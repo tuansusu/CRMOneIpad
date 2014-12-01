@@ -42,14 +42,21 @@
 //////////chon trol
 @property (weak, nonatomic) IBOutlet UITextField *txtName;
 @property (weak, nonatomic) IBOutlet UITextField *txtPhone;
+@property (weak, nonatomic) IBOutlet UITextField *txtPosition;
+
 @property (weak, nonatomic) IBOutlet UITextField *txtNumberIdentity;
+@property (weak, nonatomic) IBOutlet UITextField *txtDateCreate;
+@property (weak, nonatomic) IBOutlet UITextField *txtWhereBorn;
+@property (weak, nonatomic) IBOutlet UITextField *txtDateOfBirth;
+
 @property (weak, nonatomic) IBOutlet UITextField *txtEmail;
 
-@property (weak, nonatomic) IBOutlet UITextField *txtPersonPosition;
+
 
 @property (weak, nonatomic) IBOutlet UITextField *txtAddress;
 //////////controll////////
 
+@property (weak, nonatomic) IBOutlet UITextView *tvNote;
 
 
 @property (nonatomic,retain) IBOutlet UILabel *barLabel;

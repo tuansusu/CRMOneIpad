@@ -1,0 +1,40 @@
+//
+// Prefix header for all source files of the 'IphoneFramework' target in the 'IphoneFramework' project
+//
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iPhone SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
+#import "DateUtil.h"
+#import "InterfaceUtil.h"
+#import "Constants.h"
+#import "UIDevice+extend.h"
+#import "GraphicName.h"
+#import "Util.h"
+#import "NSString+extend.h"
+#import "UILabel+extend.h"
+#import "StringUtil.h"
+#import "AppController.h"
+#import "GlobalVars.h"
+//custom control
+#import "UIButton+Custom.h"
+#import "UILabel+Custom.h"
+#import "UIImage+Custom.h"
+#import "UIView+Custom.h"
+#import "UITextField+Custom.h"
+#import "UITextView+Custom.h"
+#import "LogUtil.h"
+#import "DataField.h"
+#import "AlertViewUtils.h"
+#import "Network.h"
+#import "Reachability.h"
+#import "UIAlertView+Blocks.h"
+
+#endif
+
+#define OAUTH

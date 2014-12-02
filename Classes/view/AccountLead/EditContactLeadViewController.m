@@ -265,7 +265,7 @@
     if (succsess) {
         //cap nhat vao bang quan he
         NSMutableDictionary *dicSubEntity = [[NSMutableDictionary alloc]init];
-        [dicSubEntity ]
+        //[dicSubEntity ]
     }
     
     

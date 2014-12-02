@@ -43,8 +43,15 @@
     
     UIFont *boldFont = [UIFont fontWithName:SYSFONT_BOLD size:SYSFONT_SIZE_BIG];
     UIColor *blackColor = FONT_TEXT_HIGHLIGNT;
-    
-    self.lbName.text = [NSString stringWithFormat:@"%@   với công ty Kim Khí Hoàng Phong", [dicData objectForKey:DTOOPPORTUNITY_name]];
+    NSString *account = [dicData objectForKey:@"Account"];
+    if([StringUtil stringIsEmpty:account])
+    {
+        self.lbName.text = [NSString stringWithFormat:@"%@  ", [dicData objectForKey:DTOOPPORTUNITY_name]];
+    }
+    else
+    {
+        self.lbName.text = [NSString stringWithFormat:@"%@   với %@", [dicData objectForKey:DTOOPPORTUNITY_name],[dicData objectForKey:@"Account"]];
+    }
     
     if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOOPPORTUNITY_name]]) {
         
@@ -62,29 +69,22 @@
     
     
     self.lbPotential.text = [dicData objectForKey:DTOOPPORTUNITY_code]; //chua biet de cai gi de tam day!
-    self.lbStatus.text = [dicData objectForKey:DTOOPPORTUNITY_status];
+    self.lbStatus.text = [dicData objectForKey:@"StatusName"];
     
-    if ([self.lbStatus.text isEqualToString:@"1"]) {
-        self.lbStatus.text = @"Đang thực hiện";
+    NSString *status = [dicData objectForKey:DTOOPPORTUNITY_status];
+    
+    if ([status isEqualToString:@"1"]) {
         self.viewStatus.backgroundColor = [UIColor grayColor];
     }else{
-        self.lbStatus.text = @"Đã liên hệ với đối tác";
         self.viewStatus.backgroundColor = [UIColor greenColor];
     }
-    float widthLabel = [UILabel getWidthFitWithLabel:self.lbStatus];
-    NSLog(@"widthLabel = %f", widthLabel);
+    CGSize textSize = [[self.lbStatus text] sizeWithFont:[self.lbStatus font]];
+    float widthLabel = textSize.width;
     float xx = self.viewStatus.frame.origin.x + self.viewStatus.frame.size.width -widthLabel -20;
     
     self.viewStatus.frame = CGRectMake(xx, self.viewStatus.frame.origin.y, (widthLabel + 20), self.viewStatus.frame.size.height);
-    
-    NSLog(@"viewStatusWidth = %f", self.viewStatus.frame.size.width);
-    
+
     self.lbStatus.frame = CGRectMake(5, self.lbStatus.frame.origin.y, (widthLabel + 10), self.lbStatus.frame.size.height);
-//    if ([self.lbStatus.text isEqualToString:@"1"]) {
-//        self.lbStatus.text = @"Đang thực hiện";
-//    }else{
-//        self.lbStatus.text = @"Đã liên hệ với đối tác";
-//    }
     
     //self.lbDate.text = [dicData objectForKey:DTOOPPORTUNITY_startDate] ;
     //[dicData objectForKey:DTOOPPORTUNITY_endDate]

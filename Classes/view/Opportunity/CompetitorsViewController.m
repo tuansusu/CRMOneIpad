@@ -15,6 +15,9 @@
 @interface CompetitorsViewController ()
 {
     int smgSelect ; //option layout
+
+    NSDictionary *opportunity;
+
     NSArray *arrayData; //mang luu tru du lieu
     
     
@@ -32,7 +35,9 @@
 @end
 
 @implementation CompetitorsViewController
-@synthesize typeActionEvent;
+
+@synthesize typeActionEvent,itemId;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -62,6 +67,35 @@
     [self actionClueContact:self.btnClueContact];
     
 //    [self.tbData registerNib:[UINib nibWithNibName:@"OpportunityCell" bundle:nil] forCellReuseIdentifier:@"opportunityCell"];
+
+
+    //Hien thi chi tiet thong tin co hoi
+    self.lblName.text = [opportunity objectForKey:DTOOPPORTUNITY_name];
+    self.lblCode.text = [opportunity objectForKey:DTOOPPORTUNITY_code];
+    self.lblStatusDetail.text = [opportunity objectForKey:@"Status"];
+    self.lblNextTaskDetail.text = [opportunity objectForKey:@"NextTask"];
+    NSDateFormatter *DateFormatter=[[NSDateFormatter alloc] init];
+    [DateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.S"];
+
+    NSString *strStartDate= [opportunity objectForKey:DTOOPPORTUNITY_startDate];
+    NSDate *startDate =[DateFormatter dateFromString:strStartDate];
+    NSDateFormatter *DateToDisplayFormatter=[[NSDateFormatter alloc] init];
+    [DateToDisplayFormatter setDateFormat:@"dd/MM/yyyy"];
+    self.lblStartDateDetail.text = [DateToDisplayFormatter stringFromDate:startDate];
+    NSString *strEndDate = [opportunity objectForKey:DTOOPPORTUNITY_endDate];
+    NSDate *endDate = [DateFormatter dateFromString:strEndDate];
+    self.lblEndDateDetail.text = [DateToDisplayFormatter stringFromDate:endDate];
+    
+    self.lblCustomerDetail.text = [opportunity objectForKey:@"Account"];
+
+    //self.lblCustomerDetail.text = [opportunity objectForKey:DTOOPPORTUNITY_updatedDate];
+    self.lblOpporttunityLevelDetail.text = [opportunity objectForKey:@"Level"];
+    
+    //Ti le thanh cong
+    int successPercent = [[opportunity objectForKey:DTOOPPORTUNITY_successPercent] intValue];
+    self.pgSuccessPercent.progress =  (float)successPercent / 100;
+    self.lblSuccessPercentDetail.text = [NSString stringWithFormat:@"%d %%", successPercent];
+
     
 }
 -(void) viewWillAppear:(BOOL)animated{
@@ -81,6 +115,10 @@
     dtoCompetitorProcess = [DTOCOMPETITORProcess new];
     dtoProductMasterProcess = [DTOPRODUCTMASTERProcess new];
     dtoAccountProcess  = [DTOACCOUNTProcess new];
+
+    
+    opportunity = [dtoOpportunityProcess getById:itemId];
+
     arrayData  = [NSArray new];
 }
 

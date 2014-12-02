@@ -517,6 +517,10 @@
 		92C68E681519D4F100981728 /* AppService.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C68E471519D4F100981728 /* AppService.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		92C68E691519D4F100981728 /* ModelEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C68E491519D4F100981728 /* ModelEvent.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		92C68E6A1519D4F100981728 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C68E4C1519D4F100981728 /* RootViewController.m */; };
+		94BA8D771A2DF3710082AE9E /* EditOpportunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA8D751A2DF3710082AE9E /* EditOpportunityViewController.m */; };
+		94BA8D781A2DF3710082AE9E /* EditOpportunityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BA8D761A2DF3710082AE9E /* EditOpportunityViewController.xib */; };
+		94BA8D7C1A2DF3CF0082AE9E /* CalendarPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA8D7A1A2DF3CF0082AE9E /* CalendarPickerViewController.m */; };
+		94BA8D7D1A2DF3CF0082AE9E /* CalendarPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BA8D7B1A2DF3CF0082AE9E /* CalendarPickerViewController.xib */; };
 		B301F1B817C376CD0004650C /* ExampleHTMLStringToAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = B301F1B717C376CD0004650C /* ExampleHTMLStringToAttributedString.m */; };
 		B301F1E717C382D80004650C /* e_Background-over.png in Resources */ = {isa = PBXBuildFile; fileRef = B301F1BF17C382D80004650C /* e_Background-over.png */; };
 		B301F1E817C382D80004650C /* f_Bg_header.png in Resources */ = {isa = PBXBuildFile; fileRef = B301F1C017C382D80004650C /* f_Bg_header.png */; };
@@ -1458,6 +1462,12 @@
 		92C68E491519D4F100981728 /* ModelEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelEvent.m; sourceTree = "<group>"; };
 		92C68E4B1519D4F100981728 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		92C68E4C1519D4F100981728 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		94BA8D741A2DF3710082AE9E /* EditOpportunityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditOpportunityViewController.h; sourceTree = "<group>"; };
+		94BA8D751A2DF3710082AE9E /* EditOpportunityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditOpportunityViewController.m; sourceTree = "<group>"; };
+		94BA8D761A2DF3710082AE9E /* EditOpportunityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditOpportunityViewController.xib; sourceTree = "<group>"; };
+		94BA8D791A2DF3CF0082AE9E /* CalendarPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalendarPickerViewController.h; path = CustomView/CalendarPickerViewController.h; sourceTree = "<group>"; };
+		94BA8D7A1A2DF3CF0082AE9E /* CalendarPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalendarPickerViewController.m; path = CustomView/CalendarPickerViewController.m; sourceTree = "<group>"; };
+		94BA8D7B1A2DF3CF0082AE9E /* CalendarPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CalendarPickerViewController.xib; path = CustomView/CalendarPickerViewController.xib; sourceTree = "<group>"; };
 		B301F1B617C376CC0004650C /* ExampleHTMLStringToAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleHTMLStringToAttributedString.h; sourceTree = "<group>"; };
 		B301F1B717C376CD0004650C /* ExampleHTMLStringToAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleHTMLStringToAttributedString.m; sourceTree = "<group>"; };
 		B301F1BF17C382D80004650C /* e_Background-over.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "e_Background-over.png"; sourceTree = "<group>"; };
@@ -2252,6 +2262,9 @@
 		2DBE93E51753391400627804 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				94BA8D791A2DF3CF0082AE9E /* CalendarPickerViewController.h */,
+				94BA8D7A1A2DF3CF0082AE9E /* CalendarPickerViewController.m */,
+				94BA8D7B1A2DF3CF0082AE9E /* CalendarPickerViewController.xib */,
 				849B6D901A18EDAE007E3B06 /* SelectIndexViewController.h */,
 				849B6D911A18EDAE007E3B06 /* SelectIndexViewController.m */,
 				849B6D921A18EDAE007E3B06 /* SelectIndexViewController.xib */,
@@ -2800,6 +2813,9 @@
 			isa = PBXGroup;
 			children = (
 				843BF0BB1A03ECB100EA1D8A /* Cell */,
+				94BA8D741A2DF3710082AE9E /* EditOpportunityViewController.h */,
+				94BA8D751A2DF3710082AE9E /* EditOpportunityViewController.m */,
+				94BA8D761A2DF3710082AE9E /* EditOpportunityViewController.xib */,
 				843BF0B61A03EC3200EA1D8A /* ListOpportunityViewController.h */,
 				843BF0B71A03EC3200EA1D8A /* ListOpportunityViewController.m */,
 				843BF0B81A03EC3200EA1D8A /* ListOpportunityViewController.xib */,
@@ -3632,6 +3648,7 @@
 				B39DD45F18A9FFF200FFA8EB /* bg-pdf-reader-1.png in Resources */,
 				8497BFED1A295A2300A5ED3C /* step7@2x.png in Resources */,
 				2DB2AAE617A0BF6E00D7B01F /* right_arrow.png in Resources */,
+				94BA8D781A2DF3710082AE9E /* EditOpportunityViewController.xib in Resources */,
 				2DB2AAE717A0BF6E00D7B01F /* right_arrow@2x.png in Resources */,
 				76977D601A02A72E0029F297 /* ListEmployeeAccountViewController.xib in Resources */,
 				B315788A188D5E5200C0ED01 /* ic-work-fw-person-2-1.png in Resources */,
@@ -3671,6 +3688,7 @@
 				76C964811A17A15C00029978 /* pin.png in Resources */,
 				76D29B241A136E4A004B9CF6 /* ic_plus-1.png in Resources */,
 				B3157895188D5E5200C0ED01 /* del-btn-1-1.png in Resources */,
+				94BA8D7D1A2DF3CF0082AE9E /* CalendarPickerViewController.xib in Resources */,
 				B3157897188D5E5200C0ED01 /* extra-btn-1-1.png in Resources */,
 				76CD8819196D1E4F00503B99 /* ic-xls-1.png in Resources */,
 				76EE207219FA829200A80414 /* ic-add-sub-1.png in Resources */,
@@ -3937,6 +3955,7 @@
 				92C68E5B1519D4F100981728 /* SBJsonWriter.m in Sources */,
 				92C68E651519D4F100981728 /* NetworkEngine.m in Sources */,
 				92C68E661519D4F100981728 /* NetworkUtils.m in Sources */,
+				94BA8D7C1A2DF3CF0082AE9E /* CalendarPickerViewController.m in Sources */,
 				76C964411A17731900029978 /* MIMMeter.m in Sources */,
 				92C68E671519D4F100981728 /* AbstractModelService.m in Sources */,
 				849794671A1FB19300ACC568 /* DetailCustomBussinessViewController.m in Sources */,
@@ -4125,6 +4144,7 @@
 				76977D5A1A029E6F0029F297 /* DTOEMPLOYEEACCOUNTProcess.m in Sources */,
 				8497BFF31A295A2300A5ED3C /* CameraViewController.m in Sources */,
 				B31938D318E4355D0008BBFE /* UIButton+Custom.m in Sources */,
+				94BA8D771A2DF3710082AE9E /* EditOpportunityViewController.m in Sources */,
 				8497C0091A295A2300A5ED3C /* PolylinesViewController.m in Sources */,
 				8497BFFC1A295A2300A5ED3C /* GroundOverlayViewController.m in Sources */,
 				B3F727B817B512E40024DC0D /* FileManagerUtil.m in Sources */,

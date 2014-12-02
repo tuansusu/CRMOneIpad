@@ -9,12 +9,22 @@
 #import "ListOpportunityViewController.h"
 #import "DTOOPPORTUNITYProcess.h"
 #import "VTCheckBox.h"
+#import "CalendarPickerViewController.h"
+
+#define START_DATE 1
+#define END_DATE 2
 
 
 @interface ListOpportunityViewController ()
 {
     int smgSelect ; //option layout
+    
+    NSString *userType;
     NSArray *arrayData; //mang luu tru du lieu
+    NSString *nowStr;
+    NSDate *now,*startDate,*endDate ;
+    NSDateFormatter *df;
+    NSInteger selectDatePicker;
     
     DTOOPPORTUNITYProcess *dtoOpportunityProcess;
     
@@ -24,6 +34,8 @@
 @end
 
 @implementation ListOpportunityViewController
+
+@synthesize listPopover;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -55,6 +67,14 @@
     [self initCustomControl];
     
     [self.tbData registerNib:[UINib nibWithNibName:@"OpportunityCell" bundle:nil] forCellReuseIdentifier:@"opportunityCell"];
+
+    
+    //
+    df = [[NSDateFormatter alloc] init];
+   	[df setDateFormat:@"dd/MM/yyyy"];
+    now = [NSDate date];
+    nowStr = [df stringFromDate:now];
+
 }
 
 /*
@@ -81,10 +101,24 @@
 
 #pragma mark check radio
 -(void) checkBoxClick:(id)sender withIndex:(NSInteger)index{
-    if (index == 0) {
-        
-    }else if (index == 1){
-        
+
+//    if (index == 0) {
+//        userType = @"1";
+//    }else if (index == 1){
+//        userType = @"2";
+//    }
+    
+    if(rdCustomer360.getCheck && !rdCustomerRoot.getCheck)
+    {
+        userType=@"1";
+    }
+    else if(!rdCustomer360.getCheck && rdCustomerRoot.getCheck)
+    {
+        userType = @"2";
+    }
+    else
+    {
+        userType = nil;
     }
 }
 
@@ -92,7 +126,9 @@
 -(void) initData {
     dtoOpportunityProcess = [DTOOPPORTUNITYProcess new];
     arrayData  = [NSArray new];
-    arrayData = [dtoOpportunityProcess filterOpportunity];
+
+    arrayData = [dtoOpportunityProcess filterOpportunity:nil addStartDate:nil addEndDate:nil userType:nil];
+
     //load data from db
     
 }
@@ -106,27 +142,52 @@
     [self.leftViewHeader setBackgroundColor:BACKGROUND_COLOR_TOP_LEFT_HEADER];
     self.leftLabelHeader.textColor = TEXT_COLOR_HEADER_APP;
     
+
+    //
+    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    
+    //Start date
+    self.dtStartDate.enabled = false;
+    self.dtStartDate.leftView = paddingView;
+    self.dtStartDate.leftViewMode = UITextFieldViewModeAlways;
+    
+    //End date
+    self.dtEndDate.enabled = false;
+    paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    self.dtEndDate.leftView = paddingView;
+    self.dtEndDate.leftViewMode = UITextFieldViewModeAlways;
+    
+    
+    //Nut tim kiem
+    self.btnSearch.backgroundColor = BUTTON_IN_ACTIVE_COLOR_1;
+    [self.btnSearch setTitleColor: TEXT_BUTTON_COLOR1 forState:UIControlStateNormal];
+    
+    
+    
     for (UIView *viewTemp in self.leftInMainView.subviews) {
         if ([viewTemp isKindOfClass:[UILabel class]]) {
             ((UILabel*) viewTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
         }
         
-        if ([viewTemp isKindOfClass:[UIButton class]]) {
-            ((UIButton*) viewTemp).backgroundColor = BUTTON_IN_ACTIVE_COLOR_1;
-            [((UIButton*) viewTemp) setTitleColor:TEXT_BUTTON_COLOR1 forState:UIControlStateNormal];
-        }
-        if ([viewTemp isKindOfClass:[UITextView class]]) {
-            ((UITextView*) viewTemp).textColor = TEXT_COLOR_REPORT;
-            ((UITextView*) viewTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
-            ((UITextView*) viewTemp).layer.borderColor = [BORDER_COLOR CGColor];
-            ((UITextView*) viewTemp).layer.borderWidth = BORDER_WITH;
-        }
-        if ([viewTemp isKindOfClass:[UITextField class]]) {
-            ((UITextField*) viewTemp).textColor = TEXT_COLOR_REPORT;
-            ((UITextField*) viewTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
-            ((UITextField*) viewTemp).layer.borderColor = [BORDER_COLOR CGColor];
-            ((UITextField*) viewTemp).layer.borderWidth = BORDER_WITH;
-        }
+
+//        if ([viewTemp isKindOfClass:[UIButton class]]) {
+//            {
+//                ((UIButton*) viewTemp).backgroundColor = BUTTON_IN_ACTIVE_COLOR_1;
+//                [((UIButton*) viewTemp) setTitleColor:TEXT_BUTTON_COLOR1 forState:UIControlStateNormal];
+//            }
+//        }
+//        if ([viewTemp isKindOfClass:[UITextView class]]) {
+//            ((UITextView*) viewTemp).textColor = TEXT_COLOR_REPORT;
+//            ((UITextView*) viewTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
+//            ((UITextView*) viewTemp).layer.borderColor = [BORDER_COLOR CGColor];
+//            ((UITextView*) viewTemp).layer.borderWidth = BORDER_WITH;
+//        }
+//        if ([viewTemp isKindOfClass:[UITextField class]]) {
+//            ((UITextField*) viewTemp).textColor = TEXT_COLOR_REPORT;
+//            ((UITextField*) viewTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
+//            ((UITextField*) viewTemp).layer.borderColor = [BORDER_COLOR CGColor];
+//            ((UITextField*) viewTemp).layer.borderWidth = BORDER_WITH;
+//        }
     }
     
     //self.view.backgroundColor = BACKGROUND_NORMAL_COLOR1;
@@ -190,12 +251,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSIndexPath* selection = [tableView indexPathForSelectedRow];
+    
+    NSDictionary *selectedItem = [arrayData objectAtIndex:indexPath.row];
+    
     if (selection){
-        
         [tableView deselectRowAtIndexPath:selection animated:YES];
     }
     
     CompetitorsViewController *viewController = [[CompetitorsViewController alloc] initWithNibName:@"CompetitorsViewController" bundle:nil];
+    viewController.itemId = [selectedItem objectForKey:DTOOPPORTUNITY_id];
     [self presentViewController:viewController animated:YES completion:nil];
     
     
@@ -295,4 +359,100 @@
 }
 
 
+- (IBAction)startDateSelect:(id)sender {
+    if (self.dtStartDate.text.length==0) {
+        self.dtStartDate.text = nowStr;
+        startDate = [NSDate date];
+    }else{
+        startDate = [DateUtil getDateFromString:self.dtStartDate.text :@"dd/MM/yyyy"];
+    }
+    
+    selectDatePicker = START_DATE;
+    CalendarPickerViewController *detail = [[CalendarPickerViewController alloc] initWithNibName:@"CalendarPickerViewController" bundle:nil];
+    detail.dateSelected = startDate;
+    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+    CGRect popoverFrame = self.dtStartDate.frame;
+    
+    detail.delegateDatePicker =(id<CalendarSelectDatePickerDelegate>) self;
+    [self.listPopover setPopoverContentSize:CGSizeMake(320, 260) animated:NO];
+    
+    
+    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.mainView permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+}
+
+- (IBAction)startDateClear:(id)sender {
+    self.dtStartDate.text = @"Ngày bắt đầu";
+    startDate = nil;
+}
+
+
+- (IBAction)endDateSelect:(id)sender {
+    if (self.dtEndDate.text.length==0) {
+        self.dtEndDate.text = nowStr;
+        endDate = [NSDate date];
+    }else{
+        endDate = [DateUtil getDateFromString:self.dtEndDate.text :@"dd/MM/yyyy"];
+    }
+    
+    selectDatePicker = END_DATE;
+    CalendarPickerViewController *detail = [[CalendarPickerViewController alloc] initWithNibName:@"CalendarPickerViewController" bundle:nil];
+    detail.dateSelected = endDate;
+    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+    CGRect popoverFrame = self.dtEndDate.frame;
+    
+    detail.delegateDatePicker =(id<CalendarSelectDatePickerDelegate>) self;
+    [self.listPopover setPopoverContentSize:CGSizeMake(320, 260) animated:NO];
+    
+    
+    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.mainView permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+}
+
+- (IBAction)endDateClear:(id)sender {
+    self.dtEndDate.text = @"Ngày kết thúc";
+    endDate = nil;
+}
+
+- (IBAction)search:(id)sender {
+    NSString *keyword = self.txtKeyword.text;
+    arrayData = [dtoOpportunityProcess filterOpportunity:keyword addStartDate:startDate addEndDate:endDate userType:userType];
+    [self.tbData reloadData];
+}
+
+-(void) selectDatePickerWithDate:(NSDate *)date
+{
+    
+    switch (selectDatePicker) {
+        case START_DATE:
+            self.dtStartDate.text = [NSString stringWithFormat:@"%@",
+                                     [df stringFromDate:date]];
+            startDate = date;
+            break;
+        case END_DATE:
+            self.dtEndDate.text = [NSString stringWithFormat:@"%@",
+                                            [df stringFromDate:date]];
+            endDate = date;
+            break;
+            
+        default:
+            break;
+    }
+    
+	
+}
+
+
+-(void) dismissPopoverView
+{
+    [self dismissPopover];
+}
+
+- (void) dismissPopover
+{
+    if ([self.listPopover isPopoverVisible])
+        [self.listPopover dismissPopoverAnimated:YES];
+}
+- (IBAction)actionAdd:(id)sender {
+    EditOpportunityViewController *viewController = [[EditOpportunityViewController alloc]initWithNibName:@"EditOpportunityViewController" bundle:nil];
+    [self presentViewController:viewController animated:YES completion:nil];
+}
 @end

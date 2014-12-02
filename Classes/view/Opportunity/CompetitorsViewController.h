@@ -26,6 +26,8 @@ enum TypeActionEvent{
 
 @property (nonatomic) enum TypeActionEvent typeActionEvent;
 
+@property (nonatomic,retain) NSString *itemId;
+
 
 //Header
 @property (weak, nonatomic) IBOutlet UIView *headerViewBar;
@@ -58,6 +60,25 @@ enum TypeActionEvent{
 
 @property (weak, nonatomic) IBOutlet UIButton *btnSupport;
 
+
+@property (strong, nonatomic) IBOutlet UILabel *lblCode;
+
+@property (strong, nonatomic) IBOutlet UILabel *lblName;
+
+@property (strong, nonatomic) IBOutlet UILabel *lblStatusTitle;
+@property (strong, nonatomic) IBOutlet UILabel *lblStatusDetail;
+@property (strong, nonatomic) IBOutlet UILabel *lblNextTaskTitle;
+@property (strong, nonatomic) IBOutlet UILabel *lblNextTaskDetail;
+@property (strong, nonatomic) IBOutlet UILabel *lblStartDateTitle;
+@property (strong, nonatomic) IBOutlet UILabel *lblStartDateDetail;
+@property (strong, nonatomic) IBOutlet UILabel *lblEndDateTitle;
+@property (strong, nonatomic) IBOutlet UILabel *lblEndDateDetail;
+@property (strong, nonatomic) IBOutlet UILabel *lblCustomerTitle;
+@property (strong, nonatomic) IBOutlet UILabel *lblCustomerDetail;
+@property (strong, nonatomic) IBOutlet UILabel *lblOpportunityLevelTitle;
+@property (strong, nonatomic) IBOutlet UILabel *lblOpporttunityLevelDetail;
+@property (strong, nonatomic) IBOutlet UIProgressView *pgSuccessPercent;
+@property (strong, nonatomic) IBOutlet UILabel *lblSuccessPercentDetail;
 
 - (IBAction)actionClueContact:(UIButton *)sender;
 

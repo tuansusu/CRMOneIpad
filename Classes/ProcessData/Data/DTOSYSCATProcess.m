@@ -17,7 +17,7 @@
 
 ///////xac dinh loai hinh doanh nghiep = 5/////////
 -(NSMutableArray*) filterWithCatType : (NSString *) catType  {
-    NSArray *allFields =[NSArray arrayWithObjects:DTOSYSCAT_code, DTOSYSCAT_sysCatId,DTOSYSCAT_name, nil];
+    NSArray *allFields =[NSArray arrayWithObjects:DTOSYSCAT_code, DTOSYSCAT_sysCatId,DTOSYSCAT_name,DTOSYSCAT_value, nil];
     
     NSString *query = [NSString stringWithFormat:@"Select %@  FROM dtosyscat where  syscattypeid=%@ order by name",[allFields componentsJoinedByString:@"," ] , catType];
     //NSLog(@"query = %@", query);

@@ -15,7 +15,6 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 
 #define DATABASE_NAME @"bisone.sqlite"
 
-
 /*
  * luongdv3: Validate Login Message
  */

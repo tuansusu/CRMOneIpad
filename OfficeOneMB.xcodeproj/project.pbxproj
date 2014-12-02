@@ -387,6 +387,9 @@
 		84945FFE1A2B383E002EF8BD /* flag_enable.png in Resources */ = {isa = PBXBuildFile; fileRef = 84945FFB1A2B383E002EF8BD /* flag_enable.png */; };
 		84945FFF1A2B383E002EF8BD /* follow_success.png in Resources */ = {isa = PBXBuildFile; fileRef = 84945FFC1A2B383E002EF8BD /* follow_success.png */; };
 		849662C51A24D19F001B3776 /* logo_login-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 849662C41A24D19F001B3776 /* logo_login-1.png */; };
+		8496FB271A2DE34200F4A641 /* ContactLeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8496FB251A2DE34200F4A641 /* ContactLeadCell.m */; };
+		8496FB281A2DE34200F4A641 /* ContactLeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8496FB261A2DE34200F4A641 /* ContactLeadCell.xib */; };
+		8496FB2B1A2DEF3800F4A641 /* DTOACCCONTACTProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 8496FB2A1A2DEF3800F4A641 /* DTOACCCONTACTProcess.m */; };
 		849788031A2BE1A400384566 /* TaskCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 849788011A2BE1A400384566 /* TaskCalendarCell.m */; };
 		849788041A2BE1A400384566 /* TaskCalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849788021A2BE1A400384566 /* TaskCalendarCell.xib */; };
 		849788081A2BE1BF00384566 /* TaskActionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 849788061A2BE1BF00384566 /* TaskActionCell.m */; };
@@ -1237,6 +1240,11 @@
 		84945FFB1A2B383E002EF8BD /* flag_enable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag_enable.png; sourceTree = "<group>"; };
 		84945FFC1A2B383E002EF8BD /* follow_success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = follow_success.png; sourceTree = "<group>"; };
 		849662C41A24D19F001B3776 /* logo_login-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo_login-1.png"; path = "VofficeImage/Option1/logo_login-1.png"; sourceTree = "<group>"; };
+		8496FB241A2DE34200F4A641 /* ContactLeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactLeadCell.h; sourceTree = "<group>"; };
+		8496FB251A2DE34200F4A641 /* ContactLeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactLeadCell.m; sourceTree = "<group>"; };
+		8496FB261A2DE34200F4A641 /* ContactLeadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactLeadCell.xib; sourceTree = "<group>"; };
+		8496FB291A2DEF3800F4A641 /* DTOACCCONTACTProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOACCCONTACTProcess.h; sourceTree = "<group>"; };
+		8496FB2A1A2DEF3800F4A641 /* DTOACCCONTACTProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOACCCONTACTProcess.m; sourceTree = "<group>"; };
 		849788001A2BE1A400384566 /* TaskCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCalendarCell.h; sourceTree = "<group>"; };
 		849788011A2BE1A400384566 /* TaskCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCalendarCell.m; sourceTree = "<group>"; };
 		849788021A2BE1A400384566 /* TaskCalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskCalendarCell.xib; sourceTree = "<group>"; };
@@ -2458,6 +2466,8 @@
 				849125CC1A1CE20600949FC8 /* DTOINVENTORYProcess.m */,
 				849125CE1A1CE68500949FC8 /* DTOSYSCATProcess.h */,
 				849125CF1A1CE68500949FC8 /* DTOSYSCATProcess.m */,
+				8496FB291A2DEF3800F4A641 /* DTOACCCONTACTProcess.h */,
+				8496FB2A1A2DEF3800F4A641 /* DTOACCCONTACTProcess.m */,
 			);
 			name = Data;
 			path = ProcessData/Data;
@@ -2835,6 +2845,9 @@
 		849787FF1A2BE17700384566 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				8496FB241A2DE34200F4A641 /* ContactLeadCell.h */,
+				8496FB251A2DE34200F4A641 /* ContactLeadCell.m */,
+				8496FB261A2DE34200F4A641 /* ContactLeadCell.xib */,
 				849788001A2BE1A400384566 /* TaskCalendarCell.h */,
 				849788011A2BE1A400384566 /* TaskCalendarCell.m */,
 				849788021A2BE1A400384566 /* TaskCalendarCell.xib */,
@@ -3571,6 +3584,7 @@
 				8497BFC61A295A2300A5ED3C /* glow-marker.png in Resources */,
 				B3157888188D5E5200C0ED01 /* ic-work-fw-group-2-1.png in Resources */,
 				2D6D76791876726A0051AD9E /* icon_read-1.png in Resources */,
+				8496FB281A2DE34200F4A641 /* ContactLeadCell.xib in Resources */,
 				B315788C188D5E5200C0ED01 /* ic-work-order-group-2-1.png in Resources */,
 				8497BFD71A295A2300A5ED3C /* spitfire.png in Resources */,
 				76C964731A17731900029978 /* RightTriangleIconBlack.png in Resources */,
@@ -3945,6 +3959,7 @@
 				769C1A1C1A00027900F015A5 /* Reachability.m in Sources */,
 				849078901A1E476D009D5D5F /* DetailLeadViewController.m in Sources */,
 				92C68E681519D4F100981728 /* AppService.m in Sources */,
+				8496FB2B1A2DEF3800F4A641 /* DTOACCCONTACTProcess.m in Sources */,
 				762048761A0D246600AAA917 /* CompetitorsViewController.m in Sources */,
 				92C68E691519D4F100981728 /* ModelEvent.m in Sources */,
 				76C9643E1A17731900029978 /* MIM_MathClass.m in Sources */,
@@ -4147,6 +4162,7 @@
 				B3A066A017D1A72400BA6487 /* WCGridViewController.m in Sources */,
 				B3F7EA8317DEC24F00504705 /* LogUtil.m in Sources */,
 				76601A2C194BE90F001D4C01 /* ReaderContentView.m in Sources */,
+				8496FB271A2DE34200F4A641 /* ContactLeadCell.m in Sources */,
 				2D459E79184EC5EA004D9C45 /* LineView.m in Sources */,
 				B362285717E943EE00CAA6AE /* Toast+UIView.m in Sources */,
 				2D6D7639187645EB0051AD9E /* GraphicName.m in Sources */,

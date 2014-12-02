@@ -7,15 +7,22 @@
 //
 
 #import "BaseViewController.h"
+#import "CalendarPickerViewController.h"
+
 
 
 @interface EditContactLeadViewController : BaseViewController<UITextFieldDelegate>
 
 //DATA
 /*
- * chuyen tu form KHDM
+ * chuyen tu form danh sahc lien he
  */
 @property (nonatomic, retain) NSDictionary *dataSend;
+
+/*
+ * chuyen tu form KHDM
+ */
+@property (nonatomic, retain) NSDictionary *dataRoot;
 
 //Header
 @property (weak, nonatomic) IBOutlet UIView *headerViewBar;
@@ -57,6 +64,13 @@
 //////////controll////////
 
 @property (weak, nonatomic) IBOutlet UITextView *tvNote;
+
+- (IBAction)actionChoiceDateCreate:(id)sender;
+
+- (IBAction)actionChoiceDateBirthday:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnCreateDate;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnBirthDay;
 
 
 @property (nonatomic,retain) IBOutlet UILabel *barLabel;

@@ -303,7 +303,7 @@
 }
 
 
--(NSMutableArray*) getAllItemsWithTableName : (NSString*) tableName withFields: (NSArray*) allFields withOrderBy : (NSMutableDictionary*) orderByFields{
+-(NSMutableArray*) getAllItemsWithTableName : (NSString*) tableName withFields: (NSArray*) allFields withOrderBy : (NSArray*) orderByFields{
     
     NSMutableArray *listDic = [[NSMutableArray alloc]init];
     sqlite3 *database;
@@ -330,6 +330,21 @@
             if (orderByFields!=nil && orderByFields.count>0) {
               //Cai dictionary
             //   NSMutable
+                //them cai orderby
+                
+                    NSString *orderQuery = @" order by ";
+                    NSInteger count = 0;
+                    for (OrderByObject *object in orderByFields) {
+                        count ++;
+                        if (count<orderByFields.count) {
+                            orderQuery = [orderQuery stringByAppendingString:[NSString stringWithFormat:@" %@ %@,", object.fieldName, object.typeOrder]];
+                        }else{
+                            orderQuery = [orderQuery stringByAppendingString:[NSString stringWithFormat:@" %@ %@", object.fieldName, object.typeOrder]];
+                        }
+                    }//end of for
+                    query = [query stringByAppendingString:orderQuery];
+                    
+                
             }
             
             sqlite3_stmt *statement;
@@ -505,6 +520,27 @@
     }
     
     return YES;
+}
+
+-(NSInteger) getMaxClientIdWithTableName : (NSString*) tableName withField : (NSString*) fieldName{
+    @try {
+        
+        OrderByObject *orderBy = [OrderByObject new];
+        orderBy.fieldName = fieldName;
+        orderBy.typeOrder = order_desc;
+        
+       NSArray *arrayResult =  [self getAllItemsWithTableName:tableName withFields:[NSArray arrayWithObjects:fieldName, nil] withOrderBy:[NSArray arrayWithObjects:orderBy, nil] ];
+        
+        if (arrayResult!=nil && arrayResult.count>0) {
+            NSInteger result = [arrayResult objectAtIndex:0];
+            return result + 1;
+        }
+        
+    }
+    @catch (NSException *exception) {
+        return 1;
+    }
+    return 1;
 }
 
 @end

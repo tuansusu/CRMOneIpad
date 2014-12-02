@@ -250,13 +250,16 @@
     //neu qua duoc check thi tien hanh luu du lieu
     NSMutableDictionary *dicEntity = [NSMutableDictionary new];
     
+    
+    
     [dicEntity setObject:[StringUtil trimString:_txtName.text] forKey:DTOLEAD_name];
+    [dicEntity setObject:[StringUtil trimString:_txtNumberIdentity.text] forKey:DTOLEAD_identifiedNumber];
     [dicEntity setObject:[StringUtil trimString:_txtAddress.text] forKey:DTOLEAD_address];
     [dicEntity setObject:[StringUtil trimString:_txtPhone.text]forKey:DTOLEAD_mobile];
     [dicEntity setObject:[StringUtil trimString:_txtCompany.text] forKey:DTOLEAD_organization];
     [dicEntity setObject:[StringUtil trimString:_txtEmail.text] forKey:DTOLEAD_email];
     
-    [dicEntity setObject:[StringUtil trimString:_txtNumberIdentity.text] forKey:DTOLEAD_identifiedNumber];
+    
     
     //xac dinh chuc danh
     if (selectPersonJobIndex>=0) {

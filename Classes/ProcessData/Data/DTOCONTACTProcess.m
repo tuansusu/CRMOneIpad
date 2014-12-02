@@ -7,78 +7,108 @@
 //
 
 #import "DTOCONTACTProcess.h"
-#import <sqlite3.h>
 #import "DataUtil.h"
+#import "DataField.h"
 
-
+#define TABLENAME_DTOCONTACT @"dtocontact"
 
 @implementation DTOCONTACTProcess
 
--(void) RenderDataField{
+
+
+-(NSArray*) getAllFields {
+    return  [NSArray arrayWithObjects:DTOCONTACT_accountId,// @"accountId" //BIGINT
+             DTOCONTACT_address, //address" //VARCHAR
+             DTOCONTACT_birthday, //birthday" //VARCHAR
+             DTOCONTACT_clientContactId, //clientContactId" //BIGINT
+             DTOCONTACT_clientId, //clientId" //BIGINT
+             DTOCONTACT_contactId, //contactId" //BIGINT
+             DTOCONTACT_email, //email" //VARCHAR
+             DTOCONTACT_employeeId, //employeeId" //BIGINT
+             DTOCONTACT_favoriteLevel, //favoriteLevel" //INTEGER
+             DTOCONTACT_fullName, //fullName" //VARCHAR
+             DTOCONTACT_identifiedIssueArea, //identifiedIssueArea" //VARCHAR
+             DTOCONTACT_identifiedIssueDate, //identifiedIssueDate" //VARCHAR
+             DTOCONTACT_identifiedNumber, //identifiedNumber" //VARCHAR
+             DTOCONTACT_isActive, //isActive" //INTEGER
+             DTOCONTACT_leadId, //leadId" //BIGINT
+             DTOCONTACT_mobile, //mobile" //VARCHAR
+             DTOCONTACT_organizationId, //organizationId" //BIGINT
+             DTOCONTACT_passport, //passport" //VARCHAR
+             DTOCONTACT_phone, //phone" //VARCHAR
+             DTOCONTACT_position, //position" //VARCHAR
+             DTOCONTACT_roleDescription, //roleDescription" //VARCHAR
+             DTOCONTACT_sex, //sex" //VARCHAR
+             DTOCONTACT_updatedDate, //updatedDate" //VARCHAR
+             DTOCONTACT_id]; //id" //INTEGER
+}
+
+
+-(BOOL) deleteEntity:(NSString *)contactId{
     
-    sqlite3 *database = [DataUtil openDatabase];
-    //lay danh sach tat ca table
-    NSArray *arrayTableName = [DataUtil BuilQueryGetListWithListFields:[NSArray arrayWithObjects:@"name", nil] selectQuery:@"SELECT name FROM sqlite_master where type='table'" valueParameter:nil];
-    for (NSDictionary *dicTable in arrayTableName) {
-        [self DetailTable:[dicTable objectForKey:@"name"] withDatabase:database];
+    NSMutableDictionary *dicFieldSet = [[NSMutableDictionary alloc]initWithObjects:[NSArray arrayWithObjects:@"0", nil] forKeys:[NSArray arrayWithObjects:DTOCONTACT_isActive, nil]];
+    NSMutableDictionary *dicFieldCondition = [[NSMutableDictionary alloc]initWithObjects:[NSArray arrayWithObjects:contactId, nil] forKeys:[NSArray arrayWithObjects:DTOCONTACT_id, nil]];
+    
+    
+    return [super updateToTableName:TABLENAME_DTOCONTACT withFields:dicFieldSet withCondition:dicFieldCondition];
+}
+
+
+-(BOOL) insertToDBWithEntity:(NSMutableDictionary*) entity{
+    
+    if ([[entity allKeys] containsObject:DTOCONTACT_id]) {
+        return [self updateToDBWithEntity:entity];
     }
     
-    [DataUtil closeDatabase];
-    
-    //NSLog(@"table info = %@", arrayColumn);
+    return [super addToDBWithTableName:TABLENAME_DTOCONTACT dictionary:entity];
     
 }
 
--(void) DetailTable  : (NSString*) strTableName  withDatabase : (sqlite3*) database {
+-(BOOL) updateToDBWithEntity:(NSMutableDictionary*) entity{
     
-    [LogUtil writeLogWithContent:[NSString stringWithFormat:@"///%@  Field\n", strTableName]];
+    NSDictionary *dicCondition = [[NSDictionary alloc]initWithObjectsAndKeys:[entity objectForKey:DTOCONTACT_id] , DTOCONTACT_id, nil];
     
-    strTableName =   [strTableName uppercaseString];
-    NSString *query = [NSString stringWithFormat:@"PRAGMA table_info('%@')", strTableName] ;
+    return [super updateToTableName:TABLENAME_DTOCONTACT withFields:entity withCondition:dicCondition];
     
-    NSArray *allFields = [[NSArray alloc]initWithObjects:@"cid", @"name", @"type", nil];
+}
+
+-(NSMutableArray*) filter{
+
+    NSArray *allFields =[NSArray arrayWithObjects:DTOCONTACT_id, DTOCONTACT_fullName, DTOCONTACT_address, DTOCONTACT_birthday, DTOCONTACT_mobile, DTOCONTACT_position, DTOCONTACT_clientContactId, nil];
     
-    NSMutableArray *listDic = [[NSMutableArray alloc]init];
+    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where isActive = 1 order by %@ desc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOCONTACT, DTOLEAD_updatedDate];
     
-    @try {
-        sqlite3_stmt *statement;
-        NSMutableDictionary *dic;
-        if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
-            
-            NSInteger start = 0;
-            
-            while (sqlite3_step(statement) == SQLITE_ROW) {
-                
-                dic = [[NSMutableDictionary alloc]init];
-                start = 0;
-                for (NSString* field in allFields) {
-                    if (sqlite3_column_text(statement, start) != NULL) {
-                        NSString *value = [NSString stringWithUTF8String:( char *) sqlite3_column_text(statement, start)];
-                        [dic setObject:value forKey:field];
-                    }
-                    start++;
-                }
-                [listDic addObject:dic];
-            }
-            sqlite3_finalize(statement);
-        }
-    }
-    @catch (NSException *exception) {
-        [LogUtil writeLogWithException:exception ];
-    }
+    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:nil];
+}
+
+
+-(NSMutableArray*) filterWithKey : (NSString*) strKey withValue : (NSString*) strValue{
+    NSArray *allFields =[NSArray arrayWithObjects:DTOCONTACT_id, DTOCONTACT_fullName, DTOCONTACT_address, DTOCONTACT_birthday, DTOCONTACT_mobile, DTOCONTACT_position, DTOCONTACT_clientContactId, nil];
+    
+    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where status = 1 and %@  like ? order by %@ desc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOCONTACT, strKey, DTOLEAD_updatedDate];
+    
+    NSLog(@"query = %@", query);
+    NSString *value = @"%";
+    value = [value stringByAppendingString:[strValue stringByAppendingString:@"%"]];
+    
+    NSLog(@"param = %@", value);
+    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:[NSArray arrayWithObjects:value, nil]];
     
     
-    //NSLog(@"table info = %@", listDic);
-    //#define DTOCONTACT_accountId @"accountId"
+}
+
+-(NSDictionary*) getDataWithKey : (NSString*) inputKey withValue : (NSString*) inputValue{
+    NSMutableArray *listDic = nil;
+    NSArray *orderBy = [NSArray array];
+    listDic = [super getAllItemsWithTableName:TABLENAME_DTOCONTACT withFields:[self getAllFields] withConditionString:[NSString stringWithFormat:@" Where %@ = ?", inputKey] withParameter:[NSArray arrayWithObjects:inputValue, nil] withOrderByFields:orderBy];
     
-    
-    
-    //NSMutableArray *arrayColumn = [NSMutableArray new];
-    for (NSDictionary *dicField in listDic) {
-        //        [arrayColumn addObject: [NSString stringWithFormat:@"#define DTOCONTACT_%@ @\"%@\" //%@",  [dicField objectForKey:@"name"], [dicField objectForKey:@"name"], [dicField objectForKey:@"type"]] ];
-        [LogUtil writeLogWithContent:[NSString stringWithFormat:@"#define %@_%@ @\"%@\" //%@ \n",strTableName,  [dicField objectForKey:@"name"], [dicField objectForKey:@"name"], [dicField objectForKey:@"type"]]];
+    if (listDic.count>0) {
+        
+        return [listDic objectAtIndex:0];
         
     }
+    
+    return nil;
 }
 
 @end

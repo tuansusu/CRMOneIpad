@@ -37,5 +37,4 @@
 +(BOOL) vacuumDatabase;
 
 
-
 @end

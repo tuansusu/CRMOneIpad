@@ -15,6 +15,7 @@
 
 -(BOOL) checkExistObjectWithTableName: (NSString*) tableName dictionaryKeys : (NSMutableDictionary*) dicKeys;
 -(NSMutableArray*) getAllItemsWithTableName : (NSString*) tableName withFields: (NSArray*) allFields;
+
 -(NSMutableArray*) getAllItemsWithTableName : (NSString*) tableName withFields: (NSArray*) allFields withOrderBy : (NSMutableArray*) orderByFields;
 
 -(NSMutableArray*) getAllItemsWithTableNameAndCondition : (NSString*) tableName withFields: (NSArray*) allFields withCondition : (NSString*) condition;
@@ -26,5 +27,7 @@
 -(NSMutableArray*) getAllItemsWithTableName : (NSString*) tableName withFields: (NSArray*) allFields withConditionString : (NSString*) condition withParameter: (NSArray*) parameters withOrderByFields: (NSArray*) orderFields withCurpage : (NSInteger) curPage withItemsPerpage : (NSInteger) limit;
 
 -(BOOL) updateToTableName : (NSString*) tableName withFields: (NSMutableDictionary*) fieldsConditions withCondition : (NSDictionary*) condition;
+
++(NSInteger) getMaxClientIdWithTableName : (NSString*) tableName withField : (NSString*) fieldName;
 
 @end

@@ -340,7 +340,9 @@
             break;
         case SELECT_INDEX_ADD_CONTACT:
         {
-            
+            EditContactLeadViewController *viewController = [[EditContactLeadViewController alloc]initWithNibName:@"EditContactLeadViewController" bundle:nil];
+            viewController.dataRoot = dicData;
+            [self presentViewController:viewController animated:YES completion:nil];
         }
             break;
         case SELECT_INDEX_ADD_NOTE:

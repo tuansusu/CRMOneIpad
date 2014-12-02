@@ -53,6 +53,7 @@
     DTOOPPORTUNITYProcess *dtoOpportunityProcess;
     
     int SELECTED_TAG;
+    int CUSTOMER_TYPE;
     
     NSInteger selectStatusIndex;
     NSInteger selectNextTaskIndex;
@@ -89,9 +90,7 @@
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
     
-    smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
-    [self updateInterFaceWithOption:smgSelect];
-    [self initData];
+    
     
 //    [self.tbData registerNib:[UINib nibWithNibName:@"OpportunityCell" bundle:nil] forCellReuseIdentifier:@"opportunityCell"];
 //    [SVProgressHUD show];
@@ -104,6 +103,11 @@
     now = [NSDate date];
     nowStr = [df stringFromDate:now];
     nowTimeStr = [dfTime stringFromDate:now];
+    
+    
+    smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
+    [self updateInterFaceWithOption:smgSelect];
+    [self initData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -141,6 +145,100 @@
     selectNextTaskIndex = -1;
     selectLevelIndex = -1;
     selectLevelIndex = -1;
+    
+    if (self.dataSend) {
+        
+        [self loadEditData];
+    }else{
+        //
+       // _txtCode.text = [NSString stringWithFormat:@"%d", [dtoOpportunityProcess getClientId]];
+    }
+}
+
+//Load thong tin len form sua
+-(void) loadEditData {
+    
+    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOOPPORTUNITY_name]]) {
+        _txtName.text =[_dataSend objectForKey:DTOOPPORTUNITY_name];
+    }
+    
+    
+    
+    //start date
+    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOOPPORTUNITY_startDate]]) {
+        startDate = [DateUtil getDateFromString:[_dataSend objectForKey:DTOOPPORTUNITY_startDate] :@"yyyy-MM-dd HH:mm:ss.S"];
+        _dtStartDate.text = [NSString stringWithFormat:@"%@",
+                                 [df stringFromDate:startDate]];
+        
+        self.txtStartDateTime.text =[NSString stringWithFormat:@"%@",
+                                     [dfTime stringFromDate:startDate]];
+
+    }
+    
+    //end date
+    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOOPPORTUNITY_endDate]]) {
+        endDate = [DateUtil getDateFromString:[_dataSend objectForKey:DTOOPPORTUNITY_endDate] :@"yyyy-MM-dd HH:mm:ss.S"];
+        _dtEndDate.text = [NSString stringWithFormat:@"%@",
+                             [df stringFromDate:startDate]];
+        
+        self.txtEndDateTime.text =[NSString stringWithFormat:@"%@",
+                                     [dfTime stringFromDate:endDate]];
+        
+    }
+    
+    //trang thai
+    NSString *strStatus = [_dataSend objectForKey:DTOOPPORTUNITY_status];
+    if (![StringUtil stringIsEmpty:strStatus]) {
+        NSArray *arrayStatusID = [listArrStatus valueForKey:DTOSYSCAT_value];
+        selectStatusIndex = [arrayStatusID indexOfObject:strStatus];
+        if (selectStatusIndex>=0) {
+            NSDictionary *dataStatus = [listArrStatus objectAtIndex:selectStatusIndex];
+            _txtStatus.text = [dataStatus objectForKey:DTOSYSCAT_name];
+        }
+    }
+    
+    //viec tiep theo
+    NSString *strNextTask = [_dataSend objectForKey:DTOOPPORTUNITY_nextTask];
+    if (![StringUtil stringIsEmpty:strNextTask]) {
+        NSArray *arrayNextTaskID = [listArrNextTask valueForKey:DTOSYSCAT_sysCatId];
+        selectNextTaskIndex = [arrayNextTaskID indexOfObject:strNextTask];
+        if (selectNextTaskIndex>=0) {
+            NSDictionary *dataNextTask = [listArrNextTask objectAtIndex:selectNextTaskIndex];
+            _txtNextTask.text = [dataNextTask objectForKey:DTOSYSCAT_name];
+        }
+    }
+    
+    //Muc do co hoi
+    NSString *strLevel = [_dataSend objectForKey:DTOOPPORTUNITY_opportunityLevelId];
+    if (![StringUtil stringIsEmpty:strLevel]) {
+        NSArray *arrayLevelID = [listArrLevel valueForKey:DTOSYSCAT_sysCatId];
+        selectLevelIndex = [arrayLevelID indexOfObject:strLevel];
+        if (selectLevelIndex>=0) {
+            NSDictionary *dataLevel = [listArrLevel objectAtIndex:selectLevelIndex];
+            _txtLevel.text = [dataLevel objectForKey:DTOSYSCAT_name];
+            
+            int value = [[dataLevel objectForKey:DTOSYSCAT_value] intValue];
+            self.pgLevel.progress = (float)value / 100;
+        }
+    }
+
+    //Khach hang
+    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOOPPORTUNITY_accountId]]) {
+        NSArray *arrayAccountID = [listArrAccount valueForKey:DTOACCOUNT_id];
+        selectCustomerIndex = [arrayAccountID indexOfObject:[_dataSend objectForKey:DTOOPPORTUNITY_accountId]];
+        if (selectCustomerIndex>=0) {
+            NSDictionary *dataAccount = [listArrAccount objectAtIndex:selectCustomerIndex];
+            _txtCustomer.text = [dataAccount objectForKey:DTOACCOUNT_name];
+        }
+    } else if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOOPPORTUNITY_leadId]]) {
+        NSArray *arrayLeadID = [listArrLead valueForKey:DTOLEAD_leadId];
+        selectCustomerIndex = [arrayLeadID indexOfObject:[_dataSend objectForKey:DTOOPPORTUNITY_leadId]];
+        if (selectCustomerIndex>=0) {
+            NSDictionary *dataLead = [listArrLead objectAtIndex:selectCustomerIndex];
+            _txtCustomer.text = [dataLead objectForKey:DTOLEAD_name];
+        }
+    }
+    
 }
 
 - (void) updateInterFaceWithOption : (int) option
@@ -220,6 +318,55 @@
 -(IBAction)homeBack:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == 0 && alertView.tag ==1) {
+        
+        
+    }
+    if (succsess && alertView.tag == 5 && buttonIndex == 0) { //thong bao dong form
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    
+    if (succsess && alertView.tag == 5 && buttonIndex == 1) {
+        //reset lai form
+        [self resetForm];
+    }
+}
+
+-(void) resetForm {
+    for (UIView *viewTemp in self.bodyMainView.subviews) {
+        
+        for (UIView *viewSubTemp in viewTemp.subviews) {
+            
+            if ([viewSubTemp isKindOfClass:[UITextView class]]) {
+                ((UITextView*) viewSubTemp).text = @"";
+            }
+            if ([viewSubTemp isKindOfClass:[UITextField class]]) {
+                ((UITextField*) viewSubTemp).text = @"";
+            }
+            
+        }
+    }
+    selectCustomerIndex = -1;
+    selectLevelIndex = -1;
+    selectNextTaskIndex = -1;
+    selectCustomerIndex = -1;
+    selectStatusIndex = -1;
+    succsess = false;
+    
+    [self hiddenKeyBoard];
+    
+}
+
+-(void) hiddenKeyBoard {
+    for (UIView *viewTemp in _bodyMainView.subviews) {
+        for (UIView *subViewTemp in viewTemp.subviews) {
+            [(UITextField *)subViewTemp resignFirstResponder];
+        }
+    }
 }
 
 - (IBAction)actionChooseStatus:(id)sender {
@@ -337,6 +484,7 @@
             if(index == 0)
             {
                 SELECTED_TAG = TAG_SELECT_CUSTOMER_TYPE_ACCOUNT;
+                CUSTOMER_TYPE = TAG_SELECT_CUSTOMER_TYPE_ACCOUNT;
                 detail.listData = [listArrAccount valueForKey:DTOACCOUNT_name];
                 
                
@@ -344,6 +492,7 @@
             else if(index == 1)
             {
                 SELECTED_TAG = TAG_SELECT_CUSTOMER_TYPE_LEAD;
+                CUSTOMER_TYPE = TAG_SELECT_CUSTOMER_TYPE_LEAD;
                 detail.listData = [listArrLead valueForKey:DTOLEAD_name];
             }
             
@@ -546,13 +695,13 @@
     //Khach hang
     if(selectCustomerIndex >= 0)
     {
-        if(SELECTED_TAG == TAG_SELECT_CUSTOMER_TYPE_ACCOUNT)
+        if(CUSTOMER_TYPE == TAG_SELECT_CUSTOMER_TYPE_ACCOUNT)
         {
              [dicEntity setObject:[[listArrAccount objectAtIndex:selectCustomerIndex] objectForKey:DTOACCOUNT_accountId] forKey:DTOOPPORTUNITY_accountId];
         }
-        else
+        else if(CUSTOMER_TYPE == TAG_SELECT_CUSTOMER_TYPE_LEAD)
         {
-            [dicEntity setObject:[[listArrLead objectAtIndex:selectCustomerIndex] objectForKey:DTOLEAD_name] forKey:DTOOPPORTUNITY_leadId];
+            [dicEntity setObject:[[listArrLead objectAtIndex:selectCustomerIndex] objectForKey:DTOLEAD_leadId] forKey:DTOOPPORTUNITY_leadId];
         }
     }
    
@@ -568,6 +717,11 @@
         
     [dicEntity setObject:@"1" forKey:DTOOPPORTUNITY_isActive];
     
+    
+    if (self.dataSend) {
+        
+        [dicEntity setObject:[_dataSend objectForKey:DTOOPPORTUNITY_id] forKey:DTOOPPORTUNITY_id];
+    }
     succsess = [dtoOpportunityProcess insertToDBWithEntity:dicEntity];
     if (succsess) {
         //Thong bao cap nhat thanh cong va thoat

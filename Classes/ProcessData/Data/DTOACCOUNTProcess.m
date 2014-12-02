@@ -15,7 +15,7 @@
 
 
 -(NSMutableArray*) filter {
-    NSArray *allFields =[NSArray arrayWithObjects:DTOACCOUNT_email, DTOACCOUNT_code, DTOACCOUNT_name, DTOACCOUNT_mobile, nil];
+    NSArray *allFields =[NSArray arrayWithObjects:DTOACCOUNT_email, DTOACCOUNT_code, DTOACCOUNT_name, DTOACCOUNT_mobile,DTOACCOUNT_accountId, nil];
     
     NSString *query = [NSString stringWithFormat:@"Select %@ from %@",[allFields componentsJoinedByString:@"," ] ,TABLENAME_DTOACCOUNT ];
     

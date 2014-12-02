@@ -12,6 +12,9 @@
 
 @interface EditOpportunityViewController : BaseViewController<UITextFieldDelegate, SelectIndexDelegate>
 
+//DATA
+@property (nonatomic, retain) NSDictionary *dataSend;
+
 //Header
 @property (weak, nonatomic) IBOutlet UIView *headerViewBar;
 @property (weak, nonatomic) IBOutlet UILabel *fullNameLB;

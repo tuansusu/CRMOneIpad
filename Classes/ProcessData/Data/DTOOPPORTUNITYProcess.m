@@ -14,6 +14,40 @@
 #define TableName_DTOOPPORTUNTITY @"dtoopportunity"
 
 @implementation DTOOPPORTUNITYProcess
+
+-(NSArray*) getAllFields {
+    return  [NSArray arrayWithObjects: DTOOPPORTUNITY_accountId, //BIGINT
+ DTOOPPORTUNITY_campaignId,  //BIGINT
+DTOOPPORTUNITY_client, //BIGINT
+DTOOPPORTUNITY_clientOpportunityId,//BIGINT
+ DTOOPPORTUNITY_code, //VARCHAR
+ DTOOPPORTUNITY_createdBy, //BIGINT
+DTOOPPORTUNITY_createdDate,//VARCHAR
+DTOOPPORTUNITY_description, //VARCHAR
+ DTOOPPORTUNITY_employeeId,//BIGINT
+ DTOOPPORTUNITY_endDate, //VARCHAR
+ DTOOPPORTUNITY_endDateReal, //VARCHAR
+ DTOOPPORTUNITY_isActive, //SMALLINT
+ DTOOPPORTUNITY_languageId, //BIGINT
+DTOOPPORTUNITY_leadId, //BIGINT
+DTOOPPORTUNITY_name, //VARCHAR
+DTOOPPORTUNITY_needSupport, //SMALLINT
+ DTOOPPORTUNITY_nextTask, //BIGINT
+ DTOOPPORTUNITY_opportunityId,//BIGINT
+ DTOOPPORTUNITY_opportunityLevelId, //BIGINT
+DTOOPPORTUNITY_resultDescription, //VARCHAR
+DTOOPPORTUNITY_startDate, //VARCHAR
+ DTOOPPORTUNITY_startDateReal, //VARCHAR
+ DTOOPPORTUNITY_status, //INTEGER
+ DTOOPPORTUNITY_successPercent, //INTEGER
+ DTOOPPORTUNITY_sysOrganizationId, //BIGINT
+DTOOPPORTUNITY_type, //BIGINT
+DTOOPPORTUNITY_updatedBy, //BIGINT
+DTOOPPORTUNITY_updatedDate, //VARCHAR
+             DTOOPPORTUNITY_id,nil]; //INTEGER
+}
+
+
 -(BOOL) insertToDBWithEntity:(NSMutableDictionary*) entity{
     
     return [super addToDBWithTableName:TableName_DTOOPPORTUNTITY dictionary:entity];
@@ -97,6 +131,22 @@
     {
         return nil;
     }
+}
+-(NSDictionary*) getDataWithKey : (NSString*) inputKey withValue : (NSString*) inputValue{
+    NSMutableArray *listDic = nil;
+    NSArray *orderBy = [NSArray array];
+    listDic = [super getAllItemsWithTableName:TableName_DTOOPPORTUNTITY withFields:[self getAllFields] withConditionString:[NSString stringWithFormat:@" Where %@ = ?", inputKey] withParameter:[NSArray arrayWithObjects:inputValue, nil] withOrderByFields:orderBy];
+    
+    if (listDic.count>0) {
+        
+        return [listDic objectAtIndex:0];
+        
+    }
+    
+    return nil;
+}
+-(NSInteger) getClientId {
+    return [super getMaxClientIdWithTableName:TableName_DTOOPPORTUNTITY withField:DTOOPPORTUNITY_clientOpportunityId];
 }
 
 @end

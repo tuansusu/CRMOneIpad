@@ -344,6 +344,15 @@
 -(void)tableView:(UITableView *)tableView swipeAccessoryButtonPushedForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"sua item at index = %d", indexPath.row);
+    
+    NSDictionary *dicDataTemp = [arrayData objectAtIndex:indexPath.row];
+    
+    NSDictionary *dicData = [dtoOpportunityProcess getDataWithKey:DTOOPPORTUNITY_id withValue:[dicDataTemp objectForKey:DTOOPPORTUNITY_id]];
+    
+
+        EditOpportunityViewController *viewController = [[EditOpportunityViewController alloc]initWithNibName:@"EditOpportunityViewController" bundle:nil];
+        viewController.dataSend = dicData;
+        [self presentViewController:viewController animated:YES completion:nil];
 }
 
 
@@ -455,4 +464,5 @@
     EditOpportunityViewController *viewController = [[EditOpportunityViewController alloc]initWithNibName:@"EditOpportunityViewController" bundle:nil];
     [self presentViewController:viewController animated:YES completion:nil];
 }
+
 @end

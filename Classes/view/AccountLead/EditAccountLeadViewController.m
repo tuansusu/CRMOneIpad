@@ -9,6 +9,7 @@
 #import "EditAccountLeadViewController.h"
 #import "DTOACCOUNTLEADProcess.h"
 #import "DTOSYSCATProcess.h"
+#import "DataField.h"
 
 #define TAG_SELECT_PERSONAL_POSITION 1
 #define TAG_SELECT_PERSONAL_JOB 2
@@ -292,6 +293,8 @@
     if (self.dataSend) {
         
         [dicEntity setObject:[_dataSend objectForKey:DTOLEAD_id] forKey:DTOLEAD_id];
+    }else{
+        [dicEntity setObject:IntToStr([dtoLeadProcess getClientId]) forKey:DTOLEAD_clientLeadId];
     }
     succsess = [dtoLeadProcess insertToDBWithEntity:dicEntity];
     

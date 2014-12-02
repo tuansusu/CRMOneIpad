@@ -255,6 +255,9 @@
     
     [dicEntity setObject:@"1" forKey:DTOCONTACT_isActive];
     [dicEntity setObject:[DateUtil formatDate:[NSDate new] :@"yyyy-MM-dd HH:mm:ss.S"] forKey:DTOCONTACT_updatedDate];
+    NSString *strClientContactId = IntToStr(([dtoProcess getClientId]));
+    [dicEntity setObject:strClientContactId forKey:DTOCONTACT_clientContactId];
+    [dicEntity setObject:@"1" forKey:DTOCONTACT_clientId];
     
     if (self.dataSend) {
         
@@ -263,9 +266,23 @@
     succsess = [dtoProcess insertToDBWithEntity:dicEntity];
     
     if (succsess) {
+        
+        strClientContactId = IntToStr(([dtoProcess getClientId] - 1));
+        
         //cap nhat vao bang quan he
-        NSMutableDictionary *dicSubEntity = [[NSMutableDictionary alloc]init];
-        //[dicSubEntity ]
+        NSMutableDictionary *dicSubEntity =  [[NSMutableDictionary alloc]init];
+        
+        DTOACCCONTACTProcess *dtoAccContactProcess = [DTOACCCONTACTProcess new];
+        
+        NSString *strAccountContactId = IntToStr([dtoAccContactProcess getClientId]);
+        
+        [dicSubEntity setObject:strAccountContactId forKey:DTOACCOUNTCONTACT_clientAccountContactId];
+        [dicSubEntity setObject:strClientContactId forKey:DTOACCOUNTCONTACT_clientAccountId];
+        [dicSubEntity setObject:[self.dataRoot objectForKey:DTOLEAD_clientLeadId] forKey:DTOACCOUNTCONTACT_clientLeadId];
+        [dicSubEntity setObject:@"1" forKey:DTOACCOUNTCONTACT_isActive];
+        
+       succsess = [dtoAccContactProcess insertToDBWithEntity:dicSubEntity];
+        
     }
     
     

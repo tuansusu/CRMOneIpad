@@ -532,8 +532,8 @@
        NSArray *arrayResult =  [self getAllItemsWithTableName:tableName withFields:[NSArray arrayWithObjects:fieldName, nil] withOrderBy:[NSArray arrayWithObjects:orderBy, nil] ];
         
         if (arrayResult!=nil && arrayResult.count>0) {
-            NSInteger result = [arrayResult objectAtIndex:0];
-            return result + 1;
+            NSInteger result = [[arrayResult objectAtIndex:0] integerValue] + 1;
+            return result;
         }
         
     }

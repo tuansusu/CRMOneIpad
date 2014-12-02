@@ -15,4 +15,6 @@
  */
 -(BOOL) insertToDBWithEntity:(NSMutableDictionary*) entity;
 
+-(NSInteger) getClientId ;
+
 @end

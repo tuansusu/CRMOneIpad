@@ -34,4 +34,5 @@
 -(NSDictionary*) getDataWithKey : (NSString*) inputKey withValue : (NSString*) inputValue;
 
 
+-(NSInteger) getClientId ;
 @end

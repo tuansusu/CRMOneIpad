@@ -28,6 +28,6 @@
 
 -(BOOL) updateToTableName : (NSString*) tableName withFields: (NSMutableDictionary*) fieldsConditions withCondition : (NSDictionary*) condition;
 
-+(NSInteger) getMaxClientIdWithTableName : (NSString*) tableName withField : (NSString*) fieldName;
+-(NSInteger) getMaxClientIdWithTableName : (NSString*) tableName withField : (NSString*) fieldName;
 
 @end

@@ -145,4 +145,10 @@
     return nil;
 }
 
+-(NSInteger) getClientId {
+    return [super getMaxClientIdWithTableName:TABLENAME_DTOACCOUNTLEAD withField:DTOLEAD_clientLeadId];
+}
+
+
+
 @end

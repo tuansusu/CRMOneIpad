@@ -30,4 +30,8 @@
     
 }
 
+-(NSInteger) getClientId {
+    return [super getMaxClientIdWithTableName:TABLENAME_DTOACCCONTACT withField:DTOACCOUNTCONTACT_clientAccountContactId];
+}
+
 @end

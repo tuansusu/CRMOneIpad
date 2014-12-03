@@ -367,6 +367,8 @@
 		76EE210E19FF4D7100A80414 /* icon-accept-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EE210B19FF4D7100A80414 /* icon-accept-1.png */; };
 		76EE210F19FF4D7100A80414 /* icon-clock-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EE210C19FF4D7100A80414 /* icon-clock-1.png */; };
 		76EE211019FF4D7100A80414 /* icon-confirm-process-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EE210D19FF4D7100A80414 /* icon-confirm-process-1.png */; };
+		8434BEFD1A2F485700C29815 /* DetailContactLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8434BEFB1A2F485700C29815 /* DetailContactLeadViewController.m */; };
+		8434BEFE1A2F485700C29815 /* DetailContactLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8434BEFC1A2F485700C29815 /* DetailContactLeadViewController.xib */; };
 		843BF0B91A03EC3200EA1D8A /* ListOpportunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843BF0B71A03EC3200EA1D8A /* ListOpportunityViewController.m */; };
 		843BF0BA1A03EC3200EA1D8A /* ListOpportunityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843BF0B81A03EC3200EA1D8A /* ListOpportunityViewController.xib */; };
 		843BF0BF1A03ECC500EA1D8A /* OpportunityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 843BF0BD1A03ECC500EA1D8A /* OpportunityCell.m */; };
@@ -1216,6 +1218,9 @@
 		76EE210B19FF4D7100A80414 /* icon-accept-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-accept-1.png"; path = "VofficeImage/Option1/icon-accept-1.png"; sourceTree = "<group>"; };
 		76EE210C19FF4D7100A80414 /* icon-clock-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-clock-1.png"; path = "VofficeImage/Option1/icon-clock-1.png"; sourceTree = "<group>"; };
 		76EE210D19FF4D7100A80414 /* icon-confirm-process-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-confirm-process-1.png"; path = "VofficeImage/Option1/icon-confirm-process-1.png"; sourceTree = "<group>"; };
+		8434BEFA1A2F485700C29815 /* DetailContactLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailContactLeadViewController.h; sourceTree = "<group>"; };
+		8434BEFB1A2F485700C29815 /* DetailContactLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailContactLeadViewController.m; sourceTree = "<group>"; };
+		8434BEFC1A2F485700C29815 /* DetailContactLeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailContactLeadViewController.xib; sourceTree = "<group>"; };
 		843BF0B61A03EC3200EA1D8A /* ListOpportunityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListOpportunityViewController.h; sourceTree = "<group>"; };
 		843BF0B71A03EC3200EA1D8A /* ListOpportunityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListOpportunityViewController.m; sourceTree = "<group>"; };
 		843BF0B81A03EC3200EA1D8A /* ListOpportunityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListOpportunityViewController.xib; sourceTree = "<group>"; };
@@ -2521,6 +2526,9 @@
 		76C962951A16DBA500029978 /* AccountLead */ = {
 			isa = PBXGroup;
 			children = (
+				8434BEFA1A2F485700C29815 /* DetailContactLeadViewController.h */,
+				8434BEFB1A2F485700C29815 /* DetailContactLeadViewController.m */,
+				8434BEFC1A2F485700C29815 /* DetailContactLeadViewController.xib */,
 				849787FF1A2BE17700384566 /* Cell */,
 				76C962961A16DBA500029978 /* AccountLeadCell.h */,
 				76C962971A16DBA500029978 /* AccountLeadCell.m */,
@@ -3845,6 +3853,7 @@
 				84945FFD1A2B383E002EF8BD /* flag_disable.png in Resources */,
 				2DE2D2431829060700034877 /* tab-data-btn-2.png in Resources */,
 				7633081C1A04941E000E190B /* VTDateField.xib in Resources */,
+				8434BEFE1A2F485700C29815 /* DetailContactLeadViewController.xib in Resources */,
 				2DE2D2441829060700034877 /* tab-data-btn-1.png in Resources */,
 				76601A48194BE90F001D4C01 /* Reader-Button-N@2x.png in Resources */,
 				2DE2D2451829060700034877 /* tab-data-bg.png in Resources */,
@@ -3949,6 +3958,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				76601A37194BE90F001D4C01 /* ReaderThumbView.m in Sources */,
 				92C68E501519D4F100981728 /* BaseViewController.m in Sources */,
+				8434BEFD1A2F485700C29815 /* DetailContactLeadViewController.m in Sources */,
 				92C68E511519D4F100981728 /* Constants.m in Sources */,
 				76D29B301A13AD88004B9CF6 /* ProductCell.m in Sources */,
 				76C9645E1A17731900029978 /* BiTransPieChart.m in Sources */,

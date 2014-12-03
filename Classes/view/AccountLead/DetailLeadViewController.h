@@ -11,6 +11,8 @@
 #import "SelectIndexViewController.h"
 
 #import "EditContactLeadViewController.h"
+#import "ContactLeadCell.h"
+#import "DetailContactLeadViewController.h"
 
 enum TypeLeaderView{
     typeLeaderView_ExpandInfo, //Thông tin mở rộng
@@ -40,10 +42,7 @@ enum TypeLeaderView{
 
 - (IBAction)actionAdd:(id)sender;
 
-
 @property (weak, nonatomic) IBOutlet UIView *mainView;
-
-
 
 @property (weak, nonatomic) IBOutlet UIView *bodyMainView;
 

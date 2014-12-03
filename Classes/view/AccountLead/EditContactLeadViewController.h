@@ -15,7 +15,7 @@
 
 //DATA
 /*
- * chuyen tu form danh sahc lien he
+ * chuyen tu form danh sahc lien he(co ca clientLeaderId)
  */
 @property (nonatomic, retain) NSDictionary *dataSend;
 

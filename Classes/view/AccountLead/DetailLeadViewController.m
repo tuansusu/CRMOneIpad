@@ -8,6 +8,10 @@
 
 #import "DetailLeadViewController.h"
 #import "DTOACCOUNTLEADProcess.h"
+#import "DTOCONTACTProcess.h"
+
+////remove
+#import "StringUtil.h"
 
 #define TITLE_APP @"KHÁCH HÀNG TIỀM NĂNG"
 
@@ -27,6 +31,8 @@
 {
     int smgSelect ; //option layout
     NSArray *arrayData; //mang luu tru du lieu
+    
+    DTOCONTACTProcess *dtoContactProcess; //lay danh sach du lieu theo clientLeadId
     
     NSUserDefaults *defaults ;
     
@@ -88,6 +94,7 @@
     listArr  = [NSArray arrayWithObjects:SELECT_TEXT_ADD_CONTACT,SELECT_TEXT_ADD_NOTE, SELECT_TEXT_ADD_CALENDAR, SELECT_TEXT_ADD_TASK, SELECT_TEXT_ADD_OPPORTUNITY, nil];
     
     dtoLeadProcess = [DTOACCOUNTLEADProcess new];
+    dtoContactProcess = [DTOCONTACTProcess new];
     
     NSLog(@"datasend detail lead = %@", self.dataSend);
     dicData = [dtoLeadProcess getDataWithKey:DTOLEAD_id withValue:[self.dataSend objectForKey:DTOLEAD_id]];
@@ -247,7 +254,7 @@
             break;
         case typeLeaderView_Contact:
         {
-            
+            arrayData = [dtoContactProcess filterWithClientLeaderId:[dicData objectForKey:DTOLEAD_clientLeadId]];
         }break;
         case typeLeaderView_Note:
         {
@@ -502,20 +509,19 @@
         }
             break;
         case typeLeaderView_Contact:{
-            //            static NSString *cellId = @"ClueContactCell";
-            //            ClueContactCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
-            //
-            //
-            //            if (!cell) {
-            //
-            //                cell = [ClueContactCell getNewCell ];
-            //            }
-            //
-            //            if (arrayData.count>0) {
-            //                [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
-            //            }
-            //
-            //            return cell;
+            static NSString *cellId = @"ContactLeadCell";
+            ContactLeadCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+            
+            
+              if (!cell) {
+                   cell = [ContactLeadCell initNibCell];
+                  }
+            
+                        if (arrayData.count>0) {
+                            [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+                        }
+            
+                       return cell;
         }
             break;
         case typeLeaderView_Note:
@@ -561,17 +567,29 @@
     if (selection){
         
         [tableView deselectRowAtIndexPath:selection animated:YES];
+    
     }
+    
+    NSDictionary *dicTempData = [arrayData objectAtIndex:indexPath.row];
+
     
     switch (typeActionEvent) {
         case typeLeaderView_Task:
-            
             break;
         case typeLeaderView_Opportunity:
             break;
         case typeLeaderView_Note:
             break;
         case typeLeaderView_Contact:
+        {
+            //lay chi tiet doi tuong nhet vao datasend
+            
+            
+            
+            DetailContactLeadViewController *viewController = [[DetailContactLeadViewController alloc]initWithNibName:@"DetailContactLeadViewController" bundle:nil];
+            viewController.dataSend = dicTempData;
+            [self presentViewController:viewController animated:YES completion:nil];
+        }
             break;
         case typeLeaderView_Calendar:
             break;

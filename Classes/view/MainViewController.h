@@ -15,6 +15,7 @@
 #import "ListOpportunityViewController.h"
 #import "ProductViewController.h"
 #import "ListAccountLeadViewController.h"
+#import "ListAccountViewController.h"
 #import "TestMapViewController.h"
 
 ///////////CHART///////
@@ -49,6 +50,8 @@
 - (IBAction)actionDashBoard:(id)sender;
 
 - (IBAction)actionPotentialCustomer:(id)sender;
+
+- (IBAction)actionAccount360:(id)sender;
 
 - (IBAction)actionOpportunity:(UIButton *)sender;
 

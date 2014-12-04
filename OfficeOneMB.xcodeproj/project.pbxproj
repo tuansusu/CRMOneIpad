@@ -393,6 +393,8 @@
 		84945FFD1A2B383E002EF8BD /* flag_disable.png in Resources */ = {isa = PBXBuildFile; fileRef = 84945FFA1A2B383E002EF8BD /* flag_disable.png */; };
 		84945FFE1A2B383E002EF8BD /* flag_enable.png in Resources */ = {isa = PBXBuildFile; fileRef = 84945FFB1A2B383E002EF8BD /* flag_enable.png */; };
 		84945FFF1A2B383E002EF8BD /* follow_success.png in Resources */ = {isa = PBXBuildFile; fileRef = 84945FFC1A2B383E002EF8BD /* follow_success.png */; };
+		8495DDCE1A30A10A00C4E922 /* ListAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8495DDCC1A30A10A00C4E922 /* ListAccountViewController.m */; };
+		8495DDCF1A30A10A00C4E922 /* ListAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8495DDCD1A30A10A00C4E922 /* ListAccountViewController.xib */; };
 		849662C51A24D19F001B3776 /* logo_login-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 849662C41A24D19F001B3776 /* logo_login-1.png */; };
 		8496FB271A2DE34200F4A641 /* ContactLeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8496FB251A2DE34200F4A641 /* ContactLeadCell.m */; };
 		8496FB281A2DE34200F4A641 /* ContactLeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8496FB261A2DE34200F4A641 /* ContactLeadCell.xib */; };
@@ -1259,6 +1261,9 @@
 		84945FFA1A2B383E002EF8BD /* flag_disable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag_disable.png; sourceTree = "<group>"; };
 		84945FFB1A2B383E002EF8BD /* flag_enable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag_enable.png; sourceTree = "<group>"; };
 		84945FFC1A2B383E002EF8BD /* follow_success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = follow_success.png; sourceTree = "<group>"; };
+		8495DDCB1A30A10A00C4E922 /* ListAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListAccountViewController.h; sourceTree = "<group>"; };
+		8495DDCC1A30A10A00C4E922 /* ListAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListAccountViewController.m; sourceTree = "<group>"; };
+		8495DDCD1A30A10A00C4E922 /* ListAccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListAccountViewController.xib; sourceTree = "<group>"; };
 		849662C41A24D19F001B3776 /* logo_login-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo_login-1.png"; path = "VofficeImage/Option1/logo_login-1.png"; sourceTree = "<group>"; };
 		8496FB241A2DE34200F4A641 /* ContactLeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactLeadCell.h; sourceTree = "<group>"; };
 		8496FB251A2DE34200F4A641 /* ContactLeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactLeadCell.m; sourceTree = "<group>"; };
@@ -2883,6 +2888,16 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
+		8495DDCA1A30A0AF00C4E922 /* Account360 */ = {
+			isa = PBXGroup;
+			children = (
+				8495DDCB1A30A10A00C4E922 /* ListAccountViewController.h */,
+				8495DDCC1A30A10A00C4E922 /* ListAccountViewController.m */,
+				8495DDCD1A30A10A00C4E922 /* ListAccountViewController.xib */,
+			);
+			path = Account360;
+			sourceTree = "<group>";
+		};
 		849787FF1A2BE17700384566 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -3288,6 +3303,7 @@
 		92C68E4A1519D4F100981728 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				8495DDCA1A30A0AF00C4E922 /* Account360 */,
 				8497C0111A295A6700A5ED3C /* MapView */,
 				76C962951A16DBA500029978 /* AccountLead */,
 				76D29B261A1397DD004B9CF6 /* Product */,
@@ -3688,6 +3704,7 @@
 				B39DD45F18A9FFF200FFA8EB /* bg-pdf-reader-1.png in Resources */,
 				8497BFED1A295A2300A5ED3C /* step7@2x.png in Resources */,
 				2DB2AAE617A0BF6E00D7B01F /* right_arrow.png in Resources */,
+				8495DDCF1A30A10A00C4E922 /* ListAccountViewController.xib in Resources */,
 				94BA8D781A2DF3710082AE9E /* EditOpportunityViewController.xib in Resources */,
 				2DB2AAE717A0BF6E00D7B01F /* right_arrow@2x.png in Resources */,
 				76977D601A02A72E0029F297 /* ListEmployeeAccountViewController.xib in Resources */,
@@ -4205,6 +4222,7 @@
 				8497C0151A295A8500A5ED3C /* TestMapViewController.m in Sources */,
 				8497C00D1A295A2300A5ED3C /* TrafficMapViewController.m in Sources */,
 				2D3643931859996700190EE7 /* AFNetworkRequestHelper.m in Sources */,
+				8495DDCE1A30A10A00C4E922 /* ListAccountViewController.m in Sources */,
 				76C9644D1A17731900029978 /* MIMColorClass.m in Sources */,
 				B3A0669C17D1A72400BA6487 /* UIGestureRecognizer+FLKit.m in Sources */,
 				B3A0669D17D1A72400BA6487 /* WCGridView.m in Sources */,

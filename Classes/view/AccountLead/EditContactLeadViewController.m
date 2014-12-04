@@ -173,6 +173,8 @@
 }
 #pragma mark action button
 - (IBAction)actionChoiceDateCreate:(id)sender {
+    [self hiddenKeyBoard];
+    
     if (self.txtDateCreate.text.length==0) {
         dateCreate = [DateUtil getDateFromString:@"01/01/2000" :FORMAT_DATE];
     }else{
@@ -193,6 +195,9 @@
 }
 
 - (IBAction)actionChoiceDateBirthday:(id)sender {
+    
+    [self hiddenKeyBoard];
+    
     if (self.txtDateCreate.text.length==0) {
         dateBirthday = [DateUtil getDateFromString:@"01/01/2000" :FORMAT_DATE];
     }else{
@@ -273,10 +278,11 @@
         NSMutableDictionary *dicSubEntity =  [[NSMutableDictionary alloc]init];
         
         DTOACCCONTACTProcess *dtoAccContactProcess = [DTOACCCONTACTProcess new];
-        
+        //id tu tang cua thang AccountcontactId
         NSString *strAccountContactId = IntToStr([dtoAccContactProcess getClientId]);
-        
+        //id tu tang cua thang AccountcontactId
         [dicSubEntity setObject:strAccountContactId forKey:DTOACCOUNTCONTACT_clientAccountContactId];
+        //id cua thang contact vua tao
         [dicSubEntity setObject:strClientContactId forKey:DTOACCOUNTCONTACT_clientAccountId];
         
         [dicSubEntity setObject:[self.dataRoot objectForKey:DTOLEAD_clientLeadId] forKey:DTOACCOUNTCONTACT_clientLeadId];

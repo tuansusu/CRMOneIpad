@@ -97,7 +97,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="1024" height="674"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="separatorColor" red="0.0" green="0.34122452334507125" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <connections>
                                         <outlet property="dataSource" destination="-1" id="js1-q4-5gz"/>
                                         <outlet property="delegate" destination="-1" id="qq7-nG-V58"/>

@@ -119,9 +119,9 @@
         self.scrollViewBussiness.hidden = NO;
         
         [self loadDetailCustomerBussinessData];
-        DetailCustomBussinessViewController *viewDetailController = [[DetailCustomBussinessViewController alloc]initWithNibName:@"DetailCustomBussinessViewController" bundle:nil];
-        viewDetailController.dataSend = dicData;
-        [self.viewBodyExpandInfo addSubview:viewDetailController.view];
+//        DetailCustomBussinessViewController *viewDetailController = [[DetailCustomBussinessViewController alloc]initWithNibName:@"DetailCustomBussinessViewController" bundle:nil];
+//        viewDetailController.dataSend = dicData;
+//        [self.viewBodyExpandInfo addSubview:viewDetailController.view];
         
         self.lbDescription.text = @"";
         
@@ -137,9 +137,9 @@
         [self loadDetailCustomerPersonalData];
         
         
-        DetailCustomPersonViewController *viewDetailController = [[DetailCustomPersonViewController alloc]initWithNibName:@"DetailCustomPersonViewController" bundle:nil];
-        viewDetailController.dataSend = dicData;
-        [self.viewBodyExpandInfo addSubview:viewDetailController.view];
+//        DetailCustomPersonViewController *viewDetailController = [[DetailCustomPersonViewController alloc]initWithNibName:@"DetailCustomPersonViewController" bundle:nil];
+//        viewDetailController.dataSend = dicData;
+//        [self.viewBodyExpandInfo addSubview:viewDetailController.view];
         
     }
     
@@ -255,6 +255,7 @@
         case typeLeaderView_Contact:
         {
             arrayData = [dtoContactProcess filterWithClientLeaderId:[dicData objectForKey:DTOLEAD_clientLeadId]];
+            NSLog(@"get detail data = %d", arrayData.count);
         }break;
         case typeLeaderView_Note:
         {
@@ -399,9 +400,12 @@
 
 
 - (IBAction)actionExpandInfo:(UIButton *)sender {
-    self.viewBodyExpandInfo.hidden = NO;
-    self.tbData.hidden  = YES;
+//    self.viewBodyExpandInfo.hidden = NO;
+//    self.tbData.hidden  = YES;
+//    [self displayNormalButtonState:sender];
+    [self loadDataWithTypeAction:typeLeaderView_Contact];
     [self displayNormalButtonState:sender];
+
 }
 
 - (IBAction)actionNote:(UIButton *)sender {
@@ -463,11 +467,6 @@
         case typeLeaderView_Calendar:{
             return 50.0f;
         }break;
-            
-        case typeLeaderView_Contact:{
-            return 50.0f;
-        }
-            break;
         default:
             break;
     }

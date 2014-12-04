@@ -112,21 +112,17 @@
 }
 
 -(NSInteger) getClientId {
-    return [super getMaxClientIdWithTableName:TABLENAME_DTOCONTACT withField:DTOACCOUNT_clientAccountId];
+    return [super getMaxClientIdWithTableName:TABLENAME_DTOCONTACT withField:DTOCONTACT_clientContactId];
 }
 
 //filter with lay danh sach lien he cua 1 cai khach hang dau moi
 -(NSMutableArray*) filterWithClientLeaderId: (NSString*) strValue{
     NSArray *allFields =[NSArray arrayWithObjects:DTOCONTACT_id, DTOCONTACT_fullName, DTOCONTACT_address, DTOCONTACT_birthday, DTOCONTACT_mobile, DTOCONTACT_position, DTOCONTACT_clientContactId, nil];
     
-    NSString *query = [NSString stringWithFormat:@"SELECT %@ FROM dtoaccountcontact inner join dtocontact on clientAccountContactId = clientContactId order by %@ desc",[allFields componentsJoinedByString:@"," ] , DTOLEAD_updatedDate];
+    NSString *query = [NSString stringWithFormat:@"SELECT dtocontact.id,fullName,address,birthday,mobile,position,clientContactId FROM dtoaccountcontact inner join dtocontact on clientAccountId = clientContactId where clientLeadId = ? order by dtoaccountcontact.updatedDate  desc"];
     
-    NSLog(@"query = %@", query);
-    NSString *value = @"%";
-    value = [value stringByAppendingString:[strValue stringByAppendingString:@"%"]];
-    
-    NSLog(@"param = %@", value);
-    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:[NSArray arrayWithObjects:value, nil]];
+   
+    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:[NSArray arrayWithObjects:strValue, nil]];
     
     
 }

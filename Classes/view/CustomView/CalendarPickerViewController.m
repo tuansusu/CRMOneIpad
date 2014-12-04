@@ -72,11 +72,13 @@
 
 - (void) labelChange
 {
+    
     [delegateDatePicker selectDatePickerWithDate:datePicker.date];
 }
 
 -(IBAction)dismissView:(id)sender
 {
+    [delegateDatePicker selectDatePickerWithDate:datePicker.date];
     [delegateDatePicker dismissPopoverView];
 }
 

@@ -105,6 +105,7 @@
 }
 
 - (IBAction)actionChangeFlow:(id)sender {
+    [_delegate AccountLeadCellDelegate_ActionChangeFlowWithData:_dicData];
 }
 
 

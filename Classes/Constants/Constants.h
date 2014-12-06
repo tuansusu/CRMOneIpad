@@ -58,7 +58,7 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 #define KEY_NOTIFICATION_CENTER_DOCUMENT_VIEWDETAIL_REMOVEVIEW @"DocumentViewDetailNotification"  //
 
 
-#define TITLE_APP_COPYRIGHT @"OfficeOne ipad 2.0 - Copyright Viettel ICT - Viettel Group"
+#define TITLE_APP_COPYRIGHT @"CRMONE IPAD 1.0 - Copyright Viettel ICT - Viettel Group"
 
 #define GRID_VIEW_X 7.0
 #define GRID_VIEW_WIDTH 990.0
@@ -184,7 +184,7 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 
 #define COPY_OF_SOFTWARE @"Copyright Viettel ICT - Viettel Group"
 #define VOFFICE @"OfficeOne-iPad"
-#define TITLE_APPLICATION @"HỆ THỐNG QUẢN LÝ CÔNG VĂN - CÔNG VIỆC"
+#define TITLE_APPLICATION @"HỆ THỐNG QUẢN LÝ QUAN HỆ KHÁCH HÀNG"
 #define NO_CONFIG_TITLE_DEPARTMENT @"HỆ THỐNG THỬ NGHIỆM"
 #define ALL_DEPARTMENT @"Tất cả đơn vị"
 

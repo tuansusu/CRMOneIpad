@@ -17,6 +17,19 @@
     
     NSArray *arrayData;
     
+    ///////CHART///////
+    /////////////////////////////
+    MIMLineGraph *mLineGraph;
+    NSMutableArray *dataArrayFromCSV;
+    NSMutableArray *xDataArrayFromCSV;
+    NSArray *anchorPropertiesArray;
+    NSDictionary *horizontalLinesProperties;
+    NSDictionary *verticalLinesProperties;
+    
+    NSArray *yValuesArray;
+    NSArray *xValuesArray;
+    NSArray *xTitlesArray;
+    
 }
 @end
 
@@ -137,38 +150,208 @@ NSString* emptyText = @"";
 
 #pragma mark TableViewDelegate
 
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-        return 0;
-}
-
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    
-    return 1;
+    return 400;
 }
 
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    UITableViewCell *cell  = [[UITableViewCell alloc] init];
-    
-        return cell ;
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
+{
+    return  1;
 }
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     
-    NSIndexPath* selection = [tableView indexPathForSelectedRow];
-    if (selection){
-        
-        [tableView deselectRowAtIndexPath:selection animated:YES];
+    return  2;
+    
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    
+    verticalLinesProperties=nil;
+    
+    switch (indexPath.row)
+    {
+        case 0:
+        {
+            
+            horizontalLinesProperties=nil;
+            verticalLinesProperties=nil;
+            anchorPropertiesArray=nil;
+            
+            
+            yValuesArray=[[NSArray alloc]initWithObjects:@"10000",@"21000",@"24000",@"11000",@"5000",@"2000",@"9000",@"4000",@"10000",@"17000",@"15000",@"11000",nil];
+            xValuesArray=[[NSArray alloc]initWithObjects:@"Jan",
+                          @"Feb",
+                          @"Mar",
+                          @"Apr",
+                          @"May",
+                          @"Jun",
+                          @"Jul",
+                          @"Aug",
+                          @"Sep",
+                          @"Oct",
+                          @"Nov",
+                          @"Dec", nil];
+            
+            xTitlesArray=[[NSArray alloc]initWithObjects:@"Jan",
+                          @"Feb",
+                          @"Mar",
+                          @"Apr",
+                          @"May",
+                          @"Jun",
+                          @"Jul",
+                          @"Aug",
+                          @"Sep",
+                          @"Oct",
+                          @"Nov",
+                          @"Dec", nil];
+            
+            mLineGraph=[[MIMLineGraph alloc]initWithFrame:CGRectMake(5, 30, _tbData.frame.size.width-50, _tbData.frame.size.width * 0.5)];
+            mLineGraph.delegate=self;
+            mLineGraph.tag=10+indexPath.row;
+            
+            //Set initial Y-Label as 0..
+            mLineGraph.minimumLabelOnYIsZero=TRUE;
+            
+            
+            //Set color for line graph
+            MIMColorClass *c1=[MIMColorClass colorWithComponent:@"0,169,249"];
+            mLineGraph.lineColorArray=[NSArray arrayWithObjects:c1, nil];
+            
+            
+            mLineGraph.titleLabel.text=@"Ten bieu do";
+            mLineGraph.titleLabel.frame=CGRectMake(0, -30, _tbData.frame.size.width, 30);
+            
+            [mLineGraph drawMIMLineGraph];
+            [cell.contentView addSubview:mLineGraph];
+            
+        }
+            break;
+            
+        case 1:
+        {
+            
+            horizontalLinesProperties=[[NSDictionary alloc] initWithObjectsAndKeys:@"2,1",@"dotted", nil];
+            verticalLinesProperties=[[NSDictionary alloc]initWithObjectsAndKeys:@"1,2",@"dotted", nil];
+            
+            
+            
+            yValuesArray=[[NSArray alloc]initWithObjects:@"10000",@"21000",@"24000",@"11000",@"5000",@"2000",@"9000",@"4000",@"10000",@"17000",@"15000",@"11000",nil];
+            
+            xValuesArray=[[NSArray alloc]initWithObjects:@"Jan",
+                          @"Feb",
+                          @"Mar",
+                          @"Apr",
+                          @"May",
+                          @"Jun",
+                          @"Jul",
+                          @"Aug",
+                          @"Sep",
+                          @"Oct",
+                          @"Nov",
+                          @"Dec", nil];
+            
+            xTitlesArray=[[NSArray alloc]initWithObjects:@"Jan",
+                          @"Feb",
+                          @"Mar",
+                          @"Apr",
+                          @"May",
+                          @"Jun",
+                          @"Jul",
+                          @"Aug",
+                          @"Sep",
+                          @"Oct",
+                          @"Nov",
+                          @"Dec", nil];
+            
+            
+            
+            mLineGraph=[[MIMLineGraph alloc]initWithFrame:CGRectMake(5, 30, _tbData.frame.size.width-50, _tbData.frame.size.width * 0.5)];
+            mLineGraph.delegate=self;
+            mLineGraph.tag=10+indexPath.row;
+            
+            
+            mLineGraph.titleLabel.text=@"Ten bieu do";
+            mLineGraph.titleLabel.frame=CGRectMake(0, -30, _tbData.frame.size.width, 30);
+            
+            
+            [mLineGraph drawMIMLineGraph];
+            [cell.contentView addSubview:mLineGraph];
+            
+            
+        }
+            break;
+            
+            
     }
+    return cell;
+    
     
 }
+
+
+
+#pragma mark - DELEGATE METHODS
+-(NSArray *)valuesForGraph:(id)graph
+{
+    return yValuesArray;
+}
+
+-(NSArray *)valuesForXAxis:(id)graph
+{
+    return xValuesArray;
+}
+
+-(NSArray *)titlesForXAxis:(id)graph
+{
+    
+    return xTitlesArray;
+    
+}
+
+-(NSArray *)AnchorProperties:(id)graph
+{
+    return anchorPropertiesArray;
+}
+
+-(NSDictionary *)horizontalLinesProperties:(id)graph
+{
+    return horizontalLinesProperties;
+    
+}
+
+-(NSDictionary*)verticalLinesProperties:(id)graph
+{
+    return verticalLinesProperties;
+}
+
+
+-(UILabel *)createLabelWithText:(NSString *)text
+{
+    UILabel *a=[[UILabel alloc]initWithFrame:CGRectMake(5, _tbData.frame.size.width * 0.5 + 20, 310, 20)];
+    [a setBackgroundColor:[UIColor clearColor]];
+    [a setText:text];
+    a.numberOfLines=5;
+    [a setTextAlignment:UITextAlignmentCenter];
+    [a setTextColor:[UIColor blackColor]];
+    [a setFont:[UIFont fontWithName:@"Helvetica" size:12]];
+    [a setMinimumFontSize:8];
+    return a;
+    
+}
+
 
 #pragma mark Action
 

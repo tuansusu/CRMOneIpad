@@ -370,6 +370,8 @@
 		76F328931A34B10B00E0F2C4 /* DTOTASKProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F328921A34B10B00E0F2C4 /* DTOTASKProcess.m */; };
 		76F328971A34B11E00E0F2C4 /* EditTaskLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F328951A34B11E00E0F2C4 /* EditTaskLeadViewController.m */; };
 		76F328981A34B11E00E0F2C4 /* EditTaskLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76F328961A34B11E00E0F2C4 /* EditTaskLeadViewController.xib */; };
+		76F3289B1A34B88B00E0F2C4 /* task_done.png in Resources */ = {isa = PBXBuildFile; fileRef = 76F328991A34B88B00E0F2C4 /* task_done.png */; };
+		76F3289C1A34B88B00E0F2C4 /* task_not_done.png in Resources */ = {isa = PBXBuildFile; fileRef = 76F3289A1A34B88B00E0F2C4 /* task_not_done.png */; };
 		8434BEFD1A2F485700C29815 /* DetailContactLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8434BEFB1A2F485700C29815 /* DetailContactLeadViewController.m */; };
 		8434BEFE1A2F485700C29815 /* DetailContactLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8434BEFC1A2F485700C29815 /* DetailContactLeadViewController.xib */; };
 		8434BF021A2F61B200C29815 /* alarm_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8434BEFF1A2F61B200C29815 /* alarm_icon.png */; };
@@ -1235,6 +1237,8 @@
 		76F328941A34B11E00E0F2C4 /* EditTaskLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTaskLeadViewController.h; sourceTree = "<group>"; };
 		76F328951A34B11E00E0F2C4 /* EditTaskLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTaskLeadViewController.m; sourceTree = "<group>"; };
 		76F328961A34B11E00E0F2C4 /* EditTaskLeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditTaskLeadViewController.xib; sourceTree = "<group>"; };
+		76F328991A34B88B00E0F2C4 /* task_done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = task_done.png; sourceTree = "<group>"; };
+		76F3289A1A34B88B00E0F2C4 /* task_not_done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = task_not_done.png; sourceTree = "<group>"; };
 		8434BEFA1A2F485700C29815 /* DetailContactLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailContactLeadViewController.h; sourceTree = "<group>"; };
 		8434BEFB1A2F485700C29815 /* DetailContactLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailContactLeadViewController.m; sourceTree = "<group>"; };
 		8434BEFC1A2F485700C29815 /* DetailContactLeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailContactLeadViewController.xib; sourceTree = "<group>"; };
@@ -2833,6 +2837,8 @@
 		76C9647C1A17A15C00029978 /* Bisone */ = {
 			isa = PBXGroup;
 			children = (
+				76F328991A34B88B00E0F2C4 /* task_done.png */,
+				76F3289A1A34B88B00E0F2C4 /* task_not_done.png */,
 				8434BEFF1A2F61B200C29815 /* alarm_icon.png */,
 				8434BF001A2F61B200C29815 /* alarm_small.png */,
 				8434BF011A2F61B200C29815 /* calendar_small_new.png */,
@@ -3659,6 +3665,7 @@
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				92C68E551519D4F100981728 /* License.md in Resources */,
 				2D0AD497173219510048A239 /* Default-568h@2x.png in Resources */,
+				76F3289C1A34B88B00E0F2C4 /* task_not_done.png in Resources */,
 				8497BFC61A295A2300A5ED3C /* glow-marker.png in Resources */,
 				B3157888188D5E5200C0ED01 /* ic-work-fw-group-2-1.png in Resources */,
 				2D6D76791876726A0051AD9E /* icon_read-1.png in Resources */,
@@ -3954,6 +3961,7 @@
 				76601A4B194BE90F001D4C01 /* Reader-Mark-N.png in Resources */,
 				2DE2D2601829060700034877 /* title-tab-bg-2.png in Resources */,
 				2DE2D2611829060700034877 /* title-tab-bg-1.png in Resources */,
+				76F3289B1A34B88B00E0F2C4 /* task_done.png in Resources */,
 				2DE2D26A1829060700034877 /* tab-bg.png in Resources */,
 				2DE2D26B1829060700034877 /* refresh-btn-2.png in Resources */,
 				76EE207419FA829200A80414 /* ic-reply-task-1.png in Resources */,

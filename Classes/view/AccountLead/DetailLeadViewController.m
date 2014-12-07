@@ -9,6 +9,7 @@
 #import "DetailLeadViewController.h"
 #import "DTOACCOUNTLEADProcess.h"
 #import "DTOCONTACTProcess.h"
+#import "DTOTASKProcess.h"
 
 ////remove
 #import "StringUtil.h"
@@ -33,6 +34,7 @@
     NSArray *arrayData; //mang luu tru du lieu
     
     DTOCONTACTProcess *dtoContactProcess; //lay danh sach du lieu theo clientLeadId
+    DTOTASKProcess *dtoTaskProcess;
     
     NSUserDefaults *defaults ;
     
@@ -95,6 +97,7 @@
     
     dtoLeadProcess = [DTOACCOUNTLEADProcess new];
     dtoContactProcess = [DTOCONTACTProcess new];
+    dtoTaskProcess= [DTOTASKProcess new];
     
     NSLog(@"datasend detail lead = %@", self.dataSend);
     dicData = [dtoLeadProcess getDataWithKey:DTOLEAD_id withValue:[self.dataSend objectForKey:DTOLEAD_id]];
@@ -265,6 +268,10 @@
             
         }break;
         case typeLeaderView_Task:{
+            
+            
+            arrayData = [dtoTaskProcess filterWithClientLeaderId:[dicData objectForKey:DTOLEAD_clientLeadId]];
+            NSLog(@"get detail data = %d", arrayData.count);
             
         }break;
             
@@ -469,6 +476,9 @@
         case typeLeaderView_Calendar:{
             return 50.0f;
         }break;
+            case typeLeaderView_Task:
+            return 60.0f;
+            break;
         default:
             break;
     }
@@ -549,7 +559,19 @@
             
         case typeLeaderView_Task:
             {
+                static NSString *cellId = @"TaskActionCell";
+                TaskActionCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
                 
+                
+                if (!cell) {
+                    cell = [TaskActionCell initNibCell];
+                }
+                
+                if (arrayData.count>0) {
+                    [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+                }
+                
+                return cell;
             }
             break;
         default:
@@ -597,6 +619,11 @@
         default:
             break;
     }
+}
+
+#pragma mark taskaction Cell
+- (void) AccountLeadCellDelegate_ActionChangeTaskStatusWithData : (NSDictionary*) dicData {
+    
 }
 
 

@@ -94,6 +94,8 @@
     [self updateInterFaceWithOption:smgSelect];
     
     
+    [self initData];
+    
     [self.tbData registerNib:[UINib nibWithNibName:@"OpportunityCell" bundle:nil] forCellReuseIdentifier:@"opportunityCell"];
     [SVProgressHUD show];
 }
@@ -105,7 +107,7 @@
 }
 
 -(void) viewDidAppear:(BOOL)animated{
-    [self initData];
+    [self filterData];
 }
 
 //khoi tao gia tri mac dinh cua form
@@ -125,7 +127,7 @@
     dtoLeadProcess = [DTOACCOUNTLEADProcess new];
     arrayData  = [NSArray new];
     
-    [self filterData];
+    //[self filterData];
     
     [SVProgressHUD dismiss];
 }

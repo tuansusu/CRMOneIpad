@@ -218,6 +218,7 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 #define GIATRI_TRANGTHAI_CONG_VIEC_DA_DONG 6
 #define GIATRI_TRANGTHAI_CONG_VIEC_DA_PHEDUYET 8
 
+#define FORMAT_TIME @"HH:mm"
 #define FORMAT_DATE @"dd/MM/yyyy"
 #define PER_LOAD  @"500"
 

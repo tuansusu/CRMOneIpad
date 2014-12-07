@@ -367,7 +367,9 @@
             
         case SELECT_INDEX_ADD_TASK:
         {
-            
+            EditTaskLeadViewController *viewController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
+            viewController.dataRoot = dicData;
+            [self presentViewController:viewController animated:YES completion:nil];
         }
             break;
             

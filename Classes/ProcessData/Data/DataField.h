@@ -324,6 +324,7 @@
 #define DTOTASK_accountId @"accountId" //BIGINT
 #define DTOTASK_campaignId @"campaignId" //BIGINT
 #define DTOTASK_clientId @"clientId" //BIGINT
+#define DTOTASK_clientLeadId @"clientLeadId" //BIGINT
 #define DTOTASK_clientTaskId @"clientTaskId" //BIGINT
 #define DTOTASK_code @"code" //VARCHAR
 #define DTOTASK_content @"content" //VARCHAR

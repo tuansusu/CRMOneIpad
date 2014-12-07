@@ -14,6 +14,8 @@
 #import "ContactLeadCell.h"
 #import "DetailContactLeadViewController.h"
 
+#import "EditTaskLeadViewController.h"
+
 enum TypeLeaderView{
     typeLeaderView_ExpandInfo, //Thông tin mở rộng
     typeLeaderView_Contact, //Liên hệ

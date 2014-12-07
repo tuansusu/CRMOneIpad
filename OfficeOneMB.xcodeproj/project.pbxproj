@@ -367,6 +367,9 @@
 		76EE210E19FF4D7100A80414 /* icon-accept-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EE210B19FF4D7100A80414 /* icon-accept-1.png */; };
 		76EE210F19FF4D7100A80414 /* icon-clock-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EE210C19FF4D7100A80414 /* icon-clock-1.png */; };
 		76EE211019FF4D7100A80414 /* icon-confirm-process-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EE210D19FF4D7100A80414 /* icon-confirm-process-1.png */; };
+		76F328931A34B10B00E0F2C4 /* DTOTASKProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F328921A34B10B00E0F2C4 /* DTOTASKProcess.m */; };
+		76F328971A34B11E00E0F2C4 /* EditTaskLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F328951A34B11E00E0F2C4 /* EditTaskLeadViewController.m */; };
+		76F328981A34B11E00E0F2C4 /* EditTaskLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76F328961A34B11E00E0F2C4 /* EditTaskLeadViewController.xib */; };
 		8434BEFD1A2F485700C29815 /* DetailContactLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8434BEFB1A2F485700C29815 /* DetailContactLeadViewController.m */; };
 		8434BEFE1A2F485700C29815 /* DetailContactLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8434BEFC1A2F485700C29815 /* DetailContactLeadViewController.xib */; };
 		8434BF021A2F61B200C29815 /* alarm_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8434BEFF1A2F61B200C29815 /* alarm_icon.png */; };
@@ -1227,6 +1230,11 @@
 		76EE210B19FF4D7100A80414 /* icon-accept-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-accept-1.png"; path = "VofficeImage/Option1/icon-accept-1.png"; sourceTree = "<group>"; };
 		76EE210C19FF4D7100A80414 /* icon-clock-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-clock-1.png"; path = "VofficeImage/Option1/icon-clock-1.png"; sourceTree = "<group>"; };
 		76EE210D19FF4D7100A80414 /* icon-confirm-process-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-confirm-process-1.png"; path = "VofficeImage/Option1/icon-confirm-process-1.png"; sourceTree = "<group>"; };
+		76F328911A34B10B00E0F2C4 /* DTOTASKProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOTASKProcess.h; sourceTree = "<group>"; };
+		76F328921A34B10B00E0F2C4 /* DTOTASKProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOTASKProcess.m; sourceTree = "<group>"; };
+		76F328941A34B11E00E0F2C4 /* EditTaskLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTaskLeadViewController.h; sourceTree = "<group>"; };
+		76F328951A34B11E00E0F2C4 /* EditTaskLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTaskLeadViewController.m; sourceTree = "<group>"; };
+		76F328961A34B11E00E0F2C4 /* EditTaskLeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditTaskLeadViewController.xib; sourceTree = "<group>"; };
 		8434BEFA1A2F485700C29815 /* DetailContactLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailContactLeadViewController.h; sourceTree = "<group>"; };
 		8434BEFB1A2F485700C29815 /* DetailContactLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailContactLeadViewController.m; sourceTree = "<group>"; };
 		8434BEFC1A2F485700C29815 /* DetailContactLeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailContactLeadViewController.xib; sourceTree = "<group>"; };
@@ -2485,6 +2493,8 @@
 		76977D521A0284770029F297 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				76F328911A34B10B00E0F2C4 /* DTOTASKProcess.h */,
+				76F328921A34B10B00E0F2C4 /* DTOTASKProcess.m */,
 				76C962921A16DB8200029978 /* DTOACCOUNTLEADProcess.h */,
 				76C962931A16DB8200029978 /* DTOACCOUNTLEADProcess.m */,
 				76977D531A0284DE0029F297 /* TableTestProcess.h */,
@@ -2547,6 +2557,9 @@
 		76C962951A16DBA500029978 /* AccountLead */ = {
 			isa = PBXGroup;
 			children = (
+				76F328941A34B11E00E0F2C4 /* EditTaskLeadViewController.h */,
+				76F328951A34B11E00E0F2C4 /* EditTaskLeadViewController.m */,
+				76F328961A34B11E00E0F2C4 /* EditTaskLeadViewController.xib */,
 				8434BEFA1A2F485700C29815 /* DetailContactLeadViewController.h */,
 				8434BEFB1A2F485700C29815 /* DetailContactLeadViewController.m */,
 				8434BEFC1A2F485700C29815 /* DetailContactLeadViewController.xib */,
@@ -3957,6 +3970,7 @@
 				8497BFE81A295A2300A5ED3C /* step5.png in Resources */,
 				849078871A1E461D009D5D5F /* DetailPersonLeadViewController.xib in Resources */,
 				B3157887188D5E5200C0ED01 /* ic-work-fw-group-1-1.png in Resources */,
+				76F328981A34B11E00E0F2C4 /* EditTaskLeadViewController.xib in Resources */,
 				8497BFDB1A295A2300A5ED3C /* x29.png in Resources */,
 				76601A4F194BE90F001D4C01 /* Reader-Print.png in Resources */,
 				2D6D7667187670B00051AD9E /* write-btn-1.png in Resources */,
@@ -4200,6 +4214,7 @@
 				76C964441A17731900029978 /* XAxisBand.m in Sources */,
 				2D4B92C817ACD7DE002A9AC5 /* DAAttributedStringFormatter.m in Sources */,
 				843BF0BF1A03ECC500EA1D8A /* OpportunityCell.m in Sources */,
+				76F328971A34B11E00E0F2C4 /* EditTaskLeadViewController.m in Sources */,
 				76C9646F1A17731900029978 /* PermanentScroller.m in Sources */,
 				2D4B92C917ACD7DE002A9AC5 /* DABoxesLayer.m in Sources */,
 				76C964601A17731900029978 /* DefaultInfoBox.m in Sources */,
@@ -4261,6 +4276,7 @@
 				76C9643F1A17731900029978 /* MIMFloatingView.m in Sources */,
 				76601A33194BE90F001D4C01 /* ReaderThumbQueue.m in Sources */,
 				B3F4250017FA5EC10092847D /* NSRegularExpression+VofficeRegularExpression.m in Sources */,
+				76F328931A34B10B00E0F2C4 /* DTOTASKProcess.m in Sources */,
 				76D29AC71A1124C9004B9CF6 /* ProposeProductCell.m in Sources */,
 				76D29ABA1A110F8D004B9CF6 /* CompetionorCell.m in Sources */,
 				8490788B1A1E463C009D5D5F /* DetailBussinessLeadViewController.m in Sources */,

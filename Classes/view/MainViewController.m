@@ -231,7 +231,7 @@ NSString* emptyText = @"";
             mLineGraph.lineColorArray=[NSArray arrayWithObjects:c1, nil];
             
             
-            mLineGraph.titleLabel.text=@"Ten bieu do";
+            mLineGraph.titleLabel.text=@"Huy động vốn";
             mLineGraph.titleLabel.frame=CGRectMake(0, -30, _tbData.frame.size.width, 30);
             
             [mLineGraph drawMIMLineGraph];
@@ -283,7 +283,7 @@ NSString* emptyText = @"";
             mLineGraph.tag=10+indexPath.row;
             
             
-            mLineGraph.titleLabel.text=@"Ten bieu do";
+            mLineGraph.titleLabel.text=@"Doanh thu";
             mLineGraph.titleLabel.frame=CGRectMake(0, -30, _tbData.frame.size.width, 30);
             
             

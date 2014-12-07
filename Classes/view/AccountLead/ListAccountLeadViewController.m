@@ -287,6 +287,9 @@
     
 }
 
+- (IBAction)actionAdvanceSearch:(id)sender {
+}
+
 
 #pragma mark UISearach bar delegate
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption{
@@ -593,6 +596,12 @@
     //[InterfaceUtil setBorderWithCornerAndBorder:detail.view :6 :0.2 :nil];
     [self presentPopupViewController:detail animationType:1];
 }
+
+#pragma mark ADVANCE SEARCH
+-(void) actionSearchAdvanceWithCode:(NSString *)strCode withName:(NSString *)strName withMobile:(NSString *)strMobile withEmail:(NSString *)strEmail{
+    
+}
+
 
 
 @end

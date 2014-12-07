@@ -82,6 +82,14 @@
                                 <action selector="actionChoiceTypeOfCustomer:" destination="-1" eventType="touchUpInside" id="9KF-or-jG3"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Lqr-Va-yo0" userLabel="BTN_SEARCH">
+                            <rect key="frame" x="909" y="7" width="32" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="ic-search-1.png"/>
+                            <connections>
+                                <action selector="actionAdvanceSearch:" destination="-1" eventType="touchUpInside" id="JM3-qY-EB6"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
@@ -152,6 +160,7 @@
         </view>
     </objects>
     <resources>
+        <image name="ic-search-1.png" width="32" height="32"/>
         <image name="ic_cbx-1.png" width="60" height="60"/>
         <image name="ic_plus-1.png" width="48" height="48"/>
         <image name="icon_menu-1.png" width="32" height="32"/>

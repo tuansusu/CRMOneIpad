@@ -12,6 +12,7 @@
 #import "SelectIndexViewController.h"
 #import "DetailLeadViewController.h"
 #import "AccountLeadCell.h"
+#import "SearchAdvanceLeadViewController.h"
 
 
 #import "MJDetailViewController.h"
@@ -20,7 +21,7 @@
 
 #import "TestMapViewController.h"
 
-@interface ListAccountLeadViewController : BaseViewController<SelectIndexDelegate, UISearchBarDelegate, UISearchDisplayDelegate, AccountLeadCellDelegate>
+@interface ListAccountLeadViewController : BaseViewController<SelectIndexDelegate, UISearchBarDelegate, UISearchDisplayDelegate, AccountLeadCellDelegate, SearchAdvanceDelegate>
 
 //Header
 @property (weak, nonatomic) IBOutlet UIView *headerViewBar;
@@ -33,6 +34,9 @@
 
 
 - (IBAction)actionAdd:(id)sender;
+
+- (IBAction)actionAdvanceSearch:(id)sender;
+
 
 
 @property (weak, nonatomic) IBOutlet UIButton *btnHome;

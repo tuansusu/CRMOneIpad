@@ -390,6 +390,8 @@
 		849125D01A1CE68500949FC8 /* DTOSYSCATProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 849125CF1A1CE68500949FC8 /* DTOSYSCATProcess.m */; };
 		84912AC41A1F6A3300E99FF7 /* DetailCustomPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84912AC21A1F6A3300E99FF7 /* DetailCustomPersonViewController.m */; };
 		84912AC51A1F6A3300E99FF7 /* DetailCustomPersonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84912AC31A1F6A3300E99FF7 /* DetailCustomPersonViewController.xib */; };
+		84918ABF1A34574A00149CB4 /* SearchAdvanceLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84918ABD1A34574A00149CB4 /* SearchAdvanceLeadViewController.m */; };
+		84918AC01A34574A00149CB4 /* SearchAdvanceLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84918ABE1A34574A00149CB4 /* SearchAdvanceLeadViewController.xib */; };
 		84945FFD1A2B383E002EF8BD /* flag_disable.png in Resources */ = {isa = PBXBuildFile; fileRef = 84945FFA1A2B383E002EF8BD /* flag_disable.png */; };
 		84945FFE1A2B383E002EF8BD /* flag_enable.png in Resources */ = {isa = PBXBuildFile; fileRef = 84945FFB1A2B383E002EF8BD /* flag_enable.png */; };
 		84945FFF1A2B383E002EF8BD /* follow_success.png in Resources */ = {isa = PBXBuildFile; fileRef = 84945FFC1A2B383E002EF8BD /* follow_success.png */; };
@@ -1258,6 +1260,9 @@
 		84912AC11A1F6A3300E99FF7 /* DetailCustomPersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailCustomPersonViewController.h; sourceTree = "<group>"; };
 		84912AC21A1F6A3300E99FF7 /* DetailCustomPersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailCustomPersonViewController.m; sourceTree = "<group>"; };
 		84912AC31A1F6A3300E99FF7 /* DetailCustomPersonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailCustomPersonViewController.xib; sourceTree = "<group>"; };
+		84918ABC1A34574A00149CB4 /* SearchAdvanceLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchAdvanceLeadViewController.h; sourceTree = "<group>"; };
+		84918ABD1A34574A00149CB4 /* SearchAdvanceLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchAdvanceLeadViewController.m; sourceTree = "<group>"; };
+		84918ABE1A34574A00149CB4 /* SearchAdvanceLeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchAdvanceLeadViewController.xib; sourceTree = "<group>"; };
 		84945FFA1A2B383E002EF8BD /* flag_disable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag_disable.png; sourceTree = "<group>"; };
 		84945FFB1A2B383E002EF8BD /* flag_enable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag_enable.png; sourceTree = "<group>"; };
 		84945FFC1A2B383E002EF8BD /* follow_success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = follow_success.png; sourceTree = "<group>"; };
@@ -2579,6 +2584,9 @@
 				8434BF051A2F632000C29815 /* FlowLeadViewController.h */,
 				8434BF061A2F632000C29815 /* FlowLeadViewController.m */,
 				8434BF071A2F632000C29815 /* FlowLeadViewController.xib */,
+				84918ABC1A34574A00149CB4 /* SearchAdvanceLeadViewController.h */,
+				84918ABD1A34574A00149CB4 /* SearchAdvanceLeadViewController.m */,
+				84918ABE1A34574A00149CB4 /* SearchAdvanceLeadViewController.xib */,
 			);
 			path = AccountLead;
 			sourceTree = "<group>";
@@ -3714,6 +3722,7 @@
 				76D29B181A126C9B004B9CF6 /* ClueContactCell.xib in Resources */,
 				8497C0161A295A8500A5ED3C /* TestMapViewController.xib in Resources */,
 				8497BFC21A295A2300A5ED3C /* botswana-large.png in Resources */,
+				84918AC01A34574A00149CB4 /* SearchAdvanceLeadViewController.xib in Resources */,
 				8434BF041A2F61B200C29815 /* calendar_small_new.png in Resources */,
 				2D60B07B17A27AA400848776 /* checkbox_ticked.png in Resources */,
 				76D29B2B1A1397EE004B9CF6 /* ProductViewController.xib in Resources */,
@@ -4236,6 +4245,7 @@
 				2D459E79184EC5EA004D9C45 /* LineView.m in Sources */,
 				B362285717E943EE00CAA6AE /* Toast+UIView.m in Sources */,
 				2D6D7639187645EB0051AD9E /* GraphicName.m in Sources */,
+				84918ABF1A34574A00149CB4 /* SearchAdvanceLeadViewController.m in Sources */,
 				B362286517E95FE300CAA6AE /* EncryptBase64.m in Sources */,
 				76C9643B1A17731900029978 /* Anchor.m in Sources */,
 				B362286617E95FE300CAA6AE /* NSData-AES.m in Sources */,

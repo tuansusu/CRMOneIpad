@@ -9,6 +9,7 @@
 #import "EditCalendarLeadViewController.h"
 #import "DTOTASKProcess.h"
 #import "DTOSYSCATProcess.H"
+#import "DTOACCOUNTLEADProcess.h"
 //REMOVE DEPLOY
 #import "UIDevice+extend.h"
 #import "Constant.h"
@@ -128,6 +129,19 @@
         
         
     }
+    
+    if(self.dataRoot){
+        if(![StringUtil stringIsEmpty:[self.dataRoot objectForKey:DTOLEAD_leadType]]){
+            if([ObjectToStr([self.dataRoot objectForKey:DTOLEAD_leadType]) isEqualToString:FIX_LEADTYPE_PERSON]){
+                self.txtTypeObject.text = SELECT_TEXT_ADD_PERSON;
+            }else{
+                self.txtTypeObject.text = SELECT_TEXT_ADD_BUSSINESS;
+            }
+        }
+    
+        self.txtNameObject.text = [self.dataRoot objectForKey:DTOLEAD_name];
+    }
+    
     
 }
 

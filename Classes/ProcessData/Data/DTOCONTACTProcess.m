@@ -119,7 +119,7 @@
 -(NSMutableArray*) filterWithClientLeaderId: (NSString*) strValue{
     NSArray *allFields =[NSArray arrayWithObjects:DTOCONTACT_id, DTOCONTACT_fullName, DTOCONTACT_address, DTOCONTACT_birthday, DTOCONTACT_mobile, DTOCONTACT_position, DTOCONTACT_clientContactId, nil];
     
-    NSString *query = [NSString stringWithFormat:@"SELECT dtocontact.id,fullName,address,birthday,mobile,position,clientContactId FROM dtoaccountcontact inner join dtocontact on clientAccountId = clientContactId where clientLeadId = ? order by dtoaccountcontact.updatedDate  desc"];
+    NSString *query = [NSString stringWithFormat:@"SELECT dtocontact.id,fullName,address,birthday,mobile,position,dtocontact.clientContactId FROM dtoaccountcontact inner join dtocontact on clientAccountId = dtocontact.clientContactId where clientLeadId = ? order by dtoaccountcontact.updatedDate  desc"];
     
    
     return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:[NSArray arrayWithObjects:strValue, nil]];

@@ -16,8 +16,7 @@
 #define SELECT_INDEX_ADD_PERSON 0
 #define SELECT_INDEX_ADD_BUSSINESS 1
 
-#define SELECT_TEXT_ADD_PERSON @"Khách hàng cá nhân"
-#define SELECT_TEXT_ADD_BUSSINESS @"Khách hàng doanh nghiệp"
+
 
 #define SCOPE_CODE 0
 #define SCOPE_NAME 1

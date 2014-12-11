@@ -11,6 +11,9 @@
 #define FIX_LEADTYPE_PERSON @"0"
 #define FIX_LEADTYPE_BUSSINESS @"1"
 
+#define SELECT_TEXT_ADD_PERSON @"Khách hàng cá nhân"
+#define SELECT_TEXT_ADD_BUSSINESS @"Khách hàng doanh nghiệp"
+
 /*
  * Khách hàng đầu mối
  */

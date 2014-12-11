@@ -18,7 +18,9 @@
                 <outlet property="btnSave" destination="m34-fh-hPC" id="Jwz-tk-dmg"/>
                 <outlet property="footerView" destination="jrA-Hx-IRH" id="tgv-ha-J7r"/>
                 <outlet property="fullNameLB" destination="RD6-la-4Mr" id="8RV-Ce-V2a"/>
+                <outlet property="headerMainView" destination="oW9-eD-UkM" id="fKX-5a-WXd"/>
                 <outlet property="headerViewBar" destination="ppW-z5-BXS" id="Fwf-TY-X5P"/>
+                <outlet property="mainView" destination="77s-cN-KRE" id="dxv-3D-LYD"/>
                 <outlet property="txtDateFrom" destination="OVe-eB-YMO" id="Bfz-Og-cOB"/>
                 <outlet property="txtDateTo" destination="YNq-bG-gW2" id="ZXK-Lm-Z1W"/>
                 <outlet property="txtName" destination="gtM-T9-DkQ" id="5J3-DE-z5B"/>

@@ -10,7 +10,7 @@
 
 @protocol TaskActionCellDelegate <NSObject>
 
-- (void) AccountLeadCellDelegate_ActionChangeTaskStatusWithData : (NSDictionary*) dicData ;
+- (void) AccountLeadCellDelegate_ActionChangeTaskStatusWithData : (NSMutableDictionary*) dicData ;
 
 @end
 
@@ -19,7 +19,7 @@
 +(TaskActionCell*) initNibCell;
 
 @property (weak, nonatomic) id <TaskActionCellDelegate> delegate;
-@property (nonatomic, strong) NSDictionary *dicData;
+@property (nonatomic, strong) NSMutableDictionary *dicData;
 
 @property (weak, nonatomic) IBOutlet UILabel *lbName;
 

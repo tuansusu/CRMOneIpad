@@ -239,6 +239,13 @@
 		76601A55194BE90F001D4C01 /* signature.png in Resources */ = {isa = PBXBuildFile; fileRef = 76601A27194BE90E001D4C01 /* signature.png */; };
 		76601A6019540CCD001D4C01 /* Introduct_OfficeOne.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 76601A5F19540CCD001D4C01 /* Introduct_OfficeOne.pdf */; };
 		76746A371A07CF4E005CEDB8 /* DTOOPPORTUNITYProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76746A361A07CF4E005CEDB8 /* DTOOPPORTUNITYProcess.m */; };
+		7693EE021A35556E004E0178 /* DetailTaskLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7693EE001A35556E004E0178 /* DetailTaskLeadViewController.m */; };
+		7693EE031A35556E004E0178 /* DetailTaskLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7693EE011A35556E004E0178 /* DetailTaskLeadViewController.xib */; };
+		7693EE071A355593004E0178 /* EditCalendarLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7693EE051A355593004E0178 /* EditCalendarLeadViewController.m */; };
+		7693EE081A355593004E0178 /* EditCalendarLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7693EE061A355593004E0178 /* EditCalendarLeadViewController.xib */; };
+		7693EE0C1A3555B0004E0178 /* DetailCalendarLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7693EE0A1A3555B0004E0178 /* DetailCalendarLeadViewController.m */; };
+		7693EE0D1A3555B0004E0178 /* DetailCalendarLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7693EE0B1A3555B0004E0178 /* DetailCalendarLeadViewController.xib */; };
+		7693EE0F1A35587E004E0178 /* icon_start.png in Resources */ = {isa = PBXBuildFile; fileRef = 7693EE0E1A35587E004E0178 /* icon_start.png */; };
 		76977D551A0284DE0029F297 /* TableTestProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76977D541A0284DE0029F297 /* TableTestProcess.m */; };
 		76977D571A0295D60029F297 /* bisone.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 76977D561A0295D60029F297 /* bisone.sqlite */; };
 		76977D5A1A029E6F0029F297 /* DTOEMPLOYEEACCOUNTProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76977D591A029E6F0029F297 /* DTOEMPLOYEEACCOUNTProcess.m */; };
@@ -246,6 +253,9 @@
 		76977D601A02A72E0029F297 /* ListEmployeeAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76977D5E1A02A72E0029F297 /* ListEmployeeAccountViewController.xib */; };
 		76977D641A02A75B0029F297 /* EmployeeAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76977D621A02A75B0029F297 /* EmployeeAccountCell.m */; };
 		76977D651A02A75B0029F297 /* EmployeeAccountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76977D631A02A75B0029F297 /* EmployeeAccountCell.xib */; };
+		769C0A261A35E4220008CC4B /* DTONOTEProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 769C0A251A35E4220008CC4B /* DTONOTEProcess.m */; };
+		769C0A2A1A35F3E90008CC4B /* NoteLeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 769C0A281A35F3E90008CC4B /* NoteLeadCell.m */; };
+		769C0A2B1A35F3E90008CC4B /* NoteLeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769C0A291A35F3E90008CC4B /* NoteLeadCell.xib */; };
 		769C1A1019FFF7BC00F015A5 /* OfficeOneStudy-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 769C1A0F19FFF7BC00F015A5 /* OfficeOneStudy-Info.plist */; };
 		769C1A1319FFFBE100F015A5 /* AlertViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 769C1A1219FFFBE100F015A5 /* AlertViewUtils.m */; };
 		769C1A1619FFFECA00F015A5 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 769C1A1519FFFECA00F015A5 /* UIAlertView+Blocks.m */; };
@@ -367,6 +377,7 @@
 		76EE210E19FF4D7100A80414 /* icon-accept-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EE210B19FF4D7100A80414 /* icon-accept-1.png */; };
 		76EE210F19FF4D7100A80414 /* icon-clock-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EE210C19FF4D7100A80414 /* icon-clock-1.png */; };
 		76EE211019FF4D7100A80414 /* icon-confirm-process-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EE210D19FF4D7100A80414 /* icon-confirm-process-1.png */; };
+		76F31E821A36A4160010606A /* AMRatingControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F31E811A36A4160010606A /* AMRatingControl.m */; };
 		76F328931A34B10B00E0F2C4 /* DTOTASKProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F328921A34B10B00E0F2C4 /* DTOTASKProcess.m */; };
 		76F328971A34B11E00E0F2C4 /* EditTaskLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F328951A34B11E00E0F2C4 /* EditTaskLeadViewController.m */; };
 		76F328981A34B11E00E0F2C4 /* EditTaskLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76F328961A34B11E00E0F2C4 /* EditTaskLeadViewController.xib */; };
@@ -1024,6 +1035,16 @@
 		76601A5F19540CCD001D4C01 /* Introduct_OfficeOne.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Introduct_OfficeOne.pdf; sourceTree = "<group>"; };
 		76746A351A07CF4E005CEDB8 /* DTOOPPORTUNITYProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOOPPORTUNITYProcess.h; sourceTree = "<group>"; };
 		76746A361A07CF4E005CEDB8 /* DTOOPPORTUNITYProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOOPPORTUNITYProcess.m; sourceTree = "<group>"; };
+		7693EDFF1A35556E004E0178 /* DetailTaskLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailTaskLeadViewController.h; sourceTree = "<group>"; };
+		7693EE001A35556E004E0178 /* DetailTaskLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailTaskLeadViewController.m; sourceTree = "<group>"; };
+		7693EE011A35556E004E0178 /* DetailTaskLeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailTaskLeadViewController.xib; sourceTree = "<group>"; };
+		7693EE041A355593004E0178 /* EditCalendarLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCalendarLeadViewController.h; sourceTree = "<group>"; };
+		7693EE051A355593004E0178 /* EditCalendarLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCalendarLeadViewController.m; sourceTree = "<group>"; };
+		7693EE061A355593004E0178 /* EditCalendarLeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditCalendarLeadViewController.xib; sourceTree = "<group>"; };
+		7693EE091A3555B0004E0178 /* DetailCalendarLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailCalendarLeadViewController.h; sourceTree = "<group>"; };
+		7693EE0A1A3555B0004E0178 /* DetailCalendarLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailCalendarLeadViewController.m; sourceTree = "<group>"; };
+		7693EE0B1A3555B0004E0178 /* DetailCalendarLeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailCalendarLeadViewController.xib; sourceTree = "<group>"; };
+		7693EE0E1A35587E004E0178 /* icon_start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_start.png; sourceTree = "<group>"; };
 		76977D531A0284DE0029F297 /* TableTestProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableTestProcess.h; sourceTree = "<group>"; };
 		76977D541A0284DE0029F297 /* TableTestProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableTestProcess.m; sourceTree = "<group>"; };
 		76977D561A0295D60029F297 /* bisone.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = bisone.sqlite; sourceTree = "<group>"; };
@@ -1035,6 +1056,11 @@
 		76977D611A02A75B0029F297 /* EmployeeAccountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployeeAccountCell.h; sourceTree = "<group>"; };
 		76977D621A02A75B0029F297 /* EmployeeAccountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployeeAccountCell.m; sourceTree = "<group>"; };
 		76977D631A02A75B0029F297 /* EmployeeAccountCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmployeeAccountCell.xib; sourceTree = "<group>"; };
+		769C0A241A35E4220008CC4B /* DTONOTEProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTONOTEProcess.h; sourceTree = "<group>"; };
+		769C0A251A35E4220008CC4B /* DTONOTEProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTONOTEProcess.m; sourceTree = "<group>"; };
+		769C0A271A35F3E90008CC4B /* NoteLeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteLeadCell.h; sourceTree = "<group>"; };
+		769C0A281A35F3E90008CC4B /* NoteLeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteLeadCell.m; sourceTree = "<group>"; };
+		769C0A291A35F3E90008CC4B /* NoteLeadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteLeadCell.xib; sourceTree = "<group>"; };
 		769C1A0F19FFF7BC00F015A5 /* OfficeOneStudy-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OfficeOneStudy-Info.plist"; sourceTree = "<group>"; };
 		769C1A1119FFFBE100F015A5 /* AlertViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewUtils.h; sourceTree = "<group>"; };
 		769C1A1219FFFBE100F015A5 /* AlertViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewUtils.m; sourceTree = "<group>"; };
@@ -1232,6 +1258,8 @@
 		76EE210B19FF4D7100A80414 /* icon-accept-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-accept-1.png"; path = "VofficeImage/Option1/icon-accept-1.png"; sourceTree = "<group>"; };
 		76EE210C19FF4D7100A80414 /* icon-clock-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-clock-1.png"; path = "VofficeImage/Option1/icon-clock-1.png"; sourceTree = "<group>"; };
 		76EE210D19FF4D7100A80414 /* icon-confirm-process-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-confirm-process-1.png"; path = "VofficeImage/Option1/icon-confirm-process-1.png"; sourceTree = "<group>"; };
+		76F31E801A36A4160010606A /* AMRatingControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMRatingControl.h; sourceTree = "<group>"; };
+		76F31E811A36A4160010606A /* AMRatingControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMRatingControl.m; sourceTree = "<group>"; };
 		76F328911A34B10B00E0F2C4 /* DTOTASKProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOTASKProcess.h; sourceTree = "<group>"; };
 		76F328921A34B10B00E0F2C4 /* DTOTASKProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOTASKProcess.m; sourceTree = "<group>"; };
 		76F328941A34B11E00E0F2C4 /* EditTaskLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTaskLeadViewController.h; sourceTree = "<group>"; };
@@ -1861,6 +1889,7 @@
 		2D0E2ED21798018E0081D44A /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				76F31E7F1A36A4150010606A /* RatingStart */,
 				76C963B61A17731800029978 /* MIMChart */,
 				76C963521A16F61600029978 /* GoogleMap */,
 				763308021A048068000E190B /* NZLabel */,
@@ -2521,6 +2550,8 @@
 				849125CF1A1CE68500949FC8 /* DTOSYSCATProcess.m */,
 				8496FB291A2DEF3800F4A641 /* DTOACCCONTACTProcess.h */,
 				8496FB2A1A2DEF3800F4A641 /* DTOACCCONTACTProcess.m */,
+				769C0A241A35E4220008CC4B /* DTONOTEProcess.h */,
+				769C0A251A35E4220008CC4B /* DTONOTEProcess.m */,
 			);
 			name = Data;
 			path = ProcessData/Data;
@@ -2604,6 +2635,15 @@
 				84918ABC1A34574A00149CB4 /* SearchAdvanceLeadViewController.h */,
 				84918ABD1A34574A00149CB4 /* SearchAdvanceLeadViewController.m */,
 				84918ABE1A34574A00149CB4 /* SearchAdvanceLeadViewController.xib */,
+				7693EDFF1A35556E004E0178 /* DetailTaskLeadViewController.h */,
+				7693EE001A35556E004E0178 /* DetailTaskLeadViewController.m */,
+				7693EE011A35556E004E0178 /* DetailTaskLeadViewController.xib */,
+				7693EE041A355593004E0178 /* EditCalendarLeadViewController.h */,
+				7693EE051A355593004E0178 /* EditCalendarLeadViewController.m */,
+				7693EE061A355593004E0178 /* EditCalendarLeadViewController.xib */,
+				7693EE091A3555B0004E0178 /* DetailCalendarLeadViewController.h */,
+				7693EE0A1A3555B0004E0178 /* DetailCalendarLeadViewController.m */,
+				7693EE0B1A3555B0004E0178 /* DetailCalendarLeadViewController.xib */,
 			);
 			path = AccountLead;
 			sourceTree = "<group>";
@@ -2837,6 +2877,7 @@
 		76C9647C1A17A15C00029978 /* Bisone */ = {
 			isa = PBXGroup;
 			children = (
+				7693EE0E1A35587E004E0178 /* icon_start.png */,
 				76F328991A34B88B00E0F2C4 /* task_done.png */,
 				76F3289A1A34B88B00E0F2C4 /* task_not_done.png */,
 				8434BEFF1A2F61B200C29815 /* alarm_icon.png */,
@@ -2874,6 +2915,15 @@
 				76D29B2F1A13AD88004B9CF6 /* ProductCell.xib */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		76F31E7F1A36A4150010606A /* RatingStart */ = {
+			isa = PBXGroup;
+			children = (
+				76F31E801A36A4160010606A /* AMRatingControl.h */,
+				76F31E811A36A4160010606A /* AMRatingControl.m */,
+			);
+			path = RatingStart;
 			sourceTree = "<group>";
 		};
 		843BF0B51A03EC1600EA1D8A /* Opportunity */ = {
@@ -2937,6 +2987,9 @@
 				849788051A2BE1BF00384566 /* TaskActionCell.h */,
 				849788061A2BE1BF00384566 /* TaskActionCell.m */,
 				849788071A2BE1BF00384566 /* TaskActionCell.xib */,
+				769C0A271A35F3E90008CC4B /* NoteLeadCell.h */,
+				769C0A281A35F3E90008CC4B /* NoteLeadCell.m */,
+				769C0A291A35F3E90008CC4B /* NoteLeadCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -3792,9 +3845,11 @@
 				B3F727AF17B512CC0024DC0D /* arrow_table.png in Resources */,
 				76D29B221A13567D004B9CF6 /* TestTableViewController.xib in Resources */,
 				8497BFD11A295A2300A5ED3C /* sdkdemos_icon.png in Resources */,
+				769C0A2B1A35F3E90008CC4B /* NoteLeadCell.xib in Resources */,
 				76C964671A17731900029978 /* LeftTriangleIcon.png in Resources */,
 				B3F727B517B512CC0024DC0D /* Box-tinnong.png in Resources */,
 				76601A42194BE90F001D4C01 /* AppIcon-144.png in Resources */,
+				7693EE081A355593004E0178 /* EditCalendarLeadViewController.xib in Resources */,
 				8497BFE71A295A2300A5ED3C /* step4@2x.png in Resources */,
 				B301F1E717C382D80004650C /* e_Background-over.png in Resources */,
 				B301F1E817C382D80004650C /* f_Bg_header.png in Resources */,
@@ -3825,6 +3880,7 @@
 				B313F1D118A51414001FDEC6 /* notification-long-bg-1.png in Resources */,
 				76C9646A1A17731900029978 /* OthersPart1.png in Resources */,
 				8497BFD21A295A2300A5ED3C /* sdkdemos_icon@2x.png in Resources */,
+				7693EE0D1A3555B0004E0178 /* DetailCalendarLeadViewController.xib in Resources */,
 				B3A0669F17D1A72400BA6487 /* WCGridViewCell.xib in Resources */,
 				B315789E188D5E5200C0ED01 /* write-btn-2-1.png in Resources */,
 				76EE207319FA829200A80414 /* ic-move-user-1.png in Resources */,
@@ -3910,6 +3966,7 @@
 				2DF533AC180BF2B70037217F /* img_cell_calendar.png in Resources */,
 				2DF533AD180BF2B70037217F /* img_line_calendar.png in Resources */,
 				2DF7C8871821FE7F0020D4CC /* MonthPickerViewController.xib in Resources */,
+				7693EE0F1A35587E004E0178 /* icon_start.png in Resources */,
 				8497BFB81A295A2300A5ED3C /* InfoPlist.strings in Resources */,
 				849788041A2BE1A400384566 /* TaskCalendarCell.xib in Resources */,
 				B3157889188D5E5200C0ED01 /* ic-work-fw-person-1-1.png in Resources */,
@@ -3956,6 +4013,7 @@
 				8497BFE91A295A2300A5ED3C /* step5@2x.png in Resources */,
 				B31AFAA5187ADB5800D366B5 /* ic-show-column-1-1.png in Resources */,
 				76601A40194BE90F001D4C01 /* AppIcon-114.png in Resources */,
+				7693EE031A35556E004E0178 /* DetailTaskLeadViewController.xib in Resources */,
 				76601A4A194BE90F001D4C01 /* Reader-Email@2x.png in Resources */,
 				849125CA1A1CDAE400949FC8 /* icon_save-1.png in Resources */,
 				76601A4B194BE90F001D4C01 /* Reader-Mark-N.png in Resources */,
@@ -4025,6 +4083,7 @@
 			files = (
 				76601A36194BE90F001D4C01 /* ReaderThumbsView.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				769C0A261A35E4220008CC4B /* DTONOTEProcess.m in Sources */,
 				76601A37194BE90F001D4C01 /* ReaderThumbView.m in Sources */,
 				92C68E501519D4F100981728 /* BaseViewController.m in Sources */,
 				8434BEFD1A2F485700C29815 /* DetailContactLeadViewController.m in Sources */,
@@ -4067,6 +4126,7 @@
 				DDBC46E6171540A200CCFB94 /* HTTPEngine.m in Sources */,
 				DDBC46E7171540A200CCFB94 /* HttpLoader.m in Sources */,
 				76C9645A1A17731900029978 /* BasicPieChart.m in Sources */,
+				7693EE021A35556E004E0178 /* DetailTaskLeadViewController.m in Sources */,
 				DDBC46E8171540A200CCFB94 /* HTTPMessage.m in Sources */,
 				DDBC46E9171540A200CCFB94 /* HttpNetwork.m in Sources */,
 				DDBC46EA171540A200CCFB94 /* HTTPRequest.m in Sources */,
@@ -4133,6 +4193,7 @@
 				8497C0071A295A2300A5ED3C /* PanoramaViewController.m in Sources */,
 				2D47E7F91761704200F291D6 /* GCNetworkDownloadRequest.m in Sources */,
 				2D47E7FA1761704200F291D6 /* GCNetworkFormRequest.m in Sources */,
+				76F31E821A36A4160010606A /* AMRatingControl.m in Sources */,
 				76977D641A02A75B0029F297 /* EmployeeAccountCell.m in Sources */,
 				76601A2F194BE90F001D4C01 /* ReaderMainPagebar.m in Sources */,
 				2D47E7FB1761704200F291D6 /* GCNetworkImageRequest.m in Sources */,
@@ -4264,6 +4325,7 @@
 				B3A066A017D1A72400BA6487 /* WCGridViewController.m in Sources */,
 				B3F7EA8317DEC24F00504705 /* LogUtil.m in Sources */,
 				76601A2C194BE90F001D4C01 /* ReaderContentView.m in Sources */,
+				7693EE071A355593004E0178 /* EditCalendarLeadViewController.m in Sources */,
 				8496FB271A2DE34200F4A641 /* ContactLeadCell.m in Sources */,
 				2D459E79184EC5EA004D9C45 /* LineView.m in Sources */,
 				B362285717E943EE00CAA6AE /* Toast+UIView.m in Sources */,
@@ -4287,6 +4349,7 @@
 				76F328931A34B10B00E0F2C4 /* DTOTASKProcess.m in Sources */,
 				76D29AC71A1124C9004B9CF6 /* ProposeProductCell.m in Sources */,
 				76D29ABA1A110F8D004B9CF6 /* CompetionorCell.m in Sources */,
+				769C0A2A1A35F3E90008CC4B /* NoteLeadCell.m in Sources */,
 				8490788B1A1E463C009D5D5F /* DetailBussinessLeadViewController.m in Sources */,
 				76601A28194BE90F001D4C01 /* CGPDFDocument.m in Sources */,
 				2D044C7F18025D8D00FBC073 /* NSNull+extend.m in Sources */,
@@ -4312,6 +4375,7 @@
 				76C9644C1A17731900029978 /* MIMColor.m in Sources */,
 				8497C00C1A295A2300A5ED3C /* TileLayerViewController.m in Sources */,
 				8497C0061A295A2300A5ED3C /* MyLocationViewController.m in Sources */,
+				7693EE0C1A3555B0004E0178 /* DetailCalendarLeadViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

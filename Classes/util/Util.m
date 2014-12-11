@@ -28,13 +28,60 @@
 
 
 +(void) backToHome : (UIViewController*) viewController {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     MainViewController *view = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
     //action.sender = view;
     //view.userData = [defaults objectForKey:USER_LOGIN];
     //view.versionTypeCheck = [defaults objectForKey:KEY_VERSION];
     view.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [viewController presentViewController:view animated:YES completion:nil];
+}
+
++(void) sendMail : (UIViewController*) viewController withEmail : (NSString*) strEmailTo {
+    //kiem tra xem no da cau hinh mail hay chua?
+    if (![MFMailComposeViewController canSendMail]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:KEY_NOTIFICATION_TITLE message:@"Anh/chị chưa cấu hình mail, cấu hình mail trước khi thực hiện chức năng này" delegate:viewController cancelButtonTitle:KEY_NOTIFICATION_CANCEL otherButtonTitles: nil];
+        if (IS_OS_8_OR_LATER) {
+            [alert showWithHandler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                //[self alertView:alertView clickedButtonAtIndex:buttonIndex];
+            }];
+        }else{
+            [alert show];
+        }
+        return;
+    }
+    
+    //viec dau tien la lay file log
+    
+    
+    
+    MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+	picker.mailComposeDelegate =(id<MFMailComposeViewControllerDelegate>) viewController;
+    
+    //NSArray *address = [NSArray arrayWithObjects:@"tuannv36@viettel.com.vn", nil];
+    
+    NSArray *toRecipients = [NSArray arrayWithObjects:strEmailTo,nil];
+	NSArray *ccRecipients = [NSArray arrayWithObjects:@"", nil];
+	NSArray *bccRecipients = [NSArray arrayWithObjects:@"",nil];
+	
+    
+    
+	[picker setToRecipients:toRecipients];
+	[picker setCcRecipients:ccRecipients];
+	[picker setBccRecipients:bccRecipients];
+	
+    
+//    NSData *myData = [NSData dataWithContentsOfFile:filePath];
+//    
+//    [picker addAttachmentData:myData mimeType:@"text/plain" fileName :fileName];
+	
+	// Fill out the email body text
+    NSString *emailBody = [NSString stringWithFormat:@""];
+	[picker setMessageBody:emailBody isHTML:NO];
+    
+	picker.modalPresentationStyle = UIModalPresentationPageSheet;
+    
+	[viewController presentViewController:picker animated:YES completion:nil];
 }
 
 +(void) rerenderFrameWithImage : (UIImageView*)  inputImage withLabel : (UILabel*) inputLabel withOption : (int) smgSelect{

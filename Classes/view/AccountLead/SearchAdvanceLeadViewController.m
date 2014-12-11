@@ -10,7 +10,7 @@
 
 @interface SearchAdvanceLeadViewController ()
 {
-    
+    ///control
     __weak IBOutlet UITextField *txtCode;
     
     __weak IBOutlet UITextField *txtName;
@@ -18,6 +18,10 @@
     __weak IBOutlet UITextField *txtMobile;
     
     __weak IBOutlet UITextField *txtEmail;
+    
+    //khai báo biến
+    int smgSelect ; //option layout
+    NSUserDefaults *defaults ;
     
 }
 @end
@@ -36,8 +40,55 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    defaults = [NSUserDefaults standardUserDefaults];
+    [defaults synchronize];
+    
+    smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
+    [self updateInterFaceWithOption:smgSelect];
 }
+
+
+- (void) updateInterFaceWithOption : (int) option
+{
+    
+    
+    
+        
+        for (UIView *viewSubTemp in self.view.subviews) {
+            
+            
+            if ([viewSubTemp isKindOfClass:[UILabel class]]) {
+                ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+            }
+            
+            
+            if ([viewSubTemp isKindOfClass:[UITextView class]]) {
+                ((UITextView*) viewSubTemp).textColor = TEXT_COLOR_REPORT;
+                ((UITextView*) viewSubTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
+                ((UITextView*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
+                ((UITextView*) viewSubTemp).layer.borderWidth = BORDER_WITH;
+            }
+            if ([viewSubTemp isKindOfClass:[UITextField class]]) {
+                ((UITextField*) viewSubTemp).textColor = TEXT_COLOR_REPORT;
+                ((UITextField*) viewSubTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
+                ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
+                ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
+            }
+            
+            if ([viewSubTemp isKindOfClass:[UIButton class]]) {
+                
+                [((UIButton*) viewSubTemp) setStyleNormalWithOption:smgSelect];
+            }
+            
+        }
+        
+    
+        
+    
+    
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -47,14 +98,16 @@
 
 - (IBAction)actionSearch:(id)sender {
     
-    if (self.advanceSearchDelegate && [self.advanceSearchDelegate respondsToSelector:@selector(advanceSearchDelegate)]) {
+    if (self.advanceSearchDelegate && [self.advanceSearchDelegate respondsToSelector:@selector(actionSearchAdvanceWithCode:withName:withMobile:withEmail:)]) {
         [self.advanceSearchDelegate actionSearchAdvanceWithCode:txtCode.text withName:txtName.text withMobile:txtMobile.text withEmail:txtEmail.text];
     }
     
 }
 
 - (IBAction)actionCancel:(id)sender {
-    
+    if (self.advanceSearchDelegate && [self.advanceSearchDelegate respondsToSelector:@selector(dismissPopoverView)]) {
+        [self.advanceSearchDelegate dismissPopoverView];
+    }
 }
 
 @end

@@ -10,6 +10,7 @@
 #import "DTOACCOUNTLEADProcess.h"
 #import "DTOCONTACTProcess.h"
 #import "DTOTASKProcess.h"
+#import "DTONOTEProcess.h"
 
 ////remove
 #import "StringUtil.h"
@@ -35,6 +36,7 @@
     
     DTOCONTACTProcess *dtoContactProcess; //lay danh sach du lieu theo clientLeadId
     DTOTASKProcess *dtoTaskProcess;
+    DTONOTEProcess *dtoNoteProcess;
     
     NSUserDefaults *defaults ;
     
@@ -98,6 +100,7 @@
     dtoLeadProcess = [DTOACCOUNTLEADProcess new];
     dtoContactProcess = [DTOCONTACTProcess new];
     dtoTaskProcess= [DTOTASKProcess new];
+    dtoNoteProcess = [DTONOTEProcess new];
     
     NSLog(@"datasend detail lead = %@", self.dataSend);
     dicData = [dtoLeadProcess getDataWithKey:DTOLEAD_id withValue:[self.dataSend objectForKey:DTOLEAD_id]];
@@ -262,6 +265,10 @@
         }break;
         case typeLeaderView_Note:
         {
+            //load data la ghi chu
+            
+             arrayData = [dtoNoteProcess filter];
+            
             
         }break;
         case typeLeaderView_Opportunity:{
@@ -350,7 +357,9 @@
     switch (index) {
         case SELECT_INDEX_ADD_CALENDAR:
         {
-            
+            EditCalendarLeadViewController *viewController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
+            viewController.dataRoot = dicData;
+            [self presentViewController:viewController animated:YES completion:nil];
         }
             break;
         case SELECT_INDEX_ADD_CONTACT:
@@ -479,6 +488,9 @@
             case typeLeaderView_Task:
             return 60.0f;
             break;
+            case typeLeaderView_Note:
+            return 60.0f;
+            break;
         default:
             break;
     }
@@ -537,19 +549,19 @@
             break;
         case typeLeaderView_Note:
         {
-            //            static NSString *cellId = @"competionorCell";
-            //            CompetionorCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
-            //
-            //
-            //            if (!cell) {
-            //                cell = [CompetionorCell getNewCell];
-            //            }
-            //
-            //            if (arrayData.count>0) {
-            //                [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
-            //            }
-            //            
-            //            return cell;
+            static NSString *cellId = @"NoteLeadCell";
+            NoteLeadCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+            
+            
+            if (!cell) {
+                cell = [NoteLeadCell initNibCell];
+            }
+            
+            if (arrayData.count>0) {
+                [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+            }
+            
+            return cell;
         }
             break;
         case typeLeaderView_Opportunity:
@@ -606,9 +618,6 @@
         case typeLeaderView_Contact:
         {
             //lay chi tiet doi tuong nhet vao datasend
-            
-            
-            
             DetailContactLeadViewController *viewController = [[DetailContactLeadViewController alloc]initWithNibName:@"DetailContactLeadViewController" bundle:nil];
             viewController.dataSend = dicTempData;
             [self presentViewController:viewController animated:YES completion:nil];
@@ -622,9 +631,147 @@
 }
 
 #pragma mark taskaction Cell
-- (void) AccountLeadCellDelegate_ActionChangeTaskStatusWithData : (NSDictionary*) dicData {
+- (void) AccountLeadCellDelegate_ActionChangeTaskStatusWithData : (NSMutableDictionary*) inputDicData {
+    //change status
+    //dtoTaskProcess
+    
+    NSMutableDictionary *dicTaskUpdate = [[NSMutableDictionary alloc] init];
+    
+    [dicTaskUpdate setObject:[inputDicData objectForKey:DTOTASK_id] forKey:DTOTASK_id];
+    
+    if ([[inputDicData objectForKey:DTOTASK_taskStatus] intValue] == FIX_TASK_STATUS_COMPLETE) {
+        [dicTaskUpdate setObject:ObjectToStr(FIX_TASK_STATUS_NOT_COMPLETE) forKey:DTOTASK_taskStatus];
+        
+    }else if ([[inputDicData objectForKey:DTOTASK_taskStatus] intValue] == FIX_TASK_STATUS_NOT_COMPLETE){
+         [dicTaskUpdate setObject:ObjectToStr(FIX_TASK_STATUS_COMPLETE) forKey:DTOTASK_taskStatus];
+    }else{
+        //qua han
+                //chua mau do
+        
+    }
+    [dtoTaskProcess insertToDBWithEntity:dicTaskUpdate];
+    [inputDicData setObject:[dicTaskUpdate objectForKey:DTOTASK_taskStatus] forKey:DTOTASK_taskStatus];
+    
+    [self.tbData reloadData];
+    
+    
     
 }
+
+
+//Thêm phần sửa, xoá hiển thị trên row của table
+
+#pragma mark edit
+/**
+ *  Bat Swipe right de cho phep hien thi button xoa 1 row
+ *  @return YES: If you want the specified item to be editable.
+ */
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *deletePermission =@"1";
+    if ([deletePermission isEqualToString:@"1"]) {
+        return YES;
+    }
+    return NO;
+}
+
+/**
+ *  Delete 1 row tren TableView
+ */
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        //NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
+        
+        switch (typeActionEvent) {
+            case typeLeaderView_Task:{
+                //deleteLeadId = [dicData objectForKey:DTOLEAD_id];
+                UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xác nhận đồng ý xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
+                mylert.tag = TAG_DELETE_ITEM;
+                [mylert show];
+            }
+                break;
+            case typeLeaderView_Opportunity:
+                break;
+            case typeLeaderView_Note:
+                break;
+            case typeLeaderView_Contact:
+            {
+            }
+                break;
+            case typeLeaderView_Calendar:
+                break;
+            default:
+                break;
+        }
+        
+    }
+}
+
+/**
+ *  Xu ly khi click Button Accessory (tren ios6, xem trong cellForRow co code set AccessoryType cho cell neu khong phai la Header)
+ *  TRUONG HOP NAY HIEN TAI KHONG DUNG DEN MA SU DUNG 1 CUSTOM BUTTON VOI ACTION "customButtonAccessoryTapped"
+ */
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return SYS_KEY_DELETE;
+}
+
+/**
+ *  Them 1 button "Sua" ben canh button "Xoa" (tren ios7, ios6 su dung accessoryType)
+ */
+-(NSString *)tableView:(UITableView *)tableView titleForSwipeAccessoryButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    /**
+     *  Neu khong phai la Header thi la item level 2
+     */
+    return SYS_KEY_EDIT;
+    //return nil;
+}
+
+/**
+ *  Xu ly khi chon button "Sua"
+ */
+-(void)tableView:(UITableView *)tableView swipeAccessoryButtonPushedForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"sua item at index = %d", indexPath.row);
+    
+    //NSDictionary *dicDataTemp = [arrayData objectAtIndex:indexPath.row];
+    
+//    NSDictionary *dicData = [dtoLeadProcess getDataWithKey:DTOLEAD_id withValue:[dicDataTemp objectForKey:DTOLEAD_id]];
+//    
+//    if ([ObjectToStr([dicDataTemp objectForKey:DTOLEAD_leadType]) isEqualToString:FIX_LEADTYPE_PERSON]) {
+//        
+//        EditAccountLeadViewController *viewController = [[EditAccountLeadViewController alloc]initWithNibName:@"EditAccountLeadViewController" bundle:nil];
+//        viewController.dataSend = dicData;
+//        [self presentViewController:viewController animated:YES completion:nil];
+//    }else{
+//        EditBussinessLeadViewController *viewController = [[EditBussinessLeadViewController alloc]initWithNibName:@"EditBussinessLeadViewController" bundle:nil];
+//        viewController.dataSend = dicDataTemp;
+//        [self presentViewController:viewController animated:YES completion:nil];
+//    }
+    
+    
+}
+
+
+
+#pragma mark table edit row
+
+- (void) customButtonAccessoryTapped:(id)sender
+{
+    UIButton *btnSender = (UIButton *) sender;
+    
+    NSLog(@"btnSender = %d", btnSender.tag);
+    
+}
+
 
 
 @end

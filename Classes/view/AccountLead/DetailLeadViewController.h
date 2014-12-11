@@ -17,6 +17,11 @@
 #import "EditTaskLeadViewController.h"
 #import "TaskActionCell.h"
 
+#import "EditCalendarLeadViewController.h"
+#import "DetailCalendarLeadViewController.h"
+
+#import "NoteLeadCell.h"
+
 enum TypeLeaderView{
     typeLeaderView_ExpandInfo, //Thông tin mở rộng
     typeLeaderView_Contact, //Liên hệ

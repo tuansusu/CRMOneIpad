@@ -11,7 +11,7 @@
 
 
 
-#define TAG_DELETE_ITEM 11
+
 
 #define SELECT_INDEX_ADD_PERSON 0
 #define SELECT_INDEX_ADD_BUSSINESS 1
@@ -290,6 +290,20 @@
 }
 
 - (IBAction)actionAdvanceSearch:(id)sender {
+    
+    //hidden keyboard
+    [self.txtSearchBar resignFirstResponder];
+    
+    //tim kiem nang cao
+    SearchAdvanceLeadViewController *detail = [[SearchAdvanceLeadViewController alloc]initWithNibName:@"SearchAdvanceLeadViewController" bundle:nil];
+    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+    CGRect popoverFrame = ((UIButton*) sender).frame;
+    
+    detail.advanceSearchDelegate =(id<SearchAdvanceDelegate>) self;
+    
+    self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
+    [self.listPopover setPopoverContentSize:CGSizeMake(250, 370) animated:NO];
+    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.headerViewBar permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
 
@@ -332,32 +346,52 @@
         arrayData = [dtoLeadProcess filter];
     }else{
     
-    switch (iSearchOption) {
-        case SCOPE_ALL:
-            break;
-        case SCOPE_CODE:{
-            arrayData = [dtoLeadProcess filterWithKey:DTOLEAD_code withValue: strSearchText];
-        }
-            break;
-        case SCOPE_EMAIL:{
-            arrayData = [dtoLeadProcess filterWithKey:DTOLEAD_email withValue: strSearchText];
-        }
-            break;
-        case SCOPE_NAME:
-        {
-            arrayData = [dtoLeadProcess filterWithKey:DTOLEAD_name withValue: strSearchText];
-        }
-            break;
-        case SCOPE_PHONE:
-        {
-            arrayData = [dtoLeadProcess filterWithKey:DTOLEAD_mobile withValue: strSearchText];
-        }
-            break;
-        default:
-            break;
-    }
+//    switch (iSearchOption) {
+//        case SCOPE_ALL:
+//            break;
+//        case SCOPE_CODE:{
+//            arrayData = [dtoLeadProcess filterWithKey:DTOLEAD_code withValue: strSearchText];
+//        }
+//            break;
+//        case SCOPE_EMAIL:{
+//            arrayData = [dtoLeadProcess filterWithKey:DTOLEAD_email withValue: strSearchText];
+//        }
+//            break;
+//        case SCOPE_NAME:
+//        {
+//            arrayData = [dtoLeadProcess filterWithKey:DTOLEAD_name withValue: strSearchText];
+//        }
+//            break;
+//        case SCOPE_PHONE:
+//        {
+//            arrayData = [dtoLeadProcess filterWithKey:DTOLEAD_mobile withValue: strSearchText];
+//        }
+//            break;
+//        default:
+//            break;
+//    }
     
     
+        NSMutableDictionary *dicCondition = [[NSMutableDictionary alloc]init];
+        
+            [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOLEAD_code];
+        
+        
+        
+            [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOLEAD_name];
+        
+        
+        
+            [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOLEAD_mobile];
+        
+        
+        
+            [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOLEAD_email];
+        
+        
+        
+        arrayData = [dtoLeadProcess filterWithOrArrayCondition:dicCondition];
+        
     }
     //load data from db
     _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
@@ -370,49 +404,35 @@
 #pragma mark UISearch bar 
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
-    searchBar.showsScopeBar = YES;
-    [searchBar sizeToFit];
-    //searchBar.superview.backgroundColor = HEADER_VIEW_COLOR1;
-    
-    // Hide the search bar until user scrolls up
-//    CGRect newBounds = self.tbData.bounds;
-//    newBounds.origin.y = newBounds.origin.y + searchBar.bounds.size.height;
-//    self.tbData.bounds = newBounds;
-    NSLog(@"start search");
-    
-    CGRect frame = self.tbData.frame;
-    frame.origin.y = frame.origin.y + searchBar.bounds.size.height;
-    self.tbData.frame = frame;
-    
-    
-    [searchBar setShowsCancelButton:NO animated:YES];
+//    searchBar.showsScopeBar = YES;
+//    [searchBar sizeToFit];
+//    
+//    NSLog(@"start search");
+//    
+//    CGRect frame = self.tbData.frame;
+//    frame.origin.y = frame.origin.y + searchBar.bounds.size.height;
+//    self.tbData.frame = frame;
+//    
+//    
+//    [searchBar setShowsCancelButton:NO animated:YES];
     
     return YES;
 }
 
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
-    //searchBar.frame = CGRectMake(0, 0, searchBar.frame.size.width, searchBar.frame.size.height);
-    
-    CGRect frame = self.tbData.frame;
-    frame.origin.y = frame.origin.y - searchBar.bounds.size.height;
-    self.tbData.frame = frame;
-    
-    NSLog(@"end search");
-    
-    searchBar.showsScopeBar = NO;
-    [searchBar sizeToFit];
-    
-    // Hide the search bar until user scrolls up
-//    CGRect newBounds = self.tbData.bounds;
-//    newBounds.origin.y = newBounds.origin.y - searchBar.bounds.size.height;
-//    self.tbData.bounds = newBounds;
-    
-    
-    
-    [searchBar setShowsCancelButton:NO animated:YES];
-    //searchBar.superview.backgroundColor = [UIColor clearColor];
-    
-    NSLog(@"");
+//    CGRect frame = self.tbData.frame;
+//    frame.origin.y = frame.origin.y - searchBar.bounds.size.height;
+//    self.tbData.frame = frame;
+//    
+//    NSLog(@"end search");
+//    
+//    searchBar.showsScopeBar = NO;
+//    [searchBar sizeToFit];
+//    
+//    [searchBar setShowsCancelButton:NO animated:YES];
+//    
+//    
+//    NSLog(@"");
     
     return YES;
 }
@@ -553,7 +573,7 @@
 #pragma mark Account lead cell delegate
 
 - (void) AccountLeadCellDelegate_ActionSendMailWithData : (NSDictionary*) dicData {
-    
+    [Util sendMail:self withEmail:[dicData objectForKey:DTOLEAD_email]];
 }
 - (void) AccountLeadCellDelegate_ActionViewMapWithData : (NSDictionary*) dicData {
     //lon lan
@@ -602,8 +622,78 @@
 #pragma mark ADVANCE SEARCH
 -(void) actionSearchAdvanceWithCode:(NSString *)strCode withName:(NSString *)strName withMobile:(NSString *)strMobile withEmail:(NSString *)strEmail{
     
+    NSMutableDictionary *dicCondition = [[NSMutableDictionary alloc]init];
+    if (![StringUtil stringIsEmpty:strCode]) {
+        [dicCondition setObject:[StringUtil trimString:strCode] forKey:DTOLEAD_code];
+    }
+    
+    if (![StringUtil stringIsEmpty:strName]) {
+        [dicCondition setObject:[StringUtil trimString:strName] forKey:DTOLEAD_name];
+    }
+    
+    if (![StringUtil stringIsEmpty:strMobile]) {
+        [dicCondition setObject:[StringUtil trimString:strMobile] forKey:DTOLEAD_mobile];
+    }
+    
+    if (![StringUtil stringIsEmpty:strEmail]) {
+        [dicCondition setObject:[StringUtil trimString:strEmail] forKey:DTOLEAD_email];
+    }
+    
+    
+    arrayData = [dtoLeadProcess filterWithArrayCondition:dicCondition];
+    _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
+    
+    [self.tbData reloadData];
+}
+-(void) dismissPopoverView
+{
+    if ([self.listPopover isPopoverVisible])
+        [self.listPopover dismissPopoverAnimated:YES];
 }
 
+#pragma mark sendTime
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+    
+    switch (result)
+	{
+		case MFMailComposeResultCancelled:
+			//NSLog(@"Cancelled");
+			break;
+		case MFMailComposeResultSaved:
+			//NSLog(@"Saved");
+			break;
+		case MFMailComposeResultSent:
+        {
+            UIAlertView *alert = [[UIAlertView alloc] init];
+            [alert setTitle:@"Gửi email thành công!"];
+            [alert setMessage:nil];
+            [alert setDelegate:self];
+            [alert addButtonWithTitle:@"Thoát"];
+            
+            [alert show];
+            
+        }
+			break;
+		case MFMailComposeResultFailed:
+        {
+            UIAlertView *alert = [[UIAlertView alloc] init];
+            [alert setTitle:@"Không gửi được email!"];
+            [alert setMessage:nil];
+            [alert setDelegate:self];
+            [alert addButtonWithTitle:@"Thoát"];
+            
+            [alert show];
+            
+        }
+			break;
+            
+			//NSLog(@"Not send");
+    }
+	[self dismissViewControllerAnimated:YES completion:nil];
+    
+}
 
 
 @end

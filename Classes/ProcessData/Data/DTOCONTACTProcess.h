@@ -17,6 +17,8 @@
  */
 -(BOOL) insertToDBWithEntity:(NSMutableDictionary*) entity;
 
+-(BOOL) updateToDBWithEntity:(NSMutableDictionary*) entity;
+
 /*
  * Ham xoa khach hang dau moi - truyen clientLeadId
  */

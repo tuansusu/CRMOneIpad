@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+#import <MessageUI/MessageUI.h>
 #import "EditAccountLeadViewController.h"
 #import "EditBussinessLeadViewController.h"
 #import "SelectIndexViewController.h"
@@ -21,7 +22,7 @@
 
 #import "TestMapViewController.h"
 
-@interface ListAccountLeadViewController : BaseViewController<SelectIndexDelegate, UISearchBarDelegate, UISearchDisplayDelegate, AccountLeadCellDelegate, SearchAdvanceDelegate>
+@interface ListAccountLeadViewController : BaseViewController<SelectIndexDelegate, UISearchBarDelegate, UISearchDisplayDelegate, AccountLeadCellDelegate>
 
 //Header
 @property (weak, nonatomic) IBOutlet UIView *headerViewBar;
@@ -41,6 +42,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btnHome;
 - (IBAction)homeBack:(id)sender;
+@property (weak, nonatomic) IBOutlet UISearchBar *txtSearchBar;
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 

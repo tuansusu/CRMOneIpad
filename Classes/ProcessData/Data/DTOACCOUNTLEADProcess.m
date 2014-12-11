@@ -150,5 +150,82 @@
 }
 
 
+-(NSMutableArray*) filterWithArrayCondition : (NSDictionary *) dicCondition{
+    NSArray *allFields =[NSArray arrayWithObjects:DTOLEAD_accountId, DTOLEAD_address, DTOLEAD_companyPhone, DTOLEAD_email, DTOLEAD_mobile, DTOLEAD_name,DTOLEAD_updatedBy,DTOLEAD_code, DTOLEAD_leadId, DTOLEAD_leadType,DTOLEAD_clientLeadId, DTOLEAD_lat, DTOLEAD_lon, DTOLEAD_id, nil];
+    
+    
+    
+    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where status = 1 ",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOACCOUNTLEAD];
+    
+     NSMutableArray *arrayValue = [[NSMutableArray alloc]init];
+    
+    for (NSString *strKey in dicCondition.allKeys) {
+        if ([StringUtil stringIsEmpty:[dicCondition objectForKey:strKey]]) {
+            continue;
+        }
+        
+        query = [query stringByAppendingString:[NSString stringWithFormat:@" and %@ like ?", strKey]];
+        
+        NSString *value = @"%";
+        value = [value stringByAppendingString:[[dicCondition objectForKey:strKey] stringByAppendingString:@"%"]];
+        [arrayValue addObject:value];
+        
+    }
+    
+    
+    query = [query stringByAppendingString:[NSString stringWithFormat:@" order by %@ desc", DTONOTE_updatedDate]];
+    
+    
+   return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:arrayValue];
+    
+}
+
+/*
+ *Ham tim kiem theo nhieu dieu kien or
+ */
+-(NSMutableArray*) filterWithOrArrayCondition : (NSDictionary *) dicCondition{
+    NSArray *allFields =[NSArray arrayWithObjects:DTOLEAD_accountId, DTOLEAD_address, DTOLEAD_companyPhone, DTOLEAD_email, DTOLEAD_mobile, DTOLEAD_name,DTOLEAD_updatedBy,DTOLEAD_code, DTOLEAD_leadId, DTOLEAD_leadType,DTOLEAD_clientLeadId, DTOLEAD_lat, DTOLEAD_lon, DTOLEAD_id, nil];
+    
+    
+    
+    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where status = 1 ",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOACCOUNTLEAD];
+    
+    NSMutableArray *arrayValue = [[NSMutableArray alloc]init];
+    
+    BOOL isCheckCondition = NO;
+    
+    for (NSString *strKey in dicCondition.allKeys) {
+        if ([StringUtil stringIsEmpty:[dicCondition objectForKey:strKey]]) {
+            continue;
+        }
+        
+        if (isCheckCondition==NO) {
+            query = [query stringByAppendingString:@" and ( "];
+            isCheckCondition = YES;
+            query = [query stringByAppendingString:[NSString stringWithFormat:@" %@ like ?", strKey]];
+        }else{
+            query = [query stringByAppendingString:[NSString stringWithFormat:@" or %@ like ?", strKey]];
+        }
+        
+        
+        
+        NSString *value = @"%";
+        value = [value stringByAppendingString:[[dicCondition objectForKey:strKey] stringByAppendingString:@"%"]];
+        [arrayValue addObject:value];
+        
+    }
+    
+    if (isCheckCondition) {
+        query = [query stringByAppendingString:@" ) "];
+    }
+    
+    
+    query = [query stringByAppendingString:[NSString stringWithFormat:@" order by %@ desc", DTONOTE_updatedDate]];
+    
+    
+    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:arrayValue];
+    
+}
+
 
 @end

@@ -13,6 +13,7 @@
 #import "DetailLeadViewController.h"
 #import "AccountLeadCell.h"
 
+#import "SearchAdvanceLeadViewController.h"
 
 #import "MJDetailViewController.h"
 #import "UIViewController+MJPopupViewController.h"
@@ -30,10 +31,13 @@
 - (IBAction)actionChoiceTypeOfCustomer:(id)sender;
 
 - (IBAction)actionAdd:(id)sender;
-
+- (IBAction)actionAdvanceSearch:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnHome;
 - (IBAction)homeBack:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UISearchBar *txtSearchBar;
+
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 

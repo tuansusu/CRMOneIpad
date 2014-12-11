@@ -102,6 +102,7 @@
 }
 
 - (IBAction)actionSendMail:(id)sender {
+    [_delegate AccountLeadCellDelegate_ActionSendMailWithData:_dicData];
 }
 
 - (IBAction)actionChangeFlow:(id)sender {

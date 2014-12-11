@@ -20,5 +20,8 @@
 
 +(BOOL) checkFileExtension : (NSString *) fileName;
 
-
+/*
+ *Ham send mail den dia chi cu the
+ */
++(void) sendMail : (UIViewController*) viewController withEmail : (NSString*) strEmailTo ;
 @end

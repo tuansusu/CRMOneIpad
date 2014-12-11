@@ -8,6 +8,9 @@
 
 #import "BaseDataProcess.h"
 
+#define FIX_TASK_STATUS_COMPLETE 3245
+#define FIX_TASK_STATUS_NOT_COMPLETE 3244
+
 @interface DTOTASKProcess : BaseDataProcess
 
 /*

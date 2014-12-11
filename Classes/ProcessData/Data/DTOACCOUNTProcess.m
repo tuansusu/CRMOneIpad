@@ -156,4 +156,85 @@
     return [super getMaxClientIdWithTableName:TABLENAME_DTOACCOUNT withField:DTOACCOUNT_clientAccountId];
 }
 
+
+
+
+-(NSMutableArray*) filterWithArrayCondition : (NSDictionary *) dicCondition{
+    NSArray *allFields =[NSArray arrayWithObjects:DTOACCOUNT_accountId, DTOACCOUNT_address, DTOACCOUNT_email, DTOACCOUNT_mobile, DTOACCOUNT_name,DTOACCOUNT_updatedBy,DTOACCOUNT_code, DTOACCOUNT_accountType,DTOACCOUNT_clientAccountId, DTOACCOUNT_lat, DTOACCOUNT_lon, DTOACCOUNT_id, nil];
+    
+    
+    
+    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where status = 1 ",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOACCOUNT];
+    
+    NSMutableArray *arrayValue = [[NSMutableArray alloc]init];
+    
+    for (NSString *strKey in dicCondition.allKeys) {
+        if ([StringUtil stringIsEmpty:[dicCondition objectForKey:strKey]]) {
+            continue;
+        }
+        
+        query = [query stringByAppendingString:[NSString stringWithFormat:@" and %@ like ?", strKey]];
+        
+        NSString *value = @"%";
+        value = [value stringByAppendingString:[[dicCondition objectForKey:strKey] stringByAppendingString:@"%"]];
+        [arrayValue addObject:value];
+        
+    }
+    
+    
+    query = [query stringByAppendingString:[NSString stringWithFormat:@" order by %@ desc", DTOACCOUNT_updatedDate]];
+    
+    
+    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:arrayValue];
+    
+}
+
+/*
+ *Ham tim kiem theo nhieu dieu kien or
+ */
+-(NSMutableArray*) filterWithOrArrayCondition : (NSDictionary *) dicCondition{
+    NSArray *allFields =[NSArray arrayWithObjects:DTOACCOUNT_accountId, DTOACCOUNT_address, DTOACCOUNT_email, DTOACCOUNT_mobile, DTOACCOUNT_name,DTOACCOUNT_updatedBy,DTOACCOUNT_code, DTOACCOUNT_accountType,DTOACCOUNT_clientAccountId, DTOACCOUNT_lat, DTOACCOUNT_lon, DTOACCOUNT_id, nil];
+    
+    
+    
+    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where status = 1 ",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOACCOUNT];
+    
+    NSMutableArray *arrayValue = [[NSMutableArray alloc]init];
+    
+    BOOL isCheckCondition = NO;
+    
+    for (NSString *strKey in dicCondition.allKeys) {
+        if ([StringUtil stringIsEmpty:[dicCondition objectForKey:strKey]]) {
+            continue;
+        }
+        
+        if (isCheckCondition==NO) {
+            query = [query stringByAppendingString:@" and ( "];
+            isCheckCondition = YES;
+            query = [query stringByAppendingString:[NSString stringWithFormat:@" %@ like ?", strKey]];
+        }else{
+            query = [query stringByAppendingString:[NSString stringWithFormat:@" or %@ like ?", strKey]];
+        }
+        
+        
+        
+        NSString *value = @"%";
+        value = [value stringByAppendingString:[[dicCondition objectForKey:strKey] stringByAppendingString:@"%"]];
+        [arrayValue addObject:value];
+        
+    }
+    
+    if (isCheckCondition) {
+        query = [query stringByAppendingString:@" ) "];
+    }
+    
+    
+    query = [query stringByAppendingString:[NSString stringWithFormat:@" order by %@ desc", DTOACCOUNT_updatedDate]];
+    
+    
+    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:arrayValue];
+    
+}
+
+
 @end

@@ -12,7 +12,6 @@
 //Xoa
 #import "DataField.h"
 
-#define TAG_DELETE_ITEM 11
 
 #define SELECT_INDEX_ADD_PERSON 0
 #define SELECT_INDEX_ADD_BUSSINESS 1
@@ -93,6 +92,9 @@
     
     
     [self.tbData registerNib:[UINib nibWithNibName:@"OpportunityCell" bundle:nil] forCellReuseIdentifier:@"opportunityCell"];
+    
+    [self initData];
+    
     [SVProgressHUD show];
 }
 
@@ -102,7 +104,9 @@
 }
 
 -(void) viewDidAppear:(BOOL)animated{
-    [self initData];
+    //[self initData];
+    [self filterData];
+    [SVProgressHUD dismiss];
 }
 
 //khoi tao gia tri mac dinh cua form
@@ -122,9 +126,9 @@
     dtoProcess = [DTOACCOUNTProcess new];
     arrayData  = [NSArray new];
     
-    [self filterData];
+    //[self filterData];
     
-    [SVProgressHUD dismiss];
+    
 }
 
 - (void) updateInterFaceWithOption : (int) option
@@ -285,6 +289,23 @@
 }
 
 
+- (IBAction)actionAdvanceSearch:(id)sender {
+    
+    //hidden keyboard
+    [self.txtSearchBar resignFirstResponder];
+    
+    //tim kiem nang cao
+    SearchAdvanceLeadViewController *detail = [[SearchAdvanceLeadViewController alloc]initWithNibName:@"SearchAdvanceLeadViewController" bundle:nil];
+    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+    CGRect popoverFrame = ((UIButton*) sender).frame;
+    
+    detail.advanceSearchDelegate =(id<SearchAdvanceDelegate>) self;
+    
+    self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
+    [self.listPopover setPopoverContentSize:CGSizeMake(250, 370) animated:NO];
+    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.headerViewBar permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+}
+
 #pragma mark UISearach bar delegate
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption{
     NSLog(@"searchOption %d", searchOption);
@@ -324,31 +345,51 @@
         arrayData = [dtoProcess filter];
     }else{
         
-        switch (iSearchOption) {
-            case SCOPE_ALL:
-                break;
-            case SCOPE_CODE:{
-                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_code withValue: strSearchText];
-            }
-                break;
-            case SCOPE_EMAIL:{
-                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_email withValue: strSearchText];
-            }
-                break;
-            case SCOPE_NAME:
-            {
-                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_name withValue: strSearchText];
-            }
-                break;
-            case SCOPE_PHONE:
-            {
-                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_mobile withValue: strSearchText];
-            }
-                break;
-            default:
-                break;
-        }
+//        switch (iSearchOption) {
+//            case SCOPE_ALL:
+//                break;
+//            case SCOPE_CODE:{
+//                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_code withValue: strSearchText];
+//            }
+//                break;
+//            case SCOPE_EMAIL:{
+//                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_email withValue: strSearchText];
+//            }
+//                break;
+//            case SCOPE_NAME:
+//            {
+//                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_name withValue: strSearchText];
+//            }
+//                break;
+//            case SCOPE_PHONE:
+//            {
+//                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_mobile withValue: strSearchText];
+//            }
+//                break;
+//            default:
+//                break;
+//        }
         
+        
+        NSMutableDictionary *dicCondition = [[NSMutableDictionary alloc]init];
+        
+        [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOACCOUNT_code];
+        
+        
+        
+        [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOACCOUNT_name];
+        
+        
+        
+        [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOACCOUNT_mobile];
+        
+        
+        
+        [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOACCOUNT_email];
+        
+        
+        
+        arrayData = [dtoProcess filterWithOrArrayCondition:dicCondition];
         
     }
     //load data from db
@@ -362,49 +403,36 @@
 #pragma mark UISearch bar
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
-    searchBar.showsScopeBar = YES;
-    [searchBar sizeToFit];
-    //searchBar.superview.backgroundColor = HEADER_VIEW_COLOR1;
-    
-    // Hide the search bar until user scrolls up
-    //    CGRect newBounds = self.tbData.bounds;
-    //    newBounds.origin.y = newBounds.origin.y + searchBar.bounds.size.height;
-    //    self.tbData.bounds = newBounds;
-    NSLog(@"start search");
-    
-    CGRect frame = self.tbData.frame;
-    frame.origin.y = frame.origin.y + searchBar.bounds.size.height;
-    self.tbData.frame = frame;
-    
-    
-    [searchBar setShowsCancelButton:NO animated:YES];
+//    searchBar.showsScopeBar = YES;
+//    [searchBar sizeToFit];
+//    
+//    NSLog(@"start search");
+//    
+//    CGRect frame = self.tbData.frame;
+//    frame.origin.y = frame.origin.y + searchBar.bounds.size.height;
+//    self.tbData.frame = frame;
+//    
+//    
+//    [searchBar setShowsCancelButton:NO animated:YES];
     
     return YES;
 }
 
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
-    //searchBar.frame = CGRectMake(0, 0, searchBar.frame.size.width, searchBar.frame.size.height);
-    
-    CGRect frame = self.tbData.frame;
-    frame.origin.y = frame.origin.y - searchBar.bounds.size.height;
-    self.tbData.frame = frame;
-    
-    NSLog(@"end search");
-    
-    searchBar.showsScopeBar = NO;
-    [searchBar sizeToFit];
-    
-    // Hide the search bar until user scrolls up
-    //    CGRect newBounds = self.tbData.bounds;
-    //    newBounds.origin.y = newBounds.origin.y - searchBar.bounds.size.height;
-    //    self.tbData.bounds = newBounds;
     
     
-    
-    [searchBar setShowsCancelButton:NO animated:YES];
-    //searchBar.superview.backgroundColor = [UIColor clearColor];
-    
-    NSLog(@"");
+//    CGRect frame = self.tbData.frame;
+//    frame.origin.y = frame.origin.y - searchBar.bounds.size.height;
+//    self.tbData.frame = frame;
+//    
+//    NSLog(@"end search");
+//    
+//    searchBar.showsScopeBar = NO;
+//    [searchBar sizeToFit];
+//    
+//    
+//    [searchBar setShowsCancelButton:NO animated:YES];
+//    
     
     return YES;
 }
@@ -441,18 +469,6 @@
         [mylert show];
         
         
-        
-        //        switch (objDelTemp.level) {
-        //            case 0:
-        //                [AlertViewUtils showAlertViewWithTitle:ALERTVIEW_BUTTON_TEXT_002 message: CONFIRM_DELETE_LEVEL0_CALENDAR(objDelTemp.level0Name) delegate:self withTag:11 withTitleButtonCancel:ALERTVIEW_BUTTON_TEXT_006 withTitleButtonOther:KEY_NOTIFICATION_CANCEL];
-        //                break;
-        //            case 1:
-        //                [AlertViewUtils showAlertViewWithTitle:ALERTVIEW_BUTTON_TEXT_002 message: CONFIRM_DELETE_LEVEL1_CALENDAR(objDelTemp.level1Name) delegate:self withTag:11 withTitleButtonCancel:ALERTVIEW_BUTTON_TEXT_006 withTitleButtonOther:KEY_NOTIFICATION_CANCEL];
-        //                break;
-        //            case 2:
-        //                [AlertViewUtils showAlertViewWithTitle:ALERTVIEW_BUTTON_TEXT_002 message: CONFIRM_DELETE_LEVEL2_CALENDAR delegate:self withTag:11 withTitleButtonCancel:ALERTVIEW_BUTTON_TEXT_006 withTitleButtonOther:KEY_NOTIFICATION_CANCEL];
-        //                break;
-        //        }
     }
 }
 
@@ -589,6 +605,39 @@
     detail.view.frame = CGRectMake(0, 0, 600, 500);
     //[InterfaceUtil setBorderWithCornerAndBorder:detail.view :6 :0.2 :nil];
     [self presentPopupViewController:detail animationType:1];
+}
+
+
+#pragma mark ADVANCE SEARCH
+-(void) actionSearchAdvanceWithCode:(NSString *)strCode withName:(NSString *)strName withMobile:(NSString *)strMobile withEmail:(NSString *)strEmail{
+    
+    NSMutableDictionary *dicCondition = [[NSMutableDictionary alloc]init];
+    if (![StringUtil stringIsEmpty:strCode]) {
+        [dicCondition setObject:[StringUtil trimString:strCode] forKey:DTOACCOUNT_code];
+    }
+    
+    if (![StringUtil stringIsEmpty:strName]) {
+        [dicCondition setObject:[StringUtil trimString:strName] forKey:DTOACCOUNT_name];
+    }
+    
+    if (![StringUtil stringIsEmpty:strMobile]) {
+        [dicCondition setObject:[StringUtil trimString:strMobile] forKey:DTOACCOUNT_mobile];
+    }
+    
+    if (![StringUtil stringIsEmpty:strEmail]) {
+        [dicCondition setObject:[StringUtil trimString:strEmail] forKey:DTOACCOUNT_email];
+    }
+    
+    
+    arrayData = [dtoProcess filterWithArrayCondition:dicCondition];
+    _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
+    
+    [self.tbData reloadData];
+}
+-(void) dismissPopoverView
+{
+    if ([self.listPopover isPopoverVisible])
+        [self.listPopover dismissPopoverAnimated:YES];
 }
 
 @end

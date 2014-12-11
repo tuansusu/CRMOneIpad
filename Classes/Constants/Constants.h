@@ -45,6 +45,10 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 #define BUTTON_ACCEPT  1
 #define BUTTON_CANCEL  0
 #pragma mark Tag
+
+
+#define TAG_DELETE_ITEM 11
+
 #define TAG_RELOAD_BUTTON  50
 #define TAG_EDIT_CARLENDAR_BUTTON  10
 #define TAG_DELETE_CARLENDAR_BUTTON  11
@@ -183,7 +187,7 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 #define MyTaskCount @"MyTaskCount"
 
 #define COPY_OF_SOFTWARE @"Copyright Viettel ICT - Viettel Group"
-#define VOFFICE @"OfficeOne-iPad"
+#define VOFFICE @"CRMOne-iPad"
 #define TITLE_APPLICATION @"HỆ THỐNG QUẢN LÝ QUAN HỆ KHÁCH HÀNG"
 #define NO_CONFIG_TITLE_DEPARTMENT @"HỆ THỐNG THỬ NGHIỆM"
 #define ALL_DEPARTMENT @"Tất cả đơn vị"

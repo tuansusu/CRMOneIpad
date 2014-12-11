@@ -484,6 +484,7 @@
 #define DTONOTE_accountId @"accountId" //BIGINT
 #define DTONOTE_campaignId @"campaignId" //BIGINT
 #define DTONOTE_clientNoteId @"clientNoteId" //BIGINT
+#define DTONOTE_clientObjectId @"clientObjectId" //BIGINT
 #define DTONOTE_content @"content" //VARCHAR
 #define DTONOTE_contentFormated @"contentFormated" //BLOB
 #define DTONOTE_createdBy @"createdBy" //BIGINT

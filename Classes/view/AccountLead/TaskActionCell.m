@@ -7,6 +7,9 @@
 //
 
 #import "TaskActionCell.h"
+#import "DTOTASKProcess.h"
+
+
 
 @implementation TaskActionCell
 
@@ -42,7 +45,7 @@
 
 -(void) loadDataToCellWithData:(NSDictionary *)dicData withOption:(int)smgSelect{
     
-    _dicData = dicData;
+    _dicData = [[NSMutableDictionary alloc]initWithDictionary:dicData];
     
     
     if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOTASK_title]]) {
@@ -55,11 +58,41 @@
     
     if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOTASK_endDate]]) {
         self.lbTime.text = @"";
-        
     }else{
-        self.lbTime.text = [dicData objectForKey:DTOTASK_endDate];
+        NSLog(@"date = %@", [dicData objectForKey:DTOTASK_endDate]);
+        self.lbTime.text = [NSString stringWithFormat:@"Kết thúc %@",[dicData objectForKey:DTOTASK_endDate] ] ;
     }
     
+    
+    //kiểm tra xem trạng thái của công việc
+    //check ngay ket thuc so voi ngay hien tai
+    //[DateUtil dateDiffrenceFromDate:@"" second:@""];
+    
+//    int diffDay = [DateUtil dateDiffrenceFromDate:endDate second:nowStr];
+//    if (diffDay>0 && (iStatusField==DANG_THUC_HIEN || iStatusField==QUA_HAN)) {
+//        lbQuaHan.hidden = NO;
+//        lbQuaHan.text = [NSString stringWithFormat:@"Đã quá hạn %d ngày",diffDay];
+//    }
+//    else
+//    {
+//        lbQuaHan.hidden = YES;
+//    }
+    
+    if ([[dicData objectForKey:DTOTASK_taskStatus] intValue] == FIX_TASK_STATUS_COMPLETE) {
+        [self.btnChangeStatus setImage:[UIImage imageNamed:@"task_done.png"] forState:UIControlStateNormal];
+        
+    //chu gach ngang
+        
+    }else if ([[dicData objectForKey:DTOTASK_taskStatus] intValue] == FIX_TASK_STATUS_NOT_COMPLETE){
+        //chua thuc hien
+        [self.btnChangeStatus setImage:[UIImage imageNamed:@"task_not_done.png"] forState:UIControlStateNormal];
+    }else{
+        //qua han
+        [self.btnChangeStatus setImage:[UIImage imageNamed:@"task_not_done.png"] forState:UIControlStateNormal];
+        
+        //chua mau do
+        
+    }
     
     switch (smgSelect) {
         case 1:
@@ -81,6 +114,10 @@
 
 -(void) actionChangeStatus:(id)sender{
      [_delegate AccountLeadCellDelegate_ActionChangeTaskStatusWithData:_dicData];
+    //
+    
+    
+    
 }
 
 @end

@@ -11,6 +11,7 @@
 @protocol SearchAdvanceDelegate <NSObject>
 
 -(void) actionSearchAdvanceWithCode : (NSString*) strCode withName : (NSString*) strName withMobile : (NSString*) strMobile withEmail : (NSString*) strEmail;
+-(void) dismissPopoverView;
 @end
 
 @interface SearchAdvanceLeadViewController : UIViewController

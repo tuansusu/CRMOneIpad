@@ -14,6 +14,10 @@
 #define TAG_SELECT_PERSONAL_POSITION 1
 #define TAG_SELECT_PERSONAL_JOB 2
 
+
+#define TEXT_HEADER_ADD_LEADER_PERSON @"THÊM MỚI KHÁCH HÀNG CÁ NHÂN"
+#define TEXT_HEADER_EDIT_LEADER_PERSON @"SỬA KHÁCH HÀNG CÁ NHÂN"
+
 @interface EditAccountLeadViewController ()
 {
     int smgSelect ; //option layout
@@ -90,8 +94,10 @@
     
     dataId = 0;
     if (self.dataSend) {
-        
+        self.lbTextHeaderMainView.text = TEXT_HEADER_EDIT_LEADER_PERSON;
         [self loadEditData];
+    }else{
+        self.lbTextHeaderMainView.text = TEXT_HEADER_ADD_LEADER_PERSON;
     }
     
 }

@@ -21,6 +21,7 @@
 #import "DetailCalendarLeadViewController.h"
 
 #import "NoteLeadCell.h"
+#import "EditNoteLeadViewController.h"
 
 enum TypeLeaderView{
     typeLeaderView_ExpandInfo, //Thông tin mở rộng

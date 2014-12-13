@@ -246,6 +246,10 @@
 		7693EE0C1A3555B0004E0178 /* DetailCalendarLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7693EE0A1A3555B0004E0178 /* DetailCalendarLeadViewController.m */; };
 		7693EE0D1A3555B0004E0178 /* DetailCalendarLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7693EE0B1A3555B0004E0178 /* DetailCalendarLeadViewController.xib */; };
 		7693EE0F1A35587E004E0178 /* icon_start.png in Resources */ = {isa = PBXBuildFile; fileRef = 7693EE0E1A35587E004E0178 /* icon_start.png */; };
+		76961E4F1A3B2D69008B5CE7 /* DTOATTACHMENTProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76961E4E1A3B2D69008B5CE7 /* DTOATTACHMENTProcess.m */; };
+		76961E511A3B306B008B5CE7 /* avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 76961E501A3B306B008B5CE7 /* avatar.png */; };
+		76961E551A3B3170008B5CE7 /* SelectPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76961E531A3B3170008B5CE7 /* SelectPhotoViewController.m */; };
+		76961E561A3B3170008B5CE7 /* SelectPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76961E541A3B3170008B5CE7 /* SelectPhotoViewController.xib */; };
 		76977D551A0284DE0029F297 /* TableTestProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76977D541A0284DE0029F297 /* TableTestProcess.m */; };
 		76977D571A0295D60029F297 /* bisone.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 76977D561A0295D60029F297 /* bisone.sqlite */; };
 		76977D5A1A029E6F0029F297 /* DTOEMPLOYEEACCOUNTProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76977D591A029E6F0029F297 /* DTOEMPLOYEEACCOUNTProcess.m */; };
@@ -383,6 +387,8 @@
 		76F328981A34B11E00E0F2C4 /* EditTaskLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76F328961A34B11E00E0F2C4 /* EditTaskLeadViewController.xib */; };
 		76F3289B1A34B88B00E0F2C4 /* task_done.png in Resources */ = {isa = PBXBuildFile; fileRef = 76F328991A34B88B00E0F2C4 /* task_done.png */; };
 		76F3289C1A34B88B00E0F2C4 /* task_not_done.png in Resources */ = {isa = PBXBuildFile; fileRef = 76F3289A1A34B88B00E0F2C4 /* task_not_done.png */; };
+		76F7DFAE1A3B44620003D720 /* EditNoteLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F7DFAC1A3B44620003D720 /* EditNoteLeadViewController.m */; };
+		76F7DFAF1A3B44620003D720 /* EditNoteLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76F7DFAD1A3B44620003D720 /* EditNoteLeadViewController.xib */; };
 		8434BEFD1A2F485700C29815 /* DetailContactLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8434BEFB1A2F485700C29815 /* DetailContactLeadViewController.m */; };
 		8434BEFE1A2F485700C29815 /* DetailContactLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8434BEFC1A2F485700C29815 /* DetailContactLeadViewController.xib */; };
 		8434BF021A2F61B200C29815 /* alarm_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8434BEFF1A2F61B200C29815 /* alarm_icon.png */; };
@@ -1045,6 +1051,12 @@
 		7693EE0A1A3555B0004E0178 /* DetailCalendarLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailCalendarLeadViewController.m; sourceTree = "<group>"; };
 		7693EE0B1A3555B0004E0178 /* DetailCalendarLeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailCalendarLeadViewController.xib; sourceTree = "<group>"; };
 		7693EE0E1A35587E004E0178 /* icon_start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_start.png; sourceTree = "<group>"; };
+		76961E4D1A3B2D69008B5CE7 /* DTOATTACHMENTProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOATTACHMENTProcess.h; sourceTree = "<group>"; };
+		76961E4E1A3B2D69008B5CE7 /* DTOATTACHMENTProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOATTACHMENTProcess.m; sourceTree = "<group>"; };
+		76961E501A3B306B008B5CE7 /* avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar.png; sourceTree = "<group>"; };
+		76961E521A3B3170008B5CE7 /* SelectPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectPhotoViewController.h; path = CustomView/SelectPhotoViewController.h; sourceTree = "<group>"; };
+		76961E531A3B3170008B5CE7 /* SelectPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectPhotoViewController.m; path = CustomView/SelectPhotoViewController.m; sourceTree = "<group>"; };
+		76961E541A3B3170008B5CE7 /* SelectPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectPhotoViewController.xib; path = CustomView/SelectPhotoViewController.xib; sourceTree = "<group>"; };
 		76977D531A0284DE0029F297 /* TableTestProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableTestProcess.h; sourceTree = "<group>"; };
 		76977D541A0284DE0029F297 /* TableTestProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableTestProcess.m; sourceTree = "<group>"; };
 		76977D561A0295D60029F297 /* bisone.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = bisone.sqlite; sourceTree = "<group>"; };
@@ -1267,6 +1279,9 @@
 		76F328961A34B11E00E0F2C4 /* EditTaskLeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditTaskLeadViewController.xib; sourceTree = "<group>"; };
 		76F328991A34B88B00E0F2C4 /* task_done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = task_done.png; sourceTree = "<group>"; };
 		76F3289A1A34B88B00E0F2C4 /* task_not_done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = task_not_done.png; sourceTree = "<group>"; };
+		76F7DFAB1A3B44620003D720 /* EditNoteLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNoteLeadViewController.h; sourceTree = "<group>"; };
+		76F7DFAC1A3B44620003D720 /* EditNoteLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNoteLeadViewController.m; sourceTree = "<group>"; };
+		76F7DFAD1A3B44620003D720 /* EditNoteLeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditNoteLeadViewController.xib; sourceTree = "<group>"; };
 		8434BEFA1A2F485700C29815 /* DetailContactLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailContactLeadViewController.h; sourceTree = "<group>"; };
 		8434BEFB1A2F485700C29815 /* DetailContactLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailContactLeadViewController.m; sourceTree = "<group>"; };
 		8434BEFC1A2F485700C29815 /* DetailContactLeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailContactLeadViewController.xib; sourceTree = "<group>"; };
@@ -2343,6 +2358,9 @@
 				849B6D901A18EDAE007E3B06 /* SelectIndexViewController.h */,
 				849B6D911A18EDAE007E3B06 /* SelectIndexViewController.m */,
 				849B6D921A18EDAE007E3B06 /* SelectIndexViewController.xib */,
+				76961E521A3B3170008B5CE7 /* SelectPhotoViewController.h */,
+				76961E531A3B3170008B5CE7 /* SelectPhotoViewController.m */,
+				76961E541A3B3170008B5CE7 /* SelectPhotoViewController.xib */,
 			);
 			name = CustomView;
 			sourceTree = "<group>";
@@ -2552,6 +2570,8 @@
 				8496FB2A1A2DEF3800F4A641 /* DTOACCCONTACTProcess.m */,
 				769C0A241A35E4220008CC4B /* DTONOTEProcess.h */,
 				769C0A251A35E4220008CC4B /* DTONOTEProcess.m */,
+				76961E4D1A3B2D69008B5CE7 /* DTOATTACHMENTProcess.h */,
+				76961E4E1A3B2D69008B5CE7 /* DTOATTACHMENTProcess.m */,
 			);
 			name = Data;
 			path = ProcessData/Data;
@@ -2592,6 +2612,9 @@
 		76C962951A16DBA500029978 /* AccountLead */ = {
 			isa = PBXGroup;
 			children = (
+				76F7DFAB1A3B44620003D720 /* EditNoteLeadViewController.h */,
+				76F7DFAC1A3B44620003D720 /* EditNoteLeadViewController.m */,
+				76F7DFAD1A3B44620003D720 /* EditNoteLeadViewController.xib */,
 				76F328941A34B11E00E0F2C4 /* EditTaskLeadViewController.h */,
 				76F328951A34B11E00E0F2C4 /* EditTaskLeadViewController.m */,
 				76F328961A34B11E00E0F2C4 /* EditTaskLeadViewController.xib */,
@@ -2877,6 +2900,7 @@
 		76C9647C1A17A15C00029978 /* Bisone */ = {
 			isa = PBXGroup;
 			children = (
+				76961E501A3B306B008B5CE7 /* avatar.png */,
 				7693EE0E1A35587E004E0178 /* icon_start.png */,
 				76F328991A34B88B00E0F2C4 /* task_done.png */,
 				76F3289A1A34B88B00E0F2C4 /* task_not_done.png */,
@@ -3645,7 +3669,6 @@
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = 3267Z52VP5;
 						SystemCapabilities = {
 							com.apple.InterAppAudio = {
 								enabled = 0;
@@ -3748,6 +3771,7 @@
 				2D6D7662187670B00051AD9E /* ic-work-fw-person-1.png in Resources */,
 				8497BFD91A295A2300A5ED3C /* voyager.png in Resources */,
 				76C964551A17731900029978 /* lines1.png in Resources */,
+				76961E511A3B306B008B5CE7 /* avatar.png in Resources */,
 				B31AFAA8187ADB5800D366B5 /* ic-show-path-2-1.png in Resources */,
 				B3157893188D5E5200C0ED01 /* btn-refresh-1-1.png in Resources */,
 				8497BFBE1A295A2300A5ED3C /* australia-large@2x.png in Resources */,
@@ -3881,6 +3905,7 @@
 				76C9646A1A17731900029978 /* OthersPart1.png in Resources */,
 				8497BFD21A295A2300A5ED3C /* sdkdemos_icon@2x.png in Resources */,
 				7693EE0D1A3555B0004E0178 /* DetailCalendarLeadViewController.xib in Resources */,
+				76961E561A3B3170008B5CE7 /* SelectPhotoViewController.xib in Resources */,
 				B3A0669F17D1A72400BA6487 /* WCGridViewCell.xib in Resources */,
 				B315789E188D5E5200C0ED01 /* write-btn-2-1.png in Resources */,
 				76EE207319FA829200A80414 /* ic-move-user-1.png in Resources */,
@@ -3904,6 +3929,7 @@
 				B315787D188D5E5200C0ED01 /* ic-pdf-1.png in Resources */,
 				B3A066E217D1AB8200BA6487 /* icon_down.png in Resources */,
 				76D29B381A14C47F004B9CF6 /* OfficeOneMB-Info.plist in Resources */,
+				76F7DFAF1A3B44620003D720 /* EditNoteLeadViewController.xib in Resources */,
 				B316D697188FFA91009B751B /* login-ic-pass-1.png in Resources */,
 				76601A4D194BE90F001D4C01 /* Reader-Mark-Y.png in Resources */,
 				8497BFBB1A295A2300A5ED3C /* arrow.png in Resources */,
@@ -4169,6 +4195,7 @@
 				76C964581A17731900029978 /* MultiLineLongGraph.m in Sources */,
 				DDBC47191715424D00CCFB94 /* NSMutableDictionary-(KunKun).m in Sources */,
 				8497BFF71A295A2300A5ED3C /* FitBoundsViewController.m in Sources */,
+				76961E551A3B3170008B5CE7 /* SelectPhotoViewController.m in Sources */,
 				DDBC47471715459C00CCFB94 /* Base64Transcoder.c in Sources */,
 				76C964431A17731900029978 /* PageControl.m in Sources */,
 				2D210679187AA1BB0022681B /* WeekPickerViewController.m in Sources */,
@@ -4256,6 +4283,7 @@
 				76C963B41A17403600029978 /* MainBISViewController.m in Sources */,
 				76601A2E194BE90F001D4C01 /* ReaderDocumentOutline.m in Sources */,
 				2D2D216217A6946800A87364 /* InfSourceColorView.m in Sources */,
+				76F7DFAE1A3B44620003D720 /* EditNoteLeadViewController.m in Sources */,
 				8497BFF11A295A2300A5ED3C /* AnimatedCurrentLocationViewController.m in Sources */,
 				2D0C7E2B17A9F95E00DDABAC /* JFDepthView.m in Sources */,
 				2D0C7E3517A9FD1000DDABAC /* ASDepthModalViewController.m in Sources */,
@@ -4289,6 +4317,7 @@
 				76C964601A17731900029978 /* DefaultInfoBox.m in Sources */,
 				76C964591A17731900029978 /* BasicPie.m in Sources */,
 				2D4B92CA17ACD7DE002A9AC5 /* DAFontSet.m in Sources */,
+				76961E4F1A3B2D69008B5CE7 /* DTOATTACHMENTProcess.m in Sources */,
 				B3FCE41317AF492D00C13574 /* OrderByObject.m in Sources */,
 				76D29B131A126B91004B9CF6 /* DTOACCOUNTProcess.m in Sources */,
 				769C1A1619FFFECA00F015A5 /* UIAlertView+Blocks.m in Sources */,
@@ -4433,7 +4462,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-3";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: TRAN HIEP (24C2799DLV)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: TRAN HIEP (24C2799DLV)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (

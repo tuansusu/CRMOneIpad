@@ -1,0 +1,156 @@
+//
+//  SelectPhotoViewController.m
+//  OfficeOneMB
+//
+//  Created by viettel on 12/12/14.
+//
+//
+
+#import "SelectPhotoViewController.h"
+
+@interface SelectPhotoViewController ()
+{
+    NSMutableArray *arrayData;
+    
+    NSString *strFileName;
+    NSString *nowStr;
+}
+@end
+
+@implementation SelectPhotoViewController
+@synthesize imageView,choosePhotoBtn, takePhotoBtn;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+
+-(IBAction) getPhoto:(id) sender {
+	UIImagePickerController * picker = [[UIImagePickerController alloc] init];
+	picker.delegate = self;
+	
+	if((UIButton *) sender == choosePhotoBtn) {
+		picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+	} else {
+		picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+	}
+	
+	[self presentModalViewController:picker animated:YES];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+	[picker dismissModalViewControllerAnimated:YES];
+	imageView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+    
+    //luu file
+    strFileName = [NSString stringWithFormat:@"%@_%@.jpg", self.typeImage, nowStr];    NSData* imageData = UIImageJPEGRepresentation(imageView.image, 1.0);
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *dbPath = [documentsDirectory stringByAppendingPathComponent:strFileName];
+    
+    NSLog(@"image paht = %@", dbPath);
+    
+    [imageData writeToFile:dbPath atomically:YES];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    
+    arrayData =[NSMutableArray new];
+    
+    NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+	NSFileManager* fm = [[NSFileManager alloc] init];
+	NSDirectoryEnumerator* en = [fm enumeratorAtPath:path];
+	NSString* file;
+	while (file = [en nextObject]) {
+        
+		[arrayData addObject:file];
+	}
+    
+   NSDateFormatter *df = [[NSDateFormatter alloc] init];
+   	[df setDateFormat:FORMAT_DATE];
+   NSDate *now = [NSDate date];
+   nowStr = [df stringFromDate:now];
+    
+    strFileName = @"";
+}
+#pragma mark - Table view data source
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return 1;
+    
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return arrayData.count;
+    
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    //    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+    //        [cell setLayoutMargins:UIEdgeInsetsZero];
+    //    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *simpleTableIdentifier = @"SimpleTableItem";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    }
+    
+    cell.textLabel.text = [arrayData objectAtIndex:indexPath.row];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSIndexPath* selection = [tableView indexPathForSelectedRow];
+    if (selection) {
+        [tableView deselectRowAtIndexPath:selection animated:YES];
+    }
+}
+
+
+- (IBAction)actionLoadPhoto:(id)sender {
+    
+    [self loadimage];
+    
+    [self.delegate selectPhoto:strFileName];
+    
+}
+
+- (NSString *)applicationDocumentsDirectory {
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+}
+
+-(void)loadimage{
+    NSString *workSpacePath=[[self applicationDocumentsDirectory] stringByAppendingPathComponent:@"tuankk.jpg"];
+    
+    imageView.image=[UIImage imageWithData:[NSData dataWithContentsOfFile:workSpacePath]];
+    
+}
+
+@end

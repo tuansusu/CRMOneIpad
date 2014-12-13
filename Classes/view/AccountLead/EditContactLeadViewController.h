@@ -8,10 +8,11 @@
 
 #import "BaseViewController.h"
 #import "CalendarPickerViewController.h"
+#import "SelectPhotoViewController.h"
 
 
 
-@interface EditContactLeadViewController : BaseViewController<UITextFieldDelegate>
+@interface EditContactLeadViewController : BaseViewController<UITextFieldDelegate, SelectPhotoDelegate>
 
 //DATA
 /*
@@ -47,6 +48,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnClose;
 - (IBAction)actionClose:(id)sender;
 //////////chon trol
+
+@property (weak, nonatomic) IBOutlet UIImageView *imgAvartar;
+
+- (IBAction)actionChoicePhoto:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnChoicePhoto;
+
 @property (weak, nonatomic) IBOutlet UITextField *txtName;
 @property (weak, nonatomic) IBOutlet UITextField *txtPhone;
 @property (weak, nonatomic) IBOutlet UITextField *txtPosition;

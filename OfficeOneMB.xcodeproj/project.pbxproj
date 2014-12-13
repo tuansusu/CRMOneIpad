@@ -290,7 +290,7 @@
 		76C9643F1A17731900029978 /* MIMFloatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C963C31A17731800029978 /* MIMFloatingView.m */; };
 		76C964401A17731900029978 /* MIMMargin.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C963C51A17731800029978 /* MIMMargin.m */; };
 		76C964411A17731900029978 /* MIMMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C963C71A17731800029978 /* MIMMeter.m */; };
-		76C964421A17731900029978 /* MIMProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C963C91A17731800029978 /* MIMProperties.m */; };
+		76C964421A17731900029978 /* MIMProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C963C91A17731800029978 /* MIMProperties.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		76C964431A17731900029978 /* PageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C963CB1A17731800029978 /* PageControl.m */; };
 		76C964441A17731900029978 /* XAxisBand.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C963CD1A17731800029978 /* XAxisBand.m */; };
 		76C964451A17731900029978 /* XAxisLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C963CF1A17731800029978 /* XAxisLabel.m */; };

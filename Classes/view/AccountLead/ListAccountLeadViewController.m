@@ -146,6 +146,10 @@
     [self.leftViewHeader setBackgroundColor:BACKGROUND_COLOR_TOP_LEFT_HEADER];
     self.leftLabelHeader.textColor = TEXT_COLOR_HEADER_APP;
     
+    
+    self.txtSearchBar.barTintColor = HEADER_VIEW_COLOR1;
+    
+    
     for (UIView *viewTemp in self.leftInMainView.subviews) {
         if ([viewTemp isKindOfClass:[UILabel class]]) {
             ((UILabel*) viewTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;

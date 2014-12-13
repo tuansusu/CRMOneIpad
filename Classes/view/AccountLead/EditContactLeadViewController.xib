@@ -10,6 +10,7 @@
                 <outlet property="barLabel" destination="kyp-9U-zQ2" id="9wc-7s-blA"/>
                 <outlet property="bodyMainView" destination="Fhe-QU-hMr" id="oTy-yt-naa"/>
                 <outlet property="btnBirthDay" destination="xHo-t4-kUv" id="GiP-Gm-izE"/>
+                <outlet property="btnChoicePhoto" destination="b83-pG-fFx" id="Q9u-sz-JIR"/>
                 <outlet property="btnCreateDate" destination="JYZ-YP-LiC" id="tjS-kM-Wvq"/>
                 <outlet property="btnHome" destination="iYm-aZ-udO" id="uvF-mW-8gS"/>
                 <outlet property="btnSave" destination="Wud-qg-tQQ" id="fk7-UJ-ueH"/>
@@ -17,6 +18,7 @@
                 <outlet property="fullNameLB" destination="WAG-FP-kuv" id="yj1-P3-pnh"/>
                 <outlet property="headerMainView" destination="J6f-r1-sac" id="YbB-AZ-rxS"/>
                 <outlet property="headerViewBar" destination="DVJ-nD-Q8I" id="76p-AZ-G3t"/>
+                <outlet property="imgAvartar" destination="Z6p-Ck-uHL" id="99y-Yd-dpt"/>
                 <outlet property="mainView" destination="6XT-dU-A8I" id="mcz-RC-JhW"/>
                 <outlet property="tvNote" destination="ErC-OT-X6S" id="Xlv-dw-uRq"/>
                 <outlet property="txtAddress" destination="HK5-xg-0Ef" id="cYu-zw-84e"/>
@@ -274,6 +276,9 @@
                                             <state key="normal" title="Chọn ảnh">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="actionChoicePhoto:" destination="-1" eventType="touchUpInside" id="99a-Xr-K1f"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

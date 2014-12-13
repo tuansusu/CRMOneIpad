@@ -81,7 +81,7 @@
 	}
     
    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-   	[df setDateFormat:FORMAT_DATE];
+   	[df setDateFormat:@"yyyyMMdd_HHmmss"];
    NSDate *now = [NSDate date];
    nowStr = [df stringFromDate:now];
     
@@ -135,12 +135,29 @@
 
 
 - (IBAction)actionLoadPhoto:(id)sender {
+    if ([StringUtil stringIsEmpty:strFileName]) {
+        //tinh
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:KEY_NOTIFICATION_TITLE message:@"Chưa chọn file đồng ý đóng?" delegate:self cancelButtonTitle:@"Thoát" otherButtonTitles:nil];
+        alert.tag = 5;
+        if (IS_OS_8_OR_LATER) {
+            [alert showWithHandler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                [self alertView:alertView clickedButtonAtIndex:buttonIndex];
+            }];
+        }else{
+            [alert show];
+        }
+        
+        return;
+    }
     
-    [self loadimage];
-    
+    //[self loadimage];
     [self.delegate selectPhoto:strFileName];
-    
+    [self.view removeFromSuperview];
 }
+
+
+
+
 
 - (NSString *)applicationDocumentsDirectory {
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
@@ -152,5 +169,16 @@
     imageView.image=[UIImage imageWithData:[NSData dataWithContentsOfFile:workSpacePath]];
     
 }
+
+
+#pragma mark alertview 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0 && alertView.tag ==5) {
+        
+        //[self dismissViewControllerAnimated:YES completion:nil];
+        
+    }
+}
+
 
 @end

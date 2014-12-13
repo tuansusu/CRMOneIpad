@@ -17,7 +17,6 @@
 @interface SelectPhotoViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (weak,nonatomic) id <SelectPhotoDelegate> delegate;
-
 /*
  * khi tao moi hay sua 1 ban ghi co chon lai anh 
  * se luu anh lay ten bang _ id local cua anh _ time yyyyMMdd_HHmmss

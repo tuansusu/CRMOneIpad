@@ -417,5 +417,89 @@
     return  YES;
 }// called when 'return' key pressed. return NO to ignore.
 
+/*chon anh dai dien*/
+- (IBAction)actionChoicePhoto:(id)sender {
+    
+    [self viewWhenAddSubView];
+    SelectPhotoViewController *detail = [[SelectPhotoViewController alloc] initWithNibName:@"SelectPhotoViewController" bundle:nil];
+    detail.delegate = self;
+    detail.typeImage = @"Lead";
+    detail.index = 0;
+    detail.view.frame = CGRectMake(380, 80, 320,480);
+    [self addChildViewController: detail];
+    [detail didMoveToParentViewController:self];
+    //[InterfaceUtil setBorderWithCornerAndBorder:detail.view :10 :0.5 :nil];
+    
+    [UIView transitionWithView:self.view
+                      duration:0.2
+                       options:UIViewAnimationOptionCurveEaseIn //any animation
+                    animations:^ { [self.view addSubview:detail.view];
+                    }
+                    completion:nil];
+}
+
+
+- (void) viewWhenAddSubView
+{
+    self.mainView.alpha = 0.4;
+    self.footerView.alpha = 0.4;
+    self.headerViewBar.alpha = 0.4;
+    
+    self.headerViewBar.userInteractionEnabled = NO;
+    self.mainView.userInteractionEnabled = NO;
+    
+    
+    
+    self.btnHome.enabled = NO;
+    self.btnSave.enabled = NO;
+    for (UIView *viewTemp in self.bodyMainView.subviews) {
+        if([viewTemp isKindOfClass:[UIButton class]])  {
+            [((UIButton*) viewTemp) setEnabled:NO];
+        }
+        
+    }
+}
+
+- (void) viewWhenRemoveSubView
+{
+    
+    self.mainView.alpha = 1;
+    self.footerView.alpha = 1;
+    self.headerViewBar.alpha = 1;
+    
+    self.headerViewBar.userInteractionEnabled = YES;
+    self.mainView.userInteractionEnabled = YES;
+    
+    self.mainView.alpha = 1;
+    self.btnHome.enabled = YES;
+    self.btnSave.enabled = YES;
+    for (UIView *viewTemp in self.bodyMainView.subviews) {
+        if([viewTemp isKindOfClass:[UIButton class]])  {
+            [((UIButton*) viewTemp) setEnabled:YES];
+        }
+        
+    }
+}
+
+#pragma mark delegate photo 
+-(void) selectPhoto:(NSString *)fileName{
+    [self viewWhenRemoveSubView];
+    [self loadimage: fileName];
+    
+}
+
+-(void)loadimage : (NSString*)fileName{
+    NSString *workSpacePath=[[self applicationDocumentsDirectory] stringByAppendingPathComponent:fileName];
+    
+    self.imgAvartar.image=[UIImage imageWithData:[NSData dataWithContentsOfFile:workSpacePath]];
+    
+}
+
+- (NSString *)applicationDocumentsDirectory {
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+}
+
+
+
 
 @end

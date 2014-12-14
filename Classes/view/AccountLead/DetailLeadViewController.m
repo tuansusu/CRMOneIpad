@@ -293,6 +293,8 @@
 - (void) updateInterFaceWithOption : (int) option
 {
     
+    
+    
     [self.mainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
     
     self.bodyMainView.backgroundColor = BACKGROUND_NORMAL_COLOR1;

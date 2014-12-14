@@ -254,6 +254,11 @@
 -(void) actionSave:(id)sender{
     //check valid to save
     
+    //test
+    [self showTooltip:self.txtCompany withText:@"test tool tip"];
+    
+    return;
+    
     //neu qua duoc check thi tien hanh luu du lieu
     NSMutableDictionary *dicEntity = [NSMutableDictionary new];
     
@@ -508,7 +513,103 @@
             break;
     }
     
+}
+
+#pragma mark check
+-(BOOL) checkValidToSave {
+    BOOL isValidate = NO;
+    if ([StringUtil trimString: self.txtName.text].length==0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:SYS_Notification_Title message:@"Anh/chị chưa nhập tên công việc." delegate:self cancelButtonTitle:SYS_Notification_ReInput otherButtonTitles :nil];
+        if (IS_OS_8_OR_LATER) {
+            [alert showWithHandler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                [self alertView:alertView clickedButtonAtIndex:buttonIndex];
+            }];
+        }else{
+            [alert show];
+        }
+    }
+    
+    return isValidate;
+}
+
+
+#pragma mark tooltip
+
+-(void) showTooltip : (UIView*) inputTooltipView withText : (NSString*) inputMessage {
+    
+    [self dismissAllPopTipViews];
+	
+	
+		NSString *contentMessage = inputMessage;
+		//UIView *contentView = inputTooltipView;
+        
+		UIColor *backgroundColor = [UIColor lightGrayColor];
+        
+		UIColor *textColor = [UIColor darkTextColor];
+		
+		//NSString *title = inputMessage;
+		
+		CMPopTipView *popTipView;
+        
+		
+			popTipView = [[CMPopTipView alloc] initWithMessage:contentMessage];
+		
+		popTipView.delegate = self;
+		
+		/* Some options to try.
+		 */
+		//popTipView.disableTapToDismiss = YES;
+		//popTipView.preferredPointDirection = PointDirectionUp;
+		//popTipView.hasGradientBackground = NO;
+        //popTipView.cornerRadius = 2.0;
+        //popTipView.sidePadding = 30.0f;
+        //popTipView.topMargin = 20.0f;
+        //popTipView.pointerSize = 50.0f;
+        //popTipView.hasShadow = NO;
+		
+        popTipView.preferredPointDirection = PointDirectionDown;
+        popTipView.hasShadow = NO;
+    
+		if (backgroundColor && ![backgroundColor isEqual:[NSNull null]]) {
+			popTipView.backgroundColor = backgroundColor;
+		}
+		if (textColor && ![textColor isEqual:[NSNull null]]) {
+			popTipView.textColor = textColor;
+		}
+        
+        popTipView.animation = arc4random() % 2;
+		popTipView.has3DStyle = (BOOL)(arc4random() % 2);
+		
+		popTipView.dismissTapAnywhere = YES;
+        [popTipView autoDismissAnimated:YES atTimeInterval:3.0];
+  
+		
+        [popTipView presentPointingAtView:inputTooltipView inView:self.viewMainBodyInfo animated:YES];
+        
+        
+		[self.visiblePopTipViews addObject:popTipView];
+		self.currentPopTipViewTarget = inputTooltipView;
+	
     
     
 }
+
+- (void)dismissAllPopTipViews
+{
+	while ([self.visiblePopTipViews count] > 0) {
+		CMPopTipView *popTipView = [self.visiblePopTipViews objectAtIndex:0];
+		[popTipView dismissAnimated:YES];
+		[self.visiblePopTipViews removeObjectAtIndex:0];
+	}
+}
+
+
+#pragma mark - CMPopTipViewDelegate methods
+
+- (void)popTipViewWasDismissedByUser:(CMPopTipView *)popTipView
+{
+	[self.visiblePopTipViews removeObject:popTipView];
+	self.currentPopTipViewTarget = nil;
+}
+
 @end

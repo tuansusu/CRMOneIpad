@@ -10,10 +10,10 @@
 
 #import "BaseViewController.h"
 #import "SelectIndexViewController.h"
+#import "CMPopTipView.h"
 
 
-
-@interface EditAccountLeadViewController : BaseViewController<UITextFieldDelegate, SelectIndexDelegate>
+@interface EditAccountLeadViewController : BaseViewController<UITextFieldDelegate, SelectIndexDelegate, CMPopTipViewDelegate>
 
 //DATA
 @property (nonatomic, retain) NSDictionary *dataSend;
@@ -79,6 +79,10 @@
 
 ////////////// KHAI BAO BIEN CHUNG//////////
 @property (nonatomic, retain) UIPopoverController *listPopover;
+
+//danh sách nhưng tooltip
+@property (nonatomic, retain) NSMutableArray *visiblePopTipViews;
+@property (nonatomic, strong) id currentPopTipViewTarget;
 ////////////// KHAI BAO BIEN CHUNG//////////
 
 @end

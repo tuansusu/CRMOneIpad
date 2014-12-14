@@ -12,7 +12,7 @@
 @interface EditNoteLeadViewController ()
 {
     int smgSelect ; //option layout
-    NSArray *arrayData; //mang luu tru du lieu
+    NSArray *arrayData; //mang luu tru du lieu (file)
     NSDictionary *dicData; //luu tru du lieu sua
     
     DTONOTEProcess *dtoProcess;
@@ -20,6 +20,7 @@
     //chon index form them moi
     NSInteger selectIndex;
     NSArray *listArr;
+    NSInteger selectStatusIndex;
     
     int dataId; //xac dinh id de them moi hay sua
     NSUserDefaults *defaults ;
@@ -41,6 +42,11 @@
 @end
 
 @implementation EditNoteLeadViewController
+
+@synthesize txtTitle;
+@synthesize txtContent;
+@synthesize choosePhotoBtn, takePhotoBtn;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -175,4 +181,124 @@
 
 - (IBAction)actionCancel:(id)sender {
 }
+- (IBAction)actionSave:(id)sender {
+    
+    NSString *title=txtTitle.text;
+
+    if(title==NULL || [title isEqualToString:@""]){
+        
+        NSLog(@"Rong");
+    
+        [[[UIAlertView alloc]initWithTitle:nil message:@"Ban chua nhap tieu de" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil]show];
+        return;
+        
+    }
+    
+    
+    NSLog(@"%@",txtTitle.text);
+     NSLog(@"%@",txtContent.text);
+    
+    //check valid to save
+    
+    //neu qua duoc check thi tien hanh luu du lieu
+    NSMutableDictionary *dicEntity = [NSMutableDictionary new];
+    
+    [dicEntity setObject:[StringUtil trimString:txtTitle.text] forKey:DTONOTE_title];
+    [dicEntity setObject:[StringUtil trimString:txtContent.text] forKey:DTONOTE_content];
+    
+    [dicEntity setObject:@"1" forKey:DTONOTE_isActive];
+    [dicEntity setObject:[DateUtil formatDate:[NSDate new] :@"yyyy-MM-dd HH:mm:ss.S"] forKey:DTONOTE_updatedDate];
+    
+    
+    
+    
+    if (self.dataSend) {
+        //truong hop sua
+        [dicEntity setObject:[_dataSend objectForKey:DTONOTE_id] forKey:DTONOTE_id];
+    }else{
+        //truong hop them moi
+        
+        [dicEntity setObject:[self.dataRoot objectForKey:DTOLEAD_clientLeadId] forKey:DTONOTE_clientObjectId];
+        [dicEntity setObject:@"Lead" forKey:DTONOTE_objectType];
+        
+        NSString *strClientContactId = IntToStr(([dtoProcess getClientId]));
+        [dicEntity setObject:strClientContactId forKey:DTONOTE_clientNoteId];
+    }
+    succsess = [dtoProcess insertToDBWithEntity:dicEntity];
+    
+    
+    
+    if (succsess) {
+        //Thong bao cap nhat thanh cong va thoat
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Cập nhật thành công, tiếp tục nhập?" delegate:self cancelButtonTitle:@"Không" otherButtonTitles:@"Có", nil];
+        alert.tag = 5;
+        [alert show];
+        
+        
+    }else{
+        //khong bao nhap loi - lien he quan tri
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Sảy ra lỗi, vui lòng thử lại hoặc gửi log đến quản trị" delegate:self cancelButtonTitle:@"Thoát" otherButtonTitles:nil];
+        alert.tag = 6;
+        [alert show];
+    }
+}
+
+-(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    if(buttonIndex==0){
+        NSLog(@"Ban khong tiep tuc");
+         [self dismissViewControllerAnimated:YES completion:nil];
+        
+    }
+    else if(buttonIndex==1){
+        NSLog(@"Ban co tiep tuc");
+       
+        txtContent.text=@"";
+        txtTitle.text=@"";
+    }
+    
+}
+
+
+#pragma mark text delegate
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    ////NSLog(@"edit ting : %@", self.t\\\);
+    txtContent.text=txtTitle.text;
+    return  YES;
+}// return NO to not change text
+
+
+#pragma mark action photo
+
+-(IBAction) getPhoto:(id) sender {
+	UIImagePickerController * picker = [[UIImagePickerController alloc] init];
+	picker.delegate = self;
+	
+	if((UIButton *) sender == choosePhotoBtn) {
+		picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+	} else {
+		picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+	}
+	
+	[self presentModalViewController:picker animated:YES];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+	[picker dismissModalViewControllerAnimated:YES];
+	//imageView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+    
+    //luu file
+    //strFileName = [NSString stringWithFormat:@"%@_%@.jpg", self.typeImage, nowStr];    NSData* imageData = UIImageJPEGRepresentation(imageView.image, 1.0);
+    
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *documentsDirectory = [paths objectAtIndex:0];
+//    NSString *dbPath = [documentsDirectory stringByAppendingPathComponent:strFileName];
+//    
+//    NSLog(@"image paht = %@", dbPath);
+//    
+//    [imageData writeToFile:dbPath atomically:YES];
+}
+
+
+
 @end

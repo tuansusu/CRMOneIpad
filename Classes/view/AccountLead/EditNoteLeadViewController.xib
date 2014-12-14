@@ -10,12 +10,16 @@
                 <outlet property="barLabel" destination="reH-Ql-Gj8" id="zsN-n4-b5j"/>
                 <outlet property="bodyMainView" destination="XSw-TN-t0I" id="3ef-Vz-oxS"/>
                 <outlet property="btnHome" destination="a7d-it-5GR" id="LaL-QH-3CW"/>
-                <outlet property="btnSave" destination="YaX-5V-PUR" id="NNd-Kz-pd8"/>
+                <outlet property="btnSave" destination="YaX-5V-PUR" id="yqt-01-Bmb"/>
+                <outlet property="choosePhotoBtn" destination="Zla-gZ-Cqd" id="VfG-Wg-wxz"/>
                 <outlet property="footerView" destination="hJe-bw-6Dw" id="Xxb-vz-hCX"/>
                 <outlet property="fullNameLB" destination="6IQ-if-gwC" id="nd9-kP-N3E"/>
                 <outlet property="headerMainView" destination="kYl-L1-yjw" id="vwX-dW-ski"/>
                 <outlet property="headerViewBar" destination="vBH-mc-NeY" id="WOr-uD-qWc"/>
                 <outlet property="mainView" destination="bb3-M1-S36" id="1Pb-Yb-ozN"/>
+                <outlet property="takePhotoBtn" destination="K02-si-2Zb" id="5mm-Jy-BNZ"/>
+                <outlet property="txtContent" destination="BsA-rs-ajG" id="OsW-Da-qcF"/>
+                <outlet property="txtTitle" destination="qNT-7Z-Ovs" id="tl7-Q1-mqL"/>
                 <outlet property="view" destination="UJV-s5-TlZ" id="5zO-vd-Jgt"/>
                 <outlet property="viewMainBarButton" destination="al8-pw-LoD" id="EBT-mz-fgy"/>
                 <outlet property="viewMainBodyInfo" destination="DJa-wq-qwk" id="rQY-7F-e1l"/>
@@ -59,7 +63,7 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="actionSave:" destination="-1" eventType="touchUpInside" id="NJa-xL-Niw"/>
+                                <action selector="actionSave:" destination="-1" eventType="touchUpInside" id="7Xu-8t-t1Z"/>
                             </connections>
                         </button>
                     </subviews>
@@ -108,6 +112,9 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="-1" id="wW6-fN-HGM"/>
+                                            </connections>
                                         </textField>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_require-1.png" id="YI1-6A-Tqy">
                                             <rect key="frame" x="54" y="27" width="16" height="16"/>
@@ -145,6 +152,9 @@
                                                     <state key="normal" title="Choice Photo">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="getPhoto:" destination="-1" eventType="touchUpInside" id="Dpz-N3-2uL"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="K02-si-2Zb">
                                                     <rect key="frame" x="475" y="10" width="122" height="30"/>
@@ -152,6 +162,9 @@
                                                     <state key="normal" title="Take Photo">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="getPhoto:" destination="-1" eventType="touchUpInside" id="Cd9-0T-1G9"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

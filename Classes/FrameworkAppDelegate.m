@@ -70,16 +70,44 @@
     
     
 
-    //SET COLOR IN STATUSBUAR
+//    //SET COLOR IN STATUSBUAR
+//    self.window.backgroundColor = [UIColor whiteColor];
+//    [application setStatusBarStyle:UIBarStyleBlackTranslucent];
+//    
+//    //tuannv call copyDatabaseIfNeeded method
+//    [self copyDatabaseIfNeeded];
+//    [window addSubview:navigationController.view];
+//    [window makeKeyAndVisible];
     self.window.backgroundColor = [UIColor whiteColor];
     [application setStatusBarStyle:UIBarStyleBlackTranslucent];
     
     //tuannv call copyDatabaseIfNeeded method
     [self copyDatabaseIfNeeded];
-    [window addSubview:navigationController.view];
+    if (IS_OS_8_OR_LATER) {
+        self.window.frame = [UIScreen mainScreen].bounds;
+    }
+    
+    RootViewController *rootView = [[RootViewController alloc] init];
+    
+    if (IS_OS_8_OR_LATER) {
+        //set Landscape io8
+        [UIView transitionWithView:window
+                          duration:0.5
+                           options:UIViewAnimationOptionTransitionCrossDissolve
+                        animations:^{
+                            BOOL oldState = [UIView areAnimationsEnabled];
+                            [UIView setAnimationsEnabled:NO];
+                            rootView.view.layer.transform = window.rootViewController.view.layer.transform;
+                            window.rootViewController = rootView;
+                            [UIView setAnimationsEnabled:oldState];
+                        } completion:nil];
+    }else
+    {
+        [window setRootViewController:rootView];
+    }
+    
+    //    [window addSubview:navigationController.view];
     [window makeKeyAndVisible];
-    
-    
     
     return YES;
 }

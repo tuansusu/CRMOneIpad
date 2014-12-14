@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 
-@interface EditNoteLeadViewController : BaseViewController
+@interface EditNoteLeadViewController : BaseViewController<UITextFieldDelegate,UIAlertViewDelegate, UIImagePickerControllerDelegate>
 
 
 //DATA
@@ -26,11 +26,13 @@
 @property (weak, nonatomic) IBOutlet UIView *headerViewBar;
 @property (weak, nonatomic) IBOutlet UILabel *fullNameLB;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnSave;
+
+- (IBAction)actionSave:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnHome;
 - (IBAction)homeBack:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *btnSave;
-- (IBAction)actionSave:(id)sender;
+
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 
@@ -41,8 +43,19 @@
 
 @property (weak, nonatomic) IBOutlet UIView *viewMainBodyInfo;
 
+@property (weak, nonatomic) IBOutlet UITextField *txtTitle;
+
+
+@property (weak, nonatomic) IBOutlet UITextView *txtContent;
+
+
 
 @property (weak, nonatomic) IBOutlet UIView *viewMainBarButton;
+
+@property (nonatomic, retain) IBOutlet UIButton * choosePhotoBtn;
+@property (nonatomic, retain) IBOutlet UIButton * takePhotoBtn;
+
+-(IBAction) getPhoto:(id) sender;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *btnCancel;

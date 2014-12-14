@@ -50,6 +50,8 @@ enum TypeLeaderView{
 - (IBAction)homeBack:(id)sender;
 
 - (IBAction)actionAdd:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnTempAdd;
+
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 

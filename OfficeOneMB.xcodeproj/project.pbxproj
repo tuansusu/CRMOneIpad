@@ -374,6 +374,7 @@
 		76D29B301A13AD88004B9CF6 /* ProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D29B2E1A13AD88004B9CF6 /* ProductCell.m */; };
 		76D29B311A13AD88004B9CF6 /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76D29B2F1A13AD88004B9CF6 /* ProductCell.xib */; };
 		76D29B381A14C47F004B9CF6 /* OfficeOneMB-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76D29B371A14C47F004B9CF6 /* OfficeOneMB-Info.plist */; };
+		76D6281C1A3DA741009C3A0C /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D6281B1A3DA741009C3A0C /* CMPopTipView.m */; };
 		76EE207219FA829200A80414 /* ic-add-sub-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EE206E19FA829200A80414 /* ic-add-sub-1.png */; };
 		76EE207319FA829200A80414 /* ic-move-user-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EE206F19FA829200A80414 /* ic-move-user-1.png */; };
 		76EE207419FA829200A80414 /* ic-reply-task-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EE207019FA829200A80414 /* ic-reply-task-1.png */; };
@@ -1263,6 +1264,8 @@
 		76D29B2E1A13AD88004B9CF6 /* ProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCell.m; sourceTree = "<group>"; };
 		76D29B2F1A13AD88004B9CF6 /* ProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductCell.xib; sourceTree = "<group>"; };
 		76D29B371A14C47F004B9CF6 /* OfficeOneMB-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OfficeOneMB-Info.plist"; sourceTree = "<group>"; };
+		76D6281A1A3DA741009C3A0C /* CMPopTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPopTipView.h; sourceTree = "<group>"; };
+		76D6281B1A3DA741009C3A0C /* CMPopTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPopTipView.m; sourceTree = "<group>"; };
 		76EE206E19FA829200A80414 /* ic-add-sub-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic-add-sub-1.png"; path = "VofficeImage/Option1/ic-add-sub-1.png"; sourceTree = "<group>"; };
 		76EE206F19FA829200A80414 /* ic-move-user-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic-move-user-1.png"; path = "VofficeImage/Option1/ic-move-user-1.png"; sourceTree = "<group>"; };
 		76EE207019FA829200A80414 /* ic-reply-task-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic-reply-task-1.png"; path = "VofficeImage/Option1/ic-reply-task-1.png"; sourceTree = "<group>"; };
@@ -1904,6 +1907,7 @@
 		2D0E2ED21798018E0081D44A /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				76D628191A3DA741009C3A0C /* CMPopTipView */,
 				76F31E7F1A36A4150010606A /* RatingStart */,
 				76C963B61A17731800029978 /* MIMChart */,
 				76C963521A16F61600029978 /* GoogleMap */,
@@ -2939,6 +2943,15 @@
 				76D29B2F1A13AD88004B9CF6 /* ProductCell.xib */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		76D628191A3DA741009C3A0C /* CMPopTipView */ = {
+			isa = PBXGroup;
+			children = (
+				76D6281A1A3DA741009C3A0C /* CMPopTipView.h */,
+				76D6281B1A3DA741009C3A0C /* CMPopTipView.m */,
+			);
+			path = CMPopTipView;
 			sourceTree = "<group>";
 		};
 		76F31E7F1A36A4150010606A /* RatingStart */ = {
@@ -4243,6 +4256,7 @@
 				76C964571A17731900029978 /* MIMLineGraph.m in Sources */,
 				8497C0081A295A2300A5ED3C /* PolygonsViewController.m in Sources */,
 				76D29B211A13567D004B9CF6 /* TestTableViewController.m in Sources */,
+				76D6281C1A3DA741009C3A0C /* CMPopTipView.m in Sources */,
 				2D9FCB9E179639EB00950763 /* QLCoverFlowPagesView.m in Sources */,
 				2D9FCB9F179639EB00950763 /* QLPageView.m in Sources */,
 				769C1A1B1A00027900F015A5 /* Network.m in Sources */,

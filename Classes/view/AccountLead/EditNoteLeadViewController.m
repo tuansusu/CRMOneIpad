@@ -12,7 +12,7 @@
 @interface EditNoteLeadViewController ()
 {
     int smgSelect ; //option layout
-    NSArray *arrayData; //mang luu tru du lieu (file)
+    NSMutableArray *arrayData; //mang luu tru du lieu (file)
     NSDictionary *dicData; //luu tru du lieu sua
     
     DTONOTEProcess *dtoProcess;
@@ -83,8 +83,8 @@
     self.barLabel.text = [NSString stringWithFormat:@"%@ %@, %@",VOFFICE,[defaults objectForKey:@"versionSoftware"],COPY_OF_SOFTWARE];
     
     dtoProcess = [DTONOTEProcess new];
-    //    arrayData  = [NSArray new];
-    //    arrayData = [dtoLeadProcess filter];
+    arrayData  = [NSMutableArray new];
+    //arrayData = [dtoLeadProcess filter];
     
     dataId = 0;
     if (self.dataSend) {
@@ -288,16 +288,86 @@
 	//imageView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
     
     //luu file
-    //strFileName = [NSString stringWithFormat:@"%@_%@.jpg", self.typeImage, nowStr];    NSData* imageData = UIImageJPEGRepresentation(imageView.image, 1.0);
     
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *documentsDirectory = [paths objectAtIndex:0];
-//    NSString *dbPath = [documentsDirectory stringByAppendingPathComponent:strFileName];
-//    
-//    NSLog(@"image paht = %@", dbPath);
-//    
-//    [imageData writeToFile:dbPath atomically:YES];
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+   	[df setDateFormat:@"yyyyMMdd_HHmmss"];
+    NSDate *now = [NSDate date];
+    NSString *nowStr = [df stringFromDate:now];
+    
+    
+   NSString *strFileName = [NSString stringWithFormat:@"%@_%@.jpg", @"Note", nowStr];
+    NSData* imageData = UIImageJPEGRepresentation([info objectForKey:@"UIImagePickerControllerOriginalImage"], 1.0);
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *dbPath = [documentsDirectory stringByAppendingPathComponent:strFileName];
+    
+    NSLog(@"image paht = %@", dbPath);
+    
+    [imageData writeToFile:dbPath atomically:YES];
+    
+    
+    //luu file thanh cong
+    [arrayData addObject:strFileName];
+    
+    
 }
+
+
+
+#pragma mark - Table View
+
+
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return 44.0f;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    
+    return  arrayData.count;
+    
+    
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"newFriendCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"newFriendCell"];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    //etc.
+    cell.textLabel.text = [arrayData objectAtIndex:indexPath.row];
+    
+    return cell;
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSIndexPath* selection = [tableView indexPathForSelectedRow];
+    if (selection){
+        
+        [tableView deselectRowAtIndexPath:selection animated:YES];
+    }
+    
+    NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
+    
+//    
+//    
+//    DetailLeadViewController *viewController = [[DetailLeadViewController alloc]initWithNibName:@"DetailLeadViewController" bundle:nil];
+//    viewController.dataSend = dicData;
+//    [self presentViewController:viewController animated:YES completion:nil];
+    
+}
+
 
 
 

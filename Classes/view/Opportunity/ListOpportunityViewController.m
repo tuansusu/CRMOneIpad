@@ -10,6 +10,8 @@
 #import "DTOOPPORTUNITYProcess.h"
 #import "VTCheckBox.h"
 #import "CalendarPickerViewController.h"
+#import "SearchAdvanceOpportunityViewController.h"
+
 
 #define START_DATE 1
 #define END_DATE 2
@@ -425,6 +427,22 @@
     NSString *keyword = self.txtKeyword.text;
     arrayData = [dtoOpportunityProcess filterOpportunity:keyword addStartDate:startDate addEndDate:endDate userType:userType];
     [self.tbData reloadData];
+}
+
+- (IBAction)actionAdvanceSearch:(id)sender {
+    //hidden keyboard
+    [self.txtSearchBar resignFirstResponder];
+    
+    //tim kiem nang cao
+    SearchAdvanceOpportunityViewController *detail = [[SearchAdvanceOpportunityViewController alloc]initWithNibName:@"SearchAdvanceOpportunityViewController" bundle:nil];
+    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+    CGRect popoverFrame = ((UIButton*) sender).frame;
+    
+    detail.advanceSearchDelegate =(id<SearchAdvanceDelegate>) self;
+    
+    self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
+    [self.listPopover setPopoverContentSize:CGSizeMake(250, 370) animated:NO];
+    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.headerViewBar permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
 -(void) selectDatePickerWithDate:(NSDate *)date

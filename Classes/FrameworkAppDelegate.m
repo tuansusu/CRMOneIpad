@@ -68,7 +68,7 @@
     NSLog(@"Open source licenses:\n%@", [GMSServices openSourceLicenseInfo]);
     ////////////<<<<GOOGLE MAP>>>////////////////////
     
-    
+    //tuankk test git
 
 //    //SET COLOR IN STATUSBUAR
 //    self.window.backgroundColor = [UIColor whiteColor];

@@ -421,4 +421,11 @@ NSString* emptyText = @"";
     [self presentViewController:viewController animated:YES completion:nil];
     
 }
+
+- (IBAction)actionHelp:(id)sender {
+    
+    TestEditViewController *viewController = [[TestEditViewController alloc]initWithNibName:@"TestEditViewController" bundle:nil];
+    [self presentViewController:viewController animated:YES completion:nil];
+    
+}
 @end

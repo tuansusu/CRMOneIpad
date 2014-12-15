@@ -8,13 +8,19 @@
 
 #import "TestMapViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import "MDDirectionService.h"
 
-@interface TestMapViewController ()
+@interface TestMapViewController ()<CLLocationManagerDelegate,GMSMapViewDelegate>
 {
     NSUserDefaults *defaults;
     int smgSelect ; //option layout
     
     GMSMapView *mapView_;
+    CLLocationManager *locationManager;
+
+    NSMutableArray *waypoints_;
+    NSMutableArray *waypointStrings_;
+    IBOutlet UIView *mainView;
 }
 @end
 
@@ -29,11 +35,11 @@
     return self;
 }
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    waypoints_ = [[NSMutableArray alloc]init];
+    waypointStrings_ = [[NSMutableArray alloc]init];
     
     if ([UIDevice getCurrentSysVer] >= 7.0) {
         [UIDevice updateLayoutInIOs7OrAfter:self];
@@ -45,27 +51,22 @@
     
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
-    
-//    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.86
-//                                                            longitude:151.20
-//                                                                 zoom:6];
-    
+    // add start location
     NSLog(@"_lan = %f : _lon = %f", _lan, _lon);
+    _lan = 21.032439554704172;
+    _lon = 105.79308874905109;
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:_lan
                                                             longitude:_lon
                                                                  zoom:15];
-    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+    mapView_ = [GMSMapView mapWithFrame:CGRectMake(0, 0, mainView.frame.size.width, mainView.frame.size.height)  camera:camera];
     mapView_.myLocationEnabled = YES;
-    
-    self.view = mapView_;
-    //[self.mainView addSubview:mapView_];
+    mapView_.delegate = self;
+    [mainView addSubview:mapView_];
     
     // Creates a marker in the center of the map.
     GMSMarker *marker = [[GMSMarker alloc] init];
-    
 
-    
     //marker.position = CLLocationCoordinate2DMake(-33.86, 151.20);
     marker.position = CLLocationCoordinate2DMake(_lan, _lon);
     //marker.title = @"Sydney";
@@ -76,25 +77,18 @@
     }
     marker.snippet = @"Viet Nam";
     marker.map = mapView_;
+    [waypoints_ addObject:marker];
+    NSString *positionString = [[NSString alloc] initWithFormat:@"%f,%f",
+                                _lan,_lon];
+    [waypointStrings_ addObject:positionString];
     
-
-    
-    UIButton *btnBack = [[UIButton alloc]initWithFrame:CGRectMake(20, 6, 32, 32)];
-
-    
-    [btnBack setImage:[UIImage imageNamed:@"icon_menu-1.png"] forState:UIControlStateNormal];
-    
-    [btnBack addTarget:self action:@selector(homeBack:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [mapView_ addSubview:btnBack];
-    
-
-    
+    [self initLocation];
 }
 
 //Home button
 - (IBAction)homeBack:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+//    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) updateInterFaceWithOption : (int) option
@@ -116,6 +110,68 @@
 
 #pragma mark Button action
 
+#pragma mark init location
+-(void)initLocation{
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
 
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+        [locationManager requestWhenInUseAuthorization];
+
+    [locationManager startUpdatingLocation];
+}
+
+#pragma mark location delegate
+
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray *)locations {
+    CLLocation *location = [locations lastObject];
+    NSLog(@"lat%f - lon%f", location.coordinate.latitude, location.coordinate.longitude);
+}
+
+#pragma mark map delegate
+/**
+ * Called after a tap gesture at a particular coordinate, but only if a marker
+ * was not tapped.  This is called before deselecting any currently selected
+ * marker (the implicit action for tapping on the map).
+ */
+- (void)mapView:(GMSMapView *)mapView
+didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
+    CLLocationCoordinate2D position = CLLocationCoordinate2DMake(
+                                                                 coordinate.latitude,
+                                                                 coordinate.longitude);
+    GMSMarker *marker = [GMSMarker markerWithPosition:position];
+    marker.map = mapView_;
+    [waypoints_ addObject:marker];
+    NSString *positionString = [[NSString alloc] initWithFormat:@"%f,%f",
+                                coordinate.latitude,coordinate.longitude];
+    [waypointStrings_ addObject:positionString];
+    if([waypoints_ count]>1){
+        NSString *sensor = @"false";
+        NSArray *parameters = [NSArray arrayWithObjects:sensor, waypointStrings_,
+                               nil];
+        NSArray *keys = [NSArray arrayWithObjects:@"sensor", @"waypoints", nil];
+        NSDictionary *query = [NSDictionary dictionaryWithObjects:parameters
+                                                          forKeys:keys];
+        MDDirectionService *mds=[[MDDirectionService alloc] init];
+        SEL selector = @selector(addDirections:);
+        [mds setDirectionsQuery:query
+                   withSelector:selector
+                   withDelegate:self];
+    }
+}
+
+- (void)addDirections:(NSDictionary *)json {
+
+    NSDictionary *routes = [json objectForKey:@"routes"][0];
+
+    NSDictionary *route = [routes objectForKey:@"overview_polyline"];
+    NSString *overview_route = [route objectForKey:@"points"];
+    GMSPath *path = [GMSPath pathFromEncodedPath:overview_route];
+    GMSPolyline *polyline = [GMSPolyline polylineWithPath:path];
+    polyline.map = mapView_;
+}
 
 @end

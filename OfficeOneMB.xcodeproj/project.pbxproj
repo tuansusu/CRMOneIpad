@@ -536,6 +536,7 @@
 		849B6D8F1A18EAD9007E3B06 /* EditBussinessLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849B6D8D1A18EAD9007E3B06 /* EditBussinessLeadViewController.xib */; };
 		849B6D931A18EDAE007E3B06 /* SelectIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B6D911A18EDAE007E3B06 /* SelectIndexViewController.m */; };
 		849B6D941A18EDAE007E3B06 /* SelectIndexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849B6D921A18EDAE007E3B06 /* SelectIndexViewController.xib */; };
+		8ED8C32C1A3F23F60030386C /* MDDirectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8C32B1A3F23F60030386C /* MDDirectionService.m */; };
 		92C68E501519D4F100981728 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C68E0D1519D4F100981728 /* BaseViewController.m */; };
 		92C68E511519D4F100981728 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C68E101519D4F100981728 /* Constants.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		92C68E521519D4F100981728 /* ActionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C68E131519D4F100981728 /* ActionEvent.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -1518,6 +1519,8 @@
 		849B6D901A18EDAE007E3B06 /* SelectIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectIndexViewController.h; path = CustomView/SelectIndexViewController.h; sourceTree = "<group>"; };
 		849B6D911A18EDAE007E3B06 /* SelectIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectIndexViewController.m; path = CustomView/SelectIndexViewController.m; sourceTree = "<group>"; };
 		849B6D921A18EDAE007E3B06 /* SelectIndexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectIndexViewController.xib; path = CustomView/SelectIndexViewController.xib; sourceTree = "<group>"; };
+		8ED8C32A1A3F23F60030386C /* MDDirectionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDirectionService.h; sourceTree = "<group>"; };
+		8ED8C32B1A3F23F60030386C /* MDDirectionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDirectionService.m; sourceTree = "<group>"; };
 		92C68E0C1519D4F100981728 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		92C68E0D1519D4F100981728 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		92C68E0F1519D4F100981728 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -3295,6 +3298,8 @@
 				8497C0121A295A8500A5ED3C /* TestMapViewController.h */,
 				8497C0131A295A8500A5ED3C /* TestMapViewController.m */,
 				8497C0141A295A8500A5ED3C /* TestMapViewController.xib */,
+				8ED8C32A1A3F23F60030386C /* MDDirectionService.h */,
+				8ED8C32B1A3F23F60030386C /* MDDirectionService.m */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -4230,6 +4235,7 @@
 				2D47E7F81761704200F291D6 /* GCNetworkRequestQueue.m in Sources */,
 				8497C00F1A295A2300A5ED3C /* SDKDemoMasterViewController.m in Sources */,
 				76C964451A17731900029978 /* XAxisLabel.m in Sources */,
+				8ED8C32C1A3F23F60030386C /* MDDirectionService.m in Sources */,
 				8497C0071A295A2300A5ED3C /* PanoramaViewController.m in Sources */,
 				2D47E7F91761704200F291D6 /* GCNetworkDownloadRequest.m in Sources */,
 				2D47E7FA1761704200F291D6 /* GCNetworkFormRequest.m in Sources */,

@@ -18,6 +18,7 @@
 #import "ListAccountViewController.h"
 #import "TestMapViewController.h"
 
+#import "TestEditViewController.h"
 ///////////CHART///////
 #import <QuartzCore/QuartzCore.h>
 #import "BasicPieChart.h"
@@ -59,6 +60,8 @@
 //@property (weak, nonatomic) IBOutlet UIButton *actionMapView;
 - (IBAction)actionMapView:(id)sender;
 
+
+- (IBAction)actionHelp:(id)sender;
 
 //////////
 

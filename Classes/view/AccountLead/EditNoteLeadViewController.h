@@ -8,7 +8,10 @@
 
 #import "BaseViewController.h"
 
-@interface EditNoteLeadViewController : BaseViewController<UITextFieldDelegate,UIAlertViewDelegate, UIImagePickerControllerDelegate>
+#import "SelectIndexViewController.h"
+#import "CMPopTipView.h"
+
+@interface EditNoteLeadViewController : BaseViewController<UITextFieldDelegate,UIAlertViewDelegate, UIImagePickerControllerDelegate,SelectIndexDelegate, CMPopTipViewDelegate>
 
 
 //DATA
@@ -27,6 +30,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *fullNameLB;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnSave;
+
+@property (weak, nonatomic) IBOutlet UILabel *lbTieudeghichu;
+
 
 - (IBAction)actionSave:(id)sender;
 
@@ -65,5 +71,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *barLabel;
 @property (weak, nonatomic) IBOutlet UIView *footerView;
+
+//danh sách nhưng tooltip
+@property (nonatomic, retain) NSMutableArray *visiblePopTipViews;
+@property (nonatomic, strong) id currentPopTipViewTarget;
 
 @end

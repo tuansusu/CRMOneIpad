@@ -57,6 +57,7 @@
 
 -(IBAction) getPhoto:(id) sender;
 
+@property (weak, nonatomic) IBOutlet UITableView *tbData;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnCancel;
 

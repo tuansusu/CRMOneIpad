@@ -181,6 +181,8 @@
 		762048721A0BDE8000AAA917 /* icon_menu-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 762048711A0BDE8000AAA917 /* icon_menu-1.png */; };
 		762048761A0D246600AAA917 /* CompetitorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 762048741A0D246600AAA917 /* CompetitorsViewController.m */; };
 		762048771A0D246600AAA917 /* CompetitorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 762048751A0D246600AAA917 /* CompetitorsViewController.xib */; };
+		762133AE1A3DF7420049771C /* TestEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 762133AC1A3DF7420049771C /* TestEditViewController.m */; };
+		762133AF1A3DF7420049771C /* TestEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 762133AD1A3DF7420049771C /* TestEditViewController.xib */; };
 		762DCF171A0336FB00C7E416 /* DTOCONTACTProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 762DCF161A0336FB00C7E416 /* DTOCONTACTProcess.m */; };
 		762DCF1A1A033C7900C7E416 /* DataField.m in Sources */ = {isa = PBXBuildFile; fileRef = 762DCF191A033C7900C7E416 /* DataField.m */; };
 		763308051A048068000E190B /* NZLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 763308041A048068000E190B /* NZLabel.m */; };
@@ -953,6 +955,9 @@
 		762048731A0D246600AAA917 /* CompetitorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompetitorsViewController.h; sourceTree = "<group>"; };
 		762048741A0D246600AAA917 /* CompetitorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompetitorsViewController.m; sourceTree = "<group>"; };
 		762048751A0D246600AAA917 /* CompetitorsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompetitorsViewController.xib; sourceTree = "<group>"; };
+		762133AB1A3DF7420049771C /* TestEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestEditViewController.h; sourceTree = "<group>"; };
+		762133AC1A3DF7420049771C /* TestEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestEditViewController.m; sourceTree = "<group>"; };
+		762133AD1A3DF7420049771C /* TestEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestEditViewController.xib; sourceTree = "<group>"; };
 		762DCF151A0336FB00C7E416 /* DTOCONTACTProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOCONTACTProcess.h; sourceTree = "<group>"; };
 		762DCF161A0336FB00C7E416 /* DTOCONTACTProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOCONTACTProcess.m; sourceTree = "<group>"; };
 		762DCF181A033C7900C7E416 /* DataField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataField.h; path = ProcessData/Data/DataField.h; sourceTree = "<group>"; };
@@ -2671,6 +2676,9 @@
 				7693EE091A3555B0004E0178 /* DetailCalendarLeadViewController.h */,
 				7693EE0A1A3555B0004E0178 /* DetailCalendarLeadViewController.m */,
 				7693EE0B1A3555B0004E0178 /* DetailCalendarLeadViewController.xib */,
+				762133AB1A3DF7420049771C /* TestEditViewController.h */,
+				762133AC1A3DF7420049771C /* TestEditViewController.m */,
+				762133AD1A3DF7420049771C /* TestEditViewController.xib */,
 			);
 			path = AccountLead;
 			sourceTree = "<group>";
@@ -4007,6 +4015,7 @@
 				2DF7C8871821FE7F0020D4CC /* MonthPickerViewController.xib in Resources */,
 				7693EE0F1A35587E004E0178 /* icon_start.png in Resources */,
 				8497BFB81A295A2300A5ED3C /* InfoPlist.strings in Resources */,
+				762133AF1A3DF7420049771C /* TestEditViewController.xib in Resources */,
 				849788041A2BE1A400384566 /* TaskCalendarCell.xib in Resources */,
 				B3157889188D5E5200C0ED01 /* ic-work-fw-person-1-1.png in Resources */,
 				8497BFDE1A295A2300A5ED3C /* popup_santa.png in Resources */,
@@ -4368,6 +4377,7 @@
 				B3A066A017D1A72400BA6487 /* WCGridViewController.m in Sources */,
 				B3F7EA8317DEC24F00504705 /* LogUtil.m in Sources */,
 				76601A2C194BE90F001D4C01 /* ReaderContentView.m in Sources */,
+				762133AE1A3DF7420049771C /* TestEditViewController.m in Sources */,
 				7693EE071A355593004E0178 /* EditCalendarLeadViewController.m in Sources */,
 				8496FB271A2DE34200F4A641 /* ContactLeadCell.m in Sources */,
 				2D459E79184EC5EA004D9C45 /* LineView.m in Sources */,

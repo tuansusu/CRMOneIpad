@@ -254,10 +254,9 @@
 -(void) actionSave:(id)sender{
     //check valid to save
     
-    //test
-    [self showTooltip:self.txtCompany withText:@"test tool tip"];
-    
-    return;
+    if (![self checkValidToSave]) {
+        return;
+    }
     
     //neu qua duoc check thi tien hanh luu du lieu
     NSMutableDictionary *dicEntity = [NSMutableDictionary new];
@@ -426,9 +425,23 @@
 
 
 #pragma mark UITextField
-
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.txtName) {
+        [textField resignFirstResponder];
+        
+        [self.txtNumberIdentity becomeFirstResponder];
+        
+        return NO;
+    }
+    
+    return YES;
+}
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    
+    if (textField == self.txtName) {
+        return YES;
+    }
     
     float height = 190;
     if (textField == _txtTotalassets || textField == _txtAddress) {
@@ -455,6 +468,11 @@
     return  YES;
 }// return YES to allow editing to stop and to resign first responder status. NO to disallow the editing session to end
 - (void)textFieldDidEndEditing:(UITextField *)textField{
+    
+    if (textField == self.txtName) {
+        return;
+    }
+    
     float height = 190;
     if (textField == _txtTotalassets || textField == _txtAddress) {
         height = 230;
@@ -477,9 +495,9 @@
 - (BOOL)textFieldShouldClear:(UITextField *)textField{
     return YES;
 }// called when clear button pressed. return NO to ignore (no notifications)
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    return  YES;
-}// called when 'return' key pressed. return NO to ignore.
+//- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+//    return  YES;
+//}// called when 'return' key pressed. return NO to ignore.
 
 
 #pragma mark SelectIndexDelegate
@@ -517,18 +535,22 @@
 
 #pragma mark check
 -(BOOL) checkValidToSave {
-    BOOL isValidate = NO;
+    BOOL isValidate = YES;
     if ([StringUtil trimString: self.txtName.text].length==0) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:SYS_Notification_Title message:@"Anh/chị chưa nhập tên công việc." delegate:self cancelButtonTitle:SYS_Notification_ReInput otherButtonTitles :nil];
-        if (IS_OS_8_OR_LATER) {
-            [alert showWithHandler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                [self alertView:alertView clickedButtonAtIndex:buttonIndex];
-            }];
-        }else{
-            [alert show];
-        }
+        [self showTooltip:self.txtName withText:@"Bạn chưa nhập Tên khách hàng"];
+        
+        [self.txtName becomeFirstResponder];
+        
+        isValidate = NO;
+        return isValidate;
     }
     
+    if ([StringUtil trimString: self.txtPhone.text].length==0) {
+        [self showTooltip:self.txtPhone withText:@"Bạn chưa nhập Số điện thoại"];
+        isValidate = NO;
+        [self.txtPhone becomeFirstResponder];
+        return isValidate;
+    }
     return isValidate;
 }
 

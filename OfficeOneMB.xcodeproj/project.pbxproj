@@ -554,6 +554,8 @@
 		92C68E681519D4F100981728 /* AppService.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C68E471519D4F100981728 /* AppService.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		92C68E691519D4F100981728 /* ModelEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C68E491519D4F100981728 /* ModelEvent.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		92C68E6A1519D4F100981728 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C68E4C1519D4F100981728 /* RootViewController.m */; };
+		9473E32F1A3F174E00C5F8E4 /* SearchAdvanceOpportunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9473E32D1A3F174E00C5F8E4 /* SearchAdvanceOpportunityViewController.m */; };
+		9473E3301A3F174E00C5F8E4 /* SearchAdvanceOpportunityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9473E32E1A3F174E00C5F8E4 /* SearchAdvanceOpportunityViewController.xib */; };
 		94BA8D771A2DF3710082AE9E /* EditOpportunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA8D751A2DF3710082AE9E /* EditOpportunityViewController.m */; };
 		94BA8D781A2DF3710082AE9E /* EditOpportunityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BA8D761A2DF3710082AE9E /* EditOpportunityViewController.xib */; };
 		94BA8D7C1A2DF3CF0082AE9E /* CalendarPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA8D7A1A2DF3CF0082AE9E /* CalendarPickerViewController.m */; };
@@ -1554,6 +1556,9 @@
 		92C68E491519D4F100981728 /* ModelEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelEvent.m; sourceTree = "<group>"; };
 		92C68E4B1519D4F100981728 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		92C68E4C1519D4F100981728 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		9473E32C1A3F174E00C5F8E4 /* SearchAdvanceOpportunityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchAdvanceOpportunityViewController.h; sourceTree = "<group>"; };
+		9473E32D1A3F174E00C5F8E4 /* SearchAdvanceOpportunityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchAdvanceOpportunityViewController.m; sourceTree = "<group>"; };
+		9473E32E1A3F174E00C5F8E4 /* SearchAdvanceOpportunityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchAdvanceOpportunityViewController.xib; sourceTree = "<group>"; };
 		94BA8D741A2DF3710082AE9E /* EditOpportunityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditOpportunityViewController.h; sourceTree = "<group>"; };
 		94BA8D751A2DF3710082AE9E /* EditOpportunityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditOpportunityViewController.m; sourceTree = "<group>"; };
 		94BA8D761A2DF3710082AE9E /* EditOpportunityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditOpportunityViewController.xib; sourceTree = "<group>"; };
@@ -2979,6 +2984,9 @@
 				76D29B191A134C58004B9CF6 /* ViewController.h */,
 				76D29B1A1A134C58004B9CF6 /* ViewController.m */,
 				76D29B1B1A134C58004B9CF6 /* ViewController.xib */,
+				9473E32C1A3F174E00C5F8E4 /* SearchAdvanceOpportunityViewController.h */,
+				9473E32D1A3F174E00C5F8E4 /* SearchAdvanceOpportunityViewController.m */,
+				9473E32E1A3F174E00C5F8E4 /* SearchAdvanceOpportunityViewController.xib */,
 			);
 			path = Opportunity;
 			sourceTree = "<group>";
@@ -4007,6 +4015,7 @@
 				2DF7C8871821FE7F0020D4CC /* MonthPickerViewController.xib in Resources */,
 				7693EE0F1A35587E004E0178 /* icon_start.png in Resources */,
 				8497BFB81A295A2300A5ED3C /* InfoPlist.strings in Resources */,
+				9473E3301A3F174E00C5F8E4 /* SearchAdvanceOpportunityViewController.xib in Resources */,
 				849788041A2BE1A400384566 /* TaskCalendarCell.xib in Resources */,
 				B3157889188D5E5200C0ED01 /* ic-work-fw-person-1-1.png in Resources */,
 				8497BFDE1A295A2300A5ED3C /* popup_santa.png in Resources */,
@@ -4159,6 +4168,7 @@
 				762048761A0D246600AAA917 /* CompetitorsViewController.m in Sources */,
 				92C68E691519D4F100981728 /* ModelEvent.m in Sources */,
 				76C9643E1A17731900029978 /* MIM_MathClass.m in Sources */,
+				9473E32F1A3F174E00C5F8E4 /* SearchAdvanceOpportunityViewController.m in Sources */,
 				92C68E6A1519D4F100981728 /* RootViewController.m in Sources */,
 				76977D5F1A02A72E0029F297 /* ListEmployeeAccountViewController.m in Sources */,
 				DDBC46E5171540A200CCFB94 /* HTTPClient.m in Sources */,

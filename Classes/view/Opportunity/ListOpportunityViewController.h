@@ -51,8 +51,10 @@
 @property (strong, nonatomic) IBOutlet UIButton *btnEndDateClear;
 - (IBAction)endDateSelect:(id)sender;
 - (IBAction)endDateClear:(id)sender;
+@property (weak, nonatomic) IBOutlet UISearchBar *txtSearchBar;
 
 - (IBAction)search:(id)sender;
+- (IBAction)actionAdvanceSearch:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UIButton *btnAdd;
 - (IBAction)actionAdd:(id)sender;

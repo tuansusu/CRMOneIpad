@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		170862EA1A3F3CB30021705D /* attach_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 170862E91A3F3CB30021705D /* attach_icon.png */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -702,6 +703,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		170862E91A3F3CB30021705D /* attach_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attach_icon.png; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* OfficeOneMB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OfficeOneMB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -2920,6 +2922,7 @@
 		76C9647C1A17A15C00029978 /* Bisone */ = {
 			isa = PBXGroup;
 			children = (
+				170862E91A3F3CB30021705D /* attach_icon.png */,
 				76961E501A3B306B008B5CE7 /* avatar.png */,
 				7693EE0E1A35587E004E0178 /* icon_start.png */,
 				76F328991A34B88B00E0F2C4 /* task_done.png */,
@@ -4129,6 +4132,7 @@
 				76EE210E19FF4D7100A80414 /* icon-accept-1.png in Resources */,
 				8434BF021A2F61B200C29815 /* alarm_icon.png in Resources */,
 				8497BFBC1A295A2300A5ED3C /* arrow@2x.png in Resources */,
+				170862EA1A3F3CB30021705D /* attach_icon.png in Resources */,
 				2D5C53931833441800910E1C /* icon_calendar.png in Resources */,
 				8497BFD61A295A2300A5ED3C /* h1@2x.png in Resources */,
 				2DD29EE918769C260066B883 /* menu-ic-ca-1.png in Resources */,

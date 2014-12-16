@@ -7,7 +7,11 @@
 //
 
 #import "NoteLeadCell.h"
+#import "DTOATTACHMENTProcess.h"
 
+
+DTOATTACHMENTProcess *dtoAttachProcess ;
+NSMutableArray *arrayData;
 @implementation NoteLeadCell
 
 - (void)awakeFromNib
@@ -34,14 +38,15 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
 
 -(void) loadDataToCellWithData:(NSDictionary *)dicData withOption:(int)smgSelect{
     
-    
+    dtoAttachProcess = [DTOATTACHMENTProcess new];
+    arrayData=[NSMutableArray new];
     
     if ([StringUtil stringIsEmpty:[dicData objectForKey:DTONOTE_title]]) {
         self.lbName.text = @"";
@@ -65,6 +70,13 @@
         self.lbTime.text = [dicData objectForKey:DTONOTE_updatedDate ] ;
     }
     
+    arrayData = [dtoAttachProcess filterWithKey:DTOATTACHMENT_clientObjectId withValue:[dicData objectForKey:DTONOTE_clientObjectId]];
+    NSLog(@"count: %i",arrayData.count);
+    //if(arrayData.count >0){
+    NSLog(@"Có file đính kèm");
+    UIImage *image=[UIImage imageNamed:@"attach_icon.png"];
+    [self.imgFile setImage:image];
+    // }
     
     switch (smgSelect) {
         case 1:

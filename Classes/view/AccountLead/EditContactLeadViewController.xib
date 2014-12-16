@@ -8,7 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditContactLeadViewController">
             <connections>
                 <outlet property="barLabel" destination="kyp-9U-zQ2" id="9wc-7s-blA"/>
-                <outlet property="bodyMainView" destination="Fhe-QU-hMr" id="oTy-yt-naa"/>
+                <outlet property="bodyMainView" destination="Fhe-QU-hMr" id="HJq-Me-aYR"/>
                 <outlet property="btnBirthDay" destination="xHo-t4-kUv" id="GiP-Gm-izE"/>
                 <outlet property="btnChoicePhoto" destination="b83-pG-fFx" id="Q9u-sz-JIR"/>
                 <outlet property="btnCreateDate" destination="JYZ-YP-LiC" id="tjS-kM-Wvq"/>

@@ -167,9 +167,6 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                            <connections>
-                                                <outlet property="delegate" destination="-1" id="6nL-kU-VXD"/>
-                                            </connections>
                                         </textField>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số chứng minh thư" minimumFontSize="17" id="fqm-VV-QUm">
                                             <rect key="frame" x="480" y="40" width="380" height="30"/>
@@ -181,7 +178,7 @@
                                             <rect key="frame" x="30" y="100" width="380" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         </textField>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" id="N1H-gW-h6T">
                                             <rect key="frame" x="480" y="100" width="380" height="30"/>

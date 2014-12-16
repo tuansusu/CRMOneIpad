@@ -10,17 +10,22 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "MDDirectionService.h"
 
+#define ZOOM_RATIO 15
+
 @interface TestMapViewController ()<CLLocationManagerDelegate,GMSMapViewDelegate>
 {
     NSUserDefaults *defaults;
     int smgSelect ; //option layout
     
     GMSMapView *mapView_;
+    GMSCameraPosition *camera;
     CLLocationManager *locationManager;
 
     NSMutableArray *waypoints_;
     NSMutableArray *waypointStrings_;
     IBOutlet UIView *mainView;
+    float zoomRatio;
+    CLLocation *currentLocation;
 }
 @end
 
@@ -55,10 +60,11 @@
     NSLog(@"_lan = %f : _lon = %f", _lan, _lon);
     _lan = 21.032439554704172;
     _lon = 105.79308874905109;
-    
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:_lan
+    zoomRatio = ZOOM_RATIO;
+    camera = [GMSCameraPosition cameraWithLatitude:_lan
                                                             longitude:_lon
-                                                                 zoom:15];
+                                                                 zoom:zoomRatio];
+
     mapView_ = [GMSMapView mapWithFrame:CGRectMake(0, 0, mainView.frame.size.width, mainView.frame.size.height)  camera:camera];
     mapView_.myLocationEnabled = YES;
     mapView_.delegate = self;
@@ -110,6 +116,44 @@
 
 #pragma mark Button action
 
+-(IBAction)btnZoomPlusAction:(id)sender{
+    if (zoomRatio<21) {
+        zoomRatio+=1;
+        CGPoint point = mapView_.center;
+        CLLocationCoordinate2D coor = [mapView_.projection coordinateForPoint:point];
+        camera = [GMSCameraPosition cameraWithLatitude:coor.latitude
+                                             longitude:coor.longitude
+                                                  zoom:zoomRatio];
+        GMSCameraUpdate *cameraUpdate = [GMSCameraUpdate setCamera:camera];
+        [mapView_ animateWithCameraUpdate:cameraUpdate];
+    }
+}
+-(IBAction)btnZoomMinusAction:(id)sender{
+    if (zoomRatio>1) {
+        zoomRatio-=1;
+        CGPoint point = mapView_.center;
+        CLLocationCoordinate2D coor = [mapView_.projection coordinateForPoint:point];
+        camera = [GMSCameraPosition cameraWithLatitude:coor.latitude
+                                             longitude:coor.longitude
+                                                  zoom:zoomRatio];
+        GMSCameraUpdate *cameraUpdate = [GMSCameraUpdate setCamera:camera];
+        [mapView_ animateWithCameraUpdate:cameraUpdate];
+    }
+}
+
+-(IBAction)btnCurrentLocationAction:(id)sender{
+    if (currentLocation) {
+        camera = [GMSCameraPosition cameraWithLatitude:currentLocation.coordinate.latitude
+                                             longitude:currentLocation.coordinate.longitude
+                                                  zoom:zoomRatio];
+        GMSCameraUpdate *cameraUpdate = [GMSCameraUpdate setCamera:camera];
+        [mapView_ animateWithCameraUpdate:cameraUpdate];
+    }else{
+        [[[UIAlertView alloc] initWithTitle:SYS_Notification_Title message:SYS_Notification_NotGetCurrentLocation delegate:nil cancelButtonTitle:SYS_Notification_CancelTitle otherButtonTitles: nil] show];
+    }
+
+}
+
 #pragma mark init location
 -(void)initLocation{
     locationManager = [[CLLocationManager alloc] init];
@@ -127,8 +171,8 @@
 
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations {
-    CLLocation *location = [locations lastObject];
-    NSLog(@"lat%f - lon%f", location.coordinate.latitude, location.coordinate.longitude);
+    currentLocation = [locations lastObject];
+    NSLog(@"currentLocation lat : %f - currentLocation lon : %f", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
 }
 
 #pragma mark map delegate

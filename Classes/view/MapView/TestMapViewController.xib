@@ -47,7 +47,7 @@
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vTm-hm-cqG" userLabel="BTNADD">
                             <rect key="frame" x="958" y="7" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" backgroundImage="BE16C05D-B8FE-4A91-BA9E-76C710F4F4DC"/>
+                            <state key="normal" backgroundImage="D31897BE-3F42-4671-81BF-A0C256BC9BA5"/>
                         </button>
                         <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tổng số 1,100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9iz-qe-5MY">
                             <rect key="frame" x="69" y="24" width="133" height="20"/>
@@ -64,7 +64,7 @@
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="CNP-x3-qpM">
-                    <rect key="frame" x="950" y="600" width="50" height="85"/>
+                    <rect key="frame" x="950" y="620" width="50" height="85"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ujp-g3-Nns">
@@ -73,6 +73,9 @@
                             <state key="normal" title="-">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="btnZoomMinusAction:" destination="-1" eventType="touchUpInside" id="fHk-4K-Sf4"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="37Y-zo-mQI">
                             <rect key="frame" x="2" y="9" width="46" height="30"/>
@@ -80,10 +83,23 @@
                             <state key="normal" title="+">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="btnZoomPlusAction:" destination="-1" eventType="touchUpInside" id="398-32-MxT"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jAj-iC-3Wz">
+                    <rect key="frame" x="950" y="568" width="50" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" backgroundImage="Mobile_GPS_MyLocationIcon.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btnCurrentLocationAction:" destination="-1" eventType="touchUpInside" id="YUT-nS-9q1"/>
+                    </connections>
+                </button>
                 <view contentMode="scaleToFill" id="D7N-dG-iIC" userLabel="FOOTER VIEW">
                     <rect key="frame" x="0.0" y="718" width="1024" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -105,7 +121,7 @@
         </view>
     </objects>
     <resources>
-        <image name="BE16C05D-B8FE-4A91-BA9E-76C710F4F4DC" width="48" height="48">
+        <image name="D31897BE-3F42-4671-81BF-A0C256BC9BA5" width="48" height="48">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -329,6 +345,7 @@ MlkyYDJoMnUyejJ8Mn4ygzKLMo4ykzKbMp4ysDKzMrgAAAAAAAACAQAAAAAAAAA/AAAAAAAAAAAAAAAA
 AAAyug
 </mutableData>
         </image>
+        <image name="Mobile_GPS_MyLocationIcon.png" width="48" height="48"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

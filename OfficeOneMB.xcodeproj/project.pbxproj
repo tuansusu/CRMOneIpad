@@ -539,6 +539,8 @@
 		849B6D8F1A18EAD9007E3B06 /* EditBussinessLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849B6D8D1A18EAD9007E3B06 /* EditBussinessLeadViewController.xib */; };
 		849B6D931A18EDAE007E3B06 /* SelectIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B6D911A18EDAE007E3B06 /* SelectIndexViewController.m */; };
 		849B6D941A18EDAE007E3B06 /* SelectIndexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849B6D921A18EDAE007E3B06 /* SelectIndexViewController.xib */; };
+		8EB708771A407A1C001861A0 /* Mobile_GPS_MyLocationIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EB708751A407A1C001861A0 /* Mobile_GPS_MyLocationIcon.png */; };
+		8EB708781A407A1C001861A0 /* Mobile_GPS_MyLocationIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EB708761A407A1C001861A0 /* Mobile_GPS_MyLocationIcon@2x.png */; };
 		8ED8C32C1A3F23F60030386C /* MDDirectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8C32B1A3F23F60030386C /* MDDirectionService.m */; };
 		92C68E501519D4F100981728 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C68E0D1519D4F100981728 /* BaseViewController.m */; };
 		92C68E511519D4F100981728 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C68E101519D4F100981728 /* Constants.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -1528,6 +1530,8 @@
 		849B6D901A18EDAE007E3B06 /* SelectIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectIndexViewController.h; path = CustomView/SelectIndexViewController.h; sourceTree = "<group>"; };
 		849B6D911A18EDAE007E3B06 /* SelectIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectIndexViewController.m; path = CustomView/SelectIndexViewController.m; sourceTree = "<group>"; };
 		849B6D921A18EDAE007E3B06 /* SelectIndexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectIndexViewController.xib; path = CustomView/SelectIndexViewController.xib; sourceTree = "<group>"; };
+		8EB708751A407A1C001861A0 /* Mobile_GPS_MyLocationIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mobile_GPS_MyLocationIcon.png; sourceTree = "<group>"; };
+		8EB708761A407A1C001861A0 /* Mobile_GPS_MyLocationIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Mobile_GPS_MyLocationIcon@2x.png"; sourceTree = "<group>"; };
 		8ED8C32A1A3F23F60030386C /* MDDirectionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDirectionService.h; sourceTree = "<group>"; };
 		8ED8C32B1A3F23F60030386C /* MDDirectionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDirectionService.m; sourceTree = "<group>"; };
 		92C68E0C1519D4F100981728 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -3323,6 +3327,15 @@
 			path = MapView;
 			sourceTree = "<group>";
 		};
+		8EB708701A407856001861A0 /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				8EB708751A407A1C001861A0 /* Mobile_GPS_MyLocationIcon.png */,
+				8EB708761A407A1C001861A0 /* Mobile_GPS_MyLocationIcon@2x.png */,
+			);
+			path = Maps;
+			sourceTree = "<group>";
+		};
 		92C68E0B1519D4F100981728 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -3473,6 +3486,7 @@
 		92C68E6D1519DC7D00981728 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				8EB708701A407856001861A0 /* Maps */,
 				B3A066BF17D1AB8200BA6487 /* Img_common */,
 				B346C25717C4688D00433B07 /* arrow_right.png */,
 				B346C25117C45C6C00433B07 /* Button_Normal.png */,
@@ -3946,6 +3960,7 @@
 				76961E561A3B3170008B5CE7 /* SelectPhotoViewController.xib in Resources */,
 				B3A0669F17D1A72400BA6487 /* WCGridViewCell.xib in Resources */,
 				B315789E188D5E5200C0ED01 /* write-btn-2-1.png in Resources */,
+				8EB708771A407A1C001861A0 /* Mobile_GPS_MyLocationIcon.png in Resources */,
 				76EE207319FA829200A80414 /* ic-move-user-1.png in Resources */,
 				76C964801A17A15C00029978 /* call.png in Resources */,
 				76601A46194BE90F001D4C01 /* Reader-Button-H@2x.png in Resources */,
@@ -3955,6 +3970,7 @@
 				B315789C188D5E5200C0ED01 /* logo-small-1.png in Resources */,
 				B3A066D817D1AB8200BA6487 /* background_2.png in Resources */,
 				8497BFD41A295A2300A5ED3C /* museum-exhibits.json in Resources */,
+				8EB708781A407A1C001861A0 /* Mobile_GPS_MyLocationIcon@2x.png in Resources */,
 				8497BFCE1A295A2300A5ED3C /* Default@2x.png in Resources */,
 				B3A066D917D1AB8200BA6487 /* background_3.png in Resources */,
 				B3A066DA17D1AB8200BA6487 /* background_4.png in Resources */,

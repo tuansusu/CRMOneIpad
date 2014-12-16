@@ -83,6 +83,9 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 #define Key_SortValidTime @"SortValidTime"
 #define Key_SortIndex @"SortIndex"
 #define TIME_DISPLAY_CONFIG @"dd/MM/yyyy   HH:mm:ss"
+//=========================Map Configuration
+
+#define SYS_Notification_NotGetCurrentLocation @"Không xác định được vị trí của bạn"
 
 //tuannv
 #define CommentType_CapNhatTienDo @"Cập nhật tiến độ"

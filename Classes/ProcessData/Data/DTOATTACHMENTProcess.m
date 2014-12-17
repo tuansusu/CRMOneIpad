@@ -31,6 +31,7 @@
              DTOATTACHMENT_updatedDate , //updatedDate" //VARCHAR
              DTOATTACHMENT_verifyLat , //verifyLat" //VARCHAR
              DTOATTACHMENT_verifyLon , //verifyLon" //VARCHAR
+             DTOATTACHMENT_clientObjectId ,//
              DTOATTACHMENT_id, nil //id" //INTEGER
              ]; //id" //INTEGER]; //id" //INTEGER
     
@@ -39,7 +40,7 @@
 
 -(BOOL) deleteEntity:(NSString *)contactId{
     
-    NSMutableDictionary *dicFieldSet = [[NSMutableDictionary alloc]initWithObjects:[NSArray arrayWithObjects:@"0", nil] forKeys:[NSArray arrayWithObjects:DTOATTACHMENT_id, nil]];
+    NSMutableDictionary *dicFieldSet = [[NSMutableDictionary alloc]initWithObjects:[NSArray arrayWithObjects:@"1", nil] forKeys:[NSArray arrayWithObjects:DTOATTACHMENT_id, nil]];
     NSMutableDictionary *dicFieldCondition = [[NSMutableDictionary alloc]initWithObjects:[NSArray arrayWithObjects:contactId, nil] forKeys:[NSArray arrayWithObjects:DTOATTACHMENT_id, nil]];
     
     
@@ -49,9 +50,12 @@
 
 -(BOOL) insertToDBWithEntity:(NSMutableDictionary*) entity{
     
+    NSLog(@"Vao day roi");
     if ([[entity allKeys] containsObject:DTOATTACHMENT_id]) {
+        NSLog(@"sua");
         return [self updateToDBWithEntity:entity];
     }
+    NSLog(@"them moi %@:",entity);
     
     return [super addToDBWithTableName:TABLENAME_DTOATTACHMENT dictionary:entity];
     
@@ -70,6 +74,8 @@
     NSArray *allFields =[NSArray arrayWithObjects:DTOATTACHMENT_id, DTOATTACHMENT_attachmentId, DTOATTACHMENT_checkSum, DTOATTACHMENT_clientAttachmentId, DTOATTACHMENT_clientFilePath, DTOATTACHMENT_createdBy, DTOATTACHMENT_fileName, DTOATTACHMENT_note, DTOATTACHMENT_objectId, DTOATTACHMENT_objectType, DTOATTACHMENT_serverFilePath, DTOATTACHMENT_verifyLat,DTOATTACHMENT_verifyLon, nil];
     
     NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where isActive = 1 order by %@ desc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOATTACHMENT, DTOLEAD_updatedDate];
+    
+    NSLog(@"query attach:%@", query);
     
     return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:nil];
 }

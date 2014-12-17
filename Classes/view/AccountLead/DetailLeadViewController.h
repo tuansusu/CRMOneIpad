@@ -33,7 +33,7 @@ enum TypeLeaderView{
     
 };
 
-@interface DetailLeadViewController : BaseViewController<SelectIndexDelegate>
+@interface DetailLeadViewController : BaseViewController<SelectIndexDelegate,UIAlertViewDelegate>
 
 //DATA
 @property (nonatomic, retain) NSDictionary *dataSend;

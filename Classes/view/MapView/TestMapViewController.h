@@ -22,8 +22,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnHome;
 - (IBAction)homeBack:(id)sender;
 
-@property (weak, nonatomic) IBOutlet UIView *mainView;
-
 @property (nonatomic,retain) IBOutlet UILabel *barLabel;
 @property (weak, nonatomic) IBOutlet UIView *footerView;
 

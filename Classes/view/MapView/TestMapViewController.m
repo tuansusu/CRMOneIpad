@@ -9,14 +9,20 @@
 #import "TestMapViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import "MDDirectionService.h"
+#import "DTOACCOUNTLEADProcess.h"
+#import "CustomerViewCell.h"
 
 #define ZOOM_RATIO 15
+
+#define BTN_TAG_CUSTOMER 1
+#define BTN_TAG_CUSTOMER 2
+#define BTN_TAG_CUSTOMER 3
 
 @interface TestMapViewController ()<CLLocationManagerDelegate,GMSMapViewDelegate>
 {
     NSUserDefaults *defaults;
     int smgSelect ; //option layout
-    
+
     GMSMapView *mapView_;
     GMSCameraPosition *camera;
     CLLocationManager *locationManager;
@@ -26,6 +32,14 @@
     IBOutlet UIView *mainView;
     float zoomRatio;
     CLLocation *currentLocation;
+
+    IBOutlet UIView *containerOptionView;
+    IBOutlet UIView *customerView;
+    IBOutlet UITableView *customerTbv;
+    IBOutlet UIView *directionView;
+    BOOL expandOptionSelected;
+    NSArray *arrayData;
+    DTOACCOUNTLEADProcess *dtoLeadProcess;
 }
 @end
 
@@ -45,15 +59,15 @@
     [super viewDidLoad];
     waypoints_ = [[NSMutableArray alloc]init];
     waypointStrings_ = [[NSMutableArray alloc]init];
-    
+
     if ([UIDevice getCurrentSysVer] >= 7.0) {
         [UIDevice updateLayoutInIOs7OrAfter:self];
-        
+
     }
-    
+
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
-    
+
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
     // add start location
@@ -62,16 +76,17 @@
     _lon = 105.79308874905109;
     zoomRatio = ZOOM_RATIO;
     camera = [GMSCameraPosition cameraWithLatitude:_lan
-                                                            longitude:_lon
-                                                                 zoom:zoomRatio];
+                                         longitude:_lon
+                                              zoom:zoomRatio];
 
     mapView_ = [GMSMapView mapWithFrame:CGRectMake(0, 0, mainView.frame.size.width, mainView.frame.size.height)  camera:camera];
     mapView_.myLocationEnabled = YES;
     mapView_.delegate = self;
     [mainView addSubview:mapView_];
-    
+
     // Creates a marker in the center of the map.
     GMSMarker *marker = [[GMSMarker alloc] init];
+
 
     //marker.position = CLLocationCoordinate2DMake(-33.86, 151.20);
     marker.position = CLLocationCoordinate2DMake(_lan, _lon);
@@ -87,14 +102,23 @@
     NSString *positionString = [[NSString alloc] initWithFormat:@"%f,%f",
                                 _lan,_lon];
     [waypointStrings_ addObject:positionString];
-    
+
     [self initLocation];
+    [self initData];
+
+}
+
+-(void)initData{
+    dtoLeadProcess = [DTOACCOUNTLEADProcess new];
+    arrayData  = [NSArray new];
+    arrayData = [dtoLeadProcess filter];
+    [customerTbv reloadData];
 }
 
 //Home button
 - (IBAction)homeBack:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
-//    [self.navigationController popViewControllerAnimated:YES];
+    //    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) updateInterFaceWithOption : (int) option
@@ -115,6 +139,29 @@
 
 
 #pragma mark Button action
+
+#pragma mark tab action
+-(IBAction)btnCustomerTabAction:(id)sender{
+
+    [customerView setHidden:NO];
+    [directionView setHidden:YES];
+}
+
+-(IBAction)btnDirectionTabAction:(id)sender{
+    [directionView setHidden:NO];
+    [customerView setHidden:YES];
+}
+
+-(IBAction)btnExpandTabAction:(id)sender{
+    if (expandOptionSelected) {
+        [containerOptionView setHidden:NO];
+        expandOptionSelected= NO;
+    }else{
+        [containerOptionView setHidden:YES];
+        expandOptionSelected= YES;
+    }
+}
+
 
 -(IBAction)btnZoomPlusAction:(id)sender{
     if (zoomRatio<21) {
@@ -151,7 +198,6 @@
     }else{
         [[[UIAlertView alloc] initWithTitle:SYS_Notification_Title message:SYS_Notification_NotGetCurrentLocation delegate:nil cancelButtonTitle:SYS_Notification_CancelTitle otherButtonTitles: nil] show];
     }
-
 }
 
 #pragma mark init location
@@ -216,6 +262,63 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
     GMSPath *path = [GMSPath pathFromEncodedPath:overview_route];
     GMSPolyline *polyline = [GMSPolyline polylineWithPath:path];
     polyline.map = mapView_;
+}
+
+#pragma mark tableview delegate
+#pragma mark - Table View
+
+
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    return 44.0f;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+
+
+    return  arrayData.count;
+
+
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *cellId = @"CustomerViewCell";
+    CustomerViewCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+
+    if (!cell) {
+        cell = [CustomerViewCell initNibCell];
+    }
+
+//    if (arrayData.count>0) {
+//        [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+//        cell.delegate = (id<AccountLeadCellDelegate>) self;
+//    }
+
+    return cell;
+
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    NSIndexPath* selection = [tableView indexPathForSelectedRow];
+    if (selection){
+
+        [tableView deselectRowAtIndexPath:selection animated:YES];
+    }
+
+    NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
+
+
+
+//    DetailLeadViewController *viewController = [[DetailLeadViewController alloc]initWithNibName:@"DetailLeadViewController" bundle:nil];
+//    viewController.dataSend = dicData;
+//    [self presentViewController:viewController animated:YES completion:nil];
+
 }
 
 @end

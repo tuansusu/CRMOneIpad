@@ -12,11 +12,15 @@
 #import "DTOPRODUCTMASTERProcess.h"
 #import "DTOACCOUNTProcess.h"
 
+
 #define SELECT_TEXT_ADD_CONTACT @"LIÊN HỆ"
 #define SELECT_TEXT_ADD_NOTE @"SẢN PHẨM ĐỀ XUẤT"
 #define SELECT_TEXT_ADD_CALENDAR @"SẢN PHẨM ĐÃ BÁN"
 #define SELECT_TEXT_ADD_COMPETITOR @"ĐỐI THỦ CẠNH TRANH"
 #define SELECT_TEXT_ADD_SUPORT @"HỖ TRỢ"
+
+#define SELECT_INDEX_ADD_CONTACT 0
+
 
 
 
@@ -212,6 +216,30 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark SelectIndexDelegate
+
+-(void) selectAtIndex:(NSInteger)index{
+    
+    if (self.listPopover) {
+        [ self.listPopover dismissPopoverAnimated:YES];
+    }
+    
+    switch (index) {
+        case SELECT_INDEX_ADD_CONTACT:
+        {
+            EditContactLeadViewController *viewController = [[EditContactLeadViewController alloc]initWithNibName:@"EditContactLeadViewController" bundle:nil];
+            viewController.dataRoot = opportunity;
+            [self presentViewController:viewController animated:YES completion:nil];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+
 
 #pragma mark action button
 - (IBAction)homeBack:(id)sender {

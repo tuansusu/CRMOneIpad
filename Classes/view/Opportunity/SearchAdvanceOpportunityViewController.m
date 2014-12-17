@@ -18,8 +18,6 @@
 
 @interface SearchAdvanceOpportunityViewController ()
 {
-    ///control
-    __weak IBOutlet UITextField *txtName;
     
     //khai báo biến
     int smgSelect ; //option layout
@@ -31,7 +29,7 @@
     NSDate *dateFrom, *dateTo;
     NSDateFormatter *df;
     
-    NSInteger selectStatusIndex;
+    NSInteger selectAccountTypeIndex;
 }
 
 @end
@@ -60,8 +58,8 @@
     df = [[NSDateFormatter alloc] init];
    	[df setDateFormat:FORMAT_DATE];
     
-     selectStatusIndex = -1;
-
+     selectAccountTypeIndex = 0;
+    self.txtAccountType.text= @"Tất cả";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -109,8 +107,8 @@
 
 - (IBAction)actionSearch:(id)sender {
     
-    if (self.advanceSearchDelegate && [self.advanceSearchDelegate respondsToSelector:@selector(actionSearchAdvanceWithCode:withName:withMobile:withEmail:)]) {
-//        [self.advanceSearchDelegate actionSearchAdvanceWithCode:txtCode.text withName:txtName.text withMobile:txtMobile.text withEmail:txtEmail.text];
+    if (self.advanceSearchDelegate && [self.advanceSearchDelegate respondsToSelector:@selector(actionSearchAdvance:addStartDate:addEndDate:userType:)]) {
+        [self.advanceSearchDelegate actionSearchAdvance:self.txtName.text addStartDate:dateFrom addEndDate:dateTo userType:selectAccountTypeIndex];
     }
     
 }
@@ -194,16 +192,16 @@
     
     SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
     
-    detail.selectIndex = selectStatusIndex;
+    detail.selectIndex = selectAccountTypeIndex;
     
-    detail.listData = [NSArray arrayWithObjects:@"Khách hàng 360", @"Khách hàng đầu mối",nil];
+    detail.listData = [NSArray arrayWithObjects:@"Tất cả", @"Khách hàng 360", @"Khách hàng đầu mối",nil];
     
     self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
     CGRect popoverFrame = self.btnChoiceAccountType.frame;
     
     detail.delegate =(id<SelectIndexDelegate>) self;
     self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(220,84) animated:NO];
+    [self.listPopover setPopoverContentSize:CGSizeMake(220,128) animated:NO];
     [self.listPopover presentPopoverFromRect:popoverFrame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 
 }
@@ -216,12 +214,18 @@
     switch (SELECTED_TAG) {
         case TAG_SELECT_ACCOUNT_TYPE:
         {
-            selectStatusIndex = index;
-            if (index == 0) {
-                self.txtAccountType.text = @"Khách hàng 360";
+            selectAccountTypeIndex = index;
+            if(index == 0) {
+                self.txtAccountType.text = @"Tất cả";
+                selectAccountTypeIndex = 0;
             }
-            else if(index == 1){
+            if (index == 1) {
+                self.txtAccountType.text = @"Khách hàng 360";
+                selectAccountTypeIndex = 1;
+            }
+            else if(index == 2){
                 self.txtAccountType.text= @"Khách hàng đầu mối";
+                selectAccountTypeIndex = 2;
             }
         }
             break;

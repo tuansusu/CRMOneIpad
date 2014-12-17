@@ -10,6 +10,7 @@
 #import "CompetionorCell.h"
 #import "ProposeProductCell.h"
 #import "ClueContactCell.h"
+#import "SelectIndexViewController.h"
 
 
 enum TypeActionEvent{
@@ -21,7 +22,7 @@ enum TypeActionEvent{
 };
 
 
-@interface CompetitorsViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate>
+@interface CompetitorsViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate,SelectIndexDelegate>
 
 
 @property (nonatomic) enum TypeActionEvent typeActionEvent;
@@ -91,6 +92,13 @@ enum TypeActionEvent{
 - (IBAction)actionSupport:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UITableView *tbData;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnAdd;
+- (IBAction)actionAdd:(id)sender;
+
+////////////// KHAI BAO BIEN CHUNG//////////
+@property (nonatomic, retain) UIPopoverController *listPopover;
+////////////// KHAI BAO BIEN CHUNG//////////
 
 
 

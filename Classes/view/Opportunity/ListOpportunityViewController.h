@@ -12,7 +12,7 @@
 #import "CompetitorsViewController.h"
 #import "EditOpportunityViewController.h"
 
-@interface ListOpportunityViewController : BaseViewController<VTCheckBoxDelegate>
+@interface ListOpportunityViewController : BaseViewController<VTCheckBoxDelegate,UISearchBarDelegate>
 
 //Header
 @property (weak, nonatomic) IBOutlet UIView *headerViewBar;

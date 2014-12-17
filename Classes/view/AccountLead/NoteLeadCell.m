@@ -70,13 +70,13 @@ NSMutableArray *arrayData;
         self.lbTime.text = [dicData objectForKey:DTONOTE_updatedDate ] ;
     }
     
-    arrayData = [dtoAttachProcess filterWithKey:DTOATTACHMENT_clientObjectId withValue:[dicData objectForKey:DTONOTE_clientObjectId]];
+    arrayData = [dtoAttachProcess filterWithKey:DTOATTACHMENT_clientObjectId withValue:[dicData objectForKey:DTONOTE_clientNoteId]];
     NSLog(@"count: %i",arrayData.count);
-    //if(arrayData.count >0){
-    NSLog(@"Có file đính kèm");
-    UIImage *image=[UIImage imageNamed:@"attach_icon.png"];
-    [self.imgFile setImage:image];
-    // }
+    if(arrayData.count >0){
+        NSLog(@"Có file đính kèm");
+        UIImage *image=[UIImage imageNamed:@"attach_icon.png"];
+        [self.imgFile setImage:image];
+    }
     
     switch (smgSelect) {
         case 1:

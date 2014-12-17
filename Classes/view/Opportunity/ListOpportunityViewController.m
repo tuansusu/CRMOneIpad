@@ -429,6 +429,14 @@
     [self.tbData reloadData];
 }
 
+-(void) actionSearchAdvance:(NSString*)keyword addStartDate:(NSDate*)startDate addEndDate:(NSDate*)endDate userType:(int)type{
+    
+    arrayData = [dtoOpportunityProcess filterOpportunity:keyword addStartDate:startDate addEndDate:endDate userType:type];
+    //_lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
+    
+    [self.tbData reloadData];
+}
+
 - (IBAction)actionAdvanceSearch:(id)sender {
     //hidden keyboard
     [self.txtSearchBar resignFirstResponder];
@@ -483,4 +491,42 @@
     [self presentViewController:viewController animated:YES completion:nil];
 }
 
+#pragma mark -  phần tìm kiếm
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption{
+    NSLog(@"searchOption %d", searchOption);
+    return YES;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText   // called when text changes (including clear)
+{
+    NSLog(@"text did change %@", searchText);
+    //strSearchText = searchText;
+    if(self.txtSearchBar.text.length == 0){
+        arrayData = [dtoOpportunityProcess filterOpportunity:self.txtSearchBar.text addStartDate:nil addEndDate:nil userType:nil];
+        [self.tbData reloadData];
+
+    }
+}
+
+
+-(void) searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    NSLog(@"searchBarCancelButtonClicked");
+    //strSearchText = @"";
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar                     // called when keyboard search button pressed
+{
+    NSLog(@"seach click");
+    //[SVProgressHUD show];
+    
+    arrayData = [dtoOpportunityProcess filterOpportunity:self.txtSearchBar.text addStartDate:nil addEndDate:nil userType:nil];
+    [self.tbData reloadData];
+    [searchBar resignFirstResponder];
+    
+}
+
+- (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope{
+    NSLog(@"selectedScopeButtonIndexDidChange = %d", selectedScope);
+    //iSearchOption = selectedScope;
+}
 @end

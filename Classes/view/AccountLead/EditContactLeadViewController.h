@@ -42,7 +42,9 @@
 
 @property (weak, nonatomic) IBOutlet UIView *bodyMainView;
 
-@property (weak, nonatomic) IBOutlet UIView *viewMainBodyInfo;
+//@property (weak, nonatomic) IBOutlet UIView *viewMainBodyInfo;
+@property (weak, nonatomic) IBOutlet UIScrollView *viewMainBodyInfo;
+
 
 @property (weak, nonatomic) IBOutlet UIButton *btnSave;
 - (IBAction)actionSave:(id)sender;

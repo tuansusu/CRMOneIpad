@@ -53,7 +53,7 @@ DTOOPPORTUNITY_updatedDate, //VARCHAR
     return [super addToDBWithTableName:TableName_DTOOPPORTUNTITY dictionary:entity];
     
 }
--(NSMutableArray*) filterOpportunity:(NSString*)keyword addStartDate:(NSDate*)startDate addEndDate:(NSDate*)endDate userType:(NSString*)type{
+-(NSMutableArray*) filterOpportunity:(NSString*)keyword addStartDate:(NSDate*)startDate addEndDate:(NSDate*)endDate userType:(int)type{
     
     
     NSArray *allFields =[NSArray arrayWithObjects:DTOOPPORTUNITY_id, DTOOPPORTUNITY_clientOpportunityId, DTOCONTACT_fullName, DTOOPPORTUNITY_code, DTOOPPORTUNITY_name, DTOOPPORTUNITY_endDate, DTOOPPORTUNITY_startDate,@"StatusName", DTOOPPORTUNITY_status,@"Account", nil];
@@ -89,13 +89,13 @@ DTOOPPORTUNITY_updatedDate, //VARCHAR
     {
         [query appendString:[NSString stringWithFormat:@"AND op.endDate <= '%@' ",[NSString stringWithFormat:@"%@",[df stringFromDate:endDate]]]];
     }
-    if(type != nil)
+    if(type != 0)
     {
-        if([type isEqualToString:@"1"]) //Khachs hang 360
+        if(type == 1) //Khachs hang 360
         {
             [query appendString:@"AND op.accountId is not null "];
         }
-        else if([type isEqualToString:@"2"])
+        else if(type == 2)
         {
             [query appendString:@"AND op.leadId is not null "];
         }

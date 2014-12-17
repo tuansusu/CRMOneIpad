@@ -12,6 +12,14 @@
 #import "DTOPRODUCTMASTERProcess.h"
 #import "DTOACCOUNTProcess.h"
 
+#define SELECT_TEXT_ADD_CONTACT @"LIÊN HỆ"
+#define SELECT_TEXT_ADD_NOTE @"SẢN PHẨM ĐỀ XUẤT"
+#define SELECT_TEXT_ADD_CALENDAR @"SẢN PHẨM ĐÃ BÁN"
+#define SELECT_TEXT_ADD_COMPETITOR @"ĐỐI THỦ CẠNH TRANH"
+#define SELECT_TEXT_ADD_SUPORT @"HỖ TRỢ"
+
+
+
 @interface CompetitorsViewController ()
 {
     int smgSelect ; //option layout
@@ -30,6 +38,10 @@
     UIColor *textColorButtonSelected; //mau chu button select
     UIColor *backgrondButtonSelected; //mau nen button select
     UIColor *backgroundButtonNormal; //Mau nen button binh thuong
+    
+    //chon index form them moi
+    NSInteger selectIndex;
+    NSArray *listArr;
     
 }
 @end
@@ -108,6 +120,9 @@
 
 //khoi tao gia tri mac dinh cua form
 -(void) initData {
+    
+    //khoi tao du lieu!
+    listArr  = [NSArray arrayWithObjects:SELECT_TEXT_ADD_CONTACT,SELECT_TEXT_ADD_NOTE, SELECT_TEXT_ADD_CALENDAR,SELECT_TEXT_ADD_COMPETITOR,SELECT_TEXT_ADD_SUPORT, nil];
     
     [self actionClueContact:self.btnClueContact];
     
@@ -405,4 +420,20 @@
 
 //Thêm phần sửa, xoá hiển thị trên row của table
 
+- (IBAction)actionAdd:(id)sender {
+    SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
+    
+    detail.selectIndex = selectIndex;
+    
+    detail.listData = listArr;
+    
+    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+    CGRect popoverFrame = self.btnAdd.frame;
+    
+    detail.delegate =(id<SelectIndexDelegate>) self;
+    self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
+    [self.listPopover setPopoverContentSize:CGSizeMake(320, HEIGHT_SELECT_INDEX_ROW*listArr.count) animated:NO];
+    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.headerViewBar permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+
+}
 @end

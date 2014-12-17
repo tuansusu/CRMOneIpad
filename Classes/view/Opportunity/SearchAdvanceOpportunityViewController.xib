@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchAdvanceOpportunityViewController">
@@ -12,7 +12,7 @@
                 <outlet property="btnStartDate" destination="rKT-2b-LeP" id="IQB-AA-iCY"/>
                 <outlet property="txtAccountType" destination="iyG-Ft-0Q8" id="FLS-R2-KUF"/>
                 <outlet property="txtEndDate" destination="tmF-HS-m9U" id="tyO-5Z-yE1"/>
-                <outlet property="txtName" destination="DCt-Qd-nUc" id="tS8-tj-laV"/>
+                <outlet property="txtName" destination="DCt-Qd-nUc" id="3SY-HL-IPZ"/>
                 <outlet property="txtStartDate" destination="dWk-Aa-4CO" id="IXI-wu-tFx"/>
                 <outlet property="view" destination="01c-fy-jcS" id="yF0-jh-kbt"/>
             </connections>

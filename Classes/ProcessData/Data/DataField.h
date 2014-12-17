@@ -502,7 +502,8 @@
 ///dtoattachment  Field
 #define DTOATTACHMENT_attachmentId @"attachmentId" //BIGINT
 #define DTOATTACHMENT_checkSum @"checkSum" //SMALLINT
-#define DTOATTACHMENT_clientAttachmentId @"clientAttachmentId" //BIGINT
+#define DTOATTACHMENT_clientAttachmentId @"clientAttachmentId" //BIGINT DTOATTACHMENT_clientObjectId
+#define DTOATTACHMENT_clientObjectId @"clientObjectId"//DTOATTACHMENT_clientObjectId
 #define DTOATTACHMENT_clientFilePath @"clientFilePath" //VARCHAR
 #define DTOATTACHMENT_createdBy @"createdBy" //BIGINT
 #define DTOATTACHMENT_createdDate @"createdDate" //VARCHAR

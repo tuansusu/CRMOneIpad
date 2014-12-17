@@ -8,6 +8,7 @@
 
 #import "EditNoteLeadViewController.h"
 #import "DTONOTEProcess.h"
+#import "DTOATTACHMENTProcess.h"
 
 @interface EditNoteLeadViewController ()
 {
@@ -16,6 +17,7 @@
     NSDictionary *dicData; //luu tru du lieu sua
     
     DTONOTEProcess *dtoProcess;
+    DTOATTACHMENTProcess *dtoFileProcess;
     
     //chon index form them moi
     NSInteger selectIndex;
@@ -35,6 +37,8 @@
     //thong tin chon cho loai hinh CHUC DANH
     NSInteger selectPersonPositionIndex;
     NSArray *listArrPersonPosition;
+    
+    NSString *strClientContactId;
     
     BOOL succsess;//Trang thai acap nhat
 }
@@ -85,12 +89,39 @@
     dtoProcess = [DTONOTEProcess new];
     arrayData  = [NSMutableArray new];
     //arrayData = [dtoLeadProcess filter];
-    
+    NSLog(@"dataRoot %@",self.dataRoot);
     dataId = 0;
     if (self.dataSend) {
         
+        NSLog(@"data gui tu form chi tiet %@", self.dataSend);
         
+        self.lbTieudeghichu.text=@"CẬP NHẬP GHI CHÚ";
+        
+        [self loadDataEdit];
     }
+    else{
+        self.lbTieudeghichu.text=@"THÊM MƠI GHI CHÚ";
+    }
+    
+}
+//load du lieu khi sua
+-(void) loadDataEdit{
+    
+    
+    
+    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTONOTE_title]]) {
+        txtTitle.text =[_dataSend objectForKey:DTONOTE_title];
+    }
+    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTONOTE_content]]) {
+        txtContent.text =[_dataSend objectForKey:DTONOTE_content];
+    }
+    
+    //  arrayData =[dtoFileProcess filter];
+    //NSLog(@"count:%i", arrayData.count);
+    arrayData= [[NSMutableArray alloc] initWithObjects:@"One",@"Two",@"Three",@"Four",@"Five",@"Six",@"Seven",@"Eight",@"Nine",@"Ten",nil];
+    
+    //  arrayData = [dtoProcess filterWithKey:DTONOTE_id withValue:[_dataSend objectForKey:DTONOTE_id]];
+    
     
 }
 - (void) updateInterFaceWithOption : (int) option
@@ -170,25 +201,30 @@
     
 }
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (IBAction)actionCancel:(id)sender {
 }
 - (IBAction)actionSave:(id)sender {
     
+    if (![self checkValidToSave]) {
+        return;
+    }
+    
     NSString *title=txtTitle.text;
-
+    strClientContactId = IntToStr(([dtoProcess getClientId]));
+    
     if(title==NULL || [title isEqualToString:@""]){
         
         NSLog(@"Rong");
-    
+        
         [[[UIAlertView alloc]initWithTitle:nil message:@"Ban chua nhap tieu de" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil]show];
         return;
         
@@ -196,7 +232,7 @@
     
     
     NSLog(@"%@",txtTitle.text);
-     NSLog(@"%@",txtContent.text);
+    NSLog(@"%@",txtContent.text);
     
     //check valid to save
     
@@ -212,21 +248,54 @@
     
     
     
+    
+    
     if (self.dataSend) {
         //truong hop sua
         [dicEntity setObject:[_dataSend objectForKey:DTONOTE_id] forKey:DTONOTE_id];
     }else{
         //truong hop them moi
-        
         [dicEntity setObject:[self.dataRoot objectForKey:DTOLEAD_clientLeadId] forKey:DTONOTE_clientObjectId];
         [dicEntity setObject:@"Lead" forKey:DTONOTE_objectType];
-        
-        NSString *strClientContactId = IntToStr(([dtoProcess getClientId]));
         [dicEntity setObject:strClientContactId forKey:DTONOTE_clientNoteId];
+        NSLog(@"clientObjectId= %@", [dicEntity objectForKey:DTONOTE_clientObjectId]);
+        NSLog(@"clientLeadId= %@", [self.dataRoot objectForKey:DTOLEAD_clientLeadId]);
+        
     }
     succsess = [dtoProcess insertToDBWithEntity:dicEntity];
-    
-    
+    if (self.dataSend) {
+        //truong hop sua fiel
+    }
+    else{
+        
+        //truong hop them moi file
+        if(arrayData.count>0 && succsess){
+            
+            NSMutableDictionary *entiFile= [NSMutableDictionary new];
+            
+            NSString *strClientFileId = IntToStr(([dtoProcess getClientId]));
+            
+            for (NSString *path in arrayData) {
+                NSLog(@"%@", path);
+                [entiFile setObject:@"" forKey:DTOATTACHMENT_attachmentId];
+                [entiFile setObject:strClientFileId forKey:DTOATTACHMENT_clientAttachmentId];
+                [entiFile setObject:strClientContactId forKey:DTOATTACHMENT_clientObjectId];
+                [entiFile setObject:path forKey:DTOATTACHMENT_fileName];
+                [entiFile setObject:[DateUtil formatDate:[NSDate new] :@"yyyy-MM-dd HH:mm:ss.S"] forKey:DTOATTACHMENT_updatedDate];
+                [entiFile setObject:[DateUtil formatDate:[NSDate new] :@"yyyy-MM-dd HH:mm:ss.S"] forKey:DTOATTACHMENT_createdDate];
+                [entiFile setObject:@"Note" forKey:DTOATTACHMENT_objectType];
+                @try {
+                    [dtoFileProcess insertToDBWithEntity:entiFile];
+                }
+                @catch (NSException *exception) {
+                    NSLog(@"%@", exception);            }
+                @finally {
+                    NSLog(@"OK");            }
+                
+            }
+        }
+        
+    }
     
     if (succsess) {
         //Thong bao cap nhat thanh cong va thoat
@@ -246,14 +315,16 @@
 -(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
     if(buttonIndex==0){
         NSLog(@"Ban khong tiep tuc");
-         [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismissViewControllerAnimated:YES completion:nil];
         
     }
     else if(buttonIndex==1){
         NSLog(@"Ban co tiep tuc");
-       
+        [arrayData removeAllObjects];
+        [self.tbData reloadData];
         txtContent.text=@"";
         txtTitle.text=@"";
+        
     }
     
 }
@@ -271,21 +342,21 @@
 #pragma mark action photo
 
 -(IBAction) getPhoto:(id) sender {
-	UIImagePickerController * picker = [[UIImagePickerController alloc] init];
-	picker.delegate = self;
-	
-	if((UIButton *) sender == choosePhotoBtn) {
-		picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-	} else {
-		picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-	}
-	
-	[self presentModalViewController:picker animated:YES];
+    UIImagePickerController * picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    
+    if((UIButton *) sender == choosePhotoBtn) {
+        picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    } else {
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+    
+    [self presentModalViewController:picker animated:YES];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-	[picker dismissModalViewControllerAnimated:YES];
-	//imageView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+    [picker dismissModalViewControllerAnimated:YES];
+    //imageView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
     
     //luu file
     
@@ -295,7 +366,7 @@
     NSString *nowStr = [df stringFromDate:now];
     
     
-   NSString *strFileName = [NSString stringWithFormat:@"%@_%@.jpg", @"Note", nowStr];
+    NSString *strFileName = [NSString stringWithFormat:@"%@_%@.jpg", @"Note", nowStr];
     NSData* imageData = UIImageJPEGRepresentation([info objectForKey:@"UIImagePickerControllerOriginalImage"], 1.0);
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -309,7 +380,7 @@
     
     //luu file thanh cong
     [arrayData addObject:strFileName];
-    
+    [self.tbData reloadData];
     
 }
 
@@ -360,15 +431,117 @@
     
     NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
     
-//    
-//    
-//    DetailLeadViewController *viewController = [[DetailLeadViewController alloc]initWithNibName:@"DetailLeadViewController" bundle:nil];
-//    viewController.dataSend = dicData;
-//    [self presentViewController:viewController animated:YES completion:nil];
-    
+}
+
+#pragma mark check
+-(BOOL) checkValidToSave {
+    BOOL isValidate = YES;
+    if ([StringUtil trimString: txtTitle.text].length==0) {
+        [self showTooltip:self.txtTitle withText:@"Bạn chưa nhập Tên khách hàng"];
+        
+        [txtTitle becomeFirstResponder];
+        txtTitle.layer.cornerRadius=1.0f;
+        txtTitle.layer.masksToBounds=YES;
+        txtTitle.layer.borderColor=[[UIColor redColor]CGColor ];
+        txtTitle.layer.borderWidth=1.0f;
+        
+        isValidate = NO;
+        return isValidate;
+    }
+    return isValidate;
 }
 
 
+#pragma mark tooltip
+
+-(void) showTooltip : (UIView*) inputTooltipView withText : (NSString*) inputMessage {
+    
+    [self dismissAllPopTipViews];
+    
+    
+    NSString *contentMessage = inputMessage;
+    //UIView *contentView = inputTooltipView;
+    
+    UIColor *backgroundColor = [UIColor redColor];
+    
+    UIColor *textColor = [UIColor whiteColor];
+    
+    //NSString *title = inputMessage;
+    
+    CMPopTipView *popTipView;
+    
+    
+    popTipView = [[CMPopTipView alloc] initWithMessage:contentMessage];
+    
+    popTipView.delegate = self;
+    
+    /* Some options to try.
+     */
+    //popTipView.disableTapToDismiss = YES;
+    //popTipView.preferredPointDirection = PointDirectionUp;
+    //popTipView.hasGradientBackground = NO;
+    //popTipView.cornerRadius = 2.0;
+    //popTipView.sidePadding = 30.0f;
+    //popTipView.topMargin = 20.0f;
+    //popTipView.pointerSize = 50.0f;
+    //popTipView.hasShadow = NO;
+    
+    
+    //txtTitle.layer.cornerRadius=1.0f;
+    //txtTitle.layer.masksToBounds=YES;
+    //txtTitle.layer.borderColor=[[UIColor redColor]CGColor ];
+    //txtTitle.layer.borderWidth=1.0f;
+    
+    popTipView.preferredPointDirection = PointDirectionDown;
+    popTipView.hasShadow = NO;
+    
+    if (backgroundColor && ![backgroundColor isEqual:[NSNull null]]) {
+        popTipView.backgroundColor = backgroundColor;
+    }
+    if (textColor && ![textColor isEqual:[NSNull null]]) {
+        popTipView.textColor = textColor;
+    }
+    
+    popTipView.animation = arc4random() % 2;
+    popTipView.has3DStyle = (BOOL)(arc4random() % 2);
+    
+    popTipView.dismissTapAnywhere = YES;
+    [popTipView autoDismissAnimated:YES atTimeInterval:3.0];
+    
+    
+    [popTipView presentPointingAtView:inputTooltipView inView:self.viewMainBodyInfo animated:YES];
+    
+    
+    [self.visiblePopTipViews addObject:popTipView];
+    self.currentPopTipViewTarget = inputTooltipView;
+    
+    
+    
+}
+
+- (void)dismissAllPopTipViews
+{
+    while ([self.visiblePopTipViews count] > 0) {
+        CMPopTipView *popTipView = [self.visiblePopTipViews objectAtIndex:0];
+        [popTipView dismissAnimated:YES];
+        [self.visiblePopTipViews removeObjectAtIndex:0];
+    }
+}
+#pragma mark - CMPopTipViewDelegate methods
+
+- (void)popTipViewWasDismissedByUser:(CMPopTipView *)popTipView
+{
+    [self.visiblePopTipViews removeObject:popTipView];
+    self.currentPopTipViewTarget = nil;
+}
+
+
+-(void)tableView:(UITableView *)tableView swipeAccessoryButtonPushedForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"sua item at index = %d", indexPath.row);
+    
+    
+}
 
 
 @end

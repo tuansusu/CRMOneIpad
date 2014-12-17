@@ -112,9 +112,9 @@
 
 //filter with lay danh sach lien he cua 1 cai khach hang dau moi
 -(NSMutableArray*) filterWithClientLeaderId: (NSString*) strValue{
-     NSArray *allFields =[NSArray arrayWithObjects:DTONOTE_id, DTONOTE_content, DTONOTE_title, DTONOTE_noteId, DTONOTE_contentFormated, DTONOTE_createdDate, DTONOTE_updatedDate, nil];
+     NSArray *allFields =[NSArray arrayWithObjects:DTONOTE_id, DTONOTE_content, DTONOTE_title, DTONOTE_noteId, DTONOTE_contentFormated,DTOATTACHMENT_clientObjectId, DTONOTE_createdDate, DTONOTE_updatedDate, nil];
     
-    NSString *query = [NSString stringWithFormat:@"SELECT %@ FROM %@ where clientLeadId = ? order by dtoaccountcontact.updatedDate  desc", [allFields componentsJoinedByString:@"," ], TABLENAME_DTONOTE];
+    NSString *query = [NSString stringWithFormat:@"SELECT %@ FROM %@ where clientObjectId = ? order by updatedDate  desc", [allFields componentsJoinedByString:@"," ], TABLENAME_DTONOTE];
     
     
     return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:[NSArray arrayWithObjects:strValue, nil]];

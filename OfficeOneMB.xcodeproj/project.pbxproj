@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		170862EA1A3F3CB30021705D /* attach_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 170862E91A3F3CB30021705D /* attach_icon.png */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -538,6 +539,7 @@
 		849B6D8F1A18EAD9007E3B06 /* EditBussinessLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849B6D8D1A18EAD9007E3B06 /* EditBussinessLeadViewController.xib */; };
 		849B6D931A18EDAE007E3B06 /* SelectIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B6D911A18EDAE007E3B06 /* SelectIndexViewController.m */; };
 		849B6D941A18EDAE007E3B06 /* SelectIndexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849B6D921A18EDAE007E3B06 /* SelectIndexViewController.xib */; };
+		8ED8C32C1A3F23F60030386C /* MDDirectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8C32B1A3F23F60030386C /* MDDirectionService.m */; };
 		92C68E501519D4F100981728 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C68E0D1519D4F100981728 /* BaseViewController.m */; };
 		92C68E511519D4F100981728 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C68E101519D4F100981728 /* Constants.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		92C68E521519D4F100981728 /* ActionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C68E131519D4F100981728 /* ActionEvent.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -701,6 +703,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		170862E91A3F3CB30021705D /* attach_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attach_icon.png; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* OfficeOneMB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OfficeOneMB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -1525,6 +1528,8 @@
 		849B6D901A18EDAE007E3B06 /* SelectIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectIndexViewController.h; path = CustomView/SelectIndexViewController.h; sourceTree = "<group>"; };
 		849B6D911A18EDAE007E3B06 /* SelectIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectIndexViewController.m; path = CustomView/SelectIndexViewController.m; sourceTree = "<group>"; };
 		849B6D921A18EDAE007E3B06 /* SelectIndexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectIndexViewController.xib; path = CustomView/SelectIndexViewController.xib; sourceTree = "<group>"; };
+		8ED8C32A1A3F23F60030386C /* MDDirectionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDirectionService.h; sourceTree = "<group>"; };
+		8ED8C32B1A3F23F60030386C /* MDDirectionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDirectionService.m; sourceTree = "<group>"; };
 		92C68E0C1519D4F100981728 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		92C68E0D1519D4F100981728 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		92C68E0F1519D4F100981728 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -2917,6 +2922,7 @@
 		76C9647C1A17A15C00029978 /* Bisone */ = {
 			isa = PBXGroup;
 			children = (
+				170862E91A3F3CB30021705D /* attach_icon.png */,
 				76961E501A3B306B008B5CE7 /* avatar.png */,
 				7693EE0E1A35587E004E0178 /* icon_start.png */,
 				76F328991A34B88B00E0F2C4 /* task_done.png */,
@@ -3311,6 +3317,8 @@
 				8497C0121A295A8500A5ED3C /* TestMapViewController.h */,
 				8497C0131A295A8500A5ED3C /* TestMapViewController.m */,
 				8497C0141A295A8500A5ED3C /* TestMapViewController.xib */,
+				8ED8C32A1A3F23F60030386C /* MDDirectionService.h */,
+				8ED8C32B1A3F23F60030386C /* MDDirectionService.m */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -4124,6 +4132,7 @@
 				76EE210E19FF4D7100A80414 /* icon-accept-1.png in Resources */,
 				8434BF021A2F61B200C29815 /* alarm_icon.png in Resources */,
 				8497BFBC1A295A2300A5ED3C /* arrow@2x.png in Resources */,
+				170862EA1A3F3CB30021705D /* attach_icon.png in Resources */,
 				2D5C53931833441800910E1C /* icon_calendar.png in Resources */,
 				8497BFD61A295A2300A5ED3C /* h1@2x.png in Resources */,
 				2DD29EE918769C260066B883 /* menu-ic-ca-1.png in Resources */,
@@ -4249,6 +4258,7 @@
 				2D47E7F81761704200F291D6 /* GCNetworkRequestQueue.m in Sources */,
 				8497C00F1A295A2300A5ED3C /* SDKDemoMasterViewController.m in Sources */,
 				76C964451A17731900029978 /* XAxisLabel.m in Sources */,
+				8ED8C32C1A3F23F60030386C /* MDDirectionService.m in Sources */,
 				8497C0071A295A2300A5ED3C /* PanoramaViewController.m in Sources */,
 				2D47E7F91761704200F291D6 /* GCNetworkDownloadRequest.m in Sources */,
 				2D47E7FA1761704200F291D6 /* GCNetworkFormRequest.m in Sources */,

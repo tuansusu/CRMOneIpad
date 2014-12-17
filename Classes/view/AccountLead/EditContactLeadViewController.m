@@ -19,7 +19,9 @@
 
 #define TAG_SELECT_DATE_CREATE 1 //NGAY CAP CHUNG MINH THU
 #define TAG_SELECT_DATE_BIRTHDAY 2 //NGAY SINH
-
+#define NUMBER_ONLY @"1234567890"//SO NHAP
+#define CHARACTER_MAX 15 //MAX CUA SDT
+#define CHARACTER_MIN 9//MIN CUA SDT
 @interface EditContactLeadViewController ()
 {
     int smgSelect ; //option layout
@@ -93,8 +95,8 @@
     self.barLabel.text = [NSString stringWithFormat:@"%@ %@, %@",VOFFICE,[defaults objectForKey:@"versionSoftware"],COPY_OF_SOFTWARE];
     
     dtoProcess = [DTOCONTACTProcess new];
-//    arrayData  = [NSArray new];
-//    arrayData = [dtoLeadProcess filter];
+    //    arrayData  = [NSArray new];
+    //    arrayData = [dtoLeadProcess filter];
     
     dataId = 0;
     if (self.dataSend) {
@@ -227,12 +229,12 @@
     switch (SELECTED_DATE_TAG) {
         case TAG_SELECT_DATE_BIRTHDAY:
             self.txtDateOfBirth.text = [NSString stringWithFormat:@"%@",
-                                [df stringFromDate:date]];
+                                        [df stringFromDate:date]];
             dateBirthday = date;
             break;
         case TAG_SELECT_DATE_CREATE:
             self.txtDateCreate.text = [NSString stringWithFormat:@"%@",
-                                 [df stringFromDate:date]];
+                                       [df stringFromDate:date]];
             dateCreate = date;
             break;
             
@@ -248,7 +250,9 @@
 
 -(void) actionSave:(id)sender{
     //check valid to save
-    
+    if (![self checkValidToSave]) {
+        return;
+    }
     //neu qua duoc check thi tien hanh luu du lieu
     NSMutableDictionary *dicEntity = [NSMutableDictionary new];
     
@@ -293,7 +297,7 @@
         [dicSubEntity setObject:[self.dataRoot objectForKey:DTOLEAD_clientLeadId] forKey:DTOACCOUNTCONTACT_clientLeadId];
         [dicSubEntity setObject:@"1" forKey:DTOACCOUNTCONTACT_isActive];
         
-       succsess = [dtoAccContactProcess insertToDBWithEntity:dicSubEntity];
+        succsess = [dtoAccContactProcess insertToDBWithEntity:dicSubEntity];
         
     }
     
@@ -362,7 +366,9 @@
 -(void) hiddenKeyBoard {
     for (UIView *viewTemp in _bodyMainView.subviews) {
         for (UIView *subViewTemp in viewTemp.subviews) {
-            [(UITextField *)subViewTemp resignFirstResponder];
+            if([subViewTemp isKindOfClass:[UITextField class]]){
+                [(UITextField *)subViewTemp resignFirstResponder];
+            }
         }
     }
 }
@@ -470,7 +476,25 @@
 }// may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    return  YES;
+    NSLog(@"text thay doi");
+    if(textField==self.txtPhone){
+        NSLog(@"text phone thay doi");
+        NSNumberFormatter *nf=[[NSNumberFormatter alloc]init];
+        [nf setNumberStyle:NSNumberFormatterNoStyle];
+        NSString *newString =[NSString stringWithFormat:@"%@%@",textField.text,string];
+        NSNumber *number =[nf numberFromString:newString];
+        if(number){
+            return YES;
+        }
+        else{
+            return  NO;
+        }
+    }
+    else{
+        NSLog(@"khong phai text phone");
+    return YES;
+    }
+    
 }// return NO to not change text
 
 - (BOOL)textFieldShouldClear:(UITextField *)textField{
@@ -484,6 +508,8 @@
 
 /*chon anh dai dien*/
 - (IBAction)actionChoicePhoto:(id)sender {
+    
+    [self hiddenKeyBoard];
     
     [self viewWhenAddSubView];
     SelectPhotoViewController *detail = [[SelectPhotoViewController alloc] initWithNibName:@"SelectPhotoViewController" bundle:nil];
@@ -546,7 +572,7 @@
     }
 }
 
-#pragma mark delegate photo 
+#pragma mark delegate photo
 -(void) selectPhoto:(NSString *)fileName{
     [self viewWhenRemoveSubView];
     [self loadimage: fileName];
@@ -565,6 +591,148 @@
 }
 
 
+#pragma mark check
+-(BOOL) checkValidToSave {
+    BOOL isValidate = YES;
+    if ([StringUtil trimString: self.txtName.text].length==0) {
+        [self showTooltip:self.txtName withText:@"Bạn chưa nhập tên liên hệ"];
+        
+        [self.txtName  becomeFirstResponder];
+        [self setBorder:self.txtName];
+        isValidate = NO;
+        return isValidate;
+    }
+    if([StringUtil trimString:self.txtPosition.text].length==0){
+        
+        [self showTooltip:self.txtPosition  withText:@"Bạn chưa nhập chức danh"];
+        [self.txtPosition becomeFirstResponder];
+        [self setBorder:self.txtPosition];
+        isValidate=NO;
+        return isValidate;
+    }
+    if([StringUtil trimString:self.txtPhone.text].length==0){
+        
+        [self showTooltip:self.txtPhone  withText:@"Bạn chưa nhập số điện thoại"];
+        [self.txtPhone becomeFirstResponder];
+        [self setBorder:self.txtPhone];
+        isValidate=NO;
+        return isValidate;
+    }
+    if([StringUtil trimString:self.txtEmail.text].length==0){
+        
+        [self showTooltip:self.txtEmail withText:@"Bạn chưa nhập Email"];
+        [self.txtEmail becomeFirstResponder];
+        
+        [self setBorder:self.txtEmail];
+        
+        isValidate=NO;
+        return isValidate;
+    }
+    
+    if([self validateEmail:self.txtEmail.text]==NO)
+    {
+        [self showTooltip:self.txtEmail withText:@"Email không đúng"];
+        [self.txtEmail becomeFirstResponder];
+        [self setBorder:self.txtEmail];
+        isValidate=NO;
+        return isValidate;
+    }
+    
+    return isValidate;
+}
 
+
+#pragma mark tooltip
+
+-(void) showTooltip : (UIView*) inputTooltipView withText : (NSString*) inputMessage {
+    
+    [self dismissAllPopTipViews];
+    
+    
+    NSString *contentMessage = inputMessage;
+    //UIView *contentView = inputTooltipView;
+    
+    UIColor *backgroundColor = [UIColor redColor];
+    
+    UIColor *textColor = [UIColor whiteColor];
+    
+    //NSString *title = inputMessage;
+    
+    CMPopTipView *popTipView;
+    
+    
+    popTipView = [[CMPopTipView alloc] initWithMessage:contentMessage];
+    
+    popTipView.delegate = self;
+    
+    /* Some options to try.
+     */
+    //popTipView.disableTapToDismiss = YES;
+    //popTipView.preferredPointDirection = PointDirectionUp;
+    //popTipView.hasGradientBackground = NO;
+    //popTipView.cornerRadius = 2.0;
+    //popTipView.sidePadding = 30.0f;
+    //popTipView.topMargin = 20.0f;
+    //popTipView.pointerSize = 50.0f;
+    //popTipView.hasShadow = NO;
+    
+    popTipView.preferredPointDirection = PointDirectionDown;
+    popTipView.hasShadow = NO;
+    
+    if (backgroundColor && ![backgroundColor isEqual:[NSNull null]]) {
+        popTipView.backgroundColor = backgroundColor;
+    }
+    if (textColor && ![textColor isEqual:[NSNull null]]) {
+        popTipView.textColor = textColor;
+    }
+    
+    popTipView.animation = arc4random() % 2;
+    popTipView.has3DStyle = (BOOL)(arc4random() % 2);
+    
+    popTipView.dismissTapAnywhere = YES;
+    [popTipView autoDismissAnimated:YES atTimeInterval:3.0];
+    
+    
+    [popTipView presentPointingAtView:inputTooltipView inView:self.viewMainBodyInfo animated:YES];
+    
+    
+    [self.visiblePopTipViews addObject:popTipView];
+    self.currentPopTipViewTarget = inputTooltipView;
+    
+    
+    
+}
+
+- (void)dismissAllPopTipViews
+{
+    while ([self.visiblePopTipViews count] > 0) {
+        CMPopTipView *popTipView = [self.visiblePopTipViews objectAtIndex:0];
+        [popTipView dismissAnimated:YES];
+        [self.visiblePopTipViews removeObjectAtIndex:0];
+    }
+}
+#pragma mark - CMPopTipViewDelegate methods
+
+- (void)popTipViewWasDismissedByUser:(CMPopTipView *)popTipView
+{
+    [self.visiblePopTipViews removeObject:popTipView];
+    self.currentPopTipViewTarget = nil;
+}
+#pragma mark -check email
+-(BOOL) validateEmail:(NSString *)email{
+    
+    NSString *emailRegex=@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9]+\\.[A-Za-z]{2,6}";
+    NSPredicate *emailtext=[NSPredicate predicateWithFormat:@"SELF MATCHES %@",emailRegex];
+    return [emailtext evaluateWithObject:email];
+}
+#pragma mark-set border text
+-(void)setBorder:(UITextField *)txtView{
+    
+    txtView .layer.cornerRadius=1.0f;
+    txtView.layer.masksToBounds=YES;
+    txtView.layer.borderColor=[[UIColor redColor]CGColor ];
+    txtView.layer.borderWidth=1.0f;
+    [txtView becomeFirstResponder];
+}
 
 @end

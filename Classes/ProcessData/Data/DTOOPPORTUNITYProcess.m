@@ -58,7 +58,7 @@ DTOOPPORTUNITY_updatedDate, //VARCHAR
     
     NSArray *allFields =[NSArray arrayWithObjects:DTOOPPORTUNITY_id, DTOOPPORTUNITY_clientOpportunityId, DTOCONTACT_fullName, DTOOPPORTUNITY_code, DTOOPPORTUNITY_name, DTOOPPORTUNITY_endDate, DTOOPPORTUNITY_startDate,@"StatusName", DTOOPPORTUNITY_status,@"Account", nil];
     
-    NSMutableString *query = [[NSMutableString alloc] initWithString:@"SELECT op.id,clientOpportunityId,fullName,op.code,op.name,endDate,startDate \
+    NSMutableString *query = [[NSMutableString alloc] initWithString:@"SELECT op.id,op.clientOpportunityId,fullName,op.code,op.name,endDate,startDate \
                         ,catStatus.name as StatusName \
                         ,op.status \
                         ,case \
@@ -112,7 +112,7 @@ DTOOPPORTUNITY_updatedDate, //VARCHAR
     NSArray *allFields =[NSArray arrayWithObjects:DTOOPPORTUNITY_clientOpportunityId, DTOCONTACT_fullName, DTOOPPORTUNITY_code, DTOOPPORTUNITY_name, DTOOPPORTUNITY_endDate, DTOOPPORTUNITY_startDate
                          ,@"Level",@"NextTask",@"Status",DTOOPPORTUNITY_successPercent,@"Account", nil];
     
-    NSString *query = [NSString stringWithFormat: @"Select clientOpportunityId,fullName,op.code,op.name,endDate,startDate,catLevel.name as Level,catTask.name as NextTask,catStatus.name as Status,successPercent,ac.name as Account \
+    NSString *query = [NSString stringWithFormat: @"Select op.clientOpportunityId,fullName,op.code,op.name,endDate,startDate,catLevel.name as Level,catTask.name as NextTask,catStatus.name as Status,successPercent,ac.name as Account \
                        from  dtoopportunity op \
                        left join dtoopportunitycontact opc on op.clientOpportunityId=opc.clientOpportunityContactId \
                        left join dtocontact con on opc.clientOpportunityContactId = con.clientContactId \

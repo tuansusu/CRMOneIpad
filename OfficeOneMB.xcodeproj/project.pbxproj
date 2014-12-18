@@ -184,6 +184,8 @@
 		762048771A0D246600AAA917 /* CompetitorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 762048751A0D246600AAA917 /* CompetitorsViewController.xib */; };
 		762133AE1A3DF7420049771C /* TestEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 762133AC1A3DF7420049771C /* TestEditViewController.m */; };
 		762133AF1A3DF7420049771C /* TestEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 762133AD1A3DF7420049771C /* TestEditViewController.xib */; };
+		7623F0521A41C98400F99DA0 /* EditContactOpportunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7623F0501A41C98400F99DA0 /* EditContactOpportunityViewController.m */; };
+		7623F0531A41C98400F99DA0 /* EditContactOpportunityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7623F0511A41C98400F99DA0 /* EditContactOpportunityViewController.xib */; };
 		762DCF171A0336FB00C7E416 /* DTOCONTACTProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 762DCF161A0336FB00C7E416 /* DTOCONTACTProcess.m */; };
 		762DCF1A1A033C7900C7E416 /* DataField.m in Sources */ = {isa = PBXBuildFile; fileRef = 762DCF191A033C7900C7E416 /* DataField.m */; };
 		763308051A048068000E190B /* NZLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 763308041A048068000E190B /* NZLabel.m */; };
@@ -268,6 +270,7 @@
 		769C1A1619FFFECA00F015A5 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 769C1A1519FFFECA00F015A5 /* UIAlertView+Blocks.m */; };
 		769C1A1B1A00027900F015A5 /* Network.m in Sources */ = {isa = PBXBuildFile; fileRef = 769C1A181A00027900F015A5 /* Network.m */; };
 		769C1A1C1A00027900F015A5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 769C1A1A1A00027900F015A5 /* Reachability.m */; };
+		769CB8141A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 769CB8131A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.m */; };
 		76C962941A16DB8200029978 /* DTOACCOUNTLEADProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C962931A16DB8200029978 /* DTOACCOUNTLEADProcess.m */; };
 		76C9629C1A16DBA500029978 /* AccountLeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C962971A16DBA500029978 /* AccountLeadCell.m */; };
 		76C9629D1A16DBA500029978 /* AccountLeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C962981A16DBA500029978 /* AccountLeadCell.xib */; };
@@ -963,6 +966,9 @@
 		762133AB1A3DF7420049771C /* TestEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestEditViewController.h; sourceTree = "<group>"; };
 		762133AC1A3DF7420049771C /* TestEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestEditViewController.m; sourceTree = "<group>"; };
 		762133AD1A3DF7420049771C /* TestEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestEditViewController.xib; sourceTree = "<group>"; };
+		7623F04F1A41C98400F99DA0 /* EditContactOpportunityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditContactOpportunityViewController.h; sourceTree = "<group>"; };
+		7623F0501A41C98400F99DA0 /* EditContactOpportunityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditContactOpportunityViewController.m; sourceTree = "<group>"; };
+		7623F0511A41C98400F99DA0 /* EditContactOpportunityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditContactOpportunityViewController.xib; sourceTree = "<group>"; };
 		762DCF151A0336FB00C7E416 /* DTOCONTACTProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOCONTACTProcess.h; sourceTree = "<group>"; };
 		762DCF161A0336FB00C7E416 /* DTOCONTACTProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOCONTACTProcess.m; sourceTree = "<group>"; };
 		762DCF181A033C7900C7E416 /* DataField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataField.h; path = ProcessData/Data/DataField.h; sourceTree = "<group>"; };
@@ -1093,6 +1099,8 @@
 		769C1A181A00027900F015A5 /* Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Network.m; sourceTree = "<group>"; };
 		769C1A191A00027900F015A5 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		769C1A1A1A00027900F015A5 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		769CB8121A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOOPPORTUNITYCONTACTProcess.h; sourceTree = "<group>"; };
+		769CB8131A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOOPPORTUNITYCONTACTProcess.m; sourceTree = "<group>"; };
 		76C962921A16DB8200029978 /* DTOACCOUNTLEADProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOACCOUNTLEADProcess.h; sourceTree = "<group>"; };
 		76C962931A16DB8200029978 /* DTOACCOUNTLEADProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOACCOUNTLEADProcess.m; sourceTree = "<group>"; };
 		76C962961A16DBA500029978 /* AccountLeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountLeadCell.h; sourceTree = "<group>"; };
@@ -2591,6 +2599,8 @@
 				769C0A251A35E4220008CC4B /* DTONOTEProcess.m */,
 				76961E4D1A3B2D69008B5CE7 /* DTOATTACHMENTProcess.h */,
 				76961E4E1A3B2D69008B5CE7 /* DTOATTACHMENTProcess.m */,
+				769CB8121A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.h */,
+				769CB8131A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.m */,
 			);
 			name = Data;
 			path = ProcessData/Data;
@@ -3001,6 +3011,9 @@
 				76D29B191A134C58004B9CF6 /* ViewController.h */,
 				76D29B1A1A134C58004B9CF6 /* ViewController.m */,
 				76D29B1B1A134C58004B9CF6 /* ViewController.xib */,
+				7623F04F1A41C98400F99DA0 /* EditContactOpportunityViewController.h */,
+				7623F0501A41C98400F99DA0 /* EditContactOpportunityViewController.m */,
+				7623F0511A41C98400F99DA0 /* EditContactOpportunityViewController.xib */,
 			);
 			path = Opportunity;
 			sourceTree = "<group>";
@@ -4039,6 +4052,7 @@
 				76C9629F1A16DBA500029978 /* ListAccountLeadViewController.xib in Resources */,
 				2DE2D2401829060700034877 /* spec.png in Resources */,
 				84945FFD1A2B383E002EF8BD /* flag_disable.png in Resources */,
+				7623F0531A41C98400F99DA0 /* EditContactOpportunityViewController.xib in Resources */,
 				2DE2D2431829060700034877 /* tab-data-btn-2.png in Resources */,
 				7633081C1A04941E000E190B /* VTDateField.xib in Resources */,
 				8434BEFE1A2F485700C29815 /* DetailContactLeadViewController.xib in Resources */,
@@ -4187,6 +4201,7 @@
 				762048761A0D246600AAA917 /* CompetitorsViewController.m in Sources */,
 				92C68E691519D4F100981728 /* ModelEvent.m in Sources */,
 				76C9643E1A17731900029978 /* MIM_MathClass.m in Sources */,
+				769CB8141A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.m in Sources */,
 				92C68E6A1519D4F100981728 /* RootViewController.m in Sources */,
 				76977D5F1A02A72E0029F297 /* ListEmployeeAccountViewController.m in Sources */,
 				DDBC46E5171540A200CCFB94 /* HTTPClient.m in Sources */,
@@ -4296,6 +4311,7 @@
 				2D3643911859996700190EE7 /* AFJSONUtilities.m in Sources */,
 				2D0E2EE01798053C0081D44A /* StringUtil.m in Sources */,
 				2D0E2EE11798053C0081D44A /* MyCalendar.m in Sources */,
+				7623F0521A41C98400F99DA0 /* EditContactOpportunityViewController.m in Sources */,
 				76601A30194BE90F001D4C01 /* ReaderMainToolbar.m in Sources */,
 				2DA084F9179C1B9F00EB986D /* AUISelectiveBordersLayer.m in Sources */,
 				2DA084FA179C1B9F00EB986D /* UIView+AUISelectiveBorder.m in Sources */,

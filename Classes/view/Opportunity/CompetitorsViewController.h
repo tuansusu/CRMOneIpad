@@ -11,7 +11,7 @@
 #import "ProposeProductCell.h"
 #import "ClueContactCell.h"
 #import "SelectIndexViewController.h"
-#import "EditContactLeadViewController.h"
+#import "EditContactOpportunityViewController.h"
 
 
 enum TypeActionEvent{

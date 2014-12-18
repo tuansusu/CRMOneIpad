@@ -228,7 +228,7 @@
     switch (index) {
         case SELECT_INDEX_ADD_CONTACT:
         {
-            EditContactLeadViewController *viewController = [[EditContactLeadViewController alloc]initWithNibName:@"EditContactLeadViewController" bundle:nil];
+            EditContactOpportunityViewController *viewController = [[EditContactOpportunityViewController alloc]initWithNibName:@"EditContactLeadViewController" bundle:nil];
             viewController.dataRoot = opportunity;
             [self presentViewController:viewController animated:YES completion:nil];
         }

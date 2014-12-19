@@ -34,6 +34,14 @@
 #define SELECT_TEXT_ADD_TASK @"NHIỆM VỤ"
 #define SELECT_TEXT_ADD_OPPORTUNITY @"CƠ HỘI"
 
+
+#define DELETE_CONTAC 11
+#define DELETE_NOTE 22
+#define DELETE_CALENDAR 33
+#define DELETE_TASK 44
+#define DELETE_COHOI 55
+#define DELETE_LEAD 66
+
 static NSString* const TaskCalendarNormalCellId   = @"TaskCalendarCellId";
 static NSString* const TaskCalendarTimelineCellId = @"TaskCalTLineCellId";
 static NSString* const TaskActionCellId           = @"TaskActionCellId";
@@ -67,6 +75,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     NSString *deleteNoteId;
     //delete file
     NSString *deleteFileClienWithClientNoteID;
+    NSString *deleteItem;
     
     //controll
     
@@ -118,7 +127,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 -(void) viewWillAppear:(BOOL)animated{
     //cu quay lai la no load
     NSLog(@"quay lai form");
-    [self viewDidLoad];
+    // [self viewDidLoad];
 }
 
 //khoi tao gia tri mac dinh cua form
@@ -293,8 +302,6 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             //load data la ghi chu
             
             NSLog(@"DTOLEAD_ClientLeadID:%@", [dicData objectForKey:DTOLEAD_clientLeadId]);
-            //arrayData =[dtoNoteProcess filter];
-            //arrayData = [dtoNoteProcess filterWithClientLeaderId:[dicData objectForKey:DTOLEAD_clientLeadId]];
             arrayData = [dtoNoteProcess filterWithClientLeaderId:[dicData objectForKey:DTOLEAD_clientLeadId]];
             NSLog(@"total: %i", arrayData.count);
             
@@ -342,11 +349,6 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     self.viewHeaderExpandInfo.backgroundColor = BACKGROUND_NORMAL_COLOR1;
     
-    
-    
-    //    self.viewHeaderExpandInfo.layer.borderWidth = BORDER_WITH;
-    //    self.viewHeaderExpandInfo.layer.borderColor = [BORDER_COLOR CGColor];
-    
     [self.tbData setBorderWithOption:smgSelect];
     [self.viewBodyExpandInfo setBorderWithOption:smgSelect];
     
@@ -354,7 +356,6 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
     self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
-    //[self.btnSearch setStyleNormalWithOption:smgSelect];
     self.footerView.backgroundColor = TOOLBAR_VIEW_COLOR;
     self.barLabel.textColor = TEXT_TOOLBAR_COLOR1;
     
@@ -455,9 +456,6 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
 
 - (IBAction)actionExpandInfo:(UIButton *)sender {
-    //    self.viewBodyExpandInfo.hidden = NO;
-    //    self.tbData.hidden  = YES;
-    //    [self displayNormalButtonState:sender];
     [self loadDataWithTypeAction:typeLeaderView_Contact];
     [self displayNormalButtonState:sender];
     
@@ -488,27 +486,13 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     for (UIView *viewTemp in self.viewHeaderExpandInfo.subviews) {
         if ([viewTemp isKindOfClass:[UIButton class]]) {
-            //            [((UIButton*) viewTemp) setBackgroundColor:backgroundButtonNormal];
-            //            [((UIButton*) viewTemp) setTitleColor:textColorButtonNormal forState:UIControlStateNormal];
-            
-            
             [((UIButton*) viewTemp) setBackgroundColor:[UIColor whiteColor]];
             [((UIButton*) viewTemp) setTitleColor:textColorButtonNormal forState:UIControlStateNormal];
-            
-            //[((UIButton*) viewTemp) setBorderWithOption:1 withBorderFlag:AUISelectiveBordersFlagBottom];
-            
             [((UIButton*) viewTemp) setSelectiveBorderWithColor:backgrondButtonSelected withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
         }
     }
-    
-    //    [btnSelect setBackgroundColor:backgrondButtonSelected];
-    //[btnSelect setTitleColor:textColorButtonSelected forState:UIControlStateNormal];
-    
     [btnSelect setBackgroundColor:[UIColor whiteColor]];
     [btnSelect setTitleColor:textColorButtonNormal forState:UIControlStateNormal];
-    
-    //[btnSelect setBorderWithOption:1 withBorderFlag:AUISelectiveBordersFlagBottom];
-    
     [btnSelect setSelectiveBorderWithColor:backgrondButtonSelected withBorderWith:5.0f withBorderFlag:AUISelectiveBordersFlagBottom];
 }
 
@@ -632,6 +616,14 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     
     switch (typeActionEvent) {
+        case typeLeaderView_Task:{
+            
+            EditTaskLeadViewController *viewNoteController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
+            viewNoteController.dataSend = dicTempData;
+            [self presentViewController:viewNoteController animated:YES completion:nil];
+            
+        }
+            break;
         case typeLeaderView_Opportunity:
             break;
         case typeLeaderView_Note:{
@@ -642,15 +634,17 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             break;
         case typeLeaderView_Contact:
         {
-            //lay chi tiet doi tuong nhet vao datasend
-            DetailContactLeadViewController *viewController = [[DetailContactLeadViewController alloc]initWithNibName:@"DetailContactLeadViewController" bundle:nil];
-            viewController.dataSend = dicTempData;
-            [self presentViewController:viewController animated:YES completion:nil];
+            EditContactLeadViewController *viewNoteController = [[EditContactLeadViewController alloc]initWithNibName:@"EditContactLeadViewController" bundle:nil];
+            viewNoteController.dataSend = dicTempData;
+            [self presentViewController:viewNoteController animated:YES completion:nil];
+            
         }
             break;
-        case typeLeaderView_Calendar:
-            break;
-        case typeLeaderView_Task:
+        case typeLeaderView_Calendar:{
+            EditCalendarLeadViewController *viewNoteController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
+            viewNoteController.dataSend = dicTempData;
+            [self presentViewController:viewNoteController animated:YES completion:nil];
+        }
             break;
         default:
             break;
@@ -713,39 +707,39 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         switch (typeActionEvent) {
             case typeLeaderView_Task:{
                 //deleteLeadId = [dicData objectForKey:DTOLEAD_id];
-                UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xác nhận đồng ý xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
-                mylert.tag = TAG_DELETE_ITEM;
+                UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Bạn có muốn xoá công việc?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
+                mylert.tag =DELETE_TASK;
                 [mylert show];
             }
                 break;
             case typeLeaderView_Opportunity:{
-                //deleteLeadId = [dicData objectForKey:DTOLEAD_id];
-                UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xác nhận đồng ý xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
-                mylert.tag = TAG_DELETE_ITEM;
+                deleteItem = [dicData objectForKey:DTOOPPORTUNITY_id];
+                UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Bạn có muốn xoá cơ hội?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
+                mylert.tag = DELETE_COHOI;
                 [mylert show];
             }
                 break;
             case typeLeaderView_Note:{
-                //deleteLeadId = [dicData objectForKey:DTOLEAD_id];
+                deleteItem = [dicData objectForKey:DTONOTE_id];
                 deleteNoteId =[dicDataItem objectForKey:DTONOTE_id];
                 deleteFileClienWithClientNoteID=[dicDataItem objectForKey:DTONOTE_clientNoteId];
-                UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xác nhận xoá ghi chú?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
-                mylert.tag = 20;
+                UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Bạn có muốn xoá ghi chú?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
+                mylert.tag = DELETE_NOTE;
                 [mylert show];
             }
                 break;
             case typeLeaderView_Contact:
             {
-                //deleteLeadId = [dicData objectForKey:DTOLEAD_id];
-                UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xác nhận đồng ý xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
-                mylert.tag = TAG_DELETE_ITEM;
+                deleteItem = [dicData objectForKey:DTOCONTACT_id];
+                UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Bạn có muốn xoá liên hệ?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
+                mylert.tag = DELETE_CONTAC;
                 [mylert show];
             }
                 break;
             case typeLeaderView_Calendar:{
-                //deleteLeadId = [dicData objectForKey:DTOLEAD_id];
-                UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xác nhận đồng ý xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
-                mylert.tag = TAG_DELETE_ITEM;
+                // deleteItem = [dicData objectForKey:d];
+                UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Bạn có muốn xoá lịch?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
+                mylert.tag = DELETE_CALENDAR;
                 [mylert show];
             }
                 break;
@@ -792,17 +786,16 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     NSDictionary *dicTempData = [arrayData objectAtIndex:indexPath.row];
     switch (typeActionEvent) {
         case typeLeaderView_Task:{
-            //deleteLeadId = [dicData objectForKey:DTOLEAD_id];
-            UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xác nhận đồng ý xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
-            mylert.tag = TAG_DELETE_ITEM;
-            [mylert show];
+            EditTaskLeadViewController *viewNoteController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
+            viewNoteController.dataSend = dicTempData;
+            [self presentViewController:viewNoteController animated:YES completion:nil];
+            
         }
             break;
         case typeLeaderView_Opportunity:{
-            //deleteLeadId = [dicData objectForKey:DTOLEAD_id];
-            UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xác nhận đồng ý xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
-            mylert.tag = TAG_DELETE_ITEM;
-            [mylert show];
+            EditCalendarLeadViewController *viewNoteController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
+            viewNoteController.dataSend = dicTempData;
+            [self presentViewController:viewNoteController animated:YES completion:nil];
         }
             break;
         case typeLeaderView_Note:{
@@ -813,17 +806,17 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             break;
         case typeLeaderView_Contact:
         {
-            //deleteLeadId = [dicData objectForKey:DTOLEAD_id];
-            UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xác nhận đồng ý xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
-            mylert.tag = TAG_DELETE_ITEM;
-            [mylert show];
+            EditContactLeadViewController *viewNoteController = [[EditContactLeadViewController alloc]initWithNibName:@"EditContactLeadViewController" bundle:nil];
+            viewNoteController.dataSend = dicTempData;
+            [self presentViewController:viewNoteController animated:YES completion:nil];
+            
         }
             break;
         case typeLeaderView_Calendar:{
-            //deleteLeadId = [dicData objectForKey:DTOLEAD_id];
-            UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xác nhận đồng ý xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
-            mylert.tag = TAG_DELETE_ITEM;
-            [mylert show];
+            EditCalendarLeadViewController *viewNoteController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
+            viewNoteController.dataSend = dicTempData;
+            [self presentViewController:viewNoteController animated:YES completion:nil];
+            
         }
             break;
         default:
@@ -848,52 +841,79 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 #pragma -mark xử lý thông báo
 -(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
     
-    if (alertView.tag==20) {
-        NSLog(@"chọn xoá ghi chú");
+    if (alertView.tag==DELETE_NOTE) {
         if(buttonIndex==0){
-            NSLog(@"Xoa file dinh kem");
-            NSLog(@"noteID:%@",deleteFileClienWithClientNoteID);
-            NSLog(@"ID:%@",deleteNoteId);
-            @try {
-                BOOL resultNote  =  [dtoNoteProcess deleteEntity:deleteNoteId];
-                BOOL resultFile = [dtoAttachProcess deleteEntity:deleteFileClienWithClientNoteID];
-                if (resultNote) {
-                    NSLog(@"Xoa ghi chu thanh cong");
-                }
-                if (resultFile) {
-                    NSLog(@"Xo file thanh cong");
-                }
-            }
-            @catch (NSException *exception) {
-                NSLog(@"%@",exception);
-            }
-            @finally {
-                
-            }
+            NSLog(@"chọn xoá ghi chú");
             
-            // [self.tbData reloadData];
-            NSLog(@"delelete thanh cong");
         }
         else if(buttonIndex==1){
             
             NSLog(@"Khong  xoa file");
+            [alertView dismissWithClickedButtonIndex:nil animated:YES];
         }
-    }else{
+    }else if(alertView.tag==DELETE_TASK){
         if(buttonIndex==0){
-            //            NSLog(@"Ban khong tiep tuc");
-            //            [self dismissViewControllerAnimated:YES completion:nil];
-            
+            NSLog(@"Delete task");
         }
         else if(buttonIndex==1){
-            //            NSLog(@"Ban co tiep tuc");
-            //            [arrayData removeAllObjects];
-            //            [self.tbData reloadData];
-            //            txtContent.text=@"";
-            //            txtTitle.text=@"";
-            
+            NSLog(@"No del task");
+        }
+    }else if(alertView.tag==DELETE_LEAD){
+    
+        if(buttonIndex==0){
+            NSLog(@"Xoa khach hang dau moi");
+        }
+        else{
+            NSLog(@"Khong xoa khach hang dau moi");
+        }
+    }else if(alertView.tag==DELETE_CONTAC){
+        if(buttonIndex==0){
+            NSLog(@"Xoa lien he");
+        }
+        else{
+            NSLog(@"Khong xoa lien he");
+        }
+    }else if(alertView.tag==DELETE_COHOI){
+        if(buttonIndex==0){
+            NSLog(@"xoa co hoi");
+        }
+        else{
+            NSLog(@"Khong xoa co hoi");
+        }
+    }else if(alertView.tag==DELETE_CALENDAR){
+        if(buttonIndex==0){
+            NSLog(@"xoa lich");
+        }
+        else{
+        NSLog(@"khong xoa lich");
+            [alertView dismissWithClickedButtonIndex:nil animated:YES];
         }
     }
     
 }
 
+- (IBAction)actionEdit:(id)sender {
+    
+    
+    if([[self.dataSend objectForKey:DTOLEAD_leadType] isEqualToString:@"0"]){
+        
+        EditAccountLeadViewController *viewController = [[EditAccountLeadViewController alloc]initWithNibName:@"EditAccountLeadViewController" bundle:nil];
+        viewController.dataSend=self.dataSend;
+        [self presentViewController:viewController animated:YES completion:nil];
+    }
+    else{
+        EditBussinessLeadViewController *viewController = [[EditBussinessLeadViewController alloc]initWithNibName:@"EditBussinessLeadViewController" bundle:nil];
+        viewController.dataSend=self.dataSend;
+        [self presentViewController:viewController animated:YES completion:nil];
+    }
+    
+}
+
+- (IBAction)actionDel:(id)sender {
+    deleteItem=[self.dataSend objectForKey:DTOLEAD_id];
+    UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Bạn có muốn xoá khách hàng?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
+    mylert.tag = DELETE_LEAD;
+    [mylert show];
+    
+}
 @end

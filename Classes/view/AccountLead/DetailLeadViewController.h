@@ -22,6 +22,8 @@
 
 #import "NoteLeadCell.h"
 #import "EditNoteLeadViewController.h"
+#import "EditAccountLeadViewController.h"
+#import "EditBussinessLeadViewController.h"
 
 enum TypeLeaderView{
     typeLeaderView_ExpandInfo, //Thông tin mở rộng
@@ -140,5 +142,13 @@ enum TypeLeaderView{
 @property (weak, nonatomic) IBOutlet UILabel *lbBussinessAddress;
 
 ////////KHAI BAO BIẾN THÔNG TIN KHÁCH HÀNG DOANH NGHIEP///////
+
+@property (weak, nonatomic) IBOutlet UIButton *actionEdit;
+
+- (IBAction)actionEdit:(id)sender;
+
+- (IBAction)actionDel:(id)sender;
+
+
 
 @end

@@ -146,7 +146,6 @@
 
 - (void) viewDidAppear:(BOOL)animated
 {
-    [self logIn];
 }
 
 -(void) resetUserDefault
@@ -185,8 +184,8 @@
 //            [AlertViewUtils showAlertViewWithTitle:KEY_NOTIFICATION_TITLE message:VLD_01_005 delegate:self withTag:0 withTitleButtonCancel:nil withTitleButtonOther:KEY_NOTIFICATION_OTHER];
 //        } else  {
             //[ListMeetingProcess deleteAllObject];
-        NSString *username = @"crm_admin";//[[StringUtil trimString:self.tf_username.text] lowercaseString];
-        NSString *password = @"123456a@";//[StringUtil trimString:self.tf_password.text];
+        NSString *username = [[StringUtil trimString:self.tf_username.text] lowercaseString];
+        NSString *password = [StringUtil trimString:self.tf_password.text];
             /**
              *  Tam thoi kiem tra login success/fail bang cach nay
              */

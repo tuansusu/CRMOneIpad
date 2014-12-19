@@ -539,6 +539,19 @@
 		849B6D8F1A18EAD9007E3B06 /* EditBussinessLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849B6D8D1A18EAD9007E3B06 /* EditBussinessLeadViewController.xib */; };
 		849B6D931A18EDAE007E3B06 /* SelectIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B6D911A18EDAE007E3B06 /* SelectIndexViewController.m */; };
 		849B6D941A18EDAE007E3B06 /* SelectIndexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849B6D921A18EDAE007E3B06 /* SelectIndexViewController.xib */; };
+		8E0B07BC1A446B4100CF7A78 /* CustomInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E0B07BB1A446B4100CF7A78 /* CustomInfoView.xib */; };
+		8E0B07BF1A446B8800CF7A78 /* CustomInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0B07BE1A446B8800CF7A78 /* CustomInfoView.m */; };
+		8E0B07C21A44710000CF7A78 /* popup_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0B07C11A44710000CF7A78 /* popup_bg.png */; };
+		8E0B07CB1A4475CF00CF7A78 /* iconCall.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0B07C31A4475CF00CF7A78 /* iconCall.png */; };
+		8E0B07CC1A4475CF00CF7A78 /* iconCall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0B07C41A4475CF00CF7A78 /* iconCall@2x.png */; };
+		8E0B07CD1A4475CF00CF7A78 /* iconEmail.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0B07C51A4475CF00CF7A78 /* iconEmail.png */; };
+		8E0B07CE1A4475CF00CF7A78 /* iconEmail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0B07C61A4475CF00CF7A78 /* iconEmail@2x.png */; };
+		8E0B07CF1A4475CF00CF7A78 /* iconInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0B07C71A4475CF00CF7A78 /* iconInfo.png */; };
+		8E0B07D01A4475CF00CF7A78 /* iconInfo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0B07C81A4475CF00CF7A78 /* iconInfo@2x.png */; };
+		8E0B07D11A4475CF00CF7A78 /* iconMessage.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0B07C91A4475CF00CF7A78 /* iconMessage.png */; };
+		8E0B07D21A4475CF00CF7A78 /* iconMessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0B07CA1A4475CF00CF7A78 /* iconMessage@2x.png */; };
+		8E0B07D51A4479EF00CF7A78 /* bgPopup.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0B07D31A4479EF00CF7A78 /* bgPopup.png */; };
+		8E0B07D61A4479EF00CF7A78 /* bgPopup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0B07D41A4479EF00CF7A78 /* bgPopup@2x.png */; };
 		8EB708771A407A1C001861A0 /* Mobile_GPS_MyLocationIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EB708751A407A1C001861A0 /* Mobile_GPS_MyLocationIcon.png */; };
 		8EB708781A407A1C001861A0 /* Mobile_GPS_MyLocationIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EB708761A407A1C001861A0 /* Mobile_GPS_MyLocationIcon@2x.png */; };
 		8EB7087A1A408AE2001861A0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB708791A408AE2001861A0 /* MapKit.framework */; };
@@ -1546,6 +1559,20 @@
 		849B6D901A18EDAE007E3B06 /* SelectIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectIndexViewController.h; path = CustomView/SelectIndexViewController.h; sourceTree = "<group>"; };
 		849B6D911A18EDAE007E3B06 /* SelectIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectIndexViewController.m; path = CustomView/SelectIndexViewController.m; sourceTree = "<group>"; };
 		849B6D921A18EDAE007E3B06 /* SelectIndexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectIndexViewController.xib; path = CustomView/SelectIndexViewController.xib; sourceTree = "<group>"; };
+		8E0B07BB1A446B4100CF7A78 /* CustomInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomInfoView.xib; sourceTree = "<group>"; };
+		8E0B07BD1A446B8800CF7A78 /* CustomInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomInfoView.h; sourceTree = "<group>"; };
+		8E0B07BE1A446B8800CF7A78 /* CustomInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomInfoView.m; sourceTree = "<group>"; };
+		8E0B07C11A44710000CF7A78 /* popup_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popup_bg.png; sourceTree = "<group>"; };
+		8E0B07C31A4475CF00CF7A78 /* iconCall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconCall.png; sourceTree = "<group>"; };
+		8E0B07C41A4475CF00CF7A78 /* iconCall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconCall@2x.png"; sourceTree = "<group>"; };
+		8E0B07C51A4475CF00CF7A78 /* iconEmail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconEmail.png; sourceTree = "<group>"; };
+		8E0B07C61A4475CF00CF7A78 /* iconEmail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconEmail@2x.png"; sourceTree = "<group>"; };
+		8E0B07C71A4475CF00CF7A78 /* iconInfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconInfo.png; sourceTree = "<group>"; };
+		8E0B07C81A4475CF00CF7A78 /* iconInfo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconInfo@2x.png"; sourceTree = "<group>"; };
+		8E0B07C91A4475CF00CF7A78 /* iconMessage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconMessage.png; sourceTree = "<group>"; };
+		8E0B07CA1A4475CF00CF7A78 /* iconMessage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconMessage@2x.png"; sourceTree = "<group>"; };
+		8E0B07D31A4479EF00CF7A78 /* bgPopup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgPopup.png; sourceTree = "<group>"; };
+		8E0B07D41A4479EF00CF7A78 /* bgPopup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgPopup@2x.png"; sourceTree = "<group>"; };
 		8EB708751A407A1C001861A0 /* Mobile_GPS_MyLocationIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mobile_GPS_MyLocationIcon.png; sourceTree = "<group>"; };
 		8EB708761A407A1C001861A0 /* Mobile_GPS_MyLocationIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Mobile_GPS_MyLocationIcon@2x.png"; sourceTree = "<group>"; };
 		8EB708791A408AE2001861A0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -3353,6 +3380,7 @@
 		8497C0111A295A6700A5ED3C /* MapView */ = {
 			isa = PBXGroup;
 			children = (
+				8E0B07B71A446AFD00CF7A78 /* CustomInfoWindow */,
 				8ED402891A41E17400CCBE6D /* CustomerCell */,
 				8497C0121A295A8500A5ED3C /* TestMapViewController.h */,
 				8497C0131A295A8500A5ED3C /* TestMapViewController.m */,
@@ -3363,9 +3391,30 @@
 			path = MapView;
 			sourceTree = "<group>";
 		};
+		8E0B07B71A446AFD00CF7A78 /* CustomInfoWindow */ = {
+			isa = PBXGroup;
+			children = (
+				8E0B07BB1A446B4100CF7A78 /* CustomInfoView.xib */,
+				8E0B07BD1A446B8800CF7A78 /* CustomInfoView.h */,
+				8E0B07BE1A446B8800CF7A78 /* CustomInfoView.m */,
+			);
+			path = CustomInfoWindow;
+			sourceTree = "<group>";
+		};
 		8EB708701A407856001861A0 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
+				8E0B07D31A4479EF00CF7A78 /* bgPopup.png */,
+				8E0B07D41A4479EF00CF7A78 /* bgPopup@2x.png */,
+				8E0B07C31A4475CF00CF7A78 /* iconCall.png */,
+				8E0B07C41A4475CF00CF7A78 /* iconCall@2x.png */,
+				8E0B07C51A4475CF00CF7A78 /* iconEmail.png */,
+				8E0B07C61A4475CF00CF7A78 /* iconEmail@2x.png */,
+				8E0B07C71A4475CF00CF7A78 /* iconInfo.png */,
+				8E0B07C81A4475CF00CF7A78 /* iconInfo@2x.png */,
+				8E0B07C91A4475CF00CF7A78 /* iconMessage.png */,
+				8E0B07CA1A4475CF00CF7A78 /* iconMessage@2x.png */,
+				8E0B07C11A44710000CF7A78 /* popup_bg.png */,
 				8ED402831A41DF3C00CCBE6D /* ic_qu_direction_mylocation.png */,
 				8ED402841A41DF3C00CCBE6D /* ic_qu_direction_mylocation@2x.png */,
 				8ED402851A41DF3C00CCBE6D /* ic_qu_direction_mylocation@3x.png */,
@@ -3868,6 +3917,7 @@
 				2DD29EEF18769C260066B883 /* menu-ic-nextweek-calendar-1.png in Resources */,
 				8497BFE21A295A2300A5ED3C /* step2.png in Resources */,
 				8497BFDF1A295A2300A5ED3C /* popup_santa@2x.png in Resources */,
+				8E0B07CE1A4475CF00CF7A78 /* iconEmail@2x.png in Resources */,
 				76601A49194BE90F001D4C01 /* Reader-Email.png in Resources */,
 				2D6D7661187670B00051AD9E /* ic-work-fw-group-1.png in Resources */,
 				76977D651A02A75B0029F297 /* EmployeeAccountCell.xib in Resources */,
@@ -3908,6 +3958,7 @@
 				B315789A188D5E5200C0ED01 /* flag-btn-2-1.png in Resources */,
 				76601A53194BE90F001D4C01 /* Left-1.png in Resources */,
 				B3157891188D5E5200C0ED01 /* btn-back-1-1.png in Resources */,
+				8E0B07CF1A4475CF00CF7A78 /* iconInfo.png in Resources */,
 				B3157883188D5E5200C0ED01 /* ic-viewpdf-close-1.png in Resources */,
 				B316D695188FFA91009B751B /* bg-login-1.png in Resources */,
 				2D32B5CC187BDAA10065C305 /* Button_Normal-1.png in Resources */,
@@ -3945,8 +3996,10 @@
 				2D0DCEE817A37ADC004FDBBC /* Line-Phong kinhdoanh.png in Resources */,
 				B31AFAA7187ADB5800D366B5 /* ic-show-path-1-1.png in Resources */,
 				76CD8816196D1E4F00503B99 /* ic-ppt-1.png in Resources */,
+				8E0B07CC1A4475CF00CF7A78 /* iconCall@2x.png in Resources */,
 				2D2D212A17A6291700A87364 /* Icon-Reload.png in Resources */,
 				2D2D213417A6291700A87364 /* Line-box_doanh_thu_cac_dich_vu.png in Resources */,
+				8E0B07D21A4475CF00CF7A78 /* iconMessage@2x.png in Resources */,
 				2D2D214617A66DB800A87364 /* Box-Header_chi_tiet.png in Resources */,
 				849662C51A24D19F001B3776 /* logo_login-1.png in Resources */,
 				849788091A2BE1BF00384566 /* TaskActionCell.xib in Resources */,
@@ -3966,6 +4019,7 @@
 				76C964811A17A15C00029978 /* pin.png in Resources */,
 				76D29B241A136E4A004B9CF6 /* ic_plus-1.png in Resources */,
 				B3157895188D5E5200C0ED01 /* del-btn-1-1.png in Resources */,
+				8E0B07D11A4475CF00CF7A78 /* iconMessage.png in Resources */,
 				94BA8D7D1A2DF3CF0082AE9E /* CalendarPickerViewController.xib in Resources */,
 				B3157897188D5E5200C0ED01 /* extra-btn-1-1.png in Resources */,
 				76CD8819196D1E4F00503B99 /* ic-xls-1.png in Resources */,
@@ -3981,6 +4035,7 @@
 				B315789B188D5E5200C0ED01 /* logo-big-1.png in Resources */,
 				8497BFC41A295A2300A5ED3C /* bulgaria-large.png in Resources */,
 				2DD29EF418769C260066B883 /* menu-ic-tech-data-1.png in Resources */,
+				8E0B07CD1A4475CF00CF7A78 /* iconEmail.png in Resources */,
 				B3F727AF17B512CC0024DC0D /* arrow_table.png in Resources */,
 				76D29B221A13567D004B9CF6 /* TestTableViewController.xib in Resources */,
 				8497BFD11A295A2300A5ED3C /* sdkdemos_icon.png in Resources */,
@@ -3994,6 +4049,7 @@
 				B301F1E817C382D80004650C /* f_Bg_header.png in Resources */,
 				B315787F188D5E5200C0ED01 /* ic-signed-1.png in Resources */,
 				8434BF031A2F61B200C29815 /* alarm_small.png in Resources */,
+				8E0B07D51A4479EF00CF7A78 /* bgPopup.png in Resources */,
 				8497BF051A2959A500A5ED3C /* GoogleMaps.bundle in Resources */,
 				B301F1E917C382D80004650C /* g_bg.png in Resources */,
 				8497BFC91A295A2300A5ED3C /* Default-Landscape@2x~ipad.png in Resources */,
@@ -4009,12 +4065,14 @@
 				2D6D7663187670B00051AD9E /* ic-work-order-group-1.png in Resources */,
 				7633080E1A048962000E190B /* VTCheckBox.xib in Resources */,
 				76601A3F194BE90F001D4C01 /* AppIcon-076.png in Resources */,
+				8E0B07CB1A4475CF00CF7A78 /* iconCall.png in Resources */,
 				76C964721A17731900029978 /* RightTriangleIcon.png in Resources */,
 				8497BFEA1A295A2300A5ED3C /* step6.png in Resources */,
 				2D2F75A1185801E000EC76EE /* Button_Chon.png in Resources */,
 				B346C25417C45C6C00433B07 /* Button_Normal.png in Resources */,
 				B346C25517C45C6C00433B07 /* Button_Selected.png in Resources */,
 				8497BFB51A295A2300A5ED3C /* iTunesArtwork-1024.png in Resources */,
+				8E0B07D61A4479EF00CF7A78 /* bgPopup@2x.png in Resources */,
 				B346C25817C4688D00433B07 /* arrow_right.png in Resources */,
 				B313F1D118A51414001FDEC6 /* notification-long-bg-1.png in Resources */,
 				76C9646A1A17731900029978 /* OthersPart1.png in Resources */,
@@ -4077,6 +4135,7 @@
 				B3157886188D5E5200C0ED01 /* ic-viewpdf-rotateright-1.png in Resources */,
 				2D6D7666187670B00051AD9E /* refresh-btn-1.png in Resources */,
 				B3ECBA2617D1EFF300AF40CF /* icon_close.png in Resources */,
+				8E0B07D01A4475CF00CF7A78 /* iconInfo@2x.png in Resources */,
 				8ED4027D1A41D46900CCBE6D /* iconMultilCustomer.png in Resources */,
 				B3ECBA2717D1EFF300AF40CF /* icon_Dropdownlist.png in Resources */,
 				8497BFE51A295A2300A5ED3C /* step3@2x.png in Resources */,
@@ -4129,6 +4188,7 @@
 				8434BEFE1A2F485700C29815 /* DetailContactLeadViewController.xib in Resources */,
 				2DE2D2441829060700034877 /* tab-data-btn-1.png in Resources */,
 				76601A48194BE90F001D4C01 /* Reader-Button-N@2x.png in Resources */,
+				8E0B07C21A44710000CF7A78 /* popup_bg.png in Resources */,
 				2DE2D2451829060700034877 /* tab-data-bg.png in Resources */,
 				2DD29EEC18769C260066B883 /* menu-ic-list-doc-1.png in Resources */,
 				84912AC51A1F6A3300E99FF7 /* DetailCustomPersonViewController.xib in Resources */,
@@ -4184,6 +4244,7 @@
 				2DE2D28C1829060700034877 /* footer.png in Resources */,
 				8497BFF01A295A2300A5ED3C /* track.json in Resources */,
 				B38111E718ACD40600876151 /* update-btn-1-1.png in Resources */,
+				8E0B07BC1A446B4100CF7A78 /* CustomInfoView.xib in Resources */,
 				8ED402811A41DEC000CCBE6D /* iconBranchArrow.png in Resources */,
 				8497BFE81A295A2300A5ED3C /* step5.png in Resources */,
 				849078871A1E461D009D5D5F /* DetailPersonLeadViewController.xib in Resources */,
@@ -4441,6 +4502,7 @@
 				2D0E0EB6183DB43600590E4C /* Clock.m in Sources */,
 				B31938D618E4355D0008BBFE /* UITextField+Custom.m in Sources */,
 				2D4B92C717ACD7DE002A9AC5 /* DAAttributedLabel.m in Sources */,
+				8E0B07BF1A446B8800CF7A78 /* CustomInfoView.m in Sources */,
 				76C964441A17731900029978 /* XAxisBand.m in Sources */,
 				2D4B92C817ACD7DE002A9AC5 /* DAAttributedStringFormatter.m in Sources */,
 				843BF0BF1A03ECC500EA1D8A /* OpportunityCell.m in Sources */,

@@ -11,6 +11,7 @@
 #import "MDDirectionService.h"
 #import "DTOACCOUNTLEADProcess.h"
 #import "CustomerViewCell.h"
+#import "CustomInfoView.h"
 
 #define ZOOM_RATIO 15
 
@@ -106,6 +107,8 @@
     [self initLocation];
     [self initData];
 
+    NSDictionary *dicData=[arrayData objectAtIndex:1];
+    [marker setUserData:dicData];
 }
 
 -(void)initData{
@@ -288,6 +291,14 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
     GMSPath *path = [GMSPath pathFromEncodedPath:overview_route];
     GMSPolyline *polyline = [GMSPolyline polylineWithPath:path];
     polyline.map = mapView_;
+}
+
+- (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker{
+    CustomInfoView *infoView = [[CustomInfoView alloc] initWithFrame:CGRectZero];
+
+    NSDictionary *dicData= marker.userData;
+    [infoView loadViewWithData:dicData];
+    return infoView;
 }
 
 #pragma mark tableview delegate

@@ -18,7 +18,7 @@
 #define BTN_TAG_CUSTOMER 2
 #define BTN_TAG_CUSTOMER 3
 
-@interface TestMapViewController ()<CLLocationManagerDelegate,GMSMapViewDelegate>
+@interface TestMapViewController ()<CLLocationManagerDelegate,GMSMapViewDelegate,CustomerViewCellDelegate>
 {
     NSUserDefaults *defaults;
     int smgSelect ; //option layout
@@ -223,6 +223,32 @@
 
 #pragma mark map delegate
 /**
+ * Called after a long-press gesture at a particular coordinate.
+ *
+ * @param mapView The map view that was pressed.
+ * @param coordinate The location that was pressed.
+ */
+- (void)mapView:(GMSMapView *)mapView
+didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate{
+    [[GMSGeocoder geocoder] reverseGeocodeCoordinate:coordinate completionHandler:^(GMSReverseGeocodeResponse* response, NSError* error) {
+        NSLog(@"reverse geocoding results:");
+        for(GMSAddress* addressObj in [response results])
+        {
+            NSLog(@"coordinate.latitude=%f", addressObj.coordinate.latitude);
+            NSLog(@"coordinate.longitude=%f", addressObj.coordinate.longitude);
+            NSLog(@"thoroughfare=%@", addressObj.thoroughfare);
+            NSLog(@"locality=%@", addressObj.locality);
+            NSLog(@"subLocality=%@", addressObj.subLocality);
+            NSLog(@"administrativeArea=%@", addressObj.administrativeArea);
+            NSLog(@"postalCode=%@", addressObj.postalCode);
+            NSLog(@"country=%@", addressObj.country);
+            NSLog(@"lines=%@", addressObj.lines);
+        }
+    }];
+}
+
+
+/**
  * Called after a tap gesture at a particular coordinate, but only if a marker
  * was not tapped.  This is called before deselecting any currently selected
  * marker (the implicit action for tapping on the map).
@@ -292,17 +318,28 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
 
     if (!cell) {
         cell = [CustomerViewCell initNibCell];
+        cell.delegate = self;
     }
 
-//    if (arrayData.count>0) {
-//        [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+    if (arrayData.count>0) {
+        [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row]];
 //        cell.delegate = (id<AccountLeadCellDelegate>) self;
-//    }
+    }
 
     return cell;
 
 }
 
+#pragma mark Customer Cell Delegate
+
+- (void)didSelectedAtCell:(id)cell
+{
+    CustomerViewCell *currentCell = (CustomerViewCell *)cell;
+    NSIndexPath *indexPath = [customerTbv indexPathForCell:currentCell];
+
+    NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
+
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     NSIndexPath* selection = [tableView indexPathForSelectedRow];
@@ -320,5 +357,7 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
 //    [self presentViewController:viewController animated:YES completion:nil];
 
 }
+
+
 
 @end

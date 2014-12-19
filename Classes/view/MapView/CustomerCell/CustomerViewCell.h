@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CustomerViewCell : UITableViewCell
+@protocol CustomerViewCellDelegate <NSObject>
+
+- (void)didSelectedAtCell:(id)cell;
+@end
+
+@interface CustomerViewCell : UITableViewCell{
+    IBOutlet UILabel *lblName;
+}
 +(CustomerViewCell*) initNibCell;
+-(void) loadDataToCellWithData:(NSDictionary *)dicData ;
+
+@property (nonatomic) id<CustomerViewCellDelegate> delegate;
+
 @end

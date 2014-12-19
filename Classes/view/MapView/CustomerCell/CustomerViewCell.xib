@@ -28,6 +28,9 @@
                     </label>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="lblName" destination="rfe-oU-J6j" id="mnA-w6-IAc"/>
+            </connections>
             <point key="canvasLocation" x="241" y="312"/>
         </tableViewCell>
     </objects>

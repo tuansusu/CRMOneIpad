@@ -36,4 +36,16 @@
     // Configure the view for the selected state
 }
 
+-(void) loadDataToCellWithData:(NSDictionary *)dicData{
+    if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_name]]) {
+        lblName.text = [dicData objectForKey:DTOLEAD_name];
+    }
+}
+
+-(IBAction)cellSelectedAtIndex:(id)sender{
+    if (_delegate && [_delegate respondsToSelector:@selector(didSelectedAtCell:)]) {
+        [_delegate didSelectedAtCell:self];
+    }
+}
+
 @end

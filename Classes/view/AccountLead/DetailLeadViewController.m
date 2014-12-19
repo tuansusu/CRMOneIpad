@@ -11,6 +11,7 @@
 #import "DTOCONTACTProcess.h"
 #import "DTOTASKProcess.h"
 #import "DTONOTEProcess.h"
+#import "DTOATTACHMENTProcess.h"
 
 ////remove
 #import "StringUtil.h"
@@ -37,6 +38,7 @@
     DTOCONTACTProcess *dtoContactProcess; //lay danh sach du lieu theo clientLeadId
     DTOTASKProcess *dtoTaskProcess;
     DTONOTEProcess *dtoNoteProcess;
+    DTOATTACHMENTProcess *dtoAttachProcess;
     
     NSUserDefaults *defaults ;
     
@@ -53,6 +55,10 @@
     //chon index form them moi
     NSInteger selectIndex;
     NSArray *listArr;
+    //delete note
+    NSString *deleteNoteId;
+    //delete file
+    NSString *deleteFileClienWithClientNoteID;
     
     //controll
     
@@ -93,7 +99,7 @@
 -(void) viewWillAppear:(BOOL)animated{
     //cu quay lai la no load
     NSLog(@"quay lai form");
-    
+    [self viewDidLoad];
 }
 
 //khoi tao gia tri mac dinh cua form
@@ -106,7 +112,7 @@
     dtoContactProcess = [DTOCONTACTProcess new];
     dtoTaskProcess= [DTOTASKProcess new];
     dtoNoteProcess = [DTONOTEProcess new];
-    
+    dtoAttachProcess=[DTOATTACHMENTProcess new];
     NSLog(@"datasend detail lead = %@", self.dataSend);
     dicData = [dtoLeadProcess getDataWithKey:DTOLEAD_id withValue:[self.dataSend objectForKey:DTOLEAD_id]];
     NSLog(@"Get detail = %@", dicData);
@@ -696,7 +702,7 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
-        //NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
+        NSDictionary *dicDataItem = [arrayData objectAtIndex:indexPath.row];
         
         switch (typeActionEvent) {
             case typeLeaderView_Task:{
@@ -715,8 +721,10 @@
                 break;
             case typeLeaderView_Note:{
                 //deleteLeadId = [dicData objectForKey:DTOLEAD_id];
-                UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xác nhận đồng ý xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
-                mylert.tag = TAG_DELETE_ITEM;
+                deleteNoteId =[dicDataItem objectForKey:DTONOTE_id];
+                deleteFileClienWithClientNoteID=[dicDataItem objectForKey:DTONOTE_clientNoteId];
+                UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xác nhận xoá ghi chú?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
+                mylert.tag = 20;
                 [mylert show];
             }
                 break;
@@ -775,7 +783,7 @@
 -(void)tableView:(UITableView *)tableView swipeAccessoryButtonPushedForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"o day");
-     NSDictionary *dicTempData = [arrayData objectAtIndex:indexPath.row];
+    NSDictionary *dicTempData = [arrayData objectAtIndex:indexPath.row];
     switch (typeActionEvent) {
         case typeLeaderView_Task:{
             //deleteLeadId = [dicData objectForKey:DTOLEAD_id];
@@ -831,6 +839,55 @@
     
 }
 
-
+#pragma -mark xử lý thông báo
+-(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    
+    if (alertView.tag==20) {
+        NSLog(@"chọn xoá ghi chú");
+        if(buttonIndex==0){
+            NSLog(@"Xoa file dinh kem");
+            NSLog(@"noteID:%@",deleteFileClienWithClientNoteID);
+            NSLog(@"ID:%@",deleteNoteId);
+            @try {
+                BOOL resultNote  =  [dtoNoteProcess deleteEntity:deleteNoteId];
+                BOOL resultFile = [dtoAttachProcess deleteEntity:deleteFileClienWithClientNoteID];
+                if (resultNote) {
+                    NSLog(@"Xoa ghi chu thanh cong");
+                }
+                if (resultFile) {
+                    NSLog(@"Xo file thanh cong");
+                }
+            }
+            @catch (NSException *exception) {
+                NSLog(@"%@",exception);
+            }
+            @finally {
+                
+            }
+            
+            // [self.tbData reloadData];
+            NSLog(@"delelete thanh cong");
+        }
+        else if(buttonIndex==1){
+            
+            NSLog(@"Khong  xoa file");
+        }
+    }else{
+        if(buttonIndex==0){
+            //            NSLog(@"Ban khong tiep tuc");
+            //            [self dismissViewControllerAnimated:YES completion:nil];
+            
+        }
+        else if(buttonIndex==1){
+            //            NSLog(@"Ban co tiep tuc");
+            //            [arrayData removeAllObjects];
+            //            [self.tbData reloadData];
+            //            txtContent.text=@"";
+            //            txtTitle.text=@"";
+            
+        }
+    }
+    
+}
 
 @end

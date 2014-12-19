@@ -17,15 +17,13 @@
 @property (weak, nonatomic) IBOutlet NZLabel *lbName;
 
 
-@property (weak, nonatomic) IBOutlet UILabel *lbPotential; //tiem nang
+@property (weak, nonatomic) IBOutlet UILabel *lbLevel; //tiem nang
 
 @property (weak, nonatomic) IBOutlet UILabel *lbContact;
 
 @property (weak, nonatomic) IBOutlet UILabel *lbDate;
 
-@property (weak, nonatomic) IBOutlet UIView *viewStatus;
-
-@property (weak, nonatomic) IBOutlet UILabel *lbStatus;
+@property (weak, nonatomic) IBOutlet UILabel *lbType;
 
 
 -(void) loadDataToCellWithData : (NSDictionary*) dicData withOption : (int) smgSelect ;

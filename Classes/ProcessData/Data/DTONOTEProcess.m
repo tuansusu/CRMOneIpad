@@ -41,7 +41,7 @@
 
 -(BOOL) deleteEntity:(NSString *)contactId{
     
-    NSMutableDictionary *dicFieldSet = [[NSMutableDictionary alloc]initWithObjects:[NSArray arrayWithObjects:@"0", nil] forKeys:[NSArray arrayWithObjects:DTONOTE_isActive, nil]];
+    NSMutableDictionary *dicFieldSet = [[NSMutableDictionary alloc]initWithObjects:[NSArray arrayWithObjects:@"1", nil] forKeys:[NSArray arrayWithObjects:DTONOTE_isActive, nil]];
     NSMutableDictionary *dicFieldCondition = [[NSMutableDictionary alloc]initWithObjects:[NSArray arrayWithObjects:contactId, nil] forKeys:[NSArray arrayWithObjects:DTONOTE_id, nil]];
     
     
@@ -78,9 +78,9 @@
 
 
 -(NSMutableArray*) filterWithKey : (NSString*) strKey withValue : (NSString*) strValue{
-   NSArray *allFields =[NSArray arrayWithObjects:DTONOTE_id, DTONOTE_content, DTONOTE_title, DTONOTE_noteId, DTONOTE_contentFormated, DTONOTE_createdDate, DTONOTE_updatedDate, nil];
+   NSArray *allFields =[NSArray arrayWithObjects:DTONOTE_id, DTONOTE_content, DTONOTE_title, DTONOTE_noteId, DTONOTE_contentFormated, DTONOTE_createdDate,DTONOTE_clientObjectId, DTONOTE_updatedDate, nil];
     
-    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where status = 1 and %@  like ? order by %@ desc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTONOTE, strKey, DTOLEAD_updatedDate];
+    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where isactive = 1 and %@  like ? order by %@ desc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTONOTE, strKey, DTOLEAD_updatedDate];
     
     NSLog(@"query = %@", query);
     NSString *value = @"%";
@@ -112,7 +112,7 @@
 
 //filter with lay danh sach lien he cua 1 cai khach hang dau moi
 -(NSMutableArray*) filterWithClientLeaderId: (NSString*) strValue{
-     NSArray *allFields =[NSArray arrayWithObjects:DTONOTE_id, DTONOTE_content, DTONOTE_title, DTONOTE_noteId, DTONOTE_contentFormated,DTOATTACHMENT_clientObjectId, DTONOTE_createdDate, DTONOTE_updatedDate, nil];
+     NSArray *allFields =[NSArray arrayWithObjects:DTONOTE_id, DTONOTE_content, DTONOTE_title, DTONOTE_noteId, DTONOTE_contentFormated,DTOATTACHMENT_clientObjectId, DTONOTE_createdDate, DTONOTE_updatedDate,DTONOTE_clientNoteId, nil];
     
     NSString *query = [NSString stringWithFormat:@"SELECT %@ FROM %@ where clientObjectId = ? order by updatedDate  desc", [allFields componentsJoinedByString:@"," ], TABLENAME_DTONOTE];
     

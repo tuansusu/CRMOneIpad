@@ -53,23 +53,29 @@ DTOOPPORTUNITY_updatedDate, //VARCHAR
     return [super addToDBWithTableName:TableName_DTOOPPORTUNTITY dictionary:entity];
     
 }
--(NSMutableArray*) filterOpportunity:(NSString*)keyword addStartDate:(NSDate*)startDate addEndDate:(NSDate*)endDate userType:(NSString*)type{
+-(NSMutableArray*) filterOpportunity:(NSString*)keyword addStartDate:(NSDate*)startDate addEndDate:(NSDate*)endDate userType:(int)type{
     
     
-    NSArray *allFields =[NSArray arrayWithObjects:DTOOPPORTUNITY_id, DTOOPPORTUNITY_clientOpportunityId, DTOCONTACT_fullName, DTOOPPORTUNITY_code, DTOOPPORTUNITY_name, DTOOPPORTUNITY_endDate, DTOOPPORTUNITY_startDate,@"StatusName", DTOOPPORTUNITY_status,@"Account", nil];
+    NSArray *allFields =[NSArray arrayWithObjects:DTOOPPORTUNITY_id, DTOOPPORTUNITY_clientOpportunityId, DTOCONTACT_fullName, DTOOPPORTUNITY_code, DTOOPPORTUNITY_name, DTOOPPORTUNITY_endDate, DTOOPPORTUNITY_startDate,@"StatusName", DTOOPPORTUNITY_status,@"Contact",@"ContactCode",@"Level", nil];
     
-    NSMutableString *query = [[NSMutableString alloc] initWithString:@"SELECT op.id,clientOpportunityId,fullName,op.code,op.name,endDate,startDate \
+    NSMutableString *query = [[NSMutableString alloc] initWithString:@"SELECT op.id,op.clientOpportunityId,fullName,op.code,op.name,endDate,startDate \
                         ,catStatus.name as StatusName \
                         ,op.status \
                         ,case \
                             when op.accountId is null then ld.name \
                             when op.leadId is null then ac.name \
-                        end as Account \
+                        end as Contact \
+                       ,case \
+                            when op.accountId is null then ld.clientId \
+                            when op.leadId is null then ac.clientAccountId \
+                        end as ContactCode \
+                       ,catLevel.name as Level \
                 FROM  dtoopportunity op \
                 LEFT JOIN dtoopportunitycontact opc ON op.clientOpportunityId=opc.clientOpportunityContactId \
                 LEFT JOIN dtocontact con ON opc.clientOpportunityContactId = con.clientContactId \
                 LEFT JOIN dtosyscat catStatus ON op.status = catStatus.value \
                         AND catStatus.sysCatTypeId = 10 \
+                LEFT JOIN dtosyscat catLevel on op.opportunityLevelId = catLevel.sysCatId \
                 LEFT JOIN dtoaccount ac ON op.accountId = ac.accountId \
                 LEFT JOIN dtolead ld on op.leadId = ld.leadId \
         WHERE op.isActive = 1 "];
@@ -89,13 +95,13 @@ DTOOPPORTUNITY_updatedDate, //VARCHAR
     {
         [query appendString:[NSString stringWithFormat:@"AND op.endDate <= '%@' ",[NSString stringWithFormat:@"%@",[df stringFromDate:endDate]]]];
     }
-    if(type != nil)
+    if(type != 0)
     {
-        if([type isEqualToString:@"1"]) //Khachs hang 360
+        if(type == 1) //Khachs hang 360
         {
             [query appendString:@"AND op.accountId is not null "];
         }
-        else if([type isEqualToString:@"2"])
+        else if(type == 2)
         {
             [query appendString:@"AND op.leadId is not null "];
         }
@@ -112,7 +118,7 @@ DTOOPPORTUNITY_updatedDate, //VARCHAR
     NSArray *allFields =[NSArray arrayWithObjects:DTOOPPORTUNITY_clientOpportunityId, DTOCONTACT_fullName, DTOOPPORTUNITY_code, DTOOPPORTUNITY_name, DTOOPPORTUNITY_endDate, DTOOPPORTUNITY_startDate
                          ,@"Level",@"NextTask",@"Status",DTOOPPORTUNITY_successPercent,@"Account", nil];
     
-    NSString *query = [NSString stringWithFormat: @"Select clientOpportunityId,fullName,op.code,op.name,endDate,startDate,catLevel.name as Level,catTask.name as NextTask,catStatus.name as Status,successPercent,ac.name as Account \
+    NSString *query = [NSString stringWithFormat: @"Select op.clientOpportunityId,fullName,op.code,op.name,endDate,startDate,catLevel.name as Level,catTask.name as NextTask,catStatus.name as Status,successPercent,ac.name as Account,catLevel.name as Level \
                        from  dtoopportunity op \
                        left join dtoopportunitycontact opc on op.clientOpportunityId=opc.clientOpportunityContactId \
                        left join dtocontact con on opc.clientOpportunityContactId = con.clientContactId \

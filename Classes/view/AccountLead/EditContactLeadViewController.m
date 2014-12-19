@@ -49,6 +49,10 @@
     NSArray *listArrPersonPosition;
     
     BOOL succsess;//Trang thai acap nhat
+    
+    //key board
+    float heightKeyboard;
+    UITextField *_txt;
 }
 @end
 
@@ -60,6 +64,7 @@
     if (self) {
         // Custom initialization
     }
+    [self registerForKeyboardNotifications];
     return self;
 }
 
@@ -370,21 +375,87 @@
 #pragma mark UITextField
 
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+// Call this method somewhere in your view controller setup code.
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+}
+
+// Called when the UIKeyboardDidShowNotification is sent.
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
     
-    float height = 190;
-    if (textField == _txtEmail || textField == _txtAddress) {
-        height = 230;
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    if (kbSize.width>0) {
+        heightKeyboard = kbSize.width;
     }
     
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.25f];
     
-    CGRect frame = self.mainView.frame;
-    frame.origin.y = frame.origin.y - height;
-    [self.mainView setFrame:frame];
+    self.viewMainBodyInfo.contentSize = CGSizeMake(self.viewMainBodyInfo.frame.size.width, self.viewMainBodyInfo.frame.size.height + heightKeyboard);
     
-    [UIView commitAnimations];
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, heightKeyboard, 0.0);
+    self.viewMainBodyInfo.contentInset = contentInsets;
+    self.viewMainBodyInfo.scrollIndicatorInsets = contentInsets;
+    
+    // If active text field is hidden by keyboard, scroll it so it's visible
+    // Your application might not need or want this behavior.
+    //CGRect aRect = self.view.frame;
+    CGRect aRect = CGRectMake(0, 0, 1024, 768);
+    aRect.size.height -= kbSize.width;
+    if (!CGRectContainsPoint(aRect, _txt.frame.origin) ) {
+        CGPoint scrollPoint = CGPointMake(0.0, _txt.frame.origin.y-heightKeyboard + 20);
+        [self.viewMainBodyInfo setContentOffset:scrollPoint animated:YES];
+    }
+    
+    //    NSDictionary* info = [aNotification userInfo];
+    //    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    //    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+    //    scrollView.contentInset = contentInsets;
+    //    scrollView.scrollIndicatorInsets = contentInsets;
+    //
+    //    // If active text field is hidden by keyboard, scroll it so it's visible
+    //    // Your application might not need or want this behavior.
+    //    CGRect aRect = self.view.frame;
+    //    aRect.size.height -= kbSize.height;
+    //    if (!CGRectContainsPoint(aRect, self.txt10.frame.origin) ) {
+    //        CGPoint scrollPoint = CGPointMake(0.0, self.txt10.frame.origin.y-kbSize.height);
+    //        [scrollView setContentOffset:scrollPoint animated:YES];
+    //    }
+}
+
+// Called when the UIKeyboardWillHideNotification is sent
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    
+    if(self.viewMainBodyInfo.contentSize.height>self.viewMainBodyInfo.frame.size.height){
+    self.viewMainBodyInfo.contentSize = CGSizeMake(self.viewMainBodyInfo.frame.size.width, self.viewMainBodyInfo.frame.size.height - heightKeyboard);
+    
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    self.viewMainBodyInfo.contentInset = contentInsets;
+    self.viewMainBodyInfo.scrollIndicatorInsets = contentInsets;
+    }
+}
+
+
+#pragma mark UITextField
+
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    
+    //[self hiddenKeyBoard];
+    //bat dau edit
+    _txt = textField;
+    //[_txt becomeFirstResponder];
+   [self keyboardWillBeHidden:nil];
+    [self keyboardWasShown:nil];
+    
     
     return  YES;
     
@@ -397,18 +468,10 @@
     return  YES;
 }// return YES to allow editing to stop and to resign first responder status. NO to disallow the editing session to end
 - (void)textFieldDidEndEditing:(UITextField *)textField{
-    float height = 190;
-    if (textField == _txtEmail || textField == _txtAddress) {
-        height = 230;
+    //ket thuc khong edit text do
+    if (textField==_txt) {
+        _txt = nil;
     }
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.25f];
-    CGRect frame = self.mainView.frame;
-    frame.origin.y = frame.origin.y + height;
-    [self.mainView setFrame:frame];
-    
-    [UIView commitAnimations];
     
 }// may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
 
@@ -440,6 +503,8 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     return  YES;
 }// called when 'return' key pressed. return NO to ignore.
+
+//end keyboard
 
 /*chon anh dai dien*/
 - (IBAction)actionChoicePhoto:(id)sender {

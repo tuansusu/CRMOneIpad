@@ -11,6 +11,18 @@
 #import "DTOCOMPETITORProcess.h"
 #import "DTOPRODUCTMASTERProcess.h"
 #import "DTOACCOUNTProcess.h"
+#import "DTOCONTACTProcess.h"
+
+#define SELECT_TEXT_ADD_CONTACT @"LIÊN HỆ"
+#define SELECT_TEXT_ADD_NOTE @"SẢN PHẨM ĐỀ XUẤT"
+#define SELECT_TEXT_ADD_CALENDAR @"SẢN PHẨM ĐÃ BÁN"
+#define SELECT_TEXT_ADD_COMPETITOR @"ĐỐI THỦ CẠNH TRANH"
+#define SELECT_TEXT_ADD_SUPORT @"HỖ TRỢ"
+
+#define SELECT_INDEX_ADD_CONTACT 0
+
+
+
 
 @interface CompetitorsViewController ()
 {
@@ -25,11 +37,16 @@
     DTOCOMPETITORProcess *dtoCompetitorProcess;
     DTOPRODUCTMASTERProcess *dtoProductMasterProcess;
     DTOACCOUNTProcess *dtoAccountProcess;
+    DTOCONTACTProcess *dtoContactProcess;
     
     UIColor *textColorButtonNormal; //mau chu button binh thuong
     UIColor *textColorButtonSelected; //mau chu button select
     UIColor *backgrondButtonSelected; //mau nen button select
     UIColor *backgroundButtonNormal; //Mau nen button binh thuong
+    
+    //chon index form them moi
+    NSInteger selectIndex;
+    NSArray *listArr;
     
 }
 @end
@@ -109,12 +126,17 @@
 //khoi tao gia tri mac dinh cua form
 -(void) initData {
     
+    //khoi tao du lieu!
+    listArr  = [NSArray arrayWithObjects:SELECT_TEXT_ADD_CONTACT,SELECT_TEXT_ADD_NOTE, SELECT_TEXT_ADD_CALENDAR,SELECT_TEXT_ADD_COMPETITOR,SELECT_TEXT_ADD_SUPORT, nil];
+    
     [self actionClueContact:self.btnClueContact];
     
     dtoOpportunityProcess = [DTOOPPORTUNITYProcess new];
     dtoCompetitorProcess = [DTOCOMPETITORProcess new];
     dtoProductMasterProcess = [DTOPRODUCTMASTERProcess new];
     dtoAccountProcess  = [DTOACCOUNTProcess new];
+    dtoContactProcess = [DTOCONTACTProcess new];
+
 
     
     opportunity = [dtoOpportunityProcess getById:itemId];
@@ -133,7 +155,8 @@
             break;
             case type_ClueContact:
         {
-            arrayData = [dtoAccountProcess filter];
+            //arrayData = [dtoAccountProcess filter];
+            arrayData = [dtoContactProcess filterWithClientOpportunityId:[opportunity objectForKey:DTOOPPORTUNITY_clientOpportunityId]];
         }break;
             case type_Competionor:
         {
@@ -198,6 +221,30 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark SelectIndexDelegate
+
+-(void) selectAtIndex:(NSInteger)index{
+    
+    if (self.listPopover) {
+        [ self.listPopover dismissPopoverAnimated:YES];
+    }
+    
+    switch (index) {
+        case SELECT_INDEX_ADD_CONTACT:
+        {
+            EditContactOpportunityViewController *viewController = [[EditContactOpportunityViewController alloc]initWithNibName:@"EditContactLeadViewController" bundle:nil];
+            viewController.dataRoot = opportunity;
+            [self presentViewController:viewController animated:YES completion:nil];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+
+
 #pragma mark action button
 - (IBAction)homeBack:(id)sender {
     [Util backToHome:self];
@@ -260,7 +307,7 @@
         }break;
         
         case type_ClueContact:{
-            return 50.0f;
+            return 100.0f;
         }
             break;
         default:
@@ -302,13 +349,12 @@
         }
             break;
         case type_ClueContact:{
-            static NSString *cellId = @"ClueContactCell";
-            ClueContactCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+            static NSString *cellId = @"ContactOpportunityCell";
+            ContactOpportunityCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
             
             
             if (!cell) {
-                
-                cell = [ClueContactCell getNewCell ];
+                cell = [ContactOpportunityCell initNibCell];
             }
             
             if (arrayData.count>0) {
@@ -316,6 +362,7 @@
             }
             
             return cell;
+
         }
             break;
             case type_Competionor:
@@ -405,4 +452,20 @@
 
 //Thêm phần sửa, xoá hiển thị trên row của table
 
+- (IBAction)actionAdd:(id)sender {
+    SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
+    
+    detail.selectIndex = selectIndex;
+    
+    detail.listData = listArr;
+    
+    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+    CGRect popoverFrame = self.btnAdd.frame;
+    
+    detail.delegate =(id<SelectIndexDelegate>) self;
+    self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
+    [self.listPopover setPopoverContentSize:CGSizeMake(320, HEIGHT_SELECT_INDEX_ROW*listArr.count) animated:NO];
+    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.headerViewBar permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+
+}
 @end

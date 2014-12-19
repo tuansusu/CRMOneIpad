@@ -12,7 +12,7 @@
 
 
 
--(NSMutableArray*) filterOpportunity:(NSString*)keyword addStartDate:(NSDate*)startDate addEndDate:(NSDate*)endDate userType:(NSString*)type;
+-(NSMutableArray*) filterOpportunity:(NSString*)keyword addStartDate:(NSDate*)startDate addEndDate:(NSDate*)endDate userType:(int)type;
 -(NSDictionary*) getById:(NSString*)itemId;
 -(BOOL) insertToDBWithEntity:(NSMutableDictionary*) entity;
 -(NSDictionary*) getDataWithKey : (NSString*) inputKey withValue : (NSString*) inputValue;

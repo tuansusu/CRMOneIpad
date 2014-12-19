@@ -39,6 +39,7 @@
     NSArray *listArrPersonPosition;
     
     NSString *strClientContactId;
+    NSString *deleteFile;
     
     BOOL succsess;//Trang thai acap nhat
 }
@@ -87,17 +88,20 @@
     self.barLabel.text = [NSString stringWithFormat:@"%@ %@, %@",VOFFICE,[defaults objectForKey:@"versionSoftware"],COPY_OF_SOFTWARE];
     
     dtoProcess = [DTONOTEProcess new];
+    dtoFileProcess=[DTOATTACHMENTProcess new];
     arrayData  = [NSMutableArray new];
     //arrayData = [dtoLeadProcess filter];
     NSLog(@"dataRoot %@",self.dataRoot);
     dataId = 0;
     if (self.dataSend) {
         
+        arrayData =[dtoFileProcess filterWithKey:DTOATTACHMENT_clientObjectId withValue:[_dataSend objectForKey:DTONOTE_clientNoteId]];
         NSLog(@"data gui tu form chi tiet %@", self.dataSend);
         
         self.lbTieudeghichu.text=@"CẬP NHẬP GHI CHÚ";
         
         [self loadDataEdit];
+        [self.tbData reloadData];
     }
     else{
         self.lbTieudeghichu.text=@"THÊM MƠI GHI CHÚ";
@@ -116,9 +120,9 @@
         txtContent.text =[_dataSend objectForKey:DTONOTE_content];
     }
     
-    //  arrayData =[dtoFileProcess filter];
+    
     //NSLog(@"count:%i", arrayData.count);
-    arrayData= [[NSMutableArray alloc] initWithObjects:@"One",@"Two",@"Three",@"Four",@"Five",@"Six",@"Seven",@"Eight",@"Nine",@"Ten",nil];
+    //arrayData= [[NSMutableArray alloc] initWithObjects:@"One",@"Two",@"Three",nil];
     
     //  arrayData = [dtoProcess filterWithKey:DTONOTE_id withValue:[_dataSend objectForKey:DTONOTE_id]];
     
@@ -263,39 +267,57 @@
         
     }
     succsess = [dtoProcess insertToDBWithEntity:dicEntity];
-    if (self.dataSend) {
-        //truong hop sua fiel
-    }
-    else{
+    
+    BOOL dt ;
+    //truong hop them moi file
+    if(arrayData.count>0 && succsess){
         
-        //truong hop them moi file
-        if(arrayData.count>0 && succsess){
-            
-            NSMutableDictionary *entiFile= [NSMutableDictionary new];
-            
-            NSString *strClientFileId = IntToStr(([dtoProcess getClientId]));
-            
-            for (NSString *path in arrayData) {
-                NSLog(@"%@", path);
+        NSMutableDictionary *entiFile= [NSMutableDictionary new];
+        
+        NSString *strClientFileId = IntToStr(([dtoProcess getClientId]));
+        //NSDictionary *dicRow = [arrayData objectAtIndex:indexPath.row];
+        for (NSDictionary *path in arrayData) {
+            //  NSLog(@"%@", path);
+            if([path objectForKey:DTOATTACHMENT_id]==0){
                 [entiFile setObject:@"" forKey:DTOATTACHMENT_attachmentId];
                 [entiFile setObject:strClientFileId forKey:DTOATTACHMENT_clientAttachmentId];
-                [entiFile setObject:strClientContactId forKey:DTOATTACHMENT_clientObjectId];
-                [entiFile setObject:path forKey:DTOATTACHMENT_fileName];
+                if (self.dataSend.count>0) {
+                    [entiFile setObject:[_dataSend objectForKey:DTONOTE_clientNoteId] forKey:DTOATTACHMENT_clientObjectId];
+                }
+                else{
+                    [entiFile setObject:strClientContactId forKey:DTOATTACHMENT_clientObjectId];
+                }
+                [entiFile setObject:[path objectForKey:@"fileName"] forKey:DTOATTACHMENT_fileName];
                 [entiFile setObject:[DateUtil formatDate:[NSDate new] :@"yyyy-MM-dd HH:mm:ss.S"] forKey:DTOATTACHMENT_updatedDate];
                 [entiFile setObject:[DateUtil formatDate:[NSDate new] :@"yyyy-MM-dd HH:mm:ss.S"] forKey:DTOATTACHMENT_createdDate];
                 [entiFile setObject:@"Note" forKey:DTOATTACHMENT_objectType];
+                [entiFile setObject:@"1" forKey:DTOATTACHMENT_isActive];
+                [entiFile setObject:@"" forKey:DTOATTACHMENT_updatedBy];
+                [entiFile setObject:@"" forKey:DTOATTACHMENT_checkSum];
+                [entiFile setObject:@"" forKey:DTOATTACHMENT_clientFilePath];
+                [entiFile setObject:@"" forKey:DTOATTACHMENT_createdBy];
+                [entiFile setObject:@"" forKey:DTOATTACHMENT_note];
+                [entiFile setObject:@"" forKey:DTOATTACHMENT_objectId];
+                [entiFile setObject:@"" forKey:DTOATTACHMENT_serverFilePath];
+                [entiFile setObject:@"" forKey:DTOATTACHMENT_verifyLat];
+                [entiFile setObject:@"" forKey:DTOATTACHMENT_verifyLon];
+                
                 @try {
-                    [dtoFileProcess insertToDBWithEntity:entiFile];
+                    dt = [dtoFileProcess insertToDBWithEntity:entiFile];
+                    if (!dt) {
+                        NSLog(@"Loi roi");
+                    }
                 }
                 @catch (NSException *exception) {
-                    NSLog(@"%@", exception);            }
+                    NSLog(@"log:%@", exception);            }
                 @finally {
                     NSLog(@"OK");            }
                 
             }
         }
-        
     }
+    
+    
     
     if (succsess) {
         //Thong bao cap nhat thanh cong va thoat
@@ -311,20 +333,36 @@
         [alert show];
     }
 }
-
+#pragma -mark xử lý thông báo
 -(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
-    if(buttonIndex==0){
-        NSLog(@"Ban khong tiep tuc");
-        [self dismissViewControllerAnimated:YES completion:nil];
-        
-    }
-    else if(buttonIndex==1){
-        NSLog(@"Ban co tiep tuc");
-        [arrayData removeAllObjects];
-        [self.tbData reloadData];
-        txtContent.text=@"";
-        txtTitle.text=@"";
-        
+    
+    if (alertView.tag==TAG_DELETE_ITEM) {
+        NSLog(@"Xoa file dinh kem");
+        if(buttonIndex==0){
+            
+            NSLog(@"Xoa file dinh kem:%@",deleteFile);
+            BOOL result=[dtoFileProcess deleteEntity:deleteFile];
+            if (result) {
+                [self.tbData reloadData];
+            }
+        }
+        else if(buttonIndex==1){
+            NSLog(@"Khong  xoa file");
+        }
+    }else{
+        if(buttonIndex==0){
+            NSLog(@"Ban khong tiep tuc");
+            [self dismissViewControllerAnimated:YES completion:nil];
+            
+        }
+        else if(buttonIndex==1){
+            NSLog(@"Ban co tiep tuc");
+            [arrayData removeAllObjects];
+            [self.tbData reloadData];
+            txtContent.text=@"";
+            txtTitle.text=@"";
+            
+        }
     }
     
 }
@@ -379,8 +417,25 @@
     
     
     //luu file thanh cong
-    [arrayData addObject:strFileName];
+    
+    NSMutableDictionary *dicFile = [[NSMutableDictionary alloc]init];
+    
+    //    if (self.dataSend.count>0) {
+    //        [dicData setValue:strFileName forKey:DTOATTACHMENT_fileName];
+    //        [dicData setValue:0 forKey:DTOATTACHMENT_id];
+    //
+    //        [arrayData addObject: dicData];
+    //        [self.tbData reloadData];
+    //    }
+    dicData=[NSMutableDictionary new];
+    [dicData setValue:strFileName forKey:DTOATTACHMENT_fileName];
+    [dicData setValue:0 forKey:DTOATTACHMENT_id];
+    
+    [arrayData addObject: dicData];
     [self.tbData reloadData];
+    
+    
+    
     
 }
 
@@ -415,7 +470,9 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     //etc.
-    cell.textLabel.text = [arrayData objectAtIndex:indexPath.row];
+    NSDictionary *dicRow = [arrayData objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = [dicRow objectForKey:DTOATTACHMENT_fileName];
     
     return cell;
     
@@ -432,6 +489,91 @@
     NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
     
 }
+
+
+//Thêm phần sửa, xoá hiển thị trên row của table
+
+#pragma mark edit
+/**
+ *  Bat Swipe right de cho phep hien thi button xoa 1 row
+ *  @return YES: If you want the specified item to be editable.
+ */
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *deletePermission =@"1";
+    if ([deletePermission isEqualToString:@"1"]) {
+        return YES;
+    }
+    return NO;
+}
+
+/**
+ *  Delete 1 row tren TableView
+ */
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        
+        NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
+        //deleteLeadId = [dicData objectForKey:DTOLEAD_id];
+        deleteFile =[dicData objectForKey:DTOATTACHMENT_id];
+        UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xác nhận đồng ý xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
+        mylert.tag = TAG_DELETE_ITEM;
+        [mylert show];
+    }
+}
+
+/**
+ *  Xu ly khi click Button Accessory (tren ios6, xem trong cellForRow co code set AccessoryType cho cell neu khong phai la Header)
+ *  TRUONG HOP NAY HIEN TAI KHONG DUNG DEN MA SU DUNG 1 CUSTOM BUTTON VOI ACTION "customButtonAccessoryTapped"
+ */
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return SYS_KEY_DELETE;
+}
+
+/**
+ *  Them 1 button "Sua" ben canh button "Xoa" (tren ios7, ios6 su dung accessoryType)
+ */
+//-(NSString *)tableView:(UITableView *)tableView titleForSwipeAccessoryButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+
+/**
+ *  Neu khong phai la Header thi la item level 2
+ */
+//  return SYS_KEY_EDIT;
+//return nil;
+//}
+
+/**
+ *  Xu ly khi chon button "Sua"
+ */
+-(void)tableView:(UITableView *)tableView swipeAccessoryButtonPushedForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"sua item at index = %d", indexPath.row);
+    
+    NSDictionary *dicDataTemp = [arrayData objectAtIndex:indexPath.row];
+    
+    
+}
+
+
+
+#pragma mark table edit row
+
+- (void) customButtonAccessoryTapped:(id)sender
+{
+    UIButton *btnSender = (UIButton *) sender;
+    
+    NSLog(@"btnSender = %d", btnSender.tag);
+    
+}
+
 
 #pragma mark check
 -(BOOL) checkValidToSave {
@@ -474,23 +616,6 @@
     popTipView = [[CMPopTipView alloc] initWithMessage:contentMessage];
     
     popTipView.delegate = self;
-    
-    /* Some options to try.
-     */
-    //popTipView.disableTapToDismiss = YES;
-    //popTipView.preferredPointDirection = PointDirectionUp;
-    //popTipView.hasGradientBackground = NO;
-    //popTipView.cornerRadius = 2.0;
-    //popTipView.sidePadding = 30.0f;
-    //popTipView.topMargin = 20.0f;
-    //popTipView.pointerSize = 50.0f;
-    //popTipView.hasShadow = NO;
-    
-    
-    //txtTitle.layer.cornerRadius=1.0f;
-    //txtTitle.layer.masksToBounds=YES;
-    //txtTitle.layer.borderColor=[[UIColor redColor]CGColor ];
-    //txtTitle.layer.borderWidth=1.0f;
     
     popTipView.preferredPointDirection = PointDirectionDown;
     popTipView.hasShadow = NO;
@@ -535,13 +660,6 @@
     self.currentPopTipViewTarget = nil;
 }
 
-
--(void)tableView:(UITableView *)tableView swipeAccessoryButtonPushedForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"sua item at index = %d", indexPath.row);
-    
-    
-}
 
 
 @end

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15A92D2C1A447049005DC9CA /* TaskCalTLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A92D2A1A447049005DC9CA /* TaskCalTLineCell.m */; };
+		15A92D2D1A447049005DC9CA /* TaskCalTLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A92D2B1A447049005DC9CA /* TaskCalTLineCell.xib */; };
 		170862EA1A3F3CB30021705D /* attach_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 170862E91A3F3CB30021705D /* attach_icon.png */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -708,6 +710,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15A92D291A447049005DC9CA /* TaskCalTLineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCalTLineCell.h; sourceTree = "<group>"; };
+		15A92D2A1A447049005DC9CA /* TaskCalTLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCalTLineCell.m; sourceTree = "<group>"; };
+		15A92D2B1A447049005DC9CA /* TaskCalTLineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskCalTLineCell.xib; sourceTree = "<group>"; };
 		170862E91A3F3CB30021705D /* attach_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attach_icon.png; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* OfficeOneMB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OfficeOneMB.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1820,6 +1825,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15A92D261A446F6B005DC9CA /* CalendarNormalCell */ = {
+			isa = PBXGroup;
+			children = (
+				849788001A2BE1A400384566 /* TaskCalendarCell.h */,
+				849788011A2BE1A400384566 /* TaskCalendarCell.m */,
+				849788021A2BE1A400384566 /* TaskCalendarCell.xib */,
+			);
+			name = CalendarNormalCell;
+			sourceTree = "<group>";
+		};
+		15A92D271A446F79005DC9CA /* TaskCell */ = {
+			isa = PBXGroup;
+			children = (
+				849788051A2BE1BF00384566 /* TaskActionCell.h */,
+				849788061A2BE1BF00384566 /* TaskActionCell.m */,
+				849788071A2BE1BF00384566 /* TaskActionCell.xib */,
+			);
+			name = TaskCell;
+			sourceTree = "<group>";
+		};
+		15A92D281A44700D005DC9CA /* CalendarTimelineCell */ = {
+			isa = PBXGroup;
+			children = (
+				15A92D291A447049005DC9CA /* TaskCalTLineCell.h */,
+				15A92D2A1A447049005DC9CA /* TaskCalTLineCell.m */,
+				15A92D2B1A447049005DC9CA /* TaskCalTLineCell.xib */,
+			);
+			name = CalendarTimelineCell;
+			sourceTree = "<group>";
+		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -3061,15 +3096,12 @@
 				8496FB241A2DE34200F4A641 /* ContactLeadCell.h */,
 				8496FB251A2DE34200F4A641 /* ContactLeadCell.m */,
 				8496FB261A2DE34200F4A641 /* ContactLeadCell.xib */,
-				849788001A2BE1A400384566 /* TaskCalendarCell.h */,
-				849788011A2BE1A400384566 /* TaskCalendarCell.m */,
-				849788021A2BE1A400384566 /* TaskCalendarCell.xib */,
-				849788051A2BE1BF00384566 /* TaskActionCell.h */,
-				849788061A2BE1BF00384566 /* TaskActionCell.m */,
-				849788071A2BE1BF00384566 /* TaskActionCell.xib */,
 				769C0A271A35F3E90008CC4B /* NoteLeadCell.h */,
 				769C0A281A35F3E90008CC4B /* NoteLeadCell.m */,
 				769C0A291A35F3E90008CC4B /* NoteLeadCell.xib */,
+				15A92D261A446F6B005DC9CA /* CalendarNormalCell */,
+				15A92D281A44700D005DC9CA /* CalendarTimelineCell */,
+				15A92D271A446F79005DC9CA /* TaskCell */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -3829,6 +3861,7 @@
 				2D2F75A5185801E000EC76EE /* button_tim_kiem.png in Resources */,
 				2D6D7662187670B00051AD9E /* ic-work-fw-person-1.png in Resources */,
 				8497BFD91A295A2300A5ED3C /* voyager.png in Resources */,
+				15A92D2D1A447049005DC9CA /* TaskCalTLineCell.xib in Resources */,
 				76C964551A17731900029978 /* lines1.png in Resources */,
 				76961E511A3B306B008B5CE7 /* avatar.png in Resources */,
 				B31AFAA8187ADB5800D366B5 /* ic-show-path-2-1.png in Resources */,
@@ -4378,6 +4411,7 @@
 				B31938D618E4355D0008BBFE /* UITextField+Custom.m in Sources */,
 				2D4B92C717ACD7DE002A9AC5 /* DAAttributedLabel.m in Sources */,
 				76C964441A17731900029978 /* XAxisBand.m in Sources */,
+				15A92D2C1A447049005DC9CA /* TaskCalTLineCell.m in Sources */,
 				2D4B92C817ACD7DE002A9AC5 /* DAAttributedStringFormatter.m in Sources */,
 				843BF0BF1A03ECC500EA1D8A /* OpportunityCell.m in Sources */,
 				76F328971A34B11E00E0F2C4 /* EditTaskLeadViewController.m in Sources */,

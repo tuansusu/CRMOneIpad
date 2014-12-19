@@ -13,6 +13,11 @@
 
 @implementation TaskActionCell
 
++ (UINib *)nib
+{
+    return [UINib nibWithNibName:@"TaskActionCell" bundle:nil];
+}
+
 - (void)awakeFromNib
 {
     // Initialization code
@@ -43,8 +48,8 @@
 }
 
 
--(void) loadDataToCellWithData:(NSDictionary *)dicData withOption:(int)smgSelect{
-    
+- (void) loadDataToCellWithData:(NSDictionary *)dicData withOption:(int)smgSelect
+{
     _dicData = [[NSMutableDictionary alloc]initWithDictionary:dicData];
     
     

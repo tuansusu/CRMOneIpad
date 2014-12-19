@@ -1,33 +1,33 @@
 //
-//  TaskCalendarCell.m
+//  TaskCalTLineCell.m
 //  OfficeOneMB
 //
-//  Created by ADMIN on 12/1/14.
+//  Created by Duy Pham on 12/13/14.
 //
 //
 
-#import "TaskCalendarCell.h"
+#import "TaskCalTLineCell.h"
 
-@implementation TaskCalendarCell
+@implementation TaskCalTLineCell
 {
-    __weak IBOutlet UILabel     *_titleLabel;
-    __weak IBOutlet UILabel     *_startMonthLabel;
-    __weak IBOutlet UILabel     *_startDateLabel;
-    __weak IBOutlet UILabel     *_startTimeLabel;
+    __weak IBOutlet UILabel *_dateLabel;
+    __weak IBOutlet UILabel *_timeLabel;
+    __weak IBOutlet UILabel *_typeLabel;
+    __weak IBOutlet UIImageView *_typeImage;
+    __weak IBOutlet UILabel *_titleLabel;
+    __weak IBOutlet UILabel *_descLabel;
+    __weak IBOutlet UILabel *_customerLabel;
 }
-
 + (UINib *)nib
 {
-    return [UINib nibWithNibName:@"TaskCalendarCell" bundle:nil];
+    return [UINib nibWithNibName:@"TaskCalTLineCell" bundle:nil];
 }
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
@@ -51,11 +51,10 @@
     
     NSDate *startDate = [DateFormatter dateFromString:strStartDate];
     
-    [DateFormatter setDateFormat:@"MMM"];
-    _startMonthLabel.text = [DateFormatter stringFromDate:startDate];
-    [DateFormatter setDateFormat:@"dd"];
-    _startDateLabel.text  = [DateFormatter stringFromDate:startDate];
+    [DateFormatter setDateFormat:@"yyyy-MM-dd"];
+    _dateLabel.text = [DateFormatter stringFromDate:startDate];
     [DateFormatter setDateFormat:@"HH:mm"];
-    _startTimeLabel.text  = [DateFormatter stringFromDate:startDate];
+    _timeLabel.text  = [DateFormatter stringFromDate:startDate];
 }
+
 @end

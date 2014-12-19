@@ -1,14 +1,14 @@
 //
-//  TaskCalendarCell.h
+//  TaskCalTLineCell.h
 //  OfficeOneMB
 //
-//  Created by ADMIN on 12/1/14.
+//  Created by Duy Pham on 12/13/14.
 //
 //
 
 #import <UIKit/UIKit.h>
 
-@interface TaskCalendarCell : UITableViewCell
+@interface TaskCalTLineCell : UITableViewCell
 
 + (UINib *)nib;
 - (void)loadDataToCellWithData:(NSDictionary *)dicData withOption:(int)smgSelect;

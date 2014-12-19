@@ -38,5 +38,5 @@
  * Lọc danh sach lien he theo clientLeaderId 
  */
 -(NSMutableArray*) filterWithClientLeaderId: (NSString*) strValue;
-
+-(NSMutableArray*) filterWithClientOpportunityId: (NSString*) strValue;
 @end

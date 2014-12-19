@@ -597,11 +597,14 @@
 ///dtoopportunitycontact  Field
 #define DTOOPPORTUNITYCONTACT_clientOpportunityContactId @"clientOpportunityContactId" //BIGINT
 #define DTOOPPORTUNITYCONTACT_contactId @"contactId" //BIGINT
+#define DTOOPPORTUNITYCONTACT_clientContactId @"clientContactId" //BIGINT
 #define DTOOPPORTUNITYCONTACT_createdBy @"createdBy" //BIGINT
 #define DTOOPPORTUNITYCONTACT_createdDate @"createdDate" //VARCHAR
 #define DTOOPPORTUNITYCONTACT_isActive @"isActive" //SMALLINT
 #define DTOOPPORTUNITYCONTACT_opportunityContactId @"opportunityContactId" //BIGINT
 #define DTOOPPORTUNITYCONTACT_opportunityId @"opportunityId" //BIGINT
+#define DTOOPPORTUNITYCONTACT_clientOpportunityId @"clientOpportunityId" //BIGINT
+
 #define DTOOPPORTUNITYCONTACT_updatedBy @"updatedBy" //BIGINT
 #define DTOOPPORTUNITYCONTACT_updatedDate @"updatedDate" //VARCHAR
 #define DTOOPPORTUNITYCONTACT_id @"id" //INTEGER

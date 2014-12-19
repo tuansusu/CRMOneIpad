@@ -303,7 +303,7 @@
         }break;
         
         case type_ClueContact:{
-            return 50.0f;
+            return 100.0f;
         }
             break;
         default:
@@ -345,13 +345,12 @@
         }
             break;
         case type_ClueContact:{
-            static NSString *cellId = @"ClueContactCell";
-            ClueContactCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+            static NSString *cellId = @"ContactOpportunityCell";
+            ContactOpportunityCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
             
             
             if (!cell) {
-                
-                cell = [ClueContactCell getNewCell ];
+                cell = [ContactOpportunityCell initNibCell];
             }
             
             if (arrayData.count>0) {
@@ -359,6 +358,7 @@
             }
             
             return cell;
+
         }
             break;
             case type_Competionor:

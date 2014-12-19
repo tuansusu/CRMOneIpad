@@ -10,10 +10,8 @@
                 <outlet property="btnActionSale" destination="dAl-yz-QAt" id="G6U-QH-MRE"/>
                 <outlet property="btnAdd" destination="Nzy-Vp-Qun" id="OEo-4K-vjP"/>
                 <outlet property="btnClueContact" destination="UmA-il-Xwv" id="tZg-by-MY7"/>
-                <outlet property="btnCompetionor" destination="qK8-Fb-Ic1" id="J6R-M1-qZJ"/>
                 <outlet property="btnHome" destination="JtN-cm-mZx" id="SS1-RK-xbh"/>
                 <outlet property="btnProposeProduct" destination="FMx-z5-X0B" id="Ojg-k0-Aj0"/>
-                <outlet property="btnSupport" destination="KLa-OA-Oo9" id="d4J-NW-5fm"/>
                 <outlet property="fullNameLB" destination="lSo-wO-QHp" id="97r-tg-A6h"/>
                 <outlet property="headerViewBar" destination="zdl-Hq-ker" id="nKV-ln-Kbj"/>
                 <outlet property="lblCode" destination="zPR-3p-aBU" id="Rwv-07-xPB"/>
@@ -279,10 +277,10 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="UmA-il-Xwv" userLabel="Button đầu mối">
-                                            <rect key="frame" x="0.0" y="0.0" width="130" height="40"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="210" height="40"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                            <state key="normal" title="Đầu mối liên hệ">
+                                            <state key="normal" title="Liên hệ">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -293,8 +291,23 @@
                                                 <action selector="actionClueContact:" destination="-1" eventType="touchUpInside" id="VVX-Rb-Rsh"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dAl-yz-QAt" userLabel="Button Hoạt động bán hàng">
+                                            <rect key="frame" x="420" y="0.0" width="284" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                            <state key="normal" title="Sản phẩm đã bán">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="highlighted">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="actionActionSale:" destination="-1" eventType="touchUpInside" id="8Xn-yl-1qw"/>
+                                            </connections>
+                                        </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FMx-z5-X0B" userLabel="Button Sản phẩm đề xuất">
-                                            <rect key="frame" x="130" y="0.0" width="140" height="40"/>
+                                            <rect key="frame" x="210" y="0.0" width="210" height="40"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                             <state key="normal" title="Sản phẩm đề xuất">
@@ -306,50 +319,6 @@
                                             </state>
                                             <connections>
                                                 <action selector="actionProposeProduct:" destination="-1" eventType="touchUpInside" id="64b-os-243"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dAl-yz-QAt" userLabel="Button Hoạt động bán hàng">
-                                            <rect key="frame" x="270" y="0.0" width="160" height="40"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                            <state key="normal" title="Hoạt động bán hàng">
-                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <state key="highlighted">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="actionActionSale:" destination="-1" eventType="touchUpInside" id="8Xn-yl-1qw"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="qK8-Fb-Ic1" userLabel="Button Đối thủ cạnh tranh">
-                                            <rect key="frame" x="430" y="0.0" width="150" height="40"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                            <state key="normal" title="Đối thủ cạnh tranh">
-                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <state key="highlighted">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="actionCompetionor:" destination="-1" eventType="touchUpInside" id="3Ub-CW-nLh"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="KLa-OA-Oo9" userLabel="Button Hỗ trợ">
-                                            <rect key="frame" x="580" y="0.0" width="124" height="40"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                            <state key="normal" title="Hỗ trợ">
-                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <state key="highlighted">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="actionSupport:" destination="-1" eventType="touchUpInside" id="S9q-ri-XFd"/>
                                             </connections>
                                         </button>
                                     </subviews>

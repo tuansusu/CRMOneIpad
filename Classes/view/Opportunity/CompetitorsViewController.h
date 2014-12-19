@@ -9,7 +9,7 @@
 #import "BaseViewController.h"
 #import "CompetionorCell.h"
 #import "ProposeProductCell.h"
-#import "ClueContactCell.h"
+#import "ContactOpportunityCell.h"
 #import "SelectIndexViewController.h"
 #import "EditContactOpportunityViewController.h"
 

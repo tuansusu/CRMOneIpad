@@ -33,7 +33,17 @@
 }
 
 -(NSInteger) getClientId {
-    return [super getMaxClientIdWithTableName:TABLENAME_DTOOPPORTUNITYCONTACT withField:DTOOPPORTUNITYCONTACT_clientOpportunityContactId];
+    NSInteger *result;
+   
+    @try {
+        result = [super getMaxClientIdWithTableName:TABLENAME_DTOOPPORTUNITYCONTACT withField:DTOOPPORTUNITYCONTACT_clientOpportunityId];
+    }
+    @catch (NSException *exception) {
+        result = 1;
+        NSLog([NSString stringWithFormat:@"OpportunityContact:getClientId:Error:%@",exception]);
+    }
+    
+    return  result;
 }
 
 @end

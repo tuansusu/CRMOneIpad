@@ -184,6 +184,8 @@
 		762048771A0D246600AAA917 /* CompetitorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 762048751A0D246600AAA917 /* CompetitorsViewController.xib */; };
 		762133AE1A3DF7420049771C /* TestEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 762133AC1A3DF7420049771C /* TestEditViewController.m */; };
 		762133AF1A3DF7420049771C /* TestEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 762133AD1A3DF7420049771C /* TestEditViewController.xib */; };
+		7622D2F01A43246700DC9309 /* ContactOpportunityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7622D2EE1A43246700DC9309 /* ContactOpportunityCell.m */; };
+		7622D2F11A43246700DC9309 /* ContactOpportunityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7622D2EF1A43246700DC9309 /* ContactOpportunityCell.xib */; };
 		7623F0521A41C98400F99DA0 /* EditContactOpportunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7623F0501A41C98400F99DA0 /* EditContactOpportunityViewController.m */; };
 		7623F0531A41C98400F99DA0 /* EditContactOpportunityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7623F0511A41C98400F99DA0 /* EditContactOpportunityViewController.xib */; };
 		762DCF171A0336FB00C7E416 /* DTOCONTACTProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 762DCF161A0336FB00C7E416 /* DTOCONTACTProcess.m */; };
@@ -966,6 +968,9 @@
 		762133AB1A3DF7420049771C /* TestEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestEditViewController.h; sourceTree = "<group>"; };
 		762133AC1A3DF7420049771C /* TestEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestEditViewController.m; sourceTree = "<group>"; };
 		762133AD1A3DF7420049771C /* TestEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestEditViewController.xib; sourceTree = "<group>"; };
+		7622D2ED1A43246700DC9309 /* ContactOpportunityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactOpportunityCell.h; sourceTree = "<group>"; };
+		7622D2EE1A43246700DC9309 /* ContactOpportunityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactOpportunityCell.m; sourceTree = "<group>"; };
+		7622D2EF1A43246700DC9309 /* ContactOpportunityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactOpportunityCell.xib; sourceTree = "<group>"; };
 		7623F04F1A41C98400F99DA0 /* EditContactOpportunityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditContactOpportunityViewController.h; sourceTree = "<group>"; };
 		7623F0501A41C98400F99DA0 /* EditContactOpportunityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditContactOpportunityViewController.m; sourceTree = "<group>"; };
 		7623F0511A41C98400F99DA0 /* EditContactOpportunityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditContactOpportunityViewController.xib; sourceTree = "<group>"; };
@@ -3033,6 +3038,9 @@
 				76D29B141A126C9B004B9CF6 /* ClueContactCell.h */,
 				76D29B151A126C9B004B9CF6 /* ClueContactCell.m */,
 				76D29B161A126C9B004B9CF6 /* ClueContactCell.xib */,
+				7622D2ED1A43246700DC9309 /* ContactOpportunityCell.h */,
+				7622D2EE1A43246700DC9309 /* ContactOpportunityCell.m */,
+				7622D2EF1A43246700DC9309 /* ContactOpportunityCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -3812,6 +3820,7 @@
 				76977D651A02A75B0029F297 /* EmployeeAccountCell.xib in Resources */,
 				2D161064174F69780083F301 /* MainWindow-iPad.xib in Resources */,
 				2D21067A187AA1BB0022681B /* WeekPickerViewController.xib in Resources */,
+				7622D2F11A43246700DC9309 /* ContactOpportunityCell.xib in Resources */,
 				76C964541A17731900029978 /* lines.png in Resources */,
 				2D161066174F6D920083F301 /* RootViewController.xib in Resources */,
 				76601A51194BE90F001D4C01 /* Reader-Thumbs.png in Resources */,
@@ -4273,6 +4282,7 @@
 				2D47E7F81761704200F291D6 /* GCNetworkRequestQueue.m in Sources */,
 				8497C00F1A295A2300A5ED3C /* SDKDemoMasterViewController.m in Sources */,
 				76C964451A17731900029978 /* XAxisLabel.m in Sources */,
+				7622D2F01A43246700DC9309 /* ContactOpportunityCell.m in Sources */,
 				8ED8C32C1A3F23F60030386C /* MDDirectionService.m in Sources */,
 				8497C0071A295A2300A5ED3C /* PanoramaViewController.m in Sources */,
 				2D47E7F91761704200F291D6 /* GCNetworkDownloadRequest.m in Sources */,

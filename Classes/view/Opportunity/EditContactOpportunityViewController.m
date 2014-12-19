@@ -289,12 +289,15 @@
         
         DTOOPPORTUNITYCONTACTProcess  *dtoOpportunityContactProcess = [DTOOPPORTUNITYCONTACTProcess new];
         //id tu tang cua thang OpportunityContactId
+     
+
         NSString *strOpportunityContactId = IntToStr([dtoOpportunityContactProcess getClientId]);
         //id tu tang cua thang OpportunityContactId
         [dicSubEntity setObject:strOpportunityContactId forKey:DTOOPPORTUNITYCONTACT_clientOpportunityContactId];
+        [dicSubEntity setObject:@"0" forKey:@"updatedBy"];
         //id cua thang contact vua tao
         [dicSubEntity setObject:strClientContactId forKey:DTOCONTACT_clientContactId];
-        
+ 
         [dicSubEntity setObject:[self.dataRoot objectForKey:DTOOPPORTUNITY_clientOpportunityId] forKey:DTOOPPORTUNITY_clientOpportunityId];
         [dicSubEntity setObject:[self.dataRoot objectForKey:DTOOPPORTUNITY_clientOpportunityId] forKey:DTOOPPORTUNITYCONTACT_opportunityId];
         [dicSubEntity setObject:@"1" forKey:DTOACCOUNTCONTACT_isActive];

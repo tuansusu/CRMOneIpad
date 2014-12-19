@@ -11,7 +11,7 @@
 #import "DTOCOMPETITORProcess.h"
 #import "DTOPRODUCTMASTERProcess.h"
 #import "DTOACCOUNTProcess.h"
-
+#import "DTOCONTACTProcess.h"
 
 #define SELECT_TEXT_ADD_CONTACT @"LIÊN HỆ"
 #define SELECT_TEXT_ADD_NOTE @"SẢN PHẨM ĐỀ XUẤT"
@@ -37,6 +37,7 @@
     DTOCOMPETITORProcess *dtoCompetitorProcess;
     DTOPRODUCTMASTERProcess *dtoProductMasterProcess;
     DTOACCOUNTProcess *dtoAccountProcess;
+    DTOCONTACTProcess *dtoContactProcess;
     
     UIColor *textColorButtonNormal; //mau chu button binh thuong
     UIColor *textColorButtonSelected; //mau chu button select
@@ -134,6 +135,8 @@
     dtoCompetitorProcess = [DTOCOMPETITORProcess new];
     dtoProductMasterProcess = [DTOPRODUCTMASTERProcess new];
     dtoAccountProcess  = [DTOACCOUNTProcess new];
+    dtoContactProcess = [DTOCONTACTProcess new];
+
 
     
     opportunity = [dtoOpportunityProcess getById:itemId];
@@ -152,7 +155,8 @@
             break;
             case type_ClueContact:
         {
-            arrayData = [dtoAccountProcess filter];
+            //arrayData = [dtoAccountProcess filter];
+            arrayData = [dtoContactProcess filterWithClientOpportunityId:[opportunity objectForKey:DTOOPPORTUNITY_clientOpportunityId]];
         }break;
             case type_Competionor:
         {

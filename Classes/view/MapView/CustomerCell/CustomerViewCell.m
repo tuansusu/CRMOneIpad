@@ -8,6 +8,7 @@
 
 #import "CustomerViewCell.h"
 #import "DTOAcountLeadProcessObject.h"
+#import "DTOAccountProcessObject.h"
 
 @implementation CustomerViewCell
 
@@ -37,7 +38,7 @@
     // Configure the view for the selected state
 }
 
--(void) loadDataToCellWithCustomerOB:(DTOAcountLeadProcessObject *)customerOB withStatus:(NSString *)status{
+-(void) loadDataToCellWithKH360OB:(DTOAccountProcessObject *)kh360OB withStatus:(NSString *)status{
     if ([status isEqual:@"YES"]) {
         [btnDirection setImage:[UIImage imageNamed:@"iconDirectionSelected"] forState:UIControlStateNormal];
         _isCellSelected = YES;
@@ -45,8 +46,21 @@
         [btnDirection setImage:[UIImage imageNamed:@"iconDirection"] forState:UIControlStateNormal];
         _isCellSelected = NO;
     }
-    if (customerOB.name) {
-        lblName.text = customerOB.name;
+    if (kh360OB.name) {
+        lblName.text = kh360OB.name;
+    }
+}
+
+-(void) loadDataToCellWithKHDMOB:(DTOAcountLeadProcessObject *)khdmOB withStatus:(NSString *)status{
+    if ([status isEqual:@"YES"]) {
+        [btnDirection setImage:[UIImage imageNamed:@"iconDirectionSelected"] forState:UIControlStateNormal];
+        _isCellSelected = YES;
+    }else{
+        [btnDirection setImage:[UIImage imageNamed:@"iconDirection"] forState:UIControlStateNormal];
+        _isCellSelected = NO;
+    }
+    if (khdmOB.name) {
+        lblName.text = khdmOB.name;
     }
 }
 

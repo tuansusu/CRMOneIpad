@@ -567,6 +567,7 @@
 		8E0B07D21A4475CF00CF7A78 /* iconMessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0B07CA1A4475CF00CF7A78 /* iconMessage@2x.png */; };
 		8E0B07D51A4479EF00CF7A78 /* bgPopup.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0B07D31A4479EF00CF7A78 /* bgPopup.png */; };
 		8E0B07D61A4479EF00CF7A78 /* bgPopup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0B07D41A4479EF00CF7A78 /* bgPopup@2x.png */; };
+		8E87C9321A45B29700CB0918 /* DTOAccountProcessObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E87C9311A45B29700CB0918 /* DTOAccountProcessObject.m */; };
 		8EB708771A407A1C001861A0 /* Mobile_GPS_MyLocationIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EB708751A407A1C001861A0 /* Mobile_GPS_MyLocationIcon.png */; };
 		8EB708781A407A1C001861A0 /* Mobile_GPS_MyLocationIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EB708761A407A1C001861A0 /* Mobile_GPS_MyLocationIcon@2x.png */; };
 		8EB7087A1A408AE2001861A0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB708791A408AE2001861A0 /* MapKit.framework */; };
@@ -1609,6 +1610,8 @@
 		8E0B07CA1A4475CF00CF7A78 /* iconMessage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconMessage@2x.png"; sourceTree = "<group>"; };
 		8E0B07D31A4479EF00CF7A78 /* bgPopup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgPopup.png; sourceTree = "<group>"; };
 		8E0B07D41A4479EF00CF7A78 /* bgPopup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgPopup@2x.png"; sourceTree = "<group>"; };
+		8E87C9301A45B29700CB0918 /* DTOAccountProcessObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOAccountProcessObject.h; sourceTree = "<group>"; };
+		8E87C9311A45B29700CB0918 /* DTOAccountProcessObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOAccountProcessObject.m; sourceTree = "<group>"; };
 		8EB708751A407A1C001861A0 /* Mobile_GPS_MyLocationIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mobile_GPS_MyLocationIcon.png; sourceTree = "<group>"; };
 		8EB708761A407A1C001861A0 /* Mobile_GPS_MyLocationIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Mobile_GPS_MyLocationIcon@2x.png"; sourceTree = "<group>"; };
 		8EB708791A408AE2001861A0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -1911,6 +1914,8 @@
 			children = (
 				06FE2E1D1A4566DD004A1D16 /* DTOAcountLeadProcessObject.h */,
 				06FE2E1E1A4566DD004A1D16 /* DTOAcountLeadProcessObject.m */,
+				8E87C9301A45B29700CB0918 /* DTOAccountProcessObject.h */,
+				8E87C9311A45B29700CB0918 /* DTOAccountProcessObject.m */,
 			);
 			name = Objects;
 			path = ProcessData/Objects;
@@ -4558,6 +4563,7 @@
 				2D3643921859996700190EE7 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				8497BFF81A295A2300A5ED3C /* FixedPanoramaViewController.m in Sources */,
 				2D3643911859996700190EE7 /* AFJSONUtilities.m in Sources */,
+				8E87C9321A45B29700CB0918 /* DTOAccountProcessObject.m in Sources */,
 				2D0E2EE01798053C0081D44A /* StringUtil.m in Sources */,
 				2D0E2EE11798053C0081D44A /* MyCalendar.m in Sources */,
 				7623F0521A41C98400F99DA0 /* EditContactOpportunityViewController.m in Sources */,

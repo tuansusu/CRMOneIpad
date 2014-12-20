@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class DTOAcountLeadProcessObject;
+@class DTOAccountProcessObject;
 
 @protocol CustomerViewCellDelegate <NSObject>
 
@@ -21,7 +22,9 @@
 }
 +(CustomerViewCell*) initNibCell;
 
--(void) loadDataToCellWithCustomerOB:(DTOAcountLeadProcessObject *)customerOB withStatus:(NSString *)status;
+-(void) loadDataToCellWithKH360OB:(DTOAccountProcessObject *)kh360OB withStatus:(NSString *)status;
+
+-(void) loadDataToCellWithKHDMOB:(DTOAcountLeadProcessObject *)khdmOB withStatus:(NSString *)status;
 
 @property (nonatomic) id<CustomerViewCellDelegate> delegate;
 @property (nonatomic,assign) BOOL isCellSelected;

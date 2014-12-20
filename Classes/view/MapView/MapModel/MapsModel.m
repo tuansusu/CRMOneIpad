@@ -15,17 +15,27 @@
     self = [super init];
     
     if(self){
-        _listCustomer= [[NSMutableArray alloc] init];
+        _listCustomerKHDM= [[NSMutableArray alloc] init];
         dtoLeadProcess = [DTOACCOUNTLEADProcess new];
+
+        dtoProcess = [DTOACCOUNTProcess new];
+        _listCustomerKH360= [[NSMutableArray alloc] init];
     }
     return self;
 }
 
--(void)getAllCustomer{
-    [_listCustomer removeAllObjects];
+-(void)getAllCustomerKHDM{
+    [_listCustomerKHDM removeAllObjects];
     NSMutableArray *resultArr = [dtoLeadProcess filter];
     for (NSDictionary *dic in resultArr) {
-        [_listCustomer addObject:[dic dtoAcountLeadProcessOb]];
+        [_listCustomerKHDM addObject:[dic dtoAcountLeadProcessOb]];
+    }
+}
+-(void)getAllCustomerKH360{
+    [_listCustomerKH360 removeAllObjects];
+    NSMutableArray *resultArr = [dtoProcess filter];
+    for (NSDictionary *dic in resultArr) {
+        [_listCustomerKH360 addObject:[dic dtoAcountProcessOb]];
     }
 }
 

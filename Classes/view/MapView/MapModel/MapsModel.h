@@ -9,14 +9,18 @@
 #import <Foundation/Foundation.h>
 
 #import "DTOACCOUNTLEADProcess.h"
+#import "DTOACCOUNTProcess.h"
 
 @interface MapsModel : NSObject
 {
     DTOACCOUNTLEADProcess *dtoLeadProcess;
+    DTOACCOUNTProcess *dtoProcess;
 }
 
-@property (nonatomic,readonly) NSMutableArray *listCustomer;
+@property (nonatomic,readonly) NSMutableArray *listCustomerKHDM;
+@property (nonatomic,readonly) NSMutableArray *listCustomerKH360;
 
--(void)getAllCustomer;
+-(void)getAllCustomerKHDM;
+-(void)getAllCustomerKH360;
 
 @end

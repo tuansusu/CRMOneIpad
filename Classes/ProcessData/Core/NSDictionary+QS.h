@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 
 #import "DTOAcountLeadProcessObject.h"
+#import "DTOAccountProcessObject.h"
 
 @interface NSDictionary (QS)
 
 -(DTOAcountLeadProcessObject*)dtoAcountLeadProcessOb;
+-(DTOAccountProcessObject*)dtoAcountProcessOb;
 
 @end

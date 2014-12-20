@@ -16,9 +16,8 @@
 
 #define ZOOM_RATIO 15
 
-#define BTN_TAG_CUSTOMER 1
-#define BTN_TAG_CUSTOMER 2
-#define BTN_TAG_CUSTOMER 3
+#define BUTTON_KH_COLOR_SELECTED [UIColor colorWithRed:0.0f/255.0f green:122.0f/255.0f blue:255.0f/255.0f alpha:1.0f]
+#define BUTTON_KH_COLOR_DEFAULT [UIColor colorWithRed:170.0f/255.0f green:170.0f/255.0f blue:170.0f/255.0f alpha:0.4f]
 
 @interface TestMapViewController ()<CLLocationManagerDelegate,GMSMapViewDelegate,CustomerViewCellDelegate>
 {
@@ -40,10 +39,16 @@
     IBOutlet UITableView *customerTbv;
     IBOutlet UIView *directionView;
     BOOL expandOptionSelected;
-    
+
     NSMutableArray *listCustomerDirections;
-    NSMutableArray *listCustomerDirectionsFlag;
+    NSMutableArray *listKH360Flag;
+    NSMutableArray *listKHDMFlag;
     MapsModel *_mapModel;
+    BOOL khdmSelected;
+    IBOutlet UIButton *btnKHDM;
+    IBOutlet UIButton *btnKH360;
+    IBOutlet UIImageView *imgCusSelected;
+    IBOutlet UIImageView *imgDirSelected;
 }
 @end
 
@@ -62,11 +67,13 @@
 {
     [super viewDidLoad];
 
-     _mapModel = [[MapsModel alloc] init];
-    
+    _mapModel = [[MapsModel alloc] init];
+    listCustomerDirections = [[NSMutableArray alloc] init];
+    listKH360Flag = [[NSMutableArray alloc] init];
+    listKHDMFlag = [[NSMutableArray alloc] init];
     waypoints_ = [[NSMutableArray alloc]init];
     waypointStrings_ = [[NSMutableArray alloc]init];
-    
+
     if ([UIDevice getCurrentSysVer] >= 7.0) {
         [UIDevice updateLayoutInIOs7OrAfter:self];
 
@@ -111,17 +118,18 @@
     [waypointStrings_ addObject:positionString];
 
     [self initLocation];
-    [self initData];
+    [self initDataKH];
 
-    DTOAcountLeadProcessObject *customerData=[_mapModel.listCustomer objectAtIndex:1];
+    DTOAcountLeadProcessObject *customerData=[_mapModel.listCustomerKHDM objectAtIndex:1];
     [marker setUserData:customerData];
 }
 
--(void)initData{
-    listCustomerDirections = [[NSMutableArray alloc] init];
-    [_mapModel getAllCustomer];
+-(void)initDataKH{
+
+    [_mapModel getAllCustomerKHDM];
+    [_mapModel getAllCustomerKH360];
     [customerTbv reloadData];
-    [self initlistCustomerDirectionsFlag];
+    [self initListCustomerDirectionsFlag];
 }
 
 //Home button
@@ -148,32 +156,77 @@
 
 #pragma mark list directions action
 
--(void)initlistCustomerDirectionsFlag{
-    listCustomerDirectionsFlag = [[NSMutableArray alloc] init];
-    if (_mapModel.listCustomer.count>0) {
-        for (int i=0;i<_mapModel.listCustomer.count;i++) {
-            [listCustomerDirectionsFlag addObject:@"NO"];
+-(void)initListCustomerDirectionsFlag{
+        [listKHDMFlag removeAllObjects];
+        if (_mapModel.listCustomerKHDM.count>0) {
+            for (int i=0;i<_mapModel.listCustomerKHDM.count;i++) {
+                [listKHDMFlag addObject:@"NO"];
+            }
         }
-    }
+
+        [listKH360Flag removeAllObjects];
+        if (_mapModel.listCustomerKH360.count>0) {
+            for (int i=0;i<_mapModel.listCustomerKH360.count;i++) {
+                [listKH360Flag addObject:@"NO"];
+            }
+        }
 }
 - (void)updatelistCustomerDirectionsFlagAtIndex:(int)index withStatus:(NSString *)status
 {
-    [listCustomerDirectionsFlag replaceObjectAtIndex:index withObject:status];
+    if (khdmSelected) {
+        [listKHDMFlag replaceObjectAtIndex:index withObject:status];
+    }else{
+        [listKH360Flag replaceObjectAtIndex:index withObject:status];
+    }
+
 }
 
 
 #pragma mark Button action
+
+#pragma mark change kh action
+-(IBAction)btnKH360Selected:(id)sender{
+    [btnKH360 setBackgroundColor:BUTTON_KH_COLOR_SELECTED];
+    [btnKH360 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+
+    [btnKHDM setBackgroundColor:BUTTON_KH_COLOR_DEFAULT];
+    [btnKHDM setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    if (khdmSelected) {
+        khdmSelected = NO;
+        [customerTbv reloadData];
+    }
+}
+
+-(IBAction)btnKHDMSelected:(id)sender{
+
+    [btnKHDM setBackgroundColor:BUTTON_KH_COLOR_SELECTED];
+    [btnKHDM setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    if (!khdmSelected) {
+        khdmSelected = YES;
+        [customerTbv reloadData];
+    }
+
+    [btnKH360 setBackgroundColor:BUTTON_KH_COLOR_DEFAULT];
+    [btnKH360 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+
+}
 
 #pragma mark tab action
 -(IBAction)btnCustomerTabAction:(id)sender{
 
     [customerView setHidden:NO];
     [directionView setHidden:YES];
+
+    [imgCusSelected setHidden:NO];
+    [imgDirSelected setHidden:YES];
 }
 
 -(IBAction)btnDirectionTabAction:(id)sender{
     [directionView setHidden:NO];
     [customerView setHidden:YES];
+
+    [imgCusSelected setHidden:YES];
+    [imgDirSelected setHidden:NO];
 }
 
 -(IBAction)btnExpandTabAction:(id)sender{
@@ -337,7 +390,12 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return  _mapModel.listCustomer.count;
+    if (khdmSelected) {
+        return  _mapModel.listCustomerKHDM.count;
+    }else{
+        return _mapModel.listCustomerKH360.count;
+    }
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -348,10 +406,16 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
         cell = [CustomerViewCell initNibCell];
         cell.delegate = self;
     }
-
-    if (_mapModel.listCustomer.count>0) {
-        DTOAcountLeadProcessObject *customerOB = [_mapModel.listCustomer objectAtIndex:indexPath.row];
-        [cell loadDataToCellWithCustomerOB:customerOB withStatus:[listCustomerDirectionsFlag objectAtIndex:indexPath.row]];
+    if (khdmSelected) {
+        if (_mapModel.listCustomerKHDM.count>0) {
+            DTOAcountLeadProcessObject *khdmOB = [_mapModel.listCustomerKHDM objectAtIndex:indexPath.row];
+            [cell loadDataToCellWithKHDMOB:khdmOB withStatus:[listKHDMFlag objectAtIndex:indexPath.row]];
+        }
+    }else{
+        if (_mapModel.listCustomerKH360.count>0) {
+            DTOAccountProcessObject *kh360OB = [_mapModel.listCustomerKH360 objectAtIndex:indexPath.row];
+            [cell loadDataToCellWithKH360OB:kh360OB withStatus:[listKH360Flag objectAtIndex:indexPath.row]];
+        }
     }
 
     return cell;
@@ -364,17 +428,25 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
 {
     CustomerViewCell *currentCell = (CustomerViewCell *)cell;
     NSIndexPath *indexPath = [customerTbv indexPathForCell:currentCell];
-    
-    
+
     [self updatelistCustomerDirectionsFlagAtIndex:indexPath.row withStatus:status];
     [customerTbv reloadData];
-    DTOAcountLeadProcessObject *customerOB = [_mapModel.listCustomer objectAtIndex:indexPath.row];
-    if ([status isEqualToString:@"YES"]) {
-        [listCustomerDirections addObject:customerOB];
+    if (khdmSelected) {
+        DTOAcountLeadProcessObject *khdmOB = [_mapModel.listCustomerKHDM objectAtIndex:indexPath.row];
+
+        if ([status isEqualToString:@"YES"]) {
+            [listCustomerDirections addObject:khdmOB];
+        }else{
+            [listCustomerDirections removeObject:khdmOB];
+        }
     }else{
-        [listCustomerDirections removeObject:customerOB];
+        DTOAccountProcessObject *kh360OB = [_mapModel.listCustomerKH360 objectAtIndex:indexPath.row];
+        if ([status isEqualToString:@"YES"]) {
+            [listCustomerDirections addObject:kh360OB];
+        }else{
+            [listCustomerDirections removeObject:kh360OB];
+        }
     }
-    
 }
 
 

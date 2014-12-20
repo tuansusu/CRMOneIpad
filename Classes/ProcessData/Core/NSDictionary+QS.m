@@ -125,4 +125,13 @@
     return accountLeadOB;
 }
 
+-(DTOAccountProcessObject*)dtoAcountProcessOb{
+    DTOAccountProcessObject *kh360OB = [[DTOAccountProcessObject alloc] init];
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOACCOUNT_name]]) {
+        kh360OB.name = [self objectForKey:DTOACCOUNT_name];
+    }
+    return kh360OB;
+}
+
+
 @end

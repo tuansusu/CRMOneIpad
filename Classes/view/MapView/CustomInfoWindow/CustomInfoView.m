@@ -7,6 +7,7 @@
 //
 
 #import "CustomInfoView.h"
+#import "DTOAcountLeadProcessObject.h"
 
 @implementation CustomInfoView
 - (id)initWithFrame:(CGRect)frame
@@ -26,35 +27,35 @@
 }
 */
 
--(void) loadViewWithData:(NSDictionary *)dicData{
+-(void) loadViewWithCustomerOB:(DTOAcountLeadProcessObject *)customerOB{
     NSString *code = @"";
     NSString *name = @"";
-    if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_code]]) {
-        code = [dicData objectForKey:DTOLEAD_code];
+    if (customerOB.code) {
+        code = customerOB.code;
     }
-    if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_name]]) {
-        name = [dicData objectForKey:DTOLEAD_name];
+    if (customerOB.name) {
+        name = customerOB.name;
     }
 
     lblTitle.text = [NSString stringWithFormat:@"%@-%@",code,name];
 
-    if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_address]]) {
-        lblAdress.text = @"N/a";
+    if (customerOB.address) {
+        lblAdress.text = @"Địa chỉ: N/a";
     }else{
-        lblAdress.text = [NSString stringWithFormat:@"Địa chỉ: %@",[dicData objectForKey:DTOLEAD_address]];
+        lblAdress.text = [NSString stringWithFormat:@"Địa chỉ: %@",customerOB.address];
     }
 
-    if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_email]]) {
-        lblEmail.text = @"N/a";
+    if (customerOB.email) {
+        lblEmail.text = @"Email: N/a";
     }else{
-        lblEmail.text = [NSString stringWithFormat:@"Email: %@",[dicData objectForKey:DTOLEAD_email]];
+        lblEmail.text = [NSString stringWithFormat:@"Email: %@",customerOB.address];
     }
 
-    if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_mobile]]) {
-        lblPhone.text = @"N/a";
+    if (customerOB.mobile) {
+        lblPhone.text = @"Điện thoại: N/a";
 
     }else{
-        lblPhone.text =[NSString stringWithFormat:@"Điện thoại : %@",[dicData objectForKey:DTOLEAD_mobile]];
+        lblPhone.text =[NSString stringWithFormat:@"Điện thoại : %@",customerOB.mobile];
     }
 }
 

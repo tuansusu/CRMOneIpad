@@ -9,9 +9,10 @@
 #import "TestMapViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import "MDDirectionService.h"
-#import "DTOACCOUNTLEADProcess.h"
+
 #import "CustomerViewCell.h"
 #import "CustomInfoView.h"
+#import "MapsModel.h"
 
 #define ZOOM_RATIO 15
 
@@ -39,8 +40,10 @@
     IBOutlet UITableView *customerTbv;
     IBOutlet UIView *directionView;
     BOOL expandOptionSelected;
-    NSArray *arrayData;
-    DTOACCOUNTLEADProcess *dtoLeadProcess;
+    
+    NSMutableArray *listCustomerDirections;
+    NSMutableArray *listCustomerDirectionsFlag;
+    MapsModel *_mapModel;
 }
 @end
 
@@ -58,9 +61,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+     _mapModel = [[MapsModel alloc] init];
+    
     waypoints_ = [[NSMutableArray alloc]init];
     waypointStrings_ = [[NSMutableArray alloc]init];
-
+    
     if ([UIDevice getCurrentSysVer] >= 7.0) {
         [UIDevice updateLayoutInIOs7OrAfter:self];
 
@@ -107,15 +113,15 @@
     [self initLocation];
     [self initData];
 
-    NSDictionary *dicData=[arrayData objectAtIndex:1];
-    [marker setUserData:dicData];
+    DTOAcountLeadProcessObject *customerData=[_mapModel.listCustomer objectAtIndex:1];
+    [marker setUserData:customerData];
 }
 
 -(void)initData{
-    dtoLeadProcess = [DTOACCOUNTLEADProcess new];
-    arrayData  = [NSArray new];
-    arrayData = [dtoLeadProcess filter];
+    listCustomerDirections = [[NSMutableArray alloc] init];
+    [_mapModel getAllCustomer];
     [customerTbv reloadData];
+    [self initlistCustomerDirectionsFlag];
 }
 
 //Home button
@@ -138,6 +144,21 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark list directions action
+
+-(void)initlistCustomerDirectionsFlag{
+    listCustomerDirectionsFlag = [[NSMutableArray alloc] init];
+    if (_mapModel.listCustomer.count>0) {
+        for (int i=0;i<_mapModel.listCustomer.count;i++) {
+            [listCustomerDirectionsFlag addObject:@"NO"];
+        }
+    }
+}
+- (void)updatelistCustomerDirectionsFlagAtIndex:(int)index withStatus:(NSString *)status
+{
+    [listCustomerDirectionsFlag replaceObjectAtIndex:index withObject:status];
 }
 
 
@@ -296,8 +317,8 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
 - (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker{
     CustomInfoView *infoView = [[CustomInfoView alloc] initWithFrame:CGRectZero];
 
-    NSDictionary *dicData= marker.userData;
-    [infoView loadViewWithData:dicData];
+    DTOAcountLeadProcessObject *customerData= marker.userData;
+    [infoView loadViewWithCustomerOB:customerData];
     return infoView;
 }
 
@@ -316,11 +337,7 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
-
-    return  arrayData.count;
-
-
+    return  _mapModel.listCustomer.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -332,9 +349,9 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
         cell.delegate = self;
     }
 
-    if (arrayData.count>0) {
-        [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row]];
-//        cell.delegate = (id<AccountLeadCellDelegate>) self;
+    if (_mapModel.listCustomer.count>0) {
+        DTOAcountLeadProcessObject *customerOB = [_mapModel.listCustomer objectAtIndex:indexPath.row];
+        [cell loadDataToCellWithCustomerOB:customerOB withStatus:[listCustomerDirectionsFlag objectAtIndex:indexPath.row]];
     }
 
     return cell;
@@ -343,30 +360,21 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
 
 #pragma mark Customer Cell Delegate
 
-- (void)didSelectedAtCell:(id)cell
+- (void)didSelectedAtCell:(id)cell withStatus:(NSString *)status
 {
     CustomerViewCell *currentCell = (CustomerViewCell *)cell;
     NSIndexPath *indexPath = [customerTbv indexPathForCell:currentCell];
-
-    NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
-
-}
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    NSIndexPath* selection = [tableView indexPathForSelectedRow];
-    if (selection){
-
-        [tableView deselectRowAtIndexPath:selection animated:YES];
+    
+    
+    [self updatelistCustomerDirectionsFlagAtIndex:indexPath.row withStatus:status];
+    [customerTbv reloadData];
+    DTOAcountLeadProcessObject *customerOB = [_mapModel.listCustomer objectAtIndex:indexPath.row];
+    if ([status isEqualToString:@"YES"]) {
+        [listCustomerDirections addObject:customerOB];
+    }else{
+        [listCustomerDirections removeObject:customerOB];
     }
-
-    NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
-
-
-
-//    DetailLeadViewController *viewController = [[DetailLeadViewController alloc]initWithNibName:@"DetailLeadViewController" bundle:nil];
-//    viewController.dataSend = dicData;
-//    [self presentViewController:viewController animated:YES completion:nil];
-
+    
 }
 
 

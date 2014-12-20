@@ -8,17 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+@class DTOAcountLeadProcessObject;
+
 @protocol CustomerViewCellDelegate <NSObject>
 
-- (void)didSelectedAtCell:(id)cell;
+- (void)didSelectedAtCell:(id)cell withStatus:(NSString *)status;
 @end
 
 @interface CustomerViewCell : UITableViewCell{
     IBOutlet UILabel *lblName;
+    IBOutlet UIButton *btnDirection;
 }
 +(CustomerViewCell*) initNibCell;
--(void) loadDataToCellWithData:(NSDictionary *)dicData ;
+
+-(void) loadDataToCellWithCustomerOB:(DTOAcountLeadProcessObject *)customerOB withStatus:(NSString *)status;
 
 @property (nonatomic) id<CustomerViewCellDelegate> delegate;
+@property (nonatomic,assign) BOOL isCellSelected;
 
 @end

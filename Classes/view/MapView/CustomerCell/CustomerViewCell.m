@@ -7,6 +7,7 @@
 //
 
 #import "CustomerViewCell.h"
+#import "DTOAcountLeadProcessObject.h"
 
 @implementation CustomerViewCell
 
@@ -32,19 +33,36 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
--(void) loadDataToCellWithData:(NSDictionary *)dicData{
-    if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_name]]) {
-        lblName.text = [dicData objectForKey:DTOLEAD_name];
+-(void) loadDataToCellWithCustomerOB:(DTOAcountLeadProcessObject *)customerOB withStatus:(NSString *)status{
+    if ([status isEqual:@"YES"]) {
+        [btnDirection setImage:[UIImage imageNamed:@"iconDirectionSelected"] forState:UIControlStateNormal];
+        _isCellSelected = YES;
+    }else{
+        [btnDirection setImage:[UIImage imageNamed:@"iconDirection"] forState:UIControlStateNormal];
+        _isCellSelected = NO;
+    }
+    if (customerOB.name) {
+        lblName.text = customerOB.name;
     }
 }
 
 -(IBAction)cellSelectedAtIndex:(id)sender{
-    if (_delegate && [_delegate respondsToSelector:@selector(didSelectedAtCell:)]) {
-        [_delegate didSelectedAtCell:self];
+    NSString *statusSelect;
+    if (_isCellSelected) {
+        [btnDirection setImage:[UIImage imageNamed:@"iconDirection"] forState:UIControlStateNormal];
+        _isCellSelected= NO;
+        statusSelect = @"NO";
+    }else{
+        [btnDirection setImage:[UIImage imageNamed:@"iconDirectionSelected"] forState:UIControlStateNormal];
+        _isCellSelected = YES;
+        statusSelect = @"YES";
+    }
+    if (_delegate && [_delegate respondsToSelector:@selector(didSelectedAtCell: withStatus:)]) {
+        [_delegate didSelectedAtCell:self withStatus:statusSelect];
     }
 }
 

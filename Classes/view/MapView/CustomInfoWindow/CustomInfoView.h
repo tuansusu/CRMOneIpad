@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class DTOAcountLeadProcessObject;
+
 @interface CustomInfoView : UIView
 {
     IBOutlet UILabel *lblTitle;
@@ -16,5 +18,6 @@
     IBOutlet UILabel *lblPhone;
 }
 
--(void) loadViewWithData:(NSDictionary *)dicData;
+-(void) loadViewWithCustomerOB:(DTOAcountLeadProcessObject *)customerOB;
+
 @end

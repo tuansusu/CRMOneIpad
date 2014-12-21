@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import "SelectIndexViewController.h"
-#import "QuickSearchViewcontroller.h"
+#import "MDSearchBarController.h"
 
-@interface EditOpportunityViewController : BaseViewController<UITextFieldDelegate, SelectIndexDelegate>
+@interface EditOpportunityViewController : BaseViewController<UITextFieldDelegate, SelectIndexDelegate,MDSearchBarViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 
 //DATA
 @property (nonatomic, retain) NSDictionary *dataSend;
@@ -72,8 +72,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtNote;
 @property (weak, nonatomic) IBOutlet UIButton *btnType;
 - (IBAction)actionChooseType:(id)sender;
-@property (weak, nonatomic) IBOutlet UISearchBar *txtSearchCustomer;
 
+@property (weak, nonatomic) IBOutlet MDSearchBar *txtSearchCustomer;
+@property (nonatomic) int searchResultCount;
 
 
 

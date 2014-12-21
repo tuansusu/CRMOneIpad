@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -31,6 +30,7 @@
                 <outlet property="txtName" destination="rZ9-bd-fbA" id="qDH-TT-Or0"/>
                 <outlet property="txtNextTask" destination="pmq-g9-yD2" id="Pqt-Gb-bhW"/>
                 <outlet property="txtNote" destination="Y0d-wI-PQl" id="BNj-TR-HkZ"/>
+                <outlet property="txtSearchCustomer" destination="Yms-Z6-5Rf" id="uZf-pt-fBP"/>
                 <outlet property="txtType" destination="olG-es-CRZ" id="cqH-5o-Z4w"/>
                 <outlet property="view" destination="pCS-6G-g57" id="7mg-ui-htN"/>
                 <outlet property="viewMainBodyInfo" destination="A2L-1A-C1D" id="yEh-dB-xb1"/>
@@ -324,6 +324,11 @@
                                             <rect key="frame" x="480" y="82" width="16" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
+                                        <view contentMode="scaleToFill" id="Yms-Z6-5Rf" customClass="MDSearchBar">
+                                            <rect key="frame" x="30" y="267" width="380" height="45"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.88627457620000005" green="0.4156863093" blue="0.43529415129999999" alpha="1" colorSpace="deviceRGB"/>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>

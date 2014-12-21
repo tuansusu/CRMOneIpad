@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -41,14 +42,10 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="call.png" id="4jo-zY-gwe">
-                        <rect key="frame" x="20" y="35" width="25" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pDz-yf-36A" userLabel="btn Flolow">
-                        <rect key="frame" x="653" y="32" width="30" height="30"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pDz-yf-36A" userLabel="btn Flolow">
+                        <rect key="frame" x="656" y="35" width="24" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" backgroundImage="flag_enable.png">
+                        <state key="normal" image="flag_enable.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
@@ -76,12 +73,22 @@
                             <action selector="actionSendMail:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3lK-y5-vAQ"/>
                         </connections>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pa8-De-4Em">
+                        <rect key="frame" x="21" y="35" width="25" height="25"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" backgroundImage="call.png">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="actionCall:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="YKm-iw-bG2"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="btnAddress" destination="hjl-i1-PMU" id="nL8-V4-ZqR"/>
+                <outlet property="btnFollow" destination="pDz-yf-36A" id="cSv-AR-d3p"/>
                 <outlet property="btnSendMail" destination="rAI-z0-rRN" id="IDi-A7-he3"/>
-                <outlet property="imgIconPhone" destination="4jo-zY-gwe" id="rrt-V1-wWl"/>
                 <outlet property="lbAddress" destination="Hwv-9z-ocW" id="tnL-fm-YsR"/>
                 <outlet property="lbEmail" destination="PAa-Qg-sgU" id="vG7-ar-9I2"/>
                 <outlet property="lbName" destination="RIg-zI-tJ2" id="Pjm-Dk-vls"/>

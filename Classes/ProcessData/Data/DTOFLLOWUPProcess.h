@@ -1,17 +1,15 @@
 //
-//  DTOTASKProcess.h
+//  DTOFLLOWUPProcess.h
 //  OfficeOneMB
 //
-//  Created by viettel on 12/7/14.
+//  Created by Luong Hoang on 12/21/14.
 //
 //
 
+#import <UIKit/UIKit.h>
 #import "BaseDataProcess.h"
 
-#define FIX_TASK_STATUS_COMPLETE 3245
-#define FIX_TASK_STATUS_NOT_COMPLETE 3244
-
-@interface DTOTASKProcess : BaseDataProcess
+@interface DTOFLLOWUPProcess : BaseDataProcess
 
 /*
  *Ham them moi
@@ -19,9 +17,10 @@
 -(BOOL) insertToDBWithEntity:(NSMutableDictionary*) entity;
 
 /*
- * Ham xoa khach hang dau moi - truyen clientLeadId
+ * Ham xoa theo doi
  */
 -(BOOL) deleteEntity : (NSString*) leadId;
+-(BOOL) checkFollowUp:(NSString *)leadId objectType:(NSString *)type;
 
 /*
  * Lọc khách hàng đầu mối (chưa có tìm kiếm và phân trang)
@@ -37,5 +36,4 @@
  * Lọc danh sach lien he theo clientLeaderId
  */
 -(NSMutableArray*) filterWithClientLeaderId: (NSString*) strValue;
-
 @end

@@ -46,6 +46,10 @@
     NSArray *listArrPersonPosition;
     
     BOOL succsess;//Trang thai acap nhat
+    
+    //key board
+    float heightKeyboard;
+    UITextField *_txt;
 }
 @end
 
@@ -57,6 +61,7 @@
     if (self) {
         // Custom initialization
     }
+   [self registerForKeyboardNotifications];
     return self;
 }
 
@@ -105,6 +110,7 @@
 //Load thong tin len form sua
 -(void) loadEditData {
     
+    NSLog(@"dataSen:%@",_dataSend);
     if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_name]]) {
         _txtName.text =[_dataSend objectForKey:DTOLEAD_name];
     }
@@ -123,8 +129,6 @@
     if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_identifiedNumber]]) {
         _txtNumberIdentity.text =[_dataSend objectForKey:DTOLEAD_identifiedNumber];
     }
-    
-    
     NSString *strPersonalJob = [_dataSend objectForKey:DTOLEAD_personalJob];
     if (![StringUtil stringIsEmpty:strPersonalJob]) {
         NSArray *arrayPersonJobID = [listArrPersonJob valueForKey:DTOSYSCAT_sysCatId];
@@ -638,5 +642,58 @@
     [self.visiblePopTipViews removeObject:popTipView];
     self.currentPopTipViewTarget = nil;
 }
+#pragma mark UITextField
 
+
+// Call this method somewhere in your view controller setup code.
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+}
+// Called when the UIKeyboardDidShowNotification is sent.
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    if (kbSize.width>0) {
+        heightKeyboard = kbSize.width;
+    }
+    
+    
+    self.bodyMainView.contentSize = CGSizeMake(self.bodyMainView.frame.size.width, self.bodyMainView.frame.size.height + heightKeyboard);
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, heightKeyboard, 0.0);
+    self.bodyMainView.contentInset = contentInsets;
+    self.bodyMainView.scrollIndicatorInsets = contentInsets;
+    
+    // If active text field is hidden by keyboard, scroll it so it's visible
+    // Your application might not need or want this behavior.
+    //CGRect aRect = self.view.frame;
+    CGRect aRect = CGRectMake(0, 0, 1024, 768);
+    aRect.size.height -= kbSize.width;
+    if (!CGRectContainsPoint(aRect, _txt.frame.origin) ) {
+        CGPoint scrollPoint = CGPointMake(0.0, _txt.frame.origin.y-heightKeyboard);
+        [self.bodyMainView setContentOffset:scrollPoint animated:YES];
+    }
+}
+
+// Called when the UIKeyboardWillHideNotification is sent
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    
+    if(self.bodyMainView.contentSize.height>self.bodyMainView.frame.size.height){
+        self.bodyMainView.contentSize = CGSizeMake(self.bodyMainView.frame.size.width, self.bodyMainView.frame.size.height - heightKeyboard);
+        
+        
+        UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+        self.bodyMainView.contentInset = contentInsets;
+        self.bodyMainView.scrollIndicatorInsets = contentInsets;
+    }
+}
 @end

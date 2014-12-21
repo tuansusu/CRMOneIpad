@@ -80,6 +80,8 @@
     
     dataId = 0;
     if (self.dataSend) {
+        _lbTitle.text=@"CẬP NHẬP KHÁCH HÀNG TIỀM NĂNG (DOANH NGHIỆP)";
+        [self loadEditData];
         
     }
     
@@ -87,6 +89,8 @@
 
 //Load thong tin len form sua
 -(void) loadEditData {
+    
+    NSLog(@"dataSend:%@",_dataSend);
     
     if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_name]]) {
         _txtName.text =[_dataSend objectForKey:DTOLEAD_name];

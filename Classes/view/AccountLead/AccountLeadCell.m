@@ -7,6 +7,7 @@
 //
 
 #import "AccountLeadCell.h"
+#import "DTOFLLOWUPProcess.h"
 
 @implementation AccountLeadCell
 
@@ -34,12 +35,22 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
 -(void) loadDataToCellWithData:(NSDictionary *)dicData withOption:(int)smgSelect{
     
+    DTOFLLOWUPProcess *_DTOFLLOWUPProcess=[DTOFLLOWUPProcess new];
+    BOOL checkFollow;
+    NSString *leadId=[dicData objectForKey:DTOLEAD_leadId];
+    if(leadId.length>0){
+        leadId=leadId;
+    }
+    else{
+        leadId=[dicData objectForKey:DTOLEAD_clientLeadId];
+    }
+    checkFollow=[_DTOFLLOWUPProcess checkFollowUp:leadId objectType:@"Lead"];
     _dicData = dicData;
     
     NSString *code = @"";
@@ -49,6 +60,10 @@
     }
     if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_name]]) {
         name = [dicData objectForKey:DTOLEAD_name];
+    }
+    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_clientLeadId]]){
+        
+        code=[dicData objectForKey:DTOLEAD_clientLeadId];
     }
     
     self.lbName.text = [NSString stringWithFormat:@"%@ - %@",code, name];
@@ -70,13 +85,19 @@
     }else{
         self.lbRightName.text = [dicData objectForKey:DTOLEAD_name];
     }
-
+    
     if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_address]]) {
         self.lbAddress.text = @"N/a";
     }else{
         self.lbAddress.text = [dicData objectForKey:DTOLEAD_address];
     }
-    
+    if (checkFollow) {
+        [_btnFollow setImage:[UIImage imageNamed:@"task_done.png"] forState:UIControlStateNormal];
+    }
+    else{
+        [_btnFollow setImage:[UIImage imageNamed:@"flag_enable.png"] forState:UIControlStateNormal];
+
+    }
     switch (smgSelect) {
         case 1:
         {
@@ -107,6 +128,11 @@
 
 - (IBAction)actionChangeFlow:(id)sender {
     [_delegate AccountLeadCellDelegate_ActionChangeFlowWithData:_dicData];
+}
+
+- (IBAction)actionCall:(id)sender {
+    //if(!])
+   [[UIApplication sharedApplication]openURL:[NSURL URLWithString:_lbPhone.text]];
 }
 
 

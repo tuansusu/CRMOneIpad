@@ -62,6 +62,8 @@
     
     BOOL succsess;//Trang thai acap nhat
     BOOL isCustomerValid;
+    
+    MDSearchBarController *searchBarController;
 }
 @end
 @implementation EditOpportunityViewController
@@ -111,6 +113,16 @@
     [self initData];
     
     isCustomerValid = NO;
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    searchBarController = [MDSearchBarController new];
+    searchBarController.searchBarView.frame = self.txtSearchCustomer.frame;
+    [self.txtSearchCustomer.superview addSubview:searchBarController.searchBarView];
+    [self.txtSearchCustomer removeFromSuperview];
+    searchBarController.delegate= self;
+    
+    self.txtSearchCustomer = searchBarController.searchBarView;
 }
 
 - (void)didReceiveMemoryWarning
@@ -402,22 +414,22 @@
             break;
         }
     }
-    
-    QuickSearchViewcontroller *detail = [[QuickSearchViewcontroller alloc] initWithNibName:@"QuickSearchViewcontroller" bundle:nil];
-    detail.delegate =(id<SelectIdDelegate>) self;
-    //self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-
-    NSPredicate *keyPred = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"name contains[c] '%@'",self.txtCustomer.text]];
-    
-    detail.listData = [[listArrAccount filteredArrayUsingPredicate: keyPred] valueForKey:DTOACCOUNT_name];
-
-
-    
-//    detail.view.frame = CGRectMake(self.txtCustomer.frame.origin.x -20, self.txtCustomer.frame.origin.y + self.txtCustomer.frame.size.height, self.txtCustomer.frame.size.width + 20, 400);
-//    [self.viewMainBodyInfo addSubview:detail.view];
-    
-    
-    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+//    
+//    QuickSearchViewcontroller *detail = [[QuickSearchViewcontroller alloc] initWithNibName:@"QuickSearchViewcontroller" bundle:nil];
+//    detail.delegate =(id<SelectIdDelegate>) self;
+//    //self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
+//
+//    NSPredicate *keyPred = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"name contains[c] '%@'",self.txtCustomer.text]];
+//    
+//    detail.listData = [[listArrAccount filteredArrayUsingPredicate: keyPred] valueForKey:DTOACCOUNT_name];
+//
+//
+//    
+////    detail.view.frame = CGRectMake(self.txtCustomer.frame.origin.x -20, self.txtCustomer.frame.origin.y + self.txtCustomer.frame.size.height, self.txtCustomer.frame.size.width + 20, 400);
+////    [self.viewMainBodyInfo addSubview:detail.view];
+//    
+//    
+//    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
     CGRect popoverFrame = self.txtCustomer.frame;
 
     [self.listPopover setPopoverContentSize:CGSizeMake(320,250) animated:NO];
@@ -784,5 +796,29 @@
     }
 
 }
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.searchResultCount;
+}
+
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 40;
+}
+
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (!cell) cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    cell.textLabel.text = [NSString stringWithFormat:@"%d",indexPath.row];
+    return cell;
+}
+
+-(void)searchBar:(MDSearchBarController *)searchBarController searchWithText:(NSString *)text{
+    self.searchResultCount = text.length;
+    [searchBarController reloadData];
+}
+
 
 @end

@@ -16,6 +16,7 @@
 #define FIX_SYS_CAT_TYPE_OPPORTTUNITY_NEXT_TASK @"69"
 #define FIX_SYS_CAT_TYPE_OPPORTTUNITY_LEVEL @"8"
 #define FIX_SYS_CAT_TYPE_TASK_STATUS @"14"
+#define FOLLOW_UP_LEAD @"44"
 
 @interface DTOSYSCATProcess : BaseDataProcess
 

@@ -31,6 +31,8 @@
 @property (weak, nonatomic) IBOutlet UIView *headerViewBar;
 @property (weak, nonatomic) IBOutlet UILabel *fullNameLB;
 
+@property (weak, nonatomic) IBOutlet UILabel *lbTitle;
+
 
 @property (weak, nonatomic) IBOutlet UIButton *btnHome;
 - (IBAction)homeBack:(id)sender;

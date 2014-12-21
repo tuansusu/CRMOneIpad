@@ -37,11 +37,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnAddress;
 @property (weak, nonatomic) IBOutlet UIButton *btnSendMail;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnFollow;
 
 -(void) loadDataToCellWithData : (NSDictionary*) dicData withOption : (int) smgSelect ;
 
 - (IBAction)actionAddress:(id)sender;
 - (IBAction)actionSendMail:(id)sender;
 - (IBAction)actionChangeFlow:(id)sender;
+
+- (IBAction)actionCall:(id)sender;
 
 @end

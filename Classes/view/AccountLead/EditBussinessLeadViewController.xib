@@ -16,6 +16,7 @@
                 <outlet property="fullNameLB" destination="U63-8u-c4a" id="sxI-ga-v8E"/>
                 <outlet property="headerMainView" destination="mSf-Nl-zec" id="YiN-j8-9QN"/>
                 <outlet property="headerViewBar" destination="Hrd-cB-DNq" id="RTk-Iu-YVj"/>
+                <outlet property="lbTitle" destination="ARJ-bb-UT6" id="L5Y-lW-sul"/>
                 <outlet property="mainView" destination="W0a-Ep-vfq" id="j8c-1j-eyS"/>
                 <outlet property="txtAddress" destination="n9L-uf-0kw" id="r2t-TO-jaZ"/>
                 <outlet property="txtCapital" destination="4ZK-ea-MKB" id="qex-Cs-feA"/>

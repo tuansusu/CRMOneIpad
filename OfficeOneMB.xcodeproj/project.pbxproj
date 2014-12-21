@@ -179,6 +179,8 @@
 		2DFEFC0917AD075800D684FB /* arrow_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DFEFC0717AD075800D684FB /* arrow_up.png */; };
 		2DFEFC0A17AD075800D684FB /* down_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DFEFC0817AD075800D684FB /* down_arrow.png */; };
 		7617F07F193DE30A00BB7073 /* GlobalVars.m in Sources */ = {isa = PBXBuildFile; fileRef = 7617F07E193DE30A00BB7073 /* GlobalVars.m */; };
+		76199E011A454D7F00B792C5 /* QuickSearchViewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 76199DFF1A454D7F00B792C5 /* QuickSearchViewcontroller.m */; };
+		76199E021A454D7F00B792C5 /* QuickSearchViewcontroller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76199E001A454D7F00B792C5 /* QuickSearchViewcontroller.xib */; };
 		762048721A0BDE8000AAA917 /* icon_menu-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 762048711A0BDE8000AAA917 /* icon_menu-1.png */; };
 		762048761A0D246600AAA917 /* CompetitorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 762048741A0D246600AAA917 /* CompetitorsViewController.m */; };
 		762048771A0D246600AAA917 /* CompetitorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 762048751A0D246600AAA917 /* CompetitorsViewController.xib */; };
@@ -961,6 +963,9 @@
 		3E990E5F19480DEC00F0D276 /* 58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 58x58.png; path = images/58x58.png; sourceTree = "<group>"; };
 		7617F07D193DE30A00BB7073 /* GlobalVars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalVars.h; sourceTree = "<group>"; };
 		7617F07E193DE30A00BB7073 /* GlobalVars.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalVars.m; sourceTree = "<group>"; };
+		76199DFE1A454D7F00B792C5 /* QuickSearchViewcontroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuickSearchViewcontroller.h; path = CustomView/QuickSearchViewcontroller.h; sourceTree = "<group>"; };
+		76199DFF1A454D7F00B792C5 /* QuickSearchViewcontroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuickSearchViewcontroller.m; path = CustomView/QuickSearchViewcontroller.m; sourceTree = "<group>"; };
+		76199E001A454D7F00B792C5 /* QuickSearchViewcontroller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QuickSearchViewcontroller.xib; path = CustomView/QuickSearchViewcontroller.xib; sourceTree = "<group>"; };
 		762048711A0BDE8000AAA917 /* icon_menu-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_menu-1.png"; path = "VofficeImage/Option1/icon_menu-1.png"; sourceTree = "<group>"; };
 		762048731A0D246600AAA917 /* CompetitorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompetitorsViewController.h; sourceTree = "<group>"; };
 		762048741A0D246600AAA917 /* CompetitorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompetitorsViewController.m; sourceTree = "<group>"; };
@@ -2393,6 +2398,9 @@
 				76961E521A3B3170008B5CE7 /* SelectPhotoViewController.h */,
 				76961E531A3B3170008B5CE7 /* SelectPhotoViewController.m */,
 				76961E541A3B3170008B5CE7 /* SelectPhotoViewController.xib */,
+				76199DFE1A454D7F00B792C5 /* QuickSearchViewcontroller.h */,
+				76199DFF1A454D7F00B792C5 /* QuickSearchViewcontroller.m */,
+				76199E001A454D7F00B792C5 /* QuickSearchViewcontroller.xib */,
 			);
 			name = CustomView;
 			sourceTree = "<group>";
@@ -3985,6 +3993,7 @@
 				B313F1D818A65107001FDEC6 /* popover-bg-1.png in Resources */,
 				2DD29F161876C3B70066B883 /* menu-list-bg-1.png in Resources */,
 				8497BFBA1A295A2300A5ED3C /* argentina.png in Resources */,
+				76199E021A454D7F00B792C5 /* QuickSearchViewcontroller.xib in Resources */,
 				B3A066E117D1AB8200BA6487 /* icon_clear_search.png in Resources */,
 				B315787D188D5E5200C0ED01 /* ic-pdf-1.png in Resources */,
 				B3A066E217D1AB8200BA6487 /* icon_down.png in Resources */,
@@ -4276,6 +4285,7 @@
 				2D47E7F41761704200F291D6 /* GCDataTransformer.m in Sources */,
 				76C964561A17731900029978 /* LineScrollView.m in Sources */,
 				2D47E7F51761704200F291D6 /* GCNetworkAPIWrapper.m in Sources */,
+				76199E011A454D7F00B792C5 /* QuickSearchViewcontroller.m in Sources */,
 				849788031A2BE1A400384566 /* TaskCalendarCell.m in Sources */,
 				2D47E7F61761704200F291D6 /* GCNetworkCenter.m in Sources */,
 				2D47E7F71761704200F291D6 /* GCNetworkRequestOperation.m in Sources */,

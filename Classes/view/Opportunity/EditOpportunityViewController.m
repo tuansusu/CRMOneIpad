@@ -14,7 +14,7 @@
 #import "DTOOPPORTUNITYProcess.h"
 #import "CalendarPickerViewController.h"
 
-#define TAG_SELECT_STATUS 1
+#define TAG_SELECT_TYPE 1
 #define TAG_SELECT_NEXT_JOB 2
 #define TAG_SELECT_LEVEL 3
 #define TAG_SELECT_CUSOMTER 4
@@ -27,10 +27,10 @@
 #define END_DATE 3
 #define END_DATE_TIME 4
 
-@interface EditOpportunityViewController ()
+@interface EditOpportunityViewController ()<UITableViewDelegate>
 {
     int smgSelect ; //option layout
-    NSArray *listArrStatus;
+    NSArray *listArrType;
     NSArray *listArrNextTask;
     NSArray *listArrLevel;
     NSMutableArray *listCustomerType;
@@ -55,12 +55,13 @@
     int SELECTED_TAG;
     int CUSTOMER_TYPE;
     
-    NSInteger selectStatusIndex;
+    NSInteger selectTypeIndex;
     NSInteger selectNextTaskIndex;
     NSInteger selectLevelIndex;
     NSInteger selectCustomerIndex;
     
     BOOL succsess;//Trang thai acap nhat
+    BOOL isCustomerValid;
 }
 @end
 @implementation EditOpportunityViewController
@@ -108,6 +109,8 @@
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
     [self initData];
+    
+    isCustomerValid = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -127,7 +130,7 @@
     dtoLeadProcess = [DTOACCOUNTLEADProcess new];
     dtoAccountProcess = [DTOACCOUNTProcess new];
     dtoOpportunityProcess = [DTOOPPORTUNITYProcess new];
-    listArrStatus = [dtoSyscatProcess filterWithCatType:FIX_SYS_CAT_TYPE_OPPORTTUNITY_STATUS];
+    listArrType = [dtoSyscatProcess filterWithCatType:FIX_SYS_CAT_TYPE_OPPORTTUNITY_TYPE];
     listArrNextTask = [dtoSyscatProcess filterWithCatType:FIX_SYS_CAT_TYPE_OPPORTTUNITY_NEXT_TASK];
     listArrLevel = [dtoSyscatProcess filterWithCatType:FIX_SYS_CAT_TYPE_OPPORTTUNITY_LEVEL];
     listArrLead = [dtoLeadProcess filter];
@@ -141,7 +144,7 @@
     
     dataId = 0;
 
-    selectStatusIndex = -1;
+    selectTypeIndex = -1;
     selectNextTaskIndex = -1;
     selectLevelIndex = -1;
     selectLevelIndex = -1;
@@ -153,6 +156,7 @@
         //
        // _txtCode.text = [NSString stringWithFormat:@"%d", [dtoOpportunityProcess getClientId]];
     }
+ 
 }
 
 //Load thong tin len form sua
@@ -186,14 +190,14 @@
         
     }
     
-    //trang thai
-    NSString *strStatus = [_dataSend objectForKey:DTOOPPORTUNITY_status];
-    if (![StringUtil stringIsEmpty:strStatus]) {
-        NSArray *arrayStatusID = [listArrStatus valueForKey:DTOSYSCAT_value];
-        selectStatusIndex = [arrayStatusID indexOfObject:strStatus];
-        if (selectStatusIndex>=0) {
-            NSDictionary *dataStatus = [listArrStatus objectAtIndex:selectStatusIndex];
-            _txtStatus.text = [dataStatus objectForKey:DTOSYSCAT_name];
+    //Kiểu cơ hội
+    NSString *strType = [_dataSend objectForKey:DTOOPPORTUNITY_status];
+    if (![StringUtil stringIsEmpty:strType]) {
+        NSArray *arrayTypeID = [listArrType valueForKey:DTOSYSCAT_value];
+        selectTypeIndex = [arrayTypeID indexOfObject:strType];
+        if (selectTypeIndex>=0) {
+            NSDictionary *dataType = [listArrType objectAtIndex:selectTypeIndex];
+            self.txtType.text = [dataType objectForKey:DTOSYSCAT_name];
         }
     }
     
@@ -354,7 +358,7 @@
     selectLevelIndex = -1;
     selectNextTaskIndex = -1;
     selectCustomerIndex = -1;
-    selectStatusIndex = -1;
+    selectTypeIndex = -1;
     succsess = false;
     
     [self hiddenKeyBoard];
@@ -368,19 +372,18 @@
         }
     }
 }
-
-- (IBAction)actionChooseStatus:(id)sender {
-
-    SELECTED_TAG = TAG_SELECT_STATUS;
+- (IBAction)actionChooseType:(id)sender {
+    
+    SELECTED_TAG = TAG_SELECT_TYPE;
     
     SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
     
-    detail.selectIndex = selectStatusIndex;
+    detail.selectIndex = selectTypeIndex;
     
-    detail.listData = [listArrStatus valueForKey:DTOSYSCAT_name];
+    detail.listData = [listArrType valueForKey:DTOSYSCAT_name];
     
     self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
-    CGRect popoverFrame = self.btnStatus.frame;
+    CGRect popoverFrame = self.btnType.frame;
     
     detail.delegate =(id<SelectIndexDelegate>) self;
     self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
@@ -388,6 +391,58 @@
     [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
     
 }
+
+- (IBAction)actionCustomerQuerySearch:(id)sender {
+    
+    for (UIView *subView in self.viewMainBodyInfo.subviews){
+        //if (subView.tag == 80) {
+        if([subView isKindOfClass:[UITableView class]]){
+            [subView removeFromSuperview];
+            //subView.hidden = NO;
+            break;
+        }
+    }
+    
+    QuickSearchViewcontroller *detail = [[QuickSearchViewcontroller alloc] initWithNibName:@"QuickSearchViewcontroller" bundle:nil];
+    detail.delegate =(id<SelectIdDelegate>) self;
+    //self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
+
+    NSPredicate *keyPred = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"name contains[c] '%@'",self.txtCustomer.text]];
+    
+    detail.listData = [[listArrAccount filteredArrayUsingPredicate: keyPred] valueForKey:DTOACCOUNT_name];
+
+
+    
+//    detail.view.frame = CGRectMake(self.txtCustomer.frame.origin.x -20, self.txtCustomer.frame.origin.y + self.txtCustomer.frame.size.height, self.txtCustomer.frame.size.width + 20, 400);
+//    [self.viewMainBodyInfo addSubview:detail.view];
+    
+    
+    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+    CGRect popoverFrame = self.txtCustomer.frame;
+
+    [self.listPopover setPopoverContentSize:CGSizeMake(320,250) animated:NO];
+    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    
+
+}
+
+- (IBAction)didEndEditing:(id)sender {
+    for (UIView *subView in self.viewMainBodyInfo.subviews){
+        //if (subView.tag == 80) {
+        if([subView isKindOfClass:[UITableView class]]){
+            [subView removeFromSuperview];
+            //subView.hidden = YES;
+            break;
+        }
+    }
+    
+    if(!isCustomerValid){
+        self.txtCustomer.text = @"";
+    }
+
+}
+
+
 - (IBAction)actionChooseNextTask:(id)sender {
     
     SELECTED_TAG = TAG_SELECT_NEXT_JOB;
@@ -424,23 +479,16 @@
     [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
-- (IBAction)actionChooseCustomer:(id)sender {
-    SELECTED_TAG = TAG_SELECT_CUSOMTER;
+#pragma mark SelectIdDelegate
+-(void) selectAtId:(NSInteger)id{
+    NSPredicate *keyPred = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"id =  %d",id]];
     
-    SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
-    
-    detail.selectIndex = -1;
-    
-    detail.listData = [listCustomerType valueForKey:@"Name"];
-    
-    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
-    CGRect popoverFrame = self.btnCustomer.frame;
-    
-    detail.delegate =(id<SelectIndexDelegate>) self;
-    self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(320,250) animated:NO];
-    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+
+    NSDictionary *selected = [[listArrAccount filteredArrayUsingPredicate: keyPred] firstObject];
+    self.txtCustomer.text = [selected objectForKey:@"name"];
 }
+
+
 #pragma mark SelectIndexDelegate
 
 -(void) selectAtIndex:(NSInteger)index{
@@ -449,12 +497,12 @@
         [ self.listPopover dismissPopoverAnimated:YES];
     }
     switch (SELECTED_TAG) {
-        case TAG_SELECT_STATUS:
+        case TAG_SELECT_TYPE:
         {
-            selectStatusIndex = index;
-            if (index<listArrStatus.count) {
-                NSDictionary *dic = [listArrStatus objectAtIndex:index];
-                self.txtStatus.text = [dic objectForKey:DTOSYSCAT_name];
+            selectTypeIndex = index;
+            if (index<listArrType.count) {
+                NSDictionary *dic = [listArrType objectAtIndex:index];
+                self.txtType.text = [dic objectForKey:DTOSYSCAT_name];
             }
         }
             break;
@@ -675,11 +723,10 @@
     //neu qua duoc check thi tien hanh luu du lieu
     NSMutableDictionary *dicEntity = [NSMutableDictionary new];
     [dicEntity setObject:[StringUtil trimString:self.txtName.text] forKey:DTOOPPORTUNITY_name];
-    [dicEntity setObject:[StringUtil trimString:self.txtCode.text] forKey:DTOOPPORTUNITY_code];
     
-    //trang thai
-    if(selectStatusIndex >=0){
-        [dicEntity setObject:[[listArrStatus objectAtIndex:selectStatusIndex] objectForKey:DTOSYSCAT_value] forKey:DTOOPPORTUNITY_status];
+    //Loại cơ hội
+    if(selectTypeIndex >=0){
+        [dicEntity setObject:[[listArrType objectAtIndex:selectTypeIndex] objectForKey:DTOSYSCAT_value] forKey:DTOOPPORTUNITY_type];
     }
     
     //Viec tiep theo
@@ -737,4 +784,5 @@
     }
 
 }
+
 @end

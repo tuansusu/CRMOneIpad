@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import "SelectIndexViewController.h"
+#import "QuickSearchViewcontroller.h"
+#import "SearchViewController.h"
 
 @interface EditOpportunityViewController : BaseViewController<UITextFieldDelegate, SelectIndexDelegate>
 
@@ -67,7 +69,12 @@
 - (IBAction)actionSelectEndDateTime:(id)sender;
 - (IBAction)actionSave:(id)sender;
 @property (strong, nonatomic) IBOutlet UITextField *txtName;
-@property (strong, nonatomic) IBOutlet UITextField *txtCode;
+@property (strong, nonatomic) IBOutlet UITextField *txtType;
+@property (weak, nonatomic) IBOutlet UITextField *txtNote;
+@property (weak, nonatomic) IBOutlet UIButton *btnType;
+- (IBAction)actionChooseType:(id)sender;
+@property (weak, nonatomic) IBOutlet UISearchBar *txtSearchCustomer;
+
 
 
 

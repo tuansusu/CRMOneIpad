@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditOpportunityViewController">
             <connections>
                 <outlet property="barLabel" destination="Cdb-bM-VEg" id="Glc-Ns-LOP"/>
                 <outlet property="bodyMainView" destination="kpg-5a-ZeD" id="t78-aS-Vcl"/>
-                <outlet property="btnCustomer" destination="jRT-c0-aX8" id="ngE-NE-We5"/>
                 <outlet property="btnEndDate" destination="qsa-HL-vKA" id="fpG-hA-GPE"/>
-                <outlet property="btnEndDateTime" destination="tfF-Xy-lWw" id="pMD-nt-hhO"/>
                 <outlet property="btnHome" destination="Ezg-G9-y01" id="Zdv-Oi-Kw5"/>
                 <outlet property="btnLevel" destination="L3g-Xw-41K" id="4Zc-C9-f9L"/>
                 <outlet property="btnNextTask" destination="ktH-e8-j64" id="TpZ-Am-6GO"/>
                 <outlet property="btnStartDate" destination="02p-uf-dzb" id="phG-Or-DU1"/>
                 <outlet property="btnStartDateClear" destination="bQa-oq-sKR" id="7PG-iT-cG6"/>
-                <outlet property="btnStartDateTime" destination="Rgj-7j-LO9" id="1qp-Fc-OpI"/>
-                <outlet property="btnStatus" destination="9vs-JG-Whq" id="lA4-eV-gkO"/>
+                <outlet property="btnType" destination="NbO-1G-Uef" id="2hP-Ho-vXC"/>
                 <outlet property="dfEndDateClear" destination="G9E-Pb-qCL" id="cLp-kp-51r"/>
                 <outlet property="dtEndDate" destination="sHb-jh-PnJ" id="CHO-PU-AbQ"/>
                 <outlet property="dtStartDate" destination="J9v-ci-N6a" id="0ed-Tx-muP"/>
@@ -28,14 +25,13 @@
                 <outlet property="headerViewBar" destination="oqY-Oi-L8z" id="8OT-qX-hLZ"/>
                 <outlet property="mainView" destination="cLF-NJ-ACN" id="6uE-Mb-snA"/>
                 <outlet property="pgLevel" destination="h4I-xh-s8n" id="OZn-Fa-HAm"/>
-                <outlet property="txtCode" destination="olG-es-CRZ" id="tc3-Ll-LdX"/>
+                <outlet property="searchDisplayController" destination="mmr-Ap-yqq" id="eBk-mp-GsW"/>
                 <outlet property="txtCustomer" destination="RmJ-Je-B5H" id="QV9-LC-lCh"/>
-                <outlet property="txtEndDateTime" destination="15T-C8-Hzx" id="v9y-ML-uLV"/>
                 <outlet property="txtLevel" destination="A9A-6M-e2o" id="IgJ-tL-tiz"/>
                 <outlet property="txtName" destination="rZ9-bd-fbA" id="qDH-TT-Or0"/>
                 <outlet property="txtNextTask" destination="pmq-g9-yD2" id="Pqt-Gb-bhW"/>
-                <outlet property="txtStartDateTime" destination="dyt-Lo-JkE" id="Cn0-AX-9KK"/>
-                <outlet property="txtStatus" destination="mAg-ev-bAn" id="aSI-KQ-ysR"/>
+                <outlet property="txtNote" destination="Y0d-wI-PQl" id="BNj-TR-HkZ"/>
+                <outlet property="txtType" destination="olG-es-CRZ" id="cqH-5o-Z4w"/>
                 <outlet property="view" destination="pCS-6G-g57" id="7mg-ui-htN"/>
                 <outlet property="viewMainBodyInfo" destination="A2L-1A-C1D" id="yEh-dB-xb1"/>
             </connections>
@@ -51,7 +47,7 @@
                     <subviews>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tống Viết Trung" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cag-dB-QuZ">
                             <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                             <color key="textColor" red="0.88175101899999997" green="0.88175101899999997" blue="0.88175101899999997" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -125,35 +121,29 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <view contentMode="scaleToFill" id="A2L-1A-C1D" userLabel="View body main info">
-                                    <rect key="frame" x="0.0" y="40" width="984" height="365"/>
+                                    <rect key="frame" x="0.0" y="40" width="984" height="540"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tên cơ hội" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PKp-g6-3Kd">
-                                            <rect key="frame" x="30" y="10" width="123" height="30"/>
+                                            <rect key="frame" x="53" y="10" width="100" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mã cơ hội" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="T6Y-vg-YXh">
-                                            <rect key="frame" x="480" y="10" width="78" height="30"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kiểu cơ hội" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="T6Y-vg-YXh">
+                                            <rect key="frame" x="480" y="10" width="141" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trạng thái" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yym-fN-Tz2">
-                                            <rect key="frame" x="30" y="70" width="86" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Việc tiếp theo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fIL-VI-Js2">
-                                            <rect key="frame" x="480" y="70" width="179" height="30"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Công việc tiếp theo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fIL-VI-Js2">
+                                            <rect key="frame" x="480" y="140" width="179" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngày bắt đầu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="w5O-cC-5Ja">
-                                            <rect key="frame" x="30" y="130" width="148" height="30"/>
+                                            <rect key="frame" x="53" y="75" width="125" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <nil key="highlightedColor"/>
@@ -164,36 +154,20 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                         </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mã cơ hội" minimumFontSize="17" id="olG-es-CRZ">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Kiểu cơ hội" minimumFontSize="17" id="olG-es-CRZ">
                                             <rect key="frame" x="480" y="40" width="380" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Trạng thái" minimumFontSize="17" id="mAg-ev-bAn">
-                                            <rect key="frame" x="30" y="100" width="380" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9vs-JG-Whq" userLabel="btnSysCat">
-                                            <rect key="frame" x="380" y="100" width="30" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" backgroundImage="ic_cbx-1.png">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="actionChooseStatus:" destination="-1" eventType="touchUpInside" id="s5Y-ev-FhI"/>
-                                            </connections>
-                                        </button>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Việc tiếp theo" minimumFontSize="17" id="pmq-g9-yD2">
-                                            <rect key="frame" x="480" y="100" width="380" height="30"/>
+                                            <rect key="frame" x="480" y="170" width="380" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ktH-e8-j64" userLabel="btnSysCat">
-                                            <rect key="frame" x="830" y="100" width="30" height="30"/>
+                                            <rect key="frame" x="830" y="170" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" backgroundImage="ic_cbx-1.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -203,13 +177,13 @@
                                             </connections>
                                         </button>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ngày bắt đầu" minimumFontSize="17" id="J9v-ci-N6a" userLabel="dtStartDate">
-                                            <rect key="frame" x="30" y="160" width="236" height="30"/>
+                                            <rect key="frame" x="30" y="105" width="380" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bQa-oq-sKR" userLabel="BT_XoaNGV">
-                                            <rect key="frame" x="36" y="168" width="15" height="15"/>
+                                            <rect key="frame" x="36" y="112" width="15" height="15"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <state key="normal" backgroundImage="ic-cancel-1.png">
@@ -224,10 +198,10 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="02p-uf-dzb">
-                                            <rect key="frame" x="237" y="164" width="23" height="23"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
+                                            <rect key="frame" x="380" y="105" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <state key="normal" backgroundImage="menu-ic-nextweek-calendar-1.png">
+                                            <state key="normal" backgroundImage="ic_cbx-1.png">
                                                 <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -236,19 +210,19 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngày kết thúc" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5pc-go-XjX">
-                                            <rect key="frame" x="480" y="130" width="148" height="30"/>
+                                            <rect key="frame" x="500" y="75" width="128" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ngày kết thúc" minimumFontSize="17" id="sHb-jh-PnJ" userLabel="dtStartDate">
-                                            <rect key="frame" x="480" y="160" width="236" height="30"/>
+                                            <rect key="frame" x="480" y="105" width="380" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="G9E-Pb-qCL" userLabel="BT_XoaNGV">
-                                            <rect key="frame" x="485" y="167" width="15" height="15"/>
+                                            <rect key="frame" x="485" y="113" width="15" height="15"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <state key="normal" backgroundImage="ic-cancel-1.png">
@@ -262,11 +236,37 @@
                                                 <action selector="actionEndDateClear:" destination="-1" eventType="touchUpInside" id="dD0-aq-BBH"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Khách hàng" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mN4-2q-8ek">
+                                            <rect key="frame" x="30" y="205" width="123" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nhập thông tin để tìm kiếm" minimumFontSize="17" id="RmJ-Je-B5H">
+                                            <rect key="frame" x="30" y="235" width="380" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="actionCustomerQuerySearch:" destination="-1" eventType="editingChanged" id="f8Z-fA-QC6"/>
+                                                <action selector="didEndEditing:" destination="-1" eventType="editingDidEnd" id="UDh-1p-B06"/>
+                                            </connections>
+                                        </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NbO-1G-Uef" userLabel="btnSysCat">
+                                            <rect key="frame" x="830" y="40" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" backgroundImage="ic_cbx-1.png">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="actionChooseType:" destination="-1" eventType="touchUpInside" id="MvD-xZ-GJB"/>
+                                            </connections>
+                                        </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qsa-HL-vKA">
-                                            <rect key="frame" x="688" y="163" width="23" height="23"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
+                                            <rect key="frame" x="830" y="105" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <state key="normal" backgroundImage="menu-ic-nextweek-calendar-1.png">
+                                            <state key="normal" backgroundImage="ic_cbx-1.png">
                                                 <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -274,40 +274,14 @@
                                                 <action selector="actionEndDateSelect:" destination="-1" eventType="touchUpInside" id="Xqk-Q8-ja2"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Khách hàng" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mN4-2q-8ek">
-                                            <rect key="frame" x="30" y="190" width="123" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Khách hàng" minimumFontSize="17" id="RmJ-Je-B5H">
-                                            <rect key="frame" x="30" y="220" width="380" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jRT-c0-aX8" userLabel="btnSysCat">
-                                            <rect key="frame" x="380" y="220" width="30" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" backgroundImage="ic_cbx-1.png">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="actionChooseCustomer:" destination="-1" eventType="touchUpInside" id="r0b-UV-WuX"/>
-                                            </connections>
-                                        </button>
-                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" id="h4I-xh-s8n">
-                                            <rect key="frame" x="36" y="343" width="824" height="2"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </progressView>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Việc tiếp theo" minimumFontSize="17" id="A9A-6M-e2o">
-                                            <rect key="frame" x="480" y="220" width="380" height="30"/>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mức độ cơ hội" minimumFontSize="17" id="A9A-6M-e2o">
+                                            <rect key="frame" x="30" y="170" width="380" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="L3g-Xw-41K" userLabel="btnSysCat">
-                                            <rect key="frame" x="830" y="220" width="30" height="30"/>
+                                            <rect key="frame" x="380" y="170" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" backgroundImage="ic_cbx-1.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -316,51 +290,43 @@
                                                 <action selector="actionChooseLevel:" destination="-1" eventType="touchUpInside" id="ewU-nV-mwu"/>
                                             </connections>
                                         </button>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="dyt-Lo-JkE" userLabel="dtStartDate">
-                                            <rect key="frame" x="287" y="160" width="123" height="30"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mức độ cơ hội" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3Ih-d9-cFv">
+                                            <rect key="frame" x="30" y="140" width="145" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ghi chú" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="J2Y-Gd-8eG">
+                                            <rect key="frame" x="480" y="205" width="123" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ghi chú" minimumFontSize="17" id="Y0d-wI-PQl">
+                                            <rect key="frame" x="480" y="235" width="380" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                         </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Rgj-7j-LO9">
-                                            <rect key="frame" x="387" y="163" width="23" height="23"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
-                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <state key="normal" backgroundImage="menu-ic-nextweek-calendar-1.png">
-                                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="actionSelectStartDateTime:" destination="-1" eventType="touchUpInside" id="j3a-Xm-pXa"/>
-                                            </connections>
-                                        </button>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="15T-C8-Hzx" userLabel="dtStartDate">
-                                            <rect key="frame" x="719" y="160" width="141" height="30"/>
+                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" id="h4I-xh-s8n">
+                                            <rect key="frame" x="36" y="320" width="824" height="2"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tfF-Xy-lWw">
-                                            <rect key="frame" x="837" y="163" width="23" height="23"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
-                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <state key="normal" backgroundImage="menu-ic-nextweek-calendar-1.png">
-                                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="actionSelectEndDateTime:" destination="-1" eventType="touchUpInside" id="hZc-G0-3F7"/>
-                                            </connections>
-                                        </button>
+                                        </progressView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_require-1.png" id="5Rf-KF-IXg">
+                                            <rect key="frame" x="30" y="17" width="16" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_require-1.png" id="Kll-Ul-os9">
+                                            <rect key="frame" x="30" y="82" width="16" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_require-1.png" id="l3z-Zx-jVv">
+                                            <rect key="frame" x="480" y="82" width="16" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mức độ cơ hội" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3Ih-d9-cFv">
-                                    <rect key="frame" x="478" y="230" width="145" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                             </subviews>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
@@ -373,7 +339,7 @@
                     <subviews>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="VOFFICE-iPad 2.0, copyright Viettel CIT, Viettel Group" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Cdb-bM-VEg">
                             <rect key="frame" x="0.0" y="0.0" width="1024" height="30"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <nil key="highlightedColor"/>
@@ -385,15 +351,24 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+            <point key="canvasLocation" x="2" y="317"/>
         </view>
+        <searchDisplayController id="mmr-Ap-yqq">
+            <connections>
+                <outlet property="delegate" destination="-1" id="dDy-ea-ys9"/>
+                <outlet property="searchContentsController" destination="-1" id="Jot-d3-Qxx"/>
+                <outlet property="searchResultsDataSource" destination="-1" id="XFZ-Es-wr8"/>
+                <outlet property="searchResultsDelegate" destination="-1" id="foN-1P-pEM"/>
+            </connections>
+        </searchDisplayController>
     </objects>
     <resources>
         <image name="ic-cancel-1.png" width="57" height="56"/>
         <image name="ic_cbx-1.png" width="60" height="60"/>
         <image name="icon_down.png" width="19" height="11"/>
         <image name="icon_menu-1.png" width="32" height="32"/>
+        <image name="icon_require-1.png" width="16" height="16"/>
         <image name="icon_save-1.png" width="48" height="48"/>
-        <image name="menu-ic-nextweek-calendar-1.png" width="31" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

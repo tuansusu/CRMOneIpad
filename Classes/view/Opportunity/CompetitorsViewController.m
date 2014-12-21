@@ -116,7 +116,7 @@
     
 }
 -(void) viewWillAppear:(BOOL)animated{
-    
+    [self viewDidLoad];
 }
 
 -(void) viewDidAppear:(BOOL)animated{
@@ -186,6 +186,8 @@
     [self.leftViewHeader setBackgroundColor:BACKGROUND_COLOR_TOP_LEFT_HEADER];
     self.leftLabelHeader.textColor = TEXT_COLOR_HEADER_APP;
     
+    textColorButtonNormal = TEXT_BUTTON_COLOR_BLACK_1; //mau chu button binh thuong
+    textColorButtonSelected = TEXT_BUTTON_COLOR1; //mau chu button select
     backgrondButtonSelected = BUTTON_ACTIVE_COLOR_1;
     backgroundButtonNormal = BUTTON_REPORT_MAIN_IN_ACTIVE_COLOR_1;
     
@@ -212,6 +214,7 @@
         }
     }
     
+    [self.rightViewHeader setSelectiveBorderWithColor:backgrondButtonSelected withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
 }
 
 
@@ -280,18 +283,42 @@
 
 #pragma mark display color button
 -(void) displayNormalButtonState : (UIButton*) btnSelect {
+//    
+//    for (UIView *viewTemp in self.rightViewHeader.subviews) {
+//        if ([viewTemp isKindOfClass:[UIButton class]]) {
+//            [((UIButton*) viewTemp) setBackgroundColor:backgroundButtonNormal];
+//            [((UIButton*) viewTemp) setTitleColor:textColorButtonNormal forState:UIControlStateNormal];
+//        }
+//    }
+//    
+//    [btnSelect setBackgroundColor:backgrondButtonSelected];
+//    [btnSelect setTitleColor:textColorButtonSelected forState:UIControlStateNormal];
+//    
     
     for (UIView *viewTemp in self.rightViewHeader.subviews) {
         if ([viewTemp isKindOfClass:[UIButton class]]) {
-            [((UIButton*) viewTemp) setBackgroundColor:backgroundButtonNormal];
+            //            [((UIButton*) viewTemp) setBackgroundColor:backgroundButtonNormal];
+            //            [((UIButton*) viewTemp) setTitleColor:textColorButtonNormal forState:UIControlStateNormal];
+            
+            
+            [((UIButton*) viewTemp) setBackgroundColor:[UIColor whiteColor]];
             [((UIButton*) viewTemp) setTitleColor:textColorButtonNormal forState:UIControlStateNormal];
+            
+            //[((UIButton*) viewTemp) setBorderWithOption:1 withBorderFlag:AUISelectiveBordersFlagBottom];
+            
+            [((UIButton*) viewTemp) setSelectiveBorderWithColor:backgrondButtonSelected withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
         }
     }
     
-    [btnSelect setBackgroundColor:backgrondButtonSelected];
-    [btnSelect setTitleColor:textColorButtonSelected forState:UIControlStateNormal];
+    //    [btnSelect setBackgroundColor:backgrondButtonSelected];
+    //[btnSelect setTitleColor:textColorButtonSelected forState:UIControlStateNormal];
     
+    [btnSelect setBackgroundColor:[UIColor whiteColor]];
+    [btnSelect setTitleColor:textColorButtonNormal forState:UIControlStateNormal];
     
+    //[btnSelect setBorderWithOption:1 withBorderFlag:AUISelectiveBordersFlagBottom];
+    
+    [btnSelect setSelectiveBorderWithColor:backgrondButtonSelected withBorderWith:5.0f withBorderFlag:AUISelectiveBordersFlagBottom];
 }
 
 

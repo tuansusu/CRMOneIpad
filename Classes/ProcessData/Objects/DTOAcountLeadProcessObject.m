@@ -49,6 +49,31 @@
                                                 @"mobile",
                                                 @"monthlyIncome",
                                                 @"name",
+                                                @"orgTypeId",
+                                                @"organization",
+                                                @"ownerEmployeeId",
+                                                @"passport",
+                                                @"personalJob",
+                                                @"personalPosition",
+                                                @"phone",
+                                                @"pinMilitary",
+                                                @"profitNonTax",
+                                                @"registrationNumber",
+                                                @"revenue",
+                                                @"sector",
+                                                @"sex",
+                                                @"shareholderNumber",
+                                                @"sourceDescription",
+                                                @"sourceId",
+                                                @"status",
+                                                @"statusDescription",
+                                                @"swiftCode",
+                                                @"sysOrganizationId",
+                                                @"taxCode",
+                                                @"updatedBy",
+                                                @"updatedDate",
+                                                @"website",
+                                                @"id",
                                                 nil]];
     
     for (NSString *key in [item allKeys]) {
@@ -97,8 +122,33 @@
                        @"mobile",
                        @"monthlyIncome",
                        @"name",
+                       @"orgTypeId",
+                       @"organization",
+                       @"ownerEmployeeId",
+                       @"passport",
+                       @"personalJob",
+                       @"personalPosition",
+                       @"phone",
+                       @"pinMilitary",
+                       @"profitNonTax",
+                       @"registrationNumber",
+                       @"revenue",
+                       @"sector",
+                       @"sex",
+                       @"shareholderNumber",
+                       @"sourceDescription",
+                       @"sourceId",
+                       @"status",
+                       @"statusDescription",
+                       @"swiftCode",
+                       @"sysOrganizationId",
+                       @"taxCode",
+                       @"updatedBy",
+                       @"updatedDate",
+                       @"website",
+                       @"id",
                        nil];
-    
+
     for (NSString *key in keyArray) {
         [_dictionary setValue:[self valueForKey:key] forKey:key];
     }
@@ -115,8 +165,8 @@
     for (NSString *key in [item allKeys]) {
         [self setValue:[item valueForKey:key] forKey:key];
     }
-    
-    
+
+
 }
 
 @end

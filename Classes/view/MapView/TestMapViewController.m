@@ -126,10 +126,11 @@
 
 -(void)initDataKH{
 
-    [_mapModel getAllCustomerKHDM];
-    [_mapModel getAllCustomerKH360];
+    [_mapModel getFirstPageCustomerKHDM];
+    [_mapModel getFirstPageCustomerKH360];
     [customerTbv reloadData];
-    [self initListCustomerDirectionsFlag];
+    [self initFirstPageKHDMDirectionsFlag];
+    [self initFirstPageKHD360irectionsFlag];
 }
 
 //Home button
@@ -156,21 +157,37 @@
 
 #pragma mark list directions action
 
--(void)initListCustomerDirectionsFlag{
+-(void)initFirstPageKHDMDirectionsFlag{
         [listKHDMFlag removeAllObjects];
         if (_mapModel.listCustomerKHDM.count>0) {
             for (int i=0;i<_mapModel.listCustomerKHDM.count;i++) {
                 [listKHDMFlag addObject:@"NO"];
             }
         }
-
-        [listKH360Flag removeAllObjects];
-        if (_mapModel.listCustomerKH360.count>0) {
-            for (int i=0;i<_mapModel.listCustomerKH360.count;i++) {
-                [listKH360Flag addObject:@"NO"];
-            }
-        }
 }
+-(void)updateNextPageKHDMDirectionsFlag{
+
+        for (int i=listKHDMFlag.count;i<_mapModel.listCustomerKHDM.count;i++) {
+            [listKHDMFlag addObject:@"NO"];
+        }
+
+}
+
+-(void)initFirstPageKHD360irectionsFlag{
+    [listKH360Flag removeAllObjects];
+    if (_mapModel.listCustomerKH360.count>0) {
+        for (int i=0;i<_mapModel.listCustomerKH360.count;i++) {
+            [listKH360Flag addObject:@"NO"];
+        }
+    }
+}
+-(void)updateNextPageKH360DirectionsFlag{
+    for (int i=listKH360Flag.count;i<_mapModel.listCustomerKH360.count;i++) {
+        [listKH360Flag addObject:@"NO"];
+    }
+}
+
+
 - (void)updatelistCustomerDirectionsFlagAtIndex:(int)index withStatus:(NSString *)status
 {
     if (khdmSelected) {
@@ -449,6 +466,25 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
     }
 }
 
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+
+
+    NSInteger currentOffset = scrollView.contentOffset.y;
+    NSInteger maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height;
+
+
+    if (currentOffset - maximumOffset >= 40) {
+        if (khdmSelected) {
+            [_mapModel getNextPageCustomerKHDM];
+            [customerTbv reloadData];
+            [self updateNextPageKHDMDirectionsFlag];
+        }else{
+            [_mapModel getNextPageCustomerKH360];
+            [customerTbv reloadData];
+            [self updateNextPageKH360DirectionsFlag];
+        }
+    }
+}
 
 
 @end

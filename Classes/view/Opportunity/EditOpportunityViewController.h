@@ -10,7 +10,6 @@
 #import "BaseViewController.h"
 #import "SelectIndexViewController.h"
 #import "QuickSearchViewcontroller.h"
-#import "SearchViewController.h"
 
 @interface EditOpportunityViewController : BaseViewController<UITextFieldDelegate, SelectIndexDelegate>
 

@@ -1942,6 +1942,25 @@
 			path = MapModel;
 			sourceTree = "<group>";
 		};
+		159435601A4609D100E5159B /* Add+Edit */ = {
+			isa = PBXGroup;
+			children = (
+				7693EE041A355593004E0178 /* EditCalendarLeadViewController.h */,
+				7693EE051A355593004E0178 /* EditCalendarLeadViewController.m */,
+				7693EE061A355593004E0178 /* EditCalendarLeadViewController.xib */,
+				8499B2DA1A2C9BC4004D9ACB /* EditContactLeadViewController.h */,
+				8499B2DB1A2C9BC4004D9ACB /* EditContactLeadViewController.m */,
+				8499B2DC1A2C9BC4004D9ACB /* EditContactLeadViewController.xib */,
+				76F7DFAB1A3B44620003D720 /* EditNoteLeadViewController.h */,
+				76F7DFAC1A3B44620003D720 /* EditNoteLeadViewController.m */,
+				76F7DFAD1A3B44620003D720 /* EditNoteLeadViewController.xib */,
+				76F328941A34B11E00E0F2C4 /* EditTaskLeadViewController.h */,
+				76F328951A34B11E00E0F2C4 /* EditTaskLeadViewController.m */,
+				76F328961A34B11E00E0F2C4 /* EditTaskLeadViewController.xib */,
+			);
+			name = "Add+Edit";
+			sourceTree = "<group>";
+		};
 		15A92D261A446F6B005DC9CA /* CalendarNormalCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -2801,12 +2820,7 @@
 		76C962951A16DBA500029978 /* AccountLead */ = {
 			isa = PBXGroup;
 			children = (
-				76F7DFAB1A3B44620003D720 /* EditNoteLeadViewController.h */,
-				76F7DFAC1A3B44620003D720 /* EditNoteLeadViewController.m */,
-				76F7DFAD1A3B44620003D720 /* EditNoteLeadViewController.xib */,
-				76F328941A34B11E00E0F2C4 /* EditTaskLeadViewController.h */,
-				76F328951A34B11E00E0F2C4 /* EditTaskLeadViewController.m */,
-				76F328961A34B11E00E0F2C4 /* EditTaskLeadViewController.xib */,
+				159435601A4609D100E5159B /* Add+Edit */,
 				8434BEFA1A2F485700C29815 /* DetailContactLeadViewController.h */,
 				8434BEFB1A2F485700C29815 /* DetailContactLeadViewController.m */,
 				8434BEFC1A2F485700C29815 /* DetailContactLeadViewController.xib */,
@@ -2838,9 +2852,6 @@
 				849794641A1FB19300ACC568 /* DetailCustomBussinessViewController.h */,
 				849794651A1FB19300ACC568 /* DetailCustomBussinessViewController.m */,
 				849794661A1FB19300ACC568 /* DetailCustomBussinessViewController.xib */,
-				8499B2DA1A2C9BC4004D9ACB /* EditContactLeadViewController.h */,
-				8499B2DB1A2C9BC4004D9ACB /* EditContactLeadViewController.m */,
-				8499B2DC1A2C9BC4004D9ACB /* EditContactLeadViewController.xib */,
 				8434BF051A2F632000C29815 /* FlowLeadViewController.h */,
 				8434BF061A2F632000C29815 /* FlowLeadViewController.m */,
 				8434BF071A2F632000C29815 /* FlowLeadViewController.xib */,
@@ -2850,9 +2861,6 @@
 				7693EDFF1A35556E004E0178 /* DetailTaskLeadViewController.h */,
 				7693EE001A35556E004E0178 /* DetailTaskLeadViewController.m */,
 				7693EE011A35556E004E0178 /* DetailTaskLeadViewController.xib */,
-				7693EE041A355593004E0178 /* EditCalendarLeadViewController.h */,
-				7693EE051A355593004E0178 /* EditCalendarLeadViewController.m */,
-				7693EE061A355593004E0178 /* EditCalendarLeadViewController.xib */,
 				7693EE091A3555B0004E0178 /* DetailCalendarLeadViewController.h */,
 				7693EE0A1A3555B0004E0178 /* DetailCalendarLeadViewController.m */,
 				7693EE0B1A3555B0004E0178 /* DetailCalendarLeadViewController.xib */,

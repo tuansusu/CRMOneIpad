@@ -390,13 +390,6 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     }
     
     switch (index) {
-        case SELECT_INDEX_ADD_CALENDAR:
-        {
-            EditCalendarLeadViewController *viewController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
-            viewController.dataRoot = dicData;
-            [self presentViewController:viewController animated:YES completion:nil];
-        }
-            break;
         case SELECT_INDEX_ADD_CONTACT:
         {
             EditContactLeadViewController *viewController = [[EditContactLeadViewController alloc]initWithNibName:@"EditContactLeadViewController" bundle:nil];
@@ -418,7 +411,14 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             
         }
             break;
-            
+        // calendar+task
+        case SELECT_INDEX_ADD_CALENDAR:
+        {
+            EditCalendarLeadViewController *viewController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
+            viewController.dataRoot = dicData;
+            [self presentViewController:viewController animated:YES completion:nil];
+        }
+            break;
         case SELECT_INDEX_ADD_TASK:
         {
             EditTaskLeadViewController *viewController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
@@ -569,7 +569,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         {
         }
             break;
-            
+        // calendar + task
         case typeLeaderView_Calendar:
         {
             TaskCalendarCell *cell= [tableView dequeueReusableCellWithIdentifier:TaskCalendarNormalCellId];

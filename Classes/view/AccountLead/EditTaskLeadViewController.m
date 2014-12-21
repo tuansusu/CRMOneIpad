@@ -18,11 +18,10 @@
 #import "DateUtil.h"
 
 #define TAG_SELECT_DATE_FROM 1 //NGAY BAT DAU
-#define TAG_SELECT_DATE_TO 2 //NGAY KET THUC
+#define TAG_SELECT_DATE_TO   2 //NGAY KET THUC
 #define TAG_SELECT_TIME_FROM 3 //THOI GIAN BAT DAU
-#define TAG_SELECT_TIME_TO 4 //THOI GIAN KET THUC
-
-#define TAG_SELECT_STATUS 5 //TRANG THAI
+#define TAG_SELECT_TIME_TO   4 //THOI GIAN KET THUC
+#define TAG_SELECT_STATUS    5 //TRANG THAI
 
 @interface EditTaskLeadViewController ()
 {
@@ -41,7 +40,7 @@
     NSUserDefaults *defaults ;
     
     //thong tin chon NGAY - THANG
-    int SELECTED_DATE_TAG ;
+    int SELECTED_POPOVER_TAG ;
     NSDate *dateFrom, *dateTo;
     NSDate *timeFrom, *timeTo;
     NSDateFormatter *df,*dfTime;
@@ -52,9 +51,53 @@
     
     BOOL succsess;//Trang thai acap nhat
 }
+
+- (IBAction)actionChoiceStatus:(id)sender;
+
+- (IBAction)actionChoiceDateFrom:(id)sender;
+- (IBAction)actionChocieTimeFrom:(id)sender;
+- (IBAction)actionChoiceDateTo:(id)sender;
+- (IBAction)actionChoiceTimeTo:(id)sender;
+
+- (IBAction)homeBack:(id)sender;
+- (IBAction)actionSave:(id)sender;
+
+//////////chon trol
+
+
 @end
 
 @implementation EditTaskLeadViewController
+{
+    // interface references here - if not used outside object
+    __weak IBOutlet UIButton *_btnHome;
+    __weak IBOutlet UIButton *_btnSave;
+    
+    __weak IBOutlet UIView  *_headerView;
+    __weak IBOutlet UILabel *_headerLabel;
+    __weak IBOutlet UIView  *_footerView;
+    __weak IBOutlet UILabel *_footerLabel;
+    
+    __weak IBOutlet UIView  *_mainView;
+    __weak IBOutlet UIView  *_headerMainView;
+    __weak IBOutlet UIView  *_bodyMainView;
+    __weak IBOutlet UIView  *_viewMainBodyInfo;
+    
+    __weak IBOutlet UIButton *_btnChoiceStatus;
+    __weak IBOutlet UIButton *_btnChoiceDateFrom;
+    __weak IBOutlet UIButton *_btnChoiceTimeFrom;
+    __weak IBOutlet UIButton *_btnChoiceDateTo;
+    __weak IBOutlet UIButton *_btnChoiceTimeTo;
+    
+    __weak IBOutlet UITextField *_txtName;
+    __weak IBOutlet UITextField *_txtStatus;
+    __weak IBOutlet UITextField *_txtDateFrom;
+    __weak IBOutlet UITextField *_txtTimeFrom;
+    __weak IBOutlet UITextField *_txtDateTo;
+    __weak IBOutlet UITextField *_txtTimeTo;
+    
+    UIPopoverController *_listPopover;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -76,8 +119,9 @@
     [defaults synchronize];
     
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
-    [self updateInterFaceWithOption:smgSelect];
+    
     [self initData];
+    [self updateInterFaceWithOption:smgSelect];
 }
 
 //khoi tao gia tri mac dinh cua form
@@ -91,7 +135,6 @@
     
     selectStatusIndex = -1;
     succsess = NO;
-    self.barLabel.text = [NSString stringWithFormat:@"%@ %@, %@",VOFFICE,[defaults objectForKey:@"versionSoftware"],COPY_OF_SOFTWARE];
     
     dtoProcess = [DTOTASKProcess new];
     dtoSyscatProcess = [DTOSYSCATProcess new];
@@ -99,9 +142,18 @@
     listArrStatus = [dtoSyscatProcess filterWithCatType:FIX_SYS_CAT_TYPE_TASK_STATUS];
     
     dataId = 0;
-    if (self.dataSend) {
-        
-        
+    
+    if (self.dataSend)
+    {
+        // edit/view task
+    }
+    else if (self.dataRoot)
+    {
+        // new task
+    }
+    else
+    {
+        // ??
     }
     
 }
@@ -109,79 +161,76 @@
 
 - (void) updateInterFaceWithOption : (int) option
 {
-    self.fullNameLB.text = TITLE_APPLICATION;
-    [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
-    self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
+    // fixed contents
+    // header + footer
+    _headerView.backgroundColor = HEADER_VIEW_COLOR1;
+    _headerLabel.text           = TITLE_APPLICATION;
+    _headerLabel.textColor      = TEXT_COLOR_HEADER_APP;
+
+    _footerView.backgroundColor = TOOLBAR_VIEW_COLOR;
+    _footerLabel.text           = [NSString stringWithFormat:@"%@ %@, %@", VOFFICE, [defaults objectForKey:@"versionSoftware"], COPY_OF_SOFTWARE];
+    _footerLabel.textColor      = TEXT_TOOLBAR_COLOR1;
     
-    self.footerView.backgroundColor = TOOLBAR_VIEW_COLOR;
-    self.barLabel.textColor = TEXT_TOOLBAR_COLOR1;
-    //    [self.leftViewHeader setBackgroundColor:BACKGROUND_COLOR_TOP_LEFT_HEADER];
-    //    self.leftLabelHeader.textColor = TEXT_COLOR_HEADER_APP;
+    // main
+    _mainView.backgroundColor = HEADER_SUB_VIEW_COLOR1;
+    // - header
+    _headerMainView.backgroundColor = HEADER_SUB_VIEW_COLOR1;
+    [_headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
     
-    
-    [self.headerMainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
-    [self.headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
-    for (UIView *viewSubTemp in self.headerMainView.subviews) {
-        
-        
-        if ([viewSubTemp isKindOfClass:[UILabel class]]) {
-            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+    for (UIView *childView in _headerMainView.subviews)
+    {
+        if ([childView isKindOfClass:[UILabel class]]) {
+            ((UILabel*) childView).textColor = TEXT_COLOR_REPORT_TITLE_1;
         }
     }
+    // - body
+    _bodyMainView.backgroundColor   = BACKGROUND_NORMAL_COLOR1;
+    _bodyMainView.layer.borderWidth = BORDER_WITH;
+    _bodyMainView.layer.borderColor = [BORDER_COLOR CGColor];
     
-    
-    
-    
-    [self.mainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
-    
-    self.bodyMainView.backgroundColor = BACKGROUND_NORMAL_COLOR1;
-    
-    self.bodyMainView.layer.borderWidth = BORDER_WITH;
-    self.bodyMainView.layer.borderColor = [BORDER_COLOR CGColor];
-    
-    for (UIView *viewTemp in self.bodyMainView.subviews) {
-        
-        for (UIView *viewSubTemp in viewTemp.subviews) {
-            
-            
-            if ([viewSubTemp isKindOfClass:[UILabel class]]) {
-                ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+    for (UIView *childView in _bodyMainView.subviews)
+    {
+        for (UIView *subChildView in childView.subviews)
+        {
+            if ([subChildView isKindOfClass:[UILabel class]])
+            {
+                ((UILabel*) subChildView).textColor = TEXT_COLOR_REPORT_TITLE_1;
             }
-            
-            
-            if ([viewSubTemp isKindOfClass:[UITextView class]]) {
-                ((UITextView*) viewSubTemp).textColor = TEXT_COLOR_REPORT;
-                ((UITextView*) viewSubTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
-                ((UITextView*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
-                ((UITextView*) viewSubTemp).layer.borderWidth = BORDER_WITH;
+            else if ([subChildView isKindOfClass:[UITextView class]])
+            {
+                ((UITextView*) subChildView).textColor         = TEXT_COLOR_REPORT;
+                ((UITextView*) subChildView).backgroundColor   = BACKGROUND_NORMAL_COLOR1;
+                ((UITextView*) subChildView).layer.borderColor = [BORDER_COLOR CGColor];
+                ((UITextView*) subChildView).layer.borderWidth = BORDER_WITH;
             }
-            if ([viewSubTemp isKindOfClass:[UITextField class]]) {
-                ((UITextField*) viewSubTemp).textColor = TEXT_COLOR_REPORT;
-                ((UITextField*) viewSubTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
-                ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
-                ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
+            else if ([subChildView isKindOfClass:[UITextField class]])
+            {
+                ((UITextField*) subChildView).textColor         = TEXT_COLOR_REPORT;
+                ((UITextField*) subChildView).backgroundColor   = BACKGROUND_NORMAL_COLOR1;
+                ((UITextField*) subChildView).layer.borderColor = [BORDER_COLOR CGColor];
+                ((UITextField*) subChildView).layer.borderWidth = BORDER_WITH;
             }
-            
         }
         
-        if ([viewTemp isKindOfClass:[UIButton class]]) {
-            
-            [((UIButton*) viewTemp) setStyleNormalWithOption:smgSelect];
+        if ([childView isKindOfClass:[UIButton class]])
+        {
+            [((UIButton*) childView) setStyleNormalWithOption:smgSelect];
         }
-        
     }
-    
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)actionChoiceStatus:(id)sender {
-    [self hiddenKeyBoard];
+- (IBAction)actionChoiceStatus:(id)sender
+{
+    // status drop down
+    [self hideKeyboard];
     
-    SELECTED_DATE_TAG = TAG_SELECT_STATUS;
+    SELECTED_POPOVER_TAG = TAG_SELECT_STATUS;
     
     SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
     
@@ -189,133 +238,133 @@
     
     detail.listData = [listArrStatus valueForKey:DTOSYSCAT_name];
     
-    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
-    CGRect popoverFrame = self.btnChoiceStatus.frame;
+    _listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+    CGRect popoverFrame = _btnChoiceStatus.frame;
     
     detail.delegate =(id<SelectIndexDelegate>) self;
-    self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(320,250) animated:NO];
-    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    _listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
+    [_listPopover setPopoverContentSize:CGSizeMake(320,250) animated:NO];
+    [_listPopover presentPopoverFromRect:popoverFrame inView:_viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
     
 }
 
 - (IBAction)actionChoiceDateFrom:(id)sender {
-    [self hiddenKeyBoard];
+    [self hideKeyboard];
     
-    if (self.txtDateFrom.text.length==0) {
+    if (_txtDateFrom.text.length==0) {
         dateFrom = [NSDate date];
     }else{
-        dateTo = [DateUtil getDateFromString:self.txtDateFrom.text :FORMAT_DATE];
+        dateTo = [DateUtil getDateFromString:_txtDateFrom.text :FORMAT_DATE];
     }
     
-    SELECTED_DATE_TAG = TAG_SELECT_DATE_FROM;
+    SELECTED_POPOVER_TAG = TAG_SELECT_DATE_FROM;
     CalendarPickerViewController *detail = [[CalendarPickerViewController alloc] initWithNibName:@"CalendarPickerViewController" bundle:nil];
     detail.dateSelected = dateFrom;
-    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
-    CGRect popoverFrame = self.btnChoiceDateFrom.frame;
+    _listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+    CGRect popoverFrame = _btnChoiceDateFrom.frame;
     
     detail.delegateDatePicker =(id<CalendarSelectDatePickerDelegate>) self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(320, 260) animated:NO];
+    [_listPopover setPopoverContentSize:CGSizeMake(320, 260) animated:NO];
     
     
-    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    [_listPopover presentPopoverFromRect:popoverFrame inView:_viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
 - (IBAction)actionChocieTimeFrom:(id)sender {
-    if (self.txtTimeFrom.text.length==0) {
+    if (_txtTimeFrom.text.length==0) {
         //        self.txtStartDateTime.text = nowTimeStr;
         //        startDate = [NSDate date];
     }else{
-        NSString *strEndDate = [NSString stringWithFormat:@"%@ %@",self.txtDateFrom.text,self.txtTimeFrom.text];
+        NSString *strEndDate = [NSString stringWithFormat:@"%@ %@",_txtDateFrom.text,_txtTimeFrom.text];
         timeFrom = [DateUtil getDateFromString:strEndDate :@"dd/MM/yyyy HH:mm"];
     }
     
-    SELECTED_DATE_TAG = TAG_SELECT_TIME_FROM;
+    SELECTED_POPOVER_TAG = TAG_SELECT_TIME_FROM;
     CalendarPickerViewController *detail = [[CalendarPickerViewController alloc] initWithNibName:@"CalendarPickerViewController" bundle:nil];
     detail.dateSelected = timeFrom;
     detail.isTimeMode = true;
-    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
-    CGRect popoverFrame = self.txtTimeFrom.frame;
+    _listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+    CGRect popoverFrame = _txtTimeFrom.frame;
     
     detail.delegateDatePicker =(id<CalendarSelectDatePickerDelegate>) self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(320, 260) animated:NO];
+    [_listPopover setPopoverContentSize:CGSizeMake(320, 260) animated:NO];
     
     
-    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    [_listPopover presentPopoverFromRect:popoverFrame inView:_viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
 - (IBAction)actionChoiceDateTo:(id)sender {
-    [self hiddenKeyBoard];
+    [self hideKeyboard];
     
-    if (self.txtDateTo.text.length==0) {
+    if (_txtDateTo.text.length==0) {
         dateTo = [NSDate date];
     }else{
-        dateTo = [DateUtil getDateFromString:self.txtDateTo.text :FORMAT_DATE];
+        dateTo = [DateUtil getDateFromString:_txtDateTo.text :FORMAT_DATE];
     }
     
-    SELECTED_DATE_TAG = TAG_SELECT_DATE_TO;
+    SELECTED_POPOVER_TAG = TAG_SELECT_DATE_TO;
     CalendarPickerViewController *detail = [[CalendarPickerViewController alloc] initWithNibName:@"CalendarPickerViewController" bundle:nil];
     detail.dateSelected = dateTo;
-    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
-    CGRect popoverFrame = self.btnChoiceDateTo.frame;
+    _listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+    CGRect popoverFrame = _btnChoiceDateTo.frame;
     
     detail.delegateDatePicker =(id<CalendarSelectDatePickerDelegate>) self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(320, 260) animated:NO];
+    [_listPopover setPopoverContentSize:CGSizeMake(320, 260) animated:NO];
     
     
-    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    [_listPopover presentPopoverFromRect:popoverFrame inView:_viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
 - (IBAction)actionChoiceTimeTo:(id)sender {
-    if (self.txtTimeTo.text.length==0) {
+    if (_txtTimeTo.text.length==0) {
         //        self.txtStartDateTime.text = nowTimeStr;
         //        startDate = [NSDate date];
     }else{
-        NSString *strEndDate = [NSString stringWithFormat:@"%@ %@",self.txtDateTo.text,self.txtTimeTo.text];
+        NSString *strEndDate = [NSString stringWithFormat:@"%@ %@",_txtDateTo.text,_txtTimeTo.text];
         timeTo = [DateUtil getDateFromString:strEndDate :@"dd/MM/yyyy HH:mm"];
     }
     
-    SELECTED_DATE_TAG = TAG_SELECT_TIME_TO;
+    SELECTED_POPOVER_TAG = TAG_SELECT_TIME_TO;
     CalendarPickerViewController *detail = [[CalendarPickerViewController alloc] initWithNibName:@"CalendarPickerViewController" bundle:nil];
     detail.dateSelected = timeTo;
     detail.isTimeMode = true;
-    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
-    CGRect popoverFrame = self.txtTimeTo.frame;
+    _listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+    CGRect popoverFrame = _txtTimeTo.frame;
     
     detail.delegateDatePicker =(id<CalendarSelectDatePickerDelegate>) self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(320, 260) animated:NO];
+    [_listPopover setPopoverContentSize:CGSizeMake(320, 260) animated:NO];
     
     
-    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    [_listPopover presentPopoverFromRect:popoverFrame inView:_viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
 
 -(void) selectDatePickerWithDate:(NSDate *)date
 {
     NSLog(@"select date = %@", date);
-    switch (SELECTED_DATE_TAG) {
+    switch (SELECTED_POPOVER_TAG) {
         case TAG_SELECT_DATE_FROM:
-            self.txtDateFrom.text = [NSString stringWithFormat:@"%@",
+            _txtDateFrom.text = [NSString stringWithFormat:@"%@",
                                         [df stringFromDate:date]];
             dateFrom = date;
             break;
         case TAG_SELECT_DATE_TO:
-            self.txtDateTo.text = [NSString stringWithFormat:@"%@",
+            _txtDateTo.text = [NSString stringWithFormat:@"%@",
                                        [df stringFromDate:date]];
             dateTo = date;
             break;
             
         case TAG_SELECT_TIME_FROM:{
-            self.txtTimeFrom.text = [NSString stringWithFormat:@"%@", [dfTime stringFromDate:date]];
+            _txtTimeFrom.text = [NSString stringWithFormat:@"%@", [dfTime stringFromDate:date]];
             
-            NSString *strTimeFrom = [NSString stringWithFormat:@"%@ %@",self.txtDateFrom.text,self.txtTimeFrom.text];
+            NSString *strTimeFrom = [NSString stringWithFormat:@"%@ %@",_txtDateFrom.text,_txtTimeFrom.text];
             timeFrom = [DateUtil getDateFromString:strTimeFrom :@"dd/MM/yyyy HH:mm"];
         }
             break;
         case TAG_SELECT_TIME_TO:{
-            self.txtTimeTo.text = [NSString stringWithFormat:@"%@", [dfTime stringFromDate:date]];
+            _txtTimeTo.text = [NSString stringWithFormat:@"%@", [dfTime stringFromDate:date]];
             
-            NSString *strTimeTo = [NSString stringWithFormat:@"%@ %@",self.txtDateTo.text,self.txtTimeTo.text];
+            NSString *strTimeTo = [NSString stringWithFormat:@"%@ %@",_txtDateTo.text,_txtTimeTo.text];
             timeTo = [DateUtil getDateFromString:strTimeTo :@"dd/MM/yyyy HH:mm"];
         }
             break;
@@ -326,8 +375,8 @@
 }
 -(void) dismissPopoverView
 {
-    if ([self.listPopover isPopoverVisible])
-        [self.listPopover dismissPopoverAnimated:YES];
+    if ([_listPopover isPopoverVisible])
+        [_listPopover dismissPopoverAnimated:YES];
 }
 
 -(void) actionSave:(id)sender{
@@ -377,10 +426,6 @@
     
 }
 
--(void) actionClose:(id)sender{
-    
-}
-
 -(void) homeBack:(id)sender{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -402,7 +447,7 @@
 }
 
 -(void) resetForm {
-    for (UIView *viewTemp in self.bodyMainView.subviews) {
+    for (UIView *viewTemp in _bodyMainView.subviews) {
         
         for (UIView *viewSubTemp in viewTemp.subviews) {
             
@@ -418,32 +463,33 @@
     selectStatusIndex = -1;
     succsess = false;
     
-    [self hiddenKeyBoard];
+    [self hideKeyboard];
     
 }
 
--(void) hiddenKeyBoard {
-    for (UIView *viewTemp in _bodyMainView.subviews) {
-        for (UIView *subViewTemp in viewTemp.subviews) {
-            [(UITextField *)subViewTemp resignFirstResponder];
-        }
-    }
+- (void)hideKeyboard
+{
+    [self.view endEditing:YES];
 }
 
 #pragma mark SelectIndexDelegate
 
 -(void) selectAtIndex:(NSInteger)index{
     
-    if (self.listPopover) {
-        [ self.listPopover dismissPopoverAnimated:YES];
+    if (_listPopover)
+    {
+        [ _listPopover dismissPopoverAnimated:YES];
     }
-    switch (SELECTED_DATE_TAG) {
+    
+    switch (SELECTED_POPOVER_TAG)
+    {
         case TAG_SELECT_STATUS:
         {
             selectStatusIndex = index;
-            if (index<listArrStatus.count) {
+            if (index < listArrStatus.count)
+            {
                 NSDictionary *dic = [listArrStatus objectAtIndex:index];
-                self.txtStatus.text = [dic objectForKey:DTOSYSCAT_name];
+                _txtStatus.text = [dic objectForKey:DTOSYSCAT_name];
             }
         }
             break;
@@ -451,9 +497,6 @@
         default:
             break;
     }
-    
-    
-    
 }
 
 @end

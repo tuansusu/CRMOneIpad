@@ -10,4 +10,7 @@
 
 @interface TaskCalendarCell : UITableViewCell
 
++ (UINib *)nib;
+- (void)loadDataToCellWithData:(NSDictionary *)dicData withOption:(int)smgSelect;
+
 @end

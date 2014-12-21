@@ -8,6 +8,7 @@
 
 #import "CustomInfoView.h"
 #import "DTOAcountLeadProcessObject.h"
+#import "DTOAccountProcessObject.h"
 
 @implementation CustomInfoView
 - (id)initWithFrame:(CGRect)frame
@@ -27,36 +28,69 @@
 }
 */
 
--(void) loadViewWithCustomerOB:(DTOAcountLeadProcessObject *)customerOB{
+-(void) loadViewWithKHDMOB:(DTOAcountLeadProcessObject *)khdmOB{
     NSString *code = @"";
     NSString *name = @"";
-    if (customerOB.code) {
-        code = customerOB.code;
+    if (khdmOB.code) {
+        code = khdmOB.code;
     }
-    if (customerOB.name) {
-        name = customerOB.name;
+    if (khdmOB.name) {
+        name = khdmOB.name;
     }
 
     lblTitle.text = [NSString stringWithFormat:@"%@-%@",code,name];
 
-    if (customerOB.address) {
+    if (khdmOB.address) {
         lblAdress.text = @"Địa chỉ: N/a";
     }else{
-        lblAdress.text = [NSString stringWithFormat:@"Địa chỉ: %@",customerOB.address];
+        lblAdress.text = [NSString stringWithFormat:@"Địa chỉ: %@",khdmOB.address];
     }
 
-    if (customerOB.email) {
+    if (khdmOB.email) {
         lblEmail.text = @"Email: N/a";
     }else{
-        lblEmail.text = [NSString stringWithFormat:@"Email: %@",customerOB.address];
+        lblEmail.text = [NSString stringWithFormat:@"Email: %@",khdmOB.address];
     }
 
-    if (customerOB.mobile) {
+    if (khdmOB.mobile) {
         lblPhone.text = @"Điện thoại: N/a";
 
     }else{
-        lblPhone.text =[NSString stringWithFormat:@"Điện thoại : %@",customerOB.mobile];
+        lblPhone.text =[NSString stringWithFormat:@"Điện thoại : %@",khdmOB.mobile];
     }
 }
+
+-(void) loadViewWithKH360OB:(DTOAccountProcessObject *)kh360OB{
+    NSString *code = @"";
+    NSString *name = @"";
+    if (kh360OB.code) {
+        code = kh360OB.code;
+    }
+    if (kh360OB.name) {
+        name = kh360OB.name;
+    }
+
+    lblTitle.text = [NSString stringWithFormat:@"%@-%@",code,name];
+
+    if (kh360OB.address) {
+        lblAdress.text = @"Địa chỉ: N/a";
+    }else{
+        lblAdress.text = [NSString stringWithFormat:@"Địa chỉ: %@",kh360OB.address];
+    }
+
+    if (kh360OB.email) {
+        lblEmail.text = @"Email: N/a";
+    }else{
+        lblEmail.text = [NSString stringWithFormat:@"Email: %@",kh360OB.address];
+    }
+
+    if (kh360OB.mobile) {
+        lblPhone.text = @"Điện thoại: N/a";
+
+    }else{
+        lblPhone.text =[NSString stringWithFormat:@"Điện thoại : %@",kh360OB.mobile];
+    }
+}
+
 
 @end

@@ -80,8 +80,6 @@
             [_listCustomerKH360 addObject:[dic dtoAcountProcessOb]];
         }
     }
-
-
 }
 -(void)getNextPageCustomerKH360{
     int currentPage = _currentPageKH360;

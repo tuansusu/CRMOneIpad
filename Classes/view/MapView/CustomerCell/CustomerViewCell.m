@@ -9,6 +9,7 @@
 #import "CustomerViewCell.h"
 #import "DTOAcountLeadProcessObject.h"
 #import "DTOAccountProcessObject.h"
+#import <CoreLocation/CoreLocation.h>
 
 @implementation CustomerViewCell
 
@@ -76,6 +77,9 @@
 
 -(IBAction)cellSelectedAtIndex:(id)sender{
     NSString *statusSelect;
+    if([CLLocationManager locationServicesEnabled] &&
+       [CLLocationManager authorizationStatus] != kCLAuthorizationStatusDenied)
+    {
     if (_isCellSelected) {
         [btnDirection setImage:[UIImage imageNamed:@"iconDirection"] forState:UIControlStateNormal];
         _isCellSelected= NO;
@@ -87,6 +91,9 @@
     }
     if (_delegate && [_delegate respondsToSelector:@selector(didSelectedAtCell: withStatus:)]) {
         [_delegate didSelectedAtCell:self withStatus:statusSelect];
+    }
+    }else {
+        [[[UIAlertView alloc] initWithTitle:SYS_Notification_Title message:SYS_Notification_EnableLocation delegate:nil cancelButtonTitle:SYS_Notification_CancelTitle otherButtonTitles: nil] show];
     }
 }
 

@@ -21,6 +21,14 @@
 #define BUTTON_KH_COLOR_SELECTED [UIColor colorWithRed:0.0f/255.0f green:122.0f/255.0f blue:255.0f/255.0f alpha:1.0f]
 #define BUTTON_KH_COLOR_DEFAULT [UIColor colorWithRed:170.0f/255.0f green:170.0f/255.0f blue:170.0f/255.0f alpha:0.4f]
 
+#define KEY_MARKER_KHDM @"khdmMarkAtIndex%d"
+#define KEY_MARKER_KH360 @"kh360MarkAtIndex%d"
+
+typedef enum {
+    typeKHDM,
+    typeKH360
+} CustomerType;
+
 @interface TestMapViewController ()<CLLocationManagerDelegate,GMSMapViewDelegate,CustomerViewCellDelegate>
 {
     NSUserDefaults *defaults;
@@ -31,7 +39,7 @@
     CLLocationManager *locationManager;
 
     NSMutableArray *waypoints_;
-    NSMutableDictionary *waypointsDic_;
+    NSMutableDictionary *polyLineDic_;
     NSMutableArray *waypointStrings_;
 
     IBOutlet UIView *mainView;
@@ -53,6 +61,8 @@
     IBOutlet UIButton *btnKH360;
     IBOutlet UIImageView *imgCusSelected;
     IBOutlet UIImageView *imgDirSelected;
+    CustomerType customerType;
+    NSInteger indexDirectionSelected;
 }
 @end
 
@@ -76,7 +86,7 @@
     listKH360Flag = [[NSMutableArray alloc] init];
     listKHDMFlag = [[NSMutableArray alloc] init];
     waypoints_ = [[NSMutableArray alloc]init];
-    waypointsDic_ = [[NSMutableDictionary alloc] init];
+    polyLineDic_ = [[NSMutableDictionary alloc] init];
     waypointStrings_ = [[NSMutableArray alloc]init];
 
     if ([UIDevice getCurrentSysVer] >= 7.0) {
@@ -110,7 +120,7 @@
     //marker.position = CLLocationCoordinate2DMake(-33.86, 151.20);
     marker.position = CLLocationCoordinate2DMake(_lan, _lon);
 
-//    marker.map = mapView_;
+    marker.map = mapView_;
     [waypoints_ addObject:marker];
     NSString *positionString = [[NSString alloc] initWithFormat:@"%f,%f",_lan,_lon];
     [waypointStrings_ addObject:positionString];
@@ -118,8 +128,8 @@
     [self initLocation];
     [self initDataKH];
 
-//    DTOAcountLeadProcessObject *customerData=[_mapModel.listCustomerKHDM objectAtIndex:1];
-//    [marker setUserData:customerData];
+    //    DTOAcountLeadProcessObject *customerData=[_mapModel.listCustomerKHDM objectAtIndex:1];
+    //    [marker setUserData:customerData];
 }
 
 -(void)initDataKH{
@@ -237,19 +247,19 @@
 
 #pragma mark tim duong di ngan nhat action
 -(IBAction)btnTDDNNSelected:(id)sender{
-    if([waypoints_ count]>1){
-        NSString *sensor = @"false";
-        NSArray *parameters = [NSArray arrayWithObjects:sensor, waypointStrings_,
-                               nil];
-        NSArray *keys = [NSArray arrayWithObjects:@"sensor", @"waypoints", nil];
-        NSDictionary *query = [NSDictionary dictionaryWithObjects:parameters
-                                                          forKeys:keys];
-        MDDirectionService *mds=[[MDDirectionService alloc] init];
-        SEL selector = @selector(addDirections:);
-        [mds setDirectionsQuery:query
-                   withSelector:selector
-                   withDelegate:self];
-    }
+    //    if([waypoints_ count]>1){
+    //        NSString *sensor = @"false";
+    //        NSArray *parameters = [NSArray arrayWithObjects:sensor, waypointStrings_,
+    //                               nil];
+    //        NSArray *keys = [NSArray arrayWithObjects:@"sensor", @"waypoints", nil];
+    //        NSDictionary *query = [NSDictionary dictionaryWithObjects:parameters
+    //                                                          forKeys:keys];
+    //        MDDirectionService *mds=[[MDDirectionService alloc] init];
+    //        SEL selector = @selector(addDirections:);
+    //        [mds setDirectionsQuery:query
+    //                   withSelector:selector
+    //                   withDelegate:self];
+    //    }
 }
 
 #pragma mark change kh action
@@ -400,28 +410,9 @@ didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate{
  */
 - (void)mapView:(GMSMapView *)mapView
 didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
-//    CLLocationCoordinate2D position = CLLocationCoordinate2DMake(
-//                                                                 coordinate.latitude,
-//                                                                 coordinate.longitude);
-//    GMSMarker *marker = [GMSMarker markerWithPosition:position];
-//    marker.map = mapView_;
-//    [waypoints_ addObject:marker];
-//    NSString *positionString = [[NSString alloc] initWithFormat:@"%f,%f",
-//                                coordinate.latitude,coordinate.longitude];
-//    [waypointStrings_ addObject:positionString];
-//    if([waypoints_ count]>1){
-//        NSString *sensor = @"false";
-//        NSArray *parameters = [NSArray arrayWithObjects:sensor, waypointStrings_,
-//                               nil];
-//        NSArray *keys = [NSArray arrayWithObjects:@"sensor", @"waypoints", nil];
-//        NSDictionary *query = [NSDictionary dictionaryWithObjects:parameters
-//                                                          forKeys:keys];
-//        MDDirectionService *mds=[[MDDirectionService alloc] init];
-//        SEL selector = @selector(addDirections:);
-//        [mds setDirectionsQuery:query
-//                   withSelector:selector
-//                   withDelegate:self];
-//    }
+    //    CLLocationCoordinate2D position = CLLocationCoordinate2DMake(
+    //                                                                 coordinate.latitude,
+    //                                                                 coordinate.longitude);
 }
 
 - (void)addDirections:(NSDictionary *)json {
@@ -433,18 +424,24 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
     GMSPath *path = [GMSPath pathFromEncodedPath:overview_route];
     GMSPolyline *polyline = [GMSPolyline polylineWithPath:path];
     polyline.map = mapView_;
+    if (customerType==typeKHDM) {
+        [polyLineDic_ setObject:polyline forKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_KHDM,indexDirectionSelected]];
+    }else if(customerType==typeKH360){
+        [polyLineDic_ setObject:polyline forKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_KH360,indexDirectionSelected]];
+    }
+
 }
 
-- (void)removeDirections:(NSDictionary *)json {
-
-    NSDictionary *routes = [json objectForKey:@"routes"][0];
-
-    NSDictionary *route = [routes objectForKey:@"overview_polyline"];
-    NSString *overview_route = [route objectForKey:@"points"];
-    GMSPath *path = [GMSPath pathFromEncodedPath:overview_route];
-    GMSPolyline *polyline = [GMSPolyline polylineWithPath:path];
-    polyline.map = mapView_;
-    polyline.map = nil;
+- (void)removeDirectionsWithTypeCustomer:(CustomerType)cusType withInxex:(NSInteger)index {
+    GMSPolyline *polyline;
+    if (cusType==typeKHDM) {
+        polyline =[polyLineDic_ objectForKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_KHDM,index]];
+    }else if(cusType==typeKH360){
+        polyline =[polyLineDic_ objectForKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_KH360,index]];
+    }
+    if (polyline) {
+        polyline.map = nil;
+    }
 }
 
 - (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker{
@@ -530,27 +527,28 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
                 [marker setUserData:khdmOB];
 
                 [waypoints_ addObject:marker];
-                [waypointsDic_ setObject:marker forKey:[NSString stringWithFormat:@"khdmMarkAtIndex%d",indexPath.row]];
                 NSString *positionString = [[NSString alloc] initWithFormat:@"%f,%f",
                                             [khdmOB.lat floatValue],[khdmOB.lon floatValue]];
                 [waypointStrings_ addObject:positionString];
-//                if([waypoints_ count]>1){
-//                    NSString *sensor = @"false";
-//                    NSArray *parameters = [NSArray arrayWithObjects:sensor, waypointStrings_,
-//                                           nil];
-//                    NSArray *keys = [NSArray arrayWithObjects:@"sensor", @"waypoints", nil];
-//                    NSDictionary *query = [NSDictionary dictionaryWithObjects:parameters
-//                                                                      forKeys:keys];
-//                    MDDirectionService *mds=[[MDDirectionService alloc] init];
-//                    SEL selector = @selector(addDirections:);
-//                    [mds setDirectionsQuery:query
-//                               withSelector:selector
-//                               withDelegate:self];
-//                }
+                if([waypoints_ count]>1){
+                    NSString *sensor = @"false";
+                    NSArray *parameters = [NSArray arrayWithObjects:sensor, waypointStrings_,
+                                           nil];
+                    NSArray *keys = [NSArray arrayWithObjects:@"sensor", @"waypoints", nil];
+                    NSDictionary *query = [NSDictionary dictionaryWithObjects:parameters
+                                                                      forKeys:keys];
+                    MDDirectionService *mds=[[MDDirectionService alloc] init];
+                    customerType = typeKHDM;
+                    indexDirectionSelected = indexPath.row;
+                    SEL selector = @selector(addDirections:);
+                    [mds setDirectionsQuery:query
+                               withSelector:selector
+                               withDelegate:self];
+                }
             }
 
         }else{
-
+            [self removeDirectionsWithTypeCustomer:typeKHDM withInxex:indexPath.row];
             [listCustomerDirections removeObject:khdmOB];
         }
 
@@ -565,47 +563,30 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
                 [marker setUserData:kh360OB];
 
                 [waypoints_ addObject:marker];
-                [waypointsDic_ setObject:marker forKey:[NSString stringWithFormat:@"kh360MarkAtIndex%d",indexPath.row]];
                 NSString *positionString = [[NSString alloc] initWithFormat:@"%f,%f",
                                             [kh360OB.lat floatValue],[kh360OB.lon floatValue]];
                 [waypointStrings_ addObject:positionString];
-//                if([waypoints_ count]>1){
-//                    NSString *sensor = @"false";
-//                    NSArray *parameters = [NSArray arrayWithObjects:sensor, waypointStrings_,
-//                                           nil];
-//                    NSArray *keys = [NSArray arrayWithObjects:@"sensor", @"waypoints", nil];
-//                    NSDictionary *query = [NSDictionary dictionaryWithObjects:parameters
-//                                                                      forKeys:keys];
-//                    MDDirectionService *mds=[[MDDirectionService alloc] init];
-//                    SEL selector = @selector(addDirections:);
-//                    [mds setDirectionsQuery:query
-//                               withSelector:selector
-//                               withDelegate:self];
-//                }
+
+                if([waypoints_ count]>1){
+
+                    NSString *sensor = @"false";
+                    NSArray *parameters = [NSArray arrayWithObjects:sensor, waypointStrings_,
+                                           nil];
+                    NSArray *keys = [NSArray arrayWithObjects:@"sensor", @"waypoints", nil];
+                    NSDictionary *query = [NSDictionary dictionaryWithObjects:parameters
+                                                                      forKeys:keys];
+                    MDDirectionService *mds=[[MDDirectionService alloc] init];
+                    customerType = typeKH360;
+                    indexDirectionSelected = indexPath.row;
+                    SEL selector = @selector(addDirections:);
+                    [mds setDirectionsQuery:query
+                               withSelector:selector
+                               withDelegate:self];
+
+                }
             }
         }else{
-//            if (kh360OB.lat && kh360OB.lon) {
-//                GMSMarker *marker = [waypointsDic_ objectForKey:[NSString stringWithFormat:@"kh360MarkAtIndex%d",indexPath.row]];
-//
-//                [waypoints_ removeObject:marker];
-//                [waypointsDic_ removeObjectForKey:[NSString stringWithFormat:@"kh360MarkAtIndex%d",indexPath.row]];
-//                NSString *positionString = [[NSString alloc] initWithFormat:@"%f,%f",
-//                                            [kh360OB.lat floatValue],[kh360OB.lon floatValue]];
-//                [waypointStrings_ removeObject:positionString];
-//                if([waypoints_ count]>1){
-//                    NSString *sensor = @"false";
-//                    NSArray *parameters = [NSArray arrayWithObjects:sensor, waypointStrings_,
-//                                           nil];
-//                    NSArray *keys = [NSArray arrayWithObjects:@"sensor", @"waypoints", nil];
-//                    NSDictionary *query = [NSDictionary dictionaryWithObjects:parameters
-//                                                                      forKeys:keys];
-//                    MDDirectionService *mds=[[MDDirectionService alloc] init];
-//                    SEL selector = @selector(removeObject:);
-//                    [mds setDirectionsQuery:query
-//                               withSelector:selector
-//                               withDelegate:self];
-//                }
-//            }
+            [self removeDirectionsWithTypeCustomer:typeKH360 withInxex:indexPath.row];
             [listCustomerDirections removeObject:kh360OB];
         }
 

@@ -86,7 +86,7 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 //=========================Map Configuration
 
 #define SYS_Notification_NotGetCurrentLocation @"Không xác định được vị trí của bạn"
-
+#define SYS_Notification_EnableLocation @"Chức năng này yêu cầu bật xác định vị trí của bạn"
 //tuannv
 #define CommentType_CapNhatTienDo @"Cập nhật tiến độ"
 #define CommentType_DeXuat @"Đề xuất"

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="5056" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditContactLeadViewController">
@@ -19,6 +19,7 @@
                 <outlet property="headerMainView" destination="J6f-r1-sac" id="YbB-AZ-rxS"/>
                 <outlet property="headerViewBar" destination="DVJ-nD-Q8I" id="76p-AZ-G3t"/>
                 <outlet property="imgAvartar" destination="Z6p-Ck-uHL" id="99y-Yd-dpt"/>
+                <outlet property="lbTitle" destination="tcG-Cc-lAh" id="v7s-G5-SOy"/>
                 <outlet property="mainView" destination="6XT-dU-A8I" id="mcz-RC-JhW"/>
                 <outlet property="tvNote" destination="ErC-OT-X6S" id="Xlv-dw-uRq"/>
                 <outlet property="txtAddress" destination="HK5-xg-0Ef" id="cYu-zw-84e"/>
@@ -171,7 +172,7 @@
                                             </connections>
                                         </textField>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ngày cấp" minimumFontSize="17" id="lLM-21-oHX">
-                                            <rect key="frame" x="479" y="290" width="380" height="30"/>
+                                            <rect key="frame" x="479" y="240" width="380" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -330,4 +331,9 @@
         <image name="icon_require-1.png" width="16" height="16"/>
         <image name="icon_save-1.png" width="48" height="48"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
 </document>

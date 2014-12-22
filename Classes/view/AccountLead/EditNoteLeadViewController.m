@@ -294,7 +294,7 @@
                 [entiFile setObject:@"1" forKey:DTOATTACHMENT_isActive];
                 [entiFile setObject:@"" forKey:DTOATTACHMENT_updatedBy];
                 [entiFile setObject:@"" forKey:DTOATTACHMENT_checkSum];
-                [entiFile setObject:@"" forKey:DTOATTACHMENT_clientFilePath];
+                [entiFile setObject:[path objectForKey:@"clientFilePath"] forKey:DTOATTACHMENT_clientFilePath];
                 [entiFile setObject:@"" forKey:DTOATTACHMENT_createdBy];
                 [entiFile setObject:@"" forKey:DTOATTACHMENT_note];
                 [entiFile setObject:@"" forKey:DTOATTACHMENT_objectId];
@@ -429,6 +429,7 @@
     //    }
     dicData=[NSMutableDictionary new];
     [dicData setValue:strFileName forKey:DTOATTACHMENT_fileName];
+    [dicData setValue:dbPath forKey:DTOATTACHMENT_clientFilePath];
     [dicData setValue:0 forKey:DTOATTACHMENT_id];
     
     [arrayData addObject: dicData];

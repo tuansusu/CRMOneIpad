@@ -16,6 +16,7 @@
 #import "AUISelectiveBordersLayer.h"
 #import "DataField.h"
 #import "DateUtil.h"
+#import "DTOATTACHMENTProcess.h"
 
 #define TAG_SELECT_DATE_CREATE 1 //NGAY CAP CHUNG MINH THU
 #define TAG_SELECT_DATE_BIRTHDAY 2 //NGAY SINH
@@ -29,6 +30,10 @@
     NSDictionary *dicData; //luu tru du lieu sua
     
     DTOCONTACTProcess *dtoProcess;
+    DTOATTACHMENTProcess *dtoFileProcess;
+    
+    NSString *fileAvartar;
+    NSString *imagePath;
     
     //chon index form them moi
     NSInteger selectIndex;
@@ -101,11 +106,27 @@
     dataId = 0;
     if (self.dataSend) {
         
-        
+        [self loadEdit];
     }
     
 }
 
+-(void) loadEdit{
+    
+    NSLog(@"data:%@", _dataSend);
+    _lbTitle.text=@"CẬP NHẬP LIÊN HỆ";
+    
+    _txtAddress.text=[_dataSend objectForKey:DTOCONTACT_address];
+    _txtDateOfBirth.text=[_dataSend objectForKey:DTOCONTACT_birthday];
+    _txtEmail.text=[_dataSend objectForKey:DTOCONTACT_email];
+    _txtName.text=[_dataSend objectForKey:DTOCONTACT_fullName];
+    _txtNumberIdentity.text=[_dataSend objectForKey:DTOCONTACT_identifiedNumber];
+    _txtPhone.text=[_dataSend objectForKey:DTOCONTACT_mobile];
+    _txtPosition.text=[_dataSend objectForKey:DTOCONTACT_position];
+    _txtWhereBorn.text=[_dataSend objectForKey:DTOCONTACT_identifiedIssueArea];
+    _txtDateCreate.text=[_dataSend objectForKey:DTOCONTACT_identifiedIssueDate];
+    _tvNote.text=[_dataSend objectForKey:DTOCONTACT_roleDescription];
+}
 
 - (void) updateInterFaceWithOption : (int) option
 {
@@ -253,6 +274,8 @@
     if (![self checkValidToSave]) {
         return;
     }
+    
+    NSString *strClientContactId = IntToStr(([dtoProcess getClientId]));
     //neu qua duoc check thi tien hanh luu du lieu
     NSMutableDictionary *dicEntity = [NSMutableDictionary new];
     
@@ -265,41 +288,96 @@
     [dicEntity setObject:[StringUtil trimString:_txtNumberIdentity.text] forKey:DTOLEAD_identifiedNumber];
     [dicEntity setObject:[StringUtil trimString:_txtDateCreate.text] forKey:DTOCONTACT_identifiedIssueDate];
     [dicEntity setObject:[StringUtil trimString:_txtWhereBorn.text] forKey:DTOCONTACT_identifiedIssueArea];
+    [dicEntity setValue:[StringUtil trimString:_tvNote.text] forKey:DTOCONTACT_roleDescription];
     
     
-    [dicEntity setObject:@"1" forKey:DTOCONTACT_isActive];
     [dicEntity setObject:[DateUtil formatDate:[NSDate new] :@"yyyy-MM-dd HH:mm:ss.S"] forKey:DTOCONTACT_updatedDate];
-    NSString *strClientContactId = IntToStr(([dtoProcess getClientId]));
-    [dicEntity setObject:strClientContactId forKey:DTOCONTACT_clientContactId];
-    [dicEntity setObject:@"1" forKey:DTOCONTACT_clientId];
+    [dicEntity setObject:@"1" forKey:DTOCONTACT_isActive];
+    
+    
     
     if (self.dataSend) {
-        
         [dicEntity setObject:[_dataSend objectForKey:DTOCONTACT_id] forKey:DTOCONTACT_id];
+    }
+    else{
+        [dicEntity setObject:strClientContactId forKey:DTOCONTACT_clientContactId];
+        [dicEntity setObject:@"1" forKey:DTOCONTACT_clientId];
     }
     succsess = [dtoProcess insertToDBWithEntity:dicEntity];
     
     if (succsess) {
-        
-        strClientContactId = IntToStr(([dtoProcess getClientId] - 1));
-        
-        //cap nhat vao bang quan he
-        NSMutableDictionary *dicSubEntity =  [[NSMutableDictionary alloc]init];
-        
-        DTOACCCONTACTProcess *dtoAccContactProcess = [DTOACCCONTACTProcess new];
-        //id tu tang cua thang AccountcontactId
-        NSString *strAccountContactId = IntToStr([dtoAccContactProcess getClientId]);
-        //id tu tang cua thang AccountcontactId
-        [dicSubEntity setObject:strAccountContactId forKey:DTOACCOUNTCONTACT_clientAccountContactId];
-        //id cua thang contact vua tao
-        [dicSubEntity setObject:strClientContactId forKey:DTOACCOUNTCONTACT_clientAccountId];
-        
-        [dicSubEntity setObject:[self.dataRoot objectForKey:DTOLEAD_clientLeadId] forKey:DTOACCOUNTCONTACT_clientLeadId];
-        [dicSubEntity setObject:@"1" forKey:DTOACCOUNTCONTACT_isActive];
-        
-        succsess = [dtoAccContactProcess insertToDBWithEntity:dicSubEntity];
+        if (_dataSend.count<=0) {
+            
+            
+            strClientContactId = IntToStr(([dtoProcess getClientId] - 1));
+            
+            //cap nhat vao bang quan he
+            NSMutableDictionary *dicSubEntity =  [[NSMutableDictionary alloc]init];
+            
+            DTOACCCONTACTProcess *dtoAccContactProcess = [DTOACCCONTACTProcess new];
+            //id tu tang cua thang AccountcontactId
+            NSString *strAccountContactId = IntToStr([dtoAccContactProcess getClientId]);
+            //id tu tang cua thang AccountcontactId
+            [dicSubEntity setObject:strAccountContactId forKey:DTOACCOUNTCONTACT_clientAccountContactId];
+            //id cua thang contact vua tao
+            [dicSubEntity setObject:strClientContactId forKey:DTOACCOUNTCONTACT_clientAccountId];
+            
+            [dicSubEntity setObject:[self.dataRoot objectForKey:DTOLEAD_clientLeadId] forKey:DTOACCOUNTCONTACT_clientLeadId];
+            [dicSubEntity setObject:@"1" forKey:DTOACCOUNTCONTACT_isActive];
+            
+            succsess = [dtoAccContactProcess insertToDBWithEntity:dicSubEntity];
+        }
         
     }
+    
+    BOOL dt ;
+    //truong hop them moi file
+    if(![StringUtil stringIsEmpty:fileAvartar] && succsess){
+        
+        NSMutableDictionary *entiFile= [NSMutableDictionary new];
+        
+        NSString *strClientFileId = IntToStr(([dtoProcess getClientId]));
+        //NSDictionary *dicRow = [arrayData objectAtIndex:indexPath.row];
+       // for (NSDictionary *path in arrayData) {
+            //  NSLog(@"%@", path);
+            //if([path objectForKey:DTOATTACHMENT_id]==0){
+                [entiFile setObject:@"" forKey:DTOATTACHMENT_attachmentId];
+                [entiFile setObject:strClientFileId forKey:DTOATTACHMENT_clientAttachmentId];
+                if (self.dataSend.count>0) {
+                    [entiFile setObject:[_dataSend objectForKey:DTOCONTACT_id] forKey:DTOATTACHMENT_clientObjectId];
+                }
+                else{
+                    [entiFile setObject:strClientContactId forKey:DTOATTACHMENT_clientObjectId];
+                }
+                [entiFile setObject:fileAvartar forKey:DTOATTACHMENT_fileName];
+                [entiFile setObject:[DateUtil formatDate:[NSDate new] :@"yyyy-MM-dd HH:mm:ss.S"] forKey:DTOATTACHMENT_updatedDate];
+                [entiFile setObject:[DateUtil formatDate:[NSDate new] :@"yyyy-MM-dd HH:mm:ss.S"] forKey:DTOATTACHMENT_createdDate];
+                [entiFile setObject:@"Avatar" forKey:DTOATTACHMENT_objectType];
+                [entiFile setObject:@"1" forKey:DTOATTACHMENT_isActive];
+                [entiFile setObject:@"" forKey:DTOATTACHMENT_updatedBy];
+                [entiFile setObject:@"" forKey:DTOATTACHMENT_checkSum];
+                [entiFile setObject:imagePath forKey:DTOATTACHMENT_clientFilePath];
+                [entiFile setObject:@"" forKey:DTOATTACHMENT_createdBy];
+                [entiFile setObject:@"" forKey:DTOATTACHMENT_note];
+                [entiFile setObject:@"" forKey:DTOATTACHMENT_objectId];
+                [entiFile setObject:@"" forKey:DTOATTACHMENT_serverFilePath];
+                [entiFile setObject:@"" forKey:DTOATTACHMENT_verifyLat];
+                [entiFile setObject:@"" forKey:DTOATTACHMENT_verifyLon];
+                
+                @try {
+                    dt = [dtoFileProcess insertToDBWithEntity:entiFile];
+                    if (!dt) {
+                        NSLog(@"Loi roi");
+                    }
+                }
+                @catch (NSException *exception) {
+                    NSLog(@"log:%@", exception);            }
+                @finally {
+                    NSLog(@"OK");            }
+                
+            }
+       // }
+   // }
     
     
     if (succsess) {
@@ -412,21 +490,6 @@
         CGPoint scrollPoint = CGPointMake(0.0, _txt.frame.origin.y-heightKeyboard + 20);
         [self.viewMainBodyInfo setContentOffset:scrollPoint animated:YES];
     }
-    
-    //    NSDictionary* info = [aNotification userInfo];
-    //    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    //    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
-    //    scrollView.contentInset = contentInsets;
-    //    scrollView.scrollIndicatorInsets = contentInsets;
-    //
-    //    // If active text field is hidden by keyboard, scroll it so it's visible
-    //    // Your application might not need or want this behavior.
-    //    CGRect aRect = self.view.frame;
-    //    aRect.size.height -= kbSize.height;
-    //    if (!CGRectContainsPoint(aRect, self.txt10.frame.origin) ) {
-    //        CGPoint scrollPoint = CGPointMake(0.0, self.txt10.frame.origin.y-kbSize.height);
-    //        [scrollView setContentOffset:scrollPoint animated:YES];
-    //    }
 }
 
 // Called when the UIKeyboardWillHideNotification is sent
@@ -434,12 +497,12 @@
 {
     
     if(self.viewMainBodyInfo.contentSize.height>self.viewMainBodyInfo.frame.size.height){
-    self.viewMainBodyInfo.contentSize = CGSizeMake(self.viewMainBodyInfo.frame.size.width, self.viewMainBodyInfo.frame.size.height - heightKeyboard);
-    
-    
-    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-    self.viewMainBodyInfo.contentInset = contentInsets;
-    self.viewMainBodyInfo.scrollIndicatorInsets = contentInsets;
+        self.viewMainBodyInfo.contentSize = CGSizeMake(self.viewMainBodyInfo.frame.size.width, self.viewMainBodyInfo.frame.size.height - heightKeyboard);
+        
+        
+        UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+        self.viewMainBodyInfo.contentInset = contentInsets;
+        self.viewMainBodyInfo.scrollIndicatorInsets = contentInsets;
     }
 }
 
@@ -453,7 +516,7 @@
     //bat dau edit
     _txt = textField;
     //[_txt becomeFirstResponder];
-   [self keyboardWillBeHidden:nil];
+    [self keyboardWillBeHidden:nil];
     [self keyboardWasShown:nil];
     
     
@@ -492,7 +555,7 @@
     }
     else{
         NSLog(@"khong phai text phone");
-    return YES;
+        return YES;
     }
     
 }// return NO to not change text
@@ -574,14 +637,18 @@
 
 #pragma mark delegate photo
 -(void) selectPhoto:(NSString *)fileName{
+    fileAvartar = fileName;
     [self viewWhenRemoveSubView];
     [self loadimage: fileName];
     
 }
 
 -(void)loadimage : (NSString*)fileName{
-    NSString *workSpacePath=[[self applicationDocumentsDirectory] stringByAppendingPathComponent:fileName];
     
+    
+    NSString *workSpacePath=[[self applicationDocumentsDirectory] stringByAppendingPathComponent:fileName];
+    NSLog(@"duong dan:%@",workSpacePath);
+    imagePath=workSpacePath;
     self.imgAvartar.image=[UIImage imageWithData:[NSData dataWithContentsOfFile:workSpacePath]];
     
 }

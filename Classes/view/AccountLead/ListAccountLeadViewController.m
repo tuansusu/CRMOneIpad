@@ -616,7 +616,7 @@
     //Tạm thời hiển thị form thêm mới theo dõi
     //sau hỏi rõ giải pháp tính sau
     FlowLeadViewController *detail = [[FlowLeadViewController alloc] initWithNibName:@"FlowLeadViewController" bundle:nil];
-   
+    detail.dataSend=dicData;
     detail.view.frame = CGRectMake(0, 0, 600, 500);
     //[InterfaceUtil setBorderWithCornerAndBorder:detail.view :6 :0.2 :nil];
     [self presentPopupViewController:detail animationType:1];

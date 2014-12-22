@@ -189,6 +189,12 @@
 		2DFEFC0917AD075800D684FB /* arrow_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DFEFC0717AD075800D684FB /* arrow_up.png */; };
 		2DFEFC0A17AD075800D684FB /* down_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DFEFC0817AD075800D684FB /* down_arrow.png */; };
 		7617F07F193DE30A00BB7073 /* GlobalVars.m in Sources */ = {isa = PBXBuildFile; fileRef = 7617F07E193DE30A00BB7073 /* GlobalVars.m */; };
+		76199E111A471DA900B792C5 /* MDSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 76199E0A1A471DA900B792C5 /* MDSearchBar.m */; };
+		76199E121A471DA900B792C5 /* MDSearchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76199E0B1A471DA900B792C5 /* MDSearchBar.xib */; };
+		76199E131A471DA900B792C5 /* MDSearchBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76199E0D1A471DA900B792C5 /* MDSearchBarController.m */; };
+		76199E141A471DA900B792C5 /* MDSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76199E0F1A471DA900B792C5 /* MDSearchView.m */; };
+		76199E151A471DA900B792C5 /* MDSearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76199E101A471DA900B792C5 /* MDSearchView.xib */; };
+		76199E181A472AE700B792C5 /* DTOFLLOWUPProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76199E171A472AE700B792C5 /* DTOFLLOWUPProcess.m */; };
 		762048721A0BDE8000AAA917 /* icon_menu-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 762048711A0BDE8000AAA917 /* icon_menu-1.png */; };
 		762048761A0D246600AAA917 /* CompetitorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 762048741A0D246600AAA917 /* CompetitorsViewController.m */; };
 		762048771A0D246600AAA917 /* CompetitorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 762048751A0D246600AAA917 /* CompetitorsViewController.xib */; };
@@ -1016,6 +1022,16 @@
 		3E990E5F19480DEC00F0D276 /* 58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 58x58.png; path = images/58x58.png; sourceTree = "<group>"; };
 		7617F07D193DE30A00BB7073 /* GlobalVars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalVars.h; sourceTree = "<group>"; };
 		7617F07E193DE30A00BB7073 /* GlobalVars.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalVars.m; sourceTree = "<group>"; };
+		76199E091A471DA900B792C5 /* MDSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSearchBar.h; sourceTree = "<group>"; };
+		76199E0A1A471DA900B792C5 /* MDSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSearchBar.m; sourceTree = "<group>"; };
+		76199E0B1A471DA900B792C5 /* MDSearchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MDSearchBar.xib; sourceTree = "<group>"; };
+		76199E0C1A471DA900B792C5 /* MDSearchBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSearchBarController.h; sourceTree = "<group>"; };
+		76199E0D1A471DA900B792C5 /* MDSearchBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSearchBarController.m; sourceTree = "<group>"; };
+		76199E0E1A471DA900B792C5 /* MDSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSearchView.h; sourceTree = "<group>"; };
+		76199E0F1A471DA900B792C5 /* MDSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSearchView.m; sourceTree = "<group>"; };
+		76199E101A471DA900B792C5 /* MDSearchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MDSearchView.xib; sourceTree = "<group>"; };
+		76199E161A472AE700B792C5 /* DTOFLLOWUPProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOFLLOWUPProcess.h; sourceTree = "<group>"; };
+		76199E171A472AE700B792C5 /* DTOFLLOWUPProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOFLLOWUPProcess.m; sourceTree = "<group>"; };
 		762048711A0BDE8000AAA917 /* icon_menu-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_menu-1.png"; path = "VofficeImage/Option1/icon_menu-1.png"; sourceTree = "<group>"; };
 		762048731A0D246600AAA917 /* CompetitorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompetitorsViewController.h; sourceTree = "<group>"; };
 		762048741A0D246600AAA917 /* CompetitorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompetitorsViewController.m; sourceTree = "<group>"; };
@@ -2558,6 +2574,7 @@
 		2DBE93E51753391400627804 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				76199E081A471D7800B792C5 /* MDSearchBarController */,
 				94BA8D791A2DF3CF0082AE9E /* CalendarPickerViewController.h */,
 				94BA8D7A1A2DF3CF0082AE9E /* CalendarPickerViewController.m */,
 				94BA8D7B1A2DF3CF0082AE9E /* CalendarPickerViewController.xib */,
@@ -2623,6 +2640,21 @@
 				2DF7C8851821FE7F0020D4CC /* MonthPickerViewController.xib */,
 			);
 			name = MonthPicker;
+			sourceTree = "<group>";
+		};
+		76199E081A471D7800B792C5 /* MDSearchBarController */ = {
+			isa = PBXGroup;
+			children = (
+				76199E091A471DA900B792C5 /* MDSearchBar.h */,
+				76199E0A1A471DA900B792C5 /* MDSearchBar.m */,
+				76199E0B1A471DA900B792C5 /* MDSearchBar.xib */,
+				76199E0C1A471DA900B792C5 /* MDSearchBarController.h */,
+				76199E0D1A471DA900B792C5 /* MDSearchBarController.m */,
+				76199E0E1A471DA900B792C5 /* MDSearchView.h */,
+				76199E0F1A471DA900B792C5 /* MDSearchView.m */,
+				76199E101A471DA900B792C5 /* MDSearchView.xib */,
+			);
+			name = MDSearchBarController;
 			sourceTree = "<group>";
 		};
 		763308021A048068000E190B /* NZLabel */ = {
@@ -2750,6 +2782,8 @@
 		76977D521A0284770029F297 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				76199E161A472AE700B792C5 /* DTOFLLOWUPProcess.h */,
+				76199E171A472AE700B792C5 /* DTOFLLOWUPProcess.m */,
 				76F328911A34B10B00E0F2C4 /* DTOTASKProcess.h */,
 				76F328921A34B10B00E0F2C4 /* DTOTASKProcess.m */,
 				76C962921A16DB8200029978 /* DTOACCOUNTLEADProcess.h */,
@@ -4070,8 +4104,10 @@
 				B3157892188D5E5200C0ED01 /* btn-back-2-1.png in Resources */,
 				B315787B188D5E5200C0ED01 /* ic-cancel-1.png in Resources */,
 				76601A55194BE90F001D4C01 /* signature.png in Resources */,
+				76199E151A471DA900B792C5 /* MDSearchView.xib in Resources */,
 				76C9646B1A17731900029978 /* otherspart2.png in Resources */,
 				76601A4C194BE90F001D4C01 /* Reader-Mark-N@2x.png in Resources */,
+				76199E121A471DA900B792C5 /* MDSearchBar.xib in Resources */,
 				76601A3D194BE90F001D4C01 /* AppIcon-057.png in Resources */,
 				76C964821A17A15C00029978 /* vtmap_ic_marker_default.png in Resources */,
 				8497BFEB1A295A2300A5ED3C /* step6@2x.png in Resources */,
@@ -4433,6 +4469,7 @@
 				92C68E521519D4F100981728 /* ActionEvent.m in Sources */,
 				92C68E531519D4F100981728 /* AppController.m in Sources */,
 				76C964741A17731900029978 /* ScrollViewSubClass.m in Sources */,
+				76199E181A472AE700B792C5 /* DTOFLLOWUPProcess.m in Sources */,
 				76D29ACB1A11295C004B9CF6 /* DTOPRODUCTMASTERProcess.m in Sources */,
 				92C68E541519D4F100981728 /* FrameworkAppDelegate.m in Sources */,
 				92C68E561519D4F100981728 /* NSObject+SBJSON.m in Sources */,
@@ -4441,6 +4478,7 @@
 				92C68E581519D4F100981728 /* SBJSON.m in Sources */,
 				92C68E591519D4F100981728 /* SBJsonBase.m in Sources */,
 				92C68E5A1519D4F100981728 /* SBJsonParser.m in Sources */,
+				76199E111A471DA900B792C5 /* MDSearchBar.m in Sources */,
 				849078861A1E461D009D5D5F /* DetailPersonLeadViewController.m in Sources */,
 				2D36438D1859996700190EE7 /* AFHTTPClient.m in Sources */,
 				92C68E5B1519D4F100981728 /* SBJsonWriter.m in Sources */,
@@ -4525,6 +4563,7 @@
 				2D47E7F31761704200F291D6 /* NSString+GCNetworkRequest.m in Sources */,
 				2D36438C1859996700190EE7 /* AFDownloadRequestOperation.m in Sources */,
 				8497C00E1A295A2300A5ED3C /* VisibleRegionViewController.m in Sources */,
+				76199E131A471DA900B792C5 /* MDSearchBarController.m in Sources */,
 				2D47E7F41761704200F291D6 /* GCDataTransformer.m in Sources */,
 				76C964561A17731900029978 /* LineScrollView.m in Sources */,
 				2D47E7F51761704200F291D6 /* GCNetworkAPIWrapper.m in Sources */,
@@ -4707,6 +4746,7 @@
 				76D29AC71A1124C9004B9CF6 /* ProposeProductCell.m in Sources */,
 				76D29ABA1A110F8D004B9CF6 /* CompetionorCell.m in Sources */,
 				769C0A2A1A35F3E90008CC4B /* NoteLeadCell.m in Sources */,
+				76199E141A471DA900B792C5 /* MDSearchView.m in Sources */,
 				8490788B1A1E463C009D5D5F /* DetailBussinessLeadViewController.m in Sources */,
 				76601A28194BE90F001D4C01 /* CGPDFDocument.m in Sources */,
 				2D044C7F18025D8D00FBC073 /* NSNull+extend.m in Sources */,

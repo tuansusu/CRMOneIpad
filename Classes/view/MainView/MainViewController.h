@@ -19,14 +19,7 @@
 #import "TestMapViewController.h"
 
 #import "TestEditViewController.h"
-///////////CHART///////
-#import <QuartzCore/QuartzCore.h>
-#import "BasicPieChart.h"
-#import "MIMBarGraph.h"
-#import "MIMLineGraph.h"
-#import "MIMColor.h"
 #import "AppController.h"
-///////////CHART///////
 
 
 #define x1 230

@@ -134,8 +134,6 @@
 		2DA084F9179C1B9F00EB986D /* AUISelectiveBordersLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA084F6179C1B9F00EB986D /* AUISelectiveBordersLayer.m */; };
 		2DA084FA179C1B9F00EB986D /* UIView+AUISelectiveBorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA084F8179C1B9F00EB986D /* UIView+AUISelectiveBorder.m */; };
 		2DA7D92E180955AA00AE5E6B /* note_paper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2DA7D92D180955AA00AE5E6B /* note_paper.jpg */; };
-		2DB0458017718B5E002D060B /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB0457E17718B5E002D060B /* MainViewController.m */; };
-		2DB0458117718B5E002D060B /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB0457F17718B5E002D060B /* MainViewController.xib */; };
 		2DB2AADE17A0BF5400D7B01F /* CKCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB2AADD17A0BF5400D7B01F /* CKCalendarView.m */; };
 		2DB2AAE417A0BF6E00D7B01F /* left_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DB2AAE017A0BF6E00D7B01F /* left_arrow.png */; };
 		2DB2AAE517A0BF6E00D7B01F /* left_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DB2AAE117A0BF6E00D7B01F /* left_arrow@2x.png */; };
@@ -574,6 +572,10 @@
 		8E0B07D51A4479EF00CF7A78 /* bgPopup.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0B07D31A4479EF00CF7A78 /* bgPopup.png */; };
 		8E0B07D61A4479EF00CF7A78 /* bgPopup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0B07D41A4479EF00CF7A78 /* bgPopup@2x.png */; };
 		8E87C9321A45B29700CB0918 /* DTOAccountProcessObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E87C9311A45B29700CB0918 /* DTOAccountProcessObject.m */; };
+		8E8B3F251A49AA4300241360 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8B3F231A49AA4300241360 /* MainViewController.m */; };
+		8E8B3F261A49AA4300241360 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E8B3F241A49AA4300241360 /* MainViewController.xib */; };
+		8E8B3F2B1A49AA7F00241360 /* MainViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8B3F291A49AA7F00241360 /* MainViewCell.m */; };
+		8E8B3F2C1A49AA7F00241360 /* MainViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E8B3F2A1A49AA7F00241360 /* MainViewCell.xib */; };
 		8EB708771A407A1C001861A0 /* Mobile_GPS_MyLocationIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EB708751A407A1C001861A0 /* Mobile_GPS_MyLocationIcon.png */; };
 		8EB708781A407A1C001861A0 /* Mobile_GPS_MyLocationIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EB708761A407A1C001861A0 /* Mobile_GPS_MyLocationIcon@2x.png */; };
 		8EB7087A1A408AE2001861A0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB708791A408AE2001861A0 /* MapKit.framework */; };
@@ -950,9 +952,6 @@
 		2DA084F7179C1B9F00EB986D /* UIView+AUISelectiveBorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AUISelectiveBorder.h"; sourceTree = "<group>"; };
 		2DA084F8179C1B9F00EB986D /* UIView+AUISelectiveBorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AUISelectiveBorder.m"; sourceTree = "<group>"; };
 		2DA7D92D180955AA00AE5E6B /* note_paper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = note_paper.jpg; sourceTree = "<group>"; };
-		2DB0457D17718B5E002D060B /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		2DB0457E17718B5E002D060B /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		2DB0457F17718B5E002D060B /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		2DB2AADC17A0BF5400D7B01F /* CKCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CKCalendarView.h; path = CalendarKit/Source/CKCalendarView.h; sourceTree = "<group>"; };
 		2DB2AADD17A0BF5400D7B01F /* CKCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CKCalendarView.m; path = CalendarKit/Source/CKCalendarView.m; sourceTree = "<group>"; };
 		2DB2AAE017A0BF6E00D7B01F /* left_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = left_arrow.png; path = CalendarKit/Source/resources/left_arrow.png; sourceTree = "<group>"; };
@@ -1628,6 +1627,12 @@
 		8E0B07D41A4479EF00CF7A78 /* bgPopup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgPopup@2x.png"; sourceTree = "<group>"; };
 		8E87C9301A45B29700CB0918 /* DTOAccountProcessObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOAccountProcessObject.h; sourceTree = "<group>"; };
 		8E87C9311A45B29700CB0918 /* DTOAccountProcessObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOAccountProcessObject.m; sourceTree = "<group>"; };
+		8E8B3F221A49AA4300241360 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		8E8B3F231A49AA4300241360 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		8E8B3F241A49AA4300241360 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		8E8B3F281A49AA7F00241360 /* MainViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewCell.h; sourceTree = "<group>"; };
+		8E8B3F291A49AA7F00241360 /* MainViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewCell.m; sourceTree = "<group>"; };
+		8E8B3F2A1A49AA7F00241360 /* MainViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewCell.xib; sourceTree = "<group>"; };
 		8EB708751A407A1C001861A0 /* Mobile_GPS_MyLocationIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mobile_GPS_MyLocationIcon.png; sourceTree = "<group>"; };
 		8EB708761A407A1C001861A0 /* Mobile_GPS_MyLocationIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Mobile_GPS_MyLocationIcon@2x.png"; sourceTree = "<group>"; };
 		8EB708791A408AE2001861A0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -3551,6 +3556,27 @@
 			path = CustomInfoWindow;
 			sourceTree = "<group>";
 		};
+		8E8B3F211A49AA4300241360 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				8E8B3F271A49AA5F00241360 /* MainViewCell */,
+				8E8B3F221A49AA4300241360 /* MainViewController.h */,
+				8E8B3F231A49AA4300241360 /* MainViewController.m */,
+				8E8B3F241A49AA4300241360 /* MainViewController.xib */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		8E8B3F271A49AA5F00241360 /* MainViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				8E8B3F281A49AA7F00241360 /* MainViewCell.h */,
+				8E8B3F291A49AA7F00241360 /* MainViewCell.m */,
+				8E8B3F2A1A49AA7F00241360 /* MainViewCell.xib */,
+			);
+			path = MainViewCell;
+			sourceTree = "<group>";
+		};
 		8EB708701A407856001861A0 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
@@ -3717,6 +3743,7 @@
 		92C68E4A1519D4F100981728 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				8E8B3F211A49AA4300241360 /* MainView */,
 				8495DDCA1A30A0AF00C4E922 /* Account360 */,
 				8497C0111A295A6700A5ED3C /* MapView */,
 				76C962951A16DBA500029978 /* AccountLead */,
@@ -3728,9 +3755,6 @@
 				92C68E4B1519D4F100981728 /* RootViewController.h */,
 				92C68E4C1519D4F100981728 /* RootViewController.m */,
 				2D161065174F6D920083F301 /* RootViewController.xib */,
-				2DB0457D17718B5E002D060B /* MainViewController.h */,
-				2DB0457E17718B5E002D060B /* MainViewController.m */,
-				2DB0457F17718B5E002D060B /* MainViewController.xib */,
 				B3D87B3918962C8C00C53DCE /* DismissPoperverDelegate.h */,
 				B38A9128194697480002E654 /* ClockViewDelegate.h */,
 				76C963B11A17403600029978 /* MainBISViewController.h */,
@@ -4092,7 +4116,6 @@
 				8497BFBE1A295A2300A5ED3C /* australia-large@2x.png in Resources */,
 				2D87F5F5175AD862007F861D /* SVProgressHUD.bundle in Resources */,
 				2DD29EF318769C260066B883 /* menu-ic-setting-1.png in Resources */,
-				2DB0458117718B5E002D060B /* MainViewController.xib in Resources */,
 				2D9FCB8D1795643900950763 /* MJDetailViewController.xib in Resources */,
 				2DD29EE718769C260066B883 /* menu-ic-boss-calendar-1.png in Resources */,
 				8490788C1A1E463C009D5D5F /* DetailBussinessLeadViewController.xib in Resources */,
@@ -4154,6 +4177,7 @@
 				76CD8816196D1E4F00503B99 /* ic-ppt-1.png in Resources */,
 				8E0B07CC1A4475CF00CF7A78 /* iconCall@2x.png in Resources */,
 				2D2D212A17A6291700A87364 /* Icon-Reload.png in Resources */,
+				8E8B3F261A49AA4300241360 /* MainViewController.xib in Resources */,
 				2D2D213417A6291700A87364 /* Line-box_doanh_thu_cac_dich_vu.png in Resources */,
 				8E0B07D21A4475CF00CF7A78 /* iconMessage@2x.png in Resources */,
 				2D2D214617A66DB800A87364 /* Box-Header_chi_tiet.png in Resources */,
@@ -4184,6 +4208,7 @@
 				2DFEFC0917AD075800D684FB /* arrow_up.png in Resources */,
 				8ED4028E1A41E18800CCBE6D /* CustomerViewCell.xib in Resources */,
 				8497BFE41A295A2300A5ED3C /* step3.png in Resources */,
+				8E8B3F2C1A49AA7F00241360 /* MainViewCell.xib in Resources */,
 				76601A3E194BE90F001D4C01 /* AppIcon-072.png in Resources */,
 				2DFEFC0A17AD075800D684FB /* down_arrow.png in Resources */,
 				76601A4E194BE90F001D4C01 /* Reader-Mark-Y@2x.png in Resources */,
@@ -4587,7 +4612,6 @@
 				B315784F188912D800C0ED01 /* NSString+extend.m in Sources */,
 				76C964631A17731900029978 /* InfoBoxStyle1.m in Sources */,
 				2D47E80F1761CACC00F291D6 /* Base64.m in Sources */,
-				2DB0458017718B5E002D060B /* MainViewController.m in Sources */,
 				7617F07F193DE30A00BB7073 /* GlobalVars.m in Sources */,
 				76601A2B194BE90F001D4C01 /* ReaderContentTile.m in Sources */,
 				2D9FCB7C1795483900950763 /* UITableView+HCFoldTableView.m in Sources */,
@@ -4604,6 +4628,7 @@
 				76D6281C1A3DA741009C3A0C /* CMPopTipView.m in Sources */,
 				2D9FCB9E179639EB00950763 /* QLCoverFlowPagesView.m in Sources */,
 				2D9FCB9F179639EB00950763 /* QLPageView.m in Sources */,
+				8E8B3F2B1A49AA7F00241360 /* MainViewCell.m in Sources */,
 				769C1A1B1A00027900F015A5 /* Network.m in Sources */,
 				76C9644B1A17731900029978 /* ClusterGraph.m in Sources */,
 				2D36438E1859996700190EE7 /* AFHTTPRequestOperation.m in Sources */,
@@ -4621,6 +4646,7 @@
 				76601A31194BE90F001D4C01 /* ReaderThumbCache.m in Sources */,
 				2D36438F1859996700190EE7 /* AFImageRequestOperation.m in Sources */,
 				76C964711A17731900029978 /* PieBubble.m in Sources */,
+				8E8B3F251A49AA4300241360 /* MainViewController.m in Sources */,
 				2DB2AADE17A0BF5400D7B01F /* CKCalendarView.m in Sources */,
 				763308151A048DBC000E190B /* VTRadio.m in Sources */,
 				8497C00A1A295A2300A5ED3C /* Samples.m in Sources */,

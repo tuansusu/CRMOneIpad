@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0648C62A1A4C2F5D0002F9FE /* UICGPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 0648C6251A4C2F5D0002F9FE /* UICGPolyline.m */; };
+		0648C62B1A4C2F5D0002F9FE /* UICGRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 0648C6271A4C2F5D0002F9FE /* UICGRoute.m */; };
+		0648C62C1A4C2F5D0002F9FE /* UICGStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 0648C6291A4C2F5D0002F9FE /* UICGStep.m */; };
+		0648C62F1A4C3D020002F9FE /* StringRemoval.m in Sources */ = {isa = PBXBuildFile; fileRef = 0648C62E1A4C3D020002F9FE /* StringRemoval.m */; };
 		06FE2E151A4528B3004A1D16 /* iconDirection3.png in Resources */ = {isa = PBXBuildFile; fileRef = 06FE2E111A4528B3004A1D16 /* iconDirection3.png */; };
 		06FE2E161A4528B3004A1D16 /* iconDirection3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06FE2E121A4528B3004A1D16 /* iconDirection3@2x.png */; };
 		06FE2E171A4528B3004A1D16 /* iconDirectionSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 06FE2E131A4528B3004A1D16 /* iconDirectionSelected.png */; };
@@ -756,6 +760,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0648C6241A4C2F5D0002F9FE /* UICGPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICGPolyline.h; sourceTree = "<group>"; };
+		0648C6251A4C2F5D0002F9FE /* UICGPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICGPolyline.m; sourceTree = "<group>"; };
+		0648C6261A4C2F5D0002F9FE /* UICGRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICGRoute.h; sourceTree = "<group>"; };
+		0648C6271A4C2F5D0002F9FE /* UICGRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICGRoute.m; sourceTree = "<group>"; };
+		0648C6281A4C2F5D0002F9FE /* UICGStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICGStep.h; sourceTree = "<group>"; };
+		0648C6291A4C2F5D0002F9FE /* UICGStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICGStep.m; sourceTree = "<group>"; };
+		0648C62D1A4C3D020002F9FE /* StringRemoval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringRemoval.h; sourceTree = "<group>"; };
+		0648C62E1A4C3D020002F9FE /* StringRemoval.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringRemoval.m; sourceTree = "<group>"; };
 		06FE2E111A4528B3004A1D16 /* iconDirection3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconDirection3.png; sourceTree = "<group>"; };
 		06FE2E121A4528B3004A1D16 /* iconDirection3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconDirection3@2x.png"; sourceTree = "<group>"; };
 		06FE2E131A4528B3004A1D16 /* iconDirectionSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconDirectionSelected.png; sourceTree = "<group>"; };
@@ -1930,6 +1942,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0648C6231A4C2E5E0002F9FE /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				0648C62D1A4C3D020002F9FE /* StringRemoval.h */,
+				0648C62E1A4C3D020002F9FE /* StringRemoval.m */,
+				0648C6241A4C2F5D0002F9FE /* UICGPolyline.h */,
+				0648C6251A4C2F5D0002F9FE /* UICGPolyline.m */,
+				0648C6261A4C2F5D0002F9FE /* UICGRoute.h */,
+				0648C6271A4C2F5D0002F9FE /* UICGRoute.m */,
+				0648C6281A4C2F5D0002F9FE /* UICGStep.h */,
+				0648C6291A4C2F5D0002F9FE /* UICGStep.m */,
+			);
+			path = Maps;
+			sourceTree = "<group>";
+		};
 		06FE2E1C1A4565BD004A1D16 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
@@ -1945,6 +1972,7 @@
 		06FE2E201A456904004A1D16 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				0648C6231A4C2E5E0002F9FE /* Maps */,
 				06FE2E241A4569E6004A1D16 /* NSDictionary+QS.h */,
 				06FE2E251A4569E6004A1D16 /* NSDictionary+QS.m */,
 				06FE2E211A456904004A1D16 /* Items.h */,
@@ -4550,6 +4578,7 @@
 				7633080D1A048962000E190B /* VTCheckBox.m in Sources */,
 				2D3643971859996700190EE7 /* UIImageView+AFNetworking.m in Sources */,
 				76C964461A17731900029978 /* YAxisBand.m in Sources */,
+				0648C62C1A4C2F5D0002F9FE /* UICGStep.m in Sources */,
 				DDBC470E1715412D00CCFB94 /* OAAsynchronousDataFetcher.m in Sources */,
 				DDBC470F1715412D00CCFB94 /* OAConsumer.m in Sources */,
 				DDBC47101715412D00CCFB94 /* OADataFetcher.m in Sources */,
@@ -4566,6 +4595,7 @@
 				DDBC47131715412D00CCFB94 /* OAPlaintextSignatureProvider.m in Sources */,
 				DDBC47141715412D00CCFB94 /* OARequestParameter.m in Sources */,
 				2D3643941859996700190EE7 /* AFPropertyListRequestOperation.m in Sources */,
+				0648C62A1A4C2F5D0002F9FE /* UICGPolyline.m in Sources */,
 				DDBC47151715412D00CCFB94 /* OAServiceTicket.m in Sources */,
 				763308051A048068000E190B /* NZLabel.m in Sources */,
 				B313F1D418A64DA2001FDEC6 /* CustomPopoverBackgroundView.m in Sources */,
@@ -4640,6 +4670,7 @@
 				2D0E2EE11798053C0081D44A /* MyCalendar.m in Sources */,
 				7623F0521A41C98400F99DA0 /* EditContactOpportunityViewController.m in Sources */,
 				76601A30194BE90F001D4C01 /* ReaderMainToolbar.m in Sources */,
+				0648C62F1A4C3D020002F9FE /* StringRemoval.m in Sources */,
 				2DA084F9179C1B9F00EB986D /* AUISelectiveBordersLayer.m in Sources */,
 				06FE2E1F1A4566DD004A1D16 /* DTOAcountLeadProcessObject.m in Sources */,
 				2DA084FA179C1B9F00EB986D /* UIView+AUISelectiveBorder.m in Sources */,
@@ -4765,6 +4796,7 @@
 				8497BCE01A294C7F00A5ED3C /* TestViewController.m in Sources */,
 				76C9646E1A17731900029978 /* PaddedPieChart.m in Sources */,
 				8497BFFF1A295A2300A5ED3C /* MapLayerViewController.m in Sources */,
+				0648C62B1A4C2F5D0002F9FE /* UICGRoute.m in Sources */,
 				76C9643F1A17731900029978 /* MIMFloatingView.m in Sources */,
 				76601A33194BE90F001D4C01 /* ReaderThumbQueue.m in Sources */,
 				B3F4250017FA5EC10092847D /* NSRegularExpression+VofficeRegularExpression.m in Sources */,

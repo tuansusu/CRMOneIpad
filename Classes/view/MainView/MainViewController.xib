@@ -308,10 +308,10 @@
                     <rect key="frame" x="260" y="44" width="764" height="680"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="340" sectionHeaderHeight="1" sectionFooterHeight="1" id="sz2-bc-V5M">
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="340" sectionHeaderHeight="1" sectionFooterHeight="1" id="sz2-bc-V5M">
                             <rect key="frame" x="0.0" y="0.0" width="764" height="680"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="WfP-u3-nnU"/>
                                 <outlet property="delegate" destination="-1" id="lcf-vk-uHl"/>

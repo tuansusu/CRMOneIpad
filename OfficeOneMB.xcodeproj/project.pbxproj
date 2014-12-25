@@ -571,6 +571,10 @@
 		8E0B07D21A4475CF00CF7A78 /* iconMessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0B07CA1A4475CF00CF7A78 /* iconMessage@2x.png */; };
 		8E0B07D51A4479EF00CF7A78 /* bgPopup.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0B07D31A4479EF00CF7A78 /* bgPopup.png */; };
 		8E0B07D61A4479EF00CF7A78 /* bgPopup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0B07D41A4479EF00CF7A78 /* bgPopup@2x.png */; };
+		8E2640B41A4C7A4C0047073B /* MainViewListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2640AF1A4C7A4C0047073B /* MainViewListCell.m */; };
+		8E2640B51A4C7A4C0047073B /* MainViewListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E2640B01A4C7A4C0047073B /* MainViewListCell.xib */; };
+		8E2640B61A4C7A4C0047073B /* SubListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2640B21A4C7A4C0047073B /* SubListViewCell.m */; };
+		8E2640B71A4C7A4C0047073B /* SubListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E2640B31A4C7A4C0047073B /* SubListViewCell.xib */; };
 		8E87C9321A45B29700CB0918 /* DTOAccountProcessObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E87C9311A45B29700CB0918 /* DTOAccountProcessObject.m */; };
 		8E8B3F251A49AA4300241360 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8B3F231A49AA4300241360 /* MainViewController.m */; };
 		8E8B3F261A49AA4300241360 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E8B3F241A49AA4300241360 /* MainViewController.xib */; };
@@ -1625,6 +1629,12 @@
 		8E0B07CA1A4475CF00CF7A78 /* iconMessage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconMessage@2x.png"; sourceTree = "<group>"; };
 		8E0B07D31A4479EF00CF7A78 /* bgPopup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgPopup.png; sourceTree = "<group>"; };
 		8E0B07D41A4479EF00CF7A78 /* bgPopup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgPopup@2x.png"; sourceTree = "<group>"; };
+		8E2640AE1A4C7A4C0047073B /* MainViewListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewListCell.h; sourceTree = "<group>"; };
+		8E2640AF1A4C7A4C0047073B /* MainViewListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewListCell.m; sourceTree = "<group>"; };
+		8E2640B01A4C7A4C0047073B /* MainViewListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewListCell.xib; sourceTree = "<group>"; };
+		8E2640B11A4C7A4C0047073B /* SubListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubListViewCell.h; sourceTree = "<group>"; };
+		8E2640B21A4C7A4C0047073B /* SubListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubListViewCell.m; sourceTree = "<group>"; };
+		8E2640B31A4C7A4C0047073B /* SubListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubListViewCell.xib; sourceTree = "<group>"; };
 		8E87C9301A45B29700CB0918 /* DTOAccountProcessObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOAccountProcessObject.h; sourceTree = "<group>"; };
 		8E87C9311A45B29700CB0918 /* DTOAccountProcessObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOAccountProcessObject.m; sourceTree = "<group>"; };
 		8E8B3F221A49AA4300241360 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -3556,6 +3566,19 @@
 			path = CustomInfoWindow;
 			sourceTree = "<group>";
 		};
+		8E2640AD1A4C7A4C0047073B /* ListViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				8E2640AE1A4C7A4C0047073B /* MainViewListCell.h */,
+				8E2640AF1A4C7A4C0047073B /* MainViewListCell.m */,
+				8E2640B01A4C7A4C0047073B /* MainViewListCell.xib */,
+				8E2640B11A4C7A4C0047073B /* SubListViewCell.h */,
+				8E2640B21A4C7A4C0047073B /* SubListViewCell.m */,
+				8E2640B31A4C7A4C0047073B /* SubListViewCell.xib */,
+			);
+			path = ListViewCell;
+			sourceTree = "<group>";
+		};
 		8E8B3F211A49AA4300241360 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
@@ -3570,6 +3593,7 @@
 		8E8B3F271A49AA5F00241360 /* MainViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				8E2640AD1A4C7A4C0047073B /* ListViewCell */,
 				8E8B3F281A49AA7F00241360 /* MainViewCell.h */,
 				8E8B3F291A49AA7F00241360 /* MainViewCell.m */,
 				8E8B3F2A1A49AA7F00241360 /* MainViewCell.xib */,
@@ -4113,6 +4137,7 @@
 				76961E511A3B306B008B5CE7 /* avatar.png in Resources */,
 				B31AFAA8187ADB5800D366B5 /* ic-show-path-2-1.png in Resources */,
 				B3157893188D5E5200C0ED01 /* btn-refresh-1-1.png in Resources */,
+				8E2640B51A4C7A4C0047073B /* MainViewListCell.xib in Resources */,
 				8497BFBE1A295A2300A5ED3C /* australia-large@2x.png in Resources */,
 				2D87F5F5175AD862007F861D /* SVProgressHUD.bundle in Resources */,
 				2DD29EF318769C260066B883 /* menu-ic-setting-1.png in Resources */,
@@ -4222,6 +4247,7 @@
 				769C0A2B1A35F3E90008CC4B /* NoteLeadCell.xib in Resources */,
 				76C964671A17731900029978 /* LeftTriangleIcon.png in Resources */,
 				B3F727B517B512CC0024DC0D /* Box-tinnong.png in Resources */,
+				8E2640B71A4C7A4C0047073B /* SubListViewCell.xib in Resources */,
 				76601A42194BE90F001D4C01 /* AppIcon-144.png in Resources */,
 				7693EE081A355593004E0178 /* EditCalendarLeadViewController.xib in Resources */,
 				8497BFE71A295A2300A5ED3C /* step4@2x.png in Resources */,
@@ -4494,6 +4520,7 @@
 				92C68E521519D4F100981728 /* ActionEvent.m in Sources */,
 				92C68E531519D4F100981728 /* AppController.m in Sources */,
 				76C964741A17731900029978 /* ScrollViewSubClass.m in Sources */,
+				8E2640B61A4C7A4C0047073B /* SubListViewCell.m in Sources */,
 				76199E181A472AE700B792C5 /* DTOFLLOWUPProcess.m in Sources */,
 				76D29ACB1A11295C004B9CF6 /* DTOPRODUCTMASTERProcess.m in Sources */,
 				92C68E541519D4F100981728 /* FrameworkAppDelegate.m in Sources */,
@@ -4603,6 +4630,7 @@
 				8497C0071A295A2300A5ED3C /* PanoramaViewController.m in Sources */,
 				2D47E7F91761704200F291D6 /* GCNetworkDownloadRequest.m in Sources */,
 				2D47E7FA1761704200F291D6 /* GCNetworkFormRequest.m in Sources */,
+				8E2640B41A4C7A4C0047073B /* MainViewListCell.m in Sources */,
 				76F31E821A36A4160010606A /* AMRatingControl.m in Sources */,
 				76977D641A02A75B0029F297 /* EmployeeAccountCell.m in Sources */,
 				76601A2F194BE90F001D4C01 /* ReaderMainPagebar.m in Sources */,

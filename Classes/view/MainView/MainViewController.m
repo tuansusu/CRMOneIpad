@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "UIView+AUISelectiveBorder.h"
 #import "MainViewCell.h"
+#import "MainViewListCell.h"
 
 @interface MainViewController ()
 {
@@ -133,7 +134,7 @@ NSString* emptyText = @"";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 400;
+    return 450;
 }
 
 
@@ -151,29 +152,41 @@ NSString* emptyText = @"";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return  2;
+    return  3;
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row == 0 || indexPath.row ==1) {
+        static NSString *cellId = @"MainViewCell";
+        MainViewCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
 
-    static NSString *cellId = @"MainViewCell";
-    MainViewCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+        if (!cell) {
 
-    if (!cell) {
-        
-        cell = [MainViewCell initNibCell];
-        if (indexPath.row==0) {
-            [cell loadDataCellWithType:typeGraphLine];
-        }else{
-            [cell loadDataCellWithType:typeGraphColumn];
+            cell = [MainViewCell initNibCell];
+            if (indexPath.row==0) {
+                [cell loadDataCellWithType:typeGraphLine];
+            }else if (indexPath.row==1){
+                [cell loadDataCellWithType:typeGraphColumn];
+            }
+
+            //        cell.delegate = self;
         }
+        return cell;
+    }else if (indexPath.row == 2) {
+        static NSString *cellId = @"MainViewListCell";
+        MainViewListCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
 
-//        cell.delegate = self;
+        if (!cell) {
+
+            cell = [MainViewListCell initNibCell];
+        }
+        return cell;
+
     }
-    return cell;
-    
+
+    return nil;
     
 }
 

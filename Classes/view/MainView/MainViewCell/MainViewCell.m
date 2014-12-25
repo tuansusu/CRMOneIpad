@@ -38,6 +38,8 @@
 }
 
 -(void)loadDataCellWithType:(TypeGraphs)type{
+    self.contentView.layer.cornerRadius = 20;
+    self.contentView.clipsToBounds = YES;
     _typeGraph = type;
     if (type == typeGraphLine) {
         [mLineGraph setHidden:NO];
@@ -46,7 +48,7 @@
         verticalLinesProperties=nil;
         anchorPropertiesArray=nil;
         //    mLineGraph=[[MIMLineGraph alloc]initWithFrame:CGRectMake(5, 30, self.frame.size.width, self.frame.size.height)];
-        [mLineGraph setFrame:CGRectMake(5, 30, self.frame.size.width, self.frame.size.height)];
+        [mLineGraph setFrame:CGRectMake(5, 60, 764, 400)];
         mLineGraph.delegate=self;
         anchorPropertiesArray= [NSArray arrayWithObjects:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"touchenabled"],[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"touchenabled"], nil];
         //Set initial Y-Label as 0..
@@ -57,18 +59,21 @@
         MIMColorClass *c1=[MIMColorClass colorWithComponent:@"0,169,249"];
         mLineGraph.lineColorArray=[NSArray arrayWithObjects:c1, nil];
         
-        titleGraph.text=@"line Huy động vốn";
+        titleGraph.text=@"Huy động vốn";
 
         [mLineGraph drawMIMLineGraph];
+
+        
+
     }else if (type == typeGraphColumn)
     {
         [mLineGraph setHidden:YES];
         [mBarGraph setHidden:NO];
 
-        [mBarGraph setFrame:CGRectMake(50, 30, self.frame.size.width-50, self.frame.size.height)];
+        [mBarGraph setFrame:CGRectMake(0, 60,  764, 400)];
         mBarGraph.delegate=self;
         mBarGraph.barLabelStyle=BAR_LABEL_STYLE1;
-        titleGraph.text=@"column Huy động vốn";
+        titleGraph.text=@"Tín Dụng";
         mBarGraph.barcolorArray=[NSArray arrayWithObjects:[MIMColorClass colorWithComponent:@"0,255,0,1"], nil];
         mBarGraph.mbackgroundcolor=[MIMColorClass colorWithComponent:@"0,0,0,0"];
         mBarGraph.xTitleStyle=XTitleStyle2;
@@ -96,7 +101,10 @@
 -(NSArray *)valuesForGraph:(id)graph
 {
     if (_typeGraph == typeGraphLine) {
-        yValuesArray=[[NSArray alloc]initWithObjects:@"10000",@"21000",@"24000",@"11000",@"5000",@"2000",@"9000",@"4000",@"10000",@"17000",@"15000",@"11000",nil];
+
+        NSArray *array1=[NSArray arrayWithObjects:@"10000",@"21000",@"24000",@"11000",@"5000",@"2000",@"9000",@"4000",@"10000",@"17000",@"15000",@"11000",nil];
+        NSArray *array2=[NSArray arrayWithObjects:@"5000",@"11000",@"20000",@"15000",@"14000",@"20000",@"19000",@"14000",@"12000",@"17000",@"18000",@"14000",nil];
+        yValuesArray=[[NSArray alloc]initWithObjects:array1,array2,nil];
     }else{
         yValuesArray=[[NSArray alloc]initWithObjects:@"10000",@"21000",@"24000",@"11000",@"5000",@"2000",@"9000",@"4000",@"10000",@"17000",@"15000",@"11000",nil];
     }

@@ -16,6 +16,8 @@
 #import "DTOAccountProcessObject.h"
 #import "DTOAcountLeadProcessObject.h"
 
+#import "UICGRoute.h"
+
 #define ZOOM_RATIO 15
 
 #define BUTTON_KH_COLOR_SELECTED [UIColor colorWithRed:0.0f/255.0f green:122.0f/255.0f blue:255.0f/255.0f alpha:1.0f]
@@ -119,7 +121,7 @@ typedef enum {
 
     //marker.position = CLLocationCoordinate2DMake(-33.86, 151.20);
     marker.position = CLLocationCoordinate2DMake(_lan, _lon);
-
+    [marker setIcon:[UIImage imageNamed:@"Mobile_GPS_MyLocationIcon.png"]];
     marker.map = mapView_;
     [waypoints_ addObject:marker];
     NSString *positionString = [[NSString alloc] initWithFormat:@"%f,%f",_lan,_lon];
@@ -418,7 +420,11 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
 - (void)addDirections:(NSDictionary *)json {
 
     NSDictionary *routes = [json objectForKey:@"routes"][0];
-
+    NSArray *Legs =[routes objectForKey:@"legs"];
+    for (NSDictionary *routeDic in Legs) {
+         UICGRoute *routesDir = [[UICGRoute alloc] initWithDictionaryRepresentation:routeDic];
+    }
+   
     NSDictionary *route = [routes objectForKey:@"overview_polyline"];
     NSString *overview_route = [route objectForKey:@"points"];
     GMSPath *path = [GMSPath pathFromEncodedPath:overview_route];

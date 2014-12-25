@@ -152,7 +152,7 @@ NSString* emptyText = @"";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return  3;
+    return  2;
     
 }
 
@@ -174,17 +174,18 @@ NSString* emptyText = @"";
             //        cell.delegate = self;
         }
         return cell;
-    }else if (indexPath.row == 2) {
-        static NSString *cellId = @"MainViewListCell";
-        MainViewListCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
-
-        if (!cell) {
-
-            cell = [MainViewListCell initNibCell];
-        }
-        return cell;
-
     }
+//    else if (indexPath.row == 2) {
+//        static NSString *cellId = @"MainViewListCell";
+//        MainViewListCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+//
+//        if (!cell) {
+//
+//            cell = [MainViewListCell initNibCell];
+//        }
+//        return cell;
+//
+//    }
 
     return nil;
     

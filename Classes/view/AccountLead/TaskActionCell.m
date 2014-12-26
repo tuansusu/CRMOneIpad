@@ -8,10 +8,14 @@
 
 #import "TaskActionCell.h"
 #import "DTOTASKProcess.h"
-
-
+#import "DateUtil.h"
 
 @implementation TaskActionCell
+
++ (UINib *)nib
+{
+    return [UINib nibWithNibName:@"TaskActionCell" bundle:nil];
+}
 
 - (void)awakeFromNib
 {
@@ -43,22 +47,27 @@
 }
 
 
--(void) loadDataToCellWithData:(NSDictionary *)dicData withOption:(int)smgSelect{
-    
+- (void) loadDataToCellWithData:(NSDictionary *)dicData withOption:(int)smgSelect
+{
     _dicData = [[NSMutableDictionary alloc]initWithDictionary:dicData];
     
     
-    if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOTASK_title]]) {
+    if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOTASK_title]])
+    {
         self.lbName.text = @"";
-        
-    }else{
+    }
+    else
+    {
         self.lbName.text = [dicData objectForKey:DTOTASK_title];
     }
     
     
-    if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOTASK_endDate]]) {
+    if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOTASK_endDate]])
+    {
         self.lbTime.text = @"";
-    }else{
+    }
+    else
+    {
         NSLog(@"date = %@", [dicData objectForKey:DTOTASK_endDate]);
         self.lbTime.text = [NSString stringWithFormat:@"Kết thúc %@",[dicData objectForKey:DTOTASK_endDate] ] ;
     }

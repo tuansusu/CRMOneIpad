@@ -13,6 +13,9 @@
 #import "DTONOTEProcess.h"
 #import "DTOATTACHMENTProcess.h"
 
+#import "TaskCalendarCell.h"
+#import "TaskCalTLineCell.h"
+#import "TaskActionCell.h"
 
 ////remove
 #import "StringUtil.h"
@@ -38,6 +41,10 @@
 #define DELETE_TASK 44
 #define DELETE_COHOI 55
 #define DELETE_LEAD 66
+
+static NSString* const TaskCalendarNormalCellId   = @"TaskCalendarCellId";
+static NSString* const TaskCalendarTimelineCellId = @"TaskCalTLineCellId";
+static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
 @interface DetailLeadViewController ()
 {
@@ -76,6 +83,9 @@
     //controll
     
     __weak IBOutlet UIButton *btnAdd;
+    
+    //calendar
+    BOOL calendarIsTimeline;
 }
 @end
 
@@ -99,6 +109,14 @@
         
         [self.tbData setSeparatorInset:UIEdgeInsetsZero];
     }
+    
+    /* set defaults cell for Task Calendar */
+    [self.tbData registerNib:[TaskCalendarCell nib] forCellReuseIdentifier:TaskCalendarNormalCellId];
+    [self.tbData registerNib:[TaskCalTLineCell nib] forCellReuseIdentifier:TaskCalendarTimelineCellId];
+    [self.tbData registerNib:[TaskActionCell nib]   forCellReuseIdentifier:TaskActionCellId];
+    
+    // calendar
+    calendarIsTimeline = NO;
     
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
@@ -277,16 +295,10 @@
             
         }
             break;
-        case typeLeaderView_Calendar:
-        {
-            arrayData = [dtoTaskProcess filterWithClientLeaderId:[dicData objectForKey:DTOLEAD_clientLeadId]];
-
-        }
-            break;
         case typeLeaderView_Contact:
         {
             arrayData = [dtoContactProcess filterWithClientLeaderId:[dicData objectForKey:DTOLEAD_clientLeadId]];
-          //  NSLog(@"get detail data = %d", );
+            NSLog(@"get detail data = %d", arrayData.count);
         }break;
         case typeLeaderView_Note:
         {
@@ -300,12 +312,18 @@
         case typeLeaderView_Opportunity:{
             
         }break;
-        case typeLeaderView_Task:{
-            arrayData = [dtoTaskProcess filterWithClientLeaderId:[dicData objectForKey:DTOLEAD_clientLeadId]];
-            NSLog(@"get detail data = %d", arrayData.count);
-            
-        }break;
-            
+        case typeLeaderView_Calendar:
+        {
+            arrayData = [dtoTaskProcess filterCalendarWithClientLeaderId:[dicData objectForKey:DTOLEAD_clientLeadId]];
+            NSLog(@"calendar count = %ld", (unsigned long)arrayData.count);
+        }
+            break;
+        case typeLeaderView_Task:
+        {
+            arrayData = [dtoTaskProcess filterTaskWithClientLeaderId:[dicData objectForKey:DTOLEAD_clientLeadId]];
+            NSLog(@"task count = %ld", (unsigned long)arrayData.count);
+        }
+            break;
         default:
             break;
     }
@@ -375,13 +393,6 @@
     }
     
     switch (index) {
-        case SELECT_INDEX_ADD_CALENDAR:
-        {
-            EditCalendarLeadViewController *viewController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
-            viewController.dataRoot = dicData;
-            [self presentViewController:viewController animated:YES completion:nil];
-        }
-            break;
         case SELECT_INDEX_ADD_CONTACT:
         {
             EditContactLeadViewController *viewController = [[EditContactLeadViewController alloc]initWithNibName:@"EditContactLeadViewController" bundle:nil];
@@ -403,7 +414,14 @@
             
         }
             break;
-            
+        // calendar+task
+        case SELECT_INDEX_ADD_CALENDAR:
+        {
+            EditCalendarLeadViewController *viewController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
+            viewController.dataRoot = dicData;
+            [self presentViewController:viewController animated:YES completion:nil];
+        }
+            break;
         case SELECT_INDEX_ADD_TASK:
         {
             EditTaskLeadViewController *viewController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
@@ -488,13 +506,13 @@
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (typeActionEvent) {
-        case typeLeaderView_Calendar:
-            return 40.0f;
-        break;
-        case typeLeaderView_Task:
+        case typeLeaderView_Note:
             return 60.0f;
             break;
-        case typeLeaderView_Note:
+        case typeLeaderView_Calendar:
+            return 225.0f;//43.0f;
+            break;
+        case typeLeaderView_Task:
             return 60.0f;
             break;
         default:
@@ -508,36 +526,15 @@
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"numberofrows = %d", arrayData.count);
-    
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSLog(@"numberofrows = %ld", (unsigned long)arrayData.count);
     return  arrayData.count;
-    
-    
 }
 
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     switch (typeActionEvent) {
-        case typeLeaderView_Calendar:
-        {
-            static NSString *cellId = @"TaskCalendarCell";
-             TaskCalendarCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
-            
-            
-            if (!cell) {
-                cell = [TaskCalendarCell initNibCell];
-            }
-            
-            if (arrayData.count>0) {
-                [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
-            }
-            
-            return cell;
-
-        }
-            break;
         case typeLeaderView_Contact:{
             static NSString *cellId = @"ContactLeadCell";
             ContactLeadCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
@@ -575,18 +572,26 @@
         {
         }
             break;
-            
-        case typeLeaderView_Task:
+        // calendar + task
+        case typeLeaderView_Calendar:
         {
-            static NSString *cellId = @"TaskActionCell";
-            TaskActionCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+//            TaskCalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:TaskCalendarNormalCellId];
+            TaskCalTLineCell *cell = [tableView dequeueReusableCellWithIdentifier:TaskCalendarTimelineCellId];
             
-            
-            if (!cell) {
-                cell = [TaskActionCell initNibCell];
+            if (indexPath.row < arrayData.count)
+            {
+                [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
             }
             
-            if (arrayData.count>0) {
+            return cell;
+        }
+            break;
+        case typeLeaderView_Task:
+        {
+            TaskActionCell *cell= [tableView dequeueReusableCellWithIdentifier:TaskActionCellId];
+            
+            if (indexPath.row < arrayData.count)
+            {
                 [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
             }
             
@@ -599,7 +604,6 @@
     
     UITableViewCell *cellNull = [[UITableViewCell alloc] init];
     return cellNull;
-    
 }
 
 

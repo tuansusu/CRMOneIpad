@@ -1,45 +1,94 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6250" systemVersion="13E28" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="KGk-i7-Jjw" customClass="TaskCalendarCell">
-            <rect key="frame" x="0.0" y="0.0" width="704" height="40"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCalendarCellId" rowHeight="43" id="Otx-3d-RTX" customClass="TaskCalendarCell">
+            <rect key="frame" x="0.0" y="0.0" width="768" height="66"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="704" height="99"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Otx-3d-RTX" id="26f-j4-Mtf">
+                <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ykV-6R-cht" userLabel="Label - name">
-                        <rect key="frame" x="20" y="5" width="400" height="25"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KKc-Lj-kcy">
+                        <rect key="frame" x="0.0" y="-1" width="154" height="68"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MonthLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BqC-wx-6oA">
+                                <rect key="frame" x="8" y="10" width="138" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="KEX-gw-ybN"/>
+                                    <constraint firstAttribute="width" constant="138" id="lae-qC-nrP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DateLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fjh-Ht-6QP">
+                                <rect key="frame" x="8" y="39" width="138" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="138" id="Ew2-qL-C2s"/>
+                                    <constraint firstAttribute="height" constant="21" id="O5J-yo-Lzd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fjh-Ht-6QP" firstAttribute="top" secondItem="BqC-wx-6oA" secondAttribute="bottom" constant="8" id="SvX-qg-dWH"/>
+                            <constraint firstAttribute="width" constant="154" id="XPT-Vc-Y6M"/>
+                            <constraint firstAttribute="centerX" secondItem="BqC-wx-6oA" secondAttribute="centerX" id="aRw-zy-J16"/>
+                            <constraint firstItem="BqC-wx-6oA" firstAttribute="top" secondItem="KKc-Lj-kcy" secondAttribute="top" constant="10" id="gkz-he-OQa"/>
+                            <constraint firstAttribute="bottom" secondItem="fjh-Ht-6QP" secondAttribute="bottom" constant="8" id="iIm-7a-85t"/>
+                            <constraint firstAttribute="centerX" secondItem="fjh-Ht-6QP" secondAttribute="centerX" id="mbd-QD-azP"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TimeLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFG-YH-VFm">
+                        <rect key="frame" x="176" y="38" width="570" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Ajd-Mh-j9p"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oya-T1-MiI" userLabel="Label - phone">
-                        <rect key="frame" x="479" y="5" width="217" height="25"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TitleLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jmd-al-WC9">
+                        <rect key="frame" x="176" y="10" width="570" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="o2R-eX-KG2"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="calendar_small_new.png" translatesAutoresizingMaskIntoConstraints="NO" id="SKT-pe-rn9">
-                        <rect key="frame" x="445" y="6" width="23" height="23"/>
-                    </imageView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="Jmd-al-WC9" firstAttribute="leading" secondItem="KKc-Lj-kcy" secondAttribute="trailing" constant="22" id="6Iz-ML-jg7"/>
+                    <constraint firstItem="KKc-Lj-kcy" firstAttribute="top" secondItem="26f-j4-Mtf" secondAttribute="topMargin" constant="-9" id="Ax6-VO-8hV"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="JFG-YH-VFm" secondAttribute="bottom" constant="-2" id="D5i-9y-4Su"/>
+                    <constraint firstItem="Jmd-al-WC9" firstAttribute="top" secondItem="26f-j4-Mtf" secondAttribute="topMargin" constant="2" id="EH5-Vu-VXF"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Jmd-al-WC9" secondAttribute="trailing" constant="14" id="G1C-SM-c9A"/>
+                    <constraint firstItem="Jmd-al-WC9" firstAttribute="leading" secondItem="JFG-YH-VFm" secondAttribute="leading" id="R6I-FR-8Xy"/>
+                    <constraint firstItem="Jmd-al-WC9" firstAttribute="width" secondItem="JFG-YH-VFm" secondAttribute="width" id="Wh8-fs-nxf"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="KKc-Lj-kcy" secondAttribute="bottom" constant="-10" id="yXP-s7-cjp"/>
+                    <constraint firstItem="KKc-Lj-kcy" firstAttribute="leading" secondItem="26f-j4-Mtf" secondAttribute="leadingMargin" constant="-8" id="z5y-pG-M0i"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="lbTime" destination="Oya-T1-MiI" id="dq4-VF-F7N"/>
-                <outlet property="lbTitle" destination="ykV-6R-cht" id="3Ah-Hz-2JC"/>
+                <outlet property="_startDateLabel" destination="fjh-Ht-6QP" id="aar-wQ-JDb"/>
+                <outlet property="_startMonthLabel" destination="BqC-wx-6oA" id="qxf-Z4-yR2"/>
+                <outlet property="_startTimeLabel" destination="JFG-YH-VFm" id="IkJ-ER-MmY"/>
+                <outlet property="_titleLabel" destination="Jmd-al-WC9" id="u0M-VV-aBR"/>
             </connections>
+            <point key="canvasLocation" x="160" y="322"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="calendar_small_new.png" width="16" height="16"/>
-    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

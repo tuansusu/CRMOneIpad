@@ -16,6 +16,8 @@
 
 @interface TaskActionCell : UITableViewCell
 
++ (UINib *)nib;
+
 +(TaskActionCell*) initNibCell;
 
 @property (weak, nonatomic) id <TaskActionCellDelegate> delegate;

@@ -25,7 +25,10 @@
     __weak IBOutlet UILabel *_titleLabel;
     __weak IBOutlet UILabel *_descLabel;
     __weak IBOutlet UILabel *_customerLabel;
+    
+    __weak IBOutlet UIView *_bubbleview;
 }
+
 + (UINib *)nib
 {
     return [UINib nibWithNibName:@"TaskCalTLineCell" bundle:nil];
@@ -33,6 +36,13 @@
 
 - (void)awakeFromNib {
     // Initialization code
+}
+
+- (void)drawRect:(CGRect)rect
+{
+    [super drawRect:rect];
+    [self drawBubble];
+    [self drawTimeline];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -129,4 +139,53 @@
     _customerLabel.text = @"";
 }
 
+- (void)drawBubble
+{
+    CGRect frame = _bubbleview.frame;
+    
+    //// Bezier Drawing
+    UIBezierPath* bezierPath = UIBezierPath.bezierPath;
+    [bezierPath moveToPoint: CGPointMake(CGRectGetMaxX(frame) - 1, CGRectGetMinY(frame) + 9)];
+    [bezierPath addLineToPoint: CGPointMake(CGRectGetMaxX(frame) - 1, CGRectGetMaxY(frame) - 9)];
+    [bezierPath addCurveToPoint: CGPointMake(CGRectGetMaxX(frame) - 10, CGRectGetMaxY(frame) - 1) controlPoint1: CGPointMake(CGRectGetMaxX(frame) - 1, CGRectGetMaxY(frame) - 2) controlPoint2: CGPointMake(CGRectGetMaxX(frame) - 3, CGRectGetMaxY(frame) - 1)];
+    [bezierPath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 17, CGRectGetMaxY(frame) - 1)];
+    [bezierPath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 9, CGRectGetMaxY(frame) - 9) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 10, CGRectGetMaxY(frame) - 1) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 9, CGRectGetMaxY(frame) - 2)];
+    [bezierPath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 9, CGRectGetMinY(frame) + 27)];
+    [bezierPath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 1, CGRectGetMinY(frame) + 19)];
+    [bezierPath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 9, CGRectGetMinY(frame) + 11)];
+    [bezierPath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 9, CGRectGetMinY(frame) + 9)];
+    [bezierPath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 17, CGRectGetMinY(frame) + 1) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 9, CGRectGetMinY(frame) + 2) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 10, CGRectGetMinY(frame) + 1)];
+    [bezierPath addLineToPoint: CGPointMake(CGRectGetMaxX(frame) - 10, CGRectGetMinY(frame) + 1)];
+    [bezierPath addCurveToPoint: CGPointMake(CGRectGetMaxX(frame) - 1, CGRectGetMinY(frame) + 9) controlPoint1: CGPointMake(CGRectGetMaxX(frame) - 3, CGRectGetMinY(frame) + 1) controlPoint2: CGPointMake(CGRectGetMaxX(frame) - 1, CGRectGetMinY(frame) + 2)];
+    [bezierPath closePath];
+    bezierPath.lineJoinStyle = kCGLineJoinRound;
+    
+    [UIColor.lightGrayColor setStroke];
+    bezierPath.lineWidth = 1.5;
+    [bezierPath stroke];
+}
+
+- (void)drawTimeline
+{
+    CGRect dateFrame = _dateLabel.frame;
+    CGRect iconFrame = _typeImage.frame;
+    CGRect bubbleFrame = _bubbleview.frame;
+    CGRect frame = self.contentView.frame;
+    
+    UIBezierPath* topPath = [UIBezierPath bezierPathWithRect: CGRectMake((CGRectGetMaxX(dateFrame) + CGRectGetMinX(bubbleFrame))/2 - 1.5, CGRectGetMinY(frame), 3, CGRectGetMidY(iconFrame))];
+    [UIColor.lightGrayColor setFill];
+    [topPath fill];
+
+    UIBezierPath* circlePath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake((CGRectGetMaxX(dateFrame) + CGRectGetMinX(bubbleFrame))/2 - 7.5, CGRectGetMidY(iconFrame) - 7.5, 15, 15)];
+    [UIColor.lightGrayColor setFill];
+    [circlePath fill];
+    
+    UIBezierPath* rightPath = [UIBezierPath bezierPathWithRect: CGRectMake((CGRectGetMaxX(dateFrame) + CGRectGetMinX(bubbleFrame))/2, CGRectGetMidY(iconFrame) - 1.5, CGRectGetMinX(iconFrame) - (CGRectGetMaxX(dateFrame) + CGRectGetMinX(bubbleFrame))/2, 3)];
+    [UIColor.lightGrayColor setFill];
+    [rightPath fill];
+    
+    UIBezierPath* bottomPath = [UIBezierPath bezierPathWithRect: CGRectMake((CGRectGetMaxX(dateFrame) + CGRectGetMinX(bubbleFrame))/2 - 1.5, CGRectGetMidY(iconFrame), 3, CGRectGetHeight(frame) - CGRectGetMidY(iconFrame))];
+    [UIColor.lightGrayColor setFill];
+    [bottomPath fill];
+}
 @end

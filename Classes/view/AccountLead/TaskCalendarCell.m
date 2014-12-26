@@ -9,6 +9,19 @@
 #import "TaskCalendarCell.h"
 
 @implementation TaskCalendarCell
+{
+    __weak IBOutlet UILabel     *_titleLabel;
+    __weak IBOutlet UILabel     *_startMonthLabel;
+    __weak IBOutlet UILabel     *_startDateLabel;
+    __weak IBOutlet UILabel     *_startTimeLabel;
+    
+    NSDictionary *_dicData;
+}
+
++ (UINib *)nib
+{
+    return [UINib nibWithNibName:@"TaskCalendarCell" bundle:nil];
+}
 
 - (void)awakeFromNib
 {
@@ -22,29 +35,34 @@
     // Configure the view for the selected state
 }
 
-+(TaskCalendarCell*) initNibCell{
+- (void)loadDataToCellWithData:(NSDictionary *)dicData withOption:(int)smgSelect
+{
+    _dicData = [dicData copy];
     
-    NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"TaskCalendarCell" owner:nil options:nil];
-    
-    for(id curentObject in topLevelObjects)
+    if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOTASK_title]])
     {
-        if([curentObject isKindOfClass:[TaskCalendarCell class]])
-        {
-            return (TaskCalendarCell *) curentObject;
-            
-        }
+        _titleLabel.text = @"";
+    }
+    else
+    {
+        _titleLabel.text = [dicData objectForKey:DTOTASK_title];
     }
     
-    return nil;
-}
-
-
--(void) loadDataToCellWithData:(NSDictionary *)dicData withOption:(int)smgSelect{
+//    _titleLabel.textColor = TEXT_COLOR_HIGHLIGHT;
     
-    _dicData = dicData;
-    _lbTitle.text=[dicData objectForKey:DTOTASK_title];
-    _lbTime.text=[dicData objectForKey:DTOTASK_startDate];
-    _lbTitle.textColor = TEXT_COLOR_HIGHLIGHT;
+    NSString *strStartDate = [dicData objectForKey:DTOTASK_startDate];
+    
+    NSDateFormatter *DateFormatter=[[NSDateFormatter alloc] init];
+    [DateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.S"];
+    
+    NSDate *startDate = [DateFormatter dateFromString:strStartDate];
+    
+    [DateFormatter setDateFormat:@"MMM"];
+    _startMonthLabel.text = [DateFormatter stringFromDate:startDate];
+    [DateFormatter setDateFormat:@"dd"];
+    _startDateLabel.text  = [DateFormatter stringFromDate:startDate];
+    [DateFormatter setDateFormat:@"HH:mm"];
+    _startTimeLabel.text  = [DateFormatter stringFromDate:startDate];
 }
 
 //    

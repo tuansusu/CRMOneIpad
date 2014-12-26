@@ -36,6 +36,7 @@
 /*
  * Lọc danh sach lien he theo clientLeaderId
  */
--(NSMutableArray*) filterWithClientLeaderId: (NSString*) strValue;
+- (NSMutableArray *) filterCalendarWithClientLeaderId: (NSString *) strValue;
+- (NSMutableArray *) filterTaskWithClientLeaderId: (NSString *) strValue;
 
 @end

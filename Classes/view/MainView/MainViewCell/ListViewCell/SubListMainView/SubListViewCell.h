@@ -10,6 +10,7 @@
 
 @interface SubListViewCell : UITableViewCell
 
+
 +(SubListViewCell*) initNibCell;
 
 @end

@@ -12,12 +12,13 @@
 @implementation UICGStep
 
 @synthesize dictionaryRepresentation;
-@synthesize distance;
+@synthesize distanceText,distanceValue;
+@synthesize durationText,durationValue;
 @synthesize startLocation,endLocation;
 @synthesize polylineIndex,polyline;
 @synthesize htmlInstructions;
 @synthesize travel_mode;
-@synthesize duration;
+@synthesize maneuver;
 
 + (UICGStep *)stepWithDictionaryRepresentation:(NSDictionary *)dictionary {
 	UICGStep *step = [[UICGStep alloc] initWithDictionaryRepresentation:dictionary];
@@ -68,7 +69,9 @@
             htmlInstructions = [[[dictionary objectForKey:@"html_instructions"]description] stringByStrippingHTML];
         }
 		
-		
+        if ([durationDic valueForKey:@"maneuver"]) {
+            maneuver = [durationDic valueForKey:@"maneuver"];
+        }
 	}
 	return self;
 }

@@ -10,11 +10,8 @@
 
 #import "MIMLineGraph.h"
 #import "MIMBarGraph.h"
+#import "Globals.h"
 
-typedef enum {
-    typeGraphLine,
-    typeGraphColumn
-} TypeGraphs;
 
 @interface MainViewCell : UITableViewCell<LineGraphDelegate,BarGraphDelegate>
 {
@@ -31,11 +28,12 @@ typedef enum {
     NSArray *anchorPropertiesArray;
     NSDictionary *horizontalLinesProperties;
     NSDictionary *verticalLinesProperties;
-    
+
     NSArray *yValuesArray;
     NSArray *xValuesArray;
     NSArray *xTitlesArray;
     TypeGraphs _typeGraph;
+    IBOutlet UITableView *tbvMain;
 }
 
 +(MainViewCell*) initNibCell;

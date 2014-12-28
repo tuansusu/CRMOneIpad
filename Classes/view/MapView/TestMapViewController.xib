@@ -17,6 +17,7 @@
                 <outlet property="imgDirSelected" destination="1nI-td-Tsc" id="rYF-Z1-orC"/>
                 <outlet property="mainView" destination="hrj-Ht-ui3" id="F4k-Jg-uty"/>
                 <outlet property="mapView_" destination="hrj-Ht-ui3" id="gyA-bA-ILV"/>
+                <outlet property="routesDirectionsView" destination="fce-HX-LxW" id="9Ed-Vc-c8R"/>
                 <outlet property="view" destination="4ZA-7L-Z4P" id="NYp-iS-f0B"/>
             </connections>
         </placeholder>
@@ -55,7 +56,7 @@
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vTm-hm-cqG" userLabel="BTNADD">
                             <rect key="frame" x="958" y="7" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" backgroundImage="DD9C9030-8DF5-4EA1-9132-7512961C2AAD"/>
+                            <state key="normal" backgroundImage="E7E7958E-70EA-493D-83FA-3CEDE6B76152"/>
                         </button>
                         <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tổng số 1,100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9iz-qe-5MY">
                             <rect key="frame" x="69" y="24" width="133" height="20"/>
@@ -123,7 +124,7 @@
                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RjF-Tj-NN3">
                             <rect key="frame" x="100" y="0.0" width="100" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="iconDirection2.png">
+                            <state key="normal" image="iconDirection.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -147,8 +148,8 @@
                     <rect key="frame" x="20" y="115" width="300" height="250"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <view hidden="YES" contentMode="scaleToFill" id="vgv-iC-PUC">
-                            <rect key="frame" x="0.0" y="0.0" width="300" height="220"/>
+                        <view contentMode="scaleToFill" id="vgv-iC-PUC">
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="250"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" id="6F7-ON-Dk7">
@@ -232,6 +233,25 @@
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
+                                <view contentMode="scaleToFill" id="fce-HX-LxW" customClass="RoutesDirectionsView">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="rtf-jg-3om">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="250"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <outlet property="dataSource" destination="fce-HX-LxW" id="yTM-O4-CUf"/>
+                                                <outlet property="delegate" destination="fce-HX-LxW" id="OhI-B3-mCx"/>
+                                            </connections>
+                                        </tableView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <connections>
+                                        <outlet property="routesDirectionsTbv" destination="rtf-jg-3om" id="GKz-1f-uAe"/>
+                                    </connections>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
@@ -244,8 +264,8 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <connections>
-                                        <outlet property="dataSource" destination="-1" id="3py-tX-Qa3"/>
-                                        <outlet property="delegate" destination="-1" id="Opt-VC-LzX"/>
+                                        <outlet property="dataSource" destination="-1" id="1PE-sr-paV"/>
+                                        <outlet property="delegate" destination="-1" id="nC2-G2-XXk"/>
                                     </connections>
                                 </tableView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sHb-t2-eqe">
@@ -339,7 +359,7 @@
         </view>
     </objects>
     <resources>
-        <image name="DD9C9030-8DF5-4EA1-9132-7512961C2AAD" width="48" height="48">
+        <image name="E7E7958E-70EA-493D-83FA-3CEDE6B76152" width="48" height="48">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -567,7 +587,7 @@ AAAyug
         <image name="ic-add-sub-1.png" width="32" height="32"/>
         <image name="ic_qu_direction_mylocation.png" width="24" height="24"/>
         <image name="iconBranchArrow.png" width="25" height="25"/>
-        <image name="iconDirection2.png" width="25" height="25"/>
+        <image name="iconDirection.png" width="24" height="25"/>
         <image name="iconExpand.png" width="25" height="25"/>
         <image name="iconMultilCustomer.png" width="25" height="25"/>
     </resources>

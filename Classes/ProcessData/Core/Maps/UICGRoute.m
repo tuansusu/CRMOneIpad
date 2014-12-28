@@ -40,13 +40,13 @@
 		distance = [dictionary objectForKey:@"distance"];
 		duration = [dictionary objectForKey:@"duration"];
         
-        startAddress = [dictionary objectForKey:@"start_address"];
-        endAddress = [dictionary objectForKey:@"end_address"];
+        _startAddress = [dictionary objectForKey:@"start_address"];
+        _endAddress = [[dictionary objectForKey:@"end_address"] description];
         
         NSDictionary *startLocationDic = [dictionary objectForKey:@"start_location"];
         CLLocationDegrees startLongitude = [[startLocationDic objectForKey:@"lat"] doubleValue];
         CLLocationDegrees startLatitude  = [[startLocationDic objectForKey:@"lng"] doubleValue];
-        startLocation = [[CLLocation alloc] initWithLatitude:startLatitude longitude:startLongitude];
+        _startLocation = [[CLLocation alloc] initWithLatitude:startLatitude longitude:startLongitude];
         
 		NSDictionary *endLocationDic = [dictionary objectForKey:@"end_location"];
 		CLLocationDegrees endLongitude = [[endLocationDic objectForKey:@"lat"] doubleValue];

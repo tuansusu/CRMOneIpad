@@ -134,13 +134,13 @@ NSString* emptyText = @"";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 450;
+        return 450;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
@@ -151,44 +151,38 @@ NSString* emptyText = @"";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
-    return  2;
-    
+         return  4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0 || indexPath.row ==1) {
-        static NSString *cellId = @"MainViewCell";
-        MainViewCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+        if (indexPath.row == 0 || indexPath.row ==2) {
+            static NSString *cellId = @"MainViewCell";
+            MainViewCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
 
-        if (!cell) {
+            if (!cell) {
 
-            cell = [MainViewCell initNibCell];
-            if (indexPath.row==0) {
-                [cell loadDataCellWithType:typeGraphLine];
-            }else if (indexPath.row==1){
-                [cell loadDataCellWithType:typeGraphColumn];
+                cell = [MainViewCell initNibCell];
+                if (indexPath.row==0) {
+                    [cell loadDataCellWithType:typeGraphLine];
+                }else if (indexPath.row==2){
+                    [cell loadDataCellWithType:typeGraphColumn];
+                }
+            }
+            return cell;
+        } else if (indexPath.row == 1 || indexPath.row==3) {
+
+            static NSString *cellId = @"MainViewListCell";
+            
+            MainViewListCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+            if (cell == nil) {
+                cell = [[MainViewListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
             }
 
-            //        cell.delegate = self;
+            return cell;
+            
         }
-        return cell;
-    }
-//    else if (indexPath.row == 2) {
-//        static NSString *cellId = @"MainViewListCell";
-//        MainViewListCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
-//
-//        if (!cell) {
-//
-//            cell = [MainViewListCell initNibCell];
-//        }
-//        return cell;
-//
-//    }
-
     return nil;
-    
 }
 
 #pragma mark Action

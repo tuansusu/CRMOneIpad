@@ -447,7 +447,7 @@
     NSString *strClientContactId = IntToStr(([dtoProcess getClientId]));
     [dicEntity setObject:strClientContactId forKey:DTOTASK_clientTaskId];
     [dicEntity setObject:@"1" forKey:DTOTASK_clientId];
-    
+    [dicEntity setObject:@"1" forKey:DTOTASK_typeTask];
     
     
     if (self.dataSend) {

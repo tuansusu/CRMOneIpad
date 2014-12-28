@@ -1,15 +1,14 @@
 //
-//  MainViewListCell.m
+//  DirectionsViewCell.m
 //  OfficeOneMB
 //
-//  Created by macpro on 12/25/14.
+//  Created by macpro on 12/28/14.
 //
 //
 
-#import "MainViewListCell.h"
+#import "DirectionsViewCell.h"
 
-
-@implementation MainViewListCell
+@implementation DirectionsViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -19,22 +18,6 @@
         self = [[[NSBundle mainBundle] loadNibNamed:[[self class] description] owner:self options:Nil] objectAtIndex:0];
     }
     return self;
-}
-
-+(MainViewListCell*) initNibCell{
-
-    NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"MainViewListCell" owner:nil options:nil];
-
-    for(id curentObject in topLevelObjects)
-    {
-        if([curentObject isKindOfClass:[MainViewListCell class]])
-        {
-            return (MainViewListCell *) curentObject;
-
-        }
-    }
-
-    return nil;
 }
 
 - (void)awakeFromNib {
@@ -47,5 +30,8 @@
     // Configure the view for the selected state
 }
 
+-(void)loadDataCellWithStepOB:(UICGStep*)stepOB{
+    [lblDescription setText:stepOB.htmlInstructions];
+}
 
 @end

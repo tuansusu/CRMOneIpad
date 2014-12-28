@@ -15,21 +15,24 @@
 #import "MapsModel.h"
 #import "DTOAccountProcessObject.h"
 #import "DTOAcountLeadProcessObject.h"
+#import "SVProgressHUD.h"
 
 #import "UICGRoute.h"
+#import "Globals.h"
+#import "Reachability.h"
+#import "DirectionsHeaderView.h"
+#import "DirectionsViewCell.h"
+
+#import "RoutesDirectionsView.h"
+
 
 #define ZOOM_RATIO 15
 
 #define BUTTON_KH_COLOR_SELECTED [UIColor colorWithRed:0.0f/255.0f green:122.0f/255.0f blue:255.0f/255.0f alpha:1.0f]
 #define BUTTON_KH_COLOR_DEFAULT [UIColor colorWithRed:170.0f/255.0f green:170.0f/255.0f blue:170.0f/255.0f alpha:0.4f]
 
-#define KEY_MARKER_KHDM @"khdmMarkAtIndex%d"
-#define KEY_MARKER_KH360 @"kh360MarkAtIndex%d"
 
-typedef enum {
-    typeKHDM,
-    typeKH360
-} CustomerType;
+
 
 @interface TestMapViewController ()<CLLocationManagerDelegate,GMSMapViewDelegate,CustomerViewCellDelegate>
 {
@@ -42,7 +45,12 @@ typedef enum {
 
     NSMutableArray *waypoints_;
     NSMutableDictionary *polyLineDic_;
+    NSMutableDictionary *wayPointDic_;
     NSMutableArray *waypointStrings_;
+    NSMutableDictionary *wayPointStrDic_;
+
+    NSMutableArray *listRoutes;
+    NSMutableDictionary *listRoutesDic;
 
     IBOutlet UIView *mainView;
     float zoomRatio;
@@ -51,7 +59,9 @@ typedef enum {
     IBOutlet UIView *containerOptionView;
     IBOutlet UIView *customerView;
     IBOutlet UITableView *customerTbv;
+
     IBOutlet UIView *directionView;
+    IBOutlet RoutesDirectionsView *routesDirectionsView;
     BOOL expandOptionSelected;
 
     NSMutableArray *listCustomerDirections;
@@ -89,7 +99,12 @@ typedef enum {
     listKHDMFlag = [[NSMutableArray alloc] init];
     waypoints_ = [[NSMutableArray alloc]init];
     polyLineDic_ = [[NSMutableDictionary alloc] init];
+    wayPointDic_ = [[NSMutableDictionary alloc] init];
+    wayPointStrDic_ = [[NSMutableDictionary alloc] init];
     waypointStrings_ = [[NSMutableArray alloc]init];
+
+    listRoutes = [[NSMutableArray alloc]init];
+    listRoutesDic = [[NSMutableDictionary alloc] init];
 
     if ([UIDevice getCurrentSysVer] >= 7.0) {
         [UIDevice updateLayoutInIOs7OrAfter:self];
@@ -307,6 +322,7 @@ typedef enum {
 
     [imgCusSelected setHidden:YES];
     [imgDirSelected setHidden:NO];
+    [routesDirectionsView loadDataTableWithRoutesList:listRoutes];
 }
 
 -(IBAction)btnExpandTabAction:(id)sender{
@@ -418,36 +434,71 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
 }
 
 - (void)addDirections:(NSDictionary *)json {
+    [SVProgressHUD dismiss];
+    NSMutableDictionary *dicJSON =[json objectForKey:@"routes"];
+    if (dicJSON.count>0) {
+        NSDictionary *routes = [json objectForKey:@"routes"][0];
+        NSArray *Legs =[routes objectForKey:@"legs"];
+        for (NSDictionary *routeDic in Legs) {
+            UICGRoute *routesOB = [UICGRoute routeWithDictionaryRepresentation:routeDic];
+            NSLog(@"address : %@",routesOB.endAddress);
 
-    NSDictionary *routes = [json objectForKey:@"routes"][0];
-    NSArray *Legs =[routes objectForKey:@"legs"];
-    for (NSDictionary *routeDic in Legs) {
-         UICGRoute *routesDir = [[UICGRoute alloc] initWithDictionaryRepresentation:routeDic];
-    }
-   
-    NSDictionary *route = [routes objectForKey:@"overview_polyline"];
-    NSString *overview_route = [route objectForKey:@"points"];
-    GMSPath *path = [GMSPath pathFromEncodedPath:overview_route];
-    GMSPolyline *polyline = [GMSPolyline polylineWithPath:path];
-    polyline.map = mapView_;
-    if (customerType==typeKHDM) {
-        [polyLineDic_ setObject:polyline forKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_KHDM,indexDirectionSelected]];
-    }else if(customerType==typeKH360){
-        [polyLineDic_ setObject:polyline forKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_KH360,indexDirectionSelected]];
-    }
+            [listRoutes addObject:routesOB];
+            [listRoutesDic setObject:routesOB forKey:[NSString stringWithFormat:@"%@%d",KEY_POLYLINE_KHDM,indexDirectionSelected]];
+        }
 
+        NSDictionary *route = [routes objectForKey:@"overview_polyline"];
+        NSString *overview_route = [route objectForKey:@"points"];
+        GMSPath *path = [GMSPath pathFromEncodedPath:overview_route];
+        GMSPolyline *polyline = [GMSPolyline polylineWithPath:path];
+        polyline.map = mapView_;
+        // add Polyline Dictionary
+        if (customerType==typeKHDM) {
+            [polyLineDic_ setObject:polyline forKey:[NSString stringWithFormat:@"%@%d",KEY_POLYLINE_KHDM,indexDirectionSelected]];
+        }else if(customerType==typeKH360){
+            [polyLineDic_ setObject:polyline forKey:[NSString stringWithFormat:@"%@%d",KEY_POLYLINE_KH360,indexDirectionSelected]];
+        }
+    }
 }
 
 - (void)removeDirectionsWithTypeCustomer:(CustomerType)cusType withInxex:(NSInteger)index {
     GMSPolyline *polyline;
     if (cusType==typeKHDM) {
-        polyline =[polyLineDic_ objectForKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_KHDM,index]];
+
+        // remove Polyline dictionary KHDM
+        polyline =[polyLineDic_ objectForKey:[NSString stringWithFormat:@"%@%d",KEY_POLYLINE_KHDM,index]];
+
+        // remove GMSMarker string KHDM
+        GMSMarker *marker = [wayPointDic_ objectForKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_KHDM,index]];
+        [waypoints_ removeObject:marker];
+        [wayPointDic_ removeObjectForKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_KHDM,index]];
+
+        // remove marker string KHDM
+        NSString *markerStr = [wayPointStrDic_ objectForKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_STRING_KHDM,index]];
+        [waypointStrings_ removeObject:markerStr];
+        [wayPointStrDic_ removeObjectForKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_STRING_KHDM,index]];
+
     }else if(cusType==typeKH360){
-        polyline =[polyLineDic_ objectForKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_KH360,index]];
+        // remove Polyline dictionary kh360
+        polyline =[polyLineDic_ objectForKey:[NSString stringWithFormat:@"%@%d",KEY_POLYLINE_KH360,index]];
+
+        // remove GMSMarker string kh360
+        GMSMarker *marker = [wayPointDic_ objectForKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_KH360,index]];
+        [waypoints_ removeObject:marker];
+        [wayPointDic_ removeObjectForKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_KH360,index]];
+
+        // remove marker string kh360
+        NSString *markerStr = [wayPointStrDic_ objectForKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_STRING_KH360,index]];
+        [waypointStrings_ removeObject:markerStr];
+        [wayPointStrDic_ removeObjectForKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_STRING_KH360,index]];
     }
     if (polyline) {
         polyline.map = nil;
     }
+    UICGRoute *routesOB = [listRoutesDic objectForKey:[NSString stringWithFormat:@"%@%d",KEY_POLYLINE_KHDM,index]];
+    [listRoutes removeObject:routesOB];
+    [listRoutesDic removeObjectForKey:[NSString stringWithFormat:@"%@%d",KEY_POLYLINE_KHDM,index]];
+
 }
 
 - (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker{
@@ -467,9 +518,7 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
 #pragma mark tableview delegate
 #pragma mark - Table View
 
-
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-
     return 44.0f;
 }
 
@@ -479,15 +528,18 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+
     if (khdmSelected) {
         return  _mapModel.listCustomerKHDM.count;
     }else{
         return _mapModel.listCustomerKH360.count;
     }
-
+    return 0;
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
     static NSString *cellId = @"CustomerViewCell";
     CustomerViewCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
 
@@ -509,7 +561,6 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
     }
 
     return cell;
-
 }
 
 #pragma mark Customer Cell Delegate
@@ -526,17 +577,25 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
 
         if ([status isEqualToString:@"YES"]) {
             [listCustomerDirections addObject:khdmOB];
-            if (khdmOB.lat && khdmOB.lon) {
-                GMSMarker *marker = [[GMSMarker alloc] init];
 
+            if (khdmOB.lat && khdmOB.lon) {
+
+                // add GMSMarker KHDM
+                GMSMarker *marker = [[GMSMarker alloc] init];
                 marker.position = CLLocationCoordinate2DMake([khdmOB.lat floatValue], [khdmOB.lon floatValue]);
                 [marker setUserData:khdmOB];
-
                 [waypoints_ addObject:marker];
+                [wayPointDic_ setObject:marker forKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_KHDM,indexPath.row]];
+
+                // add marker string KHDM
                 NSString *positionString = [[NSString alloc] initWithFormat:@"%f,%f",
                                             [khdmOB.lat floatValue],[khdmOB.lon floatValue]];
                 [waypointStrings_ addObject:positionString];
+                [wayPointStrDic_ setObject:positionString forKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_STRING_KHDM,indexPath.row]];
+                // implement Routes of Directions with Google API
+
                 if([waypoints_ count]>1){
+                    [SVProgressHUD show];
                     NSString *sensor = @"false";
                     NSArray *parameters = [NSArray arrayWithObjects:sensor, waypointStrings_,
                                            nil];
@@ -554,6 +613,7 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
             }
 
         }else{
+            // remove Routes of Directions
             [self removeDirectionsWithTypeCustomer:typeKHDM withInxex:indexPath.row];
             [listCustomerDirections removeObject:khdmOB];
         }
@@ -563,19 +623,24 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
         if ([status isEqualToString:@"YES"]) {
             [listCustomerDirections addObject:kh360OB];
             if (kh360OB.lat && kh360OB.lon) {
-                GMSMarker *marker = [[GMSMarker alloc] init];
 
+                // add GMSMarker kh360
+                GMSMarker *marker = [[GMSMarker alloc] init];
                 marker.position = CLLocationCoordinate2DMake([kh360OB.lat floatValue], [kh360OB.lon floatValue]);
                 [marker setUserData:kh360OB];
-
                 [waypoints_ addObject:marker];
+                [wayPointDic_ setObject:marker forKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_KH360,indexPath.row]];
+
+                // add marker string kh360
                 NSString *positionString = [[NSString alloc] initWithFormat:@"%f,%f",
                                             [kh360OB.lat floatValue],[kh360OB.lon floatValue]];
                 [waypointStrings_ addObject:positionString];
+                [wayPointStrDic_ setObject:positionString forKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_STRING_KH360,indexPath.row]];
 
+                // implement Routes of Directions with Google API
                 if([waypoints_ count]>1){
-
-                    NSString *sensor = @"false";
+                    [SVProgressHUD show];
+                    NSString *sensor = @"true";
                     NSArray *parameters = [NSArray arrayWithObjects:sensor, waypointStrings_,
                                            nil];
                     NSArray *keys = [NSArray arrayWithObjects:@"sensor", @"waypoints", nil];
@@ -592,10 +657,10 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
                 }
             }
         }else{
+            // remove Routes of Directions
             [self removeDirectionsWithTypeCustomer:typeKH360 withInxex:indexPath.row];
             [listCustomerDirections removeObject:kh360OB];
         }
-
     }
 }
 
@@ -607,13 +672,12 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
     if (currentOffset - maximumOffset >= 40) {
         if (khdmSelected) {
             [_mapModel getNextPageCustomerKHDM];
-            [customerTbv reloadData];
             [self updateNextPageKHDMDirectionsFlag];
         }else{
             [_mapModel getNextPageCustomerKH360];
-            [customerTbv reloadData];
             [self updateNextPageKH360DirectionsFlag];
         }
+        [customerTbv reloadData];
     }
 }
 

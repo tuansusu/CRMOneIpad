@@ -528,6 +528,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+//    return 10;
     NSLog(@"numberofrows = %ld", (unsigned long)arrayData.count);
     return  arrayData.count;
 }

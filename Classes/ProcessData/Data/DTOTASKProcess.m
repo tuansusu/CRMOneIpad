@@ -166,16 +166,28 @@ DTOTASK_updatedDate, //updatedDate" //VARCHAR
 
 - (NSMutableArray *) filterCalendarWithClientLeaderId: (NSString *) strValue
 {
-    NSArray *allFields =[NSArray arrayWithObjects:DTOTASK_id, DTOTASK_code, DTOTASK_clientTaskId, DTOTASK_clientLeadId, DTOTASK_content, DTOTASK_title, DTOTASK_typeTask, DTOTASK_startDate, DTOTASK_percentComplete, DTOTASK_location, DTOTASK_leadId, DTOTASK_content,DTOTASK_taskPriority, DTOTASK_taskId, DTOTASK_endDate, DTOTASK_formal, nil];
-    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where typeTask = 0 and order by %@ desc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOTASK, DTOTASK_startDate];
+    NSArray *allFields =[NSArray arrayWithObjects:DTOTASK_id, DTOTASK_code, DTOTASK_clientTaskId, DTOTASK_clientLeadId, DTOTASK_content, DTOTASK_title, DTOTASK_typeTask, DTOTASK_startDate, DTOTASK_percentComplete, DTOTASK_location, DTOTASK_leadId, DTOTASK_content,DTOTASK_taskPriority, DTOTASK_taskId, DTOTASK_endDate,DTOTASK_taskStatus, nil];
+
+    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where typeTask = 0 and isActive = 1 and clientLeadId = ? order by %@ desc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOTASK, DTOLEAD_updatedDate];
+
     return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:[NSArray arrayWithObjects:strValue, nil]];
+
+
+//    NSArray *allFields =[NSArray arrayWithObjects:DTOTASK_id, DTOTASK_code, DTOTASK_clientTaskId, DTOTASK_clientLeadId, DTOTASK_content, DTOTASK_title, DTOTASK_typeTask, DTOTASK_startDate, DTOTASK_percentComplete, DTOTASK_location, DTOTASK_leadId, DTOTASK_content,DTOTASK_taskPriority, DTOTASK_taskId, DTOTASK_endDate, DTOTASK_formal, nil];
+//    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where typeTask = 0 and order by %@ desc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOTASK, DTOTASK_startDate];
+//    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:[NSArray arrayWithObjects:strValue, nil]];
 }
 
 - (NSMutableArray *) filterTaskWithClientLeaderId: (NSString *) strValue
 {
-    NSArray *allFields =[NSArray arrayWithObjects:DTOTASK_id, DTOTASK_code, DTOTASK_clientTaskId, DTOTASK_clientLeadId, DTOTASK_content, DTOTASK_title, DTOTASK_typeTask, DTOTASK_startDate, DTOTASK_percentComplete, DTOTASK_location, DTOTASK_leadId, DTOTASK_content,DTOTASK_taskPriority, DTOTASK_taskId, DTOTASK_endDate, nil];
-    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where typeTask = 1 order by %@ desc, %@ desc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOTASK, DTOTASK_startDate, DTOTASK_isActive];
+    NSArray *allFields =[NSArray arrayWithObjects:DTOTASK_id, DTOTASK_code, DTOTASK_clientTaskId, DTOTASK_clientLeadId, DTOTASK_content, DTOTASK_title, DTOTASK_typeTask, DTOTASK_startDate, DTOTASK_percentComplete, DTOTASK_location, DTOTASK_leadId, DTOTASK_content,DTOTASK_taskPriority, DTOTASK_taskId, DTOTASK_endDate,DTOTASK_taskStatus, nil];
+
+    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where typeTask = 1 and isActive = 1 and clientLeadId = ? order by %@ desc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOTASK, DTOLEAD_updatedDate];
+
     return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:[NSArray arrayWithObjects:strValue, nil]];
+//    NSArray *allFields =[NSArray arrayWithObjects:DTOTASK_id, DTOTASK_code, DTOTASK_clientTaskId, DTOTASK_clientLeadId, DTOTASK_content, DTOTASK_title, DTOTASK_typeTask, DTOTASK_startDate, DTOTASK_percentComplete, DTOTASK_location, DTOTASK_leadId, DTOTASK_content,DTOTASK_taskPriority, DTOTASK_taskId, DTOTASK_endDate, nil];
+//    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where typeTask = 1 order by %@ desc, %@ desc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOTASK, DTOTASK_startDate, DTOTASK_isActive];
+//    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:[NSArray arrayWithObjects:strValue, nil]];
 }
 
 @end

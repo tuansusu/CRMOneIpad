@@ -391,6 +391,7 @@
     [dicEntity setObject:strClientContactId forKey:DTOTASK_clientTaskId];
     [dicEntity setObject:@"1" forKey:DTOTASK_clientId];
     [dicEntity setObject:@"5" forKey:DTOTASK_formal];
+    [dicEntity setObject:@"0" forKey:DTOTASK_typeTask];
     
     
     

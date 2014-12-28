@@ -11,19 +11,7 @@
 #import "UICGStep.h"
 
 @interface UICGRoute : NSObject {
-	NSDictionary *dictionaryRepresentation;
-	NSInteger numerOfSteps;
-	NSArray *steps;
-	NSDictionary *distance;
-	NSDictionary *duration;
-	NSString *summaryHtml;
-	NSDictionary *startGeocode;
-	NSDictionary *endGeocode;
-    NSString *startAddress;
-    NSString *endAddress;
-	CLLocation *startLocation;
-    CLLocation *endLocation;
-	NSInteger polylineEndIndex;
+
 }
 
 @property (nonatomic, retain, readonly) NSDictionary *dictionaryRepresentation;

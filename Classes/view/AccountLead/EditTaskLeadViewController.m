@@ -172,12 +172,9 @@
     
     _txtName.text     = @"";
     _txtStatus.text   = [[statusArray objectAtIndex:0] objectForKey:DTOSYSCAT_name];
-    _startDateTime = [NSDate date];
-    _txtDateFrom.text = [_dateDF stringFromDate:_startDateTime];
-    _txtTimeFrom.text = [_timeDF stringFromDate:_startDateTime];
-    _endDateTime   = [NSDate date];
-    _txtDateTo.text   = [_dateDF stringFromDate:_endDateTime];
-    _txtTimeTo.text   = [_timeDF stringFromDate:_endDateTime];
+    selectStatusIndex = 0;
+    [self setStartDateTime:[NSDate date]];
+    [self setEndDateTime:[NSDate date]];
 }
 
 #pragma mark - edit view: load existing data into view
@@ -200,14 +197,10 @@
     }
     
     NSString *startDateStr = [_dataSend objectForKey:DTOTASK_startDate];
-    _startDateTime = [_dateTimeDF dateFromString:startDateStr];
-    _txtDateFrom.text = [_dateDF stringFromDate:_startDateTime];
-    _txtTimeFrom.text = [_timeDF stringFromDate:_startDateTime];
+    [self setStartDateTime:[_dateTimeDF dateFromString:startDateStr]];
     
     NSString *endDateStr = [_dataSend objectForKey:DTOTASK_endDate];
-    _endDateTime = [_dateTimeDF dateFromString:endDateStr];
-    _txtDateTo.text = [_dateDF stringFromDate:_endDateTime];
-    _txtTimeTo.text = [_timeDF stringFromDate:_endDateTime];
+    [self setEndDateTime:[_dateTimeDF dateFromString:endDateStr]];
 }
 
 #pragma mark - init view interface
@@ -277,7 +270,21 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-#pragma mark - Task Status dropdown
+
+- (void)setStartDateTime:(NSDate *)date
+{
+    _startDateTime = [date copy];
+    _txtDateFrom.text = [_dateDF stringFromDate:_startDateTime];
+    _txtTimeFrom.text = [_timeDF stringFromDate:_startDateTime];
+}
+
+- (void)setEndDateTime:(NSDate *)date
+{
+    _endDateTime = [date copy];
+    _txtDateTo.text = [_dateDF stringFromDate:_endDateTime];
+    _txtTimeTo.text = [_timeDF stringFromDate:_endDateTime];
+}
+#pragma mark - dropdown
 - (IBAction)actionChoiceStatus:(id)sender
 {
     [self hideKeyboard];
@@ -295,7 +302,7 @@
     [_listPopover presentPopoverFromRect:_txtStatus.frame inView:_viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
     
 }
-#pragma mark - From Date dropdown
+
 - (IBAction)actionChoiceDateFrom:(id)sender
 {
     [self hideKeyboard];
@@ -312,7 +319,7 @@
     _listPopover.popoverContentSize = CGSizeMake(320, 260);
     [_listPopover presentPopoverFromRect:_txtDateFrom.frame inView:_viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
-#pragma mark - From Time dropdown
+
 - (IBAction)actionChocieTimeFrom:(id)sender
 {
     [self hideKeyboard];
@@ -329,7 +336,7 @@
     _listPopover.popoverContentSize = CGSizeMake(320, 260);
     [_listPopover presentPopoverFromRect:_txtTimeFrom.frame inView:_viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
-#pragma mark - To Date dropdown
+
 - (IBAction)actionChoiceDateTo:(id)sender
 {
     [self hideKeyboard];
@@ -346,7 +353,7 @@
     _listPopover.popoverContentSize = CGSizeMake(320, 260);
     [_listPopover presentPopoverFromRect:_txtDateTo.frame inView:_viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
-#pragma mark - To Time dropdown
+
 - (IBAction)actionChoiceTimeTo:(id)sender
 {
     [self hideKeyboard];
@@ -364,7 +371,7 @@
     [_listPopover presentPopoverFromRect:_txtTimeTo.frame inView:_viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
-
+#pragma mark - Delegate calls
 -(void) selectDatePickerWithDate:(NSDate *)date
 {
     NSLog(@"selected date = %@", date);
@@ -373,17 +380,13 @@
         case TAG_SELECT_DATE_FROM:
         case TAG_SELECT_TIME_FROM:
         {
-            _startDateTime = [date copy];
-            _txtDateFrom.text = [_dateDF stringFromDate:_startDateTime];
-            _txtTimeFrom.text = [_timeDF stringFromDate:_startDateTime];
+            [self setStartDateTime:date];
         }
             break;
         case TAG_SELECT_DATE_TO:
         case TAG_SELECT_TIME_TO:
         {
-            _endDateTime = [date copy];
-            _txtDateTo.text = [_dateDF stringFromDate:_endDateTime];
-            _txtTimeTo.text = [_timeDF stringFromDate:_endDateTime];
+            [self setEndDateTime:date];
         }
             break;
         default:
@@ -397,53 +400,85 @@
         [_listPopover dismissPopoverAnimated:YES];
 }
 
--(void) actionSave:(id)sender{
+#pragma mark - Save
+- (void)actionSave:(id)sender
+{
     //check valid to save
+    if (![self validateBeforeSave])
+    {
+        return;
+    }
     
     //neu qua duoc check thi tien hanh luu du lieu
     NSMutableDictionary *dicEntity = [NSMutableDictionary new];
     
     [dicEntity setObject:[StringUtil trimString:_txtName.text] forKey:DTOTASK_title];
     
-    if (selectStatusIndex>=0) {
+    if (selectStatusIndex >= 0)
+    {
         [dicEntity setObject:[[statusArray objectAtIndex:selectStatusIndex] objectForKey:DTOSYSCAT_sysCatId] forKey:DTOTASK_taskStatus];
     }
     
     [dicEntity setObject:[DateUtil formatDate:_startDateTime :FORMAT_DATE_AND_TIME] forKey:DTOTASK_startDate];
-    [dicEntity setObject:[DateUtil formatDate:_endDateTime :FORMAT_DATE_AND_TIME] forKey:DTOTASK_endDate];
+    [dicEntity setObject:[DateUtil formatDate:_endDateTime   :FORMAT_DATE_AND_TIME] forKey:DTOTASK_endDate];
     
-   [dicEntity setObject:[self.dataRoot objectForKey:DTOLEAD_clientLeadId] forKey:DTOTASK_clientLeadId];
+    //TODO: check
+    [dicEntity setObject:[self.dataRoot objectForKey:DTOLEAD_clientLeadId] forKey:DTOTASK_clientLeadId];
     [dicEntity setObject:@"1" forKey:DTOTASK_isActive];
-    [dicEntity setObject:[DateUtil formatDate:[NSDate new] :@"yyyy-MM-dd HH:mm:ss.S"] forKey:DTOTASK_updatedDate];
+    [dicEntity setObject:[DateUtil formatDate:[NSDate new] :FORMAT_DATE_AND_TIME] forKey:DTOTASK_updatedDate];
     NSString *strClientContactId = IntToStr(([dtoProcess getClientId]));
     [dicEntity setObject:strClientContactId forKey:DTOTASK_clientTaskId];
     [dicEntity setObject:@"1" forKey:DTOTASK_clientId];
     [dicEntity setObject:@"1" forKey:DTOTASK_typeTask];
     
     
-    if (self.dataSend) {
-        
+    if (self.dataSend)
+    {
         [dicEntity setObject:[_dataSend objectForKey:DTOTASK_id] forKey:DTOTASK_id];
     }
+    
     succsess = [dtoProcess insertToDBWithEntity:dicEntity];
     
-    
-    
-    if (succsess) {
+    if (succsess)
+    {
         //Thong bao cap nhat thanh cong va thoat
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Cập nhật thành công, tiếp tục nhập?" delegate:self cancelButtonTitle:@"Không" otherButtonTitles:@"Có", nil];
         alert.tag = 5;
         [alert show];
-        
-    }else{
+    }
+    else
+    {
         //khong bao nhap loi - lien he quan tri
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Sảy ra lỗi, vui lòng thử lại hoặc gửi log đến quản trị" delegate:self cancelButtonTitle:@"Thoát" otherButtonTitles:nil];
         alert.tag = 6;
         [alert show];
     }
-    
 }
 
+- (BOOL)validateBeforeSave
+{
+    /* returns TRUE if all fields validate OK */
+    if (_txtName.text == nil || _txtName.text.length == 0 || [StringUtil trimString:_txtName.text].length == 0)
+    {
+        [[[UIAlertView alloc] initWithTitle:@"Lỗi" message:@"Vui lòng nhập tiêu đề cho Công việc" delegate:nil cancelButtonTitle:@"Đóng" otherButtonTitles: nil] show];
+        return FALSE;
+    }
+    else if (   [_endDateTime compare:_startDateTime] == NSOrderedAscending
+             || [_endDateTime compare:_startDateTime] == NSOrderedSame)
+    {
+        [[[UIAlertView alloc] initWithTitle:@"Lỗi" message:@"Vui lòng nhập thời điểm kết thúc sau thời điểm bắt đầu" delegate:nil cancelButtonTitle:@"Đóng" otherButtonTitles: nil] show];
+        return FALSE;
+    }
+    else if (selectStatusIndex < 0)
+    {
+        [[[UIAlertView alloc] initWithTitle:@"Lỗi" message:@"Vui lòng nhập trạng thái của Công việc" delegate:nil cancelButtonTitle:@"Đóng" otherButtonTitles: nil] show];
+        return FALSE;
+    }
+    
+    return TRUE;
+}
+
+#pragma mark - Delegate calls
 - (IBAction)homeBack:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];

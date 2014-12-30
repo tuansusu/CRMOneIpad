@@ -69,8 +69,8 @@
             htmlInstructions = [[[dictionary objectForKey:@"html_instructions"]description] stringByStrippingHTML];
         }
 		
-        if ([durationDic valueForKey:@"maneuver"]) {
-            maneuver = [durationDic valueForKey:@"maneuver"];
+        if ([dictionary valueForKey:@"maneuver"]) {
+            maneuver = [dictionary valueForKey:@"maneuver"];
         }
 	}
 	return self;

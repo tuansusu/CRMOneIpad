@@ -7,6 +7,7 @@
 //
 
 #import "DirectionsViewCell.h"
+#import "Globals.h"
 
 @implementation DirectionsViewCell
 
@@ -31,7 +32,13 @@
 }
 
 -(void)loadDataCellWithStepOB:(UICGStep*)stepOB{
+    NSMutableDictionary *maneuverDic = [[NSUserDefaults standardUserDefaults] objectForKey:MANEUVER_KEY];
+    
     [lblDescription setText:stepOB.htmlInstructions];
+    if (stepOB.maneuver) {
+        [iconDerections setImage:[UIImage imageNamed:[maneuverDic valueForKey:stepOB.maneuver]] forState:UIControlStateNormal];
+    }
+
 }
 
 @end

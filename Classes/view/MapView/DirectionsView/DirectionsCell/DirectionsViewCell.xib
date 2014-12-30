@@ -8,34 +8,38 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="DirectionsViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="300" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Describes" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JQ9-1b-Jde">
-                        <rect key="frame" x="50" y="0.0" width="242" height="50"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JQ9-1b-Jde">
+                        <rect key="frame" x="50" y="0.0" width="250" height="60"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <string key="text">69 Hàm Tử Quan, Phúc Tân, Hoàn Kiếm, Hà Nội, Việt Nam69 Hàm Tử Quan, Phúc Tân, Hoàn Kiếm, Hà Nội, Việt Nam69 Hàm Tử Quan, Phúc Tân, Hoàn Kiếm, Hà Nội, Việt Nam</string>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconArrowUp.png" id="Q9x-8C-3qC">
-                        <rect key="frame" x="5" y="5" width="40" height="40"/>
+                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="I9o-YX-tS8">
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="59.5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
+                        <state key="normal" image="iconMarkerLocation.png">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="iconDerections" destination="Q9x-8C-3qC" id="mzi-sk-c5H"/>
+                <outlet property="iconDerections" destination="I9o-YX-tS8" id="vQW-8S-McA"/>
                 <outlet property="lblDescription" destination="JQ9-1b-Jde" id="6va-LJ-wuD"/>
             </connections>
             <point key="canvasLocation" x="-109" y="329"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="iconArrowUp.png" width="40" height="40"/>
+        <image name="iconMarkerLocation.png" width="40" height="40"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

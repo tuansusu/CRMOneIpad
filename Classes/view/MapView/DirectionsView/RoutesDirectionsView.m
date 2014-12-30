@@ -21,13 +21,17 @@
  // Drawing code
  }
  */
+
+
+
 -(void)loadDataTableWithRoutesList:(NSMutableArray*)routesList{
     _listRoutes = routesList;
     [routesDirectionsTbv reloadData];
+
 }
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 50.0f;
+    return 60.0f;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

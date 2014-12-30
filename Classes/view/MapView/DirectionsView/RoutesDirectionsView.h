@@ -12,6 +12,8 @@
 {
     IBOutlet UITableView *routesDirectionsTbv;
     NSMutableArray *_listRoutes;
+
+    
 }
 
 -(void)loadDataTableWithRoutesList:(NSMutableArray*)routesList;

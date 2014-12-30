@@ -11,7 +11,8 @@
 @interface DirectionsViewCell : UITableViewCell
 {
     IBOutlet UILabel *lblDescription;
-    IBOutlet UIImageView *iconDerections;
+    IBOutlet UIButton *iconDerections;
+    
 }
 
 -(void)loadDataCellWithStepOB:(UICGStep*)stepOB;

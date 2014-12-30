@@ -16,6 +16,7 @@
 {
     DTOACCOUNTLEADProcess *dtoLeadProcess;
     DTOACCOUNTProcess *dtoProcess;
+    NSMutableDictionary *maneuverDic;
 }
 
 @property (nonatomic,readonly) NSMutableArray *listCustomerKHDM;

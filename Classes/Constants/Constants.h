@@ -230,6 +230,7 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 
 #define FORMAT_TIME @"HH:mm"
 #define FORMAT_DATE @"dd/MM/yyyy"
+#define FORMAT_DATE_AND_TIME @"yyyy-MM-dd HH:mm:ss.S"
 #define PER_LOAD  @"500"
 
 #define SCHEDULE_INTERVAL_NORMAL 400  //300 GIAY

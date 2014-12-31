@@ -431,8 +431,6 @@
 		849078871A1E461D009D5D5F /* DetailPersonLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849078851A1E461D009D5D5F /* DetailPersonLeadViewController.xib */; };
 		8490788B1A1E463C009D5D5F /* DetailBussinessLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849078891A1E463C009D5D5F /* DetailBussinessLeadViewController.m */; };
 		8490788C1A1E463C009D5D5F /* DetailBussinessLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8490788A1A1E463C009D5D5F /* DetailBussinessLeadViewController.xib */; };
-		849078901A1E476D009D5D5F /* DetailLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8490788E1A1E476D009D5D5F /* DetailLeadViewController.m */; };
-		849078911A1E476D009D5D5F /* DetailLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8490788F1A1E476D009D5D5F /* DetailLeadViewController.xib */; };
 		849078931A1E4D5B009D5D5F /* icon_Line-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 849078921A1E4D5B009D5D5F /* icon_Line-1.png */; };
 		849125CA1A1CDAE400949FC8 /* icon_save-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 849125C91A1CDAE400949FC8 /* icon_save-1.png */; };
 		849125CD1A1CE20600949FC8 /* DTOINVENTORYProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 849125CC1A1CE20600949FC8 /* DTOINVENTORYProcess.m */; };
@@ -639,6 +637,15 @@
 		8EC4B90D1A505A7D0078BF13 /* DirectionsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC4B9091A505A7D0078BF13 /* DirectionsViewCell.m */; };
 		8EC4B90E1A505A7D0078BF13 /* DirectionsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EC4B90A1A505A7D0078BF13 /* DirectionsViewCell.xib */; };
 		8EC4B9161A505B0E0078BF13 /* RoutesDirectionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC4B9151A505B0E0078BF13 /* RoutesDirectionsView.m */; };
+		8ED38D741A5447C500D95A3B /* DetailLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED38D6F1A5447C500D95A3B /* DetailLeadViewController.m */; };
+		8ED38D751A5447C500D95A3B /* DetailLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ED38D701A5447C500D95A3B /* DetailLeadViewController.xib */; };
+		8ED38D7A1A54480100D95A3B /* ProductsLeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED38D791A54480100D95A3B /* ProductsLeadView.m */; };
+		8ED38D7D1A544D6400D95A3B /* DTOProductLeadTypeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED38D7C1A544D6400D95A3B /* DTOProductLeadTypeObject.m */; };
+		8ED38D801A544F7200D95A3B /* DTOPRODUCTTYPEProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED38D7F1A544F7200D95A3B /* DTOPRODUCTTYPEProcess.m */; };
+		8ED38D841A54528200D95A3B /* ProductLeadCellHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED38D831A54528200D95A3B /* ProductLeadCellHeader.m */; };
+		8ED38D861A54528E00D95A3B /* ProductLeadCellHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ED38D851A54528E00D95A3B /* ProductLeadCellHeader.xib */; };
+		8ED38D8A1A54558100D95A3B /* ProductLeadViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED38D881A54558100D95A3B /* ProductLeadViewCell.m */; };
+		8ED38D8B1A54558100D95A3B /* ProductLeadViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ED38D891A54558100D95A3B /* ProductLeadViewCell.xib */; };
 		8ED402711A41CF1900CCBE6D /* iconDirection.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ED4026F1A41CF1900CCBE6D /* iconDirection.png */; };
 		8ED402721A41CF1900CCBE6D /* iconDirection@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ED402701A41CF1900CCBE6D /* iconDirection@2x.png */; };
 		8ED402791A41D2DC00CCBE6D /* iconExpand.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ED402771A41D2DC00CCBE6D /* iconExpand.png */; };
@@ -1467,9 +1474,6 @@
 		849078881A1E463C009D5D5F /* DetailBussinessLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailBussinessLeadViewController.h; sourceTree = "<group>"; };
 		849078891A1E463C009D5D5F /* DetailBussinessLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailBussinessLeadViewController.m; sourceTree = "<group>"; };
 		8490788A1A1E463C009D5D5F /* DetailBussinessLeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailBussinessLeadViewController.xib; sourceTree = "<group>"; };
-		8490788D1A1E476D009D5D5F /* DetailLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailLeadViewController.h; sourceTree = "<group>"; };
-		8490788E1A1E476D009D5D5F /* DetailLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailLeadViewController.m; sourceTree = "<group>"; };
-		8490788F1A1E476D009D5D5F /* DetailLeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailLeadViewController.xib; sourceTree = "<group>"; };
 		849078921A1E4D5B009D5D5F /* icon_Line-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_Line-1.png"; path = "VofficeImage/Option1/icon_Line-1.png"; sourceTree = "<group>"; };
 		849125C91A1CDAE400949FC8 /* icon_save-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_save-1.png"; path = "VofficeImage/Option1/icon_save-1.png"; sourceTree = "<group>"; };
 		849125CB1A1CE20600949FC8 /* DTOINVENTORYProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOINVENTORYProcess.h; sourceTree = "<group>"; };
@@ -1767,6 +1771,21 @@
 		8EC4B90A1A505A7D0078BF13 /* DirectionsViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DirectionsViewCell.xib; sourceTree = "<group>"; };
 		8EC4B9141A505B0E0078BF13 /* RoutesDirectionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoutesDirectionsView.h; sourceTree = "<group>"; };
 		8EC4B9151A505B0E0078BF13 /* RoutesDirectionsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoutesDirectionsView.m; sourceTree = "<group>"; };
+		8ED38D6E1A5447C500D95A3B /* DetailLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailLeadViewController.h; sourceTree = "<group>"; };
+		8ED38D6F1A5447C500D95A3B /* DetailLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailLeadViewController.m; sourceTree = "<group>"; };
+		8ED38D701A5447C500D95A3B /* DetailLeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailLeadViewController.xib; sourceTree = "<group>"; };
+		8ED38D781A54480100D95A3B /* ProductsLeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductsLeadView.h; sourceTree = "<group>"; };
+		8ED38D791A54480100D95A3B /* ProductsLeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductsLeadView.m; sourceTree = "<group>"; };
+		8ED38D7B1A544D6400D95A3B /* DTOProductLeadTypeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOProductLeadTypeObject.h; sourceTree = "<group>"; };
+		8ED38D7C1A544D6400D95A3B /* DTOProductLeadTypeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOProductLeadTypeObject.m; sourceTree = "<group>"; };
+		8ED38D7E1A544F7200D95A3B /* DTOPRODUCTTYPEProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOPRODUCTTYPEProcess.h; sourceTree = "<group>"; };
+		8ED38D7F1A544F7200D95A3B /* DTOPRODUCTTYPEProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOPRODUCTTYPEProcess.m; sourceTree = "<group>"; };
+		8ED38D821A54528200D95A3B /* ProductLeadCellHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductLeadCellHeader.h; sourceTree = "<group>"; };
+		8ED38D831A54528200D95A3B /* ProductLeadCellHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductLeadCellHeader.m; sourceTree = "<group>"; };
+		8ED38D851A54528E00D95A3B /* ProductLeadCellHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductLeadCellHeader.xib; sourceTree = "<group>"; };
+		8ED38D871A54558100D95A3B /* ProductLeadViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductLeadViewCell.h; sourceTree = "<group>"; };
+		8ED38D881A54558100D95A3B /* ProductLeadViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductLeadViewCell.m; sourceTree = "<group>"; };
+		8ED38D891A54558100D95A3B /* ProductLeadViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductLeadViewCell.xib; sourceTree = "<group>"; };
 		8ED4026F1A41CF1900CCBE6D /* iconDirection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconDirection.png; sourceTree = "<group>"; };
 		8ED402701A41CF1900CCBE6D /* iconDirection@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconDirection@2x.png"; sourceTree = "<group>"; };
 		8ED402771A41D2DC00CCBE6D /* iconExpand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconExpand.png; sourceTree = "<group>"; };
@@ -2083,6 +2102,8 @@
 				06FE2E1E1A4566DD004A1D16 /* DTOAcountLeadProcessObject.m */,
 				8E87C9301A45B29700CB0918 /* DTOAccountProcessObject.h */,
 				8E87C9311A45B29700CB0918 /* DTOAccountProcessObject.m */,
+				8ED38D7B1A544D6400D95A3B /* DTOProductLeadTypeObject.h */,
+				8ED38D7C1A544D6400D95A3B /* DTOProductLeadTypeObject.m */,
 			);
 			name = Objects;
 			path = ProcessData/Objects;
@@ -2967,6 +2988,8 @@
 				76961E4E1A3B2D69008B5CE7 /* DTOATTACHMENTProcess.m */,
 				769CB8121A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.h */,
 				769CB8131A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.m */,
+				8ED38D7E1A544F7200D95A3B /* DTOPRODUCTTYPEProcess.h */,
+				8ED38D7F1A544F7200D95A3B /* DTOPRODUCTTYPEProcess.m */,
 			);
 			name = Data;
 			path = ProcessData/Data;
@@ -3007,6 +3030,7 @@
 		76C962951A16DBA500029978 /* AccountLead */ = {
 			isa = PBXGroup;
 			children = (
+				8ED38D6D1A5447C500D95A3B /* DetailsLead */,
 				159435601A4609D100E5159B /* Add+Edit */,
 				8434BEFA1A2F485700C29815 /* DetailContactLeadViewController.h */,
 				8434BEFB1A2F485700C29815 /* DetailContactLeadViewController.m */,
@@ -3030,9 +3054,6 @@
 				849078881A1E463C009D5D5F /* DetailBussinessLeadViewController.h */,
 				849078891A1E463C009D5D5F /* DetailBussinessLeadViewController.m */,
 				8490788A1A1E463C009D5D5F /* DetailBussinessLeadViewController.xib */,
-				8490788D1A1E476D009D5D5F /* DetailLeadViewController.h */,
-				8490788E1A1E476D009D5D5F /* DetailLeadViewController.m */,
-				8490788F1A1E476D009D5D5F /* DetailLeadViewController.xib */,
 				84912AC11A1F6A3300E99FF7 /* DetailCustomPersonViewController.h */,
 				84912AC21A1F6A3300E99FF7 /* DetailCustomPersonViewController.m */,
 				84912AC31A1F6A3300E99FF7 /* DetailCustomPersonViewController.xib */,
@@ -3862,6 +3883,40 @@
 			path = DirectionsCell;
 			sourceTree = "<group>";
 		};
+		8ED38D6D1A5447C500D95A3B /* DetailsLead */ = {
+			isa = PBXGroup;
+			children = (
+				8ED38D771A54480100D95A3B /* ProductsLead */,
+				8ED38D6E1A5447C500D95A3B /* DetailLeadViewController.h */,
+				8ED38D6F1A5447C500D95A3B /* DetailLeadViewController.m */,
+				8ED38D701A5447C500D95A3B /* DetailLeadViewController.xib */,
+			);
+			path = DetailsLead;
+			sourceTree = "<group>";
+		};
+		8ED38D771A54480100D95A3B /* ProductsLead */ = {
+			isa = PBXGroup;
+			children = (
+				8ED38D811A54525B00D95A3B /* ProductsLeadCell */,
+				8ED38D781A54480100D95A3B /* ProductsLeadView.h */,
+				8ED38D791A54480100D95A3B /* ProductsLeadView.m */,
+			);
+			path = ProductsLead;
+			sourceTree = "<group>";
+		};
+		8ED38D811A54525B00D95A3B /* ProductsLeadCell */ = {
+			isa = PBXGroup;
+			children = (
+				8ED38D821A54528200D95A3B /* ProductLeadCellHeader.h */,
+				8ED38D831A54528200D95A3B /* ProductLeadCellHeader.m */,
+				8ED38D851A54528E00D95A3B /* ProductLeadCellHeader.xib */,
+				8ED38D871A54558100D95A3B /* ProductLeadViewCell.h */,
+				8ED38D881A54558100D95A3B /* ProductLeadViewCell.m */,
+				8ED38D891A54558100D95A3B /* ProductLeadViewCell.xib */,
+			);
+			path = ProductsLeadCell;
+			sourceTree = "<group>";
+		};
 		8ED402891A41E17400CCBE6D /* CustomerCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -4325,6 +4380,7 @@
 				8E7554541A52EFC8001940FB /* iconKeepRight.png in Resources */,
 				8ED402821A41DEC000CCBE6D /* iconBranchArrow@2x.png in Resources */,
 				8497BFEF1A295A2300A5ED3C /* step8@2x.png in Resources */,
+				8ED38D8B1A54558100D95A3B /* ProductLeadViewCell.xib in Resources */,
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				92C68E551519D4F100981728 /* License.md in Resources */,
 				2D0AD497173219510048A239 /* Default-568h@2x.png in Resources */,
@@ -4538,6 +4594,7 @@
 				8497BFD51A295A2300A5ED3C /* h1.png in Resources */,
 				B315788E188D5E5200C0ED01 /* ic-work-order-person-2-1.png in Resources */,
 				8E7554651A52EFC8001940FB /* iconTurnRight@2x.png in Resources */,
+				8ED38D861A54528E00D95A3B /* ProductLeadCellHeader.xib in Resources */,
 				8ED402791A41D2DC00CCBE6D /* iconExpand.png in Resources */,
 				8E7554581A52EFC8001940FB /* iconRampLeft.png in Resources */,
 				B3A066D717D1AB8200BA6487 /* background_1.png in Resources */,
@@ -4577,6 +4634,7 @@
 				8ED402711A41CF1900CCBE6D /* iconDirection.png in Resources */,
 				B3A066E817D1AB8200BA6487 /* icon_right.png in Resources */,
 				B3A066E917D1AB8200BA6487 /* icon_search.png in Resources */,
+				8ED38D751A5447C500D95A3B /* DetailLeadViewController.xib in Resources */,
 				B3157898188D5E5200C0ED01 /* extra-btn-2-1.png in Resources */,
 				8497BFC71A295A2300A5ED3C /* glow-marker@2x.png in Resources */,
 				769C1A1019FFF7BC00F015A5 /* OfficeOneStudy-Info.plist in Resources */,
@@ -4629,7 +4687,6 @@
 				B316D68E188E927A009B751B /* bg-doc.png in Resources */,
 				8497BFB91A295A2300A5ED3C /* argentina-large.png in Resources */,
 				2DE6B97C17FD242C00DC0D4E /* icon_radio-button_on.png in Resources */,
-				849078911A1E476D009D5D5F /* DetailLeadViewController.xib in Resources */,
 				76601A52194BE90F001D4C01 /* Reader-Thumbs@2x.png in Resources */,
 				2DA7D92E180955AA00AE5E6B /* note_paper.jpg in Resources */,
 				76601A54194BE90F001D4C01 /* Right-1.png in Resources */,
@@ -4781,6 +4838,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8ED38D7D1A544D6400D95A3B /* DTOProductLeadTypeObject.m in Sources */,
 				76601A36194BE90F001D4C01 /* ReaderThumbsView.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				769C0A261A35E4220008CC4B /* DTONOTEProcess.m in Sources */,
@@ -4818,7 +4876,6 @@
 				7633080F1A048962000E190B /* VTCombobox.m in Sources */,
 				843BF0B91A03EC3200EA1D8A /* ListOpportunityViewController.m in Sources */,
 				769C1A1C1A00027900F015A5 /* Reachability.m in Sources */,
-				849078901A1E476D009D5D5F /* DetailLeadViewController.m in Sources */,
 				92C68E681519D4F100981728 /* AppService.m in Sources */,
 				8496FB2B1A2DEF3800F4A641 /* DTOACCCONTACTProcess.m in Sources */,
 				762048761A0D246600AAA917 /* CompetitorsViewController.m in Sources */,
@@ -4857,6 +4914,7 @@
 				DDBC470F1715412D00CCFB94 /* OAConsumer.m in Sources */,
 				DDBC47101715412D00CCFB94 /* OADataFetcher.m in Sources */,
 				76977D551A0284DE0029F297 /* TableTestProcess.m in Sources */,
+				8ED38D7A1A54480100D95A3B /* ProductsLeadView.m in Sources */,
 				76C964611A17731900029978 /* DefaultPopOverForPieChart.m in Sources */,
 				06FE2E2A1A45816D004A1D16 /* MapsModel.m in Sources */,
 				8EC4B90B1A505A7D0078BF13 /* DirectionsHeaderView.m in Sources */,
@@ -4882,6 +4940,7 @@
 				8497BFF71A295A2300A5ED3C /* FitBoundsViewController.m in Sources */,
 				76961E551A3B3170008B5CE7 /* SelectPhotoViewController.m in Sources */,
 				DDBC47471715459C00CCFB94 /* Base64Transcoder.c in Sources */,
+				8ED38D841A54528200D95A3B /* ProductLeadCellHeader.m in Sources */,
 				76C964431A17731900029978 /* PageControl.m in Sources */,
 				2D210679187AA1BB0022681B /* WeekPickerViewController.m in Sources */,
 				76601A3B194BE90F001D4C01 /* UIXToolbarView.m in Sources */,
@@ -4918,6 +4977,7 @@
 				B315784F188912D800C0ED01 /* NSString+extend.m in Sources */,
 				76C964631A17731900029978 /* InfoBoxStyle1.m in Sources */,
 				2D47E80F1761CACC00F291D6 /* Base64.m in Sources */,
+				8ED38D741A5447C500D95A3B /* DetailLeadViewController.m in Sources */,
 				7617F07F193DE30A00BB7073 /* GlobalVars.m in Sources */,
 				76601A2B194BE90F001D4C01 /* ReaderContentTile.m in Sources */,
 				2D9FCB7C1795483900950763 /* UITableView+HCFoldTableView.m in Sources */,
@@ -4980,6 +5040,7 @@
 				76C9643C1A17731900029978 /* AnchorInfo.m in Sources */,
 				76C963B41A17403600029978 /* MainBISViewController.m in Sources */,
 				76601A2E194BE90F001D4C01 /* ReaderDocumentOutline.m in Sources */,
+				8ED38D801A544F7200D95A3B /* DTOPRODUCTTYPEProcess.m in Sources */,
 				2D2D216217A6946800A87364 /* InfSourceColorView.m in Sources */,
 				76F7DFAE1A3B44620003D720 /* EditNoteLeadViewController.m in Sources */,
 				8497BFF11A295A2300A5ED3C /* AnimatedCurrentLocationViewController.m in Sources */,
@@ -5034,6 +5095,7 @@
 				8497C0091A295A2300A5ED3C /* PolylinesViewController.m in Sources */,
 				8497BFFC1A295A2300A5ED3C /* GroundOverlayViewController.m in Sources */,
 				B3F727B817B512E40024DC0D /* FileManagerUtil.m in Sources */,
+				8ED38D8A1A54558100D95A3B /* ProductLeadViewCell.m in Sources */,
 				76601A32194BE90F001D4C01 /* ReaderThumbFetch.m in Sources */,
 				76C9644E1A17731900029978 /* DoughtNutFragmentTitle.m in Sources */,
 				B3332AF317B8CF330011CD85 /* EnumClass.m in Sources */,

@@ -12,6 +12,28 @@
 
 @implementation NSDictionary (QS)
 
+-(DTOProductLeadTypeObject*)dtoProductLeadTypeObject{
+    DTOProductLeadTypeObject *produtTypeLeadOB = [[DTOProductLeadTypeObject alloc] init];
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTTYPE_productTypeId]]) {
+        produtTypeLeadOB.productTypeId = [self objectForKey:DTOPRODUCTTYPE_productTypeId];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTTYPE_name]]) {
+        produtTypeLeadOB.name = [self objectForKey:DTOPRODUCTTYPE_name];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTTYPE_code]]) {
+        produtTypeLeadOB.code = [self objectForKey:DTOPRODUCTTYPE_code];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTTYPE_isActive]]) {
+        produtTypeLeadOB.isActive = [self objectForKey:DTOPRODUCTTYPE_isActive];
+    }
+    return produtTypeLeadOB;
+}
+
+
 -(DTOAcountLeadProcessObject*)dtoAcountLeadProcessOb{
     DTOAcountLeadProcessObject *accountLeadOB = [[DTOAcountLeadProcessObject alloc] init];
     

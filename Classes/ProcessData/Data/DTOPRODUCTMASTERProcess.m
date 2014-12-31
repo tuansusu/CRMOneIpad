@@ -19,4 +19,14 @@
     
     return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:nil];
 }
+
+-(NSMutableArray*) filterProductWithLeadId:(NSString*)leadId WithTypeId:(NSString*)typeId{
+    NSArray *allFields =[NSArray arrayWithObjects:DTOPRODUCTMASTER_name, DTOPRODUCTMASTER_code, nil];
+
+    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where productTypeId=%@ and ",[allFields componentsJoinedByString:@"," ] ,TABLENAME_DTOPRODUCTMASTER ];
+
+    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:nil];
+}
+
+
 @end

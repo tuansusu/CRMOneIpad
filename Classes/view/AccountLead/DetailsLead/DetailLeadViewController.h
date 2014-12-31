@@ -32,8 +32,8 @@ enum TypeLeaderView{
     typeLeaderView_Note, //Ghi chú
     typeLeaderView_Calendar, // Lịch
     typeLeaderView_Task, // Tác vụ
-    typeLeaderView_Opportunity   //Cơ hội
-    
+    typeLeaderView_Opportunity,   //Cơ hội
+    typeLeaderView_ProductsLead // sản phẩm dịch vụ
 };
 
 @interface DetailLeadViewController : BaseViewController<SelectIndexDelegate,UIAlertViewDelegate>

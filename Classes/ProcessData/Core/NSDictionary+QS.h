@@ -10,10 +10,14 @@
 
 #import "DTOAcountLeadProcessObject.h"
 #import "DTOAccountProcessObject.h"
+#import "DTOProductLeadTypeObject.h"
 
 @interface NSDictionary (QS)
 
+-(DTOProductLeadTypeObject*)dtoProductLeadTypeObject;
+
 -(DTOAcountLeadProcessObject*)dtoAcountLeadProcessOb;
 -(DTOAccountProcessObject*)dtoAcountProcessOb;
+
 
 @end

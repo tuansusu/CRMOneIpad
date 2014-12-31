@@ -16,6 +16,7 @@
 #import "TaskCalendarCell.h"
 #import "TaskCalTLineCell.h"
 #import "TaskActionCell.h"
+#import "ProductsLeadView.h"
 
 ////remove
 #import "StringUtil.h"
@@ -41,6 +42,7 @@
 #define DELETE_TASK 44
 #define DELETE_COHOI 55
 #define DELETE_LEAD 66
+#define WIDTH_HEADER_EXPAND_INFO 930
 
 static NSString* const TaskCalendarNormalCellId   = @"TaskCalendarCellId";
 static NSString* const TaskCalendarTimelineCellId = @"TaskCalTLineCellId";
@@ -86,6 +88,11 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     //calendar
     BOOL calendarIsTimeline;
+
+    IBOutlet UIScrollView *scrollViewHeaderExpandInfo;
+
+    IBOutlet  ProductsLeadView* viewProductsLead;
+
 }
 @end
 
@@ -125,6 +132,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     [self updateInterFaceWithOption:smgSelect];
     [self initData];
     [self actionExpandInfo:self.btnExpandInfo];
+    [scrollViewHeaderExpandInfo setContentSize:CGSizeMake(WIDTH_HEADER_EXPAND_INFO, scrollViewHeaderExpandInfo.frame.size.height)];
 }
 
 -(void) viewWillAppear:(BOOL)animated{
@@ -324,6 +332,14 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             NSLog(@"task count = %ld", (unsigned long)arrayData.count);
         }
             break;
+        case typeLeaderView_ProductsLead:
+        {
+            self.viewBodyExpandInfo.hidden = NO;
+            self.tbData.hidden  = YES;
+            [viewProductsLead setHidden:NO];
+            [viewProductsLead initDataWithLeaderId:[[dicData objectForKey:DTOLEAD_clientLeadId] description]];
+        }
+            break;
         default:
             break;
     }
@@ -484,6 +500,11 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     [self displayNormalButtonState:sender];
 }
 
+- (IBAction)btnProductsTaped:(UIButton *)sender {
+    [self loadDataWithTypeAction:typeLeaderView_ProductsLead];
+}
+
+
 #pragma mark display color button
 -(void) displayNormalButtonState : (UIButton*) btnSelect {
     
@@ -501,7 +522,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
 
 
-#pragma mark - Table View
+#pragma mark - Table View Datasource
 
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

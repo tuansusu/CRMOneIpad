@@ -10,8 +10,9 @@
 
 @interface ProductLeadCellHeader : UIView{
     IBOutlet UILabel *lblTitle;
+    IBOutlet UILabel *lblTotalBalanceQD;
 }
 
--(void)loadViewWithTittle:(NSString*)title;
+-(void)loadViewWithTittle:(NSString*)title WithTotalBalanceQD:(double)totalBalanceQD;
 
 @end

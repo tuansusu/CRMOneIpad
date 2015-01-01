@@ -12,6 +12,6 @@
 
 -(NSMutableArray*) filter ;
 
--(NSMutableArray*) filterProductWithLeadId:(NSString*)leadId WithTypeId:(NSString*)typeId;
+-(NSMutableArray*) filterProductWithProductCode:(NSString*)productCode;
 
 @end

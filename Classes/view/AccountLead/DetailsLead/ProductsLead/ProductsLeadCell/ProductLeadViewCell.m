@@ -7,6 +7,8 @@
 //
 
 #import "ProductLeadViewCell.h"
+#import "DTOProductMasterObject.h"
+#import "NSDictionary+QS.h"
 
 @implementation ProductLeadViewCell
 
@@ -29,6 +31,36 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+-(void)loadDataCellWithProductDetail:(DTOProductDetailObject*)productDetailOB{
+
+    [lblProductCode setText:productDetailOB.productCode];
+
+    dtoProductMaster = [DTOPRODUCTMASTERProcess new];
+    NSMutableArray *resultArr = [dtoProductMaster filterProductWithProductCode:productDetailOB.productCode];
+    if (resultArr.count>0) {
+        NSDictionary *productMasterDic =[resultArr objectAtIndex:0];
+        DTOProductMasterObject *productMasterOB = [productMasterDic dtoProductMasterObject];
+        [lblProductName setText:productMasterOB.name];
+    }
+
+
+
+    [lblContractNumber setText:productDetailOB.contractNumber];
+    [lblOpenDate setText:productDetailOB.openDate];
+
+
+    NSNumber *number = [NSNumber numberWithFloat:[productDetailOB.balanceQD doubleValue]];
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    NSString *balanceQDStr = [formatter stringFromNumber:number];
+
+    [lblBalanceQD setText:balanceQDStr];
+    [lblCurrency setText:productDetailOB.currency];
+    [lblExpiredDate setText:productDetailOB.expiredDate];
+    [lblBussinessDate setText:productDetailOB.bussinessDate];
+
 }
 
 @end

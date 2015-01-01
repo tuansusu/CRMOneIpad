@@ -10,12 +10,14 @@
 
 #import "DTOPRODUCTMASTERProcess.h"
 #import "DTOPRODUCTTYPEProcess.h"
+#import "DTOPRODUCTDETAILProcess.h"
 
 @interface ProductsLeadView : UIView<UITableViewDataSource,UITableViewDelegate>
 {
     IBOutlet UITableView *tbvProductsLead;
     DTOPRODUCTMASTERProcess *dtoProductMaster;
     DTOPRODUCTTYPEProcess *dtoProductType;
+    DTOPRODUCTDETAILProcess *dtoProductDetail;
     NSMutableArray *_listProductsLead;
     NSMutableArray *_listTypeProduct;
     NSString *_leadId;

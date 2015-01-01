@@ -22,10 +22,15 @@
  }
  */
 -(void)initDataWithLeaderId:(NSString*)leadId{
+
+    dtoProductMaster = [DTOPRODUCTMASTERProcess new];
+    dtoProductType = [DTOPRODUCTTYPEProcess new];
+    dtoProductDetail = [DTOPRODUCTDETAILProcess new];
+
     _leadId = leadId;
     _listTypeProduct = [[NSMutableArray alloc] init];
     [_listTypeProduct removeAllObjects];
-    dtoProductType = [DTOPRODUCTTYPEProcess new];
+
     NSMutableArray *listProductType = [dtoProductType filter];
     if (listProductType.count>0) {
         for (NSDictionary *dic in listProductType) {
@@ -33,7 +38,6 @@
         }
     }
 
-    dtoProductMaster = [DTOPRODUCTMASTERProcess new];
     [tbvProductsLead reloadData];
 }
 
@@ -52,7 +56,13 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     ProductLeadCellHeader *header = [[ProductLeadCellHeader alloc] init];
     DTOProductLeadTypeObject *typeOB = [_listTypeProduct objectAtIndex:section];
-    [header loadViewWithTittle:typeOB.name];
+    NSMutableArray *resultArr = [dtoProductDetail filterProductWithLeadId:_leadId WithTypeId:typeOB.productTypeId];
+    double totalBalanceQD =0;
+    for (NSDictionary *productDetailDic in resultArr) {
+        DTOProductDetailObject *productDetailOB = [productDetailDic dtoProductDetailObject];
+        totalBalanceQD += [productDetailOB.balanceQD doubleValue];
+    }
+    [header loadViewWithTittle:typeOB.name WithTotalBalanceQD:totalBalanceQD];
 
     return header;
 }
@@ -64,16 +74,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    DTOProductLeadTypeObject *typeOB = [_listTypeProduct objectAtIndex:section];
-//    NSMutableArray *resultArr = [dtoProductMaster filter];
-//    if (resultArr.count>0) {
-//        for (NSDictionary *dic in resultArr) {
-//            //            [arrayData addObject:[dic dtoAcountLeadProcessOb]];
-//
-//        }
-//    }
-//    [tbvProductsLead reloadData];
-    return 1;
+    DTOProductLeadTypeObject *typeOB = [_listTypeProduct objectAtIndex:section];
+    NSMutableArray *resultArr = [dtoProductDetail filterProductWithLeadId:_leadId WithTypeId:typeOB.productTypeId];
+    return resultArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -82,10 +85,11 @@
     ProductLeadViewCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
     if (cell == nil) {
         cell = [[ProductLeadViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
-
-        //        UICGRoute *routesOB = [_listRoutes objectAtIndex:indexPath.section];
-        //        UICGStep *stepOB = [routesOB.steps objectAtIndex:indexPath.row];
-        //        [cell loadDataCellWithStepOB:stepOB];
+        DTOProductLeadTypeObject *typeOB = [_listTypeProduct objectAtIndex:indexPath.section];
+        NSMutableArray *resultArr = [dtoProductDetail filterProductWithLeadId:_leadId WithTypeId:typeOB.productTypeId];
+        NSDictionary *productDetailDic =[resultArr objectAtIndex:indexPath.row];
+        DTOProductDetailObject *productDetailOB = [productDetailDic dtoProductDetailObject];
+        [cell loadDataCellWithProductDetail:productDetailOB];
     }
     return cell;
 }

@@ -11,8 +11,14 @@
 #import "DTOAcountLeadProcessObject.h"
 #import "DTOAccountProcessObject.h"
 #import "DTOProductLeadTypeObject.h"
+#import "DTOProductDetailObject.h"
+#import "DTOProductMasterObject.h"
 
 @interface NSDictionary (QS)
+
+-(DTOProductMasterObject*)dtoProductMasterObject;
+
+-(DTOProductDetailObject*)dtoProductDetailObject;
 
 -(DTOProductLeadTypeObject*)dtoProductLeadTypeObject;
 

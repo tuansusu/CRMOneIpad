@@ -17,7 +17,7 @@
 -(NSMutableArray*) filter {
     NSArray *allFields =[NSArray arrayWithObjects:DTOPRODUCTTYPE_productTypeId, DTOPRODUCTTYPE_name,DTOPRODUCTTYPE_code,DTOPRODUCTTYPE_isActive, nil];
 
-    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where isActive=1",[allFields componentsJoinedByString:@"," ] ,TABLENAME_DTOPRODUCTTYPE ];
+    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where isActive=1 order by %@ asc",[allFields componentsJoinedByString:@"," ] ,TABLENAME_DTOPRODUCTTYPE,DTOPRODUCTTYPE_name];
 
     return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:nil];
 }

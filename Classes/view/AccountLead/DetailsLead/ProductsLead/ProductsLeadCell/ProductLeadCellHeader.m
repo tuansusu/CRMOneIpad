@@ -27,8 +27,14 @@
 }
 */
 
--(void)loadViewWithTittle:(NSString*)title{
+-(void)loadViewWithTittle:(NSString*)title WithTotalBalanceQD:(double)totalBalanceQD{
     [lblTitle setText:title];
+
+    NSNumber *number = [NSNumber numberWithFloat:totalBalanceQD];
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    NSString *totalBalanceStr = [formatter stringFromNumber:number];
+    [lblTotalBalanceQD setText:totalBalanceStr];
 }
 
 @end

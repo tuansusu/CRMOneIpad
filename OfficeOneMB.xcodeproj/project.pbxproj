@@ -560,6 +560,8 @@
 		849B6D8F1A18EAD9007E3B06 /* EditBussinessLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849B6D8D1A18EAD9007E3B06 /* EditBussinessLeadViewController.xib */; };
 		849B6D931A18EDAE007E3B06 /* SelectIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B6D911A18EDAE007E3B06 /* SelectIndexViewController.m */; };
 		849B6D941A18EDAE007E3B06 /* SelectIndexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849B6D921A18EDAE007E3B06 /* SelectIndexViewController.xib */; };
+		8E013B491A55008E00A72586 /* DTOPRODUCTDETAILProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E013B481A55008E00A72586 /* DTOPRODUCTDETAILProcess.m */; };
+		8E013B4C1A5548DE00A72586 /* DTOProductMasterObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E013B4B1A5548DE00A72586 /* DTOProductMasterObject.m */; };
 		8E0B07BC1A446B4100CF7A78 /* CustomInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E0B07BB1A446B4100CF7A78 /* CustomInfoView.xib */; };
 		8E0B07BF1A446B8800CF7A78 /* CustomInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0B07BE1A446B8800CF7A78 /* CustomInfoView.m */; };
 		8E0B07C21A44710000CF7A78 /* popup_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0B07C11A44710000CF7A78 /* popup_bg.png */; };
@@ -637,6 +639,7 @@
 		8EC4B90D1A505A7D0078BF13 /* DirectionsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC4B9091A505A7D0078BF13 /* DirectionsViewCell.m */; };
 		8EC4B90E1A505A7D0078BF13 /* DirectionsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EC4B90A1A505A7D0078BF13 /* DirectionsViewCell.xib */; };
 		8EC4B9161A505B0E0078BF13 /* RoutesDirectionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC4B9151A505B0E0078BF13 /* RoutesDirectionsView.m */; };
+		8EC9DDB71A54FB6400E18A0E /* DTOProductDetailObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC9DDB61A54FB6400E18A0E /* DTOProductDetailObject.m */; };
 		8ED38D741A5447C500D95A3B /* DetailLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED38D6F1A5447C500D95A3B /* DetailLeadViewController.m */; };
 		8ED38D751A5447C500D95A3B /* DetailLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ED38D701A5447C500D95A3B /* DetailLeadViewController.xib */; };
 		8ED38D7A1A54480100D95A3B /* ProductsLeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED38D791A54480100D95A3B /* ProductsLeadView.m */; };
@@ -1683,6 +1686,10 @@
 		849B6D901A18EDAE007E3B06 /* SelectIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectIndexViewController.h; path = CustomView/SelectIndexViewController.h; sourceTree = "<group>"; };
 		849B6D911A18EDAE007E3B06 /* SelectIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectIndexViewController.m; path = CustomView/SelectIndexViewController.m; sourceTree = "<group>"; };
 		849B6D921A18EDAE007E3B06 /* SelectIndexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectIndexViewController.xib; path = CustomView/SelectIndexViewController.xib; sourceTree = "<group>"; };
+		8E013B471A55008E00A72586 /* DTOPRODUCTDETAILProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOPRODUCTDETAILProcess.h; sourceTree = "<group>"; };
+		8E013B481A55008E00A72586 /* DTOPRODUCTDETAILProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOPRODUCTDETAILProcess.m; sourceTree = "<group>"; };
+		8E013B4A1A5548DE00A72586 /* DTOProductMasterObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOProductMasterObject.h; sourceTree = "<group>"; };
+		8E013B4B1A5548DE00A72586 /* DTOProductMasterObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOProductMasterObject.m; sourceTree = "<group>"; };
 		8E0B07BB1A446B4100CF7A78 /* CustomInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomInfoView.xib; sourceTree = "<group>"; };
 		8E0B07BD1A446B8800CF7A78 /* CustomInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomInfoView.h; sourceTree = "<group>"; };
 		8E0B07BE1A446B8800CF7A78 /* CustomInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomInfoView.m; sourceTree = "<group>"; };
@@ -1771,6 +1778,8 @@
 		8EC4B90A1A505A7D0078BF13 /* DirectionsViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DirectionsViewCell.xib; sourceTree = "<group>"; };
 		8EC4B9141A505B0E0078BF13 /* RoutesDirectionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoutesDirectionsView.h; sourceTree = "<group>"; };
 		8EC4B9151A505B0E0078BF13 /* RoutesDirectionsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoutesDirectionsView.m; sourceTree = "<group>"; };
+		8EC9DDB51A54FB6400E18A0E /* DTOProductDetailObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOProductDetailObject.h; sourceTree = "<group>"; };
+		8EC9DDB61A54FB6400E18A0E /* DTOProductDetailObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOProductDetailObject.m; sourceTree = "<group>"; };
 		8ED38D6E1A5447C500D95A3B /* DetailLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailLeadViewController.h; sourceTree = "<group>"; };
 		8ED38D6F1A5447C500D95A3B /* DetailLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailLeadViewController.m; sourceTree = "<group>"; };
 		8ED38D701A5447C500D95A3B /* DetailLeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailLeadViewController.xib; sourceTree = "<group>"; };
@@ -2104,6 +2113,10 @@
 				8E87C9311A45B29700CB0918 /* DTOAccountProcessObject.m */,
 				8ED38D7B1A544D6400D95A3B /* DTOProductLeadTypeObject.h */,
 				8ED38D7C1A544D6400D95A3B /* DTOProductLeadTypeObject.m */,
+				8EC9DDB51A54FB6400E18A0E /* DTOProductDetailObject.h */,
+				8EC9DDB61A54FB6400E18A0E /* DTOProductDetailObject.m */,
+				8E013B4A1A5548DE00A72586 /* DTOProductMasterObject.h */,
+				8E013B4B1A5548DE00A72586 /* DTOProductMasterObject.m */,
 			);
 			name = Objects;
 			path = ProcessData/Objects;
@@ -2990,6 +3003,8 @@
 				769CB8131A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.m */,
 				8ED38D7E1A544F7200D95A3B /* DTOPRODUCTTYPEProcess.h */,
 				8ED38D7F1A544F7200D95A3B /* DTOPRODUCTTYPEProcess.m */,
+				8E013B471A55008E00A72586 /* DTOPRODUCTDETAILProcess.h */,
+				8E013B481A55008E00A72586 /* DTOPRODUCTDETAILProcess.m */,
 			);
 			name = Data;
 			path = ProcessData/Data;
@@ -4868,6 +4883,7 @@
 				92C68E5B1519D4F100981728 /* SBJsonWriter.m in Sources */,
 				92C68E651519D4F100981728 /* NetworkEngine.m in Sources */,
 				92C68E661519D4F100981728 /* NetworkUtils.m in Sources */,
+				8E013B4C1A5548DE00A72586 /* DTOProductMasterObject.m in Sources */,
 				94BA8D7C1A2DF3CF0082AE9E /* CalendarPickerViewController.m in Sources */,
 				76C964411A17731900029978 /* MIMMeter.m in Sources */,
 				92C68E671519D4F100981728 /* AbstractModelService.m in Sources */,
@@ -4919,6 +4935,7 @@
 				06FE2E2A1A45816D004A1D16 /* MapsModel.m in Sources */,
 				8EC4B90B1A505A7D0078BF13 /* DirectionsHeaderView.m in Sources */,
 				DDBC47111715412D00CCFB94 /* OAHMAC_SHA1SignatureProvider.m in Sources */,
+				8EC9DDB71A54FB6400E18A0E /* DTOProductDetailObject.m in Sources */,
 				DDBC47121715412D00CCFB94 /* OAMutableURLRequest.m in Sources */,
 				76C964471A17731900029978 /* BarInfoBox.m in Sources */,
 				762DCF171A0336FB00C7E416 /* DTOCONTACTProcess.m in Sources */,
@@ -5061,6 +5078,7 @@
 				76C962941A16DB8200029978 /* DTOACCOUNTLEADProcess.m in Sources */,
 				2D4B929817AB5736002A9AC5 /* BaseDataProcess.m in Sources */,
 				2D4B929917AB5736002A9AC5 /* DataUtil.m in Sources */,
+				8E013B491A55008E00A72586 /* DTOPRODUCTDETAILProcess.m in Sources */,
 				7633081A1A0493F3000E190B /* VTDateField.m in Sources */,
 				849125CD1A1CE20600949FC8 /* DTOINVENTORYProcess.m in Sources */,
 				8497BFF61A295A2300A5ED3C /* DoubleMapViewController.m in Sources */,

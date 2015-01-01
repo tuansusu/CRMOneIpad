@@ -558,6 +558,27 @@
 #define DTOPRODUCTTYPE_name @"name" //VARCHAR
 #define DTOPRODUCTTYPE_productTypeId @"productTypeId" //BIGINT
 #define DTOPRODUCTTYPE_id @"id" //INTEGER
+
+///dtoproductdetail  Field
+#define DTOPRODUCTDETAIL_productDetailId @"productDetailId" //VARCHAR
+#define DTOPRODUCTDETAIL_contractNumber @"contractNumber" //VARCHAR
+#define DTOPRODUCTDETAIL_balance @"balance" //VARCHAR
+#define DTOPRODUCTDETAIL_openDate @"openDate" //VARCHAR
+#define DTOPRODUCTDETAIL_expiredDate @"expiredDate" //VARCHAR
+#define DTOPRODUCTDETAIL_status @"status" //VARCHAR
+#define DTOPRODUCTDETAIL_type @"type" //VARCHAR
+#define DTOPRODUCTDETAIL_branchCode @"branchCode" //VARCHAR
+#define DTOPRODUCTDETAIL_currency @"currency" //VARCHAR
+#define DTOPRODUCTDETAIL_productCode @"productCode" //VARCHAR
+#define DTOPRODUCTDETAIL_clientId @"clientId" //VARCHAR
+#define DTOPRODUCTDETAIL_bussinessDate @"bussinessDate" //VARCHAR
+#define DTOPRODUCTDETAIL_createdDate @"createdDate" //VARCHAR
+#define DTOPRODUCTDETAIL_updatedDate @"updatedDate" //VARCHAR
+#define DTOPRODUCTDETAIL_rmCode @"rmCode" //VARCHAR
+#define DTOPRODUCTDETAIL_balanceQD @"balanceQD" //VARCHAR
+#define DTOPRODUCTDETAIL_Khoi @"Khoi" //VARCHAR
+#define DTOPRODUCTDETAIL_rmBancheo @"rmBancheo" //VARCHAR
+
 ///dtocontact  Field
 #define DTOCONTACT_accountId @"accountId" //BIGINT
 #define DTOCONTACT_address @"address" //VARCHAR

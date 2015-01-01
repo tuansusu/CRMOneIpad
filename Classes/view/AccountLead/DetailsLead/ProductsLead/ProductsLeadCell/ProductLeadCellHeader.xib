@@ -45,6 +45,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="lblTitle" destination="3BP-tD-onu" id="f7Y-7z-l3Q"/>
+                <outlet property="lblTotalBalanceQD" destination="gLr-sT-L2q" id="7sk-vB-gBo"/>
             </connections>
             <point key="canvasLocation" x="185" y="317"/>
         </view>

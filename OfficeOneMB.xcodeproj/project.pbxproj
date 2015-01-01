@@ -264,8 +264,6 @@
 		76601A55194BE90F001D4C01 /* signature.png in Resources */ = {isa = PBXBuildFile; fileRef = 76601A27194BE90E001D4C01 /* signature.png */; };
 		76601A6019540CCD001D4C01 /* Introduct_OfficeOne.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 76601A5F19540CCD001D4C01 /* Introduct_OfficeOne.pdf */; };
 		76746A371A07CF4E005CEDB8 /* DTOOPPORTUNITYProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76746A361A07CF4E005CEDB8 /* DTOOPPORTUNITYProcess.m */; };
-		7693EE021A35556E004E0178 /* DetailTaskLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7693EE001A35556E004E0178 /* DetailTaskLeadViewController.m */; };
-		7693EE031A35556E004E0178 /* DetailTaskLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7693EE011A35556E004E0178 /* DetailTaskLeadViewController.xib */; };
 		7693EE071A355593004E0178 /* EditCalendarLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7693EE051A355593004E0178 /* EditCalendarLeadViewController.m */; };
 		7693EE081A355593004E0178 /* EditCalendarLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7693EE061A355593004E0178 /* EditCalendarLeadViewController.xib */; };
 		7693EE0C1A3555B0004E0178 /* DetailCalendarLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7693EE0A1A3555B0004E0178 /* DetailCalendarLeadViewController.m */; };
@@ -1211,9 +1209,6 @@
 		76601A5F19540CCD001D4C01 /* Introduct_OfficeOne.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Introduct_OfficeOne.pdf; sourceTree = "<group>"; };
 		76746A351A07CF4E005CEDB8 /* DTOOPPORTUNITYProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOOPPORTUNITYProcess.h; sourceTree = "<group>"; };
 		76746A361A07CF4E005CEDB8 /* DTOOPPORTUNITYProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOOPPORTUNITYProcess.m; sourceTree = "<group>"; };
-		7693EDFF1A35556E004E0178 /* DetailTaskLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailTaskLeadViewController.h; sourceTree = "<group>"; };
-		7693EE001A35556E004E0178 /* DetailTaskLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailTaskLeadViewController.m; sourceTree = "<group>"; };
-		7693EE011A35556E004E0178 /* DetailTaskLeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailTaskLeadViewController.xib; sourceTree = "<group>"; };
 		7693EE041A355593004E0178 /* EditCalendarLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCalendarLeadViewController.h; sourceTree = "<group>"; };
 		7693EE051A355593004E0178 /* EditCalendarLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCalendarLeadViewController.m; sourceTree = "<group>"; };
 		7693EE061A355593004E0178 /* EditCalendarLeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditCalendarLeadViewController.xib; sourceTree = "<group>"; };
@@ -3081,9 +3076,6 @@
 				84918ABC1A34574A00149CB4 /* SearchAdvanceLeadViewController.h */,
 				84918ABD1A34574A00149CB4 /* SearchAdvanceLeadViewController.m */,
 				84918ABE1A34574A00149CB4 /* SearchAdvanceLeadViewController.xib */,
-				7693EDFF1A35556E004E0178 /* DetailTaskLeadViewController.h */,
-				7693EE001A35556E004E0178 /* DetailTaskLeadViewController.m */,
-				7693EE011A35556E004E0178 /* DetailTaskLeadViewController.xib */,
 				7693EE091A3555B0004E0178 /* DetailCalendarLeadViewController.h */,
 				7693EE0A1A3555B0004E0178 /* DetailCalendarLeadViewController.m */,
 				7693EE0B1A3555B0004E0178 /* DetailCalendarLeadViewController.xib */,
@@ -4767,7 +4759,6 @@
 				8497BFE91A295A2300A5ED3C /* step5@2x.png in Resources */,
 				B31AFAA5187ADB5800D366B5 /* ic-show-column-1-1.png in Resources */,
 				76601A40194BE90F001D4C01 /* AppIcon-114.png in Resources */,
-				7693EE031A35556E004E0178 /* DetailTaskLeadViewController.xib in Resources */,
 				8E7554621A52EFC8001940FB /* iconTurnLeft.png in Resources */,
 				8E7554221A52E3A2001940FB /* iconTurnSharpLeft.png in Resources */,
 				76601A4A194BE90F001D4C01 /* Reader-Email@2x.png in Resources */,
@@ -4905,7 +4896,6 @@
 				DDBC46E6171540A200CCFB94 /* HTTPEngine.m in Sources */,
 				DDBC46E7171540A200CCFB94 /* HttpLoader.m in Sources */,
 				76C9645A1A17731900029978 /* BasicPieChart.m in Sources */,
-				7693EE021A35556E004E0178 /* DetailTaskLeadViewController.m in Sources */,
 				DDBC46E8171540A200CCFB94 /* HTTPMessage.m in Sources */,
 				DDBC46E9171540A200CCFB94 /* HttpNetwork.m in Sources */,
 				DDBC46EA171540A200CCFB94 /* HTTPRequest.m in Sources */,

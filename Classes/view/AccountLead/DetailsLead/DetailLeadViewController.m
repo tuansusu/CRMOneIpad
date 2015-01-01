@@ -48,7 +48,7 @@ static NSString* const TaskCalendarNormalCellId   = @"TaskCalendarCellId";
 static NSString* const TaskCalendarTimelineCellId = @"TaskCalTLineCellId";
 static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
-@interface DetailLeadViewController ()
+@interface DetailLeadViewController () <TaskActionCellDelegate>
 {
     int smgSelect ; //option layout
     NSArray *arrayData; //mang luu tru du lieu
@@ -120,7 +120,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     /* set defaults cell for Task Calendar */
     [self.tbData registerNib:[TaskCalendarCell nib] forCellReuseIdentifier:TaskCalendarNormalCellId];
     [self.tbData registerNib:[TaskCalTLineCell nib] forCellReuseIdentifier:TaskCalendarTimelineCellId];
-    [self.tbData registerNib:[TaskActionCell nib]   forCellReuseIdentifier:TaskActionCellId];
+    [self.tbData registerNib:[TaskActionCell   nib] forCellReuseIdentifier:TaskActionCellId];
     
     // calendar
     calendarIsTimeline = NO;
@@ -508,7 +508,8 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 #pragma mark display color button
 -(void) displayNormalButtonState : (UIButton*) btnSelect {
     
-    for (UIView *viewTemp in self.viewHeaderExpandInfo.subviews) {
+    for (UIView *viewTemp in scrollViewHeaderExpandInfo.subviews)
+    {
         if ([viewTemp isKindOfClass:[UIButton class]]) {
             [((UIButton*) viewTemp) setBackgroundColor:[UIColor whiteColor]];
             [((UIButton*) viewTemp) setTitleColor:textColorButtonNormal forState:UIControlStateNormal];
@@ -612,12 +613,17 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         {
             TaskActionCell *cell= [tableView dequeueReusableCellWithIdentifier:TaskActionCellId];
             
-            if (indexPath.row < arrayData.count)
+            if (cell !=nil)
             {
-                [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+                cell.delegate = self;
+                
+                if (indexPath.row < arrayData.count)
+                {
+                    [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+                }
+                
+                return cell;
             }
-            
-            return cell;
         }
             break;
         default:
@@ -677,8 +683,9 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     }
 }
 
-#pragma mark taskaction Cell
-- (void) AccountLeadCellDelegate_ActionChangeTaskStatusWithData : (NSMutableDictionary*) inputDicData {
+#pragma mark - TaskActionCellDelegate
+- (void)taskActionCell:(TaskActionCell *)taskActionCell changeStatusWithData:(NSMutableDictionary *)inputDicData
+{
     //change status
     //dtoTaskProcess
     
@@ -686,23 +693,28 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     [dicTaskUpdate setObject:[inputDicData objectForKey:DTOTASK_id] forKey:DTOTASK_id];
     
-    if ([[inputDicData objectForKey:DTOTASK_taskStatus] intValue] == FIX_TASK_STATUS_COMPLETE) {
-        [dicTaskUpdate setObject:ObjectToStr(FIX_TASK_STATUS_NOT_COMPLETE) forKey:DTOTASK_taskStatus];
-        
-    }else if ([[inputDicData objectForKey:DTOTASK_taskStatus] intValue] == FIX_TASK_STATUS_NOT_COMPLETE){
-        [dicTaskUpdate setObject:ObjectToStr(FIX_TASK_STATUS_COMPLETE) forKey:DTOTASK_taskStatus];
-    }else{
-        //qua han
-        //chua mau do
-        
+    if ([[inputDicData objectForKey:DTOTASK_taskStatus] intValue] == FIX_TASK_STATUS_COMPLETE)
+    {
+        [dicTaskUpdate setObject:IntToStr(FIX_TASK_STATUS_NOT_COMPLETE) forKey:DTOTASK_taskStatus];
     }
-    [dtoTaskProcess insertToDBWithEntity:dicTaskUpdate];
-    [inputDicData setObject:[dicTaskUpdate objectForKey:DTOTASK_taskStatus] forKey:DTOTASK_taskStatus];
+    else //if ([[inputDicData objectForKey:DTOTASK_taskStatus] intValue] == FIX_TASK_STATUS_NOT_COMPLETE)
+    {
+        [dicTaskUpdate setObject:IntToStr(FIX_TASK_STATUS_COMPLETE) forKey:DTOTASK_taskStatus];
+    }
     
-    [self.tbData reloadData];
-    
-    
-    
+    if ([dtoTaskProcess insertToDBWithEntity:dicTaskUpdate])
+    {
+        NSIndexPath *indexPathToReload = [self.tbData indexPathForCell:taskActionCell];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            arrayData = [dtoTaskProcess filterTaskWithClientLeaderId:[dicData objectForKey:DTOLEAD_clientLeadId]];
+            NSLog(@"task count = %ld", (unsigned long)arrayData.count);
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tbData reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPathToReload] withRowAnimation:UITableViewRowAnimationAutomatic];
+            });
+        });
+    }
 }
 
 

@@ -10,7 +10,20 @@
 #import "DTOTASKProcess.h"
 #import "DateUtil.h"
 
+@interface TaskActionCell ()
+
+- (IBAction)actionChangeStatus:(id)sender;
+
+@end
+
 @implementation TaskActionCell
+{
+    __weak IBOutlet UILabel  *_nameLabel;
+    __weak IBOutlet UILabel  *_endTimeLabel;
+    __weak IBOutlet UIButton *_changeStatusBtn;
+    
+    NSMutableDictionary *_dicData;
+}
 
 + (UINib *)nib
 {
@@ -29,104 +42,88 @@
     // Configure the view for the selected state
 }
 
-
-+(TaskActionCell*) initNibCell{
-    
-    NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"TaskActionCell" owner:nil options:nil];
-    
-    for(id curentObject in topLevelObjects)
-    {
-        if([curentObject isKindOfClass:[TaskActionCell class]])
-        {
-            return (TaskActionCell *) curentObject;
-            
-        }
-    }
-    
-    return nil;
-}
-
-
 - (void) loadDataToCellWithData:(NSDictionary *)dicData withOption:(int)smgSelect
 {
     _dicData = [[NSMutableDictionary alloc]initWithDictionary:dicData];
     
+    NSString *title      = @"";
+    NSString *endDateStr = @"";
+    NSDate   *endDate    = [NSDate date];
     
-    if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOTASK_title]])
+    if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOTASK_title]])
     {
-        self.lbName.text = @"";
+        title = [dicData objectForKey:DTOTASK_title];
     }
-    else
+    
+    if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOTASK_endDate]])
     {
-        self.lbName.text = [dicData objectForKey:DTOTASK_title];
+        endDate    = [DateUtil getDateFromString:[dicData objectForKey:DTOTASK_endDate] :FORMAT_DATE_AND_TIME];
+        endDateStr = [DateUtil formatDate:endDate :FORMAT_DATE];
     }
     
-    
-    if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOTASK_endDate]])
+    if ([[dicData objectForKey:DTOTASK_taskStatus] intValue] == FIX_TASK_STATUS_COMPLETE)
     {
-        self.lbTime.text = @"";
+        [_changeStatusBtn setImage:[UIImage imageNamed:@"task_done.png"] forState:UIControlStateNormal];
+        _nameLabel.attributedText    = [[NSAttributedString alloc] initWithString:title attributes:[NSDictionary dictionaryWithObject:[NSNumber numberWithInteger:NSUnderlineStyleSingle] forKey:NSStrikethroughStyleAttributeName]];
+        _endTimeLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Kết thúc %@",endDateStr] attributes:[NSDictionary dictionaryWithObject:[NSNumber numberWithInteger:NSUnderlineStyleSingle] forKey:NSStrikethroughStyleAttributeName]];
     }
-    else
+    else // if ([[dicData objectForKey:DTOTASK_taskStatus] intValue] == FIX_TASK_STATUS_NOT_COMPLETE)
     {
-        NSLog(@"date = %@", [dicData objectForKey:DTOTASK_endDate]);
-        self.lbTime.text = [NSString stringWithFormat:@"Kết thúc %@",[dicData objectForKey:DTOTASK_endDate] ] ;
-    }
-    
-    
-    //kiểm tra xem trạng thái của công việc
-    //check ngay ket thuc so voi ngay hien tai
-    //[DateUtil dateDiffrenceFromDate:@"" second:@""];
-    
-//    int diffDay = [DateUtil dateDiffrenceFromDate:endDate second:nowStr];
-//    if (diffDay>0 && (iStatusField==DANG_THUC_HIEN || iStatusField==QUA_HAN)) {
-//        lbQuaHan.hidden = NO;
-//        lbQuaHan.text = [NSString stringWithFormat:@"Đã quá hạn %d ngày",diffDay];
-//    }
-//    else
-//    {
-//        lbQuaHan.hidden = YES;
-//    }
-    
-    if ([[dicData objectForKey:DTOTASK_taskStatus] intValue] == FIX_TASK_STATUS_COMPLETE) {
-        [self.btnChangeStatus setImage:[UIImage imageNamed:@"task_done.png"] forState:UIControlStateNormal];
-        
-    //chu gach ngang
-        
-    }else if ([[dicData objectForKey:DTOTASK_taskStatus] intValue] == FIX_TASK_STATUS_NOT_COMPLETE){
-        //chua thuc hien
-        [self.btnChangeStatus setImage:[UIImage imageNamed:@"task_not_done.png"] forState:UIControlStateNormal];
-    }else{
-        //qua han
-        [self.btnChangeStatus setImage:[UIImage imageNamed:@"task_not_done.png"] forState:UIControlStateNormal];
-        
-        //chua mau do
-        
-    }
-    
-    switch (smgSelect) {
-        case 1:
+        [_changeStatusBtn setImage:[UIImage imageNamed:@"task_not_done.png"] forState:UIControlStateNormal];
+        if (![StringUtil stringIsEmpty:endDateStr])
         {
-            for (UIView *viewTemp in self.contentView.subviews) {
-                if ([viewTemp isKindOfClass:[UILabel class]]) {
-                    ((UILabel*) viewTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
-                }
+            //kiểm tra xem trạng thái của công việc
+            //check ngay ket thuc so voi ngay hien tai
+            NSDate *endDate = [DateUtil getDateFromString:endDateStr :FORMAT_DATE_AND_TIME];
+            NSDate *nowDate = [NSDate date];
+            if ([endDate compare:nowDate] == NSOrderedAscending)
+            {
+                // is overdue
+                _nameLabel.text      = title;
+                _nameLabel.textColor = TEXT_COLOR_RED;
+                _endTimeLabel.text      = [NSString stringWithFormat:@"Kết thúc %@",endDateStr];
+                _endTimeLabel.textColor = TEXT_COLOR_RED;
             }
-            self.lbName.textColor = TEXT_COLOR_HIGHLIGHT;
+            else
+            {
+                _nameLabel.text      = title;
+                _nameLabel.textColor = TEXT_COLOR_REPORT_TITLE_1;
+                _endTimeLabel.text      = [NSString stringWithFormat:@"Kết thúc %@",endDateStr];
+                _endTimeLabel.textColor = TEXT_COLOR_REPORT_TITLE_1;
+            }
         }
-            break;
-            
-        default:
-            break;
+        else
+        {
+            _nameLabel.text      = title;
+            _nameLabel.textColor = TEXT_COLOR_REPORT_TITLE_1;
+            _endTimeLabel.text      = @"";
+            _endTimeLabel.textColor = TEXT_COLOR_REPORT_TITLE_1;
+        }
     }
     
+//    switch (smgSelect) {
+//        case 1:
+//        {
+//            for (UIView *viewTemp in self.contentView.subviews) {
+//                if ([viewTemp isKindOfClass:[UILabel class]]) {
+//                    ((UILabel*) viewTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+//                }
+//            }
+//            _nameLabel.textColor = TEXT_COLOR_HIGHLIGHT;
+//        }
+//            break;
+//            
+//        default:
+//            break;
+//    }
 }
 
--(void) actionChangeStatus:(id)sender{
-     [_delegate AccountLeadCellDelegate_ActionChangeTaskStatusWithData:_dicData];
-    //
-    
-    
-    
+- (IBAction)actionChangeStatus:(id)sender
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(taskActionCell:changeStatusWithData:)])
+    {
+        [_delegate taskActionCell:self changeStatusWithData:_dicData];
+    }
 }
 
 @end

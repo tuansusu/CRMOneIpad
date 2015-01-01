@@ -185,15 +185,15 @@
     _titleLabel.text = @"CẬP NHẬP CÔNG VIỆC";
     _txtName.text    = [_dataSend objectForKey:DTOTASK_title];
     
-    if ([[_dataSend objectForKey:DTOTASK_taskStatus] isEqualToString:@"3244"])
+    if ([[_dataSend objectForKey:DTOTASK_taskStatus] intValue] == FIX_TASK_STATUS_NOT_COMPLETE)
     {
         _txtStatus.text = @"Đang thực hiện";
-        selectStatusIndex = 0;
+        selectStatusIndex = 0;//TODO: check
     }
-    else
+    else if ([[dicData objectForKey:DTOTASK_taskStatus] intValue] == FIX_TASK_STATUS_COMPLETE)
     {
         _txtStatus.text = @"Đã hoàn thành";
-        selectStatusIndex = 1;
+        selectStatusIndex = 1;//TODO: check
     }
     
     NSString *startDateStr = [_dataSend objectForKey:DTOTASK_startDate];
@@ -458,7 +458,7 @@
 - (BOOL)validateBeforeSave
 {
     /* returns TRUE if all fields validate OK */
-    if (_txtName.text == nil || _txtName.text.length == 0 || [StringUtil trimString:_txtName.text].length == 0)
+    if ([StringUtil stringIsEmpty:_txtName.text])
     {
         [[[UIAlertView alloc] initWithTitle:@"Lỗi" message:@"Vui lòng nhập tiêu đề cho Công việc" delegate:nil cancelButtonTitle:@"Đóng" otherButtonTitles: nil] show];
         return FALSE;

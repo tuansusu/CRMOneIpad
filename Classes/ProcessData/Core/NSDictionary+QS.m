@@ -190,7 +190,7 @@
         accountLeadOB.languageId = [self objectForKey:DTOLEAD_languageId];
     }
     if (![StringUtil stringIsEmpty:[self objectForKey:DTOLEAD_lat]]) {
-        accountLeadOB.languageId = [self objectForKey:DTOLEAD_lat];
+        accountLeadOB.lat = [self objectForKey:DTOLEAD_lat];
     }
     if (![StringUtil stringIsEmpty:[self objectForKey:DTOLEAD_leadId]]) {
         accountLeadOB.leadId = [self objectForKey:DTOLEAD_leadId];

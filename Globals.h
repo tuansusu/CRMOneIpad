@@ -54,6 +54,11 @@ typedef enum {
 #define ICON_START_ROUTES_OF_DIRECTION @"iconArrowUp"
 #define ICON_END_ROUTES_OF_DIRECTION @"iconMarker"
 
+#define VEHICLES_SELECTED @"vehiclesSelected"
+#define VEHICLES_DRIVING @"driving"
+#define VEHICLES_CYCLING @"cycling"
+#define VEHICLES_WALKING @"walking"
+
 
 //=============================Maneuver Configuration========================
 

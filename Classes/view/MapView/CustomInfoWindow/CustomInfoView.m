@@ -29,6 +29,9 @@
 */
 
 -(void) loadViewWithKHDMOB:(DTOAcountLeadProcessObject *)khdmOB{
+    _khdmOB = khdmOB;
+    _customerType = typeKHDM;
+
     NSString *code = @"";
     NSString *name = @"";
     if (khdmOB.code) {
@@ -61,6 +64,9 @@
 }
 
 -(void) loadViewWithKH360OB:(DTOAccountProcessObject *)kh360OB{
+    _kh360OB = kh360OB;
+    _customerType = typeKH360;
+
     NSString *code = @"";
     NSString *name = @"";
     if (kh360OB.code) {
@@ -92,5 +98,40 @@
     }
 }
 
+#pragma mark btn Call Customer Action
+-(IBAction)btnCallCustomerTapper:(id)sender{
+    
+}
 
+#pragma mark btn Send SMS Customer Action
+-(IBAction)btnSendSMSCustomerTapper:(id)sender{
+    if (_customerType == typeKHDM) {
+//        if (_khdmOB.phone) {
+            if (_delegate && [_delegate respondsToSelector:@selector(sendSMSToCustomerTel:)]) {
+                [_delegate sendSMSToCustomerTel:@"1234"];
+            }
+//        }
+    }else if (_customerType == typeKH360) {
+//        if (_kh360OB.phone) {
+            if (_delegate && [_delegate respondsToSelector:@selector(sendSMSToCustomerTel:)]) {
+                [_delegate sendSMSToCustomerTel:@"1234"];
+            }
+//        }
+    }
+
+}
+
+#pragma mark btn Send Mail Customer Action
+-(IBAction)btnSendMailCustomerTapper:(id)sender{
+    
+}
+
+#pragma mark btn Info Customer Action
+-(IBAction)btnInfoCustomerTapper:(id)sender{
+
+}
+
+-(void)ButtonPressed{
+
+}
 @end

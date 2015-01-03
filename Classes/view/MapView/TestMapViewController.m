@@ -7,9 +7,12 @@
 //
 
 #import "TestMapViewController.h"
-#import <GoogleMaps/GoogleMaps.h>
-#import "MDDirectionService.h"
 
+#import <GoogleMaps/GoogleMaps.h>
+#import <MessageUI/MessageUI.h>
+
+
+#import "MDDirectionService.h"
 #import "CustomerViewCell.h"
 #import "CustomInfoView.h"
 #import "MapsModel.h"
@@ -24,6 +27,8 @@
 #import "DirectionsViewCell.h"
 
 #import "RoutesDirectionsView.h"
+#import "DetailLeadViewController.h"
+
 
 
 #define ZOOM_RATIO 15
@@ -34,7 +39,7 @@
 
 
 
-@interface TestMapViewController ()<CLLocationManagerDelegate,GMSMapViewDelegate,CustomerViewCellDelegate>
+@interface TestMapViewController ()<CLLocationManagerDelegate,GMSMapViewDelegate,CustomerViewCellDelegate,MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate,CustomInfoViewDelegate>
 {
     NSUserDefaults *defaults;
     int smgSelect ; //option layout
@@ -71,6 +76,16 @@
     BOOL khdmSelected;
     IBOutlet UIButton *btnKHDM;
     IBOutlet UIButton *btnKH360;
+
+    IBOutlet UIButton *btnCar;
+    IBOutlet UIButton *btnMoto;
+    IBOutlet UIButton *btnWalking;
+    IBOutlet UIImageView *imgCarSelected;
+    IBOutlet UIImageView *imgMotoSelected;
+    IBOutlet UIImageView *imgWalkingSelected;
+
+    IBOutlet UISearchBar *searchBarCustomer;
+    
     IBOutlet UIImageView *imgCusSelected;
     IBOutlet UIImageView *imgDirSelected;
     CustomerType customerType;
@@ -92,6 +107,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    // init mode vehicles
+    [[NSUserDefaults standardUserDefaults] setValue:VEHICLES_DRIVING forKey:VEHICLES_SELECTED];
 
     _mapModel = [[MapsModel alloc] init];
     listCustomerDirections = [[NSMutableArray alloc] init];
@@ -151,8 +168,8 @@
 
 -(void)initDataKH{
 
-    [_mapModel getFirstPageCustomerKHDM];
-    [_mapModel getFirstPageCustomerKH360];
+    [_mapModel getFirstPageCustomerKHDMWithKey:searchBarCustomer.text];
+    [_mapModel getFirstPageCustomerKH360WithKey:searchBarCustomer.text];
     [customerTbv reloadData];
     [self initFirstPageKHDMDirectionsFlag];
     [self initFirstPageKHD360irectionsFlag];
@@ -288,6 +305,7 @@
     [btnKHDM setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     if (khdmSelected) {
         khdmSelected = NO;
+        [_mapModel getFirstPageCustomerKH360WithKey:searchBarCustomer.text];
         [customerTbv reloadData];
     }
 }
@@ -298,12 +316,35 @@
     [btnKHDM setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     if (!khdmSelected) {
         khdmSelected = YES;
+        [_mapModel getFirstPageCustomerKHDMWithKey:searchBarCustomer.text];
         [customerTbv reloadData];
     }
 
     [btnKH360 setBackgroundColor:BUTTON_KH_COLOR_DEFAULT];
     [btnKH360 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 
+}
+
+#pragma mark vehicles action
+-(IBAction)btnCarSelected:(id)sender{
+    [imgCarSelected setHidden:NO];
+    [imgMotoSelected setHidden:YES];
+    [imgWalkingSelected setHidden:YES];
+    [[NSUserDefaults standardUserDefaults] setValue:VEHICLES_DRIVING forKey:VEHICLES_SELECTED];
+}
+
+-(IBAction)btnMotoSelected:(id)sender{
+    [imgCarSelected setHidden:YES];
+    [imgMotoSelected setHidden:NO];
+    [imgWalkingSelected setHidden:YES];
+    [[NSUserDefaults standardUserDefaults] setValue:VEHICLES_CYCLING forKey:VEHICLES_SELECTED];
+}
+
+-(IBAction)btnWalkingSelected:(id)sender{
+    [imgCarSelected setHidden:YES];
+    [imgMotoSelected setHidden:YES];
+    [imgWalkingSelected setHidden:NO];
+    [[NSUserDefaults standardUserDefaults] setValue:VEHICLES_WALKING forKey:VEHICLES_SELECTED];
 }
 
 #pragma mark tab action
@@ -501,9 +542,10 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
 
 }
 
+
 - (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker{
     CustomInfoView *infoView = [[CustomInfoView alloc] initWithFrame:CGRectZero];
-
+    infoView.delegate = self;
     if ([marker.userData isKindOfClass:[DTOAcountLeadProcessObject class]]) {
         DTOAcountLeadProcessObject *customerData= marker.userData;
         [infoView loadViewWithKHDMOB:customerData];
@@ -511,8 +553,36 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
         DTOAccountProcessObject *customerData= marker.userData;
         [infoView loadViewWithKH360OB:customerData];
     }
-
+    
     return infoView;
+}
+
+
+/**
+ * Called after a marker's info window has been tapped.
+ */
+- (void)mapView:(GMSMapView *)mapView
+didTapInfoWindowOfMarker:(GMSMarker *)marker{
+    if ([marker.userData isKindOfClass:[DTOAcountLeadProcessObject class]]) {
+        DTOAcountLeadProcessObject *customerData= marker.userData;
+
+        NSDictionary *dicData = [NSDictionary dictionaryWithObjectsAndKeys:customerData.clientLeadId,@"clientLeadId",customerData.leadType,@"leadType",customerData.address,@"address",customerData.name,@"name",customerData.id,@"id",customerData.updatedBy,@"updatedBy",customerData.mobile,@"mobile",customerData.code,@"code",customerData.email,@"email",customerData.leadId,@"leadId", nil];
+
+        DetailLeadViewController *viewController = [[DetailLeadViewController alloc]initWithNibName:@"DetailLeadViewController" bundle:nil];
+        viewController.dataSend = dicData;
+        [self presentViewController:viewController animated:YES completion:nil];
+        
+    }else if ([marker.userData isKindOfClass:[DTOAccountProcessObject class]]) {
+        DTOAccountProcessObject *customerData= marker.userData;
+
+        NSDictionary *dicData = [NSDictionary dictionaryWithObjectsAndKeys:customerData.name,@"name",customerData.mobile,@"mobile",customerData.updatedBy,@"updatedBy",customerData.id,@"id",customerData.clientAccountId,@"clientAccountId", nil];
+        
+        DetailLeadViewController *viewController = [[DetailLeadViewController alloc]initWithNibName:@"DetailLeadViewController" bundle:nil];
+
+        viewController.dataSend = dicData;
+        [self presentViewController:viewController animated:YES completion:nil];
+    }
+
 }
 
 #pragma mark tableview delegate
@@ -671,14 +741,25 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
 
     if (currentOffset - maximumOffset >= 40) {
         if (khdmSelected) {
-            [_mapModel getNextPageCustomerKHDM];
+            [_mapModel getNextPageCustomerKHDMWithKey:searchBarCustomer.text];
             [self updateNextPageKHDMDirectionsFlag];
         }else{
-            [_mapModel getNextPageCustomerKH360];
+            [_mapModel getNextPageCustomerKH360WithKey:searchBarCustomer.text];
             [self updateNextPageKH360DirectionsFlag];
         }
         [customerTbv reloadData];
     }
+}
+
+#pragma mark Search Bar Delegate
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    if (khdmSelected) {
+        [_mapModel getFirstPageCustomerKHDMWithKey:searchText];
+    }else{
+        [_mapModel getFirstPageCustomerKH360WithKey:searchText];
+    }
+
+    [customerTbv reloadData];
 }
 
 

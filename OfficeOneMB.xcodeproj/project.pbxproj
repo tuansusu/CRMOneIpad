@@ -583,6 +583,12 @@
 		8E69BDD51A57D23900C6924D /* ProThanhToanQuocTeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E69BDD31A57D23900C6924D /* ProThanhToanQuocTeViewCell.xib */; };
 		8E69BDD81A57D24E00C6924D /* ProThanhToanQuocTeViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E69BDD71A57D24E00C6924D /* ProThanhToanQuocTeViewHeader.m */; };
 		8E69BDDA1A57D25A00C6924D /* ProThanhToanQuocTeViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E69BDD91A57D25A00C6924D /* ProThanhToanQuocTeViewHeader.xib */; };
+		8E69BDE31A58458500C6924D /* iconCar.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E69BDE01A58458500C6924D /* iconCar.png */; };
+		8E69BDE41A58458500C6924D /* iconCar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E69BDE11A58458500C6924D /* iconCar@2x.png */; };
+		8E69BDE51A58458500C6924D /* iconMoto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E69BDE21A58458500C6924D /* iconMoto@2x.png */; };
+		8E69BDE71A58467100C6924D /* iconMoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E69BDE61A58467100C6924D /* iconMoto.png */; };
+		8E69BDE91A584A2F00C6924D /* iconWalking@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E69BDE81A584A2F00C6924D /* iconWalking@2x.png */; };
+		8E69BDEB1A584B5500C6924D /* iconWalking.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E69BDEA1A584B5500C6924D /* iconWalking.png */; };
 		8E7554221A52E3A2001940FB /* iconTurnSharpLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7554201A52E3A2001940FB /* iconTurnSharpLeft.png */; };
 		8E7554231A52E3A2001940FB /* iconTurnSharpLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7554211A52E3A2001940FB /* iconTurnSharpLeft@2x.png */; };
 		8E75544A1A52EFC8001940FB /* iconFerry.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7554241A52EFC8001940FB /* iconFerry.png */; };
@@ -1735,6 +1741,12 @@
 		8E69BDD61A57D24E00C6924D /* ProThanhToanQuocTeViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProThanhToanQuocTeViewHeader.h; sourceTree = "<group>"; };
 		8E69BDD71A57D24E00C6924D /* ProThanhToanQuocTeViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProThanhToanQuocTeViewHeader.m; sourceTree = "<group>"; };
 		8E69BDD91A57D25A00C6924D /* ProThanhToanQuocTeViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProThanhToanQuocTeViewHeader.xib; sourceTree = "<group>"; };
+		8E69BDE01A58458500C6924D /* iconCar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconCar.png; sourceTree = "<group>"; };
+		8E69BDE11A58458500C6924D /* iconCar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconCar@2x.png"; sourceTree = "<group>"; };
+		8E69BDE21A58458500C6924D /* iconMoto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconMoto@2x.png"; sourceTree = "<group>"; };
+		8E69BDE61A58467100C6924D /* iconMoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconMoto.png; sourceTree = "<group>"; };
+		8E69BDE81A584A2F00C6924D /* iconWalking@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconWalking@2x.png"; sourceTree = "<group>"; };
+		8E69BDEA1A584B5500C6924D /* iconWalking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconWalking.png; sourceTree = "<group>"; };
 		8E7554201A52E3A2001940FB /* iconTurnSharpLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconTurnSharpLeft.png; sourceTree = "<group>"; };
 		8E7554211A52E3A2001940FB /* iconTurnSharpLeft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconTurnSharpLeft@2x.png"; sourceTree = "<group>"; };
 		8E7554241A52EFC8001940FB /* iconFerry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconFerry.png; sourceTree = "<group>"; };
@@ -2107,6 +2119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D0AD5D61733526F0048A239 /* MessageUI.framework in Frameworks */,
 				8EB7087A1A408AE2001861A0 /* MapKit.framework in Frameworks */,
 				8497BF031A29591000A5ED3C /* GoogleMaps.framework in Frameworks */,
 				76C962B81A16F37800029978 /* OpenGLES.framework in Frameworks */,
@@ -2128,7 +2141,6 @@
 				2DD763E0178D472600F2D79E /* EventKit.framework in Frameworks */,
 				2D47E8001761706E00F291D6 /* SystemConfiguration.framework in Frameworks */,
 				2D47E7FE1761706700F291D6 /* MobileCoreServices.framework in Frameworks */,
-				2D0AD5D61733526F0048A239 /* MessageUI.framework in Frameworks */,
 				2D0AD5D4173352440048A239 /* QuartzCore.framework in Frameworks */,
 				2D0AD5D21733522D0048A239 /* ImageIO.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
@@ -3891,6 +3903,12 @@
 		8EB708701A407856001861A0 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
+				8E69BDEA1A584B5500C6924D /* iconWalking.png */,
+				8E69BDE81A584A2F00C6924D /* iconWalking@2x.png */,
+				8E69BDE61A58467100C6924D /* iconMoto.png */,
+				8E69BDE01A58458500C6924D /* iconCar.png */,
+				8E69BDE11A58458500C6924D /* iconCar@2x.png */,
+				8E69BDE21A58458500C6924D /* iconMoto@2x.png */,
 				8E75541F1A52E3A2001940FB /* ManeuverIcon */,
 				8E5AA9B91A503F02007D9C8A /* iconArrowUp.png */,
 				8E5AA9BA1A503F02007D9C8A /* iconArrowUp@2x.png */,
@@ -4621,6 +4639,7 @@
 				8497BFEB1A295A2300A5ED3C /* step6@2x.png in Resources */,
 				8E7554691A52EFC8001940FB /* iconTurnSlightLeft@2x.png in Resources */,
 				B315789A188D5E5200C0ED01 /* flag-btn-2-1.png in Resources */,
+				8E69BDE91A584A2F00C6924D /* iconWalking@2x.png in Resources */,
 				76601A53194BE90F001D4C01 /* Left-1.png in Resources */,
 				B3157891188D5E5200C0ED01 /* btn-back-1-1.png in Resources */,
 				8E0B07CF1A4475CF00CF7A78 /* iconInfo.png in Resources */,
@@ -4651,6 +4670,7 @@
 				8497C0161A295A8500A5ED3C /* TestMapViewController.xib in Resources */,
 				8E69BDDA1A57D25A00C6924D /* ProThanhToanQuocTeViewHeader.xib in Resources */,
 				8E75544D1A52EFC8001940FB /* iconFerryTrain@2x.png in Resources */,
+				8E69BDEB1A584B5500C6924D /* iconWalking.png in Resources */,
 				8497BFC21A295A2300A5ED3C /* botswana-large.png in Resources */,
 				84918AC01A34574A00149CB4 /* SearchAdvanceLeadViewController.xib in Resources */,
 				8434BF041A2F61B200C29815 /* calendar_small_new.png in Resources */,
@@ -4866,6 +4886,7 @@
 				8497BFD81A295A2300A5ED3C /* spitfire@2x.png in Resources */,
 				2DD29EBA18769A500066B883 /* notification-bg-1.png in Resources */,
 				8E7554671A52EFC8001940FB /* iconTurnSharpRight@2x.png in Resources */,
+				8E69BDE41A58458500C6924D /* iconCar@2x.png in Resources */,
 				B39DD45D18A9F66300FFA8EB /* ic_no_image1.png in Resources */,
 				2DE6B97B17FD242C00DC0D4E /* icon_radio-button_off.png in Resources */,
 				B316D68E188E927A009B751B /* bg-doc.png in Resources */,
@@ -4892,6 +4913,7 @@
 				7623F0531A41C98400F99DA0 /* EditContactOpportunityViewController.xib in Resources */,
 				2DE2D2431829060700034877 /* tab-data-btn-2.png in Resources */,
 				7633081C1A04941E000E190B /* VTDateField.xib in Resources */,
+				8E69BDE31A58458500C6924D /* iconCar.png in Resources */,
 				8434BEFE1A2F485700C29815 /* DetailContactLeadViewController.xib in Resources */,
 				2DE2D2441829060700034877 /* tab-data-btn-1.png in Resources */,
 				76601A48194BE90F001D4C01 /* Reader-Button-N@2x.png in Resources */,
@@ -4911,6 +4933,7 @@
 				2D6D76781876726A0051AD9E /* icon_noread-1.png in Resources */,
 				2D6D7640187658BA0051AD9E /* Button-Tim kiem.png in Resources */,
 				76C964701A17731900029978 /* pie_pop_over_gradient.jpg in Resources */,
+				8E69BDE51A58458500C6924D /* iconMoto@2x.png in Resources */,
 				2DE2D2531829060700034877 /* ic-pdf.png in Resources */,
 				2D2F75A2185801E000EC76EE /* Button_Dong_y.png in Resources */,
 				2DE2D2541829060700034877 /* ic-notsign.png in Resources */,
@@ -4942,6 +4965,7 @@
 				76601A4A194BE90F001D4C01 /* Reader-Email@2x.png in Resources */,
 				8E75544C1A52EFC8001940FB /* iconFerryTrain.png in Resources */,
 				849125CA1A1CDAE400949FC8 /* icon_save-1.png in Resources */,
+				8E69BDE71A58467100C6924D /* iconMoto.png in Resources */,
 				76601A4B194BE90F001D4C01 /* Reader-Mark-N.png in Resources */,
 				8E7554721A52F599001940FB /* iconMarkerLocation.png in Resources */,
 				2DE2D2601829060700034877 /* title-tab-bg-2.png in Resources */,

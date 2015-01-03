@@ -73,10 +73,17 @@
     [[NSUserDefaults standardUserDefaults] setObject:maneuverDic forKey:MANEUVER_KEY];
 }
 
--(void)getFirstPageCustomerKHDM{
+-(void)getFirstPageCustomerKHDMWithKey:(NSString*)key{
     [_listCustomerKHDM removeAllObjects];
     _currentPageKHDM =1;
-    NSMutableArray *resultArr = [dtoLeadProcess filter];
+    NSMutableArray *resultArr = [[NSMutableArray alloc] init];
+
+    if ([key isEqualToString:@""]) {
+        resultArr =  [dtoLeadProcess filter];
+    }else{
+        resultArr = [dtoLeadProcess filterWithKey:DTOLEAD_name withValue:key];
+    }
+
     if (resultArr.count>MAX_ROW_A_PAGE) {
         for (int i=0;i<MAX_ROW_A_PAGE;i++) {
             NSDictionary *dic = [resultArr objectAtIndex:i];
@@ -89,11 +96,19 @@
     }
 
 }
--(void)getNextPageCustomerKHDM{
+-(void)getNextPageCustomerKHDMWithKey:(NSString*)key{
 
     int currentPage = _currentPageKHDM;
     int nextPage = ++_currentPageKHDM;
-    NSMutableArray *resultArr = [dtoLeadProcess filter];
+
+    NSMutableArray *resultArr = [[NSMutableArray alloc] init];
+
+    if ([key isEqualToString:@""]) {
+        resultArr =  [dtoLeadProcess filter];
+    }else{
+        resultArr = [dtoLeadProcess filterWithKey:DTOLEAD_name withValue:key];
+    }
+
     NSInteger totalPage =resultArr.count/MAX_ROW_A_PAGE;
     if (totalPage>currentPage) {
         for (int i=MAX_ROW_A_PAGE*currentPage;i<MAX_ROW_A_PAGE*nextPage;i++) {
@@ -112,11 +127,16 @@
     }
 }
 
--(void)getFirstPageCustomerKH360{
+-(void)getFirstPageCustomerKH360WithKey:(NSString*)key{
     [_listCustomerKH360 removeAllObjects];
     _currentPageKH360 = 1;
-    NSMutableArray *resultArr = [dtoProcess filter];
+    NSMutableArray *resultArr = [[NSMutableArray alloc] init];
 
+    if ([key isEqualToString:@""]) {
+        resultArr = [dtoProcess filter];
+    }else{
+        resultArr = [dtoProcess filterWithKey:DTOACCOUNT_name withValue:key];
+    }
     if (resultArr.count>MAX_ROW_A_PAGE) {
         for (int i=0;i<MAX_ROW_A_PAGE;i++) {
             NSDictionary *dic = [resultArr objectAtIndex:i];
@@ -128,10 +148,17 @@
         }
     }
 }
--(void)getNextPageCustomerKH360{
+-(void)getNextPageCustomerKH360WithKey:(NSString*)key{
     int currentPage = _currentPageKH360;
     int nextPage = ++_currentPageKH360;
-    NSMutableArray *resultArr = [dtoProcess filter];
+    NSMutableArray *resultArr = [[NSMutableArray alloc] init];
+
+    if ([key isEqualToString:@""]) {
+        resultArr = [dtoProcess filter];
+    }else{
+        resultArr = [dtoProcess filterWithKey:DTOACCOUNT_name withValue:key];
+    }
+    
     NSInteger totalPage =resultArr.count/MAX_ROW_A_PAGE;
     if (totalPage>currentPage) {
         for (int i=MAX_ROW_A_PAGE*currentPage;i<MAX_ROW_A_PAGE*nextPage;i++) {

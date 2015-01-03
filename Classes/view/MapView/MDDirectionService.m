@@ -8,6 +8,8 @@
 
 #import "MDDirectionService.h"
 
+#import "Globals.h"
+
 @implementation MDDirectionService{
 @private
     BOOL _sensor;
@@ -25,9 +27,10 @@ static NSString *kMDDirectionsURL = @"http://maps.googleapis.com/maps/api/direct
     int destinationPos = waypointCount -1;
     NSString *destination = [waypoints objectAtIndex:destinationPos];
     NSString *sensor = [query objectForKey:@"sensor"];
+    NSString *modeVehicles = [[NSUserDefaults standardUserDefaults] valueForKey:VEHICLES_SELECTED];
     NSMutableString *url =
     [NSMutableString stringWithFormat:@"%@&origin=%@&destination=%@&sensor=%@&language=vi&mode=%@",
-     kMDDirectionsURL,origin,destination, sensor,@"driving"];
+     kMDDirectionsURL,origin,destination, sensor,modeVehicles];
     if(waypointCount>2) {
         [url appendString:@"&waypoints=optimize:true"];
         int wpCount = waypointCount-2;

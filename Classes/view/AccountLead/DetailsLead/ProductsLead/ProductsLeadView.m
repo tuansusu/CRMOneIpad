@@ -11,6 +11,8 @@
 #import "ProductLeadCellHeader.h"
 #import "ProductLeadViewCell.h"
 #import "DTOProductLeadTypeObject.h"
+#import "Globals.h"
+
 
 @implementation ProductsLeadView
 
@@ -76,22 +78,135 @@
 {
     DTOProductLeadTypeObject *typeOB = [_listTypeProduct objectAtIndex:section];
     NSMutableArray *resultArr = [dtoProductDetail filterProductWithLeadId:_leadId WithTypeId:typeOB.productTypeId];
-    return resultArr.count;
+    if (resultArr.count>0) {
+        return resultArr.count;
+    }
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    DTOProductLeadTypeObject *typeOB = [_listTypeProduct objectAtIndex:indexPath.section];
+    NSMutableArray *resultArr = [dtoProductDetail filterProductWithLeadId:_leadId WithTypeId:typeOB.productTypeId];
+    if (resultArr.count>0) {
+        static NSString *cellId = @"ProductLeadViewCell";
+        ProductLeadViewCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+        if (cell == nil) {
+            cell = [[ProductLeadViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+
+            NSDictionary *productDetailDic =[resultArr objectAtIndex:indexPath.row];
+            DTOProductDetailObject *productDetailOB = [productDetailDic dtoProductDetailObject];
+            [cell loadDataCellWithProductDetail:productDetailOB];
+        }
+        return cell;
+    }
+
     static NSString *cellId = @"ProductLeadViewCell";
     ProductLeadViewCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
     if (cell == nil) {
         cell = [[ProductLeadViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
-        DTOProductLeadTypeObject *typeOB = [_listTypeProduct objectAtIndex:indexPath.section];
-        NSMutableArray *resultArr = [dtoProductDetail filterProductWithLeadId:_leadId WithTypeId:typeOB.productTypeId];
-        NSDictionary *productDetailDic =[resultArr objectAtIndex:indexPath.row];
-        DTOProductDetailObject *productDetailOB = [productDetailDic dtoProductDetailObject];
-        [cell loadDataCellWithProductDetail:productDetailOB];
     }
     return cell;
+}
+
+#pragma mark Table view Delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    DTOProductLeadTypeObject *typeOB = [_listTypeProduct objectAtIndex:indexPath.section];
+    if ([typeOB.productTypeId intValue]==PRODUCT_TYPE_TIN_DUNG)
+    {
+        proTindungDetailVC = [[ProTindungDetailViewController alloc] init];
+        proTindungDetailVC.delegate= self;
+        [self addSubview:proTindungDetailVC.view];
+    }
+    else if ([typeOB.productTypeId intValue]==PRODUCT_TYPE_THANH_TOAN)
+    {
+        proTaiKhoanThanhToanDetailVC = [[ProTaiKhoanThanhToanDetailViewController alloc] init];
+
+        proTaiKhoanThanhToanDetailVC.delegate= self;
+        [self addSubview:proTaiKhoanThanhToanDetailVC.view];
+    }
+    else if ([typeOB.productTypeId intValue]==PRODUCT_TYPE_TIET_KIEM)
+    {
+        proTaiKhoanTietKiemDetailVC = [[ProTaiKhoanTietKiemDetailViewController alloc] init];
+        proTaiKhoanTietKiemDetailVC.delegate= self;
+        [self addSubview:proTaiKhoanTietKiemDetailVC.view];
+    }
+    else if ([typeOB.productTypeId intValue]==PRODUCT_TYPE_BAO_LANH)
+    {
+        proBaoLanhDetailVC = [[ProBaoLanhDetailViewController alloc] init];
+        proBaoLanhDetailVC.delegate= self;
+        [self addSubview:proBaoLanhDetailVC.view];
+    }
+    else if ([typeOB.productTypeId intValue]==PRODUCT_TYPE_THANH_TOAN_QUOC_TE)
+    {
+        proThanhToanQuocTeDetailVC = [[ProThanhToanQuocTeDetailViewController alloc] init];
+        proThanhToanQuocTeDetailVC.delegate= self;
+        [self addSubview:proThanhToanQuocTeDetailVC.view];
+
+    }
+    else if ([typeOB.productTypeId intValue]==PRODUCT_TYPE_THE)
+    {
+        proTheDetailVC = [[ProTheDetailViewController alloc] init];
+        proTheDetailVC.delegate= self;
+        [self addSubview:proTheDetailVC.view];
+    }
+    else if ([typeOB.productTypeId intValue]==PRODUCT_TYPE_NGAN_HANG_DIEN_TU)
+    {
+        proEMBDetailVC = [[ProEMBDetailViewController alloc] init];
+        proEMBDetailVC.delegate= self;
+        [self addSubview:proEMBDetailVC.view];
+        
+    }
+    else if ([typeOB.productTypeId intValue]==PRODUCT_TYPE_BANK_PLUS)
+    {
+        proBankPlusDetailVC = [[ProBankPlusDetailViewController alloc] init];
+        proBankPlusDetailVC.delegate= self;
+        [self addSubview:proBankPlusDetailVC.view];
+    }
+}
+
+
+
+#pragma mark ProTindungDetailViewController Delegate
+- (void)closeProTindungDetailView:(ProTindungDetailViewController*)tinDungDetailVC{
+    [tinDungDetailVC.view removeFromSuperview];
+}
+
+#pragma mark ProTheDetailViewController Delegate
+- (void)closeProTheDetailView:(ProTheDetailViewController*)theDetailVC{
+    [theDetailVC.view removeFromSuperview];
+}
+
+#pragma mark ProThanhToanQuocTeDetailViewController Delegate
+- (void)closeThanhToanQuocTeDetailView:(ProThanhToanQuocTeDetailViewController*)ThanhToanQuocTeDetailVC{
+    [ThanhToanQuocTeDetailVC.view removeFromSuperview];
+}
+
+#pragma mark ProTaiKhoanTietKiemDetailViewController Delegate
+- (void)closeTaiKhoanTietKiemDetailView:(ProTaiKhoanTietKiemDetailViewController*)taiKhoanTietKiemDetailVC{
+    [taiKhoanTietKiemDetailVC.view removeFromSuperview];
+}
+
+#pragma mark ProEMBDetailViewController Delegate
+- (void)closeEMBDetailView:(ProEMBDetailViewController*)eMBDetailVC{
+    [eMBDetailVC.view removeFromSuperview];
+}
+
+#pragma mark ProBankPlusDetailViewController Delegate
+- (void)closeBankPlusDetailView:(ProBankPlusDetailViewController*)bankPlusDetailViewController{
+    [bankPlusDetailViewController.view removeFromSuperview];
+}
+
+#pragma mark ProTaiKhoanThanhToanDetailViewController Delegate
+- (void)closeProTaiKhoanThanhToanDetailView:(ProTaiKhoanThanhToanDetailViewController*)taiKhoanThanhToanDetailViewController{
+    [taiKhoanThanhToanDetailViewController.view removeFromSuperview];
+}
+
+#pragma mark ProBaoLanhDetailViewController Delegate
+- (void)closeProBaoLanhDetailView:(ProBaoLanhDetailViewController*)baoLanhDetailViewController{
+    [baoLanhDetailViewController.view removeFromSuperview];
 }
 
 @end

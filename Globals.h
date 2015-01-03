@@ -23,6 +23,23 @@ typedef enum {
     typeKH360
 } CustomerType;
 
+//=============================Product Type========================
+
+#define PRODUCT_TYPE_THANH_TOAN 1
+#define PRODUCT_TYPE_TIN_DUNG 2
+#define PRODUCT_TYPE_BAO_LANH 3
+#define PRODUCT_TYPE_THANH_TOAN_QUOC_TE 4
+#define PRODUCT_TYPE_THE 5
+#define PRODUCT_TYPE_NGAN_HANG_DIEN_TU 6
+#define PRODUCT_TYPE_TIET_KIEM 7
+#define PRODUCT_TYPE_KIEU_HOI 8
+#define PRODUCT_TYPE_ATM_POS 9
+#define PRODUCT_TYPE_BANK_PLUS 10
+#define PRODUCT_TYPE_DAI_TRA 11
+#define PRODUCT_TYPE_DU_AN 12
+#define PRODUCT_TYPE_LOI 13
+
+//=============================Map Configuration========================
 #define KEY_ROUTES_OF_DIRECTIONS_AT_INDEX @"routesOfDirectionAtIndex%d"
 
 #define KEY_MARKER_KHDM @"khdmMarkerAtIndex%d"

@@ -8,31 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol TaskActionCellDelegate <NSObject>
-
-- (void) AccountLeadCellDelegate_ActionChangeTaskStatusWithData : (NSMutableDictionary*) dicData ;
-
-@end
+@protocol TaskActionCellDelegate;
 
 @interface TaskActionCell : UITableViewCell
 
-+ (UINib *)nib;
+    @property (nonatomic, assign) id <TaskActionCellDelegate> delegate;
 
-+(TaskActionCell*) initNibCell;
+    + (UINib *)nib;
+    - (void)loadDataToCellWithData:(NSDictionary *)dicData withOption:(int)smgSelect;
 
-@property (weak, nonatomic) id <TaskActionCellDelegate> delegate;
-@property (nonatomic, strong) NSMutableDictionary *dicData;
+@end
 
-@property (weak, nonatomic) IBOutlet UILabel *lbName;
+@protocol TaskActionCellDelegate <NSObject>
 
-@property (weak, nonatomic) IBOutlet UILabel *lbTime;
-
-
-@property (weak, nonatomic) IBOutlet UIButton *btnChangeStatus;
-
-
--(void) loadDataToCellWithData : (NSDictionary*) dicData withOption : (int) smgSelect ;
-
-- (IBAction)actionChangeStatus:(id)sender;
+    - (void)taskActionCell:(TaskActionCell *)taskActionCell changeStatusWithData:(NSMutableDictionary *)dicData;
 
 @end

@@ -59,6 +59,7 @@
                 <outlet property="tbData" destination="T7A-it-tM5" id="q36-fI-YaE"/>
                 <outlet property="view" destination="Cer-zB-WQ1" id="c5h-Gh-OPd"/>
                 <outlet property="viewBodyExpandInfo" destination="yfP-EW-4Lk" id="lae-oa-3MX"/>
+                <outlet property="viewComplain" destination="owi-bZ-2dQ" id="VjB-lN-2e6"/>
                 <outlet property="viewHeaderExpandInfo" destination="w19-hH-sP0" id="KgF-Qz-TMm"/>
                 <outlet property="viewProductsLead" destination="Ymc-ci-E7A" id="ceS-OY-rYk"/>
             </connections>
@@ -507,12 +508,12 @@
                                                     <rect key="frame" x="650" y="0.0" width="130" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                    <state key="normal" title="Nganh Nghề">
+                                                    <state key="normal" title="Ý kiến phản hồi">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="actionOpportunity:" destination="-1" eventType="touchUpInside" id="QsR-UP-vdB"/>
+                                                        <action selector="btnComplainsTaped:" destination="-1" eventType="touchUpInside" id="fzA-vC-hfh"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qr8-Qz-zqb">
@@ -524,7 +525,6 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="actionOpportunity:" destination="-1" eventType="touchUpInside" id="cze-in-Ulb"/>
                                                         <action selector="btnProductsTaped:" destination="-1" eventType="touchUpInside" id="4Ec-wp-b3j"/>
                                                     </connections>
                                                 </button>
@@ -673,6 +673,41 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
                                                 <outlet property="tbvProductsLead" destination="s7Z-P2-uYw" id="qRn-Ex-msw"/>
+                                            </connections>
+                                        </view>
+                                        <view contentMode="scaleToFill" id="owi-bZ-2dQ" customClass="ComplainsView">
+                                            <rect key="frame" x="0.0" y="0.0" width="704" height="604"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" id="2A0-8F-edn" userLabel="contentView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="704" height="604"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <searchBar contentMode="redraw" id="D9E-Rt-Ao3">
+                                                            <rect key="frame" x="0.0" y="0.0" width="704" height="44"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                            <connections>
+                                                                <outlet property="delegate" destination="owi-bZ-2dQ" id="drn-dn-eUx"/>
+                                                            </connections>
+                                                        </searchBar>
+                                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="tJt-JE-f5b">
+                                                            <rect key="frame" x="0.0" y="44" width="704" height="560"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <connections>
+                                                                <outlet property="dataSource" destination="owi-bZ-2dQ" id="SBr-2f-1l8"/>
+                                                                <outlet property="delegate" destination="owi-bZ-2dQ" id="JYK-jK-3pm"/>
+                                                            </connections>
+                                                        </tableView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <outlet property="searchBarComplain" destination="D9E-Rt-Ao3" id="CbI-Ti-Aqo"/>
+                                                <outlet property="tbvListComplains" destination="tJt-JE-f5b" id="eM6-hm-hLG"/>
                                             </connections>
                                         </view>
                                     </subviews>

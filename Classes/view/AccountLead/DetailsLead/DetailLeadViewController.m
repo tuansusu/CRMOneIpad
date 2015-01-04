@@ -17,7 +17,7 @@
 #import "TaskCalTLineCell.h"
 #import "TaskActionCell.h"
 #import "ProductsLeadView.h"
-
+#import "ComplainsView.h"
 ////remove
 #import "StringUtil.h"
 
@@ -92,7 +92,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     IBOutlet UIScrollView *scrollViewHeaderExpandInfo;
 
     IBOutlet  ProductsLeadView* viewProductsLead;
-
+    IBOutlet  ComplainsView* viewComplain;
 }
 @end
 
@@ -332,10 +332,21 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             NSLog(@"task count = %ld", (unsigned long)arrayData.count);
         }
             break;
+
+        case typeLeaderView_Complains:
+        {
+            self.viewBodyExpandInfo.hidden = NO;
+            self.tbData.hidden  = YES;
+            [viewProductsLead setHidden:YES];
+            [viewComplain setHidden:NO];
+            [viewComplain initDataWithLeaderId:[[dicData objectForKey:DTOLEAD_clientLeadId] description]];
+        }
+            break;
         case typeLeaderView_ProductsLead:
         {
             self.viewBodyExpandInfo.hidden = NO;
             self.tbData.hidden  = YES;
+            [viewComplain setHidden:YES];
             [viewProductsLead setHidden:NO];
             [viewProductsLead initDataWithLeaderId:[[dicData objectForKey:DTOLEAD_clientLeadId] description]];
         }
@@ -500,8 +511,14 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     [self displayNormalButtonState:sender];
 }
 
+- (IBAction)btnComplainsTaped:(UIButton *)sender {
+    [self loadDataWithTypeAction:typeLeaderView_Complains];
+    [self displayNormalButtonState:sender];
+}
+
 - (IBAction)btnProductsTaped:(UIButton *)sender {
     [self loadDataWithTypeAction:typeLeaderView_ProductsLead];
+    [self displayNormalButtonState:sender];
 }
 
 

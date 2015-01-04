@@ -86,7 +86,15 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 //=========================Network Configuration==============================================================
 #define SYS_Notification_NotConnection @"Mất kết nối internet hoặc không tìm thấy máy chủ"
 
-//=========================Map Configuration
+//=========================Complain Alert=======================================================
+
+#define SYS_Notification_CheckValid_NoiDungKhieuNai @"Hãy nhập nội dung khiếu nại"
+#define SYS_Notification_CheckValid_LiDo @"Hãy nhập lí do"
+#define SYS_Notification_CheckValid_NoiDungXuLy @"Hãy nhập nội dung xử lý"
+
+#define SYS_Notification_DeleteConfirm @"Bạn có chắc chắn muốn xoá không?"
+
+//=========================Map Configuration ===================================================
 
 #define SYS_Notification_NotGetCurrentLocation @"Không xác định được vị trí của bạn"
 #define SYS_Notification_EnableLocation @"Chức năng này yêu cầu bật xác định vị trí của bạn"
@@ -115,6 +123,8 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 #define SYS_Notification_UpdateSuccess @"Cập nhật thành công"
 #define SYS_Notification_UpdateFail @"Cập nhật không thành công"
 #define SYS_Notification_CancelTitle @"Thoát"
+#define SYS_Notification_OKButton @"Đồng ý"
+#define SYS_Notification_CancelButton @"Huỷ"
 
 #define IMAGE_ICON_RIGHT @"icon_right.png"
 #define IMAGE_ICON_DOWN @"icon_down.png"

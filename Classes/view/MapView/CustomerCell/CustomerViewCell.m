@@ -53,8 +53,8 @@
     }
 
     if (kh360OB.name) {
-        if (kh360OB.accountId && kh360OB.name) {
-            lblName.text = [NSString stringWithFormat:@"%@-%@",kh360OB.accountId,kh360OB.name];
+        if (kh360OB.clientAccountId && kh360OB.name) {
+            lblName.text = [NSString stringWithFormat:@"%@-%@",kh360OB.clientAccountId,kh360OB.name];
         }else{
             lblName.text = [NSString stringWithFormat:@"%@",kh360OB.name];
         }
@@ -76,9 +76,9 @@
     }
 
     if (khdmOB.name) {
-        if(khdmOB.leadId && khdmOB.name)
+        if(khdmOB.clientLeadId && khdmOB.name)
         {
-            lblName.text = [NSString stringWithFormat:@"%@-%@",khdmOB.leadId,khdmOB.name];
+            lblName.text = [NSString stringWithFormat:@"%@-%@",khdmOB.clientLeadId,khdmOB.name];
         }else{
             lblName.text = [NSString stringWithFormat:@"%@",khdmOB.name];
         }

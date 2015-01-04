@@ -10,7 +10,7 @@
 
 #import "DTOACCOUNTLEADProcess.h"
 #import "DTOACCOUNTProcess.h"
-#define MAX_ROW_A_PAGE 20
+
 
 @interface MapsModel : NSObject
 {

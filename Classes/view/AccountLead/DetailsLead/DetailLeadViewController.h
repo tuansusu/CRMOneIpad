@@ -33,6 +33,7 @@ enum TypeLeaderView{
     typeLeaderView_Calendar, // Lịch
     typeLeaderView_Task, // Tác vụ
     typeLeaderView_Opportunity,   //Cơ hội
+    typeLeaderView_Complains, // ý kiến phản hồi
     typeLeaderView_ProductsLead // sản phẩm dịch vụ
 };
 

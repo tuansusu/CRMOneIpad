@@ -552,6 +552,31 @@
 #define DTOPRODUCTMASTER_updatedBy @"updatedBy" //BIGINT
 #define DTOPRODUCTMASTER_crossPercent @"crossPercent" //INTEGER
 #define DTOPRODUCTMASTER_id @"id" //INTEGER
+
+///dtocompalin Field
+#define DTOCOMPLAIN_casesId @"casesId" //VARCHAR
+#define DTOCOMPLAIN_code @"code" //VARCHAR
+#define DTOCOMPLAIN_content @"content" //VARCHAR
+#define DTOCOMPLAIN_reason @"reason" //VARCHAR
+#define DTOCOMPLAIN_result @"result" //VARCHAR
+#define DTOCOMPLAIN_status @"status" //VARCHAR
+#define DTOCOMPLAIN_fromReceived @"fromReceived" //VARCHAR
+#define DTOCOMPLAIN_type @"type" //VARCHAR
+#define DTOCOMPLAIN_priority @"priority" //VARCHAR
+#define DTOCOMPLAIN_receiverId @"receiverId" //VARCHAR
+#define DTOCOMPLAIN_receivedDate @"receivedDate" //VARCHAR
+#define DTOCOMPLAIN_processerId @"processerId" //VARCHAR
+#define DTOCOMPLAIN_processedDate @"processedDate" //VARCHAR
+#define DTOCOMPLAIN_closedId @"closedId" //VARCHAR
+#define DTOCOMPLAIN_closedDate @"closedDate" //VARCHAR
+#define DTOCOMPLAIN_accountId @"accountId" //VARCHAR
+#define DTOCOMPLAIN_productMasterId @"productMasterId" //VARCHAR
+#define DTOCOMPLAIN_acceptTypeId @"acceptTypeId" //VARCHAR
+#define DTOCOMPLAIN_agentText @"agentText" //VARCHAR
+#define DTOCOMPLAIN_assignBy @"assignBy" //VARCHAR
+#define DTOCOMPLAIN_blackList @"blackList" //VARCHAR
+#define DTOCOMPLAIN_callLenght @"callLenght" //VARCHAR
+
 ///dtoproducttype  Field
 #define DTOPRODUCTTYPE_code @"code" //VARCHAR
 #define DTOPRODUCTTYPE_isActive @"isActive" //SMALLINT

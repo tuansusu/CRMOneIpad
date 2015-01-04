@@ -575,10 +575,25 @@
 		8E0B07D61A4479EF00CF7A78 /* bgPopup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0B07D41A4479EF00CF7A78 /* bgPopup@2x.png */; };
 		8E2640B41A4C7A4C0047073B /* MainViewListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2640AF1A4C7A4C0047073B /* MainViewListCell.m */; };
 		8E2640B51A4C7A4C0047073B /* MainViewListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E2640B01A4C7A4C0047073B /* MainViewListCell.xib */; };
+		8E568F7E1A58EEDF0002A3C4 /* ListComplainsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E568F7C1A58EEDF0002A3C4 /* ListComplainsViewController.m */; };
+		8E568F7F1A58EEDF0002A3C4 /* ListComplainsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E568F7D1A58EEDF0002A3C4 /* ListComplainsViewController.xib */; };
+		8E568F841A58F5170002A3C4 /* ComplainViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E568F821A58F5170002A3C4 /* ComplainViewCell.m */; };
+		8E568F851A58F5170002A3C4 /* ComplainViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E568F831A58F5170002A3C4 /* ComplainViewCell.xib */; };
+		8E568F881A58F7010002A3C4 /* ComplainViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E568F871A58F7010002A3C4 /* ComplainViewHeader.m */; };
+		8E568F8A1A58F70C0002A3C4 /* ComplainViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E568F891A58F70C0002A3C4 /* ComplainViewHeader.xib */; };
+		8E568F8D1A58FDFC0002A3C4 /* DTOComplainObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E568F8C1A58FDFC0002A3C4 /* DTOComplainObject.m */; };
+		8E568F931A5900310002A3C4 /* DTOComplainProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E568F921A5900310002A3C4 /* DTOComplainProcess.m */; };
+		8E568F981A5916FD0002A3C4 /* ComplainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E568F971A5916FD0002A3C4 /* ComplainModel.m */; };
+		8E568F9D1A591CC80002A3C4 /* ComplainDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E568F9B1A591CC80002A3C4 /* ComplainDetailViewController.m */; };
+		8E568F9E1A591CC80002A3C4 /* ComplainDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E568F9C1A591CC80002A3C4 /* ComplainDetailViewController.xib */; };
+		8E568FA21A59228B0002A3C4 /* iconSave.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E568FA01A59228B0002A3C4 /* iconSave.png */; };
+		8E568FA31A59228B0002A3C4 /* iconSave@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E568FA11A59228B0002A3C4 /* iconSave@2x.png */; };
 		8E5AA9B71A503C86007D9C8A /* iconMarker.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E5AA9B51A503C86007D9C8A /* iconMarker.png */; };
 		8E5AA9B81A503C86007D9C8A /* iconMarker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E5AA9B61A503C86007D9C8A /* iconMarker@2x.png */; };
 		8E5AA9BB1A503F02007D9C8A /* iconArrowUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E5AA9B91A503F02007D9C8A /* iconArrowUp.png */; };
 		8E5AA9BC1A503F02007D9C8A /* iconArrowUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E5AA9BA1A503F02007D9C8A /* iconArrowUp@2x.png */; };
+		8E6105F01A59515B003D1C0C /* iconAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E6105EF1A59515B003D1C0C /* iconAdd@2x.png */; };
+		8E6105F41A5964E4003D1C0C /* ComplainsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6105F31A5964E4003D1C0C /* ComplainsView.m */; };
 		8E69BDD41A57D23900C6924D /* ProThanhToanQuocTeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E69BDD21A57D23900C6924D /* ProThanhToanQuocTeViewCell.m */; };
 		8E69BDD51A57D23900C6924D /* ProThanhToanQuocTeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E69BDD31A57D23900C6924D /* ProThanhToanQuocTeViewCell.xib */; };
 		8E69BDD81A57D24E00C6924D /* ProThanhToanQuocTeViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E69BDD71A57D24E00C6924D /* ProThanhToanQuocTeViewHeader.m */; };
@@ -1730,11 +1745,34 @@
 		8E2640AE1A4C7A4C0047073B /* MainViewListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewListCell.h; sourceTree = "<group>"; };
 		8E2640AF1A4C7A4C0047073B /* MainViewListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewListCell.m; sourceTree = "<group>"; };
 		8E2640B01A4C7A4C0047073B /* MainViewListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewListCell.xib; sourceTree = "<group>"; };
+		8E568F7B1A58EEDF0002A3C4 /* ListComplainsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListComplainsViewController.h; sourceTree = "<group>"; };
+		8E568F7C1A58EEDF0002A3C4 /* ListComplainsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListComplainsViewController.m; sourceTree = "<group>"; };
+		8E568F7D1A58EEDF0002A3C4 /* ListComplainsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListComplainsViewController.xib; sourceTree = "<group>"; };
+		8E568F811A58F5170002A3C4 /* ComplainViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComplainViewCell.h; sourceTree = "<group>"; };
+		8E568F821A58F5170002A3C4 /* ComplainViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComplainViewCell.m; sourceTree = "<group>"; };
+		8E568F831A58F5170002A3C4 /* ComplainViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComplainViewCell.xib; sourceTree = "<group>"; };
+		8E568F861A58F7010002A3C4 /* ComplainViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComplainViewHeader.h; sourceTree = "<group>"; };
+		8E568F871A58F7010002A3C4 /* ComplainViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComplainViewHeader.m; sourceTree = "<group>"; };
+		8E568F891A58F70C0002A3C4 /* ComplainViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComplainViewHeader.xib; sourceTree = "<group>"; };
+		8E568F8B1A58FDFC0002A3C4 /* DTOComplainObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOComplainObject.h; sourceTree = "<group>"; };
+		8E568F8C1A58FDFC0002A3C4 /* DTOComplainObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOComplainObject.m; sourceTree = "<group>"; };
+		8E568F911A5900310002A3C4 /* DTOComplainProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOComplainProcess.h; sourceTree = "<group>"; };
+		8E568F921A5900310002A3C4 /* DTOComplainProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOComplainProcess.m; sourceTree = "<group>"; };
+		8E568F961A5916FD0002A3C4 /* ComplainModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComplainModel.h; sourceTree = "<group>"; };
+		8E568F971A5916FD0002A3C4 /* ComplainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComplainModel.m; sourceTree = "<group>"; };
+		8E568F9A1A591CC80002A3C4 /* ComplainDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComplainDetailViewController.h; sourceTree = "<group>"; };
+		8E568F9B1A591CC80002A3C4 /* ComplainDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComplainDetailViewController.m; sourceTree = "<group>"; };
+		8E568F9C1A591CC80002A3C4 /* ComplainDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComplainDetailViewController.xib; sourceTree = "<group>"; };
+		8E568FA01A59228B0002A3C4 /* iconSave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconSave.png; sourceTree = "<group>"; };
+		8E568FA11A59228B0002A3C4 /* iconSave@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconSave@2x.png"; sourceTree = "<group>"; };
 		8E5AA9AE1A50093C007D9C8A /* Globals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
 		8E5AA9B51A503C86007D9C8A /* iconMarker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconMarker.png; sourceTree = "<group>"; };
 		8E5AA9B61A503C86007D9C8A /* iconMarker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconMarker@2x.png"; sourceTree = "<group>"; };
 		8E5AA9B91A503F02007D9C8A /* iconArrowUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconArrowUp.png; sourceTree = "<group>"; };
 		8E5AA9BA1A503F02007D9C8A /* iconArrowUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconArrowUp@2x.png"; sourceTree = "<group>"; };
+		8E6105EF1A59515B003D1C0C /* iconAdd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconAdd@2x.png"; sourceTree = "<group>"; };
+		8E6105F21A5964E4003D1C0C /* ComplainsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComplainsView.h; sourceTree = "<group>"; };
+		8E6105F31A5964E4003D1C0C /* ComplainsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComplainsView.m; sourceTree = "<group>"; };
 		8E69BDD11A57D23900C6924D /* ProThanhToanQuocTeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProThanhToanQuocTeViewCell.h; sourceTree = "<group>"; };
 		8E69BDD21A57D23900C6924D /* ProThanhToanQuocTeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProThanhToanQuocTeViewCell.m; sourceTree = "<group>"; };
 		8E69BDD31A57D23900C6924D /* ProThanhToanQuocTeViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProThanhToanQuocTeViewCell.xib; sourceTree = "<group>"; };
@@ -2182,6 +2220,8 @@
 				8E013B4B1A5548DE00A72586 /* DTOProductMasterObject.m */,
 				8EFE68FF1A565BDF003D55CE /* DTOProTindungDetailObject.h */,
 				8EFE69001A565BDF003D55CE /* DTOProTindungDetailObject.m */,
+				8E568F8B1A58FDFC0002A3C4 /* DTOComplainObject.h */,
+				8E568F8C1A58FDFC0002A3C4 /* DTOComplainObject.m */,
 			);
 			name = Objects;
 			path = ProcessData/Objects;
@@ -3072,6 +3112,8 @@
 				8E013B481A55008E00A72586 /* DTOPRODUCTDETAILProcess.m */,
 				8EFE69021A56604F003D55CE /* DTOProTindungDetailProcess.h */,
 				8EFE69031A56604F003D55CE /* DTOProTindungDetailProcess.m */,
+				8E568F911A5900310002A3C4 /* DTOComplainProcess.h */,
+				8E568F921A5900310002A3C4 /* DTOComplainProcess.m */,
 			);
 			name = Data;
 			path = ProcessData/Data;
@@ -3816,6 +3858,78 @@
 			path = ListViewCell;
 			sourceTree = "<group>";
 		};
+		8E568F791A58EE950002A3C4 /* Complain */ = {
+			isa = PBXGroup;
+			children = (
+				8E568F991A591CB10002A3C4 /* ComplainDetail */,
+				8E568F7A1A58EEC90002A3C4 /* ListComplains */,
+			);
+			path = Complain;
+			sourceTree = "<group>";
+		};
+		8E568F7A1A58EEC90002A3C4 /* ListComplains */ = {
+			isa = PBXGroup;
+			children = (
+				8E568F951A5916EC0002A3C4 /* ComplainModel */,
+				8E568F801A58F5010002A3C4 /* ComplainCell */,
+				8E568F7B1A58EEDF0002A3C4 /* ListComplainsViewController.h */,
+				8E568F7C1A58EEDF0002A3C4 /* ListComplainsViewController.m */,
+				8E568F7D1A58EEDF0002A3C4 /* ListComplainsViewController.xib */,
+			);
+			path = ListComplains;
+			sourceTree = "<group>";
+		};
+		8E568F801A58F5010002A3C4 /* ComplainCell */ = {
+			isa = PBXGroup;
+			children = (
+				8E568F811A58F5170002A3C4 /* ComplainViewCell.h */,
+				8E568F821A58F5170002A3C4 /* ComplainViewCell.m */,
+				8E568F831A58F5170002A3C4 /* ComplainViewCell.xib */,
+				8E568F861A58F7010002A3C4 /* ComplainViewHeader.h */,
+				8E568F871A58F7010002A3C4 /* ComplainViewHeader.m */,
+				8E568F891A58F70C0002A3C4 /* ComplainViewHeader.xib */,
+			);
+			path = ComplainCell;
+			sourceTree = "<group>";
+		};
+		8E568F951A5916EC0002A3C4 /* ComplainModel */ = {
+			isa = PBXGroup;
+			children = (
+				8E568F961A5916FD0002A3C4 /* ComplainModel.h */,
+				8E568F971A5916FD0002A3C4 /* ComplainModel.m */,
+			);
+			path = ComplainModel;
+			sourceTree = "<group>";
+		};
+		8E568F991A591CB10002A3C4 /* ComplainDetail */ = {
+			isa = PBXGroup;
+			children = (
+				8E568F9A1A591CC80002A3C4 /* ComplainDetailViewController.h */,
+				8E568F9B1A591CC80002A3C4 /* ComplainDetailViewController.m */,
+				8E568F9C1A591CC80002A3C4 /* ComplainDetailViewController.xib */,
+			);
+			path = ComplainDetail;
+			sourceTree = "<group>";
+		};
+		8E568F9F1A59228B0002A3C4 /* complain */ = {
+			isa = PBXGroup;
+			children = (
+				8E6105EF1A59515B003D1C0C /* iconAdd@2x.png */,
+				8E568FA01A59228B0002A3C4 /* iconSave.png */,
+				8E568FA11A59228B0002A3C4 /* iconSave@2x.png */,
+			);
+			path = complain;
+			sourceTree = "<group>";
+		};
+		8E6105F11A5964B5003D1C0C /* ComplainTab */ = {
+			isa = PBXGroup;
+			children = (
+				8E6105F21A5964E4003D1C0C /* ComplainsView.h */,
+				8E6105F31A5964E4003D1C0C /* ComplainsView.m */,
+			);
+			path = ComplainTab;
+			sourceTree = "<group>";
+		};
 		8E69BDD01A57D21A00C6924D /* ProThanhToanQuocTeCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -3984,6 +4098,7 @@
 		8ED38D6D1A5447C500D95A3B /* DetailsLead */ = {
 			isa = PBXGroup;
 			children = (
+				8E6105F11A5964B5003D1C0C /* ComplainTab */,
 				8ED38D771A54480100D95A3B /* ProductsLead */,
 				8ED38D6E1A5447C500D95A3B /* DetailLeadViewController.h */,
 				8ED38D6F1A5447C500D95A3B /* DetailLeadViewController.m */,
@@ -4243,6 +4358,7 @@
 		92C68E4A1519D4F100981728 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				8E568F791A58EE950002A3C4 /* Complain */,
 				8E8B3F211A49AA4300241360 /* MainView */,
 				8495DDCA1A30A0AF00C4E922 /* Account360 */,
 				8497C0111A295A6700A5ED3C /* MapView */,
@@ -4270,6 +4386,7 @@
 		92C68E6D1519DC7D00981728 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				8E568F9F1A59228B0002A3C4 /* complain */,
 				8EB708701A407856001861A0 /* Maps */,
 				B3A066BF17D1AB8200BA6487 /* Img_common */,
 				B346C25717C4688D00433B07 /* arrow_right.png */,
@@ -4722,6 +4839,7 @@
 				94BA8D7D1A2DF3CF0082AE9E /* CalendarPickerViewController.xib in Resources */,
 				B3157897188D5E5200C0ED01 /* extra-btn-1-1.png in Resources */,
 				8E75545F1A52EFC8001940FB /* iconRoundAboutRight@2x.png in Resources */,
+				8E568F8A1A58F70C0002A3C4 /* ComplainViewHeader.xib in Resources */,
 				8EFE69411A569A59003D55CE /* ProTheDetailViewController.xib in Resources */,
 				76CD8819196D1E4F00503B99 /* ic-xls-1.png in Resources */,
 				76EE207219FA829200A80414 /* ic-add-sub-1.png in Resources */,
@@ -4799,6 +4917,7 @@
 				8E7554651A52EFC8001940FB /* iconTurnRight@2x.png in Resources */,
 				8ED38D861A54528E00D95A3B /* ProductLeadCellHeader.xib in Resources */,
 				8ED402791A41D2DC00CCBE6D /* iconExpand.png in Resources */,
+				8E568FA31A59228B0002A3C4 /* iconSave@2x.png in Resources */,
 				8E7554581A52EFC8001940FB /* iconRampLeft.png in Resources */,
 				B3A066D717D1AB8200BA6487 /* background_1.png in Resources */,
 				B315789C188D5E5200C0ED01 /* logo-small-1.png in Resources */,
@@ -4963,9 +5082,11 @@
 				8E7554621A52EFC8001940FB /* iconTurnLeft.png in Resources */,
 				8E7554221A52E3A2001940FB /* iconTurnSharpLeft.png in Resources */,
 				76601A4A194BE90F001D4C01 /* Reader-Email@2x.png in Resources */,
+				8E568F851A58F5170002A3C4 /* ComplainViewCell.xib in Resources */,
 				8E75544C1A52EFC8001940FB /* iconFerryTrain.png in Resources */,
 				849125CA1A1CDAE400949FC8 /* icon_save-1.png in Resources */,
 				8E69BDE71A58467100C6924D /* iconMoto.png in Resources */,
+				8E568FA21A59228B0002A3C4 /* iconSave.png in Resources */,
 				76601A4B194BE90F001D4C01 /* Reader-Mark-N.png in Resources */,
 				8E7554721A52F599001940FB /* iconMarkerLocation.png in Resources */,
 				2DE2D2601829060700034877 /* title-tab-bg-2.png in Resources */,
@@ -4991,10 +5112,12 @@
 				2DE2D28C1829060700034877 /* footer.png in Resources */,
 				8497BFF01A295A2300A5ED3C /* track.json in Resources */,
 				B38111E718ACD40600876151 /* update-btn-1-1.png in Resources */,
+				8E568F7F1A58EEDF0002A3C4 /* ListComplainsViewController.xib in Resources */,
 				8E0B07BC1A446B4100CF7A78 /* CustomInfoView.xib in Resources */,
 				8ED402811A41DEC000CCBE6D /* iconBranchArrow.png in Resources */,
 				8497BFE81A295A2300A5ED3C /* step5.png in Resources */,
 				849078871A1E461D009D5D5F /* DetailPersonLeadViewController.xib in Resources */,
+				8E568F9E1A591CC80002A3C4 /* ComplainDetailViewController.xib in Resources */,
 				B3157887188D5E5200C0ED01 /* ic-work-fw-group-1-1.png in Resources */,
 				76F328981A34B11E00E0F2C4 /* EditTaskLeadViewController.xib in Resources */,
 				8497BFDB1A295A2300A5ED3C /* x29.png in Resources */,
@@ -5030,6 +5153,7 @@
 				8ED402871A41DF3C00CCBE6D /* ic_qu_direction_mylocation@2x.png in Resources */,
 				2D007BF818330F6100A664F3 /* img_line_report.png in Resources */,
 				76EE210E19FF4D7100A80414 /* icon-accept-1.png in Resources */,
+				8E6105F01A59515B003D1C0C /* iconAdd@2x.png in Resources */,
 				8434BF021A2F61B200C29815 /* alarm_icon.png in Resources */,
 				8497BFBC1A295A2300A5ED3C /* arrow@2x.png in Resources */,
 				170862EA1A3F3CB30021705D /* attach_icon.png in Resources */,
@@ -5086,8 +5210,10 @@
 				949B76B01A3F357A00945B41 /* SearchAdvanceOpportunityViewController.m in Sources */,
 				849794671A1FB19300ACC568 /* DetailCustomBussinessViewController.m in Sources */,
 				8EFE69311A5699BC003D55CE /* ProEMBDetailViewController.m in Sources */,
+				8E6105F41A5964E4003D1C0C /* ComplainsView.m in Sources */,
 				7633080F1A048962000E190B /* VTCombobox.m in Sources */,
 				843BF0B91A03EC3200EA1D8A /* ListOpportunityViewController.m in Sources */,
+				8E568F931A5900310002A3C4 /* DTOComplainProcess.m in Sources */,
 				769C1A1C1A00027900F015A5 /* Reachability.m in Sources */,
 				92C68E681519D4F100981728 /* AppService.m in Sources */,
 				8496FB2B1A2DEF3800F4A641 /* DTOACCCONTACTProcess.m in Sources */,
@@ -5098,6 +5224,7 @@
 				769CB8141A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.m in Sources */,
 				92C68E6A1519D4F100981728 /* RootViewController.m in Sources */,
 				76977D5F1A02A72E0029F297 /* ListEmployeeAccountViewController.m in Sources */,
+				8E568F981A5916FD0002A3C4 /* ComplainModel.m in Sources */,
 				DDBC46E5171540A200CCFB94 /* HTTPClient.m in Sources */,
 				DDBC46E6171540A200CCFB94 /* HTTPEngine.m in Sources */,
 				DDBC46E7171540A200CCFB94 /* HttpLoader.m in Sources */,
@@ -5116,6 +5243,7 @@
 				76C964531A17731900029978 /* LineInfoBox.m in Sources */,
 				76C964781A17731900029978 /* MIMLongRangeGraph.m in Sources */,
 				76C9629E1A16DBA500029978 /* ListAccountLeadViewController.m in Sources */,
+				8E568F8D1A58FDFC0002A3C4 /* DTOComplainObject.m in Sources */,
 				DDBC470D1715412D00CCFB94 /* NSURL+Base.m in Sources */,
 				7633080D1A048962000E190B /* VTCheckBox.m in Sources */,
 				2D3643971859996700190EE7 /* UIImageView+AFNetworking.m in Sources */,
@@ -5249,6 +5377,7 @@
 				B31938D418E4355D0008BBFE /* UIImage+Custom.m in Sources */,
 				849B6D8E1A18EAD9007E3B06 /* EditBussinessLeadViewController.m in Sources */,
 				84912AC41A1F6A3300E99FF7 /* DetailCustomPersonViewController.m in Sources */,
+				8E568F7E1A58EEDF0002A3C4 /* ListComplainsViewController.m in Sources */,
 				76C9647A1A17731900029978 /* MIMWallGraph.m in Sources */,
 				76746A371A07CF4E005CEDB8 /* DTOOPPORTUNITYProcess.m in Sources */,
 				2D2D216117A6946800A87364 /* InfHSBSupport.m in Sources */,
@@ -5263,6 +5392,7 @@
 				8ED38D801A544F7200D95A3B /* DTOPRODUCTTYPEProcess.m in Sources */,
 				2D2D216217A6946800A87364 /* InfSourceColorView.m in Sources */,
 				76F7DFAE1A3B44620003D720 /* EditNoteLeadViewController.m in Sources */,
+				8E568F881A58F7010002A3C4 /* ComplainViewHeader.m in Sources */,
 				8497BFF11A295A2300A5ED3C /* AnimatedCurrentLocationViewController.m in Sources */,
 				2D0C7E2B17A9F95E00DDABAC /* JFDepthView.m in Sources */,
 				2D0C7E3517A9FD1000DDABAC /* ASDepthModalViewController.m in Sources */,
@@ -5271,6 +5401,7 @@
 				76C962A31A16DD0D00029978 /* EditAccountLeadViewController.m in Sources */,
 				8497BFFA1A295A2300A5ED3C /* GestureControlViewController.m in Sources */,
 				8EFE69401A569A59003D55CE /* ProTheDetailViewController.m in Sources */,
+				8E568F9D1A591CC80002A3C4 /* ComplainDetailViewController.m in Sources */,
 				76601A3A194BE90F001D4C01 /* ThumbsViewController.m in Sources */,
 				2D0C7E3617A9FD1000DDABAC /* UIImage+Blur.m in Sources */,
 				2D0C7E3A17AA43FE00DDABAC /* MarqueeLabel.m in Sources */,
@@ -5319,6 +5450,7 @@
 				B3F727B817B512E40024DC0D /* FileManagerUtil.m in Sources */,
 				8ED38D8A1A54558100D95A3B /* ProductLeadViewCell.m in Sources */,
 				76601A32194BE90F001D4C01 /* ReaderThumbFetch.m in Sources */,
+				8E568F841A58F5170002A3C4 /* ComplainViewCell.m in Sources */,
 				76C9644E1A17731900029978 /* DoughtNutFragmentTitle.m in Sources */,
 				B3332AF317B8CF330011CD85 /* EnumClass.m in Sources */,
 				B301F1B817C376CD0004650C /* ExampleHTMLStringToAttributedString.m in Sources */,

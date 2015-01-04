@@ -13,8 +13,11 @@
 #import "DTOProductLeadTypeObject.h"
 #import "DTOProductDetailObject.h"
 #import "DTOProductMasterObject.h"
+#import "DTOComplainObject.h"
 
 @interface NSDictionary (QS)
+
+-(DTOComplainObject*)dtoComplainObject;
 
 -(DTOProductMasterObject*)dtoProductMasterObject;
 

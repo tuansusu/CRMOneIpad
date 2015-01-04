@@ -12,6 +12,95 @@
 
 @implementation NSDictionary (QS)
 
+-(DTOComplainObject*)dtoComplainObject{
+    DTOComplainObject *complainOB = [[DTOComplainObject alloc] init];
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_casesId]]) {
+        complainOB.casesId = [self objectForKey:DTOCOMPLAIN_casesId];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_code]]) {
+        complainOB.code = [self objectForKey:DTOCOMPLAIN_code];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_content]]) {
+        complainOB.content = [self objectForKey:DTOCOMPLAIN_content];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_reason]]) {
+        complainOB.reason = [self objectForKey:DTOCOMPLAIN_reason];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_result]]) {
+        complainOB.result = [self objectForKey:DTOCOMPLAIN_result];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_fromReceived]]) {
+        complainOB.fromReceived = [self objectForKey:DTOCOMPLAIN_fromReceived];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_type]]) {
+        complainOB.type = [self objectForKey:DTOCOMPLAIN_type];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_priority]]) {
+        complainOB.priority = [self objectForKey:DTOCOMPLAIN_priority];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_receiverId]]) {
+        complainOB.receiverId = [self objectForKey:DTOCOMPLAIN_receiverId];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_receivedDate]]) {
+        complainOB.receivedDate = [self objectForKey:DTOCOMPLAIN_receivedDate];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_processerId]]) {
+        complainOB.processerId = [self objectForKey:DTOCOMPLAIN_processerId];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_processedDate]]) {
+        complainOB.processedDate = [self objectForKey:DTOCOMPLAIN_processedDate];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_closedId]]) {
+        complainOB.closedId = [self objectForKey:DTOCOMPLAIN_closedId];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_closedDate]]) {
+        complainOB.closedDate = [self objectForKey:DTOCOMPLAIN_closedDate];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_accountId]]) {
+        complainOB.accountId = [self objectForKey:DTOCOMPLAIN_accountId];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_productMasterId]]) {
+        complainOB.productMasterId = [self objectForKey:DTOCOMPLAIN_productMasterId];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_acceptTypeId]]) {
+        complainOB.acceptTypeId = [self objectForKey:DTOCOMPLAIN_acceptTypeId];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_agentText]]) {
+        complainOB.agentText = [self objectForKey:DTOCOMPLAIN_agentText];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_assignBy]]) {
+        complainOB.assignBy = [self objectForKey:DTOCOMPLAIN_assignBy];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_blackList]]) {
+        complainOB.blackList = [self objectForKey:DTOCOMPLAIN_blackList];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_callLenght]]) {
+        complainOB.callLenght = [self objectForKey:DTOCOMPLAIN_callLenght];
+    }
+    
+    return complainOB;
+}
+
+
 -(DTOProductMasterObject*)dtoProductMasterObject{
     DTOProductMasterObject *productMasterOB = [[DTOProductMasterObject alloc] init];
 

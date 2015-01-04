@@ -23,6 +23,11 @@ typedef enum {
     typeKH360
 } CustomerType;
 
+#define MAX_ROW_A_PAGE 20
+
+#define CORNER_RADIUS_BUTTON 5
+#define CORNER_RADIUS_VIEW 20
+
 //=============================Product Type========================
 
 #define PRODUCT_TYPE_THANH_TOAN 1

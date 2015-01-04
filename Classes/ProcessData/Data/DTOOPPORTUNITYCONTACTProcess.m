@@ -45,5 +45,14 @@
 //    
     return  result;
 }
+-(BOOL) deleteEntity:(NSString *)opportunityContactId{
+    
+    NSMutableDictionary *dicFieldSet = [[NSMutableDictionary alloc]initWithObjects:[NSArray arrayWithObjects:@"0", nil] forKeys:[NSArray arrayWithObjects:DTOOPPORTUNITYCONTACT_isActive, nil]];
+    NSMutableDictionary *dicFieldCondition = [[NSMutableDictionary alloc]initWithObjects:[NSArray arrayWithObjects:opportunityContactId, nil] forKeys:[NSArray arrayWithObjects:DTOOPPORTUNITYCONTACT_id, nil]];
+    
+    
+    return [super updateToTableName:TABLENAME_DTOOPPORTUNITYCONTACT withFields:dicFieldSet withCondition:dicFieldCondition];
+}
+
 
 @end

@@ -8,6 +8,7 @@
 
 #import "ListAccountViewController.h"
 #import "DTOACCOUNTProcess.h"
+#import "EditAccount360ViewController.h"
 
 //Xoa
 #import "DataField.h"
@@ -133,7 +134,7 @@
 
 - (void) updateInterFaceWithOption : (int) option
 {
-    //self.fullNameLB.text = TITLE_APPLICATION;
+     self.fullNameLB.text = @"KHÁCH HÀNG 360";
     [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
     self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
     self.lbTotal.textColor = TEXT_COLOR_HEADER_APP;
@@ -199,16 +200,16 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellId = @"AccountLeadCell";
-    AccountLeadCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+    static NSString *cellId = @"Account360Cell";
+    Account360Cell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
     
     if (!cell) {
-        cell = [AccountLeadCell initNibCell];
+        cell = [Account360Cell initNibCell];
     }
     
     if (arrayData.count>0) {
         [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
-        cell.delegate = (id<AccountLeadCellDelegate>) self;
+        cell.delegate = (id<Account360CellDelegate>) self;
     }
     
     return cell;
@@ -227,7 +228,7 @@
     
     
     
-    DetailLeadViewController *viewController = [[DetailLeadViewController alloc]initWithNibName:@"DetailLeadViewController" bundle:nil];
+    Detail360ViewController *viewController = [[Detail360ViewController alloc]initWithNibName:@"Detail360ViewController" bundle:nil];
     viewController.dataSend = dicData;
     [self presentViewController:viewController animated:YES completion:nil];
     
@@ -244,13 +245,13 @@
     switch (index) {
         case SELECT_INDEX_ADD_PERSON:
         {
-            EditAccountLeadViewController *viewController = [[EditAccountLeadViewController alloc]initWithNibName:@"EditAccountLeadViewController" bundle:nil];
+            EditAccount360ViewController *viewController = [[EditAccount360ViewController alloc]initWithNibName:@"EditAccount360ViewController" bundle:nil];
             [self presentViewController:viewController animated:YES completion:nil];
         }
             break;
         case SELECT_INDEX_ADD_BUSSINESS:
         {
-            EditBussinessLeadViewController *viewController = [[EditBussinessLeadViewController alloc]initWithNibName:@"EditBussinessLeadViewController" bundle:nil];
+            EditBussiness360ViewController *viewController = [[EditBussiness360ViewController alloc]initWithNibName:@"EditBussiness360ViewController" bundle:nil];
             [self presentViewController:viewController animated:YES completion:nil];
         }
             break;
@@ -272,7 +273,6 @@
 }
 
 - (IBAction)actionAdd:(id)sender {
-    
     SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
     
     detail.selectIndex = selectIndex;
@@ -280,7 +280,7 @@
     detail.listData = listArr;
     
     self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
-    CGRect popoverFrame = btnAdd.frame;
+    CGRect popoverFrame = _btnAdd.frame;
     
     detail.delegate =(id<SelectIndexDelegate>) self;
     self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
@@ -318,6 +318,10 @@
 {
     NSLog(@"text did change %@", searchText);
     strSearchText = searchText;
+    arrayData=[dtoProcess filterWithKey:DTOACCOUNT_name withValue:searchText];
+   // _lbTotal.text=arrayData.count;
+      _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
+    [_tbData reloadData];
 }
 
 
@@ -514,12 +518,12 @@
     
     if ([ObjectToStr([dicDataTemp objectForKey:DTOACCOUNT_accountType]) isEqualToString:FIX_LEADTYPE_PERSON]) {
         
-        EditAccountLeadViewController *viewController = [[EditAccountLeadViewController alloc]initWithNibName:@"EditAccountLeadViewController" bundle:nil];
+        EditAccount360ViewController *viewController = [[EditAccount360ViewController alloc]initWithNibName:@"EditAccount360ViewController" bundle:nil];
         viewController.dataSend = dicData;
         [self presentViewController:viewController animated:YES completion:nil];
     }else{
-        EditBussinessLeadViewController *viewController = [[EditBussinessLeadViewController alloc]initWithNibName:@"EditBussinessLeadViewController" bundle:nil];
-        viewController.dataSend = dicDataTemp;
+        EditBussiness360ViewController *viewController = [[EditBussiness360ViewController alloc]initWithNibName:@"EditBussiness360ViewController" bundle:nil];
+       // viewController.dataSend = dicDataTemp;
         [self presentViewController:viewController animated:YES completion:nil];
     }
     
@@ -562,8 +566,8 @@
 
 #pragma mark Account lead cell delegate
 
-- (void) AccountLeadCellDelegate_ActionSendMailWithData : (NSDictionary*) dicData {
-    
+- (void) Account360CellDelegate_ActionSendMailWithData : (NSDictionary*) dicData {
+      [Util sendMail:self withEmail:[dicData objectForKey:DTOACCOUNT_email]];
 }
 - (void) AccountLeadCellDelegate_ActionViewMapWithData : (NSDictionary*) dicData {
     //lon lan
@@ -598,12 +602,12 @@
     //
     //    [self presentViewController:viewController animated:YES completion:nil];
 }
-- (void) AccountLeadCellDelegate_ActionChangeFlowWithData : (NSDictionary*) dicData {
+- (void) Account360CellDelegate_ActionChangeFlowWithData : (NSDictionary*) dicData {
     
     //Tạm thời hiển thị form thêm mới theo dõi
     //sau hỏi rõ giải pháp tính sau
-    FlowLeadViewController *detail = [[FlowLeadViewController alloc] initWithNibName:@"FlowLeadViewController" bundle:nil];
-    
+    Follow360ViewController *detail = [[Follow360ViewController alloc] initWithNibName:@"Follow360ViewController" bundle:nil];
+    detail.dataSend=dicData;
     detail.view.frame = CGRectMake(0, 0, 600, 500);
     //[InterfaceUtil setBorderWithCornerAndBorder:detail.view :6 :0.2 :nil];
     [self presentPopupViewController:detail animationType:1];

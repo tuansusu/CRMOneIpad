@@ -36,6 +36,7 @@
     NSMutableArray *listCustomerType;
     NSArray *listArrLead;
     NSArray *listArrAccount;
+    NSMutableArray *listArrCustomerFilter;
     
     NSString *nowStr;
     NSString*nowTimeStr;
@@ -44,7 +45,6 @@
     NSDateFormatter *dfTime;
     NSInteger selectDatePicker;
     
-    int dataId; //xac dinh id de them moi hay sua
     NSUserDefaults *defaults ;
     
     DTOSYSCATProcess *dtoSyscatProcess;
@@ -59,9 +59,9 @@
     NSInteger selectNextTaskIndex;
     NSInteger selectLevelIndex;
     NSInteger selectCustomerIndex;
+    NSDictionary *selectedCustomer;
     
     BOOL succsess;//Trang thai acap nhat
-    BOOL isCustomerValid;
     
     MDSearchBarController *searchBarController;
 }
@@ -85,7 +85,7 @@
     if ([UIDevice getCurrentSysVer] >= 7.0) {
         [UIDevice updateLayoutInIOs7OrAfter:self];
         
-     //  [self.tbData setSeparatorInset:UIEdgeInsetsZero];
+        //  [self.tbData setSeparatorInset:UIEdgeInsetsZero];
         
         
     }
@@ -95,8 +95,8 @@
     
     
     
-//    [self.tbData registerNib:[UINib nibWithNibName:@"OpportunityCell" bundle:nil] forCellReuseIdentifier:@"opportunityCell"];
-//    [SVProgressHUD show];
+    //    [self.tbData registerNib:[UINib nibWithNibName:@"OpportunityCell" bundle:nil] forCellReuseIdentifier:@"opportunityCell"];
+    //    [SVProgressHUD show];
     
     //
     df = [[NSDateFormatter alloc] init];
@@ -107,15 +107,6 @@
     nowStr = [df stringFromDate:now];
     nowTimeStr = [dfTime stringFromDate:now];
     
-    
-    smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
-    [self updateInterFaceWithOption:smgSelect];
-    [self initData];
-    
-    isCustomerValid = NO;
-}
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
     searchBarController = [MDSearchBarController new];
     searchBarController.searchBarView.frame = self.txtSearchCustomer.frame;
     [self.txtSearchCustomer.superview addSubview:searchBarController.searchBarView];
@@ -123,6 +114,32 @@
     searchBarController.delegate= self;
     
     self.txtSearchCustomer = searchBarController.searchBarView;
+    
+    smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
+    [self updateInterFaceWithOption:smgSelect];
+    [self initData];
+    
+    searchBarController.isValid = NO;
+    
+    //tam an 2 nut xoa ngay thang
+    self.btnStartDateClear.hidden = YES;
+    self.dfEndDateClear.hidden = YES;
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    
+    UITapGestureRecognizer *tapImageRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(dismissPopUp)];
+    [self.view addGestureRecognizer:tapImageRecognizer];
+}
+
+-(void)dismissPopUp
+{
+    //your dimiss code here
+    if(!searchBarController.isValid){
+        self.txtCustomer.text = @"";
+    }
+    searchBarController.active = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -136,7 +153,7 @@
     
     succsess = NO;
     self.barLabel.text = [NSString stringWithFormat:@"%@ %@, %@",VOFFICE,[defaults objectForKey:@"versionSoftware"],COPY_OF_SOFTWARE];
-
+    
     
     dtoSyscatProcess = [DTOSYSCATProcess new];
     dtoLeadProcess = [DTOACCOUNTLEADProcess new];
@@ -147,6 +164,7 @@
     listArrLevel = [dtoSyscatProcess filterWithCatType:FIX_SYS_CAT_TYPE_OPPORTTUNITY_LEVEL];
     listArrLead = [dtoLeadProcess filter];
     listArrAccount = [dtoAccountProcess filter];
+    listArrCustomerFilter = (NSMutableArray*)listArrAccount;
     
     NSDictionary *typeAccount = [NSDictionary dictionaryWithObject:@"Khách hàng 360" forKey:@"Name"];
     NSDictionary *typeLead = [NSDictionary dictionaryWithObject:@"Khách hàng đầu mối" forKey:@"Name"];
@@ -154,25 +172,49 @@
     [listCustomerType addObject:typeAccount];
     [listCustomerType addObject:typeLead];
     
-    dataId = 0;
-
+    
     selectTypeIndex = -1;
     selectNextTaskIndex = -1;
     selectLevelIndex = -1;
     selectLevelIndex = -1;
     
     if (self.dataSend) {
-        
         [self loadEditData];
     }else{
         //
-       // _txtCode.text = [NSString stringWithFormat:@"%d", [dtoOpportunityProcess getClientId]];
+        // _txtCode.text = [NSString stringWithFormat:@"%d", [dtoOpportunityProcess getClientId]];
     }
- 
+    
 }
 
 //Load thong tin len form sua
 -(void) loadEditData {
+    
+    if (self.dataSend) {
+        
+        self.lblFormTitle.text = @"CHỈNH SỬA CƠ HỘI";
+    }
+    
+    //Customer
+    NSString *customerId = [_dataSend objectForKey:@"CustomerId"];
+    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOOPPORTUNITY_accountId]]) {
+        NSArray *arrayAccountID = [listArrAccount valueForKey:DTOACCOUNT_accountId];
+        selectCustomerIndex = [arrayAccountID indexOfObject:customerId];
+        if (selectCustomerIndex>=0) {
+            selectedCustomer = [listArrAccount objectAtIndex:selectCustomerIndex];
+            self.txtSearchCustomer.textField.text = [selectedCustomer objectForKey:DTOACCOUNT_name];
+            searchBarController.isValid = YES;
+        }
+    } else if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOOPPORTUNITY_leadId]]) {
+        NSArray *arrayLeadID = [listArrLead valueForKey:DTOLEAD_leadId];
+        selectCustomerIndex = [arrayLeadID indexOfObject:customerId];
+        if (selectCustomerIndex>=0) {
+            selectedCustomer = [listArrLead objectAtIndex:selectCustomerIndex];
+            self.txtSearchCustomer.textField.text = [selectedCustomer objectForKey:DTOLEAD_name];
+            searchBarController.isValid = YES;
+
+        }
+    }
     
     if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOOPPORTUNITY_name]]) {
         _txtName.text =[_dataSend objectForKey:DTOOPPORTUNITY_name];
@@ -184,26 +226,26 @@
     if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOOPPORTUNITY_startDate]]) {
         startDate = [DateUtil getDateFromString:[_dataSend objectForKey:DTOOPPORTUNITY_startDate] :@"yyyy-MM-dd HH:mm:ss.S"];
         _dtStartDate.text = [NSString stringWithFormat:@"%@",
-                                 [df stringFromDate:startDate]];
+                             [df stringFromDate:startDate]];
         
         self.txtStartDateTime.text =[NSString stringWithFormat:@"%@",
                                      [dfTime stringFromDate:startDate]];
-
+        
     }
     
     //end date
     if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOOPPORTUNITY_endDate]]) {
         endDate = [DateUtil getDateFromString:[_dataSend objectForKey:DTOOPPORTUNITY_endDate] :@"yyyy-MM-dd HH:mm:ss.S"];
         _dtEndDate.text = [NSString stringWithFormat:@"%@",
-                             [df stringFromDate:startDate]];
+                           [df stringFromDate:startDate]];
         
         self.txtEndDateTime.text =[NSString stringWithFormat:@"%@",
-                                     [dfTime stringFromDate:endDate]];
+                                   [dfTime stringFromDate:endDate]];
         
     }
     
     //Kiểu cơ hội
-    NSString *strType = [_dataSend objectForKey:DTOOPPORTUNITY_status];
+    NSString *strType = [_dataSend objectForKey:@"TypeCode"];
     if (![StringUtil stringIsEmpty:strType]) {
         NSArray *arrayTypeID = [listArrType valueForKey:DTOSYSCAT_value];
         selectTypeIndex = [arrayTypeID indexOfObject:strType];
@@ -237,24 +279,11 @@
             self.pgLevel.progress = (float)value / 100;
         }
     }
-
-    //Khach hang
-    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOOPPORTUNITY_accountId]]) {
-        NSArray *arrayAccountID = [listArrAccount valueForKey:DTOACCOUNT_id];
-        selectCustomerIndex = [arrayAccountID indexOfObject:[_dataSend objectForKey:DTOOPPORTUNITY_accountId]];
-        if (selectCustomerIndex>=0) {
-            NSDictionary *dataAccount = [listArrAccount objectAtIndex:selectCustomerIndex];
-            _txtCustomer.text = [dataAccount objectForKey:DTOACCOUNT_name];
-        }
-    } else if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOOPPORTUNITY_leadId]]) {
-        NSArray *arrayLeadID = [listArrLead valueForKey:DTOLEAD_leadId];
-        selectCustomerIndex = [arrayLeadID indexOfObject:[_dataSend objectForKey:DTOOPPORTUNITY_leadId]];
-        if (selectCustomerIndex>=0) {
-            NSDictionary *dataLead = [listArrLead objectAtIndex:selectCustomerIndex];
-            _txtCustomer.text = [dataLead objectForKey:DTOLEAD_name];
-        }
-    }
     
+    //Description
+    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:@"Description"]]) {
+        self.txtNote.text =[_dataSend objectForKey:@"Description"];
+    }
 }
 
 - (void) updateInterFaceWithOption : (int) option
@@ -414,46 +443,29 @@
             break;
         }
     }
-//    
-//    QuickSearchViewcontroller *detail = [[QuickSearchViewcontroller alloc] initWithNibName:@"QuickSearchViewcontroller" bundle:nil];
-//    detail.delegate =(id<SelectIdDelegate>) self;
-//    //self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-//
-//    NSPredicate *keyPred = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"name contains[c] '%@'",self.txtCustomer.text]];
-//    
-//    detail.listData = [[listArrAccount filteredArrayUsingPredicate: keyPred] valueForKey:DTOACCOUNT_name];
-//
-//
-//    
-////    detail.view.frame = CGRectMake(self.txtCustomer.frame.origin.x -20, self.txtCustomer.frame.origin.y + self.txtCustomer.frame.size.height, self.txtCustomer.frame.size.width + 20, 400);
-////    [self.viewMainBodyInfo addSubview:detail.view];
-//    
-//    
-//    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+    //
+    //    QuickSearchViewcontroller *detail = [[QuickSearchViewcontroller alloc] initWithNibName:@"QuickSearchViewcontroller" bundle:nil];
+    //    detail.delegate =(id<SelectIdDelegate>) self;
+    //    //self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
+    //
+    //    NSPredicate *keyPred = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"name contains[c] '%@'",self.txtCustomer.text]];
+    //
+    //    detail.listData = [[listArrAccount filteredArrayUsingPredicate: keyPred] valueForKey:DTOACCOUNT_name];
+    //
+    //
+    //
+    ////    detail.view.frame = CGRectMake(self.txtCustomer.frame.origin.x -20, self.txtCustomer.frame.origin.y + self.txtCustomer.frame.size.height, self.txtCustomer.frame.size.width + 20, 400);
+    ////    [self.viewMainBodyInfo addSubview:detail.view];
+    //
+    //
+    //    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
     CGRect popoverFrame = self.txtCustomer.frame;
-
+    
     [self.listPopover setPopoverContentSize:CGSizeMake(320,250) animated:NO];
     [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
     
-
-}
-
-- (IBAction)didEndEditing:(id)sender {
-    for (UIView *subView in self.viewMainBodyInfo.subviews){
-        //if (subView.tag == 80) {
-        if([subView isKindOfClass:[UITableView class]]){
-            [subView removeFromSuperview];
-            //subView.hidden = YES;
-            break;
-        }
-    }
     
-    if(!isCustomerValid){
-        self.txtCustomer.text = @"";
-    }
-
 }
-
 
 - (IBAction)actionChooseNextTask:(id)sender {
     
@@ -495,7 +507,7 @@
 -(void) selectAtId:(NSInteger)id{
     NSPredicate *keyPred = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"id =  %d",id]];
     
-
+    
     NSDictionary *selected = [[listArrAccount filteredArrayUsingPredicate: keyPred] firstObject];
     self.txtCustomer.text = [selected objectForKey:@"name"];
 }
@@ -534,53 +546,6 @@
                 int value = [[dic objectForKey:DTOSYSCAT_value] intValue];
                 self.pgLevel.progress = (float)value / 100;
                 
-            }
-        }
-            break;
-        case TAG_SELECT_CUSOMTER:{
-            
-            SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
-            
-            if(index == 0)
-            {
-                SELECTED_TAG = TAG_SELECT_CUSTOMER_TYPE_ACCOUNT;
-                CUSTOMER_TYPE = TAG_SELECT_CUSTOMER_TYPE_ACCOUNT;
-                detail.listData = [listArrAccount valueForKey:DTOACCOUNT_name];
-                
-               
-            }
-            else if(index == 1)
-            {
-                SELECTED_TAG = TAG_SELECT_CUSTOMER_TYPE_LEAD;
-                CUSTOMER_TYPE = TAG_SELECT_CUSTOMER_TYPE_LEAD;
-                detail.listData = [listArrLead valueForKey:DTOLEAD_name];
-            }
-            
-            detail.selectIndex = selectCustomerIndex;
-            self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
-            CGRect popoverFrame = self.btnCustomer.frame;
-            
-            detail.delegate =(id<SelectIndexDelegate>) self;
-            self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-            [self.listPopover setPopoverContentSize:CGSizeMake(320,250) animated:NO];
-            [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
-            
-            
-        }
-            break;
-        case TAG_SELECT_CUSTOMER_TYPE_ACCOUNT:{
-            selectCustomerIndex = index;
-            if (index<listArrAccount.count) {
-                NSDictionary *dic = [listArrAccount objectAtIndex:index];
-                self.txtCustomer.text = [dic objectForKey:DTOACCOUNT_name];
-            }
-        }
-            break;
-        case TAG_SELECT_CUSTOMER_TYPE_LEAD:{
-            selectCustomerIndex = index;
-            if (index<listArrLead.count) {
-                NSDictionary *dic = [listArrLead objectAtIndex:index];
-                self.txtCustomer.text = [dic objectForKey:DTOLEAD_name];
             }
         }
             break;
@@ -632,7 +597,7 @@
     
     
     [self.listPopover presentPopoverFromRect:popoverFrame inView:self.mainView permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
-
+    
 }
 
 - (IBAction)actionEndDateClear:(id)sender {
@@ -666,14 +631,14 @@
             break;
         case END_DATE_TIME:
             self.txtEndDateTime.text = [NSString stringWithFormat:@"%@",
-                                   [dfTime stringFromDate:date]];
+                                        [dfTime stringFromDate:date]];
             endDate = date;
             break;
         default:
             break;
     }
     
-	
+    
 }
 -(void) dismissPopoverView
 {
@@ -686,8 +651,8 @@
 }
 - (IBAction)actionSelectStartDateTime:(id)sender {
     if (self.txtStartDateTime.text.length==0) {
-//        self.txtStartDateTime.text = nowTimeStr;
-//        startDate = [NSDate date];
+        //        self.txtStartDateTime.text = nowTimeStr;
+        //        startDate = [NSDate date];
     }else{
         NSString *strStartDate = [NSString stringWithFormat:@"%@ %@",self.dtStartDate.text,self.txtStartDateTime.text];
         startDate = [DateUtil getDateFromString:strStartDate :@"dd/MM/yyyy HH:mm"];
@@ -731,51 +696,78 @@
 
 - (IBAction)actionSave:(id)sender {
     //check valid to save
-    
+    if(![self checkValidToSave]){
+        return;
+    }
     //neu qua duoc check thi tien hanh luu du lieu
     NSMutableDictionary *dicEntity = [NSMutableDictionary new];
-    [dicEntity setObject:[StringUtil trimString:self.txtName.text] forKey:DTOOPPORTUNITY_name];
     
-    //Loại cơ hội
-    if(selectTypeIndex >=0){
-        [dicEntity setObject:[[listArrType objectAtIndex:selectTypeIndex] objectForKey:DTOSYSCAT_value] forKey:DTOOPPORTUNITY_type];
-    }
-    
-    //Viec tiep theo
-    if(selectNextTaskIndex >= 0){
-         [dicEntity setObject:[[listArrNextTask objectAtIndex:selectNextTaskIndex] objectForKey:DTOSYSCAT_sysCatId] forKey:DTOOPPORTUNITY_nextTask];
-    }
-    
-    //Muc do co hoi
-    if(selectLevelIndex >= 0){
-        [dicEntity setObject:[[listArrLevel objectAtIndex:selectLevelIndex] objectForKey:DTOSYSCAT_sysCatId] forKey:DTOOPPORTUNITY_opportunityLevelId];
-    }
-    
-    //Khach hang
-    if(selectCustomerIndex >= 0)
-    {
-        if(CUSTOMER_TYPE == TAG_SELECT_CUSTOMER_TYPE_ACCOUNT)
-        {
-             [dicEntity setObject:[[listArrAccount objectAtIndex:selectCustomerIndex] objectForKey:DTOACCOUNT_accountId] forKey:DTOOPPORTUNITY_accountId];
-        }
-        else if(CUSTOMER_TYPE == TAG_SELECT_CUSTOMER_TYPE_LEAD)
-        {
-            [dicEntity setObject:[[listArrLead objectAtIndex:selectCustomerIndex] objectForKey:DTOLEAD_leadId] forKey:DTOOPPORTUNITY_leadId];
+    if(selectTypeIndex >= 0){
+        if([[[listArrType objectAtIndex:selectTypeIndex] objectForKey:@"code"] isEqualToString:@"NEW"]){
+            //Luu la khach hang dau moi
+            //clientLeadId
+            [dicEntity setObject:[selectedCustomer objectForKey:@"clientLeadId"] forKey:@"clientLeadId"];
+            //leadId
+            [dicEntity setObject:[selectedCustomer objectForKey:@"leadId"] forKey:@"leadId"];
+        }else{
+            //accountId
+            [dicEntity setObject:[selectedCustomer objectForKey:@"accountId"] forKey:DTOOPPORTUNITY_accountId];
         }
     }
+    
+    //client
+    [dicEntity setObject:@"1" forKey:DTOOPPORTUNITY_client];
+     //clientOpportunityId
+    if(self.dataSend){
+        [dicEntity setObject:[self.dataSend objectForKey:DTOOPPORTUNITY_clientOpportunityId] forKey:DTOOPPORTUNITY_clientOpportunityId];
+    }else{
    
-    if(startDate != nil)
-    {
-        [dicEntity setObject:[DateUtil formatDate:startDate :@"yyyy-MM-dd HH:mm:ss.S"] forKey:DTOOPPORTUNITY_startDate];
+        NSString *strClientOpportunityId = IntToStr(([dtoOpportunityProcess getClientId]));
+        [dicEntity setObject:strClientOpportunityId forKey:DTOOPPORTUNITY_clientOpportunityId];
     }
-    
+    //description
+    [dicEntity setObject:[StringUtil trimString:self.txtNote.text] forKey:DTOOPPORTUNITY_description];
+    //employeeId - Ma cua RM tao CHBH
+    [dicEntity setObject:@"0" forKey:DTOOPPORTUNITY_employeeId]; //Hien tai chua lam phan dang nhap nen truogn nay tam thoi de trong
+    //endDate
     if(endDate != nil)
     {
         [dicEntity setObject:[DateUtil formatDate:endDate :@"yyyy-MM-dd HH:mm:ss.S"] forKey:DTOOPPORTUNITY_endDate];
     }
-        
+    //isActive
     [dicEntity setObject:@"1" forKey:DTOOPPORTUNITY_isActive];
-    
+    //languageId
+    [dicEntity setObject:@"1" forKey:DTOOPPORTUNITY_languageId];
+    //name
+    [dicEntity setObject:[StringUtil trimString:self.txtName.text] forKey:DTOOPPORTUNITY_name];
+    //needSupport
+    [dicEntity setObject:@"1" forKey:DTOOPPORTUNITY_needSupport];
+    //nextTask
+    if(selectNextTaskIndex >= 0){
+        [dicEntity setObject:[[listArrNextTask objectAtIndex:selectNextTaskIndex] objectForKey:DTOSYSCAT_sysCatId] forKey:DTOOPPORTUNITY_nextTask];
+    }
+    //opportunityLevelId
+    if(selectLevelIndex >= 0){
+        [dicEntity setObject:[[listArrLevel objectAtIndex:selectLevelIndex] objectForKey:DTOSYSCAT_sysCatId] forKey:DTOOPPORTUNITY_opportunityLevelId];
+    }
+    //startDate
+    if(startDate != nil)
+    {
+        [dicEntity setObject:[DateUtil formatDate:startDate :@"yyyy-MM-dd HH:mm:ss.S"] forKey:DTOOPPORTUNITY_startDate];
+    }
+    //status
+    [dicEntity setObject:@"3" forKey:DTOOPPORTUNITY_status];//Da duyet
+    //successPercent
+    if (selectLevelIndex>=0) {
+        NSDictionary *dataLevel = [listArrLevel objectAtIndex:selectLevelIndex];
+        [dicEntity setObject:[dataLevel objectForKey:DTOSYSCAT_value] forKey:DTOOPPORTUNITY_successPercent];
+    }
+    //sysOrganizationId - Id don  vi thao CHBH
+    [dicEntity setObject:@"0" forKey:DTOOPPORTUNITY_successPercent];
+    //type
+    if(selectTypeIndex >=0){
+        [dicEntity setObject:[[listArrType objectAtIndex:selectTypeIndex] objectForKey:DTOSYSCAT_value] forKey:DTOOPPORTUNITY_type];
+    }
     
     if (self.dataSend) {
         
@@ -794,11 +786,45 @@
         alert.tag = 6;
         [alert show];
     }
+}
 
+-(BOOL)checkValidToSave{
+    //clear all boder red
+    for (UIView *viewTemp in self.bodyMainView.subviews) {
+        
+        for (UIView *viewSubTemp in viewTemp.subviews) {
+            if ([viewSubTemp isKindOfClass:[UITextField class]]) {
+                ((UITextView*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
+            }
+        }
+    }
+    if([StringUtil trimString:self.txtName.text].length==0)
+    {
+        [self showTooltip:self.txtName withText:@"Tên cơ hội không được rỗng"];
+        [self.txtName becomeFirstResponder];
+        [self setBorder:self.txtName];
+        return NO;
+    }
+    if(startDate == nil){
+        [self showTooltip:self.dtStartDate withText:@"Ngày bắt đầu không được để trống"];//Ngày kết thúc không được để trống
+        [self.dtStartDate becomeFirstResponder];
+        [self setBorder:self.dtStartDate];
+        return NO;
+
+    }
+    if(endDate == nil){
+        [self showTooltip:self.dtEndDate withText:@"Ngày kết thúc không được để trống"];
+        [self.dtEndDate becomeFirstResponder];
+        [self setBorder:self.dtEndDate];
+        return NO;
+        
+    }
+    
+    return YES;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.searchResultCount;
+    return listArrCustomerFilter.count;
 }
 
 
@@ -811,14 +837,117 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell) cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-    cell.textLabel.text = [NSString stringWithFormat:@"%d",indexPath.row];
+    cell.textLabel.text = [[listArrCustomerFilter objectAtIndex:indexPath.row] objectForKey:@"name"]; //[NSString stringWithFormat:@"%d",indexPath.row];
     return cell;
 }
 
+
 -(void)searchBar:(MDSearchBarController *)searchBarController searchWithText:(NSString *)text{
-    self.searchResultCount = text.length;
+    if(selectTypeIndex < 0)
+    {
+        listArrCustomerFilter = [NSMutableArray new];
+        [self showTooltip:self.txtSearchCustomer withText:@"Bạn cần chọn loại cơ hội trước khi chọn khách hàng"];
+        [self.txtType becomeFirstResponder];
+        return;
+    }
+    
+    NSPredicate *keyPred = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"name contains[c] '%@'",text]];
+    NSDictionary *oppType = [listArrType objectAtIndex:selectTypeIndex];
+    if([[oppType objectForKey:@"code"] isEqualToString:@"NEW"])
+    {
+        listArrCustomerFilter = [listArrLead filteredArrayUsingPredicate: keyPred];
+    }
+    else
+    {
+        listArrCustomerFilter = [listArrAccount filteredArrayUsingPredicate: keyPred];
+    }
     [searchBarController reloadData];
+    searchBarController.isValid = NO;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    selectedCustomer = [listArrCustomerFilter objectAtIndex:indexPath.row];
+    self.txtSearchCustomer.textField.text = [selectedCustomer objectForKey:@"name"];
+    searchBarController.active = NO;
+    searchBarController.isValid = YES;
+}
+- (void)dismissAllPopTipViews
+{
+    while ([self.visiblePopTipViews count] > 0) {
+        CMPopTipView *popTipView = [self.visiblePopTipViews objectAtIndex:0];
+        [popTipView dismissAnimated:YES];
+        [self.visiblePopTipViews removeObjectAtIndex:0];
+    }
 }
 
-
+- (void)popTipViewWasDismissedByUser:(CMPopTipView *)popTipView
+{
+    [self.visiblePopTipViews removeObject:popTipView];
+    self.currentPopTipViewTarget = nil;
+}
+-(void) showTooltip : (UIView*) inputTooltipView withText : (NSString*) inputMessage {
+    
+    [self dismissAllPopTipViews];
+    
+    
+    NSString *contentMessage = inputMessage;
+    //UIView *contentView = inputTooltipView;
+    
+    UIColor *backgroundColor = [UIColor redColor];
+    
+    UIColor *textColor = [UIColor whiteColor];
+    
+    //NSString *title = inputMessage;
+    
+    CMPopTipView *popTipView;
+    
+    
+    popTipView = [[CMPopTipView alloc] initWithMessage:contentMessage];
+    
+    popTipView.delegate = self;
+    
+    /* Some options to try.
+     */
+    //popTipView.disableTapToDismiss = YES;
+    //popTipView.preferredPointDirection = PointDirectionUp;
+    //popTipView.hasGradientBackground = NO;
+    //popTipView.cornerRadius = 2.0;
+    //popTipView.sidePadding = 30.0f;
+    //popTipView.topMargin = 20.0f;
+    //popTipView.pointerSize = 50.0f;
+    //popTipView.hasShadow = NO;
+    
+    popTipView.preferredPointDirection = PointDirectionDown;
+    popTipView.hasShadow = NO;
+    
+    if (backgroundColor && ![backgroundColor isEqual:[NSNull null]]) {
+        popTipView.backgroundColor = backgroundColor;
+    }
+    if (textColor && ![textColor isEqual:[NSNull null]]) {
+        popTipView.textColor = textColor;
+    }
+    
+    popTipView.animation = arc4random() % 2;
+    popTipView.has3DStyle = (BOOL)(arc4random() % 2);
+    
+    popTipView.dismissTapAnywhere = YES;
+    [popTipView autoDismissAnimated:YES atTimeInterval:3.0];
+    
+    
+    [popTipView presentPointingAtView:inputTooltipView inView:self.viewMainBodyInfo animated:YES];
+    
+    
+    [self.visiblePopTipViews addObject:popTipView];
+    self.currentPopTipViewTarget = inputTooltipView;
+    
+    
+    
+}
+-(void)setBorder:(UITextField *)txtView{
+    
+    txtView .layer.cornerRadius=1.0f;
+    txtView.layer.masksToBounds=YES;
+    txtView.layer.borderColor=[[UIColor redColor]CGColor ];
+    txtView.layer.borderWidth=1.0f;
+    [txtView becomeFirstResponder];
+}
 @end

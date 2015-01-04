@@ -54,7 +54,7 @@
 //    }
     
     self.lbName.text= [NSString stringWithFormat:@"%@ - %@",[dicData objectForKey:DTOOPPORTUNITY_id], [dicData objectForKey:DTOOPPORTUNITY_name]];
-    
+    self.lbName.textColor = TEXT_COLOR_HIGHLIGHT;
     
 //    if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOOPPORTUNITY_name]]) {
 //        
@@ -68,7 +68,7 @@
     }else{
         self.lbContact.text= [NSString stringWithFormat:@"%@ - %@",[dicData objectForKey:@"Contact"], [dicData objectForKey:@"ContactCode"]];    }
     
-    
+    self.lbContact.textColor = TEXT_COLOR_CELL_BOLD;
     
     self.lbLevel.text = [dicData objectForKey:@"Level"];
     self.lbType.text = [dicData objectForKey:@"StatusName"];

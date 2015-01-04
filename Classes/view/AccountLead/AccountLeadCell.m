@@ -50,7 +50,7 @@
     else{
         leadId=[dicData objectForKey:DTOLEAD_clientLeadId];
     }
-    checkFollow=[_DTOFLLOWUPProcess checkFollowUp:leadId objectType:@"Lead"];
+    checkFollow=[_DTOFLLOWUPProcess checkFollowUp:leadId objectType:@"LEAD"];
     _dicData = dicData;
     
     NSString *code = @"";

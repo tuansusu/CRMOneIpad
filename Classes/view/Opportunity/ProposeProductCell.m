@@ -41,10 +41,9 @@
 -(void) loadDataToCellWithData : (NSDictionary*) dicData withOption : (int) smgSelect {
     
     
-    self.lbName.text = [NSString stringWithFormat:@"%@ - %@", [dicData objectForKey:DTOPRODUCTMASTER_code], [dicData objectForKey:DTOPRODUCTMASTER_name]] ;
+    self.lbName.text = [NSString stringWithFormat:@"%@ - %@", [dicData objectForKey:DTOOPPORTUNITYPRODUCT_clientOpportunityProductId], [dicData objectForKey:DTOPRODUCTMASTER_name]] ;
     
-    self.lbMoney1.text = @"1000";
-    self.lbMoney2.text = @"500 000 000 đ";
+    self.lbMoney2.text = [dicData objectForKey:DTOOPPORTUNITYPRODUCT_revenue]; //@"500 000 000 đ";
     
     switch (smgSelect) {
         case 1:

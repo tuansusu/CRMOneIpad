@@ -10,6 +10,7 @@
 #import "BaseViewController.h"
 #import "SelectIndexViewController.h"
 #import "MDSearchBarController.h"
+#import "CMPopTipView.h"
 
 @interface EditOpportunityViewController : BaseViewController<UITextFieldDelegate, SelectIndexDelegate,MDSearchBarViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -20,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIView *headerViewBar;
 @property (weak, nonatomic) IBOutlet UILabel *fullNameLB;
 
+@property (weak, nonatomic) IBOutlet UILabel *lblFormTitle;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *btnHome;
@@ -81,5 +83,10 @@
 ////////////// KHAI BAO BIEN CHUNG//////////
 @property (nonatomic, retain) UIPopoverController *listPopover;
 ////////////// KHAI BAO BIEN CHUNG//////////
+
+//danh sách nhưng tooltip
+@property (nonatomic, retain) NSMutableArray *visiblePopTipViews;
+@property (nonatomic, strong) id currentPopTipViewTarget;
+
 
 @end

@@ -13,7 +13,7 @@
 
 @implementation DTOPRODUCTMASTERProcess
 -(NSMutableArray*) filter {
-    NSArray *allFields =[NSArray arrayWithObjects:DTOPRODUCTMASTER_name, DTOPRODUCTMASTER_code, nil];
+    NSArray *allFields =[NSArray arrayWithObjects:DTOPRODUCTMASTER_id, DTOPRODUCTMASTER_productMasterId, DTOPRODUCTMASTER_name, DTOPRODUCTMASTER_code, nil];
     
     NSString *query = [NSString stringWithFormat:@"Select %@ from %@",[allFields componentsJoinedByString:@"," ] ,TABLENAME_DTOPRODUCTMASTER ];
     

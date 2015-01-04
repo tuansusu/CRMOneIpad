@@ -1,11 +1,10 @@
 //
-//  EditContactOpportunityViewController.m
+//  EditContactLeadViewController.m
 //  OfficeOneMB
 //
-//  Created by viettel on 12/17/14.
+//  Created by ADMIN on 12/1/14.
 //
 //
-
 
 #import "EditContactOpportunityViewController.h"
 #import "DTOCONTACTProcess.h"
@@ -17,6 +16,7 @@
 #import "AUISelectiveBordersLayer.h"
 #import "DataField.h"
 #import "DateUtil.h"
+#import "DTOATTACHMENTProcess.h"
 
 #define TAG_SELECT_DATE_CREATE 1 //NGAY CAP CHUNG MINH THU
 #define TAG_SELECT_DATE_BIRTHDAY 2 //NGAY SINH
@@ -30,6 +30,10 @@
     NSDictionary *dicData; //luu tru du lieu sua
     
     DTOCONTACTProcess *dtoProcess;
+    DTOATTACHMENTProcess *dtoFileProcess;
+    
+    NSString *fileAvartar;
+    NSString *imagePath;
     
     //chon index form them moi
     NSInteger selectIndex;
@@ -102,11 +106,32 @@
     dataId = 0;
     if (self.dataSend) {
         
-        
+        [self loadEdit];
     }
     
 }
 
+-(void) loadEdit{
+    
+    NSLog(@"data:%@", _dataSend);
+    _lbTitle.text=@"CẬP NHẬP LIÊN HỆ";
+
+    NSString *avartar = [dicData objectForKey:DTOCONTACT_avartar];
+    if (![StringUtil stringIsEmpty:avartar]) {
+        self.imgAvartar.image=[UIImage imageWithData:[NSData dataWithContentsOfFile:avartar]];
+    }
+    
+    _txtAddress.text=[_dataSend objectForKey:DTOCONTACT_address];
+    _txtDateOfBirth.text=[_dataSend objectForKey:DTOCONTACT_birthday];
+    _txtEmail.text=[_dataSend objectForKey:DTOCONTACT_email];
+    _txtName.text=[_dataSend objectForKey:DTOCONTACT_fullName];
+    _txtNumberIdentity.text=[_dataSend objectForKey:DTOCONTACT_identifiedNumber];
+    _txtPhone.text=[_dataSend objectForKey:DTOCONTACT_mobile];
+    _txtPosition.text=[_dataSend objectForKey:DTOCONTACT_position];
+    _txtWhereBorn.text=[_dataSend objectForKey:DTOCONTACT_identifiedIssueArea];
+    _txtDateCreate.text=[_dataSend objectForKey:DTOCONTACT_identifiedIssueDate];
+    _tvNote.text=[_dataSend objectForKey:DTOCONTACT_roleDescription];
+}
 
 - (void) updateInterFaceWithOption : (int) option
 {
@@ -270,17 +295,25 @@
     
     [dicEntity setObject:@"1" forKey:DTOCONTACT_isActive];
     [dicEntity setObject:[DateUtil formatDate:[NSDate new] :@"yyyy-MM-dd HH:mm:ss.S"] forKey:DTOCONTACT_updatedDate];
-    NSString *strClientContactId = IntToStr(([dtoProcess getClientId]));
-    [dicEntity setObject:strClientContactId forKey:DTOCONTACT_clientContactId];
+    
     [dicEntity setObject:@"1" forKey:DTOCONTACT_clientId];
+    
+    //truong hop them moi file
+    if(![StringUtil stringIsEmpty:fileAvartar]){
+        [dicEntity setObject:imagePath forKey:DTOCONTACT_avartar];
+        
+    }
+    NSString *strClientContactId = IntToStr(([dtoProcess getClientId]));
     
     if (self.dataSend) {
         
         [dicEntity setObject:[_dataSend objectForKey:DTOCONTACT_id] forKey:DTOCONTACT_id];
+    }else{
+        [dicEntity setObject:strClientContactId forKey:DTOCONTACT_clientContactId];
     }
     succsess = [dtoProcess insertToDBWithEntity:dicEntity];
     
-    if (succsess) {
+    if (succsess && !self.dataSend) {
         
         strClientContactId = IntToStr(([dtoProcess getClientId] - 1));
         
@@ -289,15 +322,15 @@
         
         DTOOPPORTUNITYCONTACTProcess  *dtoOpportunityContactProcess = [DTOOPPORTUNITYCONTACTProcess new];
         //id tu tang cua thang OpportunityContactId
-     
-
+        
+        
         NSString *strOpportunityContactId = IntToStr([dtoOpportunityContactProcess getClientId]);
         //id tu tang cua thang OpportunityContactId
         [dicSubEntity setObject:strOpportunityContactId forKey:DTOOPPORTUNITYCONTACT_clientOpportunityContactId];
         [dicSubEntity setObject:@"0" forKey:@"updatedBy"];
         //id cua thang contact vua tao
         [dicSubEntity setObject:strClientContactId forKey:DTOCONTACT_clientContactId];
- 
+        
         [dicSubEntity setObject:[self.dataRoot objectForKey:DTOOPPORTUNITY_clientOpportunityId] forKey:DTOOPPORTUNITY_clientOpportunityId];
         [dicSubEntity setObject:[self.dataRoot objectForKey:DTOOPPORTUNITY_clientOpportunityId] forKey:DTOOPPORTUNITYCONTACT_opportunityId];
         [dicSubEntity setObject:@"1" forKey:DTOACCOUNTCONTACT_isActive];
@@ -417,21 +450,6 @@
         CGPoint scrollPoint = CGPointMake(0.0, _txt.frame.origin.y-heightKeyboard + 20);
         [self.viewMainBodyInfo setContentOffset:scrollPoint animated:YES];
     }
-    
-    //    NSDictionary* info = [aNotification userInfo];
-    //    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    //    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
-    //    scrollView.contentInset = contentInsets;
-    //    scrollView.scrollIndicatorInsets = contentInsets;
-    //
-    //    // If active text field is hidden by keyboard, scroll it so it's visible
-    //    // Your application might not need or want this behavior.
-    //    CGRect aRect = self.view.frame;
-    //    aRect.size.height -= kbSize.height;
-    //    if (!CGRectContainsPoint(aRect, self.txt10.frame.origin) ) {
-    //        CGPoint scrollPoint = CGPointMake(0.0, self.txt10.frame.origin.y-kbSize.height);
-    //        [scrollView setContentOffset:scrollPoint animated:YES];
-    //    }
 }
 
 // Called when the UIKeyboardWillHideNotification is sent
@@ -579,14 +597,18 @@
 
 #pragma mark delegate photo
 -(void) selectPhoto:(NSString *)fileName{
+    fileAvartar = fileName;
     [self viewWhenRemoveSubView];
     [self loadimage: fileName];
     
 }
 
 -(void)loadimage : (NSString*)fileName{
-    NSString *workSpacePath=[[self applicationDocumentsDirectory] stringByAppendingPathComponent:fileName];
     
+    
+    NSString *workSpacePath=[[self applicationDocumentsDirectory] stringByAppendingPathComponent:fileName];
+    NSLog(@"duong dan:%@",workSpacePath);
+    imagePath=workSpacePath;
     self.imgAvartar.image=[UIImage imageWithData:[NSData dataWithContentsOfFile:workSpacePath]];
     
 }
@@ -741,4 +763,3 @@
 }
 
 @end
-

@@ -573,6 +573,7 @@
 #define DTOCONTACT_identifiedIssueDate @"identifiedIssueDate" //VARCHAR
 #define DTOCONTACT_identifiedNumber @"identifiedNumber" //VARCHAR
 #define DTOCONTACT_isActive @"isActive" //INTEGER
+#define DTOCONTACT_avartar @"avartar" //varchar
 #define DTOCONTACT_leadId @"leadId" //BIGINT
 #define DTOCONTACT_mobile @"mobile" //VARCHAR
 #define DTOCONTACT_organizationId @"organizationId" //BIGINT

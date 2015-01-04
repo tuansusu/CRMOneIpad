@@ -320,6 +320,11 @@
 {
     NSLog(@"text did change %@", searchText);
     strSearchText = searchText;
+    arrayData=[dtoLeadProcess filterWithKey:DTOLEAD_name withValue:searchText];
+      _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
+    [_tbData reloadData];
+    
+    
 }
 
 
@@ -697,6 +702,5 @@
 	[self dismissViewControllerAnimated:YES completion:nil];
     
 }
-
 
 @end

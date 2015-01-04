@@ -117,7 +117,7 @@
     NSArray *allFields =[NSArray arrayWithObjects:DTOACCOUNT_accountId, DTOACCOUNT_address, DTOACCOUNT_email, DTOACCOUNT_mobile, DTOACCOUNT_name,DTOACCOUNT_updatedBy,DTOACCOUNT_code, DTOACCOUNT_accountType,DTOACCOUNT_clientAccountId, DTOACCOUNT_lat, DTOACCOUNT_lon, DTOACCOUNT_id, nil];
     
     NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where status = 1 order by %@ desc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOACCOUNT, DTOACCOUNT_updatedDate];
-    
+    NSLog(@"query123:%@",query);
     return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:nil];
 }
 

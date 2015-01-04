@@ -14,6 +14,7 @@
 
 //@property (weak, nonatomic) id <AccountLeadCellDelegate> delegate;
 @property (nonatomic, strong) NSDictionary *dicData;
+@property (weak, nonatomic) IBOutlet UIImageView *avartar;
 
 @property (weak, nonatomic) IBOutlet UILabel *lbName;
 @property (weak, nonatomic) IBOutlet UILabel *lbPhone;

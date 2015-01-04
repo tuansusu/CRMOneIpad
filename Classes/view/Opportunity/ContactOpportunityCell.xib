@@ -1,85 +1,91 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContactOpportunityCell"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="hCY-aK-ZKU" customClass="ContactOpportunityCell">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="4aa-5d-uwp" customClass="ContactOpportunityCell">
             <rect key="frame" x="0.0" y="0.0" width="704" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hCY-aK-ZKU" id="EQQ-fb-lxG">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4aa-5d-uwp" id="OJd-GK-d3B">
                 <rect key="frame" x="0.0" y="0.0" width="704" height="99"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVc-L4-E3f" userLabel="Label - name">
-                        <rect key="frame" x="20" y="5" width="400" height="25"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wyv-Df-RTw" userLabel="Label - name">
+                        <rect key="frame" x="119" y="5" width="400" height="25"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Zn-vb-2F1" userLabel="Label - phone">
-                        <rect key="frame" x="54" y="35" width="113" height="25"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4WF-fy-xbS" userLabel="Label - phone">
+                        <rect key="frame" x="153" y="35" width="113" height="25"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b74-rs-gof" userLabel="Label - email">
-                        <rect key="frame" x="292" y="35" width="313" height="25"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57S-vg-vBx" userLabel="Label - email">
+                        <rect key="frame" x="391" y="35" width="313" height="25"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2FU-tx-diL" userLabel="Label - address">
-                        <rect key="frame" x="54" y="70" width="630" height="25"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUi-yy-6Pm" userLabel="Label - address">
+                        <rect key="frame" x="153" y="70" width="630" height="25"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="call.png" translatesAutoresizingMaskIntoConstraints="NO" id="657-oc-WxG">
-                        <rect key="frame" x="20" y="35" width="25" height="25"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="call.png" translatesAutoresizingMaskIntoConstraints="NO" id="XkX-ZG-U6t">
+                        <rect key="frame" x="119" y="35" width="25" height="25"/>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kzj-ye-8ag" userLabel="btn Address">
-                        <rect key="frame" x="21" y="70" width="25" height="25"/>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWx-wl-oxZ" userLabel="btn Address">
+                        <rect key="frame" x="120" y="70" width="25" height="25"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <state key="normal" backgroundImage="pin.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
-                            <action selector="actionAddress:" destination="hCY-aK-ZKU" eventType="touchUpInside" id="yVg-OB-QYX"/>
+                            <action selector="actionAddress:" destination="4aa-5d-uwp" eventType="touchUpInside" id="T6e-6k-Nnb"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSj-oX-bIx" userLabel="btn Email">
-                        <rect key="frame" x="256" y="36" width="25" height="25"/>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l3S-UH-hW9" userLabel="btn Email">
+                        <rect key="frame" x="355" y="36" width="25" height="25"/>
                         <state key="normal" backgroundImage="email_icon_hide.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
-                            <action selector="actionSendMail:" destination="hCY-aK-ZKU" eventType="touchUpInside" id="daR-Vz-JKf"/>
+                            <action selector="actionSendMail:" destination="4aa-5d-uwp" eventType="touchUpInside" id="Grc-fY-Pmb"/>
                         </connections>
                     </button>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZI-fk-f0O" userLabel="Label - chuc danh">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TVU-OG-JMa" userLabel="Label - chuc danh">
                         <rect key="frame" x="435" y="6" width="249" height="25"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="avatar.png" translatesAutoresizingMaskIntoConstraints="NO" id="cDR-lH-VBN">
+                        <rect key="frame" x="5" y="5" width="90" height="90"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="btnAddress" destination="kzj-ye-8ag" id="3vh-pv-tOx"/>
-                <outlet property="btnSendMail" destination="KSj-oX-bIx" id="XyI-ec-siM"/>
-                <outlet property="imgIconPhone" destination="657-oc-WxG" id="SGk-7z-XnL"/>
-                <outlet property="lbAddress" destination="2FU-tx-diL" id="b35-ck-Ddz"/>
-                <outlet property="lbEmail" destination="b74-rs-gof" id="qUQ-c6-Vhn"/>
-                <outlet property="lbName" destination="CVc-L4-E3f" id="bi4-ZU-Wd4"/>
-                <outlet property="lbPhone" destination="3Zn-vb-2F1" id="MPM-Tu-7aO"/>
-                <outlet property="lbPosition" destination="pZI-fk-f0O" id="BFX-Nf-AdF"/>
+                <outlet property="avartar" destination="cDR-lH-VBN" id="anE-zx-sRo"/>
+                <outlet property="btnAddress" destination="LWx-wl-oxZ" id="80H-Ze-zHg"/>
+                <outlet property="btnSendMail" destination="l3S-UH-hW9" id="rMu-TB-a1h"/>
+                <outlet property="imgIconPhone" destination="XkX-ZG-U6t" id="Fse-xL-t6I"/>
+                <outlet property="lbAddress" destination="JUi-yy-6Pm" id="eV5-f6-ZHq"/>
+                <outlet property="lbEmail" destination="57S-vg-vBx" id="Kkd-Rn-vmR"/>
+                <outlet property="lbName" destination="Wyv-Df-RTw" id="kbw-18-y5d"/>
+                <outlet property="lbPhone" destination="4WF-fy-xbS" id="5Vx-9u-YCX"/>
+                <outlet property="lbPosition" destination="TVU-OG-JMa" id="Y9G-OZ-BXk"/>
             </connections>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="avatar.png" width="120" height="120"/>
         <image name="call.png" width="30" height="27"/>
         <image name="email_icon_hide.png" width="32" height="32"/>
         <image name="pin.png" width="48" height="48"/>

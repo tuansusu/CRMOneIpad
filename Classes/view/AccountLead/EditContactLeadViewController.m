@@ -294,7 +294,11 @@
     [dicEntity setObject:[DateUtil formatDate:[NSDate new] :@"yyyy-MM-dd HH:mm:ss.S"] forKey:DTOCONTACT_updatedDate];
     [dicEntity setObject:@"1" forKey:DTOCONTACT_isActive];
     
-    
+    //truong hop them moi file
+    if(![StringUtil stringIsEmpty:fileAvartar]){
+        [dicEntity setObject:imagePath forKey:DTOCONTACT_avartar];
+        
+    }
     
     if (self.dataSend) {
         [dicEntity setObject:[_dataSend objectForKey:DTOCONTACT_id] forKey:DTOCONTACT_id];
@@ -329,55 +333,6 @@
         }
         
     }
-    
-    BOOL dt ;
-    //truong hop them moi file
-    if(![StringUtil stringIsEmpty:fileAvartar] && succsess){
-        
-        NSMutableDictionary *entiFile= [NSMutableDictionary new];
-        
-        NSString *strClientFileId = IntToStr(([dtoProcess getClientId]));
-        //NSDictionary *dicRow = [arrayData objectAtIndex:indexPath.row];
-       // for (NSDictionary *path in arrayData) {
-            //  NSLog(@"%@", path);
-            //if([path objectForKey:DTOATTACHMENT_id]==0){
-                [entiFile setObject:@"" forKey:DTOATTACHMENT_attachmentId];
-                [entiFile setObject:strClientFileId forKey:DTOATTACHMENT_clientAttachmentId];
-                if (self.dataSend.count>0) {
-                    [entiFile setObject:[_dataSend objectForKey:DTOCONTACT_id] forKey:DTOATTACHMENT_clientObjectId];
-                }
-                else{
-                    [entiFile setObject:strClientContactId forKey:DTOATTACHMENT_clientObjectId];
-                }
-                [entiFile setObject:fileAvartar forKey:DTOATTACHMENT_fileName];
-                [entiFile setObject:[DateUtil formatDate:[NSDate new] :@"yyyy-MM-dd HH:mm:ss.S"] forKey:DTOATTACHMENT_updatedDate];
-                [entiFile setObject:[DateUtil formatDate:[NSDate new] :@"yyyy-MM-dd HH:mm:ss.S"] forKey:DTOATTACHMENT_createdDate];
-                [entiFile setObject:@"Avatar" forKey:DTOATTACHMENT_objectType];
-                [entiFile setObject:@"1" forKey:DTOATTACHMENT_isActive];
-                [entiFile setObject:@"" forKey:DTOATTACHMENT_updatedBy];
-                [entiFile setObject:@"" forKey:DTOATTACHMENT_checkSum];
-                [entiFile setObject:imagePath forKey:DTOATTACHMENT_clientFilePath];
-                [entiFile setObject:@"" forKey:DTOATTACHMENT_createdBy];
-                [entiFile setObject:@"" forKey:DTOATTACHMENT_note];
-                [entiFile setObject:@"" forKey:DTOATTACHMENT_objectId];
-                [entiFile setObject:@"" forKey:DTOATTACHMENT_serverFilePath];
-                [entiFile setObject:@"" forKey:DTOATTACHMENT_verifyLat];
-                [entiFile setObject:@"" forKey:DTOATTACHMENT_verifyLon];
-                
-                @try {
-                    dt = [dtoFileProcess insertToDBWithEntity:entiFile];
-                    if (!dt) {
-                        NSLog(@"Loi roi");
-                    }
-                }
-                @catch (NSException *exception) {
-                    NSLog(@"log:%@", exception);            }
-                @finally {
-                    NSLog(@"OK");            }
-                
-            }
-       // }
-   // }
     
     
     if (succsess) {

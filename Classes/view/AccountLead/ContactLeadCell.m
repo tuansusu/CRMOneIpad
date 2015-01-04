@@ -49,6 +49,7 @@
     
     _dicData = dicData;
     
+    NSLog(@"Avartar:%@",[dicData objectForKey:DTOCONTACT_avartar]);
     
     if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOCONTACT_fullName]]) {
         self.lbName.text = @"";
@@ -81,7 +82,10 @@
     }else{
         self.lbAddress.text = [dicData objectForKey:DTOCONTACT_address];
     }
-    
+    NSString *avartar = [dicData objectForKey:DTOCONTACT_avartar];
+    if (![StringUtil stringIsEmpty:avartar]) {
+         _avartar.image=[UIImage imageWithData:[NSData dataWithContentsOfFile:avartar]];
+    }
     switch (smgSelect) {
         case 1:
         {

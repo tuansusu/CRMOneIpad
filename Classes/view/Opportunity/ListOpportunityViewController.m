@@ -27,7 +27,7 @@
     NSDate *now,*startDate,*endDate ;
     NSDateFormatter *df;
     NSInteger selectDatePicker;
-    
+    NSString *deleteOpportunityId;
     DTOOPPORTUNITYProcess *dtoOpportunityProcess;
     
     VTRadio *rdCustomer360; //Radio khach hang 360
@@ -137,13 +137,14 @@
 
 - (void) updateInterFaceWithOption : (int) option
 {
-    self.fullNameLB.text = TITLE_APPLICATION;
+    //self.fullNameLB.text =  TITLE_APPLICATION;
     [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
     self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
     [self.btnSearch setStyleNormalWithOption:smgSelect];
     [self.leftViewHeader setBackgroundColor:BACKGROUND_COLOR_TOP_LEFT_HEADER];
     self.leftLabelHeader.textColor = TEXT_COLOR_HEADER_APP;
     
+    self.txtSearchBar.barTintColor = HEADER_VIEW_COLOR1;
 
     //
     UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
@@ -234,7 +235,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-        static NSString *cellId = @"opportunityCell";
+        static NSString *cellId = @"OpportunityCell";
         OpportunityCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
     
     
@@ -263,9 +264,11 @@
     CompetitorsViewController *viewController = [[CompetitorsViewController alloc] initWithNibName:@"CompetitorsViewController" bundle:nil];
     viewController.itemId = [selectedItem objectForKey:DTOOPPORTUNITY_id];
     [self presentViewController:viewController animated:YES completion:nil];
-    
-    
-    
+}
+
+-(void) viewDidAppear:(BOOL)animated{
+    arrayData = [dtoOpportunityProcess filterOpportunity:nil addStartDate:nil addEndDate:nil userType:nil];
+    [self.tbData reloadData];
 }
 
 
@@ -297,7 +300,12 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
+        NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
+        deleteOpportunityId = [dicData objectForKey:DTOOPPORTUNITY_id];
         
+        UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xác nhận đồng ý xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
+        mylert.tag = TAG_DELETE_ITEM;
+        [mylert show];
         
         //        switch (objDelTemp.level) {
         //            case 0:
@@ -349,14 +357,35 @@
     
     NSDictionary *dicDataTemp = [arrayData objectAtIndex:indexPath.row];
     
-    NSDictionary *dicData = [dtoOpportunityProcess getDataWithKey:DTOOPPORTUNITY_id withValue:[dicDataTemp objectForKey:DTOOPPORTUNITY_id]];
-    
+    //NSDictionary *dicData = [dtoOpportunityProcess getDataWithKey:DTOOPPORTUNITY_id withValue:[dicDataTemp objectForKey:DTOOPPORTUNITY_id]];
+    NSDictionary *dicData = [dtoOpportunityProcess getById:[dicDataTemp objectForKey:DTOOPPORTUNITY_id]];
 
         EditOpportunityViewController *viewController = [[EditOpportunityViewController alloc]initWithNibName:@"EditOpportunityViewController" bundle:nil];
         viewController.dataSend = dicData;
         [self presentViewController:viewController animated:YES completion:nil];
 }
-
+#pragma mark alertView
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0 && alertView.tag == TAG_DELETE_ITEM) {
+        //thuc hien xoa
+        
+        BOOL result = [dtoOpportunityProcess deleteEntity:deleteOpportunityId];
+        //reload lai csdl
+        if (result) {
+            
+            arrayData = [dtoOpportunityProcess filterOpportunity:nil addStartDate:nil addEndDate:nil userType:nil];
+            [self.tbData reloadData];
+            //thong bao cap nhat thanh cong
+            UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:KEY_NOTIFICATION_TITLE message:SYS_Notification_UpdateSuccess delegate:self cancelButtonTitle:KEY_NOTIFICATION_ACCEPT otherButtonTitles:  nil];
+            
+            [mylert show];
+        }else{
+            //thong bao cap nhat that bai
+            UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:KEY_NOTIFICATION_TITLE message:SYS_Notification_UpdateFail delegate:self cancelButtonTitle:KEY_NOTIFICATION_ACCEPT otherButtonTitles:  nil];
+        }
+        
+    }
+}
 
 
 #pragma mark table edit row
@@ -529,4 +558,5 @@
     NSLog(@"selectedScopeButtonIndexDidChange = %d", selectedScope);
     //iSearchOption = selectedScope;
 }
+
 @end

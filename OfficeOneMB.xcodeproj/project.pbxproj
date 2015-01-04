@@ -269,6 +269,37 @@
 		7693EE0C1A3555B0004E0178 /* DetailCalendarLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7693EE0A1A3555B0004E0178 /* DetailCalendarLeadViewController.m */; };
 		7693EE0D1A3555B0004E0178 /* DetailCalendarLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7693EE0B1A3555B0004E0178 /* DetailCalendarLeadViewController.xib */; };
 		7693EE0F1A35587E004E0178 /* icon_start.png in Resources */ = {isa = PBXBuildFile; fileRef = 7693EE0E1A35587E004E0178 /* icon_start.png */; };
+		7695FA611A4D5C3A003BE496 /* EditCalendar360ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7695FA371A4D5C3A003BE496 /* EditCalendar360ViewController.xib */; };
+		7695FA621A4D5C3A003BE496 /* Account360Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7695FA381A4D5C3A003BE496 /* Account360Cell.m */; };
+		7695FA631A4D5C3A003BE496 /* Account360Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7695FA391A4D5C3A003BE496 /* Account360Cell.xib */; };
+		7695FA641A4D5C3A003BE496 /* Calendar360Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7695FA3A1A4D5C3A003BE496 /* Calendar360Cell.xib */; };
+		7695FA651A4D5C3A003BE496 /* Detail360ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7695FA3C1A4D5C3A003BE496 /* Detail360ViewController.m */; };
+		7695FA661A4D5C3A003BE496 /* Detail360ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7695FA3D1A4D5C3A003BE496 /* Detail360ViewController.xib */; };
+		7695FA671A4D5C3A003BE496 /* EditAccount360ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7695FA3F1A4D5C3A003BE496 /* EditAccount360ViewController.m */; };
+		7695FA681A4D5C3A003BE496 /* EditAccount360ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7695FA401A4D5C3A003BE496 /* EditAccount360ViewController.xib */; };
+		7695FA691A4D5C3A003BE496 /* EditBussiness360ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7695FA421A4D5C3A003BE496 /* EditBussiness360ViewController.m */; };
+		7695FA6A1A4D5C3A003BE496 /* EditBussiness360ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7695FA431A4D5C3A003BE496 /* EditBussiness360ViewController.xib */; };
+		7695FA6B1A4D5C3A003BE496 /* EditCalendar360ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7695FA451A4D5C3A003BE496 /* EditCalendar360ViewController.m */; };
+		7695FA6C1A4D5C3A003BE496 /* EditContact360ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7695FA471A4D5C3A003BE496 /* EditContact360ViewController.m */; };
+		7695FA6D1A4D5C3A003BE496 /* EditContact360ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7695FA481A4D5C3A003BE496 /* EditContact360ViewController.xib */; };
+		7695FA6E1A4D5C3A003BE496 /* EditNote360ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7695FA4A1A4D5C3A003BE496 /* EditNote360ViewController.m */; };
+		7695FA6F1A4D5C3A003BE496 /* EditNote360ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7695FA4B1A4D5C3A003BE496 /* EditNote360ViewController.xib */; };
+		7695FA701A4D5C3A003BE496 /* EditTask360ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7695FA4D1A4D5C3A003BE496 /* EditTask360ViewController.m */; };
+		7695FA711A4D5C3A003BE496 /* EditTask360ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7695FA4E1A4D5C3A003BE496 /* EditTask360ViewController.xib */; };
+		7695FA721A4D5C3A003BE496 /* Follow360ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7695FA501A4D5C3A003BE496 /* Follow360ViewController.m */; };
+		7695FA731A4D5C3A003BE496 /* Follow360ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7695FA511A4D5C3A003BE496 /* Follow360ViewController.xib */; };
+		7695FA741A4D5C3A003BE496 /* Task360Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7695FA521A4D5C3A003BE496 /* Task360Cell.m */; };
+		7695FA751A4D5C3A003BE496 /* Calendar360Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7695FA551A4D5C3A003BE496 /* Calendar360Cell.m */; };
+		7695FA761A4D5C3A003BE496 /* Contact360Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7695FA571A4D5C3A003BE496 /* Contact360Cell.m */; };
+		7695FA771A4D5C3A003BE496 /* Contact360Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7695FA581A4D5C3A003BE496 /* Contact360Cell.xib */; };
+		7695FA781A4D5C3A003BE496 /* Note360Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7695FA5A1A4D5C3A003BE496 /* Note360Cell.m */; };
+		7695FA791A4D5C3A003BE496 /* Note360Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7695FA5B1A4D5C3A003BE496 /* Note360Cell.xib */; };
+		7695FA7A1A4D5C3A003BE496 /* Opportunity360Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7695FA5D1A4D5C3A003BE496 /* Opportunity360Cell.m */; };
+		7695FA7B1A4D5C3A003BE496 /* Opportunity360Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7695FA5E1A4D5C3A003BE496 /* Opportunity360Cell.xib */; };
+		7695FA7C1A4D5C3A003BE496 /* Task360Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7695FA601A4D5C3A003BE496 /* Task360Cell.xib */; };
+		7695FA851A4D61C6003BE496 /* TaskOpportunityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7695FA831A4D61C6003BE496 /* TaskOpportunityCell.m */; };
+		7695FA861A4D61C6003BE496 /* TaskOpportunityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7695FA841A4D61C6003BE496 /* TaskOpportunityCell.xib */; };
+		7695FA8B1A4D6715003BE496 /* EditOpportunityTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7695FA891A4D6715003BE496 /* EditOpportunityTaskViewController.xib */; };
 		76961E4F1A3B2D69008B5CE7 /* DTOATTACHMENTProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76961E4E1A3B2D69008B5CE7 /* DTOATTACHMENTProcess.m */; };
 		76961E511A3B306B008B5CE7 /* avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 76961E501A3B306B008B5CE7 /* avatar.png */; };
 		76961E551A3B3170008B5CE7 /* SelectPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76961E531A3B3170008B5CE7 /* SelectPhotoViewController.m */; };
@@ -399,6 +430,9 @@
 		76D29B311A13AD88004B9CF6 /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76D29B2F1A13AD88004B9CF6 /* ProductCell.xib */; };
 		76D29B381A14C47F004B9CF6 /* OfficeOneMB-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76D29B371A14C47F004B9CF6 /* OfficeOneMB-Info.plist */; };
 		76D6281C1A3DA741009C3A0C /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D6281B1A3DA741009C3A0C /* CMPopTipView.m */; };
+		76E02BD81A4C52DB00FBE99F /* DTOOPPORTUNITYPRODUCTProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E02BD71A4C52DB00FBE99F /* DTOOPPORTUNITYPRODUCTProcess.m */; };
+		76E02BDC1A4C59B500FBE99F /* EditOpportunityProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E02BDA1A4C59B500FBE99F /* EditOpportunityProductViewController.m */; };
+		76E02BDD1A4C59B500FBE99F /* EditOpportunityProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76E02BDB1A4C59B500FBE99F /* EditOpportunityProductViewController.xib */; };
 		76EE207219FA829200A80414 /* ic-add-sub-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EE206E19FA829200A80414 /* ic-add-sub-1.png */; };
 		76EE207319FA829200A80414 /* ic-move-user-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EE206F19FA829200A80414 /* ic-move-user-1.png */; };
 		76EE207419FA829200A80414 /* ic-reply-task-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EE207019FA829200A80414 /* ic-reply-task-1.png */; };
@@ -406,6 +440,7 @@
 		76EE210E19FF4D7100A80414 /* icon-accept-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EE210B19FF4D7100A80414 /* icon-accept-1.png */; };
 		76EE210F19FF4D7100A80414 /* icon-clock-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EE210C19FF4D7100A80414 /* icon-clock-1.png */; };
 		76EE211019FF4D7100A80414 /* icon-confirm-process-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EE210D19FF4D7100A80414 /* icon-confirm-process-1.png */; };
+		76EF09871A583BD2000A8280 /* EditOpportunityTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7695FA881A4D6715003BE496 /* EditOpportunityTaskViewController.m */; };
 		76F31E821A36A4160010606A /* AMRatingControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F31E811A36A4160010606A /* AMRatingControl.m */; };
 		76F328931A34B10B00E0F2C4 /* DTOTASKProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F328921A34B10B00E0F2C4 /* DTOTASKProcess.m */; };
 		76F328971A34B11E00E0F2C4 /* EditTaskLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F328951A34B11E00E0F2C4 /* EditTaskLeadViewController.m */; };
@@ -1144,6 +1179,54 @@
 		7693EE0A1A3555B0004E0178 /* DetailCalendarLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailCalendarLeadViewController.m; sourceTree = "<group>"; };
 		7693EE0B1A3555B0004E0178 /* DetailCalendarLeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailCalendarLeadViewController.xib; sourceTree = "<group>"; };
 		7693EE0E1A35587E004E0178 /* icon_start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_start.png; sourceTree = "<group>"; };
+		7695FA371A4D5C3A003BE496 /* EditCalendar360ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditCalendar360ViewController.xib; sourceTree = "<group>"; };
+		7695FA381A4D5C3A003BE496 /* Account360Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account360Cell.m; sourceTree = "<group>"; };
+		7695FA391A4D5C3A003BE496 /* Account360Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Account360Cell.xib; sourceTree = "<group>"; };
+		7695FA3A1A4D5C3A003BE496 /* Calendar360Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Calendar360Cell.xib; sourceTree = "<group>"; };
+		7695FA3B1A4D5C3A003BE496 /* Detail360ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Detail360ViewController.h; sourceTree = "<group>"; };
+		7695FA3C1A4D5C3A003BE496 /* Detail360ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Detail360ViewController.m; sourceTree = "<group>"; };
+		7695FA3D1A4D5C3A003BE496 /* Detail360ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Detail360ViewController.xib; sourceTree = "<group>"; };
+		7695FA3E1A4D5C3A003BE496 /* EditAccount360ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditAccount360ViewController.h; sourceTree = "<group>"; };
+		7695FA3F1A4D5C3A003BE496 /* EditAccount360ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditAccount360ViewController.m; sourceTree = "<group>"; };
+		7695FA401A4D5C3A003BE496 /* EditAccount360ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditAccount360ViewController.xib; sourceTree = "<group>"; };
+		7695FA411A4D5C3A003BE496 /* EditBussiness360ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditBussiness360ViewController.h; sourceTree = "<group>"; };
+		7695FA421A4D5C3A003BE496 /* EditBussiness360ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditBussiness360ViewController.m; sourceTree = "<group>"; };
+		7695FA431A4D5C3A003BE496 /* EditBussiness360ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditBussiness360ViewController.xib; sourceTree = "<group>"; };
+		7695FA441A4D5C3A003BE496 /* EditCalendar360ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCalendar360ViewController.h; sourceTree = "<group>"; };
+		7695FA451A4D5C3A003BE496 /* EditCalendar360ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCalendar360ViewController.m; sourceTree = "<group>"; };
+		7695FA461A4D5C3A003BE496 /* EditContact360ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditContact360ViewController.h; sourceTree = "<group>"; };
+		7695FA471A4D5C3A003BE496 /* EditContact360ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditContact360ViewController.m; sourceTree = "<group>"; };
+		7695FA481A4D5C3A003BE496 /* EditContact360ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditContact360ViewController.xib; sourceTree = "<group>"; };
+		7695FA491A4D5C3A003BE496 /* EditNote360ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNote360ViewController.h; sourceTree = "<group>"; };
+		7695FA4A1A4D5C3A003BE496 /* EditNote360ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNote360ViewController.m; sourceTree = "<group>"; };
+		7695FA4B1A4D5C3A003BE496 /* EditNote360ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditNote360ViewController.xib; sourceTree = "<group>"; };
+		7695FA4C1A4D5C3A003BE496 /* EditTask360ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTask360ViewController.h; sourceTree = "<group>"; };
+		7695FA4D1A4D5C3A003BE496 /* EditTask360ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTask360ViewController.m; sourceTree = "<group>"; };
+		7695FA4E1A4D5C3A003BE496 /* EditTask360ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditTask360ViewController.xib; sourceTree = "<group>"; };
+		7695FA4F1A4D5C3A003BE496 /* Follow360ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Follow360ViewController.h; sourceTree = "<group>"; };
+		7695FA501A4D5C3A003BE496 /* Follow360ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Follow360ViewController.m; sourceTree = "<group>"; };
+		7695FA511A4D5C3A003BE496 /* Follow360ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Follow360ViewController.xib; sourceTree = "<group>"; };
+		7695FA521A4D5C3A003BE496 /* Task360Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task360Cell.m; sourceTree = "<group>"; };
+		7695FA531A4D5C3A003BE496 /* Account360Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account360Cell.h; sourceTree = "<group>"; };
+		7695FA541A4D5C3A003BE496 /* Calendar360Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calendar360Cell.h; sourceTree = "<group>"; };
+		7695FA551A4D5C3A003BE496 /* Calendar360Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calendar360Cell.m; sourceTree = "<group>"; };
+		7695FA561A4D5C3A003BE496 /* Contact360Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact360Cell.h; sourceTree = "<group>"; };
+		7695FA571A4D5C3A003BE496 /* Contact360Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact360Cell.m; sourceTree = "<group>"; };
+		7695FA581A4D5C3A003BE496 /* Contact360Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Contact360Cell.xib; sourceTree = "<group>"; };
+		7695FA591A4D5C3A003BE496 /* Note360Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note360Cell.h; sourceTree = "<group>"; };
+		7695FA5A1A4D5C3A003BE496 /* Note360Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note360Cell.m; sourceTree = "<group>"; };
+		7695FA5B1A4D5C3A003BE496 /* Note360Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Note360Cell.xib; sourceTree = "<group>"; };
+		7695FA5C1A4D5C3A003BE496 /* Opportunity360Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Opportunity360Cell.h; sourceTree = "<group>"; };
+		7695FA5D1A4D5C3A003BE496 /* Opportunity360Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Opportunity360Cell.m; sourceTree = "<group>"; };
+		7695FA5E1A4D5C3A003BE496 /* Opportunity360Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Opportunity360Cell.xib; sourceTree = "<group>"; };
+		7695FA5F1A4D5C3A003BE496 /* Task360Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task360Cell.h; sourceTree = "<group>"; };
+		7695FA601A4D5C3A003BE496 /* Task360Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Task360Cell.xib; sourceTree = "<group>"; };
+		7695FA821A4D61C6003BE496 /* TaskOpportunityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskOpportunityCell.h; sourceTree = "<group>"; };
+		7695FA831A4D61C6003BE496 /* TaskOpportunityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskOpportunityCell.m; sourceTree = "<group>"; };
+		7695FA841A4D61C6003BE496 /* TaskOpportunityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskOpportunityCell.xib; sourceTree = "<group>"; };
+		7695FA871A4D6715003BE496 /* EditOpportunityTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditOpportunityTaskViewController.h; sourceTree = "<group>"; };
+		7695FA881A4D6715003BE496 /* EditOpportunityTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditOpportunityTaskViewController.m; sourceTree = "<group>"; };
+		7695FA891A4D6715003BE496 /* EditOpportunityTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditOpportunityTaskViewController.xib; sourceTree = "<group>"; };
 		76961E4D1A3B2D69008B5CE7 /* DTOATTACHMENTProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOATTACHMENTProcess.h; sourceTree = "<group>"; };
 		76961E4E1A3B2D69008B5CE7 /* DTOATTACHMENTProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOATTACHMENTProcess.m; sourceTree = "<group>"; };
 		76961E501A3B306B008B5CE7 /* avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar.png; sourceTree = "<group>"; };
@@ -1360,6 +1443,11 @@
 		76D29B371A14C47F004B9CF6 /* OfficeOneMB-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OfficeOneMB-Info.plist"; sourceTree = "<group>"; };
 		76D6281A1A3DA741009C3A0C /* CMPopTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPopTipView.h; sourceTree = "<group>"; };
 		76D6281B1A3DA741009C3A0C /* CMPopTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPopTipView.m; sourceTree = "<group>"; };
+		76E02BD61A4C52DB00FBE99F /* DTOOPPORTUNITYPRODUCTProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOOPPORTUNITYPRODUCTProcess.h; sourceTree = "<group>"; };
+		76E02BD71A4C52DB00FBE99F /* DTOOPPORTUNITYPRODUCTProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOOPPORTUNITYPRODUCTProcess.m; sourceTree = "<group>"; };
+		76E02BD91A4C59B500FBE99F /* EditOpportunityProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditOpportunityProductViewController.h; sourceTree = "<group>"; };
+		76E02BDA1A4C59B500FBE99F /* EditOpportunityProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditOpportunityProductViewController.m; sourceTree = "<group>"; };
+		76E02BDB1A4C59B500FBE99F /* EditOpportunityProductViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditOpportunityProductViewController.xib; sourceTree = "<group>"; };
 		76EE206E19FA829200A80414 /* ic-add-sub-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic-add-sub-1.png"; path = "VofficeImage/Option1/ic-add-sub-1.png"; sourceTree = "<group>"; };
 		76EE206F19FA829200A80414 /* ic-move-user-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic-move-user-1.png"; path = "VofficeImage/Option1/ic-move-user-1.png"; sourceTree = "<group>"; };
 		76EE207019FA829200A80414 /* ic-reply-task-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic-reply-task-1.png"; path = "VofficeImage/Option1/ic-reply-task-1.png"; sourceTree = "<group>"; };
@@ -2814,6 +2902,8 @@
 				76961E4E1A3B2D69008B5CE7 /* DTOATTACHMENTProcess.m */,
 				769CB8121A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.h */,
 				769CB8131A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.m */,
+				76E02BD61A4C52DB00FBE99F /* DTOOPPORTUNITYPRODUCTProcess.h */,
+				76E02BD71A4C52DB00FBE99F /* DTOOPPORTUNITYPRODUCTProcess.m */,
 			);
 			name = Data;
 			path = ProcessData/Data;
@@ -3216,6 +3306,12 @@
 				7623F04F1A41C98400F99DA0 /* EditContactOpportunityViewController.h */,
 				7623F0501A41C98400F99DA0 /* EditContactOpportunityViewController.m */,
 				7623F0511A41C98400F99DA0 /* EditContactOpportunityViewController.xib */,
+				76E02BD91A4C59B500FBE99F /* EditOpportunityProductViewController.h */,
+				76E02BDA1A4C59B500FBE99F /* EditOpportunityProductViewController.m */,
+				76E02BDB1A4C59B500FBE99F /* EditOpportunityProductViewController.xib */,
+				7695FA871A4D6715003BE496 /* EditOpportunityTaskViewController.h */,
+				7695FA881A4D6715003BE496 /* EditOpportunityTaskViewController.m */,
+				7695FA891A4D6715003BE496 /* EditOpportunityTaskViewController.xib */,
 			);
 			path = Opportunity;
 			sourceTree = "<group>";
@@ -3238,6 +3334,9 @@
 				7622D2ED1A43246700DC9309 /* ContactOpportunityCell.h */,
 				7622D2EE1A43246700DC9309 /* ContactOpportunityCell.m */,
 				7622D2EF1A43246700DC9309 /* ContactOpportunityCell.xib */,
+				7695FA821A4D61C6003BE496 /* TaskOpportunityCell.h */,
+				7695FA831A4D61C6003BE496 /* TaskOpportunityCell.m */,
+				7695FA841A4D61C6003BE496 /* TaskOpportunityCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -3245,6 +3344,48 @@
 		8495DDCA1A30A0AF00C4E922 /* Account360 */ = {
 			isa = PBXGroup;
 			children = (
+				7695FA371A4D5C3A003BE496 /* EditCalendar360ViewController.xib */,
+				7695FA381A4D5C3A003BE496 /* Account360Cell.m */,
+				7695FA391A4D5C3A003BE496 /* Account360Cell.xib */,
+				7695FA3A1A4D5C3A003BE496 /* Calendar360Cell.xib */,
+				7695FA3B1A4D5C3A003BE496 /* Detail360ViewController.h */,
+				7695FA3C1A4D5C3A003BE496 /* Detail360ViewController.m */,
+				7695FA3D1A4D5C3A003BE496 /* Detail360ViewController.xib */,
+				7695FA3E1A4D5C3A003BE496 /* EditAccount360ViewController.h */,
+				7695FA3F1A4D5C3A003BE496 /* EditAccount360ViewController.m */,
+				7695FA401A4D5C3A003BE496 /* EditAccount360ViewController.xib */,
+				7695FA411A4D5C3A003BE496 /* EditBussiness360ViewController.h */,
+				7695FA421A4D5C3A003BE496 /* EditBussiness360ViewController.m */,
+				7695FA431A4D5C3A003BE496 /* EditBussiness360ViewController.xib */,
+				7695FA441A4D5C3A003BE496 /* EditCalendar360ViewController.h */,
+				7695FA451A4D5C3A003BE496 /* EditCalendar360ViewController.m */,
+				7695FA461A4D5C3A003BE496 /* EditContact360ViewController.h */,
+				7695FA471A4D5C3A003BE496 /* EditContact360ViewController.m */,
+				7695FA481A4D5C3A003BE496 /* EditContact360ViewController.xib */,
+				7695FA491A4D5C3A003BE496 /* EditNote360ViewController.h */,
+				7695FA4A1A4D5C3A003BE496 /* EditNote360ViewController.m */,
+				7695FA4B1A4D5C3A003BE496 /* EditNote360ViewController.xib */,
+				7695FA4C1A4D5C3A003BE496 /* EditTask360ViewController.h */,
+				7695FA4D1A4D5C3A003BE496 /* EditTask360ViewController.m */,
+				7695FA4E1A4D5C3A003BE496 /* EditTask360ViewController.xib */,
+				7695FA4F1A4D5C3A003BE496 /* Follow360ViewController.h */,
+				7695FA501A4D5C3A003BE496 /* Follow360ViewController.m */,
+				7695FA511A4D5C3A003BE496 /* Follow360ViewController.xib */,
+				7695FA521A4D5C3A003BE496 /* Task360Cell.m */,
+				7695FA531A4D5C3A003BE496 /* Account360Cell.h */,
+				7695FA541A4D5C3A003BE496 /* Calendar360Cell.h */,
+				7695FA551A4D5C3A003BE496 /* Calendar360Cell.m */,
+				7695FA561A4D5C3A003BE496 /* Contact360Cell.h */,
+				7695FA571A4D5C3A003BE496 /* Contact360Cell.m */,
+				7695FA581A4D5C3A003BE496 /* Contact360Cell.xib */,
+				7695FA591A4D5C3A003BE496 /* Note360Cell.h */,
+				7695FA5A1A4D5C3A003BE496 /* Note360Cell.m */,
+				7695FA5B1A4D5C3A003BE496 /* Note360Cell.xib */,
+				7695FA5C1A4D5C3A003BE496 /* Opportunity360Cell.h */,
+				7695FA5D1A4D5C3A003BE496 /* Opportunity360Cell.m */,
+				7695FA5E1A4D5C3A003BE496 /* Opportunity360Cell.xib */,
+				7695FA5F1A4D5C3A003BE496 /* Task360Cell.h */,
+				7695FA601A4D5C3A003BE496 /* Task360Cell.xib */,
 				8495DDCB1A30A10A00C4E922 /* ListAccountViewController.h */,
 				8495DDCC1A30A10A00C4E922 /* ListAccountViewController.m */,
 				8495DDCD1A30A10A00C4E922 /* ListAccountViewController.xib */,
@@ -4109,6 +4250,7 @@
 				76601A4C194BE90F001D4C01 /* Reader-Mark-N@2x.png in Resources */,
 				76199E121A471DA900B792C5 /* MDSearchBar.xib in Resources */,
 				76601A3D194BE90F001D4C01 /* AppIcon-057.png in Resources */,
+				7695FA6F1A4D5C3A003BE496 /* EditNote360ViewController.xib in Resources */,
 				76C964821A17A15C00029978 /* vtmap_ic_marker_default.png in Resources */,
 				8497BFEB1A295A2300A5ED3C /* step6@2x.png in Resources */,
 				B315789A188D5E5200C0ED01 /* flag-btn-2-1.png in Resources */,
@@ -4120,10 +4262,12 @@
 				2D32B5CC187BDAA10065C305 /* Button_Normal-1.png in Resources */,
 				76C962A41A16DD0D00029978 /* EditAccountLeadViewController.xib in Resources */,
 				8497BFC11A295A2300A5ED3C /* boat@2x.png in Resources */,
+				7695FA7B1A4D5C3A003BE496 /* Opportunity360Cell.xib in Resources */,
 				2DD29EF118769C260066B883 /* menu-ic-order-work-1.png in Resources */,
 				8497BFB61A295A2300A5ED3C /* aeroplane.png in Resources */,
 				2DB2AAE417A0BF6E00D7B01F /* left_arrow.png in Resources */,
 				2DB2AAE517A0BF6E00D7B01F /* left_arrow@2x.png in Resources */,
+				7695FA611A4D5C3A003BE496 /* EditCalendar360ViewController.xib in Resources */,
 				849794631A1FA90000ACC568 /* email_icon_hide.png in Resources */,
 				B39DD45F18A9FFF200FFA8EB /* bg-pdf-reader-1.png in Resources */,
 				8497BFED1A295A2300A5ED3C /* step7@2x.png in Resources */,
@@ -4131,12 +4275,14 @@
 				8495DDCF1A30A10A00C4E922 /* ListAccountViewController.xib in Resources */,
 				94BA8D781A2DF3710082AE9E /* EditOpportunityViewController.xib in Resources */,
 				2DB2AAE717A0BF6E00D7B01F /* right_arrow@2x.png in Resources */,
+				7695FA861A4D61C6003BE496 /* TaskOpportunityCell.xib in Resources */,
 				76977D601A02A72E0029F297 /* ListEmployeeAccountViewController.xib in Resources */,
 				B315788A188D5E5200C0ED01 /* ic-work-fw-person-2-1.png in Resources */,
 				2D60B07A17A27AA400848776 /* checkbox_not_ticked.png in Resources */,
 				84945FFF1A2B383E002EF8BD /* follow_success.png in Resources */,
 				76D29B181A126C9B004B9CF6 /* ClueContactCell.xib in Resources */,
 				8497C0161A295A8500A5ED3C /* TestMapViewController.xib in Resources */,
+				7695FA791A4D5C3A003BE496 /* Note360Cell.xib in Resources */,
 				8497BFC21A295A2300A5ED3C /* botswana-large.png in Resources */,
 				84918AC01A34574A00149CB4 /* SearchAdvanceLeadViewController.xib in Resources */,
 				8434BF041A2F61B200C29815 /* calendar_small_new.png in Resources */,
@@ -4144,6 +4290,7 @@
 				76D29B2B1A1397EE004B9CF6 /* ProductViewController.xib in Resources */,
 				8497BFC01A295A2300A5ED3C /* boat.png in Resources */,
 				8497BFCF1A295A2300A5ED3C /* sdkdemos_icon-72.png in Resources */,
+				7695FA6A1A4D5C3A003BE496 /* EditBussiness360ViewController.xib in Resources */,
 				763308101A048962000E190B /* VTCombobox.xib in Resources */,
 				84945FFE1A2B383E002EF8BD /* flag_enable.png in Resources */,
 				762048721A0BDE8000AAA917 /* icon_menu-1.png in Resources */,
@@ -4185,6 +4332,7 @@
 				8ED4028E1A41E18800CCBE6D /* CustomerViewCell.xib in Resources */,
 				8497BFE41A295A2300A5ED3C /* step3.png in Resources */,
 				76601A3E194BE90F001D4C01 /* AppIcon-072.png in Resources */,
+				7695FA681A4D5C3A003BE496 /* EditAccount360ViewController.xib in Resources */,
 				2DFEFC0A17AD075800D684FB /* down_arrow.png in Resources */,
 				76601A4E194BE90F001D4C01 /* Reader-Mark-Y@2x.png in Resources */,
 				B315789B188D5E5200C0ED01 /* logo-big-1.png in Resources */,
@@ -4193,6 +4341,7 @@
 				8E0B07CD1A4475CF00CF7A78 /* iconEmail.png in Resources */,
 				B3F727AF17B512CC0024DC0D /* arrow_table.png in Resources */,
 				76D29B221A13567D004B9CF6 /* TestTableViewController.xib in Resources */,
+				7695FA731A4D5C3A003BE496 /* Follow360ViewController.xib in Resources */,
 				8497BFD11A295A2300A5ED3C /* sdkdemos_icon.png in Resources */,
 				769C0A2B1A35F3E90008CC4B /* NoteLeadCell.xib in Resources */,
 				76C964671A17731900029978 /* LeftTriangleIcon.png in Resources */,
@@ -4241,6 +4390,7 @@
 				B315789E188D5E5200C0ED01 /* write-btn-2-1.png in Resources */,
 				8EB708771A407A1C001861A0 /* Mobile_GPS_MyLocationIcon.png in Resources */,
 				76EE207319FA829200A80414 /* ic-move-user-1.png in Resources */,
+				7695FA8B1A4D6715003BE496 /* EditOpportunityTaskViewController.xib in Resources */,
 				76C964801A17A15C00029978 /* call.png in Resources */,
 				76601A46194BE90F001D4C01 /* Reader-Button-H@2x.png in Resources */,
 				8497BFD51A295A2300A5ED3C /* h1.png in Resources */,
@@ -4248,12 +4398,15 @@
 				8ED402791A41D2DC00CCBE6D /* iconExpand.png in Resources */,
 				B3A066D717D1AB8200BA6487 /* background_1.png in Resources */,
 				B315789C188D5E5200C0ED01 /* logo-small-1.png in Resources */,
+				7695FA7C1A4D5C3A003BE496 /* Task360Cell.xib in Resources */,
 				B3A066D817D1AB8200BA6487 /* background_2.png in Resources */,
 				8497BFD41A295A2300A5ED3C /* museum-exhibits.json in Resources */,
 				8EB708781A407A1C001861A0 /* Mobile_GPS_MyLocationIcon@2x.png in Resources */,
 				8497BFCE1A295A2300A5ED3C /* Default@2x.png in Resources */,
+				7695FA641A4D5C3A003BE496 /* Calendar360Cell.xib in Resources */,
 				B3A066D917D1AB8200BA6487 /* background_3.png in Resources */,
 				B3A066DA17D1AB8200BA6487 /* background_4.png in Resources */,
+				7695FA711A4D5C3A003BE496 /* EditTask360ViewController.xib in Resources */,
 				849794681A1FB19300ACC568 /* DetailCustomBussinessViewController.xib in Resources */,
 				B3A066DC17D1AB8200BA6487 /* btn_choose_list.png in Resources */,
 				8ED402861A41DF3C00CCBE6D /* ic_qu_direction_mylocation.png in Resources */,
@@ -4303,6 +4456,7 @@
 				8497BFDC1A295A2300A5ED3C /* x29@2x.png in Resources */,
 				B315787C188D5E5200C0ED01 /* ic-notsign-1.png in Resources */,
 				8497BFE61A295A2300A5ED3C /* step4.png in Resources */,
+				7695FA771A4D5C3A003BE496 /* Contact360Cell.xib in Resources */,
 				849B6D941A18EDAE007E3B06 /* SelectIndexViewController.xib in Resources */,
 				8497BFBF1A295A2300A5ED3C /* australia.png in Resources */,
 				2DD29EEA18769C260066B883 /* menu-ic-contact-1.png in Resources */,
@@ -4321,6 +4475,7 @@
 				B39DD45D18A9F66300FFA8EB /* ic_no_image1.png in Resources */,
 				2DE6B97B17FD242C00DC0D4E /* icon_radio-button_off.png in Resources */,
 				B316D68E188E927A009B751B /* bg-doc.png in Resources */,
+				76E02BDD1A4C59B500FBE99F /* EditOpportunityProductViewController.xib in Resources */,
 				8497BFB91A295A2300A5ED3C /* argentina-large.png in Resources */,
 				2DE6B97C17FD242C00DC0D4E /* icon_radio-button_on.png in Resources */,
 				849078911A1E476D009D5D5F /* DetailLeadViewController.xib in Resources */,
@@ -4401,10 +4556,12 @@
 				B3157880188D5E5200C0ED01 /* ic-uncheck-1.png in Resources */,
 				8497BFC81A295A2300A5ED3C /* Default-568h@2x.png in Resources */,
 				2DE2D28C1829060700034877 /* footer.png in Resources */,
+				7695FA631A4D5C3A003BE496 /* Account360Cell.xib in Resources */,
 				8497BFF01A295A2300A5ED3C /* track.json in Resources */,
 				B38111E718ACD40600876151 /* update-btn-1-1.png in Resources */,
 				8E0B07BC1A446B4100CF7A78 /* CustomInfoView.xib in Resources */,
 				8ED402811A41DEC000CCBE6D /* iconBranchArrow.png in Resources */,
+				7695FA661A4D5C3A003BE496 /* Detail360ViewController.xib in Resources */,
 				8497BFE81A295A2300A5ED3C /* step5.png in Resources */,
 				849078871A1E461D009D5D5F /* DetailPersonLeadViewController.xib in Resources */,
 				B3157887188D5E5200C0ED01 /* ic-work-fw-group-1-1.png in Resources */,
@@ -4445,6 +4602,7 @@
 				2D5C53931833441800910E1C /* icon_calendar.png in Resources */,
 				8497BFD61A295A2300A5ED3C /* h1@2x.png in Resources */,
 				2DD29EE918769C260066B883 /* menu-ic-ca-1.png in Resources */,
+				7695FA6D1A4D5C3A003BE496 /* EditContact360ViewController.xib in Resources */,
 				B3157882188D5E5200C0ED01 /* ic-viewpdf-bookmark-1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4461,6 +4619,7 @@
 				769C0A261A35E4220008CC4B /* DTONOTEProcess.m in Sources */,
 				76601A37194BE90F001D4C01 /* ReaderThumbView.m in Sources */,
 				92C68E501519D4F100981728 /* BaseViewController.m in Sources */,
+				7695FA761A4D5C3A003BE496 /* Contact360Cell.m in Sources */,
 				8434BEFD1A2F485700C29815 /* DetailContactLeadViewController.m in Sources */,
 				92C68E511519D4F100981728 /* Constants.m in Sources */,
 				76D29B301A13AD88004B9CF6 /* ProductCell.m in Sources */,
@@ -4473,10 +4632,12 @@
 				76D29ACB1A11295C004B9CF6 /* DTOPRODUCTMASTERProcess.m in Sources */,
 				92C68E541519D4F100981728 /* FrameworkAppDelegate.m in Sources */,
 				92C68E561519D4F100981728 /* NSObject+SBJSON.m in Sources */,
+				7695FA621A4D5C3A003BE496 /* Account360Cell.m in Sources */,
 				8497C00B1A295A2300A5ED3C /* StructuredGeocoderViewController.m in Sources */,
 				92C68E571519D4F100981728 /* NSString+SBJSON.m in Sources */,
 				92C68E581519D4F100981728 /* SBJSON.m in Sources */,
 				92C68E591519D4F100981728 /* SBJsonBase.m in Sources */,
+				7695FA6B1A4D5C3A003BE496 /* EditCalendar360ViewController.m in Sources */,
 				92C68E5A1519D4F100981728 /* SBJsonParser.m in Sources */,
 				76199E111A471DA900B792C5 /* MDSearchBar.m in Sources */,
 				849078861A1E461D009D5D5F /* DetailPersonLeadViewController.m in Sources */,
@@ -4503,6 +4664,7 @@
 				92C68E6A1519D4F100981728 /* RootViewController.m in Sources */,
 				76977D5F1A02A72E0029F297 /* ListEmployeeAccountViewController.m in Sources */,
 				DDBC46E5171540A200CCFB94 /* HTTPClient.m in Sources */,
+				76EF09871A583BD2000A8280 /* EditOpportunityTaskViewController.m in Sources */,
 				DDBC46E6171540A200CCFB94 /* HTTPEngine.m in Sources */,
 				DDBC46E7171540A200CCFB94 /* HttpLoader.m in Sources */,
 				76C9645A1A17731900029978 /* BasicPieChart.m in Sources */,
@@ -4515,6 +4677,7 @@
 				76C9646C1A17731900029978 /* OthersPieChart.m in Sources */,
 				76C964641A17731900029978 /* InfoBoxStyle2.m in Sources */,
 				DDBC46ED171540A200CCFB94 /* SyncQueue.m in Sources */,
+				7695FA6C1A4D5C3A003BE496 /* EditContact360ViewController.m in Sources */,
 				DDBC470B1715412D00CCFB94 /* NSMutableURLRequest+Parameters.m in Sources */,
 				DDBC470C1715412D00CCFB94 /* NSString+URLEncoding.m in Sources */,
 				76C964491A17731900029978 /* MIMBarGraph.m in Sources */,
@@ -4580,7 +4743,9 @@
 				2D47E7FA1761704200F291D6 /* GCNetworkFormRequest.m in Sources */,
 				76F31E821A36A4160010606A /* AMRatingControl.m in Sources */,
 				76977D641A02A75B0029F297 /* EmployeeAccountCell.m in Sources */,
+				7695FA701A4D5C3A003BE496 /* EditTask360ViewController.m in Sources */,
 				76601A2F194BE90F001D4C01 /* ReaderMainPagebar.m in Sources */,
+				7695FA671A4D5C3A003BE496 /* EditAccount360ViewController.m in Sources */,
 				2D47E7FB1761704200F291D6 /* GCNetworkImageRequest.m in Sources */,
 				2D47E7FC1761704200F291D6 /* GCNetworkRequest.m in Sources */,
 				8499B2DD1A2C9BC4004D9ACB /* EditContactLeadViewController.m in Sources */,
@@ -4604,11 +4769,14 @@
 				76D6281C1A3DA741009C3A0C /* CMPopTipView.m in Sources */,
 				2D9FCB9E179639EB00950763 /* QLCoverFlowPagesView.m in Sources */,
 				2D9FCB9F179639EB00950763 /* QLPageView.m in Sources */,
+				7695FA651A4D5C3A003BE496 /* Detail360ViewController.m in Sources */,
 				769C1A1B1A00027900F015A5 /* Network.m in Sources */,
+				7695FA741A4D5C3A003BE496 /* Task360Cell.m in Sources */,
 				76C9644B1A17731900029978 /* ClusterGraph.m in Sources */,
 				2D36438E1859996700190EE7 /* AFHTTPRequestOperation.m in Sources */,
 				2D3643921859996700190EE7 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				8497BFF81A295A2300A5ED3C /* FixedPanoramaViewController.m in Sources */,
+				7695FA721A4D5C3A003BE496 /* Follow360ViewController.m in Sources */,
 				2D3643911859996700190EE7 /* AFJSONUtilities.m in Sources */,
 				8E87C9321A45B29700CB0918 /* DTOAccountProcessObject.m in Sources */,
 				2D0E2EE01798053C0081D44A /* StringUtil.m in Sources */,
@@ -4620,6 +4788,7 @@
 				2DA084FA179C1B9F00EB986D /* UIView+AUISelectiveBorder.m in Sources */,
 				76601A31194BE90F001D4C01 /* ReaderThumbCache.m in Sources */,
 				2D36438F1859996700190EE7 /* AFImageRequestOperation.m in Sources */,
+				7695FA691A4D5C3A003BE496 /* EditBussiness360ViewController.m in Sources */,
 				76C964711A17731900029978 /* PieBubble.m in Sources */,
 				2DB2AADE17A0BF5400D7B01F /* CKCalendarView.m in Sources */,
 				763308151A048DBC000E190B /* VTRadio.m in Sources */,
@@ -4652,6 +4821,7 @@
 				2D0C7E3517A9FD1000DDABAC /* ASDepthModalViewController.m in Sources */,
 				8497BFF51A295A2300A5ED3C /* CustomMarkersViewController.m in Sources */,
 				8497BFFE1A295A2300A5ED3C /* IndoorViewController.m in Sources */,
+				76E02BDC1A4C59B500FBE99F /* EditOpportunityProductViewController.m in Sources */,
 				76C962A31A16DD0D00029978 /* EditAccountLeadViewController.m in Sources */,
 				8497BFFA1A295A2300A5ED3C /* GestureControlViewController.m in Sources */,
 				76601A3A194BE90F001D4C01 /* ThumbsViewController.m in Sources */,
@@ -4673,6 +4843,7 @@
 				2D4B92C717ACD7DE002A9AC5 /* DAAttributedLabel.m in Sources */,
 				8E0B07BF1A446B8800CF7A78 /* CustomInfoView.m in Sources */,
 				76C964441A17731900029978 /* XAxisBand.m in Sources */,
+				76E02BD81A4C52DB00FBE99F /* DTOOPPORTUNITYPRODUCTProcess.m in Sources */,
 				15A92D2C1A447049005DC9CA /* TaskCalTLineCell.m in Sources */,
 				2D4B92C817ACD7DE002A9AC5 /* DAAttributedStringFormatter.m in Sources */,
 				843BF0BF1A03ECC500EA1D8A /* OpportunityCell.m in Sources */,
@@ -4680,11 +4851,13 @@
 				76C9646F1A17731900029978 /* PermanentScroller.m in Sources */,
 				2D4B92C917ACD7DE002A9AC5 /* DABoxesLayer.m in Sources */,
 				76C964601A17731900029978 /* DefaultInfoBox.m in Sources */,
+				7695FA751A4D5C3A003BE496 /* Calendar360Cell.m in Sources */,
 				76C964591A17731900029978 /* BasicPie.m in Sources */,
 				2D4B92CA17ACD7DE002A9AC5 /* DAFontSet.m in Sources */,
 				76961E4F1A3B2D69008B5CE7 /* DTOATTACHMENTProcess.m in Sources */,
 				B3FCE41317AF492D00C13574 /* OrderByObject.m in Sources */,
 				76D29B131A126B91004B9CF6 /* DTOACCOUNTProcess.m in Sources */,
+				7695FA7A1A4D5C3A003BE496 /* Opportunity360Cell.m in Sources */,
 				769C1A1619FFFECA00F015A5 /* UIAlertView+Blocks.m in Sources */,
 				76C964501A17731900029978 /* GaugeGraph.m in Sources */,
 				8497BFF41A295A2300A5ED3C /* CustomIndoorViewController.m in Sources */,
@@ -4702,6 +4875,7 @@
 				76601A32194BE90F001D4C01 /* ReaderThumbFetch.m in Sources */,
 				76C9644E1A17731900029978 /* DoughtNutFragmentTitle.m in Sources */,
 				B3332AF317B8CF330011CD85 /* EnumClass.m in Sources */,
+				7695FA851A4D61C6003BE496 /* TaskOpportunityCell.m in Sources */,
 				B301F1B817C376CD0004650C /* ExampleHTMLStringToAttributedString.m in Sources */,
 				B301F20E17C382F30004650C /* BALabel.m in Sources */,
 				B301F21117C383130004650C /* InterfaceUtil.m in Sources */,
@@ -4716,6 +4890,7 @@
 				B3A0669E17D1A72400BA6487 /* WCGridViewCell.m in Sources */,
 				76601A2D194BE90F001D4C01 /* ReaderDocument.m in Sources */,
 				76601A2A194BE90F001D4C01 /* ReaderContentPage.m in Sources */,
+				7695FA6E1A4D5C3A003BE496 /* EditNote360ViewController.m in Sources */,
 				B3A066A017D1A72400BA6487 /* WCGridViewController.m in Sources */,
 				B3F7EA8317DEC24F00504705 /* LogUtil.m in Sources */,
 				76601A2C194BE90F001D4C01 /* ReaderContentView.m in Sources */,
@@ -4769,6 +4944,7 @@
 				2DF7C8821821FD810020D4CC /* SRMonthPicker.m in Sources */,
 				2DF7C8861821FE7F0020D4CC /* MonthPickerViewController.m in Sources */,
 				849125D01A1CE68500949FC8 /* DTOSYSCATProcess.m in Sources */,
+				7695FA781A4D5C3A003BE496 /* Note360Cell.m in Sources */,
 				76C9644C1A17731900029978 /* MIMColor.m in Sources */,
 				8497C00C1A295A2300A5ED3C /* TileLayerViewController.m in Sources */,
 				8497C0061A295A2300A5ED3C /* MyLocationViewController.m in Sources */,

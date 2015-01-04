@@ -63,7 +63,7 @@
 -(BOOL) deleteEntityWithCasesId:(NSString *)casesId{
 
 
-    NSMutableDictionary *dicFieldSet = [[NSMutableDictionary alloc]initWithObjects:[NSArray arrayWithObjects:@"1", nil] forKeys:[NSArray arrayWithObjects:DTOCOMPLAIN_status, nil]];
+    NSMutableDictionary *dicFieldSet = [[NSMutableDictionary alloc]initWithObjects:[NSArray arrayWithObjects:@"0", nil] forKeys:[NSArray arrayWithObjects:DTOCOMPLAIN_status, nil]];
     NSMutableDictionary *dicFieldCondition = [[NSMutableDictionary alloc]initWithObjects:[NSArray arrayWithObjects:casesId, nil] forKeys:[NSArray arrayWithObjects:DTOCOMPLAIN_casesId, nil]];
 
 

@@ -97,6 +97,7 @@
         complainOB.processerId = txtNguoiXuLy.text;
         complainOB.processedDate = txtNgayXuLy.text;
     }
+    complainOB.casesId = @"2";
    
     if ([self checkValid]) {
         if (_delegate && [_delegate respondsToSelector:@selector(updateComplainDetailViewWithComplainOB:)]) {

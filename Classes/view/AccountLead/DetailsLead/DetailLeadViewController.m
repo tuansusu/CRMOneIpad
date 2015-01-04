@@ -18,6 +18,7 @@
 #import "TaskActionCell.h"
 #import "ProductsLeadView.h"
 #import "ComplainsView.h"
+#import "ComplainDetailViewController.h"
 ////remove
 #import "StringUtil.h"
 
@@ -28,13 +29,14 @@
 #define SELECT_INDEX_ADD_CALENDAR 2
 #define SELECT_INDEX_ADD_TASK 3
 #define SELECT_INDEX_ADD_OPPORTUNITY 4
+#define SELECT_INDEX_ADD_COMPLAIN 5
 
 #define SELECT_TEXT_ADD_CONTACT @"LIÊN HỆ"
 #define SELECT_TEXT_ADD_NOTE @"GHI CHÚ"
 #define SELECT_TEXT_ADD_CALENDAR @"LỊCH"
 #define SELECT_TEXT_ADD_TASK @"NHIỆM VỤ"
 #define SELECT_TEXT_ADD_OPPORTUNITY @"CƠ HỘI"
-
+#define SELECT_TEXT_ADD_COMPLAIN @"Ý KIẾN PHẢN HỒI"
 
 #define DELETE_CONTAC 11
 #define DELETE_NOTE 22
@@ -48,7 +50,7 @@ static NSString* const TaskCalendarNormalCellId   = @"TaskCalendarCellId";
 static NSString* const TaskCalendarTimelineCellId = @"TaskCalTLineCellId";
 static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
-@interface DetailLeadViewController () <TaskActionCellDelegate>
+@interface DetailLeadViewController () <TaskActionCellDelegate,ComplainDetailViewControllerDelegate>
 {
     int smgSelect ; //option layout
     NSArray *arrayData; //mang luu tru du lieu
@@ -145,7 +147,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 -(void) initData {
     
     //khoi tao du lieu!
-    listArr  = [NSArray arrayWithObjects:SELECT_TEXT_ADD_CONTACT,SELECT_TEXT_ADD_NOTE, SELECT_TEXT_ADD_CALENDAR, SELECT_TEXT_ADD_TASK, SELECT_TEXT_ADD_OPPORTUNITY, nil];
+    listArr  = [NSArray arrayWithObjects:SELECT_TEXT_ADD_CONTACT,SELECT_TEXT_ADD_NOTE, SELECT_TEXT_ADD_CALENDAR, SELECT_TEXT_ADD_TASK, SELECT_TEXT_ADD_OPPORTUNITY,SELECT_TEXT_ADD_COMPLAIN, nil];
     
     dtoLeadProcess = [DTOACCOUNTLEADProcess new];
     dtoContactProcess = [DTOCONTACTProcess new];
@@ -456,12 +458,23 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             [self presentViewController:viewController animated:YES completion:nil];
         }
             break;
-            
+        case SELECT_INDEX_ADD_COMPLAIN:
+        {
+            ComplainDetailViewController *viewController = [[ComplainDetailViewController alloc]initWithNibName:@"ComplainDetailViewController" bundle:nil];
+            viewController.delegate= self;
+//            viewController.dataRoot = dicData;
+            [self presentViewController:viewController animated:YES completion:nil];
+        }
+            break;
+
         default:
             break;
     }
 }
-
+- (void)closeComplainDetailView:(ComplainDetailViewController*)complainDetailViewController
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 #pragma mark action button - normal
 - (IBAction)homeBack:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];

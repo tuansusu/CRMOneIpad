@@ -594,6 +594,8 @@
 		8E5AA9BC1A503F02007D9C8A /* iconArrowUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E5AA9BA1A503F02007D9C8A /* iconArrowUp@2x.png */; };
 		8E6105F01A59515B003D1C0C /* iconAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E6105EF1A59515B003D1C0C /* iconAdd@2x.png */; };
 		8E6105F41A5964E4003D1C0C /* ComplainsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6105F31A5964E4003D1C0C /* ComplainsView.m */; };
+		8E6105F91A5986BF003D1C0C /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6105F71A5986BF003D1C0C /* ProfileViewController.m */; };
+		8E6105FA1A5986BF003D1C0C /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E6105F81A5986BF003D1C0C /* ProfileViewController.xib */; };
 		8E69BDD41A57D23900C6924D /* ProThanhToanQuocTeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E69BDD21A57D23900C6924D /* ProThanhToanQuocTeViewCell.m */; };
 		8E69BDD51A57D23900C6924D /* ProThanhToanQuocTeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E69BDD31A57D23900C6924D /* ProThanhToanQuocTeViewCell.xib */; };
 		8E69BDD81A57D24E00C6924D /* ProThanhToanQuocTeViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E69BDD71A57D24E00C6924D /* ProThanhToanQuocTeViewHeader.m */; };
@@ -1773,6 +1775,9 @@
 		8E6105EF1A59515B003D1C0C /* iconAdd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconAdd@2x.png"; sourceTree = "<group>"; };
 		8E6105F21A5964E4003D1C0C /* ComplainsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComplainsView.h; sourceTree = "<group>"; };
 		8E6105F31A5964E4003D1C0C /* ComplainsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComplainsView.m; sourceTree = "<group>"; };
+		8E6105F61A5986BF003D1C0C /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		8E6105F71A5986BF003D1C0C /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		8E6105F81A5986BF003D1C0C /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		8E69BDD11A57D23900C6924D /* ProThanhToanQuocTeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProThanhToanQuocTeViewCell.h; sourceTree = "<group>"; };
 		8E69BDD21A57D23900C6924D /* ProThanhToanQuocTeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProThanhToanQuocTeViewCell.m; sourceTree = "<group>"; };
 		8E69BDD31A57D23900C6924D /* ProThanhToanQuocTeViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProThanhToanQuocTeViewCell.xib; sourceTree = "<group>"; };
@@ -3930,6 +3935,16 @@
 			path = ComplainTab;
 			sourceTree = "<group>";
 		};
+		8E6105F51A5986A9003D1C0C /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				8E6105F61A5986BF003D1C0C /* ProfileViewController.h */,
+				8E6105F71A5986BF003D1C0C /* ProfileViewController.m */,
+				8E6105F81A5986BF003D1C0C /* ProfileViewController.xib */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		8E69BDD01A57D21A00C6924D /* ProThanhToanQuocTeCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -4358,6 +4373,7 @@
 		92C68E4A1519D4F100981728 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				8E6105F51A5986A9003D1C0C /* Profile */,
 				8E568F791A58EE950002A3C4 /* Complain */,
 				8E8B3F211A49AA4300241360 /* MainView */,
 				8495DDCA1A30A0AF00C4E922 /* Account360 */,
@@ -5093,6 +5109,7 @@
 				2DE2D2611829060700034877 /* title-tab-bg-1.png in Resources */,
 				76F3289B1A34B88B00E0F2C4 /* task_done.png in Resources */,
 				2DE2D26A1829060700034877 /* tab-bg.png in Resources */,
+				8E6105FA1A5986BF003D1C0C /* ProfileViewController.xib in Resources */,
 				2DE2D26B1829060700034877 /* refresh-btn-2.png in Resources */,
 				76EE207419FA829200A80414 /* ic-reply-task-1.png in Resources */,
 				8497BFE01A295A2300A5ED3C /* step1.png in Resources */,
@@ -5462,6 +5479,7 @@
 				2D3643931859996700190EE7 /* AFNetworkRequestHelper.m in Sources */,
 				8495DDCE1A30A10A00C4E922 /* ListAccountViewController.m in Sources */,
 				76C9644D1A17731900029978 /* MIMColorClass.m in Sources */,
+				8E6105F91A5986BF003D1C0C /* ProfileViewController.m in Sources */,
 				B3A0669C17D1A72400BA6487 /* UIGestureRecognizer+FLKit.m in Sources */,
 				B3A0669D17D1A72400BA6487 /* WCGridView.m in Sources */,
 				B3A0669E17D1A72400BA6487 /* WCGridViewCell.m in Sources */,

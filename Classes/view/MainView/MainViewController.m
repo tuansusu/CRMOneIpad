@@ -11,6 +11,7 @@
 #import "MainViewCell.h"
 #import "MainViewListCell.h"
 #import "ListComplainsViewController.h"
+#import "ProfileViewController.h"
 
 @interface MainViewController ()
 {
@@ -152,12 +153,12 @@ NSString* emptyText = @"";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-         return  4;
+         return  3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        if (indexPath.row == 0 || indexPath.row ==2) {
+        if (indexPath.row == 0 || indexPath.row ==1) {
             static NSString *cellId = @"MainViewCell";
             MainViewCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
 
@@ -166,12 +167,12 @@ NSString* emptyText = @"";
                 cell = [MainViewCell initNibCell];
                 if (indexPath.row==0) {
                     [cell loadDataCellWithType:typeGraphLine];
-                }else if (indexPath.row==2){
+                }else if (indexPath.row==1){
                     [cell loadDataCellWithType:typeGraphColumn];
                 }
             }
             return cell;
-        } else if (indexPath.row == 1 || indexPath.row==3) {
+        } else if (indexPath.row == 2) {
 
             static NSString *cellId = @"MainViewListCell";
             
@@ -227,6 +228,7 @@ NSString* emptyText = @"";
 
 #pragma mark Button action
 
+
 - (IBAction)actionDashBoard:(id)sender {
 }
 //Khach hang dau moi = khach hang tiem nang
@@ -266,6 +268,13 @@ NSString* emptyText = @"";
 
     TestEditViewController *viewController = [[TestEditViewController alloc]initWithNibName:@"TestEditViewController" bundle:nil];
     [self presentViewController:viewController animated:YES completion:nil];
+
+}
+
+- (IBAction)btnProfileAction:(id)sender {
+    ProfileViewController *profileVC = [[ProfileViewController alloc] init];
+    [profileVC.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [self presentViewController:profileVC animated:YES completion:nil];
 
 }
 

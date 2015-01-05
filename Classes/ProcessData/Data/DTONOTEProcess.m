@@ -76,6 +76,14 @@
     return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:nil];
 }
 
+-(NSMutableArray*) filterWithLimitRecord:(int)limitRecord{
+
+    NSArray *allFields =[NSArray arrayWithObjects:DTONOTE_id, DTONOTE_content, DTONOTE_title, DTONOTE_noteId, DTONOTE_contentFormated, DTONOTE_createdDate, DTONOTE_updatedDate, nil];
+
+    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where isActive = 1 order by %@ desc limit %d",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTONOTE, DTONOTE_updatedDate,limitRecord];
+
+    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:nil];
+}
 
 -(NSMutableArray*) filterWithKey : (NSString*) strKey withValue : (NSString*) strValue{
    NSArray *allFields =[NSArray arrayWithObjects:DTONOTE_id, DTONOTE_content, DTONOTE_title, DTONOTE_noteId, DTONOTE_contentFormated, DTONOTE_createdDate,DTONOTE_clientObjectId, DTONOTE_updatedDate, nil];

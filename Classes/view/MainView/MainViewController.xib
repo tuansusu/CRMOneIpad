@@ -161,6 +161,9 @@
                                             <state key="highlighted">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="actionCalendar:" destination="-1" eventType="touchUpInside" id="hCl-Ka-Y25"/>
+                                            </connections>
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menu-ic-my-order-work-1.png" id="Vsc-YG-Z2z">
                                             <rect key="frame" x="15" y="225" width="22" height="22"/>

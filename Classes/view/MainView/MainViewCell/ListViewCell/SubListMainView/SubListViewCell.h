@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface SubListViewCell : UITableViewCell
-
+{
+    IBOutlet UILabel *lblTitle;
+    IBOutlet UILabel *lblDescription;
+    IBOutlet UILabel *lblTime;
+}
 
 +(SubListViewCell*) initNibCell;
-
+-(void) loadDataToCellWithData:(NSDictionary *)dicData;
 @end

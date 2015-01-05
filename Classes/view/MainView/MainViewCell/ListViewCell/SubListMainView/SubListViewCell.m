@@ -36,6 +36,32 @@
     return nil;
 }
 
+-(void) loadDataToCellWithData:(NSDictionary *)dicData{
+
+    if ([StringUtil stringIsEmpty:[dicData objectForKey:DTONOTE_title]]) {
+        lblTitle.text = @"";
+
+    }else{
+        lblTitle.text = [dicData objectForKey:DTONOTE_title];
+    }
+
+
+    if ([StringUtil stringIsEmpty:[dicData objectForKey:DTONOTE_content]]) {
+        lblDescription.text = @"";
+
+    }else{
+        lblDescription.text = [dicData objectForKey:DTONOTE_content];
+    }
+
+
+    if ([StringUtil stringIsEmpty:[dicData objectForKey:DTONOTE_updatedDate]]) {
+        lblTime.text = @"";
+    }else{
+        lblTime.text = [dicData objectForKey:DTONOTE_updatedDate ] ;
+    }
+
+}
+
 - (void)awakeFromNib {
     // Initialization code
 }

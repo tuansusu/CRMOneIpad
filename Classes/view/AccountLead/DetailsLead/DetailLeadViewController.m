@@ -463,6 +463,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             ComplainDetailViewController *viewController = [[ComplainDetailViewController alloc]initWithNibName:@"ComplainDetailViewController" bundle:nil];
             viewController.delegate= self;
 //            viewController.dataRoot = dicData;
+            viewController.leadId = [[dicData objectForKey:DTOLEAD_clientLeadId] description];
             [self presentViewController:viewController animated:YES completion:nil];
         }
             break;

@@ -190,4 +190,12 @@ DTOTASK_updatedDate, //updatedDate" //VARCHAR
 //    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:[NSArray arrayWithObjects:strValue, nil]];
 }
 
+- (NSMutableArray*) filterAllTask{
+    
+    NSArray *allFields =[NSArray arrayWithObjects:DTOTASK_id, DTOTASK_code, DTOTASK_clientTaskId, DTOTASK_clientLeadId, DTOTASK_content, DTOTASK_title, DTOTASK_typeTask, DTOTASK_startDate, DTOTASK_percentComplete, DTOTASK_location, DTOTASK_leadId, DTOTASK_content,DTOTASK_taskPriority, DTOTASK_taskId, DTOTASK_endDate, DTOTASK_taskStatus, nil];
+    
+    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where typeTask = 1 and isActive = 1 order by %@ desc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOTASK, DTOLEAD_updatedDate];
+    
+    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:nil];
+}
 @end

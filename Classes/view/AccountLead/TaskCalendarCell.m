@@ -7,6 +7,7 @@
 //
 
 #import "TaskCalendarCell.h"
+#import "DateUtil.h"
 
 @implementation TaskCalendarCell
 {
@@ -48,71 +49,22 @@
         _titleLabel.text = [dicData objectForKey:DTOTASK_title];
     }
     
-//    _titleLabel.textColor = TEXT_COLOR_HIGHLIGHT;
+    if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOTASK_startDate]])
+    {
+        NSString *startDateStr = [dicData objectForKey:DTOTASK_startDate];
+        NSDate *startDate = [DateUtil getDateFromString:startDateStr :FORMAT_DATE_AND_TIME];
     
-    NSString *strStartDate = [dicData objectForKey:DTOTASK_startDate];
-    
-    NSDateFormatter *DateFormatter=[[NSDateFormatter alloc] init];
-    [DateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.S"];
-    
-    NSDate *startDate = [DateFormatter dateFromString:strStartDate];
-    
-    [DateFormatter setDateFormat:@"MMM"];
-    _startMonthLabel.text = [DateFormatter stringFromDate:startDate];
-    [DateFormatter setDateFormat:@"dd"];
-    _startDateLabel.text  = [DateFormatter stringFromDate:startDate];
-    [DateFormatter setDateFormat:@"HH:mm"];
-    _startTimeLabel.text  = [DateFormatter stringFromDate:startDate];
-}
+        _startMonthLabel.text = [DateUtil formatDate:startDate :@"MMM"];
+        _startDateLabel.text  = [DateUtil formatDate:startDate :@"dd"];
+        _startTimeLabel.text  = [DateUtil formatDate:startDate :@"HH:mm"];
+    }
+    else
+    {
+        _startMonthLabel.text = @"";
+        _startDateLabel.text  = @"";
+        _startTimeLabel.text  = @"";
 
-//    
-//    if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOCONTACT_fullName]]) {
-//       // self.lbName.text = @"";
-//        
-//    }else{
-//       // self.lbName.text = [dicData objectForKey:DTOCONTACT_fullName];
-//    }
-//    
-//    
-//    if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOCONTACT_mobile]]) {
-//       // self.lbPhone.text = @"";
-//        
-//    }else{
-//      //  self.lbPhone.text = [dicData objectForKey:DTOCONTACT_mobile];
-//    }
-//    if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOCONTACT_email]]) {
-//       // self.lbEmail.text = @"";
-//    }else{
-//      //  self.lbEmail.text = [dicData objectForKey:DTOCONTACT_email];
-//    }
-//    
-//    if// ([StringUtil stringIsEmpty:[dicData objectForKey:DTOCONTACT_position]]) {
-//        self.lbPosition.text = @"";
-//    }else{
-//      //  self.lbPosition.text = [dicData objectForKey:DTOCONTACT_position];
-//    }
-//    
-//    if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOCONTACT_address]]) {
-//      //  self.lbAddress.text = @"";
-//    }else{
-//       // self.lbAddress.text = [dicData objectForKey:DTOCONTACT_address];
-//    }
-//    
-//    switch (smgSelect) {
-//        case 1:
-//        {
-//            for (UIView *viewTemp in self.contentView.subviews) {
-//                if ([viewTemp isKindOfClass:[UILabel class]]) {
-//                    ((UILabel*) viewTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
-//                }
-//            }
-//            self.lbName.textColor = TEXT_COLOR_HIGHLIGHT;
-//        }
-//            break;
-//            
-//        default:
-//            break;
-//    }
-    
+    }
+}
 
 @end

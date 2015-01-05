@@ -82,12 +82,10 @@
     NSArray *listArr;
     
     int dataId; //xac dinh id de them moi hay sua
-    NSUserDefaults *defaults ;
     
     //thong tin chon NGAY - THANG
     int SELECTED_POPOVER_TAG ;
     NSDate *_startDateTime, *_endDateTime;
-    NSDateFormatter *_dateDF,*_timeDF, *_dateTimeDF;
     
     //thong tin chon cho loai hinh CHUC DANH
     NSInteger selectStatusIndex;
@@ -114,8 +112,12 @@
         [UIDevice updateLayoutInIOs7OrAfter:self];
     }
     
-    [self initData];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults synchronize];
+    smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
+    
+    [self initData];
     
     if (self.dataSend)
     {
@@ -137,32 +139,17 @@
 //khoi tao gia tri mac dinh cua form
 - (void) initData
 {
-    defaults = [NSUserDefaults standardUserDefaults];
-    [defaults synchronize];
-    
-    _dateDF = [[NSDateFormatter alloc] init];
-    [_dateDF setDateFormat:FORMAT_DATE];
-    
-    _timeDF = [[NSDateFormatter alloc] init];
-    [_timeDF setDateFormat:FORMAT_TIME];
-    
-    _dateTimeDF = [NSDateFormatter new];
-    [_dateTimeDF setDateFormat:FORMAT_DATE_AND_TIME];
-    
-    //======
     dtoProcess = [DTOTASKProcess new];
     
     /* fetch task status values from dtosyscat */
     dtoSyscatProcess = [DTOSYSCATProcess new];
     statusArray = [dtoSyscatProcess filterWithCatType:FIX_SYS_CAT_TYPE_TASK_STATUS];
     
-    //======
-    smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
-    
     selectStatusIndex = -1;
     succsess = NO;
     
     dataId = 0;
+    //======
 }
 
 #pragma mark - new view: load defaults data into view
@@ -197,10 +184,10 @@
     }
     
     NSString *startDateStr = [_dataSend objectForKey:DTOTASK_startDate];
-    [self setStartDateTime:[_dateTimeDF dateFromString:startDateStr]];
+    [self setStartDateTime:[DateUtil getDateFromString:startDateStr :FORMAT_DATE_AND_TIME]];
     
     NSString *endDateStr = [_dataSend objectForKey:DTOTASK_endDate];
-    [self setEndDateTime:[_dateTimeDF dateFromString:endDateStr]];
+    [self setEndDateTime:[DateUtil getDateFromString:endDateStr :FORMAT_DATE_AND_TIME]];
 }
 
 #pragma mark - init view interface
@@ -213,7 +200,7 @@
     _headerLabel.textColor      = TEXT_COLOR_HEADER_APP;
 
     _footerView.backgroundColor = TOOLBAR_VIEW_COLOR;
-    _footerLabel.text           = [NSString stringWithFormat:@"%@ %@, %@", VOFFICE, [defaults objectForKey:@"versionSoftware"], COPY_OF_SOFTWARE];
+    _footerLabel.text           = [NSString stringWithFormat:@"%@ %@, %@", VOFFICE, [[NSUserDefaults standardUserDefaults] objectForKey:@"versionSoftware"], COPY_OF_SOFTWARE];
     _footerLabel.textColor      = TEXT_TOOLBAR_COLOR1;
     
     // main
@@ -274,15 +261,15 @@
 - (void)setStartDateTime:(NSDate *)date
 {
     _startDateTime = [date copy];
-    _txtDateFrom.text = [_dateDF stringFromDate:_startDateTime];
-    _txtTimeFrom.text = [_timeDF stringFromDate:_startDateTime];
+    _txtDateFrom.text = [DateUtil formatDate:_startDateTime :FORMAT_DATE];
+    _txtTimeFrom.text = [DateUtil formatDate:_startDateTime :FORMAT_TIME];
 }
 
 - (void)setEndDateTime:(NSDate *)date
 {
     _endDateTime = [date copy];
-    _txtDateTo.text = [_dateDF stringFromDate:_endDateTime];
-    _txtTimeTo.text = [_timeDF stringFromDate:_endDateTime];
+    _txtDateTo.text = [DateUtil formatDate:_endDateTime :FORMAT_DATE];
+    _txtTimeTo.text = [DateUtil formatDate:_endDateTime :FORMAT_TIME];
 }
 #pragma mark - dropdown
 - (IBAction)actionChoiceStatus:(id)sender
@@ -300,7 +287,6 @@
     _listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
     _listPopover.popoverContentSize = CGSizeMake(320,250);
     [_listPopover presentPopoverFromRect:_txtStatus.frame inView:_viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
-    
 }
 
 - (IBAction)actionChoiceDateFrom:(id)sender
@@ -425,7 +411,7 @@
     //TODO: check
     [dicEntity setObject:[self.dataRoot objectForKey:DTOLEAD_clientLeadId] forKey:DTOTASK_clientLeadId];
     [dicEntity setObject:@"1" forKey:DTOTASK_isActive];
-    [dicEntity setObject:[DateUtil formatDate:[NSDate new] :FORMAT_DATE_AND_TIME] forKey:DTOTASK_updatedDate];
+    [dicEntity setObject:[DateUtil formatDate:[NSDate date] :FORMAT_DATE_AND_TIME] forKey:DTOTASK_updatedDate];
     NSString *strClientContactId = IntToStr(([dtoProcess getClientId]));
     [dicEntity setObject:strClientContactId forKey:DTOTASK_clientTaskId];
     [dicEntity setObject:@"1" forKey:DTOTASK_clientId];
@@ -461,6 +447,11 @@
     if ([StringUtil stringIsEmpty:_txtName.text])
     {
         [[[UIAlertView alloc] initWithTitle:@"Lỗi" message:@"Vui lòng nhập tiêu đề cho Công việc" delegate:nil cancelButtonTitle:@"Đóng" otherButtonTitles: nil] show];
+        return FALSE;
+    }
+    else if ([_txtName.text length] > 200)
+    {
+        [[[UIAlertView alloc] initWithTitle:@"Lỗi" message:@"Vui lòng nhập tiêu đề cho Công việc ít hơn 200 kí tự" delegate:nil cancelButtonTitle:@"Đóng" otherButtonTitles: nil] show];
         return FALSE;
     }
     else if (   [_endDateTime compare:_startDateTime] == NSOrderedAscending

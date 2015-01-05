@@ -39,4 +39,6 @@
 - (NSMutableArray *) filterCalendarWithClientLeaderId: (NSString *) strValue;
 - (NSMutableArray *) filterTaskWithClientLeaderId: (NSString *) strValue;
 
+- (NSMutableArray*) filterAllTask;
+
 @end

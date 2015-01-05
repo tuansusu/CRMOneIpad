@@ -19,7 +19,6 @@
 #import "TaskCalendarCell.h"
 
 #import "EditCalendarLeadViewController.h"
-#import "DetailCalendarLeadViewController.h"
 
 #import "NoteLeadCell.h"
 #import "EditNoteLeadViewController.h"

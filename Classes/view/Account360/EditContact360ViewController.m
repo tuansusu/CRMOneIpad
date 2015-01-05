@@ -126,6 +126,10 @@
     _txtWhereBorn.text=[_dataSend objectForKey:DTOCONTACT_identifiedIssueArea];
     _txtDateCreate.text=[_dataSend objectForKey:DTOCONTACT_identifiedIssueDate];
     _tvNote.text=[_dataSend objectForKey:DTOCONTACT_roleDescription];
+    NSString *avartar = [_dataSend objectForKey:DTOCONTACT_avartar];
+    if (![StringUtil stringIsEmpty:avartar]) {
+        _imgAvartar.image=[UIImage imageWithData:[NSData dataWithContentsOfFile:avartar]];
+    }
 }
 
 - (void) updateInterFaceWithOption : (int) option

@@ -40,5 +40,13 @@
 - (NSMutableArray *) filterTaskWithClientLeaderId: (NSString *) strValue;
 
 - (NSMutableArray*) filterAllTask;
+/*
+ * Lọc danh sach lien he theo clientLeaderId
+ */
+-(NSMutableArray*) filterWithClientLeaderId: (NSString*) strValue;
+/*
+ * lấy danh sách công việc của khách hàng 360
+ */
+-(NSMutableArray*) filterWith360Id: (NSString*) strValue;
 
 @end

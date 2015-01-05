@@ -8,7 +8,7 @@
 
 #import "BaseDataProcess.h"
 
-#define FIX_TASK_STATUS_COMPLETE 3245
+#define FIX_TASK_STATUS_COMPLETE     3245
 #define FIX_TASK_STATUS_NOT_COMPLETE 3244
 
 @interface DTOTASKProcess : BaseDataProcess
@@ -36,6 +36,9 @@
 /*
  * Lọc danh sach lien he theo clientLeaderId
  */
--(NSMutableArray*) filterWithClientLeaderId: (NSString*) strValue;
+- (NSMutableArray *) filterCalendarWithClientLeaderId: (NSString *) strValue;
+- (NSMutableArray *) filterTaskWithClientLeaderId: (NSString *) strValue;
+
+- (NSMutableArray*) filterAllTask;
 
 @end

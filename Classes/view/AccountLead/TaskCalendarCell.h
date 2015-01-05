@@ -10,14 +10,7 @@
 
 @interface TaskCalendarCell : UITableViewCell
 
-
-+(TaskCalendarCell*) initNibCell;
-@property (nonatomic, strong) NSDictionary *dicData;
--(void) loadDataToCellWithData : (NSDictionary*) dicData withOption : (int) smgSelect ;
-@property (weak, nonatomic) IBOutlet UILabel *lbTitle;
-
-@property (weak, nonatomic) IBOutlet UILabel *lbTime;
-
-@property (weak, nonatomic) IBOutlet UILabel *lbAddress;
++ (UINib *)nib;
+- (void)loadDataToCellWithData:(NSDictionary *)dicData withOption:(int)smgSelect;
 
 @end

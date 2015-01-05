@@ -956,14 +956,16 @@
     
     AnchorInfo *aInfo=[[AnchorInfo alloc]initWithFrame:CGRectMake(point.x-10, point.y-30, 320, 20)];
     [aInfo setTagID:tagID];
-    
-    long long anchorY=[[[_yValElements objectAtIndex:indexRow] objectAtIndex:indexColumn] longLongValue];
-   // NSLog(@"tuannv mimlineGraph %d %lld", tagID, anchorY);
-    
-    [aInfo setInfoString:[StringUtil formatNumber:[NSNumber numberWithLongLong:anchorY]]];
+    if ([[[_yValElements objectAtIndex:indexRow] objectAtIndex:indexColumn] longLongValue]) {
+        long long anchorY=[[[_yValElements objectAtIndex:indexRow] objectAtIndex:indexColumn] longLongValue];
+        // NSLog(@"tuannv mimlineGraph %d %lld", tagID, anchorY);
 
-    [self addSubview:aInfo];
-    //[aInfo setNeedsDisplay];
+        [aInfo setInfoString:[StringUtil formatNumber:[NSNumber numberWithLongLong:anchorY]]];
+
+        [self addSubview:aInfo];
+        //[aInfo setNeedsDisplay];
+
+    }
 }
 
 

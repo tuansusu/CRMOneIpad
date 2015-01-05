@@ -83,10 +83,21 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 #define Key_SortValidTime @"SortValidTime"
 #define Key_SortIndex @"SortIndex"
 #define TIME_DISPLAY_CONFIG @"dd/MM/yyyy   HH:mm:ss"
-//=========================Map Configuration
+//=========================Network Configuration==============================================================
+#define SYS_Notification_NotConnection @"Mất kết nối internet hoặc không tìm thấy máy chủ"
+
+//=========================Complain Alert=======================================================
+
+#define SYS_Notification_CheckValid_NoiDungKhieuNai @"Hãy nhập nội dung khiếu nại"
+#define SYS_Notification_CheckValid_LiDo @"Hãy nhập lí do"
+#define SYS_Notification_CheckValid_NoiDungXuLy @"Hãy nhập nội dung xử lý"
+
+#define SYS_Notification_DeleteConfirm @"Bạn có chắc chắn muốn xoá không?"
+
+//=========================Map Configuration ===================================================
 
 #define SYS_Notification_NotGetCurrentLocation @"Không xác định được vị trí của bạn"
-
+#define SYS_Notification_EnableLocation @"Chức năng này yêu cầu bật xác định vị trí của bạn"
 //tuannv
 #define CommentType_CapNhatTienDo @"Cập nhật tiến độ"
 #define CommentType_DeXuat @"Đề xuất"
@@ -112,6 +123,8 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 #define SYS_Notification_UpdateSuccess @"Cập nhật thành công"
 #define SYS_Notification_UpdateFail @"Cập nhật không thành công"
 #define SYS_Notification_CancelTitle @"Thoát"
+#define SYS_Notification_OKButton @"Đồng ý"
+#define SYS_Notification_CancelButton @"Huỷ"
 
 #define IMAGE_ICON_RIGHT @"icon_right.png"
 #define IMAGE_ICON_DOWN @"icon_down.png"
@@ -227,6 +240,7 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 
 #define FORMAT_TIME @"HH:mm"
 #define FORMAT_DATE @"dd/MM/yyyy"
+#define FORMAT_DATE_AND_TIME @"yyyy-MM-dd HH:mm:ss.S"
 #define PER_LOAD  @"500"
 
 #define SCHEDULE_INTERVAL_NORMAL 400  //300 GIAY

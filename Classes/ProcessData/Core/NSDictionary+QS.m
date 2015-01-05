@@ -12,6 +12,192 @@
 
 @implementation NSDictionary (QS)
 
+-(DTOComplainObject*)dtoComplainObject{
+    DTOComplainObject *complainOB = [[DTOComplainObject alloc] init];
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_casesId]]) {
+        complainOB.casesId = [self objectForKey:DTOCOMPLAIN_casesId];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_code]]) {
+        complainOB.code = [self objectForKey:DTOCOMPLAIN_code];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_content]]) {
+        complainOB.content = [self objectForKey:DTOCOMPLAIN_content];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_reason]]) {
+        complainOB.reason = [self objectForKey:DTOCOMPLAIN_reason];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_result]]) {
+        complainOB.result = [self objectForKey:DTOCOMPLAIN_result];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_fromReceived]]) {
+        complainOB.fromReceived = [self objectForKey:DTOCOMPLAIN_fromReceived];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_type]]) {
+        complainOB.type = [self objectForKey:DTOCOMPLAIN_type];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_priority]]) {
+        complainOB.priority = [self objectForKey:DTOCOMPLAIN_priority];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_receiverId]]) {
+        complainOB.receiverId = [self objectForKey:DTOCOMPLAIN_receiverId];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_receivedDate]]) {
+        complainOB.receivedDate = [self objectForKey:DTOCOMPLAIN_receivedDate];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_processerId]]) {
+        complainOB.processerId = [self objectForKey:DTOCOMPLAIN_processerId];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_processedDate]]) {
+        complainOB.processedDate = [self objectForKey:DTOCOMPLAIN_processedDate];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_closedId]]) {
+        complainOB.closedId = [self objectForKey:DTOCOMPLAIN_closedId];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_closedDate]]) {
+        complainOB.closedDate = [self objectForKey:DTOCOMPLAIN_closedDate];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_accountId]]) {
+        complainOB.accountId = [self objectForKey:DTOCOMPLAIN_accountId];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_productMasterId]]) {
+        complainOB.productMasterId = [self objectForKey:DTOCOMPLAIN_productMasterId];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_acceptTypeId]]) {
+        complainOB.acceptTypeId = [self objectForKey:DTOCOMPLAIN_acceptTypeId];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_agentText]]) {
+        complainOB.agentText = [self objectForKey:DTOCOMPLAIN_agentText];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_assignBy]]) {
+        complainOB.assignBy = [self objectForKey:DTOCOMPLAIN_assignBy];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_blackList]]) {
+        complainOB.blackList = [self objectForKey:DTOCOMPLAIN_blackList];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_callLenght]]) {
+        complainOB.callLenght = [self objectForKey:DTOCOMPLAIN_callLenght];
+    }
+    
+    return complainOB;
+}
+
+
+-(DTOProductMasterObject*)dtoProductMasterObject{
+    DTOProductMasterObject *productMasterOB = [[DTOProductMasterObject alloc] init];
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTMASTER_code]]) {
+        productMasterOB.code = [self objectForKey:DTOPRODUCTMASTER_code];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTMASTER_name]]) {
+        productMasterOB.name = [self objectForKey:DTOPRODUCTMASTER_name];
+    }
+
+    return productMasterOB;
+
+}
+
+-(DTOProductDetailObject*)dtoProductDetailObject{
+    DTOProductDetailObject *productDetailOB = [[DTOProductDetailObject alloc] init];
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTDETAIL_productDetailId]]) {
+        productDetailOB.productDetailId = [self objectForKey:DTOPRODUCTDETAIL_productDetailId];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTDETAIL_contractNumber]]) {
+        productDetailOB.contractNumber = [self objectForKey:DTOPRODUCTDETAIL_contractNumber];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTDETAIL_balance]]) {
+        productDetailOB.balance = [self objectForKey:DTOPRODUCTDETAIL_balance];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTDETAIL_openDate]]) {
+        productDetailOB.openDate = [self objectForKey:DTOPRODUCTDETAIL_openDate];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTDETAIL_expiredDate]]) {
+        productDetailOB.expiredDate = [self objectForKey:DTOPRODUCTDETAIL_expiredDate];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTDETAIL_status]]) {
+        productDetailOB.status = [self objectForKey:DTOPRODUCTDETAIL_status];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTDETAIL_type]]) {
+        productDetailOB.type = [self objectForKey:DTOPRODUCTDETAIL_type];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTDETAIL_branchCode]]) {
+        productDetailOB.branchCode = [self objectForKey:DTOPRODUCTDETAIL_branchCode];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTDETAIL_currency]]) {
+        productDetailOB.currency = [self objectForKey:DTOPRODUCTDETAIL_currency];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTDETAIL_productCode]]) {
+        productDetailOB.productCode = [self objectForKey:DTOPRODUCTDETAIL_productCode];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTDETAIL_clientId]]) {
+        productDetailOB.clientId = [self objectForKey:DTOPRODUCTDETAIL_clientId];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTDETAIL_bussinessDate]]) {
+        productDetailOB.bussinessDate = [self objectForKey:DTOPRODUCTDETAIL_bussinessDate];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTDETAIL_createdDate]]) {
+        productDetailOB.createdDate = [self objectForKey:DTOPRODUCTDETAIL_createdDate];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTDETAIL_updatedDate]]) {
+        productDetailOB.updatedDate = [self objectForKey:DTOPRODUCTDETAIL_updatedDate];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTDETAIL_rmCode]]) {
+        productDetailOB.rmCode = [self objectForKey:DTOPRODUCTDETAIL_rmCode];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTDETAIL_balanceQD]]) {
+        productDetailOB.balanceQD = [self objectForKey:DTOPRODUCTDETAIL_balanceQD];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTDETAIL_Khoi]]) {
+        productDetailOB.Khoi = [self objectForKey:DTOPRODUCTDETAIL_Khoi];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTDETAIL_rmBancheo]]) {
+        productDetailOB.rmBancheo = [self objectForKey:DTOPRODUCTDETAIL_rmBancheo];
+    }
+    return productDetailOB;
+}
+
+-(DTOProductLeadTypeObject*)dtoProductLeadTypeObject{
+    DTOProductLeadTypeObject *productTypeLeadOB = [[DTOProductLeadTypeObject alloc] init];
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTTYPE_productTypeId]]) {
+        productTypeLeadOB.productTypeId = [self objectForKey:DTOPRODUCTTYPE_productTypeId];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTTYPE_name]]) {
+        productTypeLeadOB.name = [self objectForKey:DTOPRODUCTTYPE_name];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTTYPE_code]]) {
+        productTypeLeadOB.code = [self objectForKey:DTOPRODUCTTYPE_code];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOPRODUCTTYPE_isActive]]) {
+        productTypeLeadOB.isActive = [self objectForKey:DTOPRODUCTTYPE_isActive];
+    }
+    return productTypeLeadOB;
+}
+
+
 -(DTOAcountLeadProcessObject*)dtoAcountLeadProcessOb{
     DTOAcountLeadProcessObject *accountLeadOB = [[DTOAcountLeadProcessObject alloc] init];
     
@@ -93,7 +279,7 @@
         accountLeadOB.languageId = [self objectForKey:DTOLEAD_languageId];
     }
     if (![StringUtil stringIsEmpty:[self objectForKey:DTOLEAD_lat]]) {
-        accountLeadOB.languageId = [self objectForKey:DTOLEAD_lat];
+        accountLeadOB.lat = [self objectForKey:DTOLEAD_lat];
     }
     if (![StringUtil stringIsEmpty:[self objectForKey:DTOLEAD_leadId]]) {
         accountLeadOB.leadId = [self objectForKey:DTOLEAD_leadId];

@@ -25,7 +25,12 @@
     __weak IBOutlet UILabel *_titleLabel;
     __weak IBOutlet UILabel *_descLabel;
     __weak IBOutlet UILabel *_customerLabel;
+    
+    __weak IBOutlet UIView *_bubbleview;
+    CAShapeLayer *_topTLine;
+    CAShapeLayer *_botTLine;
 }
+
 + (UINib *)nib
 {
     return [UINib nibWithNibName:@"TaskCalTLineCell" bundle:nil];
@@ -33,12 +38,43 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    _topTLine = [[CAShapeLayer alloc] init];
+    _botTLine = [[CAShapeLayer alloc] init];
+    _tbv_position = TaskCalTLineCell_Middle;
+}
+
+- (void)drawRect:(CGRect)rect
+{
+    [super drawRect:rect];
+    [self drawBubble];
+    [self drawTimeline];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)setTbv_position:(TaskCalTLineCellType)tbv_position
+{
+    _tbv_position = tbv_position;
+    
+    if (tbv_position == TaskCalTLineCell_Top)
+    {
+        _topTLine.hidden = TRUE;
+        _botTLine.hidden = FALSE;
+    }
+    else if (tbv_position == TaskCalTLineCell_Bottom)
+    {
+        _topTLine.hidden = FALSE;
+        _botTLine.hidden = TRUE;
+    }
+    else
+    {
+        _topTLine.hidden = FALSE;
+        _botTLine.hidden = FALSE;
+    }
 }
 
 - (void)loadDataToCellWithData:(NSDictionary *)dicData withOption:(int)smgSelect
@@ -52,6 +88,7 @@
     {
         _titleLabel.text = [dicData objectForKey:DTOTASK_title];
     }
+    
     // date+time
     if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOTASK_startDate]])
     {
@@ -60,18 +97,13 @@
     }
     else
     {
-        NSString *strStartDate = [dicData objectForKey:DTOTASK_startDate];
+        NSString *startDateStr = [dicData objectForKey:DTOTASK_startDate];
+        NSDate *startDate = [DateUtil getDateFromString:startDateStr :FORMAT_DATE_AND_TIME];
         
-        NSDateFormatter *DateFormatter=[[NSDateFormatter alloc] init];
-        [DateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.S"];
-        
-        NSDate *startDate = [DateFormatter dateFromString:strStartDate];
-        
-        [DateFormatter setDateFormat:@"yyyy-MM-dd"];
-        _dateLabel.text = [DateFormatter stringFromDate:startDate];
-        [DateFormatter setDateFormat:@"HH:mm"];
-        _timeLabel.text = [DateFormatter stringFromDate:startDate];
+        _dateLabel.text = [DateUtil formatDate:startDate :FORMAT_DATE];
+        _timeLabel.text  = [DateUtil formatDate:startDate :FORMAT_TIME];
     }
+    
     // type
     if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOTASK_formal]])
     {
@@ -115,6 +147,7 @@
         
         _typeImage.hidden = NO;
     }
+    
     // description
     if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOTASK_content]])
     {
@@ -129,4 +162,58 @@
     _customerLabel.text = @"";
 }
 
+- (void)drawBubble
+{
+    CGRect frame = _bubbleview.frame;
+    
+    //// Bezier Drawing
+    UIBezierPath* bezierPath = UIBezierPath.bezierPath;
+    [bezierPath moveToPoint: CGPointMake(CGRectGetMaxX(frame) - 1, CGRectGetMinY(frame) + 9)];
+    [bezierPath addLineToPoint: CGPointMake(CGRectGetMaxX(frame) - 1, CGRectGetMaxY(frame) - 9)];
+    [bezierPath addCurveToPoint: CGPointMake(CGRectGetMaxX(frame) - 10, CGRectGetMaxY(frame) - 1) controlPoint1: CGPointMake(CGRectGetMaxX(frame) - 1, CGRectGetMaxY(frame) - 2) controlPoint2: CGPointMake(CGRectGetMaxX(frame) - 3, CGRectGetMaxY(frame) - 1)];
+    [bezierPath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 17, CGRectGetMaxY(frame) - 1)];
+    [bezierPath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 9, CGRectGetMaxY(frame) - 9) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 10, CGRectGetMaxY(frame) - 1) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 9, CGRectGetMaxY(frame) - 2)];
+    [bezierPath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 9, CGRectGetMinY(frame) + 27)];
+    [bezierPath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 1, CGRectGetMinY(frame) + 19)];
+    [bezierPath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 9, CGRectGetMinY(frame) + 11)];
+    [bezierPath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 9, CGRectGetMinY(frame) + 9)];
+    [bezierPath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 17, CGRectGetMinY(frame) + 1) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 9, CGRectGetMinY(frame) + 2) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 10, CGRectGetMinY(frame) + 1)];
+    [bezierPath addLineToPoint: CGPointMake(CGRectGetMaxX(frame) - 10, CGRectGetMinY(frame) + 1)];
+    [bezierPath addCurveToPoint: CGPointMake(CGRectGetMaxX(frame) - 1, CGRectGetMinY(frame) + 9) controlPoint1: CGPointMake(CGRectGetMaxX(frame) - 3, CGRectGetMinY(frame) + 1) controlPoint2: CGPointMake(CGRectGetMaxX(frame) - 1, CGRectGetMinY(frame) + 2)];
+    [bezierPath closePath];
+    bezierPath.lineJoinStyle = kCGLineJoinRound;
+    
+    [UIColor.lightGrayColor setStroke];
+    bezierPath.lineWidth = 1.5;
+    [bezierPath stroke];
+}
+
+- (void)drawTimeline
+{
+    CGRect dateFrame   = _dateLabel.frame;
+    CGRect iconFrame   = _typeImage.frame;
+    CGRect bubbleFrame = _bubbleview.frame;
+    CGRect frame       = self.contentView.frame;
+    
+    UIBezierPath* topPath = [UIBezierPath bezierPathWithRect: CGRectMake((CGRectGetMaxX(dateFrame) + CGRectGetMinX(bubbleFrame))/2 - 1.5, CGRectGetMinY(frame), 3, CGRectGetMidY(iconFrame))];
+    
+    _topTLine.path        = topPath.CGPath;
+    _topTLine.fillColor   = [UIColor lightGrayColor].CGColor;
+    [self.layer addSublayer:_topTLine];
+    
+    UIBezierPath* circlePath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake((CGRectGetMaxX(dateFrame) + CGRectGetMinX(bubbleFrame))/2 - 7.5, CGRectGetMidY(iconFrame) - 7.5, 15, 15)];
+    [UIColor.lightGrayColor setFill];
+    [circlePath fill];
+    
+    UIBezierPath* rightPath = [UIBezierPath bezierPathWithRect: CGRectMake((CGRectGetMaxX(dateFrame) + CGRectGetMinX(bubbleFrame))/2, CGRectGetMidY(iconFrame) - 1.5, CGRectGetMinX(iconFrame) - (CGRectGetMaxX(dateFrame) + CGRectGetMinX(bubbleFrame))/2, 3)];
+    [UIColor.lightGrayColor setFill];
+    [rightPath fill];
+    
+    UIBezierPath* bottomPath = [UIBezierPath bezierPathWithRect: CGRectMake((CGRectGetMaxX(dateFrame) + CGRectGetMinX(bubbleFrame))/2 - 1.5, CGRectGetMidY(iconFrame), 3, CGRectGetHeight(frame) - CGRectGetMidY(iconFrame))];
+    
+    _botTLine.path        = bottomPath.CGPath;
+    _botTLine.fillColor   = [UIColor lightGrayColor].CGColor;
+    [self.layer addSublayer:_botTLine];
+
+}
 @end

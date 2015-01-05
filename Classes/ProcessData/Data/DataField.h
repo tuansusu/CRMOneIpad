@@ -552,12 +552,58 @@
 #define DTOPRODUCTMASTER_updatedBy @"updatedBy" //BIGINT
 #define DTOPRODUCTMASTER_crossPercent @"crossPercent" //INTEGER
 #define DTOPRODUCTMASTER_id @"id" //INTEGER
+
+///dtocompalin Field
+#define DTOCOMPLAIN_casesId @"casesId" //VARCHAR
+#define DTOCOMPLAIN_code @"code" //VARCHAR
+#define DTOCOMPLAIN_content @"content" //VARCHAR
+#define DTOCOMPLAIN_reason @"reason" //VARCHAR
+#define DTOCOMPLAIN_result @"result" //VARCHAR
+#define DTOCOMPLAIN_status @"status" //VARCHAR
+#define DTOCOMPLAIN_fromReceived @"fromReceived" //VARCHAR
+#define DTOCOMPLAIN_type @"type" //VARCHAR
+#define DTOCOMPLAIN_priority @"priority" //VARCHAR
+#define DTOCOMPLAIN_receiverId @"receiverId" //VARCHAR
+#define DTOCOMPLAIN_receivedDate @"receivedDate" //VARCHAR
+#define DTOCOMPLAIN_processerId @"processerId" //VARCHAR
+#define DTOCOMPLAIN_processedDate @"processedDate" //VARCHAR
+#define DTOCOMPLAIN_closedId @"closedId" //VARCHAR
+#define DTOCOMPLAIN_closedDate @"closedDate" //VARCHAR
+#define DTOCOMPLAIN_accountId @"accountId" //VARCHAR
+#define DTOCOMPLAIN_productMasterId @"productMasterId" //VARCHAR
+#define DTOCOMPLAIN_acceptTypeId @"acceptTypeId" //VARCHAR
+#define DTOCOMPLAIN_agentText @"agentText" //VARCHAR
+#define DTOCOMPLAIN_assignBy @"assignBy" //VARCHAR
+#define DTOCOMPLAIN_blackList @"blackList" //VARCHAR
+#define DTOCOMPLAIN_callLenght @"callLenght" //VARCHAR
+
 ///dtoproducttype  Field
 #define DTOPRODUCTTYPE_code @"code" //VARCHAR
 #define DTOPRODUCTTYPE_isActive @"isActive" //SMALLINT
 #define DTOPRODUCTTYPE_name @"name" //VARCHAR
 #define DTOPRODUCTTYPE_productTypeId @"productTypeId" //BIGINT
 #define DTOPRODUCTTYPE_id @"id" //INTEGER
+
+///dtoproductdetail  Field
+#define DTOPRODUCTDETAIL_productDetailId @"productDetailId" //VARCHAR
+#define DTOPRODUCTDETAIL_contractNumber @"contractNumber" //VARCHAR
+#define DTOPRODUCTDETAIL_balance @"balance" //VARCHAR
+#define DTOPRODUCTDETAIL_openDate @"openDate" //VARCHAR
+#define DTOPRODUCTDETAIL_expiredDate @"expiredDate" //VARCHAR
+#define DTOPRODUCTDETAIL_status @"status" //VARCHAR
+#define DTOPRODUCTDETAIL_type @"type" //VARCHAR
+#define DTOPRODUCTDETAIL_branchCode @"branchCode" //VARCHAR
+#define DTOPRODUCTDETAIL_currency @"currency" //VARCHAR
+#define DTOPRODUCTDETAIL_productCode @"productCode" //VARCHAR
+#define DTOPRODUCTDETAIL_clientId @"clientId" //VARCHAR
+#define DTOPRODUCTDETAIL_bussinessDate @"bussinessDate" //VARCHAR
+#define DTOPRODUCTDETAIL_createdDate @"createdDate" //VARCHAR
+#define DTOPRODUCTDETAIL_updatedDate @"updatedDate" //VARCHAR
+#define DTOPRODUCTDETAIL_rmCode @"rmCode" //VARCHAR
+#define DTOPRODUCTDETAIL_balanceQD @"balanceQD" //VARCHAR
+#define DTOPRODUCTDETAIL_Khoi @"Khoi" //VARCHAR
+#define DTOPRODUCTDETAIL_rmBancheo @"rmBancheo" //VARCHAR
+
 ///dtocontact  Field
 #define DTOCONTACT_accountId @"accountId" //BIGINT
 #define DTOCONTACT_address @"address" //VARCHAR

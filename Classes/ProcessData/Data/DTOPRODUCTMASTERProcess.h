@@ -12,4 +12,6 @@
 
 -(NSMutableArray*) filter ;
 
+-(NSMutableArray*) filterProductWithProductCode:(NSString*)productCode;
+
 @end

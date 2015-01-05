@@ -10,12 +10,13 @@
 
 #import "DTOACCOUNTLEADProcess.h"
 #import "DTOACCOUNTProcess.h"
-#define MAX_ROW_A_PAGE 20
+
 
 @interface MapsModel : NSObject
 {
     DTOACCOUNTLEADProcess *dtoLeadProcess;
     DTOACCOUNTProcess *dtoProcess;
+    NSMutableDictionary *maneuverDic;
 }
 
 @property (nonatomic,readonly) NSMutableArray *listCustomerKHDM;
@@ -23,10 +24,10 @@
 @property (nonatomic,assign) NSInteger currentPageKHDM;
 @property (nonatomic,assign) NSInteger currentPageKH360;
 
--(void)getFirstPageCustomerKHDM;
--(void)getNextPageCustomerKHDM;
+-(void)getFirstPageCustomerKHDMWithKey:(NSString*)key;
+-(void)getNextPageCustomerKHDMWithKey:(NSString*)key;
 
--(void)getFirstPageCustomerKH360;
--(void)getNextPageCustomerKH360;
+-(void)getFirstPageCustomerKH360WithKey:(NSString*)key;
+-(void)getNextPageCustomerKH360WithKey:(NSString*)key;
 
 @end

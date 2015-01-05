@@ -401,7 +401,6 @@
 		76D29B2B1A1397EE004B9CF6 /* ProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76D29B291A1397EE004B9CF6 /* ProductViewController.xib */; };
 		76D29B301A13AD88004B9CF6 /* ProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D29B2E1A13AD88004B9CF6 /* ProductCell.m */; };
 		76D29B311A13AD88004B9CF6 /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76D29B2F1A13AD88004B9CF6 /* ProductCell.xib */; };
-		76D29B381A14C47F004B9CF6 /* OfficeOneMB-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76D29B371A14C47F004B9CF6 /* OfficeOneMB-Info.plist */; };
 		76D6281C1A3DA741009C3A0C /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D6281B1A3DA741009C3A0C /* CMPopTipView.m */; };
 		76EE207219FA829200A80414 /* ic-add-sub-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EE206E19FA829200A80414 /* ic-add-sub-1.png */; };
 		76EE207319FA829200A80414 /* ic-move-user-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EE206F19FA829200A80414 /* ic-move-user-1.png */; };
@@ -4660,7 +4659,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0600;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						SystemCapabilities = {
@@ -4982,7 +4981,6 @@
 				B3A066E117D1AB8200BA6487 /* icon_clear_search.png in Resources */,
 				B315787D188D5E5200C0ED01 /* ic-pdf-1.png in Resources */,
 				B3A066E217D1AB8200BA6487 /* icon_down.png in Resources */,
-				76D29B381A14C47F004B9CF6 /* OfficeOneMB-Info.plist in Resources */,
 				06FE2E171A4528B3004A1D16 /* iconDirectionSelected.png in Resources */,
 				8E75544A1A52EFC8001940FB /* iconFerry.png in Resources */,
 				8E7554631A52EFC8001940FB /* iconTurnLeft@2x.png in Resources */,
@@ -5671,7 +5669,7 @@
 				PRODUCT_NAME = OfficeOneMB;
 				PROVISIONING_PROFILE = "cc782648-6bb7-41ca-8143-865f009f807e";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cc782648-6bb7-41ca-8143-865f009f807e";
-				SDKROOT = iphoneos7.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				USER_HEADER_SEARCH_PATHS = "ldap/openldap-2.4.22/include include";
 			};
@@ -5722,7 +5720,7 @@
 				PRODUCT_NAME = OfficeOneMB;
 				PROVISIONING_PROFILE = "cc782648-6bb7-41ca-8143-865f009f807e";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cc782648-6bb7-41ca-8143-865f009f807e";
-				SDKROOT = iphoneos7.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				USER_HEADER_SEARCH_PATHS = "ldap/openldap-2.4.22/include include";
 				VALIDATE_PRODUCT = YES;

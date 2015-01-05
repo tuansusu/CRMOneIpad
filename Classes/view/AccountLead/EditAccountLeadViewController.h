@@ -85,4 +85,20 @@
 @property (nonatomic, strong) id currentPopTipViewTarget;
 ////////////// KHAI BAO BIEN CHUNG//////////
 
+@property (weak, nonatomic) IBOutlet UIButton *btnAddAddress;
+
+- (IBAction)actionAddAdress:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnCheckMobile;
+
+- (IBAction)actionCheckMobile:(id)sender;
+
+
+@property (weak, nonatomic) IBOutlet UIButton *btnCheckEmail;
+- (IBAction)actionCheckMobile:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnCheckSMS;
+
+- (IBAction)actionCheckSMS:(id)sender;
+
 @end

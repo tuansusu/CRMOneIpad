@@ -9,6 +9,10 @@
             <connections>
                 <outlet property="barLabel" destination="eXB-KP-mWR" id="EfF-Zu-gnd"/>
                 <outlet property="bodyMainView" destination="tod-aE-cj1" id="256-FX-F85"/>
+                <outlet property="btnAddAddress" destination="35C-fd-49T" id="dIO-RF-Ele"/>
+                <outlet property="btnCheckEmail" destination="3Vm-iH-QSz" id="WUQ-X4-9um"/>
+                <outlet property="btnCheckMobile" destination="X5w-1x-92h" id="3yO-4y-v7B"/>
+                <outlet property="btnCheckSMS" destination="zLL-OU-TFz" id="a2X-jJ-FLa"/>
                 <outlet property="btnClose" destination="fU5-Hy-1lh" id="9Yp-SW-HJB"/>
                 <outlet property="btnHome" destination="fGR-h3-5JZ" id="ToL-xv-vpV"/>
                 <outlet property="btnPersonalJob" destination="pqR-oM-5go" id="s9l-dx-K4T"/>
@@ -192,6 +196,71 @@
                                                 <action selector="actionChoicePersonalJob:" destination="-1" eventType="touchUpInside" id="h2j-0I-f65"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="35C-fd-49T">
+                                            <rect key="frame" x="830" y="160" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Button" image="pin.png">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="actionAddAdress:" destination="-1" eventType="touchUpInside" id="Ds1-dO-7Ov"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Không liên lạc qua" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PWm-cC-aVc">
+                                            <rect key="frame" x="30" y="198" width="136" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="X5w-1x-92h">
+                                            <rect key="frame" x="174" y="198" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Email" image="checkbox_not_ticked.png">
+                                                <color key="titleColor" red="0.44313728810000003" green="0.56078433989999998" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="actionCheckMobile:" destination="-1" eventType="touchUpInside" id="jmj-MQ-0Iw"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3Vm-iH-QSz">
+                                            <rect key="frame" x="298" y="198" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Button" image="checkbox_not_ticked.png">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="actionCheckMobile:" destination="-1" eventType="touchUpInside" id="AZW-Fw-0Il"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zLL-OU-TFz">
+                                            <rect key="frame" x="389" y="198" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Button" image="checkbox_not_ticked.png">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="actionCheckSMS:" destination="-1" eventType="touchUpInside" id="9c2-A6-eXc"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Điện thoại" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="C7D-NA-rwI">
+                                            <rect key="frame" x="212" y="198" width="83" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hMg-GY-7m0">
+                                            <rect key="frame" x="336" y="198" width="45" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SMS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Plm-BH-oWM">
+                                            <rect key="frame" x="427" y="199" width="159" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -367,11 +436,13 @@
         </view>
     </objects>
     <resources>
+        <image name="checkbox_not_ticked.png" width="56" height="56"/>
         <image name="ic_cbx-1.png" width="60" height="60"/>
         <image name="icon_down.png" width="19" height="11"/>
         <image name="icon_menu-1.png" width="32" height="32"/>
         <image name="icon_require-1.png" width="16" height="16"/>
         <image name="icon_save-1.png" width="48" height="48"/>
+        <image name="pin.png" width="48" height="48"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

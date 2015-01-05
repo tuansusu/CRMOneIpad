@@ -240,8 +240,9 @@
         }
         
         if ([viewTemp isKindOfClass:[UIButton class]]) {
-            
+            if(viewTemp.tag!=10){
             [((UIButton*) viewTemp) setStyleNormalWithOption:smgSelect];
+            }
         }
         
     }
@@ -695,5 +696,11 @@
         self.bodyMainView.contentInset = contentInsets;
         self.bodyMainView.scrollIndicatorInsets = contentInsets;
     }
+}
+- (IBAction)actionAddAdress:(id)sender {
+}
+- (IBAction)actionCheckMobile:(id)sender {
+}
+- (IBAction)actionCheckSMS:(id)sender {
 }
 @end

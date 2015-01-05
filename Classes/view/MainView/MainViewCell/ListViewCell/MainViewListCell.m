@@ -17,6 +17,7 @@
     if (self) {
         // Initialization code
         self = [[[NSBundle mainBundle] loadNibNamed:[[self class] description] owner:self options:Nil] objectAtIndex:0];
+        [subListMainView initData];
     }
     return self;
 }
@@ -36,6 +37,8 @@
 
     return nil;
 }
+
+
 
 - (void)awakeFromNib {
     // Initialization code

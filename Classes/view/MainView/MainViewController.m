@@ -12,6 +12,7 @@
 #import "MainViewListCell.h"
 #import "ListComplainsViewController.h"
 #import "ProfileViewController.h"
+#import "DashBoardCalendarViewController.h"
 
 @interface MainViewController ()
 {
@@ -250,6 +251,14 @@ NSString* emptyText = @"";
     
     
 }
+
+- (IBAction)actionCalendar:(id)sender {
+
+    DashBoardCalendarViewController *viewController = [[DashBoardCalendarViewController alloc]initWithNibName:@"DashBoardCalendarViewController" bundle:nil];
+    [self presentViewController:viewController animated:YES completion:nil];
+
+}
+
 - (IBAction)actionMapView:(id)sender {
     
     TestMapViewController *viewController = [[TestMapViewController alloc]initWithNibName:@"TestMapViewController" bundle:nil];

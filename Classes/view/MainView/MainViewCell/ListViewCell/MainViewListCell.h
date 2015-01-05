@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "SubListMainView.h"
 
+
+
 @interface MainViewListCell : UITableViewCell
 {
     IBOutlet SubListMainView *subListMainView;
+    
 }
 
 +(MainViewListCell*) initNibCell;

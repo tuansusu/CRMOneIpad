@@ -653,6 +653,8 @@
 		8E8B3F261A49AA4300241360 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E8B3F241A49AA4300241360 /* MainViewController.xib */; };
 		8E8B3F2B1A49AA7F00241360 /* MainViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8B3F291A49AA7F00241360 /* MainViewCell.m */; };
 		8E8B3F2C1A49AA7F00241360 /* MainViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E8B3F2A1A49AA7F00241360 /* MainViewCell.xib */; };
+		8E8D7FC71A5ADE240084BCA3 /* DashBoardCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8D7FC51A5ADE240084BCA3 /* DashBoardCalendarViewController.m */; };
+		8E8D7FC81A5ADE240084BCA3 /* DashBoardCalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E8D7FC61A5ADE240084BCA3 /* DashBoardCalendarViewController.xib */; };
 		8EB708771A407A1C001861A0 /* Mobile_GPS_MyLocationIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EB708751A407A1C001861A0 /* Mobile_GPS_MyLocationIcon.png */; };
 		8EB708781A407A1C001861A0 /* Mobile_GPS_MyLocationIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EB708761A407A1C001861A0 /* Mobile_GPS_MyLocationIcon@2x.png */; };
 		8EB7087A1A408AE2001861A0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB708791A408AE2001861A0 /* MapKit.framework */; };
@@ -1840,6 +1842,9 @@
 		8E8B3F281A49AA7F00241360 /* MainViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewCell.h; sourceTree = "<group>"; };
 		8E8B3F291A49AA7F00241360 /* MainViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewCell.m; sourceTree = "<group>"; };
 		8E8B3F2A1A49AA7F00241360 /* MainViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewCell.xib; sourceTree = "<group>"; };
+		8E8D7FC41A5ADE240084BCA3 /* DashBoardCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashBoardCalendarViewController.h; sourceTree = "<group>"; };
+		8E8D7FC51A5ADE240084BCA3 /* DashBoardCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashBoardCalendarViewController.m; sourceTree = "<group>"; };
+		8E8D7FC61A5ADE240084BCA3 /* DashBoardCalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashBoardCalendarViewController.xib; sourceTree = "<group>"; };
 		8EB708751A407A1C001861A0 /* Mobile_GPS_MyLocationIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mobile_GPS_MyLocationIcon.png; sourceTree = "<group>"; };
 		8EB708761A407A1C001861A0 /* Mobile_GPS_MyLocationIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Mobile_GPS_MyLocationIcon@2x.png"; sourceTree = "<group>"; };
 		8EB708791A408AE2001861A0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -4029,6 +4034,16 @@
 			path = MainViewCell;
 			sourceTree = "<group>";
 		};
+		8E8D7FC31A5ADE060084BCA3 /* DashboardCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				8E8D7FC41A5ADE240084BCA3 /* DashBoardCalendarViewController.h */,
+				8E8D7FC51A5ADE240084BCA3 /* DashBoardCalendarViewController.m */,
+				8E8D7FC61A5ADE240084BCA3 /* DashBoardCalendarViewController.xib */,
+			);
+			path = DashboardCalendar;
+			sourceTree = "<group>";
+		};
 		8EB708701A407856001861A0 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
@@ -4373,6 +4388,7 @@
 		92C68E4A1519D4F100981728 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				8E8D7FC31A5ADE060084BCA3 /* DashboardCalendar */,
 				8E6105F51A5986A9003D1C0C /* Profile */,
 				8E568F791A58EE950002A3C4 /* Complain */,
 				8E8B3F211A49AA4300241360 /* MainView */,
@@ -4921,6 +4937,7 @@
 				8E7554591A52EFC8001940FB /* iconRampLeft@2x.png in Resources */,
 				76961E561A3B3170008B5CE7 /* SelectPhotoViewController.xib in Resources */,
 				06FE2E151A4528B3004A1D16 /* iconDirection3.png in Resources */,
+				8E8D7FC81A5ADE240084BCA3 /* DashBoardCalendarViewController.xib in Resources */,
 				06FE2E181A4528B3004A1D16 /* iconDirectionSelected@2x.png in Resources */,
 				B3A0669F17D1A72400BA6487 /* WCGridViewCell.xib in Resources */,
 				B315789E188D5E5200C0ED01 /* write-btn-2-1.png in Resources */,
@@ -5391,6 +5408,7 @@
 				2D2D215D17A6946800A87364 /* InfColorIndicatorView.m in Sources */,
 				2D2D215E17A6946800A87364 /* InfColorPickerController.m in Sources */,
 				2D2D216017A6946800A87364 /* InfColorSquarePicker.m in Sources */,
+				8E8D7FC71A5ADE240084BCA3 /* DashBoardCalendarViewController.m in Sources */,
 				B31938D418E4355D0008BBFE /* UIImage+Custom.m in Sources */,
 				849B6D8E1A18EAD9007E3B06 /* EditBussinessLeadViewController.m in Sources */,
 				84912AC41A1F6A3300E99FF7 /* DetailCustomPersonViewController.m in Sources */,

@@ -29,6 +29,9 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="tbvListNotes" destination="kbk-Oa-lcY" id="Sjy-3b-NfF"/>
+                        </connections>
                     </view>
                     <view contentMode="scaleToFill" id="qpV-23-B95" userLabel="HeaderView">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>

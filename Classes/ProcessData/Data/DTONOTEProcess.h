@@ -26,6 +26,7 @@
  * Lọc khách hàng đầu mối (chưa có tìm kiếm và phân trang)
  */
 -(NSMutableArray*) filter;
+-(NSMutableArray*) filterWithLimitRecord:(int)limitRecord;
 -(NSMutableArray*) filterWithKey : (NSString*) strKey withValue : (NSString*) strValue;
 
 -(NSDictionary*) getDataWithKey : (NSString*) inputKey withValue : (NSString*) inputValue;

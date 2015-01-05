@@ -8,6 +8,7 @@
 
 #import "SubListMainView.h"
 #import "SubListViewCell.h"
+#import "Globals.h"
 
 
 @implementation SubListMainView
@@ -19,7 +20,13 @@
     // Drawing code
 }
 */
+-(void)initData{
+    dtoNoteProcess = [DTONOTEProcess new];
+    listNotes = [[NSMutableArray alloc] init];
 
+    listNotes = [dtoNoteProcess filterWithLimitRecord:MAX_ROW_A_PAGE];
+    [tbvListNotes reloadData];
+}
 
 -(IBAction)btnSelected:(id)sender{
     
@@ -49,7 +56,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return  10;
+    return  listNotes.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -59,6 +66,7 @@
 
     if (!cell) {
         cell = [SubListViewCell initNibCell];
+        [cell loadDataToCellWithData:[listNotes objectAtIndex:indexPath.row]];
     }
     return cell;
 }

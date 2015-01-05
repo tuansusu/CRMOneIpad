@@ -12,14 +12,19 @@
 #import "DTOPRODUCTMASTERProcess.h"
 #import "DTOACCOUNTProcess.h"
 #import "DTOCONTACTProcess.h"
+#import "DTOTASKProcess.h"
+#import "DTOOPPORTUNITYPRODUCTProcess.h"
+#import "DTOOPPORTUNITYCONTACTProcess.h"
 
 #define SELECT_TEXT_ADD_CONTACT @"LIÊN HỆ"
 #define SELECT_TEXT_ADD_NOTE @"SẢN PHẨM ĐỀ XUẤT"
 #define SELECT_TEXT_ADD_CALENDAR @"SẢN PHẨM ĐÃ BÁN"
-#define SELECT_TEXT_ADD_COMPETITOR @"ĐỐI THỦ CẠNH TRANH"
-#define SELECT_TEXT_ADD_SUPORT @"HỖ TRỢ"
+#define SELECT_TEXT_ADD_COMPETITOR @"CÔNG VIỆC"
+#define SELECT_TEXT_ADD_SUPORT @"LỊCH"
 
 #define SELECT_INDEX_ADD_CONTACT 0
+#define SELECT_INDEX_ADD_PRODUCT 1
+#define SELECT_INDEX_ADD_TASK 3
 
 
 
@@ -38,6 +43,9 @@
     DTOPRODUCTMASTERProcess *dtoProductMasterProcess;
     DTOACCOUNTProcess *dtoAccountProcess;
     DTOCONTACTProcess *dtoContactProcess;
+    DTOOPPORTUNITYPRODUCTProcess *dtoOpportunityProductProcess;
+    DTOTASKProcess *dtoTaskProcess;
+    DTOOPPORTUNITYCONTACTProcess *dtoOpportunityContactProcess;
     
     UIColor *textColorButtonNormal; //mau chu button binh thuong
     UIColor *textColorButtonSelected; //mau chu button select
@@ -47,6 +55,10 @@
     //chon index form them moi
     NSInteger selectIndex;
     NSArray *listArr;
+    
+    //item danh dau se xoa
+     NSString *deleteItemId;
+    BOOL isMainDelete;
     
 }
 @end
@@ -85,42 +97,65 @@
     
 //    [self.tbData registerNib:[UINib nibWithNibName:@"OpportunityCell" bundle:nil] forCellReuseIdentifier:@"opportunityCell"];
 
-
-    //Hien thi chi tiet thong tin co hoi
-    self.lblName.text = [opportunity objectForKey:DTOOPPORTUNITY_name];
-    self.lblCode.text = [opportunity objectForKey:DTOOPPORTUNITY_code];
-    self.lblStatusDetail.text = [opportunity objectForKey:@"Status"];
-    self.lblNextTaskDetail.text = [opportunity objectForKey:@"NextTask"];
+    [self loadData];
+}
+-(void) loadData{
+    
     NSDateFormatter *DateFormatter=[[NSDateFormatter alloc] init];
     [DateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.S"];
-
-    NSString *strStartDate= [opportunity objectForKey:DTOOPPORTUNITY_startDate];
-    NSDate *startDate =[DateFormatter dateFromString:strStartDate];
     NSDateFormatter *DateToDisplayFormatter=[[NSDateFormatter alloc] init];
     [DateToDisplayFormatter setDateFormat:@"dd/MM/yyyy"];
+    
+    //Hien thi chi tiet thong tin co hoi
+    //code
+    self.lblCode.text = [opportunity objectForKey:DTOOPPORTUNITY_clientOpportunityId];
+    //name
+    self.lblName.text = [opportunity objectForKey:DTOOPPORTUNITY_name];
+    //startDate
+    NSString *strStartDate= [opportunity objectForKey:DTOOPPORTUNITY_startDate];
+    NSDate *startDate =[DateFormatter dateFromString:strStartDate];
     self.lblStartDateDetail.text = [DateToDisplayFormatter stringFromDate:startDate];
+    //endDateReal
+    NSString *strEndDateReal = [opportunity objectForKey:DTOOPPORTUNITY_endDateReal];
+    NSDate *endDateReal = [DateFormatter dateFromString:strEndDateReal];
+    self.lblEndDateDetail.text = [DateToDisplayFormatter stringFromDate:endDateReal];
+    //endDate
     NSString *strEndDate = [opportunity objectForKey:DTOOPPORTUNITY_endDate];
     NSDate *endDate = [DateFormatter dateFromString:strEndDate];
     self.lblEndDateDetail.text = [DateToDisplayFormatter stringFromDate:endDate];
-    
-    self.lblCustomerDetail.text = [opportunity objectForKey:@"Account"];
-
-    //self.lblCustomerDetail.text = [opportunity objectForKey:DTOOPPORTUNITY_updatedDate];
+    //Level
     self.lblOpporttunityLevelDetail.text = [opportunity objectForKey:@"Level"];
-    
-    //Ti le thanh cong
-    int successPercent = [[opportunity objectForKey:DTOOPPORTUNITY_successPercent] intValue];
-    self.pgSuccessPercent.progress =  (float)successPercent / 100;
-    self.lblSuccessPercentDetail.text = [NSString stringWithFormat:@"%d %%", successPercent];
-
-    
+    //NextTask
+    self.lblNextTaskDetail.text = [opportunity objectForKey:@"NextTaskName"];
+    //Type
+    self.lblTypeDetail.text = [opportunity objectForKey:@"Type"];
+    //Customer
+    self.lblCustomerDetail.text = [opportunity objectForKey:@"Customer"];
+    //Description
+    NSString *description = [opportunity objectForKey:@"Description"];
+    if(![StringUtil stringIsEmpty:description]){
+        self.lblNoteDetail.text = [opportunity objectForKey:@"Description"];
+    }else{
+        self.lblNoteDetail.text = @"NA";
+    }
+    //ResultDescription
+    NSString *resultDescription = [opportunity objectForKey:@"ResultDescription"];
+    if(![StringUtil stringIsEmpty:resultDescription]){
+        self.lblDescriptionDetail.text = resultDescription;
+    }else{
+        self.lblDescriptionDetail.text = @"NA";
+    }
 }
+
 -(void) viewWillAppear:(BOOL)animated{
-    [self viewDidLoad];
+   // [self viewDidLoad];
+    [self loadDataWithTypeAction:typeActionEvent];
 }
 
 -(void) viewDidAppear:(BOOL)animated{
-    
+    [self initData];
+    [self loadData];
+    [self loadDataWithTypeAction:typeActionEvent];
 }
 
 //khoi tao gia tri mac dinh cua form
@@ -136,38 +171,45 @@
     dtoProductMasterProcess = [DTOPRODUCTMASTERProcess new];
     dtoAccountProcess  = [DTOACCOUNTProcess new];
     dtoContactProcess = [DTOCONTACTProcess new];
-
-
+    dtoOpportunityProductProcess = [DTOOPPORTUNITYPRODUCTProcess new];
+    dtoTaskProcess = [DTOTASKProcess new];
+    dtoOpportunityContactProcess = [DTOOPPORTUNITYCONTACTProcess new];
     
     opportunity = [dtoOpportunityProcess getById:itemId];
 
     arrayData  = [NSArray new];
+    isMainDelete = NO;
 }
 
 
 -(void) loadDataWithTypeAction : (enum TypeActionEvent) inputTypeActionEvent{
     typeActionEvent = inputTypeActionEvent;
     switch (typeActionEvent) {
-        case type_ActionSale:
-        {
-            
-        }
-            break;
-            case type_ClueContact:
+        case type_ClueContact:
         {
             //arrayData = [dtoAccountProcess filter];
             arrayData = [dtoContactProcess filterWithClientOpportunityId:[opportunity objectForKey:DTOOPPORTUNITY_clientOpportunityId]];
         }break;
-            case type_Competionor:
+        case type_ProposeProduct:
         {
-            arrayData = [dtoCompetitorProcess filterCompetitor];
+            arrayData = [dtoOpportunityProductProcess filterWithClientOpportunityId:[opportunity objectForKey:DTOOPPORTUNITY_clientOpportunityId]];
+        }
+            break;
+        case type_Sale:
+        {
+            arrayData = [NSArray new];
+        }
+            break;
+        case type_Task:
+        {
+            //arrayData = [dtoAccountProcess filter];
+            arrayData = [dtoTaskProcess filterWithKey:DTOTASK_opportunityId withValue:[opportunity objectForKey:DTOOPPORTUNITY_id]];
         }break;
-        case type_ProposeProduct:{
-            arrayData = [dtoProductMasterProcess filter];
-        }break;
-        case type_Support:{
-            
-        }break;
+        case type_Calendar:
+        {
+            arrayData = [NSArray new];
+        }
+            break;
             
         default:
             break;
@@ -183,8 +225,8 @@
     [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
     self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
     //[self.btnSearch setStyleNormalWithOption:smgSelect];
-    [self.leftViewHeader setBackgroundColor:BACKGROUND_COLOR_TOP_LEFT_HEADER];
-    self.leftLabelHeader.textColor = TEXT_COLOR_HEADER_APP;
+   // [self.leftViewHeader setBackgroundColor:BACKGROUND_COLOR_TOP_LEFT_HEADER];
+   // self.leftLabelHeader.textColor = TEXT_COLOR_HEADER_APP;
     
     textColorButtonNormal = TEXT_BUTTON_COLOR_BLACK_1; //mau chu button binh thuong
     textColorButtonSelected = TEXT_BUTTON_COLOR1; //mau chu button select
@@ -235,12 +277,28 @@
     switch (index) {
         case SELECT_INDEX_ADD_CONTACT:
         {
-            EditContactOpportunityViewController *viewController = [[EditContactOpportunityViewController alloc]initWithNibName:@"EditContactLeadViewController" bundle:nil];
+            EditContactOpportunityViewController *viewController = [[EditContactOpportunityViewController alloc]initWithNibName:@"EditContactOpportunityViewController" bundle:nil];
             viewController.dataRoot = opportunity;
             [self presentViewController:viewController animated:YES completion:nil];
         }
             break;
-            
+        case SELECT_INDEX_ADD_PRODUCT:
+        {
+            EditOpportunityProductViewController *viewController = [[EditOpportunityProductViewController alloc]initWithNibName:@"EditOpportunityProductViewController" bundle:nil];
+            viewController.dataRoot = opportunity;
+            //[self presentViewController:viewController animated:YES completion:nil];
+            viewController.view.frame = CGRectMake(0, 0, 600, 400);
+            viewController.delegateOpportunityProduct = (id<OpportunityProductDelegate>)self;
+            [self presentPopupViewController:viewController animationType:YES];
+        }
+            break;
+        case SELECT_INDEX_ADD_TASK:
+        {
+            EditOpportunityTaskViewController *viewController = [[EditOpportunityTaskViewController alloc]initWithNibName:@"EditOpportunityTaskViewController" bundle:nil];
+            viewController.dataRoot = opportunity;
+            [self presentViewController:viewController animated:YES completion:nil];
+        }
+            break;
         default:
             break;
     }
@@ -250,7 +308,8 @@
 
 #pragma mark action button
 - (IBAction)homeBack:(id)sender {
-    [Util backToHome:self];
+   // [Util backToHome:self];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -265,61 +324,39 @@
     [self displayNormalButtonState:sender];
 }
 
-- (IBAction)actionActionSale:(id)sender {
-    [self loadDataWithTypeAction:type_ActionSale];
-    [self displayNormalButtonState:((UIButton*) sender)];
+- (IBAction)actionActionSale:(UIButton *)sender {
+    [self loadDataWithTypeAction:type_Sale];
+    [self displayNormalButtonState:sender];
 }
 
-- (IBAction)actionCompetionor:(id)sender {
-    [self loadDataWithTypeAction:type_Competionor];
-    [self displayNormalButtonState:((UIButton*) sender)];
+- (IBAction)actionTask:(UIButton *)sender {
+    [self loadDataWithTypeAction:type_Task];
+    [self displayNormalButtonState:sender];
 }
 
-- (IBAction)actionSupport:(id)sender {
-    [self loadDataWithTypeAction:type_Support];
-    [self displayNormalButtonState:((UIButton*) sender)];
+- (IBAction)actionCalendar:(UIButton*)sender {
+    [self loadDataWithTypeAction:type_Calendar];
+    [self displayNormalButtonState:sender];
 }
+
+
 
 
 #pragma mark display color button
 -(void) displayNormalButtonState : (UIButton*) btnSelect {
-//    
-//    for (UIView *viewTemp in self.rightViewHeader.subviews) {
-//        if ([viewTemp isKindOfClass:[UIButton class]]) {
-//            [((UIButton*) viewTemp) setBackgroundColor:backgroundButtonNormal];
-//            [((UIButton*) viewTemp) setTitleColor:textColorButtonNormal forState:UIControlStateNormal];
-//        }
-//    }
-//    
-//    [btnSelect setBackgroundColor:backgrondButtonSelected];
-//    [btnSelect setTitleColor:textColorButtonSelected forState:UIControlStateNormal];
-//    
     
     for (UIView *viewTemp in self.rightViewHeader.subviews) {
         if ([viewTemp isKindOfClass:[UIButton class]]) {
-            //            [((UIButton*) viewTemp) setBackgroundColor:backgroundButtonNormal];
-            //            [((UIButton*) viewTemp) setTitleColor:textColorButtonNormal forState:UIControlStateNormal];
-            
-            
             [((UIButton*) viewTemp) setBackgroundColor:[UIColor whiteColor]];
             [((UIButton*) viewTemp) setTitleColor:textColorButtonNormal forState:UIControlStateNormal];
-            
-            //[((UIButton*) viewTemp) setBorderWithOption:1 withBorderFlag:AUISelectiveBordersFlagBottom];
-            
             [((UIButton*) viewTemp) setSelectiveBorderWithColor:backgrondButtonSelected withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
         }
     }
-    
-    //    [btnSelect setBackgroundColor:backgrondButtonSelected];
-    //[btnSelect setTitleColor:textColorButtonSelected forState:UIControlStateNormal];
-    
     [btnSelect setBackgroundColor:[UIColor whiteColor]];
     [btnSelect setTitleColor:textColorButtonNormal forState:UIControlStateNormal];
-    
-    //[btnSelect setBorderWithOption:1 withBorderFlag:AUISelectiveBordersFlagBottom];
-    
     [btnSelect setSelectiveBorderWithColor:backgrondButtonSelected withBorderWith:5.0f withBorderFlag:AUISelectiveBordersFlagBottom];
 }
+
 
 
 #pragma mark table view
@@ -335,6 +372,10 @@
         
         case type_ClueContact:{
             return 100.0f;
+        }
+            break;
+        case type_Task:{
+            return 80.0f;
         }
             break;
         default:
@@ -355,26 +396,50 @@
     
     
 }
+/**
+ *  Bat Swipe right de cho phep hien thi button xoa 1 row
+ *  @return YES: If you want the specified item to be editable.
+ */
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+/**
+ *  Xu ly khi click Button Accessory (tren ios6, xem trong cellForRow co code set AccessoryType cho cell neu khong phai la Header)
+ *  TRUONG HOP NAY HIEN TAI KHONG DUNG DEN MA SU DUNG 1 CUSTOM BUTTON VOI ACTION "customButtonAccessoryTapped"
+ */
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return SYS_KEY_DELETE;
+}
+
+/**
+ *  Them 1 button "Sua" ben canh button "Xoa" (tren ios7, ios6 su dung accessoryType)
+ */
+-(NSString *)tableView:(UITableView *)tableView titleForSwipeAccessoryButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    /**
+     *  Neu khong phai la Header thi la item level 2
+     */
+    return SYS_KEY_EDIT;
+    //return nil;
+}
+- (void) customButtonAccessoryTapped:(id)sender
+{
+    UIButton *btnSender = (UIButton *) sender;
+    
+    NSLog(@"btnSender = %d", btnSender.tag);
+    
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (typeActionEvent) {
-        case type_ActionSale:
-        {
-            static NSString *cellId = @"proposeProductCell";
-            ProposeProductCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
-            
-            
-            if (!cell) {
-                cell = [ProposeProductCell getNewCell];
-            }
-            
-            if (arrayData.count>0) {
-                [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
-            }
-            
-            return cell;
-        }
-            break;
         case type_ClueContact:{
             static NSString *cellId = @"ContactOpportunityCell";
             ContactOpportunityCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
@@ -392,26 +457,9 @@
 
         }
             break;
-            case type_Competionor:
+        case type_ProposeProduct:
         {
-            static NSString *cellId = @"competionorCell";
-            CompetionorCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
-            
-            
-            if (!cell) {
-                cell = [CompetionorCell getNewCell];
-            }
-            
-            if (arrayData.count>0) {
-                [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
-            }
-            
-            return cell;
-        }
-            break;
-            case type_ProposeProduct:
-        {
-            static NSString *cellId = @"proposeProductCell";
+            static NSString *cellId = @"ProposeProductCell";
             ProposeProductCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
             
             
@@ -426,14 +474,49 @@
             return cell;
         }
             break;
-            case type_Support:
+            case type_Sale:
         {
-            static NSString *cellId = @"proposeProductCell";
+            static NSString *cellId = @"saleCell";
             ProposeProductCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
             
             
             if (!cell) {
                 cell = [ProposeProductCell getNewCell];
+            }
+            
+            if (arrayData.count>0) {
+                [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+            }
+            
+            return cell;
+        }
+            break;
+ 
+         
+        case type_Task:
+        {
+            static NSString *cellId = @"TaskOpportunityCell";
+            TaskOpportunityCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+            
+            
+            if (!cell) {
+                cell = [TaskOpportunityCell getNewCell];
+            }
+            
+            if (arrayData.count>0) {
+                [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+            }
+            
+            return cell;
+        }
+        case type_Calendar:
+        {
+            static NSString *cellId = @"TaskOpportunityCell";
+            TaskOpportunityCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+            
+            
+            if (!cell) {
+                cell = [TaskOpportunityCell getNewCell];
             }
             
             if (arrayData.count>0) {
@@ -461,17 +544,17 @@
     }
     
     switch (typeActionEvent) {
-        case type_ActionSale:
+        case type_Sale:
             
             break;
             case type_ClueContact:
             break;
-            case type_Competionor:
-            break;
+//            case type_Competionor:
+//            break;
             case type_ProposeProduct:
             break;
-            case type_Support:
-            break;
+//            case type_Support:
+//            break;
         default:
             break;
     }
@@ -494,5 +577,149 @@
     [self.listPopover setPopoverContentSize:CGSizeMake(320, HEIGHT_SELECT_INDEX_ROW*listArr.count) animated:NO];
     [self.listPopover presentPopoverFromRect:popoverFrame inView:self.headerViewBar permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 
+}
+
+//
+-(void) dismissPopoverView
+{
+    [self dismissPopover];
+    [self dismissPopupViewControllerWithanimationType:nil];
+}
+- (void) dismissPopover
+{
+    if ([self.listPopover isPopoverVisible])
+        [self.listPopover dismissPopoverAnimated:YES];
+}
+
+#pragma mark edit
+
+
+/**
+ *  Delete 1 row tren TableView
+ */
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        
+        NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
+        deleteItemId = [dicData objectForKey:DTOOPPORTUNITYPRODUCT_id];
+       // deleteFile =[dicData objectForKey:DTOATTACHMENT_id];
+        UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xác nhận đồng ý xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
+        isMainDelete = NO;
+        mylert.tag = TAG_DELETE_ITEM;
+        [mylert show];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0 && alertView.tag == TAG_DELETE_ITEM) {
+        //thuc hien xoa
+        BOOL result;
+        if(isMainDelete){
+            result = [dtoOpportunityProcess deleteEntity:deleteItemId];
+        }else{
+            switch (typeActionEvent) {
+                case type_ProposeProduct:
+                {
+                    result = [dtoOpportunityProductProcess deleteEntity:deleteItemId];
+                }
+                    break;
+                default:
+                    break;
+            }
+        }
+        //reload lai csdl
+        if (result) {
+            if(isMainDelete){
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }else{
+                arrayData = [dtoOpportunityProductProcess filterWithClientOpportunityId:[opportunity objectForKey:DTOOPPORTUNITY_clientOpportunityId]];
+                [self.tbData reloadData];
+            }
+            //thong bao cap nhat thanh cong
+            UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:KEY_NOTIFICATION_TITLE message:SYS_Notification_UpdateSuccess delegate:self cancelButtonTitle:KEY_NOTIFICATION_ACCEPT otherButtonTitles:  nil];
+            
+                [mylert show];
+            
+        }else{
+            //thong bao cap nhat that bai
+            UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:KEY_NOTIFICATION_TITLE message:SYS_Notification_UpdateFail delegate:self cancelButtonTitle:KEY_NOTIFICATION_ACCEPT otherButtonTitles:  nil];
+        }
+        
+    }
+}
+
+
+/**
+ *  Them 1 button "Sua" ben canh button "Xoa" (tren ios7, ios6 su dung accessoryType)
+ */
+//-(NSString *)tableView:(UITableView *)tableView titleForSwipeAccessoryButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+
+/**
+ *  Neu khong phai la Header thi la item level 2
+ */
+//  return SYS_KEY_EDIT;
+//return nil;
+//}
+
+/**
+ *  Xu ly khi chon button "Sua"
+ */
+-(void)tableView:(UITableView *)tableView swipeAccessoryButtonPushedForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"sua item at index = %d", indexPath.row);
+    
+    NSDictionary *dicDataTemp = [arrayData objectAtIndex:indexPath.row];
+    NSString *itemId = [dicDataTemp objectForKey:DTOCONTACT_id];
+    
+    switch (typeActionEvent) {
+        case type_ClueContact:{
+            
+            NSDictionary *dicData = [dtoContactProcess getDataWithKey:DTOCONTACT_id withValue:itemId];
+            
+            EditContactOpportunityViewController *viewController = [[EditContactOpportunityViewController alloc]initWithNibName:@"EditContactOpportunityViewController" bundle:nil];
+            viewController.dataSend = dicData;
+            [self presentViewController:viewController animated:YES completion:nil];
+        }
+            break;
+        case type_ProposeProduct:{
+            NSDictionary *dicData = [[dtoOpportunityProductProcess getById:itemId] objectAtIndex:0];
+            
+            EditOpportunityProductViewController *viewController = [[EditOpportunityProductViewController alloc]initWithNibName:@"EditOpportunityProductViewController" bundle:nil];
+            viewController.dataSend = dicData;
+            //[self presentViewController:viewController animated:YES completion:nil];
+            viewController.view.frame = CGRectMake(0, 0, 600, 400);
+            viewController.delegateOpportunityProduct = (id<OpportunityProductDelegate>)self;
+            [self presentPopupViewController:viewController animationType:YES];
+        }
+            break;
+        case type_Task:{
+            NSDictionary *dicData = [dtoTaskProcess getDataWithKey:DTOTASK_id withValue:itemId];
+            
+            EditOpportunityTaskViewController *viewController = [[EditOpportunityTaskViewController alloc]initWithNibName:@"EditOpportunityTaskViewController" bundle:nil];
+            viewController.dataSend = dicData;
+            [self presentViewController:viewController animated:YES completion:nil];
+        }
+            break;
+        default:
+            break;
+    }
+    
+    
+}
+
+- (IBAction)actionDelete:(id)sender {
+    UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xác nhận đồng ý xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
+    mylert.tag = TAG_DELETE_ITEM;
+    [mylert show];
+    isMainDelete = YES;
+    deleteItemId = [opportunity objectForKey:DTOOPPORTUNITY_id];
+}
+- (IBAction)actionEdit:(id)sender {
+    EditOpportunityViewController *viewController = [[EditOpportunityViewController alloc]initWithNibName:@"EditOpportunityViewController" bundle:nil];
+    viewController.dataSend = opportunity;
+    [self presentViewController:viewController animated:YES completion:nil];
 }
 @end

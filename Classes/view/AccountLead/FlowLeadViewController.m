@@ -189,7 +189,7 @@
         [dicEntity setObject:[_dataSend objectForKey:DTOLEAD_clientLeadId] forKey:DTOFOLLOWUP_objectId];
     }
     [dicEntity setObject:[_dataSend objectForKey:DTOLEAD_name] forKey:DTOFOLLOWUP_objectName];
-    [dicEntity setObject:@"Lead" forKey:DTOFOLLOWUP_objectType];
+    [dicEntity setObject:@"LEAD" forKey:DTOFOLLOWUP_objectType];
     //[dicEntity setObject:dateStart forKey:DTOFOLLOWUP_startDate];
     [dicEntity setObject:[DateUtil formatDate:dateStart :@"yyyy-MM-dd HH:mm:ss.S"] forKey:DTOFOLLOWUP_startDate];
     [dicEntity setObject:catId forKey:DTOFOLLOWUP_sysCatId];

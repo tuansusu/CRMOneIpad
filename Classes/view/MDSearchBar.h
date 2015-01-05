@@ -22,4 +22,5 @@
 
 -(IBAction)cancel:(id)sender;
 +(MDSearchBar *)view;
+- (void)initlayout;
 @end

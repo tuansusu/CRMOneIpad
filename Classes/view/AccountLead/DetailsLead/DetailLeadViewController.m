@@ -125,7 +125,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     [self.tbData registerNib:[TaskActionCell   nib] forCellReuseIdentifier:TaskActionCellId];
     
     // calendar
-    calendarIsTimeline = NO;
+    calendarIsTimeline = YES;
     
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
@@ -463,6 +463,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             ComplainDetailViewController *viewController = [[ComplainDetailViewController alloc]initWithNibName:@"ComplainDetailViewController" bundle:nil];
             viewController.delegate= self;
 //            viewController.dataRoot = dicData;
+            viewController.leadId = [[dicData objectForKey:DTOLEAD_clientLeadId] description];
             [self presentViewController:viewController animated:YES completion:nil];
         }
             break;
@@ -510,6 +511,10 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 }
 
 - (IBAction)actionCalendar:(UIButton *)sender {
+    if (typeActionEvent == typeLeaderView_Calendar)
+    {
+        calendarIsTimeline = !calendarIsTimeline;
+    }
     [self loadDataWithTypeAction:typeLeaderView_Calendar];
     [self displayNormalButtonState:sender];
 }
@@ -562,7 +567,16 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             return 60.0f;
             break;
         case typeLeaderView_Calendar:
-            return 225.0f;//43.0f;
+        {
+            if (calendarIsTimeline)
+            {
+                return 225.0f;
+            }
+            else
+            {
+                return 66.0f;
+            }
+        }
             break;
         case typeLeaderView_Task:
             return 60.0f;
@@ -628,15 +642,40 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         // calendar + task
         case typeLeaderView_Calendar:
         {
-//            TaskCalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:TaskCalendarNormalCellId];
-            TaskCalTLineCell *cell = [tableView dequeueReusableCellWithIdentifier:TaskCalendarTimelineCellId];
-            
-            if (indexPath.row < arrayData.count)
+            if (calendarIsTimeline)
             {
-                [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+                TaskCalTLineCell *cell = [tableView dequeueReusableCellWithIdentifier:TaskCalendarTimelineCellId];
+                
+                if (indexPath.row < arrayData.count)
+                {
+                    [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+                    if (indexPath.row == 0)
+                    {
+                        cell.tbv_position = TaskCalTLineCell_Top;
+                    }
+                    else if (indexPath.row == arrayData.count - 1)
+                    {
+                        cell.tbv_position = TaskCalTLineCell_Bottom;
+                    }
+                    else
+                    {
+                        cell.tbv_position = TaskCalTLineCell_Middle;
+                    }
+                }
+                
+                return cell;
             }
-            
-            return cell;
+            else
+            {
+                TaskCalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:TaskCalendarNormalCellId];
+                
+                if (indexPath.row < arrayData.count)
+                {
+                    [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+                }
+                
+                return cell;
+            }
         }
             break;
         case typeLeaderView_Task:

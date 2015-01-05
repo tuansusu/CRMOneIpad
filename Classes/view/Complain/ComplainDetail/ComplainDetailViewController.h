@@ -22,6 +22,7 @@
 @interface ComplainDetailViewController : UIViewController
 
 @property (nonatomic,assign) id<ComplainDetailViewControllerDelegate>delegate;
+@property (nonatomic,retain) NSString *leadId;
 
 -(void)loadDataWithComplainOB:(DTOComplainObject*)complainOB;
 

@@ -40,5 +40,8 @@
  * Lọc danh sach lien he theo clientLeaderId
  */
 -(NSMutableArray*) filterWithClientLeaderId: (NSString*) strValue;
+/* Lọc danh sach lien he theo client360Id
+*/
+-(NSMutableArray*) filterWithClient360Id: (NSString*) strValue;
 
 @end

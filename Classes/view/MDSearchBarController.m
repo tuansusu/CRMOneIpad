@@ -21,6 +21,8 @@
         self.searchView = [MDSearchView view];
         self.searchBarView.searchController = self;
         self.searchView.searchController = self;
+        self.isValid = NO;
+        [self.searchBarView initlayout];
     }
     return self;
 }
@@ -32,7 +34,10 @@
     if (active){
         UIWindow * window = [[[UIApplication sharedApplication] delegate] window];
         CGRect windFrame = [self.searchBarView.superview convertRect:self.searchBarView.frame toView:window];
-        self.searchView.frame = CGRectMake(windFrame.origin.x, windFrame.origin.y+windFrame.size.height, windFrame.size.width, window.frame.size.height - windFrame.origin.y+windFrame.size.height);
+        //self.searchView.frame = CGRectMake(windFrame.origin.x, windFrame.origin.y+windFrame.size.height, windFrame.size.width, window.frame.size.height - windFrame.origin.y+windFrame.size.height);
+        int number = 1;//[self.delegate tableView:self.searchView.searchTable numberOfRowsInSection:0];
+        self.searchView.frame = CGRectMake(windFrame.origin.x, windFrame.origin.y+windFrame.size.height, windFrame.size.width, number * 40);
+
         self.searchView.alpha = 0;
         [window addSubview:self.searchView];
         [UIView animateWithDuration:0.3 animations:^{
@@ -69,6 +74,8 @@
     if ([self.delegate respondsToSelector:_cmd]){
         int number = [self.delegate tableView:tableView numberOfRowsInSection:section];
         self.searchView.searchTable.hidden = number>0 ? NO : YES;
+        self.searchView.frame = CGRectMake(self.searchView.frame.origin.x, self.searchView.frame.origin.y, self.searchView.frame.size.width, number * 40);
+
         return number;
     }
     
@@ -106,7 +113,7 @@
     if ([self.delegate respondsToSelector:_cmd]){
         return [self.delegate tableView:tableView cellForRowAtIndexPath:indexPath];
     }
-    return [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"defaultCell"];
+   // return [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"defaultCell"];
 }
 
 
@@ -115,6 +122,18 @@
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     if (!self.active)
     self.active = YES;
+    
+    if ([self.delegate respondsToSelector:@selector(searchBar:searchWithText:)]){
+        [self.delegate searchBar:self searchWithText:self.searchBarView.textField.text];
+    }
+    
+    return YES;
+}
+
+-(BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    if ([self.delegate respondsToSelector:@selector(searchBar:searchWithText:)]){
+        [self.delegate searchBar:self searchWithText:self.searchBarView.textField.text];
+    }
     return YES;
 }
 

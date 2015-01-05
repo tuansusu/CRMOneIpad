@@ -10,20 +10,25 @@
 #import "CompetionorCell.h"
 #import "ProposeProductCell.h"
 #import "ContactOpportunityCell.h"
+#import "TaskOpportunityCell.h"
 #import "SelectIndexViewController.h"
+#import "EditOpportunityViewController.h"
 #import "EditContactOpportunityViewController.h"
+#import "EditOpportunityProductViewController.h"
+#import "EditOpportunityTaskViewController.h"
+#import "UIViewController+MJPopupViewController.h"
 
 
 enum TypeActionEvent{
     type_ClueContact, //clue contact(Đầu mối liên hệ)
     type_ProposeProduct, //propose product (sản phẩm đề xuất)
-    type_ActionSale, //action sale
-    type_Competionor, // Competionor(Đối thủ cạnh tranh)
-    type_Support // Support
+    type_Sale, //san pham da ban
+    type_Task, // cong viec
+    type_Calendar // lich
 };
 
 
-@interface CompetitorsViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate,SelectIndexDelegate>
+@interface CompetitorsViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate,SelectIndexDelegate,OpportunityProductDelegate>
 
 
 @property (nonatomic) enum TypeActionEvent typeActionEvent;
@@ -57,18 +62,20 @@ enum TypeActionEvent{
 @property (weak, nonatomic) IBOutlet UIButton *btnProposeProduct;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnActionSale;
+@property (weak, nonatomic) IBOutlet UIButton *btnTask;
+@property (weak, nonatomic) IBOutlet UIButton *btnCalendar;
 
-@property (weak, nonatomic) IBOutlet UIButton *btnCompetionor;
+@property (weak, nonatomic) IBOutlet UIButton *btnEdit;
+- (IBAction)actionEdit:(id)sender;
 
-@property (weak, nonatomic) IBOutlet UIButton *btnSupport;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnDelete;
+- (IBAction)actionDelete:(id)sender;
 
 
 @property (strong, nonatomic) IBOutlet UILabel *lblCode;
 
 @property (strong, nonatomic) IBOutlet UILabel *lblName;
-
-@property (strong, nonatomic) IBOutlet UILabel *lblStatusTitle;
-@property (strong, nonatomic) IBOutlet UILabel *lblStatusDetail;
 @property (strong, nonatomic) IBOutlet UILabel *lblNextTaskTitle;
 @property (strong, nonatomic) IBOutlet UILabel *lblNextTaskDetail;
 @property (strong, nonatomic) IBOutlet UILabel *lblStartDateTitle;
@@ -79,18 +86,20 @@ enum TypeActionEvent{
 @property (strong, nonatomic) IBOutlet UILabel *lblCustomerDetail;
 @property (strong, nonatomic) IBOutlet UILabel *lblOpportunityLevelTitle;
 @property (strong, nonatomic) IBOutlet UILabel *lblOpporttunityLevelDetail;
-@property (strong, nonatomic) IBOutlet UIProgressView *pgSuccessPercent;
-@property (strong, nonatomic) IBOutlet UILabel *lblSuccessPercentDetail;
+@property (weak, nonatomic) IBOutlet UILabel *lblTypeDetail;
+@property (weak, nonatomic) IBOutlet UILabel *lblEndDateRealDetail;
+@property (weak, nonatomic) IBOutlet UILabel *lblNoteDetail;
+@property (weak, nonatomic) IBOutlet UILabel *lblDescriptionDetail;
+
 
 - (IBAction)actionClueContact:(UIButton *)sender;
 
 - (IBAction)actionProposeProduct:(UIButton *)sender;
 
-- (IBAction)actionActionSale:(id)sender;
+- (IBAction)actionActionSale:(UIButton *)sender;
+- (IBAction)actionTask:(UIButton *)sender;
+- (IBAction)actionCalendar:(UIButton *)sender;
 
-- (IBAction)actionCompetionor:(id)sender;
-
-- (IBAction)actionSupport:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UITableView *tbData;
 

@@ -22,10 +22,10 @@
                 <outlet property="fullNameLB" destination="cag-dB-QuZ" id="Cup-ab-tLr"/>
                 <outlet property="headerMainView" destination="Qdj-q1-Wga" id="U58-EG-LHb"/>
                 <outlet property="headerViewBar" destination="oqY-Oi-L8z" id="8OT-qX-hLZ"/>
+                <outlet property="lblFormTitle" destination="WRo-U5-q63" id="7XN-ek-2QM"/>
                 <outlet property="mainView" destination="cLF-NJ-ACN" id="6uE-Mb-snA"/>
                 <outlet property="pgLevel" destination="h4I-xh-s8n" id="OZn-Fa-HAm"/>
                 <outlet property="searchDisplayController" destination="mmr-Ap-yqq" id="eBk-mp-GsW"/>
-                <outlet property="txtCustomer" destination="RmJ-Je-B5H" id="QV9-LC-lCh"/>
                 <outlet property="txtLevel" destination="A9A-6M-e2o" id="IgJ-tL-tiz"/>
                 <outlet property="txtName" destination="rZ9-bd-fbA" id="qDH-TT-Or0"/>
                 <outlet property="txtNextTask" destination="pmq-g9-yD2" id="Pqt-Gb-bhW"/>
@@ -131,7 +131,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kiểu cơ hội" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="T6Y-vg-YXh">
-                                            <rect key="frame" x="480" y="10" width="141" height="30"/>
+                                            <rect key="frame" x="30" y="140" width="141" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <nil key="highlightedColor"/>
@@ -155,7 +155,7 @@
                                             <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                         </textField>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Kiểu cơ hội" minimumFontSize="17" id="olG-es-CRZ">
-                                            <rect key="frame" x="480" y="40" width="380" height="30"/>
+                                            <rect key="frame" x="30" y="170" width="380" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -242,18 +242,8 @@
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nhập thông tin để tìm kiếm" minimumFontSize="17" id="RmJ-Je-B5H">
-                                            <rect key="frame" x="30" y="235" width="380" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                            <connections>
-                                                <action selector="actionCustomerQuerySearch:" destination="-1" eventType="editingChanged" id="f8Z-fA-QC6"/>
-                                                <action selector="didEndEditing:" destination="-1" eventType="editingDidEnd" id="UDh-1p-B06"/>
-                                            </connections>
-                                        </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NbO-1G-Uef" userLabel="btnSysCat">
-                                            <rect key="frame" x="830" y="40" width="30" height="30"/>
+                                            <rect key="frame" x="380" y="170" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" backgroundImage="ic_cbx-1.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -274,28 +264,6 @@
                                                 <action selector="actionEndDateSelect:" destination="-1" eventType="touchUpInside" id="Xqk-Q8-ja2"/>
                                             </connections>
                                         </button>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mức độ cơ hội" minimumFontSize="17" id="A9A-6M-e2o">
-                                            <rect key="frame" x="30" y="170" width="380" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="L3g-Xw-41K" userLabel="btnSysCat">
-                                            <rect key="frame" x="380" y="170" width="30" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" backgroundImage="ic_cbx-1.png">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="actionChooseLevel:" destination="-1" eventType="touchUpInside" id="ewU-nV-mwu"/>
-                                            </connections>
-                                        </button>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mức độ cơ hội" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3Ih-d9-cFv">
-                                            <rect key="frame" x="30" y="140" width="145" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ghi chú" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="J2Y-Gd-8eG">
                                             <rect key="frame" x="480" y="205" width="123" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -325,10 +293,31 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" id="Yms-Z6-5Rf" customClass="MDSearchBar">
-                                            <rect key="frame" x="30" y="267" width="380" height="45"/>
+                                            <rect key="frame" x="30" y="235" width="380" height="30"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="0.88627457620000005" green="0.4156863093" blue="0.43529415129999999" alpha="1" colorSpace="deviceRGB"/>
                                         </view>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mức độ cơ hội" minimumFontSize="17" id="A9A-6M-e2o">
+                                            <rect key="frame" x="480" y="40" width="380" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="L3g-Xw-41K" userLabel="btnSysCat">
+                                            <rect key="frame" x="830" y="40" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" backgroundImage="ic_cbx-1.png">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="actionChooseLevel:" destination="-1" eventType="touchUpInside" id="ewU-nV-mwu"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mức độ cơ hội" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3Ih-d9-cFv">
+                                            <rect key="frame" x="480" y="10" width="145" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>

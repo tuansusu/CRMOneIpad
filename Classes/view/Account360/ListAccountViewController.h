@@ -7,11 +7,13 @@
 //
 
 #import "BaseViewController.h"
-#import "EditAccountLeadViewController.h"
-#import "EditBussinessLeadViewController.h"
+#import "EditAccount360ViewController.h"
+#import "EditBussiness360ViewController.h"
 #import "SelectIndexViewController.h"
 #import "DetailLeadViewController.h"
-#import "AccountLeadCell.h"
+#import "Account360Cell.h"
+#import "Detail360ViewController.h"
+#import "Follow360ViewController.h"
 
 #import "SearchAdvanceLeadViewController.h"
 
@@ -21,7 +23,7 @@
 
 #import "TestMapViewController.h"
 
-@interface ListAccountViewController : BaseViewController<SelectIndexDelegate, UISearchBarDelegate, UISearchDisplayDelegate, AccountLeadCellDelegate>
+@interface ListAccountViewController : BaseViewController<SelectIndexDelegate, UISearchBarDelegate, UISearchDisplayDelegate, Account360CellDelegate>
 
 //Header
 @property (weak, nonatomic) IBOutlet UIView *headerViewBar;
@@ -38,6 +40,7 @@
 
 @property (weak, nonatomic) IBOutlet UISearchBar *txtSearchBar;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnAdd;
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 

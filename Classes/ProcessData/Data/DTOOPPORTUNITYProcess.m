@@ -115,17 +115,28 @@ DTOOPPORTUNITY_updatedDate, //VARCHAR
 -(NSDictionary*) getById:(NSString*)itemId {
     
     
-    NSArray *allFields =[NSArray arrayWithObjects:DTOOPPORTUNITY_clientOpportunityId, DTOCONTACT_fullName, DTOOPPORTUNITY_code, DTOOPPORTUNITY_name, DTOOPPORTUNITY_endDate, DTOOPPORTUNITY_startDate
-                         ,@"Level",@"NextTask",@"Status",DTOOPPORTUNITY_successPercent,@"Account", nil];
+    NSArray *allFields =[NSArray arrayWithObjects:DTOOPPORTUNITY_id,DTOOPPORTUNITY_clientOpportunityId,DTOOPPORTUNITY_name,DTOOPPORTUNITY_startDate,DTOOPPORTUNITY_endDateReal,DTOOPPORTUNITY_endDate
+                         ,@"Level",@"NextTaskName",@"Type",@"StatusName",@"Customer",@"CustomerId",@"Description",@"ResultDescription",@"accountId",@"leadId",@"status",@"nextTask",@"opportunityLevelId",@"TypeCode",nil];
     
-    NSString *query = [NSString stringWithFormat: @"Select op.clientOpportunityId,fullName,op.code,op.name,endDate,startDate,catLevel.name as Level,catTask.name as NextTask,catStatus.name as Status,successPercent,ac.name as Account,catLevel.name as Level \
+    NSString *query = [NSString stringWithFormat: @"Select op.id,op.clientOpportunityId,op.name,startDate,endDateReal,endDate,catLevel.name as Level,catTask.name as NextTask,catType.name as Type,catStatus.name as Status \
+                       ,case  \
+                            when op.accountId is null then l.name  \
+                            when op.leadId is null then ac.name \
+                       end as Customer \
+                       ,case \
+                            when op.accountId is null then l.leadId \
+                            when op.leadId is null then ac.accountId \
+                       end as CustomerId,op.description as Description,op.resultDescription as ResultDescription \
+                       ,op.accountId,op.leadId,op.status,op.nextTask,op.opportunityLevelId,op.type \
                        from  dtoopportunity op \
                        left join dtoopportunitycontact opc on op.clientOpportunityId=opc.clientOpportunityContactId \
                        left join dtocontact con on opc.clientOpportunityContactId = con.clientContactId \
                        left join dtosyscat catLevel on op.opportunityLevelId = catLevel.sysCatId \
                        left join dtosyscat catTask on op.nextTask = catTask.sysCatId \
                        left join dtosyscat catStatus on op.status = catStatus.value and catStatus.sysCatTypeId = 10 \
+                       left join dtosyscat catType on op.type = catType.value and catType.sysCatTypeId = 9 \
                        left join dtoaccount ac on op.accountId = ac.accountId \
+                       left join dtolead l on op.leadId = l.leadId \
                        Where op.id = %@",itemId ];
     
     NSMutableArray *array = [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:nil];
@@ -154,5 +165,12 @@ DTOOPPORTUNITY_updatedDate, //VARCHAR
 -(NSInteger) getClientId {
     return [super getMaxClientIdWithTableName:TableName_DTOOPPORTUNTITY withField:DTOOPPORTUNITY_clientOpportunityId];
 }
-
+-(BOOL) deleteEntity:(NSString *)opportunityId{
+    
+    NSMutableDictionary *dicFieldSet = [[NSMutableDictionary alloc]initWithObjects:[NSArray arrayWithObjects:@"0", nil] forKeys:[NSArray arrayWithObjects:DTOOPPORTUNITY_isActive, nil]];
+    NSMutableDictionary *dicFieldCondition = [[NSMutableDictionary alloc]initWithObjects:[NSArray arrayWithObjects:opportunityId, nil] forKeys:[NSArray arrayWithObjects:DTOOPPORTUNITY_id, nil]];
+    
+    
+    return [super updateToTableName:TableName_DTOOPPORTUNTITY withFields:dicFieldSet withCondition:dicFieldCondition];
+}
 @end

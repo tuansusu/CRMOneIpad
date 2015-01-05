@@ -108,7 +108,7 @@
 -(NSMutableArray*) filter{
 //    NSArray *allFields =[NSArray arrayWithObjects:DTOLEAD_accountId, DTOLEAD_address, DTOLEAD_companyPhone, DTOLEAD_email, DTOLEAD_mobile, DTOLEAD_name,DTOLEAD_updatedBy,DTOLEAD_code, DTOLEAD_leadId, DTOLEAD_leadType,DTOLEAD_clientLeadId, DTOLEAD_id, nil];
     
-    NSArray *allFields =[NSArray arrayWithObjects:DTOLEAD_accountId, DTOLEAD_address, DTOLEAD_companyPhone, DTOLEAD_email, DTOLEAD_mobile, DTOLEAD_name,DTOLEAD_updatedBy,DTOLEAD_code, DTOLEAD_leadId, DTOLEAD_leadType,DTOLEAD_clientLeadId, DTOLEAD_lat, DTOLEAD_lon, DTOLEAD_id, nil];
+    NSArray *allFields =[NSArray arrayWithObjects:DTOLEAD_accountId, DTOLEAD_address, DTOLEAD_companyPhone, DTOLEAD_email, DTOLEAD_mobile, DTOLEAD_name,DTOLEAD_updatedBy,DTOLEAD_code, DTOLEAD_leadId, DTOLEAD_leadType,DTOLEAD_clientLeadId, DTOLEAD_lat, DTOLEAD_lon, DTOLEAD_id,DTOLEAD_clientLeadId, nil];
     
     NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where status = 1 order by %@ desc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOACCOUNTLEAD, DTOLEAD_updatedDate];
     

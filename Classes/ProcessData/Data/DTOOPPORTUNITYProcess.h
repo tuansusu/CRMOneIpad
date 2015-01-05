@@ -17,4 +17,5 @@
 -(BOOL) insertToDBWithEntity:(NSMutableDictionary*) entity;
 -(NSDictionary*) getDataWithKey : (NSString*) inputKey withValue : (NSString*) inputValue;
 -(NSInteger) getClientId ;
+-(BOOL) deleteEntity:(NSString *)opportunityId;
 @end

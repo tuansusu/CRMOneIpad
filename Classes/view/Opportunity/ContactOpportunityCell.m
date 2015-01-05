@@ -1,13 +1,12 @@
 //
-//  ContactOpportunityCell.m
+//  ContactLeadCell.m
 //  OfficeOneMB
 //
-//  Created by viettel on 12/18/14.
+//  Created by viettel on 12/2/14.
 //
 //
 
 #import "ContactOpportunityCell.h"
-
 //remove
 #import "StringUtil.h"
 #import "GraphicName.h"
@@ -50,6 +49,7 @@
     
     _dicData = dicData;
     
+    NSLog(@"Avartar:%@",[dicData objectForKey:DTOCONTACT_avartar]);
     
     if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOCONTACT_fullName]]) {
         self.lbName.text = @"";
@@ -82,7 +82,10 @@
     }else{
         self.lbAddress.text = [dicData objectForKey:DTOCONTACT_address];
     }
-    
+    NSString *avartar = [dicData objectForKey:DTOCONTACT_avartar];
+    if (![StringUtil stringIsEmpty:avartar]) {
+        _avartar.image=[UIImage imageWithData:[NSData dataWithContentsOfFile:avartar]];
+    }
     switch (smgSelect) {
         case 1:
         {

@@ -26,7 +26,7 @@
 @property (nonatomic, strong) MDSearchBar * searchBarView;
 @property (nonatomic, strong) MDSearchView * searchView;
 @property (nonatomic, readwrite) BOOL active;
-
+@property (nonatomic, readwrite) BOOL isValid;
 
 
 

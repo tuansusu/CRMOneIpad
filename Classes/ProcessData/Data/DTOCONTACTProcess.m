@@ -40,7 +40,7 @@
              DTOCONTACT_roleDescription, //roleDescription" //VARCHAR
              DTOCONTACT_sex, //sex" //VARCHAR
              DTOCONTACT_updatedDate, //updatedDate" //VARCHAR
-             DTOCONTACT_id]; //id" //INTEGER
+             DTOCONTACT_id,DTOCONTACT_avartar,nil]; //id" //INTEGER
 }
 
 
@@ -117,9 +117,11 @@
 
 //filter with lay danh sach lien he cua 1 cai khach hang dau moi
 -(NSMutableArray*) filterWithClientLeaderId: (NSString*) strValue{
-    NSArray *allFields =[NSArray arrayWithObjects:DTOCONTACT_id, DTOCONTACT_fullName, DTOCONTACT_address, DTOCONTACT_birthday, DTOCONTACT_mobile, DTOCONTACT_position, DTOCONTACT_clientContactId, nil];
+    NSArray *allFields =[NSArray arrayWithObjects:DTOCONTACT_id,DTOCONTACT_fullName,DTOCONTACT_address,DTOCONTACT_birthday,DTOCONTACT_mobile,DTOCONTACT_position,DTOCONTACT_identifiedNumber,DTOCONTACT_identifiedIssueDate,DTOCONTACT_identifiedIssueArea,DTOCONTACT_email,DTOCONTACT_roleDescription,DTOCONTACT_clientContactId,DTOCONTACT_avartar, nil];
     
-    NSString *query = [NSString stringWithFormat:@"SELECT dtocontact.id,fullName,address,birthday,mobile,position,dtocontact.clientContactId FROM dtoaccountcontact inner join dtocontact on clientAccountId = dtocontact.clientContactId where clientLeadId = ? order by dtoaccountcontact.updatedDate  desc"];
+    NSString *query = [NSString stringWithFormat:@"SELECT dtocontact.id,fullName,address,birthday,mobile,position,identifiedNumber,identifiedIssueDate,identifiedIssueArea,email,roleDescription,dtocontact.clientContactId,avartar FROM dtoaccountcontact inner join dtocontact on clientAccountId = dtocontact.clientContactId where clientLeadId = ? and dtocontact.isactive = 1 order by dtoaccountcontact.updatedDate  desc"];
+    
+    NSLog(@"contact_query:%@",query);
     
    
     return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:[NSArray arrayWithObjects:strValue, nil]];
@@ -129,9 +131,9 @@
 
 //filter with lay danh sach lien he cua 1 co hoi ban hang
 -(NSMutableArray*) filterWithClientOpportunityId: (NSString*) strValue{
-    NSArray *allFields =[NSArray arrayWithObjects:DTOCONTACT_id, DTOCONTACT_fullName, DTOCONTACT_address, DTOCONTACT_birthday, DTOCONTACT_mobile, DTOCONTACT_position, DTOCONTACT_clientContactId,DTOCONTACT_email, nil];
+    NSArray *allFields =[NSArray arrayWithObjects:DTOCONTACT_id, DTOCONTACT_fullName, DTOCONTACT_address, DTOCONTACT_birthday, DTOCONTACT_mobile, DTOCONTACT_position, DTOCONTACT_clientContactId,DTOCONTACT_email,DTOCONTACT_avartar, nil];
     
-    NSString *query = [NSString stringWithFormat:@"SELECT \ c.id,c.fullName,c.address,c.birthday,c.mobile,c.position,c.clientContactId,c.email \
+    NSString *query = [NSString stringWithFormat:@"SELECT \ c.id,c.fullName,c.address,c.birthday,c.mobile,c.position,c.clientContactId,c.email,c.avartar \
                        FROM dtoopportunitycontact oc \
                        inner join dtocontact c \
                        on oc.clientContactId = c.clientContactId \

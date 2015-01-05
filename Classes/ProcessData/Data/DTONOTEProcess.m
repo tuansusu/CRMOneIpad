@@ -41,7 +41,7 @@
 
 -(BOOL) deleteEntity:(NSString *)contactId{
     
-    NSMutableDictionary *dicFieldSet = [[NSMutableDictionary alloc]initWithObjects:[NSArray arrayWithObjects:@"1", nil] forKeys:[NSArray arrayWithObjects:DTONOTE_isActive, nil]];
+    NSMutableDictionary *dicFieldSet = [[NSMutableDictionary alloc]initWithObjects:[NSArray arrayWithObjects:@"0", nil] forKeys:[NSArray arrayWithObjects:DTONOTE_isActive, nil]];
     NSMutableDictionary *dicFieldCondition = [[NSMutableDictionary alloc]initWithObjects:[NSArray arrayWithObjects:contactId, nil] forKeys:[NSArray arrayWithObjects:DTONOTE_id, nil]];
     
     
@@ -122,13 +122,23 @@
 -(NSMutableArray*) filterWithClientLeaderId: (NSString*) strValue{
      NSArray *allFields =[NSArray arrayWithObjects:DTONOTE_id, DTONOTE_content, DTONOTE_title, DTONOTE_noteId, DTONOTE_contentFormated,DTOATTACHMENT_clientObjectId, DTONOTE_createdDate, DTONOTE_updatedDate,DTONOTE_clientNoteId, nil];
     
-    NSString *query = [NSString stringWithFormat:@"SELECT %@ FROM %@ where clientObjectId = ? order by updatedDate  desc", [allFields componentsJoinedByString:@"," ], TABLENAME_DTONOTE];
+    NSString *query = [NSString stringWithFormat:@"SELECT %@ FROM %@ where isActive=1 and objectType='Lead' and clientObjectId = ? order by updatedDate  desc", [allFields componentsJoinedByString:@"," ], TABLENAME_DTONOTE];
     
+    NSLog(@"query:%@",query);
     
     return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:[NSArray arrayWithObjects:strValue, nil]];
     
     
 }
-
+//filter with lay danh sach lien he cua 1 cai khach hang dau moi
+-(NSMutableArray*) filterWithClient360Id: (NSString*) strValue{
+    NSArray *allFields =[NSArray arrayWithObjects:DTONOTE_id, DTONOTE_content, DTONOTE_title, DTONOTE_noteId, DTONOTE_contentFormated,DTOATTACHMENT_clientObjectId, DTONOTE_createdDate, DTONOTE_updatedDate,DTONOTE_clientNoteId, nil];
+    
+    NSString *query = [NSString stringWithFormat:@"SELECT %@ FROM %@ where isActive=1 and objectType='360' and clientObjectId = ?  order by updatedDate  desc", [allFields componentsJoinedByString:@"," ], TABLENAME_DTONOTE];
+    
+    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:[NSArray arrayWithObjects:strValue, nil]];
+    
+    
+}
 
 @end

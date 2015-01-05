@@ -1,11 +1,10 @@
 //
-//  EditContactOpportunityViewController.h
+//  EditContactLeadViewController.h
 //  OfficeOneMB
 //
-//  Created by viettel on 12/17/14.
+//  Created by ADMIN on 12/1/14.
 //
 //
-
 
 #import "BaseViewController.h"
 #import "CalendarPickerViewController.h"
@@ -31,6 +30,8 @@
 //Header
 @property (weak, nonatomic) IBOutlet UIView *headerViewBar;
 @property (weak, nonatomic) IBOutlet UILabel *fullNameLB;
+
+@property (weak, nonatomic) IBOutlet UILabel *lbTitle;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *btnHome;

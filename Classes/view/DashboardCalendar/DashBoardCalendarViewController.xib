@@ -1,52 +1,243 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6250" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DashBoardCalendarViewController">
             <connections>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="btnChangeMode" destination="seC-5Z-eMB" id="T7c-6I-LS9"/>
+                <outlet property="btnToday" destination="pUu-QN-sdo" id="sev-N8-n0M"/>
+                <outlet property="calendarContentView" destination="vqC-Et-zv7" id="7hx-c3-98h"/>
+                <outlet property="calendarMenuView" destination="NPc-sU-6fY" id="ZCX-KW-iCq"/>
+                <outlet property="view" destination="y1j-k4-WL9" id="G4C-W1-pa2"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+        <view contentMode="scaleToFill" id="y1j-k4-WL9">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" id="F9r-yd-aWy" userLabel="headerView">
-                    <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xvg-G8-Emi">
+                    <rect key="frame" x="0.0" y="20" width="600" height="50"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jOD-UP-HyM">
-                            <rect key="frame" x="707" y="0.0" width="61" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e93-TA-Iw2">
+                            <rect key="frame" x="532" y="0.0" width="68" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="68" id="FFP-74-Czd"/>
+                            </constraints>
                             <state key="normal" image="icon_close.png">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="homeBack:" destination="-1" eventType="touchUpInside" id="Gik-OB-i4y"/>
+                            </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lịch hoạt động" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ibi-T8-ika">
-                            <rect key="frame" x="222" y="14" width="325" height="21"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lịch hoạt động" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LnL-9n-rPq">
+                            <rect key="frame" x="171" y="14" width="259" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="259" id="J6t-iC-eel"/>
+                                <constraint firstAttribute="height" constant="21" id="tkJ-SO-ndt"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="cfW-ra-Qfu"/>
+                        <constraint firstAttribute="centerX" secondItem="LnL-9n-rPq" secondAttribute="centerX" constant="-0.5" id="fYy-zd-wNS"/>
+                        <constraint firstAttribute="centerY" secondItem="LnL-9n-rPq" secondAttribute="centerY" constant="0.5" id="feR-AQ-eNk"/>
+                        <constraint firstAttribute="bottom" secondItem="e93-TA-Iw2" secondAttribute="bottom" id="k47-ov-g24"/>
+                        <constraint firstItem="e93-TA-Iw2" firstAttribute="top" secondItem="xvg-G8-Emi" secondAttribute="top" id="lpM-1h-uZZ"/>
+                        <constraint firstAttribute="trailing" secondItem="e93-TA-Iw2" secondAttribute="trailing" id="lte-6L-Bdd"/>
+                    </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ve6-WF-N03">
+                    <rect key="frame" x="269" y="275" width="61" height="50"/>
+                    <state key="normal" image="1521D8D0-C261-4980-909E-6F59E737DDE1">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NPc-sU-6fY" customClass="JTCalendarMenuView">
+                    <rect key="frame" x="0.0" y="70" width="600" height="50"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Cr2-ta-J0O"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vqC-Et-zv7" customClass="JTCalendarContentView">
+                    <rect key="frame" x="0.0" y="120" width="600" height="300"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="300" id="eri-jj-vLx"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pUu-QN-sdo">
+                    <rect key="frame" x="10" y="80" width="100" height="30"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="VjY-XM-YX5"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="Today">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didGoTodayTouch" destination="-1" eventType="touchUpInside" id="plO-hA-pBw"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="seC-5Z-eMB">
+                    <rect key="frame" x="492" y="80" width="100" height="30"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="bxg-7u-1wH"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="Change mode">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didChangeModeTouch" destination="-1" eventType="touchUpInside" id="Z1c-F7-e0D"/>
+                    </connections>
+                </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <point key="canvasLocation" x="255" y="315"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="seC-5Z-eMB" firstAttribute="baseline" secondItem="pUu-QN-sdo" secondAttribute="baseline" id="2jj-fP-Vjl"/>
+                <constraint firstItem="NPc-sU-6fY" firstAttribute="top" secondItem="xvg-G8-Emi" secondAttribute="bottom" id="5hg-KK-iRL"/>
+                <constraint firstAttribute="trailingMargin" secondItem="NPc-sU-6fY" secondAttribute="trailing" id="6AX-Gk-tnq"/>
+                <constraint firstAttribute="trailing" secondItem="vqC-Et-zv7" secondAttribute="trailing" id="7zL-VT-sy5"/>
+                <constraint firstItem="seC-5Z-eMB" firstAttribute="centerY" secondItem="NPc-sU-6fY" secondAttribute="centerY" id="A3B-JC-FRb"/>
+                <constraint firstAttribute="trailing" secondItem="NPc-sU-6fY" secondAttribute="trailing" id="ABk-sx-BNF"/>
+                <constraint firstItem="xvg-G8-Emi" firstAttribute="trailing" secondItem="NPc-sU-6fY" secondAttribute="trailing" id="EQ2-k7-ZIs"/>
+                <constraint firstAttribute="trailing" secondItem="vqC-Et-zv7" secondAttribute="trailing" id="FF3-RB-he3"/>
+                <constraint firstItem="NPc-sU-6fY" firstAttribute="leading" secondItem="y1j-k4-WL9" secondAttribute="leadingMargin" id="FZR-G8-I1q"/>
+                <constraint firstItem="vqC-Et-zv7" firstAttribute="top" secondItem="NPc-sU-6fY" secondAttribute="bottom" id="N4c-hT-mLd"/>
+                <constraint firstItem="seC-5Z-eMB" firstAttribute="trailing" secondItem="y1j-k4-WL9" secondAttribute="trailingMargin" id="SbM-2T-Dv7"/>
+                <constraint firstAttribute="trailing" secondItem="NPc-sU-6fY" secondAttribute="trailing" id="TKl-qC-A18"/>
+                <constraint firstItem="vqC-Et-zv7" firstAttribute="leading" secondItem="y1j-k4-WL9" secondAttribute="leading" id="VE3-uR-qRz"/>
+                <constraint firstItem="NPc-sU-6fY" firstAttribute="leading" secondItem="y1j-k4-WL9" secondAttribute="leading" id="Yb8-5L-odX"/>
+                <constraint firstItem="xvg-G8-Emi" firstAttribute="leading" secondItem="NPc-sU-6fY" secondAttribute="leading" id="YmF-pd-RLg"/>
+                <constraint firstItem="vqC-Et-zv7" firstAttribute="leading" secondItem="y1j-k4-WL9" secondAttribute="leading" id="ZcS-oG-5lx"/>
+                <constraint firstItem="NPc-sU-6fY" firstAttribute="leading" secondItem="y1j-k4-WL9" secondAttribute="leading" id="dAe-Pm-hBW"/>
+                <constraint firstItem="vqC-Et-zv7" firstAttribute="leading" secondItem="y1j-k4-WL9" secondAttribute="leading" id="hPR-l2-Yhp"/>
+                <constraint firstAttribute="trailingMargin" secondItem="vqC-Et-zv7" secondAttribute="trailing" id="hYr-OJ-VL7"/>
+                <constraint firstItem="pUu-QN-sdo" firstAttribute="leading" secondItem="y1j-k4-WL9" secondAttribute="leading" constant="10" id="mRY-mE-r2j"/>
+                <constraint firstItem="NPc-sU-6fY" firstAttribute="top" secondItem="y1j-k4-WL9" secondAttribute="top" constant="70" id="qg4-xf-qsE"/>
+                <constraint firstAttribute="trailing" secondItem="vqC-Et-zv7" secondAttribute="trailing" id="sN3-Tm-9L4"/>
+                <constraint firstItem="vqC-Et-zv7" firstAttribute="leading" secondItem="y1j-k4-WL9" secondAttribute="leadingMargin" id="zO0-UE-Bwo"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="6AX-Gk-tnq"/>
+                    <exclude reference="ABk-sx-BNF"/>
+                    <exclude reference="FZR-G8-I1q"/>
+                    <exclude reference="dAe-Pm-hBW"/>
+                    <exclude reference="FF3-RB-he3"/>
+                    <exclude reference="VE3-uR-qRz"/>
+                    <exclude reference="hYr-OJ-VL7"/>
+                    <exclude reference="zO0-UE-Bwo"/>
+                </mask>
+            </variation>
         </view>
     </objects>
     <resources>
+        <image name="1521D8D0-C261-4980-909E-6F59E737DDE1" width="24" height="24">
+            <mutableData key="keyedArchiveRepresentation">
+YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
+GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
+c1dOU0NvbG9ygAKADRIgwAAAgAOAC1h7MjQsIDI0fdIVChYYWk5TLm9iamVjdHOhF4AEgArSFQoaHaIb
+HIAFgAaACRAA0iAKISJfEBROU1RJRkZSZXByZXNlbnRhdGlvboAHgAhPERFuTU0AKgAACQgAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFBQUGISEhJC4uLjMlJSUpCQkJCgAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARERESXV1d
+couMjMedn5/6n6Cg/5+goP+foKD/np+f/YyNjchjY2N7GxsbHQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgICA15fX3Wam5vyn5+f/5+fn/+fn5//n5+f/5+fn/+fn5//n5+f
+/5+fn/+fn5//nJ2d+mxubo0JCQkKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBARhoaG
+vp6fn/+en5//np+f/56fn/+en5//np+f/56fn/+en5//np+f/56fn/+en5//np+f/56fn/+RkZHXHx8f
+IgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkJCQqLi4vMnZ6e/52env+dnp7/nZ6e/56env+enp7/nZ6e
+/52env+enp7/nZ6e/52env+dnp7/nZ6e/52env+enp7/lJWV5CAhISQAAAAAAAAAAAAAAAAAAAAAAAAA
+AXt7e6mcnZ3/nJ2d/52dnf+cnZ3/nJ2d/5ydnf+cnZ3/nJ2d/5ydnf+dnZ3/nJ2d/5ydnf+cnZ3/nJ2d
+/5ydnf+cnZ3/nJ2d/42OjtIICAgJAAAAAAAAAAAAAAAATU5OX5ycnP+cnJz/nJyc/5ycnP+cnJz/nJyc
+/5ycnP+cnJz/nJyc/5ycnP+cnJz/nJyc/5ycnP+cnJz/nJyc/5ycnP+cnJz/nJyc/5ycnP9hYWF8AAAA
+AAAAAAADAwMEkJCQ3pucnP+bnJz/m5yc/5ucnP+bnJz/m5yc/5ydnf+bnJz/m5yc/5ucnP+bnJz/m5yc
+/5ydnf+bnJz/m5yc/5ucnP+bnJz/m5yc/5ucnP+Wl5fwEBAQEgAAAAA+Pz9Lmpub/5qbm/+am5v/mpub
+/5qbm/+am5v/np+f/+bm5v+8vLz/mpub/5qbm/+am5v/urq6/+fp6P+foKD/mpub/5qbm/+am5v/mpub
+/5qbm/+am5v/WVpacgAAAABvcHCYmpqa/5qamv+ampr/mpqa/5qamv+ampr/2tra///////+/v7/urq6
+/5qamv+4uLj//Pz8///////d3d3/mpqa/5qamv+ampr/mpqa/5qamv+ampr/g4ODwAAAAACGiYjOl5qa
+/5eamv+Xmpr/mZqa/5eamv+Xmpr/pKam//Ly8v///////Pz8/83Nzf/8/Pz///////T09P+lp6f/l5qa
+/5eamv+Xmpr/mZqa/5eamv+Xmpr/lJWV9QAAAACRk5Psl5mZ/5eZmf+XmZn/l5mZ/5eZmf+XmZn/l5mZ
+/6Wmpv/y9PT/////////////////9fX1/6anp/+XmZn/l5mZ/5eZmf+XmZn/l5mZ/5eZmf+XmZn/l5mZ
+/xESEhSSk5PwlpeX/5aXl/+Wl5f/l5eX/5aXl/+Wl5f/lpeX/5aXl/+8vb3/////////////////vr+/
+/5aXl/+Wl5f/lpeX/5aXl/+Wl5f/lpeX/5aXl/+Wl5f/l5eX/xoaGh6Njo7llZeX/5WXl/+Vl5f/lZeX
+/5WXl/+Vl5f/lZeX/66wsP/7+/v///////7+/v///////Pz8/7Kzs/+Vl5f/lZeX/5WXl/+Vl5f/lZeX
+/5WXl/+Vl5f/lZeX/wkKCgt9gIC/lJaW/5SWlv+Ulpb/lJaW/5SWlv+Ulpb/ra6u//r7+///////9vb2
+/7W2tv/29vb///////r7+/+vsLD/lJaW/5SWlv+Vlpb/lJaW/5SWlv+Ulpb/jY6O6AAAAABfYGCCk5WV
+/5OVlf+TlZX/k5WV/5OVlf+TlZX/1tfX///////39/f/p6io/5OVlf+lp6f/9vb2///////T09P/k5WV
+/5OVlf+TlJX/lJWW/5OVlf+TlZX/dHV1qgAAAAAkJSUskpSU/5KUlP+SlJT/kpSU/5OUlP+TlJT/lJaW
+/9fX1/+nqqn/kpSU/5KUlP+SlJT/p6en/9HT0/+TlZX/k5SU/5KUlP+SlJT/kpSU/5OUlP+SlJT/QkND
+VAAAAAAAAAAAenx7u5KTlP+SlJT/kpSU/5KUlP+SlJT/k5SU/5KUlP+SlJT/kpSU/5KUlP+SlJT/kpSU
+/5KUlP+SlJT/kpSU/5KUlP+SlJT/kpSU/5KUlP+Eh4bVAgICAwAAAAAAAAAAJygoMJCSkvqRk5P/kZOT
+/5GTk/+Rk5P/kZOT/5GTk/+Rk5P/kZOT/5GTk/+Rk5P/kZOT/5KTk/+Rk5P/kpOT/5GTk/+Sk5P/kZOT
+/5GTk/89Pj5PAAAAAAAAAAAAAAAAAAAAAFNVVXOQkpL/kJKS/5CSkv+QkpL/kJKS/5CSkv+QkpL/kJKS
+/5CSkv+QkpL/kZKS/5CSkv+QkpL/kJKS/5CSkv+QkpL/kJKS/2ttbZ0AAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAABjZGSOj5KS/4+Skv+PkpL/j5KS/4+Skv+PkpL/j5KS/4+Skv+PkpL/kJKS/5CSkv+PkpL/j5KS
+/4+Skv+PkpL/dHd2swUFBQYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUVNTcI2OjviOkZH/jpGR
+/46Rkf+OkZH/jpGR/46Rkf+OkZH/jpGR/46Rkf+OkZH/jpGR/42QkP5jZGSOAgICAwAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACIiIipxc3OwjY+P/Y2QkP+NkJD/jZCQ/42QkP+NkJD/jZCQ
+/42QkP+NkJD/eHx8wi4vLzsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAFxcXHExNTWhucXCqen18xYGEhNt6fX3JcXNzsFNVVXUgISEoAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAADgEAAAMAAAABABgAAAEBAAMAAAABABgAAAECAAMAAAAEAAAJtgEDAAMA
+AAABAAEAAAEGAAMAAAABAAIAAAERAAQAAAABAAAACAESAAMAAAABAAEAAAEVAAMAAAABAAQAAAEWAAMA
+AAABABgAAAEXAAQAAAABAAAJAAEcAAMAAAABAAEAAAFSAAMAAAABAAEAAAFTAAMAAAAEAAAJvodzAAcA
+AAeoAAAJxgAAAAAACAAIAAgACAABAAEAAQABAAAHqGFwcGwCIAAAbW50clJHQiBYWVogB9kAAgAZAAsA
+GgALYWNzcEFQUEwAAAAAYXBwbAAAAAAAAAAAAAAAAAAAAAAAAPbWAAEAAAAA0y1hcHBsAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALZGVzYwAAAQgAAABvZHNjbQAAAXgA
+AAVsY3BydAAABuQAAAA4d3RwdAAABxwAAAAUclhZWgAABzAAAAAUZ1hZWgAAB0QAAAAUYlhZWgAAB1gA
+AAAUclRSQwAAB2wAAAAOY2hhZAAAB3wAAAAsYlRSQwAAB2wAAAAOZ1RSQwAAB2wAAAAOZGVzYwAAAAAA
+AAAUR2VuZXJpYyBSR0IgUHJvZmlsZQAAAAAAAAAAAAAAFEdlbmVyaWMgUkdCIFByb2ZpbGUAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG1sdWMAAAAAAAAAHgAAAAxz
+a1NLAAAAKAAAAXhockhSAAAAKAAAAaBjYUVTAAAAJAAAAchwdEJSAAAAJgAAAex1a1VBAAAAKgAAAhJm
+ckZVAAAAKAAAAjx6aFRXAAAAFgAAAmRpdElUAAAAKAAAAnpuYk5PAAAAJgAAAqJrb0tSAAAAFgAAAshj
+c0NaAAAAIgAAAt5oZUlMAAAAHgAAAwBkZURFAAAALAAAAx5odUhVAAAAKAAAA0pzdlNFAAAAJgAAAqJ6
+aENOAAAAFgAAA3JqYUpQAAAAGgAAA4hyb1JPAAAAJAAAA6JlbEdSAAAAIgAAA8ZwdFBPAAAAJgAAA+hu
+bE5MAAAAKAAABA5lc0VTAAAAJgAAA+h0aFRIAAAAJAAABDZ0clRSAAAAIgAABFpmaUZJAAAAKAAABHxw
+bFBMAAAALAAABKRydVJVAAAAIgAABNBhckVHAAAAJgAABPJlblVTAAAAJgAABRhkYURLAAAALgAABT4A
+VgFhAGUAbwBiAGUAYwBuAP0AIABSAEcAQgAgAHAAcgBvAGYAaQBsAEcAZQBuAGUAcgBpAQ0AawBpACAA
+UgBHAEIAIABwAHIAbwBmAGkAbABQAGUAcgBmAGkAbAAgAFIARwBCACAAZwBlAG4A6AByAGkAYwBQAGUA
+cgBmAGkAbAAgAFIARwBCACAARwBlAG4A6QByAGkAYwBvBBcEMAQzBDAEOwRMBD0EOAQ5ACAEPwRABD4E
+RAQwBDkEOwAgAFIARwBCAFAAcgBvAGYAaQBsACAAZwDpAG4A6QByAGkAcQB1AGUAIABSAFYAQpAadSgA
+IABSAEcAQgAggnJfaWPPj/AAUAByAG8AZgBpAGwAbwAgAFIARwBCACAAZwBlAG4AZQByAGkAYwBvAEcA
+ZQBuAGUAcgBpAHMAawAgAFIARwBCAC0AcAByAG8AZgBpAGzHfLwYACAAUgBHAEIAINUEuFzTDMd8AE8A
+YgBlAGMAbgD9ACAAUgBHAEIAIABwAHIAbwBmAGkAbAXkBegF1QXkBdkF3AAgAFIARwBCACAF2wXcBdwF
+2QBBAGwAbABnAGUAbQBlAGkAbgBlAHMAIABSAEcAQgAtAFAAcgBvAGYAaQBsAMEAbAB0AGEAbADhAG4A
+bwBzACAAUgBHAEIAIABwAHIAbwBmAGkAbGZukBoAIABSAEcAQgAgY8+P8GWHTvZOAIIsACAAUgBHAEIA
+IDDXMO0w1TChMKQw6wBQAHIAbwBmAGkAbAAgAFIARwBCACAAZwBlAG4AZQByAGkAYwOTA7UDvQO5A7oD
+zAAgA8ADwQO/A8YDrwO7ACAAUgBHAEIAUABlAHIAZgBpAGwAIABSAEcAQgAgAGcAZQBuAOkAcgBpAGMA
+bwBBAGwAZwBlAG0AZQBlAG4AIABSAEcAQgAtAHAAcgBvAGYAaQBlAGwOQg4bDiMORA4fDiUOTAAgAFIA
+RwBCACAOFw4xDkgOJw5EDhsARwBlAG4AZQBsACAAUgBHAEIAIABQAHIAbwBmAGkAbABpAFkAbABlAGkA
+bgBlAG4AIABSAEcAQgAtAHAAcgBvAGYAaQBpAGwAaQBVAG4AaQB3AGUAcgBzAGEAbABuAHkAIABwAHIA
+bwBmAGkAbAAgAFIARwBCBB4EMQRJBDgEOQAgBD8EQAQ+BEQEOAQ7BEwAIABSAEcAQgZFBkQGQQAgBioG
+OQYxBkoGQQAgAFIARwBCACAGJwZEBjkGJwZFAEcAZQBuAGUAcgBpAGMAIABSAEcAQgAgAFAAcgBvAGYA
+aQBsAGUARwBlAG4AZQByAGUAbAAgAFIARwBCAC0AYgBlAHMAawByAGkAdgBlAGwAcwBldGV4dAAAAABD
+b3B5cmlnaHQgMjAwNyBBcHBsZSBJbmMuLCBhbGwgcmlnaHRzIHJlc2VydmVkLgBYWVogAAAAAAAA81IA
+AQAAAAEWz1hZWiAAAAAAAAB0TQAAPe4AAAPQWFlaIAAAAAAAAFp1AACscwAAFzRYWVogAAAAAAAAKBoA
+ABWfAAC4NmN1cnYAAAAAAAAAAQHNAABzZjMyAAAAAAABDEIAAAXe///zJgAAB5IAAP2R///7ov///aMA
+AAPcAADAbNIlJicoWiRjbGFzc25hbWVYJGNsYXNzZXNfEBBOU0JpdG1hcEltYWdlUmVwoykqK18QEE5T
+Qml0bWFwSW1hZ2VSZXBaTlNJbWFnZVJlcFhOU09iamVjdNIlJi0uV05TQXJyYXmiLSvSJSYwMV5OU011
+dGFibGVBcnJheaMwLSvTMzQKNTY3V05TV2hpdGVcTlNDb2xvclNwYWNlRDAgMAAQA4AM0iUmOTpXTlND
+b2xvcqI5K9IlJjw9V05TSW1hZ2WiPCtfEA9OU0tleWVkQXJjaGl2ZXLRQEFUcm9vdIABAAgAEQAaACMA
+LQAyADcARgBMAFcAXgBlAHIAeQCBAIMAhQCKAIwAjgCXAJwApwCpAKsArQCyALUAtwC5ALsAvQDCANkA
+2wDdEk8SVBJfEmgSexJ/EpISnRKmEqsSsxK2ErsSyhLOEtUS3RLqEu8S8RLzEvgTABMDEwgTEBMTEyUT
+KBMtAAAAAAAAAgEAAAAAAAAAQgAAAAAAAAAAAAAAAAAAEy8
+</mutableData>
+        </image>
         <image name="icon_close.png" width="24" height="24"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination"/>
-    </simulatedMetricsContainer>
 </document>

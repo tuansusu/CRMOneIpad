@@ -10,6 +10,7 @@
 #import "DTOACCOUNTLEADProcess.h"
 #import "DTOSYSCATProcess.h"
 #import "DataField.h"
+#import "FlowLeadViewController.h"
 
 #define TAG_SELECT_PERSONAL_POSITION 1
 #define TAG_SELECT_PERSONAL_JOB 2
@@ -50,6 +51,7 @@
     //key board
     float heightKeyboard;
     UITextField *_txt;
+    BOOL isPhone,isEmail,isSMS,isMeeting;
 }
 @end
 
@@ -67,6 +69,10 @@
 
 - (void)viewDidLoad
 {
+    isPhone=NO;
+    isEmail=NO;
+    isSMS=NO;
+    isMeeting=NO;
     [super viewDidLoad];
     if ([UIDevice getCurrentSysVer] >= 7.0) {
         [UIDevice updateLayoutInIOs7OrAfter:self];
@@ -169,7 +175,18 @@
     if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_assetTotal]]) {
         _txtTotalassets.text =[_dataSend objectForKey:DTOLEAD_assetTotal];
     }
-    
+    if ([[_dataSend objectForKey:DTOLEAD_disableEmail] isEqualToString:@"1"]) {
+        isEmail=YES;
+        [_btnCheckEmail setImage:[UIImage imageNamed:@"checkbox_ticked.png"] forState:UIControlStateNormal];
+    }
+    if ([[_dataSend objectForKey:DTOLEAD_disablePhone] isEqualToString:@"1"]) {
+        isPhone=YES;
+        [_btnCheckMobile setImage:[UIImage imageNamed:@"checkbox_ticked.png"] forState:UIControlStateNormal];
+    }
+    if ([[_dataSend objectForKey:DTOLEAD_disableSms ] isEqualToString:@"1"]) {
+        isSMS=YES;
+        [_btnCheckSMS setImage:[UIImage imageNamed:@"checkbox_ticked.png"] forState:UIControlStateNormal];
+    }
 }
 
 
@@ -274,7 +291,30 @@
     [dicEntity setObject:[StringUtil trimString:_txtPhone.text]forKey:DTOLEAD_mobile];
     [dicEntity setObject:[StringUtil trimString:_txtCompany.text] forKey:DTOLEAD_organization];
     [dicEntity setObject:[StringUtil trimString:_txtEmail.text] forKey:DTOLEAD_email];
-    
+    if (isPhone) {
+        [dicEntity setObject:@"1" forKey:DTOLEAD_disablePhone];
+    }
+    else{
+        [dicEntity setObject:@"0" forKey:DTOLEAD_disablePhone];
+    }
+    if (isEmail) {
+        [dicEntity setObject:@"1" forKey:DTOLEAD_disableEmail];
+    }
+    else{
+        [dicEntity setObject:@"0" forKey:DTOLEAD_disableEmail];
+    }
+    if (isSMS) {
+        [dicEntity setObject:@"1" forKey:DTOLEAD_disableSms];
+    }
+    else{
+        [dicEntity setObject:@"0" forKey:DTOLEAD_disableSms];
+    }
+    if (isMeeting) {
+        [dicEntity setObject:@"1" forKey:DTOLEAD_disableMeeting];
+    }
+    else{
+        [dicEntity setObject:@"0" forKey:DTOLEAD_disableMeeting];
+    }
     
     
     //xac dinh chuc danh
@@ -698,9 +738,43 @@
     }
 }
 - (IBAction)actionAddAdress:(id)sender {
+//    FlowLeadViewController *detail = [[FlowLeadViewController alloc] initWithNibName:@"FlowLeadViewController" bundle:nil];
+//    detail.dataSend=dicData;
+//    detail.view.frame = CGRectMake(0, 0, 600, 500);
+//    //[InterfaceUtil setBorderWithCornerAndBorder:detail.view :6 :0.2 :nil];
+//    [self presentPopupViewController:detail animationType:1];
+    
+    
 }
 - (IBAction)actionCheckMobile:(id)sender {
+    if(isPhone==NO){
+        isPhone=YES;
+        [_btnCheckMobile setImage:[UIImage imageNamed:@"checkbox_ticked.png"] forState:UIControlStateNormal];
+    }
+    else if(isPhone==YES){
+        isPhone=NO;
+        [_btnCheckMobile setImage:[UIImage imageNamed:@"checkbox_not_ticked.png"] forState:UIControlStateNormal];
+    }
+}
+
+- (IBAction)actionCheckMail:(id)sender {
+    if(isEmail==NO){
+        isEmail=YES;
+        [_btnCheckEmail setImage:[UIImage imageNamed:@"checkbox_ticked.png"] forState:UIControlStateNormal];
+    }
+    else if(isEmail==YES){
+        isEmail=NO;
+        [_btnCheckEmail setImage:[UIImage imageNamed:@"checkbox_not_ticked.png"] forState:UIControlStateNormal];
+    }
 }
 - (IBAction)actionCheckSMS:(id)sender {
+    if (isSMS==NO) {
+        isSMS=YES;
+        [_btnCheckSMS setImage:[UIImage imageNamed:@"checkbox_ticked.png"] forState:UIControlStateNormal];
+    }
+    else if(isSMS==YES){
+        isSMS=NO;
+        [_btnCheckSMS setImage:[UIImage imageNamed: @"checkbox_not_ticked.png"] forState:UIControlStateNormal];
+    }
 }
 @end

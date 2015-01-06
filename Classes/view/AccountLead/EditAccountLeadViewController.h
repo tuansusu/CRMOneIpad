@@ -12,6 +12,9 @@
 #import "SelectIndexViewController.h"
 #import "CMPopTipView.h"
 
+#import "MJDetailViewController.h"
+#import "UIViewController+MJPopupViewController.h"
+
 
 @interface EditAccountLeadViewController : BaseViewController<UITextFieldDelegate, SelectIndexDelegate, CMPopTipViewDelegate>
 
@@ -95,7 +98,7 @@
 
 
 @property (weak, nonatomic) IBOutlet UIButton *btnCheckEmail;
-- (IBAction)actionCheckMobile:(id)sender;
+- (IBAction)actionCheckMail:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnCheckSMS;
 

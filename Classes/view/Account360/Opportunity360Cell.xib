@@ -1,18 +1,54 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="Opportunity360Cell">
-            <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="opportunityCell" id="Vd0-T1-3Va" customClass="Opportunity360Cell">
+            <rect key="frame" x="0.0" y="0.0" width="704" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vd0-T1-3Va" id="oBC-hn-4fN">
+                <rect key="frame" x="0.0" y="0.0" width="704" height="99"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mã - tên cơ hội" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8H6-xt-KcI" customClass="NZLabel">
+                        <rect key="frame" x="8" y="5" width="682" height="25"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ngày kết thúc" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vy5-AY-GjA">
+                        <rect key="frame" x="473" y="65" width="217" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mã - Tên khách hàng" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wIZ-23-dSV">
+                        <rect key="frame" x="8" y="35" width="383" height="25"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kiểu cơ hội" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JH3-cj-2iN" userLabel="Label - Trang Thai">
+                        <rect key="frame" x="420" y="35" width="270" height="25"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mức độ cơ hội" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryq-UD-SHY">
+                        <rect key="frame" x="8" y="65" width="443" height="25"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="lbContact" destination="wIZ-23-dSV" id="jR7-SV-lxE"/>
+                <outlet property="lbDate" destination="vy5-AY-GjA" id="UbE-nl-noJ"/>
+                <outlet property="lbLevel" destination="ryq-UD-SHY" id="mfL-ji-HO5"/>
+                <outlet property="lbName" destination="8H6-xt-KcI" id="IGX-bN-EiA"/>
+                <outlet property="lbType" destination="JH3-cj-2iN" id="JSY-wJ-TGa"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

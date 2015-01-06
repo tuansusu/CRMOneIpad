@@ -12,6 +12,7 @@
 #import "DTOTASKProcess.h"
 #import "DTONOTEProcess.h"
 #import "DTOATTACHMENTProcess.h"
+#import "DTOOPPORTUNITYProcess.h"
 
 
 ////remove
@@ -48,6 +49,7 @@
     DTOTASKProcess *dtoTaskProcess;
     DTONOTEProcess *dtoNoteProcess;
     DTOATTACHMENTProcess *dtoAttachProcess;
+    DTOOPPORTUNITYProcess *dtoOpportunityProcess;
     
     NSUserDefaults *defaults ;
     
@@ -127,6 +129,7 @@
     dtoTaskProcess= [DTOTASKProcess new];
     dtoNoteProcess = [DTONOTEProcess new];
     dtoAttachProcess=[DTOATTACHMENTProcess new];
+    dtoOpportunityProcess =[DTOOPPORTUNITYProcess new];
     NSLog(@"datasend detail lead = %@", self.dataSend);
     dicData = [dtoAccoutProcess getDataWithKey:DTOACCOUNT_id withValue:[_dataSend objectForKey:DTOACCOUNT_id]];
     //dicData = [dtoLeadProcess getDataWithKey:DTOLEAD_id withValue:[self.dataSend objectForKey:DTOLEAD_id]];
@@ -298,13 +301,14 @@
             
         }break;
         case type360View_Opportunity:{
-            
+            arrayData = [dtoOpportunityProcess filterWith360Id:[dicData objectForKey:DTOACCOUNT_clientAccountId]];
         }break;
         case type360View_Task:{
             arrayData = [dtoTaskProcess filterWith360Id:[dicData objectForKey:DTOACCOUNT_clientAccountId]];
             NSLog(@"get detail data = %d", arrayData.count);
             
         }break;
+  
             
         default:
             break;
@@ -400,7 +404,10 @@
             
         case SELECT_INDEX_ADD_OPPORTUNITY:
         {
-            
+            EditOpportunity360ViewController *viewController = [[EditOpportunity360ViewController alloc]initWithNibName:@"EditOpportunity360ViewController" bundle:nil];
+            viewController.dataSend = dicData;
+            [self presentViewController:viewController animated:YES completion:nil];
+
         }
             break;
             
@@ -576,6 +583,20 @@
                 break;
             case type360View_Opportunity:
             {
+                static NSString *cellId = @"Opportunity360Cell";
+                Opportunity360Cell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+                
+                
+                if (!cell) {
+                    cell = [Opportunity360Cell getNewCell];
+                }
+                
+                if (arrayData.count>0) {
+                    [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+                }
+                
+                return cell;
+
             }
                 break;
                 
@@ -628,6 +649,11 @@
         }
             break;
         case type360View_Opportunity:
+        {
+            EditOpportunity360ViewController *viewNoteController = [[EditOpportunity360ViewController alloc]initWithNibName:@"EditOpportunity360ViewController" bundle:nil];
+            viewNoteController.dataRoot = dicTempData;
+            [self presentViewController:viewNoteController animated:YES completion:nil];
+        }
             break;
         case type360View_Note:{
             EditNote360ViewController *viewNoteController = [[EditNote360ViewController alloc]initWithNibName:@"EditNote360ViewController" bundle:nil];
@@ -796,8 +822,9 @@
         }
             break;
         case type360View_Opportunity:{
-            EditCalendar360ViewController *viewNoteController = [[EditCalendar360ViewController alloc]initWithNibName:@"EditCalendar360ViewController" bundle:nil];
-            viewNoteController.dataSend = dicTempData;
+            
+            EditOpportunity360ViewController *viewNoteController = [[EditOpportunity360ViewController alloc]initWithNibName:@"EditOpportunity360ViewController" bundle:nil];
+            viewNoteController.dataRoot = dicTempData;
             [self presentViewController:viewNoteController animated:YES completion:nil];
         }
             break;

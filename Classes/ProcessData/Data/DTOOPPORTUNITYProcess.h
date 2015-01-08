@@ -18,4 +18,5 @@
 -(NSDictionary*) getDataWithKey : (NSString*) inputKey withValue : (NSString*) inputValue;
 -(NSInteger) getClientId ;
 -(BOOL) deleteEntity:(NSString *)opportunityId;
+-(NSMutableArray*) filterWith360Id: (NSString*) strValue;
 @end

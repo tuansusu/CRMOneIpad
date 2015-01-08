@@ -17,6 +17,7 @@
 #import "EditTask360ViewController.h"
 #import "Task360Cell.h"
 #import "Calendar360Cell.h"
+#import "Opportunity360Cell.h"
 
 #import "EditCalendar360ViewController.h"
 
@@ -24,6 +25,7 @@
 #import "EditNote360ViewController.h"
 #import "EditAccount360ViewController.h"
 #import "EditBussinessLeadViewController.h"
+#import "EditOpportunity360ViewController.h"
 
 enum Type360View{
     type360View_ExpandInfo, //Thông tin mở rộng

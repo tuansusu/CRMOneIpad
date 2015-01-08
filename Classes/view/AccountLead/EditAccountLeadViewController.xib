@@ -230,7 +230,7 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="actionCheckMobile:" destination="-1" eventType="touchUpInside" id="AZW-Fw-0Il"/>
+                                                <action selector="actionCheckMail:" destination="-1" eventType="touchUpInside" id="jZT-3j-6rw"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zLL-OU-TFz">

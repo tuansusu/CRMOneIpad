@@ -218,6 +218,8 @@
 		763308171A048E12000E190B /* VTRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = 763308161A048E12000E190B /* VTRadio.xib */; };
 		7633081A1A0493F3000E190B /* VTDateField.m in Sources */ = {isa = PBXBuildFile; fileRef = 763308191A0493F3000E190B /* VTDateField.m */; };
 		7633081C1A04941E000E190B /* VTDateField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7633081B1A04941E000E190B /* VTDateField.xib */; };
+		763B688F1A5C2E8900397A19 /* EditOpportunity360ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 763B688D1A5C2E8900397A19 /* EditOpportunity360ViewController.m */; };
+		763B68901A5C2E8900397A19 /* EditOpportunity360ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 763B688E1A5C2E8900397A19 /* EditOpportunity360ViewController.xib */; };
 		7657E8841A5AEAB1008A62F9 /* DTOOPPORTUNITYPRODUCTProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 7657E8831A5AEAB1008A62F9 /* DTOOPPORTUNITYPRODUCTProcess.m */; };
 		7657E8AF1A5AEB3A008A62F9 /* Contact360Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7657E8861A5AEB3A008A62F9 /* Contact360Cell.m */; };
 		7657E8B01A5AEB3A008A62F9 /* Contact360Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7657E8871A5AEB3A008A62F9 /* Contact360Cell.xib */; };
@@ -1280,6 +1282,9 @@
 		763308181A0493F3000E190B /* VTDateField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VTDateField.h; sourceTree = "<group>"; };
 		763308191A0493F3000E190B /* VTDateField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VTDateField.m; sourceTree = "<group>"; };
 		7633081B1A04941E000E190B /* VTDateField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VTDateField.xib; sourceTree = "<group>"; };
+		763B688C1A5C2E8900397A19 /* EditOpportunity360ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditOpportunity360ViewController.h; sourceTree = "<group>"; };
+		763B688D1A5C2E8900397A19 /* EditOpportunity360ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditOpportunity360ViewController.m; sourceTree = "<group>"; };
+		763B688E1A5C2E8900397A19 /* EditOpportunity360ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditOpportunity360ViewController.xib; sourceTree = "<group>"; };
 		7657E8821A5AEAB1008A62F9 /* DTOOPPORTUNITYPRODUCTProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOOPPORTUNITYPRODUCTProcess.h; sourceTree = "<group>"; };
 		7657E8831A5AEAB1008A62F9 /* DTOOPPORTUNITYPRODUCTProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOOPPORTUNITYPRODUCTProcess.m; sourceTree = "<group>"; };
 		7657E8851A5AEB3A008A62F9 /* Contact360Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact360Cell.h; sourceTree = "<group>"; };
@@ -3850,6 +3855,9 @@
 				8495DDCB1A30A10A00C4E922 /* ListAccountViewController.h */,
 				8495DDCC1A30A10A00C4E922 /* ListAccountViewController.m */,
 				8495DDCD1A30A10A00C4E922 /* ListAccountViewController.xib */,
+				763B688D1A5C2E8900397A19 /* EditOpportunity360ViewController.m */,
+				763B688E1A5C2E8900397A19 /* EditOpportunity360ViewController.xib */,
+				763B688C1A5C2E8900397A19 /* EditOpportunity360ViewController.h */,
 			);
 			path = Account360;
 			sourceTree = "<group>";
@@ -5514,6 +5522,7 @@
 				8E69BDEB1A584B5500C6924D /* iconWalking.png in Resources */,
 				8497BFC21A295A2300A5ED3C /* botswana-large.png in Resources */,
 				84918AC01A34574A00149CB4 /* SearchAdvanceLeadViewController.xib in Resources */,
+				763B68901A5C2E8900397A19 /* EditOpportunity360ViewController.xib in Resources */,
 				8434BF041A2F61B200C29815 /* calendar_small_new.png in Resources */,
 				2D60B07B17A27AA400848776 /* checkbox_ticked.png in Resources */,
 				76D29B2B1A1397EE004B9CF6 /* ProductViewController.xib in Resources */,
@@ -6010,6 +6019,7 @@
 				2D3643971859996700190EE7 /* UIImageView+AFNetworking.m in Sources */,
 				8EBBC2511A4EF67C00F17BEE /* SubListViewCell.m in Sources */,
 				76C964461A17731900029978 /* YAxisBand.m in Sources */,
+				763B688F1A5C2E8900397A19 /* EditOpportunity360ViewController.m in Sources */,
 				0648C62C1A4C2F5D0002F9FE /* UICGStep.m in Sources */,
 				DDBC470E1715412D00CCFB94 /* OAAsynchronousDataFetcher.m in Sources */,
 				8EC972C11A5D786A0021DCA3 /* FFButtonAddEventWithPopover.m in Sources */,

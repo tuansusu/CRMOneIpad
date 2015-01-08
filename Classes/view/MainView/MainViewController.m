@@ -13,6 +13,13 @@
 #import "ListComplainsViewController.h"
 #import "ProfileViewController.h"
 #import "DashBoardCalendarViewController.h"
+#import "FFEvent.h"
+#import "FFImportantFilesForCalendar.h"
+
+#import "FFEvent.h"
+#import "FFImportantFilesForCalendar.h"
+
+#import "FFCalendarViewController.h"
 
 @interface MainViewController ()
 {
@@ -254,8 +261,10 @@ NSString* emptyText = @"";
 
 - (IBAction)actionCalendar:(id)sender {
 
-    DashBoardCalendarViewController *viewController = [[DashBoardCalendarViewController alloc]initWithNibName:@"DashBoardCalendarViewController" bundle:nil];
-    [self presentViewController:viewController animated:YES completion:nil];
+    FFCalendarViewController *calendarVC = [FFCalendarViewController new];
+//    [rootController setArrayWithEvents:[self arrayWithEvents]];
+//    DashBoardCalendarViewController *viewController = [[DashBoardCalendarViewController alloc]initWithNibName:@"DashBoardCalendarViewController" bundle:nil];
+    [self presentViewController:calendarVC animated:YES completion:nil];
 
 }
 

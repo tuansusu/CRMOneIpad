@@ -12,6 +12,39 @@
 
 @implementation NSDictionary (QS)
 
+
+-(DTOTaskObject*)dtoTaskObject{
+    DTOTaskObject *taskOB = [[DTOTaskObject alloc] init];
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOTASK_clientTaskId]]) {
+        taskOB.clientTaskId = [self objectForKey:DTOTASK_clientTaskId];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOTASK_clientId]]) {
+        taskOB.clientId = [self objectForKey:DTOTASK_clientId];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOTASK_clientLeadId]]) {
+        taskOB.clientLeadId = [self objectForKey:DTOTASK_clientLeadId];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOTASK_title]]) {
+        taskOB.title = [self objectForKey:DTOTASK_title];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOTASK_startDate]]) {
+        taskOB.startDate = [self objectForKey:DTOTASK_startDate];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOTASK_endDate]]) {
+        taskOB.endDate = [self objectForKey:DTOTASK_endDate];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOTASK_updatedDate]]) {
+        taskOB.updatedDate = [self objectForKey:DTOTASK_updatedDate];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOTASK_taskStatus]]) {
+        taskOB.taskStatus = [self objectForKey:DTOTASK_taskStatus];
+    }
+    return taskOB;
+}
+
 -(DTOComplainObject*)dtoComplainObject{
     DTOComplainObject *complainOB = [[DTOComplainObject alloc] init];
 

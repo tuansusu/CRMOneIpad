@@ -28,6 +28,15 @@ typedef enum {
 #define CORNER_RADIUS_BUTTON 5
 #define CORNER_RADIUS_VIEW 20
 
+//Lemon add 2013-09-05
+#define DEFINE_SHARED_INSTANCE_USING_BLOCK(block) \
+static dispatch_once_t pred = 0; \
+__strong static id _sharedObject = nil; \
+dispatch_once(&pred, ^{ \
+_sharedObject = block(); \
+}); \
+return _sharedObject; \
+
 //=============================Product Type========================
 
 #define PRODUCT_TYPE_THANH_TOAN 1

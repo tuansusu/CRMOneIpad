@@ -611,6 +611,7 @@
 		8E174C671A5ED13D004FDBBE /* DTOTaskObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E174C661A5ED13D004FDBBE /* DTOTaskObject.m */; };
 		8E2640B41A4C7A4C0047073B /* MainViewListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2640AF1A4C7A4C0047073B /* MainViewListCell.m */; };
 		8E2640B51A4C7A4C0047073B /* MainViewListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E2640B01A4C7A4C0047073B /* MainViewListCell.xib */; };
+		8E35281A1A610D4C00E1E1E3 /* Validator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3528181A610D4C00E1E1E3 /* Validator.m */; };
 		8E568F7E1A58EEDF0002A3C4 /* ListComplainsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E568F7C1A58EEDF0002A3C4 /* ListComplainsViewController.m */; };
 		8E568F7F1A58EEDF0002A3C4 /* ListComplainsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E568F7D1A58EEDF0002A3C4 /* ListComplainsViewController.xib */; };
 		8E568F841A58F5170002A3C4 /* ComplainViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E568F821A58F5170002A3C4 /* ComplainViewCell.m */; };
@@ -1900,6 +1901,8 @@
 		8E2640AE1A4C7A4C0047073B /* MainViewListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewListCell.h; sourceTree = "<group>"; };
 		8E2640AF1A4C7A4C0047073B /* MainViewListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewListCell.m; sourceTree = "<group>"; };
 		8E2640B01A4C7A4C0047073B /* MainViewListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewListCell.xib; sourceTree = "<group>"; };
+		8E3528171A610D4C00E1E1E3 /* Validator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Validator.h; sourceTree = "<group>"; };
+		8E3528181A610D4C00E1E1E3 /* Validator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Validator.m; sourceTree = "<group>"; };
 		8E568F7B1A58EEDF0002A3C4 /* ListComplainsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListComplainsViewController.h; sourceTree = "<group>"; };
 		8E568F7C1A58EEDF0002A3C4 /* ListComplainsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListComplainsViewController.m; sourceTree = "<group>"; };
 		8E568F7D1A58EEDF0002A3C4 /* ListComplainsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListComplainsViewController.xib; sourceTree = "<group>"; };
@@ -2428,6 +2431,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DD763E0178D472600F2D79E /* EventKit.framework in Frameworks */,
 				2D0AD5D61733526F0048A239 /* MessageUI.framework in Frameworks */,
 				8EB7087A1A408AE2001861A0 /* MapKit.framework in Frameworks */,
 				8497BF031A29591000A5ED3C /* GoogleMaps.framework in Frameworks */,
@@ -2447,7 +2451,6 @@
 				2D0C7E2D17A9F98B00DDABAC /* Accelerate.framework in Frameworks */,
 				B35A6E47178E8E37000807BE /* libsqlite3.0.dylib in Frameworks */,
 				2DD763E2178D472F00F2D79E /* EventKitUI.framework in Frameworks */,
-				2DD763E0178D472600F2D79E /* EventKit.framework in Frameworks */,
 				2D47E8001761706E00F291D6 /* SystemConfiguration.framework in Frameworks */,
 				2D47E7FE1761706700F291D6 /* MobileCoreServices.framework in Frameworks */,
 				2D0AD5D4173352440048A239 /* QuartzCore.framework in Frameworks */,
@@ -2704,6 +2707,7 @@
 		2D0E2ED21798018E0081D44A /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				8E3528141A610D4C00E1E1E3 /* Common */,
 				8EC971E41A5D71300021DCA3 /* Calendar */,
 				76D628191A3DA741009C3A0C /* CMPopTipView */,
 				76F31E7F1A36A4150010606A /* RatingStart */,
@@ -4171,6 +4175,15 @@
 				8E2640B01A4C7A4C0047073B /* MainViewListCell.xib */,
 			);
 			path = ListViewCell;
+			sourceTree = "<group>";
+		};
+		8E3528141A610D4C00E1E1E3 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				8E3528171A610D4C00E1E1E3 /* Validator.h */,
+				8E3528181A610D4C00E1E1E3 /* Validator.m */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		8E568F791A58EE950002A3C4 /* Complain */ = {
@@ -6098,6 +6111,7 @@
 				2D47E7FA1761704200F291D6 /* GCNetworkFormRequest.m in Sources */,
 				8E2640B41A4C7A4C0047073B /* MainViewListCell.m in Sources */,
 				8EC972A01A5D71300021DCA3 /* FFDatePopoverController.m in Sources */,
+				8E35281A1A610D4C00E1E1E3 /* Validator.m in Sources */,
 				76F31E821A36A4160010606A /* AMRatingControl.m in Sources */,
 				76977D641A02A75B0029F297 /* EmployeeAccountCell.m in Sources */,
 				76601A2F194BE90F001D4C01 /* ReaderMainPagebar.m in Sources */,

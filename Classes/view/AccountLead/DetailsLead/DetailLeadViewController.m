@@ -7,6 +7,9 @@
 //
 
 #import "DetailLeadViewController.h"
+
+#import <EventKit/EventKit.h>
+
 #import "DTOACCOUNTLEADProcess.h"
 #import "DTOCONTACTProcess.h"
 #import "DTOTASKProcess.h"
@@ -21,6 +24,7 @@
 #import "ComplainDetailViewController.h"
 ////remove
 #import "StringUtil.h"
+#import "Validator.h"
 
 #define TITLE_APP @"KHÁCH HÀNG TIỀM NĂNG"
 
@@ -50,7 +54,7 @@ static NSString* const TaskCalendarNormalCellId   = @"TaskCalendarCellId";
 static NSString* const TaskCalendarTimelineCellId = @"TaskCalTLineCellId";
 static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
-@interface DetailLeadViewController () <TaskActionCellDelegate,ComplainDetailViewControllerDelegate>
+@interface DetailLeadViewController () <TaskActionCellDelegate,ComplainDetailViewControllerDelegate,EditCalendarLeadViewControllerDelegate>
 {
     int smgSelect ; //option layout
     NSArray *arrayData; //mang luu tru du lieu
@@ -447,6 +451,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         case SELECT_INDEX_ADD_CALENDAR:
         {
             EditCalendarLeadViewController *viewController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
+            [viewController setDelegate:self];
             viewController.dataRoot = dicData;
             [self presentViewController:viewController animated:YES completion:nil];
         }
@@ -742,9 +747,10 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         }
             break;
         case typeLeaderView_Calendar:{
-            EditCalendarLeadViewController *viewNoteController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
-            viewNoteController.dataSend = dicTempData;
-            [self presentViewController:viewNoteController animated:YES completion:nil];
+            EditCalendarLeadViewController *viewCalendarController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
+            [viewCalendarController setDelegate:self];
+            viewCalendarController.dataSend = dicTempData;
+            [self presentViewController:viewCalendarController animated:YES completion:nil];
         }
             break;
         default:
@@ -845,6 +851,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
                 break;
             case typeLeaderView_Calendar:{
                 // deleteCalenda = [dicData objectForKey:DToCa];
+                delTask = [dicDataItem objectForKey:DTOTASK_id];
                 UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Bạn có muốn xoá lịch?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
                 mylert.tag = DELETE_CALENDAR;
                 [mylert show];
@@ -900,9 +907,10 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         }
             break;
         case typeLeaderView_Opportunity:{
-            EditCalendarLeadViewController *viewNoteController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
-            viewNoteController.dataSend = dicTempData;
-            [self presentViewController:viewNoteController animated:YES completion:nil];
+            EditCalendarLeadViewController *viewCalendarController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
+            viewCalendarController.dataSend = dicTempData;
+            [viewCalendarController setDelegate:self];
+            [self presentViewController:viewCalendarController animated:YES completion:nil];
         }
             break;
         case typeLeaderView_Note:{
@@ -920,9 +928,10 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         }
             break;
         case typeLeaderView_Calendar:{
-            EditCalendarLeadViewController *viewNoteController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
-            viewNoteController.dataSend = dicTempData;
-            [self presentViewController:viewNoteController animated:YES completion:nil];
+            EditCalendarLeadViewController *viewCalendarController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
+            [viewCalendarController setDelegate:self];
+            viewCalendarController.dataSend = dicTempData;
+            [self presentViewController:viewCalendarController animated:YES completion:nil];
             
         }
             break;
@@ -943,6 +952,12 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     NSLog(@"btnSender = %d", btnSender.tag);
     
+}
+
+#pragma mark Edit Calendar Lead ViewController Delegate
+- (void)reloadListCalendarTask{
+    [self loadDataWithTypeAction:typeLeaderView_Calendar];
+    [_tbData reloadData];
 }
 
 #pragma -mark xử lý thông báo
@@ -1016,6 +1031,27 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         }
     }else if(alertView.tag==DELETE_CALENDAR){
         if(buttonIndex==0){
+            item=[dtoTaskProcess deleteEntity:delTask];
+            if(item){
+                NSString* eventIden = [Validator getSafeString:[[NSUserDefaults standardUserDefaults]  valueForKey:delTask]];
+
+                EKEventStore *eventStore = [[EKEventStore alloc] init];
+                [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+                    if(granted)
+                    {
+                        EKEvent *event = [eventStore eventWithIdentifier:eventIden];
+                        [eventStore removeEvent:event span:EKSpanFutureEvents error:&error];
+                        [[NSUserDefaults standardUserDefaults] removeObjectForKey:delTask];
+                        [[NSUserDefaults standardUserDefaults] synchronize];
+                    }
+                }];
+
+                NSLog(@"Xoa thanh cong");
+                [self loadDataWithTypeAction:typeLeaderView_Calendar];
+            }
+            else{
+                NSLog(@"Loi");
+            }
             NSLog(@"xoa lich");
         }
         else{

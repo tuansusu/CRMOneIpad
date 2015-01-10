@@ -27,6 +27,9 @@
  * Lọc khách hàng đầu mối (chưa có tìm kiếm và phân trang)
  */
 -(NSMutableArray*) filter;
+
+-(NSMutableArray*) filterTheNewestRecord;
+
 -(NSMutableArray*) filterWithKey : (NSString*) strKey withValue : (NSString*) strValue;
 
 -(NSDictionary*) getDataWithKey : (NSString*) inputKey withValue : (NSString*) inputValue;

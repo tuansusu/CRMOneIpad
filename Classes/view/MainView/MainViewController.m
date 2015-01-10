@@ -261,8 +261,6 @@ NSString* emptyText = @"";
 - (IBAction)actionCalendar:(id)sender {
 
     FFCalendarViewController *calendarVC = [FFCalendarViewController new];
-//    [rootController setArrayWithEvents:[self arrayWithEvents]];
-//    DashBoardCalendarViewController *viewController = [[DashBoardCalendarViewController alloc]initWithNibName:@"DashBoardCalendarViewController" bundle:nil];
     [self presentViewController:calendarVC animated:YES completion:nil];
 
 }

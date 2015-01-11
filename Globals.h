@@ -15,7 +15,8 @@
 
 typedef enum {
     typeGraphLine,
-    typeGraphColumn
+    typeGraphColumn,
+    typeGraphFunnel
 } TypeGraphs;
 
 typedef enum {
@@ -72,6 +73,8 @@ return _sharedObject; \
 #define VEHICLES_DRIVING @"driving"
 #define VEHICLES_CYCLING @"cycling"
 #define VEHICLES_WALKING @"walking"
+
+#define KEY_CURRENT_LOCATION @"currentLocation"
 
 
 //=============================Maneuver Configuration========================

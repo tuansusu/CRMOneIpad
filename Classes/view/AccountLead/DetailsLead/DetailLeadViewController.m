@@ -481,6 +481,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 #pragma mark action button - normal
 - (IBAction)homeBack:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];

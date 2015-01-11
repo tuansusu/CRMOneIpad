@@ -165,17 +165,6 @@
     }
 
     return eventArr;
-
-
-    //
-    //    FFEvent *event3 = [FFEvent new];
-    //    [event3 setStringCustomerName: @"Customer C"];
-    //    [event3 setNumCustomerID:@3];
-    //    [event3 setDateDay:[NSDate dateWithYear:[NSDate componentsOfCurrentDate].year month:[NSDate componentsOfCurrentDate].month day:[NSDate componentsOfCurrentDate].day]];
-    //    [event3 setDateTimeBegin:[NSDate dateWithHour:16 min:00]];
-    //    [event3 setDateTimeEnd:[NSDate dateWithHour:17 min:13]];
-    //    [event3 setArrayWithGuests:[NSMutableArray arrayWithArray:@[@[@111, @"Guest 2", @"email2@email.com"], @[@111, @"Guest 4", @"email4@email.com"], @[@111, @"Guest 5", @"email5@email.com"], @[@111, @"Guest 7", @"email7@email.com"]]]];
-
 }
 
 #pragma mark - FFDateManager Notification

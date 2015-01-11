@@ -160,12 +160,12 @@ NSString* emptyText = @"";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-         return  3;
+         return  4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        if (indexPath.row == 0 || indexPath.row ==1) {
+        if (indexPath.row == 0 || indexPath.row ==1 || indexPath.row ==2) {
             static NSString *cellId = @"MainViewCell";
             MainViewCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
 
@@ -176,10 +176,12 @@ NSString* emptyText = @"";
                     [cell loadDataCellWithType:typeGraphLine];
                 }else if (indexPath.row==1){
                     [cell loadDataCellWithType:typeGraphColumn];
+                }else if (indexPath.row==2){
+                    [cell loadDataCellWithType:typeGraphFunnel];
                 }
             }
             return cell;
-        } else if (indexPath.row == 2) {
+        } else if (indexPath.row == 3) {
 
             static NSString *cellId = @"MainViewListCell";
             

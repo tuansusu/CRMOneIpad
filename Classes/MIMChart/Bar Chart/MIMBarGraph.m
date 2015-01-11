@@ -1103,8 +1103,10 @@ static NSInteger firstNumSort(id str1, id str2, void *context) {
         
         if(barGraphStyle==BAR_GRAPH_STYLE_GROUPED || barGraphStyle==BAR_GRAPH_STYLE_STACKED) totalBarColors=[[_yValElements objectAtIndex:0] count];
         
-        for (int i=0; i<totalBarColors; i++) 
-            [barcolorArray addObject:[MIMColor GetMIMColorAtIndex:style%totalColors]];
+        for (int i=0; i<totalBarColors; i++)
+            if (totalColors>0) {
+                [barcolorArray addObject:[MIMColor GetMIMColorAtIndex:style%totalColors]];
+            }
 
     }
     

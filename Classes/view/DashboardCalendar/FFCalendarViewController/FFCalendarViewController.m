@@ -7,6 +7,7 @@
 
 #define BUTTON_WIDTH 60
 #define BUTTON_MOUNT_WIDTH 80
+#define APP_SCREEN_WIDTH 1024
 
 #import "FFCalendar.h"
 
@@ -65,7 +66,7 @@
 
     self.arrayWithEvents = [self arrayWithEvents];
     [self.navigationController setNavigationBarHidden:NO];
-    //    [self.view setBackgroundColor:[UIColor blackColor]];
+    [self.view setBackgroundColor:[UIColor blackColor]];
 }
 
 - (void)viewDidLoad {
@@ -270,36 +271,42 @@
 
 
     FFRedAndWhiteButton *buttonYear = [self calendarButtonWithTitle:@"year"];
-    [buttonYear setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*3, 0, BUTTON_WIDTH, buttonYear.frame.size.height)];
 
-    UIButton *btnCloseCalendar = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*1, 0, BUTTON_WIDTH, buttonYear.frame.size.height)];
-    [btnCloseCalendar setImage:[UIImage imageNamed:@"icon_close"] forState:UIControlStateNormal];
+    UIImageView *imgBackground = [[UIImageView alloc] initWithFrame:CGRectMake(0, 20,APP_SCREEN_WIDTH, buttonYear.frame.size.height*2)];
+    [imgBackground setBackgroundColor:[UIColor whiteColor]];
+    [self.view addSubview:imgBackground];
+
+    [buttonYear setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*4, 0, BUTTON_WIDTH, buttonYear.frame.size.height)];
+
+    UIButton *btnCloseCalendar = [[UIButton alloc] initWithFrame:CGRectMake(20., 0, BUTTON_WIDTH, buttonYear.frame.size.height)];
+    [btnCloseCalendar setImage:[UIImage imageNamed:@"icon_menu-1"] forState:UIControlStateNormal];
     [btnCloseCalendar addTarget:self action:@selector(closeCalendar:) forControlEvents:UIControlEventTouchUpInside];
 
     FFRedAndWhiteButton *buttonMonth = [self calendarButtonWithTitle:@"month"];
-    [buttonMonth setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*3-BUTTON_MOUNT_WIDTH, 0, BUTTON_MOUNT_WIDTH, buttonMonth.frame.size.height)];
+    [buttonMonth setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*4-BUTTON_MOUNT_WIDTH, 0, BUTTON_MOUNT_WIDTH, buttonMonth.frame.size.height)];
 
     FFRedAndWhiteButton *buttonWeek = [self calendarButtonWithTitle:@"week"];
-    [buttonWeek setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*4-BUTTON_MOUNT_WIDTH, 0, BUTTON_WIDTH, buttonWeek.frame.size.height)];
+    [buttonWeek setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*5-BUTTON_MOUNT_WIDTH, 0, BUTTON_WIDTH, buttonWeek.frame.size.height)];
 
     FFRedAndWhiteButton *buttonDay = [self calendarButtonWithTitle:@"day"];
-    [buttonDay setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*5-BUTTON_MOUNT_WIDTH, 0, BUTTON_WIDTH, buttonDay.frame.size.height)];
+    [buttonDay setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*6-BUTTON_MOUNT_WIDTH, 0, BUTTON_WIDTH, buttonDay.frame.size.height)];
 
 
     FFRedAndWhiteButton *buttonToday = [[FFRedAndWhiteButton alloc] initWithFrame:CGRectMake(0., 0., 80., 30)];
     [buttonToday addTarget:self action:@selector(buttonTodayAction:) forControlEvents:UIControlEventTouchUpInside];
     [buttonToday setTitle:@"today" forState:UIControlStateNormal];
 
-    [buttonToday setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*6-BUTTON_MOUNT_WIDTH, 0, BUTTON_WIDTH, buttonToday.frame.size.height)];
+    [buttonToday setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*7-BUTTON_MOUNT_WIDTH, 0, BUTTON_WIDTH, buttonToday.frame.size.height)];
 
-    labelWithMonthAndYear = [[UILabel alloc] initWithFrame:CGRectMake(20., 0., 170., 30)];
+    labelWithMonthAndYear = [[UILabel alloc] initWithFrame:CGRectMake(APP_SCREEN_WIDTH-BUTTON_WIDTH*2.5, 0., 140., 30)];
     [labelWithMonthAndYear setTextColor:[UIColor redColor]];
     [labelWithMonthAndYear setFont:buttonToday.titleLabel.font];
+    labelWithMonthAndYear.textAlignment = NSTextAlignmentRight;
 
     arrayButtons = @[buttonYear, buttonMonth, buttonWeek, buttonDay];
 
 
-    _topMenuView  = [[UIView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, 100)];
+    _topMenuView  = [[UIView alloc] initWithFrame:CGRectMake(0, 40, self.view.frame.size.width, buttonYear.frame.size.height*2)];
     [_topMenuView setBackgroundColor:[UIColor whiteColor]];
     [_topMenuView addSubview:btnCloseCalendar];
     [_topMenuView addSubview:buttonYear];
@@ -308,6 +315,7 @@
     [_topMenuView addSubview:buttonDay];
     [_topMenuView addSubview:buttonToday];
     [_topMenuView addSubview:labelWithMonthAndYear];
+    [_topMenuView setBackgroundColor:[UIColor clearColor]];
 
     [self.view addSubview:_topMenuView];
 }
@@ -315,7 +323,7 @@
 #pragma mark - Add Calendars
 
 - (void)addCalendars {
-    CGRect frame = CGRectMake(0., 50, self.view.frame.size.width, self.view.frame.size.height-50);
+    CGRect frame = CGRectMake(0., 70, self.view.frame.size.width, self.view.frame.size.height-70);
 
     viewCalendarYear = [[FFYearCalendarView alloc] initWithFrame:frame];
     [viewCalendarYear setProtocol:self];

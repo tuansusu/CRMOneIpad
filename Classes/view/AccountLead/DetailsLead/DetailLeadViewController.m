@@ -16,12 +16,14 @@
 #import "DTONOTEProcess.h"
 #import "DTOATTACHMENTProcess.h"
 
+
 #import "TaskCalendarCell.h"
 #import "TaskCalTLineCell.h"
 #import "TaskActionCell.h"
 #import "ProductsLeadView.h"
 #import "ComplainsView.h"
 #import "ComplainDetailViewController.h"
+#import "ComplainModel.h"
 ////remove
 #import "StringUtil.h"
 #import "Validator.h"
@@ -54,7 +56,7 @@ static NSString* const TaskCalendarNormalCellId   = @"TaskCalendarCellId";
 static NSString* const TaskCalendarTimelineCellId = @"TaskCalTLineCellId";
 static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
-@interface DetailLeadViewController () <TaskActionCellDelegate,ComplainDetailViewControllerDelegate,EditCalendarLeadViewControllerDelegate>
+@interface DetailLeadViewController () <TaskActionCellDelegate,ComplainDetailViewControllerDelegate,EditCalendarLeadViewControllerDelegate,ComplainsViewDelegate>
 {
     int smgSelect ; //option layout
     NSArray *arrayData; //mang luu tru du lieu
@@ -345,6 +347,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             self.tbData.hidden  = YES;
             [viewProductsLead setHidden:YES];
             [viewComplain setHidden:NO];
+            [viewComplain setDelegate:self];
             [viewComplain initDataWithLeaderId:[[dicData objectForKey:DTOLEAD_clientLeadId] description]];
         }
             break;
@@ -480,6 +483,14 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 - (void)closeComplainDetailView:(ComplainDetailViewController*)complainDetailViewController
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (void)updateComplainDetailViewWithComplainOB:(DTOComplainObject*)complainOB
+{
+    ComplainModel *complainModel = [[ComplainModel alloc] init];
+    if ([complainModel updateComplainWithComplainOB:complainOB]) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [viewComplain initDataWithLeaderId:[[dicData objectForKey:DTOLEAD_clientLeadId] description]];
+    }
 }
 
 #pragma mark action button - normal
@@ -793,6 +804,14 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     }
 }
 
+#pragma mark ComplainsView Delegate
+- (void)selectedComplainOB:(DTOComplainObject*)complainOB{
+    ComplainDetailViewController *complainDetailVC = [[ComplainDetailViewController alloc] init];
+    complainDetailVC.delegate = self;
+    complainDetailVC.leadId = [[dicData objectForKey:DTOLEAD_clientLeadId] description];
+    [self presentViewController:complainDetailVC animated:YES completion:nil];
+    [complainDetailVC loadDataWithComplainOB:complainOB];
+}
 
 //Thêm phần sửa, xoá hiển thị trên row của table
 

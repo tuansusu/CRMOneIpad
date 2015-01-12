@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<script src="../../js/columnJquery.js"></script>
+		<script type="text/javascript">
+function updateData(data,types) {
+
+        $('#container').highcharts({
+    
+            chart: {
+                type: 'column'
+            },
+    
+            title: {
+                text: ''
+            },
+    
+            xAxis: {
+                labels: {
+                    style: {
+                        fontSize:'9px'
+                    }
+                },
+
+                categories: types
+            },
+    
+            yAxis: {
+                allowDecimals: false,
+                title: {
+                    text: ''
+                }
+            },
+    
+            tooltip: {
+                formatter: function() {
+                    return '<b>'+ this.x +'</b><br/>'+
+                        this.series.name +': '+ this.y +' k<br/>';
+                                   //+'Total: '+ this.point.stackTotal;
+                }
+            },
+    
+            plotOptions: {
+                column: {
+                    stacking: 'normal'
+                }
+            },
+    
+            series: data
+        });
+}
+    
+
+		</script>
+	</head>
+	<body>
+<script src="../../js/highcharts.js"></script>
+
+
+
+<div id="container" style="min-width: 310px; height: 300px; margin: 0 auto"></div>
+
+	</body>
+</html>

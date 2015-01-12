@@ -24,6 +24,10 @@
 @property (nonatomic,assign) id<ComplainDetailViewControllerDelegate>delegate;
 @property (nonatomic,retain) NSString *leadId;
 
+//danh sách nhưng tooltip
+@property (nonatomic, retain) NSMutableArray *visiblePopTipViews;
+@property (nonatomic, strong) id currentPopTipViewTarget;
+
 -(void)loadDataWithComplainOB:(DTOComplainObject*)complainOB;
 
 @end

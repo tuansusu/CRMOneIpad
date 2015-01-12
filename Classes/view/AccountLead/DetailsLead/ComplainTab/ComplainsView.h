@@ -14,6 +14,14 @@
 
 #import "ComplainDetailViewController.h"
 
+@class DTOComplainObject;
+@protocol ComplainsViewDelegate <NSObject>
+
+@optional
+- (void)selectedComplainOB:(DTOComplainObject*)complainOB;
+
+@end
+
 @interface ComplainsView : UIView<ComplainDetailViewControllerDelegate,ComplainViewCellDelegate>
 {
     IBOutlet UITableView *tbvListComplains;
@@ -24,6 +32,8 @@
     DTOComplainObject *complainEditOB;
     NSString *_leadId;
 }
+
+@property (nonatomic,assign) id<ComplainsViewDelegate>delegate;
 
 -(void)initDataWithLeaderId:(NSString*)leadId;
 

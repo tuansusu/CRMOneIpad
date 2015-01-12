@@ -148,16 +148,7 @@
     [mainView addSubview:mapView_];
 
     // Creates a marker in the center of the map.
-    GMSMarker *marker = [[GMSMarker alloc] init];
 
-
-    //marker.position = CLLocationCoordinate2DMake(-33.86, 151.20);
-    marker.position = CLLocationCoordinate2DMake(_lan, _lon);
-    [marker setIcon:[UIImage imageNamed:@"Mobile_GPS_MyLocationIcon.png"]];
-    marker.map = mapView_;
-    [waypoints_ addObject:marker];
-    NSString *positionString = [[NSString alloc] initWithFormat:@"%f,%f",_lan,_lon];
-    [waypointStrings_ addObject:positionString];
 
     [self initLocation];
     [self initDataKH];
@@ -196,7 +187,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 #pragma mark list directions action
 
 -(void)initFirstPageKHDMDirectionsFlag{
@@ -432,6 +422,19 @@
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations {
     currentLocation = [locations lastObject];
+
+    GMSMarker *currentLocationMarker = [[GMSMarker alloc] init];
+    currentLocationMarker.position = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
+    if (waypoints_.count>0 && waypointStrings_.count>0) {
+        [waypoints_ replaceObjectAtIndex:0 withObject:currentLocationMarker];
+        NSString *currentPositionString = [[NSString alloc] initWithFormat:@"%f,%f",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude];
+        [waypointStrings_ replaceObjectAtIndex:0 withObject:currentPositionString];
+    }else{
+        [waypoints_ addObject:currentLocationMarker];
+        NSString *currentPositionString = [[NSString alloc] initWithFormat:@"%f,%f",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude];
+        [waypointStrings_ addObject:currentPositionString];
+    }
+
     NSLog(@"currentLocation lat : %f - currentLocation lon : %f", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
 }
 
@@ -691,6 +694,7 @@ didTapInfoWindowOfMarker:(GMSMarker *)marker{
     }else{
         DTOAccountProcessObject *kh360OB = [_mapModel.listCustomerKH360 objectAtIndex:indexPath.row];
         if ([status isEqualToString:@"YES"]) {
+            [SVProgressHUD show];
             [listCustomerDirections addObject:kh360OB];
             if (kh360OB.lat && kh360OB.lon) {
 
@@ -709,7 +713,7 @@ didTapInfoWindowOfMarker:(GMSMarker *)marker{
 
                 // implement Routes of Directions with Google API
                 if([waypoints_ count]>1){
-                    [SVProgressHUD show];
+
                     NSString *sensor = @"true";
                     NSArray *parameters = [NSArray arrayWithObjects:sensor, waypointStrings_,
                                            nil];

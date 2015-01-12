@@ -1,12 +1,4 @@
-//
-//  FFAddEventPopoverController.m
-//  FFCalendar
-//
-//  Created by Fernanda G. Geraissate on 2/25/14.
-//  Copyright (c) 2014 Fernanda G. Geraissate. All rights reserved.
-//
-//  http://fernandasportfolio.tumblr.com
-//
+
 
 #import "FFAddEventPopoverController.h"
 

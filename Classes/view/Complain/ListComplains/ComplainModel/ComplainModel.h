@@ -20,6 +20,8 @@
 @property (nonatomic,readonly) NSMutableArray *listComplains;
 @property (nonatomic,assign) NSInteger currentPage;
 
+-(NSMutableArray*)getAllComplain;
+
 -(void)getFirstPagePageComplainsWithKey:(NSString*)key WithLeadID:(NSString*)leadId;
 
 -(void)getNextPageComplainsWithKey:(NSString*)key WithLeadID:(NSString*)leadId;

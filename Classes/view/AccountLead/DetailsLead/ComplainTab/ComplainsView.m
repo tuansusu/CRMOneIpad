@@ -69,13 +69,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    complainDetailVC = [[ComplainDetailViewController alloc] init];
-    complainDetailVC.delegate = self;
-    complainDetailVC.leadId = _leadId;
-    [complainDetailVC.view setFrame:CGRectMake(0, 0, self.frame.size.width,  self.frame.size.height)];
+    
     DTOComplainObject *complainOB = [complainModel.listComplains objectAtIndex:indexPath.row];
-    [complainDetailVC loadDataWithComplainOB:complainOB];
-    [self addSubview:complainDetailVC.view];
+
+    if (_delegate && [_delegate respondsToSelector:@selector(selectedComplainOB:)]) {
+        [_delegate selectedComplainOB:complainOB];
+    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {

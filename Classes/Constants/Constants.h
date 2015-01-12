@@ -88,6 +88,9 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 
 //=========================Complain Alert=======================================================
 
+#define COMPLAIN_TITLE_ADD_COMPLAIN @"THÊM MỚI Ý KIẾN PHẢN HỒI"
+#define COMPLAIN_TITLE_UPDATE_COMPLAIN @"CẬP NHẬT Ý KIẾN PHẢN HỒI"
+
 #define SYS_Notification_CheckValid_NoiDungKhieuNai @"Hãy nhập nội dung khiếu nại"
 #define SYS_Notification_CheckValid_LiDo @"Hãy nhập lí do"
 #define SYS_Notification_CheckValid_NoiDungXuLy @"Hãy nhập nội dung xử lý"

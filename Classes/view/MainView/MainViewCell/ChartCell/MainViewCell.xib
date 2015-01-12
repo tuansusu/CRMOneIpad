@@ -15,7 +15,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view hidden="YES" contentMode="scaleToFill" id="q1q-4f-Kas" customClass="MIMLineGraph">
-                        <rect key="frame" x="0.0" y="50" width="768" height="2432.5"/>
+                        <rect key="frame" x="0.0" y="50" width="768" height="2839"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -29,7 +29,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" id="eNe-Lu-3WE">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="400"/>
+                                <rect key="frame" x="84" y="0.0" width="600" height="400"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>

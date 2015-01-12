@@ -27,7 +27,7 @@
     //    webViewForSelectDate = [[UIWebView alloc] initWithFrame:webFrame];
     wvChart.delegate = self;
     wvChart.scalesPageToFit = NO;
-
+    [wvChart.scrollView setScrollEnabled:NO];
     wvChart.opaque = NO;
     wvChart.backgroundColor = [UIColor clearColor];
     wvChart.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
@@ -60,32 +60,20 @@
 -(void)updateData
 {
     NSString *dataStr = @"[{"
-    @"name: 'Unique users',"
+    @"name: 'Số tiền',"
     @"data: ["
-           @"['Website visits',   15654],"
-           @"['Downloads',       4064],"
-           @"['Requested price list', 1987],"
-           @"['Invoice sent',    976],"
-           @"['Finalized',    846]"
-           @"]"
+        @"['Tổng hợp',      40064],"
+        @"['Huy động vốn',  15654],"
+        @"['Tín dụng',      1987],"
+        @"['Bảo lãnh',  976],"
+        @"['Phát triển khách hàng',     846]"
+        @"]"
     @"}]";
-//    NSString *data =[NSString stringWithFormat:@"[ {"
-//                     @"name: 'Total Expense',"
-//                     @"data: [100, 70,],"
-//                     @"stack: '1'"
-//                     @"},{"
-//                     @"name: 'Total Income',"
-//                     @"data: [200, 30,],"
-//                     @"stack: '2'"
-//                     @"}]"];
-//    NSString *types =[NSString stringWithFormat:@"['Nov/13','Jan/14',]"];
-
 
     NSLog(@"data : %@ ",dataStr);
-    NSString *title = @"Cash Flow Chart";
+    NSString *title = @"Widget Tổng hợp";
     NSMutableString* jsStr = [[NSMutableString alloc] initWithCapacity:0];
-    [jsStr appendFormat:@"updateData(\"%@\")",title];
-
+    [jsStr appendFormat:@"updateData(%@,\'%@\')",dataStr,title];
 
     [wvChart stringByEvaluatingJavaScriptFromString:jsStr];
 }

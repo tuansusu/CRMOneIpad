@@ -23,7 +23,40 @@
     ComplainDetailViewController *complainDetailVC;
 
     DTOComplainObject *complainEditOB;
+    int smgSelect;
 }
+
+//Header
+@property (weak, nonatomic) IBOutlet UIView *headerViewBar;
+@property (weak, nonatomic) IBOutlet UILabel *fullNameLB;
+@property (weak, nonatomic) IBOutlet UILabel *lbTotal;
+@property (weak, nonatomic) IBOutlet UITextField *lbTypeCustomer;
+
+
+@property (weak, nonatomic) IBOutlet UIButton *btnHome;
+- (IBAction)homeBack:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIView *mainView;
+
+@property (weak, nonatomic) IBOutlet UIView *leftInMainView;
+
+@property (weak, nonatomic) IBOutlet UIView *leftViewHeader;
+
+@property (weak, nonatomic) IBOutlet UILabel *leftLabelHeader;
+
+@property (weak, nonatomic) IBOutlet UIView *rightInMainView;
+
+@property (weak, nonatomic) IBOutlet UITableView *tbData;
+
+@property (nonatomic,retain) IBOutlet UILabel *barLabel;
+@property (weak, nonatomic) IBOutlet UIView *footerView;
+
+
+////////////// KHAI BAO BIEN CHUNG//////////
+@property (nonatomic, retain) UIPopoverController *listPopover;
+
+////////////// KHAI BAO BIEN CHUNG//////////
+
 
 @end
 
@@ -35,6 +68,9 @@
     complainModel = [[ComplainModel alloc] init];
     [complainModel getFirstPagePageComplainsWithKey:searchBarComplain.text WithLeadID:@""];
     [tbvListComplains reloadData];
+    [_lbTotal setText:[NSString stringWithFormat:@"Tổng số %d",[complainModel getAllComplain].count]];
+    smgSelect = [[[NSUserDefaults standardUserDefaults] objectForKey:INTERFACE_OPTION] intValue];
+    [self updateInterFaceWithOption:smgSelect];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,6 +87,50 @@
  // Pass the selected object to the new view controller.
  }
  */
+
+- (void) updateInterFaceWithOption : (int) option
+{
+    //self.fullNameLB.text = TITLE_APPLICATION;
+    [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
+    self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
+    self.lbTotal.textColor = TEXT_COLOR_HEADER_APP;
+    [self.lbTypeCustomer setBorderWithOption:option];
+
+    self.footerView.backgroundColor = TOOLBAR_VIEW_COLOR;
+    self.barLabel.textColor = TEXT_TOOLBAR_COLOR1;
+
+
+    [self.leftViewHeader setBackgroundColor:BACKGROUND_COLOR_TOP_LEFT_HEADER];
+    self.leftLabelHeader.textColor = TEXT_COLOR_HEADER_APP;
+
+
+    searchBarComplain.barTintColor = HEADER_VIEW_COLOR1;
+
+
+    for (UIView *viewTemp in self.leftInMainView.subviews) {
+        if ([viewTemp isKindOfClass:[UILabel class]]) {
+            ((UILabel*) viewTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+        }
+
+        if ([viewTemp isKindOfClass:[UIButton class]]) {
+            ((UIButton*) viewTemp).backgroundColor = BUTTON_IN_ACTIVE_COLOR_1;
+            [((UIButton*) viewTemp) setTitleColor:TEXT_BUTTON_COLOR1 forState:UIControlStateNormal];
+        }
+        if ([viewTemp isKindOfClass:[UITextView class]]) {
+            ((UITextView*) viewTemp).textColor = TEXT_COLOR_REPORT;
+            ((UITextView*) viewTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
+            ((UITextView*) viewTemp).layer.borderColor = [BORDER_COLOR CGColor];
+            ((UITextView*) viewTemp).layer.borderWidth = BORDER_WITH;
+        }
+        if ([viewTemp isKindOfClass:[UITextField class]]) {
+            ((UITextField*) viewTemp).textColor = TEXT_COLOR_REPORT;
+            ((UITextField*) viewTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
+            ((UITextField*) viewTemp).layer.borderColor = [BORDER_COLOR CGColor];
+            ((UITextField*) viewTemp).layer.borderWidth = BORDER_WITH;
+        }
+    }
+}
+
 
 #pragma mark button close view action
 - (IBAction)btnAddComplainAction:(id)sender {
@@ -113,7 +193,7 @@
     [complainDetailVC.view setFrame:CGRectMake(0, 0, self.view.frame.size.width,  self.view.frame.size.height)];
     DTOComplainObject *complainOB = [complainModel.listComplains objectAtIndex:indexPath.row];
     [complainDetailVC loadDataWithComplainOB:complainOB];
-    [self.view addSubview:complainDetailVC.view];
+    [self presentViewController:complainDetailVC animated:YES completion:nil];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
@@ -169,13 +249,13 @@
 
 #pragma mark CompalinDetailViewController Delegate
 - (void)closeComplainDetailView:(ComplainDetailViewController*)complainDetailViewController{
-    [complainDetailVC.view removeFromSuperview];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)updateComplainDetailViewWithComplainOB:(DTOComplainObject*)complainOB
 {
     if ([complainModel updateComplainWithComplainOB:complainOB]) {
-        [complainDetailVC.view removeFromSuperview];
+        [self dismissViewControllerAnimated:YES completion:nil];
         [complainModel getFirstPagePageComplainsWithKey:searchBarComplain.text WithLeadID:@""];
         [tbvListComplains reloadData];
     }

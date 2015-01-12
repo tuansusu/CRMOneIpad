@@ -11,6 +11,7 @@
 #import "DTOSYSCATProcess.h"
 #import "DataField.h"
 #import "FlowLeadViewController.h"
+//#import "SelectAddInMapsViewController.h"
 
 #define TAG_SELECT_PERSONAL_POSITION 1
 #define TAG_SELECT_PERSONAL_JOB 2
@@ -738,12 +739,12 @@
     }
 }
 - (IBAction)actionAddAdress:(id)sender {
-//    FlowLeadViewController *detail = [[FlowLeadViewController alloc] initWithNibName:@"FlowLeadViewController" bundle:nil];
-//    detail.dataSend=dicData;
-//    detail.view.frame = CGRectMake(0, 0, 600, 500);
+//    SelectAddInMapsViewController *detail = [[SelectAddInMapsViewController alloc] initWithNibName:@"SelectAddInMapsViewController" bundle:nil];
+//    //detail.dataSend=dicData;
+//    detail.view.frame = CGRectMake(0, 0, 700, 600);
 //    //[InterfaceUtil setBorderWithCornerAndBorder:detail.view :6 :0.2 :nil];
 //    [self presentPopupViewController:detail animationType:1];
-    
+
     
 }
 - (IBAction)actionCheckMobile:(id)sender {

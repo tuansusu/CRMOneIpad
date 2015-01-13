@@ -26,6 +26,8 @@
 #define SELECT_INDEX_ADD_TASK 3
 #define SELECT_INDEX_ADD_OPPORTUNITY 4
 
+#define WIDTH_HEADER_EXPAND_INFO 930
+
 #define SELECT_TEXT_ADD_CONTACT @"LIÊN HỆ"
 #define SELECT_TEXT_ADD_NOTE @"GHI CHÚ"
 #define SELECT_TEXT_ADD_CALENDAR @"LỊCH"
@@ -109,6 +111,7 @@
     [self updateInterFaceWithOption:smgSelect];
     [self initData];
     [self actionExpandInfo:self.btnExpandInfo];
+    [self.scrollViewHeaderExpandInfo setContentSize:CGSizeMake(WIDTH_HEADER_EXPAND_INFO, self.scrollViewHeaderExpandInfo.frame.size.height)];
 }
 
 -(void) viewWillAppear:(BOOL)animated{
@@ -476,7 +479,7 @@
 #pragma mark display color button
 -(void) displayNormalButtonState : (UIButton*) btnSelect {
     
-    for (UIView *viewTemp in self.viewHeaderExpandInfo.subviews) {
+    for (UIView *viewTemp in self.scrollViewHeaderExpandInfo.subviews) {
         if ([viewTemp isKindOfClass:[UIButton class]]) {
             [((UIButton*) viewTemp) setBackgroundColor:[UIColor whiteColor]];
             [((UIButton*) viewTemp) setTitleColor:textColorButtonNormal forState:UIControlStateNormal];
@@ -486,6 +489,7 @@
     [btnSelect setBackgroundColor:[UIColor whiteColor]];
     [btnSelect setTitleColor:textColorButtonNormal forState:UIControlStateNormal];
     [btnSelect setSelectiveBorderWithColor:backgrondButtonSelected withBorderWith:5.0f withBorderFlag:AUISelectiveBordersFlagBottom];
+    
 }
 
 

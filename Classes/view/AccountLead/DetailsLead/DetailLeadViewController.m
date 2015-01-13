@@ -27,6 +27,7 @@
 ////remove
 #import "StringUtil.h"
 #import "Validator.h"
+#import "Globals.h"
 
 #define TITLE_APP @"KHÁCH HÀNG TIỀM NĂNG"
 
@@ -56,28 +57,28 @@ static NSString* const TaskCalendarNormalCellId   = @"TaskCalendarCellId";
 static NSString* const TaskCalendarTimelineCellId = @"TaskCalTLineCellId";
 static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
-@interface DetailLeadViewController () <TaskActionCellDelegate,ComplainDetailViewControllerDelegate,EditCalendarLeadViewControllerDelegate,ComplainsViewDelegate>
+@interface DetailLeadViewController () <TaskActionCellDelegate,ComplainDetailViewControllerDelegate,EditCalendarLeadViewControllerDelegate,ComplainsViewDelegate,ProductsLeadViewDelegate,ProTindungDetailViewControllerDelegate,ProBaoLanhDetailViewControllerDelegate,ProTaiKhoanThanhToanDetailViewControllerDelegate,ProTaiKhoanTietKiemDetailViewControllerDelegate,ProBankPlusDetailViewControllerDelegate,ProEMBDetailViewControllerDelegate,ProThanhToanQuocTeDetailViewControllerDelegate,ProTheDetailViewControllerDelegate>
 {
     int smgSelect ; //option layout
     NSArray *arrayData; //mang luu tru du lieu
-    
+
     DTOCONTACTProcess *dtoContactProcess; //lay danh sach du lieu theo clientLeadId
     DTOTASKProcess *dtoTaskProcess;
     DTONOTEProcess *dtoNoteProcess;
     DTOATTACHMENTProcess *dtoAttachProcess;
-    
+
     NSUserDefaults *defaults ;
-    
-    
+
+
     UIColor *textColorButtonNormal; //mau chu button binh thuong
     UIColor *textColorButtonSelected; //mau chu button select
     UIColor *backgrondButtonSelected; //mau nen button select
     UIColor *backgroundButtonNormal; //Mau nen button binh thuong
-    
+
     DTOACCOUNTLEADProcess *dtoLeadProcess;
     NSDictionary *dicData; //Data cua thang xem chi tiet
     NSString *leadType ; //
-    
+
     //chon index form them moi
     NSInteger selectIndex;
     NSArray *listArr;
@@ -89,11 +90,11 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     NSString *deleteContact;
     NSString *deleteCalenda;
     NSString *delTask;
-    
+
     //controll
-    
+
     __weak IBOutlet UIButton *btnAdd;
-    
+
     //calendar
     BOOL calendarIsTimeline;
 
@@ -101,6 +102,15 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
     IBOutlet  ProductsLeadView* viewProductsLead;
     IBOutlet  ComplainsView* viewComplain;
+
+    ProTindungDetailViewController *proTindungDetailVC;
+    ProTaiKhoanThanhToanDetailViewController *proTaiKhoanThanhToanDetailVC;
+    ProTaiKhoanTietKiemDetailViewController *proTaiKhoanTietKiemDetailVC;
+    ProBaoLanhDetailViewController *proBaoLanhDetailVC;
+    ProThanhToanQuocTeDetailViewController *proThanhToanQuocTeDetailVC;
+    ProTheDetailViewController *proTheDetailVC;
+    ProEMBDetailViewController *proEMBDetailVC;
+    ProBankPlusDetailViewController *proBankPlusDetailVC;
 }
 @end
 
@@ -121,21 +131,21 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     [super viewDidLoad];
     if ([UIDevice getCurrentSysVer] >= 7.0) {
         [UIDevice updateLayoutInIOs7OrAfter:self];
-        
+
         [self.tbData setSeparatorInset:UIEdgeInsetsZero];
     }
-    
+
     /* set defaults cell for Task Calendar */
     [self.tbData registerNib:[TaskCalendarCell nib] forCellReuseIdentifier:TaskCalendarNormalCellId];
     [self.tbData registerNib:[TaskCalTLineCell nib] forCellReuseIdentifier:TaskCalendarTimelineCellId];
     [self.tbData registerNib:[TaskActionCell   nib] forCellReuseIdentifier:TaskActionCellId];
-    
+
     // calendar
     calendarIsTimeline = YES;
-    
+
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
-    
+
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
     [self initData];
@@ -151,10 +161,10 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
 //khoi tao gia tri mac dinh cua form
 -(void) initData {
-    
+
     //khoi tao du lieu!
     listArr  = [NSArray arrayWithObjects:SELECT_TEXT_ADD_CONTACT,SELECT_TEXT_ADD_NOTE, SELECT_TEXT_ADD_CALENDAR, SELECT_TEXT_ADD_TASK, SELECT_TEXT_ADD_OPPORTUNITY,SELECT_TEXT_ADD_COMPLAIN, nil];
-    
+
     dtoLeadProcess = [DTOACCOUNTLEADProcess new];
     dtoContactProcess = [DTOCONTACTProcess new];
     dtoTaskProcess= [DTOTASKProcess new];
@@ -163,55 +173,55 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     NSLog(@"datasend detail lead = %@", self.dataSend);
     dicData = [dtoLeadProcess getDataWithKey:DTOLEAD_id withValue:[self.dataSend objectForKey:DTOLEAD_id]];
     NSLog(@"Get detail = %@", dicData);
-    
+
     if ([dicData isKindOfClass:[NSNull class]] || dicData==nil ) {
         [self dismissViewControllerAnimated:YES completion:nil];
         return;
     }
-    
+
     if ([dicData objectForKey:DTOLEAD_leadType]) {
         leadType = ObjectToStr([dicData objectForKey:DTOLEAD_leadType]);
     }
-    
+
     if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_name]]) {
         self.lbName.text =[dicData objectForKey:DTOLEAD_name];
     }
     if ([leadType isEqualToString:FIX_LEADTYPE_BUSSINESS]) {
         NSLog(@"KHACH HANG DOAN NGHIEP");
-        
+
         self.scrollViewPersonal.hidden = YES;
         self.scrollViewBussiness.hidden = NO;
-        
+
         [self loadDetailCustomerBussinessData];
         //        DetailCustomBussinessViewController *viewDetailController = [[DetailCustomBussinessViewController alloc]initWithNibName:@"DetailCustomBussinessViewController" bundle:nil];
         //        viewDetailController.dataSend = dicData;
         //        [self.viewBodyExpandInfo addSubview:viewDetailController.view];
-        
+
         self.lbDescription.text = @"";
-        
+
     }else{
         NSLog(@"KHACH HANG CA NHAN");
-        
+
         self.scrollViewPersonal.hidden = NO;
         self.scrollViewBussiness.hidden = YES;
-        
+
         self.scrollViewPersonal.contentSize = CGSizeMake(self.scrollViewPersonal.frame.size.width, 630.0f);
-        
-        
+
+
         [self loadDetailCustomerPersonalData];
-        
-        
+
+
         //        DetailCustomPersonViewController *viewDetailController = [[DetailCustomPersonViewController alloc]initWithNibName:@"DetailCustomPersonViewController" bundle:nil];
         //        viewDetailController.dataSend = dicData;
         //        [self.viewBodyExpandInfo addSubview:viewDetailController.view];
-        
+
     }
-    
-    
-    
-    
+
+
+
+
     self.barLabel.text = [NSString stringWithFormat:@"%@ %@, %@",VOFFICE,[defaults objectForKey:@"versionSoftware"],COPY_OF_SOFTWARE];
-    
+
     [self actionExpandInfo:self.btnExpandInfo];
     arrayData  = [NSArray new];
 }
@@ -220,11 +230,11 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
  *Load danh sach khach hang ca nhan
  */
 -(void) loadDetailCustomerPersonalData {
-    
+
     if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_code]]) {
         _lbCode.text =[dicData objectForKey:DTOLEAD_code];
     }
-    
+
     if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_name]]) {
         _lbName.text =[dicData objectForKey:DTOLEAD_name];
     }
@@ -234,37 +244,37 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_mobile]]) {
         _lbPhone.text =[dicData objectForKey:DTOLEAD_mobile];
     }
-    
+
     if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_email]]) {
         _lbEmail.text =[dicData objectForKey:DTOLEAD_email];
     }
-    
-    
+
+
     if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_sex]]) {
         _lbSex.text =[dicData objectForKey:DTOLEAD_sex];
-        
+
         if ([ObjectToStr([dicData objectForKey:DTOLEAD_sex]) isEqualToString:@"0"]) {
             _lbSex.text = @"Nữ";
         }else if ([ObjectToStr([dicData objectForKey:DTOLEAD_sex]) isEqualToString:@"1"]){
             _lbSex.text = @"Nam";
         }
-        
+
     }
-    
+
     if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_marialStatus]]) {
         _lbMarialStatus.text =[dicData objectForKey:DTOLEAD_marialStatus];
     }
-    
+
     if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_birthday]]) {
         _lbBirthDay.text =[dicData objectForKey:DTOLEAD_birthday];
     }
-    
+
     if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_sector]]) {
         _lbSector.text =[dicData objectForKey:DTOLEAD_sector];
     }
-    
+
     _lbAlias.text = @"";
-    
+
 }
 
 
@@ -272,7 +282,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
  *Load danh sach khach hang doanh nghiep
  */
 -(void) loadDetailCustomerBussinessData {
-    
+
     if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_name]]) {
         _lbBussinessName.text =[dicData objectForKey:DTOLEAD_name];
     }
@@ -282,35 +292,35 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_mobile]]) {
         _lbBussinessPhone.text =[dicData objectForKey:DTOLEAD_mobile];
     }
-    
+
     if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_email]]) {
         _lbBussinessEmail.text =[dicData objectForKey:DTOLEAD_email];
     }
-    
-    
+
+
     if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_taxCode]]) {
         _lbBussinessTaxCode.text =[dicData objectForKey:DTOLEAD_taxCode];
     }
-    
+
     if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_code]]) {
         _lbBussinessCode.text =[dicData objectForKey:DTOLEAD_code];
     }
-    
-    
+
+
 }
 
 
 -(void) loadDataWithTypeAction : (enum TypeLeaderView) inputTypeActionEvent{
-    
+
     self.viewBodyExpandInfo.hidden = YES;
     self.tbData.hidden  = NO;
-    
+
     typeActionEvent = inputTypeActionEvent;
     switch (typeActionEvent) {
         case typeLeaderView_ExpandInfo:{
-            
+
         }
-            break;
+        break;
         case typeLeaderView_Contact:
         {
             arrayData = [dtoContactProcess filterWithClientLeaderId:[dicData objectForKey:DTOLEAD_clientLeadId]];
@@ -319,27 +329,27 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         case typeLeaderView_Note:
         {
             //load data la ghi chu
-            
+
             NSLog(@"DTOLEAD_ClientLeadID:%@", [dicData objectForKey:DTOLEAD_clientLeadId]);
             arrayData = [dtoNoteProcess filterWithClientLeaderId:[dicData objectForKey:DTOLEAD_clientLeadId]];
             NSLog(@"total: %i", arrayData.count);
-            
+
         }break;
         case typeLeaderView_Opportunity:{
-            
+
         }break;
         case typeLeaderView_Calendar:
         {
             arrayData = [dtoTaskProcess filterCalendarWithClientLeaderId:[dicData objectForKey:DTOLEAD_clientLeadId]];
             NSLog(@"calendar count = %ld", (unsigned long)arrayData.count);
         }
-            break;
+        break;
         case typeLeaderView_Task:
         {
             arrayData = [dtoTaskProcess filterTaskWithClientLeaderId:[dicData objectForKey:DTOLEAD_clientLeadId]];
             NSLog(@"task count = %ld", (unsigned long)arrayData.count);
         }
-            break;
+        break;
 
         case typeLeaderView_Complains:
         {
@@ -350,67 +360,68 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             [viewComplain setDelegate:self];
             [viewComplain initDataWithLeaderId:[[dicData objectForKey:DTOLEAD_clientLeadId] description]];
         }
-            break;
+        break;
         case typeLeaderView_ProductsLead:
         {
             self.viewBodyExpandInfo.hidden = NO;
             self.tbData.hidden  = YES;
             [viewComplain setHidden:YES];
             [viewProductsLead setHidden:NO];
+            [viewProductsLead setDelegate:self];
             [viewProductsLead initDataWithLeaderId:[[dicData objectForKey:DTOLEAD_clientLeadId] description]];
         }
-            break;
+        break;
         default:
-            break;
+        break;
     }
-    
+
     [self.tbData reloadData];
 }
 
 
 - (void) updateInterFaceWithOption : (int) option
 {
-    
-    
-    
+
+
+
     [self.mainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
-    
+
     self.bodyMainView.backgroundColor = BACKGROUND_NORMAL_COLOR1;
-    
+
     self.bodyMainView.layer.borderWidth = BORDER_WITH;
     self.bodyMainView.layer.borderColor = [BORDER_COLOR CGColor];
-    
+
     self.viewBodyMainInfo.backgroundColor = BACKGROUND_NORMAL_COLOR1;
-    
+
     self.viewBodyMainInfo.layer.borderWidth = BORDER_WITH;
     self.viewBodyMainInfo.layer.borderColor = [BORDER_COLOR CGColor];
-    
-    
+
+
     self.viewHeaderExpandInfo.backgroundColor = BACKGROUND_NORMAL_COLOR1;
-    
+
     [self.tbData setBorderWithOption:smgSelect];
     [self.viewBodyExpandInfo setBorderWithOption:smgSelect];
-    
+
     self.fullNameLB.text = TITLE_APP;
-    
+
     [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
     self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
     self.footerView.backgroundColor = TOOLBAR_VIEW_COLOR;
     self.barLabel.textColor = TEXT_TOOLBAR_COLOR1;
-    
+
     textColorButtonNormal = TEXT_BUTTON_COLOR_BLACK_1; //mau chu button binh thuong
     textColorButtonSelected = TEXT_BUTTON_COLOR1; //mau chu button select
     backgrondButtonSelected = BUTTON_ACTIVE_COLOR_1;
     backgroundButtonNormal = BUTTON_REPORT_MAIN_IN_ACTIVE_COLOR_1;
-    
+
     for (UIView *viewTemp in self.viewBodyMainInfo.subviews) {
         if ([viewTemp isKindOfClass:[UILabel class]]) {
             ((UILabel*) viewTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
         }
     }
-    
+
     [self.viewHeaderExpandInfo setSelectiveBorderWithColor:backgrondButtonSelected withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
-    
+
 }
 
 
@@ -423,11 +434,11 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 #pragma mark SelectIndexDelegate
 
 -(void) selectAtIndex:(NSInteger)index{
-    
+
     if (self.listPopover) {
         [ self.listPopover dismissPopoverAnimated:YES];
     }
-    
+
     switch (index) {
         case SELECT_INDEX_ADD_CONTACT:
         {
@@ -435,7 +446,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             viewController.dataRoot = dicData;
             [self presentViewController:viewController animated:YES completion:nil];
         }
-            break;
+        break;
         case SELECT_INDEX_ADD_NOTE:
         {
             NSLog(@"data send note %@", dicData);
@@ -443,13 +454,13 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             viewController.dataRoot = dicData;
             [self presentViewController:viewController animated:YES completion:nil];
         }
-            break;
-            
+        break;
+
         case SELECT_INDEX_ADD_OPPORTUNITY:
         {
-            
+
         }
-            break;
+        break;
         // calendar+task
         case SELECT_INDEX_ADD_CALENDAR:
         {
@@ -458,26 +469,26 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             viewController.dataRoot = dicData;
             [self presentViewController:viewController animated:YES completion:nil];
         }
-            break;
+        break;
         case SELECT_INDEX_ADD_TASK:
         {
             EditTaskLeadViewController *viewController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
             viewController.dataRoot = dicData;
             [self presentViewController:viewController animated:YES completion:nil];
         }
-            break;
+        break;
         case SELECT_INDEX_ADD_COMPLAIN:
         {
             ComplainDetailViewController *viewController = [[ComplainDetailViewController alloc]initWithNibName:@"ComplainDetailViewController" bundle:nil];
             viewController.delegate= self;
-//            viewController.dataRoot = dicData;
+            //            viewController.dataRoot = dicData;
             viewController.leadId = [[dicData objectForKey:DTOLEAD_clientLeadId] description];
             [self presentViewController:viewController animated:YES completion:nil];
         }
-            break;
+        break;
 
         default:
-            break;
+        break;
     }
 }
 - (void)closeComplainDetailView:(ComplainDetailViewController*)complainDetailViewController
@@ -500,14 +511,14 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
 - (IBAction)actionAdd:(id)sender{
     SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
-    
+
     detail.selectIndex = selectIndex;
-    
+
     detail.listData = listArr;
-    
+
     self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
     CGRect popoverFrame = btnAdd.frame;
-    
+
     detail.delegate =(id<SelectIndexDelegate>) self;
     self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
     [self.listPopover setPopoverContentSize:CGSizeMake(320, HEIGHT_SELECT_INDEX_ROW*listArr.count) animated:NO];
@@ -519,7 +530,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 - (IBAction)actionExpandInfo:(UIButton *)sender {
     [self loadDataWithTypeAction:typeLeaderView_Contact];
     [self displayNormalButtonState:sender];
-    
+
 }
 
 - (IBAction)actionNote:(UIButton *)sender {
@@ -559,7 +570,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
 #pragma mark display color button
 -(void) displayNormalButtonState : (UIButton*) btnSelect {
-    
+
     for (UIView *viewTemp in scrollViewHeaderExpandInfo.subviews)
     {
         if ([viewTemp isKindOfClass:[UIButton class]]) {
@@ -581,8 +592,8 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (typeActionEvent) {
         case typeLeaderView_Note:
-            return 60.0f;
-            break;
+        return 60.0f;
+        break;
         case typeLeaderView_Calendar:
         {
             if (calendarIsTimeline)
@@ -594,12 +605,12 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
                 return 66.0f;
             }
         }
-            break;
+        break;
         case typeLeaderView_Task:
-            return 60.0f;
-            break;
+        return 60.0f;
+        break;
         default:
-            break;
+        break;
     }
     return 100.0f;
 }
@@ -611,7 +622,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    return 10;
+    //    return 10;
     NSLog(@"numberofrows = %ld", (unsigned long)arrayData.count);
     return  arrayData.count;
 }
@@ -622,47 +633,47 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         case typeLeaderView_Contact:{
             static NSString *cellId = @"ContactLeadCell";
             ContactLeadCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
-            
-            
+
+
             if (!cell) {
                 cell = [ContactLeadCell initNibCell];
             }
-            
+
             if (arrayData.count>0) {
                 [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
             }
-            
+
             return cell;
         }
-            break;
+        break;
         case typeLeaderView_Note:
         {
             static NSString *cellId = @"NoteLeadCell";
             NoteLeadCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
-            
-            
+
+
             if (!cell) {
                 cell = [NoteLeadCell initNibCell];
             }
-            
+
             if (arrayData.count>0) {
                 [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
             }
-            
+
             return cell;
         }
-            break;
+        break;
         case typeLeaderView_Opportunity:
         {
         }
-            break;
+        break;
         // calendar + task
         case typeLeaderView_Calendar:
         {
             if (calendarIsTimeline)
             {
                 TaskCalTLineCell *cell = [tableView dequeueReusableCellWithIdentifier:TaskCalendarTimelineCellId];
-                
+
                 if (indexPath.row < arrayData.count)
                 {
                     [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
@@ -679,94 +690,94 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
                         cell.tbv_position = TaskCalTLineCell_Middle;
                     }
                 }
-                
+
                 return cell;
             }
             else
             {
                 TaskCalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:TaskCalendarNormalCellId];
-                
+
                 if (indexPath.row < arrayData.count)
                 {
                     [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
                 }
-                
+
                 return cell;
             }
         }
-            break;
+        break;
         case typeLeaderView_Task:
         {
             TaskActionCell *cell= [tableView dequeueReusableCellWithIdentifier:TaskActionCellId];
-            
+
             if (cell !=nil)
             {
                 cell.delegate = self;
-                
+
                 if (indexPath.row < arrayData.count)
                 {
                     [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
                 }
-                
+
                 return cell;
             }
         }
-            break;
+        break;
         default:
-            break;
+        break;
     }
-    
+
     UITableViewCell *cellNull = [[UITableViewCell alloc] init];
     return cellNull;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     NSIndexPath* selection = [tableView indexPathForSelectedRow];
     if (selection){
-        
+
         [tableView deselectRowAtIndexPath:selection animated:YES];
-        
+
     }
-    
+
     NSDictionary *dicTempData = [arrayData objectAtIndex:indexPath.row];
-    
-    
+
+
     switch (typeActionEvent) {
         case typeLeaderView_Task:{
-            
+
             EditTaskLeadViewController *viewNoteController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
             viewNoteController.dataSend = dicTempData;
             [self presentViewController:viewNoteController animated:YES completion:nil];
-            
+
         }
-            break;
+        break;
         case typeLeaderView_Opportunity:
-            break;
+        break;
         case typeLeaderView_Note:{
             EditNoteLeadViewController *viewNoteController = [[EditNoteLeadViewController alloc]initWithNibName:@"EditNoteLeadViewController" bundle:nil];
             viewNoteController.dataSend = dicTempData;
             [self presentViewController:viewNoteController animated:YES completion:nil];
         }
-            break;
+        break;
         case typeLeaderView_Contact:
         {
             EditContactLeadViewController *viewNoteController = [[EditContactLeadViewController alloc]initWithNibName:@"EditContactLeadViewController" bundle:nil];
             viewNoteController.dataSend = dicTempData;
             [self presentViewController:viewNoteController animated:YES completion:nil];
-            
+
         }
-            break;
+        break;
         case typeLeaderView_Calendar:{
             EditCalendarLeadViewController *viewCalendarController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
             [viewCalendarController setDelegate:self];
             viewCalendarController.dataSend = dicTempData;
             [self presentViewController:viewCalendarController animated:YES completion:nil];
         }
-            break;
+        break;
         default:
-            break;
+        break;
     }
 }
 
@@ -775,11 +786,11 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 {
     //change status
     //dtoTaskProcess
-    
+
     NSMutableDictionary *dicTaskUpdate = [[NSMutableDictionary alloc] init];
-    
+
     [dicTaskUpdate setObject:[inputDicData objectForKey:DTOTASK_id] forKey:DTOTASK_id];
-    
+
     if ([[inputDicData objectForKey:DTOTASK_taskStatus] intValue] == FIX_TASK_STATUS_COMPLETE)
     {
         [dicTaskUpdate setObject:IntToStr(FIX_TASK_STATUS_NOT_COMPLETE) forKey:DTOTASK_taskStatus];
@@ -788,15 +799,15 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     {
         [dicTaskUpdate setObject:IntToStr(FIX_TASK_STATUS_COMPLETE) forKey:DTOTASK_taskStatus];
     }
-    
+
     if ([dtoTaskProcess insertToDBWithEntity:dicTaskUpdate])
     {
         NSIndexPath *indexPathToReload = [self.tbData indexPathForCell:taskActionCell];
-        
+
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             arrayData = [dtoTaskProcess filterTaskWithClientLeaderId:[dicData objectForKey:DTOLEAD_clientLeadId]];
             NSLog(@"task count = %ld", (unsigned long)arrayData.count);
-            
+
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tbData reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPathToReload] withRowAnimation:UITableViewRowAnimationAutomatic];
             });
@@ -812,6 +823,64 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     [self presentViewController:complainDetailVC animated:YES completion:nil];
     [complainDetailVC loadDataWithComplainOB:complainOB];
 }
+
+#pragma mark Products Lead View Delegate
+
+- (void)selectedProductDetailAtIndex:(NSInteger)index{
+
+    if (index==PRODUCT_TYPE_TIN_DUNG)
+    {
+        proTindungDetailVC = [[ProTindungDetailViewController alloc] init];
+        proTindungDetailVC.delegate= self;
+        [self presentViewController:proTindungDetailVC animated:YES completion:nil];
+    }
+    else if (index==PRODUCT_TYPE_THANH_TOAN)
+    {
+        proTaiKhoanThanhToanDetailVC = [[ProTaiKhoanThanhToanDetailViewController alloc] init];
+
+        proTaiKhoanThanhToanDetailVC.delegate= self;
+        [self presentViewController:proTaiKhoanThanhToanDetailVC animated:YES completion:nil];
+    }
+    else if (index==PRODUCT_TYPE_TIET_KIEM)
+    {
+        proTaiKhoanTietKiemDetailVC = [[ProTaiKhoanTietKiemDetailViewController alloc] init];
+        proTaiKhoanTietKiemDetailVC.delegate= self;
+        [self presentViewController:proTaiKhoanTietKiemDetailVC animated:YES completion:nil];
+    }
+    else if (index==PRODUCT_TYPE_BAO_LANH)
+    {
+        proBaoLanhDetailVC = [[ProBaoLanhDetailViewController alloc] init];
+        proBaoLanhDetailVC.delegate= self;
+        [self presentViewController:proBaoLanhDetailVC animated:YES completion:nil];
+    }
+    else if (index==PRODUCT_TYPE_THANH_TOAN_QUOC_TE)
+    {
+        proThanhToanQuocTeDetailVC = [[ProThanhToanQuocTeDetailViewController alloc] init];
+        proThanhToanQuocTeDetailVC.delegate= self;
+        [self presentViewController:proThanhToanQuocTeDetailVC animated:YES completion:nil];
+
+    }
+    else if (index==PRODUCT_TYPE_THE)
+    {
+        proTheDetailVC = [[ProTheDetailViewController alloc] init];
+        proTheDetailVC.delegate= self;
+        [self presentViewController:proTheDetailVC animated:YES completion:nil];
+    }
+    else if (index==PRODUCT_TYPE_NGAN_HANG_DIEN_TU)
+    {
+        proEMBDetailVC = [[ProEMBDetailViewController alloc] init];
+        proEMBDetailVC.delegate= self;
+        [self presentViewController:proEMBDetailVC animated:YES completion:nil];
+
+    }
+    else if (index==PRODUCT_TYPE_BANK_PLUS)
+    {
+        proBankPlusDetailVC = [[ProBankPlusDetailViewController alloc] init];
+        proBankPlusDetailVC.delegate= self;
+        [self presentViewController:proBankPlusDetailVC animated:YES completion:nil];
+    }
+}
+
 
 //Thêm phần sửa, xoá hiển thị trên row của table
 
@@ -834,9 +903,9 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        
+
         NSDictionary *dicDataItem = [arrayData objectAtIndex:indexPath.row];
-        
+
         switch (typeActionEvent) {
             case typeLeaderView_Task:{
                 //deleteLeadId = [dicData objectForKey:DTOLEAD_id];
@@ -845,14 +914,14 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
                 mylert.tag =DELETE_TASK;
                 [mylert show];
             }
-                break;
+            break;
             case typeLeaderView_Opportunity:{
                 deleteNoteId = [dicData objectForKey:DTOOPPORTUNITY_id];
                 UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Bạn có muốn xoá cơ hội?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
                 mylert.tag = DELETE_COHOI;
                 [mylert show];
             }
-                break;
+            break;
             case typeLeaderView_Note:{
                 deleteNoteId =[dicDataItem objectForKey:DTONOTE_id];
                 deleteFileClienWithClientNoteID=[dicDataItem objectForKey:DTONOTE_clientNoteId];
@@ -860,7 +929,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
                 mylert.tag = DELETE_NOTE;
                 [mylert show];
             }
-                break;
+            break;
             case typeLeaderView_Contact:
             {
                 deleteContact = [dicDataItem objectForKey:DTOCONTACT_id];
@@ -868,7 +937,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
                 mylert.tag = DELETE_CONTAC;
                 [mylert show];
             }
-                break;
+            break;
             case typeLeaderView_Calendar:{
                 // deleteCalenda = [dicData objectForKey:DToCa];
                 delTask = [dicDataItem objectForKey:DTOTASK_id];
@@ -876,11 +945,11 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
                 mylert.tag = DELETE_CALENDAR;
                 [mylert show];
             }
-                break;
+            break;
             default:
-                break;
+            break;
         }
-        
+
     }
 }
 
@@ -890,11 +959,11 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
  */
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
-    
+
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     return SYS_KEY_DELETE;
 }
 
@@ -903,7 +972,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
  */
 -(NSString *)tableView:(UITableView *)tableView titleForSwipeAccessoryButtonForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+
     /**
      *  Neu khong phai la Header thi la item level 2
      */
@@ -923,43 +992,43 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             EditTaskLeadViewController *viewNoteController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
             viewNoteController.dataSend = dicTempData;
             [self presentViewController:viewNoteController animated:YES completion:nil];
-            
+
         }
-            break;
+        break;
         case typeLeaderView_Opportunity:{
             EditCalendarLeadViewController *viewCalendarController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
             viewCalendarController.dataSend = dicTempData;
             [viewCalendarController setDelegate:self];
             [self presentViewController:viewCalendarController animated:YES completion:nil];
         }
-            break;
+        break;
         case typeLeaderView_Note:{
             EditNoteLeadViewController *viewNoteController = [[EditNoteLeadViewController alloc]initWithNibName:@"EditNoteLeadViewController" bundle:nil];
             viewNoteController.dataSend = dicTempData;
             [self presentViewController:viewNoteController animated:YES completion:nil];
         }
-            break;
+        break;
         case typeLeaderView_Contact:
         {
             EditContactLeadViewController *viewNoteController = [[EditContactLeadViewController alloc]initWithNibName:@"EditContactLeadViewController" bundle:nil];
             viewNoteController.dataSend = dicTempData;
             [self presentViewController:viewNoteController animated:YES completion:nil];
-            
+
         }
-            break;
+        break;
         case typeLeaderView_Calendar:{
             EditCalendarLeadViewController *viewCalendarController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
             [viewCalendarController setDelegate:self];
             viewCalendarController.dataSend = dicTempData;
             [self presentViewController:viewCalendarController animated:YES completion:nil];
-            
+
         }
-            break;
+        break;
         default:
-            break;
+        break;
     }
-    
-    
+
+
 }
 
 
@@ -969,9 +1038,9 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 - (void) customButtonAccessoryTapped:(id)sender
 {
     UIButton *btnSender = (UIButton *) sender;
-    
+
     NSLog(@"btnSender = %d", btnSender.tag);
-    
+
 }
 
 #pragma mark Edit Calendar Lead ViewController Delegate
@@ -983,23 +1052,23 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 #pragma -mark xử lý thông báo
 -(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
     BOOL item;
-  
+
     if (alertView.tag==DELETE_NOTE) {
         if(buttonIndex==0){
             NSLog(@"chọn xoá ghi chú");
-              NSLog(@"deleteItem:%@",deleteNoteId);
+            NSLog(@"deleteItem:%@",deleteNoteId);
             item=[dtoNoteProcess deleteEntity:deleteNoteId];
             if(item){
                 NSLog(@"Xoa thanh cong");
                 [self loadDataWithTypeAction:typeLeaderView_Note];
-               // [self displayNormalButtonState:sender];
+                // [self displayNormalButtonState:sender];
             }
             else{
                 NSLog(@"Xoa that bai");
             }
         }
         else if(buttonIndex==1){
-            
+
             NSLog(@"Khong  xoa file");
             [alertView dismissWithClickedButtonIndex:nil animated:YES];
         }
@@ -1020,7 +1089,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             [alertView dismissWithClickedButtonIndex:nil animated:YES];
         }
     }else if(alertView.tag==DELETE_LEAD){
-    
+
         if(buttonIndex==0){
             NSLog(@"Xoa khach hang dau moi");
         }
@@ -1075,18 +1144,18 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             NSLog(@"xoa lich");
         }
         else{
-        NSLog(@"khong xoa lich");
+            NSLog(@"khong xoa lich");
             [alertView dismissWithClickedButtonIndex:nil animated:YES];
         }
     }
-    
+
 }
 
 - (IBAction)actionEdit:(id)sender {
-    
-    
+
+
     if([[self.dataSend objectForKey:DTOLEAD_leadType] isEqualToString:@"0"]){
-        
+
         EditAccountLeadViewController *viewController = [[EditAccountLeadViewController alloc]initWithNibName:@"EditAccountLeadViewController" bundle:nil];
         viewController.dataSend=dicData;
         [self presentViewController:viewController animated:YES completion:nil];
@@ -1096,7 +1165,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         viewController.dataSend=dicData;
         [self presentViewController:viewController animated:YES completion:nil];
     }
-    
+
 }
 
 - (IBAction)actionDel:(id)sender {
@@ -1104,6 +1173,6 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Bạn có muốn xoá khách hàng?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
     mylert.tag = DELETE_LEAD;
     [mylert show];
-    
+
 }
 @end

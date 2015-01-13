@@ -207,9 +207,20 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 
 #define COPY_OF_SOFTWARE @"Copyright Viettel ICT - Viettel Group"
 #define VOFFICE @"CRMOne-iPad"
+
 #define TITLE_APPLICATION @"HỆ THỐNG QUẢN LÝ QUAN HỆ KHÁCH HÀNG"
+#define TITLE_PRODUCT_DETAIL_BAO_LANH @"THÔNG TIN CHI TIẾT BẢO LÃNH"
+#define TITLE_PRODUCT_DETAIL_THANH_TOAN @"THÔNG TIN CHI TIẾT THANH TOÁN"
+#define TITLE_PRODUCT_DETAIL_BANK_PLUS @"THÔNG TIN CHI TIẾT BANK PLUS"
+#define TITLE_PRODUCT_DETAIL_EMB @"THÔNG TIN CHI TIẾT EMB"
+#define TITLE_PRODUCT_DETAIL_TAI_KHOAN_TIET_KIEM @"THÔNG TIN CHI TIẾT TÀI KHOẢN TIẾT KIỆM"
+#define TITLE_PRODUCT_DETAIL_THANH_TOAN_QUOC_TE @"THÔNG TIN CHI TIẾT THANH TOÁN QUỐC TẾ"
+#define TITLE_PRODUCT_DETAIL_THE @"THÔNG TIN CHI TIẾT THẺ"
+#define TITLE_PRODUCT_DETAIL_TIN_DUNG @"THÔNG TIN CHI TIẾT TÍN DỤNG"
+
 #define NO_CONFIG_TITLE_DEPARTMENT @"HỆ THỐNG THỬ NGHIỆM"
 #define ALL_DEPARTMENT @"Tất cả đơn vị"
+
 
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]

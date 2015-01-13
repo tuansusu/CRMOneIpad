@@ -23,12 +23,11 @@
 @protocol ProductsLeadViewDelegate <NSObject>
 
 @optional
-- (void)selectedProductDetailAtIndex:(int)index;
+- (void)selectedProductDetailAtIndex:(NSInteger)index;
 
 @end
 
-@interface ProductsLeadView : UIView<UITableViewDataSource,UITableViewDelegate
-,ProTindungDetailViewControllerDelegate,ProBaoLanhDetailViewControllerDelegate,ProTaiKhoanThanhToanDetailViewControllerDelegate,ProTaiKhoanTietKiemDetailViewControllerDelegate,ProBankPlusDetailViewControllerDelegate,ProEMBDetailViewControllerDelegate,ProThanhToanQuocTeDetailViewControllerDelegate,ProTheDetailViewControllerDelegate>
+@interface ProductsLeadView : UIView<UITableViewDataSource,UITableViewDelegate>
 {
     IBOutlet UITableView *tbvProductsLead;
     DTOPRODUCTMASTERProcess *dtoProductMaster;
@@ -37,16 +36,13 @@
     NSMutableArray *_listProductsLead;
     NSMutableArray *_listTypeProduct;
     NSString *_leadId;
-    ProTindungDetailViewController *proTindungDetailVC;
-    ProTaiKhoanThanhToanDetailViewController *proTaiKhoanThanhToanDetailVC;
-    ProTaiKhoanTietKiemDetailViewController *proTaiKhoanTietKiemDetailVC;
-    ProBaoLanhDetailViewController *proBaoLanhDetailVC;
-    ProThanhToanQuocTeDetailViewController *proThanhToanQuocTeDetailVC;
-    ProTheDetailViewController *proTheDetailVC;
-    ProEMBDetailViewController *proEMBDetailVC;
-    ProBankPlusDetailViewController *proBankPlusDetailVC;
+    
 }
 
+@property (nonatomic,assign) id<ProductsLeadViewDelegate>delegate;
+
 -(void)initDataWithLeaderId:(NSString*)leadId;
+
+
 
 @end

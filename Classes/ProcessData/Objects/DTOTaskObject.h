@@ -12,6 +12,7 @@
 
 @interface DTOTaskObject : NSObject
 
+@property (nonatomic, retain) NSString * id;
 @property (nonatomic, retain) NSString * clientTaskId;
 @property (nonatomic, retain) NSString * clientId;
 @property (nonatomic, retain) NSString * clientLeadId;

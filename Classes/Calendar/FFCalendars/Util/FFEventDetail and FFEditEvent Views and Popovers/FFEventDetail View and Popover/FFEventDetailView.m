@@ -112,7 +112,7 @@
     [buttonEditPopover setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [buttonEditPopover setTitle:@"Edit" forState:UIControlStateNormal];
     [buttonEditPopover.titleLabel setFont:[UIFont boldSystemFontOfSize:buttonEditPopover.titleLabel.font.pointSize]];
-//    [buttonEditPopover addTarget:self action:@selector(buttonEditPopoverAction:) forControlEvents:UIControlEventTouchUpInside];
+    [buttonEditPopover addTarget:self action:@selector(buttonEditPopoverAction:) forControlEvents:UIControlEventTouchUpInside];
     [buttonEditPopover setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin];
     
     [self addSubview:buttonEditPopover];

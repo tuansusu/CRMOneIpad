@@ -4,6 +4,9 @@
 #import "DTOTASKProcess.h"
 #import "DTOTaskObject.h"
 #import "NSDictionary+QS.h"
+#import "EditCalendarLeadViewController.h"
+
+#import "Globals.h"
 
 #define BUTTON_WIDTH 60
 #define BUTTON_MOUNT_WIDTH 80
@@ -11,7 +14,7 @@
 
 #import "FFCalendar.h"
 
-@interface FFCalendarViewController () <FFButtonAddEventWithPopoverProtocol, FFYearCalendarViewProtocol, FFMonthCalendarViewProtocol, FFWeekCalendarViewProtocol, FFDayCalendarViewProtocol>
+@interface FFCalendarViewController () <FFButtonAddEventWithPopoverProtocol, FFYearCalendarViewProtocol, FFMonthCalendarViewProtocol, FFWeekCalendarViewProtocol, FFDayCalendarViewProtocol,EditCalendarLeadViewControllerDelegate>
 {
     UIView *_topMenuView;
 
@@ -62,6 +65,8 @@
 -(void)loadView{
     [super loadView];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editEventSelected:) name:CALENDAR_SELECTE_EVENT_NOTIFICATION object:nil];
+    
     dtoTaskProcess= [DTOTASKProcess new];
 
     self.arrayWithEvents = [self arrayWithEvents];
@@ -125,7 +130,7 @@
         if ([startDateComponents year]==[endDateComponents year] && [startDateComponents month]==[endDateComponents month] && [startDateComponents day]==[endDateComponents day]) {
             FFEvent *event = [FFEvent new];
             [event setStringCustomerName: taskOB.title];
-            [event setNumCustomerID: [NSNumber numberWithInt:[taskOB.clientTaskId intValue]]];
+            [event setNumCustomerID: [NSNumber numberWithInt:[taskOB.id intValue]]];
             [event setDateDay:[NSDate dateWithYear:[startDateComponents year] month:[startDateComponents month] day:[startDateComponents day]]];
             [event setDateTimeBegin:[NSDate dateWithHour:[startDateComponents hour] min:[startDateComponents minute]]];
             [event setDateTimeEnd:[NSDate dateWithHour:[endDateComponents hour] min:[endDateComponents minute]]];
@@ -136,7 +141,7 @@
             for ( nextDate = startDate ; [nextDate compare:endDate] < 0 ; nextDate = [nextDate dateByAddingTimeInterval:24*60*61] ) {
                 FFEvent *eventAppending = [FFEvent new];
                 [eventAppending setStringCustomerName: taskOB.title];
-                [eventAppending setNumCustomerID: [NSNumber numberWithInt:[taskOB.clientTaskId intValue]]];
+                [eventAppending setNumCustomerID: [NSNumber numberWithInt:[taskOB.id intValue]]];
                 NSCalendar *cal = [NSCalendar currentCalendar];
                 NSDateComponents *nextDateComponents = [cal components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit fromDate:nextDate];
                 if ([startDateComponents year]==[nextDateComponents year] && [startDateComponents month]==[nextDateComponents month] && [startDateComponents day]==[nextDateComponents day])
@@ -298,12 +303,19 @@
 
     [buttonToday setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*7-BUTTON_MOUNT_WIDTH, 0, BUTTON_WIDTH, buttonToday.frame.size.height)];
 
+
+    FFRedAndWhiteButton *buttonAdd = [[FFRedAndWhiteButton alloc] initWithFrame:CGRectMake(0., 0., 80., 30)];
+    [buttonAdd addTarget:self action:@selector(buttonAddEventAction:) forControlEvents:UIControlEventTouchUpInside];
+    [buttonAdd setTitle:@"Add" forState:UIControlStateNormal];
+
+    [buttonAdd setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*8-10-BUTTON_MOUNT_WIDTH, 0, BUTTON_WIDTH, buttonAdd.frame.size.height)];
+
     labelWithMonthAndYear = [[UILabel alloc] initWithFrame:CGRectMake(APP_SCREEN_WIDTH-BUTTON_WIDTH*2.5, 0., 140., 30)];
     [labelWithMonthAndYear setTextColor:[UIColor redColor]];
     [labelWithMonthAndYear setFont:buttonToday.titleLabel.font];
     labelWithMonthAndYear.textAlignment = NSTextAlignmentRight;
 
-    arrayButtons = @[buttonYear, buttonMonth, buttonWeek, buttonDay];
+    arrayButtons = @[buttonYear, buttonMonth, buttonWeek, buttonDay,buttonAdd];
 
 
     _topMenuView  = [[UIView alloc] initWithFrame:CGRectMake(0, 40, self.view.frame.size.width, buttonYear.frame.size.height*2)];
@@ -314,6 +326,7 @@
     [_topMenuView addSubview:buttonWeek];
     [_topMenuView addSubview:buttonDay];
     [_topMenuView addSubview:buttonToday];
+    [_topMenuView addSubview:buttonAdd];
     [_topMenuView addSubview:labelWithMonthAndYear];
     [_topMenuView setBackgroundColor:[UIColor clearColor]];
 
@@ -323,7 +336,7 @@
 #pragma mark - Add Calendars
 
 - (void)addCalendars {
-    CGRect frame = CGRectMake(0., 70, self.view.frame.size.width, self.view.frame.size.height-70);
+    CGRect frame = CGRectMake(0., 80, self.view.frame.size.width, self.view.frame.size.height-80);
 
     viewCalendarYear = [[FFYearCalendarView alloc] initWithFrame:frame];
     [viewCalendarYear setProtocol:self];
@@ -375,6 +388,18 @@
                                                                    day:[NSDate componentsOfCurrentDate].day]];
 }
 
+- (IBAction)buttonAddEventAction:(id)sender {
+    EditCalendarLeadViewController *viewController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
+    [viewController setDelegate:self];
+    [self presentViewController:viewController animated:YES completion:nil];
+}
+
+#pragma mark EditCalendarLeadViewController delegate
+- (void)reloadListCalendarTask{
+    self.arrayWithEvents = [self arrayWithEvents];
+    [self addCalendars];
+}
+
 #pragma mark - Interface Rotation
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
@@ -397,6 +422,22 @@
     [arrayNew addObject:eventNew];
 
     [self setNewDictionary:dictEvents];
+}
+
+#pragma mark Edit Event Selected
+-(void)editEventSelected:(NSNotification *)noti{
+    FFEvent * event = noti.object;
+    NSMutableArray *resultArr = [dtoTaskProcess filterWithKey:@"id" withValue:[NSString stringWithFormat:@"%@",event.numCustomerID]];
+    if (resultArr.count>0) {
+        NSDictionary *dataDic = [resultArr objectAtIndex:0];
+        
+        EditCalendarLeadViewController *viewController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
+        [viewController setDelegate:self];
+        viewController.dataSend = dataDic;
+        [self presentViewController:viewController animated:YES completion:nil];
+    }
+
+    
 }
 
 #pragma mark - FFMonthCalendarView, FFWeekCalendarView and FFDayCalendarView Protocols

@@ -14,6 +14,7 @@
 
 - (Items*)itemObject{
     Items * item = [[Items alloc] initWithKeys:[NSArray arrayWithObjects:
+                                                @"id",
                                                 @"clientTaskId",
                                                 @"clientId",
                                                 @"clientLeadId",
@@ -35,6 +36,7 @@
 {
     NSMutableDictionary *_dictionary=[[NSMutableDictionary alloc] init];
     NSArray *keyArray=[NSArray arrayWithObjects:
+                       @"id",
                        @"clientTaskId",
                        @"clientId",
                        @"clientLeadId",

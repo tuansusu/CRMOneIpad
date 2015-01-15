@@ -54,6 +54,10 @@ return _sharedObject; \
 #define PRODUCT_TYPE_DU_AN 12
 #define PRODUCT_TYPE_LOI 13
 
+//=============================Calendar Notification====================
+
+#define CALENDAR_SELECTE_EVENT_NOTIFICATION @"calendarSelectedEventNotification"
+
 //=============================Map Configuration========================
 #define KEY_ROUTES_OF_DIRECTIONS_AT_INDEX @"routesOfDirectionAtIndex%d"
 

@@ -10,9 +10,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class FFEvent;
+
 @protocol FFDayCalendarViewProtocol <NSObject>
 @required
 - (void)setNewDictionary:(NSDictionary *)dict;
+-(void)showEditEventCalendarWithEvent:(FFEvent *)_event;
+
 @end
 
 @interface FFDayCalendarView : UIView

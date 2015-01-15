@@ -10,6 +10,8 @@
 
 #import "FFButtonWithEditAndDetailPopoversForMonthCell.h"
 
+#import "Globals.h"
+
 #import "FFEventDetailPopoverController.h"
 #import "FFEditEventPopoverController.h"
 
@@ -79,14 +81,14 @@
 #pragma mark - FFEventDetailPopoverController Protocol
 
 - (void)showPopoverEditWithEvent:(FFEvent *)_event {
-    
-    popoverControllerEditar = [[FFEditEventPopoverController alloc] initWithEvent:_event];
-    [popoverControllerEditar setProtocol:self];
-    
-    [popoverControllerEditar presentPopoverFromRect:self.frame
-                                              inView:[super superview]
-                            permittedArrowDirections:UIPopoverArrowDirectionAny
-                                            animated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:CALENDAR_SELECTE_EVENT_NOTIFICATION object:_event userInfo:nil];
+//    popoverControllerEditar = [[FFEditEventPopoverController alloc] initWithEvent:_event];
+//    [popoverControllerEditar setProtocol:self];
+//    
+//    [popoverControllerEditar presentPopoverFromRect:self.frame
+//                                              inView:[super superview]
+//                            permittedArrowDirections:UIPopoverArrowDirectionAny
+//                                            animated:YES];
 }
 
 #pragma mark - FFEditEventPopoverController Protocol

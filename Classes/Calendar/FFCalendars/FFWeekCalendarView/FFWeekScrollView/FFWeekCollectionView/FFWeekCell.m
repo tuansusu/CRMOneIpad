@@ -10,6 +10,8 @@
 
 #import "FFWeekCell.h"
 
+#import "Globals.h"
+
 #import "FFHourAndMinLabel.h"
 #import "FFBlueButton.h"
 #import "FFEventDetailPopoverController.h"
@@ -168,14 +170,14 @@
 #pragma mark - FFEventDetailPopoverController Protocol
 
 - (void)showPopoverEditWithEvent:(FFEvent *)_event {
-    
-    popoverControllerEditar = [[FFEditEventPopoverController alloc] initWithEvent:_event];
-    [popoverControllerEditar setProtocol:self];
-    
-    [popoverControllerEditar presentPopoverFromRect:button.frame
-                                             inView:self
-                           permittedArrowDirections:UIPopoverArrowDirectionAny
-                                           animated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:CALENDAR_SELECTE_EVENT_NOTIFICATION object:_event userInfo:nil];
+//    popoverControllerEditar = [[FFEditEventPopoverController alloc] initWithEvent:_event];
+//    [popoverControllerEditar setProtocol:self];
+//    
+//    [popoverControllerEditar presentPopoverFromRect:button.frame
+//                                             inView:self
+//                           permittedArrowDirections:UIPopoverArrowDirectionAny
+//                                           animated:YES];
 }
 
 #pragma mark - FFEditEventPopoverController Protocol

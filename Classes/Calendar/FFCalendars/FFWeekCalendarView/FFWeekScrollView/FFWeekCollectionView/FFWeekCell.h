@@ -13,6 +13,8 @@
 
 @protocol FFWeekCellProtocol <NSObject>
 @required
+-(void)showEditEventCalendarWithEvent:(FFEvent *)_event;
+
 - (void)saveEditedEvent:(FFEvent *)eventNew ofCell:(UICollectionViewCell *)cell atIndex:(NSInteger)intIndex;
 - (void)deleteEventOfCell:(UICollectionViewCell *)cell atIndex:(NSInteger)intIndex;
 @end

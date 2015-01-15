@@ -10,6 +10,8 @@
 
 #import "FFDayCalendarView.h"
 
+#import "Globals.h"
+
 #import "FFDayHeaderCollectionView.h"
 #import "FFDayScrollView.h"
 
@@ -163,14 +165,17 @@
 #pragma mark - FFEventDetailView Protocol
 
 - (void)showEditViewWithEvent:(FFEvent *)_event {
-    
-    viewEdit = [[FFEditEventView alloc] initWithFrame:CGRectMake(self.frame.size.width/2., HEADER_HEIGHT_SCROLL, self.frame.size.width/2., self.frame.size.height-HEADER_HEIGHT_SCROLL) event:_event];
-    [viewEdit setAutoresizingMask:AR_WIDTH_HEIGHT | UIViewAutoresizingFlexibleLeftMargin];
-    [viewEdit setProtocol:self];
-    [self addSubview:viewEdit];
-    
-    [viewDetail removeFromSuperview];
-    viewDetail = nil;
+    [[NSNotificationCenter defaultCenter] postNotificationName:CALENDAR_SELECTE_EVENT_NOTIFICATION object:_event userInfo:nil];
+//    if (protocol != nil && [protocol respondsToSelector:@selector(showEditEventCalendarWithEvent:)]) {
+//        [protocol showEditEventCalendarWithEvent:_event];
+//    }
+//    viewEdit = [[FFEditEventView alloc] initWithFrame:CGRectMake(self.frame.size.width/2., HEADER_HEIGHT_SCROLL, self.frame.size.width/2., self.frame.size.height-HEADER_HEIGHT_SCROLL) event:_event];
+//    [viewEdit setAutoresizingMask:AR_WIDTH_HEIGHT | UIViewAutoresizingFlexibleLeftMargin];
+//    [viewEdit setProtocol:self];
+//    [self addSubview:viewEdit];
+//    
+//    [viewDetail removeFromSuperview];
+//    viewDetail = nil;
 }
 
 #pragma mark - FFEditEventView Protocol

@@ -15,6 +15,9 @@
 
 -(DTOTaskObject*)dtoTaskObject{
     DTOTaskObject *taskOB = [[DTOTaskObject alloc] init];
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOTASK_id]]) {
+        taskOB.id = [self objectForKey:DTOTASK_id];
+    }
 
     if (![StringUtil stringIsEmpty:[self objectForKey:DTOTASK_clientTaskId]]) {
         taskOB.clientTaskId = [self objectForKey:DTOTASK_clientTaskId];

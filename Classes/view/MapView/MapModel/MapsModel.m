@@ -9,6 +9,7 @@
 #import "MapsModel.h"
 #import "NSDictionary+QS.h"
 #import "Globals.h"
+#import "RequestHelper.h"
 
 @implementation MapsModel
 
@@ -26,6 +27,66 @@
         [self initManeuverDic];
     }
     return self;
+}
+
+static NSString *kMDDirectionsURL = @"http://maps.googleapis.com/maps/api/directions/json?";
+- (void)requestDirectionsQuery:(NSDictionary *)query success:(void (^)(id result))success
+                       failure:(void (^)(NSError *error))failure{
+    NSArray *waypoints = [query objectForKey:@"waypoints"];
+    NSString *origin = [waypoints objectAtIndex:0];
+    int waypointCount = [waypoints count];
+    int destinationPos = waypointCount -1;
+    NSString *destination = [waypoints objectAtIndex:destinationPos];
+    NSString *sensor = [query objectForKey:@"sensor"];
+    NSString *modeVehicles = [[NSUserDefaults standardUserDefaults] valueForKey:VEHICLES_SELECTED];
+    NSMutableString *url =
+    [NSMutableString stringWithFormat:@"%@&origin=%@&destination=%@&sensor=%@&language=vi&mode=%@",
+     kMDDirectionsURL,origin,destination, sensor,modeVehicles];
+    if(waypointCount>2) {
+        [url appendString:@"&waypoints=optimize:true"];
+        int wpCount = waypointCount-2;
+        for(int i=1;i<wpCount;i++){
+            [url appendString: @"|"];
+            [url appendString:[waypoints objectAtIndex:i]];
+        }
+    }
+    url = [url
+           stringByAddingPercentEscapesUsingEncoding: NSASCIIStringEncoding];
+    _directionsURL = [NSURL URLWithString:url];
+    
+    [RequestHelper requestWithURL:_directionsURL method:HttpMethodGet params:nil success:^(id result) {
+        NSError *error=nil;
+        NSString *string=[[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding];
+        string= [string stringByReplacingOccurrencesOfString:@":null" withString:@":\"\""];
+        NSDictionary *dic =[NSJSONSerialization JSONObjectWithData:[string dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableLeaves error:&error];
+        if (error) {
+            if (failure) {
+                failure(error);
+                
+            }
+            return;
+        }
+        NSLog(@"Result:%@",dic);
+        if (dic) {
+            
+            if (success) {
+                success(dic);
+            }
+        }
+        else{
+            if (failure) {
+                failure([NSError errorWithDomain:@"Software" code:500 userInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"result nil",NSLocalizedDescriptionKey, nil]]);
+            }
+        }
+        
+    } failure:^(NSError *error) {
+        NSLog(@"Error : %@",error);
+        if (failure) {
+            failure(error);
+        }
+    }];
+
+   
 }
 
 

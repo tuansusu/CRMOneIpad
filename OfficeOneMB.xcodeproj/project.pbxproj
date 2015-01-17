@@ -11,6 +11,8 @@
 		0648C62B1A4C2F5D0002F9FE /* UICGRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 0648C6271A4C2F5D0002F9FE /* UICGRoute.m */; };
 		0648C62C1A4C2F5D0002F9FE /* UICGStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 0648C6291A4C2F5D0002F9FE /* UICGStep.m */; };
 		0648C62F1A4C3D020002F9FE /* StringRemoval.m in Sources */ = {isa = PBXBuildFile; fileRef = 0648C62E1A4C3D020002F9FE /* StringRemoval.m */; };
+		06F2BF1D1A6A53F9003B8C40 /* RequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F2BF1C1A6A53F9003B8C40 /* RequestHelper.m */; };
+		06F2BF291A6A6F4B003B8C40 /* CustomOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F2BF281A6A6F4B003B8C40 /* CustomOperationQueue.m */; };
 		06FE2E151A4528B3004A1D16 /* iconDirection3.png in Resources */ = {isa = PBXBuildFile; fileRef = 06FE2E111A4528B3004A1D16 /* iconDirection3.png */; };
 		06FE2E161A4528B3004A1D16 /* iconDirection3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06FE2E121A4528B3004A1D16 /* iconDirection3@2x.png */; };
 		06FE2E171A4528B3004A1D16 /* iconDirectionSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 06FE2E131A4528B3004A1D16 /* iconDirectionSelected.png */; };
@@ -784,7 +786,6 @@
 		8ED402881A41DF3C00CCBE6D /* ic_qu_direction_mylocation@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ED402851A41DF3C00CCBE6D /* ic_qu_direction_mylocation@3x.png */; };
 		8ED4028D1A41E18800CCBE6D /* CustomerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED4028B1A41E18800CCBE6D /* CustomerViewCell.m */; };
 		8ED4028E1A41E18800CCBE6D /* CustomerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ED4028C1A41E18800CCBE6D /* CustomerViewCell.xib */; };
-		8ED8C32C1A3F23F60030386C /* MDDirectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8C32B1A3F23F60030386C /* MDDirectionService.m */; };
 		8EFE69011A565BDF003D55CE /* DTOProTindungDetailObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE69001A565BDF003D55CE /* DTOProTindungDetailObject.m */; };
 		8EFE69041A56604F003D55CE /* DTOProTindungDetailProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE69031A56604F003D55CE /* DTOProTindungDetailProcess.m */; };
 		8EFE69141A56938C003D55CE /* ProTindungDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE69121A56938C003D55CE /* ProTindungDetailViewController.m */; };
@@ -974,6 +975,10 @@
 		0648C6291A4C2F5D0002F9FE /* UICGStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICGStep.m; sourceTree = "<group>"; };
 		0648C62D1A4C3D020002F9FE /* StringRemoval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringRemoval.h; sourceTree = "<group>"; };
 		0648C62E1A4C3D020002F9FE /* StringRemoval.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringRemoval.m; sourceTree = "<group>"; };
+		06F2BF1B1A6A53F9003B8C40 /* RequestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestHelper.h; sourceTree = "<group>"; };
+		06F2BF1C1A6A53F9003B8C40 /* RequestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestHelper.m; sourceTree = "<group>"; };
+		06F2BF271A6A6F4B003B8C40 /* CustomOperationQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomOperationQueue.h; sourceTree = "<group>"; };
+		06F2BF281A6A6F4B003B8C40 /* CustomOperationQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomOperationQueue.m; sourceTree = "<group>"; };
 		06FE2E111A4528B3004A1D16 /* iconDirection3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconDirection3.png; sourceTree = "<group>"; };
 		06FE2E121A4528B3004A1D16 /* iconDirection3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconDirection3@2x.png"; sourceTree = "<group>"; };
 		06FE2E131A4528B3004A1D16 /* iconDirectionSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconDirectionSelected.png; sourceTree = "<group>"; };
@@ -2161,8 +2166,6 @@
 		8ED4028A1A41E18800CCBE6D /* CustomerViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerViewCell.h; sourceTree = "<group>"; };
 		8ED4028B1A41E18800CCBE6D /* CustomerViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerViewCell.m; sourceTree = "<group>"; };
 		8ED4028C1A41E18800CCBE6D /* CustomerViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerViewCell.xib; sourceTree = "<group>"; };
-		8ED8C32A1A3F23F60030386C /* MDDirectionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDirectionService.h; sourceTree = "<group>"; };
-		8ED8C32B1A3F23F60030386C /* MDDirectionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDirectionService.m; sourceTree = "<group>"; };
 		8EFE68FF1A565BDF003D55CE /* DTOProTindungDetailObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOProTindungDetailObject.h; sourceTree = "<group>"; };
 		8EFE69001A565BDF003D55CE /* DTOProTindungDetailObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOProTindungDetailObject.m; sourceTree = "<group>"; };
 		8EFE69021A56604F003D55CE /* DTOProTindungDetailProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOProTindungDetailProcess.h; sourceTree = "<group>"; };
@@ -2484,6 +2487,17 @@
 			path = Maps;
 			sourceTree = "<group>";
 		};
+		06F2BF1A1A6A53F9003B8C40 /* NetworkHelper */ = {
+			isa = PBXGroup;
+			children = (
+				06F2BF271A6A6F4B003B8C40 /* CustomOperationQueue.h */,
+				06F2BF281A6A6F4B003B8C40 /* CustomOperationQueue.m */,
+				06F2BF1B1A6A53F9003B8C40 /* RequestHelper.h */,
+				06F2BF1C1A6A53F9003B8C40 /* RequestHelper.m */,
+			);
+			path = NetworkHelper;
+			sourceTree = "<group>";
+		};
 		06FE2E1C1A4565BD004A1D16 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
@@ -2713,6 +2727,7 @@
 		2D0E2ED21798018E0081D44A /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				06F2BF1A1A6A53F9003B8C40 /* NetworkHelper */,
 				8E3528141A610D4C00E1E1E3 /* Common */,
 				8EC971E41A5D71300021DCA3 /* Calendar */,
 				76D628191A3DA741009C3A0C /* CMPopTipView */,
@@ -4156,8 +4171,6 @@
 				8497C0121A295A8500A5ED3C /* TestMapViewController.h */,
 				8497C0131A295A8500A5ED3C /* TestMapViewController.m */,
 				8497C0141A295A8500A5ED3C /* TestMapViewController.xib */,
-				8ED8C32A1A3F23F60030386C /* MDDirectionService.h */,
-				8ED8C32B1A3F23F60030386C /* MDDirectionService.m */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -6013,6 +6026,7 @@
 				92C68E681519D4F100981728 /* AppService.m in Sources */,
 				8496FB2B1A2DEF3800F4A641 /* DTOACCCONTACTProcess.m in Sources */,
 				762048761A0D246600AAA917 /* CompetitorsViewController.m in Sources */,
+				06F2BF1D1A6A53F9003B8C40 /* RequestHelper.m in Sources */,
 				92C68E691519D4F100981728 /* ModelEvent.m in Sources */,
 				76C9643E1A17731900029978 /* MIM_MathClass.m in Sources */,
 				8ED4028D1A41E18800CCBE6D /* CustomerViewCell.m in Sources */,
@@ -6122,7 +6136,6 @@
 				7622D2F01A43246700DC9309 /* ContactOpportunityCell.m in Sources */,
 				8E6A10281A6226F500D98AE3 /* MainViewCell.m in Sources */,
 				7657E8AF1A5AEB3A008A62F9 /* Contact360Cell.m in Sources */,
-				8ED8C32C1A3F23F60030386C /* MDDirectionService.m in Sources */,
 				8497C0071A295A2300A5ED3C /* PanoramaViewController.m in Sources */,
 				2D47E7F91761704200F291D6 /* GCNetworkDownloadRequest.m in Sources */,
 				8EFE693B1A569A2C003D55CE /* ProThanhToanQuocTeDetailViewController.m in Sources */,
@@ -6340,6 +6353,7 @@
 				76C964621A17731900029978 /* DetailPopOverStyle2.m in Sources */,
 				8497C0031A295A2300A5ED3C /* MarkerInfoWindowViewController.m in Sources */,
 				76C9645C1A17731900029978 /* BevelPieChart.m in Sources */,
+				06F2BF291A6A6F4B003B8C40 /* CustomOperationQueue.m in Sources */,
 				8497BCE01A294C7F00A5ED3C /* TestViewController.m in Sources */,
 				76C9646E1A17731900029978 /* PaddedPieChart.m in Sources */,
 				8497BFFF1A295A2300A5ED3C /* MapLayerViewController.m in Sources */,

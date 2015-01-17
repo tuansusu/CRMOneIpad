@@ -16,12 +16,12 @@
 -(BOOL) insertToDBWithEntity:(NSMutableDictionary*) entity;
 
 /*
- * Ham xoa khach hang dau moi - truyen clientLeadId
+ * Ham xoa ghi chu - truyen attachmentId
  */
--(BOOL) deleteEntity : (NSString*) leadId;
+-(BOOL) deleteEntity : (NSString*) attachmentId;
 
 /*
- * Lọc khách hàng đầu mối (chưa có tìm kiếm và phân trang)
+ * Lọc ghi chu (chưa có tìm kiếm và phân trang)
  */
 -(NSMutableArray*) filter;
 -(NSMutableArray*) filterWithKey : (NSString*) strKey withValue : (NSString*) strValue;
@@ -31,7 +31,7 @@
 -(NSInteger) getClientId ;
 
 /*
- * Lọc danh sach lien he theo clientLeaderId
+ * Lọc ghi chu theo attachmentId
  */
 -(NSMutableArray*) filterWithClientLeaderId: (NSString*) strValue;
 

@@ -10,6 +10,7 @@
 
 #import "DTONOTEProcess.h"
 #import "DTOATTACHMENTProcess.h"
+#import "EditNoteViewCell.h"
 
 @interface EditNote360ViewController ()
 {
@@ -301,6 +302,7 @@
             NSLog(@"Xoa file dinh kem:%@",deleteFile);
             BOOL result=[dtoFileProcess deleteEntity:deleteFile];
             if (result) {
+                arrayData =[dtoFileProcess filterWithKey:DTOATTACHMENT_clientObjectId withValue:[_dataSend objectForKey:DTONOTE_clientNoteId]];
                 [self.tbData reloadData];
             }
         }
@@ -405,7 +407,7 @@
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 44.0f;
+    return 50.0f;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -414,24 +416,24 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    
+
     return  arrayData.count;
-    
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"newFriendCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"newFriendCell"];
-    
+
+    static NSString *cellId = @"EditNoteViewCell";
+    EditNoteViewCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        [self.tbData registerNib:[UINib nibWithNibName:@"EditNoteViewCell" bundle:nil] forCellReuseIdentifier:@"EditNoteViewCell"];
+        cell = [[EditNoteViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+//        cell.delegate = self;
     }
-    //etc.
+
     NSDictionary *dicRow = [arrayData objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [dicRow objectForKey:DTOATTACHMENT_fileName];
+    [cell loadDataCellWithImageName:[dicRow objectForKey:DTOATTACHMENT_fileName]];
     
     return cell;
     

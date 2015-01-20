@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectAddInMapsViewController">
             <connections>
+                <outlet property="mkMapview" destination="rid-Ye-Ef6" id="HxE-xz-XDD"/>
                 <outlet property="txtSearchBar" destination="Dq3-Es-AG0" id="urm-bc-4CH"/>
                 <outlet property="view" destination="nNw-if-Z6B" id="hMr-YB-eiK"/>
             </connections>

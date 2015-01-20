@@ -38,6 +38,8 @@
 		15A92D2C1A447049005DC9CA /* TaskCalTLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A92D2A1A447049005DC9CA /* TaskCalTLineCell.m */; };
 		15A92D2D1A447049005DC9CA /* TaskCalTLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A92D2B1A447049005DC9CA /* TaskCalTLineCell.xib */; };
 		170862EA1A3F3CB30021705D /* attach_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 170862E91A3F3CB30021705D /* attach_icon.png */; };
+		17C67D391A5D72FA00EECD66 /* SelectAddInMapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C67D371A5D72FA00EECD66 /* SelectAddInMapsViewController.m */; };
+		17C67D3A1A5D72FA00EECD66 /* SelectAddInMapsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17C67D381A5D72FA00EECD66 /* SelectAddInMapsViewController.xib */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -971,6 +973,9 @@
 		15A92D2A1A447049005DC9CA /* TaskCalTLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCalTLineCell.m; sourceTree = "<group>"; };
 		15A92D2B1A447049005DC9CA /* TaskCalTLineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskCalTLineCell.xib; sourceTree = "<group>"; };
 		170862E91A3F3CB30021705D /* attach_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attach_icon.png; sourceTree = "<group>"; };
+		17C67D361A5D72FA00EECD66 /* SelectAddInMapsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectAddInMapsViewController.h; sourceTree = "<group>"; };
+		17C67D371A5D72FA00EECD66 /* SelectAddInMapsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAddInMapsViewController.m; sourceTree = "<group>"; };
+		17C67D381A5D72FA00EECD66 /* SelectAddInMapsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectAddInMapsViewController.xib; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* OfficeOneMB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OfficeOneMB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -4208,6 +4213,9 @@
 		8E8B3F211A49AA4300241360 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
+				17C67D361A5D72FA00EECD66 /* SelectAddInMapsViewController.h */,
+				17C67D371A5D72FA00EECD66 /* SelectAddInMapsViewController.m */,
+				17C67D381A5D72FA00EECD66 /* SelectAddInMapsViewController.xib */,
 				8E8B3F271A49AA5F00241360 /* MainViewCell */,
 				8E8B3F221A49AA4300241360 /* MainViewController.h */,
 				8E8B3F231A49AA4300241360 /* MainViewController.m */,
@@ -5314,6 +5322,7 @@
 				76C964771A17731900029978 /* trophy.png in Resources */,
 				8497BFE91A295A2300A5ED3C /* step5@2x.png in Resources */,
 				B31AFAA5187ADB5800D366B5 /* ic-show-column-1-1.png in Resources */,
+				17C67D3A1A5D72FA00EECD66 /* SelectAddInMapsViewController.xib in Resources */,
 				76601A40194BE90F001D4C01 /* AppIcon-114.png in Resources */,
 				8E7554621A52EFC8001940FB /* iconTurnLeft.png in Resources */,
 				8E7554221A52E3A2001940FB /* iconTurnSharpLeft.png in Resources */,
@@ -5733,6 +5742,7 @@
 				B3A0669C17D1A72400BA6487 /* UIGestureRecognizer+FLKit.m in Sources */,
 				B3A0669D17D1A72400BA6487 /* WCGridView.m in Sources */,
 				B3A0669E17D1A72400BA6487 /* WCGridViewCell.m in Sources */,
+				17C67D391A5D72FA00EECD66 /* SelectAddInMapsViewController.m in Sources */,
 				76601A2D194BE90F001D4C01 /* ReaderDocument.m in Sources */,
 				76601A2A194BE90F001D4C01 /* ReaderContentPage.m in Sources */,
 				06C273F91A5BCC9100036297 /* JTCalendarDayView.m in Sources */,

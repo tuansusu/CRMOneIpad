@@ -32,6 +32,7 @@ typedef void (^AlertViewCompletionBlock)(NSInteger buttonIndex);
 
 - (void)setSample:(UIViewController *)sample ;
 
+- (void)showRootView;
 
 @end
 

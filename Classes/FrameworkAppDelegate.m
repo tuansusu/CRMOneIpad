@@ -107,6 +107,8 @@
     }
     
     //    [window addSubview:navigationController.view];
+    [window addSubview:navigationController.view];
+    
     [window makeKeyAndVisible];
     
     return YES;
@@ -293,6 +295,11 @@
 //    [contactProcess RenderDataField];
     
     
+}
+
+- (void)showRootView{
+    RootViewController *rootView = [[RootViewController alloc] init];
+    [self.window setRootViewController:rootView];
 }
 
 

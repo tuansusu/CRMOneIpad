@@ -14,6 +14,10 @@
 #import <QuartzCore/QuartzCore.h>
 #import <QuartzCore/CALayer.h>
 
+//menu
+#import "DDMenuController.h"
+#import "MeunViewController.h"
+
 
 @interface RootViewController : BaseViewController <ReaderViewControllerDelegate, UIAlertViewDelegate,UITextFieldDelegate>{
     IBOutlet UITextField* tf_username;

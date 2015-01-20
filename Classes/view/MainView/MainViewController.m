@@ -132,6 +132,12 @@ NSString* emptyText = @"";
     
 }
 
+
+//Home button
+- (IBAction)homeBack:(id)sender {
+    [Util backToHome:self];
+}
+
 #pragma mark Event
 - (void)didFinish {
    

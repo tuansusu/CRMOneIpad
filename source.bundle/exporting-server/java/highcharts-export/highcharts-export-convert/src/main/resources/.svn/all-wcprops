@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/svn/C3MERPReporting/!svn/ver/223/trunk/C3MTMTApp-xcode5/C3MTMTApp/source.bundle/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources
+END
+spring-convert.xml
+K 25
+svn:wc:ra_dav:version-url
+V 184
+/svn/C3MERPReporting/!svn/ver/223/trunk/C3MTMTApp-xcode5/C3MTMTApp/source.bundle/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/spring-convert.xml
+END
+app-convert.properties
+K 25
+svn:wc:ra_dav:version-url
+V 188
+/svn/C3MERPReporting/!svn/ver/223/trunk/C3MTMTApp-xcode5/C3MTMTApp/source.bundle/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/app-convert.properties
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/svn/C3MERPReporting/!svn/ver/223/trunk/C3MTMTApp-xcode5/C3MTMTApp/source.bundle/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/log4j.properties
+END

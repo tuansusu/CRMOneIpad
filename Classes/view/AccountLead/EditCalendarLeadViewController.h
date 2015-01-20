@@ -8,6 +8,15 @@
 
 #import "BaseViewController.h"
 
+@class EditCalendarLeadViewController;
+
+@protocol EditCalendarLeadViewControllerDelegate <NSObject>
+
+@optional
+- (void)reloadListCalendarTask;
+
+@end
+
 @interface EditCalendarLeadViewController : BaseViewController
 
 //DATA
@@ -20,5 +29,7 @@
  * chuyen tu form KHDM
  */
 @property (nonatomic, retain) NSDictionary *dataRoot;
+
+@property (nonatomic,assign) id<EditCalendarLeadViewControllerDelegate>delegate;
 
 @end

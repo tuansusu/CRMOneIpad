@@ -7,80 +7,106 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListComplainsViewController">
             <connections>
-                <outlet property="searchBarComplain" destination="OYu-rm-0zj" id="RDE-Ms-OaR"/>
-                <outlet property="tbvListComplains" destination="Eel-OF-WdZ" id="hNN-dA-D7X"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="barLabel" destination="A1n-J0-ypj" id="uEP-QA-MqA"/>
+                <outlet property="btnHome" destination="PY1-Nh-lrc" id="Sbb-gf-4KB"/>
+                <outlet property="footerView" destination="dQN-Ht-C4h" id="YaX-B5-Piq"/>
+                <outlet property="fullNameLB" destination="sXi-Ml-can" id="pem-4B-PDK"/>
+                <outlet property="headerViewBar" destination="mno-4z-QkC" id="gPj-Xd-SdG"/>
+                <outlet property="lbTotal" destination="Ups-6b-0nH" id="cBe-eC-Dfn"/>
+                <outlet property="mainView" destination="emo-ou-Dar" id="Qze-2H-Iba"/>
+                <outlet property="rightInMainView" destination="2LQ-cJ-0Qq" id="Uvv-wk-VvI"/>
+                <outlet property="searchBarComplain" destination="vNq-UH-Kv2" id="gTQ-2W-YF9"/>
+                <outlet property="tbvListComplains" destination="RLD-0w-zKc" id="AFe-lI-7Wm"/>
+                <outlet property="view" destination="3yK-74-bOr" id="Um7-0M-KrL"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="3yK-74-bOr">
+            <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" id="mQt-Jv-uHY" userLabel="headerView">
-                    <rect key="frame" x="0.0" y="20" width="768" height="50"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                <view contentMode="scaleToFill" id="mno-4z-QkC" userLabel="HeaderView">
+                    <rect key="frame" x="0.0" y="20" width="1024" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="op9-hq-OUS">
-                            <rect key="frame" x="707" y="0.0" width="61" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="icon_close.png">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="homeCloseView:" destination="-1" eventType="touchUpInside" id="h8b-OS-tMr"/>
-                            </connections>
-                        </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Danh sách ý kiến phản hồi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Myb-a3-UGc">
-                            <rect key="frame" x="222" y="14" width="325" height="21"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Ý KIẾN PHẢN HỒI" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sXi-Ml-can">
+                            <rect key="frame" x="69" y="0.0" width="955" height="24"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                            <color key="textColor" red="0.88175101899999997" green="0.88175101899999997" blue="0.88175101899999997" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Imv-G7-I4S">
-                            <rect key="frame" x="0.0" y="0.0" width="60" height="50"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PY1-Nh-lrc" userLabel="BTNHome">
+                            <rect key="frame" x="20" y="6" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="iconAdd.png">
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <state key="normal" image="icon_menu-1.png">
+                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <state key="highlighted">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
                             <connections>
-                                <action selector="btnAddComplainAction:" destination="-1" eventType="touchUpInside" id="uw5-dv-vfV"/>
+                                <action selector="homeCloseView:" destination="-1" eventType="touchUpInside" id="hQ6-A0-K97"/>
                             </connections>
                         </button>
-                    </subviews>
-                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                </view>
-                <view contentMode="scaleToFill" id="O8m-XM-bPk" userLabel="contentView">
-                    <rect key="frame" x="0.0" y="70" width="768" height="924"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <searchBar contentMode="redraw" id="OYu-rm-0zj">
-                            <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VDL-QP-BV2" userLabel="BTNADD">
+                            <rect key="frame" x="972" y="7" width="32" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="ic_plus-1.png"/>
+                            <connections>
+                                <action selector="btnAddComplainAction:" destination="-1" eventType="touchUpInside" id="wHL-yQ-675"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tổng số 1,100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ups-6b-0nH">
+                            <rect key="frame" x="69" y="24" width="133" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <searchBar contentMode="redraw" placeholder="Từ khoá tìm kiếm" id="vNq-UH-Kv2">
+                            <rect key="frame" x="639" y="0.0" width="319" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
-                                <outlet property="delegate" destination="-1" id="TMe-rh-0hc"/>
+                                <outlet property="delegate" destination="-1" id="GIz-3r-hdQ"/>
                             </connections>
                         </searchBar>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Eel-OF-WdZ">
-                            <rect key="frame" x="0.0" y="44" width="768" height="880"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <outlet property="dataSource" destination="-1" id="WNM-wm-gBp"/>
-                                <outlet property="delegate" destination="-1" id="505-1b-NFv"/>
-                            </connections>
-                        </tableView>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
-                <view contentMode="scaleToFill" id="Lbp-lh-98C" userLabel="FOOTER VIEW">
-                    <rect key="frame" x="0.0" y="994" width="768" height="30"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                <view contentMode="scaleToFill" id="emo-ou-Dar" userLabel="main view">
+                    <rect key="frame" x="0.0" y="64" width="1024" height="674"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="VOFFICE-iPad 2.0, copyright Viettel CIT, Viettel Group" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="9nu-6B-5w6">
-                            <rect key="frame" x="0.0" y="0.0" width="768" height="30"/>
+                        <view contentMode="scaleToFill" id="2LQ-cJ-0Qq" userLabel="Right view">
+                            <rect key="frame" x="0.0" y="0.0" width="1024" height="674"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                            <subviews>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RLD-0w-zKc">
+                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="674"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="1ac-zY-073"/>
+                                        <outlet property="delegate" destination="-1" id="xhG-Fz-U0K"/>
+                                    </connections>
+                                </tableView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" id="dQN-Ht-C4h" userLabel="FOOTER VIEW">
+                    <rect key="frame" x="0.0" y="738" width="1024" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="VOFFICE-iPad 2.0, copyright Viettel CIT, Viettel Group" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="A1n-J0-ypj">
+                            <rect key="frame" x="0.0" y="0.0" width="1024" height="30"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -92,12 +118,12 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-            <point key="canvasLocation" x="332" y="329"/>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
         </view>
     </objects>
     <resources>
-        <image name="iconAdd.png" width="40" height="40"/>
-        <image name="icon_close.png" width="24" height="24"/>
+        <image name="ic_plus-1.png" width="48" height="48"/>
+        <image name="icon_menu-1.png" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

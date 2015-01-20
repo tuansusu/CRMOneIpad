@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<script src="../../js/columnJquery.js"></script>
+		<script type="text/javascript">
+$(function () {
+        $('#container').highcharts({
+    
+            chart: {
+                type: 'column'
+            },
+    
+            title: {
+                text: 'Total fruit consumtion, grouped by gender'
+            },
+    
+            xAxis: {
+                categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
+            },
+    
+            yAxis: {
+                allowDecimals: false,
+                min: 0,
+                title: {
+                    text: 'Amount'
+                }
+            },
+    
+            tooltip: {
+                formatter: function() {
+                    return '<b>'+ this.x +'</b><br/>'+
+                        this.series.name +': '+ this.y +'<br/>';
+                                   //+'Total: '+ this.point.stackTotal;
+                }
+            },
+    
+            plotOptions: {
+                column: {
+                    stacking: 'normal'
+                }
+            },
+    
+            series: [{
+                name: 'sale',
+                data: [5, 3, 4, 7, 2],
+                stack: 'male'
+            }, {
+                name: 'onhand',
+                data: [3, 5, 4, 4, 3],
+                stack: 'female'
+            }]
+        });
+    });
+    
+
+		</script>
+	</head>
+	<body>
+<script src="../../js/highcharts.js"></script>
+
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+	</body>
+</html>

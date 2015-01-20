@@ -21,6 +21,10 @@
     return self;
 }
 
+-(NSMutableArray*)getAllComplain{
+    return  [dtoComplainProcess filterWithLeadId:@""];
+}
+
 -(void)getFirstPagePageComplainsWithKey:(NSString*)key WithLeadID:(NSString*)leadId{
     [_listComplains removeAllObjects];
     _currentPage =1;

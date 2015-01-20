@@ -88,6 +88,9 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 
 //=========================Complain Alert=======================================================
 
+#define COMPLAIN_TITLE_ADD_COMPLAIN @"THÊM MỚI Ý KIẾN PHẢN HỒI"
+#define COMPLAIN_TITLE_UPDATE_COMPLAIN @"CẬP NHẬT Ý KIẾN PHẢN HỒI"
+
 #define SYS_Notification_CheckValid_NoiDungKhieuNai @"Hãy nhập nội dung khiếu nại"
 #define SYS_Notification_CheckValid_LiDo @"Hãy nhập lí do"
 #define SYS_Notification_CheckValid_NoiDungXuLy @"Hãy nhập nội dung xử lý"
@@ -98,6 +101,8 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 
 #define SYS_Notification_NotGetCurrentLocation @"Không xác định được vị trí của bạn"
 #define SYS_Notification_EnableLocation @"Chức năng này yêu cầu bật xác định vị trí của bạn"
+#define SYS_Notification_FIND_ROUTES_DIRECTION_FAIL @"Không tìm thấy chỉ dẫn đường của khách hàng đã chọn"
+
 //tuannv
 #define CommentType_CapNhatTienDo @"Cập nhật tiến độ"
 #define CommentType_DeXuat @"Đề xuất"
@@ -204,9 +209,20 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 
 #define COPY_OF_SOFTWARE @"Copyright Viettel ICT - Viettel Group"
 #define VOFFICE @"CRMOne-iPad"
+
 #define TITLE_APPLICATION @"HỆ THỐNG QUẢN LÝ QUAN HỆ KHÁCH HÀNG"
+#define TITLE_PRODUCT_DETAIL_BAO_LANH @"THÔNG TIN CHI TIẾT BẢO LÃNH"
+#define TITLE_PRODUCT_DETAIL_THANH_TOAN @"THÔNG TIN CHI TIẾT THANH TOÁN"
+#define TITLE_PRODUCT_DETAIL_BANK_PLUS @"THÔNG TIN CHI TIẾT BANK PLUS"
+#define TITLE_PRODUCT_DETAIL_EMB @"THÔNG TIN CHI TIẾT EMB"
+#define TITLE_PRODUCT_DETAIL_TAI_KHOAN_TIET_KIEM @"THÔNG TIN CHI TIẾT TÀI KHOẢN TIẾT KIỆM"
+#define TITLE_PRODUCT_DETAIL_THANH_TOAN_QUOC_TE @"THÔNG TIN CHI TIẾT THANH TOÁN QUỐC TẾ"
+#define TITLE_PRODUCT_DETAIL_THE @"THÔNG TIN CHI TIẾT THẺ"
+#define TITLE_PRODUCT_DETAIL_TIN_DUNG @"THÔNG TIN CHI TIẾT TÍN DỤNG"
+
 #define NO_CONFIG_TITLE_DEPARTMENT @"HỆ THỐNG THỬ NGHIỆM"
 #define ALL_DEPARTMENT @"Tất cả đơn vị"
+
 
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]

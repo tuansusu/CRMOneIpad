@@ -10,6 +10,17 @@
 
 @implementation FileManagerUtil
 
++ (NSString*) getPathWithWithName : (NSString *) fileName
+{
+    NSString* documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString* foofile = [documentsPath stringByAppendingPathComponent:fileName];
+    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:foofile];
+    if (fileExists) {
+        return foofile;
+    }
+    return nil;
+}
+
 + (BOOL) checkExitFileWithName : (NSString *) fileName
 {
     NSString* documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];

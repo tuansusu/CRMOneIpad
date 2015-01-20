@@ -17,12 +17,16 @@
     DTOACCOUNTLEADProcess *dtoLeadProcess;
     DTOACCOUNTProcess *dtoProcess;
     NSMutableDictionary *maneuverDic;
+    NSURL *_directionsURL;
 }
 
 @property (nonatomic,readonly) NSMutableArray *listCustomerKHDM;
 @property (nonatomic,readonly) NSMutableArray *listCustomerKH360;
 @property (nonatomic,assign) NSInteger currentPageKHDM;
 @property (nonatomic,assign) NSInteger currentPageKH360;
+
+- (void)requestDirectionsQuery:(NSDictionary *)query success:(void (^)(id result))success
+                       failure:(void (^)(NSError *error))failure;
 
 -(void)getFirstPageCustomerKHDMWithKey:(NSString*)key;
 -(void)getNextPageCustomerKHDMWithKey:(NSString*)key;

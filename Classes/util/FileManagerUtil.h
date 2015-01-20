@@ -15,6 +15,7 @@
 
 @interface FileManagerUtil : NSObject
 
++ (NSString*) getPathWithWithName : (NSString *) fileName;
 + (BOOL) checkExitFileWithName : (NSString *) fileName;
 + (void) removeFileWithName : (NSString *) fileName;
 + (void) removeFilesFromDocuments ;

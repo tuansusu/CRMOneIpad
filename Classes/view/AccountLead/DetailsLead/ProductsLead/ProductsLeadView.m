@@ -113,57 +113,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
     DTOProductLeadTypeObject *typeOB = [_listTypeProduct objectAtIndex:indexPath.section];
-    if ([typeOB.productTypeId intValue]==PRODUCT_TYPE_TIN_DUNG)
-    {
-        proTindungDetailVC = [[ProTindungDetailViewController alloc] init];
-        proTindungDetailVC.delegate= self;
-        [self addSubview:proTindungDetailVC.view];
-    }
-    else if ([typeOB.productTypeId intValue]==PRODUCT_TYPE_THANH_TOAN)
-    {
-        proTaiKhoanThanhToanDetailVC = [[ProTaiKhoanThanhToanDetailViewController alloc] init];
-
-        proTaiKhoanThanhToanDetailVC.delegate= self;
-        [self addSubview:proTaiKhoanThanhToanDetailVC.view];
-    }
-    else if ([typeOB.productTypeId intValue]==PRODUCT_TYPE_TIET_KIEM)
-    {
-        proTaiKhoanTietKiemDetailVC = [[ProTaiKhoanTietKiemDetailViewController alloc] init];
-        proTaiKhoanTietKiemDetailVC.delegate= self;
-        [self addSubview:proTaiKhoanTietKiemDetailVC.view];
-    }
-    else if ([typeOB.productTypeId intValue]==PRODUCT_TYPE_BAO_LANH)
-    {
-        proBaoLanhDetailVC = [[ProBaoLanhDetailViewController alloc] init];
-        proBaoLanhDetailVC.delegate= self;
-        [self addSubview:proBaoLanhDetailVC.view];
-    }
-    else if ([typeOB.productTypeId intValue]==PRODUCT_TYPE_THANH_TOAN_QUOC_TE)
-    {
-        proThanhToanQuocTeDetailVC = [[ProThanhToanQuocTeDetailViewController alloc] init];
-        proThanhToanQuocTeDetailVC.delegate= self;
-        [self addSubview:proThanhToanQuocTeDetailVC.view];
-
-    }
-    else if ([typeOB.productTypeId intValue]==PRODUCT_TYPE_THE)
-    {
-        proTheDetailVC = [[ProTheDetailViewController alloc] init];
-        proTheDetailVC.delegate= self;
-        [self addSubview:proTheDetailVC.view];
-    }
-    else if ([typeOB.productTypeId intValue]==PRODUCT_TYPE_NGAN_HANG_DIEN_TU)
-    {
-        proEMBDetailVC = [[ProEMBDetailViewController alloc] init];
-        proEMBDetailVC.delegate= self;
-        [self addSubview:proEMBDetailVC.view];
-        
-    }
-    else if ([typeOB.productTypeId intValue]==PRODUCT_TYPE_BANK_PLUS)
-    {
-        proBankPlusDetailVC = [[ProBankPlusDetailViewController alloc] init];
-        proBankPlusDetailVC.delegate= self;
-        [self addSubview:proBankPlusDetailVC.view];
+    NSLog(@"section : %@ , index : %d",typeOB.productTypeId,indexPath.row);
+    if (_delegate && [_delegate respondsToSelector:@selector(selectedProductDetailAtIndex:)]) {
+        [_delegate selectedProductDetailAtIndex:[typeOB.productTypeId integerValue]];
     }
 }
 

@@ -110,48 +110,51 @@
     
     NSLog(@"send:%@",_dataSend);
     
-    _lbTitle.text=@"CẬP NHẬP CÔNG VIỆC";
-    
-    _txtName.text=[_dataSend objectForKey:DTOTASK_title];
-    if ([[_dataSend objectForKey:DTOTASK_taskStatus] isEqualToString:@"3244"]) {
-        _txtStatus.text =@"Đang thực hiện";
-        selectStatusIndex=0;
+
+    if (_dataSend) {
+        _lbTitle.text=@"CẬP NHẬP CÔNG VIỆC";
+        _txtName.text=[_dataSend objectForKey:DTOTASK_title];
+        if ([[_dataSend objectForKey:DTOTASK_taskStatus] isEqualToString:@"3244"]) {
+            _txtStatus.text =@"Đang thực hiện";
+            selectStatusIndex=0;
+        }
+        else{
+            _txtStatus.text=@"Đã hoàn thành";
+            selectStatusIndex=1;
+        }
+        NSString *strDateStart=[_dataSend objectForKey:DTOTASK_startDate];
+        NSString *strDateEnd=[_dataSend objectForKey:DTOTASK_endDate];
+
+
+        NSDateFormatter *dateFromStringFormatS=[[NSDateFormatter alloc]init];
+        [dateFromStringFormatS setDateFormat:@"yyyy-MM-dd HH:mm:ss.S"];
+        NSDateFormatter *dateEndFormatS=[[NSDateFormatter alloc]init];
+        [dateEndFormatS setDateFormat:@"dd/MM/yyyy"];
+        NSDate *start=[dateFromStringFormatS dateFromString:strDateStart];
+        _txtDateFrom.text=[dateEndFormatS stringFromDate:start ];
+        dateFrom = start;
+        timeFrom = start;
+
+        NSDateFormatter *timeEndFormatS=[[NSDateFormatter alloc]init];
+        [timeEndFormatS setDateFormat:@"HH:mm"];
+        _txtTimeFrom.text=[timeEndFormatS stringFromDate:start];
+
+
+        NSDateFormatter *dateFromStringFormat=[[NSDateFormatter alloc]init];
+        [dateFromStringFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss.S"];
+
+        NSDateFormatter *dateEndFormat=[[NSDateFormatter alloc]init];
+        [dateEndFormat setDateFormat:@"dd/MM/yyyy"];
+        NSDate *end=[dateFromStringFormat dateFromString:strDateEnd];
+        _txtDateTo.text=[dateEndFormat stringFromDate:end ];
+        dateTo = end;
+        timeTo = end;
+
+        NSDateFormatter *timeEndFormat=[[NSDateFormatter alloc]init];
+        [timeEndFormat setDateFormat:@"HH:mm"];
+        _txtTimeTo.text=[timeEndFormat stringFromDate:end];
     }
-    else{
-        _txtStatus.text=@"Đã hoàn thành";
-        selectStatusIndex=1;
-    }
-    NSString *strDateStart=[_dataSend objectForKey:DTOTASK_startDate];
-    NSString *strDateEnd=[_dataSend objectForKey:DTOTASK_endDate];
-    
-    
-    NSDateFormatter *dateFromStringFormatS=[[NSDateFormatter alloc]init];
-    [dateFromStringFormatS setDateFormat:@"yyyy-MM-dd HH:mm:ss.S"];
-    NSDateFormatter *dateEndFormatS=[[NSDateFormatter alloc]init];
-    [dateEndFormatS setDateFormat:@"dd/MM/yyyy"];
-    NSDate *start=[dateFromStringFormatS dateFromString:strDateStart];
-    _txtDateFrom.text=[dateEndFormatS stringFromDate:start ];
-    dateFrom = start;
-    timeFrom = start;
-    
-    NSDateFormatter *timeEndFormatS=[[NSDateFormatter alloc]init];
-    [timeEndFormatS setDateFormat:@"HH:mm"];
-    _txtTimeFrom.text=[timeEndFormatS stringFromDate:start];
-    
-    
-    NSDateFormatter *dateFromStringFormat=[[NSDateFormatter alloc]init];
-    [dateFromStringFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss.S"];
-    
-    NSDateFormatter *dateEndFormat=[[NSDateFormatter alloc]init];
-    [dateEndFormat setDateFormat:@"dd/MM/yyyy"];
-    NSDate *end=[dateFromStringFormat dateFromString:strDateEnd];
-    _txtDateTo.text=[dateEndFormat stringFromDate:end ];
-    dateTo = end;
-    timeTo = end;
-    
-    NSDateFormatter *timeEndFormat=[[NSDateFormatter alloc]init];
-    [timeEndFormat setDateFormat:@"HH:mm"];
-    _txtTimeTo.text=[timeEndFormat stringFromDate:end];
+
     
 }
 

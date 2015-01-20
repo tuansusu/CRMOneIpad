@@ -38,10 +38,10 @@
 }
 
 
--(BOOL) deleteEntity:(NSString *)contactId{
+-(BOOL) deleteEntity:(NSString *)attachmentId{
     
-    NSMutableDictionary *dicFieldSet = [[NSMutableDictionary alloc]initWithObjects:[NSArray arrayWithObjects:@"1", nil] forKeys:[NSArray arrayWithObjects:DTOATTACHMENT_id, nil]];
-    NSMutableDictionary *dicFieldCondition = [[NSMutableDictionary alloc]initWithObjects:[NSArray arrayWithObjects:contactId, nil] forKeys:[NSArray arrayWithObjects:DTOATTACHMENT_id, nil]];
+    NSMutableDictionary *dicFieldSet = [[NSMutableDictionary alloc]initWithObjects:[NSArray arrayWithObjects:@"0", nil] forKeys:[NSArray arrayWithObjects:DTOATTACHMENT_isActive, nil]];
+    NSMutableDictionary *dicFieldCondition = [[NSMutableDictionary alloc]initWithObjects:[NSArray arrayWithObjects:attachmentId, nil] forKeys:[NSArray arrayWithObjects:DTOATTACHMENT_id, nil]];
     
     
     return [super updateToTableName:TABLENAME_DTOATTACHMENT withFields:dicFieldSet withCondition:dicFieldCondition];

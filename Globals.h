@@ -15,7 +15,8 @@
 
 typedef enum {
     typeGraphLine,
-    typeGraphColumn
+    typeGraphColumn,
+    typeGraphFunnel
 } TypeGraphs;
 
 typedef enum {
@@ -27,6 +28,15 @@ typedef enum {
 
 #define CORNER_RADIUS_BUTTON 5
 #define CORNER_RADIUS_VIEW 20
+
+//Lemon add 2013-09-05
+#define DEFINE_SHARED_INSTANCE_USING_BLOCK(block) \
+static dispatch_once_t pred = 0; \
+__strong static id _sharedObject = nil; \
+dispatch_once(&pred, ^{ \
+_sharedObject = block(); \
+}); \
+return _sharedObject; \
 
 //=============================Product Type========================
 
@@ -43,6 +53,10 @@ typedef enum {
 #define PRODUCT_TYPE_DAI_TRA 11
 #define PRODUCT_TYPE_DU_AN 12
 #define PRODUCT_TYPE_LOI 13
+
+//=============================Calendar Notification====================
+
+#define CALENDAR_SELECTE_EVENT_NOTIFICATION @"calendarSelectedEventNotification"
 
 //=============================Map Configuration========================
 #define KEY_ROUTES_OF_DIRECTIONS_AT_INDEX @"routesOfDirectionAtIndex%d"
@@ -63,6 +77,8 @@ typedef enum {
 #define VEHICLES_DRIVING @"driving"
 #define VEHICLES_CYCLING @"cycling"
 #define VEHICLES_WALKING @"walking"
+
+#define KEY_CURRENT_LOCATION @"currentLocation"
 
 
 //=============================Maneuver Configuration========================

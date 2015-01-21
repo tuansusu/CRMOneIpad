@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailLeadViewController">
             <connections>
-                <outlet property="actionEdit" destination="JMs-7j-VEI" id="z6G-Zc-kYo"/>
                 <outlet property="barLabel" destination="2Tg-Uk-4Yq" id="Yvb-ud-2zf"/>
                 <outlet property="bodyMainView" destination="iVb-d9-Pc1" id="SoC-qK-ged"/>
                 <outlet property="btnAdd" destination="gnE-Xk-Lxw" id="mKS-qW-pPf"/>
@@ -95,28 +94,8 @@
                                 <action selector="homeBack:" destination="-1" eventType="touchUpInside" id="fU8-zM-Iv2"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JMs-7j-VEI" userLabel="BTNEDIT">
-                            <rect key="frame" x="930" y="7" width="30" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="write-btn-2-1.png">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="actionEdit:" destination="-1" eventType="touchUpInside" id="Qfk-6L-zcP"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="99p-bf-g0n" userLabel="BTNDELETE">
-                            <rect key="frame" x="974" y="7" width="30" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="del-btn-2-1.png">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="actionDel:" destination="-1" eventType="touchUpInside" id="lnA-xi-cAO"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gnE-Xk-Lxw" userLabel="BTNHome">
-                            <rect key="frame" x="873" y="6" width="32" height="32"/>
+                            <rect key="frame" x="974" y="6" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <state key="normal" image="ic-add-sub-1.png">
@@ -758,12 +737,10 @@
     <resources>
         <image name="calendar_small_new.png" width="16" height="16"/>
         <image name="call.png" width="30" height="27"/>
-        <image name="del-btn-2-1.png" width="40" height="40"/>
         <image name="email_icon_hide.png" width="32" height="32"/>
         <image name="ic-add-sub-1.png" width="32" height="32"/>
-        <image name="icon_menu-1.png" width="32" height="32"/>
+        <image name="icon_menu-1.png" width="96" height="96"/>
         <image name="pin.png" width="48" height="48"/>
-        <image name="write-btn-2-1.png" width="40" height="40"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

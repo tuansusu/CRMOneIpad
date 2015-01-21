@@ -150,14 +150,65 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     [self updateInterFaceWithOption:smgSelect];
     [self initData];
     [self actionExpandInfo:self.btnExpandInfo];
+    
     [scrollViewHeaderExpandInfo setContentSize:CGSizeMake(WIDTH_HEADER_EXPAND_INFO, scrollViewHeaderExpandInfo.frame.size.height)];
+    
+    //scrollViewHeaderExpandInfo.contentSize = CGSizeMake(910, scrollViewHeaderExpandInfo.frame.size.height);
 }
 
 -(void) viewWillAppear:(BOOL)animated{
     //cu quay lai la no load
     NSLog(@"quay lai form");
-    // [self viewDidLoad];
+    [self loadDataWithTypeAction:typeActionEvent];
+    
+    [self setButtonSelect];
+    
 }
+
+-(void) setButtonSelect {
+    switch (typeActionEvent) {
+        case typeLeaderView_ExpandInfo:{
+            
+        }
+            break;
+        case typeLeaderView_Contact:
+        {
+            [self displayNormalButtonState:self.btnExpandInfo];
+        }break;
+        case typeLeaderView_Note:
+        {
+            
+            
+        }break;
+        case typeLeaderView_Opportunity:{
+            
+        }break;
+        case typeLeaderView_Calendar:
+        {
+            
+        }
+            break;
+        case typeLeaderView_Task:
+        {
+            
+        }
+            break;
+            
+        case typeLeaderView_Complains:
+        {
+            
+        }
+            break;
+        case typeLeaderView_ProductsLead:
+        {
+            
+        }
+            break;
+        default:
+            break;
+    }
+}
+
 
 //khoi tao gia tri mac dinh cua form
 -(void) initData {
@@ -442,6 +493,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     switch (index) {
         case SELECT_INDEX_ADD_CONTACT:
         {
+            typeActionEvent = typeLeaderView_Contact;
             EditContactLeadViewController *viewController = [[EditContactLeadViewController alloc]initWithNibName:@"EditContactLeadViewController" bundle:nil];
             viewController.dataRoot = dicData;
             [self presentViewController:viewController animated:YES completion:nil];
@@ -449,6 +501,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         break;
         case SELECT_INDEX_ADD_NOTE:
         {
+            typeActionEvent = typeLeaderView_Note;
             NSLog(@"data send note %@", dicData);
             EditNoteLeadViewController *viewController = [[EditNoteLeadViewController alloc]initWithNibName:@"EditNoteLeadViewController" bundle:nil];
             viewController.dataRoot = dicData;
@@ -464,6 +517,8 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         // calendar+task
         case SELECT_INDEX_ADD_CALENDAR:
         {
+            typeActionEvent = typeLeaderView_Note;
+            
             EditCalendarLeadViewController *viewController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
             [viewController setDelegate:self];
             viewController.dataRoot = dicData;

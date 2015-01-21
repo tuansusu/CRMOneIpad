@@ -255,7 +255,7 @@
     UIBarButtonItem *barButtonToday = [[UIBarButtonItem alloc] initWithCustomView:buttonToday];
 
     labelWithMonthAndYear = [[UILabel alloc] initWithFrame:CGRectMake(0., 0., 170., 30)];
-    [labelWithMonthAndYear setTextColor:[UIColor redColor]];
+    [labelWithMonthAndYear setTextColor:HEADER_VIEW_COLOR1];
     [labelWithMonthAndYear setFont:buttonToday.titleLabel.font];
     UIBarButtonItem *barButtonLabel = [[UIBarButtonItem alloc] initWithCustomView:labelWithMonthAndYear];
 
@@ -311,7 +311,7 @@
     [buttonAdd setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*8-10-BUTTON_MOUNT_WIDTH, 0, BUTTON_WIDTH, buttonAdd.frame.size.height)];
 
     labelWithMonthAndYear = [[UILabel alloc] initWithFrame:CGRectMake(APP_SCREEN_WIDTH-BUTTON_WIDTH*2.5, 0., 140., 30)];
-    [labelWithMonthAndYear setTextColor:[UIColor redColor]];
+    [labelWithMonthAndYear setTextColor:HEADER_VIEW_COLOR1];
     [labelWithMonthAndYear setFont:buttonToday.titleLabel.font];
     labelWithMonthAndYear.textAlignment = NSTextAlignmentRight;
 

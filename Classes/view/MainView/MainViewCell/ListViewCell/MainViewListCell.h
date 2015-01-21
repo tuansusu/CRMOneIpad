@@ -9,14 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "SubListMainView.h"
 
-
+@class DTOWidgetObject;
 
 @interface MainViewListCell : UITableViewCell
 {
     IBOutlet SubListMainView *subListMainView;
-    
+    IBOutlet UILabel *lblTitle;
 }
 
 +(MainViewListCell*) initNibCell;
+
+
+-(void)loadDataCellWithWidgetObject:(DTOWidgetObject*)widgetOB;
 
 @end

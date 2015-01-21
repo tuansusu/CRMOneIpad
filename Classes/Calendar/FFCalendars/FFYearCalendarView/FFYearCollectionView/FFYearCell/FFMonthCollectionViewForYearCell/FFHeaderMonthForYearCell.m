@@ -52,7 +52,7 @@
         CGFloat height = self.frame.size.height/4.;
         
         labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(0., 0., self.frame.size.width, 3*height)];
-        [labelTitle setTextColor:[UIColor redColor]];
+        [labelTitle setTextColor:HEADER_VIEW_COLOR1];
         [self addSubview:labelTitle];
         
         for (int i = 0; i < [arrayWeekAbrev count]; i++) {

@@ -8,11 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+#import "Globals.h"
+@class DTOWidgetObject;
+
 @interface ContentChartViewCell : UIView<UIWebViewDelegate>
 {
     IBOutlet UIWebView *wvChart;
+    DTOWidgetObject *_widgetOB;
 }
 
--(void)loadChartView;
+-(void)initChartViewWithType:(TypeGraphs)typeGraph;
+
+-(void)loadChartViewWithWidgetObject:(DTOWidgetObject*)widgetOB;
 
 @end

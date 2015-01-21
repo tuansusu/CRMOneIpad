@@ -8,24 +8,20 @@
 
 #import "MainViewCell.h"
 
+#import "DTOWidgetObject.h"
+
 @implementation MainViewCell
 
-+(MainViewCell*) initNibCell{
-
-    NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"MainViewCell" owner:nil options:nil];
-
-    for(id curentObject in topLevelObjects)
-    {
-        if([curentObject isKindOfClass:[MainViewCell class]])
-        {
-            return (MainViewCell *) curentObject;
-
-        }
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier WithType:(TypeGraphs)typeGraph
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        // Initialization code
+        self = [[[NSBundle mainBundle] loadNibNamed:[[self class] description] owner:self options:Nil] objectAtIndex:0];
+        [contentChartView initChartViewWithType:typeGraph];
     }
-    
-    return nil;
+    return self;
 }
-
 
 - (void)awakeFromNib {
     // Initialization code
@@ -37,58 +33,39 @@
     // Configure the view for the selected state
 }
 
--(void)loadDataCellWithType:(TypeGraphs)type{
+-(IBAction)btnConfigurationTapped:(id)sender{
+    [contentChartView loadChartViewWithWidgetObject:_widgetOB];
+}
+
+-(void)initLineGraph{
+    horizontalLinesProperties=nil;
+    verticalLinesProperties=nil;
+    anchorPropertiesArray=nil;
+    [mLineGraph setFrame:CGRectMake(5, 60, 764, 400)];
+    mLineGraph.delegate=self;
+    anchorPropertiesArray= [NSArray arrayWithObjects:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"touchenabled"],[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"touchenabled"], nil];
+    //Set initial Y-Label as 0..
+    mLineGraph.minimumLabelOnYIsZero=TRUE;
+
+
+    //Set color for line graph
+    MIMColorClass *c1=[MIMColorClass colorWithComponent:@"0,169,249"];
+    mLineGraph.lineColorArray=[NSArray arrayWithObjects:c1, nil];
+
+    [mLineGraph drawMIMLineGraph];
+}
+
+-(void)loadDataCellWithWidgetObject:(DTOWidgetObject*)widgetOB{
+    _widgetOB = widgetOB;
+    [titleGraph setText:_widgetOB.widgetName];
+    
     self.contentView.layer.cornerRadius = 20;
     self.contentView.clipsToBounds = YES;
-    _typeGraph = type;
-    if (type == typeGraphLine) {
-        [mLineGraph setHidden:NO];
-        [mBarGraph setHidden:YES];
-        [contentChartView setHidden:YES];
-        horizontalLinesProperties=nil;
-        verticalLinesProperties=nil;
-        anchorPropertiesArray=nil;
-        //    mLineGraph=[[MIMLineGraph alloc]initWithFrame:CGRectMake(5, 30, self.frame.size.width, self.frame.size.height)];
-        [mLineGraph setFrame:CGRectMake(5, 60, 764, 400)];
-        mLineGraph.delegate=self;
-        anchorPropertiesArray= [NSArray arrayWithObjects:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"touchenabled"],[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"touchenabled"], nil];
-        //Set initial Y-Label as 0..
-        mLineGraph.minimumLabelOnYIsZero=TRUE;
-
-
-        //Set color for line graph
-        MIMColorClass *c1=[MIMColorClass colorWithComponent:@"0,169,249"];
-        mLineGraph.lineColorArray=[NSArray arrayWithObjects:c1, nil];
-        
-        titleGraph.text=@"Huy động vốn";
-
-        [mLineGraph drawMIMLineGraph];
-
-        
-
-    }else if (type == typeGraphColumn)
-    {
-        [mLineGraph setHidden:YES];
-        [mBarGraph setHidden:NO];
-        [contentChartView setHidden:YES];
-
-        [mBarGraph setFrame:CGRectMake(0, 60,  764, 400)];
-        mBarGraph.delegate=self;
-        mBarGraph.barLabelStyle=BAR_LABEL_STYLE1;
-        titleGraph.text=@"Tín Dụng";
-        mBarGraph.barcolorArray=[NSArray arrayWithObjects:[MIMColorClass colorWithComponent:@"0,255,0,1"], nil];
-        mBarGraph.mbackgroundcolor=[MIMColorClass colorWithComponent:@"0,0,0,0"];
-        mBarGraph.xTitleStyle=XTitleStyle2;
-        mBarGraph.gradientStyle=VERTICAL_GRADIENT_STYLE;
-        mBarGraph.glossStyle=GLOSS_STYLE_2;
-        [mBarGraph drawBarChart];
-    }else if (type == typeGraphFunnel)
-    {
+    _typeGraph = [widgetOB.typeGraphically intValue];
         [mLineGraph setHidden:YES];
         [mBarGraph setHidden:YES];
         [contentChartView setHidden:NO];
-        [contentChartView loadChartView];
-    }
+        [contentChartView loadChartViewWithWidgetObject:widgetOB];
 }
 
 
@@ -114,7 +91,7 @@
         NSArray *array1=[NSArray arrayWithObjects:@"10000",@"21000",@"24000",@"11000",@"5000",@"2000",@"9000",@"4000",@"10000",@"17000",@"15000",@"11000",nil];
         NSArray *array2=[NSArray arrayWithObjects:@"5000",@"11000",@"20000",@"15000",@"14000",@"20000",@"19000",@"14000",@"12000",@"17000",@"18000",@"14000",nil];
         yValuesArray=[[NSArray alloc]initWithObjects:array1,array2,nil];
-    }else{
+    }else if (_typeGraph == typeGraphColumnVertical){
         yValuesArray=[[NSArray alloc]initWithObjects:@"10000",@"21000",@"24000",@"11000",@"5000",@"2000",@"9000",@"4000",@"10000",@"17000",@"15000",@"11000",nil];
     }
 
@@ -137,7 +114,7 @@
                       @"Oct",
                       @"Nov",
                       @"Dec", nil];
-    }else{
+    }else if (_typeGraph == typeGraphColumnVertical){
         xValuesArray=[[NSArray alloc]initWithObjects:@"Jan",
                       @"Feb",
                       @"Mar",

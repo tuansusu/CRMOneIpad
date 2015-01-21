@@ -652,6 +652,8 @@
 		8E6A10281A6226F500D98AE3 /* MainViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A10261A6226F500D98AE3 /* MainViewCell.m */; };
 		8E6A10291A6226F500D98AE3 /* MainViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E6A10271A6226F500D98AE3 /* MainViewCell.xib */; };
 		8E6A102C1A62271C00D98AE3 /* ContentChartViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A102B1A62271C00D98AE3 /* ContentChartViewCell.m */; };
+		8E705CDC1A6BF1FD00B9A9D3 /* DTOWidgetObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E705CDB1A6BF1FD00B9A9D3 /* DTOWidgetObject.m */; };
+		8E705CDF1A6BF41100B9A9D3 /* DTOWidgetProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E705CDE1A6BF41100B9A9D3 /* DTOWidgetProcess.m */; };
 		8E7554221A52E3A2001940FB /* iconTurnSharpLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7554201A52E3A2001940FB /* iconTurnSharpLeft.png */; };
 		8E7554231A52E3A2001940FB /* iconTurnSharpLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7554211A52E3A2001940FB /* iconTurnSharpLeft@2x.png */; };
 		8E75544A1A52EFC8001940FB /* iconFerry.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7554241A52EFC8001940FB /* iconFerry.png */; };
@@ -694,6 +696,7 @@
 		8E75546F1A52EFC8001940FB /* iconUturnRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7554491A52EFC8001940FB /* iconUturnRight@2x.png */; };
 		8E7554721A52F599001940FB /* iconMarkerLocation.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7554701A52F599001940FB /* iconMarkerLocation.png */; };
 		8E7554731A52F599001940FB /* iconMarkerLocation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7554711A52F599001940FB /* iconMarkerLocation@2x.png */; };
+		8E7BDB811A6E87960089CB7A /* DTOWidgetTypeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7BDB801A6E87960089CB7A /* DTOWidgetTypeObject.m */; };
 		8E87C9321A45B29700CB0918 /* DTOAccountProcessObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E87C9311A45B29700CB0918 /* DTOAccountProcessObject.m */; };
 		8E8B3F251A49AA4300241360 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8B3F231A49AA4300241360 /* MainViewController.m */; };
 		8E8B3F261A49AA4300241360 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E8B3F241A49AA4300241360 /* MainViewController.xib */; };
@@ -703,6 +706,9 @@
 		8EBBC2501A4EF67C00F17BEE /* SubListMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EBBC24C1A4EF67C00F17BEE /* SubListMainView.m */; };
 		8EBBC2511A4EF67C00F17BEE /* SubListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EBBC24E1A4EF67C00F17BEE /* SubListViewCell.m */; };
 		8EBBC2521A4EF67C00F17BEE /* SubListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EBBC24F1A4EF67C00F17BEE /* SubListViewCell.xib */; };
+		8EBFF24D1A6E94BF0009D9E1 /* DTOWidgetTypeProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EBFF24C1A6E94BF0009D9E1 /* DTOWidgetTypeProcess.m */; };
+		8EBFF2761A6E97700009D9E1 /* EditWidgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EBFF2741A6E97700009D9E1 /* EditWidgetViewController.m */; };
+		8EBFF2771A6E97700009D9E1 /* EditWidgetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EBFF2751A6E97700009D9E1 /* EditWidgetViewController.xib */; };
 		8EC4B90B1A505A7D0078BF13 /* DirectionsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC4B9061A505A7D0078BF13 /* DirectionsHeaderView.m */; };
 		8EC4B90C1A505A7D0078BF13 /* DirectionsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EC4B9071A505A7D0078BF13 /* DirectionsHeaderView.xib */; };
 		8EC4B90D1A505A7D0078BF13 /* DirectionsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC4B9091A505A7D0078BF13 /* DirectionsViewCell.m */; };
@@ -1966,6 +1972,10 @@
 		8E6A10271A6226F500D98AE3 /* MainViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewCell.xib; sourceTree = "<group>"; };
 		8E6A102A1A62271C00D98AE3 /* ContentChartViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentChartViewCell.h; sourceTree = "<group>"; };
 		8E6A102B1A62271C00D98AE3 /* ContentChartViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentChartViewCell.m; sourceTree = "<group>"; };
+		8E705CDA1A6BF1FD00B9A9D3 /* DTOWidgetObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOWidgetObject.h; sourceTree = "<group>"; };
+		8E705CDB1A6BF1FD00B9A9D3 /* DTOWidgetObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOWidgetObject.m; sourceTree = "<group>"; };
+		8E705CDD1A6BF41100B9A9D3 /* DTOWidgetProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOWidgetProcess.h; sourceTree = "<group>"; };
+		8E705CDE1A6BF41100B9A9D3 /* DTOWidgetProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOWidgetProcess.m; sourceTree = "<group>"; };
 		8E7554201A52E3A2001940FB /* iconTurnSharpLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconTurnSharpLeft.png; sourceTree = "<group>"; };
 		8E7554211A52E3A2001940FB /* iconTurnSharpLeft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconTurnSharpLeft@2x.png"; sourceTree = "<group>"; };
 		8E7554241A52EFC8001940FB /* iconFerry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconFerry.png; sourceTree = "<group>"; };
@@ -2008,6 +2018,8 @@
 		8E7554491A52EFC8001940FB /* iconUturnRight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconUturnRight@2x.png"; sourceTree = "<group>"; };
 		8E7554701A52F599001940FB /* iconMarkerLocation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconMarkerLocation.png; sourceTree = "<group>"; };
 		8E7554711A52F599001940FB /* iconMarkerLocation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconMarkerLocation@2x.png"; sourceTree = "<group>"; };
+		8E7BDB7F1A6E87960089CB7A /* DTOWidgetTypeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOWidgetTypeObject.h; sourceTree = "<group>"; };
+		8E7BDB801A6E87960089CB7A /* DTOWidgetTypeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOWidgetTypeObject.m; sourceTree = "<group>"; };
 		8E87C9301A45B29700CB0918 /* DTOAccountProcessObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOAccountProcessObject.h; sourceTree = "<group>"; };
 		8E87C9311A45B29700CB0918 /* DTOAccountProcessObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOAccountProcessObject.m; sourceTree = "<group>"; };
 		8E8B3F221A49AA4300241360 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -2021,6 +2033,11 @@
 		8EBBC24D1A4EF67C00F17BEE /* SubListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubListViewCell.h; sourceTree = "<group>"; };
 		8EBBC24E1A4EF67C00F17BEE /* SubListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubListViewCell.m; sourceTree = "<group>"; };
 		8EBBC24F1A4EF67C00F17BEE /* SubListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubListViewCell.xib; sourceTree = "<group>"; };
+		8EBFF24B1A6E94BF0009D9E1 /* DTOWidgetTypeProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOWidgetTypeProcess.h; sourceTree = "<group>"; };
+		8EBFF24C1A6E94BF0009D9E1 /* DTOWidgetTypeProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOWidgetTypeProcess.m; sourceTree = "<group>"; };
+		8EBFF2731A6E97700009D9E1 /* EditWidgetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditWidgetViewController.h; sourceTree = "<group>"; };
+		8EBFF2741A6E97700009D9E1 /* EditWidgetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditWidgetViewController.m; sourceTree = "<group>"; };
+		8EBFF2751A6E97700009D9E1 /* EditWidgetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditWidgetViewController.xib; sourceTree = "<group>"; };
 		8EC4B9051A505A7D0078BF13 /* DirectionsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionsHeaderView.h; sourceTree = "<group>"; };
 		8EC4B9061A505A7D0078BF13 /* DirectionsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionsHeaderView.m; sourceTree = "<group>"; };
 		8EC4B9071A505A7D0078BF13 /* DirectionsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DirectionsHeaderView.xib; sourceTree = "<group>"; };
@@ -2524,6 +2541,10 @@
 				8E568F8C1A58FDFC0002A3C4 /* DTOComplainObject.m */,
 				8E174C651A5ED13D004FDBBE /* DTOTaskObject.h */,
 				8E174C661A5ED13D004FDBBE /* DTOTaskObject.m */,
+				8E705CDA1A6BF1FD00B9A9D3 /* DTOWidgetObject.h */,
+				8E705CDB1A6BF1FD00B9A9D3 /* DTOWidgetObject.m */,
+				8E7BDB7F1A6E87960089CB7A /* DTOWidgetTypeObject.h */,
+				8E7BDB801A6E87960089CB7A /* DTOWidgetTypeObject.m */,
 			);
 			name = Objects;
 			path = ProcessData/Objects;
@@ -3410,6 +3431,10 @@
 				8EFE69031A56604F003D55CE /* DTOProTindungDetailProcess.m */,
 				8E568F911A5900310002A3C4 /* DTOComplainProcess.h */,
 				8E568F921A5900310002A3C4 /* DTOComplainProcess.m */,
+				8E705CDD1A6BF41100B9A9D3 /* DTOWidgetProcess.h */,
+				8E705CDE1A6BF41100B9A9D3 /* DTOWidgetProcess.m */,
+				8EBFF24B1A6E94BF0009D9E1 /* DTOWidgetTypeProcess.h */,
+				8EBFF24C1A6E94BF0009D9E1 /* DTOWidgetTypeProcess.m */,
 			);
 			name = Data;
 			path = ProcessData/Data;
@@ -4382,6 +4407,7 @@
 		8E8B3F211A49AA4300241360 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
+				8EBFF2721A6E97520009D9E1 /* WidgetDetail */,
 				8E8B3F271A49AA5F00241360 /* MainViewCell */,
 				8E8B3F221A49AA4300241360 /* MainViewController.h */,
 				8E8B3F231A49AA4300241360 /* MainViewController.m */,
@@ -4463,6 +4489,16 @@
 				8EBBC24F1A4EF67C00F17BEE /* SubListViewCell.xib */,
 			);
 			path = SubListMainView;
+			sourceTree = "<group>";
+		};
+		8EBFF2721A6E97520009D9E1 /* WidgetDetail */ = {
+			isa = PBXGroup;
+			children = (
+				8EBFF2731A6E97700009D9E1 /* EditWidgetViewController.h */,
+				8EBFF2741A6E97700009D9E1 /* EditWidgetViewController.m */,
+				8EBFF2751A6E97700009D9E1 /* EditWidgetViewController.xib */,
+			);
+			path = WidgetDetail;
 			sourceTree = "<group>";
 		};
 		8EC4B9031A505A7D0078BF13 /* DirectionsView */ = {
@@ -5544,6 +5580,7 @@
 				B3157892188D5E5200C0ED01 /* btn-back-2-1.png in Resources */,
 				B315787B188D5E5200C0ED01 /* ic-cancel-1.png in Resources */,
 				76601A55194BE90F001D4C01 /* signature.png in Resources */,
+				8EBFF2771A6E97700009D9E1 /* EditWidgetViewController.xib in Resources */,
 				76199E151A471DA900B792C5 /* MDSearchView.xib in Resources */,
 				76C9646B1A17731900029978 /* otherspart2.png in Resources */,
 				76601A4C194BE90F001D4C01 /* Reader-Mark-N@2x.png in Resources */,
@@ -6042,6 +6079,7 @@
 				7633080F1A048962000E190B /* VTCombobox.m in Sources */,
 				843BF0B91A03EC3200EA1D8A /* ListOpportunityViewController.m in Sources */,
 				8E568F931A5900310002A3C4 /* DTOComplainProcess.m in Sources */,
+				8E705CDF1A6BF41100B9A9D3 /* DTOWidgetProcess.m in Sources */,
 				159334D91A59D79700228B15 /* AlarmCalendarConfig.m in Sources */,
 				769C1A1C1A00027900F015A5 /* Reachability.m in Sources */,
 				92C68E681519D4F100981728 /* AppService.m in Sources */,
@@ -6153,6 +6191,7 @@
 				2D47E7F81761704200F291D6 /* GCNetworkRequestQueue.m in Sources */,
 				8EC972C21A5D786A0021DCA3 /* FFCalendarViewController.m in Sources */,
 				8497C00F1A295A2300A5ED3C /* SDKDemoMasterViewController.m in Sources */,
+				8EBFF2761A6E97700009D9E1 /* EditWidgetViewController.m in Sources */,
 				76C964451A17731900029978 /* XAxisLabel.m in Sources */,
 				7622D2F01A43246700DC9309 /* ContactOpportunityCell.m in Sources */,
 				8E6A10281A6226F500D98AE3 /* MainViewCell.m in Sources */,
@@ -6224,6 +6263,7 @@
 				8E8B3F251A49AA4300241360 /* MainViewController.m in Sources */,
 				763308151A048DBC000E190B /* VTRadio.m in Sources */,
 				8497C00A1A295A2300A5ED3C /* Samples.m in Sources */,
+				8E7BDB811A6E87960089CB7A /* DTOWidgetTypeObject.m in Sources */,
 				76601A35194BE90F001D4C01 /* ReaderThumbRequest.m in Sources */,
 				2D60B07E17A27BA500848776 /* UICheckBox.m in Sources */,
 				2D3643901859996700190EE7 /* AFJSONRequestOperation.m in Sources */,
@@ -6260,7 +6300,9 @@
 				8497BFF51A295A2300A5ED3C /* CustomMarkersViewController.m in Sources */,
 				8497BFFE1A295A2300A5ED3C /* IndoorViewController.m in Sources */,
 				76C962A31A16DD0D00029978 /* EditAccountLeadViewController.m in Sources */,
+				8E705CDC1A6BF1FD00B9A9D3 /* DTOWidgetObject.m in Sources */,
 				8497BFFA1A295A2300A5ED3C /* GestureControlViewController.m in Sources */,
+				8EBFF24D1A6E94BF0009D9E1 /* DTOWidgetTypeProcess.m in Sources */,
 				8EC9729C1A5D71300021DCA3 /* UILabel+FFCustomMethods.m in Sources */,
 				8EC972A81A5D71300021DCA3 /* FFEventDetailPopoverController.m in Sources */,
 				8EFE69401A569A59003D55CE /* ProTheDetailViewController.m in Sources */,

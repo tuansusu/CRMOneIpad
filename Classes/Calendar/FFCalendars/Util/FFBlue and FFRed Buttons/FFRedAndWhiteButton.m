@@ -22,13 +22,13 @@
         
         [self setFrame:frame];
         
-        [self setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        [self setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+        [self setTitleColor:TEXT_COLOR_HEADER_APP forState:UIControlStateNormal];
+        [self setTitleColor:HEADER_VIEW_COLOR1 forState:UIControlStateSelected];
         
-        [self setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
-        [self setBackgroundImage:[UIImage imageWithColor:[UIColor redColor]] forState:UIControlStateSelected];
+        [self setBackgroundImage:[UIImage imageWithColor:HEADER_VIEW_COLOR1] forState:UIControlStateNormal];
+        [self setBackgroundImage:[UIImage imageWithColor:TEXT_COLOR_HEADER_APP] forState:UIControlStateSelected];
         
-        [self.layer setBorderColor:[UIColor redColor].CGColor];
+        [self.layer setBorderColor:HEADER_VIEW_COLOR1.CGColor];
         [self.layer setBorderWidth:1.];
     }
     return self;
@@ -50,7 +50,7 @@
     if(_selected) {
         [self.layer setBorderColor:[UIColor whiteColor].CGColor];
     } else {
-        [self.layer setBorderColor:[UIColor redColor].CGColor];
+        [self.layer setBorderColor:HEADER_VIEW_COLOR1.CGColor];
     }
 }
 

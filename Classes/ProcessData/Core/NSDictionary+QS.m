@@ -13,6 +13,74 @@
 @implementation NSDictionary (QS)
 
 
+-(DTOWidgetTypeObject*)dtoWidgetTypeObject{
+    DTOWidgetTypeObject *widgetTypeOB = [[DTOWidgetTypeObject alloc] init];
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOWIDGETTYPE_widgetId]]) {
+        widgetTypeOB.widgetId = [self objectForKey:DTOWIDGETTYPE_widgetId];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOWIDGETTYPE_widgetName]]) {
+        widgetTypeOB.widgetName = [self objectForKey:DTOWIDGETTYPE_widgetName];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOWIDGETTYPE_widgetType]]) {
+        widgetTypeOB.widgetType = [self objectForKey:DTOWIDGETTYPE_widgetType];
+    }
+    return widgetTypeOB;
+}
+
+-(DTOWidgetObject*)dtoWidgetObject{
+    DTOWidgetObject *widgetOB = [[DTOWidgetObject alloc] init];
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOWIDGET_confId]]) {
+        widgetOB.confId = [self objectForKey:DTOWIDGET_confId];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOWIDGET_accountName]]) {
+        widgetOB.accountName = [self objectForKey:DTOWIDGET_accountName];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOWIDGET_typeGraphically]]) {
+        widgetOB.typeGraphically = [self objectForKey:DTOWIDGET_typeGraphically];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOWIDGET_colorDisplay1]]) {
+        widgetOB.colorDisplay1 = [self objectForKey:DTOWIDGET_colorDisplay1];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOWIDGET_createDate]]) {
+        widgetOB.createDate = [self objectForKey:DTOWIDGET_createDate];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOWIDGET_isShowData]]) {
+        widgetOB.isShowData = [self objectForKey:DTOWIDGET_isShowData];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOWIDGET_colorDisplay2]]) {
+        widgetOB.colorDisplay2 = [self objectForKey:DTOWIDGET_colorDisplay2];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOWIDGET_widgetId]]) {
+        widgetOB.widgetId = [self objectForKey:DTOWIDGET_widgetId];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOWIDGET_widgetName]]) {
+        widgetOB.widgetName = [self objectForKey:DTOWIDGET_widgetName];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOWIDGET_widgetType]]) {
+        widgetOB.widgetType = [self objectForKey:DTOWIDGET_widgetType];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:DTOWIDGET_status]]) {
+        widgetOB.status = [self objectForKey:DTOWIDGET_status];
+    }
+
+    return widgetOB;
+}
+
+
 -(DTOTaskObject*)dtoTaskObject{
     DTOTaskObject *taskOB = [[DTOTaskObject alloc] init];
     if (![StringUtil stringIsEmpty:[self objectForKey:DTOTASK_id]]) {
@@ -132,7 +200,7 @@
     if (![StringUtil stringIsEmpty:[self objectForKey:DTOCOMPLAIN_callLenght]]) {
         complainOB.callLenght = [self objectForKey:DTOCOMPLAIN_callLenght];
     }
-    
+
     return complainOB;
 }
 
@@ -236,9 +304,9 @@
 
 -(DTOAcountLeadProcessObject*)dtoAcountLeadProcessOb{
     DTOAcountLeadProcessObject *accountLeadOB = [[DTOAcountLeadProcessObject alloc] init];
-    
+
     if (![StringUtil stringIsEmpty:[self objectForKey:DTOLEAD_accountId]]) {
-         accountLeadOB.accountId = [self objectForKey:DTOLEAD_accountId];
+        accountLeadOB.accountId = [self objectForKey:DTOLEAD_accountId];
     }
     if (![StringUtil stringIsEmpty:[self objectForKey:DTOLEAD_address]]) {
         accountLeadOB.address = [self objectForKey:DTOLEAD_address];
@@ -255,7 +323,7 @@
     if (![StringUtil stringIsEmpty:[self objectForKey:DTOLEAD_birthday]]) {
         accountLeadOB.birthday = [self objectForKey:DTOLEAD_birthday];
     }
-    
+
     if (![StringUtil stringIsEmpty:[self objectForKey:DTOLEAD_campaignId]]) {
         accountLeadOB.campaignId = [self objectForKey:DTOLEAD_campaignId];
     }
@@ -271,7 +339,7 @@
     if (![StringUtil stringIsEmpty:[self objectForKey:DTOLEAD_companyPhone]]) {
         accountLeadOB.companyPhone = [self objectForKey:DTOLEAD_companyPhone];
     }
-    
+
     if (![StringUtil stringIsEmpty:[self objectForKey:DTOLEAD_createdBy]]) {
         accountLeadOB.createdBy = [self objectForKey:DTOLEAD_createdBy];
     }

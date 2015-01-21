@@ -385,6 +385,25 @@
 #define DTOTASK_updatedBy @"updatedBy" //BIGINT
 #define DTOTASK_updatedDate @"updatedDate" //VARCHAR
 #define DTOTASK_id @"id" //INTEGER
+
+///dtoDashboardConfiguration  Field
+#define DTOWIDGET_confId @"confId" //BIGINT
+#define DTOWIDGET_accountName @"accountName" //VARCHAR
+#define DTOWIDGET_typeGraphically @"typeGraphically" //VARCHAR
+#define DTOWIDGET_colorDisplay1 @"colorDisplay1" //VARCHAR
+#define DTOWIDGET_createDate @"createDate" //DATE
+#define DTOWIDGET_isShowData @"isShowData" //BIGINT
+#define DTOWIDGET_colorDisplay2 @"colorDisplay2" //VARCHAR
+#define DTOWIDGET_widgetId @"widgetId" //VARCHAR
+#define DTOWIDGET_widgetName @"widgetName" //VARCHAR
+#define DTOWIDGET_widgetType @"widgetType" //VARCHAR
+#define DTOWIDGET_status @"status" //VARCHAR
+
+//dtoWidgetType
+#define DTOWIDGETTYPE_widgetId @"widgetId" //VARCHAR
+#define DTOWIDGETTYPE_widgetName @"widgetName" //VARCHAR
+#define DTOWIDGETTYPE_widgetType @"widgetType" //VARCHAR
+
 ///dtogroup  Field
 #define DTOGROUP_code @"code" //VARCHAR
 #define DTOGROUP_createdBy @"createdBy" //BIGINT

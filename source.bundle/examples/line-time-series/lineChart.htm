@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+        <script src="../../js/jquery.js"></script>    
+		<script type="text/javascript">
+
+
+    function updateData(data,types){
+        
+        $('#container').highcharts({
+            chart: {
+                type: 'area',
+                spacingLeft: 0,
+                spacingRight: 0,
+                spacingBottom: 15,
+                spacingTop: 10,
+                                   plotBorderWidth: 1
+            },
+            title: {
+                text: null
+            },
+            subtitle: {
+                text: null
+            },
+            xAxis: {
+                labels: {
+                        style: {
+                        fontSize:'8px'
+                        }
+                },
+                categories: types,
+                title: {
+                    text:null
+                },
+                min: 0.2,
+//                max: 8,
+                                   minPadding:0,
+                                   maxPadding:0
+            },
+            yAxis: {
+                title: {
+                    text: null
+                },
+                labels: {
+                    formatter: function() {
+                        if(this.value==0)
+                            {
+                                   
+                            }else
+                        return (this.value / 1000) +'k';
+                    }
+                },
+            },
+                                   tooltip: {
+                                   shared: false,
+                                   valueSuffix: ' k'
+                                   },
+            plotOptions: {
+                area: {
+                    stacking: 'normal',
+                    lineWidth: 2.5,
+                    marker: {
+                        symbol:'circle',
+                        lineWidth: null,
+                        radius:2.5
+                    },
+                    shadow: false,
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            legend:{
+                enabled:false,
+            },
+            series: data
+        });
+      }
+        
+		</script>
+	</head>
+	<body>
+<script src="../../js/highcharts.js"></script>
+
+<div id="container" style="min-width: 100%; height: 350px; margin: 0 auto"></div>
+
+	</body>
+</html>

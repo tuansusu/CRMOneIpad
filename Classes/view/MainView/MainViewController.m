@@ -19,15 +19,22 @@
 #import "FFImportantFilesForCalendar.h"
 
 #import "FFCalendarViewController.h"
+#import "DTOWidgetProcess.h"
+
+#import "DTOWidgetObject.h"
+#import "NSDictionary+QS.h"
+
+#import "EditWidgetViewController.h"
 
 @interface MainViewController ()
 {
     NSString *interfaceOption;
     NSUserDefaults *defaults;
     int smgSelect ; //option layout
-    
-    NSArray *arrayData;
-    
+
+    NSMutableArray *arrayData;
+    DTOWidgetProcess *dtoWidgetProcess;
+    NSMutableArray *arrayWidgetDashboard;
 }
 @end
 
@@ -40,7 +47,7 @@ NSString* emptyText = @"";
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-    
+
     }
     return self;
 }
@@ -51,6 +58,11 @@ NSString* emptyText = @"";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    dtoWidgetProcess = [DTOWidgetProcess new];
+    arrayData = [[NSMutableArray alloc] init];
+    arrayWidgetDashboard = [[NSMutableArray alloc] init];
+
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     //[SVProgressHUD show];
     if ([UIDevice getCurrentSysVer] >= 7.0) {
@@ -59,20 +71,26 @@ NSString* emptyText = @"";
     }
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
-    
+
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
     [self initData];
-    
-    //[self.tbData registerNib:[UINib nibWithNibName:@"OpportunityCell" bundle:nil] forCellReuseIdentifier:@"opportunityCell"];
+
+    //
+
 }
 
 //khoi tao gia tri mac dinh cua form
 -(void) initData {
-    arrayData  = [NSArray new];
     //load data from db
-    
-    
+    NSMutableArray *resultArr = [dtoWidgetProcess filterWithKey:DTOWIDGET_accountName withValue:@"demo"];
+
+    for (NSDictionary *widgetDic in resultArr) {
+        [arrayData addObject:[widgetDic dtoWidgetObject]];
+    }
+    [_tbData reloadData];
+
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localeDidChange) name:NSCurrentLocaleDidChangeNotification object:nil];
     self.barLabel.text = [NSString stringWithFormat:@"%@ %@, %@",VOFFICE,[defaults objectForKey:@"versionSoftware"],COPY_OF_SOFTWARE];
 }
@@ -81,7 +99,7 @@ NSString* emptyText = @"";
 {
     [super viewWillAppear:animated];
     interfaceOption = [defaults objectForKey:INTERFACE_OPTION];
-    
+
     if (!interfaceOption || [interfaceOption isEqualToString:@"(null)"]) {
         [defaults setObject:@"1" forKey:INTERFACE_OPTION];
     }
@@ -94,17 +112,17 @@ NSString* emptyText = @"";
     self.fullNameLB.text = TITLE_APPLICATION;
     [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
     self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
-    
+
     [self.headerViewBar setBackGroundHeaderView:option];
     self.footerView.backgroundColor = TOOLBAR_VIEW_COLOR;
     self.barLabel.textColor = TEXT_TOOLBAR_COLOR1;
-    
-    
+
+
     for (UIView *viewTemp in self.view.subviews) {
         if ([viewTemp isKindOfClass:[UILabel class]]) {
             ((UILabel*) viewTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
         }
-        
+
         if ([viewTemp isKindOfClass:[UIButton class]]) {
             ((UIButton*) viewTemp).backgroundColor = BUTTON_IN_ACTIVE_COLOR_1;
             [((UIButton*) viewTemp) setTitleColor:TEXT_BUTTON_COLOR1 forState:UIControlStateNormal];
@@ -126,15 +144,15 @@ NSString* emptyText = @"";
 
 -(void) viewDidAppear:(BOOL)animated
 {
-    
+
     [super viewDidAppear:animated];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    
+
 }
 
 #pragma mark Event
 - (void)didFinish {
-   
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -143,13 +161,13 @@ NSString* emptyText = @"";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        return 450;
+    return 450;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
@@ -160,39 +178,42 @@ NSString* emptyText = @"";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-         return  4;
+    return  arrayData.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        if (indexPath.row == 0 || indexPath.row ==1 || indexPath.row ==2) {
-            static NSString *cellId = @"MainViewCell";
-            MainViewCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+    DTOWidgetObject *widgetOB = [arrayData objectAtIndex:indexPath.row];
 
+    if ([widgetOB.widgetType intValue]==0) {
+        static NSString *cellId = @"MainViewCell";
+        MainViewCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+        if ([arrayWidgetDashboard containsObject:cell]) {
+            return cell;
+        }else{
             if (!cell) {
-
-                cell = [MainViewCell initNibCell];
-                if (indexPath.row==0) {
-                    [cell loadDataCellWithType:typeGraphLine];
-                }else if (indexPath.row==1){
-                    [cell loadDataCellWithType:typeGraphColumn];
-                }else if (indexPath.row==2){
-                    [cell loadDataCellWithType:typeGraphFunnel];
-                }
+                [self.tbData registerNib:[UINib nibWithNibName:@"MainViewCell" bundle:nil] forCellReuseIdentifier:@"MainViewCell"];
+                cell = [[MainViewCell alloc]  initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId WithType:[widgetOB.typeGraphically intValue]];
             }
+            [cell loadDataCellWithWidgetObject:widgetOB];
+            [arrayWidgetDashboard addObject:cell];
             return cell;
-        } else if (indexPath.row == 3) {
-
-            static NSString *cellId = @"MainViewListCell";
-            
-            MainViewListCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-            if (cell == nil) {
-                cell = [[MainViewListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
-            }
-
-            return cell;
-            
         }
+    } else if ([widgetOB.widgetType intValue]==1) {
+
+        static NSString *cellId = @"MainViewListCell";
+
+        MainViewListCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+        if (cell == nil) {
+            [self.tbData registerNib:[UINib nibWithNibName:@"MainViewListCell" bundle:nil] forCellReuseIdentifier:@"MainViewListCell"];
+            cell = [[MainViewListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+
+        }
+
+        [cell loadDataCellWithWidgetObject:widgetOB];
+        return cell;
+
+    }
     return nil;
 }
 
@@ -213,7 +234,7 @@ NSString* emptyText = @"";
         RootViewController *rootView = [[RootViewController alloc] init];
         [appDel.window setRootViewController:rootView];
     }
-    
+
 }
 
 #pragma mark end
@@ -231,12 +252,18 @@ NSString* emptyText = @"";
 
 
 - (void)viewDidUnload {
-    
+
     [super viewDidUnload];
 }
 
 #pragma mark Button action
 
+-(IBAction)actionAddWidget:(id)sender
+{
+    EditWidgetViewController *editWidgetVC = [[EditWidgetViewController alloc] init];
+
+    [self presentViewController:editWidgetVC animated:YES completion:nil];
+}
 
 - (IBAction)actionDashBoard:(id)sender {
 }
@@ -244,7 +271,7 @@ NSString* emptyText = @"";
 - (IBAction)actionPotentialCustomer:(id)sender {
     ListAccountLeadViewController *viewController = [[ListAccountLeadViewController alloc]initWithNibName:@"ListAccountLeadViewController" bundle:nil];
     [self presentViewController:viewController animated:YES completion:nil];
-    
+
 }
 
 - (IBAction)actionAccount360:(id)sender {
@@ -253,11 +280,11 @@ NSString* emptyText = @"";
 }
 
 - (IBAction)actionOpportunity:(UIButton *)sender {
-    
+
     ListOpportunityViewController *viewController = [[ListOpportunityViewController alloc]initWithNibName:@"ListOpportunityViewController" bundle:nil];
     [self presentViewController:viewController animated:YES completion:nil];
-    
-    
+
+
 }
 
 - (IBAction)actionCalendar:(id)sender {
@@ -268,17 +295,17 @@ NSString* emptyText = @"";
 }
 
 - (IBAction)actionMapView:(id)sender {
-    
+
     TestMapViewController *viewController = [[TestMapViewController alloc]initWithNibName:@"TestMapViewController" bundle:nil];
     [self presentViewController:viewController animated:YES completion:nil];
-    
+
 }
 
 - (IBAction)actionComplain:(id)sender {
-    
+
     ListComplainsViewController *viewController = [[ListComplainsViewController alloc]initWithNibName:@"ListComplainsViewController" bundle:nil];
     [self presentViewController:viewController animated:YES completion:nil];
-    
+
 }
 
 - (IBAction)actionHelp:(id)sender {
@@ -292,7 +319,7 @@ NSString* emptyText = @"";
     ProfileViewController *profileVC = [[ProfileViewController alloc] init];
     [profileVC.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self presentViewController:profileVC animated:YES completion:nil];
-
+    
 }
 
 @end

@@ -74,7 +74,7 @@
         {
             //kiểm tra xem trạng thái của công việc
             //check ngay ket thuc so voi ngay hien tai
-            NSDate *endDate = [DateUtil getDateFromString:endDateStr :FORMAT_DATE_AND_TIME];
+            NSDate *endDate = [DateUtil getDateFromString:endDateStr :@"dd/MM/yyyy"];
             NSDate *nowDate = [NSDate date];
             if ([endDate compare:nowDate] == NSOrderedAscending)
             {

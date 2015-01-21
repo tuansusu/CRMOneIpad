@@ -13,6 +13,7 @@
 #import "Globals.h"
 #import "ContentChartViewCell.h"
 
+@class DTOWidgetObject;
 
 @interface MainViewCell : UITableViewCell<LineGraphDelegate,BarGraphDelegate>
 {
@@ -36,11 +37,12 @@
     NSArray *xTitlesArray;
     TypeGraphs _typeGraph;
     IBOutlet UITableView *tbvMain;
+    DTOWidgetObject *_widgetOB;
 }
 
 
-+(MainViewCell*) initNibCell;
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier WithType:(TypeGraphs)typeGraph;
 
--(void)loadDataCellWithType:(TypeGraphs)type;
+-(void)loadDataCellWithWidgetObject:(DTOWidgetObject*)widgetOB;
 
 @end

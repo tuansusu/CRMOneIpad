@@ -14,9 +14,10 @@
 
 
 typedef enum {
-    typeGraphLine,
-    typeGraphColumn,
-    typeGraphFunnel
+    typeGraphLine = 0,
+    typeGraphColumnVertical =1,
+    typeGraphColumnHorizontal =2,
+    typeGraphFunnel =3
 } TypeGraphs;
 
 typedef enum {

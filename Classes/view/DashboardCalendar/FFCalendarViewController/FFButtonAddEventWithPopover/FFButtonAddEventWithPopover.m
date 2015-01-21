@@ -23,7 +23,7 @@
     if (self) {
         // Initialization code
         
-        [self setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [self setTitleColor:HEADER_VIEW_COLOR1 forState:UIControlStateNormal];
         [self.titleLabel setFont:[UIFont systemFontOfSize:30.]];
         [self setTitle:@"+" forState:UIControlStateNormal];
         

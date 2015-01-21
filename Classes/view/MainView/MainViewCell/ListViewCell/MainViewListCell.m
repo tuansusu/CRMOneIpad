@@ -8,6 +8,7 @@
 
 #import "MainViewListCell.h"
 
+#import "DTOWidgetObject.h"
 
 @implementation MainViewListCell
 
@@ -50,5 +51,10 @@
     // Configure the view for the selected state
 }
 
+
+-(void)loadDataCellWithWidgetObject:(DTOWidgetObject*)widgetOB{
+    [lblTitle setText:widgetOB.widgetName];
+    [subListMainView initData];
+}
 
 @end

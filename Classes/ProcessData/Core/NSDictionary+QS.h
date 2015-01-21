@@ -15,8 +15,14 @@
 #import "DTOProductMasterObject.h"
 #import "DTOComplainObject.h"
 #import "DTOTaskObject.h"
+#import "DTOWidgetObject.h"
+#import "DTOWidgetTypeObject.h"
 
 @interface NSDictionary (QS)
+
+-(DTOWidgetTypeObject*)dtoWidgetTypeObject;
+
+-(DTOWidgetObject*)dtoWidgetObject;
 
 -(DTOTaskObject*)dtoTaskObject;
 

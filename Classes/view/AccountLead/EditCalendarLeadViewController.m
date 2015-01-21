@@ -16,6 +16,7 @@
 #import "SelectIndexViewController.h"
 #import "CalendarPickerViewController.h"
 #import "AlarmCalendarViewController.h"
+#import "RepeatCalendarViewController.h"
 
 #import <EventKit/EventKit.h>
 
@@ -40,7 +41,7 @@
 #define TAG_SELECT_CUSTOMERS     8
 
 
-@interface EditCalendarLeadViewController () <UITextFieldDelegate, SelectIndexDelegate, CalendarSelectDatePickerDelegate>
+@interface EditCalendarLeadViewController () <UITextFieldDelegate, SelectIndexDelegate, CalendarSelectDatePickerDelegate, AlarmCalendarViewDelegate>
 {
     int smgSelect ; //option layout
     NSArray *arrayData; //mang luu tru du lieu
@@ -470,17 +471,23 @@
 
 - (IBAction)actionChoiceRepeat:(id)sender
 {
-
+    RepeatCalendarViewController * detail = [[RepeatCalendarViewController alloc] init];
+    UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:detail];
+    _listPopover = [[UIPopoverController alloc] initWithContentViewController:nav];
+    _listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
+    _listPopover.popoverContentSize = detail.view.frame.size;
+    [_listPopover presentPopoverFromRect:_txtRepeat.frame inView:_viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 - (IBAction)actionChoiceAlarm:(id)sender
 {
     AlarmCalendarViewController * detail = [[AlarmCalendarViewController alloc] init];
+    detail.delegate = self;
+    detail.config = nil;
     _listPopover = [[UIPopoverController alloc] initWithContentViewController:detail];
     _listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
     _listPopover.popoverContentSize = detail.view.frame.size;
     [_listPopover presentPopoverFromRect:_txtAlarm.frame inView:_viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-
 }
 
 #pragma mark - CalendarSelectDatePickerDelegate
@@ -808,6 +815,12 @@
     }
 
     return FALSE;
+}
+
+#pragma mark - AlarmCalendarViewDelegate
+- (void)alarmCalendarView:(AlarmCalendarViewController *)alarmCalendarView confirmConfig:(AlarmCalendarConfig *)alarmConfig
+{
+    
 }
 
 @end

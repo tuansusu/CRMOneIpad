@@ -13,12 +13,14 @@
 
 @interface AlarmCalendarViewController : UIViewController
 
-@property (nonatomic, assign) BOOL configEnable;
+@property (nonatomic, assign) id <AlarmCalendarViewDelegate> delegate;
 @property (nonatomic, strong) AlarmCalendarConfig *config;
 @end
 
 @protocol AlarmCalendarViewDelegate <NSObject>
 @required
 
-- (void)alarmCalendarView:(AlarmCalendarViewController *)alarmCalendarView confirmEnable:(BOOL)isEnable config:(AlarmCalendarConfig *)alarmCOnfig;
+- (void)alarmCalendarView:(AlarmCalendarViewController *)alarmCalendarView confirmConfig:(AlarmCalendarConfig *)alarmCOnfig;
+- (void) dismissPopoverView;
+
 @end

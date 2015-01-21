@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlarmCalendarViewController">
@@ -16,7 +16,8 @@
                 <outlet property="_minuteTF" destination="xbG-bm-jmv" id="fSu-TV-HCg"/>
                 <outlet property="_notifSwitch" destination="cHm-Xi-w8I" id="GiS-sQ-c4b"/>
                 <outlet property="_onOffSwitch" destination="IsB-H0-9wO" id="OvO-08-3uT"/>
-                <outlet property="_pickerView" destination="bX5-A1-g4I" id="zwO-9I-gzN"/>
+                <outlet property="_pickerContainerView" destination="X65-CC-7cp" id="4hv-h1-mBO"/>
+                <outlet property="_pickerView" destination="rXC-ir-bCB" id="Lma-6m-6Qz"/>
                 <outlet property="_smsSwitch" destination="Vbx-nt-mXn" id="mTD-sz-JFd"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -136,15 +137,15 @@
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vbx-nt-mXn">
+                        <switch opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Vbx-nt-mXn">
                             <rect key="frame" x="20" y="293" width="51" height="31"/>
                             <color key="onTintColor" red="0.039215686270000001" green="0.43137254899999999" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
                         </switch>
-                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cHm-Xi-w8I">
+                        <switch opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cHm-Xi-w8I">
                             <rect key="frame" x="20" y="331" width="51" height="31"/>
                             <color key="onTintColor" red="0.039215686270000001" green="0.43137254899999999" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
                         </switch>
-                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q1t-li-jki">
+                        <switch opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Q1t-li-jki">
                             <rect key="frame" x="20" y="255" width="51" height="31"/>
                             <color key="onTintColor" red="0.039215686270000001" green="0.43137254899999999" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
                         </switch>
@@ -171,10 +172,24 @@
                         <action selector="confirmBtnPressed:" destination="-1" eventType="touchUpInside" id="Ewp-6Y-vDs"/>
                     </connections>
                 </button>
-                <pickerView hidden="YES" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bX5-A1-g4I">
-                    <rect key="frame" x="0.0" y="206" width="344" height="256"/>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X65-CC-7cp">
+                    <rect key="frame" x="-20" y="223" width="384" height="235"/>
+                    <subviews>
+                        <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rXC-ir-bCB">
+                            <rect key="frame" x="20" y="53" width="344" height="162"/>
+                        </pickerView>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e7J-ob-5Vf">
+                            <rect key="frame" x="20" y="8" width="344" height="30"/>
+                            <state key="normal" title="Xong">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="pickerDonePressed:" destination="-1" eventType="touchUpInside" id="mMc-SA-WaE"/>
+                            </connections>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </pickerView>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.4049384124" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
             <nil key="simulatedStatusBarMetrics"/>

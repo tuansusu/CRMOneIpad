@@ -10,8 +10,10 @@
 
 @interface AlarmCalendarConfig : NSObject
 
-@property (nonatomic, assign) NSTimeInterval alarmInterval;// always negative - alarm before event
-@property (nonatomic, assign) BOOL emailAlarm;
-@property (nonatomic, assign) BOOL smsAlarm;
-@property (nonatomic, assign) BOOL notifAlarm;
+@property (nonatomic, assign) BOOL isReminder;
+@property (nonatomic, assign) BOOL reminderEmail;
+@property (nonatomic, assign) BOOL reminderNofify;
+@property (nonatomic, assign) BOOL reminderSMS;
+@property (nonatomic, assign) NSUInteger reminderTime; // in minutes
+//reminderUnit - minutes
 @end

@@ -29,6 +29,8 @@
 		159599471A592C0700D87BD4 /* RepeatCalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 159599451A592C0700D87BD4 /* RepeatCalendarViewController.xib */; };
 		15A92D2C1A447049005DC9CA /* TaskCalTLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A92D2A1A447049005DC9CA /* TaskCalTLineCell.m */; };
 		15A92D2D1A447049005DC9CA /* TaskCalTLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A92D2B1A447049005DC9CA /* TaskCalTLineCell.xib */; };
+		15C6A1971A6FDC4800F19B30 /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C6A1951A6FDC4800F19B30 /* PickerViewController.m */; };
+		15C6A1981A6FDC4800F19B30 /* PickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15C6A1961A6FDC4800F19B30 /* PickerViewController.xib */; };
 		170862EA1A3F3CB30021705D /* attach_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 170862E91A3F3CB30021705D /* attach_icon.png */; };
 		17C67D391A5D72FA00EECD66 /* SelectAddInMapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C67D371A5D72FA00EECD66 /* SelectAddInMapsViewController.m */; };
 		17C67D3A1A5D72FA00EECD66 /* SelectAddInMapsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17C67D381A5D72FA00EECD66 /* SelectAddInMapsViewController.xib */; };
@@ -1025,6 +1027,9 @@
 		15A92D291A447049005DC9CA /* TaskCalTLineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCalTLineCell.h; sourceTree = "<group>"; };
 		15A92D2A1A447049005DC9CA /* TaskCalTLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCalTLineCell.m; sourceTree = "<group>"; };
 		15A92D2B1A447049005DC9CA /* TaskCalTLineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskCalTLineCell.xib; sourceTree = "<group>"; };
+		15C6A1941A6FDC4800F19B30 /* PickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PickerViewController.h; path = CustomView/PickerViewController.h; sourceTree = "<group>"; };
+		15C6A1951A6FDC4800F19B30 /* PickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PickerViewController.m; path = CustomView/PickerViewController.m; sourceTree = "<group>"; };
+		15C6A1961A6FDC4800F19B30 /* PickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PickerViewController.xib; path = CustomView/PickerViewController.xib; sourceTree = "<group>"; };
 		170862E91A3F3CB30021705D /* attach_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attach_icon.png; sourceTree = "<group>"; };
 		17C67D361A5D72FA00EECD66 /* SelectAddInMapsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectAddInMapsViewController.h; sourceTree = "<group>"; };
 		17C67D371A5D72FA00EECD66 /* SelectAddInMapsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAddInMapsViewController.m; sourceTree = "<group>"; };
@@ -3217,6 +3222,9 @@
 		2DBE93E51753391400627804 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				15C6A1941A6FDC4800F19B30 /* PickerViewController.h */,
+				15C6A1951A6FDC4800F19B30 /* PickerViewController.m */,
+				15C6A1961A6FDC4800F19B30 /* PickerViewController.xib */,
 				769F24861A6F1F3F00427A8F /* MeunViewController.h */,
 				769F24871A6F1F3F00427A8F /* MeunViewController.m */,
 				769F24881A6F1F3F00427A8F /* MeunViewController.xib */,
@@ -5836,6 +5844,7 @@
 				8ED38D861A54528E00D95A3B /* ProductLeadCellHeader.xib in Resources */,
 				8ED402791A41D2DC00CCBE6D /* iconExpand.png in Resources */,
 				8E568FA31A59228B0002A3C4 /* iconSave@2x.png in Resources */,
+				15C6A1981A6FDC4800F19B30 /* PickerViewController.xib in Resources */,
 				8E7554581A52EFC8001940FB /* iconRampLeft.png in Resources */,
 				B3A066D717D1AB8200BA6487 /* background_1.png in Resources */,
 				B315789C188D5E5200C0ED01 /* logo-small-1.png in Resources */,
@@ -6492,6 +6501,7 @@
 				84918ABF1A34574A00149CB4 /* SearchAdvanceLeadViewController.m in Sources */,
 				B362286517E95FE300CAA6AE /* EncryptBase64.m in Sources */,
 				7657E8B51A5AEB3A008A62F9 /* Calendar360Cell.m in Sources */,
+				15C6A1971A6FDC4800F19B30 /* PickerViewController.m in Sources */,
 				76C9643B1A17731900029978 /* Anchor.m in Sources */,
 				8EC9728A1A5D71300021DCA3 /* FFHourAndMinLabel.m in Sources */,
 				769F24811A6F1C5500427A8F /* MMDrawerBarButtonItem.m in Sources */,

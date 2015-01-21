@@ -11,22 +11,6 @@
 
 @interface AlarmCalendarViewController ()
 <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
-
-- (IBAction)onOffSwitchChanged:(UISegmentedControl *)sender;
-
-- (IBAction)pickerBtnPressed:(UIButton *)sender;
-
-- (IBAction)confirmBtnPressed:(id)sender;
-- (IBAction)cancelBtnPressed:(id)sender;
-@end
-
-typedef enum {
-    pickerType_day,
-    pickerType_hour,
-    pickerType_minute
-} pickerType_t;
-
-@implementation AlarmCalendarViewController
 {
     __weak IBOutlet UISegmentedControl *_onOffSwitch;
     
@@ -42,6 +26,25 @@ typedef enum {
     __weak IBOutlet UISwitch *_notifSwitch;
     
     __weak IBOutlet UIPickerView *_pickerView;
+    __weak IBOutlet UIView *_pickerContainerView;
+}
+- (IBAction)onOffSwitchChanged:(UISegmentedControl *)sender;
+
+- (IBAction)pickerBtnPressed:(UIButton *)sender;
+- (IBAction)pickerDonePressed:(UIButton *)sender;
+
+- (IBAction)confirmBtnPressed:(id)sender;
+- (IBAction)cancelBtnPressed:(id)sender;
+@end
+
+typedef enum {
+    pickerType_day,
+    pickerType_hour,
+    pickerType_minute
+} pickerType_t;
+
+@implementation AlarmCalendarViewController
+{
     pickerType_t pickerType;
 }
 
@@ -55,6 +58,15 @@ typedef enum {
     _pickerView.delegate   = self;
     _pickerView.dataSource = self;
     pickerType = pickerType_day;
+    
+    AlarmCalendarConfig * config = [[AlarmCalendarConfig alloc] init];
+    config.isReminder = FALSE;
+    config.reminderEmail = FALSE;
+    config.reminderSMS   = FALSE;
+    config.reminderNofify= TRUE;
+    config.reminderTime  = 15;
+    
+    [self setConfig:config];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -86,7 +98,7 @@ typedef enum {
 
 - (IBAction)pickerBtnPressed:(UIButton *)sender
 {
-    _pickerView.hidden = TRUE;
+    _pickerContainerView.hidden = TRUE;
     if (sender == _dayDDBtn)
     {
         pickerType = pickerType_day;
@@ -100,7 +112,6 @@ typedef enum {
     else if (sender == _minuteDDBtn)
     {
         pickerType = pickerType_minute;
-
     }
     else
     {
@@ -108,18 +119,43 @@ typedef enum {
     }
     
     [_pickerView reloadAllComponents];
-    _pickerView.hidden = FALSE;
+    _pickerContainerView.hidden = FALSE;
+}
+
+- (IBAction)pickerDonePressed:(UIButton *)sender
+{
+    _pickerContainerView.hidden = TRUE;
 }
 
 - (IBAction)confirmBtnPressed:(id)sender
 {
+    if (_config == nil)
+    {
+        _config = [[AlarmCalendarConfig alloc] init];
+    }
+    
+    _config.isReminder = ([_onOffSwitch selectedSegmentIndex] == 1);
+    _config.reminderEmail  = [_emailSwitch isOn];
+    _config.reminderSMS    = [_smsSwitch isOn];
+    _config.reminderNofify = [_notifSwitch isOn];
+    _config.reminderTime = [self getReminderTime];
+    
+    if (_delegate &&
+        [_delegate respondsToSelector:@selector(alarmCalendarView:confirmConfig:)] &&
+        [_delegate respondsToSelector:@selector(dismissPopoverView)])
+    {
+        [_delegate alarmCalendarView:self confirmConfig:_config];
+        [_delegate dismissPopoverView];
+    }
 }
 
 - (IBAction)cancelBtnPressed:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:^{
-       //??
-    }];
+    if (_delegate &&
+        [_delegate respondsToSelector:@selector(dismissPopoverView)])
+    {
+        [_delegate dismissPopoverView];
+    }
 }
 
 
@@ -138,6 +174,53 @@ typedef enum {
     _emailSwitch.enabled = configEnable;
     _smsSwitch.enabled   = configEnable;
     _notifSwitch.enabled = configEnable;
+}
+
+- (void)setConfig:(AlarmCalendarConfig *)config
+{
+    if (config != nil)
+    {
+        _config = config;
+        [self setConfigEnable:[config isReminder]];
+        if ([config isReminder])
+        {
+            [self setReminderTime:[config reminderTime]];
+            [_emailSwitch setOn:[config reminderEmail]];
+            [_smsSwitch   setOn:[config reminderSMS]];
+            [_notifSwitch setOn:[config reminderNofify]];
+        }
+    }
+    else
+    {
+        _dayTF.text = @"0";
+        _hourTF.text = @"0";
+        _minuteTF.text = @"15";
+        [_emailSwitch setOn:FALSE];
+        [_smsSwitch   setOn:FALSE];
+        [_notifSwitch setOn:TRUE];
+        
+        [self setConfigEnable:FALSE];
+    }
+}
+
+- (void)setReminderTime:(NSUInteger)reminderTime // minutes
+{
+    NSUInteger minutes = reminderTime % 60;
+    NSUInteger hours   = ((reminderTime - minutes)/60) % 24;
+    NSUInteger days    = (((reminderTime - minutes)/60) - hours)/ 24;
+    
+    _minuteTF.text = [NSString stringWithFormat:@"%d", minutes];
+    _hourTF.text   = [NSString stringWithFormat:@"%d", hours];
+    _dayTF.text    = (days > 31)?@"30":[NSString stringWithFormat:@"%d", days];
+}
+
+- (NSUInteger)getReminderTime
+{
+    NSUInteger minutes = [_minuteTF.text integerValue];
+    NSUInteger hours   = [_hourTF.text   integerValue];
+    NSUInteger days    = [_dayTF.text    integerValue];
+    
+    return ((days * 24 + hours) * 60 + minutes);
 }
 
 #pragma mark - UIPickerView data source
@@ -193,7 +276,7 @@ typedef enum {
     {
         _minuteTF.text = [NSString stringWithFormat:@"%ld", (long)row];
     }
-//    _pickerView.hidden = TRUE;
+//    _pickerContainerView.hidden = TRUE;
 }
 
 #pragma mark - UITextFieldDelegate

@@ -30,6 +30,8 @@
 		15A92D2C1A447049005DC9CA /* TaskCalTLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A92D2A1A447049005DC9CA /* TaskCalTLineCell.m */; };
 		15A92D2D1A447049005DC9CA /* TaskCalTLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A92D2B1A447049005DC9CA /* TaskCalTLineCell.xib */; };
 		170862EA1A3F3CB30021705D /* attach_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 170862E91A3F3CB30021705D /* attach_icon.png */; };
+		17C67D391A5D72FA00EECD66 /* SelectAddInMapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C67D371A5D72FA00EECD66 /* SelectAddInMapsViewController.m */; };
+		17C67D3A1A5D72FA00EECD66 /* SelectAddInMapsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17C67D381A5D72FA00EECD66 /* SelectAddInMapsViewController.xib */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -325,6 +327,16 @@
 		769C1A1B1A00027900F015A5 /* Network.m in Sources */ = {isa = PBXBuildFile; fileRef = 769C1A181A00027900F015A5 /* Network.m */; };
 		769C1A1C1A00027900F015A5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 769C1A1A1A00027900F015A5 /* Reachability.m */; };
 		769CB8141A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 769CB8131A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.m */; };
+		769F247E1A6F1C5500427A8F /* Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F246D1A6F1C5500427A8F /* Language.m */; };
+		769F247F1A6F1C5500427A8F /* LocalizeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F246F1A6F1C5500427A8F /* LocalizeHelper.m */; };
+		769F24801A6F1C5500427A8F /* DDMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F24721A6F1C5500427A8F /* DDMenuController.m */; };
+		769F24811A6F1C5500427A8F /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F24751A6F1C5500427A8F /* MMDrawerBarButtonItem.m */; };
+		769F24821A6F1C5500427A8F /* MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F24781A6F1C5500427A8F /* MMDrawerController.m */; };
+		769F24831A6F1C5500427A8F /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F247A1A6F1C5500427A8F /* MMDrawerVisualState.m */; };
+		769F24841A6F1C5500427A8F /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 769F247B1A6F1C5500427A8F /* README.md */; };
+		769F24851A6F1C5500427A8F /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F247D1A6F1C5500427A8F /* UIViewController+MMDrawerController.m */; };
+		769F24891A6F1F3F00427A8F /* MeunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F24871A6F1F3F00427A8F /* MeunViewController.m */; };
+		769F248A1A6F1F3F00427A8F /* MeunViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769F24881A6F1F3F00427A8F /* MeunViewController.xib */; };
 		76C962941A16DB8200029978 /* DTOACCOUNTLEADProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C962931A16DB8200029978 /* DTOACCOUNTLEADProcess.m */; };
 		76C9629C1A16DBA500029978 /* AccountLeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C962971A16DBA500029978 /* AccountLeadCell.m */; };
 		76C9629D1A16DBA500029978 /* AccountLeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C962981A16DBA500029978 /* AccountLeadCell.xib */; };
@@ -1014,6 +1026,9 @@
 		15A92D2A1A447049005DC9CA /* TaskCalTLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCalTLineCell.m; sourceTree = "<group>"; };
 		15A92D2B1A447049005DC9CA /* TaskCalTLineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskCalTLineCell.xib; sourceTree = "<group>"; };
 		170862E91A3F3CB30021705D /* attach_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attach_icon.png; sourceTree = "<group>"; };
+		17C67D361A5D72FA00EECD66 /* SelectAddInMapsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectAddInMapsViewController.h; sourceTree = "<group>"; };
+		17C67D371A5D72FA00EECD66 /* SelectAddInMapsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAddInMapsViewController.m; sourceTree = "<group>"; };
+		17C67D381A5D72FA00EECD66 /* SelectAddInMapsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectAddInMapsViewController.xib; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* OfficeOneMB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OfficeOneMB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -1459,6 +1474,25 @@
 		769C1A1A1A00027900F015A5 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		769CB8121A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOOPPORTUNITYCONTACTProcess.h; sourceTree = "<group>"; };
 		769CB8131A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOOPPORTUNITYCONTACTProcess.m; sourceTree = "<group>"; };
+		769F246C1A6F1C5500427A8F /* Language.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Language.h; sourceTree = "<group>"; };
+		769F246D1A6F1C5500427A8F /* Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Language.m; sourceTree = "<group>"; };
+		769F246E1A6F1C5500427A8F /* LocalizeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizeHelper.h; sourceTree = "<group>"; };
+		769F246F1A6F1C5500427A8F /* LocalizeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalizeHelper.m; sourceTree = "<group>"; };
+		769F24711A6F1C5500427A8F /* DDMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMenuController.h; sourceTree = "<group>"; };
+		769F24721A6F1C5500427A8F /* DDMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMenuController.m; sourceTree = "<group>"; };
+		769F24741A6F1C5500427A8F /* MMDrawerBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerBarButtonItem.h; sourceTree = "<group>"; };
+		769F24751A6F1C5500427A8F /* MMDrawerBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerBarButtonItem.m; sourceTree = "<group>"; };
+		769F24761A6F1C5500427A8F /* MMDrawerController+Subclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MMDrawerController+Subclass.h"; sourceTree = "<group>"; };
+		769F24771A6F1C5500427A8F /* MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerController.h; sourceTree = "<group>"; };
+		769F24781A6F1C5500427A8F /* MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerController.m; sourceTree = "<group>"; };
+		769F24791A6F1C5500427A8F /* MMDrawerVisualState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerVisualState.h; sourceTree = "<group>"; };
+		769F247A1A6F1C5500427A8F /* MMDrawerVisualState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerVisualState.m; sourceTree = "<group>"; };
+		769F247B1A6F1C5500427A8F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		769F247C1A6F1C5500427A8F /* UIViewController+MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MMDrawerController.h"; sourceTree = "<group>"; };
+		769F247D1A6F1C5500427A8F /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
+		769F24861A6F1F3F00427A8F /* MeunViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeunViewController.h; path = CustomView/MeunViewController.h; sourceTree = "<group>"; };
+		769F24871A6F1F3F00427A8F /* MeunViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeunViewController.m; path = CustomView/MeunViewController.m; sourceTree = "<group>"; };
+		769F24881A6F1F3F00427A8F /* MeunViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MeunViewController.xib; path = CustomView/MeunViewController.xib; sourceTree = "<group>"; };
 		76C962921A16DB8200029978 /* DTOACCOUNTLEADProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOACCOUNTLEADProcess.h; sourceTree = "<group>"; };
 		76C962931A16DB8200029978 /* DTOACCOUNTLEADProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOACCOUNTLEADProcess.m; sourceTree = "<group>"; };
 		76C962961A16DBA500029978 /* AccountLeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountLeadCell.h; sourceTree = "<group>"; };
@@ -2755,6 +2789,8 @@
 		2D0E2ED21798018E0081D44A /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				769F246B1A6F1C5400427A8F /* Language */,
+				769F24701A6F1C5500427A8F /* Menu */,
 				06F2BF1A1A6A53F9003B8C40 /* NetworkHelper */,
 				8E3528141A610D4C00E1E1E3 /* Common */,
 				8EC971E41A5D71300021DCA3 /* Calendar */,
@@ -3181,6 +3217,9 @@
 		2DBE93E51753391400627804 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				769F24861A6F1F3F00427A8F /* MeunViewController.h */,
+				769F24871A6F1F3F00427A8F /* MeunViewController.m */,
+				769F24881A6F1F3F00427A8F /* MeunViewController.xib */,
 				76199E081A471D7800B792C5 /* MDSearchBarController */,
 				94BA8D791A2DF3CF0082AE9E /* CalendarPickerViewController.h */,
 				94BA8D7A1A2DF3CF0082AE9E /* CalendarPickerViewController.m */,
@@ -3470,6 +3509,44 @@
 				3E990E5419480C7400F0D276 /* 72x72.png */,
 			);
 			name = logo;
+			sourceTree = "<group>";
+		};
+		769F246B1A6F1C5400427A8F /* Language */ = {
+			isa = PBXGroup;
+			children = (
+				769F246C1A6F1C5500427A8F /* Language.h */,
+				769F246D1A6F1C5500427A8F /* Language.m */,
+				769F246E1A6F1C5500427A8F /* LocalizeHelper.h */,
+				769F246F1A6F1C5500427A8F /* LocalizeHelper.m */,
+			);
+			path = Language;
+			sourceTree = "<group>";
+		};
+		769F24701A6F1C5500427A8F /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				769F24711A6F1C5500427A8F /* DDMenuController.h */,
+				769F24721A6F1C5500427A8F /* DDMenuController.m */,
+				769F24731A6F1C5500427A8F /* MMDrawerController */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		769F24731A6F1C5500427A8F /* MMDrawerController */ = {
+			isa = PBXGroup;
+			children = (
+				769F24741A6F1C5500427A8F /* MMDrawerBarButtonItem.h */,
+				769F24751A6F1C5500427A8F /* MMDrawerBarButtonItem.m */,
+				769F24761A6F1C5500427A8F /* MMDrawerController+Subclass.h */,
+				769F24771A6F1C5500427A8F /* MMDrawerController.h */,
+				769F24781A6F1C5500427A8F /* MMDrawerController.m */,
+				769F24791A6F1C5500427A8F /* MMDrawerVisualState.h */,
+				769F247A1A6F1C5500427A8F /* MMDrawerVisualState.m */,
+				769F247B1A6F1C5500427A8F /* README.md */,
+				769F247C1A6F1C5500427A8F /* UIViewController+MMDrawerController.h */,
+				769F247D1A6F1C5500427A8F /* UIViewController+MMDrawerController.m */,
+			);
+			path = MMDrawerController;
 			sourceTree = "<group>";
 		};
 		76C962951A16DBA500029978 /* AccountLead */ = {
@@ -4408,6 +4485,9 @@
 			isa = PBXGroup;
 			children = (
 				8EBFF2721A6E97520009D9E1 /* WidgetDetail */,
+				17C67D361A5D72FA00EECD66 /* SelectAddInMapsViewController.h */,
+				17C67D371A5D72FA00EECD66 /* SelectAddInMapsViewController.m */,
+				17C67D381A5D72FA00EECD66 /* SelectAddInMapsViewController.xib */,
 				8E8B3F271A49AA5F00241360 /* MainViewCell */,
 				8E8B3F221A49AA4300241360 /* MainViewController.h */,
 				8E8B3F231A49AA4300241360 /* MainViewController.m */,
@@ -5902,6 +5982,7 @@
 				2DE2D2531829060700034877 /* ic-pdf.png in Resources */,
 				2D2F75A2185801E000EC76EE /* Button_Dong_y.png in Resources */,
 				2DE2D2541829060700034877 /* ic-notsign.png in Resources */,
+				769F248A1A6F1F3F00427A8F /* MeunViewController.xib in Resources */,
 				849078931A1E4D5B009D5D5F /* icon_Line-1.png in Resources */,
 				8E75544E1A52EFC8001940FB /* iconForkLeft.png in Resources */,
 				8E2980F21A6AAB470068B66C /* EditNoteViewCell.xib in Resources */,
@@ -5928,6 +6009,7 @@
 				76C964771A17731900029978 /* trophy.png in Resources */,
 				8497BFE91A295A2300A5ED3C /* step5@2x.png in Resources */,
 				B31AFAA5187ADB5800D366B5 /* ic-show-column-1-1.png in Resources */,
+				17C67D3A1A5D72FA00EECD66 /* SelectAddInMapsViewController.xib in Resources */,
 				76601A40194BE90F001D4C01 /* AppIcon-114.png in Resources */,
 				8E7554621A52EFC8001940FB /* iconTurnLeft.png in Resources */,
 				8E7554221A52E3A2001940FB /* iconTurnSharpLeft.png in Resources */,
@@ -6072,6 +6154,7 @@
 				76C964411A17731900029978 /* MIMMeter.m in Sources */,
 				92C68E671519D4F100981728 /* AbstractModelService.m in Sources */,
 				949B76B01A3F357A00945B41 /* SearchAdvanceOpportunityViewController.m in Sources */,
+				769F247F1A6F1C5500427A8F /* LocalizeHelper.m in Sources */,
 				849794671A1FB19300ACC568 /* DetailCustomBussinessViewController.m in Sources */,
 				8EFE69311A5699BC003D55CE /* ProEMBDetailViewController.m in Sources */,
 				8E6105F41A5964E4003D1C0C /* ComplainsView.m in Sources */,
@@ -6131,6 +6214,7 @@
 				76977D551A0284DE0029F297 /* TableTestProcess.m in Sources */,
 				8ED38D7A1A54480100D95A3B /* ProductsLeadView.m in Sources */,
 				76C964611A17731900029978 /* DefaultPopOverForPieChart.m in Sources */,
+				769F24891A6F1F3F00427A8F /* MeunViewController.m in Sources */,
 				8EFE692C1A5698C9003D55CE /* ProBaoLanhDetailViewController.m in Sources */,
 				06FE2E2A1A45816D004A1D16 /* MapsModel.m in Sources */,
 				8EC4B90B1A505A7D0078BF13 /* DirectionsHeaderView.m in Sources */,
@@ -6174,6 +6258,7 @@
 				159599411A592BF600D87BD4 /* AlarmCalendarViewController.m in Sources */,
 				8E174C671A5ED13D004FDBBE /* DTOTaskObject.m in Sources */,
 				8EC9727F1A5D71300021DCA3 /* FFDayCollectionViewFlowLayout.m in Sources */,
+				769F24821A6F1C5500427A8F /* MMDrawerController.m in Sources */,
 				B31938D718E4355D0008BBFE /* UITextView+Custom.m in Sources */,
 				2D87F5F6175AD862007F861D /* SVProgressHUD.m in Sources */,
 				8497C0011A295A2300A5ED3C /* MapZoomViewController.m in Sources */,
@@ -6231,6 +6316,7 @@
 				2D9FCB931795644200950763 /* DateUtil.m in Sources */,
 				76C964571A17731900029978 /* MIMLineGraph.m in Sources */,
 				8497C0081A295A2300A5ED3C /* PolygonsViewController.m in Sources */,
+				769F247E1A6F1C5500427A8F /* Language.m in Sources */,
 				8E6A102C1A62271C00D98AE3 /* ContentChartViewCell.m in Sources */,
 				8EC972A61A5D71300021DCA3 /* FFGuestsTableViewCell.m in Sources */,
 				8EC972931A5D71300021DCA3 /* FFMonthCollectionViewForYearCell.m in Sources */,
@@ -6244,6 +6330,7 @@
 				76C9644B1A17731900029978 /* ClusterGraph.m in Sources */,
 				2D36438E1859996700190EE7 /* AFHTTPRequestOperation.m in Sources */,
 				2D3643921859996700190EE7 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				769F24801A6F1C5500427A8F /* DDMenuController.m in Sources */,
 				8497BFF81A295A2300A5ED3C /* FixedPanoramaViewController.m in Sources */,
 				8EC972921A5D71300021DCA3 /* FFMonthCellForYearCell.m in Sources */,
 				2D3643911859996700190EE7 /* AFJSONUtilities.m in Sources */,
@@ -6257,6 +6344,7 @@
 				06FE2E1F1A4566DD004A1D16 /* DTOAcountLeadProcessObject.m in Sources */,
 				2DA084FA179C1B9F00EB986D /* UIView+AUISelectiveBorder.m in Sources */,
 				8EC4B9161A505B0E0078BF13 /* RoutesDirectionsView.m in Sources */,
+				769F24851A6F1C5500427A8F /* UIViewController+MMDrawerController.m in Sources */,
 				76601A31194BE90F001D4C01 /* ReaderThumbCache.m in Sources */,
 				2D36438F1859996700190EE7 /* AFImageRequestOperation.m in Sources */,
 				76C964711A17731900029978 /* PieBubble.m in Sources */,
@@ -6387,6 +6475,7 @@
 				B3A0669C17D1A72400BA6487 /* UIGestureRecognizer+FLKit.m in Sources */,
 				B3A0669D17D1A72400BA6487 /* WCGridView.m in Sources */,
 				B3A0669E17D1A72400BA6487 /* WCGridViewCell.m in Sources */,
+				17C67D391A5D72FA00EECD66 /* SelectAddInMapsViewController.m in Sources */,
 				76601A2D194BE90F001D4C01 /* ReaderDocument.m in Sources */,
 				76601A2A194BE90F001D4C01 /* ReaderContentPage.m in Sources */,
 				B3A066A017D1A72400BA6487 /* WCGridViewController.m in Sources */,
@@ -6396,6 +6485,7 @@
 				7693EE071A355593004E0178 /* EditCalendarLeadViewController.m in Sources */,
 				8496FB271A2DE34200F4A641 /* ContactLeadCell.m in Sources */,
 				2D459E79184EC5EA004D9C45 /* LineView.m in Sources */,
+				769F24841A6F1C5500427A8F /* README.md in Sources */,
 				B362285717E943EE00CAA6AE /* Toast+UIView.m in Sources */,
 				8EC972871A5D71300021DCA3 /* FFWeekCalendarView.m in Sources */,
 				2D6D7639187645EB0051AD9E /* GraphicName.m in Sources */,
@@ -6404,6 +6494,7 @@
 				7657E8B51A5AEB3A008A62F9 /* Calendar360Cell.m in Sources */,
 				76C9643B1A17731900029978 /* Anchor.m in Sources */,
 				8EC9728A1A5D71300021DCA3 /* FFHourAndMinLabel.m in Sources */,
+				769F24811A6F1C5500427A8F /* MMDrawerBarButtonItem.m in Sources */,
 				8EC972821A5D71300021DCA3 /* FFButtonWithEditAndDetailPopoversForMonthCell.m in Sources */,
 				8EFE69261A56987C003D55CE /* ProBankPlusDetailViewController.m in Sources */,
 				8EC9728F1A5D71300021DCA3 /* FFWeekScrollView.m in Sources */,
@@ -6453,6 +6544,7 @@
 				B313F1CF18A5096C001FDEC6 /* Util.m in Sources */,
 				8EFE69141A56938C003D55CE /* ProTindungDetailViewController.m in Sources */,
 				76601A39194BE90F001D4C01 /* ThumbsMainToolbar.m in Sources */,
+				769F24831A6F1C5500427A8F /* MMDrawerVisualState.m in Sources */,
 				8EC972A91A5D71300021DCA3 /* FFEventDetailView.m in Sources */,
 				2D36439B1859998700190EE7 /* DejalActivityView.m in Sources */,
 				2DF7C8821821FD810020D4CC /* SRMonthPicker.m in Sources */,

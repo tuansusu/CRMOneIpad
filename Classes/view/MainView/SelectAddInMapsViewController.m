@@ -8,6 +8,8 @@
 
 #import "SelectAddInMapsViewController.h"
 
+
+
 @interface SelectAddInMapsViewController ()
 
 @end
@@ -18,6 +20,8 @@
     [super viewDidLoad];
     
     self.txtSearchBar.barTintColor = [UIColor whiteColor];
+    _mkMapview.showsUserLocation=YES;
+    
     // Do any additional setup after loading the view from its nib.
 }
 

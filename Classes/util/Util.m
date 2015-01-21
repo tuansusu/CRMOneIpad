@@ -28,13 +28,15 @@
 
 
 +(void) backToHome : (UIViewController*) viewController {
-    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    MainViewController *view = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
-    //action.sender = view;
-    //view.userData = [defaults objectForKey:USER_LOGIN];
-    //view.versionTypeCheck = [defaults objectForKey:KEY_VERSION];
-    view.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [viewController presentViewController:view animated:YES completion:nil];
+//    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    MainViewController *view = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+//    //action.sender = view;
+//    //view.userData = [defaults objectForKey:USER_LOGIN];
+//    //view.versionTypeCheck = [defaults objectForKey:KEY_VERSION];
+//    view.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//    [viewController presentViewController:view animated:YES completion:nil];
+    
+    [viewController.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
 +(void) sendMail : (UIViewController*) viewController withEmail : (NSString*) strEmailTo {

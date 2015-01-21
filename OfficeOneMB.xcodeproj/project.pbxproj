@@ -226,6 +226,19 @@
 		7633081C1A04941E000E190B /* VTDateField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7633081B1A04941E000E190B /* VTDateField.xib */; };
 		763B688F1A5C2E8900397A19 /* EditOpportunity360ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 763B688D1A5C2E8900397A19 /* EditOpportunity360ViewController.m */; };
 		763B68901A5C2E8900397A19 /* EditOpportunity360ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 763B688E1A5C2E8900397A19 /* EditOpportunity360ViewController.xib */; };
+		764430661A7000CC007741BA /* menu_calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 764430591A7000CC007741BA /* menu_calendar.png */; };
+		764430671A7000CC007741BA /* menu_campaign.png in Resources */ = {isa = PBXBuildFile; fileRef = 7644305A1A7000CC007741BA /* menu_campaign.png */; };
+		764430681A7000CC007741BA /* menu_customer_360.png in Resources */ = {isa = PBXBuildFile; fileRef = 7644305B1A7000CC007741BA /* menu_customer_360.png */; };
+		764430691A7000CC007741BA /* menu_dashboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 7644305C1A7000CC007741BA /* menu_dashboard.png */; };
+		7644306A1A7000CC007741BA /* menu_group.png in Resources */ = {isa = PBXBuildFile; fileRef = 7644305D1A7000CC007741BA /* menu_group.png */; };
+		7644306B1A7000CC007741BA /* menu_help.png in Resources */ = {isa = PBXBuildFile; fileRef = 7644305E1A7000CC007741BA /* menu_help.png */; };
+		7644306C1A7000CC007741BA /* menu_lead.png in Resources */ = {isa = PBXBuildFile; fileRef = 7644305F1A7000CC007741BA /* menu_lead.png */; };
+		7644306D1A7000CC007741BA /* menu_map.png in Resources */ = {isa = PBXBuildFile; fileRef = 764430601A7000CC007741BA /* menu_map.png */; };
+		7644306E1A7000CC007741BA /* menu_opportunity.png in Resources */ = {isa = PBXBuildFile; fileRef = 764430611A7000CC007741BA /* menu_opportunity.png */; };
+		7644306F1A7000CC007741BA /* menu_product.png in Resources */ = {isa = PBXBuildFile; fileRef = 764430621A7000CC007741BA /* menu_product.png */; };
+		764430701A7000CC007741BA /* menu_report.png in Resources */ = {isa = PBXBuildFile; fileRef = 764430631A7000CC007741BA /* menu_report.png */; };
+		764430711A7000CC007741BA /* menu_rm_360.png in Resources */ = {isa = PBXBuildFile; fileRef = 764430641A7000CC007741BA /* menu_rm_360.png */; };
+		764430721A7000CC007741BA /* menu_sales_activity.png in Resources */ = {isa = PBXBuildFile; fileRef = 764430651A7000CC007741BA /* menu_sales_activity.png */; };
 		7657E8841A5AEAB1008A62F9 /* DTOOPPORTUNITYPRODUCTProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 7657E8831A5AEAB1008A62F9 /* DTOOPPORTUNITYPRODUCTProcess.m */; };
 		7657E8AF1A5AEB3A008A62F9 /* Contact360Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7657E8861A5AEB3A008A62F9 /* Contact360Cell.m */; };
 		7657E8B01A5AEB3A008A62F9 /* Contact360Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7657E8871A5AEB3A008A62F9 /* Contact360Cell.xib */; };
@@ -1322,6 +1335,19 @@
 		763B688C1A5C2E8900397A19 /* EditOpportunity360ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditOpportunity360ViewController.h; sourceTree = "<group>"; };
 		763B688D1A5C2E8900397A19 /* EditOpportunity360ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditOpportunity360ViewController.m; sourceTree = "<group>"; };
 		763B688E1A5C2E8900397A19 /* EditOpportunity360ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditOpportunity360ViewController.xib; sourceTree = "<group>"; };
+		764430591A7000CC007741BA /* menu_calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_calendar.png; sourceTree = "<group>"; };
+		7644305A1A7000CC007741BA /* menu_campaign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_campaign.png; sourceTree = "<group>"; };
+		7644305B1A7000CC007741BA /* menu_customer_360.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_customer_360.png; sourceTree = "<group>"; };
+		7644305C1A7000CC007741BA /* menu_dashboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_dashboard.png; sourceTree = "<group>"; };
+		7644305D1A7000CC007741BA /* menu_group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_group.png; sourceTree = "<group>"; };
+		7644305E1A7000CC007741BA /* menu_help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_help.png; sourceTree = "<group>"; };
+		7644305F1A7000CC007741BA /* menu_lead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_lead.png; sourceTree = "<group>"; };
+		764430601A7000CC007741BA /* menu_map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_map.png; sourceTree = "<group>"; };
+		764430611A7000CC007741BA /* menu_opportunity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_opportunity.png; sourceTree = "<group>"; };
+		764430621A7000CC007741BA /* menu_product.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_product.png; sourceTree = "<group>"; };
+		764430631A7000CC007741BA /* menu_report.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_report.png; sourceTree = "<group>"; };
+		764430641A7000CC007741BA /* menu_rm_360.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_rm_360.png; sourceTree = "<group>"; };
+		764430651A7000CC007741BA /* menu_sales_activity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_sales_activity.png; sourceTree = "<group>"; };
 		7657E8821A5AEAB1008A62F9 /* DTOOPPORTUNITYPRODUCTProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOOPPORTUNITYPRODUCTProcess.h; sourceTree = "<group>"; };
 		7657E8831A5AEAB1008A62F9 /* DTOOPPORTUNITYPRODUCTProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOOPPORTUNITYPRODUCTProcess.m; sourceTree = "<group>"; };
 		7657E8851A5AEB3A008A62F9 /* Contact360Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact360Cell.h; sourceTree = "<group>"; };
@@ -3832,6 +3858,19 @@
 		76C9647C1A17A15C00029978 /* Bisone */ = {
 			isa = PBXGroup;
 			children = (
+				764430591A7000CC007741BA /* menu_calendar.png */,
+				7644305A1A7000CC007741BA /* menu_campaign.png */,
+				7644305B1A7000CC007741BA /* menu_customer_360.png */,
+				7644305C1A7000CC007741BA /* menu_dashboard.png */,
+				7644305D1A7000CC007741BA /* menu_group.png */,
+				7644305E1A7000CC007741BA /* menu_help.png */,
+				7644305F1A7000CC007741BA /* menu_lead.png */,
+				764430601A7000CC007741BA /* menu_map.png */,
+				764430611A7000CC007741BA /* menu_opportunity.png */,
+				764430621A7000CC007741BA /* menu_product.png */,
+				764430631A7000CC007741BA /* menu_report.png */,
+				764430641A7000CC007741BA /* menu_rm_360.png */,
+				764430651A7000CC007741BA /* menu_sales_activity.png */,
 				170862E91A3F3CB30021705D /* attach_icon.png */,
 				76961E501A3B306B008B5CE7 /* avatar.png */,
 				7693EE0E1A35587E004E0178 /* icon_start.png */,
@@ -5616,6 +5655,7 @@
 				92C68E551519D4F100981728 /* License.md in Resources */,
 				2D0AD497173219510048A239 /* Default-568h@2x.png in Resources */,
 				76F3289C1A34B88B00E0F2C4 /* task_not_done.png in Resources */,
+				764430661A7000CC007741BA /* menu_calendar.png in Resources */,
 				8497BFC61A295A2300A5ED3C /* glow-marker.png in Resources */,
 				B3157888188D5E5200C0ED01 /* ic-work-fw-group-2-1.png in Resources */,
 				2D6D76791876726A0051AD9E /* icon_read-1.png in Resources */,
@@ -5663,6 +5703,7 @@
 				B310D32018BDE24E003772D6 /* Images.xcassets in Resources */,
 				8ED402721A41CF1900CCBE6D /* iconDirection@2x.png in Resources */,
 				B31AFAA6187ADB5800D366B5 /* ic-show-column-2-1.png in Resources */,
+				764430711A7000CC007741BA /* menu_rm_360.png in Resources */,
 				8434BF091A2F632000C29815 /* FlowLeadViewController.xib in Resources */,
 				7657E8BC1A5AEB3A008A62F9 /* EditBussiness360ViewController.xib in Resources */,
 				B3157892188D5E5200C0ED01 /* btn-back-2-1.png in Resources */,
@@ -5719,12 +5760,14 @@
 				8497BFCF1A295A2300A5ED3C /* sdkdemos_icon-72.png in Resources */,
 				763308101A048962000E190B /* VTCombobox.xib in Resources */,
 				84945FFE1A2B383E002EF8BD /* flag_enable.png in Resources */,
+				764430681A7000CC007741BA /* menu_customer_360.png in Resources */,
 				762048721A0BDE8000AAA917 /* icon_menu-1.png in Resources */,
 				8E7554611A52EFC8001940FB /* iconStraight@2x.png in Resources */,
 				2D0DCEE617A37ADC004FDBBC /* Icon-Refresh.png in Resources */,
 				2D0DCEE717A37ADC004FDBBC /* Icon-Search.png in Resources */,
 				8E7554731A52F599001940FB /* iconMarkerLocation@2x.png in Resources */,
 				2D0DCEE817A37ADC004FDBBC /* Line-Phong kinhdoanh.png in Resources */,
+				764430691A7000CC007741BA /* menu_dashboard.png in Resources */,
 				7657E8B61A5AEB3A008A62F9 /* Calendar360Cell.xib in Resources */,
 				B31AFAA7187ADB5800D366B5 /* ic-show-path-1-1.png in Resources */,
 				76CD8816196D1E4F00503B99 /* ic-ppt-1.png in Resources */,
@@ -5745,6 +5788,7 @@
 				8EC972AF1A5D71300021DCA3 /* YearlyCalendar.png in Resources */,
 				7657E8D91A5AEBE2008A62F9 /* EditOpportunityTaskViewController.xib in Resources */,
 				8E7554531A52EFC8001940FB /* iconKeepLeft@2x.png in Resources */,
+				764430701A7000CC007741BA /* menu_report.png in Resources */,
 				2D2D214B17A690BF00A87364 /* Line-Ke_hoach.png in Resources */,
 				8497BFC31A295A2300A5ED3C /* botswana.png in Resources */,
 				8497BFCA1A295A2300A5ED3C /* Default-Landscape~ipad.png in Resources */,
@@ -5803,6 +5847,7 @@
 				8497BFC91A295A2300A5ED3C /* Default-Landscape@2x~ipad.png in Resources */,
 				2DD29EF218769C260066B883 /* menu-ic-quit-1.png in Resources */,
 				76601A6019540CCD001D4C01 /* Introduct_OfficeOne.pdf in Resources */,
+				764430721A7000CC007741BA /* menu_sales_activity.png in Resources */,
 				76EE210F19FF4D7100A80414 /* icon-clock-1.png in Resources */,
 				06FE2E161A4528B3004A1D16 /* iconDirection3@2x.png in Resources */,
 				76601A41194BE90F001D4C01 /* AppIcon-120.png in Resources */,
@@ -5811,6 +5856,7 @@
 				B301F20017C382D80004650C /* icon_number.png in Resources */,
 				B3157890188D5E5200C0ED01 /* ic-zoom-2-1.png in Resources */,
 				B316D690188FEECC009B751B /* bg-doc-event-1.png in Resources */,
+				7644306B1A7000CC007741BA /* menu_help.png in Resources */,
 				2D6D7663187670B00051AD9E /* ic-work-order-group-1.png in Resources */,
 				7633080E1A048962000E190B /* VTCheckBox.xib in Resources */,
 				76601A3F194BE90F001D4C01 /* AppIcon-076.png in Resources */,
@@ -5855,10 +5901,12 @@
 				B3A066D917D1AB8200BA6487 /* background_3.png in Resources */,
 				8E75546C1A52EFC8001940FB /* iconUturnLeft.png in Resources */,
 				B3A066DA17D1AB8200BA6487 /* background_4.png in Resources */,
+				764430671A7000CC007741BA /* menu_campaign.png in Resources */,
 				8EFE69151A56938C003D55CE /* ProTindungDetailViewController.xib in Resources */,
 				849794681A1FB19300ACC568 /* DetailCustomBussinessViewController.xib in Resources */,
 				B3A066DC17D1AB8200BA6487 /* btn_choose_list.png in Resources */,
 				8ED402861A41DF3C00CCBE6D /* ic_qu_direction_mylocation.png in Resources */,
+				7644306C1A7000CC007741BA /* menu_lead.png in Resources */,
 				8E75545D1A52EFC8001940FB /* iconRoundAboutLeft@2x.png in Resources */,
 				B313F1D818A65107001FDEC6 /* popover-bg-1.png in Resources */,
 				2DD29F161876C3B70066B883 /* menu-list-bg-1.png in Resources */,
@@ -5976,6 +6024,7 @@
 				2DD29EEC18769C260066B883 /* menu-ic-list-doc-1.png in Resources */,
 				84912AC51A1F6A3300E99FF7 /* DetailCustomPersonViewController.xib in Resources */,
 				8497BFE11A295A2300A5ED3C /* step1@2x.png in Resources */,
+				7644306E1A7000CC007741BA /* menu_opportunity.png in Resources */,
 				B3D8D557189237ED00D3ACE9 /* bg-doc-detail-1.png in Resources */,
 				843BF0C01A03ECC500EA1D8A /* OpportunityCell.xib in Resources */,
 				8499B2DE1A2C9BC4004D9ACB /* EditContactLeadViewController.xib in Resources */,
@@ -5988,6 +6037,7 @@
 				2D6D7640187658BA0051AD9E /* Button-Tim kiem.png in Resources */,
 				76C964701A17731900029978 /* pie_pop_over_gradient.jpg in Resources */,
 				8E69BDE51A58458500C6924D /* iconMoto@2x.png in Resources */,
+				7644306D1A7000CC007741BA /* menu_map.png in Resources */,
 				2DE2D2531829060700034877 /* ic-pdf.png in Resources */,
 				2D2F75A2185801E000EC76EE /* Button_Dong_y.png in Resources */,
 				2DE2D2541829060700034877 /* ic-notsign.png in Resources */,
@@ -6028,6 +6078,7 @@
 				849125CA1A1CDAE400949FC8 /* icon_save-1.png in Resources */,
 				8E69BDE71A58467100C6924D /* iconMoto.png in Resources */,
 				8E568FA21A59228B0002A3C4 /* iconSave.png in Resources */,
+				7644306F1A7000CC007741BA /* menu_product.png in Resources */,
 				76601A4B194BE90F001D4C01 /* Reader-Mark-N.png in Resources */,
 				8E7554721A52F599001940FB /* iconMarkerLocation.png in Resources */,
 				2DE2D2601829060700034877 /* title-tab-bg-2.png in Resources */,
@@ -6040,6 +6091,7 @@
 				76EE207419FA829200A80414 /* ic-reply-task-1.png in Resources */,
 				8497BFE01A295A2300A5ED3C /* step1.png in Resources */,
 				8E75544F1A52EFC8001940FB /* iconForkLeft@2x.png in Resources */,
+				7644306A1A7000CC007741BA /* menu_group.png in Resources */,
 				76CD8817196D1E4F00503B99 /* ic-txt-1.png in Resources */,
 				7657E8D71A5AEBE2008A62F9 /* TaskOpportunityCell.xib in Resources */,
 				2DE2D26D1829060700034877 /* title-bg.png in Resources */,

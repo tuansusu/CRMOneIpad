@@ -278,6 +278,18 @@
     return YES;
 }
 
+#pragma mark alert delegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+
+    if (alertView.tag == 5) { //thong bao dong form
+        [self dismissViewControllerAnimated:YES completion:nil];
+        if (_delegate && [_delegate respondsToSelector:@selector(closeEditWidgetViewController:)]) {
+            [_delegate closeEditWidgetViewController:self];
+        }
+    }
+}
+
 #pragma mark btn action
 
 -(void) actionSave:(id)sender{

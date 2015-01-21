@@ -26,7 +26,7 @@
 
 #import "EditWidgetViewController.h"
 
-@interface MainViewController ()
+@interface MainViewController ()<EditWidgetViewControllerDelegate>
 {
     NSString *interfaceOption;
     NSUserDefaults *defaults;
@@ -75,7 +75,8 @@ NSString* emptyText = @"";
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
     [self initData];
-
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localeDidChange) name:NSCurrentLocaleDidChangeNotification object:nil];
+    self.barLabel.text = [NSString stringWithFormat:@"%@ %@, %@",VOFFICE,[defaults objectForKey:@"versionSoftware"],COPY_OF_SOFTWARE];
     //
 
 }
@@ -83,16 +84,13 @@ NSString* emptyText = @"";
 //khoi tao gia tri mac dinh cua form
 -(void) initData {
     //load data from db
+    [arrayData removeAllObjects];
     NSMutableArray *resultArr = [dtoWidgetProcess filterWithKey:DTOWIDGET_accountName withValue:@"demo"];
 
     for (NSDictionary *widgetDic in resultArr) {
         [arrayData addObject:[widgetDic dtoWidgetObject]];
     }
     [_tbData reloadData];
-
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localeDidChange) name:NSCurrentLocaleDidChangeNotification object:nil];
-    self.barLabel.text = [NSString stringWithFormat:@"%@ %@, %@",VOFFICE,[defaults objectForKey:@"versionSoftware"],COPY_OF_SOFTWARE];
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -154,6 +152,12 @@ NSString* emptyText = @"";
 //Home button
 - (IBAction)homeBack:(id)sender {
     [Util backToHome:self];
+}
+
+#pragma mark EditWidgetViewController Delegate
+
+- (void)closeEditWidgetViewController:(EditWidgetViewController*)editWidgetViewController{
+    [self initData];
 }
 
 #pragma mark Event
@@ -267,7 +271,7 @@ NSString* emptyText = @"";
 -(IBAction)actionAddWidget:(id)sender
 {
     EditWidgetViewController *editWidgetVC = [[EditWidgetViewController alloc] init];
-
+    [editWidgetVC setDelegate:self];
     [self presentViewController:editWidgetVC animated:YES completion:nil];
 }
 

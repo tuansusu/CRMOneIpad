@@ -17,11 +17,14 @@
 
 @property (weak, nonatomic) IBOutlet UIView *footerView;
 
+@property (weak, nonatomic) IBOutlet UIView *DashboardView;
+
 @property (weak, nonatomic) IBOutlet UIView *CongViecView;
 @property (weak, nonatomic) IBOutlet UIView *LichHopView;
 @property (weak, nonatomic) IBOutlet UIView *TienIchView;
 @property (weak, nonatomic) IBOutlet UIView *HeThongView;
 
+@property (weak, nonatomic) IBOutlet UILabel *lbDashboard;
 @property (weak, nonatomic) IBOutlet UILabel *lbTask;
 @property (weak, nonatomic) IBOutlet UILabel *lbMeetingSchedule;
 @property (weak, nonatomic) IBOutlet UILabel *lbUtility;

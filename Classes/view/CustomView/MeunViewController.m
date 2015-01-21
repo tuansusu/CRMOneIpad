@@ -42,6 +42,7 @@
     // Do any additional setup after loading the view from its nib.
    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
+//    [self.lbDashboard setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
     [self.lbTask setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
     [self.lbMeetingSchedule setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
     [self.lbUtility setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
@@ -100,6 +101,18 @@
 {
     self.footerView.backgroundColor = TOOLBAR_VIEW_COLOR;
     self.CongViecView.backgroundColor = [UIColor whiteColor];
+
+    for (UIView *viewTemp in self.DashboardView.subviews) {
+        if ([viewTemp isKindOfClass:[UIButton class]]) {
+            [viewTemp setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagTop];
+            [((UIButton*) viewTemp) setTitleColor:TEXT_COLOR_MENU_SUB forState:UIControlStateNormal];
+        }
+        if ([viewTemp isKindOfClass:[UILabel class]]) {
+
+            [((UILabel*) viewTemp) setTextColor:TEXT_COLOR_HOME];
+        }
+
+    }
     
     for (UIView *viewTemp in self.CongViecView.subviews) {
         if ([viewTemp isKindOfClass:[UIButton class]]) {
@@ -153,7 +166,7 @@
             [((UILabel*) viewTemp) setTextColor:TEXT_COLOR_HOME];
         }
     }
-    
+    [self.lbDashboard setTextColor:TEXT_COLOR_HOMEPAGE];
     [self.lbTask setTextColor:TEXT_COLOR_HOMEPAGE];
     [self.lbMeetingSchedule setTextColor:TEXT_COLOR_HOMEPAGE];
     [self.lbUtility setTextColor:TEXT_COLOR_HOMEPAGE];
@@ -205,6 +218,19 @@
 
 
 //action menu
+
+//Khach hang dau moi = khach hang tiem nang
+- (IBAction)actionDashboard:(id)sender {
+
+    MainViewController *targetViewController = [[MainViewController alloc]initWithNibName:@"MainViewController" bundle:nil];
+    UINavigationController * navi = [[UINavigationController alloc] initWithRootViewController:targetViewController];
+    [navi setNavigationBarHidden:YES];
+
+    [self.mm_drawerController closeDrawerAnimated:YES completion:NULL];
+    [self.mm_drawerController setCenterViewController:navi withCloseAnimation:YES completion:nil];
+
+}
+
 //Khach hang dau moi = khach hang tiem nang
 - (IBAction)actionPotentialCustomer:(id)sender {
     

@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MeunViewController">
             <connections>
                 <outlet property="CongViecView" destination="G6P-Mo-IAK" id="J8M-KS-q5r"/>
+                <outlet property="DashboardView" destination="J5B-kF-cLE" id="5Yq-GL-FIP"/>
                 <outlet property="HeThongView" destination="0t1-SC-JGX" id="2iN-O0-WP1"/>
                 <outlet property="LichHopView" destination="xsk-pK-2gx" id="vUY-Pd-ABA"/>
                 <outlet property="TienIchView" destination="9gg-Dt-91i" id="J05-mw-4CA"/>
                 <outlet property="btnLogOut" destination="1zz-cW-I6h" id="ucu-rm-Nhe"/>
                 <outlet property="footerView" destination="Umw-C4-qRP" id="KCb-Hs-seg"/>
+                <outlet property="lbDashboard" destination="39M-sb-Gqg" id="Omd-ef-5hF"/>
                 <outlet property="lbMeetingSchedule" destination="PoC-of-nJw" id="izS-Qh-Dvv"/>
                 <outlet property="lbSystem" destination="CHq-h3-Bt0" id="t7w-Pe-ZBQ"/>
                 <outlet property="lbTask" destination="N74-Np-zzE" id="UbW-C0-NfI"/>
@@ -34,7 +37,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-small-1.png" id="Gj3-Ln-FXu">
-                                    <rect key="frame" x="6" y="8" width="239" height="31"/>
+                                    <rect key="frame" x="64" y="8" width="122" height="31"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YA2-jg-7pe">
@@ -57,12 +60,43 @@
                     <rect key="frame" x="0.0" y="44" width="259" height="738"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
+                        <view contentMode="scaleToFill" id="J5B-kF-cLE">
+                            <rect key="frame" x="0.0" y="0.0" width="259" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="     DASHBOARD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="39M-sb-Gqg">
+                                    <rect key="frame" x="0.0" y="0.0" width="259" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zpU-qk-rMR">
+                                    <rect key="frame" x="0.0" y="3" width="259" height="35"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <state key="normal">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <state key="highlighted">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="actionDashboard:" destination="-1" eventType="touchUpInside" id="Zto-vw-iAb"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <view contentMode="scaleToFill" id="G6P-Mo-IAK" userLabel="CongViecView">
-                            <rect key="frame" x="0.0" y="0.0" width="259" height="190"/>
+                            <rect key="frame" x="0.0" y="41" width="259" height="186"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="     KHÁCH HÀNG" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N74-Np-zzE">
-                                    <rect key="frame" x="0.0" y="0.0" width="259" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="259" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
@@ -71,7 +105,7 @@
                                     <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nuk-5r-dc6">
-                                    <rect key="frame" x="0.0" y="44" width="259" height="35"/>
+                                    <rect key="frame" x="0.0" y="40" width="259" height="35"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -86,11 +120,11 @@
                                     </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menu_lead.png" id="v73-9L-aKD">
-                                    <rect key="frame" x="13" y="53" width="17" height="17"/>
+                                    <rect key="frame" x="13" y="49" width="17" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hDr-4H-c9s">
-                                    <rect key="frame" x="0.0" y="79" width="259" height="35"/>
+                                    <rect key="frame" x="0.0" y="75" width="259" height="35"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -106,11 +140,11 @@
                                     </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menu_customer_360.png" id="ZOg-PZ-Pl5">
-                                    <rect key="frame" x="13" y="88" width="17" height="17"/>
+                                    <rect key="frame" x="13" y="84" width="17" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Eer-sS-B4e">
-                                    <rect key="frame" x="0.0" y="114" width="259" height="35"/>
+                                    <rect key="frame" x="0.0" y="110" width="259" height="35"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -126,11 +160,11 @@
                                     </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menu_opportunity.png" id="dFw-cd-mtV">
-                                    <rect key="frame" x="13" y="123" width="17" height="17"/>
+                                    <rect key="frame" x="13" y="119" width="17" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fwF-E3-ExL">
-                                    <rect key="frame" x="0.0" y="149" width="259" height="35"/>
+                                    <rect key="frame" x="0.0" y="145" width="259" height="35"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -146,18 +180,18 @@
                                     </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menu_map.png" id="Pai-cA-ZEe">
-                                    <rect key="frame" x="13" y="158" width="17" height="17"/>
+                                    <rect key="frame" x="13" y="154" width="17" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" id="xsk-pK-2gx" userLabel="LichHopView">
-                            <rect key="frame" x="0.0" y="190" width="259" height="120"/>
+                            <rect key="frame" x="0.0" y="227" width="259" height="108"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="     HOẠT ĐỘNG BÁN HÀNG" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PoC-of-nJw">
-                                    <rect key="frame" x="0.0" y="0.0" width="259" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="259" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
@@ -165,7 +199,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nEm-ds-Y21">
-                                    <rect key="frame" x="0.0" y="44" width="259" height="35"/>
+                                    <rect key="frame" x="0.0" y="40" width="259" height="35"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -178,11 +212,11 @@
                                     </state>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menu_sales_activity.png" id="oK7-Sc-f6e">
-                                    <rect key="frame" x="13" y="53" width="17" height="17"/>
+                                    <rect key="frame" x="13" y="49" width="17" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VRm-IT-azz">
-                                    <rect key="frame" x="0.0" y="79" width="259" height="35"/>
+                                    <rect key="frame" x="0.0" y="75" width="259" height="35"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -198,25 +232,25 @@
                                     </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menu_calendar.png" id="B3l-fK-X5E">
-                                    <rect key="frame" x="13" y="88" width="17" height="17"/>
+                                    <rect key="frame" x="13" y="84" width="17" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" id="9gg-Dt-91i" userLabel="TiecIchView">
-                            <rect key="frame" x="0.0" y="310" width="259" height="190"/>
+                            <rect key="frame" x="0.0" y="335" width="259" height="186"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="     TIỆN ÍCH" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sxb-Tt-USF" userLabel="Label -      TIỆN ÍCH">
-                                    <rect key="frame" x="0.0" y="0.0" width="259" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="259" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VEI-B1-yXg">
-                                    <rect key="frame" x="0.0" y="44" width="259" height="35"/>
+                                    <rect key="frame" x="0.0" y="40" width="259" height="35"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -229,11 +263,11 @@
                                     </state>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menu_report.png" id="9Ri-7k-ulE">
-                                    <rect key="frame" x="13" y="52" width="17" height="17"/>
+                                    <rect key="frame" x="13" y="48" width="17" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="r8S-06-n6m" userLabel="Button -            Kết luận BGD">
-                                    <rect key="frame" x="0.0" y="79" width="259" height="35"/>
+                                    <rect key="frame" x="0.0" y="75" width="259" height="35"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -246,11 +280,11 @@
                                     </state>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menu-ic-setting-1.png" id="YQo-I9-VJv">
-                                    <rect key="frame" x="13" y="87" width="17" height="17"/>
+                                    <rect key="frame" x="13" y="83" width="17" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wqc-hB-Yf9">
-                                    <rect key="frame" x="0.0" y="114" width="259" height="35"/>
+                                    <rect key="frame" x="0.0" y="110" width="259" height="35"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -266,11 +300,11 @@
                                     </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menu_campaign.png" id="HdW-VV-rIC">
-                                    <rect key="frame" x="13" y="123" width="17" height="17"/>
+                                    <rect key="frame" x="13" y="119" width="17" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AkI-Rh-j3R">
-                                    <rect key="frame" x="0.0" y="149" width="259" height="35"/>
+                                    <rect key="frame" x="0.0" y="145" width="259" height="35"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -286,25 +320,25 @@
                                     </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menu_help.png" id="ypB-XA-eD8">
-                                    <rect key="frame" x="13" y="158" width="17" height="17"/>
+                                    <rect key="frame" x="13" y="154" width="17" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" id="0t1-SC-JGX" userLabel="HeThongView">
-                            <rect key="frame" x="0.0" y="500" width="259" height="190"/>
+                            <rect key="frame" x="0.0" y="521" width="259" height="186"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="     HỆ THỐNG" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CHq-h3-Bt0">
-                                    <rect key="frame" x="0.0" y="0.0" width="259" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="259" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9sD-id-Ov6">
-                                    <rect key="frame" x="0.0" y="64" width="259" height="32"/>
+                                    <rect key="frame" x="0.0" y="60" width="259" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
@@ -317,7 +351,7 @@
                                     </state>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3RQ-EP-K0w">
-                                    <rect key="frame" x="0.0" y="44" width="259" height="32"/>
+                                    <rect key="frame" x="0.0" y="40" width="259" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -330,11 +364,11 @@
                                     </state>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menu-ic-setting-1.png" id="wjm-Ia-6lW">
-                                    <rect key="frame" x="232" y="51" width="17" height="17"/>
+                                    <rect key="frame" x="232" y="47" width="17" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1zz-cW-I6h">
-                                    <rect key="frame" x="0.0" y="157" width="259" height="35"/>
+                                    <rect key="frame" x="0.0" y="153" width="259" height="35"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -350,11 +384,11 @@
                                     </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menu-ic-quit-1.png" id="Bd0-2J-3ca">
-                                    <rect key="frame" x="13" y="165" width="17" height="17"/>
+                                    <rect key="frame" x="13" y="161" width="17" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7aV-hI-nSl">
-                                    <rect key="frame" x="83" y="131" width="165" height="29"/>
+                                    <rect key="frame" x="83" y="127" width="165" height="29"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -367,11 +401,11 @@
                                     </state>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar.png" id="uU6-Be-Vfw">
-                                    <rect key="frame" x="15" y="96" width="60" height="60"/>
+                                    <rect key="frame" x="15" y="92" width="60" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="QyI-7y-423">
-                                    <rect key="frame" x="83" y="97" width="165" height="21"/>
+                                    <rect key="frame" x="83" y="93" width="165" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -384,7 +418,7 @@
                                     </state>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="c1X-aj-4Je">
-                                    <rect key="frame" x="0.0" y="97" width="251" height="63"/>
+                                    <rect key="frame" x="0.0" y="93" width="251" height="63"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -394,7 +428,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gHv-Qg-TaT">
-                                    <rect key="frame" x="83" y="111" width="165" height="29"/>
+                                    <rect key="frame" x="83" y="107" width="165" height="29"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>

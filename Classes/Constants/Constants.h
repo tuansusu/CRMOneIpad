@@ -103,6 +103,13 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 #define SYS_Notification_EnableLocation @"Chức năng này yêu cầu bật xác định vị trí của bạn"
 #define SYS_Notification_FIND_ROUTES_DIRECTION_FAIL @"Không tìm thấy chỉ dẫn đường của khách hàng đã chọn"
 
+
+//=========================Main ALert ===================================================
+
+#define SYS_Notification_AddWidgetSuccess @"Thêm mới Widget thành công"
+#define SYS_Notification_UpdateDbFail @"Sảy ra lỗi, vui lòng thử lại hoặc gửi log đến quản trị"
+#define SYS_Notification_NoWidget @"Tất cả Widget đã được sử dụng"
+
 //tuannv
 #define CommentType_CapNhatTienDo @"Cập nhật tiến độ"
 #define CommentType_DeXuat @"Đề xuất"

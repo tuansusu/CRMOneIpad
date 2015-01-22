@@ -25,6 +25,8 @@
 #import "NSDictionary+QS.h"
 
 #import "EditWidgetViewController.h"
+#import "DTOWidgetTypeProcess.h"
+#import "Items.h"
 
 @interface MainViewController ()<EditWidgetViewControllerDelegate>
 {
@@ -35,7 +37,17 @@
     NSMutableArray *arrayData;
     DTOWidgetProcess *dtoWidgetProcess;
     NSMutableArray *arrayWidgetDashboard;
+    IBOutlet UIButton *btnAddWidget;
+    NSInteger selectIndex;
+
+    NSMutableArray *listWidgetTypeNotUse;
+    NSMutableArray *listWidgetTypeNotUseStr;
+    NSMutableArray *listWidgetTypeUsed;
+    DTOWidgetTypeProcess *dtoWidgetTypeProcess;
 }
+
+@property (nonatomic, retain) UIPopoverController *listPopover;
+
 @end
 
 @implementation MainViewController
@@ -74,11 +86,15 @@ NSString* emptyText = @"";
 
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
-    [self initData];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localeDidChange) name:NSCurrentLocaleDidChangeNotification object:nil];
     self.barLabel.text = [NSString stringWithFormat:@"%@ %@, %@",VOFFICE,[defaults objectForKey:@"versionSoftware"],COPY_OF_SOFTWARE];
     //
+    dtoWidgetTypeProcess = [DTOWidgetTypeProcess new];
+    listWidgetTypeNotUse = [[NSMutableArray alloc] init];
+    listWidgetTypeNotUseStr = [[NSMutableArray alloc] init];
 
+    [self initData];
 }
 
 //khoi tao gia tri mac dinh cua form
@@ -91,6 +107,25 @@ NSString* emptyText = @"";
         [arrayData addObject:[widgetDic dtoWidgetObject]];
     }
     [_tbData reloadData];
+
+
+    [listWidgetTypeNotUse removeAllObjects];
+    [listWidgetTypeNotUseStr removeAllObjects];
+    listWidgetTypeUsed = [[NSMutableArray alloc] init];
+
+    for (NSDictionary *widgetDic in resultArr) {
+        DTOWidgetTypeObject *widgetTypeOB =[widgetDic dtoWidgetTypeObject];
+        [listWidgetTypeUsed addObject:widgetTypeOB.widgetId];
+    }
+
+    NSMutableArray *listWidgetTypeDic = [dtoWidgetTypeProcess filter];
+    for (NSDictionary *widgetTypeDic in listWidgetTypeDic) {
+        DTOWidgetTypeObject *widgetTypeOB =[widgetTypeDic dtoWidgetTypeObject];
+        if (![listWidgetTypeUsed containsObject:widgetTypeOB.widgetId]) {
+            [listWidgetTypeNotUse addObject:widgetTypeOB];
+            [listWidgetTypeNotUseStr addObject:widgetTypeOB.widgetName];
+        }
+    }
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -266,13 +301,80 @@ NSString* emptyText = @"";
     [super viewDidUnload];
 }
 
+#pragma mark SelectIndexDelegate
+
+-(void) selectAtIndex:(NSInteger)index{
+
+    if (self.listPopover) {
+        [ self.listPopover dismissPopoverAnimated:YES];
+    }
+    if (listWidgetTypeNotUse.count>0) {
+        DTOWidgetTypeObject *widgetTypeOB = [listWidgetTypeNotUse objectAtIndex:index];
+        [self addWidgetWithWidgetTypeOB:widgetTypeOB];
+
+    }
+
+}
+
+-(void)addWidgetWithWidgetTypeOB:(DTOWidgetTypeObject*)dtoWidgetTypeOB{
+
+    DTOWidgetObject *widgetOB = [[DTOWidgetObject alloc] init];
+    widgetOB.accountName = @"demo";
+    widgetOB.typeGraphically = [NSString stringWithFormat:@"%d",0];
+    widgetOB.colorDisplay1 = @"0, 105, 178";
+    widgetOB.createDate= [[NSDate date] description];
+    widgetOB.isShowData = @"0";
+    widgetOB.colorDisplay2 = @"13, 35, 58";
+
+    widgetOB.widgetId = dtoWidgetTypeOB.widgetId;
+    widgetOB.widgetName = dtoWidgetTypeOB.widgetName;
+    widgetOB.widgetType = dtoWidgetTypeOB.widgetType;
+    Items *items = [widgetOB itemObject];
+    NSMutableDictionary * widgetDic = [items itemDictionary];
+
+    if ([dtoWidgetProcess insertToDBWithEntity:widgetDic]) {
+        //Thong bao cap nhat thanh cong va thoat
+
+
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:SYS_Notification_Title message:SYS_Notification_AddWidgetSuccess delegate:self cancelButtonTitle:SYS_Notification_OKButton otherButtonTitles: nil];
+        [alert show];
+        [self initData];
+
+    }else{
+        //khong bao nhap loi - lien he quan tri
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:SYS_Notification_Title message:SYS_Notification_UpdateDbFail delegate:self cancelButtonTitle:SYS_Notification_OKButton otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+
 #pragma mark Button action
 
 -(IBAction)actionAddWidget:(id)sender
 {
-    EditWidgetViewController *editWidgetVC = [[EditWidgetViewController alloc] init];
-    [editWidgetVC setDelegate:self];
-    [self presentViewController:editWidgetVC animated:YES completion:nil];
+    if (listWidgetTypeNotUse.count>0) {
+        SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
+
+        detail.selectIndex = selectIndex;
+
+        detail.listData = listWidgetTypeNotUseStr;
+
+        self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+        CGRect popoverFrame = btnAddWidget.frame;
+
+        detail.delegate =(id<SelectIndexDelegate>) self;
+        self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
+        [self.listPopover setPopoverContentSize:CGSizeMake(320, HEIGHT_SELECT_INDEX_ROW*listWidgetTypeNotUseStr.count) animated:NO];
+        [self.listPopover presentPopoverFromRect:popoverFrame inView:self.headerViewBar permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    }else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:SYS_Notification_Title message:SYS_Notification_NoWidget delegate:self cancelButtonTitle:SYS_Notification_OKButton otherButtonTitles:nil];
+        [alert show];
+    }
+
+
+    //    EditWidgetViewController *editWidgetVC = [[EditWidgetViewController alloc] init];
+    //    [editWidgetVC setDelegate:self];
+    //    [self presentViewController:editWidgetVC animated:YES completion:nil];
 }
 
 - (IBAction)actionDashBoard:(id)sender {

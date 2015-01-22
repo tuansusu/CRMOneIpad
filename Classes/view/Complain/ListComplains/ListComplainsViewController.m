@@ -142,7 +142,7 @@
 
 #pragma mark button close view action
 - (IBAction)homeCloseView:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [Util backToHome:self];
 }
 
 #pragma mark - Table View Datasource

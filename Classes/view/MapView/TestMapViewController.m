@@ -166,8 +166,7 @@
 
 //Home button
 - (IBAction)homeBack:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-    //    [self.navigationController popViewControllerAnimated:YES];
+    [Util backToHome:self];
 }
 
 - (void) updateInterFaceWithOption : (int) option

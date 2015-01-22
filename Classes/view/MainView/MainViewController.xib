@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
             <connections>
                 <outlet property="barLabel" destination="PxO-Mc-4oS" id="RPF-SJ-rvr"/>
+                <outlet property="btnAddWidget" destination="ZY2-Xp-Lkc" id="8JW-Ci-MH1"/>
                 <outlet property="btnHome" destination="MPr-m6-git" id="IeX-Oo-jfS"/>
                 <outlet property="footerView" destination="G5e-c0-BLR" id="fge-Ig-R1u"/>
                 <outlet property="fullNameLB" destination="AUH-E7-9iB" id="U1h-XF-RL0"/>
@@ -50,7 +51,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZY2-Xp-Lkc" userLabel="BTNAddWidget">
-                            <rect key="frame" x="924" y="0.0" width="100" height="44"/>
+                            <rect key="frame" x="964" y="0.0" width="60" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <state key="normal" image="ic-add-sub-1.png">

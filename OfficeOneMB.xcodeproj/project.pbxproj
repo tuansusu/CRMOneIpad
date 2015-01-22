@@ -636,6 +636,7 @@
 		8E0B07D51A4479EF00CF7A78 /* bgPopup.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0B07D31A4479EF00CF7A78 /* bgPopup.png */; };
 		8E0B07D61A4479EF00CF7A78 /* bgPopup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0B07D41A4479EF00CF7A78 /* bgPopup@2x.png */; };
 		8E174C671A5ED13D004FDBBE /* DTOTaskObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E174C661A5ED13D004FDBBE /* DTOTaskObject.m */; };
+		8E1CF2C11A71488F00AD3349 /* iconMenu in Resources */ = {isa = PBXBuildFile; fileRef = 8E1CF2BE1A71488F00AD3349 /* iconMenu */; };
 		8E2640B41A4C7A4C0047073B /* MainViewListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2640AF1A4C7A4C0047073B /* MainViewListCell.m */; };
 		8E2640B51A4C7A4C0047073B /* MainViewListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E2640B01A4C7A4C0047073B /* MainViewListCell.xib */; };
 		8E2980EC1A6AAB350068B66C /* EditNote360ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2980EA1A6AAB350068B66C /* EditNote360ViewController.m */; };
@@ -1976,6 +1977,7 @@
 		8E0B07D41A4479EF00CF7A78 /* bgPopup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgPopup@2x.png"; sourceTree = "<group>"; };
 		8E174C651A5ED13D004FDBBE /* DTOTaskObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOTaskObject.h; sourceTree = "<group>"; };
 		8E174C661A5ED13D004FDBBE /* DTOTaskObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOTaskObject.m; sourceTree = "<group>"; };
+		8E1CF2BE1A71488F00AD3349 /* iconMenu */ = {isa = PBXFileReference; lastKnownFileType = file; path = iconMenu; sourceTree = "<group>"; };
 		8E2640AE1A4C7A4C0047073B /* MainViewListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewListCell.h; sourceTree = "<group>"; };
 		8E2640AF1A4C7A4C0047073B /* MainViewListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewListCell.m; sourceTree = "<group>"; };
 		8E2640B01A4C7A4C0047073B /* MainViewListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewListCell.xib; sourceTree = "<group>"; };
@@ -4339,6 +4341,14 @@
 			path = CustomInfoWindow;
 			sourceTree = "<group>";
 		};
+		8E1CF2BB1A71488F00AD3349 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				8E1CF2BE1A71488F00AD3349 /* iconMenu */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 		8E2640AD1A4C7A4C0047073B /* ListViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -5343,6 +5353,7 @@
 		92C68E6D1519DC7D00981728 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				8E1CF2BB1A71488F00AD3349 /* Menu */,
 				8E2980F31A6AB5E00068B66C /* imageDefault.png */,
 				8E568F9F1A59228B0002A3C4 /* complain */,
 				8EB708701A407856001861A0 /* Maps */,
@@ -5894,6 +5905,7 @@
 				8E7554581A52EFC8001940FB /* iconRampLeft.png in Resources */,
 				B3A066D717D1AB8200BA6487 /* background_1.png in Resources */,
 				B315789C188D5E5200C0ED01 /* logo-small-1.png in Resources */,
+				8E1CF2C11A71488F00AD3349 /* iconMenu in Resources */,
 				B3A066D817D1AB8200BA6487 /* background_2.png in Resources */,
 				8497BFD41A295A2300A5ED3C /* museum-exhibits.json in Resources */,
 				8EB708781A407A1C001861A0 /* Mobile_GPS_MyLocationIcon@2x.png in Resources */,

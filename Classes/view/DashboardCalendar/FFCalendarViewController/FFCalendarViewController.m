@@ -66,11 +66,11 @@
     [super loadView];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editEventSelected:) name:CALENDAR_SELECTE_EVENT_NOTIFICATION object:nil];
-    
+
     dtoTaskProcess= [DTOTASKProcess new];
 
     self.arrayWithEvents = [self arrayWithEvents];
-    [self.navigationController setNavigationBarHidden:NO];
+    [self.navigationController setNavigationBarHidden:YES];
     [self.view setBackgroundColor:[UIColor blackColor]];
 }
 
@@ -283,8 +283,9 @@
 
     [buttonYear setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*4, 0, BUTTON_WIDTH, buttonYear.frame.size.height)];
 
-    UIButton *btnCloseCalendar = [[UIButton alloc] initWithFrame:CGRectMake(20., 0, BUTTON_WIDTH, buttonYear.frame.size.height)];
-    [btnCloseCalendar setImage:[UIImage imageNamed:@"icon_menu-1"] forState:UIControlStateNormal];
+    UIButton *btnCloseCalendar = [[UIButton alloc] initWithFrame:CGRectMake(20., 0, 38, 38)];
+    [btnCloseCalendar setBackgroundImage:[UIImage imageNamed:@"iconMenu"] forState:UIControlStateNormal];
+    //    [btnCloseCalendar setImage:[UIImage imageNamed:@"iconMenu"] forState:UIControlStateNormal];
     [btnCloseCalendar addTarget:self action:@selector(closeCalendar:) forControlEvents:UIControlEventTouchUpInside];
 
     FFRedAndWhiteButton *buttonMonth = [self calendarButtonWithTitle:@"month"];
@@ -318,7 +319,7 @@
     arrayButtons = @[buttonYear, buttonMonth, buttonWeek, buttonDay,buttonAdd];
 
 
-    _topMenuView  = [[UIView alloc] initWithFrame:CGRectMake(0, 40, self.view.frame.size.width, buttonYear.frame.size.height*2)];
+    _topMenuView  = [[UIView alloc] initWithFrame:CGRectMake(0, 30, self.view.frame.size.width, buttonYear.frame.size.height*2)];
     [_topMenuView setBackgroundColor:[UIColor whiteColor]];
     [_topMenuView addSubview:btnCloseCalendar];
     [_topMenuView addSubview:buttonYear];
@@ -336,7 +337,7 @@
 #pragma mark - Add Calendars
 
 - (void)addCalendars {
-    CGRect frame = CGRectMake(0., 80, self.view.frame.size.width, self.view.frame.size.height-80);
+    CGRect frame = CGRectMake(0., 70, self.view.frame.size.width, self.view.frame.size.height-70);
 
     viewCalendarYear = [[FFYearCalendarView alloc] initWithFrame:frame];
     [viewCalendarYear setProtocol:self];
@@ -363,7 +364,7 @@
 #pragma mark - Button Action
 -(void)closeCalendar:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [Util backToHome:self];
 }
 
 
@@ -430,14 +431,14 @@
     NSMutableArray *resultArr = [dtoTaskProcess filterWithKey:@"id" withValue:[NSString stringWithFormat:@"%@",event.numCustomerID]];
     if (resultArr.count>0) {
         NSDictionary *dataDic = [resultArr objectAtIndex:0];
-        
+
         EditCalendarLeadViewController *viewController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
         [viewController setDelegate:self];
         viewController.dataSend = dataDic;
         [self presentViewController:viewController animated:YES completion:nil];
     }
 
-    
+
 }
 
 #pragma mark - FFMonthCalendarView, FFWeekCalendarView and FFDayCalendarView Protocols

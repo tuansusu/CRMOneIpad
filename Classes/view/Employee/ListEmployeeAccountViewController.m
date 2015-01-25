@@ -33,8 +33,27 @@
     DTOEMPLOYEEACCOUNTProcess *employeeAccountProcess = [DTOEMPLOYEEACCOUNTProcess new];
     arrayData = [employeeAccountProcess getAllItems];
     
+    //remove footer view
+    //(xoá dòng thừa không hiển thị của table)
+    self.tbData.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
 }
 
+//thêm cái line đến tận left margin
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if ([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [tableView setLayoutMargins:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return arrayData.count;

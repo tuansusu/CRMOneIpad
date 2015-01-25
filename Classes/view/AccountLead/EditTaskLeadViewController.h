@@ -23,4 +23,7 @@
  */
 @property (nonatomic, retain) NSDictionary *dataRoot;
 
+
+@property (weak, nonatomic) IBOutlet UIButton *btnSave;
+
 @end

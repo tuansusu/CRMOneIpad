@@ -154,7 +154,7 @@
         }
     }
     
-    
+    [self.btnSave setStyleNormalWithOption:smgSelect];
     
     
     [self.mainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
@@ -183,8 +183,11 @@
             if ([viewSubTemp isKindOfClass:[UITextField class]]) {
                 ((UITextField*) viewSubTemp).textColor = TEXT_COLOR_REPORT;
                 ((UITextField*) viewSubTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
-                ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
-                ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
+//                ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
+//                ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
+                
+                [((UITextField*) viewSubTemp) setPaddingLeft];
+                [((UITextField*) viewSubTemp) setBorderWithOption:smgSelect];
             }
             
         }

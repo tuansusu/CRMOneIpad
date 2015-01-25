@@ -146,6 +146,10 @@
     
     [self.headerMainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
     [self.headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
+    
+    
+    [self.btnSave setStyleNormalWithOption:smgSelect];
+    
     for (UIView *viewSubTemp in self.headerMainView.subviews) {
         
         
@@ -185,6 +189,8 @@
                 ((UITextField*) viewSubTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
                 ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
                 ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
+                [((UITextField*) viewSubTemp) setPaddingLeft];
+                
             }
             
         }

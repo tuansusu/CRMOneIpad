@@ -54,7 +54,7 @@
                             <rect key="frame" x="20" y="6" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                            <state key="normal" image="icon_menu-1.png">
+                            <state key="normal" image="btn-back-1-1.png">
                                 <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -302,8 +302,8 @@
     </objects>
     <resources>
         <image name="avatar.png" width="120" height="120"/>
+        <image name="btn-back-1-1.png" width="40" height="40"/>
         <image name="ic_cbx-1.png" width="60" height="60"/>
-        <image name="icon_menu-1.png" width="32" height="32"/>
         <image name="icon_require-1.png" width="16" height="16"/>
         <image name="icon_save-1.png" width="48" height="48"/>
     </resources>

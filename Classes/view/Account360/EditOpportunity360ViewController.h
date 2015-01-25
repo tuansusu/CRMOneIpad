@@ -30,6 +30,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnHome;
 - (IBAction)homeBack:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnSave;
+
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 
 @property (weak, nonatomic) IBOutlet UIView *headerMainView;

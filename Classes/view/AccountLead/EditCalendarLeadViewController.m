@@ -315,6 +315,8 @@
             ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
         }
     }
+    
+    [self.btnSave setStyleNormalWithOption:smgSelect];
 
     _mainView.backgroundColor       = HEADER_SUB_VIEW_COLOR1;
 
@@ -341,8 +343,11 @@
             {
                 ((UITextField*) viewSubTemp).textColor = TEXT_COLOR_REPORT;
                 ((UITextField*) viewSubTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
-                ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
-                ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
+//                ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
+//                ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
+                
+                [((UITextField*) viewSubTemp) setPaddingLeft];
+                [((UITextField*) viewSubTemp) setBorderWithOption:smgSelect];
             }
         }
 

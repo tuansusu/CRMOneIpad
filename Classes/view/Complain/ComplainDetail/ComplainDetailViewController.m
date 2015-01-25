@@ -165,9 +165,7 @@
 }
 
 -(IBAction)btnCancelTapped:(id)sender{
-    if (_delegate && [_delegate respondsToSelector:@selector(closeComplainDetailView:)]) {
-        [_delegate closeComplainDetailView:self];
-    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(IBAction)btnSaveTapped:(id)sender{

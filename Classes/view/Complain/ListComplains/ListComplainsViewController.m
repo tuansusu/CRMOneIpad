@@ -137,7 +137,7 @@
     complainDetailVC = [[ComplainDetailViewController alloc] init];
     complainDetailVC.delegate = self;
     [complainDetailVC.view setFrame:CGRectMake(0, 0, self.view.frame.size.width,  self.view.frame.size.height)];
-    [self.view addSubview:complainDetailVC.view];
+    [self.navigationController presentViewController:complainDetailVC animated:YES completion:nil];
 }
 
 #pragma mark button close view action

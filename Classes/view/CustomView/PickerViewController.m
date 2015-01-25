@@ -33,6 +33,11 @@ UIPickerViewDelegate, UIPickerViewDataSource>
     _selectedIndex = 0;
     _mselectedIndexes = [[NSMutableIndexSet alloc] init];
     
+    _numberStart = 0;
+    _numberStep  = 1;
+    _numberCount = 1;
+    _numberSelected = 1;
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Chọn" style:UIBarButtonItemStylePlain target:self action:@selector(confirmPressed)];
 }
 
@@ -71,6 +76,10 @@ UIPickerViewDelegate, UIPickerViewDataSource>
         else if (_type == OOPickerViewType_MultiSelect && [_delegate respondsToSelector:@selector(pickerView:pickedIndexes:)])
         {
             [_delegate pickerView:self pickedIndexes:_selectedIndexes];
+        }
+        else if (_type == OOPickerViewType_Number && [_delegate respondsToSelector:@selector(pickerView:pickedNumber:)])
+        {
+            [_delegate pickerView:self pickedNumber:_numberSelected];
         }
         else
         {
@@ -127,6 +136,15 @@ UIPickerViewDelegate, UIPickerViewDataSource>
             
             self.title = @"Chọn nhiều";
         }
+        case OOPickerViewType_Number:
+        {
+            _datePicker.hidden = true;
+            _picker.hidden     = false;
+            _tableview.hidden  = true;
+            
+            self.title = @"Chọn số";
+        }
+            break;
         default:
         {
             _datePicker.hidden = true;
@@ -149,6 +167,19 @@ UIPickerViewDelegate, UIPickerViewDataSource>
     _selectedIndexes = selectedIndexes;
     
     _mselectedIndexes = [[NSMutableIndexSet alloc] initWithIndexSet:selectedIndexes];
+}
+
+- (void)setSelectedIndex:(NSUInteger)selectedIndex
+{
+    [_picker selectRow:selectedIndex inComponent:0 animated:true];
+}
+
+- (void)setNumberSelected:(NSUInteger)numberSelected
+{
+    if (_numberStep > 0 && numberSelected > _numberStart)
+    {
+        [_picker selectRow:((_numberSelected - _numberStart)/_numberStep) inComponent:0 animated:true];
+    }
 }
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource
@@ -213,9 +244,16 @@ UIPickerViewDelegate, UIPickerViewDataSource>
 #pragma mark - UIPickerViewDelegate, UIPickerViewDataSource
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    if (component == 0 &&_type == OOPickerViewType_Select && _dataList != nil && row < [_dataList count])
+    if (component == 0)
     {
-        _selectedIndex = row;
+        if (_type == OOPickerViewType_Select && _dataList != nil && row < [_dataList count])
+        {
+            _selectedIndex = row;
+        }
+        else if (_type == OOPickerViewType_Number && row < _numberCount)
+        {
+            _numberSelected = _numberStart + _numberStep*row;
+        }
     }
 }
 
@@ -226,9 +264,16 @@ UIPickerViewDelegate, UIPickerViewDataSource>
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    if (component == 0 &&_type == OOPickerViewType_Select && _dataList != nil)
+    if (component == 0)
     {
-        return [_dataList count];
+        if (_type == OOPickerViewType_Select && _dataList != nil)
+        {
+            return [_dataList count];
+        }
+        else if (_type == OOPickerViewType_Number && _numberCount > 0)
+        {
+            return _numberCount;
+        }
     }
     
     return 0U;
@@ -236,9 +281,16 @@ UIPickerViewDelegate, UIPickerViewDataSource>
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component;
 {
-    if (component == 0 &&_type == OOPickerViewType_Select && _dataList != nil)
+    if (component == 0)
     {
-        return [_dataList objectAtIndex:row];
+        if (_type == OOPickerViewType_Select && _dataList != nil)
+        {
+            return [_dataList objectAtIndex:row];
+        }
+        else if (_type == OOPickerViewType_Number && row < _numberCount)
+        {
+            return [NSString stringWithFormat:@"%u", (_numberStart + _numberStep*row)];
+        }
     }
     
     return @"--";

@@ -11,11 +11,14 @@
                 <outlet property="_endDateTF" destination="psC-Ed-dkL" id="Qxn-Mk-V9i"/>
                 <outlet property="_endHourDDBtn" destination="Kch-kw-kXM" id="wye-xk-nNa"/>
                 <outlet property="_endHourTF" destination="40a-qy-y2v" id="wDx-K4-OIl"/>
+                <outlet property="_mDateCheckBtn" destination="OS2-sj-1lU" id="fjw-CD-0Xu"/>
+                <outlet property="_mDateCheckLB" destination="Mrx-Cv-Cvh" id="NqE-vs-IM9"/>
                 <outlet property="_mDateDDBtn" destination="nM2-J3-KF6" id="a4I-Jo-USF"/>
                 <outlet property="_mDateTF" destination="CKD-zf-Iw1" id="dwk-pF-ZyF"/>
-                <outlet property="_mFirstOrLastDDBtn" destination="NMZ-dg-Fcy" id="72p-gX-UnO"/>
                 <outlet property="_mFirstOrLastTF" destination="ots-9F-lg7" id="yUG-dC-S0n"/>
                 <outlet property="_mOptionView" destination="CCR-Bi-Ylg" id="m2f-hc-Azl"/>
+                <outlet property="_mWeekDayCheckBtn" destination="VRb-8x-RRh" id="fKK-aw-Rhn"/>
+                <outlet property="_mWeekDayCheckLB" destination="e7J-bQ-dzl" id="dhi-Jc-za8"/>
                 <outlet property="_mWeekDayDDBtn" destination="Wuf-hc-nY9" id="7Hi-os-Mn9"/>
                 <outlet property="_mWeekDayTF" destination="Udq-jF-vH9" id="saF-Ly-6pX"/>
                 <outlet property="_onOffSwitch" destination="ywA-2i-5Fh" id="128-Tx-Q3r"/>
@@ -36,34 +39,43 @@
             <rect key="frame" x="0.0" y="0.0" width="344" height="562"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lặp lại" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYi-0l-XBQ">
+                    <rect key="frame" x="20" y="20" width="173" height="30"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ywA-2i-5Fh">
+                    <rect key="frame" x="201" y="21" width="123" height="29"/>
+                    <segments>
+                        <segment title="Tắt"/>
+                        <segment title="Bật"/>
+                    </segments>
+                    <color key="tintColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="onOffSwitchChanged:" destination="-1" eventType="valueChanged" id="G8Y-GU-WHD"/>
+                    </connections>
+                </segmentedControl>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="edT-HQ-LKT">
-                    <rect key="frame" x="0.0" y="0.0" width="344" height="510"/>
+                    <rect key="frame" x="0.0" y="57" width="344" height="453"/>
                     <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lặp lại" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYi-0l-XBQ">
-                            <rect key="frame" x="20" y="20" width="173" height="30"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_require-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="GP1-YN-mP7">
+                            <rect key="frame" x="113" y="9" width="16" height="16"/>
+                        </imageView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kết thúc lặp" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9Q-xD-T3Y">
+                            <rect key="frame" x="20" y="1" width="85" height="30"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ywA-2i-5Fh">
-                            <rect key="frame" x="201" y="21" width="123" height="29"/>
-                            <segments>
-                                <segment title="Tắt"/>
-                                <segment title="Bật"/>
-                            </segments>
-                            <color key="tintColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="onOffSwitchChanged:" destination="-1" eventType="valueChanged" id="G8Y-GU-WHD"/>
-                            </connections>
-                        </segmentedControl>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ngày" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V0k-KL-J9f">
-                            <rect key="frame" x="20" y="96" width="87" height="30"/>
+                            <rect key="frame" x="20" y="39" width="87" height="30"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ngày kết thúc" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="psC-Ed-dkL">
-                            <rect key="frame" x="122" y="96" width="202" height="30"/>
+                            <rect key="frame" x="122" y="39" width="202" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
@@ -71,7 +83,7 @@
                             </connections>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R8Z-Zj-Brg" userLabel="btnChoice status">
-                            <rect key="frame" x="294" y="96" width="30" height="30"/>
+                            <rect key="frame" x="294" y="39" width="30" height="30"/>
                             <state key="normal" backgroundImage="ic_cbx-1.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -79,14 +91,37 @@
                                 <action selector="pickerBtnPressed:" destination="-1" eventType="touchUpInside" id="MN0-wY-9wX"/>
                             </connections>
                         </button>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Giờ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rI8-B1-ybB">
+                            <rect key="frame" x="20" y="77" width="87" height="30"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Giờ kết thúc" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="40a-qy-y2v">
+                            <rect key="frame" x="122" y="77" width="202" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="gyV-ha-t7b"/>
+                            </connections>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kch-kw-kXM" userLabel="btnChoice status">
+                            <rect key="frame" x="294" y="77" width="30" height="30"/>
+                            <state key="normal" backgroundImage="ic_cbx-1.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="pickerBtnPressed:" destination="-1" eventType="touchUpInside" id="Boy-eb-nJf"/>
+                            </connections>
+                        </button>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lặp theo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jhO-2F-xvu">
-                            <rect key="frame" x="20" y="200" width="87" height="30"/>
+                            <rect key="frame" x="20" y="143" width="87" height="30"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ngày , Tuần, Tháng, Năm" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GgW-Kl-7CO">
-                            <rect key="frame" x="122" y="200" width="202" height="30"/>
+                            <rect key="frame" x="122" y="143" width="202" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
@@ -94,7 +129,7 @@
                             </connections>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzN-mQ-awM" userLabel="btnChoice status">
-                            <rect key="frame" x="294" y="200" width="30" height="30"/>
+                            <rect key="frame" x="294" y="143" width="30" height="30"/>
                             <state key="normal" backgroundImage="ic_cbx-1.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -103,13 +138,13 @@
                             </connections>
                         </button>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cứ mỗi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oJ-8t-D6O">
-                            <rect key="frame" x="20" y="238" width="87" height="30"/>
+                            <rect key="frame" x="20" y="181" width="87" height="30"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tần số lặp lại" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z28-Wd-XPo">
-                            <rect key="frame" x="122" y="238" width="202" height="30"/>
+                            <rect key="frame" x="122" y="181" width="202" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
@@ -117,7 +152,7 @@
                             </connections>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OwB-ca-969" userLabel="btnChoice status">
-                            <rect key="frame" x="294" y="238" width="30" height="30"/>
+                            <rect key="frame" x="294" y="181" width="30" height="30"/>
                             <state key="normal" backgroundImage="ic_cbx-1.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -125,40 +160,8 @@
                                 <action selector="pickerBtnPressed:" destination="-1" eventType="touchUpInside" id="KIK-ZW-Fu4"/>
                             </connections>
                         </button>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Giờ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rI8-B1-ybB">
-                            <rect key="frame" x="20" y="134" width="87" height="30"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Giờ kết thúc" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="40a-qy-y2v">
-                            <rect key="frame" x="122" y="134" width="202" height="30"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="-1" id="gyV-ha-t7b"/>
-                            </connections>
-                        </textField>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kch-kw-kXM" userLabel="btnChoice status">
-                            <rect key="frame" x="294" y="134" width="30" height="30"/>
-                            <state key="normal" backgroundImage="ic_cbx-1.png">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="pickerBtnPressed:" destination="-1" eventType="touchUpInside" id="Boy-eb-nJf"/>
-                            </connections>
-                        </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_require-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="GP1-YN-mP7">
-                            <rect key="frame" x="113" y="66" width="16" height="16"/>
-                        </imageView>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kết thúc lặp" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9Q-xD-T3Y">
-                            <rect key="frame" x="20" y="58" width="85" height="30"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1bD-IB-Vxq" userLabel="WeekPicker">
-                            <rect key="frame" x="0.0" y="271" width="344" height="116"/>
+                            <rect key="frame" x="0.0" y="214" width="344" height="116"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vào Thứ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGP-t1-LH4">
                                     <rect key="frame" x="20" y="5" width="87" height="30"/>
@@ -187,13 +190,16 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CCR-Bi-Ylg" userLabel="MonthPicker">
-                            <rect key="frame" x="0.0" y="271" width="344" height="116"/>
+                            <rect key="frame" x="0.0" y="214" width="344" height="116"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRb-8x-RRh">
                                     <rect key="frame" x="8" y="10" width="20" height="20"/>
                                     <state key="normal" image="checkbox_not_ticked.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="checkBtnPressed:" destination="-1" eventType="touchUpInside" id="jvD-zO-VCW"/>
+                                    </connections>
                                 </button>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vào Thứ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7J-bQ-dzl">
                                     <rect key="frame" x="36" y="5" width="78" height="30"/>
@@ -240,6 +246,9 @@
                                     <state key="normal" image="checkbox_ticked.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="checkBtnPressed:" destination="-1" eventType="touchUpInside" id="bR5-VA-jsa"/>
+                                    </connections>
                                 </button>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ngày trong tháng" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CKD-zf-Iw1">
                                     <rect key="frame" x="122" y="81" width="202" height="30"/>
@@ -268,9 +277,8 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IkF-Su-SNf">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IkF-Su-SNf">
                     <rect key="frame" x="180" y="528" width="144" height="30"/>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" title="Chọn">
@@ -280,7 +288,7 @@
                         <action selector="confirmBtnPressed:" destination="-1" eventType="touchUpInside" id="SMs-lC-6Ww"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCd-RV-TxL">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCd-RV-TxL">
                     <rect key="frame" x="20" y="528" width="144" height="30"/>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" title="Hủy">
@@ -290,16 +298,16 @@
                         <action selector="cancelBtnPressed:" destination="-1" eventType="touchUpInside" id="nfY-0E-ZxU"/>
                     </connections>
                 </button>
-                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9AL-Fi-olB">
+                <pickerView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9AL-Fi-olB">
                     <rect key="frame" x="0.0" y="400" width="344" height="162"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </pickerView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HIN-P6-4kV">
+                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HIN-P6-4kV">
                     <rect key="frame" x="0.0" y="400" width="344" height="162"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" white="0.79934210526315785" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="340" y="319"/>

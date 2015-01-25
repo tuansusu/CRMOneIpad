@@ -14,7 +14,8 @@ typedef enum
     OOPickerViewType_Date,
     OOPickerViewType_Time,
     OOPickerViewType_Select,
-    OOPickerViewType_MultiSelect
+    OOPickerViewType_MultiSelect,
+    OOPickerViewType_Number
 }OOPickerViewType;
 
 
@@ -29,14 +30,24 @@ typedef enum
 @property (nonatomic, strong) NSArray/* NSString */ * dataList;
 @property (nonatomic, assign) NSUInteger selectedIndex;
 @property (nonatomic, strong) NSIndexSet * selectedIndexes;
+//OOPickerViewType_Number
+@property (nonatomic, assign) NSUInteger numberStart;
+@property (nonatomic, assign) NSUInteger numberStep;
+@property (nonatomic, assign) NSUInteger numberCount;
+@property (nonatomic, assign) NSUInteger numberSelected;
+
+
 
 @end
 
 @protocol PickerViewDelegate <NSObject>
 
 // OOPickerViewType_Date + Time
-- pickerView:(PickerViewController *)pickerView pickedDate:(NSDate *)date;
-- pickerView:(PickerViewController *)pickerView pickedIndex:(NSUInteger)index;
-- pickerView:(PickerViewController *)pickerView pickedIndexes:(NSIndexSet *)indexes;
+- (void)pickerView:(PickerViewController *)pickerView pickedDate:(NSDate *)date;
+//OOPickerViewType_(MNulti)Select
+- (void)pickerView:(PickerViewController *)pickerView pickedIndex:(NSUInteger)index;
+- (void)pickerView:(PickerViewController *)pickerView pickedIndexes:(NSIndexSet *)indexes;
+//OOPickerViewType_Number
+- (void)pickerView:(PickerViewController *)pickerView pickedNumber:(NSUInteger)number;
 
 @end

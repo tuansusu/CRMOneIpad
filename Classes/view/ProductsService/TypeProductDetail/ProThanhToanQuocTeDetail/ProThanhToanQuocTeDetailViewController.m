@@ -10,12 +10,19 @@
 #import "ProThanhToanQuocTeViewHeader.h"
 #import "ProThanhToanQuocTeViewCell.h"
 
+#import "DTOProTTQTDetailProcess.h"
+
+#import "DTOACCOUNTProcess.h"
+#import "DTOProductDetailObject.h"
+
 @interface ProThanhToanQuocTeDetailViewController ()
 {
     IBOutlet UIView *mainView;
     IBOutlet UITableView *tbvThanhToanQuocTe;
 
     int smgSelect;
+    DTOProTTQTDetailProcess *dtoProTTQTDetailProcess;
+    NSMutableArray *arrayData;
 }
 
 //Header
@@ -51,6 +58,14 @@
 
     _fullNameLB.text = TITLE_PRODUCT_DETAIL_THANH_TOAN_QUOC_TE;
     [self updateInterFaceWithOption:smgSelect];
+
+    dtoProTTQTDetailProcess = [DTOProTTQTDetailProcess new];
+    [arrayData removeAllObjects];
+    if (_dtoProductDetailObject) {
+        arrayData = [dtoProTTQTDetailProcess filterProductDetailWithClientId:_dtoProductDetailObject.clientId WithProductCode:_dtoProductDetailObject.productCode];
+        [tbvThanhToanQuocTe reloadData];
+    }
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -140,7 +155,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return arrayData.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -149,6 +164,7 @@
     ProThanhToanQuocTeViewCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
     if (cell == nil) {
         cell = [[ProThanhToanQuocTeViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+        [cell loadDataCellWithTTQTDicData:[arrayData objectAtIndex:indexPath.row]];
     }
     return cell;
 }

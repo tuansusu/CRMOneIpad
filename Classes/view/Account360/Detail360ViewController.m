@@ -576,7 +576,7 @@
     else if (typeProduct==PRODUCT_TYPE_THANH_TOAN_QUOC_TE)
     {
         proThanhToanQuocTeDetailVC = [[ProThanhToanQuocTeDetailViewController alloc] init];
-//        proThanhToanQuocTeDetailVC.dtoProductDetailObject = productDetailObject;
+        proThanhToanQuocTeDetailVC.dtoProductDetailObject = productDetailObject;
         [self presentViewController:proThanhToanQuocTeDetailVC animated:YES completion:nil];
 
     }

@@ -27,5 +27,14 @@
 
     // Configure the view for the selected state
 }
+-(void)loadDataCellWithTTQTDicData:(NSDictionary*)TTQTDicData{
+    [lblMaGiaoDich setText:[TTQTDicData valueForKey:@"CONTRACT_NUMBER"]];
+    [lblLoaiTTQT setText:[TTQTDicData valueForKey:@"LC_TYPE"]];
+    [lblSoNguyenTienTe setText:[TTQTDicData valueForKey:@"LC_AMOUNT"]];
+    [lblTienTe setText:[TTQTDicData valueForKey:@"LC_CCY"]];
+    [lblSoTienQuyDoiUSD setText:[TTQTDicData valueForKey:@"LC_AMOUNT_USD"]];
+    [lblNgayGiaoDich setText:[TTQTDicData valueForKey:@"BUSSINESS_DATE"]];
+    [lblChiNhanhPhatHanh setText:[TTQTDicData valueForKey:@"KHOI"]];
 
+}
 @end

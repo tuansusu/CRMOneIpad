@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class DTOProductDetailObject;
 @class ProThanhToanQuocTeDetailViewController;
 
 @protocol ProThanhToanQuocTeDetailViewControllerDelegate <NSObject>
@@ -20,5 +21,6 @@
 @interface ProThanhToanQuocTeDetailViewController : UIViewController
 
 @property (nonatomic,assign) id<ProThanhToanQuocTeDetailViewControllerDelegate>delegate;
+@property (nonatomic,retain) DTOProductDetailObject *dtoProductDetailObject;
 
 @end

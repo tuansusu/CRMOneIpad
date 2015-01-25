@@ -13,6 +13,7 @@
                 <outlet property="footerView" destination="G5e-c0-BLR" id="fge-Ig-R1u"/>
                 <outlet property="fullNameLB" destination="AUH-E7-9iB" id="U1h-XF-RL0"/>
                 <outlet property="headerViewBar" destination="RP5-xa-kKa" id="Yhh-kH-H0K"/>
+                <outlet property="lblMessageWidget" destination="spu-Mu-SOP" id="iZm-D2-OfL"/>
                 <outlet property="mainView" destination="bdu-39-Uw8" id="JVU-jG-Lkd"/>
                 <outlet property="tbData" destination="sz2-bc-V5M" id="LWi-K9-uIK"/>
                 <outlet property="view" destination="a4Y-eO-ufs" id="yUW-N8-dLa"/>
@@ -75,12 +76,19 @@
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="340" sectionHeaderHeight="1" sectionFooterHeight="1" id="sz2-bc-V5M">
                             <rect key="frame" x="0.0" y="0.0" width="1024" height="680"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="WfP-u3-nnU"/>
                                 <outlet property="delegate" destination="-1" id="lcf-vk-uHl"/>
                             </connections>
                         </tableView>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Không có Widget nào được chọn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="spu-Mu-SOP">
+                            <rect key="frame" x="0.0" y="0.0" width="1024" height="680"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>

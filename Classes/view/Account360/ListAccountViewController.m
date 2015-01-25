@@ -266,6 +266,7 @@
 
 //Home button
 - (IBAction)homeBack:(id)sender {
+    [self.view endEditing:YES];
     [Util backToHome:self];
 }
 //Add action

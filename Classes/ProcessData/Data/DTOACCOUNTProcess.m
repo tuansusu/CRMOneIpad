@@ -126,14 +126,9 @@
 
     NSArray *allFields =[NSArray arrayWithObjects:DTOACCOUNT_accountId, DTOACCOUNT_address, DTOACCOUNT_email, DTOACCOUNT_mobile, DTOACCOUNT_name,DTOACCOUNT_updatedBy,DTOACCOUNT_code, DTOACCOUNT_accountType,DTOACCOUNT_clientAccountId, DTOACCOUNT_lat, DTOACCOUNT_lon, DTOACCOUNT_id, nil];
     
-    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where status = 1 and %@  like ? order by %@ desc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOACCOUNT, strKey, DTOACCOUNT_updatedDate];
+    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where status = 1 and %@  like '%%%@%%' order by %@ desc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOACCOUNT, strKey,strValue,DTOACCOUNT_updatedDate];
     
-    NSLog(@"query = %@", query);
-    NSString *value = @"%";
-    value = [value stringByAppendingString:[strValue stringByAppendingString:@"%"]];
-    
-    NSLog(@"param = %@", value);
-    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:[NSArray arrayWithObjects:value, nil]];
+       return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:nil];
     
     
 }

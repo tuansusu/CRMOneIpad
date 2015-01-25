@@ -119,16 +119,10 @@
 -(NSMutableArray*) filterWithKey : (NSString*) strKey withValue : (NSString*) strValue{
     NSArray *allFields =[NSArray arrayWithObjects:DTOLEAD_accountId, DTOLEAD_address, DTOLEAD_companyPhone, DTOLEAD_email, DTOLEAD_mobile, DTOLEAD_name,DTOLEAD_updatedBy,DTOLEAD_code, DTOLEAD_leadId, DTOLEAD_leadType,DTOLEAD_clientLeadId, DTOLEAD_lat, DTOLEAD_lon, DTOLEAD_id, nil];
     
-    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where status = 1 and %@  like ? order by %@ desc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOACCOUNTLEAD, strKey, DTOLEAD_updatedDate];
-    
-    NSLog(@"query = %@", query);
-    NSString *value = @"%";
-    value = [value stringByAppendingString:[strValue stringByAppendingString:@"%"]];
-    
-    NSLog(@"param = %@", value);
-    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:[NSArray arrayWithObjects:value, nil]];
-    
-    
+    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where status = 1 and %@  like '%%%@%%' order by %@ desc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOACCOUNTLEAD, strKey,strValue, DTOLEAD_updatedDate];
+
+    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:nil];
+
 }
 
 -(NSDictionary*) getDataWithKey : (NSString*) inputKey withValue : (NSString*) inputValue{

@@ -645,6 +645,45 @@
 		8E2980F21A6AAB470068B66C /* EditNoteViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E2980F01A6AAB470068B66C /* EditNoteViewCell.xib */; };
 		8E2980F41A6AB5E00068B66C /* imageDefault.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E2980F31A6AB5E00068B66C /* imageDefault.png */; };
 		8E35281A1A610D4C00E1E1E3 /* Validator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3528181A610D4C00E1E1E3 /* Validator.m */; };
+		8E44BC2A1A73A89B00EDCD1A /* ProductLeadCellHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44BBFB1A73A89B00EDCD1A /* ProductLeadCellHeader.m */; };
+		8E44BC2B1A73A89B00EDCD1A /* ProductLeadCellHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E44BBFC1A73A89B00EDCD1A /* ProductLeadCellHeader.xib */; };
+		8E44BC2C1A73A89B00EDCD1A /* ProductLeadViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44BBFE1A73A89B00EDCD1A /* ProductLeadViewCell.m */; };
+		8E44BC2D1A73A89B00EDCD1A /* ProductLeadViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E44BBFF1A73A89B00EDCD1A /* ProductLeadViewCell.xib */; };
+		8E44BC2E1A73A89B00EDCD1A /* ProductsLeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44BC011A73A89B00EDCD1A /* ProductsLeadView.m */; };
+		8E44BC2F1A73A89B00EDCD1A /* ProBankPlusDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44BC051A73A89B00EDCD1A /* ProBankPlusDetailViewController.m */; };
+		8E44BC301A73A89B00EDCD1A /* ProBankPlusDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E44BC061A73A89B00EDCD1A /* ProBankPlusDetailViewController.xib */; };
+		8E44BC311A73A89B00EDCD1A /* ProBaoLanhDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44BC091A73A89B00EDCD1A /* ProBaoLanhDetailViewController.m */; };
+		8E44BC321A73A89B00EDCD1A /* ProBaoLanhDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E44BC0A1A73A89B00EDCD1A /* ProBaoLanhDetailViewController.xib */; };
+		8E44BC331A73A89B00EDCD1A /* ProEMBDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44BC0D1A73A89B00EDCD1A /* ProEMBDetailViewController.m */; };
+		8E44BC341A73A89B00EDCD1A /* ProEMBDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E44BC0E1A73A89B00EDCD1A /* ProEMBDetailViewController.xib */; };
+		8E44BC351A73A89B00EDCD1A /* ProTaiKhoanThanhToanDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44BC111A73A89B00EDCD1A /* ProTaiKhoanThanhToanDetailViewController.m */; };
+		8E44BC361A73A89B00EDCD1A /* ProTaiKhoanThanhToanDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E44BC121A73A89B00EDCD1A /* ProTaiKhoanThanhToanDetailViewController.xib */; };
+		8E44BC371A73A89B00EDCD1A /* ProTaiKhoanTietKiemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44BC151A73A89B00EDCD1A /* ProTaiKhoanTietKiemDetailViewController.m */; };
+		8E44BC381A73A89B00EDCD1A /* ProTaiKhoanTietKiemDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E44BC161A73A89B00EDCD1A /* ProTaiKhoanTietKiemDetailViewController.xib */; };
+		8E44BC391A73A89B00EDCD1A /* ProThanhToanQuocTeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44BC1A1A73A89B00EDCD1A /* ProThanhToanQuocTeViewCell.m */; };
+		8E44BC3A1A73A89B00EDCD1A /* ProThanhToanQuocTeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E44BC1B1A73A89B00EDCD1A /* ProThanhToanQuocTeViewCell.xib */; };
+		8E44BC3B1A73A89B00EDCD1A /* ProThanhToanQuocTeViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44BC1D1A73A89B00EDCD1A /* ProThanhToanQuocTeViewHeader.m */; };
+		8E44BC3C1A73A89B00EDCD1A /* ProThanhToanQuocTeViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E44BC1E1A73A89B00EDCD1A /* ProThanhToanQuocTeViewHeader.xib */; };
+		8E44BC3D1A73A89B00EDCD1A /* ProThanhToanQuocTeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44BC201A73A89B00EDCD1A /* ProThanhToanQuocTeDetailViewController.m */; };
+		8E44BC3E1A73A89B00EDCD1A /* ProThanhToanQuocTeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E44BC211A73A89B00EDCD1A /* ProThanhToanQuocTeDetailViewController.xib */; };
+		8E44BC3F1A73A89B00EDCD1A /* ProTheDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44BC241A73A89B00EDCD1A /* ProTheDetailViewController.m */; };
+		8E44BC401A73A89B00EDCD1A /* ProTheDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E44BC251A73A89B00EDCD1A /* ProTheDetailViewController.xib */; };
+		8E44BC411A73A89B00EDCD1A /* ProTindungDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44BC281A73A89B00EDCD1A /* ProTindungDetailViewController.m */; };
+		8E44BC421A73A89B00EDCD1A /* ProTindungDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E44BC291A73A89B00EDCD1A /* ProTindungDetailViewController.xib */; };
+		8E44BC451A73ACDA00EDCD1A /* DTOProThanhToanDetailObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44BC441A73ACDA00EDCD1A /* DTOProThanhToanDetailObject.m */; };
+		8E44BC481A73AEB400EDCD1A /* DTOProTietKiemDetailObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44BC471A73AEB400EDCD1A /* DTOProTietKiemDetailObject.m */; };
+		8E44BC4B1A73B06800EDCD1A /* DTOProBaoLanhDetailObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44BC4A1A73B06800EDCD1A /* DTOProBaoLanhDetailObject.m */; };
+		8E44BC4E1A73B30D00EDCD1A /* DTOProTTQTDetailObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44BC4D1A73B30D00EDCD1A /* DTOProTTQTDetailObject.m */; };
+		8E44BC511A73B45300EDCD1A /* DTOProWay4DetailObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44BC501A73B45300EDCD1A /* DTOProWay4DetailObject.m */; };
+		8E44BC541A73B5AD00EDCD1A /* DTOProBPDetailObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44BC531A73B5AD00EDCD1A /* DTOProBPDetailObject.m */; };
+		8E44BC571A73B73200EDCD1A /* DTOProEMBDetailObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44BC561A73B73200EDCD1A /* DTOProEMBDetailObject.m */; };
+		8E44BC5A1A73B95400EDCD1A /* DTOProThanhToanDetailProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44BC591A73B95400EDCD1A /* DTOProThanhToanDetailProcess.m */; };
+		8E44BC5D1A73B97000EDCD1A /* DTOProTietKiemDetailProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44BC5C1A73B97000EDCD1A /* DTOProTietKiemDetailProcess.m */; };
+		8E44BC601A73B98400EDCD1A /* DTOProBaoLanhDetailProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44BC5F1A73B98400EDCD1A /* DTOProBaoLanhDetailProcess.m */; };
+		8E44BC631A73B99800EDCD1A /* DTOProTTQTDetailProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44BC621A73B99800EDCD1A /* DTOProTTQTDetailProcess.m */; };
+		8E44BC661A73B9A900EDCD1A /* DTOProWay4DetailProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44BC651A73B9A900EDCD1A /* DTOProWay4DetailProcess.m */; };
+		8E44BC691A73B9BB00EDCD1A /* DTOProBPDetailProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44BC681A73B9BB00EDCD1A /* DTOProBPDetailProcess.m */; };
+		8E44BC6C1A73B9D300EDCD1A /* DTOProEMBDetailProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44BC6B1A73B9D300EDCD1A /* DTOProEMBDetailProcess.m */; };
 		8E568F7E1A58EEDF0002A3C4 /* ListComplainsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E568F7C1A58EEDF0002A3C4 /* ListComplainsViewController.m */; };
 		8E568F7F1A58EEDF0002A3C4 /* ListComplainsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E568F7D1A58EEDF0002A3C4 /* ListComplainsViewController.xib */; };
 		8E568F841A58F5170002A3C4 /* ComplainViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E568F821A58F5170002A3C4 /* ComplainViewCell.m */; };
@@ -666,10 +705,6 @@
 		8E6105F41A5964E4003D1C0C /* ComplainsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6105F31A5964E4003D1C0C /* ComplainsView.m */; };
 		8E6105F91A5986BF003D1C0C /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6105F71A5986BF003D1C0C /* ProfileViewController.m */; };
 		8E6105FA1A5986BF003D1C0C /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E6105F81A5986BF003D1C0C /* ProfileViewController.xib */; };
-		8E69BDD41A57D23900C6924D /* ProThanhToanQuocTeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E69BDD21A57D23900C6924D /* ProThanhToanQuocTeViewCell.m */; };
-		8E69BDD51A57D23900C6924D /* ProThanhToanQuocTeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E69BDD31A57D23900C6924D /* ProThanhToanQuocTeViewCell.xib */; };
-		8E69BDD81A57D24E00C6924D /* ProThanhToanQuocTeViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E69BDD71A57D24E00C6924D /* ProThanhToanQuocTeViewHeader.m */; };
-		8E69BDDA1A57D25A00C6924D /* ProThanhToanQuocTeViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E69BDD91A57D25A00C6924D /* ProThanhToanQuocTeViewHeader.xib */; };
 		8E69BDE31A58458500C6924D /* iconCar.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E69BDE01A58458500C6924D /* iconCar.png */; };
 		8E69BDE41A58458500C6924D /* iconCar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E69BDE11A58458500C6924D /* iconCar@2x.png */; };
 		8E69BDE51A58458500C6924D /* iconMoto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E69BDE21A58458500C6924D /* iconMoto@2x.png */; };
@@ -803,13 +838,8 @@
 		8EC9DDB71A54FB6400E18A0E /* DTOProductDetailObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC9DDB61A54FB6400E18A0E /* DTOProductDetailObject.m */; };
 		8ED38D741A5447C500D95A3B /* DetailLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED38D6F1A5447C500D95A3B /* DetailLeadViewController.m */; };
 		8ED38D751A5447C500D95A3B /* DetailLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ED38D701A5447C500D95A3B /* DetailLeadViewController.xib */; };
-		8ED38D7A1A54480100D95A3B /* ProductsLeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED38D791A54480100D95A3B /* ProductsLeadView.m */; };
 		8ED38D7D1A544D6400D95A3B /* DTOProductLeadTypeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED38D7C1A544D6400D95A3B /* DTOProductLeadTypeObject.m */; };
 		8ED38D801A544F7200D95A3B /* DTOPRODUCTTYPEProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED38D7F1A544F7200D95A3B /* DTOPRODUCTTYPEProcess.m */; };
-		8ED38D841A54528200D95A3B /* ProductLeadCellHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED38D831A54528200D95A3B /* ProductLeadCellHeader.m */; };
-		8ED38D861A54528E00D95A3B /* ProductLeadCellHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ED38D851A54528E00D95A3B /* ProductLeadCellHeader.xib */; };
-		8ED38D8A1A54558100D95A3B /* ProductLeadViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED38D881A54558100D95A3B /* ProductLeadViewCell.m */; };
-		8ED38D8B1A54558100D95A3B /* ProductLeadViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ED38D891A54558100D95A3B /* ProductLeadViewCell.xib */; };
 		8ED402711A41CF1900CCBE6D /* iconDirection.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ED4026F1A41CF1900CCBE6D /* iconDirection.png */; };
 		8ED402721A41CF1900CCBE6D /* iconDirection@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ED402701A41CF1900CCBE6D /* iconDirection@2x.png */; };
 		8ED402791A41D2DC00CCBE6D /* iconExpand.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ED402771A41D2DC00CCBE6D /* iconExpand.png */; };
@@ -825,22 +855,6 @@
 		8ED4028E1A41E18800CCBE6D /* CustomerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ED4028C1A41E18800CCBE6D /* CustomerViewCell.xib */; };
 		8EFE69011A565BDF003D55CE /* DTOProTindungDetailObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE69001A565BDF003D55CE /* DTOProTindungDetailObject.m */; };
 		8EFE69041A56604F003D55CE /* DTOProTindungDetailProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE69031A56604F003D55CE /* DTOProTindungDetailProcess.m */; };
-		8EFE69141A56938C003D55CE /* ProTindungDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE69121A56938C003D55CE /* ProTindungDetailViewController.m */; };
-		8EFE69151A56938C003D55CE /* ProTindungDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EFE69131A56938C003D55CE /* ProTindungDetailViewController.xib */; };
-		8EFE69211A569800003D55CE /* ProTaiKhoanThanhToanDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE691F1A569800003D55CE /* ProTaiKhoanThanhToanDetailViewController.m */; };
-		8EFE69221A569800003D55CE /* ProTaiKhoanThanhToanDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EFE69201A569800003D55CE /* ProTaiKhoanThanhToanDetailViewController.xib */; };
-		8EFE69261A56987C003D55CE /* ProBankPlusDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE69241A56987C003D55CE /* ProBankPlusDetailViewController.m */; };
-		8EFE69271A56987C003D55CE /* ProBankPlusDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EFE69251A56987C003D55CE /* ProBankPlusDetailViewController.xib */; };
-		8EFE692C1A5698C9003D55CE /* ProBaoLanhDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE692A1A5698C9003D55CE /* ProBaoLanhDetailViewController.m */; };
-		8EFE692D1A5698C9003D55CE /* ProBaoLanhDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EFE692B1A5698C9003D55CE /* ProBaoLanhDetailViewController.xib */; };
-		8EFE69311A5699BC003D55CE /* ProEMBDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE692F1A5699BC003D55CE /* ProEMBDetailViewController.m */; };
-		8EFE69321A5699BC003D55CE /* ProEMBDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EFE69301A5699BC003D55CE /* ProEMBDetailViewController.xib */; };
-		8EFE69361A5699F9003D55CE /* ProTaiKhoanTietKiemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE69341A5699F9003D55CE /* ProTaiKhoanTietKiemDetailViewController.m */; };
-		8EFE69371A5699F9003D55CE /* ProTaiKhoanTietKiemDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EFE69351A5699F9003D55CE /* ProTaiKhoanTietKiemDetailViewController.xib */; };
-		8EFE693B1A569A2C003D55CE /* ProThanhToanQuocTeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE69391A569A2C003D55CE /* ProThanhToanQuocTeDetailViewController.m */; };
-		8EFE693C1A569A2C003D55CE /* ProThanhToanQuocTeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EFE693A1A569A2C003D55CE /* ProThanhToanQuocTeDetailViewController.xib */; };
-		8EFE69401A569A59003D55CE /* ProTheDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE693E1A569A59003D55CE /* ProTheDetailViewController.m */; };
-		8EFE69411A569A59003D55CE /* ProTheDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EFE693F1A569A59003D55CE /* ProTheDetailViewController.xib */; };
 		92C68E501519D4F100981728 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C68E0D1519D4F100981728 /* BaseViewController.m */; };
 		92C68E511519D4F100981728 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C68E101519D4F100981728 /* Constants.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		92C68E521519D4F100981728 /* ActionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C68E131519D4F100981728 /* ActionEvent.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -1990,6 +2004,72 @@
 		8E2980F31A6AB5E00068B66C /* imageDefault.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageDefault.png; sourceTree = "<group>"; };
 		8E3528171A610D4C00E1E1E3 /* Validator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Validator.h; sourceTree = "<group>"; };
 		8E3528181A610D4C00E1E1E3 /* Validator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Validator.m; sourceTree = "<group>"; };
+		8E44BBFA1A73A89B00EDCD1A /* ProductLeadCellHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductLeadCellHeader.h; sourceTree = "<group>"; };
+		8E44BBFB1A73A89B00EDCD1A /* ProductLeadCellHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductLeadCellHeader.m; sourceTree = "<group>"; };
+		8E44BBFC1A73A89B00EDCD1A /* ProductLeadCellHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductLeadCellHeader.xib; sourceTree = "<group>"; };
+		8E44BBFD1A73A89B00EDCD1A /* ProductLeadViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductLeadViewCell.h; sourceTree = "<group>"; };
+		8E44BBFE1A73A89B00EDCD1A /* ProductLeadViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductLeadViewCell.m; sourceTree = "<group>"; };
+		8E44BBFF1A73A89B00EDCD1A /* ProductLeadViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductLeadViewCell.xib; sourceTree = "<group>"; };
+		8E44BC001A73A89B00EDCD1A /* ProductsLeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductsLeadView.h; sourceTree = "<group>"; };
+		8E44BC011A73A89B00EDCD1A /* ProductsLeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductsLeadView.m; sourceTree = "<group>"; };
+		8E44BC041A73A89B00EDCD1A /* ProBankPlusDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProBankPlusDetailViewController.h; sourceTree = "<group>"; };
+		8E44BC051A73A89B00EDCD1A /* ProBankPlusDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProBankPlusDetailViewController.m; sourceTree = "<group>"; };
+		8E44BC061A73A89B00EDCD1A /* ProBankPlusDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProBankPlusDetailViewController.xib; sourceTree = "<group>"; };
+		8E44BC081A73A89B00EDCD1A /* ProBaoLanhDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProBaoLanhDetailViewController.h; sourceTree = "<group>"; };
+		8E44BC091A73A89B00EDCD1A /* ProBaoLanhDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProBaoLanhDetailViewController.m; sourceTree = "<group>"; };
+		8E44BC0A1A73A89B00EDCD1A /* ProBaoLanhDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProBaoLanhDetailViewController.xib; sourceTree = "<group>"; };
+		8E44BC0C1A73A89B00EDCD1A /* ProEMBDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProEMBDetailViewController.h; sourceTree = "<group>"; };
+		8E44BC0D1A73A89B00EDCD1A /* ProEMBDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProEMBDetailViewController.m; sourceTree = "<group>"; };
+		8E44BC0E1A73A89B00EDCD1A /* ProEMBDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProEMBDetailViewController.xib; sourceTree = "<group>"; };
+		8E44BC101A73A89B00EDCD1A /* ProTaiKhoanThanhToanDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProTaiKhoanThanhToanDetailViewController.h; sourceTree = "<group>"; };
+		8E44BC111A73A89B00EDCD1A /* ProTaiKhoanThanhToanDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProTaiKhoanThanhToanDetailViewController.m; sourceTree = "<group>"; };
+		8E44BC121A73A89B00EDCD1A /* ProTaiKhoanThanhToanDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProTaiKhoanThanhToanDetailViewController.xib; sourceTree = "<group>"; };
+		8E44BC141A73A89B00EDCD1A /* ProTaiKhoanTietKiemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProTaiKhoanTietKiemDetailViewController.h; sourceTree = "<group>"; };
+		8E44BC151A73A89B00EDCD1A /* ProTaiKhoanTietKiemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProTaiKhoanTietKiemDetailViewController.m; sourceTree = "<group>"; };
+		8E44BC161A73A89B00EDCD1A /* ProTaiKhoanTietKiemDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProTaiKhoanTietKiemDetailViewController.xib; sourceTree = "<group>"; };
+		8E44BC191A73A89B00EDCD1A /* ProThanhToanQuocTeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProThanhToanQuocTeViewCell.h; sourceTree = "<group>"; };
+		8E44BC1A1A73A89B00EDCD1A /* ProThanhToanQuocTeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProThanhToanQuocTeViewCell.m; sourceTree = "<group>"; };
+		8E44BC1B1A73A89B00EDCD1A /* ProThanhToanQuocTeViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProThanhToanQuocTeViewCell.xib; sourceTree = "<group>"; };
+		8E44BC1C1A73A89B00EDCD1A /* ProThanhToanQuocTeViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProThanhToanQuocTeViewHeader.h; sourceTree = "<group>"; };
+		8E44BC1D1A73A89B00EDCD1A /* ProThanhToanQuocTeViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProThanhToanQuocTeViewHeader.m; sourceTree = "<group>"; };
+		8E44BC1E1A73A89B00EDCD1A /* ProThanhToanQuocTeViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProThanhToanQuocTeViewHeader.xib; sourceTree = "<group>"; };
+		8E44BC1F1A73A89B00EDCD1A /* ProThanhToanQuocTeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProThanhToanQuocTeDetailViewController.h; sourceTree = "<group>"; };
+		8E44BC201A73A89B00EDCD1A /* ProThanhToanQuocTeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProThanhToanQuocTeDetailViewController.m; sourceTree = "<group>"; };
+		8E44BC211A73A89B00EDCD1A /* ProThanhToanQuocTeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProThanhToanQuocTeDetailViewController.xib; sourceTree = "<group>"; };
+		8E44BC231A73A89B00EDCD1A /* ProTheDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProTheDetailViewController.h; sourceTree = "<group>"; };
+		8E44BC241A73A89B00EDCD1A /* ProTheDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProTheDetailViewController.m; sourceTree = "<group>"; };
+		8E44BC251A73A89B00EDCD1A /* ProTheDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProTheDetailViewController.xib; sourceTree = "<group>"; };
+		8E44BC271A73A89B00EDCD1A /* ProTindungDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProTindungDetailViewController.h; sourceTree = "<group>"; };
+		8E44BC281A73A89B00EDCD1A /* ProTindungDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProTindungDetailViewController.m; sourceTree = "<group>"; };
+		8E44BC291A73A89B00EDCD1A /* ProTindungDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProTindungDetailViewController.xib; sourceTree = "<group>"; };
+		8E44BC431A73ACDA00EDCD1A /* DTOProThanhToanDetailObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOProThanhToanDetailObject.h; sourceTree = "<group>"; };
+		8E44BC441A73ACDA00EDCD1A /* DTOProThanhToanDetailObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOProThanhToanDetailObject.m; sourceTree = "<group>"; };
+		8E44BC461A73AEB400EDCD1A /* DTOProTietKiemDetailObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOProTietKiemDetailObject.h; sourceTree = "<group>"; };
+		8E44BC471A73AEB400EDCD1A /* DTOProTietKiemDetailObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOProTietKiemDetailObject.m; sourceTree = "<group>"; };
+		8E44BC491A73B06800EDCD1A /* DTOProBaoLanhDetailObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOProBaoLanhDetailObject.h; sourceTree = "<group>"; };
+		8E44BC4A1A73B06800EDCD1A /* DTOProBaoLanhDetailObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOProBaoLanhDetailObject.m; sourceTree = "<group>"; };
+		8E44BC4C1A73B30D00EDCD1A /* DTOProTTQTDetailObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOProTTQTDetailObject.h; sourceTree = "<group>"; };
+		8E44BC4D1A73B30D00EDCD1A /* DTOProTTQTDetailObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOProTTQTDetailObject.m; sourceTree = "<group>"; };
+		8E44BC4F1A73B45300EDCD1A /* DTOProWay4DetailObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOProWay4DetailObject.h; sourceTree = "<group>"; };
+		8E44BC501A73B45300EDCD1A /* DTOProWay4DetailObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOProWay4DetailObject.m; sourceTree = "<group>"; };
+		8E44BC521A73B5AD00EDCD1A /* DTOProBPDetailObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOProBPDetailObject.h; sourceTree = "<group>"; };
+		8E44BC531A73B5AD00EDCD1A /* DTOProBPDetailObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOProBPDetailObject.m; sourceTree = "<group>"; };
+		8E44BC551A73B73200EDCD1A /* DTOProEMBDetailObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOProEMBDetailObject.h; sourceTree = "<group>"; };
+		8E44BC561A73B73200EDCD1A /* DTOProEMBDetailObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOProEMBDetailObject.m; sourceTree = "<group>"; };
+		8E44BC581A73B95400EDCD1A /* DTOProThanhToanDetailProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOProThanhToanDetailProcess.h; sourceTree = "<group>"; };
+		8E44BC591A73B95400EDCD1A /* DTOProThanhToanDetailProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOProThanhToanDetailProcess.m; sourceTree = "<group>"; };
+		8E44BC5B1A73B97000EDCD1A /* DTOProTietKiemDetailProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOProTietKiemDetailProcess.h; sourceTree = "<group>"; };
+		8E44BC5C1A73B97000EDCD1A /* DTOProTietKiemDetailProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOProTietKiemDetailProcess.m; sourceTree = "<group>"; };
+		8E44BC5E1A73B98400EDCD1A /* DTOProBaoLanhDetailProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOProBaoLanhDetailProcess.h; sourceTree = "<group>"; };
+		8E44BC5F1A73B98400EDCD1A /* DTOProBaoLanhDetailProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOProBaoLanhDetailProcess.m; sourceTree = "<group>"; };
+		8E44BC611A73B99800EDCD1A /* DTOProTTQTDetailProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOProTTQTDetailProcess.h; sourceTree = "<group>"; };
+		8E44BC621A73B99800EDCD1A /* DTOProTTQTDetailProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOProTTQTDetailProcess.m; sourceTree = "<group>"; };
+		8E44BC641A73B9A900EDCD1A /* DTOProWay4DetailProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOProWay4DetailProcess.h; sourceTree = "<group>"; };
+		8E44BC651A73B9A900EDCD1A /* DTOProWay4DetailProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOProWay4DetailProcess.m; sourceTree = "<group>"; };
+		8E44BC671A73B9BB00EDCD1A /* DTOProBPDetailProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOProBPDetailProcess.h; sourceTree = "<group>"; };
+		8E44BC681A73B9BB00EDCD1A /* DTOProBPDetailProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOProBPDetailProcess.m; sourceTree = "<group>"; };
+		8E44BC6A1A73B9D300EDCD1A /* DTOProEMBDetailProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOProEMBDetailProcess.h; sourceTree = "<group>"; };
+		8E44BC6B1A73B9D300EDCD1A /* DTOProEMBDetailProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOProEMBDetailProcess.m; sourceTree = "<group>"; };
 		8E568F7B1A58EEDF0002A3C4 /* ListComplainsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListComplainsViewController.h; sourceTree = "<group>"; };
 		8E568F7C1A58EEDF0002A3C4 /* ListComplainsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListComplainsViewController.m; sourceTree = "<group>"; };
 		8E568F7D1A58EEDF0002A3C4 /* ListComplainsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListComplainsViewController.xib; sourceTree = "<group>"; };
@@ -2021,12 +2101,6 @@
 		8E6105F61A5986BF003D1C0C /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		8E6105F71A5986BF003D1C0C /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		8E6105F81A5986BF003D1C0C /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
-		8E69BDD11A57D23900C6924D /* ProThanhToanQuocTeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProThanhToanQuocTeViewCell.h; sourceTree = "<group>"; };
-		8E69BDD21A57D23900C6924D /* ProThanhToanQuocTeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProThanhToanQuocTeViewCell.m; sourceTree = "<group>"; };
-		8E69BDD31A57D23900C6924D /* ProThanhToanQuocTeViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProThanhToanQuocTeViewCell.xib; sourceTree = "<group>"; };
-		8E69BDD61A57D24E00C6924D /* ProThanhToanQuocTeViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProThanhToanQuocTeViewHeader.h; sourceTree = "<group>"; };
-		8E69BDD71A57D24E00C6924D /* ProThanhToanQuocTeViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProThanhToanQuocTeViewHeader.m; sourceTree = "<group>"; };
-		8E69BDD91A57D25A00C6924D /* ProThanhToanQuocTeViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProThanhToanQuocTeViewHeader.xib; sourceTree = "<group>"; };
 		8E69BDE01A58458500C6924D /* iconCar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconCar.png; sourceTree = "<group>"; };
 		8E69BDE11A58458500C6924D /* iconCar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconCar@2x.png"; sourceTree = "<group>"; };
 		8E69BDE21A58458500C6924D /* iconMoto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconMoto@2x.png"; sourceTree = "<group>"; };
@@ -2231,18 +2305,10 @@
 		8ED38D6E1A5447C500D95A3B /* DetailLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailLeadViewController.h; sourceTree = "<group>"; };
 		8ED38D6F1A5447C500D95A3B /* DetailLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailLeadViewController.m; sourceTree = "<group>"; };
 		8ED38D701A5447C500D95A3B /* DetailLeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailLeadViewController.xib; sourceTree = "<group>"; };
-		8ED38D781A54480100D95A3B /* ProductsLeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductsLeadView.h; sourceTree = "<group>"; };
-		8ED38D791A54480100D95A3B /* ProductsLeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductsLeadView.m; sourceTree = "<group>"; };
 		8ED38D7B1A544D6400D95A3B /* DTOProductLeadTypeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOProductLeadTypeObject.h; sourceTree = "<group>"; };
 		8ED38D7C1A544D6400D95A3B /* DTOProductLeadTypeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOProductLeadTypeObject.m; sourceTree = "<group>"; };
 		8ED38D7E1A544F7200D95A3B /* DTOPRODUCTTYPEProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOPRODUCTTYPEProcess.h; sourceTree = "<group>"; };
 		8ED38D7F1A544F7200D95A3B /* DTOPRODUCTTYPEProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOPRODUCTTYPEProcess.m; sourceTree = "<group>"; };
-		8ED38D821A54528200D95A3B /* ProductLeadCellHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductLeadCellHeader.h; sourceTree = "<group>"; };
-		8ED38D831A54528200D95A3B /* ProductLeadCellHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductLeadCellHeader.m; sourceTree = "<group>"; };
-		8ED38D851A54528E00D95A3B /* ProductLeadCellHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductLeadCellHeader.xib; sourceTree = "<group>"; };
-		8ED38D871A54558100D95A3B /* ProductLeadViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductLeadViewCell.h; sourceTree = "<group>"; };
-		8ED38D881A54558100D95A3B /* ProductLeadViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductLeadViewCell.m; sourceTree = "<group>"; };
-		8ED38D891A54558100D95A3B /* ProductLeadViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductLeadViewCell.xib; sourceTree = "<group>"; };
 		8ED4026F1A41CF1900CCBE6D /* iconDirection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconDirection.png; sourceTree = "<group>"; };
 		8ED402701A41CF1900CCBE6D /* iconDirection@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconDirection@2x.png"; sourceTree = "<group>"; };
 		8ED402771A41D2DC00CCBE6D /* iconExpand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconExpand.png; sourceTree = "<group>"; };
@@ -2261,30 +2327,6 @@
 		8EFE69001A565BDF003D55CE /* DTOProTindungDetailObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOProTindungDetailObject.m; sourceTree = "<group>"; };
 		8EFE69021A56604F003D55CE /* DTOProTindungDetailProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOProTindungDetailProcess.h; sourceTree = "<group>"; };
 		8EFE69031A56604F003D55CE /* DTOProTindungDetailProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOProTindungDetailProcess.m; sourceTree = "<group>"; };
-		8EFE69111A56938C003D55CE /* ProTindungDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProTindungDetailViewController.h; sourceTree = "<group>"; };
-		8EFE69121A56938C003D55CE /* ProTindungDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProTindungDetailViewController.m; sourceTree = "<group>"; };
-		8EFE69131A56938C003D55CE /* ProTindungDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProTindungDetailViewController.xib; sourceTree = "<group>"; };
-		8EFE691E1A569800003D55CE /* ProTaiKhoanThanhToanDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProTaiKhoanThanhToanDetailViewController.h; sourceTree = "<group>"; };
-		8EFE691F1A569800003D55CE /* ProTaiKhoanThanhToanDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProTaiKhoanThanhToanDetailViewController.m; sourceTree = "<group>"; };
-		8EFE69201A569800003D55CE /* ProTaiKhoanThanhToanDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProTaiKhoanThanhToanDetailViewController.xib; sourceTree = "<group>"; };
-		8EFE69231A56987C003D55CE /* ProBankPlusDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProBankPlusDetailViewController.h; sourceTree = "<group>"; };
-		8EFE69241A56987C003D55CE /* ProBankPlusDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProBankPlusDetailViewController.m; sourceTree = "<group>"; };
-		8EFE69251A56987C003D55CE /* ProBankPlusDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProBankPlusDetailViewController.xib; sourceTree = "<group>"; };
-		8EFE69291A5698C9003D55CE /* ProBaoLanhDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProBaoLanhDetailViewController.h; sourceTree = "<group>"; };
-		8EFE692A1A5698C9003D55CE /* ProBaoLanhDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProBaoLanhDetailViewController.m; sourceTree = "<group>"; };
-		8EFE692B1A5698C9003D55CE /* ProBaoLanhDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProBaoLanhDetailViewController.xib; sourceTree = "<group>"; };
-		8EFE692E1A5699BB003D55CE /* ProEMBDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProEMBDetailViewController.h; sourceTree = "<group>"; };
-		8EFE692F1A5699BC003D55CE /* ProEMBDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProEMBDetailViewController.m; sourceTree = "<group>"; };
-		8EFE69301A5699BC003D55CE /* ProEMBDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProEMBDetailViewController.xib; sourceTree = "<group>"; };
-		8EFE69331A5699F9003D55CE /* ProTaiKhoanTietKiemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProTaiKhoanTietKiemDetailViewController.h; sourceTree = "<group>"; };
-		8EFE69341A5699F9003D55CE /* ProTaiKhoanTietKiemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProTaiKhoanTietKiemDetailViewController.m; sourceTree = "<group>"; };
-		8EFE69351A5699F9003D55CE /* ProTaiKhoanTietKiemDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProTaiKhoanTietKiemDetailViewController.xib; sourceTree = "<group>"; };
-		8EFE69381A569A2C003D55CE /* ProThanhToanQuocTeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProThanhToanQuocTeDetailViewController.h; sourceTree = "<group>"; };
-		8EFE69391A569A2C003D55CE /* ProThanhToanQuocTeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProThanhToanQuocTeDetailViewController.m; sourceTree = "<group>"; };
-		8EFE693A1A569A2C003D55CE /* ProThanhToanQuocTeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProThanhToanQuocTeDetailViewController.xib; sourceTree = "<group>"; };
-		8EFE693D1A569A59003D55CE /* ProTheDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProTheDetailViewController.h; sourceTree = "<group>"; };
-		8EFE693E1A569A59003D55CE /* ProTheDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProTheDetailViewController.m; sourceTree = "<group>"; };
-		8EFE693F1A569A59003D55CE /* ProTheDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProTheDetailViewController.xib; sourceTree = "<group>"; };
 		92C68E0C1519D4F100981728 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		92C68E0D1519D4F100981728 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		92C68E0F1519D4F100981728 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -2602,8 +2644,6 @@
 				8EC9DDB61A54FB6400E18A0E /* DTOProductDetailObject.m */,
 				8E013B4A1A5548DE00A72586 /* DTOProductMasterObject.h */,
 				8E013B4B1A5548DE00A72586 /* DTOProductMasterObject.m */,
-				8EFE68FF1A565BDF003D55CE /* DTOProTindungDetailObject.h */,
-				8EFE69001A565BDF003D55CE /* DTOProTindungDetailObject.m */,
 				8E568F8B1A58FDFC0002A3C4 /* DTOComplainObject.h */,
 				8E568F8C1A58FDFC0002A3C4 /* DTOComplainObject.m */,
 				8E174C651A5ED13D004FDBBE /* DTOTaskObject.h */,
@@ -2612,6 +2652,22 @@
 				8E705CDB1A6BF1FD00B9A9D3 /* DTOWidgetObject.m */,
 				8E7BDB7F1A6E87960089CB7A /* DTOWidgetTypeObject.h */,
 				8E7BDB801A6E87960089CB7A /* DTOWidgetTypeObject.m */,
+				8EFE68FF1A565BDF003D55CE /* DTOProTindungDetailObject.h */,
+				8EFE69001A565BDF003D55CE /* DTOProTindungDetailObject.m */,
+				8E44BC431A73ACDA00EDCD1A /* DTOProThanhToanDetailObject.h */,
+				8E44BC441A73ACDA00EDCD1A /* DTOProThanhToanDetailObject.m */,
+				8E44BC461A73AEB400EDCD1A /* DTOProTietKiemDetailObject.h */,
+				8E44BC471A73AEB400EDCD1A /* DTOProTietKiemDetailObject.m */,
+				8E44BC491A73B06800EDCD1A /* DTOProBaoLanhDetailObject.h */,
+				8E44BC4A1A73B06800EDCD1A /* DTOProBaoLanhDetailObject.m */,
+				8E44BC4C1A73B30D00EDCD1A /* DTOProTTQTDetailObject.h */,
+				8E44BC4D1A73B30D00EDCD1A /* DTOProTTQTDetailObject.m */,
+				8E44BC4F1A73B45300EDCD1A /* DTOProWay4DetailObject.h */,
+				8E44BC501A73B45300EDCD1A /* DTOProWay4DetailObject.m */,
+				8E44BC521A73B5AD00EDCD1A /* DTOProBPDetailObject.h */,
+				8E44BC531A73B5AD00EDCD1A /* DTOProBPDetailObject.m */,
+				8E44BC551A73B73200EDCD1A /* DTOProEMBDetailObject.h */,
+				8E44BC561A73B73200EDCD1A /* DTOProEMBDetailObject.m */,
 			);
 			name = Objects;
 			path = ProcessData/Objects;
@@ -3510,6 +3566,20 @@
 				8E705CDE1A6BF41100B9A9D3 /* DTOWidgetProcess.m */,
 				8EBFF24B1A6E94BF0009D9E1 /* DTOWidgetTypeProcess.h */,
 				8EBFF24C1A6E94BF0009D9E1 /* DTOWidgetTypeProcess.m */,
+				8E44BC581A73B95400EDCD1A /* DTOProThanhToanDetailProcess.h */,
+				8E44BC591A73B95400EDCD1A /* DTOProThanhToanDetailProcess.m */,
+				8E44BC5B1A73B97000EDCD1A /* DTOProTietKiemDetailProcess.h */,
+				8E44BC5C1A73B97000EDCD1A /* DTOProTietKiemDetailProcess.m */,
+				8E44BC5E1A73B98400EDCD1A /* DTOProBaoLanhDetailProcess.h */,
+				8E44BC5F1A73B98400EDCD1A /* DTOProBaoLanhDetailProcess.m */,
+				8E44BC611A73B99800EDCD1A /* DTOProTTQTDetailProcess.h */,
+				8E44BC621A73B99800EDCD1A /* DTOProTTQTDetailProcess.m */,
+				8E44BC641A73B9A900EDCD1A /* DTOProWay4DetailProcess.h */,
+				8E44BC651A73B9A900EDCD1A /* DTOProWay4DetailProcess.m */,
+				8E44BC671A73B9BB00EDCD1A /* DTOProBPDetailProcess.h */,
+				8E44BC681A73B9BB00EDCD1A /* DTOProBPDetailProcess.m */,
+				8E44BC6A1A73B9D300EDCD1A /* DTOProEMBDetailProcess.h */,
+				8E44BC6B1A73B9D300EDCD1A /* DTOProEMBDetailProcess.m */,
 			);
 			name = Data;
 			path = ProcessData/Data;
@@ -4382,6 +4452,139 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		8E44BBF81A73A89B00EDCD1A /* ProductsService */ = {
+			isa = PBXGroup;
+			children = (
+				8E44BBF91A73A89B00EDCD1A /* ProductsLeadCell */,
+				8E44BC001A73A89B00EDCD1A /* ProductsLeadView.h */,
+				8E44BC011A73A89B00EDCD1A /* ProductsLeadView.m */,
+				8E44BC021A73A89B00EDCD1A /* TypeProductDetail */,
+			);
+			path = ProductsService;
+			sourceTree = "<group>";
+		};
+		8E44BBF91A73A89B00EDCD1A /* ProductsLeadCell */ = {
+			isa = PBXGroup;
+			children = (
+				8E44BBFA1A73A89B00EDCD1A /* ProductLeadCellHeader.h */,
+				8E44BBFB1A73A89B00EDCD1A /* ProductLeadCellHeader.m */,
+				8E44BBFC1A73A89B00EDCD1A /* ProductLeadCellHeader.xib */,
+				8E44BBFD1A73A89B00EDCD1A /* ProductLeadViewCell.h */,
+				8E44BBFE1A73A89B00EDCD1A /* ProductLeadViewCell.m */,
+				8E44BBFF1A73A89B00EDCD1A /* ProductLeadViewCell.xib */,
+			);
+			path = ProductsLeadCell;
+			sourceTree = "<group>";
+		};
+		8E44BC021A73A89B00EDCD1A /* TypeProductDetail */ = {
+			isa = PBXGroup;
+			children = (
+				8E44BC031A73A89B00EDCD1A /* ProBankPlusDetail */,
+				8E44BC071A73A89B00EDCD1A /* ProBaoLanhDetail */,
+				8E44BC0B1A73A89B00EDCD1A /* ProEMBDetail */,
+				8E44BC0F1A73A89B00EDCD1A /* ProTaiKhoanThanhToanDetail */,
+				8E44BC131A73A89B00EDCD1A /* ProTaiKhoanTietKiemDetail */,
+				8E44BC171A73A89B00EDCD1A /* ProThanhToanQuocTeDetail */,
+				8E44BC221A73A89B00EDCD1A /* ProTheDetail */,
+				8E44BC261A73A89B00EDCD1A /* ProTindungDetail */,
+			);
+			path = TypeProductDetail;
+			sourceTree = "<group>";
+		};
+		8E44BC031A73A89B00EDCD1A /* ProBankPlusDetail */ = {
+			isa = PBXGroup;
+			children = (
+				8E44BC041A73A89B00EDCD1A /* ProBankPlusDetailViewController.h */,
+				8E44BC051A73A89B00EDCD1A /* ProBankPlusDetailViewController.m */,
+				8E44BC061A73A89B00EDCD1A /* ProBankPlusDetailViewController.xib */,
+			);
+			path = ProBankPlusDetail;
+			sourceTree = "<group>";
+		};
+		8E44BC071A73A89B00EDCD1A /* ProBaoLanhDetail */ = {
+			isa = PBXGroup;
+			children = (
+				8E44BC081A73A89B00EDCD1A /* ProBaoLanhDetailViewController.h */,
+				8E44BC091A73A89B00EDCD1A /* ProBaoLanhDetailViewController.m */,
+				8E44BC0A1A73A89B00EDCD1A /* ProBaoLanhDetailViewController.xib */,
+			);
+			path = ProBaoLanhDetail;
+			sourceTree = "<group>";
+		};
+		8E44BC0B1A73A89B00EDCD1A /* ProEMBDetail */ = {
+			isa = PBXGroup;
+			children = (
+				8E44BC0C1A73A89B00EDCD1A /* ProEMBDetailViewController.h */,
+				8E44BC0D1A73A89B00EDCD1A /* ProEMBDetailViewController.m */,
+				8E44BC0E1A73A89B00EDCD1A /* ProEMBDetailViewController.xib */,
+			);
+			path = ProEMBDetail;
+			sourceTree = "<group>";
+		};
+		8E44BC0F1A73A89B00EDCD1A /* ProTaiKhoanThanhToanDetail */ = {
+			isa = PBXGroup;
+			children = (
+				8E44BC101A73A89B00EDCD1A /* ProTaiKhoanThanhToanDetailViewController.h */,
+				8E44BC111A73A89B00EDCD1A /* ProTaiKhoanThanhToanDetailViewController.m */,
+				8E44BC121A73A89B00EDCD1A /* ProTaiKhoanThanhToanDetailViewController.xib */,
+			);
+			path = ProTaiKhoanThanhToanDetail;
+			sourceTree = "<group>";
+		};
+		8E44BC131A73A89B00EDCD1A /* ProTaiKhoanTietKiemDetail */ = {
+			isa = PBXGroup;
+			children = (
+				8E44BC141A73A89B00EDCD1A /* ProTaiKhoanTietKiemDetailViewController.h */,
+				8E44BC151A73A89B00EDCD1A /* ProTaiKhoanTietKiemDetailViewController.m */,
+				8E44BC161A73A89B00EDCD1A /* ProTaiKhoanTietKiemDetailViewController.xib */,
+			);
+			path = ProTaiKhoanTietKiemDetail;
+			sourceTree = "<group>";
+		};
+		8E44BC171A73A89B00EDCD1A /* ProThanhToanQuocTeDetail */ = {
+			isa = PBXGroup;
+			children = (
+				8E44BC181A73A89B00EDCD1A /* ProThanhToanQuocTeCell */,
+				8E44BC1F1A73A89B00EDCD1A /* ProThanhToanQuocTeDetailViewController.h */,
+				8E44BC201A73A89B00EDCD1A /* ProThanhToanQuocTeDetailViewController.m */,
+				8E44BC211A73A89B00EDCD1A /* ProThanhToanQuocTeDetailViewController.xib */,
+			);
+			path = ProThanhToanQuocTeDetail;
+			sourceTree = "<group>";
+		};
+		8E44BC181A73A89B00EDCD1A /* ProThanhToanQuocTeCell */ = {
+			isa = PBXGroup;
+			children = (
+				8E44BC191A73A89B00EDCD1A /* ProThanhToanQuocTeViewCell.h */,
+				8E44BC1A1A73A89B00EDCD1A /* ProThanhToanQuocTeViewCell.m */,
+				8E44BC1B1A73A89B00EDCD1A /* ProThanhToanQuocTeViewCell.xib */,
+				8E44BC1C1A73A89B00EDCD1A /* ProThanhToanQuocTeViewHeader.h */,
+				8E44BC1D1A73A89B00EDCD1A /* ProThanhToanQuocTeViewHeader.m */,
+				8E44BC1E1A73A89B00EDCD1A /* ProThanhToanQuocTeViewHeader.xib */,
+			);
+			path = ProThanhToanQuocTeCell;
+			sourceTree = "<group>";
+		};
+		8E44BC221A73A89B00EDCD1A /* ProTheDetail */ = {
+			isa = PBXGroup;
+			children = (
+				8E44BC231A73A89B00EDCD1A /* ProTheDetailViewController.h */,
+				8E44BC241A73A89B00EDCD1A /* ProTheDetailViewController.m */,
+				8E44BC251A73A89B00EDCD1A /* ProTheDetailViewController.xib */,
+			);
+			path = ProTheDetail;
+			sourceTree = "<group>";
+		};
+		8E44BC261A73A89B00EDCD1A /* ProTindungDetail */ = {
+			isa = PBXGroup;
+			children = (
+				8E44BC271A73A89B00EDCD1A /* ProTindungDetailViewController.h */,
+				8E44BC281A73A89B00EDCD1A /* ProTindungDetailViewController.m */,
+				8E44BC291A73A89B00EDCD1A /* ProTindungDetailViewController.xib */,
+			);
+			path = ProTindungDetail;
+			sourceTree = "<group>";
+		};
 		8E568F791A58EE950002A3C4 /* Complain */ = {
 			isa = PBXGroup;
 			children = (
@@ -4462,19 +4665,6 @@
 				8E6105F81A5986BF003D1C0C /* ProfileViewController.xib */,
 			);
 			path = Profile;
-			sourceTree = "<group>";
-		};
-		8E69BDD01A57D21A00C6924D /* ProThanhToanQuocTeCell */ = {
-			isa = PBXGroup;
-			children = (
-				8E69BDD11A57D23900C6924D /* ProThanhToanQuocTeViewCell.h */,
-				8E69BDD21A57D23900C6924D /* ProThanhToanQuocTeViewCell.m */,
-				8E69BDD31A57D23900C6924D /* ProThanhToanQuocTeViewCell.xib */,
-				8E69BDD61A57D24E00C6924D /* ProThanhToanQuocTeViewHeader.h */,
-				8E69BDD71A57D24E00C6924D /* ProThanhToanQuocTeViewHeader.m */,
-				8E69BDD91A57D25A00C6924D /* ProThanhToanQuocTeViewHeader.xib */,
-			);
-			path = ProThanhToanQuocTeCell;
 			sourceTree = "<group>";
 		};
 		8E6A10241A6226F500D98AE3 /* ChartCell */ = {
@@ -5064,36 +5254,11 @@
 			isa = PBXGroup;
 			children = (
 				8E6105F11A5964B5003D1C0C /* ComplainTab */,
-				8ED38D771A54480100D95A3B /* ProductsLead */,
 				8ED38D6E1A5447C500D95A3B /* DetailLeadViewController.h */,
 				8ED38D6F1A5447C500D95A3B /* DetailLeadViewController.m */,
 				8ED38D701A5447C500D95A3B /* DetailLeadViewController.xib */,
 			);
 			path = DetailsLead;
-			sourceTree = "<group>";
-		};
-		8ED38D771A54480100D95A3B /* ProductsLead */ = {
-			isa = PBXGroup;
-			children = (
-				8EFE690F1A56938C003D55CE /* TypeProductDetail */,
-				8ED38D811A54525B00D95A3B /* ProductsLeadCell */,
-				8ED38D781A54480100D95A3B /* ProductsLeadView.h */,
-				8ED38D791A54480100D95A3B /* ProductsLeadView.m */,
-			);
-			path = ProductsLead;
-			sourceTree = "<group>";
-		};
-		8ED38D811A54525B00D95A3B /* ProductsLeadCell */ = {
-			isa = PBXGroup;
-			children = (
-				8ED38D821A54528200D95A3B /* ProductLeadCellHeader.h */,
-				8ED38D831A54528200D95A3B /* ProductLeadCellHeader.m */,
-				8ED38D851A54528E00D95A3B /* ProductLeadCellHeader.xib */,
-				8ED38D871A54558100D95A3B /* ProductLeadViewCell.h */,
-				8ED38D881A54558100D95A3B /* ProductLeadViewCell.m */,
-				8ED38D891A54558100D95A3B /* ProductLeadViewCell.xib */,
-			);
-			path = ProductsLeadCell;
 			sourceTree = "<group>";
 		};
 		8ED402891A41E17400CCBE6D /* CustomerCell */ = {
@@ -5104,102 +5269,6 @@
 				8ED4028C1A41E18800CCBE6D /* CustomerViewCell.xib */,
 			);
 			path = CustomerCell;
-			sourceTree = "<group>";
-		};
-		8EFE690F1A56938C003D55CE /* TypeProductDetail */ = {
-			isa = PBXGroup;
-			children = (
-				8EFE69281A5698B8003D55CE /* ProBaoLanhDetail */,
-				8EFE691D1A5697DD003D55CE /* ProTaiKhoanThanhToanDetail */,
-				8EFE69161A56979E003D55CE /* ProBankPlusDetail */,
-				8EFE69181A56979E003D55CE /* ProEMBDetail */,
-				8EFE69191A56979E003D55CE /* ProTaiKhoanTietKiemDetail */,
-				8EFE691B1A56979E003D55CE /* ProThanhToanQuocTeDetail */,
-				8EFE691C1A56979E003D55CE /* ProTheDetail */,
-				8EFE69101A56938C003D55CE /* ProTindungDetail */,
-			);
-			path = TypeProductDetail;
-			sourceTree = "<group>";
-		};
-		8EFE69101A56938C003D55CE /* ProTindungDetail */ = {
-			isa = PBXGroup;
-			children = (
-				8EFE69111A56938C003D55CE /* ProTindungDetailViewController.h */,
-				8EFE69121A56938C003D55CE /* ProTindungDetailViewController.m */,
-				8EFE69131A56938C003D55CE /* ProTindungDetailViewController.xib */,
-			);
-			path = ProTindungDetail;
-			sourceTree = "<group>";
-		};
-		8EFE69161A56979E003D55CE /* ProBankPlusDetail */ = {
-			isa = PBXGroup;
-			children = (
-				8EFE69231A56987C003D55CE /* ProBankPlusDetailViewController.h */,
-				8EFE69241A56987C003D55CE /* ProBankPlusDetailViewController.m */,
-				8EFE69251A56987C003D55CE /* ProBankPlusDetailViewController.xib */,
-			);
-			path = ProBankPlusDetail;
-			sourceTree = "<group>";
-		};
-		8EFE69181A56979E003D55CE /* ProEMBDetail */ = {
-			isa = PBXGroup;
-			children = (
-				8EFE692E1A5699BB003D55CE /* ProEMBDetailViewController.h */,
-				8EFE692F1A5699BC003D55CE /* ProEMBDetailViewController.m */,
-				8EFE69301A5699BC003D55CE /* ProEMBDetailViewController.xib */,
-			);
-			path = ProEMBDetail;
-			sourceTree = "<group>";
-		};
-		8EFE69191A56979E003D55CE /* ProTaiKhoanTietKiemDetail */ = {
-			isa = PBXGroup;
-			children = (
-				8EFE69331A5699F9003D55CE /* ProTaiKhoanTietKiemDetailViewController.h */,
-				8EFE69341A5699F9003D55CE /* ProTaiKhoanTietKiemDetailViewController.m */,
-				8EFE69351A5699F9003D55CE /* ProTaiKhoanTietKiemDetailViewController.xib */,
-			);
-			path = ProTaiKhoanTietKiemDetail;
-			sourceTree = "<group>";
-		};
-		8EFE691B1A56979E003D55CE /* ProThanhToanQuocTeDetail */ = {
-			isa = PBXGroup;
-			children = (
-				8E69BDD01A57D21A00C6924D /* ProThanhToanQuocTeCell */,
-				8EFE69381A569A2C003D55CE /* ProThanhToanQuocTeDetailViewController.h */,
-				8EFE69391A569A2C003D55CE /* ProThanhToanQuocTeDetailViewController.m */,
-				8EFE693A1A569A2C003D55CE /* ProThanhToanQuocTeDetailViewController.xib */,
-			);
-			path = ProThanhToanQuocTeDetail;
-			sourceTree = "<group>";
-		};
-		8EFE691C1A56979E003D55CE /* ProTheDetail */ = {
-			isa = PBXGroup;
-			children = (
-				8EFE693D1A569A59003D55CE /* ProTheDetailViewController.h */,
-				8EFE693E1A569A59003D55CE /* ProTheDetailViewController.m */,
-				8EFE693F1A569A59003D55CE /* ProTheDetailViewController.xib */,
-			);
-			path = ProTheDetail;
-			sourceTree = "<group>";
-		};
-		8EFE691D1A5697DD003D55CE /* ProTaiKhoanThanhToanDetail */ = {
-			isa = PBXGroup;
-			children = (
-				8EFE691E1A569800003D55CE /* ProTaiKhoanThanhToanDetailViewController.h */,
-				8EFE691F1A569800003D55CE /* ProTaiKhoanThanhToanDetailViewController.m */,
-				8EFE69201A569800003D55CE /* ProTaiKhoanThanhToanDetailViewController.xib */,
-			);
-			path = ProTaiKhoanThanhToanDetail;
-			sourceTree = "<group>";
-		};
-		8EFE69281A5698B8003D55CE /* ProBaoLanhDetail */ = {
-			isa = PBXGroup;
-			children = (
-				8EFE69291A5698C9003D55CE /* ProBaoLanhDetailViewController.h */,
-				8EFE692A1A5698C9003D55CE /* ProBaoLanhDetailViewController.m */,
-				8EFE692B1A5698C9003D55CE /* ProBaoLanhDetailViewController.xib */,
-			);
-			path = ProBaoLanhDetail;
 			sourceTree = "<group>";
 		};
 		92C68E0B1519D4F100981728 /* Classes */ = {
@@ -5323,6 +5392,7 @@
 		92C68E4A1519D4F100981728 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				8E44BBF81A73A89B00EDCD1A /* ProductsService */,
 				8E8D7FC31A5ADE060084BCA3 /* DashboardCalendar */,
 				8E6105F51A5986A9003D1C0C /* Profile */,
 				8E568F791A58EE950002A3C4 /* Complain */,
@@ -5661,11 +5731,12 @@
 				8E7554541A52EFC8001940FB /* iconKeepRight.png in Resources */,
 				8ED402821A41DEC000CCBE6D /* iconBranchArrow@2x.png in Resources */,
 				8497BFEF1A295A2300A5ED3C /* step8@2x.png in Resources */,
-				8ED38D8B1A54558100D95A3B /* ProductLeadViewCell.xib in Resources */,
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				92C68E551519D4F100981728 /* License.md in Resources */,
 				2D0AD497173219510048A239 /* Default-568h@2x.png in Resources */,
+				8E44BC341A73A89B00EDCD1A /* ProEMBDetailViewController.xib in Resources */,
 				76F3289C1A34B88B00E0F2C4 /* task_not_done.png in Resources */,
+				8E44BC381A73A89B00EDCD1A /* ProTaiKhoanTietKiemDetailViewController.xib in Resources */,
 				764430661A7000CC007741BA /* menu_calendar.png in Resources */,
 				8497BFC61A295A2300A5ED3C /* glow-marker.png in Resources */,
 				B3157888188D5E5200C0ED01 /* ic-work-fw-group-2-1.png in Resources */,
@@ -5687,6 +5758,7 @@
 				76601A49194BE90F001D4C01 /* Reader-Email.png in Resources */,
 				2D6D7661187670B00051AD9E /* ic-work-fw-group-1.png in Resources */,
 				76977D651A02A75B0029F297 /* EmployeeAccountCell.xib in Resources */,
+				8E44BC361A73A89B00EDCD1A /* ProTaiKhoanThanhToanDetailViewController.xib in Resources */,
 				2D161064174F69780083F301 /* MainWindow-iPad.xib in Resources */,
 				2D21067A187AA1BB0022681B /* WeekPickerViewController.xib in Resources */,
 				7622D2F11A43246700DC9309 /* ContactOpportunityCell.xib in Resources */,
@@ -5698,6 +5770,7 @@
 				2D2F75A5185801E000EC76EE /* button_tim_kiem.png in Resources */,
 				2D6D7662187670B00051AD9E /* ic-work-fw-person-1.png in Resources */,
 				8497BFD91A295A2300A5ED3C /* voyager.png in Resources */,
+				8E44BC2D1A73A89B00EDCD1A /* ProductLeadViewCell.xib in Resources */,
 				15A92D2D1A447049005DC9CA /* TaskCalTLineCell.xib in Resources */,
 				76C964551A17731900029978 /* lines1.png in Resources */,
 				76961E511A3B306B008B5CE7 /* avatar.png in Resources */,
@@ -5742,7 +5815,6 @@
 				2DD29EF118769C260066B883 /* menu-ic-order-work-1.png in Resources */,
 				8497BFB61A295A2300A5ED3C /* aeroplane.png in Resources */,
 				7657E8B41A5AEB3A008A62F9 /* Account360Cell.xib in Resources */,
-				8EFE69221A569800003D55CE /* ProTaiKhoanThanhToanDetailViewController.xib in Resources */,
 				849794631A1FA90000ACC568 /* email_icon_hide.png in Resources */,
 				B39DD45F18A9FFF200FFA8EB /* bg-pdf-reader-1.png in Resources */,
 				8497BFED1A295A2300A5ED3C /* step7@2x.png in Resources */,
@@ -5750,13 +5822,11 @@
 				94BA8D781A2DF3710082AE9E /* EditOpportunityViewController.xib in Resources */,
 				76977D601A02A72E0029F297 /* ListEmployeeAccountViewController.xib in Resources */,
 				B315788A188D5E5200C0ED01 /* ic-work-fw-person-2-1.png in Resources */,
-				8EFE692D1A5698C9003D55CE /* ProBaoLanhDetailViewController.xib in Resources */,
 				2D60B07A17A27AA400848776 /* checkbox_not_ticked.png in Resources */,
 				8E75545B1A52EFC8001940FB /* iconRampRight@2x.png in Resources */,
 				84945FFF1A2B383E002EF8BD /* follow_success.png in Resources */,
 				76D29B181A126C9B004B9CF6 /* ClueContactCell.xib in Resources */,
 				8497C0161A295A8500A5ED3C /* TestMapViewController.xib in Resources */,
-				8E69BDDA1A57D25A00C6924D /* ProThanhToanQuocTeViewHeader.xib in Resources */,
 				8E75544D1A52EFC8001940FB /* iconFerryTrain@2x.png in Resources */,
 				8E69BDEB1A584B5500C6924D /* iconWalking.png in Resources */,
 				8497BFC21A295A2300A5ED3C /* botswana-large.png in Resources */,
@@ -5782,7 +5852,6 @@
 				7657E8B61A5AEB3A008A62F9 /* Calendar360Cell.xib in Resources */,
 				B31AFAA7187ADB5800D366B5 /* ic-show-path-1-1.png in Resources */,
 				76CD8816196D1E4F00503B99 /* ic-ppt-1.png in Resources */,
-				8E69BDD51A57D23900C6924D /* ProThanhToanQuocTeViewCell.xib in Resources */,
 				8E0B07CC1A4475CF00CF7A78 /* iconCall@2x.png in Resources */,
 				2D2D212A17A6291700A87364 /* Icon-Reload.png in Resources */,
 				8E8B3F261A49AA4300241360 /* MainViewController.xib in Resources */,
@@ -5814,12 +5883,10 @@
 				76D29B241A136E4A004B9CF6 /* ic_plus-1.png in Resources */,
 				B3157895188D5E5200C0ED01 /* del-btn-1-1.png in Resources */,
 				8E0B07D11A4475CF00CF7A78 /* iconMessage.png in Resources */,
-				8EFE69271A56987C003D55CE /* ProBankPlusDetailViewController.xib in Resources */,
 				94BA8D7D1A2DF3CF0082AE9E /* CalendarPickerViewController.xib in Resources */,
 				B3157897188D5E5200C0ED01 /* extra-btn-1-1.png in Resources */,
 				8E75545F1A52EFC8001940FB /* iconRoundAboutRight@2x.png in Resources */,
 				8E568F8A1A58F70C0002A3C4 /* ComplainViewHeader.xib in Resources */,
-				8EFE69411A569A59003D55CE /* ProTheDetailViewController.xib in Resources */,
 				8EC972AE1A5D71300021DCA3 /* WeeklyCalendar.png in Resources */,
 				76CD8819196D1E4F00503B99 /* ic-xls-1.png in Resources */,
 				76EE207219FA829200A80414 /* ic-add-sub-1.png in Resources */,
@@ -5859,6 +5926,7 @@
 				2DD29EF218769C260066B883 /* menu-ic-quit-1.png in Resources */,
 				76601A6019540CCD001D4C01 /* Introduct_OfficeOne.pdf in Resources */,
 				764430721A7000CC007741BA /* menu_sales_activity.png in Resources */,
+				8E44BC3C1A73A89B00EDCD1A /* ProThanhToanQuocTeViewHeader.xib in Resources */,
 				76EE210F19FF4D7100A80414 /* icon-clock-1.png in Resources */,
 				06FE2E161A4528B3004A1D16 /* iconDirection3@2x.png in Resources */,
 				76601A41194BE90F001D4C01 /* AppIcon-120.png in Resources */,
@@ -5898,7 +5966,6 @@
 				8497BFD51A295A2300A5ED3C /* h1.png in Resources */,
 				B315788E188D5E5200C0ED01 /* ic-work-order-person-2-1.png in Resources */,
 				8E7554651A52EFC8001940FB /* iconTurnRight@2x.png in Resources */,
-				8ED38D861A54528E00D95A3B /* ProductLeadCellHeader.xib in Resources */,
 				8ED402791A41D2DC00CCBE6D /* iconExpand.png in Resources */,
 				8E568FA31A59228B0002A3C4 /* iconSave@2x.png in Resources */,
 				15C6A1981A6FDC4800F19B30 /* PickerViewController.xib in Resources */,
@@ -5914,7 +5981,6 @@
 				8E75546C1A52EFC8001940FB /* iconUturnLeft.png in Resources */,
 				B3A066DA17D1AB8200BA6487 /* background_4.png in Resources */,
 				764430671A7000CC007741BA /* menu_campaign.png in Resources */,
-				8EFE69151A56938C003D55CE /* ProTindungDetailViewController.xib in Resources */,
 				849794681A1FB19300ACC568 /* DetailCustomBussinessViewController.xib in Resources */,
 				B3A066DC17D1AB8200BA6487 /* btn_choose_list.png in Resources */,
 				8ED402861A41DF3C00CCBE6D /* ic_qu_direction_mylocation.png in Resources */,
@@ -5963,6 +6029,7 @@
 				76601A50194BE90F001D4C01 /* Reader-Print@2x.png in Resources */,
 				B3157886188D5E5200C0ED01 /* ic-viewpdf-rotateright-1.png in Resources */,
 				2D6D7666187670B00051AD9E /* refresh-btn-1.png in Resources */,
+				8E44BC301A73A89B00EDCD1A /* ProBankPlusDetailViewController.xib in Resources */,
 				B3ECBA2617D1EFF300AF40CF /* icon_close.png in Resources */,
 				8E0B07D01A4475CF00CF7A78 /* iconInfo@2x.png in Resources */,
 				8ED4027D1A41D46900CCBE6D /* iconMultilCustomer.png in Resources */,
@@ -5979,8 +6046,10 @@
 				8497BFBF1A295A2300A5ED3C /* australia.png in Resources */,
 				2DD29EEA18769C260066B883 /* menu-ic-contact-1.png in Resources */,
 				2DD29EEB18769C260066B883 /* menu-ic-group-work-1.png in Resources */,
+				8E44BC2B1A73A89B00EDCD1A /* ProductLeadCellHeader.xib in Resources */,
 				8E7554551A52EFC8001940FB /* iconKeepRight@2x.png in Resources */,
 				8E75545A1A52EFC8001940FB /* iconRampRight.png in Resources */,
+				8E44BC401A73A89B00EDCD1A /* ProTheDetailViewController.xib in Resources */,
 				2D32B5CD187BDAA10065C305 /* Button_Selected-1.png in Resources */,
 				8497BFBD1A295A2300A5ED3C /* australia-large.png in Resources */,
 				76C9645F1A17731900029978 /* BiTransPieCHartSample.png in Resources */,
@@ -5992,6 +6061,7 @@
 				B315788D188D5E5200C0ED01 /* ic-work-order-person-1-1.png in Resources */,
 				763308171A048E12000E190B /* VTRadio.xib in Resources */,
 				8E5AA9B71A503C86007D9C8A /* iconMarker.png in Resources */,
+				8E44BC321A73A89B00EDCD1A /* ProBaoLanhDetailViewController.xib in Resources */,
 				8497BFD81A295A2300A5ED3C /* spitfire@2x.png in Resources */,
 				2DD29EBA18769A500066B883 /* notification-bg-1.png in Resources */,
 				8E7554671A52EFC8001940FB /* iconTurnSharpRight@2x.png in Resources */,
@@ -6040,7 +6110,6 @@
 				B3D8D557189237ED00D3ACE9 /* bg-doc-detail-1.png in Resources */,
 				843BF0C01A03ECC500EA1D8A /* OpportunityCell.xib in Resources */,
 				8499B2DE1A2C9BC4004D9ACB /* EditContactLeadViewController.xib in Resources */,
-				8EFE693C1A569A2C003D55CE /* ProThanhToanQuocTeDetailViewController.xib in Resources */,
 				8497BFD31A295A2300A5ED3C /* Launch.xib in Resources */,
 				8497BCE11A294C7F00A5ED3C /* TestViewController.xib in Resources */,
 				2DE2D2521829060700034877 /* ic-cancel.png in Resources */,
@@ -6073,6 +6142,7 @@
 				8EC4B90E1A505A7D0078BF13 /* DirectionsViewCell.xib in Resources */,
 				B3157896188D5E5200C0ED01 /* del-btn-2-1.png in Resources */,
 				8E75546B1A52EFC8001940FB /* iconTurnSlightRight@2x.png in Resources */,
+				8E44BC3A1A73A89B00EDCD1A /* ProThanhToanQuocTeViewCell.xib in Resources */,
 				2DE2D25D1829060700034877 /* btn-bg-1.png in Resources */,
 				8EC972AD1A5D71300021DCA3 /* redCircle.png in Resources */,
 				762048771A0D246600AAA917 /* CompetitorsViewController.xib in Resources */,
@@ -6097,6 +6167,7 @@
 				2DE2D2611829060700034877 /* title-tab-bg-1.png in Resources */,
 				7657E8C81A5AEB3A008A62F9 /* Opportunity360Cell.xib in Resources */,
 				76F3289B1A34B88B00E0F2C4 /* task_done.png in Resources */,
+				8E44BC421A73A89B00EDCD1A /* ProTindungDetailViewController.xib in Resources */,
 				2DE2D26A1829060700034877 /* tab-bg.png in Resources */,
 				8E6105FA1A5986BF003D1C0C /* ProfileViewController.xib in Resources */,
 				2DE2D26B1829060700034877 /* refresh-btn-2.png in Resources */,
@@ -6110,13 +6181,12 @@
 				2D6D7660187670B00051AD9E /* header-1.png in Resources */,
 				8E2980ED1A6AAB350068B66C /* EditNote360ViewController.xib in Resources */,
 				B3157881188D5E5200C0ED01 /* ic-unsign-1.png in Resources */,
+				8E44BC3E1A73A89B00EDCD1A /* ProThanhToanQuocTeDetailViewController.xib in Resources */,
 				8E7554571A52EFC8001940FB /* iconMerge@2x.png in Resources */,
 				B3157880188D5E5200C0ED01 /* ic-uncheck-1.png in Resources */,
 				8E75546E1A52EFC8001940FB /* iconUturnRight.png in Resources */,
 				8E5AA9BC1A503F02007D9C8A /* iconArrowUp@2x.png in Resources */,
-				8EFE69371A5699F9003D55CE /* ProTaiKhoanTietKiemDetailViewController.xib in Resources */,
 				8E7554501A52EFC8001940FB /* iconForkRight.png in Resources */,
-				8EFE69321A5699BC003D55CE /* ProEMBDetailViewController.xib in Resources */,
 				8497BFC81A295A2300A5ED3C /* Default-568h@2x.png in Resources */,
 				7657E8BE1A5AEB3A008A62F9 /* EditCalendar360ViewController.xib in Resources */,
 				2DE2D28C1829060700034877 /* footer.png in Resources */,
@@ -6193,11 +6263,13 @@
 				8EC972811A5D71300021DCA3 /* FFMonthCalendarView.m in Sources */,
 				92C68E501519D4F100981728 /* BaseViewController.m in Sources */,
 				8434BEFD1A2F485700C29815 /* DetailContactLeadViewController.m in Sources */,
+				8E44BC2E1A73A89B00EDCD1A /* ProductsLeadView.m in Sources */,
 				92C68E511519D4F100981728 /* Constants.m in Sources */,
 				8EC4B90D1A505A7D0078BF13 /* DirectionsViewCell.m in Sources */,
 				8EC972911A5D71300021DCA3 /* FFHeaderMonthForYearCell.m in Sources */,
 				76D29B301A13AD88004B9CF6 /* ProductCell.m in Sources */,
 				76C9645E1A17731900029978 /* BiTransPieChart.m in Sources */,
+				8E44BC571A73B73200EDCD1A /* DTOProEMBDetailObject.m in Sources */,
 				76C964401A17731900029978 /* MIMMargin.m in Sources */,
 				92C68E521519D4F100981728 /* ActionEvent.m in Sources */,
 				8EC9728C1A5D71300021DCA3 /* FFWeekCell.m in Sources */,
@@ -6213,6 +6285,7 @@
 				92C68E571519D4F100981728 /* NSString+SBJSON.m in Sources */,
 				92C68E581519D4F100981728 /* SBJSON.m in Sources */,
 				92C68E591519D4F100981728 /* SBJsonBase.m in Sources */,
+				8E44BC331A73A89B00EDCD1A /* ProEMBDetailViewController.m in Sources */,
 				92C68E5A1519D4F100981728 /* SBJsonParser.m in Sources */,
 				76199E111A471DA900B792C5 /* MDSearchBar.m in Sources */,
 				849078861A1E461D009D5D5F /* DetailPersonLeadViewController.m in Sources */,
@@ -6229,12 +6302,12 @@
 				949B76B01A3F357A00945B41 /* SearchAdvanceOpportunityViewController.m in Sources */,
 				769F247F1A6F1C5500427A8F /* LocalizeHelper.m in Sources */,
 				849794671A1FB19300ACC568 /* DetailCustomBussinessViewController.m in Sources */,
-				8EFE69311A5699BC003D55CE /* ProEMBDetailViewController.m in Sources */,
 				8E6105F41A5964E4003D1C0C /* ComplainsView.m in Sources */,
 				8EC972A41A5D71300021DCA3 /* FFEditEventView.m in Sources */,
 				7633080F1A048962000E190B /* VTCombobox.m in Sources */,
 				843BF0B91A03EC3200EA1D8A /* ListOpportunityViewController.m in Sources */,
 				8E568F931A5900310002A3C4 /* DTOComplainProcess.m in Sources */,
+				8E44BC2C1A73A89B00EDCD1A /* ProductLeadViewCell.m in Sources */,
 				8E705CDF1A6BF41100B9A9D3 /* DTOWidgetProcess.m in Sources */,
 				159334D91A59D79700228B15 /* AlarmCalendarConfig.m in Sources */,
 				769C1A1C1A00027900F015A5 /* Reachability.m in Sources */,
@@ -6262,6 +6335,8 @@
 				8EC972791A5D71300021DCA3 /* FFDayCalendarView.m in Sources */,
 				DDBC46EB171540A200CCFB94 /* HTTPResponse.m in Sources */,
 				DDBC46EC171540A200CCFB94 /* HTTPThread.m in Sources */,
+				8E44BC5A1A73B95400EDCD1A /* DTOProThanhToanDetailProcess.m in Sources */,
+				8E44BC4E1A73B30D00EDCD1A /* DTOProTTQTDetailObject.m in Sources */,
 				76C9646C1A17731900029978 /* OthersPieChart.m in Sources */,
 				76C964641A17731900029978 /* InfoBoxStyle2.m in Sources */,
 				DDBC46ED171540A200CCFB94 /* SyncQueue.m in Sources */,
@@ -6269,7 +6344,10 @@
 				DDBC470C1715412D00CCFB94 /* NSString+URLEncoding.m in Sources */,
 				76C964491A17731900029978 /* MIMBarGraph.m in Sources */,
 				76C964531A17731900029978 /* LineInfoBox.m in Sources */,
+				8E44BC351A73A89B00EDCD1A /* ProTaiKhoanThanhToanDetailViewController.m in Sources */,
 				1595993C1A58451200D87BD4 /* NSDate+Utilities.m in Sources */,
+				8E44BC661A73B9A900EDCD1A /* DTOProWay4DetailProcess.m in Sources */,
+				8E44BC511A73B45300EDCD1A /* DTOProWay4DetailObject.m in Sources */,
 				76C964781A17731900029978 /* MIMLongRangeGraph.m in Sources */,
 				76C9629E1A16DBA500029978 /* ListAccountLeadViewController.m in Sources */,
 				8E568F8D1A58FDFC0002A3C4 /* DTOComplainObject.m in Sources */,
@@ -6282,20 +6360,21 @@
 				0648C62C1A4C2F5D0002F9FE /* UICGStep.m in Sources */,
 				DDBC470E1715412D00CCFB94 /* OAAsynchronousDataFetcher.m in Sources */,
 				8EC972C11A5D786A0021DCA3 /* FFButtonAddEventWithPopover.m in Sources */,
+				8E44BC631A73B99800EDCD1A /* DTOProTTQTDetailProcess.m in Sources */,
 				DDBC470F1715412D00CCFB94 /* OAConsumer.m in Sources */,
 				DDBC47101715412D00CCFB94 /* OADataFetcher.m in Sources */,
 				76977D551A0284DE0029F297 /* TableTestProcess.m in Sources */,
-				8ED38D7A1A54480100D95A3B /* ProductsLeadView.m in Sources */,
 				76C964611A17731900029978 /* DefaultPopOverForPieChart.m in Sources */,
 				769F24891A6F1F3F00427A8F /* MeunViewController.m in Sources */,
-				8EFE692C1A5698C9003D55CE /* ProBaoLanhDetailViewController.m in Sources */,
 				06FE2E2A1A45816D004A1D16 /* MapsModel.m in Sources */,
 				8EC4B90B1A505A7D0078BF13 /* DirectionsHeaderView.m in Sources */,
 				DDBC47111715412D00CCFB94 /* OAHMAC_SHA1SignatureProvider.m in Sources */,
 				8EC972A11A5D71300021DCA3 /* FFButtonWithHourPopover.m in Sources */,
+				8E44BC691A73B9BB00EDCD1A /* DTOProBPDetailProcess.m in Sources */,
 				8EC9DDB71A54FB6400E18A0E /* DTOProductDetailObject.m in Sources */,
 				DDBC47121715412D00CCFB94 /* OAMutableURLRequest.m in Sources */,
 				7657E8C91A5AEB3A008A62F9 /* Task360Cell.m in Sources */,
+				8E44BC3B1A73A89B00EDCD1A /* ProThanhToanQuocTeViewHeader.m in Sources */,
 				76C964471A17731900029978 /* BarInfoBox.m in Sources */,
 				8EFE69041A56604F003D55CE /* DTOProTindungDetailProcess.m in Sources */,
 				762DCF171A0336FB00C7E416 /* DTOCONTACTProcess.m in Sources */,
@@ -6320,8 +6399,6 @@
 				8497BFF71A295A2300A5ED3C /* FitBoundsViewController.m in Sources */,
 				76961E551A3B3170008B5CE7 /* SelectPhotoViewController.m in Sources */,
 				DDBC47471715459C00CCFB94 /* Base64Transcoder.c in Sources */,
-				8E69BDD81A57D24E00C6924D /* ProThanhToanQuocTeViewHeader.m in Sources */,
-				8ED38D841A54528200D95A3B /* ProductLeadCellHeader.m in Sources */,
 				8EC9729A1A5D71300021DCA3 /* UIColor+FFMoreColors.m in Sources */,
 				76C964431A17731900029978 /* PageControl.m in Sources */,
 				2D210679187AA1BB0022681B /* WeekPickerViewController.m in Sources */,
@@ -6336,7 +6413,6 @@
 				2D87F5F6175AD862007F861D /* SVProgressHUD.m in Sources */,
 				8497C0011A295A2300A5ED3C /* MapZoomViewController.m in Sources */,
 				2D47E7F31761704200F291D6 /* NSString+GCNetworkRequest.m in Sources */,
-				8EFE69211A569800003D55CE /* ProTaiKhoanThanhToanDetailViewController.m in Sources */,
 				2D36438C1859996700190EE7 /* AFDownloadRequestOperation.m in Sources */,
 				8497C00E1A295A2300A5ED3C /* VisibleRegionViewController.m in Sources */,
 				76199E131A471DA900B792C5 /* MDSearchBarController.m in Sources */,
@@ -6348,6 +6424,7 @@
 				2D47E7F71761704200F291D6 /* GCNetworkRequestOperation.m in Sources */,
 				2D47E7F81761704200F291D6 /* GCNetworkRequestQueue.m in Sources */,
 				8EC972C21A5D786A0021DCA3 /* FFCalendarViewController.m in Sources */,
+				8E44BC4B1A73B06800EDCD1A /* DTOProBaoLanhDetailObject.m in Sources */,
 				8497C00F1A295A2300A5ED3C /* SDKDemoMasterViewController.m in Sources */,
 				8EBFF2761A6E97700009D9E1 /* EditWidgetViewController.m in Sources */,
 				76C964451A17731900029978 /* XAxisLabel.m in Sources */,
@@ -6356,7 +6433,6 @@
 				7657E8AF1A5AEB3A008A62F9 /* Contact360Cell.m in Sources */,
 				8497C0071A295A2300A5ED3C /* PanoramaViewController.m in Sources */,
 				2D47E7F91761704200F291D6 /* GCNetworkDownloadRequest.m in Sources */,
-				8EFE693B1A569A2C003D55CE /* ProThanhToanQuocTeDetailViewController.m in Sources */,
 				2D47E7FA1761704200F291D6 /* GCNetworkFormRequest.m in Sources */,
 				8E2640B41A4C7A4C0047073B /* MainViewListCell.m in Sources */,
 				8EC972A01A5D71300021DCA3 /* FFDatePopoverController.m in Sources */,
@@ -6373,6 +6449,7 @@
 				2D47E80F1761CACC00F291D6 /* Base64.m in Sources */,
 				8ED38D741A5447C500D95A3B /* DetailLeadViewController.m in Sources */,
 				7617F07F193DE30A00BB7073 /* GlobalVars.m in Sources */,
+				8E44BC391A73A89B00EDCD1A /* ProThanhToanQuocTeViewCell.m in Sources */,
 				7657E8C31A5AEB3A008A62F9 /* Follow360ViewController.m in Sources */,
 				8EC9727E1A5D71300021DCA3 /* FFDayCollectionView.m in Sources */,
 				76601A2B194BE90F001D4C01 /* ReaderContentTile.m in Sources */,
@@ -6382,7 +6459,6 @@
 				2D9FCB8E1795643900950763 /* MJPopupBackgroundView.m in Sources */,
 				762DCF1A1A033C7900C7E416 /* DataField.m in Sources */,
 				8EC972981A5D71300021DCA3 /* FFRedAndWhiteButton.m in Sources */,
-				8EFE69361A5699F9003D55CE /* ProTaiKhoanTietKiemDetailViewController.m in Sources */,
 				2D9FCB8F1795643900950763 /* UIViewController+MJPopupViewController.m in Sources */,
 				8EBBC2501A4EF67C00F17BEE /* SubListMainView.m in Sources */,
 				76C9643D1A17731900029978 /* CustomBox.m in Sources */,
@@ -6397,6 +6473,7 @@
 				76D6281C1A3DA741009C3A0C /* CMPopTipView.m in Sources */,
 				2D9FCB9E179639EB00950763 /* QLCoverFlowPagesView.m in Sources */,
 				7657E8C11A5AEB3A008A62F9 /* EditTask360ViewController.m in Sources */,
+				8E44BC481A73AEB400EDCD1A /* DTOProTietKiemDetailObject.m in Sources */,
 				2D9FCB9F179639EB00950763 /* QLPageView.m in Sources */,
 				769C1A1B1A00027900F015A5 /* Network.m in Sources */,
 				8EC9727C1A5D71300021DCA3 /* FFDayHeaderCollectionView.m in Sources */,
@@ -6419,9 +6496,11 @@
 				8EC4B9161A505B0E0078BF13 /* RoutesDirectionsView.m in Sources */,
 				769F24851A6F1C5500427A8F /* UIViewController+MMDrawerController.m in Sources */,
 				76601A31194BE90F001D4C01 /* ReaderThumbCache.m in Sources */,
+				8E44BC371A73A89B00EDCD1A /* ProTaiKhoanTietKiemDetailViewController.m in Sources */,
 				2D36438F1859996700190EE7 /* AFImageRequestOperation.m in Sources */,
 				76C964711A17731900029978 /* PieBubble.m in Sources */,
 				8E8B3F251A49AA4300241360 /* MainViewController.m in Sources */,
+				8E44BC451A73ACDA00EDCD1A /* DTOProThanhToanDetailObject.m in Sources */,
 				763308151A048DBC000E190B /* VTRadio.m in Sources */,
 				8497C00A1A295A2300A5ED3C /* Samples.m in Sources */,
 				8E7BDB811A6E87960089CB7A /* DTOWidgetTypeObject.m in Sources */,
@@ -6445,11 +6524,12 @@
 				06FE2E231A456904004A1D16 /* Items.m in Sources */,
 				8EC9729D1A5D71300021DCA3 /* FFDateManager.m in Sources */,
 				76C964661A17731900029978 /* LayeredPieChart.m in Sources */,
+				8E44BC311A73A89B00EDCD1A /* ProBaoLanhDetailViewController.m in Sources */,
 				76C964421A17731900029978 /* MIMProperties.m in Sources */,
 				76C9643C1A17731900029978 /* AnchorInfo.m in Sources */,
+				8E44BC541A73B5AD00EDCD1A /* DTOProBPDetailObject.m in Sources */,
 				76C963B41A17403600029978 /* MainBISViewController.m in Sources */,
 				76601A2E194BE90F001D4C01 /* ReaderDocumentOutline.m in Sources */,
-				8E69BDD41A57D23900C6924D /* ProThanhToanQuocTeViewCell.m in Sources */,
 				7657E8B11A5AEB3A008A62F9 /* EditContact360ViewController.m in Sources */,
 				8ED38D801A544F7200D95A3B /* DTOPRODUCTTYPEProcess.m in Sources */,
 				2D2D216217A6946800A87364 /* InfSourceColorView.m in Sources */,
@@ -6460,15 +6540,16 @@
 				2D0C7E3517A9FD1000DDABAC /* ASDepthModalViewController.m in Sources */,
 				8497BFF51A295A2300A5ED3C /* CustomMarkersViewController.m in Sources */,
 				8497BFFE1A295A2300A5ED3C /* IndoorViewController.m in Sources */,
+				8E44BC3F1A73A89B00EDCD1A /* ProTheDetailViewController.m in Sources */,
 				76C962A31A16DD0D00029978 /* EditAccountLeadViewController.m in Sources */,
 				8E705CDC1A6BF1FD00B9A9D3 /* DTOWidgetObject.m in Sources */,
 				8497BFFA1A295A2300A5ED3C /* GestureControlViewController.m in Sources */,
 				8EBFF24D1A6E94BF0009D9E1 /* DTOWidgetTypeProcess.m in Sources */,
 				8EC9729C1A5D71300021DCA3 /* UILabel+FFCustomMethods.m in Sources */,
 				8EC972A81A5D71300021DCA3 /* FFEventDetailPopoverController.m in Sources */,
-				8EFE69401A569A59003D55CE /* ProTheDetailViewController.m in Sources */,
 				8E568F9D1A591CC80002A3C4 /* ComplainDetailViewController.m in Sources */,
 				76601A3A194BE90F001D4C01 /* ThumbsViewController.m in Sources */,
+				8E44BC5D1A73B97000EDCD1A /* DTOProTietKiemDetailProcess.m in Sources */,
 				2D0C7E3617A9FD1000DDABAC /* UIImage+Blur.m in Sources */,
 				2D0C7E3A17AA43FE00DDABAC /* MarqueeLabel.m in Sources */,
 				8497C0051A295A2300A5ED3C /* MarkersViewController.m in Sources */,
@@ -6497,6 +6578,7 @@
 				2D4B92C817ACD7DE002A9AC5 /* DAAttributedStringFormatter.m in Sources */,
 				8EC9729B1A5D71300021DCA3 /* UIImage+FFCustomMethods.m in Sources */,
 				843BF0BF1A03ECC500EA1D8A /* OpportunityCell.m in Sources */,
+				8E44BC601A73B98400EDCD1A /* DTOProBaoLanhDetailProcess.m in Sources */,
 				76F328971A34B11E00E0F2C4 /* EditTaskLeadViewController.m in Sources */,
 				76C9646F1A17731900029978 /* PermanentScroller.m in Sources */,
 				2D4B92C917ACD7DE002A9AC5 /* DABoxesLayer.m in Sources */,
@@ -6525,7 +6607,6 @@
 				8497C0091A295A2300A5ED3C /* PolylinesViewController.m in Sources */,
 				8497BFFC1A295A2300A5ED3C /* GroundOverlayViewController.m in Sources */,
 				B3F727B817B512E40024DC0D /* FileManagerUtil.m in Sources */,
-				8ED38D8A1A54558100D95A3B /* ProductLeadViewCell.m in Sources */,
 				76601A32194BE90F001D4C01 /* ReaderThumbFetch.m in Sources */,
 				7657E8C51A5AEB3A008A62F9 /* Note360Cell.m in Sources */,
 				8E568F841A58F5170002A3C4 /* ComplainViewCell.m in Sources */,
@@ -6534,6 +6615,7 @@
 				B3332AF317B8CF330011CD85 /* EnumClass.m in Sources */,
 				B301F1B817C376CD0004650C /* ExampleHTMLStringToAttributedString.m in Sources */,
 				B301F20E17C382F30004650C /* BALabel.m in Sources */,
+				8E44BC3D1A73A89B00EDCD1A /* ProThanhToanQuocTeDetailViewController.m in Sources */,
 				7657E8B91A5AEB3A008A62F9 /* EditAccount360ViewController.m in Sources */,
 				B301F21117C383130004650C /* InterfaceUtil.m in Sources */,
 				8EC972941A5D71300021DCA3 /* FFYearCell.m in Sources */,
@@ -6556,6 +6638,7 @@
 				76601A2C194BE90F001D4C01 /* ReaderContentView.m in Sources */,
 				762133AE1A3DF7420049771C /* TestEditViewController.m in Sources */,
 				7693EE071A355593004E0178 /* EditCalendarLeadViewController.m in Sources */,
+				8E44BC6C1A73B9D300EDCD1A /* DTOProEMBDetailProcess.m in Sources */,
 				8496FB271A2DE34200F4A641 /* ContactLeadCell.m in Sources */,
 				2D459E79184EC5EA004D9C45 /* LineView.m in Sources */,
 				769F24841A6F1C5500427A8F /* README.md in Sources */,
@@ -6567,10 +6650,10 @@
 				7657E8B51A5AEB3A008A62F9 /* Calendar360Cell.m in Sources */,
 				15C6A1971A6FDC4800F19B30 /* PickerViewController.m in Sources */,
 				76C9643B1A17731900029978 /* Anchor.m in Sources */,
+				8E44BC2F1A73A89B00EDCD1A /* ProBankPlusDetailViewController.m in Sources */,
 				8EC9728A1A5D71300021DCA3 /* FFHourAndMinLabel.m in Sources */,
 				769F24811A6F1C5500427A8F /* MMDrawerBarButtonItem.m in Sources */,
 				8EC972821A5D71300021DCA3 /* FFButtonWithEditAndDetailPopoversForMonthCell.m in Sources */,
-				8EFE69261A56987C003D55CE /* ProBankPlusDetailViewController.m in Sources */,
 				8EC9728F1A5D71300021DCA3 /* FFWeekScrollView.m in Sources */,
 				B362286617E95FE300CAA6AE /* NSData-AES.m in Sources */,
 				B362286717E95FE300CAA6AE /* NSFileManager-AES.m in Sources */,
@@ -6600,7 +6683,9 @@
 				76601A28194BE90F001D4C01 /* CGPDFDocument.m in Sources */,
 				2D044C7F18025D8D00FBC073 /* NSNull+extend.m in Sources */,
 				8497C0021A295A2300A5ED3C /* MarkerEventsViewController.m in Sources */,
+				8E44BC411A73A89B00EDCD1A /* ProTindungDetailViewController.m in Sources */,
 				769C1A1319FFFBE100F015A5 /* AlertViewUtils.m in Sources */,
+				8E44BC2A1A73A89B00EDCD1A /* ProductLeadCellHeader.m in Sources */,
 				B31938D818E4355D0008BBFE /* UIView+Custom.m in Sources */,
 				8EC9727D1A5D71300021DCA3 /* FFDayCell.m in Sources */,
 				8497BFFB1A295A2300A5ED3C /* GradientPolylinesViewController.m in Sources */,
@@ -6616,7 +6701,6 @@
 				8EC9728D1A5D71300021DCA3 /* FFWeekCollectionView.m in Sources */,
 				8497BFFD1A295A2300A5ED3C /* IndoorMuseumNavigationViewController.m in Sources */,
 				B313F1CF18A5096C001FDEC6 /* Util.m in Sources */,
-				8EFE69141A56938C003D55CE /* ProTindungDetailViewController.m in Sources */,
 				76601A39194BE90F001D4C01 /* ThumbsMainToolbar.m in Sources */,
 				769F24831A6F1C5500427A8F /* MMDrawerVisualState.m in Sources */,
 				8EC972A91A5D71300021DCA3 /* FFEventDetailView.m in Sources */,

@@ -20,7 +20,6 @@
 #import "TaskCalendarCell.h"
 #import "TaskCalTLineCell.h"
 #import "TaskActionCell.h"
-#import "ProductsLeadView.h"
 #import "ComplainsView.h"
 #import "ComplainDetailViewController.h"
 #import "ComplainModel.h"
@@ -51,13 +50,13 @@
 #define DELETE_TASK 44
 #define DELETE_COHOI 55
 #define DELETE_LEAD 66
-#define WIDTH_HEADER_EXPAND_INFO 930
+#define WIDTH_HEADER_EXPAND_INFO 800
 
 static NSString* const TaskCalendarNormalCellId   = @"TaskCalendarCellId";
 static NSString* const TaskCalendarTimelineCellId = @"TaskCalTLineCellId";
 static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
-@interface DetailLeadViewController () <TaskActionCellDelegate,ComplainDetailViewControllerDelegate,EditCalendarLeadViewControllerDelegate,ComplainsViewDelegate,ProductsLeadViewDelegate,ProTindungDetailViewControllerDelegate,ProBaoLanhDetailViewControllerDelegate,ProTaiKhoanThanhToanDetailViewControllerDelegate,ProTaiKhoanTietKiemDetailViewControllerDelegate,ProBankPlusDetailViewControllerDelegate,ProEMBDetailViewControllerDelegate,ProThanhToanQuocTeDetailViewControllerDelegate,ProTheDetailViewControllerDelegate>
+@interface DetailLeadViewController () <TaskActionCellDelegate,ComplainDetailViewControllerDelegate,EditCalendarLeadViewControllerDelegate,ComplainsViewDelegate>
 {
     int smgSelect ; //option layout
     NSArray *arrayData; //mang luu tru du lieu
@@ -99,18 +98,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     BOOL calendarIsTimeline;
 
     IBOutlet UIScrollView *scrollViewHeaderExpandInfo;
-
-    IBOutlet  ProductsLeadView* viewProductsLead;
     IBOutlet  ComplainsView* viewComplain;
-
-    ProTindungDetailViewController *proTindungDetailVC;
-    ProTaiKhoanThanhToanDetailViewController *proTaiKhoanThanhToanDetailVC;
-    ProTaiKhoanTietKiemDetailViewController *proTaiKhoanTietKiemDetailVC;
-    ProBaoLanhDetailViewController *proBaoLanhDetailVC;
-    ProThanhToanQuocTeDetailViewController *proThanhToanQuocTeDetailVC;
-    ProTheDetailViewController *proTheDetailVC;
-    ProEMBDetailViewController *proEMBDetailVC;
-    ProBankPlusDetailViewController *proBankPlusDetailVC;
 }
 @end
 
@@ -406,20 +394,9 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         {
             self.viewBodyExpandInfo.hidden = NO;
             self.tbData.hidden  = YES;
-            [viewProductsLead setHidden:YES];
             [viewComplain setHidden:NO];
             [viewComplain setDelegate:self];
             [viewComplain initDataWithLeaderId:[[dicData objectForKey:DTOLEAD_clientLeadId] description]];
-        }
-        break;
-        case typeLeaderView_ProductsLead:
-        {
-            self.viewBodyExpandInfo.hidden = NO;
-            self.tbData.hidden  = YES;
-            [viewComplain setHidden:YES];
-            [viewProductsLead setHidden:NO];
-            [viewProductsLead setDelegate:self];
-            [viewProductsLead initDataWithLeaderId:[[dicData objectForKey:DTOLEAD_clientLeadId] description]];
         }
         break;
         default:
@@ -432,9 +409,6 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
 - (void) updateInterFaceWithOption : (int) option
 {
-
-
-
     [self.mainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
 
     self.bodyMainView.backgroundColor = BACKGROUND_NORMAL_COLOR1;
@@ -879,62 +853,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     [complainDetailVC loadDataWithComplainOB:complainOB];
 }
 
-#pragma mark Products Lead View Delegate
 
-- (void)selectedProductDetailAtIndex:(NSInteger)index{
-
-    if (index==PRODUCT_TYPE_TIN_DUNG)
-    {
-        proTindungDetailVC = [[ProTindungDetailViewController alloc] init];
-        proTindungDetailVC.delegate= self;
-        [self presentViewController:proTindungDetailVC animated:YES completion:nil];
-    }
-    else if (index==PRODUCT_TYPE_THANH_TOAN)
-    {
-        proTaiKhoanThanhToanDetailVC = [[ProTaiKhoanThanhToanDetailViewController alloc] init];
-
-        proTaiKhoanThanhToanDetailVC.delegate= self;
-        [self presentViewController:proTaiKhoanThanhToanDetailVC animated:YES completion:nil];
-    }
-    else if (index==PRODUCT_TYPE_TIET_KIEM)
-    {
-        proTaiKhoanTietKiemDetailVC = [[ProTaiKhoanTietKiemDetailViewController alloc] init];
-        proTaiKhoanTietKiemDetailVC.delegate= self;
-        [self presentViewController:proTaiKhoanTietKiemDetailVC animated:YES completion:nil];
-    }
-    else if (index==PRODUCT_TYPE_BAO_LANH)
-    {
-        proBaoLanhDetailVC = [[ProBaoLanhDetailViewController alloc] init];
-        proBaoLanhDetailVC.delegate= self;
-        [self presentViewController:proBaoLanhDetailVC animated:YES completion:nil];
-    }
-    else if (index==PRODUCT_TYPE_THANH_TOAN_QUOC_TE)
-    {
-        proThanhToanQuocTeDetailVC = [[ProThanhToanQuocTeDetailViewController alloc] init];
-        proThanhToanQuocTeDetailVC.delegate= self;
-        [self presentViewController:proThanhToanQuocTeDetailVC animated:YES completion:nil];
-
-    }
-    else if (index==PRODUCT_TYPE_THE)
-    {
-        proTheDetailVC = [[ProTheDetailViewController alloc] init];
-        proTheDetailVC.delegate= self;
-        [self presentViewController:proTheDetailVC animated:YES completion:nil];
-    }
-    else if (index==PRODUCT_TYPE_NGAN_HANG_DIEN_TU)
-    {
-        proEMBDetailVC = [[ProEMBDetailViewController alloc] init];
-        proEMBDetailVC.delegate= self;
-        [self presentViewController:proEMBDetailVC animated:YES completion:nil];
-
-    }
-    else if (index==PRODUCT_TYPE_BANK_PLUS)
-    {
-        proBankPlusDetailVC = [[ProBankPlusDetailViewController alloc] init];
-        proBankPlusDetailVC.delegate= self;
-        [self presentViewController:proBankPlusDetailVC animated:YES completion:nil];
-    }
-}
 
 
 //Thêm phần sửa, xoá hiển thị trên row của table

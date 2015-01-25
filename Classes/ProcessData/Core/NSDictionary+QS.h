@@ -17,8 +17,11 @@
 #import "DTOTaskObject.h"
 #import "DTOWidgetObject.h"
 #import "DTOWidgetTypeObject.h"
+#import "DTOProTindungDetailObject.h"
 
 @interface NSDictionary (QS)
+
+-(DTOProTindungDetailObject*)dtoProTindungDetailObject;
 
 -(DTOWidgetTypeObject*)dtoWidgetTypeObject;
 

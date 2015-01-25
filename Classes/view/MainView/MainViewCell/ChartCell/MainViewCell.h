@@ -15,13 +15,22 @@
 
 @class DTOWidgetObject;
 
+@protocol MainViewCellDelegate <NSObject>
+
+@optional
+
+- (void)deleteWidgetObject:(DTOWidgetObject*)widgetOB;
+- (void)updateWidgetObject:(DTOWidgetObject*)widgetOB;
+
+@end
+
 @interface MainViewCell : UITableViewCell<LineGraphDelegate,BarGraphDelegate>
 {
 
     IBOutlet MIMLineGraph *mLineGraph;
     IBOutlet MIMBarGraph *mBarGraph;
     IBOutlet ContentChartViewCell *contentChartView;
-    
+
     IBOutlet UILabel *titleGraph;
 
     NSDictionary *barProperty;
@@ -38,8 +47,19 @@
     TypeGraphs _typeGraph;
     IBOutlet UITableView *tbvMain;
     DTOWidgetObject *_widgetOB;
+    IBOutlet UIButton *btnDelete;
+    IBOutlet UIButton *btnLine;
+    IBOutlet UIButton *btnColumnVertical;
+    IBOutlet UIButton *btnColumnHorizontal;
+    IBOutlet UIView *widgetTypeView;
+
+    IBOutlet UIButton *btnSave;
+    IBOutlet UIButton *btnCancel;
+    IBOutlet UIView *configurationView;
+
 }
 
+@property (nonatomic,assign) id<MainViewCellDelegate>delegate;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier WithType:(TypeGraphs)typeGraph;
 

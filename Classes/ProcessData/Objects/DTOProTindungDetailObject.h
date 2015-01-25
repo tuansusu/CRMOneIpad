@@ -11,7 +11,6 @@
 @class Items;
 
 @interface DTOProTindungDetailObject : NSObject
-
 @property (nonatomic, retain) NSString * BRANCH_CODE;
 @property (nonatomic, retain) NSString * CONTRACT_NUMBER;
 @property (nonatomic, retain) NSString * OPEN_DATE;
@@ -48,6 +47,7 @@
 @property (nonatomic, retain) NSString * RM_CODE;
 @property (nonatomic, retain) NSString * KHOI;
 @property (nonatomic, retain) NSString * RM_BANCHEO;
+@property (nonatomic, retain) NSString * PURPOSE;
 
 +(NSArray*)allFields;
 -(Items*)itemObject;

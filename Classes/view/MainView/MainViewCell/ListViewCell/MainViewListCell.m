@@ -19,6 +19,8 @@
         // Initialization code
         self = [[[NSBundle mainBundle] loadNibNamed:[[self class] description] owner:self options:Nil] objectAtIndex:0];
         [subListMainView initData];
+        btnDelete.layer.cornerRadius = 5;
+        btnDelete.clipsToBounds = YES;
     }
     return self;
 }
@@ -53,8 +55,17 @@
 
 
 -(void)loadDataCellWithWidgetObject:(DTOWidgetObject*)widgetOB{
+    _widgetOB = widgetOB;
     [lblTitle setText:widgetOB.widgetName];
     [subListMainView initData];
+}
+
+#pragma mark button action
+
+-(IBAction)deleteAction:(id)sender{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(deleteWidgetObject:)]) {
+        [self.delegate deleteWidgetObject:_widgetOB];
+    }
 }
 
 @end

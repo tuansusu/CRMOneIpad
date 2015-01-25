@@ -411,6 +411,11 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
 - (void) updateInterFaceWithOption : (int) option
 {
+    
+    //set upper case
+    self.lbLeftInfo.text = [self.lbLeftInfo.text uppercaseString];
+    [self.viewHeaderLeft setBorderWithOption:smgSelect withBorderFlag:AUISelectiveBordersFlagBottom];
+    
     [self.mainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
 
     self.bodyMainView.backgroundColor = BACKGROUND_NORMAL_COLOR1;
@@ -423,8 +428,12 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     self.viewBodyMainInfo.layer.borderWidth = BORDER_WITH;
     self.viewBodyMainInfo.layer.borderColor = [BORDER_COLOR CGColor];
 
-
     self.viewHeaderExpandInfo.backgroundColor = BACKGROUND_NORMAL_COLOR1;
+    
+    [self.scrollViewPersonal setBackGroundNormalColorWithOption:smgSelect];
+    [self.scrollViewBussiness setBackGroundNormalColorWithOption:smgSelect];
+    
+
 
     [self.tbData setBorderWithOption:smgSelect];
     [self.viewBodyExpandInfo setBorderWithOption:smgSelect];
@@ -451,9 +460,6 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     
     //cap nhat cho dong line phan chi tiet
-    
-    
-
 }
 
 #pragma mark set bottom
@@ -462,7 +468,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     //NSArray *arrayLabelToSetBottomLine = [scrollViewTemp vi]
     
     for (UIView *viewSub in [scrollViewTemp subviews]) {
-        if (viewSub.tag == 511) {
+        if (viewSub.tag == TAG_CONTROL_LINE) {
             [self addBottomLineWithBottomControl:viewSub.frame withInControl:scrollViewTemp];
         }
     }
@@ -907,6 +913,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         {
             EditContactLeadViewController *viewNoteController = [[EditContactLeadViewController alloc]initWithNibName:@"EditContactLeadViewController" bundle:nil];
             viewNoteController.dataSend = dicTempData;
+            viewNoteController.dataRoot = dicData;
             [self presentViewController:viewNoteController animated:YES completion:nil];
 
         }
@@ -1099,6 +1106,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         {
             EditContactLeadViewController *viewNoteController = [[EditContactLeadViewController alloc]initWithNibName:@"EditContactLeadViewController" bundle:nil];
             viewNoteController.dataSend = dicTempData;
+            viewNoteController.dataRoot = dicData;
             [self presentViewController:viewNoteController animated:YES completion:nil];
 
         }

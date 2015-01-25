@@ -28,7 +28,7 @@
 #import "DTOWidgetTypeProcess.h"
 #import "Items.h"
 
-@interface MainViewController ()<EditWidgetViewControllerDelegate>
+@interface MainViewController ()<EditWidgetViewControllerDelegate,MainViewListCellDelegate,MainViewCellDelegate>
 {
     NSString *interfaceOption;
     NSUserDefaults *defaults;
@@ -44,6 +44,7 @@
     NSMutableArray *listWidgetTypeNotUseStr;
     NSMutableArray *listWidgetTypeUsed;
     DTOWidgetTypeProcess *dtoWidgetTypeProcess;
+    IBOutlet UILabel *lblMessageWidget;
 }
 
 @property (nonatomic, retain) UIPopoverController *listPopover;
@@ -101,11 +102,18 @@ NSString* emptyText = @"";
 -(void) initData {
     //load data from db
     [arrayData removeAllObjects];
+
     NSMutableArray *resultArr = [dtoWidgetProcess filterWithKey:DTOWIDGET_accountName withValue:@"demo"];
 
     for (NSDictionary *widgetDic in resultArr) {
         [arrayData addObject:[widgetDic dtoWidgetObject]];
     }
+    if (arrayData.count>0) {
+        [lblMessageWidget setHidden:YES];
+    }else{
+        [lblMessageWidget setHidden:NO];
+    }
+
     [_tbData reloadData];
 
 
@@ -202,6 +210,7 @@ NSString* emptyText = @"";
 }
 
 
+
 #pragma mark TableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -240,6 +249,7 @@ NSString* emptyText = @"";
                 [self.tbData registerNib:[UINib nibWithNibName:@"MainViewCell" bundle:nil] forCellReuseIdentifier:@"MainViewCell"];
                 cell = [[MainViewCell alloc]  initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId WithType:[widgetOB.typeGraphically intValue]];
             }
+            [cell setDelegate:self];
             [cell loadDataCellWithWidgetObject:widgetOB];
             [arrayWidgetDashboard addObject:cell];
             return cell;
@@ -254,13 +264,37 @@ NSString* emptyText = @"";
             cell = [[MainViewListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
 
         }
-
+        [cell setDelegate:self];
         [cell loadDataCellWithWidgetObject:widgetOB];
         return cell;
 
     }
     return nil;
 }
+
+#pragma mark Main View Cell Delegate
+
+- (void)deleteWidgetObject:(DTOWidgetObject*)widgetOB{
+    if ([dtoWidgetProcess deleteEntityWithConfId:widgetOB.confId]) {
+        [arrayWidgetDashboard removeAllObjects];
+        [self initData];
+    }
+}
+
+- (void)updateWidgetObject:(DTOWidgetObject*)widgetOB{
+    Items *items = [widgetOB itemObject];
+    NSMutableDictionary * widgetDic = [items itemDictionary];
+
+    if ([dtoWidgetProcess insertToDBWithEntity:widgetDic]) {
+        [arrayWidgetDashboard removeAllObjects];
+        [self initData];
+    }else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Sảy ra lỗi, vui lòng thử lại hoặc gửi log đến quản trị" delegate:self cancelButtonTitle:@"Thoát" otherButtonTitles:nil];
+        alert.tag = 6;
+        [alert show];
+    }
+}
+
 
 #pragma mark Action
 
@@ -333,13 +367,7 @@ NSString* emptyText = @"";
     NSMutableDictionary * widgetDic = [items itemDictionary];
 
     if ([dtoWidgetProcess insertToDBWithEntity:widgetDic]) {
-        //Thong bao cap nhat thanh cong va thoat
-
-
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:SYS_Notification_Title message:SYS_Notification_AddWidgetSuccess delegate:self cancelButtonTitle:SYS_Notification_OKButton otherButtonTitles: nil];
-        [alert show];
         [self initData];
-
     }else{
         //khong bao nhap loi - lien he quan tri
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:SYS_Notification_Title message:SYS_Notification_UpdateDbFail delegate:self cancelButtonTitle:SYS_Notification_OKButton otherButtonTitles:nil];
@@ -370,68 +398,7 @@ NSString* emptyText = @"";
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:SYS_Notification_Title message:SYS_Notification_NoWidget delegate:self cancelButtonTitle:SYS_Notification_OKButton otherButtonTitles:nil];
         [alert show];
     }
-
-
-    //    EditWidgetViewController *editWidgetVC = [[EditWidgetViewController alloc] init];
-    //    [editWidgetVC setDelegate:self];
-    //    [self presentViewController:editWidgetVC animated:YES completion:nil];
 }
 
-- (IBAction)actionDashBoard:(id)sender {
-}
-//Khach hang dau moi = khach hang tiem nang
-- (IBAction)actionPotentialCustomer:(id)sender {
-    ListAccountLeadViewController *viewController = [[ListAccountLeadViewController alloc]initWithNibName:@"ListAccountLeadViewController" bundle:nil];
-    [self presentViewController:viewController animated:YES completion:nil];
-
-}
-
-- (IBAction)actionAccount360:(id)sender {
-    ListAccountViewController *viewController = [[ListAccountViewController alloc]initWithNibName:@"ListAccountViewController" bundle:nil];
-    [self presentViewController:viewController animated:YES completion:nil];
-}
-
-- (IBAction)actionOpportunity:(UIButton *)sender {
-
-    ListOpportunityViewController *viewController = [[ListOpportunityViewController alloc]initWithNibName:@"ListOpportunityViewController" bundle:nil];
-    [self presentViewController:viewController animated:YES completion:nil];
-
-
-}
-
-- (IBAction)actionCalendar:(id)sender {
-
-    FFCalendarViewController *calendarVC = [FFCalendarViewController new];
-    [self presentViewController:calendarVC animated:YES completion:nil];
-
-}
-
-- (IBAction)actionMapView:(id)sender {
-
-    TestMapViewController *viewController = [[TestMapViewController alloc]initWithNibName:@"TestMapViewController" bundle:nil];
-    [self presentViewController:viewController animated:YES completion:nil];
-
-}
-
-- (IBAction)actionComplain:(id)sender {
-
-    ListComplainsViewController *viewController = [[ListComplainsViewController alloc]initWithNibName:@"ListComplainsViewController" bundle:nil];
-    [self presentViewController:viewController animated:YES completion:nil];
-
-}
-
-- (IBAction)actionHelp:(id)sender {
-
-    TestEditViewController *viewController = [[TestEditViewController alloc]initWithNibName:@"TestEditViewController" bundle:nil];
-    [self presentViewController:viewController animated:YES completion:nil];
-
-}
-
-- (IBAction)btnProfileAction:(id)sender {
-    ProfileViewController *profileVC = [[ProfileViewController alloc] init];
-    [profileVC.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    [self presentViewController:profileVC animated:YES completion:nil];
-    
-}
 
 @end

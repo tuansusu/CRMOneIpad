@@ -16,7 +16,7 @@
 
 -(NSMutableArray*) filterProductDetailWithClientId:(NSString*)clientId WithProductCode:(NSString*)productCode{
 
-    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where clientId=%@ and PRODUCT_CODE=%@ and status=1",[[DTOProTindungDetailObject allFields] componentsJoinedByString:@"," ] ,TABLENAME_DTOProTindungDetail ,clientId,productCode];
+    NSString *query = [NSString stringWithFormat:@"Select * from %@ where CLIENT_ID=%@ and PRODUCT_CODE=%@ and STATUS=1",TABLENAME_DTOProTindungDetail ,clientId,productCode];
 
     return [DataUtil BuilQueryGetListWithListFields:[DTOProTindungDetailObject allFields] selectQuery:query valueParameter:nil];
 }

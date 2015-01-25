@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
@@ -38,8 +39,10 @@
                 <outlet property="scrollViewHeaderExpandInfo" destination="ETa-8K-1Fq" id="Mtu-yE-7oo"/>
                 <outlet property="tbData" destination="bv5-8t-xNG" id="gVw-B2-vAi"/>
                 <outlet property="view" destination="hvV-8M-G2v" id="OMx-pC-Kin"/>
-                <outlet property="viewBodyExpandInfo" destination="NYu-Bj-ZQP" id="yaU-k4-LiP"/>
+                <outlet property="viewBodyExpandInfo" destination="hnN-Pi-Hjy" id="czY-kf-Y8F"/>
+                <outlet property="viewComplain" destination="IH4-gD-F8z" id="Zj7-m6-s3O"/>
                 <outlet property="viewHeaderExpandInfo" destination="8fv-x3-MDt" id="hSL-vp-NKv"/>
+                <outlet property="viewProductsLead" destination="nhE-uh-Ee7" id="Egh-hB-B2p"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -451,6 +454,9 @@
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="btnComplainsTaped:" destination="-1" eventType="touchUpInside" id="cNQ-xO-pWn"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7O1-ER-tjX">
                                                     <rect key="frame" x="780" y="0.0" width="130" height="40"/>
@@ -460,6 +466,9 @@
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="btnProductsTaped:" destination="-1" eventType="touchUpInside" id="KXA-ae-3TM"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </scrollView>
@@ -475,9 +484,183 @@
                                         <outlet property="delegate" destination="-1" id="h6O-aT-GJb"/>
                                     </connections>
                                 </tableView>
-                                <view contentMode="scaleToFill" id="NYu-Bj-ZQP" userLabel="View body expand info">
-                                    <rect key="frame" x="-38" y="40" width="704" height="604"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view contentMode="scaleToFill" id="hnN-Pi-Hjy" userLabel="View body expand info">
+                                    <rect key="frame" x="0.0" y="40" width="704" height="604"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" id="nhE-uh-Ee7" customClass="ProductsLeadView">
+                                            <rect key="frame" x="0.0" y="0.0" width="704" height="604"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="mfy-f7-PlZ">
+                                                    <rect key="frame" x="0.0" y="50" width="704" height="554"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="nhE-uh-Ee7" id="TQf-Kh-nxr"/>
+                                                        <outlet property="delegate" destination="nhE-uh-Ee7" id="H6N-YI-8eh"/>
+                                                    </connections>
+                                                </tableView>
+                                                <view contentMode="scaleToFill" id="8bC-9H-4Ig">
+                                                    <rect key="frame" x="0.0" y="0.0" width="704" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" id="RED-tR-VZU">
+                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="50"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loại SP" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="o8R-mu-exX">
+                                                                    <rect key="frame" x="0.0" y="3" width="80" height="21"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" id="WBs-gz-mFM">
+                                                            <rect key="frame" x="80" y="0.0" width="180" height="50"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mã sản phẩm" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NT0-60-3Kf">
+                                                                    <rect key="frame" x="0.0" y="3" width="180" height="21"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tên sản phẩm" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qpw-rE-8uw">
+                                                                    <rect key="frame" x="0.0" y="24" width="180" height="21"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" id="uGF-Zm-A06">
+                                                            <rect key="frame" x="267" y="0.0" width="160" height="50"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số HĐ/TK" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GLd-Fa-XrF">
+                                                                    <rect key="frame" x="0.0" y="3" width="160" height="21"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngày mở" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jcd-7a-Dlh">
+                                                                    <rect key="frame" x="0.0" y="24" width="160" height="21"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" id="Fgm-o9-lN4">
+                                                            <rect key="frame" x="434" y="0.0" width="160" height="50"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số dư quy đổi" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ciS-ce-qQL">
+                                                                    <rect key="frame" x="0.0" y="3" width="160" height="21"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiền Tệ" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gmE-Ac-FQ1">
+                                                                    <rect key="frame" x="0.0" y="24" width="160" height="21"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" id="QDy-35-3te">
+                                                            <rect key="frame" x="601" y="0.0" width="160" height="50"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngày đáo hạn" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="B54-7h-j24">
+                                                                    <rect key="frame" x="0.0" y="3" width="160" height="21"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngày dữ liệu" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zRB-s5-bmm">
+                                                                    <rect key="frame" x="0.0" y="24" width="160" height="21"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </view>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="pvg-AL-gtx">
+                                                            <rect key="frame" x="0.0" y="49" width="704" height="1"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <outlet property="tbvProductsLead" destination="mfy-f7-PlZ" id="zec-8C-Jdl"/>
+                                            </connections>
+                                        </view>
+                                        <view contentMode="scaleToFill" id="IH4-gD-F8z" customClass="ComplainsView">
+                                            <rect key="frame" x="0.0" y="0.0" width="704" height="604"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" id="Ywa-yq-vdK" userLabel="contentView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="704" height="604"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" id="Y1S-Et-GOo">
+                                                            <rect key="frame" x="0.0" y="0.0" width="704" height="44"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <subviews>
+                                                                <searchBar contentMode="redraw" id="JS9-i4-eSb">
+                                                                    <rect key="frame" x="400" y="0.0" width="300" height="44"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                                    <color key="barTintColor" red="0.039215686270000001" green="0.43137254899999999" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <textInputTraits key="textInputTraits"/>
+                                                                    <connections>
+                                                                        <outlet property="delegate" destination="IH4-gD-F8z" id="42v-UG-BBW"/>
+                                                                    </connections>
+                                                                </searchBar>
+                                                            </subviews>
+                                                            <color key="backgroundColor" red="0.039215686270000001" green="0.43137254899999999" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </view>
+                                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="mHv-cp-6Uc">
+                                                            <rect key="frame" x="0.0" y="44" width="704" height="560"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <connections>
+                                                                <outlet property="dataSource" destination="IH4-gD-F8z" id="5tH-II-OcA"/>
+                                                                <outlet property="delegate" destination="IH4-gD-F8z" id="TcH-CJ-OUz"/>
+                                                            </connections>
+                                                        </tableView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <outlet property="searchBarComplain" destination="JS9-i4-eSb" id="vbv-SK-80T"/>
+                                                <outlet property="tbvListComplains" destination="mHv-cp-6Uc" id="1az-ts-jJ0"/>
+                                            </connections>
+                                        </view>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                             </subviews>
@@ -513,6 +696,9 @@
         <image name="call.png" width="30" height="27"/>
         <image name="email_icon_hide.png" width="32" height="32"/>
         <image name="ic-add-sub-1.png" width="32" height="32"/>
+
+        <image name="icon_menu-1.png" width="96" height="96"/>
+
         <image name="pin.png" width="48" height="48"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

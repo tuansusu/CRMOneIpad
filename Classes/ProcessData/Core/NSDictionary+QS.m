@@ -12,6 +12,124 @@
 
 @implementation NSDictionary (QS)
 
+-(DTOProTindungDetailObject*)dtoProTindungDetailObject{
+    DTOProTindungDetailObject *proTinDungDetailOB = [[DTOProTindungDetailObject alloc] init];
+    
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"BRANCH_CODE"]]) {
+        proTinDungDetailOB.BRANCH_CODE = [self objectForKey:@"BRANCH_CODE"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"CONTRACT_NUMBER"]]) {
+        proTinDungDetailOB.CONTRACT_NUMBER = [self objectForKey:@"CONTRACT_NUMBER"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"OPEN_DATE"]]) {
+        proTinDungDetailOB.OPEN_DATE = [self objectForKey:@"OPEN_DATE"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"EXPIRE_DATE"]]) {
+        proTinDungDetailOB.EXPIRE_DATE = [self objectForKey:@"EXPIRE_DATE"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"EXTENSION_DATE"]]) {
+        proTinDungDetailOB.EXTENSION_DATE = [self objectForKey:@"EXTENSION_DATE"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"BALANCE"]]) {
+        proTinDungDetailOB.BALANCE = [self objectForKey:@"BALANCE"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"BALANCE_QD"]]) {
+        proTinDungDetailOB.BALANCE_QD = [self objectForKey:@"BALANCE_QD"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"SOD_BALANCE"]]) {
+        proTinDungDetailOB.SOD_BALANCE = [self objectForKey:@"SOD_BALANCE"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"SOD_BALANCE_QD"]]) {
+        proTinDungDetailOB.SOD_BALANCE_QD = [self objectForKey:@"SOD_BALANCE_QD"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"CURRENCY"]]) {
+        proTinDungDetailOB.CURRENCY = [self objectForKey:@"CURRENCY"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"CLIENT_ID"]]) {
+        proTinDungDetailOB.CLIENT_ID = [self objectForKey:@"CLIENT_ID"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"TERM"]]) {
+        proTinDungDetailOB.TERM = [self objectForKey:@"TERM"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"TERM_TYPE"]]) {
+        proTinDungDetailOB.TERM_TYPE = [self objectForKey:@"TERM_TYPE"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"DEPT_GROUP"]]) {
+        proTinDungDetailOB.DEPT_GROUP = [self objectForKey:@"DEPT_GROUP"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"DEPT_GROUP2"]]) {
+        proTinDungDetailOB.DEPT_GROUP2 = [self objectForKey:@"DEPT_GROUP2"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"FIXED_INTEREST"]]) {
+        proTinDungDetailOB.FIXED_INTEREST = [self objectForKey:@"FIXED_INTEREST"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"INTEREST_MARGIN"]]) {
+        proTinDungDetailOB.INTEREST_MARGIN = [self objectForKey:@"INTEREST_MARGIN"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"INTEREST"]]) {
+        proTinDungDetailOB.INTEREST = [self objectForKey:@"INTEREST"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"RECEIVEABLE_AMOUNT"]]) {
+        proTinDungDetailOB.RECEIVEABLE_AMOUNT = [self objectForKey:@"RECEIVEABLE_AMOUNT"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"STATUS"]]) {
+        proTinDungDetailOB.STATUS = [self objectForKey:@"STATUS"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"BUSSINESS_DATE"]]) {
+        proTinDungDetailOB.BUSSINESS_DATE = [self objectForKey:@"BUSSINESS_DATE"];
+    }
+
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"INITIAL_BALANCE"]]) {
+        proTinDungDetailOB.INITIAL_BALANCE = [self objectForKey:@"INITIAL_BALANCE"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"PREPAID_INTEREST"]]) {
+        proTinDungDetailOB.PREPAID_INTEREST = [self objectForKey:@"PREPAID_INTEREST"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"OVERDUE_INTEREST"]]) {
+        proTinDungDetailOB.OVERDUE_INTEREST = [self objectForKey:@"OVERDUE_INTEREST"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"SECTOR"]]) {
+        proTinDungDetailOB.SECTOR = [self objectForKey:@"SECTOR"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"SOURCE_OF_FUND"]]) {
+        proTinDungDetailOB.SOURCE_OF_FUND = [self objectForKey:@"SOURCE_OF_FUND"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"SECURE"]]) {
+        proTinDungDetailOB.SECURE = [self objectForKey:@"SECURE"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"GL"]]) {
+        proTinDungDetailOB.GL = [self objectForKey:@"GL"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"INDUSTRY_CODE"]]) {
+        proTinDungDetailOB.INDUSTRY_CODE = [self objectForKey:@"INDUSTRY_CODE"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"INTEREST_TYPE"]]) {
+        proTinDungDetailOB.INTEREST_TYPE = [self objectForKey:@"INTEREST_TYPE"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"INTEREST_KEY"]]) {
+        proTinDungDetailOB.INTEREST_KEY = [self objectForKey:@"INTEREST_KEY"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"INPUTTER"]]) {
+        proTinDungDetailOB.INPUTTER = [self objectForKey:@"INPUTTER"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"PRODUCT_CODE"]]) {
+        proTinDungDetailOB.PRODUCT_CODE = [self objectForKey:@"PRODUCT_CODE"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"RM_CODE"]]) {
+        proTinDungDetailOB.RM_CODE = [self objectForKey:@"RM_CODE"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"KHOI"]]) {
+        proTinDungDetailOB.KHOI = [self objectForKey:@"KHOI"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"RM_BANCHEO"]]) {
+        proTinDungDetailOB.RM_BANCHEO = [self objectForKey:@"RM_BANCHEO"];
+    }
+    if (![StringUtil stringIsEmpty:[self objectForKey:@"PURPOSE"]]) {
+        proTinDungDetailOB.PURPOSE = [self objectForKey:@"PURPOSE"];
+    }
+
+    return proTinDungDetailOB;
+}
 
 -(DTOWidgetTypeObject*)dtoWidgetTypeObject{
     DTOWidgetTypeObject *widgetTypeOB = [[DTOWidgetTypeObject alloc] init];

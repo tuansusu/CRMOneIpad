@@ -50,6 +50,7 @@
             @"RM_CODE",
             @"KHOI",
             @"RM_BANCHEO",
+            @"PURPOSE",
             nil];
 }
 
@@ -91,6 +92,7 @@
                                                 @"RM_CODE",
                                                 @"KHOI",
                                                 @"RM_BANCHEO",
+                                                @"PURPOSE",
                                                 nil]];
 
     for (NSString *key in [item allKeys]) {
@@ -140,6 +142,7 @@
                        @"RM_CODE",
                        @"KHOI",
                        @"RM_BANCHEO",
+                       @"PURPOSE",
                        nil];
 
     for (NSString *key in keyArray) {

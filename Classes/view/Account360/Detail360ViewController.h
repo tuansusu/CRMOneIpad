@@ -33,8 +33,9 @@ enum Type360View{
     type360View_Note, //Ghi chú
     type360View_Calendar, // Lịch
     type360View_Task, // Tác vụ
-    type360View_Opportunity   //Cơ hội
-    
+    type360View_Opportunity,   //Cơ hội
+    type360View_Complains, // ý kiến phản hồi
+    type360View_ProductsLead // sản phẩm dịch vụ
 };
 
 @interface Detail360ViewController : BaseViewController<SelectIndexDelegate,UIAlertViewDelegate>

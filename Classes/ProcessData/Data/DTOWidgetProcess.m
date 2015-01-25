@@ -19,7 +19,7 @@
 @implementation DTOWidgetProcess
 
 -(NSMutableArray*) filter{
-    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ order by %@ asc",[[DTOWidgetObject allFields] componentsJoinedByString:@"," ] , TABLENAME_DTODASHBOARDCONFIGURATION, DTOWIDGET_confId];
+    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where status=1 order by %@ asc",[[DTOWidgetObject allFields] componentsJoinedByString:@"," ] , TABLENAME_DTODASHBOARDCONFIGURATION, DTOWIDGET_confId];
 
     NSLog(@"query attach:%@", query);
 
@@ -28,7 +28,7 @@
 
 
 -(NSMutableArray*) filterWithKey : (NSString*) strKey withValue : (NSString*) strValue{
-    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where %@  like '%@' order by %@ asc",[[DTOWidgetObject allFields] componentsJoinedByString:@"," ] , TABLENAME_DTODASHBOARDCONFIGURATION, strKey,strValue, DTOWIDGET_confId];
+    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where status=1 and %@  like '%@' order by %@ asc",[[DTOWidgetObject allFields] componentsJoinedByString:@"," ] , TABLENAME_DTODASHBOARDCONFIGURATION, strKey,strValue, DTOWIDGET_confId];
 
     NSLog(@"query = %@", query);
 
@@ -54,11 +54,10 @@
 
 }
 
--(BOOL) deleteEntityWithCasesId:(NSString *)casesId{
-
+-(BOOL) deleteEntityWithConfId:(NSString *)confId{
 
     NSMutableDictionary *dicFieldSet = [[NSMutableDictionary alloc]initWithObjects:[NSArray arrayWithObjects:@"0", nil] forKeys:[NSArray arrayWithObjects:DTOWIDGET_status, nil]];
-    NSMutableDictionary *dicFieldCondition = [[NSMutableDictionary alloc]initWithObjects:[NSArray arrayWithObjects:casesId, nil] forKeys:[NSArray arrayWithObjects:DTOWIDGET_confId, nil]];
+    NSMutableDictionary *dicFieldCondition = [[NSMutableDictionary alloc]initWithObjects:[NSArray arrayWithObjects:confId, nil] forKeys:[NSArray arrayWithObjects:DTOWIDGET_confId, nil]];
 
     return [super updateToTableName:TABLENAME_DTODASHBOARDCONFIGURATION withFields:dicFieldSet withCondition:dicFieldCondition];
 }

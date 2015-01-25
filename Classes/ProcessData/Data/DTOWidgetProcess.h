@@ -15,6 +15,6 @@
 
 -(BOOL) insertToDBWithEntity:(NSMutableDictionary*) entity;
 -(BOOL) updateToDBWithEntity:(NSMutableDictionary*) entity;
--(BOOL) deleteEntityWithCasesId:(NSString *)casesId;
+-(BOOL) deleteEntityWithConfId:(NSString *)confId;
 
 @end

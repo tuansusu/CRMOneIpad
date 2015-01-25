@@ -13,7 +13,11 @@
 #import "DTONOTEProcess.h"
 #import "DTOATTACHMENTProcess.h"
 #import "DTOOPPORTUNITYProcess.h"
-
+#import "ProductsLeadView.h"
+#import "ComplainsView.h"
+#import "ComplainDetailViewController.h"
+#import "ComplainModel.h"
+#import "Globals.h"
 
 ////remove
 #import "StringUtil.h"
@@ -42,7 +46,7 @@
 #define DELETE_COHOI 55
 #define DELETE_LEAD 66
 
-@interface Detail360ViewController ()
+@interface Detail360ViewController ()<ComplainsViewDelegate,ProductsLeadViewDelegate>
 {
     int smgSelect ; //option layout
     NSArray *arrayData; //mang luu tru du lieu
@@ -80,6 +84,18 @@
     //controll
     
     __weak IBOutlet UIButton *btnAdd;
+    IBOutlet  ProductsLeadView* viewProductsLead;
+    IBOutlet  ComplainsView* viewComplain;
+
+    ProTindungDetailViewController *proTindungDetailVC;
+    ProTaiKhoanThanhToanDetailViewController *proTaiKhoanThanhToanDetailVC;
+    ProTaiKhoanTietKiemDetailViewController *proTaiKhoanTietKiemDetailVC;
+    ProBaoLanhDetailViewController *proBaoLanhDetailVC;
+    ProThanhToanQuocTeDetailViewController *proThanhToanQuocTeDetailVC;
+    ProTheDetailViewController *proTheDetailVC;
+    ProEMBDetailViewController *proEMBDetailVC;
+    ProBankPlusDetailViewController *proBankPlusDetailVC;
+    
 }
 @end
 
@@ -318,7 +334,27 @@
             NSLog(@"get detail data = %d", arrayData.count);
             
         }break;
-  
+
+        case type360View_Complains:
+        {
+            self.viewBodyExpandInfo.hidden = NO;
+            self.tbData.hidden  = YES;
+            [viewProductsLead setHidden:YES];
+            [viewComplain setHidden:NO];
+            [viewComplain setDelegate:self];
+            [viewComplain initDataWithLeaderId:[[dicData objectForKey:DTOACCOUNT_clientAccountId] description]];
+        }
+        break;
+        case type360View_ProductsLead:
+        {
+            self.viewBodyExpandInfo.hidden = NO;
+            self.tbData.hidden  = YES;
+            [viewComplain setHidden:YES];
+            [viewProductsLead setHidden:NO];
+            [viewProductsLead setDelegate:self];
+            [viewProductsLead initDataWithLeaderId:[[dicData objectForKey:DTOACCOUNT_clientAccountId] description]];
+        }
+
             
         default:
             break;
@@ -483,6 +519,16 @@
     [self displayNormalButtonState:sender];
 }
 
+- (IBAction)btnComplainsTaped:(UIButton *)sender {
+    [self loadDataWithTypeAction:type360View_Complains];
+    [self displayNormalButtonState:sender];
+}
+
+- (IBAction)btnProductsTaped:(UIButton *)sender {
+    [self loadDataWithTypeAction:type360View_ProductsLead];
+    [self displayNormalButtonState:sender];
+}
+
 #pragma mark display color button
 -(void) displayNormalButtonState : (UIButton*) btnSelect {
     
@@ -499,7 +545,61 @@
     
 }
 
+#pragma mark Products Lead View Delegate
 
+- (void)selectedProductDetailWithProductDetailObject:(DTOProductDetailObject*)productDetailObject{
+    int typeProduct = [productDetailObject.type intValue];
+    if (typeProduct==PRODUCT_TYPE_TIN_DUNG)
+    {
+        proTindungDetailVC = [[ProTindungDetailViewController alloc] init];
+        proTindungDetailVC.dtoProductDetailObject = productDetailObject;
+        [self presentViewController:proTindungDetailVC animated:YES completion:nil];
+    }
+    else if (typeProduct==PRODUCT_TYPE_THANH_TOAN)
+    {
+        proTaiKhoanThanhToanDetailVC = [[ProTaiKhoanThanhToanDetailViewController alloc] init];
+        proTaiKhoanThanhToanDetailVC.dtoProductDetailObject = productDetailObject;
+        [self presentViewController:proTaiKhoanThanhToanDetailVC animated:YES completion:nil];
+    }
+    else if (typeProduct==PRODUCT_TYPE_TIET_KIEM)
+    {
+        proTaiKhoanTietKiemDetailVC = [[ProTaiKhoanTietKiemDetailViewController alloc] init];
+        proTaiKhoanTietKiemDetailVC.dtoProductDetailObject = productDetailObject;
+        [self presentViewController:proTaiKhoanTietKiemDetailVC animated:YES completion:nil];
+    }
+    else if (typeProduct==PRODUCT_TYPE_BAO_LANH)
+    {
+        proBaoLanhDetailVC = [[ProBaoLanhDetailViewController alloc] init];
+        proBaoLanhDetailVC.dtoProductDetailObject = productDetailObject;
+        [self presentViewController:proBaoLanhDetailVC animated:YES completion:nil];
+    }
+    else if (typeProduct==PRODUCT_TYPE_THANH_TOAN_QUOC_TE)
+    {
+        proThanhToanQuocTeDetailVC = [[ProThanhToanQuocTeDetailViewController alloc] init];
+        proThanhToanQuocTeDetailVC.dtoProductDetailObject = productDetailObject;
+        [self presentViewController:proThanhToanQuocTeDetailVC animated:YES completion:nil];
+
+    }
+    else if (typeProduct==PRODUCT_TYPE_THE)
+    {
+        proTheDetailVC = [[ProTheDetailViewController alloc] init];
+        proTheDetailVC.dtoProductDetailObject = productDetailObject;
+        [self presentViewController:proTheDetailVC animated:YES completion:nil];
+    }
+    else if (typeProduct==PRODUCT_TYPE_NGAN_HANG_DIEN_TU)
+    {
+        proEMBDetailVC = [[ProEMBDetailViewController alloc] init];
+        proEMBDetailVC.dtoProductDetailObject = productDetailObject;
+        [self presentViewController:proEMBDetailVC animated:YES completion:nil];
+
+    }
+    else if (typeProduct==PRODUCT_TYPE_BANK_PLUS)
+    {
+        proBankPlusDetailVC = [[ProBankPlusDetailViewController alloc] init];
+        proBankPlusDetailVC.dtoProductDetailObject = productDetailObject;
+        [self presentViewController:proBankPlusDetailVC animated:YES completion:nil];
+    }
+}
 
 #pragma mark - Table View
 

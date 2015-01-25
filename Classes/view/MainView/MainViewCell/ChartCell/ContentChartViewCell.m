@@ -41,7 +41,7 @@
     wvChart.opaque = NO;
     wvChart.backgroundColor = [UIColor clearColor];
     wvChart.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-
+    
     if (typeGraph == typeGraphLine) {
         [self loadLineChart];
     }else if (typeGraph == typeGraphColumnVertical) {

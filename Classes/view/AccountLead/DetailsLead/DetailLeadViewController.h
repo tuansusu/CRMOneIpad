@@ -25,6 +25,8 @@
 #import "EditAccountLeadViewController.h"
 #import "EditBussinessLeadViewController.h"
 
+#import "EmptyCell.h"
+
 enum TypeLeaderView{
     typeLeaderView_ExpandInfo, //Thông tin mở rộng
     typeLeaderView_Contact, //Liên hệ

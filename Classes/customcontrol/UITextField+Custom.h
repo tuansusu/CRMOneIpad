@@ -12,4 +12,6 @@
 
 -(void) setStyleNormalWithOption : (int) smgSelect;
 
+-(void) setPaddingLeft;
+
 @end

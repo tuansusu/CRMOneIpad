@@ -29,4 +29,13 @@
     
 }
 
+/*
+ *Set padding cho UITextField
+ */
+-(void) setPaddingLeft {
+    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 20)];
+    self.leftView = paddingView;
+    self.leftViewMode = UITextFieldViewModeAlways;
+}
+
 @end

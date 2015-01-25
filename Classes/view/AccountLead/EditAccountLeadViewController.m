@@ -223,6 +223,8 @@
     self.bodyMainView.layer.borderWidth = BORDER_WITH;
     self.bodyMainView.layer.borderColor = [BORDER_COLOR CGColor];
     
+    [self.btnSave setStyleNormalWithOption:smgSelect];
+    
     for (UIView *viewTemp in self.bodyMainView.subviews) {
         
         
@@ -247,12 +249,16 @@
                 ((UITextView*) viewSubTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
                 ((UITextView*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
                 ((UITextView*) viewSubTemp).layer.borderWidth = BORDER_WITH;
+                
+                
             }
             if ([viewSubTemp isKindOfClass:[UITextField class]]) {
                 ((UITextField*) viewSubTemp).textColor = TEXT_COLOR_REPORT;
                 ((UITextField*) viewSubTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
-                ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
-                ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
+//                ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
+//                ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
+                [((UITextField*) viewSubTemp) setBorderWithOption:smgSelect];
+                [((UITextField*) viewSubTemp) setPaddingLeft];
             }
             
         }

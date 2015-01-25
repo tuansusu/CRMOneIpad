@@ -68,6 +68,11 @@
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
     [self initData];
+    
+    //remove footer view
+    //(xoá dòng thừa không hiển thị của table)
+    self.tbData.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -150,7 +155,7 @@
         }
     }
     
-    
+    [self.btnSave setStyleNormalWithOption:smgSelect];
     
     
     [self.mainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
@@ -179,8 +184,10 @@
             if ([viewSubTemp isKindOfClass:[UITextField class]]) {
                 ((UITextField*) viewSubTemp).textColor = TEXT_COLOR_REPORT;
                 ((UITextField*) viewSubTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
-                ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
-                ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
+//                ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
+//                ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
+                [((UITextField*) viewSubTemp) setPaddingLeft];
+                [((UITextField*) viewSubTemp) setBorderWithOption:smgSelect];
             }
             
             if ([viewSubTemp isKindOfClass:[UIButton class]]) {
@@ -444,6 +451,22 @@
 
 #pragma mark - Table View
 
+
+//thêm cái line đến tận left margin
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if ([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [tableView setLayoutMargins:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     

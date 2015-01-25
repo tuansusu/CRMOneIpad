@@ -206,6 +206,9 @@
     // main
     _mainView.backgroundColor = HEADER_SUB_VIEW_COLOR1;
     // - header
+    
+    [self.btnSave setStyleNormalWithOption:smgSelect];
+    
     _headerMainView.backgroundColor = HEADER_SUB_VIEW_COLOR1;
     [_headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
     
@@ -240,8 +243,12 @@
             {
                 ((UITextField*) subChildView).textColor         = TEXT_COLOR_REPORT;
                 ((UITextField*) subChildView).backgroundColor   = BACKGROUND_NORMAL_COLOR1;
-                ((UITextField*) subChildView).layer.borderColor = [BORDER_COLOR CGColor];
-                ((UITextField*) subChildView).layer.borderWidth = BORDER_WITH;
+//                ((UITextField*) subChildView).layer.borderColor = [BORDER_COLOR CGColor];
+//                ((UITextField*) subChildView).layer.borderWidth = BORDER_WITH;
+                
+                [((UITextField*) subChildView) setPaddingLeft];
+                [((UITextField*) subChildView) setBorderWithOption:smgSelect];
+                
             }
         }
         

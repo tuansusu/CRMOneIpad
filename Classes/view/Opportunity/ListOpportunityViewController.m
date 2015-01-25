@@ -76,6 +76,10 @@
    	[df setDateFormat:@"dd/MM/yyyy"];
     now = [NSDate date];
     nowStr = [df stringFromDate:now];
+    
+    //remove footer view
+    //(xoá dòng thừa không hiển thị của table)
+    self.tbData.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
 }
 
@@ -215,6 +219,21 @@
 
 #pragma mark - Table View
 
+//thêm cái line đến tận left margin
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if ([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [tableView setLayoutMargins:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     

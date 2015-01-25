@@ -215,6 +215,7 @@
 		7623F0531A41C98400F99DA0 /* EditContactOpportunityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7623F0511A41C98400F99DA0 /* EditContactOpportunityViewController.xib */; };
 		762DCF171A0336FB00C7E416 /* DTOCONTACTProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 762DCF161A0336FB00C7E416 /* DTOCONTACTProcess.m */; };
 		762DCF1A1A033C7900C7E416 /* DataField.m in Sources */ = {isa = PBXBuildFile; fileRef = 762DCF191A033C7900C7E416 /* DataField.m */; };
+		762F01B01A7468730062FADF /* VTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 762F01AF1A7468730062FADF /* VTLabel.m */; };
 		763308051A048068000E190B /* NZLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 763308041A048068000E190B /* NZLabel.m */; };
 		7633080D1A048962000E190B /* VTCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 763308081A048962000E190B /* VTCheckBox.m */; };
 		7633080E1A048962000E190B /* VTCheckBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 763308091A048962000E190B /* VTCheckBox.xib */; };
@@ -1318,6 +1319,8 @@
 		762DCF161A0336FB00C7E416 /* DTOCONTACTProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOCONTACTProcess.m; sourceTree = "<group>"; };
 		762DCF181A033C7900C7E416 /* DataField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataField.h; path = ProcessData/Data/DataField.h; sourceTree = "<group>"; };
 		762DCF191A033C7900C7E416 /* DataField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataField.m; path = ProcessData/Data/DataField.m; sourceTree = "<group>"; };
+		762F01AE1A7468730062FADF /* VTLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VTLabel.h; sourceTree = "<group>"; };
+		762F01AF1A7468730062FADF /* VTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VTLabel.m; sourceTree = "<group>"; };
 		763308031A048068000E190B /* NZLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZLabel.h; sourceTree = "<group>"; };
 		763308041A048068000E190B /* NZLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZLabel.m; sourceTree = "<group>"; };
 		763308071A048962000E190B /* VTCheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VTCheckBox.h; sourceTree = "<group>"; };
@@ -3352,6 +3355,8 @@
 		763308061A048962000E190B /* CustomControl */ = {
 			isa = PBXGroup;
 			children = (
+				762F01AE1A7468730062FADF /* VTLabel.h */,
+				762F01AF1A7468730062FADF /* VTLabel.m */,
 				763308071A048962000E190B /* VTCheckBox.h */,
 				763308081A048962000E190B /* VTCheckBox.m */,
 				763308091A048962000E190B /* VTCheckBox.xib */,
@@ -6249,6 +6254,7 @@
 				769CB8141A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.m in Sources */,
 				92C68E6A1519D4F100981728 /* RootViewController.m in Sources */,
 				76977D5F1A02A72E0029F297 /* ListEmployeeAccountViewController.m in Sources */,
+				762F01B01A7468730062FADF /* VTLabel.m in Sources */,
 				8E568F981A5916FD0002A3C4 /* ComplainModel.m in Sources */,
 				DDBC46E5171540A200CCFB94 /* HTTPClient.m in Sources */,
 				8EC9729E1A5D71300021DCA3 /* FFEvent.m in Sources */,

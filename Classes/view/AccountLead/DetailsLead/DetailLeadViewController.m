@@ -153,6 +153,10 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     [scrollViewHeaderExpandInfo setContentSize:CGSizeMake(WIDTH_HEADER_EXPAND_INFO, scrollViewHeaderExpandInfo.frame.size.height)];
     
+    //remove footer view
+    //(xoá dòng thừa không hiển thị của table)
+    self.tbData.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     //scrollViewHeaderExpandInfo.contentSize = CGSizeMake(910, scrollViewHeaderExpandInfo.frame.size.height);
 }
 
@@ -673,6 +677,22 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     return 1;
+}
+
+//thêm cái line đến tận left margin
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if ([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [tableView setLayoutMargins:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

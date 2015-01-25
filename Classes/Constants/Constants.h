@@ -46,7 +46,7 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 #define BUTTON_CANCEL  0
 #pragma mark Tag
 
-
+#define TAG_CONTROL_LINE 511
 #define TAG_DELETE_ITEM 11
 
 #define TAG_RELOAD_BUTTON  50

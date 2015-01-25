@@ -241,6 +241,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         //        [self.viewBodyExpandInfo addSubview:viewDetailController.view];
 
         self.lbDescription.text = @"";
+        [self setBottomLineDetail:self.scrollViewBussiness];
 
     }else{
         NSLog(@"KHACH HANG CA NHAN");
@@ -252,6 +253,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
 
         [self loadDetailCustomerPersonalData];
+        [self setBottomLineDetail:self.scrollViewPersonal];
 
 
         //        DetailCustomPersonViewController *viewDetailController = [[DetailCustomPersonViewController alloc]initWithNibName:@"DetailCustomPersonViewController" bundle:nil];
@@ -315,9 +317,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_sector]]) {
         _lbSector.text =[dicData objectForKey:DTOLEAD_sector];
     }
-
     _lbAlias.text = @"";
-
 }
 
 
@@ -348,8 +348,6 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_code]]) {
         _lbBussinessCode.text =[dicData objectForKey:DTOLEAD_code];
     }
-
-
 }
 
 
@@ -413,6 +411,11 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
 - (void) updateInterFaceWithOption : (int) option
 {
+    
+    //set upper case
+    self.lbLeftInfo.text = [self.lbLeftInfo.text uppercaseString];
+    [self.viewHeaderLeft setBorderWithOption:smgSelect withBorderFlag:AUISelectiveBordersFlagBottom];
+    
     [self.mainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
 
     self.bodyMainView.backgroundColor = BACKGROUND_NORMAL_COLOR1;
@@ -425,8 +428,12 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     self.viewBodyMainInfo.layer.borderWidth = BORDER_WITH;
     self.viewBodyMainInfo.layer.borderColor = [BORDER_COLOR CGColor];
 
-
     self.viewHeaderExpandInfo.backgroundColor = BACKGROUND_NORMAL_COLOR1;
+    
+    [self.scrollViewPersonal setBackGroundNormalColorWithOption:smgSelect];
+    [self.scrollViewBussiness setBackGroundNormalColorWithOption:smgSelect];
+    
+
 
     [self.tbData setBorderWithOption:smgSelect];
     [self.viewBodyExpandInfo setBorderWithOption:smgSelect];
@@ -450,8 +457,33 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     }
 
     [self.viewHeaderExpandInfo setSelectiveBorderWithColor:backgrondButtonSelected withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
-
+    
+    
+    //cap nhat cho dong line phan chi tiet
 }
+
+#pragma mark set bottom
+/*set bottom line*/
+-(void) setBottomLineDetail: (UIScrollView*) scrollViewTemp {
+    //NSArray *arrayLabelToSetBottomLine = [scrollViewTemp vi]
+    
+    for (UIView *viewSub in [scrollViewTemp subviews]) {
+        if (viewSub.tag == TAG_CONTROL_LINE) {
+            [self addBottomLineWithBottomControl:viewSub.frame withInControl:scrollViewTemp];
+        }
+    }
+}
+
+-(void) addBottomLineWithBottomControl : (CGRect) bottomViewFrame withInControl : (UIView*) containView {
+    
+    UIView *viewLine = [[UIView alloc] initWithFrame:CGRectMake(0, bottomViewFrame.origin.y + bottomViewFrame.size.height, containView.frame.size.width, BORDER_WITH)];
+    viewLine.backgroundColor = BORDER_COLOR;
+    [viewLine setBorderWithOption:smgSelect];
+    [containView addSubview:viewLine];
+    
+}
+
+
 
 
 - (void)didReceiveMemoryWarning
@@ -623,6 +655,10 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if(arrayData.count == 0) return tableView.frame.size.height;
+    
+    
     switch (typeActionEvent) {
         case typeLeaderView_Note:
         return 60.0f;
@@ -671,13 +707,33 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //    return 10;
-    NSLog(@"numberofrows = %ld", (unsigned long)arrayData.count);
-    return  arrayData.count;
+    if (arrayData.count == 0) {
+        return  1;
+    }else{
+        return arrayData.count;
+    }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //set empty cell
+    if (arrayData.count == 0) {
+        static NSString *cellId = @"EmptyCell";
+        EmptyCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+        
+        
+        if (!cell) {
+            cell = [EmptyCell initNibCell];
+        }
+        
+        [cell loadDataToCellWithData:@"" withOption:smgSelect];
+        
+        return cell;
+    }
+    
+    
+    
     switch (typeActionEvent) {
         case typeLeaderView_Contact:{
             static NSString *cellId = @"ContactLeadCell";
@@ -789,10 +845,53 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         [tableView deselectRowAtIndexPath:selection animated:YES];
 
     }
+    
+    if (arrayData.count == 0) {
+        
+        switch (typeActionEvent) {
+            case typeLeaderView_Task:{
+                
+                EditTaskLeadViewController *viewController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
+                viewController.dataRoot = dicData;
+                [self presentViewController:viewController animated:YES completion:nil];
+                
+            }
+                break;
+            case typeLeaderView_Opportunity:
+                break;
+            case typeLeaderView_Note:{
+                EditNoteLeadViewController *viewController = [[EditNoteLeadViewController alloc]initWithNibName:@"EditNoteLeadViewController" bundle:nil];
+                viewController.dataRoot = dicData;
+                [self presentViewController:viewController animated:YES completion:nil];
+            }
+                break;
+            case typeLeaderView_Contact:
+            {
+                EditContactLeadViewController *viewController = [[EditContactLeadViewController alloc]initWithNibName:@"EditContactLeadViewController" bundle:nil];
+                viewController.dataRoot = dicData;
+                [self presentViewController:viewController animated:YES completion:nil];
+                
+            }
+                break;
+            case typeLeaderView_Calendar:{
+                EditCalendarLeadViewController *viewController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
+                [viewController setDelegate:self];
+                viewController.dataRoot = dicData;
+                [self presentViewController:viewController animated:YES completion:nil];
+            }
+                break;
+            default:
+                break;
+        }
+        
+        return;
+    }
+    
+    
+    
+    
 
     NSDictionary *dicTempData = [arrayData objectAtIndex:indexPath.row];
-
-
     switch (typeActionEvent) {
         case typeLeaderView_Task:{
 
@@ -814,6 +913,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         {
             EditContactLeadViewController *viewNoteController = [[EditContactLeadViewController alloc]initWithNibName:@"EditContactLeadViewController" bundle:nil];
             viewNoteController.dataSend = dicTempData;
+            viewNoteController.dataRoot = dicData;
             [self presentViewController:viewNoteController animated:YES completion:nil];
 
         }
@@ -1006,6 +1106,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         {
             EditContactLeadViewController *viewNoteController = [[EditContactLeadViewController alloc]initWithNibName:@"EditContactLeadViewController" bundle:nil];
             viewNoteController.dataSend = dicTempData;
+            viewNoteController.dataRoot = dicData;
             [self presentViewController:viewNoteController animated:YES completion:nil];
 
         }

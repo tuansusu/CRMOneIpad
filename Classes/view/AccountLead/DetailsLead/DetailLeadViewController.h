@@ -25,6 +25,8 @@
 #import "EditAccountLeadViewController.h"
 #import "EditBussinessLeadViewController.h"
 
+#import "EmptyCell.h"
+
 enum TypeLeaderView{
     typeLeaderView_ExpandInfo, //Thông tin mở rộng
     typeLeaderView_Contact, //Liên hệ
@@ -54,6 +56,8 @@ enum TypeLeaderView{
 
 - (IBAction)actionAdd:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *btnTempAdd;
+@property (weak, nonatomic) IBOutlet UILabel *lbLeftInfo;
+@property (weak, nonatomic) IBOutlet UIView *viewHeaderLeft;
 
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;

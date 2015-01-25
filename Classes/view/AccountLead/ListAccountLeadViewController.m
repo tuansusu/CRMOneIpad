@@ -81,8 +81,6 @@
     if ([UIDevice getCurrentSysVer] >= 7.0) {
         [UIDevice updateLayoutInIOs7OrAfter:self];
         
-        [self.tbData setSeparatorInset:UIEdgeInsetsZero];
-        
         
     }
     

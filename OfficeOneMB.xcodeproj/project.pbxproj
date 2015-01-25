@@ -21,6 +21,7 @@
 		06FE2E231A456904004A1D16 /* Items.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FE2E221A456904004A1D16 /* Items.m */; };
 		06FE2E261A4569E6004A1D16 /* NSDictionary+QS.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FE2E251A4569E6004A1D16 /* NSDictionary+QS.m */; };
 		06FE2E2A1A45816D004A1D16 /* MapsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FE2E291A45816D004A1D16 /* MapsModel.m */; };
+		156CD6EF1A74DECA002D6361 /* RepeatCalendarConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 156CD6EE1A74DECA002D6361 /* RepeatCalendarConfig.m */; };
 		159334D91A59D79700228B15 /* AlarmCalendarConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 159334D81A59D79700228B15 /* AlarmCalendarConfig.m */; };
 		1595993C1A58451200D87BD4 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 1595993B1A58451200D87BD4 /* NSDate+Utilities.m */; };
 		159599411A592BF600D87BD4 /* AlarmCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1595993F1A592BF600D87BD4 /* AlarmCalendarViewController.m */; };
@@ -216,6 +217,8 @@
 		762DCF171A0336FB00C7E416 /* DTOCONTACTProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 762DCF161A0336FB00C7E416 /* DTOCONTACTProcess.m */; };
 		762DCF1A1A033C7900C7E416 /* DataField.m in Sources */ = {isa = PBXBuildFile; fileRef = 762DCF191A033C7900C7E416 /* DataField.m */; };
 		762F01B01A7468730062FADF /* VTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 762F01AF1A7468730062FADF /* VTLabel.m */; };
+		762F01B41A74962A0062FADF /* EmptyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 762F01B21A74962A0062FADF /* EmptyCell.m */; };
+		762F01B51A74962A0062FADF /* EmptyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 762F01B31A74962A0062FADF /* EmptyCell.xib */; };
 		763308051A048068000E190B /* NZLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 763308041A048068000E190B /* NZLabel.m */; };
 		7633080D1A048962000E190B /* VTCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 763308081A048962000E190B /* VTCheckBox.m */; };
 		7633080E1A048962000E190B /* VTCheckBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 763308091A048962000E190B /* VTCheckBox.xib */; };
@@ -1043,6 +1046,8 @@
 		06FE2E251A4569E6004A1D16 /* NSDictionary+QS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+QS.m"; sourceTree = "<group>"; };
 		06FE2E281A45816D004A1D16 /* MapsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapsModel.h; sourceTree = "<group>"; };
 		06FE2E291A45816D004A1D16 /* MapsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapsModel.m; sourceTree = "<group>"; };
+		156CD6ED1A74DECA002D6361 /* RepeatCalendarConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepeatCalendarConfig.h; sourceTree = "<group>"; };
+		156CD6EE1A74DECA002D6361 /* RepeatCalendarConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepeatCalendarConfig.m; sourceTree = "<group>"; };
 		159334D71A59D79700228B15 /* AlarmCalendarConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmCalendarConfig.h; sourceTree = "<group>"; };
 		159334D81A59D79700228B15 /* AlarmCalendarConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmCalendarConfig.m; sourceTree = "<group>"; };
 		1595993A1A58451200D87BD4 /* NSDate+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utilities.h"; sourceTree = "<group>"; };
@@ -1335,6 +1340,9 @@
 		762DCF191A033C7900C7E416 /* DataField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataField.m; path = ProcessData/Data/DataField.m; sourceTree = "<group>"; };
 		762F01AE1A7468730062FADF /* VTLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VTLabel.h; sourceTree = "<group>"; };
 		762F01AF1A7468730062FADF /* VTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VTLabel.m; sourceTree = "<group>"; };
+		762F01B11A74962A0062FADF /* EmptyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmptyCell.h; path = CustomView/EmptyCell.h; sourceTree = "<group>"; };
+		762F01B21A74962A0062FADF /* EmptyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EmptyCell.m; path = CustomView/EmptyCell.m; sourceTree = "<group>"; };
+		762F01B31A74962A0062FADF /* EmptyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EmptyCell.xib; path = CustomView/EmptyCell.xib; sourceTree = "<group>"; };
 		763308031A048068000E190B /* NZLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZLabel.h; sourceTree = "<group>"; };
 		763308041A048068000E190B /* NZLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZLabel.m; sourceTree = "<group>"; };
 		763308071A048962000E190B /* VTCheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VTCheckBox.h; sourceTree = "<group>"; };
@@ -2726,6 +2734,8 @@
 				1595993E1A592BF600D87BD4 /* AlarmCalendarViewController.h */,
 				1595993F1A592BF600D87BD4 /* AlarmCalendarViewController.m */,
 				159599401A592BF600D87BD4 /* AlarmCalendarViewController.xib */,
+				156CD6ED1A74DECA002D6361 /* RepeatCalendarConfig.h */,
+				156CD6EE1A74DECA002D6361 /* RepeatCalendarConfig.m */,
 				159599431A592C0700D87BD4 /* RepeatCalendarViewController.h */,
 				159599441A592C0700D87BD4 /* RepeatCalendarViewController.m */,
 				159599451A592C0700D87BD4 /* RepeatCalendarViewController.xib */,
@@ -3325,6 +3335,9 @@
 				76961E521A3B3170008B5CE7 /* SelectPhotoViewController.h */,
 				76961E531A3B3170008B5CE7 /* SelectPhotoViewController.m */,
 				76961E541A3B3170008B5CE7 /* SelectPhotoViewController.xib */,
+				762F01B11A74962A0062FADF /* EmptyCell.h */,
+				762F01B21A74962A0062FADF /* EmptyCell.m */,
+				762F01B31A74962A0062FADF /* EmptyCell.xib */,
 			);
 			name = CustomView;
 			sourceTree = "<group>";
@@ -6216,6 +6229,7 @@
 				8E75545C1A52EFC8001940FB /* iconRoundAboutLeft.png in Resources */,
 				8ED402881A41DF3C00CCBE6D /* ic_qu_direction_mylocation@3x.png in Resources */,
 				2DE2D2941829060700034877 /* login-pass.png in Resources */,
+				762F01B51A74962A0062FADF /* EmptyCell.xib in Resources */,
 				B315788B188D5E5200C0ED01 /* ic-work-order-group-1-1.png in Resources */,
 				76977D571A0295D60029F297 /* bisone.sqlite in Resources */,
 				8499B2E01A2CA0CF004D9ACB /* icon_require-1.png in Resources */,
@@ -6298,6 +6312,7 @@
 				92C68E5B1519D4F100981728 /* SBJsonWriter.m in Sources */,
 				92C68E651519D4F100981728 /* NetworkEngine.m in Sources */,
 				92C68E661519D4F100981728 /* NetworkUtils.m in Sources */,
+				762F01B41A74962A0062FADF /* EmptyCell.m in Sources */,
 				8E013B4C1A5548DE00A72586 /* DTOProductMasterObject.m in Sources */,
 				8EC972901A5D71300021DCA3 /* FFYearCalendarView.m in Sources */,
 				8EC972A31A5D71300021DCA3 /* FFEditEventPopoverController.m in Sources */,
@@ -6417,6 +6432,7 @@
 				769F24821A6F1C5500427A8F /* MMDrawerController.m in Sources */,
 				B31938D718E4355D0008BBFE /* UITextView+Custom.m in Sources */,
 				2D87F5F6175AD862007F861D /* SVProgressHUD.m in Sources */,
+				156CD6EF1A74DECA002D6361 /* RepeatCalendarConfig.m in Sources */,
 				8497C0011A295A2300A5ED3C /* MapZoomViewController.m in Sources */,
 				2D47E7F31761704200F291D6 /* NSString+GCNetworkRequest.m in Sources */,
 				2D36438C1859996700190EE7 /* AFDownloadRequestOperation.m in Sources */,

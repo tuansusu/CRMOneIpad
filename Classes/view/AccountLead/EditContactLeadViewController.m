@@ -376,6 +376,10 @@
     }
     
     if (succsess && alertView.tag == 5 && buttonIndex == 1) {
+        
+        //set gia tri de them moi duoc
+        self.dataSend = nil;
+        
         //reset lai form
         [self resetForm];
     }
@@ -647,18 +651,8 @@
         isValidate=NO;
         return isValidate;
     }
-    if([StringUtil trimString:self.txtEmail.text].length==0){
-        
-        [self showTooltip:self.txtEmail withText:@"Bạn chưa nhập Email"];
-        [self.txtEmail becomeFirstResponder];
-        
-        [self setBorder:self.txtEmail];
-        
-        isValidate=NO;
-        return isValidate;
-    }
     
-    if([self validateEmail:self.txtEmail.text]==NO)
+    if([StringUtil trimString:self.txtEmail.text].length>0 && [self validateEmail:self.txtEmail.text]==NO)
     {
         [self showTooltip:self.txtEmail withText:@"Email không đúng"];
         [self.txtEmail becomeFirstResponder];

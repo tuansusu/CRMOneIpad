@@ -22,6 +22,8 @@
 +(BOOL) checkFileExtension : (NSString *) fileName;
 -(BOOL) checkValidToSave:(UITextField*) inputText :(NSString*)inputMessage :(UIView *)showView ;
 -(void) showTooltip : (UITextField*) inputTooltipView withText : (NSString*) inputMessage showview:(UIView*)viewMainBodyInfo;
+-(BOOL) validateEmail:(NSString *)email;
+-(void)setBorder:(UITextField *)txtView;
 /*
  *Ham send mail den dia chi cu the
  */

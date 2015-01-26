@@ -28,7 +28,7 @@
     
     DTOACCOUNTLEADProcess *dtoLeadProcess;
     DTOSYSCATProcess *dtoSyscatProcess; //NGHE NGHIEP CA NHAN
-    
+    Util*util;
     //chon index form them moi
     NSInteger selectIndex;
     NSArray *listArr;
@@ -78,7 +78,7 @@
     if ([UIDevice getCurrentSysVer] >= 7.0) {
         [UIDevice updateLayoutInIOs7OrAfter:self];
     }
-    
+    util=[Util new];
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
     
@@ -283,7 +283,16 @@
 -(void) actionSave:(id)sender{
     //check valid to save
     
-    if (![self checkValidToSave]) {
+    if (![util checkValidToSave:_txtName :@"Anh/Chị chưa nhập tên khách hàng" :self.viewMainBodyInfo]) {
+        return;
+    }
+    if(![util checkValidToSave:_txtPhone :@"Anh/Chị chưa nhập số điện thoại khách hàng" :_viewMainBodyInfo]){
+        return;
+    }
+    if(_txtEmail.text.length>0 && ![util validateEmail:_txtEmail.text]){
+    
+        [util showTooltip:_txtEmail withText:@"Email không đúng định dạng" showview:_viewMainBodyInfo];
+        [util setBorder:_txtEmail];
         return;
     }
     
@@ -590,106 +599,7 @@
     
 }
 
-#pragma mark check
--(BOOL) checkValidToSave {
-    BOOL isValidate = YES;
-    if ([StringUtil trimString: self.txtName.text].length==0) {
-        [self showTooltip:self.txtName withText:@"Bạn chưa nhập Tên khách hàng"];
-        
-        [self.txtName becomeFirstResponder];
-        
-        isValidate = NO;
-        return isValidate;
-    }
-    
-    if ([StringUtil trimString: self.txtPhone.text].length==0) {
-        [self showTooltip:self.txtPhone withText:@"Bạn chưa nhập Số điện thoại"];
-        isValidate = NO;
-        [self.txtPhone becomeFirstResponder];
-        return isValidate;
-    }
-    return isValidate;
-}
 
-
-#pragma mark tooltip
-
--(void) showTooltip : (UIView*) inputTooltipView withText : (NSString*) inputMessage {
-    
-    [self dismissAllPopTipViews];
-    
-    
-    NSString *contentMessage = inputMessage;
-    //UIView *contentView = inputTooltipView;
-    
-    UIColor *backgroundColor = [UIColor lightGrayColor];
-    
-    UIColor *textColor = [UIColor darkTextColor];
-    
-    //NSString *title = inputMessage;
-    
-    CMPopTipView *popTipView;
-    
-    
-    popTipView = [[CMPopTipView alloc] initWithMessage:contentMessage];
-    
-    popTipView.delegate = self;
-    
-    /* Some options to try.
-     */
-    //popTipView.disableTapToDismiss = YES;
-    //popTipView.preferredPointDirection = PointDirectionUp;
-    //popTipView.hasGradientBackground = NO;
-    //popTipView.cornerRadius = 2.0;
-    //popTipView.sidePadding = 30.0f;
-    //popTipView.topMargin = 20.0f;
-    //popTipView.pointerSize = 50.0f;
-    //popTipView.hasShadow = NO;
-    
-    popTipView.preferredPointDirection = PointDirectionDown;
-    popTipView.hasShadow = NO;
-    
-    if (backgroundColor && ![backgroundColor isEqual:[NSNull null]]) {
-        popTipView.backgroundColor = backgroundColor;
-    }
-    if (textColor && ![textColor isEqual:[NSNull null]]) {
-        popTipView.textColor = textColor;
-    }
-    
-    popTipView.animation = arc4random() % 2;
-    popTipView.has3DStyle = (BOOL)(arc4random() % 2);
-    
-    popTipView.dismissTapAnywhere = YES;
-    [popTipView autoDismissAnimated:YES atTimeInterval:3.0];
-    
-    
-    [popTipView presentPointingAtView:inputTooltipView inView:self.viewMainBodyInfo animated:YES];
-    
-    
-    [self.visiblePopTipViews addObject:popTipView];
-    self.currentPopTipViewTarget = inputTooltipView;
-    
-    
-    
-}
-
-- (void)dismissAllPopTipViews
-{
-    while ([self.visiblePopTipViews count] > 0) {
-        CMPopTipView *popTipView = [self.visiblePopTipViews objectAtIndex:0];
-        [popTipView dismissAnimated:YES];
-        [self.visiblePopTipViews removeObjectAtIndex:0];
-    }
-}
-
-
-#pragma mark - CMPopTipViewDelegate methods
-
-- (void)popTipViewWasDismissedByUser:(CMPopTipView *)popTipView
-{
-    [self.visiblePopTipViews removeObject:popTipView];
-    self.currentPopTipViewTarget = nil;
-}
 #pragma mark UITextField
 
 

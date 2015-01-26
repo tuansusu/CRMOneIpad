@@ -235,5 +235,22 @@
     [self.visiblePopTipViews removeObject:popTipView];
     self.currentPopTipViewTarget = nil;
 }
+//kiểm tra email có đúng định dạng hay không?
+-(BOOL) validateEmail:(NSString *)email{
+    
+    NSString *emailRegex=@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9]+\\.[A-Za-z]{2,6}";
+    NSPredicate *emailtext=[NSPredicate predicateWithFormat:@"SELF MATCHES %@",emailRegex];
+    return [emailtext evaluateWithObject:email];
+}
+//set border cho textview
 
+#pragma mark-set border text
+-(void)setBorder:(UITextField *)txtView{
+    
+    txtView .layer.cornerRadius=1.0f;
+    txtView.layer.masksToBounds=YES;
+    txtView.layer.borderColor=[[UIColor redColor]CGColor ];
+    txtView.layer.borderWidth=1.0f;
+    [txtView becomeFirstResponder];
+}
 @end

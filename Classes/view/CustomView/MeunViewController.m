@@ -16,7 +16,43 @@
 
 @interface MeunViewController ()
 {
-    //Language *obj;
+    
+    __weak IBOutlet UILabel *lbGroupCustomer;
+    
+    __weak IBOutlet UIButton *btnCustomer;
+    
+    __weak IBOutlet UIButton *btnAccount360;
+    
+    __weak IBOutlet UIButton *btnOpportunity;
+    
+    __weak IBOutlet UIButton *btnMap;
+    
+    __weak IBOutlet UILabel *lbGroupAction;
+    
+    __weak IBOutlet UIButton *btnTask;
+    
+    __weak IBOutlet UIButton *btnCalendar;
+    
+    __weak IBOutlet UILabel *lbGroupUtility;
+    
+    __weak IBOutlet UIButton *btnReport;
+    
+    __weak IBOutlet UIButton *btnSetting;
+    
+    __weak IBOutlet UIButton *btnOptionReply;
+    
+    __weak IBOutlet UIButton *btnHelp;
+    
+    __weak IBOutlet UILabel *lbSystem;
+    
+    __weak IBOutlet UIButton *btnSync;
+    
+    __weak IBOutlet UIButton *btnCancel;
+    
+    
+    __weak IBOutlet UIScrollView *menuScrolview;
+    
+    Language *obj;
 }
 @end
 
@@ -55,13 +91,18 @@
         interfaceOption = @"1";
     }
     [self.menuView2 setBackgroundColor:TOOLBAR_VIEW_COLOR];
-//    obj=[Language getInstance];
-//    defaults = [NSUserDefaults standardUserDefaults];
-//    [defaults synchronize];
-//    obj=[Language getInstance];
-//    obj.str = [defaults objectForKey:@"Language"];
-//    LocalizationSetLanguage(obj.str);
-//    [self setupLanguage];
+    
+    obj=[Language getInstance];
+    defaults = [NSUserDefaults standardUserDefaults];
+    [defaults synchronize];
+    obj=[Language getInstance];
+    obj.str = [defaults objectForKey:@"Language"];
+    LocalizationSetLanguage(obj.str);
+    [self setupLanguage];
+    
+    //set content size
+    menuScrolview.contentSize = CGSizeMake(menuScrolview.frame.size.width,726 );
+    
     
     [self updateInterFaceWithOption: [interfaceOption intValue]];
 }
@@ -81,20 +122,32 @@
 }
 
 -(void)setupLanguage{
-//    [lbTask setText:LocalizedString(@"KEY_TASK")];
-//    [btnTaskICreated setTitle:LocalizedString(@"KEY_TASK_I_CREATED") forState:UIControlStateNormal];
-//    [btnTaskAssign setTitle:LocalizedString(@"KEY_TASK_ASSIGNED") forState:UIControlStateNormal];
-//    [lbMeetingSchedule setText:LocalizedString(@"KEY_MEETING_SCHEDULE")];
-//    [btnScheduleGroup setTitle:LocalizedString(@"KEY_MEETING_FOR_GROUP") forState:UIControlStateNormal];
-//    [btnSchedulePersonal setTitle:LocalizedString(@"KEY_MEETING_FOR_PERSONAL") forState:UIControlStateNormal];
-//    
-//    [lbUtility setText:LocalizedString(@"KEY_UTILITY")];
-//    [btnHDTV setTitle:LocalizedString(@"KEY_MEETING_MATERIALS_HDTV") forState:UIControlStateNormal];
-//    [btnBGD setTitle:LocalizedString(@"KEY_CONCLUSIONS_BGD") forState:UIControlStateNormal];
-//    [btnContact setTitle:LocalizedString(@"KEY_CONTACT") forState:UIControlStateNormal];
-//    [btnNotification setTitle:LocalizedString(@"KEY_MENU_NOTIFICATION") forState:UIControlStateNormal];
-//    [lbSystem setText:LocalizedString(@"KEY_SYSTEM")];
-//    [btnLogOut setTitle:LocalizedString(@"KEY_LOGOUT") forState:UIControlStateNormal];
+    
+    [lbGroupCustomer setText:LocalizedString(@"MENU_GROUP_CUSTOMER")];
+    [btnCustomer setTitle:LocalizedString(@"MENU_FUNCTION_ACCOUNTLEAD") forState:UIControlStateNormal];
+    [btnAccount360 setTitle:LocalizedString(@"MENU_FUNCTION_ACCOUNT360") forState:UIControlStateNormal];
+    [btnOpportunity setTitle:LocalizedString(@"MENU_FUNCTION_OPPORTUNITY") forState:UIControlStateNormal];
+    [btnMap setTitle:LocalizedString(@"MENU_FUNCTION_MAP") forState:UIControlStateNormal];
+    
+    [lbGroupAction setText:LocalizedString(@"MENU_GROUP_ACTION_SALE")];
+    [btnTask setTitle:LocalizedString(@"MENU_FUNCTION_TASK") forState:UIControlStateNormal];
+    [btnCalendar setTitle:LocalizedString(@"MENU_FUNCTION_CALENDAR") forState:UIControlStateNormal];
+    [lbGroupUtility setText:LocalizedString(@"MENU_GROUP_UTILITY")];
+    
+    [btnReport setTitle:LocalizedString(@"MENU_FUNCTION_REPORT") forState:UIControlStateNormal];
+    
+    [btnSetting setTitle:LocalizedString(@"MENU_FUNCTION_SETTING") forState:UIControlStateNormal];
+    
+    [btnOptionReply setTitle:LocalizedString(@"MENU_FUNCTION_OPTION_REPLY") forState:UIControlStateNormal];
+    
+    [btnHelp setTitle:LocalizedString(@"MENU_FUNCTION_HELP") forState:UIControlStateNormal];
+    
+    [lbSystem setText:LocalizedString(@"MENU_GROUP_SYSTEM")];
+    [btnSync setTitle:LocalizedString(@"MENU_FUNCTION_SYNC") forState:UIControlStateNormal];
+    
+    [btnCancel setTitle:LocalizedString(@"MENU_FUNCTION_CANCEL") forState:UIControlStateNormal];
+    
+
 }
 
 - (void) updateInterFaceWithOption : (int) option

@@ -51,7 +51,15 @@
         //set focus
     [self initData];
     
-    
+    obj=[Language getInstance];
+    obj.str = [defaults objectForKey:@"Language"];
+    if ([StringUtil stringIsEmpty:obj.str] ) {
+        obj.str = @"vi";
+        [defaults setObject:@"vi" forKey:@"Language"];
+    }
+    LocalizationSetLanguage(obj.str);
+    [self setUpLanguage];
+
     
     
 }
@@ -470,6 +478,33 @@
     
 #endif
 }
+
+
+#pragma mark language
+- (IBAction)vietnamLanguageChoose:(id)sender {
+    obj.str=@"vi";
+    LocalizationSetLanguage(@"vi");
+    defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:obj.str forKey:@"Language"];
+    [self setUpLanguage];
+    
+}
+
+- (IBAction)englishLanguageChoose:(id)sender {
+    obj.str=@"en";
+    LocalizationSetLanguage(@"en");
+    defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:obj.str forKey:@"Language"];
+    [self setUpLanguage];
+}
+
+-(void)setUpLanguage{
+    [tf_username setPlaceholder:LocalizedString(@"KEY_ACCOUNT")];
+    [tf_password setPlaceholder:LocalizedString(@"KEY_PASSWORD")];
+    [self.btnLogin setTitle:LocalizedString(@"KEY_LOGIN") forState:UIControlStateNormal];
+    [self.btnGioiThieu setTitle:LocalizedString(@"KEY_ABOUT") forState:UIControlStateNormal];
+}
+
 
 
 @end

@@ -170,19 +170,19 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         case typeLeaderView_Note:
         {
             
-            
+            [self displayNormalButtonState:self.btnNote];
         }break;
         case typeLeaderView_Opportunity:{
-            
+            [self displayNormalButtonState:self.btnOpportunity];
         }break;
         case typeLeaderView_Calendar:
         {
-            
+            [self displayNormalButtonState:self.btnCalendar];
         }
             break;
         case typeLeaderView_Task:
         {
-            
+            [self displayNormalButtonState:self.btnTask];
         }
             break;
             
@@ -193,7 +193,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             break;
         case typeLeaderView_ProductsLead:
         {
-            
+            //[self displayNormalButtonState:];
         }
             break;
         default:

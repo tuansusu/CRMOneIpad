@@ -10,6 +10,7 @@
 
 #import "SelectIndexViewController.h"
 #import "CMPopTipView.h"
+#import "Util.h"
 
 @interface EditNoteLeadViewController : BaseViewController<UITextFieldDelegate,UIAlertViewDelegate, UIImagePickerControllerDelegate,SelectIndexDelegate, CMPopTipViewDelegate>
 

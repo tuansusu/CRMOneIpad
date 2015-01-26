@@ -20,6 +20,7 @@
     
     DTONOTEProcess *dtoProcess;
     DTOATTACHMENTProcess *dtoFileProcess;
+    Util *util;
     
     //chon index form them moi
     NSInteger selectIndex;
@@ -61,7 +62,7 @@
     if ([UIDevice getCurrentSysVer] >= 7.0) {
         [UIDevice updateLayoutInIOs7OrAfter:self];
     }
-    
+    util =[Util new];
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
     
@@ -227,7 +228,7 @@
 }
 - (IBAction)actionSave:(id)sender {
     
-    if (![self checkValidToSave]) {
+    if (![util checkValidToSave:self.txtTitle :@"Anh/Chị chưa nhập tiêu đề ghi chú" :self.viewMainBodyInfo] ) {
         return;
     }
     

@@ -215,6 +215,10 @@ NSString* emptyText = @"";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    DTOWidgetObject *widgetOB = [arrayData objectAtIndex:indexPath.row];
+    if ([widgetOB.widgetType integerValue]==0) {
+        return 500;
+    }
     return 450;
 }
 

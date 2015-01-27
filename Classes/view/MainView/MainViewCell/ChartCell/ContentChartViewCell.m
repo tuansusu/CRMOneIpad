@@ -41,13 +41,13 @@
     wvChart.opaque = NO;
     wvChart.backgroundColor = [UIColor clearColor];
     wvChart.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-    
+
     if (typeGraph == typeGraphLine) {
         [self loadLineChart];
     }else if (typeGraph == typeGraphColumnVertical) {
         [self loadColumnVerticalChartView];
     }else if (typeGraph == typeGraphColumnHorizontal) {
-
+        [self loadColumnHorizontalChartView];
     }else if (typeGraph == typeGraphFunnel) {
         [self loadFunnelChart];
     }
@@ -55,12 +55,13 @@
 
 -(void)loadChartViewWithWidgetObject:(DTOWidgetObject*)widgetOB{
     _widgetOB = widgetOB;
+    [self releaseDataWebview];
     if ([widgetOB.typeGraphically intValue] == typeGraphLine) {
         [self loadLineChart];
     }else if ([widgetOB.typeGraphically intValue] == typeGraphColumnVertical) {
         [self loadColumnVerticalChartView];
     }else if ([widgetOB.typeGraphically intValue] == typeGraphColumnHorizontal) {
-
+        [self loadColumnHorizontalChartView];
     }else if ([widgetOB.typeGraphically intValue] == typeGraphFunnel) {
         [self loadFunnelChart];
     }
@@ -102,12 +103,22 @@
 
 -(void)loadColumnVerticalChartView{
     [wvChart.scrollView setScrollEnabled:NO];
-    NSString* htmlPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"source.bundle/examples/column-parsed/CashFlowChart.htm"];
+    NSString* htmlPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"source.bundle/examples/column-parsed/columnVertical.htm"];
     NSURL* url = [NSURL fileURLWithPath:htmlPath];
     NSURLRequest* request = [NSURLRequest requestWithURL:url];
     [wvChart loadRequest:request];
 
 }
+
+-(void)loadColumnHorizontalChartView{
+    [wvChart.scrollView setScrollEnabled:NO];
+    NSString* htmlPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"source.bundle/examples/column-parsed/columnHorizontal.htm"];
+    NSURL* url = [NSURL fileURLWithPath:htmlPath];
+    NSURLRequest* request = [NSURLRequest requestWithURL:url];
+    [wvChart loadRequest:request];
+
+}
+
 
 
 #pragma mark - delegate of webview
@@ -127,63 +138,54 @@
 }
 -(void)updateData
 {
-    if([_widgetOB.typeGraphically intValue]==typeGraphLine)
-    {
-        NSString *data = @"";
-        NSString *types =@"";
+    NSString *data = @"";
+    NSString *types =@"";
+    data =[NSString stringWithFormat:@"[ {"
+           @"name: 'Năm 2014',"
+           @"data: [10, 32, 23, 36, 47, 65, 55, 39, 66, 100, 80, 22],"
+           @"color:'rgb(%@)',"
+           @"stack: '1'"
+           @"},{"
+           @"name: 'Năm 2015',"
+           @"data: [10, 30, 20, 30, 40, 50, 60, 80, 70, 100, 90, 80],"
+           @"color:'rgb(%@)',"
+           @"stack: '2'"
+           @"}]",_widgetOB.colorDisplay2,_widgetOB.colorDisplay1];
 
-        data = [NSString stringWithFormat:@"[{name: 'TMT01',data: [10, 30, 20, 30, 40, 50, 60, 80, 70, 100, 90, 80, ],color:'rgb(%@)' }]",_widgetOB.colorDisplay1];
-        types = @"['Jan 15', 'Feb 15', 'Mar 15', 'Apr 15', 'May 15', 'Jun 15', 'Jul 15', 'Aug 15', 'Sep 15', 'Oct 15', 'Nov 15', 'Dec 15', ]";
-           NSMutableString* jsStr = [[NSMutableString alloc] initWithCapacity:0];
+    types = @"['Tháng 1', 'Tháng 12', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12', ]";
 
-        [jsStr appendFormat:@"updateData(%@,%@)",data,types];
+    NSMutableString* jsStr = [[NSMutableString alloc] initWithCapacity:0];
+    [jsStr appendFormat:@"updateData(%@,%@)",data,types];
+    [wvChart stringByEvaluatingJavaScriptFromString:jsStr];
+    /*
+     if([_widgetOB.typeGraphically intValue]==typeGraphLine)
+     {
+     //        data = [NSString stringWithFormat:@"[{name: 'TMT01',data: [10, 30, 20, 30, 40, 50, 60, 80, 70, 100, 90, 80, ],color:'rgb(%@)' }]",_widgetOB.colorDisplay1];
+     }else if([_widgetOB.typeGraphically intValue]==typeGraphColumnHorizontal)
+     {
+     }
+     else
+     if([_widgetOB.typeGraphically intValue]==typeGraphFunnel)
+     {
+     NSString *dataStr = @"[{"
+     @"name: 'Số tiền',"
+     @"data: ["
+     @"['Tổng hợp',      40064],"
+     @"['Huy động vốn',  15654],"
+     @"['Tín dụng',      1987],"
+     @"['Bảo lãnh',  976],"
+     @"['Phát triển khách hàng',     846]"
+     @"]"
+     @"}]";
 
-        [wvChart stringByEvaluatingJavaScriptFromString:jsStr];
-    }else if([_widgetOB.typeGraphically intValue]==typeGraphColumnVertical)
-    {
-        NSString *data =[NSString stringWithFormat:@"[ {"
-                         @"name: 'Total Expense',"
-                         @"data: [10, 30, 20, 30, 40, 50, 60, 80, 70, 100, 90, 80],"
-                         @"color:'rgb(%@)',"
-                         @"stack: '1'"
-                         @"},{"
-                         @"name: 'Total Income',"
-                         @"data: [10, 30, 20, 30, 40, 50, 60, 80, 70, 100, 90, 80],"
-                         @"color:'rgb(%@)',"
-                         @"stack: '2'"
-                         @"}]",_widgetOB.colorDisplay1,_widgetOB.colorDisplay2];
+     NSLog(@"data : %@ ",dataStr);
+     NSString *title = @"Widget Tổng hợp";
+     NSMutableString* jsStr = [[NSMutableString alloc] initWithCapacity:0];
+     [jsStr appendFormat:@"updateData(%@,\'%@\')",dataStr,title];
 
-        NSString *types =[NSString stringWithFormat:@"['Jan 15', 'Feb 15', 'Mar 15', 'Apr 15', 'May 15', 'Jun 15', 'Jul 15', 'Aug 15', 'Sep 15', 'Oct 15', 'Nov 15', 'Dec 15', ]"];
-
-        NSLog(@"data : %@ \n types : %@",data,types);
-        NSMutableString* jsStr = [[NSMutableString alloc] initWithCapacity:0];
-        [jsStr appendFormat:@"updateData(%@,%@)",data,types];
-
-        [wvChart stringByEvaluatingJavaScriptFromString:jsStr];
-    }else if([_widgetOB.typeGraphically intValue]==typeGraphColumnHorizontal)
-    {
-
-    }
-    else if([_widgetOB.typeGraphically intValue]==typeGraphFunnel)
-    {
-        NSString *dataStr = @"[{"
-        @"name: 'Số tiền',"
-        @"data: ["
-        @"['Tổng hợp',      40064],"
-        @"['Huy động vốn',  15654],"
-        @"['Tín dụng',      1987],"
-        @"['Bảo lãnh',  976],"
-        @"['Phát triển khách hàng',     846]"
-        @"]"
-        @"}]";
-
-        NSLog(@"data : %@ ",dataStr);
-        NSString *title = @"Widget Tổng hợp";
-        NSMutableString* jsStr = [[NSMutableString alloc] initWithCapacity:0];
-        [jsStr appendFormat:@"updateData(%@,\'%@\')",dataStr,title];
-        
-        [wvChart stringByEvaluatingJavaScriptFromString:jsStr];
-    }
+     [wvChart stringByEvaluatingJavaScriptFromString:jsStr];
+     }
+     */
 }
 
 

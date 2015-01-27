@@ -1,0 +1,58 @@
+/* 
+  Localizable.strings
+  OfficeOneMB
+
+  Created by viettel on 1/26/15.
+
+*/
+
+
+//[tf_username setPlaceholder:LocalizedString(@"KEY_ACCOUNT")];
+//[tf_password setPlaceholder:LocalizedString(@"KEY_PASSWORD")];
+//[self.btnLogin setTitle:LocalizedString(@"KEY_LOGIN") forState:UIControlStateNormal];
+//[self.btnGioiThieu setTitle:LocalizedString(@"KEY_ABOUT") forState:UIControlStateNormal];
+
+//login
+"KEY_ACCOUNT" = "Tài khoản";
+"KEY_PASSWORD" = "Mật khẩu";
+"KEY_LOGIN" = "Đăng nhập";
+"KEY_ABOUT" = "Giới thiệu";
+
+//menu
+"MENU_FUNCTION_DASHBOARD" = "     DASHBOARD";
+"MENU_GROUP_CUSTOMER" = "     KHÁCH HÀNG";
+"MENU_FUNCTION_ACCOUNTLEAD" = "           Khách hàng tiềm năng";
+"MENU_FUNCTION_ACCOUNT360" = "           Khách hàng 360";
+"MENU_FUNCTION_OPPORTUNITY" = "           Cơ hội bán hàng";
+"MENU_FUNCTION_MAP" = "           Bản đồ khách hàng";
+"MENU_GROUP_ACTION_SALE" = "     HOẠT ĐỘNG BÁN HÀNG";
+"MENU_FUNCTION_TASK" = "           Công việc";
+"MENU_FUNCTION_CALENDAR" = "           Lịch";
+"MENU_GROUP_UTILITY" = "     TIỆN ÍCH";
+"MENU_FUNCTION_REPORT" = "           Báo cáo";
+"MENU_FUNCTION_SETTING" = "           Thiết lập";
+"MENU_FUNCTION_OPTION_REPLY" = "           Ý kiến phản hồi";
+"MENU_FUNCTION_HELP" = "           Trợ giúp";
+"MENU_GROUP_SYSTEM" = "     HỆ THỐNG";
+"MENU_FUNCTION_SYNC" = "           Đồng bộ";
+"MENU_FUNCTION_CANCEL" = "           Thoát";
+
+
+"KEY_ALERTVIEW_DELETE_MESSAGE" = "chắc chắn muốn xóa công việc?";
+"KEY_ALERTVIEW_DELETE_CANCEL" = "Hủy";
+"KEY_ALERTVIEW_DELETE_OK" = "Đồng ý";
+
+"KEY_Edit" = "Sửa";
+"KEY_Delete" = "Xóa";
+
+//ALL
+"KEY_UPDATE" = "Cập nhật";
+"KEY_CANCEL" = "Hủy";
+"KEY_SEARCH" = "Tìm kiếm";
+"KEY_TOTAL" = "Tổng số";
+
+//stop task
+"KEY_STOP_TASK_TITLE" = "XÁC NHẬN LÝ DO DỪNG CÔNG VIỆC";
+"KEY_STOP_TASK_REASON" = "Lý do dừng công việc";
+
+

@@ -22,6 +22,8 @@
 @interface RootViewController : BaseViewController <ReaderViewControllerDelegate, UIAlertViewDelegate,UITextFieldDelegate>{
     IBOutlet UITextField* tf_username;
     IBOutlet UITextField* tf_password;
+    
+    Language *obj;
 
 }
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
@@ -39,4 +41,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblVersion;
 
 - (IBAction)action_introduction:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnGioiThieu;
+
+- (IBAction)vietnamLanguageChoose:(id)sender;
+- (IBAction)englishLanguageChoose:(id)sender;
+
+
 @end

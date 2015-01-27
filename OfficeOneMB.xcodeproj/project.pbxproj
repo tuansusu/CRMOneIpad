@@ -346,6 +346,7 @@
 		769C1A1B1A00027900F015A5 /* Network.m in Sources */ = {isa = PBXBuildFile; fileRef = 769C1A181A00027900F015A5 /* Network.m */; };
 		769C1A1C1A00027900F015A5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 769C1A1A1A00027900F015A5 /* Reachability.m */; };
 		769CB8141A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 769CB8131A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.m */; };
+		769CF2381A768B8B004BF96E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 769CF23A1A768B8B004BF96E /* Localizable.strings */; };
 		769F247E1A6F1C5500427A8F /* Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F246D1A6F1C5500427A8F /* Language.m */; };
 		769F247F1A6F1C5500427A8F /* LocalizeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F246F1A6F1C5500427A8F /* LocalizeHelper.m */; };
 		769F24801A6F1C5500427A8F /* DDMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F24721A6F1C5500427A8F /* DDMenuController.m */; };
@@ -1531,6 +1532,8 @@
 		769C1A1A1A00027900F015A5 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		769CB8121A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOOPPORTUNITYCONTACTProcess.h; sourceTree = "<group>"; };
 		769CB8131A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOOPPORTUNITYCONTACTProcess.m; sourceTree = "<group>"; };
+		769CF2391A768B8B004BF96E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		769CF23B1A768BCE004BF96E /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		769F246C1A6F1C5500427A8F /* Language.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Language.h; sourceTree = "<group>"; };
 		769F246D1A6F1C5500427A8F /* Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Language.m; sourceTree = "<group>"; };
 		769F246E1A6F1C5500427A8F /* LocalizeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizeHelper.h; sourceTree = "<group>"; };
@@ -2802,6 +2805,7 @@
 				769C1A1D1A00041200F015A5 /* logo */,
 				28A0AAE50D9B0CCF005BE974 /* OfficeOneMB_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
+				769CF23A1A768B8B004BF96E /* Localizable.strings */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -6018,6 +6022,7 @@
 				B316D697188FFA91009B751B /* login-ic-pass-1.png in Resources */,
 				76601A4D194BE90F001D4C01 /* Reader-Mark-Y.png in Resources */,
 				7657E8CA1A5AEB3A008A62F9 /* Task360Cell.xib in Resources */,
+				769CF2381A768B8B004BF96E /* Localizable.strings in Resources */,
 				8497BFBB1A295A2300A5ED3C /* arrow.png in Resources */,
 				8497BFCC1A295A2300A5ED3C /* Default-Portrait~ipad.png in Resources */,
 				2D6D7664187670B00051AD9E /* ic-work-order-person-1.png in Resources */,
@@ -6745,6 +6750,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		769CF23A1A768B8B004BF96E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				769CF2391A768B8B004BF96E /* en */,
+				769CF23B1A768BCE004BF96E /* vi */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		8497BF0B1A295A2300A5ED3C /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

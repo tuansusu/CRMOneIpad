@@ -148,6 +148,109 @@
     arrayFileTemp = nil;
     return NO;
 }
+//hàm kiểm tra dũ lieu nhap vao bat validate
 
 
+#pragma mark check
+-(BOOL) checkValidToSave:(UITextField*) inputText :(NSString*)inputMessage :(UIView *)showView {
+    BOOL isValidate = YES;
+    if ([StringUtil trimString: inputText.text].length==0) {
+        [self showTooltip:inputText withText:inputMessage showview:showView];
+        
+        [inputText becomeFirstResponder];
+        inputText.layer.cornerRadius=1.0f;
+        inputText.layer.masksToBounds=YES;
+        inputText.layer.borderColor=[[UIColor redColor]CGColor ];
+        inputText.layer.borderWidth=1.0f;
+        
+        isValidate = NO;
+        return isValidate;
+    }
+    return isValidate;
+}
+
+//hiển thị thông báo
+#pragma mark tooltip
+
+-(void) showTooltip : (UITextField*) inputTooltipView withText : (NSString*) inputMessage showview:(UIView*)viewMainBodyInfo{
+    
+    [self dismissAllPopTipViews];
+    
+    
+    NSString *contentMessage = inputMessage;
+    //UIView *contentView = inputTooltipView;
+    
+    UIColor *backgroundColor = [UIColor redColor];
+    
+    UIColor *textColor = [UIColor whiteColor];
+    
+    //NSString *title = inputMessage;
+    
+    CMPopTipView *popTipView;
+    
+    
+    popTipView = [[CMPopTipView alloc] initWithMessage:contentMessage];
+    
+    popTipView.delegate = self;
+    
+    popTipView.preferredPointDirection = PointDirectionDown;
+    popTipView.hasShadow = NO;
+    
+    if (backgroundColor && ![backgroundColor isEqual:[NSNull null]]) {
+        popTipView.backgroundColor = backgroundColor;
+    }
+    if (textColor && ![textColor isEqual:[NSNull null]]) {
+        popTipView.textColor = textColor;
+    }
+    
+    popTipView.animation = arc4random() % 2;
+    popTipView.has3DStyle = (BOOL)(arc4random() % 2);
+    
+    popTipView.dismissTapAnywhere = YES;
+    [popTipView autoDismissAnimated:YES atTimeInterval:3.0];
+    
+    
+    [popTipView presentPointingAtView:inputTooltipView inView:viewMainBodyInfo animated:YES];
+    
+    
+    [self.visiblePopTipViews addObject:popTipView];
+    self.currentPopTipViewTarget = inputTooltipView;
+    
+    
+    
+}
+
+- (void)dismissAllPopTipViews
+{
+    while ([self.visiblePopTipViews count] > 0) {
+        CMPopTipView *popTipView = [self.visiblePopTipViews objectAtIndex:0];
+        [popTipView dismissAnimated:YES];
+        [self.visiblePopTipViews removeObjectAtIndex:0];
+    }
+}
+#pragma mark - CMPopTipViewDelegate methods
+
+- (void)popTipViewWasDismissedByUser:(CMPopTipView *)popTipView
+{
+    [self.visiblePopTipViews removeObject:popTipView];
+    self.currentPopTipViewTarget = nil;
+}
+//kiểm tra email có đúng định dạng hay không?
+-(BOOL) validateEmail:(NSString *)email{
+    
+    NSString *emailRegex=@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9]+\\.[A-Za-z]{2,6}";
+    NSPredicate *emailtext=[NSPredicate predicateWithFormat:@"SELF MATCHES %@",emailRegex];
+    return [emailtext evaluateWithObject:email];
+}
+//set border cho textview
+
+#pragma mark-set border text
+-(void)setBorder:(UITextField *)txtView{
+    
+    txtView .layer.cornerRadius=1.0f;
+    txtView.layer.masksToBounds=YES;
+    txtView.layer.borderColor=[[UIColor redColor]CGColor ];
+    txtView.layer.borderWidth=1.0f;
+    [txtView becomeFirstResponder];
+}
 @end

@@ -9,9 +9,9 @@
 #import "BaseViewController.h"
 
 #import "SelectIndexViewController.h"
-#import "CMPopTipView.h"
+#import "Util.h"
 
-@interface EditNoteLeadViewController : BaseViewController<UITextFieldDelegate,UIAlertViewDelegate, UIImagePickerControllerDelegate,SelectIndexDelegate, CMPopTipViewDelegate>
+@interface EditNoteLeadViewController : BaseViewController<UITextFieldDelegate,UIAlertViewDelegate, UIImagePickerControllerDelegate,SelectIndexDelegate>
 
 
 //DATA
@@ -72,8 +72,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *barLabel;
 @property (weak, nonatomic) IBOutlet UIView *footerView;
 
-//danh sách nhưng tooltip
-@property (nonatomic, retain) NSMutableArray *visiblePopTipViews;
-@property (nonatomic, strong) id currentPopTipViewTarget;
 
 @end

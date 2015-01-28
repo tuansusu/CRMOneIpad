@@ -509,19 +509,19 @@
         return YES;
     }
     
-    float height = 190;
-    if (textField == _txtTotalassets || textField == _txtAddress) {
-        height = 230;
-    }
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.25f];
-    
-    CGRect frame = self.mainView.frame;
-    frame.origin.y = frame.origin.y - height;
-    [self.mainView setFrame:frame];
-    
-    [UIView commitAnimations];
+//    float height = 190;
+//    if (textField == _txtTotalassets || textField == _txtAddress) {
+//        height = 230;
+//    }
+//    
+//    [UIView beginAnimations:nil context:NULL];
+//    [UIView setAnimationDuration:0.25f];
+//    
+//    CGRect frame = self.mainView.frame;
+//    frame.origin.y = frame.origin.y - height;
+//    [self.mainView setFrame:frame];
+//    
+//    [UIView commitAnimations];
     
     return  YES;
     
@@ -535,22 +535,22 @@
 }// return YES to allow editing to stop and to resign first responder status. NO to disallow the editing session to end
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     
-    if (textField == self.txtName) {
-        return;
-    }
-    
-    float height = 190;
-    if (textField == _txtTotalassets || textField == _txtAddress) {
-        height = 230;
-    }
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.25f];
-    CGRect frame = self.mainView.frame;
-    frame.origin.y = frame.origin.y + height;
-    [self.mainView setFrame:frame];
-    
-    [UIView commitAnimations];
+//    if (textField == self.txtName) {
+//        return;
+//    }
+//    
+//    float height = 190;
+//    if (textField == _txtTotalassets || textField == _txtAddress) {
+//        height = 230;
+//    }
+//    
+//    [UIView beginAnimations:nil context:NULL];
+//    [UIView setAnimationDuration:0.25f];
+//    CGRect frame = self.mainView.frame;
+//    frame.origin.y = frame.origin.y + height;
+//    [self.mainView setFrame:frame];
+//    
+//    [UIView commitAnimations];
     
 }// may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
 

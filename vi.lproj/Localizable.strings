@@ -7,11 +7,6 @@
 */
 
 
-//[tf_username setPlaceholder:LocalizedString(@"KEY_ACCOUNT")];
-//[tf_password setPlaceholder:LocalizedString(@"KEY_PASSWORD")];
-//[self.btnLogin setTitle:LocalizedString(@"KEY_LOGIN") forState:UIControlStateNormal];
-//[self.btnGioiThieu setTitle:LocalizedString(@"KEY_ABOUT") forState:UIControlStateNormal];
-
 //login
 "KEY_ACCOUNT" = "Tài khoản";
 "KEY_PASSWORD" = "Mật khẩu";
@@ -54,5 +49,8 @@
 //stop task
 "KEY_STOP_TASK_TITLE" = "XÁC NHẬN LÝ DO DỪNG CÔNG VIỆC";
 "KEY_STOP_TASK_REASON" = "Lý do dừng công việc";
+
+
+//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Đồng chí có muốn đăng xuất không ?" delegate:self cancelButtonTitle:@"Không" otherButtonTitles:@"Có", nil];
 
 

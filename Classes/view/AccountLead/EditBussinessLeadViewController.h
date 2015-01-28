@@ -31,7 +31,10 @@
 
 @property (weak, nonatomic) IBOutlet UIView *headerMainView;
 
-@property (weak, nonatomic) IBOutlet UIView *bodyMainView;
+//@property (weak, nonatomic) IBOutlet UIView *bodyMainView;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *bodyMainView;
+
 
 @property (weak, nonatomic) IBOutlet UIView *viewExpandInfo;
 

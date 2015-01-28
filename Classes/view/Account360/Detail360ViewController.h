@@ -27,6 +27,8 @@
 #import "EditBussinessLeadViewController.h"
 #import "EditOpportunity360ViewController.h"
 
+#import "EmptyCell.h"
+
 enum Type360View{
     type360View_ExpandInfo, //Thông tin mở rộng
     type360View_Contact, //Liên hệ
@@ -88,6 +90,10 @@ enum Type360View{
 @property (weak, nonatomic) IBOutlet UIButton *btnCalendar;
 @property (weak, nonatomic) IBOutlet UIButton *btnTask;
 @property (weak, nonatomic) IBOutlet UIButton *btnOpportunity;
+@property (weak, nonatomic) IBOutlet UIButton *btnComplains;
+@property (weak, nonatomic) IBOutlet UIButton *btnProductService;
+
+
 
 
 - (IBAction)actionExpandInfo:(UIButton *)sender;

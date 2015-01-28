@@ -655,14 +655,56 @@
     }
 }
 - (IBAction)actionAddAdress:(id)sender {
-    SelectAddInMapsViewController *detail = [[SelectAddInMapsViewController alloc] initWithNibName:@"SelectAddInMapsViewController" bundle:nil];
-    //detail.dataSend=dicData;
-    detail.view.frame = CGRectMake(0, 0, 700, 600);
-    //[InterfaceUtil setBorderWithCornerAndBorder:detail.view :6 :0.2 :nil];
-    [self presentPopupViewController:detail animationType:1];
-
+    
+    //chọn địa điểm
+    
+    //neu la luc them moi
+    
+    //neu la luc sua
+    
+    TestMapViewController *detail = [[TestMapViewController alloc] initWithNibName:@"TestMapViewController" bundle:nil];
+    
+    if (self.dataSend) {
+        if (![StringUtil stringIsEmpty:[self.dataSend objectForKey:DTOACCOUNT_lat]]) {
+            float fLon = [[self.dataSend objectForKey:DTOACCOUNT_lon] floatValue];
+            float fLan =[[self.dataSend objectForKey:DTOACCOUNT_lat] floatValue];
+            detail.lan = fLan;
+            detail.lon = fLon;
+            //viewController.address = [dicData objectForKey:DTOLEAD_address];
+            if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_address]]) {
+                detail.address = [dicData objectForKey:DTOACCOUNT_address];
+            }else{
+                detail.address = @"";
+            }
+            
+        }
+    }
+    
+    detail.typeMapView = typeMapView_Choice;
+    detail.selectMapDelegate = self;
+    [self presentViewController:detail animated:YES completion:nil];
     
 }
+
+#pragma mark SelectMap Delegate
+-(void) selectAddress:(GMSAddress *)addressObj{
+
+    NSLog(@"coordinate.latitude=%f", addressObj.coordinate.latitude);
+    NSLog(@"coordinate.longitude=%f", addressObj.coordinate.longitude);
+    NSLog(@"thoroughfare=%@", addressObj.thoroughfare);
+    NSLog(@"locality=%@", addressObj.locality);
+    NSLog(@"subLocality=%@", addressObj.subLocality);
+    NSLog(@"administrativeArea=%@", addressObj.administrativeArea);
+    NSLog(@"postalCode=%@", addressObj.postalCode);
+    NSLog(@"country=%@", addressObj.country);
+    NSLog(@"lines=%@", addressObj.lines);
+    
+    if (addressObj.lines.count>0) {
+        self.txtAddress.text =[addressObj.lines objectAtIndex:0];
+    }
+    
+}
+
 - (IBAction)actionCheckMobile:(id)sender {
     if(isPhone==NO){
         isPhone=YES;

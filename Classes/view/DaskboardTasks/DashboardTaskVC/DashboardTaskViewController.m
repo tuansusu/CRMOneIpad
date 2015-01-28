@@ -16,15 +16,16 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
 @interface DashboardTaskViewController ()<UISearchBarDelegate, UISearchDisplayDelegate,TaskActionCellDelegate,EditTaskLeadViewControllerDelegate>
 {
-     __weak IBOutlet UIButton *btnAdd;
+    __weak IBOutlet UIButton *btnAdd;
     int smgSelect ; //option layout
 
     NSUserDefaults *defaults;
 
-     NSString *strSearchText ;
-     NSArray *arrayData; //mang luu tru du lieu
+    NSString *strSearchText ;
+    NSArray *arrayData; //mang luu tru du lieu
 
     DTOTASKProcess *dtoProcess;
+    NSString *delTask;
 }
 //Header
 @property (weak, nonatomic) IBOutlet UIView *headerViewBar;
@@ -90,7 +91,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
     //remove footer view
     //(xoá dòng thừa không hiển thị của table)
-//    self.tbData.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    //    self.tbData.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
     [self initData];
 
@@ -104,14 +105,14 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 }
 
 /*
-#pragma mark - Navigation
+ #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 -(void) initData {
 
@@ -120,7 +121,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
     [self filterData];
 
-//    [SVProgressHUD dismiss];
+    //    [SVProgressHUD dismiss];
 }
 
 #pragma mark custom view
@@ -191,7 +192,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     [self.txtSearchBar resignFirstResponder];
 
     //tim kiem nang cao
-   
+
 }
 
 #pragma mark - Table View
@@ -228,7 +229,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     TaskActionCell *cell= [tableView dequeueReusableCellWithIdentifier:TaskActionCellId];
 
     if (cell !=nil)
@@ -311,8 +312,6 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 }
 
 
-
-
 //Thêm phần sửa, xoá hiển thị trên row của table
 
 #pragma mark edit
@@ -334,16 +333,11 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSDictionary *dicDataItem = [arrayData objectAtIndex:indexPath.row];
 
-
-//        NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
-//        deleteLeadId = [dicData objectForKey:DTOACCOUNT_id];
-//
-//        UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xác nhận đồng ý xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
-//        mylert.tag = TAG_DELETE_ITEM;
-//        [mylert show];
-
-
+        delTask = [dicDataItem objectForKey:DTOTASK_id];
+        UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Bạn có muốn xoá công việc?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
+        [mylert show];
     }
 }
 
@@ -381,10 +375,32 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 {
     NSLog(@"sua item at index = %d", indexPath.row);
 
-    NSDictionary *dicDataTemp = [arrayData objectAtIndex:indexPath.row];
+    NSDictionary *dicTempData = [arrayData objectAtIndex:indexPath.row];
+    EditTaskLeadViewController *viewController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
+    viewController.dataSend = dicTempData;
+    [viewController setDelegate:self];
+    [self presentViewController:viewController animated:YES completion:nil];
+}
 
-    NSDictionary *dicData = [dtoProcess getDataWithKey:DTOACCOUNT_id withValue:[dicDataTemp objectForKey:DTOACCOUNT_id]];
-    
+
+#pragma -mark xử lý thông báo
+-(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    BOOL item;
+    if(buttonIndex==0){
+        NSLog(@"Delete task");
+        item=[dtoProcess deleteEntity:delTask];
+        if(item){
+            NSLog(@"Xoa thanh cong");
+            [self filterData];
+        }
+        else{
+            NSLog(@"Loi");
+        }
+    }
+    else if(buttonIndex==1){
+        NSLog(@"No del task");
+        [alertView dismissWithClickedButtonIndex:nil animated:YES];
+    }
 }
 
 #pragma mark EditTaskLeadViewController delegate
@@ -393,6 +409,43 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     [self filterData];
 }
 
+#pragma mark - TaskActionCellDelegate
+- (void)taskActionCell:(TaskActionCell *)taskActionCell changeStatusWithData:(NSMutableDictionary *)inputDicData
+{
+    //change status
+    //dtoTaskProcess
 
+    NSMutableDictionary *dicTaskUpdate = [[NSMutableDictionary alloc] init];
+
+    [dicTaskUpdate setObject:[inputDicData objectForKey:DTOTASK_id] forKey:DTOTASK_id];
+
+    if ([[inputDicData objectForKey:DTOTASK_taskStatus] intValue] == FIX_TASK_STATUS_COMPLETE)
+    {
+        [dicTaskUpdate setObject:IntToStr(FIX_TASK_STATUS_NOT_COMPLETE) forKey:DTOTASK_taskStatus];
+    }
+    else //if ([[inputDicData objectForKey:DTOTASK_taskStatus] intValue] == FIX_TASK_STATUS_NOT_COMPLETE)
+    {
+        [dicTaskUpdate setObject:IntToStr(FIX_TASK_STATUS_COMPLETE) forKey:DTOTASK_taskStatus];
+    }
+
+    if ([dtoProcess insertToDBWithEntity:dicTaskUpdate])
+    {
+        NSIndexPath *indexPathToReload = [self.tbData indexPathForCell:taskActionCell];
+
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            if (strSearchText) {
+                arrayData = [dtoProcess filterTaskWithKey:DTOTASK_title withValue:@""];
+            }else{
+                arrayData = [dtoProcess filterTaskWithKey:DTOTASK_title withValue:strSearchText];
+            }
+
+            NSLog(@"task count = %ld", (unsigned long)arrayData.count);
+
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tbData reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPathToReload] withRowAnimation:UITableViewRowAnimationAutomatic];
+            });
+        });
+    }
+}
 
 @end

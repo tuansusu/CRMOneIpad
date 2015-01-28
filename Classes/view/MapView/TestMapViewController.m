@@ -8,24 +8,7 @@
 
 #import "TestMapViewController.h"
 
-#import <GoogleMaps/GoogleMaps.h>
-#import <MessageUI/MessageUI.h>
 
-#import "CustomerViewCell.h"
-#import "CustomInfoView.h"
-#import "MapsModel.h"
-#import "DTOAccountProcessObject.h"
-#import "DTOAcountLeadProcessObject.h"
-#import "SVProgressHUD.h"
-
-#import "UICGRoute.h"
-#import "Globals.h"
-#import "Reachability.h"
-#import "DirectionsHeaderView.h"
-#import "DirectionsViewCell.h"
-
-#import "RoutesDirectionsView.h"
-#import "DetailLeadViewController.h"
 
 
 
@@ -131,11 +114,15 @@
     
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
+    
+    zoomRatio = ZOOM_RATIO;
+    
+    
     // add start location
     NSLog(@"_lan = %f : _lon = %f", _lan, _lon);
     _lan = 21.032439554704172;
     _lon = 105.79308874905109;
-    zoomRatio = ZOOM_RATIO;
+    
     camera = [GMSCameraPosition cameraWithLatitude:_lan
                                          longitude:_lon
                                               zoom:zoomRatio];
@@ -149,10 +136,16 @@
     
     
     [self initLocation];
-    [self initDataKH];
     
-    //    DTOAcountLeadProcessObject *customerData=[_mapModel.listCustomerKHDM objectAtIndex:1];
-    //    [marker setUserData:customerData];
+    
+    if (self.typeMapView == typeMapView_Manager) {
+        [self initDataKH];
+    }else{
+        self.viewMap1.hidden = YES;
+        self.viewMap2.hidden = YES;
+        self.imgHomeMenu.image = [UIImage imageNamed:@"btn-back-1-1.png"];
+    }
+    
 }
 
 -(void)initDataKH{
@@ -166,7 +159,14 @@
 
 //Home button
 - (IBAction)homeBack:(id)sender {
-    [Util backToHome:self];
+    
+    
+    if (self.typeMapView == typeMapView_Manager) {
+        [Util backToHome:self];
+    }else{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    
 }
 
 - (void) updateInterFaceWithOption : (int) option
@@ -176,6 +176,11 @@
     self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
     self.footerView.backgroundColor = TOOLBAR_VIEW_COLOR;
     self.barLabel.textColor = TEXT_TOOLBAR_COLOR1;
+    
+    
+    self.barLabel.text = [NSString stringWithFormat:@"%@ %@, %@",VOFFICE,[defaults objectForKey:@"versionSoftware"],COPY_OF_SOFTWARE];
+
+    
 }
 
 
@@ -445,18 +450,22 @@
 - (void)mapView:(GMSMapView *)mapView
 didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate{
     [[GMSGeocoder geocoder] reverseGeocodeCoordinate:coordinate completionHandler:^(GMSReverseGeocodeResponse* response, NSError* error) {
-        NSLog(@"reverse geocoding results:");
+        NSLog(@"reverse geocoding results: %d", [[response results] count] );
         for(GMSAddress* addressObj in [response results])
         {
-            NSLog(@"coordinate.latitude=%f", addressObj.coordinate.latitude);
-            NSLog(@"coordinate.longitude=%f", addressObj.coordinate.longitude);
-            NSLog(@"thoroughfare=%@", addressObj.thoroughfare);
-            NSLog(@"locality=%@", addressObj.locality);
-            NSLog(@"subLocality=%@", addressObj.subLocality);
-            NSLog(@"administrativeArea=%@", addressObj.administrativeArea);
-            NSLog(@"postalCode=%@", addressObj.postalCode);
-            NSLog(@"country=%@", addressObj.country);
-            NSLog(@"lines=%@", addressObj.lines);
+            
+            if (self.selectMapDelegate && [self.selectMapDelegate respondsToSelector:@selector(selectAddress:)]) {
+                [self.selectMapDelegate selectAddress:addressObj];
+                
+                [self dismissViewControllerAnimated:YES completion:nil];
+                return;
+            }
+            
+           
+            
+            
+            
+            
         }
     }];
 }

@@ -34,7 +34,7 @@
  */
 @property (nonatomic, retain) NSDictionary *dataRoot;
 
-
+@property (nonatomic,assign) BOOL isKHDM;
 @property (weak, nonatomic) IBOutlet UIButton *btnSave;
 
 @end

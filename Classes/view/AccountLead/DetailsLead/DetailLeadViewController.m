@@ -539,6 +539,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         {
             EditTaskLeadViewController *viewController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
             viewController.dataRoot = dicData;
+            viewController.isKHDM = YES;
             [self presentViewController:viewController animated:YES completion:nil];
         }
         break;
@@ -853,6 +854,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
                 
                 EditTaskLeadViewController *viewController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
                 viewController.dataRoot = dicData;
+                viewController.isKHDM = YES;
                 [self presentViewController:viewController animated:YES completion:nil];
                 
             }
@@ -896,6 +898,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         case typeLeaderView_Task:{
 
             EditTaskLeadViewController *viewNoteController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
+            viewNoteController.isKHDM = YES;
             viewNoteController.dataSend = dicTempData;
             [self presentViewController:viewNoteController animated:YES completion:nil];
 
@@ -1085,6 +1088,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         case typeLeaderView_Task:{
             EditTaskLeadViewController *viewNoteController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
             viewNoteController.dataSend = dicTempData;
+            viewNoteController.isKHDM = YES;
             [self presentViewController:viewNoteController animated:YES completion:nil];
 
         }

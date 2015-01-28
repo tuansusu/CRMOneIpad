@@ -425,7 +425,12 @@
 
     if (self.dataRoot) {
         //TODO: check
-        [dicEntity setObject:[self.dataRoot objectForKey:DTOLEAD_clientLeadId] forKey:DTOTASK_clientLeadId];
+        if (self.isKHDM) {
+             [dicEntity setObject:[self.dataRoot objectForKey:DTOLEAD_clientLeadId] forKey:DTOTASK_clientLeadId];
+        }else{
+            [dicEntity setObject:[self.dataRoot objectForKey:DTOACCOUNT_clientAccountId] forKey:DTOTASK_accountId];
+        }
+
     }
     
     if (self.dataSend)

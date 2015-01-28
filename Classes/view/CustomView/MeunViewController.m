@@ -358,6 +358,7 @@
 - (IBAction)actionMapView:(id)sender {
     
     TestMapViewController *targetViewController = [[TestMapViewController alloc]initWithNibName:@"TestMapViewController" bundle:nil];
+    targetViewController.typeMapView = typeMapView_Manager;
     UINavigationController * navi = [[UINavigationController alloc] initWithRootViewController:targetViewController];
     [navi setNavigationBarHidden:YES];
     

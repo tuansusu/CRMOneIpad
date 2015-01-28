@@ -393,6 +393,7 @@
     [dicEntity setObject:@"1" forKey:DTOTASK_typeTask];
     
     if (self.dataRoot) {
+        
         [dicEntity setObject:[self.dataRoot objectForKey:DTOACCOUNT_clientAccountId] forKey:DTOTASK_accountId];
 
     }

@@ -289,7 +289,7 @@
         return;
     }
     if(_txtEmail.text.length>0 && ![util validateEmail:_txtEmail.text]){
-        [util showTooltip:_txtEmail withText:@"Email không đúng địn dạng" showview:_viewMainBodyInfo];
+        [util showTooltip:_txtEmail withText:@"Email không đúng định dạng" showview:_viewMainBodyInfo];
         [util setBorder:_txtEmail];
         return;
     }

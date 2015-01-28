@@ -113,7 +113,7 @@ DTOTASK_updatedDate, //updatedDate" //VARCHAR
 
 -(NSMutableArray*) filter{
 
-    NSArray *allFields =[NSArray arrayWithObjects:DTOTASK_id, DTOTASK_code, DTOTASK_clientTaskId, DTOTASK_clientLeadId, DTOTASK_content, DTOTASK_title, DTOTASK_typeTask, DTOTASK_startDate, DTOTASK_percentComplete, DTOTASK_location, DTOTASK_leadId, DTOTASK_content,DTOTASK_taskPriority, DTOTASK_taskId, DTOTASK_endDate, nil];
+    NSArray *allFields =[NSArray arrayWithObjects:DTOTASK_id, DTOTASK_code, DTOTASK_clientTaskId, DTOTASK_clientLeadId, DTOTASK_content, DTOTASK_title, DTOTASK_typeTask, DTOTASK_startDate, DTOTASK_percentComplete, DTOTASK_location, DTOTASK_leadId, DTOTASK_content,DTOTASK_taskPriority, DTOTASK_taskId, DTOTASK_endDate,DTOTASK_taskStatus, nil];
 
     NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where isActive = 1 order by %@ asc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOTASK, DTOLEAD_updatedDate];
 
@@ -143,6 +143,21 @@ DTOTASK_updatedDate, //updatedDate" //VARCHAR
     return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:[NSArray arrayWithObjects:value, nil]];
     
     
+}
+
+-(NSMutableArray*) filterTaskWithKey : (NSString*) strKey withValue : (NSString*) strValue{
+    NSArray *allFields =[NSArray arrayWithObjects:DTOTASK_id, DTOTASK_code, DTOTASK_clientTaskId, DTOTASK_clientLeadId, DTOTASK_content, DTOTASK_title, DTOTASK_typeTask, DTOTASK_startDate, DTOTASK_percentComplete, DTOTASK_location, DTOTASK_leadId, DTOTASK_content,DTOTASK_taskPriority, DTOTASK_taskId, DTOTASK_endDate,DTOTASK_taskStatus, nil];
+
+    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where isActive = 1 and typeTask = 1 and %@  like ? order by %@ desc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOTASK, strKey, DTOTASK_updatedDate];
+
+    NSLog(@"query = %@", query);
+    NSString *value = @"%";
+    value = [value stringByAppendingString:[strValue stringByAppendingString:@"%"]];
+
+    NSLog(@"param = %@", value);
+    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:[NSArray arrayWithObjects:value, nil]];
+
+
 }
 
 -(NSDictionary*) getDataWithKey : (NSString*) inputKey withValue : (NSString*) inputValue{

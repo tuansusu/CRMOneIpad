@@ -771,6 +771,8 @@
 		8EB708771A407A1C001861A0 /* Mobile_GPS_MyLocationIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EB708751A407A1C001861A0 /* Mobile_GPS_MyLocationIcon.png */; };
 		8EB708781A407A1C001861A0 /* Mobile_GPS_MyLocationIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EB708761A407A1C001861A0 /* Mobile_GPS_MyLocationIcon@2x.png */; };
 		8EB7087A1A408AE2001861A0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB708791A408AE2001861A0 /* MapKit.framework */; };
+		8EB93CFD1A791F21002875F2 /* DashboardTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB93CFB1A791F21002875F2 /* DashboardTaskViewController.m */; };
+		8EB93CFE1A791F21002875F2 /* DashboardTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EB93CFC1A791F21002875F2 /* DashboardTaskViewController.xib */; };
 		8EBBC2501A4EF67C00F17BEE /* SubListMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EBBC24C1A4EF67C00F17BEE /* SubListMainView.m */; };
 		8EBBC2511A4EF67C00F17BEE /* SubListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EBBC24E1A4EF67C00F17BEE /* SubListViewCell.m */; };
 		8EBBC2521A4EF67C00F17BEE /* SubListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EBBC24F1A4EF67C00F17BEE /* SubListViewCell.xib */; };
@@ -2183,6 +2185,9 @@
 		8EB708751A407A1C001861A0 /* Mobile_GPS_MyLocationIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mobile_GPS_MyLocationIcon.png; sourceTree = "<group>"; };
 		8EB708761A407A1C001861A0 /* Mobile_GPS_MyLocationIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Mobile_GPS_MyLocationIcon@2x.png"; sourceTree = "<group>"; };
 		8EB708791A408AE2001861A0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		8EB93CFA1A791F21002875F2 /* DashboardTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardTaskViewController.h; sourceTree = "<group>"; };
+		8EB93CFB1A791F21002875F2 /* DashboardTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardTaskViewController.m; sourceTree = "<group>"; };
+		8EB93CFC1A791F21002875F2 /* DashboardTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardTaskViewController.xib; sourceTree = "<group>"; };
 		8EBBC24B1A4EF67C00F17BEE /* SubListMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubListMainView.h; sourceTree = "<group>"; };
 		8EBBC24C1A4EF67C00F17BEE /* SubListMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubListMainView.m; sourceTree = "<group>"; };
 		8EBBC24D1A4EF67C00F17BEE /* SubListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubListViewCell.h; sourceTree = "<group>"; };
@@ -4828,6 +4833,16 @@
 			path = Maps;
 			sourceTree = "<group>";
 		};
+		8EB93CF91A791EDE002875F2 /* DaskboardTasks */ = {
+			isa = PBXGroup;
+			children = (
+				8EB93CFA1A791F21002875F2 /* DashboardTaskViewController.h */,
+				8EB93CFB1A791F21002875F2 /* DashboardTaskViewController.m */,
+				8EB93CFC1A791F21002875F2 /* DashboardTaskViewController.xib */,
+			);
+			path = DaskboardTasks;
+			sourceTree = "<group>";
+		};
 		8EBBC24A1A4EF67C00F17BEE /* SubListMainView */ = {
 			isa = PBXGroup;
 			children = (
@@ -5414,6 +5429,7 @@
 		92C68E4A1519D4F100981728 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				8EB93CF91A791EDE002875F2 /* DaskboardTasks */,
 				8E44BBF81A73A89B00EDCD1A /* ProductsService */,
 				8E8D7FC31A5ADE060084BCA3 /* DashboardCalendar */,
 				8E6105F51A5986A9003D1C0C /* Profile */,
@@ -5902,6 +5918,7 @@
 				76601A45194BE90F001D4C01 /* Reader-Button-H.png in Resources */,
 				76C964811A17A15C00029978 /* pin.png in Resources */,
 				8E7554681A52EFC8001940FB /* iconTurnSlightLeft.png in Resources */,
+				8EB93CFE1A791F21002875F2 /* DashboardTaskViewController.xib in Resources */,
 				76D29B241A136E4A004B9CF6 /* ic_plus-1.png in Resources */,
 				B3157895188D5E5200C0ED01 /* del-btn-1-1.png in Resources */,
 				8E0B07D11A4475CF00CF7A78 /* iconMessage.png in Resources */,
@@ -6583,6 +6600,7 @@
 				76601A38194BE90F001D4C01 /* ReaderViewController.m in Sources */,
 				76C9647B1A17731900029978 /* MultiWallLongGraph.m in Sources */,
 				8EC972801A5D71300021DCA3 /* FFDayScrollView.m in Sources */,
+				8EB93CFD1A791F21002875F2 /* DashboardTaskViewController.m in Sources */,
 				849B6D931A18EDAE007E3B06 /* SelectIndexViewController.m in Sources */,
 				76D29B171A126C9B004B9CF6 /* ClueContactCell.m in Sources */,
 				76C962941A16DB8200029978 /* DTOACCOUNTLEADProcess.m in Sources */,

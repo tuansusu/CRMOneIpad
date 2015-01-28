@@ -102,6 +102,8 @@
     if (self.dataSend) {
         
         [self loadEdit];
+    }else{
+
     }
     
 }
@@ -121,35 +123,27 @@
         _txtStatus.text=@"Đã hoàn thành";
         selectStatusIndex=1;
     }
-    NSString *strDateStart=[_dataSend objectForKey:DTOTASK_startDate];
-    NSString *strDateEnd=[_dataSend objectForKey:DTOTASK_endDate];
-    
-    
-    NSDateFormatter *dateFromStringFormatS=[[NSDateFormatter alloc]init];
-    [dateFromStringFormatS setDateFormat:@"yyyy-MM-dd HH:mm:ss.S"];
-    NSDateFormatter *dateEndFormatS=[[NSDateFormatter alloc]init];
-    [dateEndFormatS setDateFormat:@"dd/MM/yyyy"];
-    NSDate *start=[dateFromStringFormatS dateFromString:strDateStart];
-    _txtDateFrom.text=[dateEndFormatS stringFromDate:start ];
-    
-    NSDateFormatter *timeEndFormatS=[[NSDateFormatter alloc]init];
-    [timeEndFormatS setDateFormat:@"HH:mm"];
-    _txtTimeFrom.text=[timeEndFormatS stringFromDate:start];
-    
-    
-    
-    NSDateFormatter *dateFromStringFormat=[[NSDateFormatter alloc]init];
-    [dateFromStringFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss.S"];
-    
-    NSDateFormatter *dateEndFormat=[[NSDateFormatter alloc]init];
-    [dateEndFormat setDateFormat:@"dd/MM/yyyy"];
-    NSDate *end=[dateFromStringFormat dateFromString:strDateEnd];
-    _txtDateTo.text=[dateEndFormat stringFromDate:end ];
-    
-    NSDateFormatter *timeEndFormat=[[NSDateFormatter alloc]init];
-    [timeEndFormat setDateFormat:@"HH:mm"];
-    _txtTimeTo.text=[timeEndFormat stringFromDate:end];
-    
+
+    NSString *startDateStr = [_dataSend objectForKey:DTOTASK_startDate];
+    [self setStartDateTime:[DateUtil getDateFromString:startDateStr :FORMAT_DATE_AND_TIME]];
+
+    NSString *endDateStr = [_dataSend objectForKey:DTOTASK_endDate];
+    [self setEndDateTime:[DateUtil getDateFromString:endDateStr :FORMAT_DATE_AND_TIME]];
+
+}
+
+- (void)setStartDateTime:(NSDate *)date
+{
+    timeFrom = [date copy];
+    _txtDateFrom.text = [DateUtil formatDate:timeFrom :FORMAT_DATE];
+    _txtTimeFrom.text = [DateUtil formatDate:timeFrom :FORMAT_TIME];
+}
+
+- (void)setEndDateTime:(NSDate *)date
+{
+    timeTo = [date copy];
+    _txtDateTo.text = [DateUtil formatDate:timeTo :FORMAT_DATE];
+    _txtTimeTo.text = [DateUtil formatDate:timeTo :FORMAT_TIME];
 }
 
 - (void) updateInterFaceWithOption : (int) option
@@ -388,17 +382,20 @@
     if (selectStatusIndex>=0) {
         [dicEntity setObject:[[listArrStatus objectAtIndex:selectStatusIndex] objectForKey:DTOSYSCAT_sysCatId] forKey:DTOTASK_taskStatus];
     }
-    
     [dicEntity setObject:[DateUtil formatDate:timeFrom :@"yyyy-MM-dd HH:mm:ss.S"] forKey:DTOTASK_startDate];
     [dicEntity setObject:[DateUtil formatDate:timeTo :@"yyyy-MM-dd HH:mm:ss.S"] forKey:DTOTASK_endDate];
-    [dicEntity setObject:[self.dataRoot objectForKey:DTOACCOUNT_clientAccountId] forKey:DTOTASK_accountId];
-    [dicEntity setObject:@"1" forKey:DTOTASK_isActive];
+
+   [dicEntity setObject:@"1" forKey:DTOTASK_isActive];
     [dicEntity setObject:[DateUtil formatDate:[NSDate new] :@"yyyy-MM-dd HH:mm:ss.S"] forKey:DTOTASK_updatedDate];
     NSString *strClientContactId = IntToStr(([dtoProcess getClientId]));
     [dicEntity setObject:strClientContactId forKey:DTOTASK_clientTaskId];
     [dicEntity setObject:@"1" forKey:DTOTASK_clientId];
+    [dicEntity setObject:@"1" forKey:DTOTASK_typeTask];
     
-    
+    if (self.dataRoot) {
+        [dicEntity setObject:[self.dataRoot objectForKey:DTOACCOUNT_clientAccountId] forKey:DTOTASK_accountId];
+
+    }
     
     if (self.dataSend) {
         

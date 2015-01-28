@@ -10,7 +10,18 @@
 #import "CalendarPickerViewController.h"
 #import "SelectIndexViewController.h"
 
+@class EditTaskLeadViewController;
+
+@protocol EditTaskLeadViewControllerDelegate <NSObject>
+
+@optional
+- (void)closeEditTaskLeadViewController:(EditTaskLeadViewController*)editTaskLeadViewController;
+
+@end
+
 @interface EditTaskLeadViewController : BaseViewController<SelectIndexDelegate>
+
+@property (nonatomic,assign) id<EditTaskLeadViewControllerDelegate>delegate;
 
 //DATA
 /*

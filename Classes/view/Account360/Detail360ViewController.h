@@ -14,7 +14,7 @@
 #import "Contact360Cell.h"
 #import "DetailContactLeadViewController.h"
 
-#import "EditTask360ViewController.h"
+#import "EditTaskLeadViewController.h"
 #import "Task360Cell.h"
 #import "Calendar360Cell.h"
 #import "Opportunity360Cell.h"

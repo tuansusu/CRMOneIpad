@@ -7,6 +7,7 @@
 //
 
 #import "Detail360ViewController.h"
+
 #import "DTOACCOUNTProcess.h"
 #import "DTOCONTACTProcess.h"
 #import "DTOTASKProcess.h"
@@ -330,7 +331,7 @@
             arrayData = [dtoOpportunityProcess filterWith360Id:[dicData objectForKey:DTOACCOUNT_clientAccountId]];
         }break;
         case type360View_Task:{
-            arrayData = [dtoTaskProcess filterWith360Id:[dicData objectForKey:DTOACCOUNT_clientAccountId]];
+            arrayData = [dtoTaskProcess filterWith360Id:[dicData objectForKey:DTOACCOUNT_clientAccountId]] ;
             NSLog(@"get detail data = %d", arrayData.count);
             
         }break;
@@ -459,7 +460,7 @@
             
         case SELECT_INDEX_ADD_TASK:
         {
-            EditTask360ViewController *viewController = [[EditTask360ViewController alloc]initWithNibName:@"EditTask360ViewController" bundle:nil];
+            EditTaskLeadViewController *viewController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
             viewController.dataRoot = dicData;
             [self presentViewController:viewController animated:YES completion:nil];
         }
@@ -767,7 +768,7 @@
     switch (typeActionEvent) {
         case type360View_Task:{
             
-            EditTask360ViewController *viewNoteController = [[EditTask360ViewController alloc]initWithNibName:@"EditTask360ViewController" bundle:nil];
+            EditTaskLeadViewController *viewNoteController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
             viewNoteController.dataSend = dicTempData;
             [self presentViewController:viewNoteController animated:YES completion:nil];
             
@@ -940,7 +941,7 @@
     NSDictionary *dicTempData = [arrayData objectAtIndex:indexPath.row];
     switch (typeActionEvent) {
         case type360View_Task:{
-            EditTask360ViewController *viewNoteController = [[EditTask360ViewController alloc]initWithNibName:@"EditTask360ViewController" bundle:nil];
+            EditTaskLeadViewController *viewNoteController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
             viewNoteController.dataSend = dicTempData;
             [self presentViewController:viewNoteController animated:YES completion:nil];
             

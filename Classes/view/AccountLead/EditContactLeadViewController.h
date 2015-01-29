@@ -10,11 +10,11 @@
 #import "CalendarPickerViewController.h"
 #import "SelectPhotoViewController.h"
 #import "SelectIndexViewController.h"
-#import "CMPopTipView.h"
+#import "Util.h"
 
 
 
-@interface EditContactLeadViewController : BaseViewController<UITextFieldDelegate, SelectPhotoDelegate,SelectIndexDelegate, CMPopTipViewDelegate,UITextFieldDelegate>
+@interface EditContactLeadViewController : BaseViewController<UITextFieldDelegate, SelectPhotoDelegate,SelectIndexDelegate,UITextFieldDelegate>
 
 //DATA
 /*
@@ -43,6 +43,8 @@
 
 
 @property (weak, nonatomic) IBOutlet UIView *bodyMainView;
+
+
 
 //@property (weak, nonatomic) IBOutlet UIView *viewMainBodyInfo;
 @property (weak, nonatomic) IBOutlet UIScrollView *viewMainBodyInfo;
@@ -93,8 +95,5 @@
 @property (nonatomic, retain) UIPopoverController *listPopover;
 ////////////// KHAI BAO BIEN CHUNG//////////
 
-//danh sách nhưng tooltip
-@property (nonatomic, retain) NSMutableArray *visiblePopTipViews;
-@property (nonatomic, strong) id currentPopTipViewTarget;
 
 @end

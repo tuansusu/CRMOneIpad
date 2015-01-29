@@ -1,0 +1,77 @@
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+            <title>Highcharts Example</title>
+
+            <script src="../../js/columnJquery.js"></script>
+            <script type="text/javascript">
+                function updateData(data,types) {
+
+                    $('#container').highcharts({
+                                               chart: {
+                                               type: 'bar'
+                                               },
+                                               title: {
+                                               text: ''
+                                               },
+                                               subtitle: {
+                                               text: ''
+                                               },
+                                               xAxis: {
+                                               categories: types,
+                                               title: {
+                                               text: null
+                                               }
+                                               },
+                                               yAxis: {
+                                               min: 0,
+                                               title: {
+                                               text: 'Đơn vị (tỉ đồng)',
+                                               align: 'high'
+                                               },
+                                               labels: {
+                                               overflow: 'justify'
+                                               }
+                                               },
+                                               tooltip: {
+                                               valueSuffix: ' millions'
+                                               },
+                                               plotOptions: {
+                                               bar: {
+                                                dataLabels: {
+                                                enabled: true
+                                                }
+                                                }
+                                               },
+                                               legend: {
+                                               layout: 'vertical',
+                                               align: 'right',
+                                               verticalAlign: 'top',
+                                               x: -40,
+                                               y: 100,
+                                               floating: true,
+                                               borderWidth: 1,
+                                               backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+                                               shadow: true
+                                               },
+                                               credits: {
+                                               enabled: false
+                                               },
+                                               series: data
+                                               });
+                }
+
+
+                </script>
+            </head>
+    <body>
+        <script src="../../js/highcharts.js"></script>
+
+
+
+        <div id="container" style="min-width: 310px; height: 450px; margin: 0 auto"></div>
+        
+    </body>
+</html>

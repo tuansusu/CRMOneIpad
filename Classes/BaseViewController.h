@@ -33,4 +33,11 @@
 -(void) doException : (NSException *) ex withMessage : (NSString*) strMessage;
 -(void) doException : (NSException *) ex;
 
+
+/*set bottom line*/
+-(void) setBottomLineDetail: (UIView*) scrollViewTemp;
+-(void) addBottomLineWithBottomControl : (CGRect) bottomViewFrame withInControl : (UIView*) containView;
+
+
+
 @end

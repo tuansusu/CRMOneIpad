@@ -8,7 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditBussinessLeadViewController">
             <connections>
                 <outlet property="barLabel" destination="in5-wm-72b" id="0wN-ke-Q3L"/>
-                <outlet property="bodyMainView" destination="0i8-Iw-I6a" id="G1r-sI-fUg"/>
+                <outlet property="bodyMainView" destination="j0z-CN-oHP" id="K8B-kE-cbS"/>
                 <outlet property="btnHome" destination="dZY-es-mvv" id="xje-0u-uYY"/>
                 <outlet property="btnOrgType" destination="eyO-p1-Hmj" id="k51-aR-kFL"/>
                 <outlet property="btnSave" destination="tbz-k4-iYe" id="bIf-GJ-sec"/>
@@ -98,7 +98,7 @@
                             </subviews>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
-                        <view contentMode="scaleToFill" id="0i8-Iw-I6a" userLabel="body view">
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="j0z-CN-oHP" userLabel="body view">
                             <rect key="frame" x="20" y="64" width="984" height="580"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -348,8 +348,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
+                        </scrollView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>

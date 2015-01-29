@@ -599,7 +599,7 @@
         float fLan =[[dicData objectForKey:DTOACCOUNT_lat] floatValue];
         
         TestMapViewController *viewController = [[TestMapViewController alloc]initWithNibName:@"TestMapViewController" bundle:nil];
-        
+        viewController.typeMapView = typeMapView_View;
         viewController.lan = fLan;
         viewController.lon = fLon;
         //viewController.address = [dicData objectForKey:DTOLEAD_address];

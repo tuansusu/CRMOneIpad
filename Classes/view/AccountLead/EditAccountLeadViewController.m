@@ -28,7 +28,7 @@
     
     DTOACCOUNTLEADProcess *dtoLeadProcess;
     DTOSYSCATProcess *dtoSyscatProcess; //NGHE NGHIEP CA NHAN
-    
+    Util*util;
     //chon index form them moi
     NSInteger selectIndex;
     NSArray *listArr;
@@ -78,7 +78,7 @@
     if ([UIDevice getCurrentSysVer] >= 7.0) {
         [UIDevice updateLayoutInIOs7OrAfter:self];
     }
-    
+    util=[Util new];
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
     
@@ -283,7 +283,16 @@
 -(void) actionSave:(id)sender{
     //check valid to save
     
-    if (![self checkValidToSave]) {
+    if (![util checkValidToSave:_txtName :@"Anh/Chị chưa nhập tên khách hàng" :self.viewMainBodyInfo]) {
+        return;
+    }
+    if(![util checkValidToSave:_txtPhone :@"Anh/Chị chưa nhập số điện thoại khách hàng" :_viewMainBodyInfo]){
+        return;
+    }
+    if(_txtEmail.text.length>0 && ![util validateEmail:_txtEmail.text]){
+    
+        [util showTooltip:_txtEmail withText:@"Email không đúng định dạng" showview:_viewMainBodyInfo];
+        [util setBorder:_txtEmail];
         return;
     }
     
@@ -500,19 +509,19 @@
         return YES;
     }
     
-    float height = 190;
-    if (textField == _txtTotalassets || textField == _txtAddress) {
-        height = 230;
-    }
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.25f];
-    
-    CGRect frame = self.mainView.frame;
-    frame.origin.y = frame.origin.y - height;
-    [self.mainView setFrame:frame];
-    
-    [UIView commitAnimations];
+//    float height = 190;
+//    if (textField == _txtTotalassets || textField == _txtAddress) {
+//        height = 230;
+//    }
+//    
+//    [UIView beginAnimations:nil context:NULL];
+//    [UIView setAnimationDuration:0.25f];
+//    
+//    CGRect frame = self.mainView.frame;
+//    frame.origin.y = frame.origin.y - height;
+//    [self.mainView setFrame:frame];
+//    
+//    [UIView commitAnimations];
     
     return  YES;
     
@@ -526,22 +535,22 @@
 }// return YES to allow editing to stop and to resign first responder status. NO to disallow the editing session to end
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     
-    if (textField == self.txtName) {
-        return;
-    }
-    
-    float height = 190;
-    if (textField == _txtTotalassets || textField == _txtAddress) {
-        height = 230;
-    }
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.25f];
-    CGRect frame = self.mainView.frame;
-    frame.origin.y = frame.origin.y + height;
-    [self.mainView setFrame:frame];
-    
-    [UIView commitAnimations];
+//    if (textField == self.txtName) {
+//        return;
+//    }
+//    
+//    float height = 190;
+//    if (textField == _txtTotalassets || textField == _txtAddress) {
+//        height = 230;
+//    }
+//    
+//    [UIView beginAnimations:nil context:NULL];
+//    [UIView setAnimationDuration:0.25f];
+//    CGRect frame = self.mainView.frame;
+//    frame.origin.y = frame.origin.y + height;
+//    [self.mainView setFrame:frame];
+//    
+//    [UIView commitAnimations];
     
 }// may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
 
@@ -590,106 +599,7 @@
     
 }
 
-#pragma mark check
--(BOOL) checkValidToSave {
-    BOOL isValidate = YES;
-    if ([StringUtil trimString: self.txtName.text].length==0) {
-        [self showTooltip:self.txtName withText:@"Bạn chưa nhập Tên khách hàng"];
-        
-        [self.txtName becomeFirstResponder];
-        
-        isValidate = NO;
-        return isValidate;
-    }
-    
-    if ([StringUtil trimString: self.txtPhone.text].length==0) {
-        [self showTooltip:self.txtPhone withText:@"Bạn chưa nhập Số điện thoại"];
-        isValidate = NO;
-        [self.txtPhone becomeFirstResponder];
-        return isValidate;
-    }
-    return isValidate;
-}
 
-
-#pragma mark tooltip
-
--(void) showTooltip : (UIView*) inputTooltipView withText : (NSString*) inputMessage {
-    
-    [self dismissAllPopTipViews];
-    
-    
-    NSString *contentMessage = inputMessage;
-    //UIView *contentView = inputTooltipView;
-    
-    UIColor *backgroundColor = [UIColor lightGrayColor];
-    
-    UIColor *textColor = [UIColor darkTextColor];
-    
-    //NSString *title = inputMessage;
-    
-    CMPopTipView *popTipView;
-    
-    
-    popTipView = [[CMPopTipView alloc] initWithMessage:contentMessage];
-    
-    popTipView.delegate = self;
-    
-    /* Some options to try.
-     */
-    //popTipView.disableTapToDismiss = YES;
-    //popTipView.preferredPointDirection = PointDirectionUp;
-    //popTipView.hasGradientBackground = NO;
-    //popTipView.cornerRadius = 2.0;
-    //popTipView.sidePadding = 30.0f;
-    //popTipView.topMargin = 20.0f;
-    //popTipView.pointerSize = 50.0f;
-    //popTipView.hasShadow = NO;
-    
-    popTipView.preferredPointDirection = PointDirectionDown;
-    popTipView.hasShadow = NO;
-    
-    if (backgroundColor && ![backgroundColor isEqual:[NSNull null]]) {
-        popTipView.backgroundColor = backgroundColor;
-    }
-    if (textColor && ![textColor isEqual:[NSNull null]]) {
-        popTipView.textColor = textColor;
-    }
-    
-    popTipView.animation = arc4random() % 2;
-    popTipView.has3DStyle = (BOOL)(arc4random() % 2);
-    
-    popTipView.dismissTapAnywhere = YES;
-    [popTipView autoDismissAnimated:YES atTimeInterval:3.0];
-    
-    
-    [popTipView presentPointingAtView:inputTooltipView inView:self.viewMainBodyInfo animated:YES];
-    
-    
-    [self.visiblePopTipViews addObject:popTipView];
-    self.currentPopTipViewTarget = inputTooltipView;
-    
-    
-    
-}
-
-- (void)dismissAllPopTipViews
-{
-    while ([self.visiblePopTipViews count] > 0) {
-        CMPopTipView *popTipView = [self.visiblePopTipViews objectAtIndex:0];
-        [popTipView dismissAnimated:YES];
-        [self.visiblePopTipViews removeObjectAtIndex:0];
-    }
-}
-
-
-#pragma mark - CMPopTipViewDelegate methods
-
-- (void)popTipViewWasDismissedByUser:(CMPopTipView *)popTipView
-{
-    [self.visiblePopTipViews removeObject:popTipView];
-    self.currentPopTipViewTarget = nil;
-}
 #pragma mark UITextField
 
 
@@ -745,14 +655,56 @@
     }
 }
 - (IBAction)actionAddAdress:(id)sender {
-    SelectAddInMapsViewController *detail = [[SelectAddInMapsViewController alloc] initWithNibName:@"SelectAddInMapsViewController" bundle:nil];
-    //detail.dataSend=dicData;
-    detail.view.frame = CGRectMake(0, 0, 700, 600);
-    //[InterfaceUtil setBorderWithCornerAndBorder:detail.view :6 :0.2 :nil];
-    [self presentPopupViewController:detail animationType:1];
-
+    
+    //chọn địa điểm
+    
+    //neu la luc them moi
+    
+    //neu la luc sua
+    
+    TestMapViewController *detail = [[TestMapViewController alloc] initWithNibName:@"TestMapViewController" bundle:nil];
+    
+    if (self.dataSend) {
+        if (![StringUtil stringIsEmpty:[self.dataSend objectForKey:DTOACCOUNT_lat]]) {
+            float fLon = [[self.dataSend objectForKey:DTOACCOUNT_lon] floatValue];
+            float fLan =[[self.dataSend objectForKey:DTOACCOUNT_lat] floatValue];
+            detail.lan = fLan;
+            detail.lon = fLon;
+            //viewController.address = [dicData objectForKey:DTOLEAD_address];
+            if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_address]]) {
+                detail.address = [dicData objectForKey:DTOACCOUNT_address];
+            }else{
+                detail.address = @"";
+            }
+            
+        }
+    }
+    
+    detail.typeMapView = typeMapView_Choice;
+    detail.selectMapDelegate = self;
+    [self presentViewController:detail animated:YES completion:nil];
     
 }
+
+#pragma mark SelectMap Delegate
+-(void) selectAddress:(GMSAddress *)addressObj{
+
+    NSLog(@"coordinate.latitude=%f", addressObj.coordinate.latitude);
+    NSLog(@"coordinate.longitude=%f", addressObj.coordinate.longitude);
+    NSLog(@"thoroughfare=%@", addressObj.thoroughfare);
+    NSLog(@"locality=%@", addressObj.locality);
+    NSLog(@"subLocality=%@", addressObj.subLocality);
+    NSLog(@"administrativeArea=%@", addressObj.administrativeArea);
+    NSLog(@"postalCode=%@", addressObj.postalCode);
+    NSLog(@"country=%@", addressObj.country);
+    NSLog(@"lines=%@", addressObj.lines);
+    
+    if (addressObj.lines.count>0) {
+        self.txtAddress.text =[addressObj.lines objectAtIndex:0];
+    }
+    
+}
+
 - (IBAction)actionCheckMobile:(id)sender {
     if(isPhone==NO){
         isPhone=YES;

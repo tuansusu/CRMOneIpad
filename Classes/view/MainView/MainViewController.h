@@ -40,25 +40,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnHome;
 - (IBAction)homeBack:(id)sender;
 
-@property (weak, nonatomic) IBOutlet UIView *menuView;
-
-//////////
-
-- (IBAction)actionDashBoard:(id)sender;
-
-- (IBAction)actionPotentialCustomer:(id)sender;
-
-- (IBAction)actionAccount360:(id)sender;
-
-- (IBAction)actionOpportunity:(UIButton *)sender;
-
-
-//@property (weak, nonatomic) IBOutlet UIButton *actionMapView;
-- (IBAction)actionMapView:(id)sender;
-
-
-- (IBAction)actionHelp:(id)sender;
-
 //////////
 
 

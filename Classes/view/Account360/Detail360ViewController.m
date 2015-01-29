@@ -7,6 +7,7 @@
 //
 
 #import "Detail360ViewController.h"
+
 #import "DTOACCOUNTProcess.h"
 #import "DTOCONTACTProcess.h"
 #import "DTOTASKProcess.h"
@@ -133,15 +134,56 @@
     //(xoá dòng thừa không hiển thị của table)
     self.tbData.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
-    
-    
 }
 
 -(void) viewWillAppear:(BOOL)animated{
     //cu quay lai la no load
-    NSLog(@"quay lai form");
-    // [self viewDidLoad];
+    [self loadDataWithTypeAction:typeActionEvent];
+    [self setButtonSelect];
+    //cu quay lai la no load
 }
+
+//set lai trang thai cho 
+-(void) setButtonSelect {
+    switch (typeActionEvent) {
+        case type360View_Contact:{
+            [self displayNormalButtonState:self.btnExpandInfo];
+        }
+            break;
+        case type360View_Note:
+        {
+            [self displayNormalButtonState:self.btnNote];
+        }break;
+        case type360View_Calendar:
+        {
+            
+            [self displayNormalButtonState:self.btnCalendar];
+        }break;
+        case type360View_Task:{
+            [self displayNormalButtonState:self.btnTask];
+        }break;
+        case type360View_Opportunity:
+        {
+            [self displayNormalButtonState:self.btnOpportunity];
+        }
+            break;
+        case type360View_Complains:
+        {
+            [self displayNormalButtonState:self.btnComplains];
+        }
+            break;
+            
+        case type360View_ProductsLead:
+        {
+         [self displayNormalButtonState:self.btnProductService];
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+
 
 //khoi tao gia tri mac dinh cua form
 -(void) initData {
@@ -189,12 +231,14 @@
     else{
     _lbName.text=@"N/A";
     }
-    if([[dicData objectForKey:DTOACCOUNT_sex] isEqualToValue:@"1"]){
+    
+    if([[dicData objectForKey:DTOACCOUNT_sex] isEqualToString:@"1"] || [[dicData objectForKey:DTOACCOUNT_sex] isEqualToString:@"Nam"]){
         _lbSex.text=@"Nam";
     }
     else{
         _lbSex.text=@"Nữ";
     }
+    
     if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_mobile]]) {
         _lbMobile.text=[dicData objectForKey:DTOACCOUNT_mobile];
     }
@@ -330,8 +374,8 @@
             arrayData = [dtoOpportunityProcess filterWith360Id:[dicData objectForKey:DTOACCOUNT_clientAccountId]];
         }break;
         case type360View_Task:{
-            arrayData = [dtoTaskProcess filterWith360Id:[dicData objectForKey:DTOACCOUNT_clientAccountId]];
-            NSLog(@"get detail data = %d", arrayData.count);
+
+            arrayData = [dtoTaskProcess filterWith360Id:[dicData objectForKey:DTOACCOUNT_clientAccountId]] ;
             
         }break;
 
@@ -382,6 +426,8 @@
     self.viewBodyMainInfo.layer.borderColor = [BORDER_COLOR CGColor];
     
     
+    [self.scrollViewBodyLeft setBackGroundNormalColorWithOption:smgSelect];
+    
     self.viewHeaderExpandInfo.backgroundColor = BACKGROUND_NORMAL_COLOR1;
     
     [self.tbData setBorderWithOption:smgSelect];
@@ -405,7 +451,19 @@
         }
     }
     
+    
+    for (UIView *viewTemp in [self.scrollViewHeaderRight subviews]) {
+        if ([viewTemp isKindOfClass:[UIButton class]]) {
+            [((UIButton*)viewTemp) setTitle:[((UIButton*)viewTemp).titleLabel.text uppercaseString] forState:UIControlStateNormal];
+        }
+    }
+    
     [self.viewHeaderExpandInfo setSelectiveBorderWithColor:backgrondButtonSelected withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
+    
+    
+    /////
+    [self setBottomLineDetail:self.scrollViewBodyLeft];
+    
     
 }
 
@@ -459,7 +517,7 @@
             
         case SELECT_INDEX_ADD_TASK:
         {
-            EditTask360ViewController *viewController = [[EditTask360ViewController alloc]initWithNibName:@"EditTask360ViewController" bundle:nil];
+            EditTaskLeadViewController *viewController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
             viewController.dataRoot = dicData;
             [self presentViewController:viewController animated:YES completion:nil];
         }
@@ -605,6 +663,9 @@
 
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if(arrayData.count == 0) return tableView.frame.size.height;
+    
     switch (typeActionEvent) {
         case type360View_Calendar:
             return 40.0f;
@@ -627,7 +688,10 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"numberofrows = %d", arrayData.count);
+    
+    if ([arrayData isKindOfClass:[NSNull class]] || arrayData.count==0) {
+        return 1;
+    }
     
     return  arrayData.count;
     
@@ -651,6 +715,25 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    //set empty cell
+    if (arrayData.count == 0) {
+        static NSString *cellId = @"EmptyCell";
+        EmptyCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+        
+        
+        if (!cell) {
+            cell = [EmptyCell initNibCell];
+        }
+        
+        [cell loadDataToCellWithData:@"" withOption:smgSelect];
+        
+        return cell;
+    }
+    
+    
+    
     if (self.tbData) {
         
         
@@ -758,8 +841,55 @@
     if (selection){
         
         [tableView deselectRowAtIndexPath:selection animated:YES];
-        
     }
+    
+    
+    if (arrayData.count == 0) {
+        
+        switch (typeActionEvent) {
+            case type360View_Task:{
+                
+                EditTaskLeadViewController *viewNoteController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
+                viewNoteController.dataRoot = dicData;
+                [self presentViewController:viewNoteController animated:YES completion:nil];
+                
+            }
+                break;
+            case type360View_Opportunity:
+            {
+                EditOpportunity360ViewController *viewNoteController = [[EditOpportunity360ViewController alloc]initWithNibName:@"EditOpportunity360ViewController" bundle:nil];
+                viewNoteController.dataRoot = dicData;
+                [self presentViewController:viewNoteController animated:YES completion:nil];
+            }
+                break;
+            case type360View_Note:{
+                EditNote360ViewController *viewNoteController = [[EditNote360ViewController alloc]initWithNibName:@"EditNote360ViewController" bundle:nil];
+                viewNoteController.dataRoot = dicData;
+                [self presentViewController:viewNoteController animated:YES completion:nil];
+            }
+                break;
+            case type360View_Contact:
+            {
+                EditContact360ViewController *viewNoteController = [[EditContact360ViewController alloc]initWithNibName:@"EditContact360ViewController" bundle:nil];
+                viewNoteController.dataRoot = dicData;
+                [self presentViewController:viewNoteController animated:YES completion:nil];
+                
+            }
+                break;
+            case type360View_Calendar:{
+                EditCalendar360ViewController *viewNoteController = [[EditCalendar360ViewController alloc]initWithNibName:@"EditCalendar360ViewController" bundle:nil];
+                viewNoteController.dataRoot = dicData;
+                [self presentViewController:viewNoteController animated:YES completion:nil];
+            }
+                break;
+            default:
+                break;
+        }
+        return;
+    }
+    
+    
+    
     
     NSDictionary *dicTempData = [arrayData objectAtIndex:indexPath.row];
     
@@ -767,8 +897,9 @@
     switch (typeActionEvent) {
         case type360View_Task:{
             
-            EditTask360ViewController *viewNoteController = [[EditTask360ViewController alloc]initWithNibName:@"EditTask360ViewController" bundle:nil];
+            EditTaskLeadViewController *viewNoteController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
             viewNoteController.dataSend = dicTempData;
+            viewNoteController.dataRoot = dicData;
             [self presentViewController:viewNoteController animated:YES completion:nil];
             
         }
@@ -777,12 +908,14 @@
         {
             EditOpportunity360ViewController *viewNoteController = [[EditOpportunity360ViewController alloc]initWithNibName:@"EditOpportunity360ViewController" bundle:nil];
             viewNoteController.dataRoot = dicTempData;
+            viewNoteController.dataRoot = dicData;
             [self presentViewController:viewNoteController animated:YES completion:nil];
         }
             break;
         case type360View_Note:{
             EditNote360ViewController *viewNoteController = [[EditNote360ViewController alloc]initWithNibName:@"EditNote360ViewController" bundle:nil];
             viewNoteController.dataSend = dicTempData;
+            viewNoteController.dataRoot = dicData;
             [self presentViewController:viewNoteController animated:YES completion:nil];
         }
             break;
@@ -790,6 +923,7 @@
         {
             EditContact360ViewController *viewNoteController = [[EditContact360ViewController alloc]initWithNibName:@"EditContact360ViewController" bundle:nil];
             viewNoteController.dataSend = dicTempData;
+            viewNoteController.dataRoot = dicData;
             [self presentViewController:viewNoteController animated:YES completion:nil];
             
         }
@@ -797,6 +931,7 @@
         case type360View_Calendar:{
             EditCalendar360ViewController *viewNoteController = [[EditCalendar360ViewController alloc]initWithNibName:@"EditCalendar360ViewController" bundle:nil];
             viewNoteController.dataSend = dicTempData;
+            viewNoteController.dataRoot = dicData;
             [self presentViewController:viewNoteController animated:YES completion:nil];
         }
             break;
@@ -842,6 +977,11 @@
  *  @return YES: If you want the specified item to be editable.
  */
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (arrayData.count == 0) {
+        return NO;
+    }
+    
     NSString *deletePermission =@"1";
     if ([deletePermission isEqualToString:@"1"]) {
         return YES;
@@ -940,7 +1080,7 @@
     NSDictionary *dicTempData = [arrayData objectAtIndex:indexPath.row];
     switch (typeActionEvent) {
         case type360View_Task:{
-            EditTask360ViewController *viewNoteController = [[EditTask360ViewController alloc]initWithNibName:@"EditTask360ViewController" bundle:nil];
+            EditTaskLeadViewController *viewNoteController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
             viewNoteController.dataSend = dicTempData;
             [self presentViewController:viewNoteController animated:YES completion:nil];
             
@@ -980,8 +1120,6 @@
     
     
 }
-
-
 
 #pragma mark table edit row
 

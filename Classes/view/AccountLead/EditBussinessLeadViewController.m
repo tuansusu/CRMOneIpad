@@ -31,6 +31,10 @@
     NSArray *listArrOrgType;
     
     BOOL succsess;//Trang thai acap nhat
+    
+    //key board
+    float heightKeyboard;
+    UITextField *_txt;
 }
 @end
 
@@ -42,6 +46,7 @@
     if (self) {
         // Custom initialization
     }
+    [self registerForKeyboardNotifications];
     return self;
 }
 
@@ -345,19 +350,19 @@
     
     
     
-    float height = 190;
-    if (textField == _txtTotalassets || textField == _txtNumberShareholders) {
-        height = 230;
-    }
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.25f];
-    
-    CGRect frame = self.mainView.frame;
-    frame.origin.y = frame.origin.y - height;
-    [self.mainView setFrame:frame];
-    
-    [UIView commitAnimations];
+//    float height = 190;
+//    if (textField == _txtTotalassets || textField == _txtNumberShareholders) {
+//        height = 230;
+//    }
+//    
+//    [UIView beginAnimations:nil context:NULL];
+//    [UIView setAnimationDuration:0.25f];
+//    
+//    CGRect frame = self.mainView.frame;
+//    frame.origin.y = frame.origin.y - height;
+//    [self.mainView setFrame:frame];
+//    
+//    [UIView commitAnimations];
     
     return  YES;
 }// return NO to disallow editing.
@@ -371,18 +376,18 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     
     
-    float height = 190;
-    if (textField == _txtTotalassets || textField == _txtNumberShareholders) {
-        height = 230;
-    }
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.25f];
-    CGRect frame = self.mainView.frame;
-    frame.origin.y = frame.origin.y + height;
-    [self.mainView setFrame:frame];
-    
-    [UIView commitAnimations];
+//    float height = 190;
+//    if (textField == _txtTotalassets || textField == _txtNumberShareholders) {
+//        height = 230;
+//    }
+//    
+//    [UIView beginAnimations:nil context:NULL];
+//    [UIView setAnimationDuration:0.25f];
+//    CGRect frame = self.mainView.frame;
+//    frame.origin.y = frame.origin.y + height;
+//    [self.mainView setFrame:frame];
+//    
+//    [UIView commitAnimations];
     
 }// may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
 
@@ -444,4 +449,62 @@
     [self.listPopover setPopoverContentSize:CGSizeMake(320,250) animated:NO];
     [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewExpandInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
+
+
+
+#pragma mark UITextField
+
+
+// Call this method somewhere in your view controller setup code.
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+}
+// Called when the UIKeyboardDidShowNotification is sent.
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    if (kbSize.width>0) {
+        heightKeyboard = kbSize.width;
+    }
+    
+    
+    self.bodyMainView.contentSize = CGSizeMake(self.bodyMainView.frame.size.width, self.bodyMainView.frame.size.height + heightKeyboard);
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, heightKeyboard, 0.0);
+    self.bodyMainView.contentInset = contentInsets;
+    self.bodyMainView.scrollIndicatorInsets = contentInsets;
+    
+    // If active text field is hidden by keyboard, scroll it so it's visible
+    // Your application might not need or want this behavior.
+    //CGRect aRect = self.view.frame;
+    CGRect aRect = CGRectMake(0, 0, 1024, 768);
+    aRect.size.height -= kbSize.width;
+    if (!CGRectContainsPoint(aRect, _txt.frame.origin) ) {
+        CGPoint scrollPoint = CGPointMake(0.0, _txt.frame.origin.y-heightKeyboard);
+        [self.bodyMainView setContentOffset:scrollPoint animated:YES];
+    }
+}
+
+// Called when the UIKeyboardWillHideNotification is sent
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    
+    if(self.bodyMainView.contentSize.height>self.bodyMainView.frame.size.height){
+        self.bodyMainView.contentSize = CGSizeMake(self.bodyMainView.frame.size.width, self.bodyMainView.frame.size.height - heightKeyboard);
+        
+        
+        UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+        self.bodyMainView.contentInset = contentInsets;
+        self.bodyMainView.scrollIndicatorInsets = contentInsets;
+    }
+}
+
 @end

@@ -176,4 +176,25 @@
     
 }
 
+#pragma mark set bottom
+/*set bottom line*/
+-(void) setBottomLineDetail: (UIView*) scrollViewTemp {
+    //NSArray *arrayLabelToSetBottomLine = [scrollViewTemp vi]
+    
+    for (UIView *viewSub in [scrollViewTemp subviews]) {
+        if (viewSub.tag == TAG_CONTROL_LINE) {
+            [self addBottomLineWithBottomControl:viewSub.frame withInControl:scrollViewTemp];
+        }
+    }
+}
+
+-(void) addBottomLineWithBottomControl : (CGRect) bottomViewFrame withInControl : (UIView*) containView {
+    
+    UIView *viewLine = [[UIView alloc] initWithFrame:CGRectMake(0, bottomViewFrame.origin.y + bottomViewFrame.size.height, containView.frame.size.width, BORDER_WITH)];
+    viewLine.backgroundColor = BORDER_COLOR;
+    [viewLine setBorderWithOption:1];
+    [containView addSubview:viewLine];
+    
+}
+
 @end

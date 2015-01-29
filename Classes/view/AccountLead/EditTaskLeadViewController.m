@@ -415,18 +415,27 @@
     [dicEntity setObject:[DateUtil formatDate:_startDateTime :FORMAT_DATE_AND_TIME] forKey:DTOTASK_startDate];
     [dicEntity setObject:[DateUtil formatDate:_endDateTime   :FORMAT_DATE_AND_TIME] forKey:DTOTASK_endDate];
     
-    //TODO: check
-    [dicEntity setObject:[self.dataRoot objectForKey:DTOLEAD_clientLeadId] forKey:DTOTASK_clientLeadId];
+
     [dicEntity setObject:@"1" forKey:DTOTASK_isActive];
     [dicEntity setObject:[DateUtil formatDate:[NSDate date] :FORMAT_DATE_AND_TIME] forKey:DTOTASK_updatedDate];
     NSString *strClientContactId = IntToStr(([dtoProcess getClientId]));
     [dicEntity setObject:strClientContactId forKey:DTOTASK_clientTaskId];
     [dicEntity setObject:@"1" forKey:DTOTASK_clientId];
     [dicEntity setObject:@"1" forKey:DTOTASK_typeTask];
-    
+
+    if (self.dataRoot) {
+        //TODO: check
+        if (self.isKHDM) {
+             [dicEntity setObject:[self.dataRoot objectForKey:DTOLEAD_clientLeadId] forKey:DTOTASK_clientLeadId];
+        }else{
+            [dicEntity setObject:[self.dataRoot objectForKey:DTOACCOUNT_clientAccountId] forKey:DTOTASK_accountId];
+        }
+
+    }
     
     if (self.dataSend)
     {
+
         [dicEntity setObject:[_dataSend objectForKey:DTOTASK_id] forKey:DTOTASK_id];
     }
     
@@ -490,6 +499,9 @@
     }
     if (succsess && alertView.tag == 5 && buttonIndex == 0) { //thong bao dong form
         [self dismissViewControllerAnimated:YES completion:nil];
+        if (_delegate && [_delegate respondsToSelector:@selector(closeEditTaskLeadViewController:)]) {
+            [_delegate closeEditTaskLeadViewController:self];
+        }
     }
     
     if (succsess && alertView.tag == 5 && buttonIndex == 1) {

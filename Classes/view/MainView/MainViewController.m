@@ -45,6 +45,8 @@
     NSMutableArray *listWidgetTypeUsed;
     DTOWidgetTypeProcess *dtoWidgetTypeProcess;
     IBOutlet UILabel *lblMessageWidget;
+    
+    Language *obj;
 }
 
 @property (nonatomic, retain) UIPopoverController *listPopover;
@@ -94,6 +96,17 @@ NSString* emptyText = @"";
     dtoWidgetTypeProcess = [DTOWidgetTypeProcess new];
     listWidgetTypeNotUse = [[NSMutableArray alloc] init];
     listWidgetTypeNotUseStr = [[NSMutableArray alloc] init];
+    
+    
+    obj=[Language getInstance];
+    defaults = [NSUserDefaults standardUserDefaults];
+    [defaults synchronize];
+    obj=[Language getInstance];
+    obj.str = [defaults objectForKey:@"Language"];
+    LocalizationSetLanguage(obj.str);
+    [self setupLanguage];
+
+    
 
     [self initData];
 }
@@ -197,6 +210,11 @@ NSString* emptyText = @"";
     [Util backToHome:self];
 }
 
+#pragma mark LANGUAGE
+-(void) setupLanguage{
+    
+}
+
 #pragma mark EditWidgetViewController Delegate
 
 - (void)closeEditWidgetViewController:(EditWidgetViewController*)editWidgetViewController{
@@ -215,6 +233,10 @@ NSString* emptyText = @"";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    DTOWidgetObject *widgetOB = [arrayData objectAtIndex:indexPath.row];
+    if ([widgetOB.widgetType integerValue]==0) {
+        return 500;
+    }
     return 450;
 }
 
@@ -297,12 +319,6 @@ NSString* emptyText = @"";
 
 
 #pragma mark Action
-
-- (IBAction)logOut:(id)sender {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Đồng chí có muốn đăng xuất không ?" delegate:self cancelButtonTitle:@"Không" otherButtonTitles:@"Có", nil];
-    alert.tag = 3;
-    [alert show];
-}
 
 
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

@@ -50,13 +50,13 @@
                             {
                                    
                             }else
-                        return (this.value / 1000) +'k';
+                        return (this.value) +'';
                     }
                 },
             },
                                    tooltip: {
                                    shared: false,
-                                   valueSuffix: ' k'
+                                   valueSuffix: ' tỉ dồng'
                                    },
             plotOptions: {
                 area: {
@@ -68,6 +68,9 @@
                         radius:2.5
                     },
                     shadow: false,
+                                   dataLabels: {
+                                   enabled: true
+                                   }
                 }
             },
             credits: {
@@ -85,7 +88,7 @@
 	<body>
 <script src="../../js/highcharts.js"></script>
 
-<div id="container" style="min-width: 100%; height: 350px; margin: 0 auto"></div>
+<div id="container" style="min-width: 100%; height: 400px; margin: 0 auto"></div>
 
 	</body>
 </html>

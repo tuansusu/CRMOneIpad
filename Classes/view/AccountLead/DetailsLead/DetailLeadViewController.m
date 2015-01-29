@@ -170,19 +170,19 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         case typeLeaderView_Note:
         {
             
-            
+            [self displayNormalButtonState:self.btnNote];
         }break;
         case typeLeaderView_Opportunity:{
-            
+            [self displayNormalButtonState:self.btnOpportunity];
         }break;
         case typeLeaderView_Calendar:
         {
-            
+            [self displayNormalButtonState:self.btnCalendar];
         }
             break;
         case typeLeaderView_Task:
         {
-            
+            [self displayNormalButtonState:self.btnTask];
         }
             break;
             
@@ -193,7 +193,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             break;
         case typeLeaderView_ProductsLead:
         {
-            
+            //[self displayNormalButtonState:];
         }
             break;
         default:
@@ -539,6 +539,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         {
             EditTaskLeadViewController *viewController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
             viewController.dataRoot = dicData;
+            viewController.isKHDM = YES;
             [self presentViewController:viewController animated:YES completion:nil];
         }
         break;
@@ -853,6 +854,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
                 
                 EditTaskLeadViewController *viewController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
                 viewController.dataRoot = dicData;
+                viewController.isKHDM = YES;
                 [self presentViewController:viewController animated:YES completion:nil];
                 
             }
@@ -896,6 +898,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         case typeLeaderView_Task:{
 
             EditTaskLeadViewController *viewNoteController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
+            viewNoteController.isKHDM = YES;
             viewNoteController.dataSend = dicTempData;
             [self presentViewController:viewNoteController animated:YES completion:nil];
 
@@ -984,6 +987,10 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
  *  @return YES: If you want the specified item to be editable.
  */
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (arrayData.count == 0) {
+        return NO;
+    }
     NSString *deletePermission =@"1";
     if ([deletePermission isEqualToString:@"1"]) {
         return YES;
@@ -1085,6 +1092,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         case typeLeaderView_Task:{
             EditTaskLeadViewController *viewNoteController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
             viewNoteController.dataSend = dicTempData;
+            viewNoteController.isKHDM = YES;
             [self presentViewController:viewNoteController animated:YES completion:nil];
 
         }

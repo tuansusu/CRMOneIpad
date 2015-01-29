@@ -706,6 +706,7 @@
     //neu qua duoc check thi tien hanh luu du lieu
     NSMutableDictionary *dicEntity = [NSMutableDictionary new];
     
+    if(selectedCustomer > 0){
     if(selectTypeIndex >= 0){
         if([[[listArrType objectAtIndex:selectTypeIndex] objectForKey:@"code"] isEqualToString:@"NEW"]){
             //Luu la khach hang dau moi
@@ -718,7 +719,7 @@
             [dicEntity setObject:[selectedCustomer objectForKey:@"accountId"] forKey:DTOOPPORTUNITY_accountId];
         }
     }
-    
+    }
     //client
     [dicEntity setObject:@"1" forKey:DTOOPPORTUNITY_client];
      //clientOpportunityId

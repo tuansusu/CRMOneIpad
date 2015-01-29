@@ -447,7 +447,19 @@
         }
     }
     
+    
+    for (UIView *viewTemp in [self.scrollViewHeaderRight subviews]) {
+        if ([viewTemp isKindOfClass:[UIButton class]]) {
+            [((UIButton*)viewTemp) setTitle:[((UIButton*)viewTemp).titleLabel.text uppercaseString] forState:UIControlStateNormal];
+        }
+    }
+    
     [self.viewHeaderExpandInfo setSelectiveBorderWithColor:backgrondButtonSelected withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
+    
+    
+    /////
+    [self setBottomLineDetail:self.scrollViewBodyLeft];
+    
     
 }
 

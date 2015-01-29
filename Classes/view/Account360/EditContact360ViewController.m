@@ -159,8 +159,6 @@
     }
     
     
-    
-    
     [self.mainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
     
     self.bodyMainView.backgroundColor = BACKGROUND_NORMAL_COLOR1;
@@ -424,7 +422,6 @@
                                              selector:@selector(keyboardWillBeHidden:)
                                                  name:UIKeyboardWillHideNotification object:nil];
 }
-
 // Called when the UIKeyboardDidShowNotification is sent.
 - (void)keyboardWasShown:(NSNotification*)aNotification
 {
@@ -448,7 +445,7 @@
     CGRect aRect = CGRectMake(0, 0, 1024, 768);
     aRect.size.height -= kbSize.width;
     if (!CGRectContainsPoint(aRect, _txt.frame.origin) ) {
-        CGPoint scrollPoint = CGPointMake(0.0, _txt.frame.origin.y-heightKeyboard + 20);
+        CGPoint scrollPoint = CGPointMake(0.0, _txt.frame.origin.y-heightKeyboard);
         [self.viewMainBodyInfo setContentOffset:scrollPoint animated:YES];
     }
 }
@@ -473,12 +470,11 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     
-    //[self hiddenKeyBoard];
-    //bat dau edit
+    
     _txt = textField;
-    //[_txt becomeFirstResponder];
-    [self keyboardWillBeHidden:nil];
-    [self keyboardWasShown:nil];
+    
+//    [self keyboardWillBeHidden:nil];
+//    [self keyboardWasShown:nil];
     
     
     return  YES;
@@ -646,18 +642,7 @@
         isValidate=NO;
         return isValidate;
     }
-    if([StringUtil trimString:self.txtEmail.text].length==0){
-        
-        [self showTooltip:self.txtEmail withText:@"Bạn chưa nhập Email"];
-        [self.txtEmail becomeFirstResponder];
-        
-        [self setBorder:self.txtEmail];
-        
-        isValidate=NO;
-        return isValidate;
-    }
-    
-    if([self validateEmail:self.txtEmail.text]==NO)
+    if([StringUtil trimString:self.txtEmail.text].length>0 && [self validateEmail:self.txtEmail.text]==NO)
     {
         [self showTooltip:self.txtEmail withText:@"Email không đúng"];
         [self.txtEmail becomeFirstResponder];

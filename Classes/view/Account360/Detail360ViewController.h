@@ -73,6 +73,10 @@ enum Type360View{
 @property (weak, nonatomic) IBOutlet UIView *viewBodyMainInfo;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollViewHeaderExpandInfo;
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollViewBodyLeft;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollViewHeaderRight;
+
 
 @property (weak, nonatomic) IBOutlet UILabel *lbDescription;
 

@@ -50,7 +50,8 @@
 "KEY_STOP_TASK_TITLE" = "XÁC NHẬN LÝ DO DỪNG CÔNG VIỆC";
 "KEY_STOP_TASK_REASON" = "Lý do dừng công việc";
 
-
-//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Đồng chí có muốn đăng xuất không ?" delegate:self cancelButtonTitle:@"Không" otherButtonTitles:@"Có", nil];
-
+"KEY_ALERT_SUMMARY" = "Đồng chí có muốn đăng xuất không ?";
+"KEY_ALERT_YES" = "Có";
+"KEY_ALERT_NO" = "Không";
+"KEY_ALERT_TITLE" = "Thông báo";
 

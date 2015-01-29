@@ -987,6 +987,10 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
  *  @return YES: If you want the specified item to be editable.
  */
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (arrayData.count == 0) {
+        return NO;
+    }
     NSString *deletePermission =@"1";
     if ([deletePermission isEqualToString:@"1"]) {
         return YES;

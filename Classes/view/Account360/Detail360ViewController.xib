@@ -103,7 +103,7 @@
                     <subviews>
                         <view contentMode="scaleToFill" id="ChL-G6-5ma" userLabel="Left view">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="674"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" id="Maf-yk-EgL" userLabel="View - header sub view">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
@@ -379,7 +379,7 @@
                         </view>
                         <view contentMode="scaleToFill" id="pWP-T5-xBO" userLabel="body view">
                             <rect key="frame" x="320" y="0.0" width="704" height="674"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" id="8fv-x3-MDt" userLabel="View header expand info">
                                     <rect key="frame" x="0.0" y="0.0" width="704" height="40"/>
@@ -450,7 +450,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ehU-na-wy9">
-                                                    <rect key="frame" x="650" y="0.0" width="130" height="40"/>
+                                                    <rect key="frame" x="650" y="0.0" width="150" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <state key="normal" title="Ý kiến phản hồi">
@@ -462,7 +462,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7O1-ER-tjX">
-                                                    <rect key="frame" x="780" y="0.0" width="130" height="40"/>
+                                                    <rect key="frame" x="780" y="0.0" width="150" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <state key="normal" title="Sản Phẩm Dịch Vụ">
@@ -479,7 +479,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="bv5-8t-xNG">
-                                    <rect key="frame" x="0.0" y="40" width="704" height="604"/>
+                                    <rect key="frame" x="0.0" y="40" width="704" height="634"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <connections>

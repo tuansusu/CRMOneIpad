@@ -231,12 +231,14 @@
     else{
     _lbName.text=@"N/A";
     }
-    if([[dicData objectForKey:DTOACCOUNT_sex] isEqualToValue:@"1"]){
+    
+    if([[dicData objectForKey:DTOACCOUNT_sex] isEqualToString:@"1"] || [[dicData objectForKey:DTOACCOUNT_sex] isEqualToString:@"Nam"]){
         _lbSex.text=@"Nam";
     }
     else{
         _lbSex.text=@"Nữ";
     }
+    
     if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_mobile]]) {
         _lbMobile.text=[dicData objectForKey:DTOACCOUNT_mobile];
     }
@@ -423,6 +425,8 @@
     self.viewBodyMainInfo.layer.borderWidth = BORDER_WITH;
     self.viewBodyMainInfo.layer.borderColor = [BORDER_COLOR CGColor];
     
+    
+    [self.scrollViewBodyLeft setBackGroundNormalColorWithOption:smgSelect];
     
     self.viewHeaderExpandInfo.backgroundColor = BACKGROUND_NORMAL_COLOR1;
     
@@ -973,6 +977,11 @@
  *  @return YES: If you want the specified item to be editable.
  */
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (arrayData.count == 0) {
+        return NO;
+    }
+    
     NSString *deletePermission =@"1";
     if ([deletePermission isEqualToString:@"1"]) {
         return YES;

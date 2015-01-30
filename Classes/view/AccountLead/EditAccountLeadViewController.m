@@ -53,6 +53,10 @@
     float heightKeyboard;
     UITextField *_txt;
     BOOL isPhone,isEmail,isSMS,isMeeting;
+    
+    //luu lai thong tin chon dia chi cua ban do
+    float _longitude, _latitude;
+    
 }
 @end
 
@@ -89,7 +93,8 @@
 
 //khoi tao gia tri mac dinh cua form
 -(void) initData {
-    
+    _latitude = -1; //khong chon
+    _longitude = -1; //khong chon
     
     selectPersonJobIndex = -1;
     selectPersonPositionIndex = -1;
@@ -698,6 +703,12 @@
     NSLog(@"postalCode=%@", addressObj.postalCode);
     NSLog(@"country=%@", addressObj.country);
     NSLog(@"lines=%@", addressObj.lines);
+    
+    
+    _longitude = addressObj.coordinate.longitude;
+    _latitude = addressObj.coordinate.latitude;
+    
+    
     
     if (addressObj.lines.count>0) {
         self.txtAddress.text =[addressObj.lines objectAtIndex:0];

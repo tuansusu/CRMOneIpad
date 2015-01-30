@@ -9,15 +9,18 @@
 #import "EditBussinessLeadViewController.h"
 #import "DTOACCOUNTLEADProcess.h"
 #import "DTOSYSCATProcess.h"
+#import "Util.h"
+#import "TestMapViewController.h"
 
 @interface EditBussinessLeadViewController ()
 {
     int smgSelect ; //option layout
     NSArray *arrayData; //mang luu tru du lieu
+    NSDictionary *dicData; //luu tru du lieu sua
     
     DTOACCOUNTLEADProcess *dtoLeadProcess;
     DTOSYSCATProcess *dtoSyscatProcess; //loai hinh doanh nghiep
-    
+    Util *util;
     //chon index form them moi
     NSInteger selectIndex;
     NSArray *listArr;
@@ -35,6 +38,8 @@
     //key board
     float heightKeyboard;
     UITextField *_txt;
+    //luu lai thong tin chon dia chi cua ban do
+    float _longitude, _latitude;
 }
 @end
 
@@ -56,10 +61,11 @@
     if ([UIDevice getCurrentSysVer] >= 7.0) {
         [UIDevice updateLayoutInIOs7OrAfter:self];
     }
-    
+    _latitude =0;
+    _longitude=0;
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
-    
+    util=[Util new];
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
     [self initData];
@@ -154,6 +160,12 @@
     
     if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_assetTotal]]) {
         _txtTotalassets.text =[_dataSend objectForKey:DTOLEAD_assetTotal];
+    }
+    if(![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_lon]]){
+        _longitude =[[_dataSend objectForKey:DTOLEAD_lon] floatValue];
+    }
+    if(![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_lat]]){
+        _latitude=[[_dataSend objectForKey:DTOLEAD_lat] floatValue];
     }
 }
 
@@ -250,7 +262,12 @@
 
 -(void) actionSave:(id)sender{
     //check valid to save
-    
+    if(![util checkValidToSave:_txtName :@"Anh/Chị chưa nhập tên khách hàng" :self.bodyMainView]){
+        return;
+    }
+    if(![util checkValidToSave:_txtPhone :@"Anh/Chị chưa nhập số điện thoại khách hàng" :self.bodyMainView]){
+        return;
+    }
     //neu qua duoc check thi tien hanh luu du lieu
     NSMutableDictionary *dicEntity = [NSMutableDictionary new];
     [dicEntity setObject:[StringUtil trimString:_txtName.text] forKey:DTOLEAD_name];
@@ -259,7 +276,14 @@
     [dicEntity setObject:[StringUtil trimString:_txtRegisterCodeBussiness.text] forKey:DTOLEAD_registrationNumber];
     [dicEntity setObject:[StringUtil trimString:_txtTaxCode.text] forKey:DTOLEAD_taxCode];
     [dicEntity setObject:[StringUtil trimString:_txtFax.text] forKey:DTOLEAD_fax];
-    
+    if(_longitude > 0){
+        NSString *myLon=[NSString stringWithFormat:@"%f", _longitude];
+        [dicEntity setObject:myLon forKey:DTOLEAD_lon];
+    }
+    if(_latitude > 0){
+        NSString *myLat=[NSString stringWithFormat:@"%f",_latitude];
+        [dicEntity setObject:myLat forKey:DTOLEAD_lat];
+    }
     if (selectOrgTypeIdIndex>=0) {
         [dicEntity setObject:[[listArrOrgType objectAtIndex:selectOrgTypeIdIndex] objectForKey:DTOSYSCAT_sysCatId] forKey:DTOLEAD_orgTypeId];
     }
@@ -507,4 +531,59 @@
     }
 }
 
+- (IBAction)actionChoiseAddress:(id)sender {
+    
+    //chọn địa điểm
+    
+    //neu la luc them moi
+    
+    //neu la luc sua
+    
+    TestMapViewController *detail = [[TestMapViewController alloc] initWithNibName:@"TestMapViewController" bundle:nil];
+    
+    if (self.dataSend) {
+        if (![StringUtil stringIsEmpty:[self.dataSend objectForKey:DTOACCOUNT_lat]]) {
+            float fLon = [[self.dataSend objectForKey:DTOACCOUNT_lon] floatValue];
+            float fLan =[[self.dataSend objectForKey:DTOACCOUNT_lat] floatValue];
+            detail.lan = fLan;
+            detail.lon = fLon;
+            //viewController.address = [dicData objectForKey:DTOLEAD_address];
+            if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_address]]) {
+                detail.address = [dicData objectForKey:DTOACCOUNT_address];
+            }else{
+                detail.address = @"";
+            }
+            
+        }
+    }
+    
+    detail.typeMapView = typeMapView_Choice;
+    detail.selectMapDelegate = self;
+    [self presentViewController:detail animated:YES completion:nil];
+}
+
+#pragma mark SelectMap Delegate
+-(void) selectAddress:(GMSAddress *)addressObj{
+    
+    NSLog(@"coordinate.latitude=%f", addressObj.coordinate.latitude);
+    NSLog(@"coordinate.longitude=%f", addressObj.coordinate.longitude);
+    NSLog(@"thoroughfare=%@", addressObj.thoroughfare);
+    NSLog(@"locality=%@", addressObj.locality);
+    NSLog(@"subLocality=%@", addressObj.subLocality);
+    NSLog(@"administrativeArea=%@", addressObj.administrativeArea);
+    NSLog(@"postalCode=%@", addressObj.postalCode);
+    NSLog(@"country=%@", addressObj.country);
+    NSLog(@"lines=%@", addressObj.lines);
+    
+    
+    _longitude = addressObj.coordinate.longitude;
+    _latitude = addressObj.coordinate.latitude;
+    
+    
+    
+    if (addressObj.lines.count>0) {
+        self.txtAddress.text =[addressObj.lines objectAtIndex:0];
+    }
+    
+}
 @end

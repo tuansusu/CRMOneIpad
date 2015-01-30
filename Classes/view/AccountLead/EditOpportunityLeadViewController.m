@@ -65,7 +65,7 @@
 
 }
 @end
-@implementation EditOpportunity360ViewController
+@implementation EditOpportunityLeadViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

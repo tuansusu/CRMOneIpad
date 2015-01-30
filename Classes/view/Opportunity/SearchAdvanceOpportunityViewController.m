@@ -98,7 +98,7 @@
         }
         
         if ([viewSubTemp isKindOfClass:[UIButton class]]) {
-            if(viewSubTemp.tag == 90 || viewSubTemp.tag == 91 || viewSubTemp.tag == 92){
+            if(viewSubTemp.tag == 90 || viewSubTemp.tag == 91 || viewSubTemp.tag == 92 || viewSubTemp.tag == 103 || viewSubTemp.tag == 104){
                 continue;
             }
             [((UIButton*) viewSubTemp) setStyleNormalWithOption:smgSelect];
@@ -129,7 +129,23 @@
 
 
 #pragma mark - Phan chon ngay thang
+
+- (IBAction)actionRemoveDate:(id)sender {
+    //xoa ngay bat dau
+    if (((UIButton*) sender).tag == 103) {
+        //xoa ngay bat dau
+        _txtStartDate.text = @"";
+    }else if (((UIButton*) sender).tag == 104){
+        //xoa ngay ket thuc
+        _txtEndDate.text = @"";
+    }
+    
+}
+
+
 - (IBAction)actionChoiceDateFrom:(id)sender {
+    
+    [self hiddenKeyBoard];
     
     if (self.txtStartDate.text.length==0) {
         dateFrom = [NSDate date];
@@ -150,6 +166,8 @@
     [self.listPopover presentPopoverFromRect:popoverFrame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 - (IBAction)actionChoiceDateTo:(id)sender {
+    
+    [self hiddenKeyBoard];
     
     if (self.txtEndDate.text.length==0) {
         dateTo = [NSDate date];
@@ -191,6 +209,9 @@
 
 #pragma mark - Phần chọn loại khách hàng
 - (IBAction)actionChooseAccountType:(id)sender {
+    
+    [self hiddenKeyBoard];
+    
     SELECTED_TAG = TAG_SELECT_ACCOUNT_TYPE;
     
     SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
@@ -239,6 +260,20 @@
     
     
 }
+
+-(void) hiddenKeyBoard {
+    
+        for (UIView *subViewTemp in self.view.subviews) {
+            
+            if([subViewTemp isKindOfClass:[UITextField class]]){
+                [(UITextField *)subViewTemp resignFirstResponder];
+            }
+            
+            
+        }
+    
+}
+
 
 /*
 #pragma mark - Navigation

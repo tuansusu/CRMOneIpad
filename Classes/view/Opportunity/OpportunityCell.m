@@ -41,8 +41,7 @@
 
 -(void) loadDataToCellWithData:(NSDictionary *)dicData withOption:(int)smgSelect{
     
-    UIFont *boldFont = [UIFont fontWithName:SYSFONT_BOLD size:SYSFONT_SIZE_BIG];
-    UIColor *blackColor = FONT_TEXT_HIGHLIGNT;
+   
 //    NSString *account = [dicData objectForKey:@"Account"];
 //    if([StringUtil stringIsEmpty:account])
 //    {
@@ -54,7 +53,7 @@
 //    }
     
     self.lbName.text= [NSString stringWithFormat:@"%@ - %@",[dicData objectForKey:DTOOPPORTUNITY_id], [dicData objectForKey:DTOOPPORTUNITY_name]];
-    self.lbName.textColor = TEXT_COLOR_HIGHLIGHT;
+    
     
 //    if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOOPPORTUNITY_name]]) {
 //        
@@ -105,7 +104,12 @@
     switch (smgSelect) {
         case 1:
         {
-            
+            for (UIView *viewTemp in self.contentView.subviews) {
+                if ([viewTemp isKindOfClass:[UILabel class]]) {
+                    ((UILabel*) viewTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+                }
+            }
+            self.lbName.textColor = TEXT_COLOR_HIGHLIGHT;
         }
             break;
             

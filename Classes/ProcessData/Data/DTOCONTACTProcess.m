@@ -119,7 +119,7 @@
 -(NSMutableArray*) filterWithClientLeaderId: (NSString*) strValue{
     NSArray *allFields =[NSArray arrayWithObjects:DTOCONTACT_id,DTOCONTACT_fullName,DTOCONTACT_address,DTOCONTACT_birthday,DTOCONTACT_mobile,DTOCONTACT_position,DTOCONTACT_identifiedNumber,DTOCONTACT_identifiedIssueDate,DTOCONTACT_identifiedIssueArea,DTOCONTACT_email,DTOCONTACT_roleDescription,DTOCONTACT_clientContactId,DTOCONTACT_avartar, nil];
     
-    NSString *query = [NSString stringWithFormat:@"SELECT dtocontact.id,fullName,address,birthday,mobile,position,identifiedNumber,identifiedIssueDate,identifiedIssueArea,email,roleDescription,dtocontact.clientContactId,avartar FROM dtoaccountcontact inner join dtocontact on clientAccountId = dtocontact.clientContactId where clientLeadId = ? and dtocontact.isactive = 1 order by dtoaccountcontact.updatedDate  desc"];
+    NSString *query = [NSString stringWithFormat:@"SELECT dtocontact.id,fullName,address,birthday,mobile,position,identifiedNumber,identifiedIssueDate,identifiedIssueArea,email,roleDescription,dtocontact.clientContactId,avartar FROM dtoaccountcontact inner join dtocontact on clientAccountId = dtocontact.clientContactId where clientLeadId = ? and dtocontact.isactive = 1 order by dtocontact.updatedDate  desc"];
     
     NSLog(@"contact_query:%@",query);
     

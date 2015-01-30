@@ -53,6 +53,10 @@
     float heightKeyboard;
     UITextField *_txt;
     BOOL isPhone,isEmail,isSMS,isMeeting;
+    
+    //luu lai thong tin chon dia chi cua ban do
+    float _longitude, _latitude;
+    
 }
 @end
 
@@ -74,6 +78,8 @@
     isEmail=NO;
     isSMS=NO;
     isMeeting=NO;
+    _latitude=0;
+    _longitude=0;
     [super viewDidLoad];
     if ([UIDevice getCurrentSysVer] >= 7.0) {
         [UIDevice updateLayoutInIOs7OrAfter:self];
@@ -89,7 +95,8 @@
 
 //khoi tao gia tri mac dinh cua form
 -(void) initData {
-    
+    _latitude = -1; //khong chon
+    _longitude = -1; //khong chon
     
     selectPersonJobIndex = -1;
     selectPersonPositionIndex = -1;
@@ -187,6 +194,12 @@
     if ([[_dataSend objectForKey:DTOLEAD_disableSms ] isEqualToString:@"1"]) {
         isSMS=YES;
         [_btnCheckSMS setImage:[UIImage imageNamed:@"checkbox_ticked.png"] forState:UIControlStateNormal];
+    }
+    if(![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_lat]]){
+        _latitude =[[_dataSend objectForKey:DTOLEAD_lat] floatValue];
+    }
+    if(![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_lon]]){
+        _longitude =[[_dataSend objectForKey:DTOLEAD_lon] floatValue];
     }
 }
 
@@ -307,6 +320,14 @@
     [dicEntity setObject:[StringUtil trimString:_txtPhone.text]forKey:DTOLEAD_mobile];
     [dicEntity setObject:[StringUtil trimString:_txtCompany.text] forKey:DTOLEAD_organization];
     [dicEntity setObject:[StringUtil trimString:_txtEmail.text] forKey:DTOLEAD_email];
+    if(_longitude>0){
+        NSString *myLon=[NSString stringWithFormat:@"%f",_longitude];
+        [dicEntity setObject:myLon forKey:DTOLEAD_lon];
+    }
+    if(_latitude>0){
+        NSString *myLat=[NSString stringWithFormat:@"%f",_latitude];
+        [dicEntity setObject:myLat forKey:DTOLEAD_lat];
+    }
     if (isPhone) {
         [dicEntity setObject:@"1" forKey:DTOLEAD_disablePhone];
     }
@@ -698,6 +719,12 @@
     NSLog(@"postalCode=%@", addressObj.postalCode);
     NSLog(@"country=%@", addressObj.country);
     NSLog(@"lines=%@", addressObj.lines);
+    
+    
+    _longitude = addressObj.coordinate.longitude;
+    _latitude = addressObj.coordinate.latitude;
+    
+    
     
     if (addressObj.lines.count>0) {
         self.txtAddress.text =[addressObj.lines objectAtIndex:0];

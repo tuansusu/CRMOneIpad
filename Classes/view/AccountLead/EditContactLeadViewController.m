@@ -16,6 +16,7 @@
 #import "AUISelectiveBordersLayer.h"
 #import "DataField.h"
 #import "DateUtil.h"
+#import "TestMapViewController.h"
 #import "DTOATTACHMENTProcess.h"
 
 #define TAG_SELECT_DATE_CREATE 1 //NGAY CAP CHUNG MINH THU
@@ -59,6 +60,8 @@
     //key board
     float heightKeyboard;
     UITextField *_txt;
+    //luu lai thong tin chon dia chi cua ban do
+    float _longitude, _latitude;
 }
 @end
 
@@ -636,4 +639,59 @@
 }
 
 
+- (IBAction)actionSelectAddress:(id)sender {
+    //chọn địa điểm
+    
+    //neu la luc them moi
+    
+    //neu la luc sua
+    
+    TestMapViewController *detail = [[TestMapViewController alloc] initWithNibName:@"TestMapViewController" bundle:nil];
+    
+    if (self.dataSend) {
+        if (![StringUtil stringIsEmpty:[self.dataSend objectForKey:DTOACCOUNT_lat]]) {
+            float fLon = [[self.dataSend objectForKey:DTOACCOUNT_lon] floatValue];
+            float fLan =[[self.dataSend objectForKey:DTOACCOUNT_lat] floatValue];
+            detail.lan = fLan;
+            detail.lon = fLon;
+            //viewController.address = [dicData objectForKey:DTOLEAD_address];
+            if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_address]]) {
+                detail.address = [dicData objectForKey:DTOACCOUNT_address];
+            }else{
+                detail.address = @"";
+            }
+            
+        }
+    }
+    
+    detail.typeMapView = typeMapView_Choice;
+    detail.selectMapDelegate = self;
+    [self presentViewController:detail animated:YES completion:nil];
+}
+
+
+#pragma mark SelectMap Delegate
+-(void) selectAddress:(GMSAddress *)addressObj{
+    
+    NSLog(@"coordinate.latitude=%f", addressObj.coordinate.latitude);
+    NSLog(@"coordinate.longitude=%f", addressObj.coordinate.longitude);
+    NSLog(@"thoroughfare=%@", addressObj.thoroughfare);
+    NSLog(@"locality=%@", addressObj.locality);
+    NSLog(@"subLocality=%@", addressObj.subLocality);
+    NSLog(@"administrativeArea=%@", addressObj.administrativeArea);
+    NSLog(@"postalCode=%@", addressObj.postalCode);
+    NSLog(@"country=%@", addressObj.country);
+    NSLog(@"lines=%@", addressObj.lines);
+    
+    
+    _longitude = addressObj.coordinate.longitude;
+    _latitude = addressObj.coordinate.latitude;
+    
+    
+    
+    if (addressObj.lines.count>0) {
+        self.txtAddress.text =[addressObj.lines objectAtIndex:0];
+    }
+    
+}
 @end

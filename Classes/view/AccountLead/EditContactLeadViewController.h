@@ -95,5 +95,6 @@
 @property (nonatomic, retain) UIPopoverController *listPopover;
 ////////////// KHAI BAO BIEN CHUNG//////////
 
+- (IBAction)actionSelectAddress:(id)sender;
 
 @end

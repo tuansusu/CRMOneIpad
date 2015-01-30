@@ -32,6 +32,8 @@
     
     VTRadio *rdCustomer360; //Radio khach hang 360
     VTRadio *rdCustomerRoot; //radio khach hang dau moi
+    
+    NSUserDefaults *defaults;
 }
 @end
 
@@ -60,16 +62,13 @@
         
     }
    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
     
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
     [self initData];
     [self initCustomControl];
-    
-    [self.tbData registerNib:[UINib nibWithNibName:@"OpportunityCell" bundle:nil] forCellReuseIdentifier:@"opportunityCell"];
-
     
     //
     df = [[NSDateFormatter alloc] init];
@@ -88,6 +87,9 @@
  */
 -(void) initCustomControl
 {
+    
+    
+    
     [self.tbData registerNib:[UINib nibWithNibName:@"AttachFileCell" bundle:nil] forCellReuseIdentifier:@"AttachFileCell"];
     
     rdCustomer360 = [[VTRadio alloc]init];
@@ -130,25 +132,37 @@
 
 //khoi tao gia tri mac dinh cua form
 -(void) initData {
+    
+    
+    
     dtoOpportunityProcess = [DTOOPPORTUNITYProcess new];
     arrayData  = [NSArray new];
 
     arrayData = [dtoOpportunityProcess filterOpportunity:nil addStartDate:nil addEndDate:nil userType:nil];
-
+    _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
     //load data from db
     
 }
 
 - (void) updateInterFaceWithOption : (int) option
 {
+    
+    self.barLabel.text = [NSString stringWithFormat:@"%@ %@, %@",VOFFICE,[defaults objectForKey:@"versionSoftware"],COPY_OF_SOFTWARE];
+    
     //self.fullNameLB.text =  TITLE_APPLICATION;
     [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
     self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
+    self.lbTotal.textColor = TEXT_COLOR_HEADER_APP;
+    
+    
     [self.btnSearch setStyleNormalWithOption:smgSelect];
     [self.leftViewHeader setBackgroundColor:BACKGROUND_COLOR_TOP_LEFT_HEADER];
     self.leftLabelHeader.textColor = TEXT_COLOR_HEADER_APP;
     
     self.txtSearchBar.barTintColor = HEADER_VIEW_COLOR1;
+    
+    self.footerView.backgroundColor = TOOLBAR_VIEW_COLOR;
+    self.barLabel.textColor = TEXT_TOOLBAR_COLOR1;
 
     //
     UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
@@ -177,33 +191,8 @@
         }
         
 
-//        if ([viewTemp isKindOfClass:[UIButton class]]) {
-//            {
-//                ((UIButton*) viewTemp).backgroundColor = BUTTON_IN_ACTIVE_COLOR_1;
-//                [((UIButton*) viewTemp) setTitleColor:TEXT_BUTTON_COLOR1 forState:UIControlStateNormal];
-//            }
-//        }
-//        if ([viewTemp isKindOfClass:[UITextView class]]) {
-//            ((UITextView*) viewTemp).textColor = TEXT_COLOR_REPORT;
-//            ((UITextView*) viewTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
-//            ((UITextView*) viewTemp).layer.borderColor = [BORDER_COLOR CGColor];
-//            ((UITextView*) viewTemp).layer.borderWidth = BORDER_WITH;
-//        }
-//        if ([viewTemp isKindOfClass:[UITextField class]]) {
-//            ((UITextField*) viewTemp).textColor = TEXT_COLOR_REPORT;
-//            ((UITextField*) viewTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
-//            ((UITextField*) viewTemp).layer.borderColor = [BORDER_COLOR CGColor];
-//            ((UITextField*) viewTemp).layer.borderWidth = BORDER_WITH;
-//        }
+
     }
-    
-    //self.view.backgroundColor = BACKGROUND_NORMAL_COLOR1;
-    
-//    self.lbHeader.textColor = TEXT_COLOR_REPORT;
-//    [UILabel setBoldLabel:self.lbHeader];
-//    self.lbHeader.selectiveBorderFlag = AUISelectiveBordersFlagBottom;
-//    self.lbHeader.selectiveBordersColor = BORDER_COLOR;
-//    self.lbHeader.selectiveBordersWidth = BORDER_WITH;
     
     
 }
@@ -287,6 +276,8 @@
 
 -(void) viewDidAppear:(BOOL)animated{
     arrayData = [dtoOpportunityProcess filterOpportunity:nil addStartDate:nil addEndDate:nil userType:nil];
+    
+    _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
     [self.tbData reloadData];
 }
 
@@ -497,7 +488,7 @@
     detail.advanceSearchDelegate =(id<SearchAdvanceDelegate>) self;
     
     self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(250, 370) animated:NO];
+    [self.listPopover setPopoverContentSize:CGSizeMake(286, 405) animated:NO];
     [self.listPopover presentPopoverFromRect:popoverFrame inView:self.headerViewBar permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
@@ -551,6 +542,8 @@
     //strSearchText = searchText;
     if(self.txtSearchBar.text.length == 0){
         arrayData = [dtoOpportunityProcess filterOpportunity:self.txtSearchBar.text addStartDate:nil addEndDate:nil userType:nil];
+        _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
+        
         [self.tbData reloadData];
 
     }
@@ -568,6 +561,7 @@
     //[SVProgressHUD show];
     
     arrayData = [dtoOpportunityProcess filterOpportunity:self.txtSearchBar.text addStartDate:nil addEndDate:nil userType:nil];
+    _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
     [self.tbData reloadData];
     [searchBar resignFirstResponder];
     

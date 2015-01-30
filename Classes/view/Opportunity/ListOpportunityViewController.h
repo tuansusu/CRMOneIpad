@@ -17,7 +17,7 @@
 //Header
 @property (weak, nonatomic) IBOutlet UIView *headerViewBar;
 @property (weak, nonatomic) IBOutlet UILabel *fullNameLB;
-
+@property (weak, nonatomic) IBOutlet UILabel *lbTotal;
 @property (weak, nonatomic) IBOutlet UIButton *btnHome;
 - (IBAction)homeBack:(id)sender;
 
@@ -58,6 +58,12 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *btnAdd;
 - (IBAction)actionAdd:(id)sender;
+
+
+//footer
+@property (weak, nonatomic) IBOutlet UIView *footerView;
+@property (nonatomic,retain) IBOutlet UILabel *barLabel;
+
 
 
 @property (nonatomic, retain) UIPopoverController *listPopover;

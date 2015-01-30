@@ -17,6 +17,7 @@
 #import "EditOpportunityProductViewController.h"
 #import "EditOpportunityTaskViewController.h"
 #import "UIViewController+MJPopupViewController.h"
+#import "EmptyCell.h"
 
 
 enum TypeActionEvent{
@@ -54,6 +55,8 @@ enum TypeActionEvent{
 
 @property (weak, nonatomic) IBOutlet UIView *rightInMainView;
 @property (weak, nonatomic) IBOutlet UIView *rightViewHeader;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollViewInfo;
+
 
 #pragma  mark righview button
 

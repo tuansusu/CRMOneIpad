@@ -95,6 +95,9 @@
     [self initData];
     [self actionClueContact:self.btnClueContact];
     
+    [self.scrollViewInfo setBackGroundNormalColorWithOption:smgSelect];
+    [self setBottomLineDetail:self.scrollViewInfo];
+    [self.rightInMainView setBorderWithOption:smgSelect];
 //    [self.tbData registerNib:[UINib nibWithNibName:@"OpportunityCell" bundle:nil] forCellReuseIdentifier:@"opportunityCell"];
     
     
@@ -459,6 +462,24 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    //set empty cell
+    if (arrayData.count == 0) {
+        static NSString *cellId = @"EmptyCell";
+        EmptyCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+        
+        
+        if (!cell) {
+            cell = [EmptyCell initNibCell];
+        }
+        
+        [cell loadDataToCellWithData:@"" withOption:smgSelect];
+        
+        return cell;
+    }
+
+    
+    
     switch (typeActionEvent) {
         case type_ClueContact:{
             static NSString *cellId = @"ContactOpportunityCell";
@@ -467,6 +488,9 @@
             
             if (!cell) {
                 cell = [ContactOpportunityCell initNibCell];
+            }
+            if (!cell) {
+                cell = [EmptyCell initNibCell];
             }
             
             if (arrayData.count>0) {
@@ -741,5 +765,25 @@
     EditOpportunityViewController *viewController = [[EditOpportunityViewController alloc]initWithNibName:@"EditOpportunityViewController" bundle:nil];
     viewController.dataSend = opportunity;
     [self presentViewController:viewController animated:YES completion:nil];
+}
+#pragma mark set bottom
+/*set bottom line*/
+-(void) setBottomLineDetail: (UIScrollView*) scrollViewTemp {
+    //NSArray *arrayLabelToSetBottomLine = [scrollViewTemp vi]
+    
+    for (UIView *viewSub in [scrollViewTemp subviews]) {
+        if (viewSub.tag == TAG_CONTROL_LINE) {
+            [self addBottomLineWithBottomControl:viewSub.frame withInControl:scrollViewTemp];
+        }
+    }
+}
+
+-(void) addBottomLineWithBottomControl : (CGRect) bottomViewFrame withInControl : (UIView*) containView {
+    
+    UIView *viewLine = [[UIView alloc] initWithFrame:CGRectMake(0, bottomViewFrame.origin.y + bottomViewFrame.size.height, containView.frame.size.width, BORDER_WITH)];
+    viewLine.backgroundColor = BORDER_COLOR;
+    [viewLine setBorderWithOption:smgSelect];
+    [containView addSubview:viewLine];
+    
 }
 @end

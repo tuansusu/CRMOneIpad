@@ -82,7 +82,7 @@ DTOOPPORTUNITY_updatedDate, //VARCHAR
     
     if(![StringUtil stringIsEmpty:keyword])
     {
-        [query appendString:[NSString stringWithFormat:@"AND op.name like '%%%@%%' ",keyword]];
+        [query appendString:[NSString stringWithFormat:@"AND (op.name like '%%%@%%'or op.code like '%%%@%%')  ",keyword,keyword]];
     }
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];

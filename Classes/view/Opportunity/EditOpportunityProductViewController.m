@@ -237,6 +237,12 @@
     if(selectCurrencyIndex >= 0){
         [dicEntity setObject:[[listArrCurrency objectAtIndex:selectCurrencyIndex] objectForKey:DTOSYSCAT_sysCatId] forKey:DTOOPPORTUNITYPRODUCT_currencyId];
     }
+    else{//Lấy mặc định là đồng việt nam
+        
+        NSPredicate *bPredicate = [NSPredicate predicateWithFormat:@"code = 'VND'"];
+    
+        [dicEntity setObject:[[[listArrCurrency filteredArrayUsingPredicate:bPredicate] objectAtIndex:0] objectForKey:DTOSYSCAT_sysCatId] forKey:DTOOPPORTUNITYPRODUCT_currencyId];
+    }
     //isActive
     [dicEntity setObject:@"1" forKey:DTOCONTACT_isActive];
     //clientOpportunityId

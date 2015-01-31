@@ -31,7 +31,7 @@
 -(NSMutableArray*) filterTheNewestRecord;
 
 -(NSMutableArray*) filterWithKey : (NSString*) strKey withValue : (NSString*) strValue;
--(NSMutableArray*) filterTaskWithKey : (NSString*) strKey withValue : (NSString*) strValue;
+-(NSMutableArray*) filterTaskWithAccountId:(NSString*)accountId WithKey : (NSString*) strKey withValue : (NSString*) strValue;
 
 -(NSDictionary*) getDataWithKey : (NSString*) inputKey withValue : (NSString*) inputValue;
 

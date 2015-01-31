@@ -17,10 +17,13 @@ typedef enum
 
 @interface RepeatCalendarConfig : NSObject
 
-@property (nonatomic, assign) BOOL isRepeat;
-@property (nonatomic, assign) NSUInteger repeatDuration;
-@property (nonatomic, assign) OO_RepeatMode /*NSUInteger*/ repeatMode;
-@property (nonatomic, strong) NSDate * repeatUntil;
+@property (nonatomic, assign) BOOL isRepeat; /* enabled/disabled */
+//@property (nonatomic, assign) BOOL isRecurrence; //??
+@property (nonatomic, assign) NSUInteger repeatDuration; /* Interval */
+@property (nonatomic, assign) OO_RepeatMode /* NSUInteger */ repeatMode;
+@property (nonatomic, strong) NSDate * repeatUntil; /* end Date */
+
+/* mode week */
 @property (nonatomic, assign) BOOL repeatWeekMon;
 @property (nonatomic, assign) BOOL repeatWeekTue;
 @property (nonatomic, assign) BOOL repeatWeekWed;
@@ -28,10 +31,15 @@ typedef enum
 @property (nonatomic, assign) BOOL repeatWeekFri;
 @property (nonatomic, assign) BOOL repeatWeekSat;
 @property (nonatomic, assign) BOOL repeatWeekSun;
-@property (nonatomic, assign) NSUInteger rpMonthDayOfWeek;
-@property (nonatomic, assign) NSUInteger rpMonthFirstDay;
-@property (nonatomic, assign) NSUInteger rpMonthIndexDay;
-@property (nonatomic, assign) BOOL rpMonthRdFirstDay;
-@property (nonatomic, assign) BOOL rpMonthRdIndexDay;
+/* mode month */
+@property (nonatomic, assign) NSUInteger rpMonthDayOfWeek; /* 1 for sunday, 2-7 for weekday */
+@property (nonatomic, assign) BOOL rpMonthFirstDay; /* first or last day */
 
+//@property (nonatomic, assign) BOOL rpMonthRdFirstDay; //?? INTEGER
+//@property (nonatomic, assign) BOOL rpMonthRdIndexDay; //?? INTEGER
+
+@property (nonatomic, assign) NSUInteger rpMonthIndexDay; //?? SMALLINT
+
+//- (NSString *)toReadableText;
+//- (NSDictionary *)toDictionary;
 @end

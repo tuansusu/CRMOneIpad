@@ -21,6 +21,6 @@
 @required
 
 - (void)repeatCalendarView:(RepeatCalendarViewController *)repeatCalendarView confirmConfig:(RepeatCalendarConfig *)alarmCOnfig;
-- (void) dismissPopoverView;
+- (void)dismissPopoverView;
 
 @end

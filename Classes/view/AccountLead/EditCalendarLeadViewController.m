@@ -41,7 +41,7 @@
 #define TAG_SELECT_CUSTOMERS     8
 
 
-@interface EditCalendarLeadViewController () <UITextFieldDelegate, SelectIndexDelegate, CalendarSelectDatePickerDelegate, AlarmCalendarViewDelegate>
+@interface EditCalendarLeadViewController () <UITextFieldDelegate, SelectIndexDelegate, CalendarSelectDatePickerDelegate, AlarmCalendarViewDelegate, RepeatCalendarViewDelegate>
 {
     int smgSelect ; //option layout
     NSArray *arrayData; //mang luu tru du lieu
@@ -479,6 +479,7 @@
     RepeatCalendarViewController * detail = [[RepeatCalendarViewController alloc] init];
     UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:detail];
     _listPopover = [[UIPopoverController alloc] initWithContentViewController:nav];
+    detail.delegate = self;
     _listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
     _listPopover.popoverContentSize = detail.view.frame.size;
     [_listPopover presentPopoverFromRect:_txtRepeat.frame inView:_viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
@@ -824,6 +825,12 @@
 
 #pragma mark - AlarmCalendarViewDelegate
 - (void)alarmCalendarView:(AlarmCalendarViewController *)alarmCalendarView confirmConfig:(AlarmCalendarConfig *)alarmConfig
+{
+    
+}
+
+#pragma mark - RepeatCalendarViewDelegate
+- (void)repeatCalendarView:(RepeatCalendarViewController *)repeatCalendarView confirmConfig:(RepeatCalendarConfig *)alarmCOnfig
 {
     
 }

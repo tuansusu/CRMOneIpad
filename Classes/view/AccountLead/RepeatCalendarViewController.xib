@@ -9,12 +9,13 @@
             <connections>
                 <outlet property="_endDateDDBtn" destination="R8Z-Zj-Brg" id="OVk-eC-uub"/>
                 <outlet property="_endDateTF" destination="psC-Ed-dkL" id="Qxn-Mk-V9i"/>
-                <outlet property="_endHourDDBtn" destination="Kch-kw-kXM" id="wye-xk-nNa"/>
-                <outlet property="_endHourTF" destination="40a-qy-y2v" id="wDx-K4-OIl"/>
+                <outlet property="_endTimeDDBtn" destination="Kch-kw-kXM" id="C0l-nt-olC"/>
+                <outlet property="_endTimeTF" destination="40a-qy-y2v" id="en0-NF-Ucx"/>
                 <outlet property="_mDateCheckBtn" destination="OS2-sj-1lU" id="fjw-CD-0Xu"/>
                 <outlet property="_mDateCheckLB" destination="Mrx-Cv-Cvh" id="NqE-vs-IM9"/>
                 <outlet property="_mDateDDBtn" destination="nM2-J3-KF6" id="a4I-Jo-USF"/>
                 <outlet property="_mDateTF" destination="CKD-zf-Iw1" id="dwk-pF-ZyF"/>
+                <outlet property="_mFirstOrLastDDBtn" destination="NMZ-dg-Fcy" id="A35-j3-0PY"/>
                 <outlet property="_mFirstOrLastTF" destination="ots-9F-lg7" id="yUG-dC-S0n"/>
                 <outlet property="_mOptionView" destination="CCR-Bi-Ylg" id="m2f-hc-Azl"/>
                 <outlet property="_mWeekDayCheckBtn" destination="VRb-8x-RRh" id="fKK-aw-Rhn"/>
@@ -22,8 +23,6 @@
                 <outlet property="_mWeekDayDDBtn" destination="Wuf-hc-nY9" id="7Hi-os-Mn9"/>
                 <outlet property="_mWeekDayTF" destination="Udq-jF-vH9" id="saF-Ly-6pX"/>
                 <outlet property="_onOffSwitch" destination="ywA-2i-5Fh" id="128-Tx-Q3r"/>
-                <outlet property="_pickTableView" destination="HIN-P6-4kV" id="7Jl-1b-pVj"/>
-                <outlet property="_pickerView" destination="9AL-Fi-olB" id="jL3-Mq-RoA"/>
                 <outlet property="_repeatFreqDDBtn" destination="mzN-mQ-awM" id="ftA-f7-abf"/>
                 <outlet property="_repeatFreqTF" destination="GgW-Kl-7CO" id="Fwr-0m-Jlt"/>
                 <outlet property="_repeatIntervalDDBtn" destination="OwB-ca-969" id="Adu-2E-YyB"/>
@@ -207,7 +206,7 @@
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Thứ trong tuần" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Udq-jF-vH9">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Thứ trong tuần" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Udq-jF-vH9">
                                     <rect key="frame" x="122" y="5" width="202" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -215,7 +214,7 @@
                                         <outlet property="delegate" destination="-1" id="Brl-nn-pHx"/>
                                     </connections>
                                 </textField>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wuf-hc-nY9" userLabel="btnChoice status">
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wuf-hc-nY9" userLabel="btnChoice status">
                                     <rect key="frame" x="294" y="5" width="30" height="30"/>
                                     <state key="normal" backgroundImage="ic_cbx-1.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -224,7 +223,7 @@
                                         <action selector="pickerBtnPressed:" destination="-1" eventType="touchUpInside" id="LG8-3R-xPD"/>
                                     </connections>
                                 </button>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Đầu tháng, Cuối tháng" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ots-9F-lg7">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Đầu tháng, Cuối tháng" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ots-9F-lg7">
                                     <rect key="frame" x="122" y="43" width="202" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -232,7 +231,7 @@
                                         <outlet property="delegate" destination="-1" id="piP-3d-5F9"/>
                                     </connections>
                                 </textField>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMZ-dg-Fcy" userLabel="btnChoice status">
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMZ-dg-Fcy" userLabel="btnChoice status">
                                     <rect key="frame" x="294" y="43" width="30" height="30"/>
                                     <state key="normal" backgroundImage="ic_cbx-1.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>

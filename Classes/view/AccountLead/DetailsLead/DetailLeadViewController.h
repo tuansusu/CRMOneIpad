@@ -17,6 +17,7 @@
 #import "EditTaskLeadViewController.h"
 #import "TaskActionCell.h"
 #import "TaskCalendarCell.h"
+#import "OpportunityLeadCell.h"
 
 #import "EditCalendarLeadViewController.h"
 
@@ -24,6 +25,7 @@
 #import "EditNoteLeadViewController.h"
 #import "EditAccountLeadViewController.h"
 #import "EditBussinessLeadViewController.h"
+#import "EditOpportunityLeadViewController.h"
 
 #import "EmptyCell.h"
 

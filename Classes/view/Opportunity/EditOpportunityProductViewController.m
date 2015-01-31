@@ -55,6 +55,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    if ([UIDevice getCurrentSysVer] >= 7.0) {
+        [UIDevice updateLayoutInIOs7OrAfter:self];
+    }
+    
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
     
@@ -148,26 +152,39 @@
 - (void) updateInterFaceWithOption : (int) option
 {
     
+    self.barLabel.text = [NSString stringWithFormat:@"%@ %@, %@",VOFFICE,[defaults objectForKey:@"versionSoftware"],COPY_OF_SOFTWARE];
+    
+    self.lblFormTitle.text =  TITLE_APPLICATION;
+    
+    self.footerView.backgroundColor = TOOLBAR_VIEW_COLOR;
+    self.barLabel.textColor = TEXT_TOOLBAR_COLOR1;
+    
+    
     //[self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
     
     [self.viewheader setBackgroundColor:HEADER_VIEW_COLOR1];
     
     [self.viewheader setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
     
+    [self.bodyMainView setBackgroundColor:BACKGROUND_NORMAL_COLOR1];
+    
+    [self.bodyMainView setBorderWithOption:smgSelect];
+    
     self.viewinfo.backgroundColor = HEADER_SUB_VIEW_COLOR1;
     
     self.viewinfo.layer.borderWidth = BORDER_WITH;
     self.viewinfo.layer.borderColor = [BORDER_COLOR CGColor];
     
+    
+    [self.btnSave setStyleNormalWithOption:smgSelect];
+    
     for (UIView *viewTemp in self.viewmaininfo.subviews) {
         
-        for (UIView *viewSubTemp in self.viewmaininfo.subviews) {
-            
+        for (UIView *viewSubTemp in [viewTemp subviews]) {
             
             if ([viewSubTemp isKindOfClass:[UILabel class]]) {
                 ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
             }
-            
             
             if ([viewSubTemp isKindOfClass:[UITextView class]]) {
                 ((UITextView*) viewSubTemp).textColor = TEXT_COLOR_REPORT;
@@ -178,8 +195,6 @@
             if ([viewSubTemp isKindOfClass:[UITextField class]]) {
                 ((UITextField*) viewSubTemp).textColor = TEXT_COLOR_REPORT;
                 ((UITextField*) viewSubTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
-//                ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
-//                ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
                 
                 [((UITextField*) viewSubTemp) setPaddingLeft];
                 [((UITextField*) viewSubTemp) setBorderWithOption:smgSelect];
@@ -188,13 +203,17 @@
             
         }
         
-        if ([viewTemp isKindOfClass:[UIButton class]]) {
-            if(viewTemp.tag!=10){
-                [((UIButton*) viewTemp) setStyleNormalWithOption:smgSelect];
-            }
-        }
+//        if ([viewTemp isKindOfClass:[UIButton class]]) {
+//            if(viewTemp.tag!=10){
+//                [((UIButton*) viewTemp) setStyleNormalWithOption:smgSelect];
+//            }
+//        }
         
     }
+    
+    
+    ///////
+    
     
 }
 - (void)didReceiveMemoryWarning {
@@ -202,19 +221,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 #pragma mark action button
-
-
+- (IBAction)actionHome:(id)sender{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 -(void) dismissPopoverView
 {
@@ -287,6 +297,8 @@
 }
 -(IBAction)actionChooseCurency:(id)sender{
     
+    [self hiddenKeyBoard];
+    
     SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
     
     detail.selectIndex = selectCurrencyIndex;
@@ -299,7 +311,7 @@
     detail.delegate =(id<SelectIndexDelegate>) self;
     self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
     [self.listPopover setPopoverContentSize:CGSizeMake(320,250) animated:NO];
-    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewmaininfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.bodyMainView permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 -(void) selectAtIndex:(NSInteger)index{
     
@@ -469,6 +481,9 @@
     return isValidate;
 }
 
+
+
+
 #pragma mark -check email
 -(BOOL) validateEmail:(NSString *)email{
     
@@ -553,16 +568,7 @@
     
     popTipView.delegate = self;
     
-    /* Some options to try.
-     */
-    //popTipView.disableTapToDismiss = YES;
-    //popTipView.preferredPointDirection = PointDirectionUp;
-    //popTipView.hasGradientBackground = NO;
-    //popTipView.cornerRadius = 2.0;
-    //popTipView.sidePadding = 30.0f;
-    //popTipView.topMargin = 20.0f;
-    //popTipView.pointerSize = 50.0f;
-    //popTipView.hasShadow = NO;
+    
     
     popTipView.preferredPointDirection = PointDirectionDown;
     popTipView.hasShadow = NO;
@@ -590,12 +596,19 @@
     
     
 }
-//-(void)setBorder:(UITextField *)txtView{
-//    
-//    txtView .layer.cornerRadius=1.0f;
-//    txtView.layer.masksToBounds=YES;
-//    txtView.layer.borderColor=[[UIColor redColor]CGColor ];
-//    txtView.layer.borderWidth=1.0f;
-//    [txtView becomeFirstResponder];
-//}
+
+
+-(void) hiddenKeyBoard {
+    for (UIView *viewTemp in _bodyMainView.subviews) {
+        
+            
+            if([viewTemp isKindOfClass:[UITextField class]]){
+                [(UITextField *)viewTemp resignFirstResponder];
+            }
+            
+            
+        
+    }
+}
+
 @end

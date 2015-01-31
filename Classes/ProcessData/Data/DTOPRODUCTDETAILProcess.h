@@ -11,5 +11,6 @@
 @interface DTOPRODUCTDETAILProcess : BaseDataProcess
 
 -(NSMutableArray*) filterProductWithLeadId:(NSString*)leadId WithTypeId:(NSString*)typeId;
+-(NSMutableArray*) filterTopKHWithType:(NSString*)typeQuery WithLimitRecord:(int)limitRecord;
 
 @end

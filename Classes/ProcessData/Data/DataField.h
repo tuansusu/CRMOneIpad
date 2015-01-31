@@ -622,6 +622,8 @@
 #define DTOPRODUCTDETAIL_balanceQD @"balanceQD" //VARCHAR
 #define DTOPRODUCTDETAIL_Khoi @"Khoi" //VARCHAR
 #define DTOPRODUCTDETAIL_rmBancheo @"rmBancheo" //VARCHAR
+#define DTOPRODUCTDETAIL_BalanceSum @"balanceSum" //VARCHAR
+
 //dtoProTindungDetail Field
 #define DTOProTinDungDetail_BRANCH_CODE                 @"BRANCH_CODE",
 #define DTOProTinDungDetail_CONTRACT_NUMBER             @"CONTRACT_NUMBER",

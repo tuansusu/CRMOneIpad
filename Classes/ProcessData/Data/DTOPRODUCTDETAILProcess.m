@@ -22,6 +22,15 @@
     return [DataUtil BuilQueryGetListWithListFields:[DTOProductDetailObject allFields] selectQuery:query valueParameter:nil];
 }
 
+-(NSMutableArray*) filterTopKHWithType:(NSString*)typeQuery WithLimitRecord:(int)limitRecord{
 
+    NSString *query = [NSString stringWithFormat:@"Select clientId, SUM(balanceqd) as balanceSum FROM %@ where %@ "
+                                                 @"GROUP BY clientId "
+                                                 @"ORDER BY balanceSum DESC Limit %d",TABLENAME_DTOPRODUCTMASTER,typeQuery,limitRecord];
+
+    return [DataUtil BuilQueryGetListWithListFields:[NSArray arrayWithObjects:
+                                                     @"clientId",
+                                                     @"balanceSum",nil] selectQuery:query valueParameter:nil];
+}
 
 @end

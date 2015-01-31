@@ -544,8 +544,14 @@
     //clientOpportunityId
     if(self.dataSend)
     { //truogn hop them moi
-        
-        [dicEntity setObject:[self.dataSend objectForKey:@"accountId"] forKey:DTOOPPORTUNITY_accountId];
+        if(![[self.dataSend objectForKey:@"accountId"] isKindOfClass:[NSNull class]])
+        {
+            [dicEntity setObject:[self.dataSend objectForKey:@"clientAccountId"] forKey:DTOOPPORTUNITY_accountId];
+        }
+        else
+        {
+            [dicEntity setObject:[self.dataSend objectForKey:@"accountId"] forKey:DTOOPPORTUNITY_accountId];
+        }
         NSString *strClientOpportunityId = IntToStr(([dtoOpportunityProcess getClientId]));
         [dicEntity setObject:strClientOpportunityId forKey:DTOOPPORTUNITY_clientOpportunityId];
     }else

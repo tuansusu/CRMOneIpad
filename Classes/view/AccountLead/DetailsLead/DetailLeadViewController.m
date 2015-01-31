@@ -15,6 +15,7 @@
 #import "DTOTASKProcess.h"
 #import "DTONOTEProcess.h"
 #import "DTOATTACHMENTProcess.h"
+#import "DTOOPPORTUNITYProcess.h"
 
 
 #import "TaskCalendarCell.h"
@@ -65,6 +66,8 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     DTOTASKProcess *dtoTaskProcess;
     DTONOTEProcess *dtoNoteProcess;
     DTOATTACHMENTProcess *dtoAttachProcess;
+    DTOOPPORTUNITYProcess *dtoOpportunityProcess;
+    
 
     NSUserDefaults *defaults ;
 
@@ -213,6 +216,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     dtoTaskProcess= [DTOTASKProcess new];
     dtoNoteProcess = [DTONOTEProcess new];
     dtoAttachProcess=[DTOATTACHMENTProcess new];
+    dtoOpportunityProcess = [DTOOPPORTUNITYProcess new];
     NSLog(@"datasend detail lead = %@", self.dataSend);
     dicData = [dtoLeadProcess getDataWithKey:DTOLEAD_id withValue:[self.dataSend objectForKey:DTOLEAD_id]];
     NSLog(@"Get detail = %@", dicData);
@@ -377,7 +381,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
         }break;
         case typeLeaderView_Opportunity:{
-
+            arrayData = [dtoOpportunityProcess filterWithClienLeadId:[dicData objectForKey:DTOLEAD_clientLeadId]];
         }break;
         case typeLeaderView_Calendar:
         {
@@ -521,7 +525,9 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
         case SELECT_INDEX_ADD_OPPORTUNITY:
         {
-
+            EditOpportunityLeadViewController *viewController = [[EditOpportunityLeadViewController alloc]initWithNibName:@"EditOpportunityLeadViewController" bundle:nil];
+            viewController.dataSend = dicData;
+            [self presentViewController:viewController animated:YES completion:nil];
         }
         break;
         // calendar+task
@@ -771,6 +777,19 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         break;
         case typeLeaderView_Opportunity:
         {
+            static NSString *cellId = @"OpportunityLeadCell";
+            OpportunityLeadCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+            
+            
+            if (!cell) {
+                cell = [OpportunityLeadCell getNewCell];
+            }
+            
+            if (arrayData.count>0) {
+                [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+            }
+            
+            return cell;
         }
         break;
         // calendar + task
@@ -860,6 +879,11 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             }
                 break;
             case typeLeaderView_Opportunity:
+            {
+                EditOpportunityLeadViewController *viewNoteController = [[EditOpportunityLeadViewController alloc]initWithNibName:@"EditOpportunityLeadViewController" bundle:nil];
+                viewNoteController.dataRoot = dicData;
+                [self presentViewController:viewNoteController animated:YES completion:nil];
+            }
                 break;
             case typeLeaderView_Note:{
                 EditNoteLeadViewController *viewController = [[EditNoteLeadViewController alloc]initWithNibName:@"EditNoteLeadViewController" bundle:nil];
@@ -905,6 +929,12 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         }
         break;
         case typeLeaderView_Opportunity:
+        {
+            EditOpportunityLeadViewController *viewNoteController = [[EditOpportunityLeadViewController alloc]initWithNibName:@"EditOpportunityLeadViewController" bundle:nil];
+            viewNoteController.dataRoot = dicTempData;
+            //viewNoteController.dataRoot = dicData;
+            [self presentViewController:viewNoteController animated:YES completion:nil];
+        }
         break;
         case typeLeaderView_Note:{
             EditNoteLeadViewController *viewNoteController = [[EditNoteLeadViewController alloc]initWithNibName:@"EditNoteLeadViewController" bundle:nil];

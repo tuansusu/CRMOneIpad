@@ -450,6 +450,7 @@
 #define DTOOPPORTUNITY_isActive @"isActive" //SMALLINT
 #define DTOOPPORTUNITY_languageId @"languageId" //BIGINT
 #define DTOOPPORTUNITY_leadId @"leadId" //BIGINT
+#define DTOOPPORTUNITY_clientLeadId @"clientLeadId" //BIGINT
 #define DTOOPPORTUNITY_name @"name" //VARCHAR
 #define DTOOPPORTUNITY_needSupport @"needSupport" //SMALLINT
 #define DTOOPPORTUNITY_nextTask @"nextTask" //BIGINT

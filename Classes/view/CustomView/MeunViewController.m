@@ -371,10 +371,7 @@
 }
 
 - (IBAction)actionComplain:(id)sender {
-    
-//    ListComplainsViewController *viewController = [[ListComplainsViewController alloc]initWithNibName:@"ListComplainsViewController" bundle:nil];
-//    [self presentViewController:viewController animated:YES completion:nil];
-    
+
     ListComplainsViewController *targetViewController = [[ListComplainsViewController alloc]initWithNibName:@"ListComplainsViewController" bundle:nil];
     UINavigationController * navi = [[UINavigationController alloc] initWithRootViewController:targetViewController];
     [navi setNavigationBarHidden:YES];
@@ -387,10 +384,9 @@
 
 - (IBAction)actionHelp:(id)sender {
     
-//    TestEditViewController *viewController = [[TestEditViewController alloc]initWithNibName:@"TestEditViewController" bundle:nil];
-//    [self presentViewController:viewController animated:YES completion:nil];
+
     
-    TestEditViewController *targetViewController =  [[TestEditViewController alloc]initWithNibName:@"TestEditViewController" bundle:nil];
+    HelpViewController *targetViewController =  [[HelpViewController alloc]initWithNibName:@"HelpViewController" bundle:nil];
     
     UINavigationController * navi = [[UINavigationController alloc] initWithRootViewController:targetViewController];
     [navi setNavigationBarHidden:YES];

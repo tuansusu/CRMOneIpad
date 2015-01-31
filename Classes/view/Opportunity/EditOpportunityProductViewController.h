@@ -33,6 +33,11 @@
 
 @property (weak, nonatomic) IBOutlet UIView *viewinfo;
 
+@property (weak, nonatomic) IBOutlet UIView *bodyMainView;
+
+
+//@property (weak, nonatomic) IBOutlet UIScrollView *bodyMainView;
+
 @property (weak, nonatomic) IBOutlet UIView *viewmaininfo;
 @property (weak, nonatomic) IBOutlet UILabel *lblFormTitle;
 
@@ -60,6 +65,13 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnCurrency;
 
 - (IBAction)actionChooseCurency:(id)sender;
+
+
+//footer
+@property (weak, nonatomic) IBOutlet UIView *footerView;
+@property (nonatomic,retain) IBOutlet UILabel *barLabel;
+
+
 
 @property (weak,nonatomic) id <OpportunityProductDelegate> delegateOpportunityProduct;
 

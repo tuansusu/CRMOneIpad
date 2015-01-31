@@ -347,6 +347,8 @@
 		769C1A1C1A00027900F015A5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 769C1A1A1A00027900F015A5 /* Reachability.m */; };
 		769CB8141A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 769CB8131A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.m */; };
 		769CF2381A768B8B004BF96E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 769CF23A1A768B8B004BF96E /* Localizable.strings */; };
+		769E1FCC1A7C7ED200545F63 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769E1FCA1A7C7ED200545F63 /* HelpViewController.m */; };
+		769E1FCD1A7C7ED200545F63 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769E1FCB1A7C7ED200545F63 /* HelpViewController.xib */; };
 		769F247E1A6F1C5500427A8F /* Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F246D1A6F1C5500427A8F /* Language.m */; };
 		769F247F1A6F1C5500427A8F /* LocalizeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F246F1A6F1C5500427A8F /* LocalizeHelper.m */; };
 		769F24801A6F1C5500427A8F /* DDMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F24721A6F1C5500427A8F /* DDMenuController.m */; };
@@ -883,6 +885,8 @@
 		92C68E6A1519D4F100981728 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C68E4C1519D4F100981728 /* RootViewController.m */; };
 		9418D69D1A7BE26400A5C9AA /* EditOpportunityLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9418D69B1A7BE26400A5C9AA /* EditOpportunityLeadViewController.m */; };
 		9418D69E1A7BE26400A5C9AA /* EditOpportunityLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9418D69C1A7BE26400A5C9AA /* EditOpportunityLeadViewController.xib */; };
+		943296B81A7CE9970097592D /* OpportunityLeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 943296B61A7CE9970097592D /* OpportunityLeadCell.m */; };
+		943296B91A7CE9970097592D /* OpportunityLeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 943296B71A7CE9970097592D /* OpportunityLeadCell.xib */; };
 		949B76B01A3F357A00945B41 /* SearchAdvanceOpportunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 949B76AE1A3F357A00945B41 /* SearchAdvanceOpportunityViewController.m */; };
 		949B76B11A3F357A00945B41 /* SearchAdvanceOpportunityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 949B76AF1A3F357A00945B41 /* SearchAdvanceOpportunityViewController.xib */; };
 		94BA8D771A2DF3710082AE9E /* EditOpportunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA8D751A2DF3710082AE9E /* EditOpportunityViewController.m */; };
@@ -1539,6 +1543,9 @@
 		769CB8131A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOOPPORTUNITYCONTACTProcess.m; sourceTree = "<group>"; };
 		769CF2391A768B8B004BF96E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		769CF23B1A768BCE004BF96E /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		769E1FC91A7C7ED200545F63 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
+		769E1FCA1A7C7ED200545F63 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
+		769E1FCB1A7C7ED200545F63 /* HelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpViewController.xib; sourceTree = "<group>"; };
 		769F246C1A6F1C5500427A8F /* Language.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Language.h; sourceTree = "<group>"; };
 		769F246D1A6F1C5500427A8F /* Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Language.m; sourceTree = "<group>"; };
 		769F246E1A6F1C5500427A8F /* LocalizeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizeHelper.h; sourceTree = "<group>"; };
@@ -2390,6 +2397,9 @@
 		9418D69A1A7BE26400A5C9AA /* EditOpportunityLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditOpportunityLeadViewController.h; sourceTree = "<group>"; };
 		9418D69B1A7BE26400A5C9AA /* EditOpportunityLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditOpportunityLeadViewController.m; sourceTree = "<group>"; };
 		9418D69C1A7BE26400A5C9AA /* EditOpportunityLeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditOpportunityLeadViewController.xib; sourceTree = "<group>"; };
+		943296B51A7CE9970097592D /* OpportunityLeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpportunityLeadCell.h; sourceTree = "<group>"; };
+		943296B61A7CE9970097592D /* OpportunityLeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpportunityLeadCell.m; sourceTree = "<group>"; };
+		943296B71A7CE9970097592D /* OpportunityLeadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpportunityLeadCell.xib; sourceTree = "<group>"; };
 		949B76AD1A3F357A00945B41 /* SearchAdvanceOpportunityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchAdvanceOpportunityViewController.h; sourceTree = "<group>"; };
 		949B76AE1A3F357A00945B41 /* SearchAdvanceOpportunityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchAdvanceOpportunityViewController.m; sourceTree = "<group>"; };
 		949B76AF1A3F357A00945B41 /* SearchAdvanceOpportunityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchAdvanceOpportunityViewController.xib; sourceTree = "<group>"; };
@@ -3655,6 +3665,16 @@
 			name = logo;
 			sourceTree = "<group>";
 		};
+		769E1FC31A7C7DB300545F63 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				769E1FC91A7C7ED200545F63 /* HelpViewController.h */,
+				769E1FCA1A7C7ED200545F63 /* HelpViewController.m */,
+				769E1FCB1A7C7ED200545F63 /* HelpViewController.xib */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
 		769F246B1A6F1C5400427A8F /* Language */ = {
 			isa = PBXGroup;
 			children = (
@@ -4154,6 +4174,7 @@
 		849787FF1A2BE17700384566 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				943296B41A7CE9770097592D /* OpportunityLeadCell */,
 				8496FB241A2DE34200F4A641 /* ContactLeadCell.h */,
 				8496FB251A2DE34200F4A641 /* ContactLeadCell.m */,
 				8496FB261A2DE34200F4A641 /* ContactLeadCell.xib */,
@@ -5458,6 +5479,7 @@
 		92C68E4A1519D4F100981728 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				769E1FC31A7C7DB300545F63 /* Help */,
 				8EB93CF91A791EDE002875F2 /* DaskboardTasks */,
 				8E44BBF81A73A89B00EDCD1A /* ProductsService */,
 				8E8D7FC31A5ADE060084BCA3 /* DashboardCalendar */,
@@ -5515,6 +5537,16 @@
 				2D0AD496173219510048A239 /* Default-568h@2x.png */,
 			);
 			path = images;
+			sourceTree = "<group>";
+		};
+		943296B41A7CE9770097592D /* OpportunityLeadCell */ = {
+			isa = PBXGroup;
+			children = (
+				943296B51A7CE9970097592D /* OpportunityLeadCell.h */,
+				943296B61A7CE9970097592D /* OpportunityLeadCell.m */,
+				943296B71A7CE9970097592D /* OpportunityLeadCell.xib */,
+			);
+			name = OpportunityLeadCell;
 			sourceTree = "<group>";
 		};
 		B301F1B917C382D80004650C /* interfaces */ = {
@@ -6008,6 +6040,7 @@
 				2D6D7663187670B00051AD9E /* ic-work-order-group-1.png in Resources */,
 				7633080E1A048962000E190B /* VTCheckBox.xib in Resources */,
 				76601A3F194BE90F001D4C01 /* AppIcon-076.png in Resources */,
+				943296B91A7CE9970097592D /* OpportunityLeadCell.xib in Resources */,
 				8E0B07CB1A4475CF00CF7A78 /* iconCall.png in Resources */,
 				76C964721A17731900029978 /* RightTriangleIcon.png in Resources */,
 				8497BFEA1A295A2300A5ED3C /* step6.png in Resources */,
@@ -6176,6 +6209,7 @@
 				2DD29EEC18769C260066B883 /* menu-ic-list-doc-1.png in Resources */,
 				84912AC51A1F6A3300E99FF7 /* DetailCustomPersonViewController.xib in Resources */,
 				8497BFE11A295A2300A5ED3C /* step1@2x.png in Resources */,
+				769E1FCD1A7C7ED200545F63 /* HelpViewController.xib in Resources */,
 				7644306E1A7000CC007741BA /* menu_opportunity.png in Resources */,
 				B3D8D557189237ED00D3ACE9 /* bg-doc-detail-1.png in Resources */,
 				843BF0C01A03ECC500EA1D8A /* OpportunityCell.xib in Resources */,
@@ -6457,6 +6491,7 @@
 				76C9644A1A17731900029978 /* Cluster.m in Sources */,
 				DDBC47131715412D00CCFB94 /* OAPlaintextSignatureProvider.m in Sources */,
 				DDBC47141715412D00CCFB94 /* OARequestParameter.m in Sources */,
+				769E1FCC1A7C7ED200545F63 /* HelpViewController.m in Sources */,
 				2D3643941859996700190EE7 /* AFPropertyListRequestOperation.m in Sources */,
 				8EC972951A5D71300021DCA3 /* FFYearCollectionView.m in Sources */,
 				0648C62A1A4C2F5D0002F9FE /* UICGPolyline.m in Sources */,
@@ -6673,6 +6708,7 @@
 				B31938D518E4355D0008BBFE /* UILabel+Custom.m in Sources */,
 				8497BFF91A295A2300A5ED3C /* GeocoderViewController.m in Sources */,
 				8497C0001A295A2300A5ED3C /* MapTypesViewController.m in Sources */,
+				943296B81A7CE9970097592D /* OpportunityLeadCell.m in Sources */,
 				76D29AC31A111258004B9CF6 /* DTOCOMPETITORProcess.m in Sources */,
 				8EC972831A5D71300021DCA3 /* FFMonthCell.m in Sources */,
 				8EC9728B1A5D71300021DCA3 /* FFViewWithHourLines.m in Sources */,

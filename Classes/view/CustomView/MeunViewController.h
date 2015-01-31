@@ -10,6 +10,7 @@
 #import "DDMenuController.h"
 #import "FrameworkAppDelegate.h"
 #import "MainViewController.h"
+#import "HelpViewController.h"
 
 @interface MeunViewController : BaseViewController
 

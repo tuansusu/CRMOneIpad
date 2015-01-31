@@ -17,6 +17,8 @@
 #import "DataField.h"
 #import "DateUtil.h"
 #import "DTOATTACHMENTProcess.h"
+#import "Util.h"
+#import "TestMapViewController.h"
 
 #define TAG_SELECT_DATE_CREATE 1 //NGAY CAP CHUNG MINH THU
 #define TAG_SELECT_DATE_BIRTHDAY 2 //NGAY SINH
@@ -31,7 +33,7 @@
     
     DTOCONTACTProcess *dtoProcess;
     DTOATTACHMENTProcess *dtoFileProcess;
-    
+    Util*util;
     NSString *fileAvartar;
     NSString *imagePath;
     
@@ -82,7 +84,7 @@
     
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
-    
+    util=[Util new];
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
     [self initData];
@@ -279,7 +281,18 @@
 
 -(void) actionSave:(id)sender{
     //check valid to save
-    if (![self checkValidToSave]) {
+    if (![util checkValidToSave:_txtName :@"Anh/Chị chưa nhập tên liên hệ" :self.bodyMainView]) {
+        return;
+    }
+    if(![util checkValidToSave:_txtPhone :@"Anh/Chị chưa nhập số điện thoại liên hệ" :self.bodyMainView]){
+        return;
+    }
+    if(![util checkValidToSave:_txtPosition :@"Anh/Chị chưa nhập chức danh liên hệ" :self.bodyMainView]){
+        return;
+    }
+    if(_txtEmail.text.length>0 && ![util validateEmail:_txtEmail.text]){
+        [util showTooltip:_txtEmail withText:@"Email không đúng định dạng" showview:_bodyMainView];
+        [util setBorder:_txtEmail];
         return;
     }
     
@@ -614,138 +627,59 @@
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
-
-#pragma mark check
--(BOOL) checkValidToSave {
-    BOOL isValidate = YES;
-    if ([StringUtil trimString: self.txtName.text].length==0) {
-        [self showTooltip:self.txtName withText:@"Bạn chưa nhập tên liên hệ"];
-        
-        [self.txtName  becomeFirstResponder];
-        [self setBorder:self.txtName];
-        isValidate = NO;
-        return isValidate;
-    }
-    if([StringUtil trimString:self.txtPosition.text].length==0){
-        
-        [self showTooltip:self.txtPosition  withText:@"Bạn chưa nhập chức danh"];
-        [self.txtPosition becomeFirstResponder];
-        [self setBorder:self.txtPosition];
-        isValidate=NO;
-        return isValidate;
-    }
-    if([StringUtil trimString:self.txtPhone.text].length==0){
-        
-        [self showTooltip:self.txtPhone  withText:@"Bạn chưa nhập số điện thoại"];
-        [self.txtPhone becomeFirstResponder];
-        [self setBorder:self.txtPhone];
-        isValidate=NO;
-        return isValidate;
-    }
-    if([StringUtil trimString:self.txtEmail.text].length>0 && [self validateEmail:self.txtEmail.text]==NO)
-    {
-        [self showTooltip:self.txtEmail withText:@"Email không đúng"];
-        [self.txtEmail becomeFirstResponder];
-        [self setBorder:self.txtEmail];
-        isValidate=NO;
-        return isValidate;
+- (IBAction)actionSelectAddress:(id)sender {
+    //chọn địa điểm
+    
+    //neu la luc them moi
+    
+    //neu la luc sua
+    
+    TestMapViewController *detail = [[TestMapViewController alloc] initWithNibName:@"TestMapViewController" bundle:nil];
+    
+    if (self.dataSend) {
+        if (![StringUtil stringIsEmpty:[self.dataSend objectForKey:DTOACCOUNT_lat]]) {
+            float fLon = [[self.dataSend objectForKey:DTOACCOUNT_lon] floatValue];
+            float fLan =[[self.dataSend objectForKey:DTOACCOUNT_lat] floatValue];
+            detail.lan = fLan;
+            detail.lon = fLon;
+            //viewController.address = [dicData objectForKey:DTOLEAD_address];
+            if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_address]]) {
+                detail.address = [dicData objectForKey:DTOACCOUNT_address];
+            }else{
+                detail.address = @"";
+            }
+            
+        }
     }
     
-    return isValidate;
+    detail.typeMapView = typeMapView_Choice;
+    detail.selectMapDelegate = self;
+    [self presentViewController:detail animated:YES completion:nil];
 }
 
 
-#pragma mark tooltip
-
--(void) showTooltip : (UIView*) inputTooltipView withText : (NSString*) inputMessage {
+#pragma mark SelectMap Delegate
+-(void) selectAddress:(GMSAddress *)addressObj{
     
-    [self dismissAllPopTipViews];
-    
-    
-    NSString *contentMessage = inputMessage;
-    //UIView *contentView = inputTooltipView;
-    
-    UIColor *backgroundColor = [UIColor redColor];
-    
-    UIColor *textColor = [UIColor whiteColor];
-    
-    //NSString *title = inputMessage;
-    
-    CMPopTipView *popTipView;
+    NSLog(@"coordinate.latitude=%f", addressObj.coordinate.latitude);
+    NSLog(@"coordinate.longitude=%f", addressObj.coordinate.longitude);
+    NSLog(@"thoroughfare=%@", addressObj.thoroughfare);
+    NSLog(@"locality=%@", addressObj.locality);
+    NSLog(@"subLocality=%@", addressObj.subLocality);
+    NSLog(@"administrativeArea=%@", addressObj.administrativeArea);
+    NSLog(@"postalCode=%@", addressObj.postalCode);
+    NSLog(@"country=%@", addressObj.country);
+    NSLog(@"lines=%@", addressObj.lines);
     
     
-    popTipView = [[CMPopTipView alloc] initWithMessage:contentMessage];
+   // _longitude = addressObj.coordinate.longitude;
+   // _latitude = addressObj.coordinate.latitude;
     
-    popTipView.delegate = self;
     
-    /* Some options to try.
-     */
-    //popTipView.disableTapToDismiss = YES;
-    //popTipView.preferredPointDirection = PointDirectionUp;
-    //popTipView.hasGradientBackground = NO;
-    //popTipView.cornerRadius = 2.0;
-    //popTipView.sidePadding = 30.0f;
-    //popTipView.topMargin = 20.0f;
-    //popTipView.pointerSize = 50.0f;
-    //popTipView.hasShadow = NO;
     
-    popTipView.preferredPointDirection = PointDirectionDown;
-    popTipView.hasShadow = NO;
-    
-    if (backgroundColor && ![backgroundColor isEqual:[NSNull null]]) {
-        popTipView.backgroundColor = backgroundColor;
-    }
-    if (textColor && ![textColor isEqual:[NSNull null]]) {
-        popTipView.textColor = textColor;
+    if (addressObj.lines.count>0) {
+        self.txtAddress.text =[addressObj.lines objectAtIndex:0];
     }
     
-    popTipView.animation = arc4random() % 2;
-    popTipView.has3DStyle = (BOOL)(arc4random() % 2);
-    
-    popTipView.dismissTapAnywhere = YES;
-    [popTipView autoDismissAnimated:YES atTimeInterval:3.0];
-    
-    
-    [popTipView presentPointingAtView:inputTooltipView inView:self.viewMainBodyInfo animated:YES];
-    
-    
-    [self.visiblePopTipViews addObject:popTipView];
-    self.currentPopTipViewTarget = inputTooltipView;
-    
-    
-    
 }
-
-- (void)dismissAllPopTipViews
-{
-    while ([self.visiblePopTipViews count] > 0) {
-        CMPopTipView *popTipView = [self.visiblePopTipViews objectAtIndex:0];
-        [popTipView dismissAnimated:YES];
-        [self.visiblePopTipViews removeObjectAtIndex:0];
-    }
-}
-#pragma mark - CMPopTipViewDelegate methods
-
-- (void)popTipViewWasDismissedByUser:(CMPopTipView *)popTipView
-{
-    [self.visiblePopTipViews removeObject:popTipView];
-    self.currentPopTipViewTarget = nil;
-}
-#pragma mark -check email
--(BOOL) validateEmail:(NSString *)email{
-    
-    NSString *emailRegex=@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9]+\\.[A-Za-z]{2,6}";
-    NSPredicate *emailtext=[NSPredicate predicateWithFormat:@"SELF MATCHES %@",emailRegex];
-    return [emailtext evaluateWithObject:email];
-}
-#pragma mark-set border text
--(void)setBorder:(UITextField *)txtView{
-    
-    txtView .layer.cornerRadius=1.0f;
-    txtView.layer.masksToBounds=YES;
-    txtView.layer.borderColor=[[UIColor redColor]CGColor ];
-    txtView.layer.borderWidth=1.0f;
-    [txtView becomeFirstResponder];
-}
-
 @end

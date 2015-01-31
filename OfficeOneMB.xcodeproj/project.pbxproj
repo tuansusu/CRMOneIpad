@@ -347,6 +347,8 @@
 		769C1A1C1A00027900F015A5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 769C1A1A1A00027900F015A5 /* Reachability.m */; };
 		769CB8141A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 769CB8131A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.m */; };
 		769CF2381A768B8B004BF96E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 769CF23A1A768B8B004BF96E /* Localizable.strings */; };
+		769E1FCC1A7C7ED200545F63 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769E1FCA1A7C7ED200545F63 /* HelpViewController.m */; };
+		769E1FCD1A7C7ED200545F63 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769E1FCB1A7C7ED200545F63 /* HelpViewController.xib */; };
 		769F247E1A6F1C5500427A8F /* Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F246D1A6F1C5500427A8F /* Language.m */; };
 		769F247F1A6F1C5500427A8F /* LocalizeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F246F1A6F1C5500427A8F /* LocalizeHelper.m */; };
 		769F24801A6F1C5500427A8F /* DDMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F24721A6F1C5500427A8F /* DDMenuController.m */; };
@@ -1541,6 +1543,9 @@
 		769CB8131A41D0DD00FA8F54 /* DTOOPPORTUNITYCONTACTProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOOPPORTUNITYCONTACTProcess.m; sourceTree = "<group>"; };
 		769CF2391A768B8B004BF96E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		769CF23B1A768BCE004BF96E /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		769E1FC91A7C7ED200545F63 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
+		769E1FCA1A7C7ED200545F63 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
+		769E1FCB1A7C7ED200545F63 /* HelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpViewController.xib; sourceTree = "<group>"; };
 		769F246C1A6F1C5500427A8F /* Language.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Language.h; sourceTree = "<group>"; };
 		769F246D1A6F1C5500427A8F /* Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Language.m; sourceTree = "<group>"; };
 		769F246E1A6F1C5500427A8F /* LocalizeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizeHelper.h; sourceTree = "<group>"; };
@@ -3660,6 +3665,16 @@
 			name = logo;
 			sourceTree = "<group>";
 		};
+		769E1FC31A7C7DB300545F63 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				769E1FC91A7C7ED200545F63 /* HelpViewController.h */,
+				769E1FCA1A7C7ED200545F63 /* HelpViewController.m */,
+				769E1FCB1A7C7ED200545F63 /* HelpViewController.xib */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
 		769F246B1A6F1C5400427A8F /* Language */ = {
 			isa = PBXGroup;
 			children = (
@@ -5464,6 +5479,7 @@
 		92C68E4A1519D4F100981728 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				769E1FC31A7C7DB300545F63 /* Help */,
 				8EB93CF91A791EDE002875F2 /* DaskboardTasks */,
 				8E44BBF81A73A89B00EDCD1A /* ProductsService */,
 				8E8D7FC31A5ADE060084BCA3 /* DashboardCalendar */,
@@ -6193,6 +6209,7 @@
 				2DD29EEC18769C260066B883 /* menu-ic-list-doc-1.png in Resources */,
 				84912AC51A1F6A3300E99FF7 /* DetailCustomPersonViewController.xib in Resources */,
 				8497BFE11A295A2300A5ED3C /* step1@2x.png in Resources */,
+				769E1FCD1A7C7ED200545F63 /* HelpViewController.xib in Resources */,
 				7644306E1A7000CC007741BA /* menu_opportunity.png in Resources */,
 				B3D8D557189237ED00D3ACE9 /* bg-doc-detail-1.png in Resources */,
 				843BF0C01A03ECC500EA1D8A /* OpportunityCell.xib in Resources */,
@@ -6474,6 +6491,7 @@
 				76C9644A1A17731900029978 /* Cluster.m in Sources */,
 				DDBC47131715412D00CCFB94 /* OAPlaintextSignatureProvider.m in Sources */,
 				DDBC47141715412D00CCFB94 /* OARequestParameter.m in Sources */,
+				769E1FCC1A7C7ED200545F63 /* HelpViewController.m in Sources */,
 				2D3643941859996700190EE7 /* AFPropertyListRequestOperation.m in Sources */,
 				8EC972951A5D71300021DCA3 /* FFYearCollectionView.m in Sources */,
 				0648C62A1A4C2F5D0002F9FE /* UICGPolyline.m in Sources */,

@@ -11,6 +11,7 @@
 #import "DTONOTEProcess.h"
 #import "DTOATTACHMENTProcess.h"
 #import "EditNoteViewCell.h"
+#import "Util.h"
 
 @interface EditNote360ViewController ()
 {
@@ -20,7 +21,7 @@
     
     DTONOTEProcess *dtoProcess;
     DTOATTACHMENTProcess *dtoFileProcess;
-    
+    Util*util;
     //chon index form them moi
     NSInteger selectIndex;
     NSArray *listArr;
@@ -64,7 +65,7 @@
     
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
-    
+    util=[Util new];
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
     [self initData];
@@ -211,7 +212,7 @@
 }
 - (IBAction)actionSave:(id)sender {
     
-    if (![self checkValidToSave]) {
+    if (![util checkValidToSave:self.txtTitle:@"Anh/Chị chưa nhập tiêu đề ghi chú" :self.bodyMainView]) {
         return;
     }
     strClientContactId = IntToStr(([dtoProcess getClientId]));
@@ -557,93 +558,6 @@
     NSLog(@"btnSender = %d", btnSender.tag);
     
 }
-
-
-#pragma mark check
--(BOOL) checkValidToSave {
-    BOOL isValidate = YES;
-    if ([StringUtil trimString: txtTitle.text].length==0) {
-        [self showTooltip:self.txtTitle withText:@"Bạn chưa nhập Tên khách hàng"];
-        
-        [txtTitle becomeFirstResponder];
-        txtTitle.layer.cornerRadius=1.0f;
-        txtTitle.layer.masksToBounds=YES;
-        txtTitle.layer.borderColor=[[UIColor redColor]CGColor ];
-        txtTitle.layer.borderWidth=1.0f;
-        
-        isValidate = NO;
-        return isValidate;
-    }
-    return isValidate;
-}
-
-
-#pragma mark tooltip
-
--(void) showTooltip : (UIView*) inputTooltipView withText : (NSString*) inputMessage {
-    
-    [self dismissAllPopTipViews];
-    
-    
-    NSString *contentMessage = inputMessage;
-    //UIView *contentView = inputTooltipView;
-    
-    UIColor *backgroundColor = [UIColor redColor];
-    
-    UIColor *textColor = [UIColor whiteColor];
-    
-    //NSString *title = inputMessage;
-    
-    CMPopTipView *popTipView;
-    
-    
-    popTipView = [[CMPopTipView alloc] initWithMessage:contentMessage];
-    
-    popTipView.delegate = self;
-    
-    popTipView.preferredPointDirection = PointDirectionDown;
-    popTipView.hasShadow = NO;
-    
-    if (backgroundColor && ![backgroundColor isEqual:[NSNull null]]) {
-        popTipView.backgroundColor = backgroundColor;
-    }
-    if (textColor && ![textColor isEqual:[NSNull null]]) {
-        popTipView.textColor = textColor;
-    }
-    
-    popTipView.animation = arc4random() % 2;
-    popTipView.has3DStyle = (BOOL)(arc4random() % 2);
-    
-    popTipView.dismissTapAnywhere = YES;
-    [popTipView autoDismissAnimated:YES atTimeInterval:3.0];
-    
-    
-    [popTipView presentPointingAtView:inputTooltipView inView:self.viewMainBodyInfo animated:YES];
-    
-    
-    [self.visiblePopTipViews addObject:popTipView];
-    self.currentPopTipViewTarget = inputTooltipView;
-    
-    
-    
-}
-
-- (void)dismissAllPopTipViews
-{
-    while ([self.visiblePopTipViews count] > 0) {
-        CMPopTipView *popTipView = [self.visiblePopTipViews objectAtIndex:0];
-        [popTipView dismissAnimated:YES];
-        [self.visiblePopTipViews removeObjectAtIndex:0];
-    }
-}
-#pragma mark - CMPopTipViewDelegate methods
-
-- (void)popTipViewWasDismissedByUser:(CMPopTipView *)popTipView
-{
-    [self.visiblePopTipViews removeObject:popTipView];
-    self.currentPopTipViewTarget = nil;
-}
-
 
 
 @end

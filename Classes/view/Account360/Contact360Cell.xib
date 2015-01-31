@@ -75,6 +75,7 @@
                 <outlet property="btnAddress" destination="RDg-nn-K9U" id="wfU-8L-bxp"/>
                 <outlet property="btnSendMail" destination="tYK-vY-cyf" id="GD0-oS-UNM"/>
                 <outlet property="imgIconPhone" destination="CQV-NK-bTJ" id="9qj-ta-N1q"/>
+                <outlet property="lbAddress" destination="WEc-wl-vgW" id="Y4J-DX-YJK"/>
                 <outlet property="lbEmail" destination="3fo-Gq-pIu" id="is3-v5-jPj"/>
                 <outlet property="lbName" destination="1nD-Ll-CXE" id="BEM-oS-nGa"/>
                 <outlet property="lbPhone" destination="8uF-v5-hbT" id="xrS-U9-CCy"/>

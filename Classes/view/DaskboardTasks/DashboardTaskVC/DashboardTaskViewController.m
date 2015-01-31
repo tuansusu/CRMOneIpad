@@ -11,6 +11,7 @@
 #import "DTOTASKProcess.h"
 #import "TaskActionCell.h"
 #import "EditTaskLeadViewController.h"
+#import "DashboardTaskModel.h"
 
 static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
@@ -22,10 +23,10 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     NSUserDefaults *defaults;
 
     NSString *strSearchText ;
-    NSArray *arrayData; //mang luu tru du lieu
 
     DTOTASKProcess *dtoProcess;
     NSString *delTask;
+    DashboardTaskModel *_dashboardTaskModel;
 }
 //Header
 @property (weak, nonatomic) IBOutlet UIView *headerViewBar;
@@ -77,6 +78,9 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+
+    _dashboardTaskModel = [[DashboardTaskModel alloc] init];
+
     if ([UIDevice getCurrentSysVer] >= 7.0) {
         [UIDevice updateLayoutInIOs7OrAfter:self];
 
@@ -117,7 +121,6 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 -(void) initData {
 
     dtoProcess = [DTOTASKProcess new];
-    arrayData  = [NSArray new];
 
     [self filterData];
 
@@ -225,7 +228,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return  arrayData.count;
+    return  _dashboardTaskModel.listData.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -236,9 +239,9 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     {
         cell.delegate = self;
 
-        if (indexPath.row < arrayData.count)
+        if (indexPath.row < _dashboardTaskModel.listData.count)
         {
-            [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+            [cell loadDataToCellWithData:[_dashboardTaskModel.listData objectAtIndex:indexPath.row] withOption:smgSelect];
         }
 
         return cell;
@@ -255,12 +258,23 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
         [tableView deselectRowAtIndexPath:selection animated:YES];
     }
-    NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
+    NSDictionary *dicData = [_dashboardTaskModel.listData objectAtIndex:indexPath.row];
     EditTaskLeadViewController *viewController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
     viewController.dataSend = dicData;
     [viewController setDelegate:self];
     [self presentViewController:viewController animated:YES completion:nil];
 
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+
+    NSInteger currentOffset = scrollView.contentOffset.y;
+    NSInteger maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height;
+
+    if (currentOffset - maximumOffset >= 40) {
+        [_dashboardTaskModel getNextPageWithKey:self.txtSearchBar.text];
+        [self.tbData reloadData];
+    }
 }
 
 #pragma mark UISearach bar delegate
@@ -273,9 +287,9 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 {
     NSLog(@"text did change %@", searchText);
     strSearchText = searchText;
-    arrayData=[dtoProcess filterTaskWithKey:DTOTASK_title withValue:searchText];
+    [_dashboardTaskModel getFirstPageWithKey:searchText];
     // _lbTotal.text=arrayData.count;
-    _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
+    _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", _dashboardTaskModel.listData.count];
     [_tbData reloadData];
 }
 
@@ -299,12 +313,12 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 -(void) filterData {
 
     if ([StringUtil stringIsEmpty:strSearchText]) {
-        arrayData = [dtoProcess filterTaskWithKey:DTOTASK_title withValue:@""];
+        [_dashboardTaskModel getFirstPageWithKey:@""];
     }else{
-        arrayData = [dtoProcess filterTaskWithKey:DTOTASK_title withValue:strSearchText];
+        [_dashboardTaskModel getFirstPageWithKey:strSearchText];
     }
     //load data from db
-    _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
+    _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", _dashboardTaskModel.listData.count];
 
     //NSLog(@"list data = %@", arrayData);
     [self.tbData reloadData];
@@ -333,7 +347,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSDictionary *dicDataItem = [arrayData objectAtIndex:indexPath.row];
+        NSDictionary *dicDataItem = [_dashboardTaskModel.listData objectAtIndex:indexPath.row];
 
         delTask = [dicDataItem objectForKey:DTOTASK_id];
         UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Bạn có muốn xoá công việc?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
@@ -375,7 +389,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 {
     NSLog(@"sua item at index = %d", indexPath.row);
 
-    NSDictionary *dicTempData = [arrayData objectAtIndex:indexPath.row];
+    NSDictionary *dicTempData = [_dashboardTaskModel.listData objectAtIndex:indexPath.row];
     EditTaskLeadViewController *viewController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
     viewController.dataSend = dicTempData;
     [viewController setDelegate:self];
@@ -433,13 +447,11 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         NSIndexPath *indexPathToReload = [self.tbData indexPathForCell:taskActionCell];
 
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            if (strSearchText) {
-                arrayData = [dtoProcess filterTaskWithKey:DTOTASK_title withValue:@""];
+            if ([strSearchText isEqualToString:@""]) {
+                [_dashboardTaskModel getFirstPageWithKey:@""];
             }else{
-                arrayData = [dtoProcess filterTaskWithKey:DTOTASK_title withValue:strSearchText];
+                [_dashboardTaskModel getFirstPageWithKey:strSearchText];
             }
-
-            NSLog(@"task count = %ld", (unsigned long)arrayData.count);
 
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tbData reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPathToReload] withRowAnimation:UITableViewRowAnimationAutomatic];

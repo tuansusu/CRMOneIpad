@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditNote360ViewController">
@@ -10,6 +10,7 @@
                 <outlet property="barLabel" destination="FMw-RP-U3Y" id="HvL-gF-CVu"/>
                 <outlet property="bodyMainView" destination="8zO-cF-fjL" id="V5v-25-NdM"/>
                 <outlet property="btnHome" destination="Jlk-al-LOO" id="uuo-1p-xa4"/>
+                <outlet property="btnSave" destination="8yx-gB-vmq" id="kpk-v6-cRc"/>
                 <outlet property="choosePhotoBtn" destination="Ne4-mQ-n8W" id="96h-Nd-5LI"/>
                 <outlet property="footerView" destination="23j-4x-Yiu" id="eSQ-x1-iTW"/>
                 <outlet property="fullNameLB" destination="xeE-W6-7Tj" id="Dnh-3g-9m5"/>
@@ -75,14 +76,14 @@
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="P8A-Ol-YWr" userLabel="btnSave">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8yx-gB-vmq">
                                     <rect key="frame" x="893" y="2" width="110" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Cập nhật">
+                                    <state key="normal" title="Cập nhập">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
-                                        <action selector="actionSave:" destination="-1" eventType="touchUpInside" id="qD8-Kd-9Wy"/>
+                                        <action selector="actionSave:" destination="-1" eventType="touchUpInside" id="xFT-Xa-0mK"/>
                                     </connections>
                                 </button>
                             </subviews>

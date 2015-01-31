@@ -145,12 +145,12 @@ DTOTASK_updatedDate, //updatedDate" //VARCHAR
     
 }
 
--(NSMutableArray*) filterTaskWithKey : (NSString*) strKey withValue : (NSString*) strValue{
+-(NSMutableArray*) filterTaskWithAccountId:(NSString*)accountId WithKey : (NSString*) strKey withValue : (NSString*) strValue{
     NSArray *allFields =[NSArray arrayWithObjects:DTOTASK_id, DTOTASK_code, DTOTASK_clientTaskId, DTOTASK_clientLeadId, DTOTASK_content, DTOTASK_title, DTOTASK_typeTask, DTOTASK_startDate, DTOTASK_percentComplete, DTOTASK_location, DTOTASK_leadId, DTOTASK_content,DTOTASK_taskPriority, DTOTASK_taskId, DTOTASK_endDate,DTOTASK_taskStatus, nil];
 
     NSString *query;
-    if ([strValue isEqualToString:@""] || !strValue) {
-        query = [NSString stringWithFormat:@"Select %@ from %@ where isActive = 1 and typeTask = 1 order by %@ desc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOTASK, DTOTASK_updatedDate];
+    if (([strValue isEqualToString:@""] || !strValue) && ![accountId isEqualToString:@""]) {
+        query = [NSString stringWithFormat:@"Select %@ from %@ where accountId=%@ and isActive = 1 and typeTask = 1 order by %@ desc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOTASK,accountId, DTOTASK_updatedDate];
     }else{
         query= [NSString stringWithFormat:@"Select %@ from %@ where isActive = 1 and typeTask = 1 and %@  like '%%%@%%' order by %@ desc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOTASK, strKey,strValue, DTOTASK_updatedDate];
     }

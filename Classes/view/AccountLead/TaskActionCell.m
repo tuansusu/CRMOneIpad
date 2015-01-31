@@ -79,28 +79,46 @@
             if ([endDate compare:nowDate] == NSOrderedAscending)
             {
                 // is overdue
-                _nameLabel.text      = title;
-                _nameLabel.textColor = TEXT_COLOR_RED;
-                _endTimeLabel.text      = [NSString stringWithFormat:@"Kết thúc %@",endDateStr];
-                _endTimeLabel.textColor = TEXT_COLOR_RED;
-            }
+                  _endTimeLabel.text      = [NSString stringWithFormat:@"Kết thúc %@",endDateStr];
+             }
             else
             {
-                _nameLabel.text      = title;
-                _nameLabel.textColor = TEXT_COLOR_REPORT_TITLE_1;
-                _endTimeLabel.text      = [NSString stringWithFormat:@"Kết thúc %@",endDateStr];
-                _endTimeLabel.textColor = TEXT_COLOR_REPORT_TITLE_1;
-            }
+                 _endTimeLabel.text      = [NSString stringWithFormat:@"Kết thúc %@",endDateStr];
+             }
+        }
+        else
+        {
+           _endTimeLabel.text      = @"";
+        }
+    }
+    if (![StringUtil stringIsEmpty:endDateStr])
+    {
+        //kiểm tra xem trạng thái của công việc
+        //check ngay ket thuc so voi ngay hien tai
+        NSDate *endDate = [DateUtil getDateFromString:endDateStr :@"dd/MM/yyyy"];
+        NSDate *nowDate = [NSDate date];
+        if ([endDate compare:nowDate] == NSOrderedAscending)
+        {
+            // is overdue
+            _nameLabel.text      = title;
+            _nameLabel.textColor = TEXT_COLOR_RED;
+            _endTimeLabel.textColor = TEXT_COLOR_RED;
         }
         else
         {
             _nameLabel.text      = title;
             _nameLabel.textColor = TEXT_COLOR_REPORT_TITLE_1;
-            _endTimeLabel.text      = @"";
-            _endTimeLabel.textColor = TEXT_COLOR_REPORT_TITLE_1;
+           _endTimeLabel.textColor = TEXT_COLOR_REPORT_TITLE_1;
         }
     }
-    
+    else
+    {
+        _nameLabel.text      = title;
+        _nameLabel.textColor = TEXT_COLOR_REPORT_TITLE_1;
+        _endTimeLabel.text      = @"";
+        _endTimeLabel.textColor = TEXT_COLOR_REPORT_TITLE_1;
+    }
+
 //    switch (smgSelect) {
 //        case 1:
 //        {

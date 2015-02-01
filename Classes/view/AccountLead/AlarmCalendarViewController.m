@@ -57,16 +57,8 @@ typedef enum {
     
     _pickerView.delegate   = self;
     _pickerView.dataSource = self;
-    pickerType = pickerType_day;
     
-    AlarmCalendarConfig * config = [[AlarmCalendarConfig alloc] init];
-    config.isReminder = FALSE;
-    config.reminderEmail = FALSE;
-    config.reminderSMS   = FALSE;
-    config.reminderNofify= TRUE;
-    config.reminderTime  = 15;
-    
-    [self setConfig:config];
+    [self setupViewForConfig];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -88,11 +80,14 @@ typedef enum {
 {
     if (sender == _onOffSwitch)
     {
+        _config.isReminder = ([sender selectedSegmentIndex] == 1);
         [self setConfigEnable:([sender selectedSegmentIndex] == 1)];
     }
     else
     {
-        return;
+        _config.reminderEmail  = [_emailSwitch isOn];
+        _config.reminderSMS    = [_smsSwitch isOn];
+        _config.reminderNofify = [_notifSwitch isOn];
     }
 }
 
@@ -129,23 +124,12 @@ typedef enum {
 
 - (IBAction)confirmBtnPressed:(id)sender
 {
-    if (_config == nil)
-    {
-        _config = [[AlarmCalendarConfig alloc] init];
-    }
-    
-    _config.isReminder = ([_onOffSwitch selectedSegmentIndex] == 1);
-    _config.reminderEmail  = [_emailSwitch isOn];
-    _config.reminderSMS    = [_smsSwitch isOn];
-    _config.reminderNofify = [_notifSwitch isOn];
-    _config.reminderTime = [self getReminderTime];
-    
     if (_delegate &&
         [_delegate respondsToSelector:@selector(alarmCalendarView:confirmConfig:)] &&
         [_delegate respondsToSelector:@selector(dismissPopoverView)])
     {
         [_delegate alarmCalendarView:self confirmConfig:_config];
-        [_delegate dismissPopoverView];
+//        [_delegate dismissPopoverView];
     }
 }
 
@@ -157,7 +141,23 @@ typedef enum {
         [_delegate dismissPopoverView];
     }
 }
-
+#pragma mark -
+- (void)setupViewForConfig
+{
+    if (_config == nil)
+    {
+        pickerType = pickerType_day;
+        
+        _config = [[AlarmCalendarConfig alloc] init];
+        _config.isReminder = FALSE;
+        _config.reminderEmail = FALSE;
+        _config.reminderSMS   = FALSE;
+        _config.reminderNofify= TRUE;
+        _config.reminderTime  = 15;
+    }
+    
+    [self displayConfig:_config];
+}
 
 #pragma mark -
 - (void)setConfigEnable:(BOOL)configEnable
@@ -176,31 +176,13 @@ typedef enum {
     _notifSwitch.enabled = configEnable;
 }
 
-- (void)setConfig:(AlarmCalendarConfig *)config
+- (void)displayConfig:(AlarmCalendarConfig *)config
 {
-    if (config != nil)
-    {
-        _config = config;
-        [self setConfigEnable:[config isReminder]];
-        if ([config isReminder])
-        {
-            [self setReminderTime:[config reminderTime]];
-            [_emailSwitch setOn:[config reminderEmail]];
-            [_smsSwitch   setOn:[config reminderSMS]];
-            [_notifSwitch setOn:[config reminderNofify]];
-        }
-    }
-    else
-    {
-        _dayTF.text = @"0";
-        _hourTF.text = @"0";
-        _minuteTF.text = @"15";
-        [_emailSwitch setOn:FALSE];
-        [_smsSwitch   setOn:FALSE];
-        [_notifSwitch setOn:TRUE];
-        
-        [self setConfigEnable:FALSE];
-    }
+    [self setConfigEnable:[config isReminder]];
+    [self setReminderTime:[config reminderTime]];
+    [_emailSwitch setOn:[config reminderEmail]];
+    [_smsSwitch   setOn:[config reminderSMS]];
+    [_notifSwitch setOn:[config reminderNofify]];
 }
 
 - (void)setReminderTime:(NSUInteger)reminderTime // minutes
@@ -276,7 +258,8 @@ typedef enum {
     {
         _minuteTF.text = [NSString stringWithFormat:@"%ld", (long)row];
     }
-//    _pickerContainerView.hidden = TRUE;
+    
+    _config.reminderTime = [self getReminderTime];
 }
 
 #pragma mark - UITextFieldDelegate

@@ -56,7 +56,7 @@ DTOOPPORTUNITY_updatedDate, //VARCHAR
 -(NSMutableArray*) filterOpportunity:(NSString*)keyword addStartDate:(NSDate*)startDate addEndDate:(NSDate*)endDate userType:(int)type{
     
     
-    NSArray *allFields =[NSArray arrayWithObjects:DTOOPPORTUNITY_id, DTOOPPORTUNITY_clientOpportunityId, DTOCONTACT_fullName, DTOOPPORTUNITY_code, DTOOPPORTUNITY_name, DTOOPPORTUNITY_endDate, DTOOPPORTUNITY_startDate,@"StatusName", DTOOPPORTUNITY_status,@"Contact",@"ContactCode",@"Level", nil];
+    NSArray *allFields =[NSArray arrayWithObjects:DTOOPPORTUNITY_id, DTOOPPORTUNITY_clientOpportunityId, DTOCONTACT_fullName, DTOOPPORTUNITY_code, DTOOPPORTUNITY_name, DTOOPPORTUNITY_endDate, DTOOPPORTUNITY_startDate,@"StatusName", DTOOPPORTUNITY_status,@"Contact",@"ContactCode",@"Level",@"LevelValue",@"Type", nil];
     
     NSMutableString *query = [[NSMutableString alloc] initWithString:@"SELECT op.id,op.clientOpportunityId,fullName,op.code,op.name,endDate,startDate \
                         ,catStatus.name as StatusName \
@@ -70,6 +70,8 @@ DTOOPPORTUNITY_updatedDate, //VARCHAR
                             when op.leadId is null then ac.clientAccountId \
                         end as ContactCode \
                        ,catLevel.name as Level \
+                       ,catLevel.value as LevelValue \
+                       ,catType.name as Type \
                 FROM  dtoopportunity op \
                 LEFT JOIN dtoopportunitycontact opc ON op.clientOpportunityId=opc.clientOpportunityContactId \
                 LEFT JOIN dtocontact con ON opc.clientOpportunityContactId = con.clientContactId \
@@ -78,6 +80,7 @@ DTOOPPORTUNITY_updatedDate, //VARCHAR
                 LEFT JOIN dtosyscat catLevel on op.opportunityLevelId = catLevel.sysCatId \
                 LEFT JOIN dtoaccount ac ON op.accountId = ac.accountId \
                 LEFT JOIN dtolead ld on op.leadId = ld.leadId \
+                LEFT JOIN dtosyscat catType on op.type = catType.value and catType.sysCatTypeId = 9 \
         WHERE op.isActive = 1 "];
     
     if(![StringUtil stringIsEmpty:keyword])

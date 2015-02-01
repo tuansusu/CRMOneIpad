@@ -20,7 +20,7 @@
 @protocol RepeatCalendarViewDelegate <NSObject>
 @required
 
-- (void)repeatCalendarView:(RepeatCalendarViewController *)repeatCalendarView confirmConfig:(RepeatCalendarConfig *)alarmCOnfig;
+- (void)repeatCalendarView:(RepeatCalendarViewController *)repeatCalendarView confirmConfig:(RepeatCalendarConfig *)repeatConfig;
 - (void)dismissPopoverView;
 
 @end

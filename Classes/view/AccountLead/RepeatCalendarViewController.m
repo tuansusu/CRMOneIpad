@@ -111,6 +111,7 @@
 {
     if (sender == _onOffSwitch)
     {
+        _config.isRepeat = ([sender selectedSegmentIndex] == 1);
         [self setConfigOnOff:([sender selectedSegmentIndex] == 1)];
     }
     else
@@ -302,7 +303,13 @@
 
 - (void)confirmBtnPressed
 {
-    
+    if (_delegate &&
+        [_delegate respondsToSelector:@selector(repeatCalendarView:confirmConfig:)] &&
+        [_delegate respondsToSelector:@selector(dismissPopoverView)])
+    {
+        [_delegate repeatCalendarView:self confirmConfig:_config];
+//        [_delegate dismissPopoverView];
+    }
 }
 
 - (void)cancelBtnPressed

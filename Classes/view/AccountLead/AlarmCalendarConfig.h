@@ -16,4 +16,7 @@
 @property (nonatomic, assign) BOOL reminderSMS;
 @property (nonatomic, assign) NSUInteger reminderTime; // in minutes
 //reminderUnit - minutes
+
+- (NSString *)toReadableText;
+
 @end

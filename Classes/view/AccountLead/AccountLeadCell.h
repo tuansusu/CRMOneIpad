@@ -14,7 +14,14 @@
 - (void) AccountLeadCellDelegate_ActionSendMailWithData : (NSDictionary*) dicData ;
 - (void) AccountLeadCellDelegate_ActionViewMapWithData : (NSDictionary*) dicData ;
 - (void) AccountLeadCellDelegate_ActionChangeFlowWithData : (NSDictionary*) dicData ;
-
+-(void) delegate_view:(NSDictionary *)dicData;
+-(void) delegate_edit:(NSDictionary *)dicData;
+-(void) delegate_del:(NSDictionary *)dicData;
+-(void) delegate_call:(NSDictionary *)dicData;
+-(void) delegate_sms:(NSDictionary *)dicData;
+-(void) delegate_email:(NSDictionary *)dicData;
+-(void) delegate_follow:(NSDictionary *)dicData;
+-(void) delegate_maps:(NSDictionary *)dicData;
 @end
 
 @interface AccountLeadCell : UITableViewCell

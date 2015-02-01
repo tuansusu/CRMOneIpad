@@ -194,19 +194,29 @@
     }
     
     //Customer
-    NSString *customerId = [_dataSend objectForKey:@"CustomerId"];
+    
     if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOOPPORTUNITY_accountId]]) {
+        NSString *customerId = [_dataSend objectForKey:@"accountId"];
+        if([StringUtil stringIsEmpty:customerId])
+        {
+            customerId = [_dataSend objectForKey:@"clientAccountId"];
+        }
         NSArray *arrayAccountID = [listArrAccount valueForKey:DTOACCOUNT_accountId];
         selectCustomerIndex = [arrayAccountID indexOfObject:customerId];
-        if (selectCustomerIndex>=0) {
+        if (selectCustomerIndex>=0 && selectCustomerIndex < 2147483647) {
             selectedCustomer = [listArrAccount objectAtIndex:selectCustomerIndex];
             self.txtSearchCustomer.textField.text = [selectedCustomer objectForKey:DTOACCOUNT_name];
             searchBarController.isValid = YES;
         }
     } else if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOOPPORTUNITY_leadId]]) {
+        NSString *customerId = [_dataSend objectForKey:@"leadId"];
+        if([StringUtil stringIsEmpty:customerId])
+        {
+            customerId = [_dataSend objectForKey:@"clientLeadId"];
+        }
         NSArray *arrayLeadID = [listArrLead valueForKey:DTOLEAD_leadId];
         selectCustomerIndex = [arrayLeadID indexOfObject:customerId];
-        if (selectCustomerIndex>=0) {
+        if (selectCustomerIndex>=0 && selectCustomerIndex < 2147483647) {
             selectedCustomer = [listArrLead objectAtIndex:selectCustomerIndex];
             self.txtSearchCustomer.textField.text = [selectedCustomer objectForKey:DTOLEAD_name];
             searchBarController.isValid = YES;

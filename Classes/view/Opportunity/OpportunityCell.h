@@ -24,6 +24,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbDate;
 
 @property (weak, nonatomic) IBOutlet UILabel *lbType;
+@property (weak, nonatomic) IBOutlet UIProgressView *progress;
+@property (weak, nonatomic) IBOutlet UIView *viewStatus;
+@property (weak, nonatomic) IBOutlet UILabel *lbStatus;
 
 
 -(void) loadDataToCellWithData : (NSDictionary*) dicData withOption : (int) smgSelect ;

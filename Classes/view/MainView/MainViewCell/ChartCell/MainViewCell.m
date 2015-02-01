@@ -140,6 +140,7 @@
 }
 
 -(void)loadDataCellWithWidgetObject:(DTOWidgetObject*)widgetOB{
+    [self initView];
     _widgetOB = widgetOB;
     [titleGraph setText:_widgetOB.widgetName];
 

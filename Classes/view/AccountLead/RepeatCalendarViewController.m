@@ -268,6 +268,8 @@
 
 - (IBAction)checkBtnPressed:(UIButton *)sender
 {
+    _config.rpMonthRdIndexDay = (sender == _mDateCheckBtn);
+    
     BOOL dateChecked = (sender == _mDateCheckBtn);
     BOOL weekdayChecked = (sender == _mWeekDayCheckBtn);
     
@@ -323,6 +325,7 @@
         _config.repeatDuration = 1;
         _config.repeatMode = OO_RepeatMode_Day;
         _config.repeatUntil = [NSDate date];
+        
         _config.repeatWeekMon = false;
         _config.repeatWeekTue = false;
         _config.repeatWeekWed = false;
@@ -330,6 +333,8 @@
         _config.repeatWeekFri = false;
         _config.repeatWeekSat = false;
         _config.repeatWeekSun = false;
+        
+        _config.rpMonthRdIndexDay = true;
         _config.rpMonthDayOfWeek = 2;
         _config.rpMonthFirstDay = true;
         _config.rpMonthIndexDay = 1;
@@ -349,37 +354,43 @@
 
 - (void)setConfigOnOff:(BOOL)configEnable
 {
-    if (_config != nil)
+    _onOffSwitch.selectedSegmentIndex = configEnable?1:0;
+    
+    _endDateTF.enabled           = configEnable;
+    _endDateDDBtn.enabled        = configEnable;
+    _endTimeTF.enabled           = configEnable;
+    _endTimeDDBtn.enabled        = configEnable;
+    
+    _repeatFreqTF.enabled        = configEnable;
+    _repeatFreqDDBtn.enabled     = configEnable;
+    _repeatIntervalTF.enabled    = configEnable;
+    _repeatIntervalDDBtn.enabled = configEnable;
+    
+    //TODO: recheck flow
+    BOOL _mDateEnable = _config.rpMonthRdIndexDay;
+    if (_mDateEnable)
     {
-        _config.isRepeat = configEnable;
-        
-        _onOffSwitch.selectedSegmentIndex = configEnable?1:0;
-        
-        _endDateTF.enabled           = configEnable;
-        _endDateDDBtn.enabled        = configEnable;
-        _endTimeTF.enabled           = configEnable;
-        _endTimeDDBtn.enabled        = configEnable;
-        
-        _repeatFreqTF.enabled        = configEnable;
-        _repeatFreqDDBtn.enabled     = configEnable;
-        _repeatIntervalTF.enabled    = configEnable;
-        _repeatIntervalDDBtn.enabled = configEnable;
-        //TODO: recheck flow
-        _mWeekDayCheckBtn.enabled    = configEnable;
-        _mWeekDayCheckLB.enabled     = configEnable;
-        _mWeekDayTF.enabled          = configEnable;
-        _mWeekDayDDBtn.enabled       = configEnable;
-        _mFirstOrLastTF.enabled      = configEnable;
-        _mFirstOrLastDDBtn.enabled   = configEnable;
-        _mDateCheckBtn.enabled       = configEnable;
-        _mDateCheckLB.enabled        = configEnable;
-        _mDateTF.enabled             = configEnable;
-        _mDateDDBtn.enabled          = configEnable;
-        
-        _wWeekDaysTF.enabled         = configEnable;
-        _wWeekDaysDDBtn.enabled      = configEnable;
-        
+        [_mWeekDayCheckBtn setImage:[UIImage imageNamed:@"checkbox_not_ticked"] forState:UIControlStateNormal];
+        [_mDateCheckBtn setImage:[UIImage imageNamed:@"checkbox_ticked"] forState:UIControlStateNormal];
     }
+    else
+    {
+        [_mWeekDayCheckBtn setImage:[UIImage imageNamed:@"checkbox_ticked"] forState:UIControlStateNormal];
+        [_mDateCheckBtn setImage:[UIImage imageNamed:@"checkbox_not_ticked"] forState:UIControlStateNormal];
+    }
+    _mWeekDayCheckBtn.enabled    = configEnable;
+    _mWeekDayCheckLB.enabled     = configEnable && !_mDateEnable;
+    _mWeekDayTF.enabled          = configEnable && !_mDateEnable;
+    _mWeekDayDDBtn.enabled       = configEnable && !_mDateEnable;
+    _mFirstOrLastTF.enabled      = configEnable && !_mDateEnable;
+    _mFirstOrLastDDBtn.enabled   = configEnable && !_mDateEnable;
+    _mDateCheckBtn.enabled       = configEnable;
+    _mDateCheckLB.enabled        = configEnable &&  _mDateEnable;
+    _mDateTF.enabled             = configEnable &&  _mDateEnable;
+    _mDateDDBtn.enabled          = configEnable &&  _mDateEnable;
+    
+    _wWeekDaysTF.enabled         = configEnable;
+    _wWeekDaysDDBtn.enabled      = configEnable;
 }
 
 - (void)setEndDate:(NSDate *)endDate
@@ -484,6 +495,15 @@
     if ([config rpMonthIndexDay] >0 && [config rpMonthIndexDay] <32)
     {
         _mDateTF.text = [NSString stringWithFormat:@"%u", [config rpMonthIndexDay]];
+    }
+    
+    if (_config.rpMonthRdIndexDay)
+    {
+        [_mDateCheckBtn sendActionsForControlEvents:UIControlEventTouchUpInside];
+    }
+    else
+    {
+        [_mWeekDayCheckBtn sendActionsForControlEvents:UIControlEventTouchUpInside];
     }
 }
 

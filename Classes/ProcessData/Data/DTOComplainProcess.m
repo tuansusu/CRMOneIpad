@@ -41,6 +41,12 @@
     return [DataUtil BuilQueryGetListWithListFields:[DTOComplainObject allFields] selectQuery:query valueParameter:[NSArray arrayWithObjects:value, nil]];
 }
 
+-(NSMutableArray*) filterWithLimitRecord:(int)limitRecord{
+
+    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where status = 1 order by %@ desc limit %d",[[DTOComplainObject allFields] componentsJoinedByString:@"," ] , TABLENAME_DTOCOMPLAIN, DTOCOMPLAIN_fromReceived,limitRecord];
+
+    return [DataUtil BuilQueryGetListWithListFields:[DTOComplainObject allFields] selectQuery:query valueParameter:nil];
+}
 
 -(BOOL) insertToDBWithEntity:(NSMutableDictionary*) entity{
 

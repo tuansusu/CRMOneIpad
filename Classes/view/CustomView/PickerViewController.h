@@ -29,7 +29,7 @@ typedef enum
 //OOPickerViewType_(MNulti)Select
 @property (nonatomic, strong) NSArray/* NSString */ * dataList;
 @property (nonatomic, assign) NSUInteger selectedIndex;
-@property (nonatomic, strong) NSIndexSet * selectedIndexes;
+@property (nonatomic, strong) NSMutableIndexSet * selectedIndexes;
 //OOPickerViewType_Number
 @property (nonatomic, assign) NSUInteger numberStart;
 @property (nonatomic, assign) NSUInteger numberStep;

@@ -172,7 +172,7 @@
                         <action selector="confirmBtnPressed:" destination="-1" eventType="touchUpInside" id="Ewp-6Y-vDs"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X65-CC-7cp">
+                <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X65-CC-7cp">
                     <rect key="frame" x="-20" y="223" width="384" height="235"/>
                     <subviews>
                         <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rXC-ir-bCB">

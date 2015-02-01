@@ -18,7 +18,7 @@
     if (self) {
         // Initialization code
         self = [[[NSBundle mainBundle] loadNibNamed:[[self class] description] owner:self options:Nil] objectAtIndex:0];
-        [subListMainView initData];
+        [subListMainView initDataWithWidgetObject:_widgetOB];
         btnDelete.layer.cornerRadius = 5;
         btnDelete.clipsToBounds = YES;
     }
@@ -57,7 +57,7 @@
 -(void)loadDataCellWithWidgetObject:(DTOWidgetObject*)widgetOB{
     _widgetOB = widgetOB;
     [lblTitle setText:widgetOB.widgetName];
-    [subListMainView initData];
+    [subListMainView initDataWithWidgetObject:widgetOB];
 }
 
 #pragma mark button action

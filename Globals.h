@@ -26,6 +26,7 @@ typedef enum {
 } CustomerType;
 
 #define MAX_ROW_A_PAGE 20
+#define MAX_ROW_A_PAGE_IN_DASHBOARD 10
 
 #define CORNER_RADIUS_BUTTON 5
 #define CORNER_RADIUS_VIEW 20
@@ -39,21 +40,37 @@ _sharedObject = block(); \
 }); \
 return _sharedObject; \
 
+
+//=============================Widget Type========================
+
+#define WIDGET_TYPE_TONG_HOP 1
+#define WIDGET_TYPE_HUY_DONG_VON 2
+#define WIDGET_TYPE_TIN_DUNG 3
+#define WIDGET_TYPE_BAO_LANH 4
+#define WIDGET_TYPE_PTKH 5
+#define WIDGET_TYPE_GHI_CHU 6
+#define WIDGET_TYPE_DTTM_CO_HOI 7
+#define WIDGET_TYPE_TKH_TIEN_GUI 8
+#define WIDGET_TYPE_TKH_TIN_DUNG 9
+#define WIDGET_TYPE_Y_KIEN_KH 10
+#define WIDGET_TYPE_THEO_DOI 11
+#define WIDGET_TYPE_SU_KIEN_SAP_DIEN_RA 12
+
 //=============================Product Type========================
 
-#define PRODUCT_TYPE_THANH_TOAN 1
-#define PRODUCT_TYPE_TIN_DUNG 2
-#define PRODUCT_TYPE_BAO_LANH 3
-#define PRODUCT_TYPE_THANH_TOAN_QUOC_TE 4
-#define PRODUCT_TYPE_THE 5
-#define PRODUCT_TYPE_NGAN_HANG_DIEN_TU 6
-#define PRODUCT_TYPE_TIET_KIEM 7
-#define PRODUCT_TYPE_KIEU_HOI 8
-#define PRODUCT_TYPE_ATM_POS 9
-#define PRODUCT_TYPE_BANK_PLUS 10
-#define PRODUCT_TYPE_DAI_TRA 11
-#define PRODUCT_TYPE_DU_AN 12
-#define PRODUCT_TYPE_LOI 13
+#define PRODUCT_TYPE_THANH_TOAN 100
+#define PRODUCT_TYPE_TIN_DUNG 103
+#define PRODUCT_TYPE_BAO_LANH 104
+#define PRODUCT_TYPE_THANH_TOAN_QUOC_TE 105
+#define PRODUCT_TYPE_THE 200
+#define PRODUCT_TYPE_NGAN_HANG_DIEN_TU 400
+#define PRODUCT_TYPE_TIET_KIEM 101
+#define PRODUCT_TYPE_KIEU_HOI 106
+#define PRODUCT_TYPE_ATM_POS 202
+#define PRODUCT_TYPE_BANK_PLUS 500
+#define PRODUCT_TYPE_DAI_TRA 300
+#define PRODUCT_TYPE_DU_AN 301
+#define PRODUCT_TYPE_LOI 302
 
 //=============================Calendar Notification====================
 

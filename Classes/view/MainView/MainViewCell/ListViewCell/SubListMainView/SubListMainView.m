@@ -9,6 +9,7 @@
 #import "SubListMainView.h"
 #import "SubListViewCell.h"
 #import "Globals.h"
+#import "DTOWidgetObject.h"
 
 
 @implementation SubListMainView
@@ -20,12 +21,47 @@
     // Drawing code
 }
 */
--(void)initData{
-    dtoNoteProcess = [DTONOTEProcess new];
-    listNotes = [[NSMutableArray alloc] init];
+-(void)initDataWithWidgetObject:(DTOWidgetObject*)widgetOB{
+    arrData = [[NSMutableArray alloc] init];
+    _widgetOB = widgetOB;
 
-    listNotes = [dtoNoteProcess filterWithLimitRecord:MAX_ROW_A_PAGE];
+    if ([widgetOB.widgetId intValue]==WIDGET_TYPE_TONG_HOP)
+    {
+        dtoNoteProcess = [DTONOTEProcess new];
+        arrData = [dtoNoteProcess filterWithLimitRecord:MAX_ROW_A_PAGE_IN_DASHBOARD];
+
+    }else if ([widgetOB.widgetId intValue]==WIDGET_TYPE_GHI_CHU)
+    {
+        dtoNoteProcess = [DTONOTEProcess new];
+        arrData = [dtoNoteProcess filterWithLimitRecord:MAX_ROW_A_PAGE_IN_DASHBOARD];
+
+    }else if ([widgetOB.widgetId intValue]==WIDGET_TYPE_TKH_TIEN_GUI)
+    {
+         dtoProductDetailProcess = [DTOPRODUCTDETAILProcess new];
+        arrData = [dtoProductDetailProcess filterTopKHWithType:[NSString stringWithFormat:@"type=%d or type=%d",PRODUCT_TYPE_THANH_TOAN,PRODUCT_TYPE_TIET_KIEM] WithLimitRecord:MAX_ROW_A_PAGE_IN_DASHBOARD];
+
+    }else if ([widgetOB.widgetId intValue]==WIDGET_TYPE_TKH_TIN_DUNG)
+    {
+        dtoProductDetailProcess = [DTOPRODUCTDETAILProcess new];
+        arrData = [dtoProductDetailProcess filterTopKHWithType:[NSString stringWithFormat:@"type=%d",PRODUCT_TYPE_TIN_DUNG] WithLimitRecord:MAX_ROW_A_PAGE_IN_DASHBOARD];
+
+    }else if ([widgetOB.widgetId intValue]==WIDGET_TYPE_Y_KIEN_KH)
+    {
+        dtoComplainProcess = [DTOComplainProcess new];
+        arrData = [dtoComplainProcess filterWithLimitRecord:MAX_ROW_A_PAGE_IN_DASHBOARD];
+
+    }else if ([widgetOB.widgetId intValue]==WIDGET_TYPE_THEO_DOI)
+    {
+        dtoNoteProcess = [DTONOTEProcess new];
+        arrData = [dtoNoteProcess filterWithLimitRecord:MAX_ROW_A_PAGE_IN_DASHBOARD];
+
+    }else if ([widgetOB.widgetId intValue]==WIDGET_TYPE_SU_KIEN_SAP_DIEN_RA)
+    {
+        dtoNoteProcess = [DTONOTEProcess new];
+        arrData = [dtoNoteProcess filterWithLimitRecord:MAX_ROW_A_PAGE_IN_DASHBOARD];
+    }
     [tbvListNotes reloadData];
+
 }
 
 -(IBAction)btnSelected:(id)sender{
@@ -56,7 +92,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return  listNotes.count;
+    return  arrData.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -66,7 +102,7 @@
 
     if (!cell) {
         cell = [SubListViewCell initNibCell];
-        [cell loadDataToCellWithData:[listNotes objectAtIndex:indexPath.row]];
+        [cell loadDataToCellWithData:[arrData objectAtIndex:indexPath.row] WithWidgetObject:_widgetOB];
     }
     return cell;
 }

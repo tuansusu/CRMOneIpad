@@ -121,9 +121,7 @@
     
     searchBarController.isValid = NO;
     
-    //tam an 2 nut xoa ngay thang
-    self.btnStartDateClear.hidden = YES;
-    self.dfEndDateClear.hidden = YES;
+    
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -196,19 +194,29 @@
     }
     
     //Customer
-    NSString *customerId = [_dataSend objectForKey:@"CustomerId"];
+    
     if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOOPPORTUNITY_accountId]]) {
+        NSString *customerId = [_dataSend objectForKey:@"accountId"];
+        if([StringUtil stringIsEmpty:customerId])
+        {
+            customerId = [_dataSend objectForKey:@"clientAccountId"];
+        }
         NSArray *arrayAccountID = [listArrAccount valueForKey:DTOACCOUNT_accountId];
         selectCustomerIndex = [arrayAccountID indexOfObject:customerId];
-        if (selectCustomerIndex>=0) {
+        if (selectCustomerIndex>=0 && selectCustomerIndex < 2147483647) {
             selectedCustomer = [listArrAccount objectAtIndex:selectCustomerIndex];
             self.txtSearchCustomer.textField.text = [selectedCustomer objectForKey:DTOACCOUNT_name];
             searchBarController.isValid = YES;
         }
     } else if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOOPPORTUNITY_leadId]]) {
+        NSString *customerId = [_dataSend objectForKey:@"leadId"];
+        if([StringUtil stringIsEmpty:customerId])
+        {
+            customerId = [_dataSend objectForKey:@"clientLeadId"];
+        }
         NSArray *arrayLeadID = [listArrLead valueForKey:DTOLEAD_leadId];
         selectCustomerIndex = [arrayLeadID indexOfObject:customerId];
-        if (selectCustomerIndex>=0) {
+        if (selectCustomerIndex>=0 && selectCustomerIndex < 2147483647) {
             selectedCustomer = [listArrLead objectAtIndex:selectCustomerIndex];
             self.txtSearchCustomer.textField.text = [selectedCustomer objectForKey:DTOLEAD_name];
             searchBarController.isValid = YES;
@@ -413,11 +421,31 @@
 -(void) hiddenKeyBoard {
     for (UIView *viewTemp in _bodyMainView.subviews) {
         for (UIView *subViewTemp in viewTemp.subviews) {
-            [(UITextField *)subViewTemp resignFirstResponder];
+            
+            if (([subViewTemp isKindOfClass:[UITextField class]])) {
+                [(UITextField *)subViewTemp resignFirstResponder];
+            }
+            
+            if ((([subViewTemp isKindOfClass:[MDSearchBar class]]))) {
+                [(MDSearchBar *)subViewTemp resignFirstResponder];
+            }
+            
+            
         }
     }
+    
+    [self.txtSearchCustomer resignFirstResponder];
+    [self.txtSearchCustomer endEditing:YES];
+    
+    for (UIView *viewTemp in self.txtSearchCustomer.subviews) {
+        [viewTemp endEditing:YES];
+    }
+    
+    
 }
 - (IBAction)actionChooseType:(id)sender {
+    
+    [self hiddenKeyBoard];
     
     SELECTED_TAG = TAG_SELECT_TYPE;
     
@@ -473,6 +501,8 @@
 
 - (IBAction)actionChooseNextTask:(id)sender {
     
+    [self hiddenKeyBoard];
+    
     SELECTED_TAG = TAG_SELECT_NEXT_JOB;
     
     SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
@@ -490,6 +520,9 @@
     [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 - (IBAction)actionChooseLevel:(id)sender {
+    
+    [self hiddenKeyBoard];
+    
     SELECTED_TAG = TAG_SELECT_LEVEL;
     
     SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
@@ -563,6 +596,8 @@
 
 
 - (IBAction)actionStartDateSelect:(id)sender {
+    [self hiddenKeyBoard];
+    
     if (self.dtStartDate.text.length==0) {
         self.dtStartDate.text = nowStr;
         startDate = [NSDate date];
@@ -580,9 +615,12 @@
     [self.listPopover setPopoverContentSize:CGSizeMake(320, 260) animated:NO];
     
     
-    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.mainView permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 - (IBAction)actionEndDateSelect:(id)sender {
+    
+    [self hiddenKeyBoard];
+    
     if (self.dtEndDate.text.length==0) {
         self.dtEndDate.text = nowStr;
         endDate = [NSDate date];
@@ -600,17 +638,24 @@
     [self.listPopover setPopoverContentSize:CGSizeMake(320, 260) animated:NO];
     
     
-    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.mainView permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
     
 }
 
 - (IBAction)actionEndDateClear:(id)sender {
-    self.dtEndDate.text = @"Ngày kết thúc";
+    
+    [self hiddenKeyBoard];
+    
+    
+    self.dtEndDate.text = @"";
     endDate = nil;
 }
 
 - (IBAction)actionStartDateClear:(id)sender {
-    self.dtStartDate.text = @"Ngày bắt đầu";
+    
+    [self hiddenKeyBoard];
+    
+    self.dtStartDate.text = @"";
     startDate = nil;
 }
 
@@ -653,50 +698,7 @@
     if ([self.listPopover isPopoverVisible])
         [self.listPopover dismissPopoverAnimated:YES];
 }
-- (IBAction)actionSelectStartDateTime:(id)sender {
-    if (self.txtStartDateTime.text.length==0) {
-        //        self.txtStartDateTime.text = nowTimeStr;
-        //        startDate = [NSDate date];
-    }else{
-        NSString *strStartDate = [NSString stringWithFormat:@"%@ %@",self.dtStartDate.text,self.txtStartDateTime.text];
-        startDate = [DateUtil getDateFromString:strStartDate :@"dd/MM/yyyy HH:mm"];
-    }
-    
-    selectDatePicker = START_DATE_TIME;
-    CalendarPickerViewController *detail = [[CalendarPickerViewController alloc] initWithNibName:@"CalendarPickerViewController" bundle:nil];
-    detail.dateSelected = startDate;
-    detail.isTimeMode = true;
-    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
-    CGRect popoverFrame = self.txtStartDateTime.frame;
-    
-    detail.delegateDatePicker =(id<CalendarSelectDatePickerDelegate>) self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(320, 260) animated:NO];
-    
-    
-    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.mainView permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
-}
-- (IBAction)actionSelectEndDateTime:(id)sender {
-    if (self.txtEndDateTime.text.length==0) {
-        //        self.txtStartDateTime.text = nowTimeStr;
-        //        startDate = [NSDate date];
-    }else{
-        NSString *strEndDate = [NSString stringWithFormat:@"%@ %@",self.dtEndDate.text,self.txtEndDateTime.text];
-        endDate = [DateUtil getDateFromString:strEndDate :@"dd/MM/yyyy HH:mm"];
-    }
-    
-    selectDatePicker = END_DATE_TIME;
-    CalendarPickerViewController *detail = [[CalendarPickerViewController alloc] initWithNibName:@"CalendarPickerViewController" bundle:nil];
-    detail.dateSelected = endDate;
-    detail.isTimeMode = true;
-    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
-    CGRect popoverFrame = self.txtEndDateTime.frame;
-    
-    detail.delegateDatePicker =(id<CalendarSelectDatePickerDelegate>) self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(320, 260) animated:NO];
-    
-    
-    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.mainView permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
-}
+
 
 - (IBAction)actionSave:(id)sender {
     //check valid to save
@@ -910,16 +912,7 @@
     
     popTipView.delegate = self;
     
-    /* Some options to try.
-     */
-    //popTipView.disableTapToDismiss = YES;
-    //popTipView.preferredPointDirection = PointDirectionUp;
-    //popTipView.hasGradientBackground = NO;
-    //popTipView.cornerRadius = 2.0;
-    //popTipView.sidePadding = 30.0f;
-    //popTipView.topMargin = 20.0f;
-    //popTipView.pointerSize = 50.0f;
-    //popTipView.hasShadow = NO;
+   
     
     popTipView.preferredPointDirection = PointDirectionDown;
     popTipView.hasShadow = NO;
@@ -943,8 +936,6 @@
     
     [self.visiblePopTipViews addObject:popTipView];
     self.currentPopTipViewTarget = inputTooltipView;
-    
-    
     
 }
 -(void)setBorder:(UITextField *)txtView{

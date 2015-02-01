@@ -180,7 +180,7 @@
         }
     }
     
-    
+    [self.btnSave setStyleNormalWithOption:smgSelect];
     
     
     [self.mainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
@@ -286,6 +286,9 @@
 }
 
 - (IBAction)actionChocieTimeFrom:(id)sender {
+    
+    [self hiddenKeyBoard];
+    
     if (self.txtTimeFrom.text.length==0) {
         //        self.txtStartDateTime.text = nowTimeStr;
         //        startDate = [NSDate date];
@@ -408,6 +411,9 @@
 }
 
 -(void) actionSave:(id)sender{
+    
+    [self hiddenKeyBoard];
+    
     //check valid to save
     if(![self checkValidToSave]){
         return;

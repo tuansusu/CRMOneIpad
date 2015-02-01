@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class DTOWidgetObject;
+
 @interface SubListViewCell : UITableViewCell
 {
     IBOutlet UILabel *lblTitle;
@@ -16,5 +18,7 @@
 }
 
 +(SubListViewCell*) initNibCell;
--(void) loadDataToCellWithData:(NSDictionary *)dicData;
+-(void) loadDataToCellWithData:(NSDictionary *)dicData WithWidgetObject:(DTOWidgetObject*)widgetOB;
+
+
 @end

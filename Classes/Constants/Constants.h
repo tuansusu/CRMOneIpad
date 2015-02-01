@@ -83,10 +83,10 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 #define Key_SortValidTime @"SortValidTime"
 #define Key_SortIndex @"SortIndex"
 #define TIME_DISPLAY_CONFIG @"dd/MM/yyyy   HH:mm:ss"
-//=========================Network Configuration==============================================================
+//=========================Network Configuration==================================
 #define SYS_Notification_NotConnection @"Mất kết nối internet hoặc không tìm thấy máy chủ"
 
-//=========================Complain Alert=======================================================
+//=========================Complain Configuration=======================================================
 
 #define COMPLAIN_TITLE_ADD_COMPLAIN @"THÊM MỚI Ý KIẾN PHẢN HỒI"
 #define COMPLAIN_TITLE_UPDATE_COMPLAIN @"CẬP NHẬT Ý KIẾN PHẢN HỒI"
@@ -96,6 +96,9 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 #define SYS_Notification_CheckValid_NoiDungXuLy @"Hãy nhập nội dung xử lý"
 
 #define SYS_Notification_DeleteConfirm @"Bạn có chắc chắn muốn xoá không?"
+
+#define SYS_TITLE_STATUS_COMPLAIN_NOT_PROCESSED @"Chưa xử lý"
+#define SYS_TITLE_STATUS_COMPLAIN_PROCESSED @"Đã xử lý"
 
 //=========================Map Configuration ===================================================
 

@@ -17,14 +17,14 @@
     DTOTASKProcess *dtoProcess;
 }
 
-@property (nonatomic,readonly) NSMutableArray *listComplains;
+@property (nonatomic,readonly) NSMutableArray *listData;
 @property (nonatomic,assign) NSInteger currentPage;
 
 -(NSMutableArray*)getAllComplain;
 
--(void)getFirstPageWithKey:(NSString*)key WithLeadID:(NSString*)leadId;
+-(void)getFirstPageWithKey:(NSString*)key;
 
--(void)getNextPageWithKey:(NSString*)key WithLeadID:(NSString*)leadId;
+-(void)getNextPageWithKey:(NSString*)key;
 
 -(BOOL)updateComplainWithComplainOB:(DTOComplainObject*)complainOB;
 

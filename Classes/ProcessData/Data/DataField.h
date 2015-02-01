@@ -450,6 +450,7 @@
 #define DTOOPPORTUNITY_isActive @"isActive" //SMALLINT
 #define DTOOPPORTUNITY_languageId @"languageId" //BIGINT
 #define DTOOPPORTUNITY_leadId @"leadId" //BIGINT
+#define DTOOPPORTUNITY_clientLeadId @"clientLeadId" //BIGINT
 #define DTOOPPORTUNITY_name @"name" //VARCHAR
 #define DTOOPPORTUNITY_needSupport @"needSupport" //SMALLINT
 #define DTOOPPORTUNITY_nextTask @"nextTask" //BIGINT
@@ -622,6 +623,8 @@
 #define DTOPRODUCTDETAIL_balanceQD @"balanceQD" //VARCHAR
 #define DTOPRODUCTDETAIL_Khoi @"Khoi" //VARCHAR
 #define DTOPRODUCTDETAIL_rmBancheo @"rmBancheo" //VARCHAR
+#define DTOPRODUCTDETAIL_BalanceSum @"balanceSum" //VARCHAR
+
 //dtoProTindungDetail Field
 #define DTOProTinDungDetail_BRANCH_CODE                 @"BRANCH_CODE",
 #define DTOProTinDungDetail_CONTRACT_NUMBER             @"CONTRACT_NUMBER",

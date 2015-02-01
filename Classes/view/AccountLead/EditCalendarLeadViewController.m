@@ -41,30 +41,9 @@
 #define TAG_SELECT_CUSTOMERS     8
 
 
-@interface EditCalendarLeadViewController () <UITextFieldDelegate, SelectIndexDelegate, CalendarSelectDatePickerDelegate, AlarmCalendarViewDelegate>
+@interface EditCalendarLeadViewController () <UITextFieldDelegate, SelectIndexDelegate, CalendarSelectDatePickerDelegate, AlarmCalendarViewDelegate, RepeatCalendarViewDelegate>
 {
-    int smgSelect ; //option layout
-    NSArray *arrayData; //mang luu tru du lieu
-    NSDictionary *dicData; //luu tru du lieu sua
-
-    DTOTASKProcess *dtoProcess;
-
-    //chon index form them moi
-    NSInteger selectIndex;
-    NSArray *listArr;
-
-    int dataId; //xac dinh id de them moi hay sua
-
-    //thong tin chon NGAY - THANG
-    int SELECTED_POPOVER_TAG;
-    NSDate *_startDateTime, *_endDateTime;
-
-    //thong tin chon cho loai hinh CHUC DANH
-    NSInteger selectStatusIndex;
-    NSArray *statusArray;
-
-    BOOL succsess;//Trang thai acap nhat
-    BOOL isEditTask;
+    
 }
 
 //Header
@@ -153,6 +132,34 @@
 
     __weak IBOutlet UITextField *_txtAlarm;//TODO: delegate
     __weak IBOutlet UIButton    *_btnChoiceAlarm;
+    
+    
+    int smgSelect ; //option layout
+    NSArray *arrayData; //mang luu tru du lieu
+    NSDictionary *dicData; //luu tru du lieu sua
+    
+    DTOTASKProcess *dtoProcess;
+    
+    //chon index form them moi
+    NSInteger selectIndex;
+    NSArray *listArr;
+    
+    int dataId; //xac dinh id de them moi hay sua
+    
+    //thong tin chon NGAY - THANG
+    int SELECTED_POPOVER_TAG;
+    NSDate *_startDateTime, *_endDateTime;
+    
+    //thong tin chon cho loai hinh CHUC DANH
+    NSInteger selectStatusIndex;
+    NSArray *statusArray;
+    
+    BOOL succsess;//Trang thai acap nhat
+    BOOL isEditTask;
+    
+    /* alarm and repeat config */
+    AlarmCalendarConfig * _alarmConfig;
+    RepeatCalendarConfig * _repeatConfig;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -477,6 +484,8 @@
 - (IBAction)actionChoiceRepeat:(id)sender
 {
     RepeatCalendarViewController * detail = [[RepeatCalendarViewController alloc] init];
+    detail.delegate = self;
+    detail.config = _repeatConfig;
     UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:detail];
     _listPopover = [[UIPopoverController alloc] initWithContentViewController:nav];
     _listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
@@ -488,7 +497,7 @@
 {
     AlarmCalendarViewController * detail = [[AlarmCalendarViewController alloc] init];
     detail.delegate = self;
-    detail.config = nil;
+    detail.config = _alarmConfig;
     _listPopover = [[UIPopoverController alloc] initWithContentViewController:detail];
     _listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
     _listPopover.popoverContentSize = detail.view.frame.size;
@@ -825,7 +834,37 @@
 #pragma mark - AlarmCalendarViewDelegate
 - (void)alarmCalendarView:(AlarmCalendarViewController *)alarmCalendarView confirmConfig:(AlarmCalendarConfig *)alarmConfig
 {
-    
+    _alarmConfig = alarmConfig;
+    if (alarmConfig != nil)
+    {
+        if (alarmConfig.isReminder)
+        {
+            _txtAlarm.text = [alarmConfig toReadableText];
+        }
+        else
+        {
+            _txtAlarm.text = @"";
+        }
+    }
+    [self dismissPopoverView];
+}
+
+#pragma mark - RepeatCalendarViewDelegate
+- (void)repeatCalendarView:(RepeatCalendarViewController *)repeatCalendarView confirmConfig:(RepeatCalendarConfig *)repeatConfig
+{
+    _repeatConfig = repeatConfig;
+    if (repeatConfig != nil)
+    {
+        if (repeatConfig.isRepeat)
+        {
+            _txtRepeat.text = [repeatConfig toReadableText];
+        }
+        else
+        {
+            _txtRepeat.text = @"";
+        }
+    }
+    [self dismissPopoverView];
 }
 
 @end

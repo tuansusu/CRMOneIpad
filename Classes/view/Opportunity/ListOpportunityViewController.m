@@ -226,7 +226,7 @@
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 100.0f;
+    return 120.0f;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -254,7 +254,16 @@
     if (arrayData.count>0) {
             [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
         }
-        
+    
+    cell.progress.frame = CGRectMake(cell.progress.frame.origin.x
+                                     , cell.progress.frame.origin.y
+                                     , self.view.frame.size.width - 40
+                                     , cell.progress.frame.size.height);
+
+    CGAffineTransform transform = CGAffineTransformMakeScale(1.0, 5.0f);
+    cell.progress.transform = transform;
+
+    
         return cell;
     
 }

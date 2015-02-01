@@ -12,6 +12,11 @@
 
 @implementation OpportunityCell
 
+-(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    return self;
+}
 - (void)awakeFromNib
 {
     // Initialization code
@@ -71,22 +76,44 @@
     
     self.lbLevel.text = [dicData objectForKey:@"Level"];
     self.lbType.text = [dicData objectForKey:@"StatusName"];
-    //    self.lbStatus.text = [dicData objectForKey:@"StatusName"];
-//    
-//    NSString *status = [dicData objectForKey:DTOOPPORTUNITY_status];
-//    
-//    if ([status isEqualToString:@"1"]) {
-//        self.viewStatus.backgroundColor = [UIColor grayColor];
-//    }else{
-//        self.viewStatus.backgroundColor = [UIColor greenColor];
-//    }
-//    CGSize textSize = [[self.lbStatus text] sizeWithFont:[self.lbStatus font]];
-//    float widthLabel = textSize.width;
-//    float xx = self.viewStatus.frame.origin.x + self.viewStatus.frame.size.width -widthLabel -20;
-//    
-//    self.viewStatus.frame = CGRectMake(xx, self.viewStatus.frame.origin.y, (widthLabel + 20), self.viewStatus.frame.size.height);
-//
-//    self.lbStatus.frame = CGRectMake(5, self.lbStatus.frame.origin.y, (widthLabel + 10), self.lbStatus.frame.size.height);
+    
+    int value = [[dicData objectForKey:@"LevelValue"] intValue];
+    self.progress.progress = (float)value / 100;
+    
+    self.lbType.text = [dicData objectForKey:@"Type"];
+    
+    self.lbStatus.text = [dicData objectForKey:@"StatusName"];
+    
+    NSString *status = [dicData objectForKey:DTOOPPORTUNITY_status];
+    
+    if ([status isEqualToString:@"1"]) { //DAng soan thao
+        self.viewStatus.backgroundColor = [UIColor grayColor];
+    }else if ([status isEqualToString:@"2"]){ //Cho phe duyet ke hoach
+        self.viewStatus.backgroundColor = [UIColor yellowColor];
+    }
+    else if ([status isEqualToString:@"3"]){ //Phe duyet ke hoach
+        self.viewStatus.backgroundColor = [UIColor greenColor];
+    }
+    else if ([status isEqualToString:@"4"]){ //Khong phe duyet ke hoach
+        self.viewStatus.backgroundColor = [UIColor grayColor];
+    }
+    else if ([status isEqualToString:@"5"]){ //Cho phe duyet ket qua
+        self.viewStatus.backgroundColor = [UIColor yellowColor];
+    }
+    else if ([status isEqualToString:@"6"]){ //PHe udyet ket qua
+        self.viewStatus.backgroundColor = [UIColor greenColor];
+    }
+    else //Khong phe duyet ket qua
+    {
+        self.viewStatus.backgroundColor = [UIColor grayColor];
+    }
+    CGSize textSize = [[self.lbStatus text] sizeWithFont:[self.lbStatus font]];
+    float widthLabel = textSize.width;
+    float xx = self.viewStatus.frame.origin.x + self.viewStatus.frame.size.width -widthLabel -20;
+    
+    self.viewStatus.frame = CGRectMake(xx, self.viewStatus.frame.origin.y, (widthLabel + 20), self.viewStatus.frame.size.height);
+
+    self.lbStatus.frame = CGRectMake(5, self.lbStatus.frame.origin.y, (widthLabel + 10), self.lbStatus.frame.size.height);
     
     if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOOPPORTUNITY_endDate]]) {
         self.lbDate.text = [[dicData objectForKey:DTOOPPORTUNITY_endDate] substringToIndex:10];
@@ -101,6 +128,13 @@
 //        
 //    }
     
+       
+    if ([UIDevice getCurrentSysVer] >= 7.0) {
+//        CGAffineTransform transform = CGAffineTransformMakeScale(1.0, 5.0f);
+//         self.progress.transform = transform;
+//       
+        
+          }
     switch (smgSelect) {
         case 1:
         {
@@ -110,6 +144,8 @@
                 }
             }
             self.lbName.textColor = TEXT_COLOR_HIGHLIGHT;
+            
+            
         }
             break;
             

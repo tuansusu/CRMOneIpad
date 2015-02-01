@@ -8,14 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import "DTONOTEProcess.h"
+#import "DTOComplainProcess.h"
+#import "DTOPRODUCTDETAILProcess.h"
+
+@class DTOWidgetObject;
 
 @interface SubListMainView : UIView<UITableViewDataSource,UITableViewDelegate>
 {
     DTONOTEProcess *dtoNoteProcess;
-    NSMutableArray *listNotes;
+    DTOComplainProcess *dtoComplainProcess;
+    DTOPRODUCTDETAILProcess *dtoProductDetailProcess;
+
+    NSMutableArray *arrData;
     IBOutlet UITableView *tbvListNotes;
+    DTOWidgetObject *_widgetOB;
 }
 
--(void)initData;
+-(void)initDataWithWidgetObject:(DTOWidgetObject*)widgetOB;
 
 @end

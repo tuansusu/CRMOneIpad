@@ -22,23 +22,34 @@ UIPickerViewDelegate, UIPickerViewDataSource>
 
 @implementation PickerViewController
 {
-    NSMutableIndexSet * _mselectedIndexes;
+    NSMutableIndexSet * _selectedIndexes;
 }
-
-- (void)viewDidLoad {
+- (instancetype)init
+{
+    self = [super init];
+    if (self != nil)
+    {
+        _date = [NSDate date];
+        _dataList = [NSArray array];
+        _selectedIndex = 0;
+        _selectedIndexes = [[NSMutableIndexSet alloc] init];
+        
+        _numberStart = 0;
+        _numberStep  = 1;
+        _numberCount = 1;
+        _numberSelected = 1;
+    }
+    return self;
+}
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    _date = [NSDate date];
-    _dataList = [NSArray array];
-    _selectedIndex = 0;
-    _mselectedIndexes = [[NSMutableIndexSet alloc] init];
-    
-    _numberStart = 0;
-    _numberStep  = 1;
-    _numberCount = 1;
-    _numberSelected = 1;
+    self.preferredContentSize = CGSizeMake(344, self.view.frame.size.height);
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Chọn" style:UIBarButtonItemStylePlain target:self action:@selector(confirmPressed)];
+    
+    [self setupView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,6 +57,79 @@ UIPickerViewDelegate, UIPickerViewDataSource>
     // Dispose of any resources that can be recreated.
 }
 
+- (void)setupView
+{
+    switch (_type)
+    {
+        case OOPickerViewType_Date:
+        {
+            _datePicker.hidden = false;
+            _picker.hidden     = true;
+            _tableview.hidden  = true;
+            
+            _datePicker.datePickerMode = UIDatePickerModeDate;
+            
+            _datePicker.date = _date;
+            self.title = @"Chọn ngày";
+        }
+            break;
+        case OOPickerViewType_Time:
+        {
+            _datePicker.hidden = false;
+            _picker.hidden     = true;
+            _tableview.hidden  = true;
+            
+            _datePicker.datePickerMode = UIDatePickerModeTime;
+            
+            _datePicker.date = _date;
+            self.title = @"Chọn giờ";
+        }
+            break;
+        case OOPickerViewType_Select:
+        {
+            _datePicker.hidden = true;
+            _picker.hidden     = false;
+            _tableview.hidden  = true;
+            
+            [_picker selectRow:_selectedIndex inComponent:0 animated:true];
+            self.title = @"Chọn một";
+        }
+            break;
+        case OOPickerViewType_MultiSelect:
+        {
+            _datePicker.hidden = true;
+            _picker.hidden     = true;
+            _tableview.hidden  = false;
+            
+            if ([UIDevice getCurrentSysVer] >= 7.0)
+            {
+                [_tableview setSeparatorInset:UIEdgeInsetsZero];
+            }
+            self.title = @"Chọn nhiều";
+        }
+            break;
+        case OOPickerViewType_Number:
+        {
+            _datePicker.hidden = true;
+            _picker.hidden     = false;
+            _tableview.hidden  = true;
+            
+            if (_numberStep > 0 && _numberSelected > _numberStart)
+            {
+                [_picker selectRow:((_numberSelected - _numberStart)/_numberStep) inComponent:0 animated:true];
+            }
+            self.title = @"Chọn số";
+        }
+            break;
+        default:
+        {
+            _datePicker.hidden = true;
+            _picker.hidden     = true;
+            _tableview.hidden  = true;
+        }
+            break;
+    }
+}
 /*
 #pragma mark - Navigation
 
@@ -92,108 +176,19 @@ UIPickerViewDelegate, UIPickerViewDataSource>
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
-#pragma mark -
-- (void)setType:(OOPickerViewType)type
-{
-    _type = type;
-    
-    switch (type)
-    {
-        case OOPickerViewType_Date:
-        {
-            _datePicker.hidden = false;
-            _picker.hidden     = true;
-            _tableview.hidden  = true;
-            
-            _datePicker.datePickerMode = UIDatePickerModeDate;
-            self.title = @"Chọn ngày";
-        }
-            break;
-        case OOPickerViewType_Time:
-        {
-            _datePicker.hidden = false;
-            _picker.hidden     = true;
-            _tableview.hidden  = true;
-            
-            _datePicker.datePickerMode = UIDatePickerModeTime;
-            self.title = @"Chọn giờ";
-        }
-            break;
-        case OOPickerViewType_Select:
-        {
-            _datePicker.hidden = true;
-            _picker.hidden     = false;
-            _tableview.hidden  = true;
-            
-            self.title = @"Chọn một";
-        }
-            break;
-        case OOPickerViewType_MultiSelect:
-        {
-            _datePicker.hidden = true;
-            _picker.hidden     = true;
-            _tableview.hidden  = false;
-            
-            self.title = @"Chọn nhiều";
-        }
-        case OOPickerViewType_Number:
-        {
-            _datePicker.hidden = true;
-            _picker.hidden     = false;
-            _tableview.hidden  = true;
-            
-            self.title = @"Chọn số";
-        }
-            break;
-        default:
-        {
-            _datePicker.hidden = true;
-            _picker.hidden     = true;
-            _tableview.hidden  = true;
-        }
-            break;
-    }
-}
-
-- (void)setDate:(NSDate *)date
-{
-    _date = date;
-    
-    _datePicker.date = date;
-}
-
-- (void)setSelectedIndexes:(NSIndexSet *)selectedIndexes
-{
-    _selectedIndexes = selectedIndexes;
-    
-    _mselectedIndexes = [[NSMutableIndexSet alloc] initWithIndexSet:selectedIndexes];
-}
-
-- (void)setSelectedIndex:(NSUInteger)selectedIndex
-{
-    [_picker selectRow:selectedIndex inComponent:0 animated:true];
-}
-
-- (void)setNumberSelected:(NSUInteger)numberSelected
-{
-    if (_numberStep > 0 && numberSelected > _numberStart)
-    {
-        [_picker selectRow:((_numberSelected - _numberStart)/_numberStep) inComponent:0 animated:true];
-    }
-}
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_type == OOPickerViewType_MultiSelect)
     {
-        if ([_mselectedIndexes containsIndex:indexPath.row])
+        if ([_selectedIndexes containsIndex:indexPath.row])
         {
-            [_mselectedIndexes removeIndex:indexPath.row];
+            [_selectedIndexes removeIndex:indexPath.row];
         }
         else
         {
-            [_mselectedIndexes addIndex:indexPath.row];
+            [_selectedIndexes addIndex:indexPath.row];
         }
         
 //        [_tableview reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:indexPath.row inSection:0U]] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -203,6 +198,7 @@ UIPickerViewDelegate, UIPickerViewDataSource>
         
     }
     [tableView deselectRowAtIndexPath:indexPath animated:TRUE];
+    [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -221,12 +217,13 @@ UIPickerViewDelegate, UIPickerViewDataSource>
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     if (_type == OOPickerViewType_MultiSelect && _dataList != nil && indexPath.row < [_dataList count])
     {
         cell.textLabel.text = [_dataList objectAtIndex:indexPath.row];
+        cell.textLabel.textColor = TEXT_COLOR_REPORT;
         if ([_selectedIndexes containsIndex:indexPath.row])
         {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -240,6 +237,23 @@ UIPickerViewDelegate, UIPickerViewDataSource>
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([tableView respondsToSelector:@selector(setSeparatorInset:)])
+    {
+        [tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([tableView respondsToSelector:@selector(setLayoutMargins:)])
+    {
+        [tableView setLayoutMargins:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)])
+    {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
 
 #pragma mark - UIPickerViewDelegate, UIPickerViewDataSource
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component

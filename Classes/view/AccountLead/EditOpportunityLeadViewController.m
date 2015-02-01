@@ -545,14 +545,33 @@
     if(self.dataSend)
     { //truogn hop them moi
         
-        [dicEntity setObject:[self.dataSend objectForKey:@"accountId"] forKey:DTOOPPORTUNITY_accountId];
+        [dicEntity setObject:[self.dataSend objectForKey:DTOLEAD_clientLeadId] forKey:DTOOPPORTUNITY_clientLeadId];
+        
+        
+        
+        if(![StringUtil stringIsEmpty:[self.dataSend objectForKey:DTOLEAD_leadId]])
+        {
+            [dicEntity setObject:[self.dataSend objectForKey:DTOLEAD_leadId] forKey:DTOOPPORTUNITY_leadId];
+        }
+        else
+        {
+            [dicEntity setObject:[self.dataSend objectForKey:DTOLEAD_clientLeadId] forKey:DTOOPPORTUNITY_leadId];
+        }
         NSString *strClientOpportunityId = IntToStr(([dtoOpportunityProcess getClientId]));
         [dicEntity setObject:strClientOpportunityId forKey:DTOOPPORTUNITY_clientOpportunityId];
     }else
     { //truong hop chinh sua
         [dicEntity setObject:[self.dataRoot objectForKey:DTOOPPORTUNITY_clientOpportunityId] forKey:DTOOPPORTUNITY_clientOpportunityId];
         [dicEntity setObject:[self.dataRoot objectForKey:DTOOPPORTUNITY_id] forKey:DTOOPPORTUNITY_id];
-        [dicEntity setObject:[self.dataRoot objectForKey:@"accountId"] forKey:DTOOPPORTUNITY_accountId];
+        [dicEntity setObject:[self.dataRoot objectForKey:DTOLEAD_clientLeadId] forKey:DTOOPPORTUNITY_clientLeadId];
+        if(![[self.dataSend objectForKey:DTOLEAD_leadId] isKindOfClass:[NSNull class]])
+        {
+            [dicEntity setObject:[self.dataRoot objectForKey:DTOLEAD_leadId] forKey:DTOOPPORTUNITY_leadId];
+        }
+        else
+        {
+            [dicEntity setObject:[self.dataRoot objectForKey:DTOLEAD_clientLeadId] forKey:DTOOPPORTUNITY_leadId];
+        }
     }
     //description
     [dicEntity setObject:[StringUtil trimString:self.txtNote.text] forKey:DTOOPPORTUNITY_description];

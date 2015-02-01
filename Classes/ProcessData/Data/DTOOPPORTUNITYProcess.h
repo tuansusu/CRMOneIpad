@@ -19,4 +19,5 @@
 -(NSInteger) getClientId ;
 -(BOOL) deleteEntity:(NSString *)opportunityId;
 -(NSMutableArray*) filterWith360Id: (NSString*) strValue;
+-(NSMutableArray*) filterWithClienLeadId: (NSString*) strValue;
 @end

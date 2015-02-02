@@ -106,7 +106,10 @@ NSString* emptyText = @"";
     LocalizationSetLanguage(obj.str);
     [self setupLanguage];
 
+    //[self.btnHome setImage:[UIImage imageNamed:@"menu_calendar"] forState:UIControlStateNormal];
     
+    //[self.btnHome.]
+    //[self.btnHome.imageView setAlpha:1.0f];
 
     [self initData];
 }
@@ -163,6 +166,7 @@ NSString* emptyText = @"";
 
 - (void) updateInterFaceWithOption : (int) option
 {
+    
     self.fullNameLB.text = TITLE_APPLICATION;
     [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
     self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
@@ -177,10 +181,10 @@ NSString* emptyText = @"";
             ((UILabel*) viewTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
         }
 
-        if ([viewTemp isKindOfClass:[UIButton class]]) {
-            ((UIButton*) viewTemp).backgroundColor = BUTTON_IN_ACTIVE_COLOR_1;
-            [((UIButton*) viewTemp) setTitleColor:TEXT_BUTTON_COLOR1 forState:UIControlStateNormal];
-        }
+//        if ([viewTemp isKindOfClass:[UIButton class]]) {
+//            ((UIButton*) viewTemp).backgroundColor = BUTTON_IN_ACTIVE_COLOR_1;
+//            [((UIButton*) viewTemp) setTitleColor:TEXT_BUTTON_COLOR1 forState:UIControlStateNormal];
+//        }
         if ([viewTemp isKindOfClass:[UITextView class]]) {
             ((UITextView*) viewTemp).textColor = TEXT_COLOR_REPORT;
             ((UITextView*) viewTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
@@ -194,6 +198,26 @@ NSString* emptyText = @"";
             ((UITextField*) viewTemp).layer.borderWidth = BORDER_WITH;
         }
     }
+    
+    //them phan hien thi anh tren ipad air
+    for (UIView *viewTemp in self.view.subviews) {
+        if ([viewTemp isKindOfClass:[UIView class]]) {
+            for (UIView *viewSubTemp in viewTemp.subviews) {
+                
+                if ([viewSubTemp isKindOfClass:[UIImageView class]]) {
+                    
+                    [((UIImageView*) viewSubTemp) setAlpha:1.0f];
+                }
+                
+            }
+        }
+        
+    }
+    
+    
+    
+    
+    
 }
 
 -(void) viewDidAppear:(BOOL)animated
@@ -207,6 +231,9 @@ NSString* emptyText = @"";
 
 //Home button
 - (IBAction)homeBack:(id)sender {
+    
+    //[self.btnHome setImage:[UIImage imageNamed:@"icon_menu-1"] forState:UIControlStateNormal];
+    
     [Util backToHome:self];
 }
 

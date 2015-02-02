@@ -351,6 +351,7 @@
 		7697BBCC1A7FB1700023F118 /* menu_sync@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7697BBBF1A7FB1700023F118 /* menu_sync@2x.png */; };
 		7697BBCD1A7FB1700023F118 /* menu-ic-setting-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7697BBC01A7FB1700023F118 /* menu-ic-setting-1@2x.png */; };
 		7697BBD11A7FB92C0023F118 /* UIImageView+ForScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7697BBD01A7FB92C0023F118 /* UIImageView+ForScrollView.m */; };
+		7697BBD31A7FD0640023F118 /* icon_menu-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7697BBD21A7FD0640023F118 /* icon_menu-1@2x.png */; };
 		769C0A261A35E4220008CC4B /* DTONOTEProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 769C0A251A35E4220008CC4B /* DTONOTEProcess.m */; };
 		769C0A2A1A35F3E90008CC4B /* NoteLeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 769C0A281A35F3E90008CC4B /* NoteLeadCell.m */; };
 		769C0A2B1A35F3E90008CC4B /* NoteLeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769C0A291A35F3E90008CC4B /* NoteLeadCell.xib */; };
@@ -1554,6 +1555,7 @@
 		7697BBC01A7FB1700023F118 /* menu-ic-setting-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-ic-setting-1@2x.png"; sourceTree = "<group>"; };
 		7697BBCF1A7FB92C0023F118 /* UIImageView+ForScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ForScrollView.h"; sourceTree = "<group>"; };
 		7697BBD01A7FB92C0023F118 /* UIImageView+ForScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ForScrollView.m"; sourceTree = "<group>"; };
+		7697BBD21A7FD0640023F118 /* icon_menu-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_menu-1@2x.png"; path = "VofficeImage/Option1/icon_menu-1@2x.png"; sourceTree = "<group>"; };
 		769C0A241A35E4220008CC4B /* DTONOTEProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTONOTEProcess.h; sourceTree = "<group>"; };
 		769C0A251A35E4220008CC4B /* DTONOTEProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTONOTEProcess.m; sourceTree = "<group>"; };
 		769C0A271A35F3E90008CC4B /* NoteLeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteLeadCell.h; sourceTree = "<group>"; };
@@ -3147,6 +3149,7 @@
 		2D6D764B1876709D0051AD9E /* Option1 */ = {
 			isa = PBXGroup;
 			children = (
+				7697BBD21A7FD0640023F118 /* icon_menu-1@2x.png */,
 				849662C41A24D19F001B3776 /* logo_login-1.png */,
 				849078921A1E4D5B009D5D5F /* icon_Line-1.png */,
 				849125C91A1CDAE400949FC8 /* icon_save-1.png */,
@@ -6393,6 +6396,7 @@
 				2D9A3B1A182CED4F00B6E606 /* loading-icon.png in Resources */,
 				8E7554521A52EFC8001940FB /* iconKeepLeft.png in Resources */,
 				76C9645B1A17731900029978 /* BasicPieChartSample.png in Resources */,
+				7697BBD31A7FD0640023F118 /* icon_menu-1@2x.png in Resources */,
 				8ED402871A41DF3C00CCBE6D /* ic_qu_direction_mylocation@2x.png in Resources */,
 				2D007BF818330F6100A664F3 /* img_line_report.png in Resources */,
 				76EE210E19FF4D7100A80414 /* icon-accept-1.png in Resources */,

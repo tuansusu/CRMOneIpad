@@ -12,6 +12,9 @@
 #import "DTOATTACHMENTProcess.h"
 #import "EditNoteViewCell.h"
 #import "Util.h"
+#import "MJPhotoBrowser.h"
+#import "MJPhoto.h"
+#import "FileManagerUtil.h"
 
 @interface EditNote360ViewController ()
 {
@@ -465,14 +468,28 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSIndexPath* selection = [tableView indexPathForSelectedRow];
-    if (selection){
-        
-        [tableView deselectRowAtIndexPath:selection animated:YES];
+    NSMutableArray *photos = [NSMutableArray arrayWithCapacity:arrayData.count];
+    for (int i = 0; i<arrayData.count; i++) {
+        MJPhoto *photo = [[MJPhoto alloc] init];
+
+        NSDictionary *dicRow = [arrayData objectAtIndex:i];
+        UIImage *currentimage;
+        NSString *fullPath = [FileManagerUtil getPathWithWithName:[dicRow objectForKey:DTOATTACHMENT_fileName]];
+        if (fullPath) {
+            currentimage =[UIImage imageWithContentsOfFile:fullPath];
+            NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:fullPath];
+            photo.url = fileURL;
+            photo.srcImageView = [[UIImageView alloc] initWithImage:currentimage];
+            [photos addObject:photo];
+        }
     }
-    
-    NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
-    
+    if (photos.count>0) {
+        MJPhotoBrowser *browser = [[MJPhotoBrowser alloc] init];
+        browser.currentPhotoIndex = indexPath.row; // current image index
+        browser.photos = photos; // set list photo
+        [browser show];
+    }
+
 }
 
 

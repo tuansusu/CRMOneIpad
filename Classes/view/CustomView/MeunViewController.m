@@ -14,6 +14,7 @@
 #import "ListComplainsViewController.h"
 #import "ProfileViewController.h"
 #import "DashboardTaskViewController.h"
+#import "UIImageView+ForScrollView.h"
 
 @interface MeunViewController ()
 {
@@ -153,6 +154,9 @@
 
 - (void) updateInterFaceWithOption : (int) option
 {
+    
+    
+    
     self.footerView.backgroundColor = TOOLBAR_VIEW_COLOR;
     self.CongViecView.backgroundColor = [UIColor whiteColor];
 
@@ -178,6 +182,12 @@
             [((UILabel*) viewTemp) setTextColor:TEXT_COLOR_HOME];
         }
         
+        if ([viewTemp isKindOfClass:[UIImageView class]]) {
+            
+            [((UIImageView*) viewTemp) setAlpha:1.0f];
+        }
+
+        
     }
     
     self.LichHopView.backgroundColor = [UIColor whiteColor];
@@ -190,6 +200,11 @@
         if ([viewTemp isKindOfClass:[UILabel class]]) {
             
             [((UILabel*) viewTemp) setTextColor:TEXT_COLOR_HOME];
+        }
+        
+        if ([viewTemp isKindOfClass:[UIImageView class]]) {
+            
+            [((UIImageView*) viewTemp) setAlpha:1.0f];
         }
         
     }
@@ -206,6 +221,11 @@
             [((UILabel*) viewTemp) setTextColor:TEXT_COLOR_HOME];
         }
         
+        if ([viewTemp isKindOfClass:[UIImageView class]]) {
+            
+            [((UIImageView*) viewTemp) setAlpha:1.0f];
+        }
+        
     }
     
     self.HeThongView.backgroundColor = [UIColor whiteColor];
@@ -218,6 +238,10 @@
         if ([viewTemp isKindOfClass:[UILabel class]]) {
             
             [((UILabel*) viewTemp) setTextColor:TEXT_COLOR_HOME];
+        }
+        if ([viewTemp isKindOfClass:[UIImageView class]]) {
+            
+            [((UIImageView*) viewTemp) setAlpha:1.0f];
         }
     }
     [self.lbDashboard setTextColor:TEXT_COLOR_HOMEPAGE];

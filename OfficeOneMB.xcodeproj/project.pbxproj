@@ -337,6 +337,20 @@
 		76977D601A02A72E0029F297 /* ListEmployeeAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76977D5E1A02A72E0029F297 /* ListEmployeeAccountViewController.xib */; };
 		76977D641A02A75B0029F297 /* EmployeeAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76977D621A02A75B0029F297 /* EmployeeAccountCell.m */; };
 		76977D651A02A75B0029F297 /* EmployeeAccountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76977D631A02A75B0029F297 /* EmployeeAccountCell.xib */; };
+		7697BBC11A7FB1700023F118 /* menu_calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7697BBB41A7FB1700023F118 /* menu_calendar@2x.png */; };
+		7697BBC21A7FB1700023F118 /* menu_campaign@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7697BBB51A7FB1700023F118 /* menu_campaign@2x.png */; };
+		7697BBC31A7FB1700023F118 /* menu_customer_360@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7697BBB61A7FB1700023F118 /* menu_customer_360@2x.png */; };
+		7697BBC41A7FB1700023F118 /* menu_help@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7697BBB71A7FB1700023F118 /* menu_help@2x.png */; };
+		7697BBC51A7FB1700023F118 /* menu_lead@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7697BBB81A7FB1700023F118 /* menu_lead@2x.png */; };
+		7697BBC61A7FB1700023F118 /* menu_map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7697BBB91A7FB1700023F118 /* menu_map@2x.png */; };
+		7697BBC71A7FB1700023F118 /* menu_opportunity@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7697BBBA1A7FB1700023F118 /* menu_opportunity@2x.png */; };
+		7697BBC81A7FB1700023F118 /* menu_report@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7697BBBB1A7FB1700023F118 /* menu_report@2x.png */; };
+		7697BBC91A7FB1700023F118 /* menu_rm_360@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7697BBBC1A7FB1700023F118 /* menu_rm_360@2x.png */; };
+		7697BBCA1A7FB1700023F118 /* menu_sales_activity@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7697BBBD1A7FB1700023F118 /* menu_sales_activity@2x.png */; };
+		7697BBCB1A7FB1700023F118 /* menu_sync.png in Resources */ = {isa = PBXBuildFile; fileRef = 7697BBBE1A7FB1700023F118 /* menu_sync.png */; };
+		7697BBCC1A7FB1700023F118 /* menu_sync@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7697BBBF1A7FB1700023F118 /* menu_sync@2x.png */; };
+		7697BBCD1A7FB1700023F118 /* menu-ic-setting-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7697BBC01A7FB1700023F118 /* menu-ic-setting-1@2x.png */; };
+		7697BBD11A7FB92C0023F118 /* UIImageView+ForScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7697BBD01A7FB92C0023F118 /* UIImageView+ForScrollView.m */; };
 		769C0A261A35E4220008CC4B /* DTONOTEProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 769C0A251A35E4220008CC4B /* DTONOTEProcess.m */; };
 		769C0A2A1A35F3E90008CC4B /* NoteLeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 769C0A281A35F3E90008CC4B /* NoteLeadCell.m */; };
 		769C0A2B1A35F3E90008CC4B /* NoteLeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769C0A291A35F3E90008CC4B /* NoteLeadCell.xib */; };
@@ -1525,6 +1539,21 @@
 		76977D611A02A75B0029F297 /* EmployeeAccountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployeeAccountCell.h; sourceTree = "<group>"; };
 		76977D621A02A75B0029F297 /* EmployeeAccountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployeeAccountCell.m; sourceTree = "<group>"; };
 		76977D631A02A75B0029F297 /* EmployeeAccountCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmployeeAccountCell.xib; sourceTree = "<group>"; };
+		7697BBB41A7FB1700023F118 /* menu_calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_calendar@2x.png"; sourceTree = "<group>"; };
+		7697BBB51A7FB1700023F118 /* menu_campaign@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_campaign@2x.png"; sourceTree = "<group>"; };
+		7697BBB61A7FB1700023F118 /* menu_customer_360@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_customer_360@2x.png"; sourceTree = "<group>"; };
+		7697BBB71A7FB1700023F118 /* menu_help@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_help@2x.png"; sourceTree = "<group>"; };
+		7697BBB81A7FB1700023F118 /* menu_lead@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_lead@2x.png"; sourceTree = "<group>"; };
+		7697BBB91A7FB1700023F118 /* menu_map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_map@2x.png"; sourceTree = "<group>"; };
+		7697BBBA1A7FB1700023F118 /* menu_opportunity@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_opportunity@2x.png"; sourceTree = "<group>"; };
+		7697BBBB1A7FB1700023F118 /* menu_report@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_report@2x.png"; sourceTree = "<group>"; };
+		7697BBBC1A7FB1700023F118 /* menu_rm_360@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_rm_360@2x.png"; sourceTree = "<group>"; };
+		7697BBBD1A7FB1700023F118 /* menu_sales_activity@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_sales_activity@2x.png"; sourceTree = "<group>"; };
+		7697BBBE1A7FB1700023F118 /* menu_sync.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_sync.png; sourceTree = "<group>"; };
+		7697BBBF1A7FB1700023F118 /* menu_sync@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_sync@2x.png"; sourceTree = "<group>"; };
+		7697BBC01A7FB1700023F118 /* menu-ic-setting-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-ic-setting-1@2x.png"; sourceTree = "<group>"; };
+		7697BBCF1A7FB92C0023F118 /* UIImageView+ForScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ForScrollView.h"; sourceTree = "<group>"; };
+		7697BBD01A7FB92C0023F118 /* UIImageView+ForScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ForScrollView.m"; sourceTree = "<group>"; };
 		769C0A241A35E4220008CC4B /* DTONOTEProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTONOTEProcess.h; sourceTree = "<group>"; };
 		769C0A251A35E4220008CC4B /* DTONOTEProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTONOTEProcess.m; sourceTree = "<group>"; };
 		769C0A271A35F3E90008CC4B /* NoteLeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteLeadCell.h; sourceTree = "<group>"; };
@@ -3988,6 +4017,19 @@
 		76C9647C1A17A15C00029978 /* Bisone */ = {
 			isa = PBXGroup;
 			children = (
+				7697BBB41A7FB1700023F118 /* menu_calendar@2x.png */,
+				7697BBB51A7FB1700023F118 /* menu_campaign@2x.png */,
+				7697BBB61A7FB1700023F118 /* menu_customer_360@2x.png */,
+				7697BBB71A7FB1700023F118 /* menu_help@2x.png */,
+				7697BBB81A7FB1700023F118 /* menu_lead@2x.png */,
+				7697BBB91A7FB1700023F118 /* menu_map@2x.png */,
+				7697BBBA1A7FB1700023F118 /* menu_opportunity@2x.png */,
+				7697BBBB1A7FB1700023F118 /* menu_report@2x.png */,
+				7697BBBC1A7FB1700023F118 /* menu_rm_360@2x.png */,
+				7697BBBD1A7FB1700023F118 /* menu_sales_activity@2x.png */,
+				7697BBBE1A7FB1700023F118 /* menu_sync.png */,
+				7697BBBF1A7FB1700023F118 /* menu_sync@2x.png */,
+				7697BBC01A7FB1700023F118 /* menu-ic-setting-1@2x.png */,
 				764430591A7000CC007741BA /* menu_calendar.png */,
 				7644305A1A7000CC007741BA /* menu_campaign.png */,
 				7644305B1A7000CC007741BA /* menu_customer_360.png */,
@@ -5595,6 +5637,8 @@
 				B31938D018E4355D0008BBFE /* UITextView+Custom.m */,
 				B31938D118E4355D0008BBFE /* UIView+Custom.h */,
 				B31938D218E4355D0008BBFE /* UIView+Custom.m */,
+				7697BBCF1A7FB92C0023F118 /* UIImageView+ForScrollView.h */,
+				7697BBD01A7FB92C0023F118 /* UIImageView+ForScrollView.m */,
 			);
 			path = customcontrol;
 			sourceTree = "<group>";
@@ -5901,6 +5945,7 @@
 				76C964821A17A15C00029978 /* vtmap_ic_marker_default.png in Resources */,
 				8497BFEB1A295A2300A5ED3C /* step6@2x.png in Resources */,
 				8E7554691A52EFC8001940FB /* iconTurnSlightLeft@2x.png in Resources */,
+				7697BBCD1A7FB1700023F118 /* menu-ic-setting-1@2x.png in Resources */,
 				B315789A188D5E5200C0ED01 /* flag-btn-2-1.png in Resources */,
 				8E69BDE91A584A2F00C6924D /* iconWalking@2x.png in Resources */,
 				76601A53194BE90F001D4C01 /* Left-1.png in Resources */,
@@ -6070,6 +6115,7 @@
 				8E7554651A52EFC8001940FB /* iconTurnRight@2x.png in Resources */,
 				8ED402791A41D2DC00CCBE6D /* iconExpand.png in Resources */,
 				8E568FA31A59228B0002A3C4 /* iconSave@2x.png in Resources */,
+				7697BBCA1A7FB1700023F118 /* menu_sales_activity@2x.png in Resources */,
 				15C6A1981A6FDC4800F19B30 /* PickerViewController.xib in Resources */,
 				8E7554581A52EFC8001940FB /* iconRampLeft.png in Resources */,
 				B3A066D717D1AB8200BA6487 /* background_1.png in Resources */,
@@ -6096,12 +6142,14 @@
 				B315787D188D5E5200C0ED01 /* ic-pdf-1.png in Resources */,
 				B3A066E217D1AB8200BA6487 /* icon_down.png in Resources */,
 				06FE2E171A4528B3004A1D16 /* iconDirectionSelected.png in Resources */,
+				7697BBC11A7FB1700023F118 /* menu_calendar@2x.png in Resources */,
 				8E75544A1A52EFC8001940FB /* iconFerry.png in Resources */,
 				8E7554631A52EFC8001940FB /* iconTurnLeft@2x.png in Resources */,
 				76F7DFAF1A3B44620003D720 /* EditNoteLeadViewController.xib in Resources */,
 				B316D697188FFA91009B751B /* login-ic-pass-1.png in Resources */,
 				76601A4D194BE90F001D4C01 /* Reader-Mark-Y.png in Resources */,
 				7657E8CA1A5AEB3A008A62F9 /* Task360Cell.xib in Resources */,
+				7697BBC21A7FB1700023F118 /* menu_campaign@2x.png in Resources */,
 				769CF2381A768B8B004BF96E /* Localizable.strings in Resources */,
 				8497BFBB1A295A2300A5ED3C /* arrow.png in Resources */,
 				8497BFCC1A295A2300A5ED3C /* Default-Portrait~ipad.png in Resources */,
@@ -6142,6 +6190,7 @@
 				B30E4DAE18A7A3E7009BB834 /* toolbar-bg-1.png in Resources */,
 				B3ECBA2B17D1EFF300AF40CF /* icon_thongtintiendo.png in Resources */,
 				8497BFDD1A295A2300A5ED3C /* newark_nj_1922.jpg in Resources */,
+				7697BBC41A7FB1700023F118 /* menu_help@2x.png in Resources */,
 				8497BFDC1A295A2300A5ED3C /* x29@2x.png in Resources */,
 				B315787C188D5E5200C0ED01 /* ic-notsign-1.png in Resources */,
 				8497BFE61A295A2300A5ED3C /* step4.png in Resources */,
@@ -6151,6 +6200,7 @@
 				2DD29EEB18769C260066B883 /* menu-ic-group-work-1.png in Resources */,
 				8E44BC2B1A73A89B00EDCD1A /* ProductLeadCellHeader.xib in Resources */,
 				8E7554551A52EFC8001940FB /* iconKeepRight@2x.png in Resources */,
+				7697BBC61A7FB1700023F118 /* menu_map@2x.png in Resources */,
 				8E75545A1A52EFC8001940FB /* iconRampRight.png in Resources */,
 				8E44BC401A73A89B00EDCD1A /* ProTheDetailViewController.xib in Resources */,
 				2D32B5CD187BDAA10065C305 /* Button_Selected-1.png in Resources */,
@@ -6163,6 +6213,7 @@
 				B3F5485317F9682E0093ADE1 /* icon_chidao.png in Resources */,
 				B315788D188D5E5200C0ED01 /* ic-work-order-person-1-1.png in Resources */,
 				763308171A048E12000E190B /* VTRadio.xib in Resources */,
+				7697BBC91A7FB1700023F118 /* menu_rm_360@2x.png in Resources */,
 				8E5AA9B71A503C86007D9C8A /* iconMarker.png in Resources */,
 				8E44BC321A73A89B00EDCD1A /* ProBaoLanhDetailViewController.xib in Resources */,
 				8497BFD81A295A2300A5ED3C /* spitfire@2x.png in Resources */,
@@ -6219,6 +6270,7 @@
 				2DE2D2521829060700034877 /* ic-cancel.png in Resources */,
 				76C9629D1A16DBA500029978 /* AccountLeadCell.xib in Resources */,
 				2D6D76781876726A0051AD9E /* icon_noread-1.png in Resources */,
+				7697BBCC1A7FB1700023F118 /* menu_sync@2x.png in Resources */,
 				2D6D7640187658BA0051AD9E /* Button-Tim kiem.png in Resources */,
 				76C964701A17731900029978 /* pie_pop_over_gradient.jpg in Resources */,
 				8E69BDE51A58458500C6924D /* iconMoto@2x.png in Resources */,
@@ -6245,6 +6297,7 @@
 				2DE2D25C1829060700034877 /* btn-bg-2.png in Resources */,
 				8EC4B90E1A505A7D0078BF13 /* DirectionsViewCell.xib in Resources */,
 				B3157896188D5E5200C0ED01 /* del-btn-2-1.png in Resources */,
+				7697BBC51A7FB1700023F118 /* menu_lead@2x.png in Resources */,
 				8E75546B1A52EFC8001940FB /* iconTurnSlightRight@2x.png in Resources */,
 				8E44BC3A1A73A89B00EDCD1A /* ProThanhToanQuocTeViewCell.xib in Resources */,
 				2DE2D25D1829060700034877 /* btn-bg-1.png in Resources */,
@@ -6286,6 +6339,7 @@
 				8E2980ED1A6AAB350068B66C /* EditNote360ViewController.xib in Resources */,
 				B3157881188D5E5200C0ED01 /* ic-unsign-1.png in Resources */,
 				8E44BC3E1A73A89B00EDCD1A /* ProThanhToanQuocTeDetailViewController.xib in Resources */,
+				7697BBC31A7FB1700023F118 /* menu_customer_360@2x.png in Resources */,
 				8E7554571A52EFC8001940FB /* iconMerge@2x.png in Resources */,
 				B3157880188D5E5200C0ED01 /* ic-uncheck-1.png in Resources */,
 				8E75546E1A52EFC8001940FB /* iconUturnRight.png in Resources */,
@@ -6296,6 +6350,7 @@
 				2DE2D28C1829060700034877 /* footer.png in Resources */,
 				8497BFF01A295A2300A5ED3C /* track.json in Resources */,
 				B38111E718ACD40600876151 /* update-btn-1-1.png in Resources */,
+				7697BBCB1A7FB1700023F118 /* menu_sync.png in Resources */,
 				8E568F7F1A58EEDF0002A3C4 /* ListComplainsViewController.xib in Resources */,
 				8E0B07BC1A446B4100CF7A78 /* CustomInfoView.xib in Resources */,
 				8ED402811A41DEC000CCBE6D /* iconBranchArrow.png in Resources */,
@@ -6326,12 +6381,14 @@
 				B3157885188D5E5200C0ED01 /* ic-viewpdf-rotateleft-1.png in Resources */,
 				B313F1D718A65107001FDEC6 /* arrow-1.png in Resources */,
 				76EE207519FA829200A80414 /* ic-view-history-1.png in Resources */,
+				7697BBC81A7FB1700023F118 /* menu_report@2x.png in Resources */,
 				2D9A3B18182CED4F00B6E606 /* btn-bg-3.png in Resources */,
 				8497BFC51A295A2300A5ED3C /* bulgaria.png in Resources */,
 				B315789D188D5E5200C0ED01 /* write-btn-1-1.png in Resources */,
 				76C963B51A17403600029978 /* MainBISViewController.xib in Resources */,
 				76C9646D1A17731900029978 /* padded_pie_chart.png in Resources */,
 				76D29B1D1A134C58004B9CF6 /* ViewController.xib in Resources */,
+				7697BBC71A7FB1700023F118 /* menu_opportunity@2x.png in Resources */,
 				2D9A3B19182CED4F00B6E606 /* btn-bg-4.png in Resources */,
 				2D9A3B1A182CED4F00B6E606 /* loading-icon.png in Resources */,
 				8E7554521A52EFC8001940FB /* iconKeepLeft.png in Resources */,
@@ -6686,6 +6743,7 @@
 				2D4B92C717ACD7DE002A9AC5 /* DAAttributedLabel.m in Sources */,
 				8E0B07BF1A446B8800CF7A78 /* CustomInfoView.m in Sources */,
 				76C964441A17731900029978 /* XAxisBand.m in Sources */,
+				7697BBD11A7FB92C0023F118 /* UIImageView+ForScrollView.m in Sources */,
 				15A92D2C1A447049005DC9CA /* TaskCalTLineCell.m in Sources */,
 				2D4B92C817ACD7DE002A9AC5 /* DAAttributedStringFormatter.m in Sources */,
 				8EC9729B1A5D71300021DCA3 /* UIImage+FFCustomMethods.m in Sources */,

@@ -735,9 +735,10 @@
             EditOpportunityProductViewController *viewController = [[EditOpportunityProductViewController alloc]initWithNibName:@"EditOpportunityProductViewController" bundle:nil];
             viewController.dataSend = dicData;
             //[self presentViewController:viewController animated:YES completion:nil];
-            viewController.view.frame = CGRectMake(0, 0, 600, 400);
+           // viewController.view.frame = CGRectMake(0, 0, 600, 400);
             viewController.delegateOpportunityProduct = (id<OpportunityProductDelegate>)self;
-            [self presentPopupViewController:viewController animationType:YES];
+            //[self presentPopupViewController:viewController animationType:YES];
+            [self presentViewController:viewController animated:YES completion:nil];
         }
             break;
         case type_Task:{

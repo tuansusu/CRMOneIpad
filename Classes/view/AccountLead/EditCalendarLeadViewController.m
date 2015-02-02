@@ -565,12 +565,21 @@
     [dicEntity setObject:@"0" forKey:DTOTASK_typeTask];
 
     if (_dataRoot) {
+        if (_isKH360) {
+            [dicEntity setObject:[self.dataRoot objectForKey:DTOACCOUNT_clientAccountId] forKey:DTOTASK_accountId];
+        }else{
         [dicEntity setObject:[_dataRoot objectForKey:DTOLEAD_clientLeadId] forKey:DTOTASK_clientLeadId];
+        }
     }
 
     if (_dataSend)
     {
-        [dicEntity setObject:[_dataSend objectForKey:DTOLEAD_clientLeadId] forKey:DTOTASK_clientLeadId];
+        if (_isKH360) {
+            [dicEntity setObject:[self.dataRoot objectForKey:DTOACCOUNT_clientAccountId] forKey:DTOTASK_accountId];
+        }else{
+            [dicEntity setObject:[_dataSend objectForKey:DTOLEAD_clientLeadId] forKey:DTOTASK_clientLeadId];
+        }
+
         [dicEntity setObject:[_dataSend objectForKey:DTOTASK_id] forKey:DTOTASK_id];
     }
 

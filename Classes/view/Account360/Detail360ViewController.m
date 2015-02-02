@@ -19,6 +19,7 @@
 #import "ComplainDetailViewController.h"
 #import "ComplainModel.h"
 #import "Globals.h"
+#import "EditCalendarLeadViewController.h"
 
 ////remove
 #import "StringUtil.h"
@@ -47,7 +48,7 @@
 #define DELETE_COHOI 55
 #define DELETE_LEAD 66
 
-@interface Detail360ViewController ()<ComplainsViewDelegate,ProductsLeadViewDelegate>
+@interface Detail360ViewController ()<ComplainsViewDelegate,ProductsLeadViewDelegate,EditCalendarLeadViewControllerDelegate>
 {
     int smgSelect ; //option layout
     NSArray *arrayData; //mang luu tru du lieu
@@ -356,7 +357,7 @@
             break;
         case type360View_Calendar:
         {
-            arrayData = [dtoTaskProcess filterWith360Id:[dicData objectForKey:DTOACCOUNT_clientAccountId]];
+            arrayData = [dtoTaskProcess filterCalendarWithAccountId:[dicData objectForKey:DTOACCOUNT_clientAccountId]];
             
         }
             break;
@@ -374,8 +375,7 @@
             arrayData = [dtoOpportunityProcess filterWith360Id:[dicData objectForKey:DTOACCOUNT_clientAccountId]];
         }break;
         case type360View_Task:{
-
-            arrayData = [dtoTaskProcess filterWith360Id:[dicData objectForKey:DTOACCOUNT_clientAccountId]] ;
+             arrayData = [dtoTaskProcess filterTaskWithAccountId:[dicData objectForKey:DTOACCOUNT_clientAccountId]];
             
         }break;
 
@@ -485,8 +485,10 @@
     switch (index) {
         case SELECT_INDEX_ADD_CALENDAR:
         {
-            EditCalendar360ViewController *viewController = [[EditCalendar360ViewController alloc]initWithNibName:@"EditCalendar360ViewController" bundle:nil];
+            EditCalendarLeadViewController *viewController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
+            [viewController setDelegate:self];
             viewController.dataRoot = dicData;
+            viewController.isKH360 = YES;
             [self presentViewController:viewController animated:YES completion:nil];
         }
             break;
@@ -601,6 +603,11 @@
     [btnSelect setTitleColor:textColorButtonNormal forState:UIControlStateNormal];
     [btnSelect setSelectiveBorderWithColor:backgrondButtonSelected withBorderWith:5.0f withBorderFlag:AUISelectiveBordersFlagBottom];
     
+}
+#pragma mark Edit Calendar Lead ViewController Delegate
+- (void)reloadListCalendarTask{
+    [self loadDataWithTypeAction:type360View_Calendar];
+    [_tbData reloadData];
 }
 
 #pragma mark Products Lead View Delegate
@@ -877,9 +884,13 @@
             }
                 break;
             case type360View_Calendar:{
-                EditCalendar360ViewController *viewNoteController = [[EditCalendar360ViewController alloc]initWithNibName:@"EditCalendar360ViewController" bundle:nil];
-                viewNoteController.dataRoot = dicData;
-                [self presentViewController:viewNoteController animated:YES completion:nil];
+
+                EditCalendarLeadViewController *viewController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
+                [viewController setDelegate:self];
+                viewController.dataRoot = dicData;
+                viewController.isKH360 = YES;
+                [self presentViewController:viewController animated:YES completion:nil];
+
             }
                 break;
             default:
@@ -929,10 +940,13 @@
         }
             break;
         case type360View_Calendar:{
-            EditCalendar360ViewController *viewNoteController = [[EditCalendar360ViewController alloc]initWithNibName:@"EditCalendar360ViewController" bundle:nil];
-            viewNoteController.dataSend = dicTempData;
-            viewNoteController.dataRoot = dicData;
-            [self presentViewController:viewNoteController animated:YES completion:nil];
+            EditCalendarLeadViewController *viewController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
+            [viewController setDelegate:self];
+            viewController.dataSend = dicTempData;
+            viewController.dataRoot = dicData;
+            viewController.isKH360 = YES;
+            [self presentViewController:viewController animated:YES completion:nil];
+
         }
             break;
         default:
@@ -1108,10 +1122,11 @@
         }
             break;
         case type360View_Calendar:{
-            EditCalendar360ViewController *viewNoteController = [[EditCalendar360ViewController alloc]initWithNibName:@"EditCalendar360ViewController" bundle:nil];
-            viewNoteController.dataSend = dicTempData;
-            [self presentViewController:viewNoteController animated:YES completion:nil];
-            
+            EditCalendarLeadViewController *viewController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
+            [viewController setDelegate:self];
+            viewController.dataSend = dicTempData;
+            viewController.isKH360 = YES;
+            [self presentViewController:viewController animated:YES completion:nil];
         }
             break;
         default:

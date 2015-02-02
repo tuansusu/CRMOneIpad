@@ -34,7 +34,7 @@
 #import "Network.h"
 #import "Reachability.h"
 #import "UIAlertView+Blocks.h"
-
+#import "UIImageView+ForScrollView.h"
 
 #import "DDMenuController.h"
 #import "FrameworkAppDelegate.h"

@@ -25,8 +25,12 @@
         [UIDevice updateLayoutInIOs7OrAfter:self];
     }
     
-    NSURL *urlFile = [NSURL URLWithString: @"https://crm.mbbank.com.vn/help.html"];
-    NSURLRequest *urlRequest = [[NSURLRequest alloc]initWithURL:urlFile];
+    //NSURL *urlFile = [NSURL URLWithString: @"https://crm.mbbank.com.vn/help.html"];
+    //NSURLRequest *urlRequest = [[NSURLRequest alloc]initWithURL:urlFile];
+    
+    NSURL *websiteUrl = [NSURL URLWithString:@"http://www.google.com"];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:websiteUrl];
+    
     
     [self.webContent loadRequest:urlRequest];
     

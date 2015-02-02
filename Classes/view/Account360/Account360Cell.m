@@ -8,6 +8,7 @@
 
 #import "Account360Cell.h"
 #import "DTOFLLOWUPProcess.h"
+#import "Detail360ViewController.h"
 
 @implementation Account360Cell
 
@@ -98,6 +99,10 @@
         [_btnFollow setImage:[UIImage imageNamed:@"flag_enable.png"] forState:UIControlStateNormal];
         
     }
+    
+    [self.imgAvatar setAlpha:1.0f];
+    
+    
     switch (smgSelect) {
         case 1:
         {
@@ -134,7 +139,37 @@
     //if(!])
     [[UIApplication sharedApplication]openURL:[NSURL URLWithString:_lbPhone.text]];
 }
+-(BOOL) canPerformAction:(SEL)action withSender:(id)sender {
+    return (action == @selector(view:)||action == @selector(edit:)||action == @selector(del:)||action == @selector(call:)||action == @selector(sms:)||action == @selector(email:)||action == @selector(follow:)||action == @selector(map:));
+}
 
+-(BOOL)canBecomeFirstResponder {
+    return YES;
+}
 
+- (void) view : (id) sender{
+    [_delegate delegate_view:_dicData];
+}
+-(void) edit:(id) sender{
+    [_delegate delegate_edit:_dicData];
+}
+-(void) del:(id) sender{
+    [_delegate delegate_del:_dicData];
+}
+-(void) call:(id) sender{
+    [_delegate delegate_call:_dicData];
+}
+-(void) sms:(id) sender{
+    [_delegate delegate_sms:_dicData];
+}
+-(void) email:(id) sender{
+    [_delegate delegate_email:_dicData];
+}
+-(void) follow:(id) sender{
+    [_delegate delegate_follow:_dicData];
+}
+-(void) map:(NSDictionary *)dicData{
+    [_delegate delegate_maps:_dicData];
+}
 
 @end

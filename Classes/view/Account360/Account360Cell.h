@@ -8,13 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-
 @protocol Account360CellDelegate <NSObject>
 
 - (void) Account360CellDelegate_ActionSendMailWithData : (NSDictionary*) dicData ;
 - (void) Account360CellDelegate_ActionViewMapWithData : (NSDictionary*) dicData ;
 - (void) Account360CellDelegate_ActionChangeFlowWithData : (NSDictionary*) dicData ;
-
+-(void) delegate_view:(NSDictionary *)dicData;
+-(void) delegate_edit:(NSDictionary *)dicData;
+-(void) delegate_del:(NSDictionary *)dicData;
+-(void) delegate_call:(NSDictionary *)dicData;
+-(void) delegate_sms:(NSDictionary *)dicData;
+-(void) delegate_email:(NSDictionary *)dicData;
+-(void) delegate_follow:(NSDictionary *)dicData;
+-(void) delegate_maps:(NSDictionary *)dicData;
 @end
 
 @interface Account360Cell : UITableViewCell
@@ -23,6 +29,9 @@
 
 @property (weak, nonatomic) id <Account360CellDelegate> delegate;
 @property (nonatomic, strong) NSDictionary *dicData;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imgAvatar;
+
 
 @property (weak, nonatomic) IBOutlet UILabel *lbName;
 @property (weak, nonatomic) IBOutlet UILabel *lbPhone;

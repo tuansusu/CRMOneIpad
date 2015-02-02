@@ -40,6 +40,6 @@ typedef enum
 //@property (nonatomic, assign) BOOL rpMonthRdFirstDay; //?? INTEGER
 
 
-//- (NSString *)toReadableText;
+- (NSString *)toReadableText;
 //- (NSDictionary *)toDictionary;
 @end

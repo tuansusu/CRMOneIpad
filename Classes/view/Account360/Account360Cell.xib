@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -73,7 +72,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8YN-2d-wN8" userLabel="btn Flolow">
-                        <rect key="frame" x="616" y="35" width="24" height="24"/>
+                        <rect key="frame" x="552" y="35" width="24" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                         <state key="normal" image="flag_enable.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -92,6 +91,7 @@
                 <outlet property="btnAddress" destination="pv8-an-q6c" id="reZ-xp-k8n"/>
                 <outlet property="btnFollow" destination="8YN-2d-wN8" id="Pml-2A-j8F"/>
                 <outlet property="btnSendMail" destination="wey-9j-wzp" id="ITw-tf-tyR"/>
+                <outlet property="imgAvatar" destination="jXI-nk-J06" id="KGs-C3-a3h"/>
                 <outlet property="lbAddress" destination="Eze-4U-bzT" id="NYG-BF-B45"/>
                 <outlet property="lbEmail" destination="XqO-Tj-rTf" id="Lp8-WV-QOB"/>
                 <outlet property="lbName" destination="fPv-hD-ExL" id="Lz2-PP-whd"/>

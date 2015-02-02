@@ -100,6 +100,26 @@
     self.tbData.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [SVProgressHUD show];
+    //set menu
+    UIMenuItem *viewMenu = [[UIMenuItem alloc] initWithTitle:@"Xem" action:@selector(view:)];
+    
+    
+    UIMenuItem *editMenu = [[UIMenuItem alloc] initWithTitle:@"Sửa" action:@selector(edit:)];
+    
+    
+    UIMenuItem *delMenu = [[UIMenuItem alloc] initWithTitle:@"Xoá" action:@selector(del:)];
+    
+    UIMenuItem *callMenu = [[UIMenuItem alloc] initWithTitle:@"Gọi điện" action:@selector(call:)];
+    
+    UIMenuItem *smsMenu = [[UIMenuItem alloc] initWithTitle:@"SMS" action:@selector(sms:)];
+    
+    UIMenuItem *emailMenu = [[UIMenuItem alloc] initWithTitle:@"Email" action:@selector(email:)];
+    
+    UIMenuItem *fowlMenu = [[UIMenuItem alloc] initWithTitle:@"Theo dõi" action:@selector(follow:)];
+    
+    UIMenuItem *mapMenu = [[UIMenuItem alloc] initWithTitle:@"Bản đồ" action:@selector(map:)];
+    [[UIMenuController sharedMenuController] setMenuItems: @[viewMenu,editMenu,delMenu,callMenu,smsMenu,emailMenu,fowlMenu,mapMenu]];
+    [[UIMenuController sharedMenuController] update];
 }
 
 - (void)didReceiveMemoryWarning
@@ -233,6 +253,42 @@
     
     return cell;
     
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canPerformAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
+{
+    return (action == @selector(view:)||action == @selector(edit:)||action == @selector(del:)||action == @selector(call:)||action == @selector(sms:)||action == @selector(email:)||action == @selector(follow:)||action == @selector(map:));
+}
+
+- (void)tableView:(UITableView *)tableView performAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
+{
+    
+    if (action == @selector(view:)){
+        NSLog(@"xem");}
+    
+    if (action == @selector(edit:)){
+        NSLog(@"sua");}
+    
+    if (action == @selector(del:)){
+        NSLog(@"ixoa");}
+    
+    if (action == @selector(call:)){
+        NSLog(@"goi");}
+    
+    if (action == @selector(sms:)){
+        NSLog(@"sms");}
+    
+    if (action == @selector(email:)){
+        NSLog(@"email");}
+    if (action == @selector(follow:)){
+        NSLog(@"tho doi");}
+    if (action == @selector(map:)){
+        NSLog(@"ban do");}
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -720,6 +776,79 @@
     }
 	[self dismissViewControllerAnimated:YES completion:nil];
     
+}
+
+//phần chọn của menu
+
+- (void) delegate_view : (NSDictionary*) dicData {
+    DetailLeadViewController *detail = [[DetailLeadViewController alloc] initWithNibName:@"DetailLeadViewController" bundle:nil];
+    detail.dataSend=dicData;
+    [self presentPopupViewController:detail animationType:1];
+}
+-(void) delegate_edit:(NSDictionary *)dicData{
+    
+    if ([ObjectToStr([dicData objectForKey:DTOLEAD_leadType]) isEqualToString:FIX_LEADTYPE_PERSON]) {
+        
+        EditAccountLeadViewController *viewController = [[EditAccountLeadViewController alloc]initWithNibName:@"EditAccountLeadViewController" bundle:nil];
+        viewController.dataSend = dicData;
+        [self presentViewController:viewController animated:YES completion:nil];
+    }else{
+        EditBussinessLeadViewController *viewController = [[EditBussinessLeadViewController alloc]initWithNibName:@"EditBussinessLeadViewController" bundle:nil];
+        viewController.dataSend = dicData;
+        [self presentViewController:viewController animated:YES completion:nil];
+    }
+}
+-(void) delegate_del:(NSDictionary *)dicData{
+    
+    deleteLeadId = [dicData objectForKey:DTOACCOUNT_id];
+    
+    UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xác nhận đồng ý xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
+    mylert.tag = TAG_DELETE_ITEM;
+    [mylert show];
+    
+}
+-(void) delegate_call:(NSDictionary *)dicData{
+    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_phone]]){
+        NSString *callnumber=[NSString stringWithFormat:@"telprompt://%@",[dicData objectForKey:DTOLEAD_phone]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callnumber]];
+    }
+}
+-(void) delegate_sms:(NSDictionary *)dicData{
+    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_phone]]){
+        NSString *sendSMS=[NSString stringWithFormat:@"sms://%@",[dicData objectForKey:DTOLEAD_phone]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:sendSMS]];
+    }
+}
+-(void) delegate_email:(NSDictionary *)dicData{
+    [Util sendMail:self withEmail:[dicData objectForKey:DTOLEAD_email]];
+}
+-(void) delegate_follow:(NSDictionary *)dicData{
+    FlowLeadViewController *detail = [[FlowLeadViewController alloc] initWithNibName:@"FlowLeadViewController" bundle:nil];
+    detail.dataSend=dicData;
+    detail.view.frame = CGRectMake(0, 0, 600, 500);
+    //[InterfaceUtil setBorderWithCornerAndBorder:detail.view :6 :0.2 :nil];
+    [self presentPopupViewController:detail animationType:1];
+}
+-(void) delegate_maps:(NSDictionary *)dicData{
+    if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_lat]]) {
+        float fLon = [[dicData objectForKey:DTOLEAD_lon] floatValue];
+        float fLan =[[dicData objectForKey:DTOLEAD_lat] floatValue];
+        
+        TestMapViewController *viewController = [[TestMapViewController alloc]initWithNibName:@"TestMapViewController" bundle:nil];
+        viewController.typeMapView = typeMapView_View;
+        viewController.lan = fLan;
+        viewController.lon = fLon;
+        //viewController.address = [dicData objectForKey:DTOLEAD_address];
+        if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_address]]) {
+            viewController.address = [dicData objectForKey:DTOLEAD_address];
+        }else{
+            viewController.address = @"";
+        }
+        
+        
+        [self presentViewController:viewController animated:YES completion:nil];
+        
+    }
 }
 
 @end

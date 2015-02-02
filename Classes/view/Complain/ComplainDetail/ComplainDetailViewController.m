@@ -127,6 +127,15 @@
         }
     }
 
+    [self.btnSave setStyleNormalWithOption:smgSelect];
+
+    [self.mainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
+
+    self.bodyMainView.backgroundColor = BACKGROUND_NORMAL_COLOR1;
+
+    self.bodyMainView.layer.borderWidth = BORDER_WITH;
+    self.bodyMainView.layer.borderColor = [BORDER_COLOR CGColor];
+
     _mainView.backgroundColor       = HEADER_SUB_VIEW_COLOR1;
 
     _bodyMainView.backgroundColor   = BACKGROUND_NORMAL_COLOR1;

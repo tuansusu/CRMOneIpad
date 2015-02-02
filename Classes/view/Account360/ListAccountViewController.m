@@ -98,6 +98,26 @@
     [self initData];
     
     [SVProgressHUD show];
+    //set menu
+    UIMenuItem *viewMenu = [[UIMenuItem alloc] initWithTitle:@"Xem" action:@selector(view:)];
+    
+    
+    UIMenuItem *editMenu = [[UIMenuItem alloc] initWithTitle:@"Sửa" action:@selector(edit:)];
+    
+    
+    UIMenuItem *delMenu = [[UIMenuItem alloc] initWithTitle:@"Xoá" action:@selector(del:)];
+    
+    UIMenuItem *callMenu = [[UIMenuItem alloc] initWithTitle:@"Gọi điện" action:@selector(call:)];
+    
+    UIMenuItem *smsMenu = [[UIMenuItem alloc] initWithTitle:@"SMS" action:@selector(sms:)];
+    
+    UIMenuItem *emailMenu = [[UIMenuItem alloc] initWithTitle:@"Email" action:@selector(email:)];
+    
+    UIMenuItem *fowlMenu = [[UIMenuItem alloc] initWithTitle:@"Theo dõi" action:@selector(follow:)];
+    
+    UIMenuItem *mapMenu = [[UIMenuItem alloc] initWithTitle:@"Bản đồ" action:@selector(map:)];
+    [[UIMenuController sharedMenuController] setMenuItems: @[viewMenu,editMenu,delMenu,callMenu,smsMenu,emailMenu,fowlMenu,mapMenu]];
+    [[UIMenuController sharedMenuController] update];
 }
 
 - (void)didReceiveMemoryWarning
@@ -135,7 +155,7 @@
 
 - (void) updateInterFaceWithOption : (int) option
 {
-     self.fullNameLB.text = @"KHÁCH HÀNG 360";
+    self.fullNameLB.text = @"KHÁCH HÀNG 360";
     [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
     self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
     self.lbTotal.textColor = TEXT_COLOR_HEADER_APP;
@@ -148,7 +168,7 @@
     [self.leftViewHeader setBackgroundColor:BACKGROUND_COLOR_TOP_LEFT_HEADER];
     self.leftLabelHeader.textColor = TEXT_COLOR_HEADER_APP;
     self.txtSearchBar.barTintColor = HEADER_VIEW_COLOR1;
-
+    
     
     for (UIView *viewTemp in self.leftInMainView.subviews) {
         if ([viewTemp isKindOfClass:[UILabel class]]) {
@@ -227,11 +247,52 @@
         [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
         cell.delegate = (id<Account360CellDelegate>) self;
     }
-    
     return cell;
     
 }
 
+- (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canPerformAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
+{
+    return (action == @selector(view:)||action == @selector(edit:)||action == @selector(del:)||action == @selector(call:)||action == @selector(sms:)||action == @selector(email:)||action == @selector(follow:)||action == @selector(map:));
+}
+
+- (void)tableView:(UITableView *)tableView performAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
+{
+    
+    if (action == @selector(view:)){
+        NSLog(@"xem");}
+    
+    if (action == @selector(edit:)){
+        NSLog(@"sua");}
+    
+    if (action == @selector(del:)){
+        NSLog(@"ixoa");}
+    
+    if (action == @selector(call:)){
+        NSLog(@"goi");}
+    
+    if (action == @selector(sms:)){
+        NSLog(@"sms");}
+    
+    if (action == @selector(email:)){
+        NSLog(@"email");}
+    if (action == @selector(follow:)){
+        NSLog(@"tho doi");}
+    if (action == @selector(map:)){
+        NSLog(@"ban do");}
+}
+
+-(void)view:(id)sender{
+    
+    Detail360ViewController *viewController = [[Detail360ViewController alloc]initWithNibName:@"Detail360ViewController" bundle:nil];
+    //viewController.dataSend = _dicData;
+    [self presentViewController:viewController animated:YES completion:nil];
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSIndexPath* selection = [tableView indexPathForSelectedRow];
@@ -336,8 +397,8 @@
     NSLog(@"text did change %@", searchText);
     strSearchText = searchText;
     arrayData=[dtoProcess filterWithKey:DTOACCOUNT_name withValue:searchText];
-   // _lbTotal.text=arrayData.count;
-      _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
+    // _lbTotal.text=arrayData.count;
+    _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
     [_tbData reloadData];
 }
 
@@ -368,30 +429,30 @@
         arrayData = [dtoProcess filter];
     }else{
         
-//        switch (iSearchOption) {
-//            case SCOPE_ALL:
-//                break;
-//            case SCOPE_CODE:{
-//                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_code withValue: strSearchText];
-//            }
-//                break;
-//            case SCOPE_EMAIL:{
-//                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_email withValue: strSearchText];
-//            }
-//                break;
-//            case SCOPE_NAME:
-//            {
-//                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_name withValue: strSearchText];
-//            }
-//                break;
-//            case SCOPE_PHONE:
-//            {
-//                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_mobile withValue: strSearchText];
-//            }
-//                break;
-//            default:
-//                break;
-//        }
+        //        switch (iSearchOption) {
+        //            case SCOPE_ALL:
+        //                break;
+        //            case SCOPE_CODE:{
+        //                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_code withValue: strSearchText];
+        //            }
+        //                break;
+        //            case SCOPE_EMAIL:{
+        //                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_email withValue: strSearchText];
+        //            }
+        //                break;
+        //            case SCOPE_NAME:
+        //            {
+        //                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_name withValue: strSearchText];
+        //            }
+        //                break;
+        //            case SCOPE_PHONE:
+        //            {
+        //                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_mobile withValue: strSearchText];
+        //            }
+        //                break;
+        //            default:
+        //                break;
+        //        }
         
         
         NSMutableDictionary *dicCondition = [[NSMutableDictionary alloc]init];
@@ -426,17 +487,17 @@
 #pragma mark UISearch bar
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
-//    searchBar.showsScopeBar = YES;
-//    [searchBar sizeToFit];
-//    
-//    NSLog(@"start search");
-//    
-//    CGRect frame = self.tbData.frame;
-//    frame.origin.y = frame.origin.y + searchBar.bounds.size.height;
-//    self.tbData.frame = frame;
-//    
-//    
-//    [searchBar setShowsCancelButton:NO animated:YES];
+    //    searchBar.showsScopeBar = YES;
+    //    [searchBar sizeToFit];
+    //
+    //    NSLog(@"start search");
+    //
+    //    CGRect frame = self.tbData.frame;
+    //    frame.origin.y = frame.origin.y + searchBar.bounds.size.height;
+    //    self.tbData.frame = frame;
+    //
+    //
+    //    [searchBar setShowsCancelButton:NO animated:YES];
     
     return YES;
 }
@@ -444,18 +505,18 @@
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
     
     
-//    CGRect frame = self.tbData.frame;
-//    frame.origin.y = frame.origin.y - searchBar.bounds.size.height;
-//    self.tbData.frame = frame;
-//    
-//    NSLog(@"end search");
-//    
-//    searchBar.showsScopeBar = NO;
-//    [searchBar sizeToFit];
-//    
-//    
-//    [searchBar setShowsCancelButton:NO animated:YES];
-//    
+    //    CGRect frame = self.tbData.frame;
+    //    frame.origin.y = frame.origin.y - searchBar.bounds.size.height;
+    //    self.tbData.frame = frame;
+    //
+    //    NSLog(@"end search");
+    //
+    //    searchBar.showsScopeBar = NO;
+    //    [searchBar sizeToFit];
+    //
+    //
+    //    [searchBar setShowsCancelButton:NO animated:YES];
+    //
     
     return YES;
 }
@@ -540,7 +601,7 @@
         [self presentViewController:viewController animated:YES completion:nil];
     }else{
         EditBussiness360ViewController *viewController = [[EditBussiness360ViewController alloc]initWithNibName:@"EditBussiness360ViewController" bundle:nil];
-       // viewController.dataSend = dicDataTemp;
+        // viewController.dataSend = dicDataTemp;
         [self presentViewController:viewController animated:YES completion:nil];
     }
     
@@ -584,9 +645,9 @@
 #pragma mark Account lead cell delegate
 
 - (void) Account360CellDelegate_ActionSendMailWithData : (NSDictionary*) dicData {
-      [Util sendMail:self withEmail:[dicData objectForKey:DTOACCOUNT_email]];
+    [Util sendMail:self withEmail:[dicData objectForKey:DTOACCOUNT_email]];
 }
-- (void) AccountLeadCellDelegate_ActionViewMapWithData : (NSDictionary*) dicData {
+- (void) Account360CellDelegate_ActionViewMapWithData : (NSDictionary*) dicData {
     //lon lan
     NSLog(@"VIEW ADDRESS = %@", dicData);
     
@@ -662,5 +723,66 @@
     if ([self.listPopover isPopoverVisible])
         [self.listPopover dismissPopoverAnimated:YES];
 }
+//phần chọn của menu
 
+- (void) delegate_view : (NSDictionary*) dicData {
+    Detail360ViewController *detail = [[Detail360ViewController alloc] initWithNibName:@"Detail360ViewController" bundle:nil];
+    detail.dataSend=dicData;
+    [self presentPopupViewController:detail animationType:1];
+}
+-(void) delegate_edit:(NSDictionary *)dicData{
+    NSLog(@"Chuaw cos");
+}
+-(void) delegate_del:(NSDictionary *)dicData{
+    
+    deleteLeadId = [dicData objectForKey:DTOACCOUNT_id];
+    
+    UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xác nhận đồng ý xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
+    mylert.tag = TAG_DELETE_ITEM;
+    [mylert show];
+    
+}
+-(void) delegate_call:(NSDictionary *)dicData{
+    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_phone]]){
+        NSString *callnumber=[NSString stringWithFormat:@"telprompt://%@",[dicData objectForKey:DTOACCOUNT_phone]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callnumber]];
+    }
+}
+-(void) delegate_sms:(NSDictionary *)dicData{
+    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_phone]]){
+        NSString *sendSMS=[NSString stringWithFormat:@"sms://%@",[dicData objectForKey:DTOACCOUNT_phone]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:sendSMS]];
+    }
+}
+-(void) delegate_email:(NSDictionary *)dicData{
+    [Util sendMail:self withEmail:[dicData objectForKey:DTOACCOUNT_email]];
+}
+-(void) delegate_follow:(NSDictionary *)dicData{
+    Follow360ViewController *detail = [[Follow360ViewController alloc] initWithNibName:@"Follow360ViewController" bundle:nil];
+    detail.dataSend=dicData;
+    detail.view.frame = CGRectMake(0, 0, 600, 500);
+    //[InterfaceUtil setBorderWithCornerAndBorder:detail.view :6 :0.2 :nil];
+    [self presentPopupViewController:detail animationType:1];
+}
+-(void) delegate_maps:(NSDictionary *)dicData{
+    if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_lat]]) {
+        float fLon = [[dicData objectForKey:DTOACCOUNT_lon] floatValue];
+        float fLan =[[dicData objectForKey:DTOACCOUNT_lat] floatValue];
+        
+        TestMapViewController *viewController = [[TestMapViewController alloc]initWithNibName:@"TestMapViewController" bundle:nil];
+        viewController.typeMapView = typeMapView_View;
+        viewController.lan = fLan;
+        viewController.lon = fLon;
+        //viewController.address = [dicData objectForKey:DTOLEAD_address];
+        if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_address]]) {
+            viewController.address = [dicData objectForKey:DTOACCOUNT_address];
+        }else{
+            viewController.address = @"";
+        }
+        
+        
+        [self presentViewController:viewController animated:YES completion:nil];
+        
+    }
+}
 @end

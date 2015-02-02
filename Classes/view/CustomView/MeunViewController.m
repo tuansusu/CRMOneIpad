@@ -14,6 +14,7 @@
 #import "ListComplainsViewController.h"
 #import "ProfileViewController.h"
 #import "DashboardTaskViewController.h"
+#import "UIImageView+ForScrollView.h"
 
 @interface MeunViewController ()
 {
@@ -153,6 +154,17 @@
 
 - (void) updateInterFaceWithOption : (int) option
 {
+    
+    
+    for (UIView *viewTemp in self.menuView2.subviews) {
+        if ([viewTemp isKindOfClass:[UIImageView class]]) {
+            
+            [((UIImageView*) viewTemp) setAlpha:1.0f];
+        }
+        
+    }
+    
+    
     self.footerView.backgroundColor = TOOLBAR_VIEW_COLOR;
     self.CongViecView.backgroundColor = [UIColor whiteColor];
 
@@ -178,6 +190,12 @@
             [((UILabel*) viewTemp) setTextColor:TEXT_COLOR_HOME];
         }
         
+        if ([viewTemp isKindOfClass:[UIImageView class]]) {
+            
+            [((UIImageView*) viewTemp) setAlpha:1.0f];
+        }
+
+        
     }
     
     self.LichHopView.backgroundColor = [UIColor whiteColor];
@@ -190,6 +208,11 @@
         if ([viewTemp isKindOfClass:[UILabel class]]) {
             
             [((UILabel*) viewTemp) setTextColor:TEXT_COLOR_HOME];
+        }
+        
+        if ([viewTemp isKindOfClass:[UIImageView class]]) {
+            
+            [((UIImageView*) viewTemp) setAlpha:1.0f];
         }
         
     }
@@ -206,6 +229,11 @@
             [((UILabel*) viewTemp) setTextColor:TEXT_COLOR_HOME];
         }
         
+        if ([viewTemp isKindOfClass:[UIImageView class]]) {
+            
+            [((UIImageView*) viewTemp) setAlpha:1.0f];
+        }
+        
     }
     
     self.HeThongView.backgroundColor = [UIColor whiteColor];
@@ -219,7 +247,15 @@
             
             [((UILabel*) viewTemp) setTextColor:TEXT_COLOR_HOME];
         }
+        if ([viewTemp isKindOfClass:[UIImageView class]]) {
+            
+            [((UIImageView*) viewTemp) setAlpha:1.0f];
+        }
     }
+    
+    
+    
+    
     [self.lbDashboard setTextColor:TEXT_COLOR_HOMEPAGE];
     [self.lbTask setTextColor:TEXT_COLOR_HOMEPAGE];
     [self.lbMeetingSchedule setTextColor:TEXT_COLOR_HOMEPAGE];

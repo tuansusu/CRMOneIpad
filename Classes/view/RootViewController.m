@@ -61,6 +61,14 @@
     [self setUpLanguage];
 
     
+    //Hien thi anh cua form
+    for (UIView *viewTemp in self.childView.subviews) {
+                
+        if ([viewTemp isKindOfClass:[UIImageView class]]) {
+            
+            [((UIImageView*) viewTemp) setAlpha:1.0f];
+        }
+    }
     
 }
 

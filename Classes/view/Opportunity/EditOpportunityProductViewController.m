@@ -386,28 +386,6 @@
     
 }// may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    NSLog(@"text thay doi");
-    if(textField==self.txtQuantity){
-        NSLog(@"text phone thay doi");
-        NSNumberFormatter *nf=[[NSNumberFormatter alloc]init];
-        [nf setNumberStyle:NSNumberFormatterNoStyle];
-        NSString *newString =[NSString stringWithFormat:@"%@%@",textField.text,string];
-        NSNumber *number =[nf numberFromString:newString];
-        if(number){
-            return YES;
-        }
-        else{
-            return  NO;
-        }
-    }
-    else{
-        NSLog(@"khong phai text phone");
-        return YES;
-    }
-    
-}// return NO to not change text
-
 - (BOOL)textFieldShouldClear:(UITextField *)textField{
     return YES;
 }// called when clear button pressed. return NO to ignore (no notifications)
@@ -481,6 +459,44 @@
     return isValidate;
 }
 
+-(BOOL)textField: (UITextField *) theTextField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    // allow backspace
+    if (!string.length)
+    {
+        return YES;
+    }
+    if(theTextField == self.txtQuantity ||  theTextField == self.txtRevenue){
+    //for Decimal value start//////This code use use for allowing single decimal value
+        if ([theTextField.text rangeOfString:@"."].location == NSNotFound)
+        {
+            if ([string isEqualToString:@"."]) {
+                return YES;
+            }
+        }
+        else
+        {
+            if ([[theTextField.text substringFromIndex:[theTextField.text rangeOfString:@"."].location] length]>2)   // this allow 2 digit after decimal
+            {
+                return NO;
+            }
+        }
+        //for Decimal value End//////This code use use for allowing single decimal value
+        
+        // allow digit 0 to 9
+        if ([string intValue])
+        {
+            return YES;
+        }
+        
+        return NO;
+    }else{
+        return YES;
+    }
+    
+    
+    
+
+}
 
 
 

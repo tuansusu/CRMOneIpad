@@ -156,6 +156,14 @@
 {
     
     
+    for (UIView *viewTemp in self.menuView2.subviews) {
+        if ([viewTemp isKindOfClass:[UIImageView class]]) {
+            
+            [((UIImageView*) viewTemp) setAlpha:1.0f];
+        }
+        
+    }
+    
     
     self.footerView.backgroundColor = TOOLBAR_VIEW_COLOR;
     self.CongViecView.backgroundColor = [UIColor whiteColor];
@@ -244,6 +252,10 @@
             [((UIImageView*) viewTemp) setAlpha:1.0f];
         }
     }
+    
+    
+    
+    
     [self.lbDashboard setTextColor:TEXT_COLOR_HOMEPAGE];
     [self.lbTask setTextColor:TEXT_COLOR_HOMEPAGE];
     [self.lbMeetingSchedule setTextColor:TEXT_COLOR_HOMEPAGE];

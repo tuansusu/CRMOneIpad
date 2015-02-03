@@ -54,6 +54,12 @@
     UITextField *_txt;
     BOOL isPhone,isEmail,isSMS,isMeeting;
     
+    
+    //thong tin chon NGAY - THANG
+    int SELECTED_DATE_TAG ;
+    NSDate  *dateBirthday;
+    NSDateFormatter *df;
+    
     //luu lai thong tin chon dia chi cua ban do
     float _longitude, _latitude;
     
@@ -95,6 +101,11 @@
 
 //khoi tao gia tri mac dinh cua form
 -(void) initData {
+    
+    df = [[NSDateFormatter alloc] init];
+   	[df setDateFormat:FORMAT_DATE];
+    
+    
     _latitude = -1; //khong chon
     _longitude = -1; //khong chon
     
@@ -113,10 +124,10 @@
     
     dataId = 0;
     if (self.dataSend) {
-        self.lbTextHeaderMainView.text = TEXT_HEADER_EDIT_LEADER_PERSON;
+        self.fullNameLB.text = TEXT_HEADER_EDIT_LEADER_PERSON;
         [self loadEditData];
     }else{
-        self.lbTextHeaderMainView.text = TEXT_HEADER_ADD_LEADER_PERSON;
+        self.fullNameLB.text = TEXT_HEADER_ADD_LEADER_PERSON;
     }
     
 }
@@ -136,6 +147,10 @@
     }
     if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_organization]]) {
         _txtCompany.text =[_dataSend objectForKey:DTOLEAD_organization];
+    }
+    
+    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_birthday]]) {
+        _txtDateOfBirth.text =[_dataSend objectForKey:DTOLEAD_birthday];
     }
     if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_email]]) {
         _txtEmail.text =[_dataSend objectForKey:DTOLEAD_email];
@@ -216,15 +231,15 @@
     //    self.leftLabelHeader.textColor = TEXT_COLOR_HEADER_APP;
     
     
-    [self.headerMainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
-    [self.headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
-    for (UIView *viewSubTemp in self.headerMainView.subviews) {
-        
-        
-        if ([viewSubTemp isKindOfClass:[UILabel class]]) {
-            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
-        }
-    }
+    //[self.headerMainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
+    //[self.headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
+//    for (UIView *viewSubTemp in self.headerMainView.subviews) {
+//        
+//        
+//        if ([viewSubTemp isKindOfClass:[UILabel class]]) {
+//            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+//        }
+//    }
     
     
     
@@ -319,6 +334,10 @@
     [dicEntity setObject:[StringUtil trimString:_txtAddress.text] forKey:DTOLEAD_address];
     [dicEntity setObject:[StringUtil trimString:_txtPhone.text]forKey:DTOLEAD_mobile];
     [dicEntity setObject:[StringUtil trimString:_txtCompany.text] forKey:DTOLEAD_organization];
+    
+    
+     [dicEntity setObject:[StringUtil trimString:_txtDateOfBirth.text] forKey:DTOLEAD_birthday];
+    
     [dicEntity setObject:[StringUtil trimString:_txtEmail.text] forKey:DTOLEAD_email];
     if(_longitude>0){
         NSString *myLon=[NSString stringWithFormat:@"%f",_longitude];
@@ -763,4 +782,43 @@
         [_btnCheckSMS setImage:[UIImage imageNamed: @"checkbox_not_ticked.png"] forState:UIControlStateNormal];
     }
 }
+- (IBAction)actionChoiceDateOfBirth:(id)sender {
+    
+    [self hiddenKeyBoard];
+    
+    if (self.txtDateOfBirth.text.length==0) {
+        dateBirthday = [DateUtil getDateFromString:@"01/01/2000" :FORMAT_DATE];
+    }else{
+        dateBirthday = [DateUtil getDateFromString:self.txtDateOfBirth.text :FORMAT_DATE];
+    }
+    
+    //SELECTED_DATE_TAG = TAG_SELECT_DATE_BIRTHDAY;
+    CalendarPickerViewController *detail = [[CalendarPickerViewController alloc] initWithNibName:@"CalendarPickerViewController" bundle:nil];
+    detail.dateSelected = dateBirthday;
+    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+    CGRect popoverFrame = self.btnBirthDay.frame;
+    
+    detail.delegateDatePicker =(id<CalendarSelectDatePickerDelegate>) self;
+    [self.listPopover setPopoverContentSize:CGSizeMake(320, 260) animated:NO];
+    
+    
+    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+}
+
+#pragma mark select date
+-(void) selectDatePickerWithDate:(NSDate *)date
+{
+    
+            self.txtDateOfBirth.text = [NSString stringWithFormat:@"%@",
+                                        [df stringFromDate:date]];
+            dateBirthday = date;
+    
+}
+
+-(void) dismissPopoverView
+{
+    if ([self.listPopover isPopoverVisible])
+        [self.listPopover dismissPopoverAnimated:YES];
+}
+
 @end

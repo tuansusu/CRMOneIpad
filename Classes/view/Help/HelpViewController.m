@@ -66,6 +66,25 @@
 }
 
 
+-(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    //Start the progressbar..
+    [SVProgressHUD show];
+    return YES;
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    //Stop or remove progressbar
+    [SVProgressHUD dismiss];
+}
+
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    //Stop or remove progressbar and show error
+    [SVProgressHUD dismiss];
+}
+
 
 
 @end

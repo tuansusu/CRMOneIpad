@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -93,6 +93,7 @@
                 <outlet property="btnAddress" destination="hjl-i1-PMU" id="nL8-V4-ZqR"/>
                 <outlet property="btnFollow" destination="pDz-yf-36A" id="cSv-AR-d3p"/>
                 <outlet property="btnSendMail" destination="rAI-z0-rRN" id="IDi-A7-he3"/>
+                <outlet property="imgAvatar" destination="ZM7-MP-gk6" id="VHh-Xy-a5E"/>
                 <outlet property="lbAddress" destination="Hwv-9z-ocW" id="tnL-fm-YsR"/>
                 <outlet property="lbEmail" destination="PAa-Qg-sgU" id="vG7-ar-9I2"/>
                 <outlet property="lbName" destination="RIg-zI-tJ2" id="Pjm-Dk-vls"/>

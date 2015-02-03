@@ -114,6 +114,8 @@
             break;
     }
     
+    [self.imgAvatar setAlpha:1.0f];
+    
 }
 
 - (IBAction)actionAddress:(id)sender {

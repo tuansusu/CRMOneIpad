@@ -35,8 +35,8 @@
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 
-@property (weak, nonatomic) IBOutlet UIView *headerMainView;
-@property (weak, nonatomic) IBOutlet UILabel *lbTextHeaderMainView;
+//@property (weak, nonatomic) IBOutlet UIView *headerMainView;
+//@property (weak, nonatomic) IBOutlet UILabel *lbTextHeaderMainView;
 
 
 @property (weak, nonatomic) IBOutlet UIScrollView *bodyMainView;
@@ -54,6 +54,13 @@
 ////////
 @property (weak, nonatomic) IBOutlet UITextField *txtName;
 @property (weak, nonatomic) IBOutlet UITextField *txtCompany;
+
+@property (weak, nonatomic) IBOutlet UITextField *txtDateOfBirth;
+
+- (IBAction)actionChoiceDateOfBirth:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnBirthDay;
+
 @property (weak, nonatomic) IBOutlet UITextField *txtPhone;
 
 @property (weak, nonatomic) IBOutlet UITextField *txtNumberIdentity;

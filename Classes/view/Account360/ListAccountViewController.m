@@ -9,6 +9,7 @@
 #import "ListAccountViewController.h"
 #import "DTOACCOUNTProcess.h"
 #import "EditAccount360ViewController.h"
+#import "DTOFLLOWUPProcess.h"
 
 //Xoa
 #import "DataField.h"
@@ -60,6 +61,7 @@
     NSInteger iSearchOption;
     
     NSUserDefaults *defaults;
+    NSString *accountfollowId;
 }
 @end
 
@@ -640,6 +642,21 @@
         }
         
     }
+    
+    else if(buttonIndex==0 && alertView.tag==22){
+        NSLog(@"id:%@",accountfollowId);
+        DTOFLLOWUPProcess *followProcess=[DTOFLLOWUPProcess new];
+        NSMutableDictionary *dicEntity=[NSMutableDictionary new];
+        [dicEntity setObject:accountfollowId forKey:DTOFOLLOWUP_id];
+        [dicEntity setObject:@"3" forKey:DTOFOLLOWUP_followUpState];
+        BOOL success=[followProcess insertToDBWithEntity:dicEntity];
+        if(success){
+            [self filterData];
+        }
+        else{
+            NSLog(@"Error");
+        }
+    }
 }
 
 #pragma mark Account lead cell delegate
@@ -686,6 +703,7 @@
     //sau hỏi rõ giải pháp tính sau
     Follow360ViewController *detail = [[Follow360ViewController alloc] initWithNibName:@"Follow360ViewController" bundle:nil];
     detail.dataSend=dicData;
+    detail.delegate=self;
     detail.view.frame = CGRectMake(0, 0, 600, 500);
     //[InterfaceUtil setBorderWithCornerAndBorder:detail.view :6 :0.2 :nil];
     [self presentPopupViewController:detail animationType:1];
@@ -728,7 +746,7 @@
 - (void) delegate_view : (NSDictionary*) dicData {
     Detail360ViewController *detail = [[Detail360ViewController alloc] initWithNibName:@"Detail360ViewController" bundle:nil];
     detail.dataSend=dicData;
-    [self presentPopupViewController:detail animationType:1];
+    [self presentViewController:detail animated:YES completion:nil];
 }
 -(void) delegate_edit:(NSDictionary *)dicData{
     NSLog(@"Chuaw cos");
@@ -783,6 +801,24 @@
         
         [self presentViewController:viewController animated:YES completion:nil];
         
+    }
+}
+#pragma mark change status follow
+-(void) delegate_changeStatusFollow:(NSString *)followid{
+    
+    accountfollowId=followid;
+    UIAlertView *aler=[[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Hoàn thành theo dõi" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles:@"Huỷ", nil];
+    aler.tag=22;
+    [aler show];
+}
+-(void)delegate_dismisFollow:(int)item{
+    NSLog(@"abc");
+    if(item==0){
+        [self dismissPopupViewControllerWithanimationType:nil];
+    }
+    else{
+        [self dismissPopupViewControllerWithanimationType:nil];
+        [self filterData];
     }
 }
 @end

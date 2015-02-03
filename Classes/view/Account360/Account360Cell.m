@@ -11,7 +11,13 @@
 #import "Detail360ViewController.h"
 
 @implementation Account360Cell
-
+int checkAccountFollow =0;
+NSDictionary *arrayData;
+//thong tin chon NGAY - THANG
+int SELECTED_DATE_TAG ;
+NSDate *dateFrom, *dateTo;
+NSDate *timeFrom, *timeTo;
+NSDateFormatter *df,*dfTime;
 - (void)awakeFromNib
 {
     // Initialization code
@@ -42,8 +48,6 @@
 
 -(void) loadDataToCellWithData:(NSDictionary *)dicData withOption:(int)smgSelect{
     
-    DTOFLLOWUPProcess *_DTOFLLOWUPProcess=[DTOFLLOWUPProcess new];
-    BOOL checkFollow;
     NSString *leadId=[dicData objectForKey:DTOACCOUNT_accountId];
     if(leadId.length>0){
         leadId=leadId;
@@ -51,7 +55,6 @@
     else{
         leadId=[dicData objectForKey:DTOACCOUNT_clientAccountId];
     }
-    checkFollow=[_DTOFLLOWUPProcess checkFollowUp:leadId objectType:@"ACCOUNT"];
     _dicData = dicData;
     NSLog(@"datarott:%@",dicData);
     NSString *code = @"";
@@ -92,8 +95,19 @@
     }else{
         self.lbAddress.text = [dicData objectForKey:DTOACCOUNT_address];
     }
-    if (checkFollow) {
+    if ([self checkFollowAccount:leadId]==1) {
+        //dang theo doi
         [_btnFollow setImage:[UIImage imageNamed:@"task_done.png"] forState:UIControlStateNormal];
+    }
+    else if([self checkFollowAccount:leadId]==2){
+        //qua han
+        [_btnFollow setImage:[UIImage imageNamed:@"task_not_done.png"] forState:UIControlStateNormal];
+        
+    }
+    else if([self checkFollowAccount:leadId]==3){
+        //hoan thanh
+        [_btnFollow setImage:[UIImage imageNamed:@"flag_disable.png"] forState:UIControlStateNormal];
+        
     }
     else{
         [_btnFollow setImage:[UIImage imageNamed:@"flag_enable.png"] forState:UIControlStateNormal];
@@ -128,7 +142,29 @@
 }
 
 - (IBAction)actionChangeFlow:(id)sender {
-    [_delegate Account360CellDelegate_ActionChangeFlowWithData:_dicData];
+    NSString *leadId=[_dicData objectForKey:DTOACCOUNT_accountId];
+    if(leadId.length>0){
+        leadId=leadId;
+    }
+    else{
+        leadId=[_dicData objectForKey:DTOACCOUNT_clientAccountId];
+    }
+    if([self checkFollowAccount:leadId]==0){
+        [_delegate Account360CellDelegate_ActionChangeFlowWithData:_dicData];
+    }
+    else if ([self checkFollowAccount:leadId]==1){
+        //xu ly trang thai thanh da hoan thanh
+        NSLog(@"chua xu ly");
+        NSDictionary *data;
+        DTOFLLOWUPProcess *followProcess=[DTOFLLOWUPProcess new];
+        data= [followProcess getDataAccountWithKey:DTOFOLLOWUP_objectId withValue:leadId];
+        NSString *followid;
+        if(data.count>0){
+            followid = [data objectForKey:DTOFOLLOWUP_id];
+            [_delegate delegate_changeStatusFollow:followid];
+        }
+    }
+
 }
 
 - (IBAction)actionCall:(id)sender {
@@ -167,5 +203,69 @@
 -(void) map:(NSDictionary *)dicData{
     [_delegate delegate_maps:_dicData];
 }
-
+//hàm kiểm trang thái theo doi khách hàng
+-(int) checkFollowAccount:(NSString *)leadId{
+    checkAccountFollow=0;
+    if([self checkAccountDateFollow:leadId]){
+        checkAccountFollow=2;
+    }
+    else{
+        DTOFLLOWUPProcess *_DTOFLLOWUPProcess=[DTOFLLOWUPProcess new];
+        arrayData= [_DTOFLLOWUPProcess getDataAccountWithKey:DTOFOLLOWUP_objectId withValue:leadId];
+        NSLog(@"cc:%@",[arrayData objectForKey:DTOFOLLOWUP_followUpState] );
+        if(arrayData.count >0){
+            NSString *item;
+            item= [arrayData objectForKey:DTOFOLLOWUP_followUpState];
+            if(item.length>0){
+                checkAccountFollow = [[arrayData objectForKey:DTOFOLLOWUP_followUpState] intValue];
+            }
+        }
+    }
+    return checkAccountFollow;
+}
+-(BOOL) checkAccountDateFollow:(NSString *)leadId{
+    BOOL res=NO;
+    NSDictionary *data;
+    DTOFLLOWUPProcess *followProcess=[DTOFLLOWUPProcess new];
+    data= [followProcess getDataAccountWithKey:DTOFOLLOWUP_objectId withValue:leadId];
+    
+    NSDate *today=[[NSDate alloc] init];
+    
+    NSString *strDateEnd=[data objectForKey:DTOFOLLOWUP_endDate];
+    if (![StringUtil stringIsEmpty:strDateEnd]) {
+        
+        
+        //ngay ket thuc theo doi
+        NSDateFormatter *dateFromStringFormat=[[NSDateFormatter alloc]init];
+        [dateFromStringFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss.S"];
+        NSDateFormatter *dateEndFormat=[[NSDateFormatter alloc]init];
+        [dateEndFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss.S"];
+        NSDate *end=[dateFromStringFormat dateFromString:strDateEnd];
+        
+        NSString *stt =[arrayData objectForKey:DTOFOLLOWUP_followUpState] ;
+        NSComparisonResult result;
+        result =[today compare:end];
+        
+        if (result == NSOrderedDescending && ![stt isEqualToString:@"2"]) {
+            NSLog(@"Qua han");
+            NSString *itemid;
+            itemid=[arrayData objectForKey:DTOFOLLOWUP_id];
+            NSLog(@"item:%@",itemid);
+            if([StringUtil stringIsEmpty:itemid]){
+                return NO;
+            }
+            NSMutableDictionary *dicEntity=[NSMutableDictionary new];
+            [dicEntity setObject:itemid forKey:DTOFOLLOWUP_id];
+            [dicEntity setObject:@"2" forKey:DTOFOLLOWUP_followUpState];
+            BOOL success=[followProcess insertToDBWithEntity:dicEntity];
+            NSLog(@"update %@ stt = 2",leadId);
+            if(success){
+                res=YES;
+            }else{
+                res=NO;
+            }
+        }
+    }
+    return res;
+}
 @end

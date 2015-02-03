@@ -9,9 +9,13 @@
 #import "BaseViewController.h"
 #import "SelectIndexViewController.h"
 
+@protocol FlowDelegate <NSObject>
+
+-(void) delegate_dismisFollow:(int)item;
+@end
 @interface FlowLeadViewController : BaseViewController
 
-
+@property(nonatomic, assign)id<FlowDelegate> delegate;
 //DATA
 /*
  * chuyen tu form danh sahc lien he(co ca clientLeaderId)

@@ -9,8 +9,15 @@
 #import "BaseViewController.h"
 #import "SelectIndexViewController.h"
 
+@protocol FollowDelegate <NSObject>
+
+-(void) delegate_dismisFollow:(int) item;
+
+@end
+
 @interface Follow360ViewController : BaseViewController
 
+@property (nonatomic,assign)id<FollowDelegate>delegate;
 
 //DATA
 /*

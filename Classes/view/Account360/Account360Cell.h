@@ -21,6 +21,7 @@
 -(void) delegate_email:(NSDictionary *)dicData;
 -(void) delegate_follow:(NSDictionary *)dicData;
 -(void) delegate_maps:(NSDictionary *)dicData;
+-(void) delegate_changeStatusFollow:(NSString *)followid;
 @end
 
 @interface Account360Cell : UITableViewCell

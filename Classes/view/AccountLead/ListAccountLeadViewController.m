@@ -8,6 +8,8 @@
 
 #import "ListAccountLeadViewController.h"
 #import "DTOACCOUNTLEADProcess.h"
+#import "DTOFLLOWUPProcess.h"
+
 
 
 
@@ -60,6 +62,7 @@
     NSInteger iSearchOption;
     
     NSUserDefaults *defaults;
+    NSString *followId;
     
 }
 @end
@@ -141,7 +144,7 @@
     selectTypeIndex = 0;
     self.lbTypeCustomer.text = [listTypeArr objectAtIndex:selectTypeIndex];
     
-
+    
     listArr  = [NSArray arrayWithObjects:SELECT_TEXT_ADD_PERSON, SELECT_TEXT_ADD_BUSSINESS, nil];
     iSearchOption = SCOPE_CODE; //
     strSearchText = @"";
@@ -193,6 +196,10 @@
             ((UITextField*) viewTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
             ((UITextField*) viewTemp).layer.borderColor = [BORDER_COLOR CGColor];
             ((UITextField*) viewTemp).layer.borderWidth = BORDER_WITH;
+        }
+        if ([viewTemp isKindOfClass:[UIImageView class]]) {
+            
+            [((UIImageView*) viewTemp) setAlpha:1.0f];
         }
     }
     
@@ -305,6 +312,7 @@
     
     DetailLeadViewController *viewController = [[DetailLeadViewController alloc]initWithNibName:@"DetailLeadViewController" bundle:nil];
     viewController.dataSend = dicData;
+    
     [self presentViewController:viewController animated:YES completion:nil];
     
 }
@@ -324,7 +332,7 @@
             [self presentViewController:viewController animated:YES completion:nil];
         }
             break;
-            case SELECT_INDEX_ADD_BUSSINESS:
+        case SELECT_INDEX_ADD_BUSSINESS:
         {
             EditBussinessLeadViewController *viewController = [[EditBussinessLeadViewController alloc]initWithNibName:@"EditBussinessLeadViewController" bundle:nil];
             [self presentViewController:viewController animated:YES completion:nil];
@@ -396,7 +404,7 @@
     NSLog(@"text did change %@", searchText);
     strSearchText = searchText;
     arrayData=[dtoLeadProcess filterWithKey:DTOLEAD_name withValue:searchText];
-      _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
+    _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
     [_tbData reloadData];
     
     
@@ -428,48 +436,48 @@
     if ([StringUtil stringIsEmpty:strSearchText]) {
         arrayData = [dtoLeadProcess filter];
     }else{
-    
-//    switch (iSearchOption) {
-//        case SCOPE_ALL:
-//            break;
-//        case SCOPE_CODE:{
-//            arrayData = [dtoLeadProcess filterWithKey:DTOLEAD_code withValue: strSearchText];
-//        }
-//            break;
-//        case SCOPE_EMAIL:{
-//            arrayData = [dtoLeadProcess filterWithKey:DTOLEAD_email withValue: strSearchText];
-//        }
-//            break;
-//        case SCOPE_NAME:
-//        {
-//            arrayData = [dtoLeadProcess filterWithKey:DTOLEAD_name withValue: strSearchText];
-//        }
-//            break;
-//        case SCOPE_PHONE:
-//        {
-//            arrayData = [dtoLeadProcess filterWithKey:DTOLEAD_mobile withValue: strSearchText];
-//        }
-//            break;
-//        default:
-//            break;
-//    }
-    
-    
+        
+        //    switch (iSearchOption) {
+        //        case SCOPE_ALL:
+        //            break;
+        //        case SCOPE_CODE:{
+        //            arrayData = [dtoLeadProcess filterWithKey:DTOLEAD_code withValue: strSearchText];
+        //        }
+        //            break;
+        //        case SCOPE_EMAIL:{
+        //            arrayData = [dtoLeadProcess filterWithKey:DTOLEAD_email withValue: strSearchText];
+        //        }
+        //            break;
+        //        case SCOPE_NAME:
+        //        {
+        //            arrayData = [dtoLeadProcess filterWithKey:DTOLEAD_name withValue: strSearchText];
+        //        }
+        //            break;
+        //        case SCOPE_PHONE:
+        //        {
+        //            arrayData = [dtoLeadProcess filterWithKey:DTOLEAD_mobile withValue: strSearchText];
+        //        }
+        //            break;
+        //        default:
+        //            break;
+        //    }
+        
+        
         NSMutableDictionary *dicCondition = [[NSMutableDictionary alloc]init];
         
-            [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOLEAD_code];
+        [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOLEAD_code];
         
         
         
-            [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOLEAD_name];
+        [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOLEAD_name];
         
         
         
-            [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOLEAD_mobile];
+        [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOLEAD_mobile];
         
         
         
-            [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOLEAD_email];
+        [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOLEAD_email];
         
         
         
@@ -484,38 +492,38 @@
     [SVProgressHUD dismiss];
 }
 
-#pragma mark UISearch bar 
+#pragma mark UISearch bar
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
-//    searchBar.showsScopeBar = YES;
-//    [searchBar sizeToFit];
-//    
-//    NSLog(@"start search");
-//    
-//    CGRect frame = self.tbData.frame;
-//    frame.origin.y = frame.origin.y + searchBar.bounds.size.height;
-//    self.tbData.frame = frame;
-//    
-//    
-//    [searchBar setShowsCancelButton:NO animated:YES];
+    //    searchBar.showsScopeBar = YES;
+    //    [searchBar sizeToFit];
+    //
+    //    NSLog(@"start search");
+    //
+    //    CGRect frame = self.tbData.frame;
+    //    frame.origin.y = frame.origin.y + searchBar.bounds.size.height;
+    //    self.tbData.frame = frame;
+    //
+    //
+    //    [searchBar setShowsCancelButton:NO animated:YES];
     
     return YES;
 }
 
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
-//    CGRect frame = self.tbData.frame;
-//    frame.origin.y = frame.origin.y - searchBar.bounds.size.height;
-//    self.tbData.frame = frame;
-//    
-//    NSLog(@"end search");
-//    
-//    searchBar.showsScopeBar = NO;
-//    [searchBar sizeToFit];
-//    
-//    [searchBar setShowsCancelButton:NO animated:YES];
-//    
-//    
-//    NSLog(@"");
+    //    CGRect frame = self.tbData.frame;
+    //    frame.origin.y = frame.origin.y - searchBar.bounds.size.height;
+    //    self.tbData.frame = frame;
+    //
+    //    NSLog(@"end search");
+    //
+    //    searchBar.showsScopeBar = NO;
+    //    [searchBar sizeToFit];
+    //
+    //    [searchBar setShowsCancelButton:NO animated:YES];
+    //
+    //
+    //    NSLog(@"");
     
     return YES;
 }
@@ -616,7 +624,7 @@
         [self presentViewController:viewController animated:YES completion:nil];
     }
     
-
+    
 }
 
 
@@ -636,7 +644,7 @@
     if (buttonIndex == 0 && alertView.tag == TAG_DELETE_ITEM) {
         //thuc hien xoa
         
-     BOOL result =    [dtoLeadProcess deleteEntity:deleteLeadId];
+        BOOL result =    [dtoLeadProcess deleteEntity:deleteLeadId];
         //reload lai csdl
         if (result) {
             
@@ -650,6 +658,21 @@
             UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:KEY_NOTIFICATION_TITLE message:SYS_Notification_UpdateFail delegate:self cancelButtonTitle:KEY_NOTIFICATION_ACCEPT otherButtonTitles:  nil];
         }
         
+        
+    }
+    else if(buttonIndex==0 && alertView.tag==22){
+        NSLog(@"id:%@",followId);
+        DTOFLLOWUPProcess *followProcess=[DTOFLLOWUPProcess new];
+        NSMutableDictionary *dicEntity=[NSMutableDictionary new];
+        [dicEntity setObject:followId forKey:DTOFOLLOWUP_id];
+        [dicEntity setObject:@"3" forKey:DTOFOLLOWUP_followUpState];
+        BOOL success=[followProcess insertToDBWithEntity:dicEntity];
+        if(success){
+            [self filterData];
+        }
+        else{
+            NSLog(@"Error");
+        }
     }
 }
 
@@ -662,9 +685,9 @@
     //lon lan
     NSLog(@"VIEW ADDRESS = %@", dicData);
     
-//    if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_address]]) {
-//        return;
-//    }
+    //    if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_address]]) {
+    //        return;
+    //    }
     
     if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_lon]]) {
         float fLon = [[dicData objectForKey:DTOLEAD_lon] floatValue];
@@ -680,16 +703,16 @@
         }else{
             viewController.address = @"";
         }
-
+        
         
         [self presentViewController:viewController animated:YES completion:nil];
         
     }
     
-//    TestMapViewController *viewController = [[TestMapViewController alloc]initWithNibName:@"TestMapViewController" bundle:nil];
-//    
-//    
-//    [self presentViewController:viewController animated:YES completion:nil];
+    //    TestMapViewController *viewController = [[TestMapViewController alloc]initWithNibName:@"TestMapViewController" bundle:nil];
+    //
+    //
+    //    [self presentViewController:viewController animated:YES completion:nil];
 }
 - (void) AccountLeadCellDelegate_ActionChangeFlowWithData : (NSDictionary*) dicData {
     
@@ -697,6 +720,7 @@
     //sau hỏi rõ giải pháp tính sau
     FlowLeadViewController *detail = [[FlowLeadViewController alloc] initWithNibName:@"FlowLeadViewController" bundle:nil];
     detail.dataSend=dicData;
+    detail.delegate = self;
     detail.view.frame = CGRectMake(0, 0, 600, 500);
     //[InterfaceUtil setBorderWithCornerAndBorder:detail.view :6 :0.2 :nil];
     [self presentPopupViewController:detail animationType:1];
@@ -740,14 +764,14 @@
 {
     
     switch (result)
-	{
-		case MFMailComposeResultCancelled:
-			//NSLog(@"Cancelled");
-			break;
-		case MFMailComposeResultSaved:
-			//NSLog(@"Saved");
-			break;
-		case MFMailComposeResultSent:
+    {
+        case MFMailComposeResultCancelled:
+            //NSLog(@"Cancelled");
+            break;
+        case MFMailComposeResultSaved:
+            //NSLog(@"Saved");
+            break;
+        case MFMailComposeResultSent:
         {
             UIAlertView *alert = [[UIAlertView alloc] init];
             [alert setTitle:@"Gửi email thành công!"];
@@ -758,8 +782,8 @@
             [alert show];
             
         }
-			break;
-		case MFMailComposeResultFailed:
+            break;
+        case MFMailComposeResultFailed:
         {
             UIAlertView *alert = [[UIAlertView alloc] init];
             [alert setTitle:@"Không gửi được email!"];
@@ -770,11 +794,11 @@
             [alert show];
             
         }
-			break;
+            break;
             
-			//NSLog(@"Not send");
+            //NSLog(@"Not send");
     }
-	[self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
@@ -783,7 +807,7 @@
 - (void) delegate_view : (NSDictionary*) dicData {
     DetailLeadViewController *detail = [[DetailLeadViewController alloc] initWithNibName:@"DetailLeadViewController" bundle:nil];
     detail.dataSend=dicData;
-    [self presentPopupViewController:detail animationType:1];
+    [self presentViewController:detail animated:YES completion:nil];
 }
 -(void) delegate_edit:(NSDictionary *)dicData{
     
@@ -807,6 +831,16 @@
     [mylert show];
     
 }
+
+#pragma mark change status follow
+-(void) delegate_changeStatusFollow:(NSString *)followid{
+    
+    followId=followid;
+    UIAlertView *aler=[[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Hoàn thành theo dõi" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles:@"Huỷ", nil];
+    aler.tag=22;
+    [aler show];
+}
+
 -(void) delegate_call:(NSDictionary *)dicData{
     if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_phone]]){
         NSString *callnumber=[NSString stringWithFormat:@"telprompt://%@",[dicData objectForKey:DTOLEAD_phone]];
@@ -850,5 +884,14 @@
         
     }
 }
-
+-(void)delegate_dismisFollow:(int)item{
+    NSLog(@"abc");
+    if(item==0){
+        [self dismissPopupViewControllerWithanimationType:nil];
+    }
+    else{
+        [self dismissPopupViewControllerWithanimationType:nil];
+        [self filterData];
+    }
+}
 @end

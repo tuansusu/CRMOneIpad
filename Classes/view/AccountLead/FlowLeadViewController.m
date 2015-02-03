@@ -10,6 +10,7 @@
 #import "DTOSYSCATProcess.h"
 #import "CalendarPickerViewController.h"
 #import "DTOFLLOWUPProcess.h"
+#import "Util.h"
 
 #define FOLLOW_UP_LEAD_ITEM 44
 #define TAG_SELECT_DATE_START 11
@@ -29,7 +30,7 @@
     DTOFLLOWUPProcess *dtoFollowProcess;
     NSString *catId;
     BOOL success;
-    
+    Util *util;
 }
 
 @end
@@ -66,7 +67,7 @@
     listArrPersonPosition = [dtoSyscatProcess filterWithCatType:FOLLOW_UP_LEAD];
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
-    
+    util=[Util new];
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
     NSString *MyString;
@@ -148,7 +149,12 @@
 
 - (IBAction)actionSave:(id)sender {
     //check validate
-    
+    if([StringUtil stringIsEmpty:_txtMucDich.text] && [StringUtil stringIsEmpty:catId]){
+        
+        [util showTooltip:_txtMucDich withText:@"Anh/Chị chưa chọn mục đích theo dõi" showview:_viewmaininfo];
+        [util setBorder:_txtMucDich];
+        return;
+    }
     NSString *strClientContactId = IntToStr(([dtoFollowProcess getClientId]));
     NSMutableDictionary *dicEntity=[NSMutableDictionary new];
     [dicEntity setObject:strClientContactId forKey:DTOFOLLOWUP_clientFollowUpId];
@@ -218,8 +224,8 @@
     
 }
 - (IBAction)actionCancel:(id)sender {
-    NSLog(@"dismiss");
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    [_delegate delegate_dismisFollow:0];
 }
 
 - (IBAction)actionRemind:(id)sender {
@@ -422,6 +428,14 @@
             
         default:
             break;
+    }
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (alertView.tag==5) {
+        [_delegate delegate_dismisFollow:1];
+    }
+    else if(alertView.tag==6){
+        [_delegate delegate_dismisFollow:0];
     }
 }
 @end

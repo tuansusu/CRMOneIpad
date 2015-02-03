@@ -8,9 +8,17 @@
 
 #import "AccountLeadCell.h"
 #import "DTOFLLOWUPProcess.h"
+#import "Util.h"
 
 @implementation AccountLeadCell
-
+//kiem tra trang thai khahc hang co dang duọc theo doi hay khong, neu la 1 thi chua theo doi, la 2 thi dang theo doi, la 3 thi xong thoi doi
+int checkFollow =0;
+NSDictionary *arrayData;
+//thong tin chon NGAY - THANG
+int SELECTED_DATE_TAG ;
+NSDate *dateFrom, *dateTo;
+NSDate *timeFrom, *timeTo;
+NSDateFormatter *df,*dfTime;
 - (void)awakeFromNib
 {
     // Initialization code
@@ -41,8 +49,7 @@
 
 -(void) loadDataToCellWithData:(NSDictionary *)dicData withOption:(int)smgSelect{
     
-    DTOFLLOWUPProcess *_DTOFLLOWUPProcess=[DTOFLLOWUPProcess new];
-    BOOL checkFollow;
+    
     NSString *leadId=[dicData objectForKey:DTOLEAD_leadId];
     if(leadId.length>0){
         leadId=leadId;
@@ -50,7 +57,7 @@
     else{
         leadId=[dicData objectForKey:DTOLEAD_clientLeadId];
     }
-    checkFollow=[_DTOFLLOWUPProcess checkFollowUp:leadId objectType:@"LEAD"];
+    //[self checkDateFollow:leadId];
     _dicData = dicData;
     
     NSString *code = @"";
@@ -91,12 +98,23 @@
     }else{
         self.lbAddress.text = [dicData objectForKey:DTOLEAD_address];
     }
-    if (checkFollow) {
+    if ([self checkFollowLead:leadId]==1) {
+        //dang theo doi
         [_btnFollow setImage:[UIImage imageNamed:@"task_done.png"] forState:UIControlStateNormal];
+    }
+    else if([self checkFollowLead:leadId]==2){
+        //qua han
+        [_btnFollow setImage:[UIImage imageNamed:@"task_not_done.png"] forState:UIControlStateNormal];
+        
+    }
+    else if([self checkFollowLead:leadId]==3){
+        //hoan thanh
+        [_btnFollow setImage:[UIImage imageNamed:@"flag_disable.png"] forState:UIControlStateNormal];
+        
     }
     else{
         [_btnFollow setImage:[UIImage imageNamed:@"flag_enable.png"] forState:UIControlStateNormal];
-
+        
     }
     switch (smgSelect) {
         case 1:
@@ -117,7 +135,26 @@
     [self.imgAvatar setAlpha:1.0f];
     
 }
-
+//hàm kiểm trang thái theo doi khách hàng
+-(int) checkFollowLead:(NSString *)leadId{
+    checkFollow=0;
+    if([self checkLeadDateFollow:leadId]){
+        checkFollow=2;
+    }
+    else{
+        DTOFLLOWUPProcess *_DTOFLLOWUPProcess=[DTOFLLOWUPProcess new];
+        arrayData= [_DTOFLLOWUPProcess getDataWithKey:DTOFOLLOWUP_objectId withValue:leadId];
+        NSLog(@"cc:%@",[arrayData objectForKey:DTOFOLLOWUP_followUpState] );
+        if(arrayData.count >0){
+            NSString *item;
+            item= [arrayData objectForKey:DTOFOLLOWUP_followUpState];
+            if(item.length>0){
+                checkFollow = [[arrayData objectForKey:DTOFOLLOWUP_followUpState] intValue];
+            }
+        }
+    }
+    return checkFollow;
+}
 - (IBAction)actionAddress:(id)sender {
     
     [_delegate AccountLeadCellDelegate_ActionViewMapWithData:_dicData];
@@ -129,12 +166,33 @@
 }
 
 - (IBAction)actionChangeFlow:(id)sender {
-    [_delegate AccountLeadCellDelegate_ActionChangeFlowWithData:_dicData];
+    NSString *leadId=[_dicData objectForKey:DTOLEAD_leadId];
+    if(leadId.length>0){
+        leadId=leadId;
+    }
+    else{
+        leadId=[_dicData objectForKey:DTOLEAD_clientLeadId];
+    }
+    if([self checkFollowLead:leadId]==0){
+        [_delegate AccountLeadCellDelegate_ActionChangeFlowWithData:_dicData];
+    }
+    else if ([self checkFollowLead:leadId]==1){
+        //xu ly trang thai thanh da hoan thanh
+        NSLog(@"chua xu ly");
+          NSDictionary *data;
+        DTOFLLOWUPProcess *followProcess=[DTOFLLOWUPProcess new];
+        data= [followProcess getDataWithKey:DTOFOLLOWUP_objectId withValue:leadId];
+        NSString *followid;
+        if(data.count>0){
+            followid = [data objectForKey:DTOFOLLOWUP_id];
+        [_delegate delegate_changeStatusFollow:followid];
+        }
+    }
 }
 
 - (IBAction)actionCall:(id)sender {
     //if(!])
-   [[UIApplication sharedApplication]openURL:[NSURL URLWithString:_lbPhone.text]];
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:_lbPhone.text]];
 }
 
 -(BOOL) canPerformAction:(SEL)action withSender:(id)sender {
@@ -169,6 +227,53 @@
 -(void) map:(NSDictionary *)dicData{
     [_delegate delegate_maps:_dicData];
 }
+-(BOOL) checkLeadDateFollow:(NSString *)leadId{
+    BOOL res=NO;
+    NSDictionary *data;
+    DTOFLLOWUPProcess *followProcess=[DTOFLLOWUPProcess new];
+    data= [followProcess getDataWithKey:DTOFOLLOWUP_objectId withValue:leadId];
+    
+    NSDate *today=[[NSDate alloc] init];
+    
+    NSString *strDateEnd=[data objectForKey:DTOFOLLOWUP_endDate];
+    if (![StringUtil stringIsEmpty:strDateEnd]) {
 
+        
+        //ngay ket thuc theo doi
+        NSDateFormatter *dateFromStringFormat=[[NSDateFormatter alloc]init];
+        [dateFromStringFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss.S"];
+        NSDateFormatter *dateEndFormat=[[NSDateFormatter alloc]init];
+        [dateEndFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss.S"];
+        NSDate *end=[dateFromStringFormat dateFromString:strDateEnd];
+        
+        NSString *stt =[arrayData objectForKey:DTOFOLLOWUP_followUpState] ;
+        NSComparisonResult result;
+        result =[today compare:end];
+        
+        if (result == NSOrderedDescending && ![stt isEqualToString:@"2"]) {
+            NSLog(@"Qua han");
+            NSString *itemid;
+            itemid=[arrayData objectForKey:DTOFOLLOWUP_id];
+            NSLog(@"item:%@",itemid);
+            if([StringUtil stringIsEmpty:itemid]){
+                return NO;
+            }
+            NSMutableDictionary *dicEntity=[NSMutableDictionary new];
+            [dicEntity setObject:itemid forKey:DTOFOLLOWUP_id];
+            [dicEntity setObject:@"2" forKey:DTOFOLLOWUP_followUpState];
+            BOOL success=[followProcess insertToDBWithEntity:dicEntity];
+            if(success){
+                res=YES;
+                  NSLog(@"update %@ stt = 2",leadId);
+            }
+            else{
+                res=NO;
+                NSLog(@"Error");
+            }
+            
+        }
+    }
+    return res;
+}
 
 @end

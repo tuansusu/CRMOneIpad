@@ -76,7 +76,7 @@
 -(NSDictionary*) getDataWithKey : (NSString*) inputKey withValue : (NSString*) inputValue{
     NSMutableArray *listDic = nil;
     NSArray *orderBy = [NSArray array];
-    listDic = [super getAllItemsWithTableName:TABLENAME_FOLLOWUP withFields:[self getAllFields] withConditionString:[NSString stringWithFormat:@" Where %@ = ?", inputKey] withParameter:[NSArray arrayWithObjects:inputValue, nil] withOrderByFields:orderBy];
+    listDic = [super getAllItemsWithTableName:TABLENAME_FOLLOWUP withFields:[self getAllFields] withConditionString:[NSString stringWithFormat:@" Where  objecttype='LEAD' and %@ = ?", inputKey] withParameter:[NSArray arrayWithObjects:inputValue, nil] withOrderByFields:orderBy];
     
     if (listDic.count>0) {
         
@@ -86,20 +86,32 @@
     
     return nil;
 }
-
+-(NSDictionary*) getDataAccountWithKey : (NSString*) inputKey withValue : (NSString*) inputValue{
+    NSMutableArray *listDic = nil;
+    NSArray *orderBy = [NSArray array];
+    listDic = [super getAllItemsWithTableName:TABLENAME_FOLLOWUP withFields:[self getAllFields] withConditionString:[NSString stringWithFormat:@" Where  objecttype='ACCOUNT' and %@ = ?", inputKey] withParameter:[NSArray arrayWithObjects:inputValue, nil] withOrderByFields:orderBy];
+    
+    if (listDic.count>0) {
+        
+        return [listDic objectAtIndex:0];
+        
+    }
+    
+    return nil;
+}
 -(NSInteger) getClientId {
     return [super getMaxClientIdWithTableName:TABLENAME_FOLLOWUP withField:DTOFOLLOWUP_clientFollowUpId];
 }
 
 //filter with lay danh sach lien he cua 1 cai khach hang dau moi
--(NSMutableArray*) filterWithClientLeaderId: (NSString*) strValue{
+-(NSMutableArray*) filterWithClientLeaderId:(NSString *)leadId objectType:(NSString *)type{
     NSArray *allFields =[NSArray arrayWithObjects:DTOFOLLOWUP_id, DTOFOLLOWUP_clientFollowUpId, DTOFOLLOWUP_createdBy, DTOFOLLOWUP_createdDate, DTOFOLLOWUP_employeeId, DTOFOLLOWUP_endDate,DTOFOLLOWUP_followUpId, DTOFOLLOWUP_followUpState,DTOFOLLOWUP_isEmail,DTOFOLLOWUP_isNotify,DTOFOLLOWUP_isReminder,DTOFOLLOWUP_isSms,DTOFOLLOWUP_notifyDate,DTOFOLLOWUP_objectId,DTOFOLLOWUP_objectName,DTOFOLLOWUP_objectType,DTOFOLLOWUP_startDate,DTOFOLLOWUP_sysCatId,DTOFOLLOWUP_updatedBy,DTOFOLLOWUP_updatedDate, nil];
     
-    NSString *query = [NSString stringWithFormat:@"SELECT %@ FROM %@ where ObjectId = ? order by updatedDate  desc", [allFields componentsJoinedByString:@"," ], TABLENAME_FOLLOWUP];
+    NSString *query = [NSString stringWithFormat:@"SELECT %@ FROM %@ where objectid = ? and objecttype=?  order by updatedDate  desc", [allFields componentsJoinedByString:@"," ], TABLENAME_FOLLOWUP];
     
     NSLog(@"query:%@",query);
     
-    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:[NSArray arrayWithObjects:strValue, nil]];
+    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:[NSArray arrayWithObjects:leadId,type, nil]];
     
     
 }

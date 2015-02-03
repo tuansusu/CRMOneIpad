@@ -30,10 +30,12 @@
 
 -(NSDictionary*) getDataWithKey : (NSString*) inputKey withValue : (NSString*) inputValue;
 
+-(NSDictionary*) getDataAccountWithKey : (NSString*) inputKey withValue : (NSString*) inputValue;
+
 -(NSInteger) getClientId ;
 
 /*
  * Lọc danh sach lien he theo clientLeaderId
  */
--(NSMutableArray*) filterWithClientLeaderId: (NSString*) strValue;
+-(NSMutableArray*) filterWithClientLeaderId: (NSString *)leadId objectType:(NSString *)type;
 @end

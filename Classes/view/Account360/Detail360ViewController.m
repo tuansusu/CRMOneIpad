@@ -21,6 +21,10 @@
 #import "Globals.h"
 #import "EditCalendarLeadViewController.h"
 
+#import "TaskCalendarCell.h"
+#import "TaskCalTLineCell.h"
+#import "TaskActionCell.h"
+
 ////remove
 #import "StringUtil.h"
 
@@ -47,6 +51,10 @@
 #define DELETE_TASK 44
 #define DELETE_COHOI 55
 #define DELETE_LEAD 66
+
+static NSString* const TaskCalendarNormalCellId   = @"TaskCalendarCellId";
+static NSString* const TaskCalendarTimelineCellId = @"TaskCalTLineCellId";
+static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
 @interface Detail360ViewController ()<ComplainsViewDelegate,ProductsLeadViewDelegate,EditCalendarLeadViewControllerDelegate>
 {
@@ -98,6 +106,8 @@
     ProEMBDetailViewController *proEMBDetailVC;
     ProBankPlusDetailViewController *proBankPlusDetailVC;
     
+    //calendar
+    BOOL calendarIsTimeline;
 }
 @end
 
@@ -121,6 +131,14 @@
         
         [self.tbData setSeparatorInset:UIEdgeInsetsZero];
     }
+    
+    /* set defaults cell for Task Calendar */
+    [self.tbData registerNib:[TaskCalendarCell nib] forCellReuseIdentifier:TaskCalendarNormalCellId];
+    [self.tbData registerNib:[TaskCalTLineCell nib] forCellReuseIdentifier:TaskCalendarTimelineCellId];
+    [self.tbData registerNib:[TaskActionCell   nib] forCellReuseIdentifier:TaskActionCellId];
+    
+    // calendar
+    calendarIsTimeline = YES;
     
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
@@ -565,6 +583,10 @@
 }
 
 - (IBAction)actionCalendar:(UIButton *)sender {
+    if (typeActionEvent == type360View_Calendar)
+    {
+        calendarIsTimeline = !calendarIsTimeline;
+    }
     [self loadDataWithTypeAction:type360View_Calendar];
     [self displayNormalButtonState:sender];
 }
@@ -675,7 +697,16 @@
     
     switch (typeActionEvent) {
         case type360View_Calendar:
-            return 40.0f;
+        {
+            if (calendarIsTimeline)
+            {
+                return 225.0f;
+            }
+            else
+            {
+                return 66.0f;
+            }
+        }
             break;
         case type360View_Task:
             return 60.0f;
@@ -742,25 +773,43 @@
     
     
     if (self.tbData) {
-        
-        
         switch (typeActionEvent) {
             case type360View_Calendar:
             {
-                static NSString *cellId = @"Calendar360Cell";
-                Calendar360Cell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
-                
-                
-                if (!cell) {
-                    cell = [Calendar360Cell initNibCell];
+                if (calendarIsTimeline)
+                {
+                    TaskCalTLineCell *cell = [tableView dequeueReusableCellWithIdentifier:TaskCalendarTimelineCellId];
+                    
+                    if (indexPath.row < arrayData.count)
+                    {
+                        [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+                        if (indexPath.row == 0)
+                        {
+                            cell.tbv_position = TaskCalTLineCell_Top;
+                        }
+                        else if (indexPath.row == arrayData.count - 1)
+                        {
+                            cell.tbv_position = TaskCalTLineCell_Bottom;
+                        }
+                        else
+                        {
+                            cell.tbv_position = TaskCalTLineCell_Middle;
+                        }
+                    }
+                    
+                    return cell;
                 }
-                
-                if (arrayData.count>0) {
-                    [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+                else
+                {
+                    TaskCalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:TaskCalendarNormalCellId];
+                    
+                    if (indexPath.row < arrayData.count)
+                    {
+                        [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+                    }
+                    
+                    return cell;
                 }
-                
-                return cell;
-                
             }
                 break;
             case type360View_Contact:{
@@ -817,19 +866,19 @@
                 
             case type360View_Task:
             {
-                static NSString *cellId = @"Task360Cell";
-                Task360Cell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+                TaskActionCell *cell= [tableView dequeueReusableCellWithIdentifier:TaskActionCellId];
                 
-                
-                if (!cell) {
-                    cell = [Task360Cell initNibCell];
+                if (cell !=nil)
+                {
+                    cell.delegate = self;
+                    
+                    if (indexPath.row < arrayData.count)
+                    {
+                        [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+                    }
+                    
+                    return cell;
                 }
-                
-                if (arrayData.count>0) {
-                    [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
-                }
-                
-                return cell;
             }
                 break;
             default:

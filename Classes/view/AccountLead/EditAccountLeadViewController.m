@@ -267,6 +267,11 @@
         for (UIView *viewSubTemp in viewTemp.subviews) {
             
             
+            if ([viewSubTemp isKindOfClass:[UIImageView class]]) {
+                [((UIImageView*) viewSubTemp) setAlpha:1.0f];
+            }
+            
+            
             if ([viewSubTemp isKindOfClass:[UILabel class]]) {
                 ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
             }

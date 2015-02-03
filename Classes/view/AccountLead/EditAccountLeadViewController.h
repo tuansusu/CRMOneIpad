@@ -111,4 +111,9 @@
 
 - (IBAction)actionCheckSMS:(id)sender;
 
+
+//display image in ipad air
+
+
+
 @end

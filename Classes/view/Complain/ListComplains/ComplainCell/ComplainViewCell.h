@@ -30,6 +30,7 @@
     IBOutlet UILabel *lblNguoiXuLy;
     IBOutlet UILabel *lblNgayXuLy;
     IBOutlet UIButton *_btnDelete;
+    IBOutlet UIImageView *imgLine;
 }
 
 -(void)loadDataCellWithComplainOB:(DTOComplainObject*)complainOB;

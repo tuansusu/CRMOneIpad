@@ -30,6 +30,8 @@
  */
 @property (nonatomic, retain) NSDictionary *dataRoot;
 
+@property (nonatomic,assign) BOOL isKH360;
+
 @property (nonatomic,assign) id<EditCalendarLeadViewControllerDelegate>delegate;
 
 @end

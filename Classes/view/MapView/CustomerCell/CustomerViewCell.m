@@ -42,10 +42,10 @@
 -(void) loadDataToCellWithKH360OB:(DTOAccountProcessObject *)kh360OB withStatus:(NSString *)status{
     if (kh360OB.lat && kh360OB.lon) {
         if ([status isEqual:@"YES"]) {
-            [btnDirection setImage:[UIImage imageNamed:@"iconDirectionSelected"] forState:UIControlStateNormal];
+            [btnDirection setBackgroundImage:[UIImage imageNamed:@"iconDirectionSelected"] forState:UIControlStateNormal];
             _isCellSelected = YES;
         }else{
-            [btnDirection setImage:[UIImage imageNamed:@"iconDirection"] forState:UIControlStateNormal];
+            [btnDirection setBackgroundImage:[UIImage imageNamed:@"iconDirection"] forState:UIControlStateNormal];
             _isCellSelected = NO;
         }
     }else{
@@ -65,10 +65,10 @@
 -(void) loadDataToCellWithKHDMOB:(DTOAcountLeadProcessObject *)khdmOB withStatus:(NSString *)status{
     if (khdmOB.lat && khdmOB.lon) {
         if ([status isEqual:@"YES"]) {
-            [btnDirection setImage:[UIImage imageNamed:@"iconDirectionSelected"] forState:UIControlStateNormal];
+            [btnDirection setBackgroundImage:[UIImage imageNamed:@"iconDirectionSelected"] forState:UIControlStateNormal];
             _isCellSelected = YES;
         }else{
-            [btnDirection setImage:[UIImage imageNamed:@"iconDirection"] forState:UIControlStateNormal];
+            [btnDirection setBackgroundImage:[UIImage imageNamed:@"iconDirection"] forState:UIControlStateNormal];
             _isCellSelected = NO;
         }
     }else{
@@ -94,11 +94,11 @@
            [CLLocationManager authorizationStatus] != kCLAuthorizationStatusDenied)
         {
             if (_isCellSelected) {
-                [btnDirection setImage:[UIImage imageNamed:@"iconDirection"] forState:UIControlStateNormal];
+                [btnDirection setBackgroundImage:[UIImage imageNamed:@"iconDirection"] forState:UIControlStateNormal];
                 _isCellSelected= NO;
                 statusSelect = @"NO";
             }else{
-                [btnDirection setImage:[UIImage imageNamed:@"iconDirectionSelected"] forState:UIControlStateNormal];
+                [btnDirection setBackgroundImage:[UIImage imageNamed:@"iconDirectionSelected"] forState:UIControlStateNormal];
                 _isCellSelected = YES;
                 statusSelect = @"YES";
             }

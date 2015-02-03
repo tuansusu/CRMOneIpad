@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ComplainViewHeader : UIView
-
+{
+     IBOutlet UIImageView *imgLineTop;
+     IBOutlet UIImageView *imgLineBottom;
+}
 @end

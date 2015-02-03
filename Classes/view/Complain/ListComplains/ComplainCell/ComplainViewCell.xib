@@ -78,6 +78,7 @@
                                 <rect key="frame" x="0.0" y="59" width="768" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="0.5" colorSpace="calibratedRGB"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -86,6 +87,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="contentViewCell" destination="Gbd-YZ-LI0" id="SQq-3A-OLr"/>
+                <outlet property="imgLine" destination="Daz-vH-0a9" id="cDK-SB-bip"/>
                 <outlet property="lblLiDo" destination="bTA-XT-s8W" id="zaW-qe-e6E"/>
                 <outlet property="lblMaKhieuNai" destination="RfU-Ed-yXT" id="X8v-37-XTF"/>
                 <outlet property="lblNgayNhan" destination="715-4t-01c" id="x8A-kL-HaW"/>

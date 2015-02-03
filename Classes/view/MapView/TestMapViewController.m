@@ -171,6 +171,16 @@
 
 - (void) updateInterFaceWithOption : (int) option
 {
+
+    for (UIView *viewTemp in self.viewMap1.subviews) {
+
+        if ([viewTemp isKindOfClass:[UIImageView class]]) {
+
+            [((UIImageView*) viewTemp) setAlpha:1.0f];
+        }
+
+           }
+    
     //self.fullNameLB.text = TITLE_APPLICATION;
     [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
     self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;

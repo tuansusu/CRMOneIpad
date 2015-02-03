@@ -19,6 +19,11 @@
 #import "ComplainDetailViewController.h"
 #import "ComplainModel.h"
 #import "Globals.h"
+#import "EditCalendarLeadViewController.h"
+
+#import "TaskCalendarCell.h"
+#import "TaskCalTLineCell.h"
+#import "TaskActionCell.h"
 
 ////remove
 #import "StringUtil.h"
@@ -47,7 +52,11 @@
 #define DELETE_COHOI 55
 #define DELETE_LEAD 66
 
-@interface Detail360ViewController ()<ComplainsViewDelegate,ProductsLeadViewDelegate>
+static NSString* const TaskCalendarNormalCellId   = @"TaskCalendarCellId";
+static NSString* const TaskCalendarTimelineCellId = @"TaskCalTLineCellId";
+static NSString* const TaskActionCellId           = @"TaskActionCellId";
+
+@interface Detail360ViewController ()<ComplainsViewDelegate,ProductsLeadViewDelegate,EditCalendarLeadViewControllerDelegate>
 {
     int smgSelect ; //option layout
     NSArray *arrayData; //mang luu tru du lieu
@@ -97,6 +106,8 @@
     ProEMBDetailViewController *proEMBDetailVC;
     ProBankPlusDetailViewController *proBankPlusDetailVC;
     
+    //calendar
+    BOOL calendarIsTimeline;
 }
 @end
 
@@ -120,6 +131,14 @@
         
         [self.tbData setSeparatorInset:UIEdgeInsetsZero];
     }
+    
+    /* set defaults cell for Task Calendar */
+    [self.tbData registerNib:[TaskCalendarCell nib] forCellReuseIdentifier:TaskCalendarNormalCellId];
+    [self.tbData registerNib:[TaskCalTLineCell nib] forCellReuseIdentifier:TaskCalendarTimelineCellId];
+    [self.tbData registerNib:[TaskActionCell   nib] forCellReuseIdentifier:TaskActionCellId];
+    
+    // calendar
+    calendarIsTimeline = YES;
     
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
@@ -356,7 +375,7 @@
             break;
         case type360View_Calendar:
         {
-            arrayData = [dtoTaskProcess filterWith360Id:[dicData objectForKey:DTOACCOUNT_clientAccountId]];
+            arrayData = [dtoTaskProcess filterCalendarWithAccountId:[dicData objectForKey:DTOACCOUNT_clientAccountId]];
             
         }
             break;
@@ -374,8 +393,7 @@
             arrayData = [dtoOpportunityProcess filterWith360Id:[dicData objectForKey:DTOACCOUNT_clientAccountId]];
         }break;
         case type360View_Task:{
-
-            arrayData = [dtoTaskProcess filterWith360Id:[dicData objectForKey:DTOACCOUNT_clientAccountId]] ;
+             arrayData = [dtoTaskProcess filterTaskWithAccountId:[dicData objectForKey:DTOACCOUNT_clientAccountId]];
             
         }break;
 
@@ -485,8 +503,10 @@
     switch (index) {
         case SELECT_INDEX_ADD_CALENDAR:
         {
-            EditCalendar360ViewController *viewController = [[EditCalendar360ViewController alloc]initWithNibName:@"EditCalendar360ViewController" bundle:nil];
+            EditCalendarLeadViewController *viewController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
+            [viewController setDelegate:self];
             viewController.dataRoot = dicData;
+            viewController.isKH360 = YES;
             [self presentViewController:viewController animated:YES completion:nil];
         }
             break;
@@ -563,6 +583,10 @@
 }
 
 - (IBAction)actionCalendar:(UIButton *)sender {
+    if (typeActionEvent == type360View_Calendar)
+    {
+        calendarIsTimeline = !calendarIsTimeline;
+    }
     [self loadDataWithTypeAction:type360View_Calendar];
     [self displayNormalButtonState:sender];
 }
@@ -601,6 +625,11 @@
     [btnSelect setTitleColor:textColorButtonNormal forState:UIControlStateNormal];
     [btnSelect setSelectiveBorderWithColor:backgrondButtonSelected withBorderWith:5.0f withBorderFlag:AUISelectiveBordersFlagBottom];
     
+}
+#pragma mark Edit Calendar Lead ViewController Delegate
+- (void)reloadListCalendarTask{
+    [self loadDataWithTypeAction:type360View_Calendar];
+    [_tbData reloadData];
 }
 
 #pragma mark Products Lead View Delegate
@@ -668,7 +697,16 @@
     
     switch (typeActionEvent) {
         case type360View_Calendar:
-            return 40.0f;
+        {
+            if (calendarIsTimeline)
+            {
+                return 225.0f;
+            }
+            else
+            {
+                return 66.0f;
+            }
+        }
             break;
         case type360View_Task:
             return 60.0f;
@@ -735,25 +773,43 @@
     
     
     if (self.tbData) {
-        
-        
         switch (typeActionEvent) {
             case type360View_Calendar:
             {
-                static NSString *cellId = @"Calendar360Cell";
-                Calendar360Cell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
-                
-                
-                if (!cell) {
-                    cell = [Calendar360Cell initNibCell];
+                if (calendarIsTimeline)
+                {
+                    TaskCalTLineCell *cell = [tableView dequeueReusableCellWithIdentifier:TaskCalendarTimelineCellId];
+                    
+                    if (indexPath.row < arrayData.count)
+                    {
+                        [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+                        if (indexPath.row == 0)
+                        {
+                            cell.tbv_position = TaskCalTLineCell_Top;
+                        }
+                        else if (indexPath.row == arrayData.count - 1)
+                        {
+                            cell.tbv_position = TaskCalTLineCell_Bottom;
+                        }
+                        else
+                        {
+                            cell.tbv_position = TaskCalTLineCell_Middle;
+                        }
+                    }
+                    
+                    return cell;
                 }
-                
-                if (arrayData.count>0) {
-                    [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+                else
+                {
+                    TaskCalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:TaskCalendarNormalCellId];
+                    
+                    if (indexPath.row < arrayData.count)
+                    {
+                        [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+                    }
+                    
+                    return cell;
                 }
-                
-                return cell;
-                
             }
                 break;
             case type360View_Contact:{
@@ -810,19 +866,19 @@
                 
             case type360View_Task:
             {
-                static NSString *cellId = @"Task360Cell";
-                Task360Cell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+                TaskActionCell *cell= [tableView dequeueReusableCellWithIdentifier:TaskActionCellId];
                 
-                
-                if (!cell) {
-                    cell = [Task360Cell initNibCell];
+                if (cell !=nil)
+                {
+                    cell.delegate = self;
+                    
+                    if (indexPath.row < arrayData.count)
+                    {
+                        [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+                    }
+                    
+                    return cell;
                 }
-                
-                if (arrayData.count>0) {
-                    [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
-                }
-                
-                return cell;
             }
                 break;
             default:
@@ -877,9 +933,13 @@
             }
                 break;
             case type360View_Calendar:{
-                EditCalendar360ViewController *viewNoteController = [[EditCalendar360ViewController alloc]initWithNibName:@"EditCalendar360ViewController" bundle:nil];
-                viewNoteController.dataRoot = dicData;
-                [self presentViewController:viewNoteController animated:YES completion:nil];
+
+                EditCalendarLeadViewController *viewController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
+                [viewController setDelegate:self];
+                viewController.dataRoot = dicData;
+                viewController.isKH360 = YES;
+                [self presentViewController:viewController animated:YES completion:nil];
+
             }
                 break;
             default:
@@ -929,10 +989,13 @@
         }
             break;
         case type360View_Calendar:{
-            EditCalendar360ViewController *viewNoteController = [[EditCalendar360ViewController alloc]initWithNibName:@"EditCalendar360ViewController" bundle:nil];
-            viewNoteController.dataSend = dicTempData;
-            viewNoteController.dataRoot = dicData;
-            [self presentViewController:viewNoteController animated:YES completion:nil];
+            EditCalendarLeadViewController *viewController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
+            [viewController setDelegate:self];
+            viewController.dataSend = dicTempData;
+            viewController.dataRoot = dicData;
+            viewController.isKH360 = YES;
+            [self presentViewController:viewController animated:YES completion:nil];
+
         }
             break;
         default:
@@ -1108,10 +1171,11 @@
         }
             break;
         case type360View_Calendar:{
-            EditCalendar360ViewController *viewNoteController = [[EditCalendar360ViewController alloc]initWithNibName:@"EditCalendar360ViewController" bundle:nil];
-            viewNoteController.dataSend = dicTempData;
-            [self presentViewController:viewNoteController animated:YES completion:nil];
-            
+            EditCalendarLeadViewController *viewController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
+            [viewController setDelegate:self];
+            viewController.dataSend = dicTempData;
+            viewController.isKH360 = YES;
+            [self presentViewController:viewController animated:YES completion:nil];
         }
             break;
         default:

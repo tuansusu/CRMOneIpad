@@ -87,6 +87,10 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="imgLineBottom" destination="wYq-1u-rIu" id="Y5H-Ed-Vsf"/>
+                <outlet property="imgLineTop" destination="aNp-D7-tJx" id="g5x-iV-AfC"/>
+            </connections>
             <point key="canvasLocation" x="294" y="310"/>
         </view>
     </objects>

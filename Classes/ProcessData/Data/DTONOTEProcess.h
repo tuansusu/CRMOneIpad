@@ -43,5 +43,7 @@
 /* Lọc danh sach lien he theo client360Id
 */
 -(NSMutableArray*) filterWithClient360Id: (NSString*) strValue;
+//lay danh sach theo id co hoi
+-(NSMutableArray*) filterWithOpportunityId: (NSString*) strValue;
 
 @end

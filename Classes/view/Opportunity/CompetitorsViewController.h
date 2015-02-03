@@ -11,11 +11,13 @@
 #import "ProposeProductCell.h"
 #import "ContactOpportunityCell.h"
 #import "TaskOpportunityCell.h"
+#import "NoteOpportunityCell.h"
 #import "SelectIndexViewController.h"
 #import "EditOpportunityViewController.h"
 #import "EditContactOpportunityViewController.h"
 #import "EditOpportunityProductViewController.h"
 #import "EditOpportunityTaskViewController.h"
+#import "EditNoteOpportunityViewController.h"
 #import "UIViewController+MJPopupViewController.h"
 #import "EmptyCell.h"
 
@@ -25,6 +27,7 @@ enum TypeActionEvent{
     type_ProposeProduct, //propose product (sản phẩm đề xuất)
     type_Sale, //san pham da ban
     type_Task, // cong viec
+    type_Note, //Ghi chú
     type_Calendar // lich
 };
 
@@ -67,6 +70,7 @@ enum TypeActionEvent{
 @property (weak, nonatomic) IBOutlet UIButton *btnActionSale;
 @property (weak, nonatomic) IBOutlet UIButton *btnTask;
 @property (weak, nonatomic) IBOutlet UIButton *btnCalendar;
+@property (weak, nonatomic) IBOutlet UIButton *btnNote;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnEdit;
 - (IBAction)actionEdit:(id)sender;
@@ -102,6 +106,7 @@ enum TypeActionEvent{
 - (IBAction)actionActionSale:(UIButton *)sender;
 - (IBAction)actionTask:(UIButton *)sender;
 - (IBAction)actionCalendar:(UIButton *)sender;
+- (IBAction)actionNote:(id)sender;
 
 
 @property (weak, nonatomic) IBOutlet UITableView *tbData;

@@ -15,16 +15,19 @@
 #import "DTOTASKProcess.h"
 #import "DTOOPPORTUNITYPRODUCTProcess.h"
 #import "DTOOPPORTUNITYCONTACTProcess.h"
+#import "DTONOTEProcess.h"
 
 #define SELECT_TEXT_ADD_CONTACT @"LIÊN HỆ"
-#define SELECT_TEXT_ADD_NOTE @"SẢN PHẨM ĐỀ XUẤT"
+#define SELECT_TEXT_ADD_PRODUCT @"SẢN PHẨM ĐỀ XUẤT"
 #define SELECT_TEXT_ADD_CALENDAR @"SẢN PHẨM ĐÃ BÁN"
 #define SELECT_TEXT_ADD_COMPETITOR @"CÔNG VIỆC"
+#define SELECT_TEXT_ADD_NOTE @"GHI CHÚ"
 #define SELECT_TEXT_ADD_SUPORT @"LỊCH"
 
 #define SELECT_INDEX_ADD_CONTACT 0
 #define SELECT_INDEX_ADD_PRODUCT 1
 #define SELECT_INDEX_ADD_TASK 3
+#define SELECT_INDEX_ADD_NOTE 4
 
 
 
@@ -46,6 +49,7 @@
     DTOOPPORTUNITYPRODUCTProcess *dtoOpportunityProductProcess;
     DTOTASKProcess *dtoTaskProcess;
     DTOOPPORTUNITYCONTACTProcess *dtoOpportunityContactProcess;
+    DTONOTEProcess *dtoNoteProcess;
     
     UIColor *textColorButtonNormal; //mau chu button binh thuong
     UIColor *textColorButtonSelected; //mau chu button select
@@ -171,7 +175,7 @@
 -(void) initData {
     
     //khoi tao du lieu!
-    listArr  = [NSArray arrayWithObjects:SELECT_TEXT_ADD_CONTACT,SELECT_TEXT_ADD_NOTE, SELECT_TEXT_ADD_CALENDAR,SELECT_TEXT_ADD_COMPETITOR,SELECT_TEXT_ADD_SUPORT, nil];
+    listArr  = [NSArray arrayWithObjects:SELECT_TEXT_ADD_CONTACT,SELECT_TEXT_ADD_PRODUCT, SELECT_TEXT_ADD_CALENDAR,SELECT_TEXT_ADD_COMPETITOR,SELECT_TEXT_ADD_NOTE,SELECT_TEXT_ADD_SUPORT, nil];
     
     [self actionClueContact:self.btnClueContact];
     
@@ -183,6 +187,7 @@
     dtoOpportunityProductProcess = [DTOOPPORTUNITYPRODUCTProcess new];
     dtoTaskProcess = [DTOTASKProcess new];
     dtoOpportunityContactProcess = [DTOOPPORTUNITYCONTACTProcess new];
+    dtoNoteProcess = [DTONOTEProcess new];
     
     opportunity = [dtoOpportunityProcess getById:itemId];
 
@@ -213,6 +218,11 @@
         {
             //arrayData = [dtoAccountProcess filter];
             arrayData = [dtoTaskProcess filterWithKey:DTOTASK_opportunityId withValue:[opportunity objectForKey:DTOOPPORTUNITY_id]];
+        }break;
+        case type_Note:
+        {
+            //load data la ghi chu
+            arrayData = [dtoNoteProcess filterWithOpportunityId:[opportunity objectForKey:DTOOPPORTUNITY_clientOpportunityId]];
         }break;
         case type_Calendar:
         {
@@ -309,6 +319,14 @@
             [self presentViewController:viewController animated:YES completion:nil];
         }
             break;
+        case SELECT_INDEX_ADD_NOTE:
+        {
+            typeActionEvent = type_Note;
+            EditNoteOpportunityViewController *viewController = [[EditNoteOpportunityViewController alloc]initWithNibName:@"EditNoteOpportunityViewController" bundle:nil];
+            viewController.dataRoot = opportunity;
+            [self presentViewController:viewController animated:YES completion:nil];
+        }
+            break;
         default:
             break;
     }
@@ -347,6 +365,12 @@
 - (IBAction)actionCalendar:(UIButton*)sender {
     [self loadDataWithTypeAction:type_Calendar];
     [self displayNormalButtonState:sender];
+}
+
+- (IBAction)actionNote:(id)sender {
+    [self loadDataWithTypeAction:type_Note];
+    [self displayNormalButtonState:sender];
+
 }
 
 
@@ -402,6 +426,9 @@
             return 80.0f;
         }
             break;
+        case type_Note:{
+            return 60.0f;
+        }
         default:
             break;
     }
@@ -554,6 +581,24 @@
             
             return cell;
         }
+        case type_Note:
+        {
+            static NSString *cellId = @"NoteOpportunityCell";
+            NoteOpportunityCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+            
+            
+            if (!cell) {
+                cell = [NoteOpportunityCell initNibCell];
+            }
+            
+            if (arrayData.count>0) {
+                [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+            }
+            
+            return cell;
+        }
+            break;
+
         case type_Calendar:
         {
             static NSString *cellId = @"TaskOpportunityCell";
@@ -747,6 +792,13 @@
             EditOpportunityTaskViewController *viewController = [[EditOpportunityTaskViewController alloc]initWithNibName:@"EditOpportunityTaskViewController" bundle:nil];
             viewController.dataSend = dicData;
             [self presentViewController:viewController animated:YES completion:nil];
+        }
+            break;
+        case type_Note:{
+             NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
+            EditNoteOpportunityViewController *viewNoteController = [[EditNoteOpportunityViewController alloc]initWithNibName:@"EditNoteOpportunityViewController" bundle:nil];
+            viewNoteController.dataSend = dicData;
+            [self presentViewController:viewNoteController animated:YES completion:nil];
         }
             break;
         default:

@@ -140,5 +140,18 @@
     
     
 }
+//filter with lay danh sach lien he cua 1 co hoi
+-(NSMutableArray*) filterWithOpportunityId: (NSString*) strValue{
+    NSArray *allFields =[NSArray arrayWithObjects:DTONOTE_id, DTONOTE_content, DTONOTE_title, DTONOTE_noteId, DTONOTE_contentFormated,DTOATTACHMENT_clientObjectId, DTONOTE_createdDate, DTONOTE_updatedDate,DTONOTE_clientNoteId, nil];
+    
+    NSString *query = [NSString stringWithFormat:@"SELECT %@ FROM %@ where isActive=1 and objectType='Opportunity' and opportunityId = ? order by updatedDate  desc", [allFields componentsJoinedByString:@"," ], TABLENAME_DTONOTE];
+    
+    NSLog(@"query:%@",query);
+    
+    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:[NSArray arrayWithObjects:strValue, nil]];
+    
+    
+}
+
 
 @end

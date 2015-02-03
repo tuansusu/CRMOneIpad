@@ -473,8 +473,6 @@
 		76D29B131A126B91004B9CF6 /* DTOACCOUNTProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D29B121A126B91004B9CF6 /* DTOACCOUNTProcess.m */; };
 		76D29B171A126C9B004B9CF6 /* ClueContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D29B151A126C9B004B9CF6 /* ClueContactCell.m */; };
 		76D29B181A126C9B004B9CF6 /* ClueContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76D29B161A126C9B004B9CF6 /* ClueContactCell.xib */; };
-		76D29B1C1A134C58004B9CF6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D29B1A1A134C58004B9CF6 /* ViewController.m */; };
-		76D29B1D1A134C58004B9CF6 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76D29B1B1A134C58004B9CF6 /* ViewController.xib */; };
 		76D29B211A13567D004B9CF6 /* TestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D29B1F1A13567D004B9CF6 /* TestTableViewController.m */; };
 		76D29B221A13567D004B9CF6 /* TestTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76D29B201A13567D004B9CF6 /* TestTableViewController.xib */; };
 		76D29B241A136E4A004B9CF6 /* ic_plus-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76D29B231A136E4A004B9CF6 /* ic_plus-1.png */; };
@@ -926,6 +924,10 @@
 		943296B91A7CE9970097592D /* OpportunityLeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 943296B71A7CE9970097592D /* OpportunityLeadCell.xib */; };
 		949B76B01A3F357A00945B41 /* SearchAdvanceOpportunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 949B76AE1A3F357A00945B41 /* SearchAdvanceOpportunityViewController.m */; };
 		949B76B11A3F357A00945B41 /* SearchAdvanceOpportunityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 949B76AF1A3F357A00945B41 /* SearchAdvanceOpportunityViewController.xib */; };
+		94A2A7721A80F89F00C412E7 /* EditNoteOpportunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A2A7701A80F89F00C412E7 /* EditNoteOpportunityViewController.m */; };
+		94A2A7731A80F89F00C412E7 /* EditNoteOpportunityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A2A7711A80F89F00C412E7 /* EditNoteOpportunityViewController.xib */; };
+		94A2A7771A80F9F900C412E7 /* NoteOpportunityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A2A7751A80F9F900C412E7 /* NoteOpportunityCell.m */; };
+		94A2A7781A80F9F900C412E7 /* NoteOpportunityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A2A7761A80F9F900C412E7 /* NoteOpportunityCell.xib */; };
 		94BA8D771A2DF3710082AE9E /* EditOpportunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA8D751A2DF3710082AE9E /* EditOpportunityViewController.m */; };
 		94BA8D781A2DF3710082AE9E /* EditOpportunityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BA8D761A2DF3710082AE9E /* EditOpportunityViewController.xib */; };
 		94BA8D7C1A2DF3CF0082AE9E /* CalendarPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA8D7A1A2DF3CF0082AE9E /* CalendarPickerViewController.m */; };
@@ -1785,9 +1787,6 @@
 		76D29B141A126C9B004B9CF6 /* ClueContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClueContactCell.h; sourceTree = "<group>"; };
 		76D29B151A126C9B004B9CF6 /* ClueContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClueContactCell.m; sourceTree = "<group>"; };
 		76D29B161A126C9B004B9CF6 /* ClueContactCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClueContactCell.xib; sourceTree = "<group>"; };
-		76D29B191A134C58004B9CF6 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		76D29B1A1A134C58004B9CF6 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		76D29B1B1A134C58004B9CF6 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		76D29B1E1A13567D004B9CF6 /* TestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTableViewController.h; sourceTree = "<group>"; };
 		76D29B1F1A13567D004B9CF6 /* TestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableViewController.m; sourceTree = "<group>"; };
 		76D29B201A13567D004B9CF6 /* TestTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestTableViewController.xib; sourceTree = "<group>"; };
@@ -2501,6 +2500,12 @@
 		949B76AD1A3F357A00945B41 /* SearchAdvanceOpportunityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchAdvanceOpportunityViewController.h; sourceTree = "<group>"; };
 		949B76AE1A3F357A00945B41 /* SearchAdvanceOpportunityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchAdvanceOpportunityViewController.m; sourceTree = "<group>"; };
 		949B76AF1A3F357A00945B41 /* SearchAdvanceOpportunityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchAdvanceOpportunityViewController.xib; sourceTree = "<group>"; };
+		94A2A76F1A80F89F00C412E7 /* EditNoteOpportunityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNoteOpportunityViewController.h; sourceTree = "<group>"; };
+		94A2A7701A80F89F00C412E7 /* EditNoteOpportunityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNoteOpportunityViewController.m; sourceTree = "<group>"; };
+		94A2A7711A80F89F00C412E7 /* EditNoteOpportunityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditNoteOpportunityViewController.xib; sourceTree = "<group>"; };
+		94A2A7741A80F9F900C412E7 /* NoteOpportunityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteOpportunityCell.h; sourceTree = "<group>"; };
+		94A2A7751A80F9F900C412E7 /* NoteOpportunityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteOpportunityCell.m; sourceTree = "<group>"; };
+		94A2A7761A80F9F900C412E7 /* NoteOpportunityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteOpportunityCell.xib; sourceTree = "<group>"; };
 		94BA8D741A2DF3710082AE9E /* EditOpportunityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditOpportunityViewController.h; sourceTree = "<group>"; };
 		94BA8D751A2DF3710082AE9E /* EditOpportunityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditOpportunityViewController.m; sourceTree = "<group>"; };
 		94BA8D761A2DF3710082AE9E /* EditOpportunityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditOpportunityViewController.xib; sourceTree = "<group>"; };
@@ -4178,34 +4183,13 @@
 		843BF0B51A03EC1600EA1D8A /* Opportunity */ = {
 			isa = PBXGroup;
 			children = (
-				7657E8CC1A5AEBE2008A62F9 /* EditOpportunityTaskViewController.h */,
-				7657E8CD1A5AEBE2008A62F9 /* EditOpportunityTaskViewController.m */,
-				7657E8D31A5AEBE2008A62F9 /* EditOpportunityTaskViewController.xib */,
-				7657E8CE1A5AEBE2008A62F9 /* TaskOpportunityCell.h */,
-				7657E8CF1A5AEBE2008A62F9 /* TaskOpportunityCell.m */,
-				7657E8D01A5AEBE2008A62F9 /* TaskOpportunityCell.xib */,
-				7657E8D11A5AEBE2008A62F9 /* EditOpportunityProductViewController.h */,
-				7657E8CB1A5AEBE2008A62F9 /* EditOpportunityProductViewController.m */,
-				7657E8D21A5AEBE2008A62F9 /* EditOpportunityProductViewController.xib */,
-				843BF0BB1A03ECB100EA1D8A /* Cell */,
-				949B76AD1A3F357A00945B41 /* SearchAdvanceOpportunityViewController.h */,
-				949B76AE1A3F357A00945B41 /* SearchAdvanceOpportunityViewController.m */,
-				949B76AF1A3F357A00945B41 /* SearchAdvanceOpportunityViewController.xib */,
-				94BA8D741A2DF3710082AE9E /* EditOpportunityViewController.h */,
-				94BA8D751A2DF3710082AE9E /* EditOpportunityViewController.m */,
-				94BA8D761A2DF3710082AE9E /* EditOpportunityViewController.xib */,
 				843BF0B61A03EC3200EA1D8A /* ListOpportunityViewController.h */,
 				843BF0B71A03EC3200EA1D8A /* ListOpportunityViewController.m */,
 				843BF0B81A03EC3200EA1D8A /* ListOpportunityViewController.xib */,
-				762048731A0D246600AAA917 /* CompetitorsViewController.h */,
-				762048741A0D246600AAA917 /* CompetitorsViewController.m */,
-				762048751A0D246600AAA917 /* CompetitorsViewController.xib */,
-				76D29B191A134C58004B9CF6 /* ViewController.h */,
-				76D29B1A1A134C58004B9CF6 /* ViewController.m */,
-				76D29B1B1A134C58004B9CF6 /* ViewController.xib */,
-				7623F04F1A41C98400F99DA0 /* EditContactOpportunityViewController.h */,
-				7623F0501A41C98400F99DA0 /* EditContactOpportunityViewController.m */,
-				7623F0511A41C98400F99DA0 /* EditContactOpportunityViewController.xib */,
+				94A2A76E1A80F83E00C412E7 /* Detail */,
+				94A2A76C1A80F7D300C412E7 /* Edit */,
+				843BF0BB1A03ECB100EA1D8A /* Cell */,
+				94A2A76D1A80F82600C412E7 /* Search andvance */,
 			);
 			path = Opportunity;
 			sourceTree = "<group>";
@@ -4213,6 +4197,12 @@
 		843BF0BB1A03ECB100EA1D8A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				94A2A7741A80F9F900C412E7 /* NoteOpportunityCell.h */,
+				94A2A7751A80F9F900C412E7 /* NoteOpportunityCell.m */,
+				94A2A7761A80F9F900C412E7 /* NoteOpportunityCell.xib */,
+				7657E8CE1A5AEBE2008A62F9 /* TaskOpportunityCell.h */,
+				7657E8CF1A5AEBE2008A62F9 /* TaskOpportunityCell.m */,
+				7657E8D01A5AEBE2008A62F9 /* TaskOpportunityCell.xib */,
 				843BF0BC1A03ECC500EA1D8A /* OpportunityCell.h */,
 				843BF0BD1A03ECC500EA1D8A /* OpportunityCell.m */,
 				843BF0BE1A03ECC500EA1D8A /* OpportunityCell.xib */,
@@ -5722,6 +5712,48 @@
 			name = OpportunityLeadCell;
 			sourceTree = "<group>";
 		};
+		94A2A76C1A80F7D300C412E7 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				94A2A76F1A80F89F00C412E7 /* EditNoteOpportunityViewController.h */,
+				94A2A7701A80F89F00C412E7 /* EditNoteOpportunityViewController.m */,
+				94A2A7711A80F89F00C412E7 /* EditNoteOpportunityViewController.xib */,
+				7657E8CC1A5AEBE2008A62F9 /* EditOpportunityTaskViewController.h */,
+				7657E8CD1A5AEBE2008A62F9 /* EditOpportunityTaskViewController.m */,
+				7657E8D31A5AEBE2008A62F9 /* EditOpportunityTaskViewController.xib */,
+				7657E8D11A5AEBE2008A62F9 /* EditOpportunityProductViewController.h */,
+				7657E8CB1A5AEBE2008A62F9 /* EditOpportunityProductViewController.m */,
+				7657E8D21A5AEBE2008A62F9 /* EditOpportunityProductViewController.xib */,
+				94BA8D741A2DF3710082AE9E /* EditOpportunityViewController.h */,
+				94BA8D751A2DF3710082AE9E /* EditOpportunityViewController.m */,
+				94BA8D761A2DF3710082AE9E /* EditOpportunityViewController.xib */,
+				7623F04F1A41C98400F99DA0 /* EditContactOpportunityViewController.h */,
+				7623F0501A41C98400F99DA0 /* EditContactOpportunityViewController.m */,
+				7623F0511A41C98400F99DA0 /* EditContactOpportunityViewController.xib */,
+			);
+			name = Edit;
+			sourceTree = "<group>";
+		};
+		94A2A76D1A80F82600C412E7 /* Search andvance */ = {
+			isa = PBXGroup;
+			children = (
+				949B76AD1A3F357A00945B41 /* SearchAdvanceOpportunityViewController.h */,
+				949B76AE1A3F357A00945B41 /* SearchAdvanceOpportunityViewController.m */,
+				949B76AF1A3F357A00945B41 /* SearchAdvanceOpportunityViewController.xib */,
+			);
+			name = "Search andvance";
+			sourceTree = "<group>";
+		};
+		94A2A76E1A80F83E00C412E7 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				762048731A0D246600AAA917 /* CompetitorsViewController.h */,
+				762048741A0D246600AAA917 /* CompetitorsViewController.m */,
+				762048751A0D246600AAA917 /* CompetitorsViewController.xib */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
 		B301F1B917C382D80004650C /* interfaces */ = {
 			isa = PBXGroup;
 			children = (
@@ -6017,6 +6049,7 @@
 				2D6D76791876726A0051AD9E /* icon_read-1.png in Resources */,
 				8496FB281A2DE34200F4A641 /* ContactLeadCell.xib in Resources */,
 				B315788C188D5E5200C0ED01 /* ic-work-order-group-2-1.png in Resources */,
+				94A2A7781A80F9F900C412E7 /* NoteOpportunityCell.xib in Resources */,
 				8497BFD71A295A2300A5ED3C /* spitfire.png in Resources */,
 				76C964731A17731900029978 /* RightTriangleIconBlack.png in Resources */,
 				8E6A10231A62257B00D98AE3 /* source.bundle in Resources */,
@@ -6320,6 +6353,7 @@
 				8E7554511A52EFC8001940FB /* iconForkRight@2x.png in Resources */,
 				B30E4DAE18A7A3E7009BB834 /* toolbar-bg-1.png in Resources */,
 				B3ECBA2B17D1EFF300AF40CF /* icon_thongtintiendo.png in Resources */,
+				94A2A7731A80F89F00C412E7 /* EditNoteOpportunityViewController.xib in Resources */,
 				8497BFDD1A295A2300A5ED3C /* newark_nj_1922.jpg in Resources */,
 				7697BBC41A7FB1700023F118 /* menu_help@2x.png in Resources */,
 				8497BFDC1A295A2300A5ED3C /* x29@2x.png in Resources */,
@@ -6518,7 +6552,6 @@
 				B315789D188D5E5200C0ED01 /* write-btn-1-1.png in Resources */,
 				76C963B51A17403600029978 /* MainBISViewController.xib in Resources */,
 				76C9646D1A17731900029978 /* padded_pie_chart.png in Resources */,
-				76D29B1D1A134C58004B9CF6 /* ViewController.xib in Resources */,
 				7697BBC71A7FB1700023F118 /* menu_opportunity@2x.png in Resources */,
 				2D9A3B19182CED4F00B6E606 /* btn-bg-4.png in Resources */,
 				2D9A3B1A182CED4F00B6E606 /* loading-icon.png in Resources */,
@@ -6571,6 +6604,7 @@
 				76C964741A17731900029978 /* ScrollViewSubClass.m in Sources */,
 				76199E181A472AE700B792C5 /* DTOFLLOWUPProcess.m in Sources */,
 				8EC9728E1A5D71300021DCA3 /* FFWeekCollectionViewFlowLayout.m in Sources */,
+				94A2A7721A80F89F00C412E7 /* EditNoteOpportunityViewController.m in Sources */,
 				8E6EF7CB1A7FB9C2008C8824 /* SDWebImageDecoder.m in Sources */,
 				8EFE69011A565BDF003D55CE /* DTOProTindungDetailObject.m in Sources */,
 				76D29ACB1A11295C004B9CF6 /* DTOPRODUCTMASTERProcess.m in Sources */,
@@ -6830,7 +6864,6 @@
 				76746A371A07CF4E005CEDB8 /* DTOOPPORTUNITYProcess.m in Sources */,
 				8E2980F11A6AAB470068B66C /* EditNoteViewCell.m in Sources */,
 				2D2D216117A6946800A87364 /* InfHSBSupport.m in Sources */,
-				76D29B1C1A134C58004B9CF6 /* ViewController.m in Sources */,
 				06FE2E231A456904004A1D16 /* Items.m in Sources */,
 				8EC9729D1A5D71300021DCA3 /* FFDateManager.m in Sources */,
 				76C964661A17731900029978 /* LayeredPieChart.m in Sources */,
@@ -7032,6 +7065,7 @@
 				2D36439B1859998700190EE7 /* DejalActivityView.m in Sources */,
 				2DF7C8821821FD810020D4CC /* SRMonthPicker.m in Sources */,
 				7657E8D61A5AEBE2008A62F9 /* TaskOpportunityCell.m in Sources */,
+				94A2A7771A80F9F900C412E7 /* NoteOpportunityCell.m in Sources */,
 				2DF7C8861821FE7F0020D4CC /* MonthPickerViewController.m in Sources */,
 				849125D01A1CE68500949FC8 /* DTOSYSCATProcess.m in Sources */,
 				8EC972A51A5D71300021DCA3 /* FFGuestsTableView.m in Sources */,

@@ -113,6 +113,10 @@ NSDateFormatter *df,*dfTime;
         [_btnFollow setImage:[UIImage imageNamed:@"flag_enable.png"] forState:UIControlStateNormal];
         
     }
+    
+    [self.imgAvatar setAlpha:1.0f];
+    
+    
     switch (smgSelect) {
         case 1:
         {

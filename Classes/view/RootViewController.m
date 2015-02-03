@@ -68,8 +68,6 @@
             
             [((UIImageView*) viewTemp) setAlpha:1.0f];
         }
-        
-        
     }
     
 }

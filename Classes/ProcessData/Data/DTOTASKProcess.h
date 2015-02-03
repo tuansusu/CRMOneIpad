@@ -43,6 +43,9 @@
 - (NSMutableArray *) filterCalendarWithClientLeaderId: (NSString *) strValue;
 - (NSMutableArray *) filterTaskWithClientLeaderId: (NSString *) strValue;
 
+- (NSMutableArray *) filterCalendarWithAccountId: (NSString *) strValue;
+- (NSMutableArray *) filterTaskWithAccountId: (NSString *) strValue;
+
 - (NSMutableArray*) filterAllTask;
 /*
  * Lọc danh sach lien he theo clientLeaderId

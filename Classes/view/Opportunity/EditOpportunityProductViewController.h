@@ -15,7 +15,7 @@
 @optional
 -(void) dismissPopoverView;
 @end
-@interface EditOpportunityProductViewController : BaseViewController
+@interface EditOpportunityProductViewController : BaseViewController<UITextFieldDelegate>
 //DATA
 /*
  * chuyen tu form danh sahc lien he(co ca clientLeaderId)

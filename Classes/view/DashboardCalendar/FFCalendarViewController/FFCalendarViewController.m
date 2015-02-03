@@ -241,6 +241,7 @@
     UIBarButtonItem *barButtonAdd = [[UIBarButtonItem alloc] initWithCustomView:buttonAdd];
 
     arrayButtons = @[buttonYear, buttonMonth, buttonWeek, buttonDay];
+    
     [self.navigationItem setRightBarButtonItems:@[barButtonAdd, fixedItem, barButtonYear, barButtonMonth, barButtonWeek, barButtonDay]];
 }
 
@@ -278,7 +279,8 @@
     FFRedAndWhiteButton *buttonYear = [self calendarButtonWithTitle:@"year"];
 
     UIImageView *imgBackground = [[UIImageView alloc] initWithFrame:CGRectMake(0, 20,APP_SCREEN_WIDTH, buttonYear.frame.size.height*2)];
-    [imgBackground setBackgroundColor:[UIColor whiteColor]];
+    //tuannv36
+    [imgBackground setBackgroundColor:HEADER_VIEW_COLOR1];
     [self.view addSubview:imgBackground];
 
     [buttonYear setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*4, 0, BUTTON_WIDTH, buttonYear.frame.size.height)];
@@ -329,7 +331,9 @@
     [_topMenuView addSubview:buttonToday];
     [_topMenuView addSubview:buttonAdd];
     [_topMenuView addSubview:labelWithMonthAndYear];
-    [_topMenuView setBackgroundColor:[UIColor clearColor]];
+    //[_topMenuView setBackgroundColor:[UIColor clearColor]];
+    //tuannv36
+    [_topMenuView setBackgroundColor:HEADER_VIEW_COLOR1];
 
     [self.view addSubview:_topMenuView];
 }

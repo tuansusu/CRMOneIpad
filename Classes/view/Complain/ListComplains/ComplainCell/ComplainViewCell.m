@@ -44,6 +44,7 @@
     [lblNgayNhan setText:complainOB.receivedDate];
     [lblNguoiXuLy setText:complainOB.processerId];
     [lblNgayXuLy setText:complainOB.processedDate];
+    [imgLine setAlpha:1.0];
 }
 
 @end

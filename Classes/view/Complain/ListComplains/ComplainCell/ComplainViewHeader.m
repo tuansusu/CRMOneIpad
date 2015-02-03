@@ -15,6 +15,8 @@
     if (self) {
         // Initialization code
         self = [[[NSBundle mainBundle] loadNibNamed:[[self class] description] owner:nil options:nil] objectAtIndex:0];
+        [imgLineTop setAlpha:1.0];
+        [imgLineBottom setAlpha:1.0];
     }
     return self;
 }

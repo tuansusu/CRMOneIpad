@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MeunViewController">
@@ -53,7 +53,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-small-1.png" id="Gj3-Ln-FXu">
-                                    <rect key="frame" x="64" y="8" width="122" height="31"/>
+                                    <rect key="frame" x="28" y="5" width="200" height="35"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YA2-jg-7pe">
@@ -461,18 +461,18 @@
     </objects>
     <resources>
         <image name="avatar.png" width="120" height="120"/>
-        <image name="logo-small-1.png" width="311" height="71"/>
+        <image name="logo-small-1.png" width="520" height="86"/>
         <image name="menu-ic-quit-1.png" width="30" height="32"/>
-        <image name="menu-ic-setting-1.png" width="28" height="28"/>
-        <image name="menu_calendar.png" width="32" height="32"/>
-        <image name="menu_campaign.png" width="32" height="32"/>
-        <image name="menu_customer_360.png" width="32" height="32"/>
-        <image name="menu_help.png" width="32" height="32"/>
-        <image name="menu_lead.png" width="32" height="32"/>
-        <image name="menu_map.png" width="32" height="32"/>
-        <image name="menu_opportunity.png" width="32" height="32"/>
-        <image name="menu_report.png" width="32" height="32"/>
-        <image name="menu_sales_activity.png" width="32" height="32"/>
+        <image name="menu-ic-setting-1.png" width="60" height="60"/>
+        <image name="menu_calendar.png" width="30" height="30"/>
+        <image name="menu_campaign.png" width="60" height="60"/>
+        <image name="menu_customer_360.png" width="60" height="60"/>
+        <image name="menu_help.png" width="60" height="60"/>
+        <image name="menu_lead.png" width="60" height="60"/>
+        <image name="menu_map.png" width="60" height="60"/>
+        <image name="menu_opportunity.png" width="60" height="60"/>
+        <image name="menu_report.png" width="60" height="60"/>
+        <image name="menu_sales_activity.png" width="60" height="60"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

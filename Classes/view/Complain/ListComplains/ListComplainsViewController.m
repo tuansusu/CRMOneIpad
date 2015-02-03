@@ -88,8 +88,17 @@
  }
  */
 
+
 - (void) updateInterFaceWithOption : (int) option
 {
+    for (UIView *viewTemp in self.view.subviews) {
+
+        if ([viewTemp isKindOfClass:[UIImageView class]]) {
+
+            [((UIImageView*) viewTemp) setAlpha:1.0f];
+        }
+    }
+
     //self.fullNameLB.text = TITLE_APPLICATION;
     [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
     self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
@@ -184,6 +193,22 @@
     return cell;
 }
 
+//thêm cái line đến tận left margin
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    if ([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+
+    if ([tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [tableView setLayoutMargins:UIEdgeInsetsZero];
+    }
+
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
 #pragma mark table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -206,6 +231,7 @@
         [tbvListComplains reloadData];
     }
 }
+
 
 #pragma mark edit
 /**

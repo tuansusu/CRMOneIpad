@@ -132,6 +132,8 @@ NSDateFormatter *df,*dfTime;
             break;
     }
     
+    [self.imgAvatar setAlpha:1.0f];
+    
 }
 //hàm kiểm trang thái theo doi khách hàng
 -(int) checkFollowLead:(NSString *)leadId{

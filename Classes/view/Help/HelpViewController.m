@@ -25,8 +25,12 @@
         [UIDevice updateLayoutInIOs7OrAfter:self];
     }
     
-    NSURL *urlFile = [NSURL URLWithString: @"https://crm.mbbank.com.vn/help.html"];
-    NSURLRequest *urlRequest = [[NSURLRequest alloc]initWithURL:urlFile];
+    //NSURL *urlFile = [NSURL URLWithString: @"https://crm.mbbank.com.vn/help.html"];
+    //NSURLRequest *urlRequest = [[NSURLRequest alloc]initWithURL:urlFile];
+    
+    NSURL *websiteUrl = [NSURL URLWithString:@"http://www.google.com"];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:websiteUrl];
+    
     
     [self.webContent loadRequest:urlRequest];
     
@@ -61,6 +65,25 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+-(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    //Start the progressbar..
+    [SVProgressHUD show];
+    return YES;
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    //Stop or remove progressbar
+    [SVProgressHUD dismiss];
+}
+
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    //Stop or remove progressbar and show error
+    [SVProgressHUD dismiss];
+}
 
 
 

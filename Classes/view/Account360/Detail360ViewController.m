@@ -479,6 +479,19 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     [self.viewHeaderExpandInfo setSelectiveBorderWithColor:backgrondButtonSelected withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
     
     
+    for (UIView *viewTemp in self.scrollViewBodyLeft.subviews) {
+        if ([viewTemp isKindOfClass:[UILabel class]]) {
+            ((UILabel*) viewTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+        }
+        
+        
+        if ([viewTemp isKindOfClass:[UIImageView class]]) {
+            [((UIImageView*) viewTemp) setAlpha:1.0f];
+        }
+        
+    }
+    
+    
     /////
     [self setBottomLineDetail:self.scrollViewBodyLeft];
     

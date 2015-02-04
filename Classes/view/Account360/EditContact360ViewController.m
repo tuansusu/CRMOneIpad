@@ -175,6 +175,7 @@
             
             if ([viewSubTemp isKindOfClass:[UILabel class]]) {
                 ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+                continue;
             }
             
             
@@ -183,6 +184,7 @@
                 ((UITextView*) viewSubTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
                 ((UITextView*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
                 ((UITextView*) viewSubTemp).layer.borderWidth = BORDER_WITH;
+                continue;
             }
             if ([viewSubTemp isKindOfClass:[UITextField class]]) {
                 ((UITextField*) viewSubTemp).textColor = TEXT_COLOR_REPORT;
@@ -190,8 +192,16 @@
                 ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
                 ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
                 [((UITextField*) viewSubTemp) setPaddingLeft];
+                continue;
+                
                 
             }
+            
+            if ([viewSubTemp isKindOfClass:[UIImageView class]]) {
+                [((UIImageView*) viewSubTemp) setAlpha:1.0f];
+                continue;
+            }
+            
             
         }
         

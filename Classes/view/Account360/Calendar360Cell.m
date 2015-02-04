@@ -42,6 +42,28 @@
     _dicData = dicData;
     _lbTitle.text=[dicData objectForKey:DTOTASK_title];
     _lbTime.text=[dicData objectForKey:DTOTASK_startDate];
+    
+    switch (smgSelect) {
+        case 1:
+        {
+            for (UIView *viewTemp in self.contentView.subviews) {
+                if ([viewTemp isKindOfClass:[UILabel class]]) {
+                    ((UILabel*) viewTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+                }
+                
+                
+                if ([viewTemp isKindOfClass:[UIImageView class]]) {
+                    [((UIImageView*) viewTemp) setAlpha:1.0f];
+                }
+            }
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
     _lbTitle.textColor = TEXT_COLOR_HIGHLIGHT;
 }
 

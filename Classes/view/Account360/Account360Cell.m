@@ -121,6 +121,12 @@ NSDateFormatter *df,*dfTime;
         case 1:
         {
             for (UIView *viewTemp in self.contentView.subviews) {
+                
+                if ([viewTemp isKindOfClass:[UIImageView class]]) {
+                    [((UIImageView*) viewTemp) setAlpha:1.0f];
+                    continue;
+                }
+                
                 if ([viewTemp isKindOfClass:[UILabel class]]) {
                     ((UILabel*) viewTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
                 }

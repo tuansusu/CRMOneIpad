@@ -99,10 +99,10 @@
     
     dataId = 0;
     if (self.dataSend) {
-        self.lbTextHeaderMainView.text = TEXT_HEADER_EDIT_LEADER_PERSON;
+        self.fullNameLB.text = TEXT_HEADER_EDIT_LEADER_PERSON;
         [self loadEditData];
     }else{
-        self.lbTextHeaderMainView.text = TEXT_HEADER_ADD_LEADER_PERSON;
+        self.fullNameLB.text = TEXT_HEADER_ADD_LEADER_PERSON;
     }
     
 }
@@ -175,7 +175,7 @@
 
 - (void) updateInterFaceWithOption : (int) option
 {
-    self.fullNameLB.text = TITLE_APPLICATION;
+    //self.fullNameLB.text = TITLE_APPLICATION;
     [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
     self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
     
@@ -187,15 +187,15 @@
     [self.btnSave setStyleNormalWithOption:smgSelect];
     
     
-    [self.headerMainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
-    [self.headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
-    for (UIView *viewSubTemp in self.headerMainView.subviews) {
-        
-        
-        if ([viewSubTemp isKindOfClass:[UILabel class]]) {
-            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
-        }
-    }
+//    [self.headerMainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
+//    [self.headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
+//    for (UIView *viewSubTemp in self.headerMainView.subviews) {
+//        
+//        
+//        if ([viewSubTemp isKindOfClass:[UILabel class]]) {
+//            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+//        }
+//    }
     
     
     
@@ -210,15 +210,14 @@
     for (UIView *viewTemp in self.bodyMainView.subviews) {
         
         
-        //        if ([viewTemp isKindOfClass:[UIView class]]) {
-        //            ((UIView*) viewTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
-        //
-        //            ((UIView*) viewTemp).layer.borderWidth = BORDER_WITH;
-        //            ((UIView*) viewTemp).layer.borderColor = [BORDER_COLOR CGColor];
-        //
-        //        }
+        
         
         for (UIView *viewSubTemp in viewTemp.subviews) {
+            
+            if ([viewSubTemp isKindOfClass:[UIImageView class]]) {
+                [((UIImageView*) viewSubTemp) setAlpha:1.0f];
+                continue;
+            }
             
             
             if ([viewSubTemp isKindOfClass:[UILabel class]]) {

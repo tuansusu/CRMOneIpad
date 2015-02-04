@@ -24,7 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIView *headerViewBar;
 @property (weak, nonatomic) IBOutlet UILabel *fullNameLB;
 
-@property (weak, nonatomic) IBOutlet UILabel *lblFormTitle;
+//@property (weak, nonatomic) IBOutlet UILabel *lblFormTitle;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *btnHome;
@@ -34,7 +34,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 
-@property (weak, nonatomic) IBOutlet UIView *headerMainView;
+//@property (weak, nonatomic) IBOutlet UIView *headerMainView;
 
 @property (weak, nonatomic) IBOutlet UIView *bodyMainView;
 

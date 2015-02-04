@@ -116,7 +116,7 @@
 -(void) loadEdit{
     
     NSLog(@"data:%@", _dataSend);
-    _lbTitle.text=@"CẬP NHẬP LIÊN HỆ";
+    self.fullNameLB.text=@"CẬP NHẬP LIÊN HỆ";
     
     _txtAddress.text=[_dataSend objectForKey:DTOCONTACT_address];
     _txtDateOfBirth.text=[_dataSend objectForKey:DTOCONTACT_birthday];
@@ -136,7 +136,7 @@
 
 - (void) updateInterFaceWithOption : (int) option
 {
-    self.fullNameLB.text = TITLE_APPLICATION;
+    //self.fullNameLB.text = TITLE_APPLICATION;
     [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
     self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
     
@@ -146,19 +146,19 @@
     //    self.leftLabelHeader.textColor = TEXT_COLOR_HEADER_APP;
     
     
-    [self.headerMainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
-    [self.headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
+//    [self.headerMainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
+//    [self.headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
     
     
     [self.btnSave setStyleNormalWithOption:smgSelect];
     
-    for (UIView *viewSubTemp in self.headerMainView.subviews) {
-        
-        
-        if ([viewSubTemp isKindOfClass:[UILabel class]]) {
-            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
-        }
-    }
+//    for (UIView *viewSubTemp in self.headerMainView.subviews) {
+//        
+//        
+//        if ([viewSubTemp isKindOfClass:[UILabel class]]) {
+//            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+//        }
+//    }
     
     
     [self.mainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];

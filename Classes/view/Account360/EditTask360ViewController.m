@@ -112,7 +112,7 @@
     
     NSLog(@"send:%@",_dataSend);
     
-    _lbTitle.text=@"CẬP NHẬP CÔNG VIỆC";
+    self.fullNameLB.text=@"CẬP NHẬP CÔNG VIỆC";
     
     _txtName.text=[_dataSend objectForKey:DTOTASK_title];
     if ([[_dataSend objectForKey:DTOTASK_taskStatus] isEqualToString:@"3244"]) {
@@ -148,7 +148,7 @@
 
 - (void) updateInterFaceWithOption : (int) option
 {
-    self.fullNameLB.text = TITLE_APPLICATION;
+    //self.fullNameLB.text = TITLE_APPLICATION;
     [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
     self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
     
@@ -158,15 +158,15 @@
     //    self.leftLabelHeader.textColor = TEXT_COLOR_HEADER_APP;
     
     
-    [self.headerMainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
-    [self.headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
-    for (UIView *viewSubTemp in self.headerMainView.subviews) {
-        
-        
-        if ([viewSubTemp isKindOfClass:[UILabel class]]) {
-            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
-        }
-    }
+//    [self.headerMainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
+//    [self.headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
+//    for (UIView *viewSubTemp in self.headerMainView.subviews) {
+//        
+//        
+//        if ([viewSubTemp isKindOfClass:[UILabel class]]) {
+//            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+//        }
+//    }
     
     [self.btnSave setStyleNormalWithOption:smgSelect];
     
@@ -182,6 +182,11 @@
         
         for (UIView *viewSubTemp in viewTemp.subviews) {
             
+            
+            if ([viewSubTemp isKindOfClass:[UIImageView class]]) {
+                [((UIImageView*) viewSubTemp) setAlpha:1.0f];
+                continue;
+            }
             
             if ([viewSubTemp isKindOfClass:[UILabel class]]) {
                 ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;

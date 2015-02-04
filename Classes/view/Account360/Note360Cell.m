@@ -79,6 +79,9 @@ NSMutableArray *arrayData;
         [self.imgFile setImage:image];
     }
     
+    
+    [self.imgFile setAlpha:1.0f];
+    
     switch (smgSelect) {
         case 1:
         {

@@ -102,6 +102,18 @@
             break;
     }
     
+    //hien thi ảnh trên ipad air
+    
+    for (UIView *viewTemp in self.contentView.subviews) {
+       
+        if ([viewTemp isKindOfClass:[UIImageView class]]) {
+            
+            [((UIImageView*) viewTemp) setAlpha:1.0f];
+        }
+    }
+    
+    
+    
 }
 
 - (IBAction)actionAddress:(id)sender {

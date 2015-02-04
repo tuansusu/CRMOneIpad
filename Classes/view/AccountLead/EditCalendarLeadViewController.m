@@ -56,7 +56,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 
-@property (weak, nonatomic) IBOutlet UIView *headerMainView;
+//@property (weak, nonatomic) IBOutlet UIView *headerMainView;
 
 
 @property (weak, nonatomic) IBOutlet UIView *bodyMainView;
@@ -117,7 +117,7 @@
 
 @implementation EditCalendarLeadViewController
 {
-    __weak IBOutlet UILabel     *_titleLabel;
+    //__weak IBOutlet UILabel     *_titleLabel;
 
     __weak IBOutlet UITextField *_txtLocation;//TODO: delegate
     __weak IBOutlet UIButton    *_btnChoiceLocation;
@@ -245,7 +245,7 @@
 #pragma mark - new view: load defaults data into view
 - (void) loadDefaults
 {
-    _titleLabel.text  = @"THÊM MỚI SỰ KIỆN";
+    _fullNameLB.text  = @"THÊM MỚI SỰ KIỆN";
 
     _txtName.text     = @"";
     _txtStatus.text   = [[statusArray objectAtIndex:0] objectForKey:DTOSYSCAT_name];
@@ -278,7 +278,7 @@
 {
     NSLog(@"send:%@",_dataSend);
 
-    _titleLabel.text = @"CẬP NHẬP SỰ KIỆN";
+    _fullNameLB.text = @"CẬP NHẬP SỰ KIỆN";
     if (_dataSend) {
         isEditTask = YES;
         _txtName.text    = [_dataSend objectForKey:DTOTASK_title];
@@ -313,15 +313,15 @@
     _footerView.backgroundColor     = TOOLBAR_VIEW_COLOR;
     _barLabel.textColor             = TEXT_TOOLBAR_COLOR1;
 
-    _headerMainView.backgroundColor = HEADER_SUB_VIEW_COLOR1;
-    [_headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
-    for (UIView *viewSubTemp in _headerMainView.subviews)
-    {
-        if ([viewSubTemp isKindOfClass:[UILabel class]])
-        {
-            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
-        }
-    }
+//    _headerMainView.backgroundColor = HEADER_SUB_VIEW_COLOR1;
+//    [_headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
+//    for (UIView *viewSubTemp in _headerMainView.subviews)
+//    {
+//        if ([viewSubTemp isKindOfClass:[UILabel class]])
+//        {
+//            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+//        }
+//    }
     
     [self.btnSave setStyleNormalWithOption:smgSelect];
 
@@ -335,6 +335,13 @@
     {
         for (UIView *viewSubTemp in viewTemp.subviews)
         {
+            
+            if ([viewSubTemp isKindOfClass:[UIImageView class]]) {
+                [((UIImageView*) viewSubTemp) setAlpha:1.0f];
+                continue;
+            }
+            
+            
             if ([viewSubTemp isKindOfClass:[UILabel class]])
             {
                 ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;

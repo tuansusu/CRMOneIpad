@@ -31,7 +31,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btnSave;
 
-@property (weak, nonatomic) IBOutlet UILabel *lbTieudeghichu;
+//@property (weak, nonatomic) IBOutlet UILabel *lbTieudeghichu;
 
 
 - (IBAction)actionSave:(id)sender;
@@ -42,7 +42,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 
-@property (weak, nonatomic) IBOutlet UIView *headerMainView;
+//@property (weak, nonatomic) IBOutlet UIView *headerMainView;
 
 
 @property (weak, nonatomic) IBOutlet UIView *bodyMainView;

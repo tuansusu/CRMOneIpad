@@ -467,6 +467,31 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
     [self.viewHeaderExpandInfo setSelectiveBorderWithColor:backgrondButtonSelected withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
     
+    //hiển thị ảnh khi hiển thị thông tin
+    for (UIView *viewTemp in self.scrollViewBussiness.subviews) {
+        if ([viewTemp isKindOfClass:[UILabel class]]) {
+            ((UILabel*) viewTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+            continue;
+        }
+        
+        if ([viewTemp isKindOfClass:[UIImageView class]]) {
+            [((UIImageView*) viewTemp) setAlpha:1.0f];
+            continue;
+        }
+    }
+    
+    for (UIView *viewTemp in self.scrollViewPersonal.subviews) {
+        if ([viewTemp isKindOfClass:[UILabel class]]) {
+            ((UILabel*) viewTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+            continue;
+        }
+        
+        if ([viewTemp isKindOfClass:[UIImageView class]]) {
+            [((UIImageView*) viewTemp) setAlpha:1.0f];
+            continue;
+        }
+    }
+    
     
     //Thêm phần hiển thị chữ in hoa trong phần tab
     for (UIView *viewTemp in scrollViewHeaderExpandInfo.subviews) {

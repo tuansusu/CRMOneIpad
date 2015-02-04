@@ -57,7 +57,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZY2-Xp-Lkc" userLabel="BTNAddWidget">
-                            <rect key="frame" x="964" y="0.0" width="60" height="44"/>
+                            <rect key="frame" x="981" y="7" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <state key="normal" image="ic-add-sub-1.png">
@@ -120,7 +120,7 @@
         </view>
     </objects>
     <resources>
-        <image name="ic-add-sub-1.png" width="32" height="32"/>
+        <image name="ic-add-sub-1.png" width="90" height="90"/>
         <image name="icon_menu-1.png" width="48" height="48"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

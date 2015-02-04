@@ -16,18 +16,10 @@
                 <outlet property="btnSave" destination="Wud-qg-tQQ" id="fk7-UJ-ueH"/>
                 <outlet property="footerView" destination="DMS-oe-1tv" id="2tQ-6Y-Odu"/>
                 <outlet property="fullNameLB" destination="WAG-FP-kuv" id="yj1-P3-pnh"/>
+                <outlet property="headerMainView" destination="J6f-r1-sac" id="YbB-AZ-rxS"/>
                 <outlet property="headerViewBar" destination="DVJ-nD-Q8I" id="76p-AZ-G3t"/>
                 <outlet property="imgAvartar" destination="Z6p-Ck-uHL" id="99y-Yd-dpt"/>
-                <outlet property="lbDiaChi" destination="V9P-bB-ohC" id="mq5-wr-g0W"/>
-                <outlet property="lbEmail" destination="6rR-q3-s3S" id="Zvy-TT-B7G"/>
-                <outlet property="lbFullname" destination="RbW-XF-CUM" id="E1D-21-hee"/>
-                <outlet property="lbNgayCap" destination="qqF-RB-aid" id="2HF-9m-Z1i"/>
-                <outlet property="lbNgaySinh" destination="Tle-Jv-bfm" id="n38-qB-2qy"/>
-                <outlet property="lbNoiSinh" destination="NfX-vd-92m" id="z5o-pi-vG5"/>
-                <outlet property="lbNote" destination="kQC-RM-e9A" id="Ii7-5R-Tdt"/>
-                <outlet property="lbPosition" destination="jNK-cL-Y9x" id="8z4-FZ-jjH"/>
-                <outlet property="lbmobile" destination="EYG-d5-0Rz" id="5GU-Oo-TRA"/>
-                <outlet property="lbpassport" destination="Dma-PV-vd6" id="nQP-rL-qNa"/>
+                <outlet property="lbTitle" destination="tcG-Cc-lAh" id="v7s-G5-SOy"/>
                 <outlet property="mainView" destination="6XT-dU-A8I" id="mcz-RC-JhW"/>
                 <outlet property="tvNote" destination="ErC-OT-X6S" id="Xlv-dw-uRq"/>
                 <outlet property="txtAddress" destination="HK5-xg-0Ef" id="cYu-zw-84e"/>
@@ -74,16 +66,6 @@
                                 <action selector="homeBack:" destination="-1" eventType="touchUpInside" id="yFB-4v-bSv"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Wud-qg-tQQ" userLabel="btnSave">
-                            <rect key="frame" x="907" y="2" width="110" height="40"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Cập nhật">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="actionSave:" destination="-1" eventType="touchUpInside" id="mE0-gC-eav"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
@@ -91,6 +73,30 @@
                     <rect key="frame" x="0.0" y="44" width="1024" height="674"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
+                        <view contentMode="scaleToFill" id="J6f-r1-sac" userLabel="header main view">
+                            <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THÊM MỚI LIÊN HỆ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tcG-Cc-lAh">
+                                    <rect key="frame" x="20" y="11" width="446" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Wud-qg-tQQ" userLabel="btnSave">
+                                    <rect key="frame" x="893" y="2" width="110" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Cập nhật">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="actionSave:" destination="-1" eventType="touchUpInside" id="mE0-gC-eav"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <view contentMode="scaleToFill" id="Fhe-QU-hMr" userLabel="body view">
                             <rect key="frame" x="20" y="64" width="984" height="580"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

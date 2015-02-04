@@ -63,7 +63,6 @@
     
     NSUserDefaults *defaults;
     NSString *followId;
-    Language *obj;
     
 }
 @end
@@ -88,12 +87,9 @@
         
     }
     
-    obj=[Language getInstance];
-    
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
-    obj.str =[defaults objectForKey:@"Language"];
-    LocalizationSetLanguage(obj.str);
+    
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
     
@@ -107,25 +103,24 @@
     self.tbData.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [SVProgressHUD show];
-    [self setLanguage];
     //set menu
-    UIMenuItem *viewMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_VIEW") action:@selector(view:)];
+    UIMenuItem *viewMenu = [[UIMenuItem alloc] initWithTitle:@"Xem" action:@selector(view:)];
     
     
-    UIMenuItem *editMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_EDIT") action:@selector(edit:)];
+    UIMenuItem *editMenu = [[UIMenuItem alloc] initWithTitle:@"Sửa" action:@selector(edit:)];
     
     
-    UIMenuItem *delMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_DEL") action:@selector(del:)];
+    UIMenuItem *delMenu = [[UIMenuItem alloc] initWithTitle:@"Xoá" action:@selector(del:)];
     
-    UIMenuItem *callMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_CALL")  action:@selector(call:)];
+    UIMenuItem *callMenu = [[UIMenuItem alloc] initWithTitle:@"Gọi điện" action:@selector(call:)];
     
-    UIMenuItem *smsMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_SMS")  action:@selector(sms:)];
+    UIMenuItem *smsMenu = [[UIMenuItem alloc] initWithTitle:@"SMS" action:@selector(sms:)];
     
-    UIMenuItem *emailMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_EMAIL")  action:@selector(email:)];
+    UIMenuItem *emailMenu = [[UIMenuItem alloc] initWithTitle:@"Email" action:@selector(email:)];
     
-    UIMenuItem *fowlMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_FOLLOW") action:@selector(follow:)];
+    UIMenuItem *fowlMenu = [[UIMenuItem alloc] initWithTitle:@"Theo dõi" action:@selector(follow:)];
     
-    UIMenuItem *mapMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_MAPS")  action:@selector(map:)];
+    UIMenuItem *mapMenu = [[UIMenuItem alloc] initWithTitle:@"Bản đồ" action:@selector(map:)];
     [[UIMenuController sharedMenuController] setMenuItems: @[viewMenu,editMenu,delMenu,callMenu,smsMenu,emailMenu,fowlMenu,mapMenu]];
     [[UIMenuController sharedMenuController] update];
 }
@@ -898,7 +893,5 @@
         [self dismissPopupViewControllerWithanimationType:nil];
         [self filterData];
     }
-}
--(void) setLanguage{
 }
 @end

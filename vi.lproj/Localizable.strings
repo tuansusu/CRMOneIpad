@@ -54,33 +54,4 @@
 "KEY_ALERT_YES" = "Có";
 "KEY_ALERT_NO" = "Không";
 "KEY_ALERT_TITLE" = "Thông báo";
-//ghi chú
-"KEY_NOTE_ADD"="THÊM MỚI GHI CHÚ";
-"KEY_NOTE_EDIT"="CẬP NHẬP GHI CHÚ";
-"KEY_NOTE_TITLE"="Tiêu đề";
-"KEY_NOTE_CONTENT"="Nội dung";
-"KEY_NOTE_FILE"="File đính kèm";
-//quick menu
-"KEY_QUICK_VIEW"="Xem";
-"KEY_QUICK_EDIT"="Sửa";
-"KEY_QUICK_DEL"="Xoá";
-"KEY_QUICK_CALL"="Gọi điện";
-"KEY_QUICK_SMS"="Sms";
-"KEY_QUICK_EMAIL"="Email";
-"KEY_QUICK_FOLLOW"="Theo dõi";
-"KEY_QUICK_MAPS"="Bản đồ";
-//lien he
-"KEY_CONTACT_ADD"="Thêm mới liên hệ";
-"KEY_CONTACT_EDIT"="Cập nhập liên hệ";
-"KEY_CONTACT_NAME"="Họ và tên";
-"KEY_CONTACT_POSITION"="Chức danh";
-"KEY_CONTACT_PHONE"="Số điện thoại";
-"KEY_CONTACT_CMT"="Chứng minh thư";
-"KEY_CONTACT_CMT_DATE"="Ngày cấp";
-"KEY_CONTACT_BIRTH"="Nơi sinh";
-"KEY_CONTACT_BIRTH_DAY"="Ngày sinh";
-"KEY_CONTACT_EMAIL"="Email";
-"KEY_CONTACT_ADDRESS"="Địa chỉ";
-"KEY_CONTACT_NOTE"="Ghi chú";
-"KEY_CONTACT_AVARTAR"="Chọn ảnh";
 

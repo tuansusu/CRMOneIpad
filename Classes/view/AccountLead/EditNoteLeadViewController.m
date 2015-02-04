@@ -49,7 +49,6 @@
     NSString *deleteFile;
     
     BOOL succsess;//Trang thai acap nhat
-    Language *obj;
 }
 
 @end
@@ -78,13 +77,6 @@
     //remove footer view
     //(xoá dòng thừa không hiển thị của table)
     self.tbData.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    obj=[Language getInstance];
-    defaults =[NSUserDefaults standardUserDefaults];
-    [defaults synchronize];
-    obj=[Language getInstance];
-    obj.str = [defaults objectForKey:@"Language"];
-    LocalizationSetLanguage(obj.str);
-    [self setLanguage];
     
 }
 
@@ -158,15 +150,15 @@
     self.barLabel.textColor = TEXT_TOOLBAR_COLOR1;
     //    [self.leftViewHeader setBackgroundColor:BACKGROUND_COLOR_TOP_LEFT_HEADER];
     //    self.leftLabelHeader.textColor = TEXT_COLOR_HEADER_APP;
-//    [self.headerMainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
-//    [self.headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
-//    for (UIView *viewSubTemp in self.headerMainView.subviews) {
-//        
-//        
-//        if ([viewSubTemp isKindOfClass:[UILabel class]]) {
-//            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
-//        }
-//    }
+    [self.headerMainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
+    [self.headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
+    for (UIView *viewSubTemp in self.headerMainView.subviews) {
+        
+        
+        if ([viewSubTemp isKindOfClass:[UILabel class]]) {
+            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+        }
+    }
     
     [self.btnSave setStyleNormalWithOption:smgSelect];
     
@@ -197,8 +189,8 @@
             if ([viewSubTemp isKindOfClass:[UITextField class]]) {
                 ((UITextField*) viewSubTemp).textColor = TEXT_COLOR_REPORT;
                 ((UITextField*) viewSubTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
-                //                ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
-                //                ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
+//                ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
+//                ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
                 [((UITextField*) viewSubTemp) setPaddingLeft];
                 [((UITextField*) viewSubTemp) setBorderWithOption:smgSelect];
             }
@@ -213,11 +205,6 @@
         if ([viewTemp isKindOfClass:[UIButton class]]) {
             
             [((UIButton*) viewTemp) setStyleNormalWithOption:smgSelect];
-        }
-        
-        if ([viewTemp isKindOfClass:[UIImageView class]]) {
-            
-            [((UIImageView*) viewTemp) setAlpha:1.0f];
         }
         
     }
@@ -460,9 +447,8 @@
     [dicData setValue:0 forKey:DTOATTACHMENT_id];
     
     [arrayData addObject: dicData];
-    NSLog(@"data:%@",arrayData);
     [self.tbData reloadData];
-    
+
 }
 
 
@@ -505,7 +491,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     static NSString *cellId = @"EditNoteViewCell";
     EditNoteViewCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
     if (cell == nil) {
@@ -513,9 +499,9 @@
         cell = [[EditNoteViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
         //        cell.delegate = self;
     }
-    
+
     NSDictionary *dicRow = [arrayData objectAtIndex:indexPath.row];
-    
+
     [cell loadDataCellWithImageName:[dicRow objectForKey:DTOATTACHMENT_fileName]];
     
     return cell;
@@ -523,11 +509,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     NSMutableArray *photos = [NSMutableArray arrayWithCapacity:arrayData.count];
     for (int i = 0; i<arrayData.count; i++) {
         MJPhoto *photo = [[MJPhoto alloc] init];
-        
+
         NSDictionary *dicRow = [arrayData objectAtIndex:i];
         UIImage *currentimage;
         NSString *fullPath = [FileManagerUtil getPathWithWithName:[dicRow objectForKey:DTOATTACHMENT_fileName]];
@@ -544,7 +530,7 @@
         browser.currentPhotoIndex = indexPath.row; // current image index
         browser.photos = photos; // set list photo
         [browser show];
-    }
+    }    
 }
 
 
@@ -630,17 +616,4 @@
     NSLog(@"btnSender = %d", btnSender.tag);
     
 }
-//set language
--(void) setLanguage{
-    [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
-    [_lbContent setText:LocalizedString(@"KEY_NOTE_CONTENT")];
-    [_lbTitle setText:LocalizedString(@"KEY_NOTE_TITLE")];
-    if (_dataSend.count>0) {
-        [_fullNameLB setText:LocalizedString(@"KEY_NOTE_EDIT")];
-    }
-    else{
-        [_fullNameLB setText:LocalizedString(@"KEY_NOTE_ADD")];
-    }
-    [_lbFileAttachment setText:LocalizedString(@"KEY_NOTE_FILE")];
-};
 @end

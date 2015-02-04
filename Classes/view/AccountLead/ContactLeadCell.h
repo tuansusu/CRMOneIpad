@@ -7,16 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-@protocol ContactDelegate<NSObject>
--(void) delegate_sendMailContact:(NSString *)email;
--(void) delegate_callContact:(NSString *)phone;
--(void) delegate_sendSMSContact:(NSString *)phone;
-@end
+
 @interface ContactLeadCell : UITableViewCell
 
 +(ContactLeadCell*) initNibCell;
 
-@property (weak, nonatomic) id <ContactDelegate> delegate;
+//@property (weak, nonatomic) id <AccountLeadCellDelegate> delegate;
 @property (nonatomic, strong) NSDictionary *dicData;
 @property (weak, nonatomic) IBOutlet UIImageView *avartar;
 
@@ -39,8 +35,5 @@
 
 - (IBAction)actionAddress:(id)sender;
 - (IBAction)actionSendMail:(id)sender;
-- (IBAction)actionSendSMS:(id)sender;
-- (IBAction)actionCall:(id)sender;
-
 
 @end

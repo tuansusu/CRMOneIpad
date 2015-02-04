@@ -62,7 +62,6 @@
     UITextField *_txt;
     //luu lai thong tin chon dia chi cua ban do
     float _longitude, _latitude;
-    Language *obj;
 }
 @end
 
@@ -85,16 +84,12 @@
         [UIDevice updateLayoutInIOs7OrAfter:self];
     }
     util=[Util new];
-    obj= [Language getInstance];
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
-    obj.str = [defaults objectForKey:@"Language"];
-    LocalizationSetLanguage(obj.str);
+    
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
     [self initData];
-    [self setLanguage];
-    
 }
 
 //khoi tao gia tri mac dinh cua form
@@ -697,27 +692,6 @@
     if (addressObj.lines.count>0) {
         self.txtAddress.text =[addressObj.lines objectAtIndex:0];
     }
-    
-}
--(void) setLanguage{
-    if (_dataSend.count>0) {
-        [_fullNameLB setText:LocalizedString(@"KEY_CONTACT_EDIT")];
-    }
-    else{
-    [_fullNameLB setText:LocalizedString(@"KEY_CONTACT_ADD")];
-    }
-    [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
-    [_lbFullname setText:LocalizedString(@"KEY_CONTACT_NAME")];
-    [_lbPosition setText:LocalizedString(@"KEY_CONTACT_POSITION")];
-    [_lbmobile setText:LocalizedString(@"KEY_CONTACT_PHONE")];
-    [_lbpassport setText:LocalizedString(@"KEY_CONTACT_CMT")];
-    [_lbNgayCap setText:LocalizedString(@"KEY_CONTACT_CMT_DATE")];
-    [_lbNoiSinh setText:LocalizedString(@"KEY_CONTACT_BIRTH")];
-    [_lbNgaySinh setText:LocalizedString(@"KEY_CONTACT_BIRTH_DAY")];
-    [_lbEmail setText:LocalizedString(@"KEY_CONTACT_EMAIL")];
-    [_lbDiaChi setText:LocalizedString(@"KEY_CONTACT_ADDRESS")];
-    [_lbNote setText:LocalizedString(@"KEY_CONTACT_NOTE")];
-    [_btnChoicePhoto setTitle:LocalizedString(@"KEY_CONTACT_AVARTAR") forState:UIControlStateNormal];
     
 }
 @end

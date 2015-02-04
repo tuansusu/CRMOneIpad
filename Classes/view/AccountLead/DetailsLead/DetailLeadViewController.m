@@ -458,6 +458,11 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         if ([viewTemp isKindOfClass:[UILabel class]]) {
             ((UILabel*) viewTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
         }
+        
+        if ([viewTemp isKindOfClass:[UIImageView class]]) {
+            
+            [((UIImageView*) viewTemp) setAlpha:1.0f];
+        }
     }
 
     [self.viewHeaderExpandInfo setSelectiveBorderWithColor:backgrondButtonSelected withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
@@ -753,6 +758,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
             if (arrayData.count>0) {
                 [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+                 cell.delegate = (id<ContactDelegate>)self;
             }
 
             return cell;
@@ -1307,5 +1313,69 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     mylert.tag = DELETE_LEAD;
     [mylert show];
 
+}
+#pragma mark sendTime
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+    
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            //NSLog(@"Cancelled");
+            break;
+        case MFMailComposeResultSaved:
+            //NSLog(@"Saved");
+            break;
+        case MFMailComposeResultSent:
+        {
+            UIAlertView *alert = [[UIAlertView alloc] init];
+            [alert setTitle:@"Gửi email thành công!"];
+            [alert setMessage:nil];
+            [alert setDelegate:self];
+            [alert addButtonWithTitle:@"Thoát"];
+            
+            [alert show];
+            
+        }
+            break;
+        case MFMailComposeResultFailed:
+        {
+            UIAlertView *alert = [[UIAlertView alloc] init];
+            [alert setTitle:@"Không gửi được email!"];
+            [alert setMessage:nil];
+            [alert setDelegate:self];
+            [alert addButtonWithTitle:@"Thoát"];
+            
+            [alert show];
+            
+        }
+            break;
+            
+            //NSLog(@"Not send");
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+//send mail contact
+-(void) delegate_sendMailContact:(NSString *)email{
+    NSLog(@"email:%@",email);
+    if(![StringUtil stringIsEmpty:email]){
+        [Util sendMail:self withEmail:email];
+    }
+}
+-(void) delegate_callContact:(NSString *)phone{
+    NSLog(@"phone:%@",phone);
+    if(![StringUtil stringIsEmpty:phone]){
+        NSString *callnumber=[NSString stringWithFormat:@"telprompt://%@",phone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callnumber]];
+    }
+}
+-(void) delegate_sendSMSContact:(NSString *)phone{
+    NSLog(@"phone:%@",phone);
+    if(![StringUtil stringIsEmpty:phone]){
+        NSString *sendSMS=[NSString stringWithFormat:@"sms://%@",phone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:sendSMS]];
+    }
 }
 @end

@@ -922,6 +922,10 @@
 		9418D69E1A7BE26400A5C9AA /* EditOpportunityLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9418D69C1A7BE26400A5C9AA /* EditOpportunityLeadViewController.xib */; };
 		943296B81A7CE9970097592D /* OpportunityLeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 943296B61A7CE9970097592D /* OpportunityLeadCell.m */; };
 		943296B91A7CE9970097592D /* OpportunityLeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 943296B71A7CE9970097592D /* OpportunityLeadCell.xib */; };
+		9438AE511A826E7C00FED3EB /* EditCalendarOpportunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9438AE4F1A826E7C00FED3EB /* EditCalendarOpportunityViewController.m */; };
+		9438AE521A826E7C00FED3EB /* EditCalendarOpportunityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9438AE501A826E7C00FED3EB /* EditCalendarOpportunityViewController.xib */; };
+		9438AE561A826E9000FED3EB /* CalendarOpportunityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9438AE541A826E9000FED3EB /* CalendarOpportunityCell.m */; };
+		9438AE571A826E9000FED3EB /* CalendarOpportunityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9438AE551A826E9000FED3EB /* CalendarOpportunityCell.xib */; };
 		949B76B01A3F357A00945B41 /* SearchAdvanceOpportunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 949B76AE1A3F357A00945B41 /* SearchAdvanceOpportunityViewController.m */; };
 		949B76B11A3F357A00945B41 /* SearchAdvanceOpportunityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 949B76AF1A3F357A00945B41 /* SearchAdvanceOpportunityViewController.xib */; };
 		94A2A7721A80F89F00C412E7 /* EditNoteOpportunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A2A7701A80F89F00C412E7 /* EditNoteOpportunityViewController.m */; };
@@ -2497,6 +2501,12 @@
 		943296B51A7CE9970097592D /* OpportunityLeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpportunityLeadCell.h; sourceTree = "<group>"; };
 		943296B61A7CE9970097592D /* OpportunityLeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpportunityLeadCell.m; sourceTree = "<group>"; };
 		943296B71A7CE9970097592D /* OpportunityLeadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpportunityLeadCell.xib; sourceTree = "<group>"; };
+		9438AE4E1A826E7C00FED3EB /* EditCalendarOpportunityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCalendarOpportunityViewController.h; sourceTree = "<group>"; };
+		9438AE4F1A826E7C00FED3EB /* EditCalendarOpportunityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCalendarOpportunityViewController.m; sourceTree = "<group>"; };
+		9438AE501A826E7C00FED3EB /* EditCalendarOpportunityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditCalendarOpportunityViewController.xib; sourceTree = "<group>"; };
+		9438AE531A826E9000FED3EB /* CalendarOpportunityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarOpportunityCell.h; sourceTree = "<group>"; };
+		9438AE541A826E9000FED3EB /* CalendarOpportunityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarOpportunityCell.m; sourceTree = "<group>"; };
+		9438AE551A826E9000FED3EB /* CalendarOpportunityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarOpportunityCell.xib; sourceTree = "<group>"; };
 		949B76AD1A3F357A00945B41 /* SearchAdvanceOpportunityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchAdvanceOpportunityViewController.h; sourceTree = "<group>"; };
 		949B76AE1A3F357A00945B41 /* SearchAdvanceOpportunityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchAdvanceOpportunityViewController.m; sourceTree = "<group>"; };
 		949B76AF1A3F357A00945B41 /* SearchAdvanceOpportunityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchAdvanceOpportunityViewController.xib; sourceTree = "<group>"; };
@@ -4197,6 +4207,9 @@
 		843BF0BB1A03ECB100EA1D8A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				9438AE531A826E9000FED3EB /* CalendarOpportunityCell.h */,
+				9438AE541A826E9000FED3EB /* CalendarOpportunityCell.m */,
+				9438AE551A826E9000FED3EB /* CalendarOpportunityCell.xib */,
 				94A2A7741A80F9F900C412E7 /* NoteOpportunityCell.h */,
 				94A2A7751A80F9F900C412E7 /* NoteOpportunityCell.m */,
 				94A2A7761A80F9F900C412E7 /* NoteOpportunityCell.xib */,
@@ -5715,6 +5728,9 @@
 		94A2A76C1A80F7D300C412E7 /* Edit */ = {
 			isa = PBXGroup;
 			children = (
+				9438AE4E1A826E7C00FED3EB /* EditCalendarOpportunityViewController.h */,
+				9438AE4F1A826E7C00FED3EB /* EditCalendarOpportunityViewController.m */,
+				9438AE501A826E7C00FED3EB /* EditCalendarOpportunityViewController.xib */,
 				94A2A76F1A80F89F00C412E7 /* EditNoteOpportunityViewController.h */,
 				94A2A7701A80F89F00C412E7 /* EditNoteOpportunityViewController.m */,
 				94A2A7711A80F89F00C412E7 /* EditNoteOpportunityViewController.xib */,
@@ -6091,6 +6107,7 @@
 				2DD29EE718769C260066B883 /* menu-ic-boss-calendar-1.png in Resources */,
 				8490788C1A1E463C009D5D5F /* DetailBussinessLeadViewController.xib in Resources */,
 				2D6D7665187670B00051AD9E /* icon_refresh-1.png in Resources */,
+				9438AE571A826E9000FED3EB /* CalendarOpportunityCell.xib in Resources */,
 				B310D32018BDE24E003772D6 /* Images.xcassets in Resources */,
 				8ED402721A41CF1900CCBE6D /* iconDirection@2x.png in Resources */,
 				B31AFAA6187ADB5800D366B5 /* ic-show-column-2-1.png in Resources */,
@@ -6440,6 +6457,7 @@
 				76C964701A17731900029978 /* pie_pop_over_gradient.jpg in Resources */,
 				8E69BDE51A58458500C6924D /* iconMoto@2x.png in Resources */,
 				7644306D1A7000CC007741BA /* menu_map.png in Resources */,
+				9438AE521A826E7C00FED3EB /* EditCalendarOpportunityViewController.xib in Resources */,
 				2DE2D2531829060700034877 /* ic-pdf.png in Resources */,
 				2D2F75A2185801E000EC76EE /* Button_Dong_y.png in Resources */,
 				2DE2D2541829060700034877 /* ic-notsign.png in Resources */,
@@ -6935,6 +6953,7 @@
 				2D4B92CA17ACD7DE002A9AC5 /* DAFontSet.m in Sources */,
 				76961E4F1A3B2D69008B5CE7 /* DTOATTACHMENTProcess.m in Sources */,
 				8EC972A71A5D71300021DCA3 /* FFSearchBarWithAutoComplete.m in Sources */,
+				9438AE561A826E9000FED3EB /* CalendarOpportunityCell.m in Sources */,
 				B3FCE41317AF492D00C13574 /* OrderByObject.m in Sources */,
 				76D29B131A126B91004B9CF6 /* DTOACCOUNTProcess.m in Sources */,
 				769C1A1619FFFECA00F015A5 /* UIAlertView+Blocks.m in Sources */,
@@ -7050,6 +7069,7 @@
 				76C964791A17731900029978 /* MIMRangeGraph.m in Sources */,
 				76C9629C1A16DBA500029978 /* AccountLeadCell.m in Sources */,
 				2D044C8018025D8D00FBC073 /* UIDevice+extend.m in Sources */,
+				9438AE511A826E7C00FED3EB /* EditCalendarOpportunityViewController.m in Sources */,
 				8497C0041A295A2300A5ED3C /* MarkerLayerViewController.m in Sources */,
 				B30569E81804F8FF0041FAB5 /* UIAlertView+extend.m in Sources */,
 				8E6EF7CC1A7FB9C2008C8824 /* SDWebImageDownloader.m in Sources */,

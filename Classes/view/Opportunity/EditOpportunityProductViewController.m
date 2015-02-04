@@ -200,6 +200,10 @@
                 [((UITextField*) viewSubTemp) setBorderWithOption:smgSelect];
                 
             }
+            if ([viewSubTemp isKindOfClass:[UIImageView class]]) {
+                
+                [((UIImageView*) viewSubTemp) setAlpha:1.0f];
+            }
             
         }
         

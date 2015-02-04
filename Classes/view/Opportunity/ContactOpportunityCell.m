@@ -93,6 +93,10 @@
                 if ([viewTemp isKindOfClass:[UILabel class]]) {
                     ((UILabel*) viewTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
                 }
+                if ([viewTemp isKindOfClass:[UIImageView class]]) {
+                    
+                    [((UIImageView*) viewTemp) setAlpha:1.0f];
+                }
             }
             self.lbName.textColor = TEXT_COLOR_HIGHLIGHT;
         }

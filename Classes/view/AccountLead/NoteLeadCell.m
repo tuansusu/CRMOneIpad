@@ -76,6 +76,7 @@ NSMutableArray *arrayData;
         NSLog(@"Có file đính kèm");
         UIImage *image=[UIImage imageNamed:@"attach_icon.png"];
         [self.imgFile setImage:image];
+        [self.imgFile setAlpha:1.0];
     }
     
     switch (smgSelect) {

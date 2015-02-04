@@ -147,7 +147,7 @@
                                     <rect key="frame" x="130" y="105" width="16" height="16"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
-                                <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="c2o-hF-Q6w" userLabel="btnChoice Date from">
+                                <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="c2o-hF-Q6w" userLabel="btnChoice Date from">
                                     <rect key="frame" x="604" y="220" width="30" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" backgroundImage="ic_cbx-1.png">

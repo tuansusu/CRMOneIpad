@@ -153,9 +153,26 @@
         if ([viewSubTemp isKindOfClass:[UILabel class]]) {
             ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
         }
+        
+        if ([viewSubTemp isKindOfClass:[UIImageView class]]) {
+            
+            [((UIImageView*) viewSubTemp) setAlpha:1.0f];
+        }
     }
     
-    
+    for (UIView *viewSubTemp in self.viewMainBodyInfo.subviews) {
+        
+        
+        if ([viewSubTemp isKindOfClass:[UILabel class]]) {
+            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+        }
+        
+        if ([viewSubTemp isKindOfClass:[UIImageView class]]) {
+            
+            [((UIImageView*) viewSubTemp) setAlpha:1.0f];
+        }
+    }
+
     
     
     [self.mainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];

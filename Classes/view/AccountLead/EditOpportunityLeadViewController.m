@@ -177,7 +177,7 @@
     
     if (self.dataRoot) {
         self.dataRoot = [dtoOpportunityProcess getById:[self.dataRoot objectForKey:DTOOPPORTUNITY_id]];
-        self.lblFormTitle.text = @"CHỈNH SỬA CƠ HỘI";
+        self.fullNameLB.text = @"CHỈNH SỬA CƠ HỘI";
     }
     
    

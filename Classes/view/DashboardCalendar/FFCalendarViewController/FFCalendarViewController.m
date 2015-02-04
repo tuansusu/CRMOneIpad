@@ -285,9 +285,8 @@
 
     [buttonYear setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*4, 0, BUTTON_WIDTH, buttonYear.frame.size.height)];
 
-    UIButton *btnCloseCalendar = [[UIButton alloc] initWithFrame:CGRectMake(20., 0, 32, 32)];
-
-    [btnCloseCalendar setBackgroundImage:[UIImage imageNamed:@"icon_menu-1.png"] forState:UIControlStateNormal];
+    UIButton *btnCloseCalendar = [[UIButton alloc] initWithFrame:CGRectMake(20., 0, 38, 38)];
+    [btnCloseCalendar setBackgroundImage:[UIImage imageNamed:@"iconMenu"] forState:UIControlStateNormal];
     //    [btnCloseCalendar setImage:[UIImage imageNamed:@"iconMenu"] forState:UIControlStateNormal];
     [btnCloseCalendar addTarget:self action:@selector(closeCalendar:) forControlEvents:UIControlEventTouchUpInside];
 
@@ -315,15 +314,14 @@
     [buttonAdd setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*8-10-BUTTON_MOUNT_WIDTH, 0, BUTTON_WIDTH, buttonAdd.frame.size.height)];
 
     labelWithMonthAndYear = [[UILabel alloc] initWithFrame:CGRectMake(APP_SCREEN_WIDTH-BUTTON_WIDTH*2.5, 0., 140., 30)];
-    [labelWithMonthAndYear setTextColor:TEXT_COLOR_WHITE_1];
-    [labelWithMonthAndYear setFont:[UIFont boldSystemFontOfSize:17]];
+    [labelWithMonthAndYear setTextColor:HEADER_VIEW_COLOR1];
     [labelWithMonthAndYear setFont:buttonToday.titleLabel.font];
     labelWithMonthAndYear.textAlignment = NSTextAlignmentRight;
 
     arrayButtons = @[buttonYear, buttonMonth, buttonWeek, buttonDay,buttonAdd];
 
 
-    _topMenuView  = [[UIView alloc] initWithFrame:CGRectMake(0, 27, self.view.frame.size.width, buttonYear.frame.size.height*2)];
+    _topMenuView  = [[UIView alloc] initWithFrame:CGRectMake(0, 30, self.view.frame.size.width, buttonYear.frame.size.height*2)];
     [_topMenuView setBackgroundColor:[UIColor whiteColor]];
     [_topMenuView addSubview:btnCloseCalendar];
     [_topMenuView addSubview:buttonYear];
@@ -343,7 +341,7 @@
 #pragma mark - Add Calendars
 
 - (void)addCalendars {
-    CGRect frame = CGRectMake(0., 64, self.view.frame.size.width, self.view.frame.size.height-64);
+    CGRect frame = CGRectMake(0., 70, self.view.frame.size.width, self.view.frame.size.height-70);
 
     viewCalendarYear = [[FFYearCalendarView alloc] initWithFrame:frame];
     [viewCalendarYear setProtocol:self];

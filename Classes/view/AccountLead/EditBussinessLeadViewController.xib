@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditBussinessLeadViewController">
@@ -14,7 +14,9 @@
                 <outlet property="btnSave" destination="tbz-k4-iYe" id="bIf-GJ-sec"/>
                 <outlet property="footerView" destination="CCp-DA-5Mj" id="9DQ-sj-QvE"/>
                 <outlet property="fullNameLB" destination="U63-8u-c4a" id="sxI-ga-v8E"/>
+                <outlet property="headerMainView" destination="mSf-Nl-zec" id="YiN-j8-9QN"/>
                 <outlet property="headerViewBar" destination="Hrd-cB-DNq" id="RTk-Iu-YVj"/>
+                <outlet property="lbTitle" destination="ARJ-bb-UT6" id="L5Y-lW-sul"/>
                 <outlet property="mainView" destination="W0a-Ep-vfq" id="j8c-1j-eyS"/>
                 <outlet property="txtAddress" destination="n9L-uf-0kw" id="r2t-TO-jaZ"/>
                 <outlet property="txtCapital" destination="4ZK-ea-MKB" id="qex-Cs-feA"/>
@@ -43,7 +45,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="THÊM MỚI KHÁCH HÀNG TIỀM NĂNG (DOANH NGHIỆP)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="U63-8u-c4a">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tống Viết Trung" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="U63-8u-c4a">
                             <rect key="frame" x="67" y="0.0" width="500" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
@@ -54,7 +56,7 @@
                             <rect key="frame" x="20" y="6" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                            <state key="normal" backgroundImage="btn-back-1-1.png">
+                            <state key="normal" image="btn-back-1-1.png">
                                 <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -65,16 +67,6 @@
                                 <action selector="homeBack:" destination="-1" eventType="touchUpInside" id="e1l-YP-xQg"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="tbz-k4-iYe" userLabel="btnSave">
-                            <rect key="frame" x="893" y="2" width="110" height="40"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Cập nhật">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="actionSave:" destination="-1" eventType="touchUpInside" id="oK0-CV-YKK"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
@@ -82,15 +74,39 @@
                     <rect key="frame" x="0.0" y="44" width="1024" height="674"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
+                        <view contentMode="scaleToFill" id="mSf-Nl-zec" userLabel="header main view">
+                            <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THÊM MỚI KHÁCH HÀNG TIỀM NĂNG (DOANH NGHIỆP)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ARJ-bb-UT6">
+                                    <rect key="frame" x="20" y="11" width="448" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="tbz-k4-iYe" userLabel="btnSave">
+                                    <rect key="frame" x="893" y="2" width="110" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Cập nhật">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="actionSave:" destination="-1" eventType="touchUpInside" id="oK0-CV-YKK"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="j0z-CN-oHP" userLabel="body view">
-                            <rect key="frame" x="20" y="20" width="984" height="634"/>
+                            <rect key="frame" x="20" y="64" width="984" height="580"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" id="OzN-al-FxC" userLabel="View header main info">
-                                    <rect key="frame" x="20" y="10" width="964" height="30"/>
+                                    <rect key="frame" x="0.0" y="10" width="984" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="icon_down.png" id="zIX-U6-Cpd">
+                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="icon_down.png" id="zIX-U6-Cpd">
                                             <rect key="frame" x="15" y="12" width="10" height="10"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
@@ -105,7 +121,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <view contentMode="scaleToFill" id="tZh-PG-lOF" userLabel="View body main info">
-                                    <rect key="frame" x="20" y="40" width="964" height="141"/>
+                                    <rect key="frame" x="0.0" y="40" width="984" height="141"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tên khách hàng" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="icp-74-pJp">
@@ -168,10 +184,10 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <view contentMode="scaleToFill" id="4ME-Qg-oQD" userLabel="View header expand info">
-                                    <rect key="frame" x="20" y="175" width="964" height="30"/>
+                                    <rect key="frame" x="0.0" y="175" width="984" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="icon_down.png" id="1py-My-2QQ">
+                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="icon_down.png" id="1py-My-2QQ">
                                             <rect key="frame" x="15" y="12" width="10" height="10"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
@@ -185,7 +201,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <view contentMode="scaleToFill" id="n71-4O-s0F" userLabel="View body expand info">
-                                    <rect key="frame" x="20" y="205" width="964" height="362"/>
+                                    <rect key="frame" x="0.0" y="205" width="984" height="362"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fax" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4NQ-go-wJ1">
@@ -339,7 +355,7 @@
                                         <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hZR-s9-YWK">
                                             <rect key="frame" x="830" y="40" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Button" backgroundImage="pin.png">
+                                            <state key="normal" title="Button" image="pin.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>

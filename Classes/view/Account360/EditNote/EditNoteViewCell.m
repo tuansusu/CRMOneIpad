@@ -41,7 +41,6 @@
         [imgNote setImage:[UIImage imageNamed:@"imageDefault"]];
     }
     [lblNoteName setText:imgName];
-    [imgNote setAlpha:1.0];
 }
 
 @end

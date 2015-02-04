@@ -99,10 +99,10 @@
     
     dataId = 0;
     if (self.dataSend) {
-        self.fullNameLB.text = TEXT_HEADER_EDIT_LEADER_PERSON;
+        self.lbTextHeaderMainView.text = TEXT_HEADER_EDIT_LEADER_PERSON;
         [self loadEditData];
     }else{
-        self.fullNameLB.text = TEXT_HEADER_ADD_LEADER_PERSON;
+        self.lbTextHeaderMainView.text = TEXT_HEADER_ADD_LEADER_PERSON;
     }
     
 }
@@ -175,7 +175,7 @@
 
 - (void) updateInterFaceWithOption : (int) option
 {
-    //self.fullNameLB.text = TITLE_APPLICATION;
+    self.fullNameLB.text = TITLE_APPLICATION;
     [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
     self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
     
@@ -187,15 +187,15 @@
     [self.btnSave setStyleNormalWithOption:smgSelect];
     
     
-//    [self.headerMainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
-//    [self.headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
-//    for (UIView *viewSubTemp in self.headerMainView.subviews) {
-//        
-//        
-//        if ([viewSubTemp isKindOfClass:[UILabel class]]) {
-//            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
-//        }
-//    }
+    [self.headerMainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
+    [self.headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
+    for (UIView *viewSubTemp in self.headerMainView.subviews) {
+        
+        
+        if ([viewSubTemp isKindOfClass:[UILabel class]]) {
+            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+        }
+    }
     
     
     
@@ -221,14 +221,8 @@
         for (UIView *viewSubTemp in viewTemp.subviews) {
             
             
-            if ([viewSubTemp isKindOfClass:[UIImageView class]]) {
-                [((UIImageView*) viewSubTemp) setAlpha:1.0f];
-                continue;
-            }
-            
             if ([viewSubTemp isKindOfClass:[UILabel class]]) {
                 ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
-                continue;
             }
             
             
@@ -237,7 +231,6 @@
                 ((UITextView*) viewSubTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
                 ((UITextView*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
                 ((UITextView*) viewSubTemp).layer.borderWidth = BORDER_WITH;
-                continue;
             }
             if ([viewSubTemp isKindOfClass:[UITextField class]]) {
                 ((UITextField*) viewSubTemp).textColor = TEXT_COLOR_REPORT;
@@ -247,7 +240,7 @@
                 
                 [((UITextField*) viewSubTemp) setPaddingLeft];
                 [((UITextField*) viewSubTemp) setBorderWithOption:smgSelect];
-                continue;
+                
             }
             
         }

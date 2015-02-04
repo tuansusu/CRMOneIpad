@@ -97,8 +97,6 @@ enum TypeActionEvent{
 @property (weak, nonatomic) IBOutlet UILabel *lblEndDateRealDetail;
 @property (weak, nonatomic) IBOutlet UILabel *lblNoteDetail;
 @property (weak, nonatomic) IBOutlet UILabel *lblDescriptionDetail;
-@property (weak, nonatomic) IBOutlet UIView *footeView;
-@property (weak, nonatomic) IBOutlet UILabel *barLabel;
 
 
 - (IBAction)actionClueContact:(UIButton *)sender;

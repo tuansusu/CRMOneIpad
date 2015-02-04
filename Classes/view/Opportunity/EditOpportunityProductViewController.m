@@ -10,7 +10,6 @@
 #import "DTOOPPORTUNITYPRODUCTProcess.h"
 #import "DTOPRODUCTMASTERProcess.h"
 #import "DTOSYSCATProcess.h"
-#import "Util.h"
 
 @interface EditOpportunityProductViewController ()
 {
@@ -77,9 +76,6 @@
     [self initData];
     
     searchBarController.isValid = NO;
-    
-    self.txtQuantity.delegate = self;
-    self.txtRevenue.delegate = self;
 }
 -(void)dismissPopUp
 {

@@ -22,13 +22,13 @@
         
         [self setFrame:frame];
         
-        [self setTitleColor:HEADER_VIEW_COLOR1 forState:UIControlStateNormal];
-        [self setTitleColor:TEXT_COLOR_HEADER_APP forState:UIControlStateSelected];
+        [self setTitleColor:TEXT_COLOR_HEADER_APP forState:UIControlStateNormal];
+        [self setTitleColor:HEADER_VIEW_COLOR1 forState:UIControlStateSelected];
         
-        [self setBackgroundImage:[UIImage imageWithColor:TEXT_COLOR_HEADER_APP] forState:UIControlStateNormal];
-        [self setBackgroundImage:[UIImage imageWithColor:HEADER_VIEW_COLOR1] forState:UIControlStateSelected];
-        [self.titleLabel setFont:[UIFont boldSystemFontOfSize:17]];
-        [self.layer setBorderColor:TEXT_COLOR_HEADER_APP.CGColor];
+        [self setBackgroundImage:[UIImage imageWithColor:HEADER_VIEW_COLOR1] forState:UIControlStateNormal];
+        [self setBackgroundImage:[UIImage imageWithColor:TEXT_COLOR_HEADER_APP] forState:UIControlStateSelected];
+        
+        [self.layer setBorderColor:HEADER_VIEW_COLOR1.CGColor];
         [self.layer setBorderWidth:1.];
     }
     return self;

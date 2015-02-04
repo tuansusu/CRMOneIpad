@@ -7,7 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CompetitorsViewController">
             <connections>
-                <outlet property="barLabel" destination="SGC-H3-uhJ" id="5IG-9z-INB"/>
                 <outlet property="btnActionSale" destination="dAl-yz-QAt" id="G6U-QH-MRE"/>
                 <outlet property="btnAdd" destination="Nzy-Vp-Qun" id="OEo-4K-vjP"/>
                 <outlet property="btnCalendar" destination="dsp-Gq-3sQ" id="yMG-07-L2X"/>
@@ -16,7 +15,6 @@
                 <outlet property="btnNote" destination="hE6-yH-DBv" id="NYi-QB-1aT"/>
                 <outlet property="btnProposeProduct" destination="FMx-z5-X0B" id="Ojg-k0-Aj0"/>
                 <outlet property="btnTask" destination="cIj-Ti-tFb" id="sfV-D1-Y5m"/>
-                <outlet property="footeView" destination="Kde-o7-Bon" id="Gmb-S9-qJK"/>
                 <outlet property="fullNameLB" destination="lSo-wO-QHp" id="97r-tg-A6h"/>
                 <outlet property="headerViewBar" destination="zdl-Hq-ker" id="nKV-ln-Kbj"/>
                 <outlet property="lblCode" destination="zPR-3p-aBU" id="Rwv-07-xPB"/>
@@ -400,22 +398,22 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
+                        <view contentMode="scaleToFill" id="cfw-Y4-ocl" userLabel="FOOTER VIEW">
+                            <rect key="frame" x="0.0" y="718" width="1024" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="VOFFICE-iPad 2.0, copyright Viettel CIT, Viettel Group" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="y7K-dF-n1v">
+                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
-                <view contentMode="scaleToFill" id="Kde-o7-Bon" userLabel="FOOTER VIEW">
-                    <rect key="frame" x="0.0" y="718" width="1024" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="VOFFICE-iPad 2.0, copyright Viettel CIT, Viettel Group" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="SGC-H3-uhJ">
-                            <rect key="frame" x="0.0" y="0.0" width="1024" height="30"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -425,7 +423,7 @@
     </objects>
     <resources>
         <image name="calendar_small_new.png" width="16" height="16"/>
-        <image name="ic-add-sub-1.png" width="90" height="90"/>
+        <image name="ic-add-sub-1.png" width="32" height="32"/>
         <image name="icon_menu-1.png" width="48" height="48"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

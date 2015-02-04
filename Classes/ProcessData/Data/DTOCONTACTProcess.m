@@ -131,13 +131,13 @@
 
 //filter with lay danh sach lien he cua 1 co hoi ban hang
 -(NSMutableArray*) filterWithClientOpportunityId: (NSString*) strValue{
-    NSArray *allFields =[NSArray arrayWithObjects:DTOCONTACT_id, DTOCONTACT_fullName, DTOCONTACT_address, DTOCONTACT_birthday, DTOCONTACT_mobile, DTOCONTACT_position, DTOCONTACT_clientContactId,DTOCONTACT_email,DTOCONTACT_avartar,DTOOPPORTUNITYCONTACT_opportunityContactId, nil];
+    NSArray *allFields =[NSArray arrayWithObjects:DTOCONTACT_id, DTOCONTACT_fullName, DTOCONTACT_address, DTOCONTACT_birthday, DTOCONTACT_mobile, DTOCONTACT_position, DTOCONTACT_clientContactId,DTOCONTACT_email,DTOCONTACT_avartar, nil];
     
-    NSString *query = [NSString stringWithFormat:@"SELECT \ c.id,c.fullName,c.address,c.birthday,c.mobile,c.position,c.clientContactId,c.email,c.avartar,oc.id \
+    NSString *query = [NSString stringWithFormat:@"SELECT \ c.id,c.fullName,c.address,c.birthday,c.mobile,c.position,c.clientContactId,c.email,c.avartar \
                        FROM dtoopportunitycontact oc \
                        inner join dtocontact c \
                        on oc.clientContactId = c.clientContactId \
-                       where oc.isActive = 1 and c.isActive = 1 and oc.clientOpportunityId = ? \
+                       where oc.clientOpportunityId = ? \
                        order by oc.updatedDate  desc"];
     
     

@@ -91,8 +91,9 @@
     
     dataId = 0;
     if (self.dataSend) {
-        self.fullNameLB.text=@"CẬP NHẬP KHÁCH HÀNG TIỀM NĂNG (DOANH NGHIỆP)";
+        _lbTitle.text=@"CẬP NHẬP KHÁCH HÀNG TIỀM NĂNG (DOANH NGHIỆP)";
         [self loadEditData];
+        
     }
     
 }
@@ -171,7 +172,7 @@
 
 - (void) updateInterFaceWithOption : (int) option
 {
-    //self.fullNameLB.text = TITLE_APPLICATION;
+    self.fullNameLB.text = TITLE_APPLICATION;
     [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
     self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
     
@@ -213,10 +214,6 @@
         //        }
         
         for (UIView *viewSubTemp in viewTemp.subviews) {
-            
-            if ([viewSubTemp isKindOfClass:[UIImageView class]]) {
-                [((UIImageView*) viewSubTemp) setAlpha:1.0f];
-            }
             
             
             if ([viewSubTemp isKindOfClass:[UILabel class]]) {

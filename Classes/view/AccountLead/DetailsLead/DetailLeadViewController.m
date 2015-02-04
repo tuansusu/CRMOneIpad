@@ -40,8 +40,8 @@
 
 #define SELECT_TEXT_ADD_CONTACT @"LIÊN HỆ"
 #define SELECT_TEXT_ADD_NOTE @"GHI CHÚ"
-#define SELECT_TEXT_ADD_CALENDAR @"SỰ KIỆN"
-#define SELECT_TEXT_ADD_TASK @"CÔNG VIỆC"
+#define SELECT_TEXT_ADD_CALENDAR @"LỊCH"
+#define SELECT_TEXT_ADD_TASK @"NHIỆM VỤ"
 #define SELECT_TEXT_ADD_OPPORTUNITY @"CƠ HỘI"
 #define SELECT_TEXT_ADD_COMPLAIN @"Ý KIẾN PHẢN HỒI"
 
@@ -462,16 +462,6 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
     [self.viewHeaderExpandInfo setSelectiveBorderWithColor:backgrondButtonSelected withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
     
-    
-    //Thêm phần hiển thị chữ in hoa trong phần tab
-    for (UIView *viewTemp in scrollViewHeaderExpandInfo.subviews) {
-        if ([viewTemp isKindOfClass:[UIButton class]]) {
-            
-            
-            [((UIButton*) viewTemp) setTitle:[((UIButton*) viewTemp).titleLabel.text  uppercaseString] forState:UIControlStateNormal];
-            
-        }
-    }
     
     //cap nhat cho dong line phan chi tiet
 }

@@ -1,7 +1,84 @@
-/* 
-  Localizable.strings
-  OfficeOneMB
+/*
+ Localizable.strings
+ OfficeOneMB
+ 
+ Created by viettel on 1/26/15.
+ 
+ */
+//login
+"KEY_ACCOUNT" = "Account";
+"KEY_PASSWORD" = "Password";
+"KEY_LOGIN" = "Login";
+"KEY_ABOUT" = "Abount";
 
-  Created by viettel on 1/26/15.
+//menu
+"MENU_FUNCTION_DASHBOARD" = "     DASHBOARD";
+"MENU_GROUP_CUSTOMER" = "    CUSTOMER";
+"MENU_FUNCTION_ACCOUNTLEAD" = "       Potential customer";
+"MENU_FUNCTION_ACCOUNT360" = "           360 customer";
+"MENU_FUNCTION_OPPORTUNITY" = "           Sale opportunities";
+"MENU_FUNCTION_MAP" = "           Customer map";
+"MENU_GROUP_ACTION_SALE" = "     SALES ACTIVITIES";
+"MENU_FUNCTION_TASK" = "           Work";
+"MENU_FUNCTION_CALENDAR" = "           Calendar";
+"MENU_GROUP_UTILITY" = "     UTILITIES";
+"MENU_FUNCTION_REPORT" = "           Report";
+"MENU_FUNCTION_SETTING" = "           Establish";
+"MENU_FUNCTION_OPTION_REPLY" = "           Feeback";
+"MENU_FUNCTION_HELP" = "           Help";
+"MENU_GROUP_SYSTEM" = "     SYSTEM";
+"MENU_FUNCTION_SYNC" = "           Sync";
+"MENU_FUNCTION_CANCEL" = "           Exit";
 
-*/
+
+"KEY_ALERTVIEW_DELETE_MESSAGE" = "chắc chắn muốn xóa công việc?";
+"KEY_ALERTVIEW_DELETE_CANCEL" = "Cancel";
+"KEY_ALERTVIEW_DELETE_OK" = "OK";
+
+"KEY_Edit" = "Edit";
+"KEY_Delete" = "Delete";
+
+//ALL
+"KEY_UPDATE" = "Update";
+"KEY_CANCEL" = "Cancel";
+"KEY_SEARCH" = "Search";
+"KEY_TOTAL" = "Total";
+
+//stop task
+"KEY_STOP_TASK_TITLE" = "XÁC NHẬN LÝ DO DỪNG CÔNG VIỆC";
+"KEY_STOP_TASK_REASON" = "Lý do dừng công việc";
+
+"KEY_ALERT_SUMMARY" = "Đồng chí có muốn đăng xuất không ?";
+"KEY_ALERT_YES" = "Yes";
+"KEY_ALERT_NO" = "No";
+"KEY_ALERT_TITLE" = "Notify";
+//ghi chú
+"KEY_NOTE_ADD"="ADD NOTE";
+"KEY_NOTE_EDIT"="UPDATE NOTE";
+"KEY_NOTE_TITLE"="Title";
+"KEY_NOTE_CONTENT"="Content";
+"KEY_NOTE_FILE"="File attachment";
+//quick menu
+"KEY_QUICK_VIEW"="View";
+"KEY_QUICK_EDIT"="Edit";
+"KEY_QUICK_DEL"="Delete";
+"KEY_QUICK_CALL"="Call";
+"KEY_QUICK_SMS"="Sms";
+"KEY_QUICK_EMAIL"="Email";
+"KEY_QUICK_FOLLOW"="Follow up";
+"KEY_QUICK_MAPS"="Maps";
+//lien he
+"KEY_CONTACT_ADD"="ADD NEW CONTACT";
+"KEY_CONTACT_EDIT"="UPDATE CONTACT";
+"KEY_CONTACT_NAME"="Full name";
+"KEY_CONTACT_POSITION"="Position";
+"KEY_CONTACT_PHONE"="Mobile";
+"KEY_CONTACT_CMT"="ID/Passport";
+"KEY_CONTACT_CMT_DATE"="Create date";
+"KEY_CONTACT_BIRTH"="Place of birth";
+"KEY_CONTACT_BIRTH_DAY"="Birth day";
+"KEY_CONTACT_EMAIL"="Email";
+"KEY_CONTACT_ADDRESS"="Address";
+"KEY_CONTACT_NOTE"="Note";
+"KEY_CONTACT_AVARTAR"="Avartar";
+

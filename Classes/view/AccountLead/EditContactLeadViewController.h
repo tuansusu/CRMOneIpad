@@ -97,4 +97,16 @@
 
 - (IBAction)actionSelectAddress:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UILabel *lbFullname;
+
+@property (weak, nonatomic) IBOutlet UILabel *lbmobile;
+@property (weak, nonatomic) IBOutlet UILabel *lbpassport;
+@property (weak, nonatomic) IBOutlet UILabel *lbNoiSinh;
+@property (weak, nonatomic) IBOutlet UILabel *lbEmail;
+@property (weak, nonatomic) IBOutlet UILabel *lbNote;
+@property (weak, nonatomic) IBOutlet UILabel *lbPosition;
+@property (weak, nonatomic) IBOutlet UILabel *lbNgayCap;
+@property (weak, nonatomic) IBOutlet UILabel *lbNgaySinh;
+@property (weak, nonatomic) IBOutlet UILabel *lbDiaChi;
+
 @end

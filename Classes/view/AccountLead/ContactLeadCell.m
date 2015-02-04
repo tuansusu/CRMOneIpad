@@ -24,7 +24,7 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
@@ -55,7 +55,16 @@
         self.lbName.text = @"";
         
     }else{
-        self.lbName.text = [dicData objectForKey:DTOCONTACT_fullName];
+        NSString *name=[dicData objectForKey:DTOCONTACT_fullName];
+        NSString *position=[dicData objectForKey:DTOCONTACT_position];
+        NSString *display;
+        if([StringUtil stringIsEmpty:position]){
+            display=name;
+        }
+        else{
+            display =[NSString stringWithFormat:@"%@ - %@",name,position];
+        }
+        self.lbName.text = display;
     }
     
     
@@ -70,13 +79,6 @@
     }else{
         self.lbEmail.text = [dicData objectForKey:DTOCONTACT_email];
     }
-    
-    if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOCONTACT_position]]) {
-        self.lbPosition.text = @"";
-    }else{
-        self.lbPosition.text = [dicData objectForKey:DTOCONTACT_position];
-    }
-    
     if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOCONTACT_address]]) {
         self.lbAddress.text = @"";
     }else{
@@ -84,7 +86,7 @@
     }
     NSString *avartar = [dicData objectForKey:DTOCONTACT_avartar];
     if (![StringUtil stringIsEmpty:avartar]) {
-         _avartar.image=[UIImage imageWithData:[NSData dataWithContentsOfFile:avartar]];
+        _avartar.image=[UIImage imageWithData:[NSData dataWithContentsOfFile:avartar]];
     }
     switch (smgSelect) {
         case 1:
@@ -92,6 +94,11 @@
             for (UIView *viewTemp in self.contentView.subviews) {
                 if ([viewTemp isKindOfClass:[UILabel class]]) {
                     ((UILabel*) viewTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+                }
+                
+                if ([viewTemp isKindOfClass:[UIImageView class]]) {
+                    
+                    [((UIImageView*) viewTemp) setAlpha:1.0f];
                 }
             }
             self.lbName.textColor = TEXT_COLOR_HIGHLIGHT;
@@ -106,11 +113,28 @@
 
 - (IBAction)actionAddress:(id)sender {
     
-//    [_delegate AccountLeadCellDelegate_ActionViewMapWithData:_dicData];
+    //    [_delegate AccountLeadCellDelegate_ActionViewMapWithData:_dicData];
     
 }
 
 - (IBAction)actionSendMail:(id)sender {
+    if(![StringUtil stringIsEmpty:self.lbEmail.text]){
+        [_delegate delegate_sendMailContact:self.lbEmail.text];
+    }
+}
+
+- (IBAction)actionSendSMS:(id)sender {
+    if(![StringUtil stringIsEmpty:self.lbPhone.text]){
+        [_delegate delegate_sendSMSContact:self.lbPhone.text];
+
+    }
+}
+
+- (IBAction)actionCall:(id)sender {
+    if(![StringUtil stringIsEmpty:self.lbPhone.text]){
+        [_delegate delegate_callContact:self.lbPhone.text];
+        
+    }
 }
 
 

@@ -52,10 +52,9 @@
                             <action selector="actionChangeFlow:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="7cu-hf-dgi"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hjl-i1-PMU" userLabel="btn Address">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hjl-i1-PMU" userLabel="btn Address">
                         <rect key="frame" x="104" y="70" width="25" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <state key="normal" backgroundImage="pin.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -63,7 +62,7 @@
                             <action selector="actionAddress:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="47A-9y-9bx"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rAI-z0-rRN" userLabel="btn Email">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rAI-z0-rRN" userLabel="btn Email">
                         <rect key="frame" x="339" y="36" width="25" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" backgroundImage="email_icon_hide.png">

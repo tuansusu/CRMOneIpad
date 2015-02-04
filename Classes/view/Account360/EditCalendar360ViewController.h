@@ -35,7 +35,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 
-@property (weak, nonatomic) IBOutlet UIView *headerMainView;
+//@property (weak, nonatomic) IBOutlet UIView *headerMainView;
 
 
 @property (weak, nonatomic) IBOutlet UIView *bodyMainView;

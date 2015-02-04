@@ -285,8 +285,8 @@
 
     [buttonYear setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*4, 0, BUTTON_WIDTH, buttonYear.frame.size.height)];
 
-    UIButton *btnCloseCalendar = [[UIButton alloc] initWithFrame:CGRectMake(20., 0, 38, 38)];
-    [btnCloseCalendar setBackgroundImage:[UIImage imageNamed:@"iconMenu"] forState:UIControlStateNormal];
+    UIButton *btnCloseCalendar = [[UIButton alloc] initWithFrame:CGRectMake(20., -5, 32, 32)];
+    [btnCloseCalendar setBackgroundImage:[UIImage imageNamed:@"icon_menu-1.png"] forState:UIControlStateNormal];
     //    [btnCloseCalendar setImage:[UIImage imageNamed:@"iconMenu"] forState:UIControlStateNormal];
     [btnCloseCalendar addTarget:self action:@selector(closeCalendar:) forControlEvents:UIControlEventTouchUpInside];
 
@@ -341,7 +341,7 @@
 #pragma mark - Add Calendars
 
 - (void)addCalendars {
-    CGRect frame = CGRectMake(0., 70, self.view.frame.size.width, self.view.frame.size.height-70);
+    CGRect frame = CGRectMake(0., 64, self.view.frame.size.width, self.view.frame.size.height-64);
 
     viewCalendarYear = [[FFYearCalendarView alloc] initWithFrame:frame];
     [viewCalendarYear setProtocol:self];

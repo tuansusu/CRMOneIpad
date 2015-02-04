@@ -123,6 +123,11 @@ NSDateFormatter *df,*dfTime;
                 if ([viewTemp isKindOfClass:[UILabel class]]) {
                     ((UILabel*) viewTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
                 }
+                
+                if ([viewTemp isKindOfClass:[UIImageView class]]) {
+                    
+                    [((UIImageView*) viewTemp) setAlpha:1.0f];
+                }
             }
             self.lbName.textColor = TEXT_COLOR_HIGHLIGHT;
         }
@@ -222,7 +227,28 @@ NSDateFormatter *df,*dfTime;
     [_delegate delegate_email:_dicData];
 }
 -(void) follow:(id) sender{
-    [_delegate delegate_follow:_dicData];
+    NSString *leadId=[_dicData objectForKey:DTOLEAD_leadId];
+    if(leadId.length>0){
+        leadId=leadId;
+    }
+    else{
+        leadId=[_dicData objectForKey:DTOLEAD_clientLeadId];
+    }
+    if([self checkFollowLead:leadId]==0){
+          [_delegate delegate_follow:_dicData];    }
+    else if ([self checkFollowLead:leadId]==1){
+        //xu ly trang thai thanh da hoan thanh
+        NSLog(@"chua xu ly");
+        NSDictionary *data;
+        DTOFLLOWUPProcess *followProcess=[DTOFLLOWUPProcess new];
+        data= [followProcess getDataWithKey:DTOFOLLOWUP_objectId withValue:leadId];
+        NSString *followid;
+        if(data.count>0){
+            followid = [data objectForKey:DTOFOLLOWUP_id];
+            [_delegate delegate_changeStatusFollow:followid];
+        }
+    }
+  
 }
 -(void) map:(NSDictionary *)dicData{
     [_delegate delegate_maps:_dicData];
@@ -246,14 +272,14 @@ NSDateFormatter *df,*dfTime;
         [dateEndFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss.S"];
         NSDate *end=[dateFromStringFormat dateFromString:strDateEnd];
         
-        NSString *stt =[arrayData objectForKey:DTOFOLLOWUP_followUpState] ;
+        NSString *stt =[data objectForKey:DTOFOLLOWUP_followUpState] ;
         NSComparisonResult result;
         result =[today compare:end];
         
         if (result == NSOrderedDescending && ![stt isEqualToString:@"2"]) {
             NSLog(@"Qua han");
             NSString *itemid;
-            itemid=[arrayData objectForKey:DTOFOLLOWUP_id];
+            itemid=[data objectForKey:DTOFOLLOWUP_id];
             NSLog(@"item:%@",itemid);
             if([StringUtil stringIsEmpty:itemid]){
                 return NO;

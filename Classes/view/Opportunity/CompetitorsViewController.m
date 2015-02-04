@@ -17,10 +17,6 @@
 #import "DTOOPPORTUNITYCONTACTProcess.h"
 #import "DTONOTEProcess.h"
 
-#import "TaskCalendarCell.h"
-#import "TaskCalTLineCell.h"
-#import "TaskActionCell.h"
-
 #define SELECT_TEXT_ADD_CONTACT @"LIÊN HỆ"
 #define SELECT_TEXT_ADD_PRODUCT @"SẢN PHẨM ĐỀ XUẤT"
 #define SELECT_TEXT_ADD_CALENDAR @"SẢN PHẨM ĐÃ BÁN"
@@ -34,16 +30,14 @@
 #define SELECT_INDEX_ADD_NOTE 4
 
 
-static NSString* const TaskCalendarNormalCellId   = @"TaskCalendarCellId";
-static NSString* const TaskCalendarTimelineCellId = @"TaskCalTLineCellId";
-static NSString* const TaskActionCellId           = @"TaskActionCellId";
+
 
 @interface CompetitorsViewController ()
 {
     int smgSelect ; //option layout
-
+    
     NSDictionary *opportunity;
-
+    
     NSArray *arrayData; //mang luu tru du lieu
     
     
@@ -67,11 +61,9 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     NSArray *listArr;
     
     //item danh dau se xoa
-     NSString *deleteItemId;
+    NSString *deleteItemId;
     BOOL isMainDelete;
     
-    //calendar
-    BOOL calendarIsTimeline;
 }
 @end
 
@@ -110,20 +102,15 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     [self.scrollViewInfo setBackGroundNormalColorWithOption:smgSelect];
     [self setBottomLineDetail:self.scrollViewInfo];
     [self.rightInMainView setBorderWithOption:smgSelect];
-//    [self.tbData registerNib:[UINib nibWithNibName:@"OpportunityCell" bundle:nil] forCellReuseIdentifier:@"opportunityCell"];
+    //    [self.tbData registerNib:[UINib nibWithNibName:@"OpportunityCell" bundle:nil] forCellReuseIdentifier:@"opportunityCell"];
     
     
     //remove footer view
     //(xoá dòng thừa không hiển thị của table)
     self.tbData.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
-    // calendar
-    calendarIsTimeline = YES;
-
+    
     [self loadData];
-    
-    
-
 }
 -(void) loadData{
     
@@ -174,7 +161,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 }
 
 -(void) viewWillAppear:(BOOL)animated{
-   // [self viewDidLoad];
+    // [self viewDidLoad];
     [self loadDataWithTypeAction:typeActionEvent];
 }
 
@@ -203,7 +190,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     dtoNoteProcess = [DTONOTEProcess new];
     
     opportunity = [dtoOpportunityProcess getById:itemId];
-
+    
     arrayData  = [NSArray new];
     isMainDelete = NO;
 }
@@ -257,8 +244,8 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
     self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
     //[self.btnSearch setStyleNormalWithOption:smgSelect];
-   // [self.leftViewHeader setBackgroundColor:BACKGROUND_COLOR_TOP_LEFT_HEADER];
-   // self.leftLabelHeader.textColor = TEXT_COLOR_HEADER_APP;
+    // [self.leftViewHeader setBackgroundColor:BACKGROUND_COLOR_TOP_LEFT_HEADER];
+    // self.leftLabelHeader.textColor = TEXT_COLOR_HEADER_APP;
     
     textColorButtonNormal = TEXT_BUTTON_COLOR_BLACK_1; //mau chu button binh thuong
     textColorButtonSelected = TEXT_BUTTON_COLOR1; //mau chu button select
@@ -290,9 +277,13 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             
             [((UIImageView*) viewTemp) setAlpha:1.0f];
         }
+
     }
     
     [self.rightViewHeader setSelectiveBorderWithColor:backgrondButtonSelected withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
+    
+    self.footeView.backgroundColor = TOOLBAR_VIEW_COLOR;
+    self.barLabel.textColor = TEXT_TOOLBAR_COLOR1;
 }
 
 
@@ -313,6 +304,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     switch (index) {
         case SELECT_INDEX_ADD_CONTACT:
         {
+            typeActionEvent = type_ClueContact;
             EditContactOpportunityViewController *viewController = [[EditContactOpportunityViewController alloc]initWithNibName:@"EditContactOpportunityViewController" bundle:nil];
             viewController.dataRoot = opportunity;
             [self presentViewController:viewController animated:YES completion:nil];
@@ -320,17 +312,16 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             break;
         case SELECT_INDEX_ADD_PRODUCT:
         {
+            typeActionEvent = type_ProposeProduct;
             EditOpportunityProductViewController *viewController = [[EditOpportunityProductViewController alloc]initWithNibName:@"EditOpportunityProductViewController" bundle:nil];
             viewController.dataRoot = opportunity;
-            //[self presentViewController:viewController animated:YES completion:nil];
-            //viewController.view.frame = CGRectMake(0, 0, 600, 400);
             viewController.delegateOpportunityProduct = (id<OpportunityProductDelegate>)self;
-            //[self presentPopupViewController:viewController animationType:YES];
             [self presentViewController:viewController animated:YES completion:nil];
         }
             break;
         case SELECT_INDEX_ADD_TASK:
         {
+            typeActionEvent = type_Task;
             EditOpportunityTaskViewController *viewController = [[EditOpportunityTaskViewController alloc]initWithNibName:@"EditOpportunityTaskViewController" bundle:nil];
             viewController.dataRoot = opportunity;
             [self presentViewController:viewController animated:YES completion:nil];
@@ -353,7 +344,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
 #pragma mark action button
 - (IBAction)homeBack:(id)sender {
-   // [Util backToHome:self];
+    // [Util backToHome:self];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -380,10 +371,6 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 }
 
 - (IBAction)actionCalendar:(UIButton*)sender {
-    if (typeActionEvent == type_Calendar)
-    {
-        calendarIsTimeline = !calendarIsTimeline;
-    }
     [self loadDataWithTypeAction:type_Calendar];
     [self displayNormalButtonState:sender];
 }
@@ -391,7 +378,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 - (IBAction)actionNote:(id)sender {
     [self loadDataWithTypeAction:type_Note];
     [self displayNormalButtonState:sender];
-
+    
 }
 
 
@@ -434,11 +421,15 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 }
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if(arrayData.count == 0)
+        return tableView.frame.size.height;
+    
     switch (typeActionEvent) {
         case type_ProposeProduct:{
             return 50.0f;
         }break;
-        
+            
         case type_ClueContact:{
             return 100.0f;
         }
@@ -450,18 +441,6 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         case type_Note:{
             return 60.0f;
         }
-        case type_Calendar:
-        {
-            if (calendarIsTimeline)
-            {
-                return 225.0f;
-            }
-            else
-            {
-                return 66.0f;
-            }
-        }
-            break;
         default:
             break;
     }
@@ -474,10 +453,11 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"numberofrows = %d", arrayData.count);
-    
-    return  arrayData.count;
-    
+    if (arrayData.count == 0) {
+        return  1;
+    }else{
+        return arrayData.count;
+    }
     
 }
 /**
@@ -538,7 +518,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         
         return cell;
     }
-
+    
     
     
     switch (typeActionEvent) {
@@ -559,7 +539,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             }
             
             return cell;
-
+            
         }
             break;
         case type_ProposeProduct:
@@ -579,7 +559,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             return cell;
         }
             break;
-            case type_Sale:
+        case type_Sale:
         {
             static NSString *cellId = @"saleCell";
             ProposeProductCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
@@ -596,8 +576,8 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             return cell;
         }
             break;
- 
-         
+            
+            
         case type_Task:
         {
             static NSString *cellId = @"TaskOpportunityCell";
@@ -631,63 +611,25 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             return cell;
         }
             break;
-
-//        case type_Calendar:
-//        {
-//            static NSString *cellId = @"TaskOpportunityCell";
-//            TaskOpportunityCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
-//            
-//            
-//            if (!cell) {
-//                cell = [TaskOpportunityCell getNewCell];
-//            }
-//            
-//            if (arrayData.count>0) {
-//                [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
-//            }
-//            
-//            return cell;
-//        }
-//            break;
-//        default:
-//            break;
+            
         case type_Calendar:
         {
-            if (calendarIsTimeline)
-            {
-                TaskCalTLineCell *cell = [tableView dequeueReusableCellWithIdentifier:TaskCalendarTimelineCellId];
-                
-                if (indexPath.row < arrayData.count)
-                {
-                    [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
-                    if (indexPath.row == 0)
-                    {
-                        cell.tbv_position = TaskCalTLineCell_Top;
-                    }
-                    else if (indexPath.row == arrayData.count - 1)
-                    {
-                        cell.tbv_position = TaskCalTLineCell_Bottom;
-                    }
-                    else
-                    {
-                        cell.tbv_position = TaskCalTLineCell_Middle;
-                    }
-                }
-                
-                return cell;
+            static NSString *cellId = @"TaskOpportunityCell";
+            TaskOpportunityCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+            
+            
+            if (!cell) {
+                cell = [TaskOpportunityCell getNewCell];
             }
-            else
-            {
-                TaskCalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:TaskCalendarNormalCellId];
-                
-                if (indexPath.row < arrayData.count)
-                {
-                    [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
-                }
-                
-                return cell;
+            
+            if (arrayData.count>0) {
+                [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
             }
+            
+            return cell;
         }
+            break;
+        default:
             break;
     }
     
@@ -708,14 +650,14 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         case type_Sale:
             
             break;
-            case type_ClueContact:
+        case type_ClueContact:
             break;
-//            case type_Competionor:
-//            break;
-            case type_ProposeProduct:
+            //            case type_Competionor:
+            //            break;
+        case type_ProposeProduct:
             break;
-//            case type_Support:
-//            break;
+            //            case type_Support:
+            //            break;
         default:
             break;
     }
@@ -737,7 +679,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
     [self.listPopover setPopoverContentSize:CGSizeMake(320, HEIGHT_SELECT_INDEX_ROW*listArr.count) animated:NO];
     [self.listPopover presentPopoverFromRect:popoverFrame inView:self.headerViewBar permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
-
+    
 }
 
 //
@@ -764,8 +706,33 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         
         
         NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
-        deleteItemId = [dicData objectForKey:DTOOPPORTUNITYPRODUCT_id];
-       // deleteFile =[dicData objectForKey:DTOATTACHMENT_id];
+        
+        switch (typeActionEvent) {
+            case type_ProposeProduct:
+            {
+                deleteItemId = [dicData objectForKey:DTOOPPORTUNITYPRODUCT_id];
+            }
+                break;
+            case type_ClueContact:
+            {
+                deleteItemId = [dicData objectForKey:DTOCONTACT_id];
+            }
+                break;
+            case type_Task:
+            {
+                deleteItemId = [dicData objectForKey:DTOTASK_id];
+            }
+                break;
+            case type_Note:
+            {
+                deleteItemId = [dicData objectForKey:DTONOTE_id];
+            }
+                break;
+            default:
+                break;
+        }
+        
+        // deleteFile =[dicData objectForKey:DTOATTACHMENT_id];
         UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xác nhận đồng ý xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
         isMainDelete = NO;
         mylert.tag = TAG_DELETE_ITEM;
@@ -784,24 +751,62 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
                 case type_ProposeProduct:
                 {
                     result = [dtoOpportunityProductProcess deleteEntity:deleteItemId];
+                    if (result) {
+                        
+                        [self loadDataWithTypeAction:type_ProposeProduct];
+                    }else{
+                        NSLog(@"Delete false!");
+                    }
+                }
+                    break;
+                case type_ClueContact:
+                {
+                    result = [dtoContactProcess deleteEntity:deleteItemId];
+                    if (result) {
+                        //xoa tiep trong bang opportunitycontact
+                        NSPredicate *bPredicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"id = '%@'",deleteItemId]];
+                        NSArray *x = [arrayData filteredArrayUsingPredicate:bPredicate];
+                        NSDictionary *dicData= [[arrayData filteredArrayUsingPredicate:bPredicate] objectAtIndex:0];
+                        NSString *opportunityContactId = [dicData objectForKey:DTOOPPORTUNITYCONTACT_opportunityContactId];
+                        result =[dtoOpportunityContactProcess deleteEntity:opportunityContactId];
+                        [self loadDataWithTypeAction:type_ClueContact];
+                    }else{
+                        NSLog(@"Delete false!");
+                    }
+                }
+                    break;
+                case type_Task:
+                {
+                    result = [dtoTaskProcess deleteEntity:deleteItemId];
+                    if (result) {
+                        
+                        [self loadDataWithTypeAction:type_Task];
+                    }else{
+                        NSLog(@"Delete false!");
+                    }
+                }
+                    break;
+                case type_Note:
+                {
+                    result = [dtoNoteProcess deleteEntity:deleteItemId];
+                    if (result) {
+                        
+                        [self loadDataWithTypeAction:type_Note];
+                    }else{
+                        NSLog(@"Delete false!");
+                    }
                 }
                     break;
                 default:
                     break;
             }
         }
-        //reload lai csdl
+        //Dua thong bao
         if (result) {
-            if(isMainDelete){
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }else{
-                arrayData = [dtoOpportunityProductProcess filterWithClientOpportunityId:[opportunity objectForKey:DTOOPPORTUNITY_clientOpportunityId]];
-                [self.tbData reloadData];
-            }
             //thong bao cap nhat thanh cong
             UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:KEY_NOTIFICATION_TITLE message:SYS_Notification_UpdateSuccess delegate:self cancelButtonTitle:KEY_NOTIFICATION_ACCEPT otherButtonTitles:  nil];
             
-                [mylert show];
+            [mylert show];
             
         }else{
             //thong bao cap nhat that bai
@@ -851,7 +856,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             EditOpportunityProductViewController *viewController = [[EditOpportunityProductViewController alloc]initWithNibName:@"EditOpportunityProductViewController" bundle:nil];
             viewController.dataSend = dicData;
             //[self presentViewController:viewController animated:YES completion:nil];
-           // viewController.view.frame = CGRectMake(0, 0, 600, 400);
+            // viewController.view.frame = CGRectMake(0, 0, 600, 400);
             viewController.delegateOpportunityProduct = (id<OpportunityProductDelegate>)self;
             //[self presentPopupViewController:viewController animationType:YES];
             [self presentViewController:viewController animated:YES completion:nil];
@@ -866,7 +871,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         }
             break;
         case type_Note:{
-             NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
+            NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
             EditNoteOpportunityViewController *viewNoteController = [[EditNoteOpportunityViewController alloc]initWithNibName:@"EditNoteOpportunityViewController" bundle:nil];
             viewNoteController.dataSend = dicData;
             [self presentViewController:viewNoteController animated:YES completion:nil];

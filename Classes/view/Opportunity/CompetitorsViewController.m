@@ -252,7 +252,7 @@
     backgrondButtonSelected = BUTTON_ACTIVE_COLOR_1;
     backgroundButtonNormal = BUTTON_REPORT_MAIN_IN_ACTIVE_COLOR_1;
     
-    for (UIView *viewTemp in self.leftInMainView.subviews) {
+    for (UIView *viewTemp in self.scrollViewInfo.subviews) {
         if ([viewTemp isKindOfClass:[UILabel class]]) {
             ((UILabel*) viewTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
         }
@@ -272,6 +272,10 @@
             ((UITextField*) viewTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
             ((UITextField*) viewTemp).layer.borderColor = [BORDER_COLOR CGColor];
             ((UITextField*) viewTemp).layer.borderWidth = BORDER_WITH;
+        }
+        if ([viewTemp isKindOfClass:[UIImageView class]]) {
+            
+            [((UIImageView*) viewTemp) setAlpha:1.0f];
         }
     }
     

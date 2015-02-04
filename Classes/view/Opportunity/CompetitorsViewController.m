@@ -17,6 +17,10 @@
 #import "DTOOPPORTUNITYCONTACTProcess.h"
 #import "DTONOTEProcess.h"
 
+#import "TaskCalendarCell.h"
+#import "TaskCalTLineCell.h"
+#import "TaskActionCell.h"
+
 #define SELECT_TEXT_ADD_CONTACT @"LIÊN HỆ"
 #define SELECT_TEXT_ADD_PRODUCT @"SẢN PHẨM ĐỀ XUẤT"
 #define SELECT_TEXT_ADD_CALENDAR @"SẢN PHẨM ĐÃ BÁN"
@@ -30,7 +34,9 @@
 #define SELECT_INDEX_ADD_NOTE 4
 
 
-
+static NSString* const TaskCalendarNormalCellId   = @"TaskCalendarCellId";
+static NSString* const TaskCalendarTimelineCellId = @"TaskCalTLineCellId";
+static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
 @interface CompetitorsViewController ()
 {
@@ -64,6 +70,8 @@
      NSString *deleteItemId;
     BOOL isMainDelete;
     
+    //calendar
+    BOOL calendarIsTimeline;
 }
 @end
 
@@ -109,8 +117,13 @@
     //(xoá dòng thừa không hiển thị của table)
     self.tbData.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
+    // calendar
+    calendarIsTimeline = YES;
 
     [self loadData];
+    
+    
+
 }
 -(void) loadData{
     
@@ -367,6 +380,10 @@
 }
 
 - (IBAction)actionCalendar:(UIButton*)sender {
+    if (typeActionEvent == type_Calendar)
+    {
+        calendarIsTimeline = !calendarIsTimeline;
+    }
     [self loadDataWithTypeAction:type_Calendar];
     [self displayNormalButtonState:sender];
 }
@@ -433,6 +450,18 @@
         case type_Note:{
             return 60.0f;
         }
+        case type_Calendar:
+        {
+            if (calendarIsTimeline)
+            {
+                return 225.0f;
+            }
+            else
+            {
+                return 66.0f;
+            }
+        }
+            break;
         default:
             break;
     }
@@ -603,24 +632,62 @@
         }
             break;
 
+//        case type_Calendar:
+//        {
+//            static NSString *cellId = @"TaskOpportunityCell";
+//            TaskOpportunityCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+//            
+//            
+//            if (!cell) {
+//                cell = [TaskOpportunityCell getNewCell];
+//            }
+//            
+//            if (arrayData.count>0) {
+//                [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+//            }
+//            
+//            return cell;
+//        }
+//            break;
+//        default:
+//            break;
         case type_Calendar:
         {
-            static NSString *cellId = @"TaskOpportunityCell";
-            TaskOpportunityCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
-            
-            
-            if (!cell) {
-                cell = [TaskOpportunityCell getNewCell];
+            if (calendarIsTimeline)
+            {
+                TaskCalTLineCell *cell = [tableView dequeueReusableCellWithIdentifier:TaskCalendarTimelineCellId];
+                
+                if (indexPath.row < arrayData.count)
+                {
+                    [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+                    if (indexPath.row == 0)
+                    {
+                        cell.tbv_position = TaskCalTLineCell_Top;
+                    }
+                    else if (indexPath.row == arrayData.count - 1)
+                    {
+                        cell.tbv_position = TaskCalTLineCell_Bottom;
+                    }
+                    else
+                    {
+                        cell.tbv_position = TaskCalTLineCell_Middle;
+                    }
+                }
+                
+                return cell;
             }
-            
-            if (arrayData.count>0) {
-                [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+            else
+            {
+                TaskCalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:TaskCalendarNormalCellId];
+                
+                if (indexPath.row < arrayData.count)
+                {
+                    [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
+                }
+                
+                return cell;
             }
-            
-            return cell;
         }
-            break;
-        default:
             break;
     }
     

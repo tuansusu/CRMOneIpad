@@ -146,7 +146,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     obj.str=[defaults objectForKey:@"Language"];
     LocalizationSetLanguage(obj.str);
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
-    [self updateInterFaceWithOption:smgSelect];
+    
     [self initData];
     [self actionExpandInfo:self.btnExpandInfo];
     [self.scrollViewHeaderExpandInfo setContentSize:CGSizeMake(WIDTH_HEADER_EXPAND_INFO, self.scrollViewHeaderExpandInfo.frame.size.height)];
@@ -157,6 +157,8 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     _scollviewDN.contentSize=CGSizeMake(0, self.view.frame.size.height);
     _scrollViewBodyLeft.contentSize=CGSizeMake(0, self.view.frame.size.height);
     //[self setLanguage];
+    
+    [self updateInterFaceWithOption:smgSelect];
 }
 
 -(void) viewWillAppear:(BOOL)animated{
@@ -238,17 +240,54 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
 }
 
+
+-(void) setFrameLabelTitle : (UILabel*) labelTitle withLabelValue : (UILabel*) lableValue withFY : (float) fY {
+    
+    CGRect frame = labelTitle.frame;
+    labelTitle.frame = CGRectMake(frame.origin.x,fY, frame.size.width, frame.size.height);
+    frame =lableValue.frame;
+    lableValue.frame = CGRectMake(frame.origin.x,fY, frame.size.width, frame.size.height);
+}
+
+
+-(float) setFrameLabelTitle : (UILabel*) labelTitle withLabelValue : (UILabel*) lableValue withFY : (float) fY : (NSString*) strValue {
+    
+    CGRect frame = labelTitle.frame;
+    labelTitle.frame = CGRectMake(frame.origin.x,fY, frame.size.width, frame.size.height);
+    frame =lableValue.frame;
+    lableValue.frame = CGRectMake(frame.origin.x,fY, frame.size.width, frame.size.height);
+    
+    float heightLabelCN = 25.0f;
+    
+    if (![StringUtil stringIsEmpty:strValue]) {
+        lableValue.text=strValue;
+        heightLabelCN =  [self getHeightLabel:strValue];
+        
+        if (heightLabelCN>25) {
+            [UILabel setMultiline:lableValue];}
+    }
+    else{
+        lableValue.text=@"";
+    }
+    return  lableValue.frame.origin.y + lableValue.frame.size.height + 10;
+}
+
+
 /*
  *Load danh sach khach hang ca nhan
  */
 -(void) loadDetailCustomerPersonalData {
     NSString*type=[dicData objectForKey:DTOACCOUNT_accountType];
+    
+    
     float fyCN=_lbCode.frame.origin.y;
     CGFloat heightLabelCN=0.0f;
     NSLog(@"type:%@",type);
     if([type isEqualToString:@"INDIV"]){
         NSLog(@"Khach hang ca nhan");
         _scollviewDN.hidden=YES;
+        
+        //ma khach hang
         if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_code]]){
             _lbCode.text=[dicData objectForKey:DTOACCOUNT_code];
             heightLabelCN =  [self getHeightLabel:[dicData objectForKey:DTOACCOUNT_code]];
@@ -260,22 +299,20 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             _lbCode.text=@"";
         }
         fyCN = _lbCode.frame.origin.y + _lbCode.frame.size.height + 10;
-        _lbName.frame = CGRectMake(_lbName.frame.origin.x,fyCN, _lbName.frame.size.width, _lbName.frame.size.height);
-        _tenkhachangCN.frame = CGRectMake(_tenkhachangCN.frame.origin.x,fyCN, _tenkhachangCN.frame.size.width, _tenkhachangCN.frame.size.height);
         
-        if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_name]]) {
-            _lbName.text=[dicData objectForKey:DTOACCOUNT_name];
-            heightLabelCN =  [self getHeightLabel:[dicData objectForKey:DTOACCOUNT_name]];
-            
-            if (heightLabelCN>25) {
-                [UILabel setMultiline:_lbName];}
-        }
-        else{
-            _lbName.text=@"";
-        }
-        fyCN = _lbName.frame.origin.y + _lbName.frame.size.height + 10;
-        self.lbSex.frame = CGRectMake(self.lbSex.frame.origin.x,fyCN, _lbSex.frame.size.width, self.lbSex.frame.size.height);
-         _gioitinhCN.frame = CGRectMake(_gioitinhCN.frame.origin.x,fyCN, _gioitinhCN.frame.size.width, _gioitinhCN.frame.size.height);
+        
+        
+        //ten khach hang
+        
+        NSString *strValue = @"";
+        
+        
+        fyCN = [self setFrameLabelTitle:_tenkhachangCN withLabelValue:_lbName withFY:fyCN :[dicData objectForKey:DTOACCOUNT_name]];
+        
+        
+        //gioi tinh
+        [self setFrameLabelTitle:_gioitinhCN withLabelValue:_lbSex withFY:fyCN];
+        
         if([[dicData objectForKey:DTOACCOUNT_sex] isEqualToString:@"1"] || [[dicData objectForKey:DTOACCOUNT_sex] isEqualToString:@"Nam"]){
             _lbSex.text=@"Nam";
         }
@@ -283,108 +320,43 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             _lbSex.text=@"Nữ";
         }
         fyCN = _lbSex.frame.origin.y + _lbSex.frame.size.height + 10;
-        _lbMobile.frame = CGRectMake(_lbMobile.frame.origin.x,fyCN, _lbMobile.frame.size.width, _lbMobile.frame.size.height);
-        _dienthoaiCN.frame = CGRectMake(_dienthoaiCN.frame.origin.x,fyCN, _dienthoaiCN.frame.size.width, _dienthoaiCN.frame.size.height);
-        if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_mobile]]) {
-            _lbMobile.text=[dicData objectForKey:DTOACCOUNT_mobile];
-            heightLabelCN =  [self getHeightLabel:[dicData objectForKey:DTOACCOUNT_mobile]];
-            
-            if (heightLabelCN>25) {
-                [UILabel setMultiline:_lbMobile];}
-        }
-        else{
-            _lbMobile.text=@"";
-        }
-        fyCN = _lbMobile.frame.origin.y + _lbMobile.frame.size.height + 10;
-        _lbEmail.frame = CGRectMake(_lbEmail.frame.origin.x,fyCN, _lbEmail.frame.size.width, _lbEmail.frame.size.height);
-        _emailCN.frame = CGRectMake(_emailCN.frame.origin.x,fyCN, _emailCN.frame.size.width, _emailCN.frame.size.height);
-
-        if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_email]]) {
-            _lbEmail.text=[dicData objectForKey:DTOACCOUNT_email];
-            heightLabelCN =  [self getHeightLabel:[dicData objectForKey:DTOACCOUNT_email]];
-            if (heightLabelCN>25) {
-                [UILabel setMultiline:_lbEmail];}
-        }
-        else{
-            _lbEmail.text=@"";
-        }
-        fyCN = _lbEmail.frame.origin.y + _lbEmail.frame.size.height + 10;
-        _lbDiaChi.frame = CGRectMake(_lbDiaChi.frame.origin.x,fyCN, _lbDiaChi.frame.size.width, _lbDiaChi.frame.size.height);
-        _diachiCN.frame = CGRectMake(_diachiCN.frame.origin.x,fyCN, _diachiCN.frame.size.width, _diachiCN.frame.size.height);
-        if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_address]]) {
-            _lbDiaChi.text=[dicData objectForKey:DTOACCOUNT_address];
-            heightLabelCN =  [self getHeightLabel:[dicData objectForKey:DTOACCOUNT_address]];
-            if (heightLabelCN>25) {
-                [UILabel setMultiline:_lbDiaChi];}
-        }
-        else{
-            _lbDiaChi.text=@"";
-        }
-        fyCN = _lbDiaChi.frame.origin.y + _lbDiaChi.frame.size.height + 10;
-        _lbSector.frame = CGRectMake(_lbSector.frame.origin.x,fyCN, _lbSector.frame.size.width, _lbSector.frame.size.height);
-          _sectorCN.frame = CGRectMake(_sectorCN.frame.origin.x,fyCN, _sectorCN.frame.size.width, _sectorCN.frame.size.height);
-        if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_sector]]) {
-            _lbSector.text=[dicData objectForKey:DTOACCOUNT_sector];
-            heightLabelCN =  [self getHeightLabel:[dicData objectForKey:DTOACCOUNT_sector]];
-            if (heightLabelCN>25) {
-                [UILabel setMultiline:_lbSector];}
-            
-        }
-        else{
-            _lbSector.text=@"";
-        }
-        fyCN = _lbSector.frame.origin.y + _lbSector.frame.size.height + 10;
-        _lbJob.frame = CGRectMake(_lbJob.frame.origin.x,fyCN, _lbJob.frame.size.width, _lbJob.frame.size.height);
-       
-         _nghenghiepCN.frame = CGRectMake(_nghenghiepCN.frame.origin.x,fyCN, _nghenghiepCN.frame.size.width, _nghenghiepCN.frame.size.height);
-        if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_personalIndustry]]) {
-            _lbJob.text=[dicData objectForKey:DTOACCOUNT_personalIndustry];
-            heightLabelCN =  [self getHeightLabel:[dicData objectForKey:DTOACCOUNT_personalIndustry]];
-            if (heightLabelCN>25) {
-                [UILabel setMultiline:_lbJob];}
-        }
-        else {
-            _lbJob.text=@"";
-        }
         
-        fyCN = _lbJob.frame.origin.y + _lbJob.frame.size.height + 10;
-        _lbCompany.frame = CGRectMake(_lbCompany.frame.origin.x,fyCN, _lbCompany.frame.size.width, _lbCompany.frame.size.height);
-           _chinhanhquanlyCN.frame = CGRectMake(_chinhanhquanlyCN.frame.origin.x,fyCN, _chinhanhquanlyCN.frame.size.width, _chinhanhquanlyCN.frame.size.height);
-        if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_branchCode]]) {
-            _lbCompany.text=[dicData objectForKey:DTOACCOUNT_branchCode];
-            heightLabelCN =  [self getHeightLabel:[dicData objectForKey:DTOACCOUNT_branchCode]];
-            if (heightLabelCN>25) {
-                [UILabel setMultiline:_lbCompany];}
-            
-        }
-        else{
-            _lbCompany.text=@"";
-        }
-        fyCN = _lbCompany.frame.origin.y + _lbCompany.frame.size.height + 10;
-        _ldDateOpenCode.frame = CGRectMake(_ldDateOpenCode.frame.origin.x,fyCN, _ldDateOpenCode.frame.size.width, _ldDateOpenCode.frame.size.height);
-          _ngamocodeCN.frame = CGRectMake(_ngamocodeCN.frame.origin.x,fyCN, _ngamocodeCN.frame.size.width, _ngamocodeCN.frame.size.height);
-        if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_openCodeDate]]) {
-            _ldDateOpenCode.text=[dicData objectForKey:DTOACCOUNT_openCodeDate];
-        }
-        else{
-            _ldDateOpenCode.text=@"";
-        }
-        fyCN = _ldDateOpenCode.frame.origin.y + _ldDateOpenCode.frame.size.height + 10;
-        _lbQuocGia.frame = CGRectMake(_lbQuocGia.frame.origin.x,fyCN, _lbQuocGia.frame.size.width, _lbQuocGia.frame.size.height);
-         _quocgiaCN.frame = CGRectMake(_quocgiaCN.frame.origin.x,fyCN, _quocgiaCN.frame.size.width, _quocgiaCN.frame.size.height);
-        _lbQuocGia.text=@"";
-        fyCN = _lbQuocGia.frame.origin.y + _lbQuocGia.frame.size.height + 10;
-        _lbThanhPho.frame = CGRectMake(_lbThanhPho.frame.origin.x,fyCN, _lbThanhPho.frame.size.width, _lbThanhPho.frame.size.height);
-          _tinhthanhphoCN.frame = CGRectMake(_tinhthanhphoCN.frame.origin.x,fyCN, _tinhthanhphoCN.frame.size.width, _tinhthanhphoCN.frame.size.height);
-        _lbThanhPho.text=@"";
-        fyCN = _lbThanhPho.frame.origin.y + _lbThanhPho.frame.size.height + 10;
-        _lbQuanHuyen.frame = CGRectMake(_lbQuanHuyen.frame.origin.x,fyCN, _lbQuanHuyen.frame.size.width, _lbQuanHuyen.frame.size.height);
-         _quanhuyenCN.frame = CGRectMake(_quanhuyenCN.frame.origin.x,fyCN, _quanhuyenCN.frame.size.width, _quanhuyenCN.frame.size.height);
-        _lbQuanHuyen.text=@"";
-        fyCN = _lbQuanHuyen.frame.origin.y + _lbQuanHuyen.frame.size.height + 10;
-        _lbPhuonXa.frame = CGRectMake(_lbPhuonXa.frame.origin.x,fyCN, _lbPhuonXa.frame.size.width, _lbPhuonXa.frame.size.height);
-        _phuongxaCN.frame = CGRectMake(_phuongxaCN.frame.origin.x,fyCN, _phuongxaCN.frame.size.width, _phuongxaCN.frame.size.height);
-        _lbPhuonXa.text=@"";
+        //dien thoai
+        
+        fyCN = [self setFrameLabelTitle:_dienthoaiCN withLabelValue:_lbMobile withFY:fyCN :[dicData objectForKey:DTOACCOUNT_mobile]];
+        
+        //email
+         fyCN = [self setFrameLabelTitle:_emailCN withLabelValue:_lbEmail withFY:fyCN :[dicData objectForKey:DTOACCOUNT_email]];
+        
+        //dia chi
+        fyCN = [self setFrameLabelTitle:_diachiCN withLabelValue:_lbDiaChi withFY:fyCN :[dicData objectForKey:DTOACCOUNT_address]];
+        
+        //sector
+        fyCN = [self setFrameLabelTitle:_sectorCN withLabelValue:_lbSector withFY:fyCN :[dicData objectForKey:DTOACCOUNT_sector]];
+        
+        //nghe nghiep
+        fyCN = [self setFrameLabelTitle:_nghenghiepCN withLabelValue:_lbJob withFY:fyCN :[dicData objectForKey:DTOACCOUNT_personalIndustry]];
+        
+        //cong ty
+        fyCN = [self setFrameLabelTitle:_chinhanhquanlyCN withLabelValue:_lbCompany withFY:fyCN :[dicData objectForKey:DTOACCOUNT_branchCode]];
+        
+        //
+        
+        fyCN = [self setFrameLabelTitle:_ngamocodeCN withLabelValue:_ldDateOpenCode withFY:fyCN :[dicData objectForKey:DTOACCOUNT_openCodeDate]];
+        
+        //
+        fyCN = [self setFrameLabelTitle:_quocgiaCN withLabelValue:_lbQuocGia withFY:fyCN :@""];
+        
+        fyCN = [self setFrameLabelTitle:_tinhthanhphoCN withLabelValue:_lbThanhPho withFY:fyCN :@""];
+        
+        
+        fyCN = [self setFrameLabelTitle:_quanhuyenCN withLabelValue:_lbQuanHuyen withFY:fyCN :@""];
+        
+        
+        fyCN = [self setFrameLabelTitle:_phuongxaCN withLabelValue:_lbPhuonXa withFY:fyCN :@""];
+        
+       
+       
         NSString *sms =@"";
         NSString *disableSms = [dicData objectForKey:DTOACCOUNT_disableSms];
         if([disableSms isEqualToString:@"0"])
@@ -406,14 +378,11 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         if ([disableMetting isEqualToString:@"0"]) {
             metting=@"Metting";
         }
-        fyCN = _lbPhuonXa.frame.origin.y + _lbPhuonXa.frame.size.height + 10;
-        _lbKhongLienLacQua.frame = CGRectMake(_lbKhongLienLacQua.frame.origin.x,fyCN, _lbKhongLienLacQua.frame.size.width, _lbKhongLienLacQua.frame.size.height);
-          _khonglienlacCN.frame = CGRectMake(_khonglienlacCN.frame.origin.x,fyCN, _khonglienlacCN.frame.size.width, _khonglienlacCN.frame.size.height);
         NSString *tmp=[NSString stringWithFormat:@"%@,%@,%@,%@",sms,phone,email,metting];
-        _lbKhongLienLacQua.text=[NSString stringWithFormat:@"%@,%@,%@,%@",sms,phone,email,metting];
-        heightLabelCN =  [self getHeightLabel:tmp];
-        if (heightLabelCN>25) {
-            [UILabel setMultiline:_lbKhongLienLacQua];}
+        
+        
+        fyCN = [self setFrameLabelTitle:_khonglienlacCN withLabelValue:_lbKhongLienLacQua withFY:fyCN :tmp];
+        
         _scrollViewBodyLeft.contentSize=CGSizeMake(0, self.view.frame.size.height + fyCN);
     }
     else{

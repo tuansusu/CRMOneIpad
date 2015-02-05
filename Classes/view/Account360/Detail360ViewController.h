@@ -165,6 +165,71 @@ enum Type360View{
 @property (weak, nonatomic) IBOutlet UIButton *btnCoBan;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnNangcao;
+//khach hang ca nhan
 
+
+//khach hang doanh nghiep
+@property (weak, nonatomic) IBOutlet UIScrollView *scollviewDN;
+
+@property (weak, nonatomic) IBOutlet UILabel *codeDN;
+@property (weak, nonatomic) IBOutlet UILabel *nameDN;
+
+@property (weak, nonatomic) IBOutlet UILabel *loaiDN;
+@property (weak, nonatomic) IBOutlet UILabel *soDKKD;
+@property (weak, nonatomic) IBOutlet UILabel *ngaycapDKKD;
+@property (weak, nonatomic) IBOutlet UILabel *dienthoaiDN;
+@property (weak, nonatomic) IBOutlet UILabel *faxDN;
+@property (weak, nonatomic) IBOutlet UILabel *sectorDN;
+@property (weak, nonatomic) IBOutlet UILabel *loaihinhDN;
+@property (weak, nonatomic) IBOutlet UILabel *chinhanhquanlyDN;
+@property (weak, nonatomic) IBOutlet UILabel *ngaymocodeDN;
+@property (weak, nonatomic) IBOutlet UILabel *quocgiaDN;
+@property (weak, nonatomic) IBOutlet UILabel *tinhthanhphoDN;
+@property (weak, nonatomic) IBOutlet UILabel *quanhuyenDN;
+@property (weak, nonatomic) IBOutlet UILabel *phuongxaDN;
+@property (weak, nonatomic) IBOutlet UILabel *khonglienlacDN;
+@property (weak, nonatomic) IBOutlet UILabel *diachiDN;
+//
+@property (weak, nonatomic) IBOutlet UILabel *lbcodeDN;
+@property (weak, nonatomic) IBOutlet UILabel *lbnameDN;
+
+@property (weak, nonatomic) IBOutlet UILabel *lbloaiDN;
+@property (weak, nonatomic) IBOutlet UILabel *lbsoDKKD;
+@property (weak, nonatomic) IBOutlet UILabel *lbngaycapDKKD;
+@property (weak, nonatomic) IBOutlet UILabel *lbdienthoaiDN;
+@property (weak, nonatomic) IBOutlet UILabel *lbfaxDN;
+@property (weak, nonatomic) IBOutlet UILabel *lbsectorDN;
+@property (weak, nonatomic) IBOutlet UILabel *lbloaihinhDN;
+@property (weak, nonatomic) IBOutlet UILabel *lbchinhanhquanlyDN;
+@property (weak, nonatomic) IBOutlet UILabel *lbngaymocodeDN;
+@property (weak, nonatomic) IBOutlet UILabel *lbquocgiaDN;
+@property (weak, nonatomic) IBOutlet UILabel *lbtinhthanhphoDN;
+@property (weak, nonatomic) IBOutlet UILabel *lbquanhuyenDN;
+@property (weak, nonatomic) IBOutlet UILabel *lbphuongxaDN;
+@property (weak, nonatomic) IBOutlet UILabel *lbkhonglienlacDN;
+@property (weak, nonatomic) IBOutlet UILabel *lbdiachiDN;
+- (IBAction)actionAddressDN:(id)sender;
+
+//khach hang ca nhan
+- (IBAction)actionCallCN:(id)sender;
+- (IBAction)actionSMSCN:(id)sender;
+- (IBAction)actionAddressCN:(id)sender;
+- (IBAction)actionEmailCN:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UILabel *tenkhachangCN;
+@property (weak, nonatomic) IBOutlet UILabel *gioitinhCN;
+@property (weak, nonatomic) IBOutlet UILabel *dienthoaiCN;
+@property (weak, nonatomic) IBOutlet UILabel *emailCN;
+@property (weak, nonatomic) IBOutlet UILabel *diachiCN;
+@property (weak, nonatomic) IBOutlet UILabel *sectorCN;
+@property (weak, nonatomic) IBOutlet UILabel *nghenghiepCN;
+@property (weak, nonatomic) IBOutlet UILabel *chinhanhquanlyCN;
+@property (weak, nonatomic) IBOutlet UILabel *ngamocodeCN;
+@property (weak, nonatomic) IBOutlet UILabel *quocgiaCN;
+@property (weak, nonatomic) IBOutlet UILabel *tinhthanhphoCN;
+@property (weak, nonatomic) IBOutlet UILabel *quanhuyenCN;
+@property (weak, nonatomic) IBOutlet UILabel *phuongxaCN;
+@property (weak, nonatomic) IBOutlet UILabel *khonglienlacCN;
+@property (weak, nonatomic) IBOutlet UILabel *makhachhangCN;
 
 @end

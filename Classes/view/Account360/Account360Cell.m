@@ -252,14 +252,14 @@ NSDateFormatter *df,*dfTime;
         [dateEndFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss.S"];
         NSDate *end=[dateFromStringFormat dateFromString:strDateEnd];
         
-        NSString *stt =[arrayData objectForKey:DTOFOLLOWUP_followUpState] ;
+        NSString *stt =[data objectForKey:DTOFOLLOWUP_followUpState] ;
         NSComparisonResult result;
         result =[today compare:end];
         
         if (result == NSOrderedDescending && ![stt isEqualToString:@"2"]) {
             NSLog(@"Qua han");
             NSString *itemid;
-            itemid=[arrayData objectForKey:DTOFOLLOWUP_id];
+            itemid=[data objectForKey:DTOFOLLOWUP_id];
             NSLog(@"item:%@",itemid);
             if([StringUtil stringIsEmpty:itemid]){
                 return NO;

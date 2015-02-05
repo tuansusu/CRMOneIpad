@@ -184,27 +184,32 @@
     for (UIView *viewTemp in self.leftInMainView.subviews) {
         if ([viewTemp isKindOfClass:[UILabel class]]) {
             ((UILabel*) viewTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+            continue;
         }
         
         if ([viewTemp isKindOfClass:[UIButton class]]) {
             ((UIButton*) viewTemp).backgroundColor = BUTTON_IN_ACTIVE_COLOR_1;
             [((UIButton*) viewTemp) setTitleColor:TEXT_BUTTON_COLOR1 forState:UIControlStateNormal];
+            continue;
         }
         if ([viewTemp isKindOfClass:[UITextView class]]) {
             ((UITextView*) viewTemp).textColor = TEXT_COLOR_REPORT;
             ((UITextView*) viewTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
             ((UITextView*) viewTemp).layer.borderColor = [BORDER_COLOR CGColor];
             ((UITextView*) viewTemp).layer.borderWidth = BORDER_WITH;
+            continue;
         }
         if ([viewTemp isKindOfClass:[UITextField class]]) {
             ((UITextField*) viewTemp).textColor = TEXT_COLOR_REPORT;
             ((UITextField*) viewTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
             ((UITextField*) viewTemp).layer.borderColor = [BORDER_COLOR CGColor];
             ((UITextField*) viewTemp).layer.borderWidth = BORDER_WITH;
+            continue;
         }
         if ([viewTemp isKindOfClass:[UIImageView class]]) {
             
             [((UIImageView*) viewTemp) setAlpha:1.0f];
+            continue;
         }
     }
     

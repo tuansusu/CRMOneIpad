@@ -662,7 +662,9 @@
 #pragma mark Account lead cell delegate
 
 - (void) Account360CellDelegate_ActionSendMailWithData : (NSDictionary*) dicData {
+    
     [Util sendMail:self withEmail:[dicData objectForKey:DTOACCOUNT_email]];
+    
 }
 - (void) Account360CellDelegate_ActionViewMapWithData : (NSDictionary*) dicData {
     //lon lan
@@ -821,4 +823,51 @@
         [self filterData];
     }
 }
+
+
+
+#pragma mark sendmail
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+    
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            //NSLog(@"Cancelled");
+            break;
+        case MFMailComposeResultSaved:
+            //NSLog(@"Saved");
+            break;
+        case MFMailComposeResultSent:
+        {
+            UIAlertView *alert = [[UIAlertView alloc] init];
+            [alert setTitle:@"Gửi email thành công!"];
+            [alert setMessage:nil];
+            [alert setDelegate:self];
+            [alert addButtonWithTitle:@"Thoát"];
+            
+            [alert show];
+            
+        }
+            break;
+        case MFMailComposeResultFailed:
+        {
+            UIAlertView *alert = [[UIAlertView alloc] init];
+            [alert setTitle:@"Không gửi được email!"];
+            [alert setMessage:nil];
+            [alert setDelegate:self];
+            [alert addButtonWithTitle:@"Thoát"];
+            
+            [alert show];
+            
+        }
+            break;
+            
+            //NSLog(@"Not send");
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
 @end

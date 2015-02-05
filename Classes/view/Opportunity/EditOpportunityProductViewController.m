@@ -76,6 +76,10 @@
     [self initData];
     
     searchBarController.isValid = NO;
+    
+    self.txtQuantity.delegate = self;
+    self.txtRevenue.delegate = self;
+
 }
 -(void)dismissPopUp
 {

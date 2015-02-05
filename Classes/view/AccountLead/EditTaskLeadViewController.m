@@ -39,7 +39,7 @@
 @implementation EditTaskLeadViewController
 {
     // interface references here - if not used outside object
-    __weak IBOutlet UILabel *_titleLabel;
+    //__weak IBOutlet UILabel *_titleLabel;
 
     __weak IBOutlet UIButton *_btnHome;
     __weak IBOutlet UIButton *_btnSave;
@@ -50,7 +50,7 @@
     __weak IBOutlet UILabel *_footerLabel;
 
     __weak IBOutlet UIView  *_mainView;
-    __weak IBOutlet UIView  *_headerMainView;
+    //__weak IBOutlet UIView  *_headerMainView;
     __weak IBOutlet UIView  *_bodyMainView;
     __weak IBOutlet UIView  *_viewMainBodyInfo;
 
@@ -155,7 +155,7 @@
 #pragma mark - new view: load defaults data into view
 - (void) loadDefaults
 {
-    _titleLabel.text  = @"THÊM MỚI CÔNG VIỆC";
+    _headerLabel.text  = @"THÊM MỚI CÔNG VIỆC";
 
     _txtName.text     = @"";
     _txtStatus.text   = [[statusArray objectAtIndex:0] objectForKey:DTOSYSCAT_name];
@@ -169,7 +169,7 @@
 {
     NSLog(@"send:%@",_dataSend);
 
-    _titleLabel.text = @"CẬP NHẬP CÔNG VIỆC";
+    _headerLabel.text = @"CẬP NHẬP CÔNG VIỆC";
     _txtName.text    = [_dataSend objectForKey:DTOTASK_title];
 
     if ([[_dataSend objectForKey:DTOTASK_taskStatus] intValue] == FIX_TASK_STATUS_NOT_COMPLETE)
@@ -209,16 +209,16 @@
 
     [self.btnSave setStyleNormalWithOption:smgSelect];
 
-    _headerMainView.backgroundColor = HEADER_SUB_VIEW_COLOR1;
-    [_headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
-
-    for (UIView *childView in _headerMainView.subviews)
-    {
-        if ([childView isKindOfClass:[UILabel class]])
-        {
-            ((UILabel*) childView).textColor = TEXT_COLOR_REPORT_TITLE_1;
-        }
-    }
+//    _headerMainView.backgroundColor = HEADER_SUB_VIEW_COLOR1;
+//    [_headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
+//
+//    for (UIView *childView in _headerMainView.subviews)
+//    {
+//        if ([childView isKindOfClass:[UILabel class]])
+//        {
+//            ((UILabel*) childView).textColor = TEXT_COLOR_REPORT_TITLE_1;
+//        }
+//    }
     // - body
     _bodyMainView.backgroundColor   = BACKGROUND_NORMAL_COLOR1;
     _bodyMainView.layer.borderWidth = BORDER_WITH;

@@ -106,7 +106,7 @@
     NSLog(@"dataRoot %@",self.dataRoot);
     dataId = 0;
     if (self.dataSend) {
-        
+        _btnDel.hidden=NO;
         arrayData =[dtoFileProcess filterWithKey:DTOATTACHMENT_clientObjectId withValue:[_dataSend objectForKey:DTONOTE_clientNoteId]];
         NSLog(@"data gui tu form chi tiet %@", self.dataSend);
         
@@ -142,15 +142,15 @@
     self.barLabel.textColor = TEXT_TOOLBAR_COLOR1;
     //    [self.leftViewHeader setBackgroundColor:BACKGROUND_COLOR_TOP_LEFT_HEADER];
     //    self.leftLabelHeader.textColor = TEXT_COLOR_HEADER_APP;
-//    [self.headerMainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
-//    [self.headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
-//    for (UIView *viewSubTemp in self.headerMainView.subviews) {
-//        
-//        
-//        if ([viewSubTemp isKindOfClass:[UILabel class]]) {
-//            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
-//        }
-//    }
+    //    [self.headerMainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
+    //    [self.headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
+    //    for (UIView *viewSubTemp in self.headerMainView.subviews) {
+    //
+    //
+    //        if ([viewSubTemp isKindOfClass:[UILabel class]]) {
+    //            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+    //        }
+    //    }
     
     
     [self.btnSave setStyleNormalWithOption:smgSelect];
@@ -171,7 +171,7 @@
                 [((UIImageView*) viewSubTemp) setAlpha:1.0f];
                 continue;
             }
-
+            
             
             if ([viewSubTemp isKindOfClass:[UILabel class]]) {
                 ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
@@ -189,8 +189,8 @@
             if ([viewSubTemp isKindOfClass:[UITextField class]]) {
                 ((UITextField*) viewSubTemp).textColor = TEXT_COLOR_REPORT;
                 ((UITextField*) viewSubTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
-//                ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
-//                ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
+                //                ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
+                //                ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
                 [((UITextField*) viewSubTemp) setBorderWithOption:option];
                 [((UITextField*) viewSubTemp) setPaddingLeft];
                 continue;
@@ -317,33 +317,71 @@
 #pragma -mark xử lý thông báo
 -(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
     
-    if (alertView.tag==TAG_DELETE_ITEM) {
-        NSLog(@"Xoa file dinh kem");
-        if(buttonIndex==0){
+    if(alertView.tag==22){
+        NSMutableDictionary *dicEntity = [NSMutableDictionary new];
+        
+        [dicEntity setObject:@"0" forKey:DTONOTE_isActive];
+        //truong hop sua
+        [dicEntity setObject:[_dataSend objectForKey:DTONOTE_id] forKey:DTONOTE_id];
+        
+        succsess = [dtoProcess insertToDBWithEntity:dicEntity];
+        if(succsess){
             
-            NSLog(@"Xoa file dinh kem:%@",deleteFile);
-            BOOL result=[dtoFileProcess deleteEntity:deleteFile];
-            if (result) {
-                arrayData =[dtoFileProcess filterWithKey:DTOATTACHMENT_clientObjectId withValue:[_dataSend objectForKey:DTONOTE_clientNoteId]];
-                [self.tbData reloadData];
+            NSMutableDictionary *entiFile= [NSMutableDictionary new];
+            for (NSDictionary *path in arrayData) {
+                //  NSLog(@"%@", path);
+                
+                [entiFile setObject:@"0" forKey:DTOATTACHMENT_isActive];
+                [entiFile setObject:[path objectForKey:DTOATTACHMENT_id] forKey:DTOATTACHMENT_id];
+                
+                @try {
+                    BOOL   dt = [dtoFileProcess insertToDBWithEntity:entiFile];
+                    if (!dt) {
+                        NSLog(@"Loi roi");
+                    }
+                }
+                @catch (NSException *exception) {
+                    NSLog(@"log:%@", exception);            }
+                @finally {
+                    NSLog(@"OK");            }
+                
+                [self dismissViewControllerAnimated:YES completion:nil];
             }
         }
-        else if(buttonIndex==1){
-            NSLog(@"Khong  xoa file");
+        else{
+            NSLog(@"Error");
         }
-    }else{
-        if(buttonIndex==0){
-            NSLog(@"Ban khong tiep tuc");
-            [self dismissViewControllerAnimated:YES completion:nil];
-            
-        }
-        else if(buttonIndex==1){
-            NSLog(@"Ban co tiep tuc");
-            [arrayData removeAllObjects];
-            [self.tbData reloadData];
-            txtContent.text=@"";
-            txtTitle.text=@"";
-            
+    }
+    else{
+        
+        if (alertView.tag==TAG_DELETE_ITEM) {
+            NSLog(@"Xoa file dinh kem");
+            if(buttonIndex==0){
+                
+                NSLog(@"Xoa file dinh kem:%@",deleteFile);
+                BOOL result=[dtoFileProcess deleteEntity:deleteFile];
+                if (result) {
+                    arrayData =[dtoFileProcess filterWithKey:DTOATTACHMENT_clientObjectId withValue:[_dataSend objectForKey:DTONOTE_clientNoteId]];
+                    [self.tbData reloadData];
+                }
+            }
+            else if(buttonIndex==1){
+                NSLog(@"Khong  xoa file");
+            }
+        }else{
+            if(buttonIndex==0){
+                NSLog(@"Ban khong tiep tuc");
+                [self dismissViewControllerAnimated:YES completion:nil];
+                
+            }
+            else if(buttonIndex==1){
+                NSLog(@"Ban co tiep tuc");
+                [arrayData removeAllObjects];
+                [self.tbData reloadData];
+                txtContent.text=@"";
+                txtTitle.text=@"";
+                
+            }
         }
     }
     
@@ -453,21 +491,21 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
+    
     return  arrayData.count;
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    
     static NSString *cellId = @"EditNoteViewCell";
     EditNoteViewCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
     if (cell == nil) {
         [self.tbData registerNib:[UINib nibWithNibName:@"EditNoteViewCell" bundle:nil] forCellReuseIdentifier:@"EditNoteViewCell"];
         cell = [[EditNoteViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
-//        cell.delegate = self;
+        //        cell.delegate = self;
     }
-
+    
     NSDictionary *dicRow = [arrayData objectAtIndex:indexPath.row];
     
     [cell loadDataCellWithImageName:[dicRow objectForKey:DTOATTACHMENT_fileName]];
@@ -481,7 +519,7 @@
     NSMutableArray *photos = [NSMutableArray arrayWithCapacity:arrayData.count];
     for (int i = 0; i<arrayData.count; i++) {
         MJPhoto *photo = [[MJPhoto alloc] init];
-
+        
         NSDictionary *dicRow = [arrayData objectAtIndex:i];
         UIImage *currentimage;
         NSString *fullPath = [FileManagerUtil getPathWithWithName:[dicRow objectForKey:DTOATTACHMENT_fileName]];
@@ -499,7 +537,7 @@
         browser.photos = photos; // set list photo
         [browser show];
     }
-
+    
 }
 
 
@@ -587,5 +625,10 @@
 }
 
 
+- (IBAction)actionDel:(id)sender {
+    UIAlertView *myAler=[[UIAlertView alloc]initWithTitle:@"Thông báo" message:@"Anh/Chị có muốn xoá ghi chú này không?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles:@"Huỷ", nil];
+    myAler.tag=22;
+    [myAler show];
+}
 @end
 

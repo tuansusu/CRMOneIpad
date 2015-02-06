@@ -13,6 +13,7 @@
 #import "GraphicName.h"
 #import "Constant.h"
 #import "DataField.h"
+#import "MJDetailViewController.h"
 
 @implementation Contact360Cell
 
@@ -55,7 +56,16 @@
         self.lbName.text = @"";
         
     }else{
-        self.lbName.text = [dicData objectForKey:DTOCONTACT_fullName];
+        NSString *name=[dicData objectForKey:DTOCONTACT_fullName];
+        NSString *position=[dicData objectForKey:DTOCONTACT_position];
+        NSString *display;
+        if([StringUtil stringIsEmpty:position]){
+            display=name;
+        }
+        else{
+            display =[NSString stringWithFormat:@"%@ - %@",name,position];
+        }
+        self.lbName.text = display;
     }
     
     
@@ -118,6 +128,20 @@
 }
 
 - (IBAction)actionSendMail:(id)sender {
+    if(![StringUtil stringIsEmpty:[_dicData objectForKey:DTOCONTACT_email]]){
+        [_delegate delegateSendEmail:[_dicData objectForKey:DTOCONTACT_email]];
+    }
 }
 
+- (IBAction)actionSMS:(id)sender {
+    if(![StringUtil stringIsEmpty:[_dicData objectForKey:DTOCONTACT_mobile]]){
+        [_delegate delegateSMS:[_dicData objectForKey:DTOCONTACT_mobile] ];
+    }
+}
+
+- (IBAction)actionCall:(id)sender {
+    if(![StringUtil stringIsEmpty:[_dicData objectForKey:DTOCONTACT_mobile]]){
+        [_delegate delegateCall:[_dicData objectForKey:DTOCONTACT_mobile]];
+    }
+}
 @end

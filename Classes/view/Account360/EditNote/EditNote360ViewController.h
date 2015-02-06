@@ -76,5 +76,7 @@
 //danh sách nhưng tooltip
 @property (nonatomic, retain) NSMutableArray *visiblePopTipViews;
 @property (nonatomic, strong) id currentPopTipViewTarget;
+- (IBAction)actionDel:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnDel;
 
 @end

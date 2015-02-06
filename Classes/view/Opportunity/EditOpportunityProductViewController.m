@@ -73,9 +73,10 @@
     
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
+    searchBarController.isValid = NO;
     [self initData];
     
-    searchBarController.isValid = NO;
+    
     
     self.txtQuantity.delegate = self;
     self.txtRevenue.delegate = self;

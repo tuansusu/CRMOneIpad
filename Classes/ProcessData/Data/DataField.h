@@ -385,6 +385,7 @@
 #define DTOTASK_updatedBy @"updatedBy" //BIGINT
 #define DTOTASK_updatedDate @"updatedDate" //VARCHAR
 #define DTOTASK_id @"id" //INTEGER
+#define DTOTASK_clientOpportunityId @"clientOpportunityId" //BIGINT
 
 ///dtoDashboardConfiguration  Field
 #define DTOWIDGET_confId @"confId" //BIGINT

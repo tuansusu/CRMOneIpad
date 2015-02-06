@@ -212,6 +212,15 @@ DTOTASK_updatedDate, //updatedDate" //VARCHAR
     return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:[NSArray arrayWithObjects:strValue, nil]];
 }
 
+- (NSMutableArray *) filterTaskWithClientOpportunityId: (NSString *) strValue
+{
+    NSArray *allFields =[NSArray arrayWithObjects:DTOTASK_id, DTOTASK_code, DTOTASK_clientTaskId, DTOTASK_clientLeadId, DTOTASK_content, DTOTASK_title, DTOTASK_typeTask, DTOTASK_startDate, DTOTASK_percentComplete, DTOTASK_location, DTOTASK_leadId, DTOTASK_content,DTOTASK_taskPriority, DTOTASK_taskId, DTOTASK_endDate,DTOTASK_taskStatus, nil];
+    
+    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where typeTask = 0 and isActive = 1 and clientOpportunityId = ? order by %@ desc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOTASK, DTOLEAD_updatedDate];
+    
+    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:[NSArray arrayWithObjects:strValue, nil]];
+}
+
 - (NSMutableArray *) filterTaskWithAccountId: (NSString *) strValue
 {
     NSArray *allFields =[NSArray arrayWithObjects:DTOTASK_id, DTOTASK_code, DTOTASK_clientTaskId, DTOTASK_clientLeadId, DTOTASK_content, DTOTASK_title, DTOTASK_typeTask, DTOTASK_startDate, DTOTASK_percentComplete, DTOTASK_location, DTOTASK_leadId, DTOTASK_content,DTOTASK_taskPriority, DTOTASK_taskId, DTOTASK_endDate,DTOTASK_taskStatus, nil];

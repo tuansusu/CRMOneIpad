@@ -107,7 +107,7 @@
     
     dataId = 0;
     if (self.dataSend) {
-        
+        _btnDel.hidden=NO;
         [self loadEdit];
     }
     
@@ -151,6 +151,8 @@
     
     
     [self.btnSave setStyleNormalWithOption:smgSelect];
+    
+    [self.btnDel setStyleNormalWithOption:smgSelect];
     
 //    for (UIView *viewSubTemp in self.headerMainView.subviews) {
 //        
@@ -388,6 +390,20 @@
     if (succsess && alertView.tag == 5 && buttonIndex == 1) {
         //reset lai form
         [self resetForm];
+    }
+    if(alertView.tag==11 && buttonIndex==0){
+        NSMutableDictionary *dicEntity = [NSMutableDictionary new];
+        [dicEntity setObject:[_dataSend objectForKey:DTOACCOUNTCONTACT_id] forKey:DTOACCOUNTCONTACT_id];
+        
+        [dicEntity setObject:@"0" forKey:DTOACCOUNTCONTACT_isActive];
+        
+      BOOL  succsess = [dtoProcess insertToDBWithEntity:dicEntity];
+        if(succsess){
+          [self dismissViewControllerAnimated:YES completion:nil];
+        }
+        else{
+            NSLog(@"Error");
+        }
     }
 }
 
@@ -681,5 +697,11 @@
         self.txtAddress.text =[addressObj.lines objectAtIndex:0];
     }
     
+}
+- (IBAction)actionDel:(id)sender {
+    //deleteContact = [dicDataItem objectForKey:DTOCONTACT_id];
+    UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Bạn có muốn xoá liên hệ?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
+    mylert.tag = 11;
+    [mylert show];
 }
 @end

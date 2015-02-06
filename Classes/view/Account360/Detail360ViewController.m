@@ -24,6 +24,8 @@
 #import "TaskCalendarCell.h"
 #import "TaskCalTLineCell.h"
 #import "TaskActionCell.h"
+#import "MJDetailViewController.h"
+#import "TestMapViewController.h"
 
 ////remove
 #import "StringUtil.h"
@@ -988,6 +990,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
                 }
                 
                 if (arrayData.count>0) {
+                    cell.delegate=(id<ContactDelegate>)self;
                     [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
                 }
                 
@@ -1467,17 +1470,64 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
 };
 - (IBAction)actionCallCN:(id)sender {
+    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_mobile]]){
+        NSString *callnumber=[NSString stringWithFormat:@"telprompt://%@",[dicData objectForKey:DTOACCOUNT_mobile]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callnumber]];
+    }
 }
 
 - (IBAction)actionSMSCN:(id)sender {
+    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_mobile]]){
+        NSString *sendSMS=[NSString stringWithFormat:@"sms://%@",[dicData objectForKey:DTOACCOUNT_mobile]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:sendSMS]];
+    }
 }
 
 - (IBAction)actionAddressCN:(id)sender {
+    if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_lat]]) {
+        float fLon = [[dicData objectForKey:DTOACCOUNT_lat] floatValue];
+        float fLan =[[dicData objectForKey:DTOACCOUNT_lat] floatValue];
+        
+        TestMapViewController *viewController = [[TestMapViewController alloc]initWithNibName:@"TestMapViewController" bundle:nil];
+        viewController.typeMapView = typeMapView_View;
+        viewController.lan = fLan;
+        viewController.lon = fLon;
+        //viewController.address = [dicData objectForKey:DTOLEAD_address];
+        if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_address]]) {
+            viewController.address = [dicData objectForKey:DTOACCOUNT_address];
+        }else{
+            viewController.address = @"";
+        }
+        
+        
+        [self presentViewController:viewController animated:YES completion:nil];
+        
+    }
 }
 
 - (IBAction)actionEmailCN:(id)sender {
+    [Util sendMail:self withEmail:[dicData objectForKey:DTOACCOUNT_email]];
 }
 - (IBAction)actionAddressDN:(id)sender {
+    if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_lat]]) {
+        float fLon = [[dicData objectForKey:DTOACCOUNT_lat] floatValue];
+        float fLan =[[dicData objectForKey:DTOACCOUNT_lat] floatValue];
+        
+        TestMapViewController *viewController = [[TestMapViewController alloc]initWithNibName:@"TestMapViewController" bundle:nil];
+        viewController.typeMapView = typeMapView_View;
+        viewController.lan = fLan;
+        viewController.lon = fLon;
+        //viewController.address = [dicData objectForKey:DTOLEAD_address];
+        if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_address]]) {
+            viewController.address = [dicData objectForKey:DTOACCOUNT_address];
+        }else{
+            viewController.address = @"";
+        }
+        
+        
+        [self presentViewController:viewController animated:YES completion:nil];
+        
+    }
 }
 -(CGFloat) getHeightLabel : (NSString*) strMessage{
     
@@ -1498,5 +1548,64 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     
     return heightLabel;
+}
+#pragma mark sendmail
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+    
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            //NSLog(@"Cancelled");
+            break;
+        case MFMailComposeResultSaved:
+            //NSLog(@"Saved");
+            break;
+        case MFMailComposeResultSent:
+        {
+            UIAlertView *alert = [[UIAlertView alloc] init];
+            [alert setTitle:@"Gửi email thành công!"];
+            [alert setMessage:nil];
+            [alert setDelegate:self];
+            [alert addButtonWithTitle:@"Thoát"];
+            
+            [alert show];
+            
+        }
+            break;
+        case MFMailComposeResultFailed:
+        {
+            UIAlertView *alert = [[UIAlertView alloc] init];
+            [alert setTitle:@"Không gửi được email!"];
+            [alert setMessage:nil];
+            [alert setDelegate:self];
+            [alert addButtonWithTitle:@"Thoát"];
+            
+            [alert show];
+            
+        }
+            break;
+            
+            //NSLog(@"Not send");
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+-(void) delegateSendEmail:(NSString *)email{
+    [Util sendMail:self withEmail:email];
+}
+- (void)delegateCall:(NSString *)mobile {
+    if(![StringUtil stringIsEmpty:mobile]){
+        NSString *callnumber=[NSString stringWithFormat:@"telprompt://%@",mobile];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callnumber]];
+    }
+}
+
+- (void)delegateSMS:(NSString *)mobile {
+    if(![StringUtil stringIsEmpty:mobile]){
+        NSString *sendSMS=[NSString stringWithFormat:@"sms://%@",mobile];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:sendSMS]];
+    }
 }
 @end

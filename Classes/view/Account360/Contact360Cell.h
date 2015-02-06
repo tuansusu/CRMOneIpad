@@ -8,10 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ContactDelegate <NSObject>
+
+-(void) delegateSendEmail:(NSString *)email;
+- (void)delegateCall:(NSString *)mobile;
+- (void)delegateSMS:(NSString *)mobile;
+
+@end
+
 @interface Contact360Cell : UITableViewCell
 +(Contact360Cell*) initNibCell;
 
-//@property (weak, nonatomic) id <AccountLeadCellDelegate> delegate;
+@property (weak, nonatomic) id <ContactDelegate> delegate;
 @property (nonatomic, strong) NSDictionary *dicData;
 @property (weak, nonatomic) IBOutlet UIImageView *avartar;
 
@@ -34,4 +42,7 @@
 
 - (IBAction)actionAddress:(id)sender;
 - (IBAction)actionSendMail:(id)sender;
+- (IBAction)actionSMS:(id)sender;
+- (IBAction)actionCall:(id)sender;
+
 @end

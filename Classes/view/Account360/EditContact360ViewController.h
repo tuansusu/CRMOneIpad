@@ -94,5 +94,7 @@
 ////////////// KHAI BAO BIEN CHUNG//////////
 
 - (IBAction)actionSelectAddress:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnDel;
+- (IBAction)actionDel:(id)sender;
 
 @end

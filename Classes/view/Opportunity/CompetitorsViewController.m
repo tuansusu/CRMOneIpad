@@ -701,20 +701,101 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         [tableView deselectRowAtIndexPath:selection animated:YES];
     }
     
+    
+    
+    if(arrayData.count ==0){
+        switch (typeActionEvent) {
+            case type_ClueContact:
+            {
+                typeActionEvent = type_ClueContact;
+                EditContactOpportunityViewController *viewController = [[EditContactOpportunityViewController alloc]initWithNibName:@"EditContactOpportunityViewController" bundle:nil];
+                viewController.dataRoot = opportunity;
+                [self presentViewController:viewController animated:YES completion:nil];
+            }
+                break;
+            case type_ProposeProduct:
+            {
+                typeActionEvent = type_ProposeProduct;
+                EditOpportunityProductViewController *viewController = [[EditOpportunityProductViewController alloc]initWithNibName:@"EditOpportunityProductViewController" bundle:nil];
+                viewController.dataRoot = opportunity;
+                viewController.delegateOpportunityProduct = (id<OpportunityProductDelegate>)self;
+                [self presentViewController:viewController animated:YES completion:nil];
+            }
+                break;
+            case type_Task:
+            {
+                typeActionEvent = type_Task;
+                EditOpportunityTaskViewController *viewController = [[EditOpportunityTaskViewController alloc]initWithNibName:@"EditOpportunityTaskViewController" bundle:nil];
+                viewController.dataRoot = opportunity;
+                [self presentViewController:viewController animated:YES completion:nil];
+            }
+                break;
+            case type_Note:
+            {
+                typeActionEvent = type_Note;
+                EditNoteOpportunityViewController *viewController = [[EditNoteOpportunityViewController alloc]initWithNibName:@"EditNoteOpportunityViewController" bundle:nil];
+                viewController.dataRoot = opportunity;
+                [self presentViewController:viewController animated:YES completion:nil];
+            }
+                break;
+            case type_Calendar:
+            {
+                EditCalendarOpportunityViewController *viewController = [[EditCalendarOpportunityViewController alloc]initWithNibName:@"EditCalendarOpportunityViewController" bundle:nil];
+                [viewController setDelegate:self];
+                viewController.dataRoot = opportunity;
+                viewController.isKH360 = YES;
+                [self presentViewController:viewController animated:YES completion:nil];
+            }
+
+            default:
+                break;
+        }
+
+    }
+    else{
+        NSDictionary *dicDataTemp = [arrayData objectAtIndex:indexPath.row];
+        NSString *itemId = [dicDataTemp objectForKey:DTOCONTACT_id];
+
     switch (typeActionEvent) {
-        case type_Sale:
+        case type_ClueContact:{
             
+            NSDictionary *dicData = [dtoContactProcess getDataWithKey:DTOCONTACT_id withValue:itemId];
+            
+            EditContactOpportunityViewController *viewController = [[EditContactOpportunityViewController alloc]initWithNibName:@"EditContactOpportunityViewController" bundle:nil];
+            viewController.dataSend = dicData;
+            [self presentViewController:viewController animated:YES completion:nil];
+        }
             break;
-        case type_ClueContact:
+        case type_ProposeProduct:{
+            NSDictionary *dicData = [[dtoOpportunityProductProcess getById:itemId] objectAtIndex:0];
+            
+            EditOpportunityProductViewController *viewController = [[EditOpportunityProductViewController alloc]initWithNibName:@"EditOpportunityProductViewController" bundle:nil];
+            viewController.dataSend = dicData;
+            //[self presentViewController:viewController animated:YES completion:nil];
+            // viewController.view.frame = CGRectMake(0, 0, 600, 400);
+            viewController.delegateOpportunityProduct = (id<OpportunityProductDelegate>)self;
+            //[self presentPopupViewController:viewController animationType:YES];
+            [self presentViewController:viewController animated:YES completion:nil];
+        }
             break;
-            //            case type_Competionor:
-            //            break;
-        case type_ProposeProduct:
+        case type_Task:{
+            NSDictionary *dicData = [dtoTaskProcess getDataWithKey:DTOTASK_id withValue:itemId];
+            
+            EditOpportunityTaskViewController *viewController = [[EditOpportunityTaskViewController alloc]initWithNibName:@"EditOpportunityTaskViewController" bundle:nil];
+            viewController.dataSend = dicData;
+            [self presentViewController:viewController animated:YES completion:nil];
+        }
             break;
-            //            case type_Support:
-            //            break;
+        case type_Note:{
+            NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
+            EditNoteOpportunityViewController *viewNoteController = [[EditNoteOpportunityViewController alloc]initWithNibName:@"EditNoteOpportunityViewController" bundle:nil];
+            viewNoteController.dataSend = dicData;
+            [self presentViewController:viewNoteController animated:YES completion:nil];
+        }
+            break;
         default:
             break;
+    }
     }
 }
 

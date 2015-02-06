@@ -73,9 +73,10 @@
     
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
+    searchBarController.isValid = NO;
     [self initData];
     
-    searchBarController.isValid = NO;
+    
     
     self.txtQuantity.delegate = self;
     self.txtRevenue.delegate = self;
@@ -491,7 +492,7 @@
         //for Decimal value End//////This code use use for allowing single decimal value
         
         // allow digit 0 to 9
-        if ([string intValue])
+        if ([string intValue] || [string isEqualToString:@"0"])
         {
             return YES;
         }

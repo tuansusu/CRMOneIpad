@@ -12,14 +12,19 @@
 #import "ContactOpportunityCell.h"
 #import "TaskOpportunityCell.h"
 #import "NoteOpportunityCell.h"
+#import "TaskCalTLineCell.h"
+#import "TaskCalendarCell.h"
 #import "SelectIndexViewController.h"
 #import "EditOpportunityViewController.h"
 #import "EditContactOpportunityViewController.h"
 #import "EditOpportunityProductViewController.h"
 #import "EditOpportunityTaskViewController.h"
 #import "EditNoteOpportunityViewController.h"
+#import "EditCalendarOpportunityViewController.h"
 #import "UIViewController+MJPopupViewController.h"
 #import "EmptyCell.h"
+#import "ComplainsView.h"
+#import "TaskActionCell.h"
 
 
 enum TypeActionEvent{
@@ -32,7 +37,7 @@ enum TypeActionEvent{
 };
 
 
-@interface CompetitorsViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate,SelectIndexDelegate,OpportunityProductDelegate>
+@interface CompetitorsViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate,SelectIndexDelegate,OpportunityProductDelegate,TaskActionCellDelegate,ComplainDetailViewControllerDelegate,EditCalendarOpportunityViewControllerDelegate,ComplainsViewDelegate>
 
 
 @property (nonatomic) enum TypeActionEvent typeActionEvent;

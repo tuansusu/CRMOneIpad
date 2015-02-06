@@ -929,10 +929,10 @@
 		92C68E6A1519D4F100981728 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C68E4C1519D4F100981728 /* RootViewController.m */; };
 		9418D69D1A7BE26400A5C9AA /* EditOpportunityLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9418D69B1A7BE26400A5C9AA /* EditOpportunityLeadViewController.m */; };
 		9418D69E1A7BE26400A5C9AA /* EditOpportunityLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9418D69C1A7BE26400A5C9AA /* EditOpportunityLeadViewController.xib */; };
+		9424A7391A846849003CB212 /* EditCalendarOpportunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9424A7371A846849003CB212 /* EditCalendarOpportunityViewController.m */; };
+		9424A73A1A846849003CB212 /* EditCalendarOpportunityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9424A7381A846849003CB212 /* EditCalendarOpportunityViewController.xib */; };
 		943296B81A7CE9970097592D /* OpportunityLeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 943296B61A7CE9970097592D /* OpportunityLeadCell.m */; };
 		943296B91A7CE9970097592D /* OpportunityLeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 943296B71A7CE9970097592D /* OpportunityLeadCell.xib */; };
-		9438AE511A826E7C00FED3EB /* EditCalendarOpportunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9438AE4F1A826E7C00FED3EB /* EditCalendarOpportunityViewController.m */; };
-		9438AE521A826E7C00FED3EB /* EditCalendarOpportunityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9438AE501A826E7C00FED3EB /* EditCalendarOpportunityViewController.xib */; };
 		9438AE561A826E9000FED3EB /* CalendarOpportunityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9438AE541A826E9000FED3EB /* CalendarOpportunityCell.m */; };
 		9438AE571A826E9000FED3EB /* CalendarOpportunityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9438AE551A826E9000FED3EB /* CalendarOpportunityCell.xib */; };
 		949B76B01A3F357A00945B41 /* SearchAdvanceOpportunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 949B76AE1A3F357A00945B41 /* SearchAdvanceOpportunityViewController.m */; };
@@ -2517,12 +2517,12 @@
 		9418D69A1A7BE26400A5C9AA /* EditOpportunityLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditOpportunityLeadViewController.h; sourceTree = "<group>"; };
 		9418D69B1A7BE26400A5C9AA /* EditOpportunityLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditOpportunityLeadViewController.m; sourceTree = "<group>"; };
 		9418D69C1A7BE26400A5C9AA /* EditOpportunityLeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditOpportunityLeadViewController.xib; sourceTree = "<group>"; };
+		9424A7361A846849003CB212 /* EditCalendarOpportunityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCalendarOpportunityViewController.h; sourceTree = "<group>"; };
+		9424A7371A846849003CB212 /* EditCalendarOpportunityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCalendarOpportunityViewController.m; sourceTree = "<group>"; };
+		9424A7381A846849003CB212 /* EditCalendarOpportunityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditCalendarOpportunityViewController.xib; sourceTree = "<group>"; };
 		943296B51A7CE9970097592D /* OpportunityLeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpportunityLeadCell.h; sourceTree = "<group>"; };
 		943296B61A7CE9970097592D /* OpportunityLeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpportunityLeadCell.m; sourceTree = "<group>"; };
 		943296B71A7CE9970097592D /* OpportunityLeadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpportunityLeadCell.xib; sourceTree = "<group>"; };
-		9438AE4E1A826E7C00FED3EB /* EditCalendarOpportunityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCalendarOpportunityViewController.h; sourceTree = "<group>"; };
-		9438AE4F1A826E7C00FED3EB /* EditCalendarOpportunityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCalendarOpportunityViewController.m; sourceTree = "<group>"; };
-		9438AE501A826E7C00FED3EB /* EditCalendarOpportunityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditCalendarOpportunityViewController.xib; sourceTree = "<group>"; };
 		9438AE531A826E9000FED3EB /* CalendarOpportunityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarOpportunityCell.h; sourceTree = "<group>"; };
 		9438AE541A826E9000FED3EB /* CalendarOpportunityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarOpportunityCell.m; sourceTree = "<group>"; };
 		9438AE551A826E9000FED3EB /* CalendarOpportunityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarOpportunityCell.xib; sourceTree = "<group>"; };
@@ -5757,9 +5757,9 @@
 		94A2A76C1A80F7D300C412E7 /* Edit */ = {
 			isa = PBXGroup;
 			children = (
-				9438AE4E1A826E7C00FED3EB /* EditCalendarOpportunityViewController.h */,
-				9438AE4F1A826E7C00FED3EB /* EditCalendarOpportunityViewController.m */,
-				9438AE501A826E7C00FED3EB /* EditCalendarOpportunityViewController.xib */,
+				9424A7361A846849003CB212 /* EditCalendarOpportunityViewController.h */,
+				9424A7371A846849003CB212 /* EditCalendarOpportunityViewController.m */,
+				9424A7381A846849003CB212 /* EditCalendarOpportunityViewController.xib */,
 				94A2A76F1A80F89F00C412E7 /* EditNoteOpportunityViewController.h */,
 				94A2A7701A80F89F00C412E7 /* EditNoteOpportunityViewController.m */,
 				94A2A7711A80F89F00C412E7 /* EditNoteOpportunityViewController.xib */,
@@ -6493,7 +6493,6 @@
 				76C964701A17731900029978 /* pie_pop_over_gradient.jpg in Resources */,
 				8E69BDE51A58458500C6924D /* iconMoto@2x.png in Resources */,
 				7644306D1A7000CC007741BA /* menu_map.png in Resources */,
-				9438AE521A826E7C00FED3EB /* EditCalendarOpportunityViewController.xib in Resources */,
 				2DE2D2531829060700034877 /* ic-pdf.png in Resources */,
 				2D2F75A2185801E000EC76EE /* Button_Dong_y.png in Resources */,
 				2DE2D2541829060700034877 /* ic-notsign.png in Resources */,
@@ -6525,6 +6524,7 @@
 				76D29AC81A1124C9004B9CF6 /* ProposeProductCell.xib in Resources */,
 				76C964771A17731900029978 /* trophy.png in Resources */,
 				8497BFE91A295A2300A5ED3C /* step5@2x.png in Resources */,
+				9424A73A1A846849003CB212 /* EditCalendarOpportunityViewController.xib in Resources */,
 				B31AFAA5187ADB5800D366B5 /* ic-show-column-1-1.png in Resources */,
 				17C67D3A1A5D72FA00EECD66 /* SelectAddInMapsViewController.xib in Resources */,
 				76601A40194BE90F001D4C01 /* AppIcon-114.png in Resources */,
@@ -6841,6 +6841,7 @@
 				B315784F188912D800C0ED01 /* NSString+extend.m in Sources */,
 				76C964631A17731900029978 /* InfoBoxStyle1.m in Sources */,
 				2D47E80F1761CACC00F291D6 /* Base64.m in Sources */,
+				9424A7391A846849003CB212 /* EditCalendarOpportunityViewController.m in Sources */,
 				8ED38D741A5447C500D95A3B /* DetailLeadViewController.m in Sources */,
 				7617F07F193DE30A00BB7073 /* GlobalVars.m in Sources */,
 				8E44BC391A73A89B00EDCD1A /* ProThanhToanQuocTeViewCell.m in Sources */,
@@ -7107,7 +7108,6 @@
 				76C964791A17731900029978 /* MIMRangeGraph.m in Sources */,
 				76C9629C1A16DBA500029978 /* AccountLeadCell.m in Sources */,
 				2D044C8018025D8D00FBC073 /* UIDevice+extend.m in Sources */,
-				9438AE511A826E7C00FED3EB /* EditCalendarOpportunityViewController.m in Sources */,
 				8497C0041A295A2300A5ED3C /* MarkerLayerViewController.m in Sources */,
 				B30569E81804F8FF0041FAB5 /* UIAlertView+extend.m in Sources */,
 				8E6EF7CC1A7FB9C2008C8824 /* SDWebImageDownloader.m in Sources */,

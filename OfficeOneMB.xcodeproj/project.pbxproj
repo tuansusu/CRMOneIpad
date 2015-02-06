@@ -33,6 +33,15 @@
 		15C6A1971A6FDC4800F19B30 /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C6A1951A6FDC4800F19B30 /* PickerViewController.m */; };
 		15C6A1981A6FDC4800F19B30 /* PickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15C6A1961A6FDC4800F19B30 /* PickerViewController.xib */; };
 		170862EA1A3F3CB30021705D /* attach_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 170862E91A3F3CB30021705D /* attach_icon.png */; };
+		172CE5531A8480530023F52F /* UIMenuItem+CXAImageSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 172CE5521A8480530023F52F /* UIMenuItem+CXAImageSupport.m */; };
+		177885941A84699100C71551 /* menudelete.png in Resources */ = {isa = PBXBuildFile; fileRef = 1778858C1A84699100C71551 /* menudelete.png */; };
+		177885951A84699100C71551 /* menuedit.png in Resources */ = {isa = PBXBuildFile; fileRef = 1778858D1A84699100C71551 /* menuedit.png */; };
+		177885961A84699100C71551 /* menuemail.png in Resources */ = {isa = PBXBuildFile; fileRef = 1778858E1A84699100C71551 /* menuemail.png */; };
+		177885971A84699100C71551 /* menuflag.png in Resources */ = {isa = PBXBuildFile; fileRef = 1778858F1A84699100C71551 /* menuflag.png */; };
+		177885981A84699100C71551 /* menumap.png in Resources */ = {isa = PBXBuildFile; fileRef = 177885901A84699100C71551 /* menumap.png */; };
+		177885991A84699100C71551 /* menumessage.png in Resources */ = {isa = PBXBuildFile; fileRef = 177885911A84699100C71551 /* menumessage.png */; };
+		1778859A1A84699100C71551 /* menuphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 177885921A84699100C71551 /* menuphone.png */; };
+		1778859B1A84699100C71551 /* menuview.png in Resources */ = {isa = PBXBuildFile; fileRef = 177885931A84699100C71551 /* menuview.png */; };
 		17C67D391A5D72FA00EECD66 /* SelectAddInMapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C67D371A5D72FA00EECD66 /* SelectAddInMapsViewController.m */; };
 		17C67D3A1A5D72FA00EECD66 /* SelectAddInMapsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17C67D381A5D72FA00EECD66 /* SelectAddInMapsViewController.xib */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
@@ -1118,6 +1127,16 @@
 		15C6A1951A6FDC4800F19B30 /* PickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PickerViewController.m; path = CustomView/PickerViewController.m; sourceTree = "<group>"; };
 		15C6A1961A6FDC4800F19B30 /* PickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PickerViewController.xib; path = CustomView/PickerViewController.xib; sourceTree = "<group>"; };
 		170862E91A3F3CB30021705D /* attach_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attach_icon.png; sourceTree = "<group>"; };
+		172CE5511A8480530023F52F /* UIMenuItem+CXAImageSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIMenuItem+CXAImageSupport.h"; sourceTree = "<group>"; };
+		172CE5521A8480530023F52F /* UIMenuItem+CXAImageSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIMenuItem+CXAImageSupport.m"; sourceTree = "<group>"; };
+		1778858C1A84699100C71551 /* menudelete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menudelete.png; sourceTree = "<group>"; };
+		1778858D1A84699100C71551 /* menuedit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuedit.png; sourceTree = "<group>"; };
+		1778858E1A84699100C71551 /* menuemail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuemail.png; sourceTree = "<group>"; };
+		1778858F1A84699100C71551 /* menuflag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuflag.png; sourceTree = "<group>"; };
+		177885901A84699100C71551 /* menumap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menumap.png; sourceTree = "<group>"; };
+		177885911A84699100C71551 /* menumessage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menumessage.png; sourceTree = "<group>"; };
+		177885921A84699100C71551 /* menuphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuphone.png; sourceTree = "<group>"; };
+		177885931A84699100C71551 /* menuview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuview.png; sourceTree = "<group>"; };
 		17C67D361A5D72FA00EECD66 /* SelectAddInMapsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectAddInMapsViewController.h; sourceTree = "<group>"; };
 		17C67D371A5D72FA00EECD66 /* SelectAddInMapsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAddInMapsViewController.m; sourceTree = "<group>"; };
 		17C67D381A5D72FA00EECD66 /* SelectAddInMapsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectAddInMapsViewController.xib; sourceTree = "<group>"; };
@@ -3388,6 +3407,8 @@
 		2D9FCB901795644000950763 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				172CE5511A8480530023F52F /* UIMenuItem+CXAImageSupport.h */,
+				172CE5521A8480530023F52F /* UIMenuItem+CXAImageSupport.m */,
 				1595993A1A58451200D87BD4 /* NSDate+Utilities.h */,
 				1595993B1A58451200D87BD4 /* NSDate+Utilities.m */,
 				769C1A171A00027900F015A5 /* Network.h */,
@@ -4104,6 +4125,14 @@
 		76C9647C1A17A15C00029978 /* Bisone */ = {
 			isa = PBXGroup;
 			children = (
+				1778858C1A84699100C71551 /* menudelete.png */,
+				1778858D1A84699100C71551 /* menuedit.png */,
+				1778858E1A84699100C71551 /* menuemail.png */,
+				1778858F1A84699100C71551 /* menuflag.png */,
+				177885901A84699100C71551 /* menumap.png */,
+				177885911A84699100C71551 /* menumessage.png */,
+				177885921A84699100C71551 /* menuphone.png */,
+				177885931A84699100C71551 /* menuview.png */,
 				7697BBB41A7FB1700023F118 /* menu_calendar@2x.png */,
 				7697BBB51A7FB1700023F118 /* menu_campaign@2x.png */,
 				7697BBB61A7FB1700023F118 /* menu_customer_360@2x.png */,
@@ -6152,6 +6181,7 @@
 				84945FFF1A2B383E002EF8BD /* follow_success.png in Resources */,
 				76D29B181A126C9B004B9CF6 /* ClueContactCell.xib in Resources */,
 				8497C0161A295A8500A5ED3C /* TestMapViewController.xib in Resources */,
+				177885991A84699100C71551 /* menumessage.png in Resources */,
 				8E75544D1A52EFC8001940FB /* iconFerryTrain@2x.png in Resources */,
 				8E69BDEB1A584B5500C6924D /* iconWalking.png in Resources */,
 				8497BFC21A295A2300A5ED3C /* botswana-large.png in Resources */,
@@ -6218,6 +6248,7 @@
 				76CD8819196D1E4F00503B99 /* ic-xls-1.png in Resources */,
 				76EE207219FA829200A80414 /* ic-add-sub-1.png in Resources */,
 				8497BFCB1A295A2300A5ED3C /* Default-Portrait@2x~ipad.png in Resources */,
+				1778859B1A84699100C71551 /* menuview.png in Resources */,
 				2D4B92CB17ACD7DE002A9AC5 /* DAFontSet.plist in Resources */,
 				2DFEFC0917AD075800D684FB /* arrow_up.png in Resources */,
 				8E5AA9B81A503C86007D9C8A /* iconMarker@2x.png in Resources */,
@@ -6261,6 +6292,7 @@
 				B301F1FD17C382D80004650C /* icon_Line.png in Resources */,
 				B301F20017C382D80004650C /* icon_number.png in Resources */,
 				B3157890188D5E5200C0ED01 /* ic-zoom-2-1.png in Resources */,
+				1778859A1A84699100C71551 /* menuphone.png in Resources */,
 				B316D690188FEECC009B751B /* bg-doc-event-1.png in Resources */,
 				7644306B1A7000CC007741BA /* menu_help.png in Resources */,
 				2D6D7663187670B00051AD9E /* ic-work-order-group-1.png in Resources */,
@@ -6303,6 +6335,7 @@
 				B315789C188D5E5200C0ED01 /* logo-small-1.png in Resources */,
 				8E1CF2C11A71488F00AD3349 /* iconMenu in Resources */,
 				B3A066D817D1AB8200BA6487 /* background_2.png in Resources */,
+				177885941A84699100C71551 /* menudelete.png in Resources */,
 				8497BFD41A295A2300A5ED3C /* museum-exhibits.json in Resources */,
 				8EB708781A407A1C001861A0 /* Mobile_GPS_MyLocationIcon@2x.png in Resources */,
 				8497BFCE1A295A2300A5ED3C /* Default@2x.png in Resources */,
@@ -6317,6 +6350,7 @@
 				8E75545D1A52EFC8001940FB /* iconRoundAboutLeft@2x.png in Resources */,
 				B313F1D818A65107001FDEC6 /* popover-bg-1.png in Resources */,
 				2DD29F161876C3B70066B883 /* menu-list-bg-1.png in Resources */,
+				177885971A84699100C71551 /* menuflag.png in Resources */,
 				8E7554661A52EFC8001940FB /* iconTurnSharpRight.png in Resources */,
 				8497BFBA1A295A2300A5ED3C /* argentina.png in Resources */,
 				B3A066E117D1AB8200BA6487 /* icon_clear_search.png in Resources */,
@@ -6406,6 +6440,7 @@
 				2DE6B97B17FD242C00DC0D4E /* icon_radio-button_off.png in Resources */,
 				B316D68E188E927A009B751B /* bg-doc.png in Resources */,
 				7657E8BA1A5AEB3A008A62F9 /* EditAccount360ViewController.xib in Resources */,
+				177885981A84699100C71551 /* menumap.png in Resources */,
 				8497BFB91A295A2300A5ED3C /* argentina-large.png in Resources */,
 				2DE6B97C17FD242C00DC0D4E /* icon_radio-button_on.png in Resources */,
 				76601A52194BE90F001D4C01 /* Reader-Thumbs@2x.png in Resources */,
@@ -6450,6 +6485,7 @@
 				8497BFD31A295A2300A5ED3C /* Launch.xib in Resources */,
 				8497BCE11A294C7F00A5ED3C /* TestViewController.xib in Resources */,
 				2DE2D2521829060700034877 /* ic-cancel.png in Resources */,
+				177885961A84699100C71551 /* menuemail.png in Resources */,
 				76C9629D1A16DBA500029978 /* AccountLeadCell.xib in Resources */,
 				2D6D76781876726A0051AD9E /* icon_noread-1.png in Resources */,
 				7697BBCC1A7FB1700023F118 /* menu_sync@2x.png in Resources */,
@@ -6533,6 +6569,7 @@
 				2DE2D28C1829060700034877 /* footer.png in Resources */,
 				8497BFF01A295A2300A5ED3C /* track.json in Resources */,
 				B38111E718ACD40600876151 /* update-btn-1-1.png in Resources */,
+				177885951A84699100C71551 /* menuedit.png in Resources */,
 				7697BBCB1A7FB1700023F118 /* menu_sync.png in Resources */,
 				8E568F7F1A58EEDF0002A3C4 /* ListComplainsViewController.xib in Resources */,
 				8E0B07BC1A446B4100CF7A78 /* CustomInfoView.xib in Resources */,
@@ -6915,6 +6952,7 @@
 				2D0C7E3617A9FD1000DDABAC /* UIImage+Blur.m in Sources */,
 				2D0C7E3A17AA43FE00DDABAC /* MarqueeLabel.m in Sources */,
 				8497C0051A295A2300A5ED3C /* MarkersViewController.m in Sources */,
+				172CE5531A8480530023F52F /* UIMenuItem+CXAImageSupport.m in Sources */,
 				76601A38194BE90F001D4C01 /* ReaderViewController.m in Sources */,
 				76C9647B1A17731900029978 /* MultiWallLongGraph.m in Sources */,
 				8EC972801A5D71300021DCA3 /* FFDayScrollView.m in Sources */,

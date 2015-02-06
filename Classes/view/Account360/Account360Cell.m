@@ -208,7 +208,28 @@ NSDateFormatter *df,*dfTime;
     [_delegate delegate_email:_dicData];
 }
 -(void) follow:(id) sender{
-    [_delegate delegate_follow:_dicData];
+    NSString *leadId=[_dicData objectForKey:DTOLEAD_leadId];
+    if(leadId.length>0){
+        leadId=leadId;
+    }
+    else{
+        leadId=[_dicData objectForKey:DTOLEAD_clientLeadId];
+    }
+    if([self checkFollowAccount:leadId]==0){
+           [_delegate delegate_follow:_dicData];    }
+    else if ([self checkFollowAccount:leadId]==1){
+        //xu ly trang thai thanh da hoan thanh
+        NSLog(@"chua xu ly");
+        NSDictionary *data;
+        DTOFLLOWUPProcess *followProcess=[DTOFLLOWUPProcess new];
+        data= [followProcess getDataWithKey:DTOFOLLOWUP_objectId withValue:leadId];
+        NSString *followid;
+        if(data.count>0){
+            followid = [data objectForKey:DTOFOLLOWUP_id];
+            [_delegate delegate_changeStatusFollow:followid];
+        }
+    }
+
 }
 -(void) map:(NSDictionary *)dicData{
     [_delegate delegate_maps:_dicData];

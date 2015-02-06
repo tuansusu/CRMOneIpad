@@ -177,7 +177,7 @@
     
     if (self.dataRoot) {
         self.dataRoot = [dtoOpportunityProcess getById:[self.dataRoot objectForKey:DTOOPPORTUNITY_id]];
-        self.lblFormTitle.text = @"CHỈNH SỬA CƠ HỘI";
+        self.fullNameLB.text = @"CHỈNH SỬA CƠ HỘI";
     }
     
    
@@ -246,15 +246,15 @@
     //    self.leftLabelHeader.textColor = TEXT_COLOR_HEADER_APP;
     
     
-    [self.headerMainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
-    [self.headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
-    for (UIView *viewSubTemp in self.headerMainView.subviews) {
-        
-        
-        if ([viewSubTemp isKindOfClass:[UILabel class]]) {
-            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
-        }
-    }
+//    [self.headerMainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
+//    [self.headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
+//    for (UIView *viewSubTemp in self.headerMainView.subviews) {
+//        
+//        
+//        if ([viewSubTemp isKindOfClass:[UILabel class]]) {
+//            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+//        }
+//    }
     
     
     
@@ -269,19 +269,17 @@
     for (UIView *viewTemp in self.bodyMainView.subviews) {
         
         
-        //        if ([viewTemp isKindOfClass:[UIView class]]) {
-        //            ((UIView*) viewTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
-        //
-        //            ((UIView*) viewTemp).layer.borderWidth = BORDER_WITH;
-        //            ((UIView*) viewTemp).layer.borderColor = [BORDER_COLOR CGColor];
-        //
-        //        }
-        
         for (UIView *viewSubTemp in viewTemp.subviews) {
             
             
+            if ([viewSubTemp isKindOfClass:[UIImageView class]]) {
+                [((UIImageView*) viewSubTemp) setAlpha:1.0f];
+                continue;
+            }
+            
             if ([viewSubTemp isKindOfClass:[UILabel class]]) {
                 ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+                continue;
             }
             
             
@@ -290,15 +288,15 @@
                 ((UITextView*) viewSubTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
                 ((UITextView*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
                 ((UITextView*) viewSubTemp).layer.borderWidth = BORDER_WITH;
+                continue;
             }
             if ([viewSubTemp isKindOfClass:[UITextField class]]) {
                 ((UITextField*) viewSubTemp).textColor = TEXT_COLOR_REPORT;
                 ((UITextField*) viewSubTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
-//                ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
-//                ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
                 
                 [((UITextField*) viewSubTemp) setPaddingLeft];
                 [((UITextField*) viewSubTemp) setBorderWithOption:smgSelect];
+                continue;
             }
             
         }

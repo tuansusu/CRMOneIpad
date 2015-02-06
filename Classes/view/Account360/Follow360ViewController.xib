@@ -172,7 +172,7 @@
                         </button>
                         <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sTr-zw-RZY">
                             <rect key="frame" x="57" y="139" width="20" height="20"/>
-                            <state key="normal" image="checkbox_not_ticked.png">
+                            <state key="normal" backgroundImage="checkbox_not_ticked.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -181,7 +181,7 @@
                         </button>
                         <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ymY-mU-PB8">
                             <rect key="frame" x="228" y="215" width="20" height="20"/>
-                            <state key="normal" image="checkbox_ticked.png">
+                            <state key="normal" backgroundImage="checkbox_ticked.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -190,7 +190,7 @@
                         </button>
                         <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMI-ir-U2N">
                             <rect key="frame" x="308" y="215" width="20" height="20"/>
-                            <state key="normal" image="checkbox_not_ticked.png">
+                            <state key="normal" backgroundImage="checkbox_not_ticked.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -199,7 +199,7 @@
                         </button>
                         <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="It2-8f-iRl">
                             <rect key="frame" x="380" y="215" width="20" height="20"/>
-                            <state key="normal" image="checkbox_ticked.png">
+                            <state key="normal" backgroundImage="checkbox_ticked.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>

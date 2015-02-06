@@ -140,17 +140,20 @@
                 [((UITextField*) viewSubTemp) setPaddingLeft];
                 [((UITextField*) viewSubTemp) setBorderWithOption:smgSelect];
                 continue;
+                
+            }
+            
+            if ([viewSubTemp isKindOfClass:[UIButton class]]) {
+                if(viewSubTemp.tag!=10){
+                    [((UIButton*) viewSubTemp) setStyleNormalWithOption:smgSelect];
+                }
             }
             
         }
         
-//        if ([viewTemp isKindOfClass:[UIButton class]]) {
-//            if(viewTemp.tag!=10){
-//                [((UIButton*) viewTemp) setStyleNormalWithOption:smgSelect];
-//            }
-//        }
     
-   // }
+        
+    //}
     
 }
 

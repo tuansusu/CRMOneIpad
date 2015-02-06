@@ -9,6 +9,7 @@
 #import "ListAccountLeadViewController.h"
 #import "DTOACCOUNTLEADProcess.h"
 #import "DTOFLLOWUPProcess.h"
+#import "UIMenuItem+CXAImageSupport.h"
 
 
 
@@ -109,23 +110,42 @@
     [SVProgressHUD show];
     [self setLanguage];
     //set menu
-    UIMenuItem *viewMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_VIEW") action:@selector(view:)];
+//    UIMenuItem *viewMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_VIEW") action:@selector(view:)];
+//    
+//    
+//    UIMenuItem *editMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_EDIT") action:@selector(edit:)];
+//    
+//    
+//    UIMenuItem *delMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_DEL") action:@selector(del:)];
+//    
+//    UIMenuItem *callMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_CALL")  action:@selector(call:)];
+//    
+//    UIMenuItem *smsMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_SMS")  action:@selector(sms:)];
+//    
+//    UIMenuItem *emailMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_EMAIL")  action:@selector(email:)];
+//    
+//    UIMenuItem *fowlMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_FOLLOW") action:@selector(follow:)];
+//    
+//    UIMenuItem *mapMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_MAPS")  action:@selector(map:)];
+//    [[UIMenuController sharedMenuController] setMenuItems: @[viewMenu,editMenu,delMenu,callMenu,smsMenu,emailMenu,fowlMenu,mapMenu]];
+//    [[UIMenuController sharedMenuController] update];
+    UIMenuItem *viewMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Xem", nil) action:@selector(view:) image:[UIImage imageNamed:@"menuview.png"]];
+    
+    UIMenuItem *editMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Sửa", nil) action:@selector(edit:) image:[UIImage imageNamed:@"menuedit.png"]];
+    
+    UIMenuItem *delMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Xoá", nil) action:@selector(del:) image:[UIImage imageNamed:@"menudelete.png"]];
+    
+    UIMenuItem *callMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Gọi điện", nil) action:@selector(call:) image:[UIImage imageNamed:@"menuphone.png"]];
+    
+    UIMenuItem *smsMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"SMS", nil) action:@selector(sms:) image:[UIImage imageNamed:@"menumessage.png"]];
+    
+    UIMenuItem *emailMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Email", nil) action:@selector(email:) image:[UIImage imageNamed:@"menuemail.png"]];
+    
+    UIMenuItem *fowlMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Theo dõi", nil) action:@selector(follow:) image:[UIImage imageNamed:@"menuflag.png"]];
     
     
-    UIMenuItem *editMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_EDIT") action:@selector(edit:)];
+    UIMenuItem *mapMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Bản đồ", nil) action:@selector(map:) image:[UIImage imageNamed:@"menumap.png"]];
     
-    
-    UIMenuItem *delMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_DEL") action:@selector(del:)];
-    
-    UIMenuItem *callMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_CALL")  action:@selector(call:)];
-    
-    UIMenuItem *smsMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_SMS")  action:@selector(sms:)];
-    
-    UIMenuItem *emailMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_EMAIL")  action:@selector(email:)];
-    
-    UIMenuItem *fowlMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_FOLLOW") action:@selector(follow:)];
-    
-    UIMenuItem *mapMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_MAPS")  action:@selector(map:)];
     [[UIMenuController sharedMenuController] setMenuItems: @[viewMenu,editMenu,delMenu,callMenu,smsMenu,emailMenu,fowlMenu,mapMenu]];
     [[UIMenuController sharedMenuController] update];
 }
@@ -184,27 +204,32 @@
     for (UIView *viewTemp in self.leftInMainView.subviews) {
         if ([viewTemp isKindOfClass:[UILabel class]]) {
             ((UILabel*) viewTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+            continue;
         }
         
         if ([viewTemp isKindOfClass:[UIButton class]]) {
             ((UIButton*) viewTemp).backgroundColor = BUTTON_IN_ACTIVE_COLOR_1;
             [((UIButton*) viewTemp) setTitleColor:TEXT_BUTTON_COLOR1 forState:UIControlStateNormal];
+            continue;
         }
         if ([viewTemp isKindOfClass:[UITextView class]]) {
             ((UITextView*) viewTemp).textColor = TEXT_COLOR_REPORT;
             ((UITextView*) viewTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
             ((UITextView*) viewTemp).layer.borderColor = [BORDER_COLOR CGColor];
             ((UITextView*) viewTemp).layer.borderWidth = BORDER_WITH;
+            continue;
         }
         if ([viewTemp isKindOfClass:[UITextField class]]) {
             ((UITextField*) viewTemp).textColor = TEXT_COLOR_REPORT;
             ((UITextField*) viewTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
             ((UITextField*) viewTemp).layer.borderColor = [BORDER_COLOR CGColor];
             ((UITextField*) viewTemp).layer.borderWidth = BORDER_WITH;
+            continue;
         }
         if ([viewTemp isKindOfClass:[UIImageView class]]) {
             
             [((UIImageView*) viewTemp) setAlpha:1.0f];
+            continue;
         }
     }
     

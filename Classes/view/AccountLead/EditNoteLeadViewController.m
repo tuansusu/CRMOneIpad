@@ -118,13 +118,13 @@
         arrayData =[dtoFileProcess filterWithKey:DTOATTACHMENT_clientObjectId withValue:[_dataSend objectForKey:DTONOTE_clientNoteId]];
         NSLog(@"data gui tu form chi tiet %@", self.dataSend);
         
-        self.lbTieudeghichu.text=@"CẬP NHẬP GHI CHÚ";
+        self.fullNameLB.text=@"CẬP NHẬP GHI CHÚ";
         
         [self loadDataEdit];
         [self.tbData reloadData];
     }
     else{
-        self.lbTieudeghichu.text=@"THÊM MƠI GHI CHÚ";
+        self.fullNameLB.text=@"THÊM MƠI GHI CHÚ";
     }
     
 }
@@ -183,8 +183,14 @@
         for (UIView *viewSubTemp in viewTemp.subviews) {
             
             
+            if ([viewSubTemp isKindOfClass:[UIImageView class]]) {
+                [((UIImageView*) viewSubTemp) setAlpha:1.0f];
+                continue;
+            }
+            
             if ([viewSubTemp isKindOfClass:[UILabel class]]) {
                 ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+                continue;
             }
             
             
@@ -193,6 +199,7 @@
                 ((UITextView*) viewSubTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
                 ((UITextView*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
                 ((UITextView*) viewSubTemp).layer.borderWidth = BORDER_WITH;
+                continue;
             }
             if ([viewSubTemp isKindOfClass:[UITextField class]]) {
                 ((UITextField*) viewSubTemp).textColor = TEXT_COLOR_REPORT;
@@ -201,6 +208,7 @@
                 //                ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
                 [((UITextField*) viewSubTemp) setPaddingLeft];
                 [((UITextField*) viewSubTemp) setBorderWithOption:smgSelect];
+                continue;
             }
             
             if ([viewSubTemp isKindOfClass:[UIButton class]]) {

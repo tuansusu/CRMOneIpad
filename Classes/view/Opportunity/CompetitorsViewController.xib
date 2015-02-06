@@ -12,6 +12,8 @@
                 <outlet property="btnAdd" destination="Nzy-Vp-Qun" id="OEo-4K-vjP"/>
                 <outlet property="btnCalendar" destination="dsp-Gq-3sQ" id="yMG-07-L2X"/>
                 <outlet property="btnClueContact" destination="UmA-il-Xwv" id="tZg-by-MY7"/>
+                <outlet property="btnDelete" destination="qaH-Wx-3AV" id="Uea-dA-2rS"/>
+                <outlet property="btnEdit" destination="yoC-iQ-llL" id="qko-9d-rGN"/>
                 <outlet property="btnHome" destination="JtN-cm-mZx" id="SS1-RK-xbh"/>
                 <outlet property="btnNote" destination="hE6-yH-DBv" id="NYi-QB-1aT"/>
                 <outlet property="btnProposeProduct" destination="FMx-z5-X0B" id="Ojg-k0-Aj0"/>
@@ -89,6 +91,26 @@
                             </state>
                             <connections>
                                 <action selector="actionAdd:" destination="-1" eventType="touchUpInside" id="Cu1-3p-1wR"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qaH-Wx-3AV">
+                            <rect key="frame" x="944" y="6" width="32" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="menudelete.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actionDelete:" destination="-1" eventType="touchUpInside" id="3b8-zA-6gz"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yoC-iQ-llL">
+                            <rect key="frame" x="904" y="6" width="32" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="menuedit.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actionEdit:" destination="-1" eventType="touchUpInside" id="4JB-wL-i9v"/>
                             </connections>
                         </button>
                     </subviews>
@@ -427,6 +449,8 @@
         <image name="btn-back-1-1.png" width="40" height="40"/>
         <image name="calendar_small_new.png" width="16" height="16"/>
         <image name="ic-add-sub-1.png" width="90" height="90"/>
+        <image name="menudelete.png" width="32" height="32"/>
+        <image name="menuedit.png" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -943,6 +943,9 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:KEY_NOTIFICATION_TITLE message:SYS_Notification_UpdateSuccess delegate:self cancelButtonTitle:KEY_NOTIFICATION_ACCEPT otherButtonTitles:  nil];
             
             [mylert show];
+            if(isMainDelete){
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }
             
         }else{
             //thong bao cap nhat that bai

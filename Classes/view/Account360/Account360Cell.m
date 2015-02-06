@@ -208,12 +208,12 @@ NSDateFormatter *df,*dfTime;
     [_delegate delegate_email:_dicData];
 }
 -(void) follow:(id) sender{
-    NSString *leadId=[_dicData objectForKey:DTOLEAD_leadId];
+    NSString *leadId=[_dicData objectForKey:DTOACCOUNT_accountId];
     if(leadId.length>0){
         leadId=leadId;
     }
     else{
-        leadId=[_dicData objectForKey:DTOLEAD_clientLeadId];
+        leadId=[_dicData objectForKey:DTOACCOUNT_clientAccountId];
     }
     if([self checkFollowAccount:leadId]==0){
            [_delegate delegate_follow:_dicData];    }

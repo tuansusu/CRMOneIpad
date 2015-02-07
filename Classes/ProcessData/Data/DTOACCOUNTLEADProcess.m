@@ -106,13 +106,31 @@
 }
 
 -(NSMutableArray*) filter{
-//    NSArray *allFields =[NSArray arrayWithObjects:DTOLEAD_accountId, DTOLEAD_address, DTOLEAD_companyPhone, DTOLEAD_email, DTOLEAD_mobile, DTOLEAD_name,DTOLEAD_updatedBy,DTOLEAD_code, DTOLEAD_leadId, DTOLEAD_leadType,DTOLEAD_clientLeadId, DTOLEAD_id, nil];
     
     NSArray *allFields =[NSArray arrayWithObjects:DTOLEAD_accountId, DTOLEAD_address, DTOLEAD_companyPhone, DTOLEAD_email, DTOLEAD_mobile, DTOLEAD_name,DTOLEAD_updatedBy,DTOLEAD_code, DTOLEAD_leadId, DTOLEAD_leadType,DTOLEAD_clientLeadId, DTOLEAD_lat, DTOLEAD_lon, DTOLEAD_id,DTOLEAD_clientLeadId, nil];
     
     NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where status = 1 order by %@ desc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOACCOUNTLEAD, DTOLEAD_updatedDate];
     
     return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:nil];
+}
+
+//filter(all) co phan trang
+-(NSMutableArray*) filterWithStart : (int) start withLimit : (int) limit withOutTotal : (int*) totalCount {
+    NSArray *allFields =[NSArray arrayWithObjects:DTOLEAD_accountId, DTOLEAD_address, DTOLEAD_companyPhone, DTOLEAD_email, DTOLEAD_mobile, DTOLEAD_name,DTOLEAD_updatedBy,DTOLEAD_code, DTOLEAD_leadId, DTOLEAD_leadType,DTOLEAD_clientLeadId, DTOLEAD_lat, DTOLEAD_lon, DTOLEAD_id,DTOLEAD_clientLeadId, nil];
+    
+    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where status = 1 order by %@ desc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOACCOUNTLEAD, DTOLEAD_updatedDate];
+    
+    
+    if (start == 0) {
+        NSString *countQuery = [NSString stringWithFormat:@"Select count(*) from %@ where status = 1 order by %@ desc", TABLENAME_DTOACCOUNTLEAD, DTOLEAD_updatedDate];
+        
+        *totalCount = [DataUtil getCountItemsselectQuery:countQuery valueParamemter:nil] ;
+    }
+    
+    query = [query stringByAppendingString:[NSString stringWithFormat:@" limit %d offset %d", limit,start ]];
+    
+    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:nil];
+    
 }
 
 
@@ -123,6 +141,28 @@
 
     return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:nil];
 
+}
+
+//co phan trang
+-(NSMutableArray*) filterWithKey : (NSString*) strKey withValue : (NSString*) strValue withStart : (int) start withLimit : (int) limit withOutTotal : (int*) totalCount{
+    
+    
+    NSArray *allFields =[NSArray arrayWithObjects:DTOLEAD_accountId, DTOLEAD_address, DTOLEAD_companyPhone, DTOLEAD_email, DTOLEAD_mobile, DTOLEAD_name,DTOLEAD_updatedBy,DTOLEAD_code, DTOLEAD_leadId, DTOLEAD_leadType,DTOLEAD_clientLeadId, DTOLEAD_lat, DTOLEAD_lon, DTOLEAD_id, nil];
+    
+    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where status = 1 and %@  like '%%%@%%' order by %@ desc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOACCOUNTLEAD, strKey,strValue, DTOLEAD_updatedDate];
+    
+    
+    if (start == 0) {
+        NSString *countQuery = [NSString stringWithFormat:@"Select count(*) from %@ where status = 1 and %@  like '%%%@%%' ", TABLENAME_DTOACCOUNTLEAD, strKey,strValue];
+        
+        *totalCount = [DataUtil getCountItemsselectQuery:countQuery valueParamemter:nil] ;
+    }
+    
+    query = [query stringByAppendingString:[NSString stringWithFormat:@" limit %d offset %d", limit,start ]];
+    
+    
+    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:nil];
+    
 }
 
 -(NSDictionary*) getDataWithKey : (NSString*) inputKey withValue : (NSString*) inputValue{
@@ -178,6 +218,7 @@
  *Ham tim kiem theo nhieu dieu kien or
  */
 -(NSMutableArray*) filterWithOrArrayCondition : (NSDictionary *) dicCondition{
+    
     NSArray *allFields =[NSArray arrayWithObjects:DTOLEAD_accountId, DTOLEAD_address, DTOLEAD_companyPhone, DTOLEAD_email, DTOLEAD_mobile, DTOLEAD_name,DTOLEAD_updatedBy,DTOLEAD_code, DTOLEAD_leadId, DTOLEAD_leadType,DTOLEAD_clientLeadId, DTOLEAD_lat, DTOLEAD_lon, DTOLEAD_id, nil];
     
     
@@ -221,5 +262,98 @@
     
 }
 
+
+/*
+ *Ham tim kiem theo nhieu dieu kien or (phan trang)
+ */
+-(NSMutableArray*) filterWithOrArrayCondition : (NSDictionary *) dicCondition withStart : (int) start withLimit : (int) limit withOutTotal : (int*) totalCount{
+    
+    NSArray *allFields =[NSArray arrayWithObjects:DTOLEAD_accountId, DTOLEAD_address, DTOLEAD_companyPhone, DTOLEAD_email, DTOLEAD_mobile, DTOLEAD_name,DTOLEAD_updatedBy,DTOLEAD_code, DTOLEAD_leadId, DTOLEAD_leadType,DTOLEAD_clientLeadId, DTOLEAD_lat, DTOLEAD_lon, DTOLEAD_id, nil];
+    
+    
+    
+    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where status = 1 ",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOACCOUNTLEAD];
+    
+    NSMutableArray *arrayValue = [[NSMutableArray alloc]init];
+    
+    BOOL isCheckCondition = NO;
+    
+    for (NSString *strKey in dicCondition.allKeys) {
+        if ([StringUtil stringIsEmpty:[dicCondition objectForKey:strKey]]) {
+            continue;
+        }
+        
+        if (isCheckCondition==NO) {
+            query = [query stringByAppendingString:@" and ( "];
+            isCheckCondition = YES;
+            query = [query stringByAppendingString:[NSString stringWithFormat:@" %@ like ?", strKey]];
+        }else{
+            query = [query stringByAppendingString:[NSString stringWithFormat:@" or %@ like ?", strKey]];
+        }
+        
+        
+        
+        NSString *value = @"%";
+        value = [value stringByAppendingString:[[dicCondition objectForKey:strKey] stringByAppendingString:@"%"]];
+        [arrayValue addObject:value];
+        
+    }
+    
+    if (isCheckCondition) {
+        query = [query stringByAppendingString:@" ) "];
+    }
+    
+    
+    query = [query stringByAppendingString:[NSString stringWithFormat:@" order by %@ desc", DTONOTE_updatedDate]];
+    
+    
+    
+    
+    if (start == 0) {
+        NSString *countQuery = [NSString stringWithFormat:@"Select count(*) from %@ where status = 1 " , TABLENAME_DTOACCOUNTLEAD];
+        
+        
+        
+        isCheckCondition = NO;
+        
+        for (NSString *strKey in dicCondition.allKeys) {
+            if ([StringUtil stringIsEmpty:[dicCondition objectForKey:strKey]]) {
+                continue;
+            }
+            
+            if (isCheckCondition==NO) {
+                countQuery = [countQuery stringByAppendingString:@" and ( "];
+                isCheckCondition = YES;
+                countQuery = [countQuery stringByAppendingString:[NSString stringWithFormat:@" %@ like ?", strKey]];
+            }else{
+                countQuery = [countQuery stringByAppendingString:[NSString stringWithFormat:@" or %@ like ?", strKey]];
+            }
+            
+            
+            
+//            NSString *value = @"%";
+//            value = [value stringByAppendingString:[[dicCondition objectForKey:strKey] stringByAppendingString:@"%"]];
+//            [arrayValue addObject:value];
+            
+        }
+        
+        if (isCheckCondition) {
+            countQuery = [countQuery stringByAppendingString:@" ) "];
+        }
+        
+        *totalCount = [DataUtil getCountItemsselectQuery:countQuery valueParamemter:arrayValue] ;
+    }
+    
+    query = [query stringByAppendingString:[NSString stringWithFormat:@" limit %d offset %d", limit,start ]];
+    
+    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:arrayValue];
+    
+    
+    
+    
+    
+    //return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:arrayValue];
+    
+}
 
 @end

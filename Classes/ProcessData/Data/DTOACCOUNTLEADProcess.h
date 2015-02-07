@@ -32,7 +32,10 @@
  * Lọc khách hàng đầu mối (chưa có tìm kiếm và phân trang)
  */
 -(NSMutableArray*) filter;
+-(NSMutableArray*) filterWithStart : (int) start withLimit : (int) limit withOutTotal : (int*) totalCount;
+
 -(NSMutableArray*) filterWithKey : (NSString*) strKey withValue : (NSString*) strValue;
+-(NSMutableArray*) filterWithKey : (NSString*) strKey withValue : (NSString*) strValue withStart : (int) start withLimit : (int) limit withOutTotal : (int*) totalCount;
 
 -(NSDictionary*) getDataWithKey : (NSString*) inputKey withValue : (NSString*) inputValue;
 -(NSInteger) getClientId ;
@@ -45,5 +48,7 @@
  * Tim kiem theo nhieu dieu kien or
  */
 -(NSMutableArray*) filterWithOrArrayCondition : (NSDictionary *) dicCondition;
+
+-(NSMutableArray*) filterWithOrArrayCondition : (NSDictionary *) dicCondition withStart : (int) start withLimit : (int) limit withOutTotal : (int*) totalCount;
 
 @end

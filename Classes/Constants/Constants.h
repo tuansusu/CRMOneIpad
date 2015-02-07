@@ -57,6 +57,8 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 #define DOCUMENT_HEIGHT_TBV_HISTORY  60
 #define DOCUMENT_HEIGHT_TBV_TASK_ASSIGN  160
 
+#define PAGESIZE 10
+
 
 #define KEY_NOTIFICATION_CENTER_TASK_VIEWDETAIL_REMOVEVIEW @"TaskViewDetailNotification"  //
 #define KEY_NOTIFICATION_CENTER_DOCUMENT_VIEWDETAIL_REMOVEVIEW @"DocumentViewDetailNotification"  //
@@ -172,17 +174,6 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 
 
 //dinh nghia cai VofficePath khi chua chon don vi
-//#define NO_CONFIG_SITE_URL @"http://10.60.15.115:8041/"
-//#define NO_CONGIG_VOFFICE_PATH    @"http://10.60.15.115:8009/Base.svc/"
-
-//#define NO_CONFIG_SITE_URL @"http://10.60.15.115:8041/"
-//#define NO_CONGIG_VOFFICE_PATH    @"http://10.60.15.115:8010/Base.svc/"
-//#define URL_DOWNLOAD @"filepath/" //#define URL_DOWNLOAD @"http://10.60.15.115:8010/Base.svc/filepath/"
-//#define KEY_CONGIG_VOFFICE_PATH    @"http://10.60.15.115:8010/Base.svc/"
-
-//#define NO_CONFIG_SITE_URL @"http://officeone.vn/"
-//#define NO_CONGIG_VOFFICE_PATH    @"http://officeone.vn:8668/base.svc/"
-//#define URL_DOWNLOAD @"http://officeone.vn:8668/base.svc/filepath/"
 
 ///sites/demo/
 #define NO_CONFIG_SITE_URL @""

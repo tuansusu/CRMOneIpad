@@ -11,11 +11,6 @@
 #import "DTOFLLOWUPProcess.h"
 #import "UIMenuItem+CXAImageSupport.h"
 
-
-
-
-
-
 #define SELECT_INDEX_ADD_PERSON 0
 #define SELECT_INDEX_ADD_BUSSINESS 1
 
@@ -35,12 +30,11 @@
 #define SELECT_TEXT_TYPE_PERSON @"Cá nhân"
 #define SELECT_TEXT_TYPE_BUSSINESS @"Doanh nghiệp"
 
-
-
 @interface ListAccountLeadViewController ()
 {
+    NSUserDefaults *defaults;
     int smgSelect ; //option layout
-    NSArray *arrayData; //mang luu tru du lieu
+    NSMutableArray *arrayData; //mang luu tru du lieu
     
     DTOACCOUNTLEADProcess *dtoLeadProcess;
     
@@ -62,9 +56,17 @@
     NSString *strSearchText ;
     NSInteger iSearchOption;
     
-    NSUserDefaults *defaults;
+    
     NSString *followId;
+    
     Language *obj;
+    
+    
+    //them phan phan trang
+    BOOL loading, noMoreResultsAvail;
+    UIActivityIndicatorView *spinner;
+    
+    int loaded,perload, totalCount;
     
 }
 @end
@@ -110,25 +112,7 @@
     [SVProgressHUD show];
     [self setLanguage];
     //set menu
-//    UIMenuItem *viewMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_VIEW") action:@selector(view:)];
-//    
-//    
-//    UIMenuItem *editMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_EDIT") action:@selector(edit:)];
-//    
-//    
-//    UIMenuItem *delMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_DEL") action:@selector(del:)];
-//    
-//    UIMenuItem *callMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_CALL")  action:@selector(call:)];
-//    
-//    UIMenuItem *smsMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_SMS")  action:@selector(sms:)];
-//    
-//    UIMenuItem *emailMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_EMAIL")  action:@selector(email:)];
-//    
-//    UIMenuItem *fowlMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_FOLLOW") action:@selector(follow:)];
-//    
-//    UIMenuItem *mapMenu = [[UIMenuItem alloc] initWithTitle:LocalizedString(@"KEY_QUICK_MAPS")  action:@selector(map:)];
-//    [[UIMenuController sharedMenuController] setMenuItems: @[viewMenu,editMenu,delMenu,callMenu,smsMenu,emailMenu,fowlMenu,mapMenu]];
-//    [[UIMenuController sharedMenuController] update];
+
     UIMenuItem *viewMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Xem", nil) action:@selector(view:) image:[UIImage imageNamed:@"menuview.png"]];
     
     UIMenuItem *editMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Sửa", nil) action:@selector(edit:) image:[UIImage imageNamed:@"menuedit.png"]];
@@ -157,6 +141,7 @@
 }
 
 -(void) viewDidAppear:(BOOL)animated{
+    [self resetLoadData];
     [self filterData];
 }
 
@@ -175,12 +160,20 @@
     strSearchText = @"";
     
     dtoLeadProcess = [DTOACCOUNTLEADProcess new];
-    arrayData  = [NSArray new];
+    arrayData  = [NSMutableArray new];
     
-    //[self filterData];
+    
     
     [SVProgressHUD dismiss];
 }
+
+//phan trang
+-(void) resetLoadData {
+    loaded = 0;
+    arrayData  = [NSMutableArray new];
+    self.lbTotal.text = @"";
+}
+
 
 - (void) updateInterFaceWithOption : (int) option
 {
@@ -258,8 +251,14 @@
 }
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if((arrayData.count) == indexPath.row){
+        return 50.0f;
+    }
+    else {
+        return 100.0f;
+    }
     
-    return 100.0f;
+    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -269,13 +268,62 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    
-    return  arrayData.count;
+    if(arrayData.count >= totalCount){
+        return arrayData.count;
+    }
+    else {
+        return arrayData.count +1;
+    }
     
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    //Cell loading
+    if((arrayData.count) == indexPath.row){
+        static NSString *cellIndentifier =@"cell";
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
+        if(cell == nil){
+            
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
+        }
+        if (!noMoreResultsAvail) {
+            
+            
+            spinner.hidden =NO;
+            cell.textLabel.text=nil;
+            
+            
+            spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            spinner.frame = CGRectMake(tableView.frame.size.width/2-12, 0, 24, 50);
+            [cell addSubview:spinner];
+            
+            if (arrayData.count >= 10) {
+                [spinner startAnimating];
+            }
+        }
+        else{
+            [spinner stopAnimating];
+            spinner.hidden=YES;
+            
+            cell.textLabel.text=nil;
+            
+            UILabel* loadingLabel = [[UILabel alloc]init];
+            loadingLabel.font=[UIFont boldSystemFontOfSize:14.0f];
+            loadingLabel.textAlignment = UITextAlignmentLeft;
+            loadingLabel.textColor = [UIColor colorWithRed:87.0/255.0 green:108.0/255.0 blue:137.0/255.0 alpha:1.0];
+            loadingLabel.numberOfLines = 0;
+            loadingLabel.text=@"No More data Available";
+            loadingLabel.frame=CGRectMake(85,20, 302,25);
+            [cell addSubview:loadingLabel];
+        }
+        
+        return cell;
+    }
+    
+    
     static NSString *cellId = @"AccountLeadCell";
     AccountLeadCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
     
@@ -291,6 +339,25 @@
     return cell;
     
 }
+
+//phân trang
+#pragma UIScroll View Method::
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if (arrayData.count<totalCount) {
+        loaded = loaded + PAGESIZE;
+        
+        float endScrolling = scrollView.contentOffset.y + scrollView.frame.size.height;
+        if (endScrolling >= scrollView.contentSize.height)
+        {
+            [self performSelector:@selector(filterData) withObject:nil afterDelay:1];
+            
+        }
+    }
+}
+
+
+
 
 - (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -425,99 +492,60 @@
 
 #pragma mark UISearach bar delegate
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption{
-    NSLog(@"searchOption %d", searchOption);
     return YES;
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText   // called when text changes (including clear)
 {
-    NSLog(@"text did change %@", searchText);
+    //NSLog(@"text did change %@", searchText);
     strSearchText = searchText;
-    arrayData=[dtoLeadProcess filterWithKey:DTOLEAD_name withValue:searchText];
-    _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
-    [_tbData reloadData];
-    
-    
+    //strSearchText = @"1010";
+    //arrayData=[dtoLeadProcess filterWithKey:DTOLEAD_name withValue:searchText];
+    //_lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
+    [self resetLoadData];
+    [self filterData];
+    //[_tbData reloadData];
 }
 
 
 -(void) searchBarCancelButtonClicked:(UISearchBar *)searchBar{
-    NSLog(@"searchBarCancelButtonClicked");
     strSearchText = @"";
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar                     // called when keyboard search button pressed
 {
-    NSLog(@"seach click");
     [SVProgressHUD show];
+    [self resetLoadData];
     [self filterData];
-    
     [searchBar resignFirstResponder];
     
 }
 
 - (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope{
-    NSLog(@"selectedScopeButtonIndexDidChange = %d", selectedScope);
+    
     iSearchOption = selectedScope;
 }
 //ham loc du lieu
 -(void) filterData {
     
     if ([StringUtil stringIsEmpty:strSearchText]) {
-        arrayData = [dtoLeadProcess filter];
+        //arrayData = [dtoLeadProcess filter];
+        //arrayData =  [dtoLeadProcess filterWithStart:loaded withLimit:PAGESIZE withOutTotal:&totalCount];
+        [arrayData addObjectsFromArray:[dtoLeadProcess filterWithStart:loaded withLimit:PAGESIZE withOutTotal:&totalCount]];
     }else{
         
-        //    switch (iSearchOption) {
-        //        case SCOPE_ALL:
-        //            break;
-        //        case SCOPE_CODE:{
-        //            arrayData = [dtoLeadProcess filterWithKey:DTOLEAD_code withValue: strSearchText];
-        //        }
-        //            break;
-        //        case SCOPE_EMAIL:{
-        //            arrayData = [dtoLeadProcess filterWithKey:DTOLEAD_email withValue: strSearchText];
-        //        }
-        //            break;
-        //        case SCOPE_NAME:
-        //        {
-        //            arrayData = [dtoLeadProcess filterWithKey:DTOLEAD_name withValue: strSearchText];
-        //        }
-        //            break;
-        //        case SCOPE_PHONE:
-        //        {
-        //            arrayData = [dtoLeadProcess filterWithKey:DTOLEAD_mobile withValue: strSearchText];
-        //        }
-        //            break;
-        //        default:
-        //            break;
-        //    }
-        
-        
         NSMutableDictionary *dicCondition = [[NSMutableDictionary alloc]init];
-        
         [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOLEAD_code];
-        
-        
-        
         [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOLEAD_name];
-        
-        
-        
         [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOLEAD_mobile];
-        
-        
-        
         [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOLEAD_email];
-        
-        
-        
-        arrayData = [dtoLeadProcess filterWithOrArrayCondition:dicCondition];
+        //arrayData = [dtoLeadProcess filterWithOrArrayCondition:dicCondition];
+        [arrayData addObjectsFromArray:[dtoLeadProcess filterWithOrArrayCondition:dicCondition withStart:loaded withLimit:PAGESIZE withOutTotal:&totalCount]];
         
     }
     //load data from db
-    _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
-    
-    //NSLog(@"list data = %@", arrayData);
+    //_lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
+    self.lbTotal.text = [NSString stringWithFormat:@"Tổng số %d / %d", arrayData.count, totalCount ];
     [self.tbData reloadData];
     [SVProgressHUD dismiss];
 }
@@ -677,7 +705,7 @@
         BOOL result =    [dtoLeadProcess deleteEntity:deleteLeadId];
         //reload lai csdl
         if (result) {
-            
+            [self resetLoadData];
             [self filterData];
             //thong bao cap nhat thanh cong
             UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:KEY_NOTIFICATION_TITLE message:SYS_Notification_UpdateSuccess delegate:self cancelButtonTitle:KEY_NOTIFICATION_ACCEPT otherButtonTitles:  nil];
@@ -698,6 +726,7 @@
         [dicEntity setObject:@"3" forKey:DTOFOLLOWUP_followUpState];
         BOOL success=[followProcess insertToDBWithEntity:dicEntity];
         if(success){
+            [self resetLoadData];
             [self filterData];
         }
         else{
@@ -921,6 +950,7 @@
     }
     else{
         [self dismissPopupViewControllerWithanimationType:nil];
+        [self resetLoadData];
         [self filterData];
     }
 }

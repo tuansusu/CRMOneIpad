@@ -70,6 +70,8 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     //calendar
     BOOL calendarIsTimeline;
     
+    NSUserDefaults *defaults ;
+    
 }
 @end
 
@@ -97,7 +99,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         [self.tbData setSeparatorInset:UIEdgeInsetsZero];
     }
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
     
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
@@ -292,6 +294,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     self.footeView.backgroundColor = TOOLBAR_VIEW_COLOR;
     self.barLabel.textColor = TEXT_TOOLBAR_COLOR1;
+     self.barLabel.text = [NSString stringWithFormat:@"%@ %@, %@",VOFFICE,[defaults objectForKey:@"versionSoftware"],COPY_OF_SOFTWARE];
 }
 
 

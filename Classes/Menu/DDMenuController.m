@@ -230,7 +230,7 @@
     } else if (gesture.state == UIGestureRecognizerStateEnded || gesture.state == UIGestureRecognizerStateCancelled) {
         
         //  Finishing moving to left, right or root view with current pan velocity
-        [self.view setUserInteractionEnabled:NO];
+        //[self.view setUserInteractionEnabled:NO];
         
         DDMenuPanCompletion completion = DDMenuPanCompletionRoot; // by default animate back to the root
         
@@ -267,7 +267,7 @@
                 [self showRootController:NO];
             }
             [_root.view.layer removeAllAnimations];
-            [self.view setUserInteractionEnabled:YES];
+            //[self.view setUserInteractionEnabled:YES];
         }];
         
         CGPoint pos = _root.view.layer.position;
@@ -412,12 +412,12 @@
         topController.navigationItem.leftBarButtonItem = nil;
     }
     
-    if (_menuFlags.canShowRight) {
-        UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_menu_icon.png"] style:UIBarButtonItemStyleBordered  target:self action:@selector(showRight:)];
-        topController.navigationItem.rightBarButtonItem = button;
-    } else {
-        topController.navigationItem.rightBarButtonItem = nil;
-    }
+//    if (_menuFlags.canShowRight) {
+//        UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_menu_icon.png"] style:UIBarButtonItemStyleBordered  target:self action:@selector(showRight:)];
+//        topController.navigationItem.rightBarButtonItem = button;
+//    } else {
+//        topController.navigationItem.rightBarButtonItem = nil;
+//    }
     
 }
 
@@ -437,7 +437,7 @@
 - (void)showRootController:(BOOL)animated {
     
     [_tap setEnabled:NO];
-    _root.view.userInteractionEnabled = YES;
+    //_root.view.userInteractionEnabled = YES;
     
     CGRect frame = _root.view.frame;
     frame.origin.x = 0.0f;
@@ -503,7 +503,7 @@
         [UIView setAnimationsEnabled:NO];
     }
     
-    _root.view.userInteractionEnabled = NO;
+    //_root.view.userInteractionEnabled = NO;
     [UIView animateWithDuration:.3 animations:^{
         _root.view.frame = frame;
     } completion:^(BOOL finished) {
@@ -545,7 +545,7 @@
         [UIView setAnimationsEnabled:NO];
     }
     
-    _root.view.userInteractionEnabled = NO;
+    //_root.view.userInteractionEnabled = NO;
     [UIView animateWithDuration:.3 animations:^{
         _root.view.frame = frame;
     } completion:^(BOOL finished) {
@@ -566,6 +566,9 @@
 }
 
 - (void)setRightViewController:(UIViewController *)rightController {
+    
+    
+    
     _right = rightController;
     _menuFlags.canShowRight = (_right!=nil);
     [self resetNavButtons];

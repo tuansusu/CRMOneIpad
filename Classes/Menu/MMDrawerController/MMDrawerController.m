@@ -190,7 +190,9 @@ static NSString *MMDrawerOpenSideKey = @"MMDrawerOpenSide";
     
     [self setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
     [self setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeNone];
-    [self setCenterHiddenInteractionMode:MMDrawerOpenCenterInteractionModeNavigationBarOnly];
+    //[self setCenterHiddenInteractionMode:MMDrawerOpenCenterInteractionModeNavigationBarOnly];
+    //tuannv
+    [self setCenterHiddenInteractionMode:MMDrawerOpenCenterInteractionModeFull];
 }
 
 #pragma mark - State Restoration

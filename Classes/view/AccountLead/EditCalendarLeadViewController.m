@@ -56,7 +56,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 
-//@property (weak, nonatomic) IBOutlet UIView *headerMainView;
+@property (weak, nonatomic) IBOutlet UIView *headerMainView;
 
 
 @property (weak, nonatomic) IBOutlet UIView *bodyMainView;
@@ -117,7 +117,7 @@
 
 @implementation EditCalendarLeadViewController
 {
-    //__weak IBOutlet UILabel     *_titleLabel;
+    __weak IBOutlet UILabel     *_titleLabel;
 
     __weak IBOutlet UITextField *_txtLocation;//TODO: delegate
     __weak IBOutlet UIButton    *_btnChoiceLocation;
@@ -582,9 +582,14 @@
     if (_dataSend)
     {
         if (_isKH360) {
-            [dicEntity setObject:[self.dataRoot objectForKey:DTOACCOUNT_clientAccountId] forKey:DTOTASK_accountId];
+            if ([self.dataRoot objectForKey:DTOACCOUNT_clientAccountId]) {
+                 [dicEntity setObject:[self.dataRoot objectForKey:DTOACCOUNT_clientAccountId] forKey:DTOTASK_accountId];
+            }
         }else{
-            [dicEntity setObject:[_dataSend objectForKey:DTOLEAD_clientLeadId] forKey:DTOTASK_clientLeadId];
+            if ([_dataSend objectForKey:DTOLEAD_clientLeadId]) {
+                [dicEntity setObject:[_dataSend objectForKey:DTOLEAD_clientLeadId] forKey:DTOTASK_clientLeadId];
+            }
+
         }
 
         [dicEntity setObject:[_dataSend objectForKey:DTOTASK_id] forKey:DTOTASK_id];

@@ -245,7 +245,7 @@
 #pragma mark - new view: load defaults data into view
 - (void) loadDefaults
 {
-    _titleLabel.text  = @"THÊM MỚI SỰ KIỆN";
+    self.fullNameLB.text  = @"THÊM MỚI SỰ KIỆN";
 
     _txtName.text     = @"";
     _txtStatus.text   = [[statusArray objectAtIndex:0] objectForKey:DTOSYSCAT_name];
@@ -278,7 +278,7 @@
 {
     NSLog(@"send:%@",_dataSend);
 
-    _titleLabel.text = @"CẬP NHẬP SỰ KIỆN";
+    self.fullNameLB.text = @"CẬP NHẬP SỰ KIỆN";
     if (_dataSend) {
         isEditTask = YES;
         _txtName.text    = [_dataSend objectForKey:DTOTASK_title];

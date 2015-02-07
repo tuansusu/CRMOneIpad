@@ -20,7 +20,6 @@
                 <outlet property="txtSearchCustomer" destination="jXO-jB-cRC" id="WtV-sI-AAj"/>
                 <outlet property="view" destination="Bgp-kO-QJS" id="Qah-Hb-Rz1"/>
                 <outlet property="viewheader" destination="fKa-Eq-5fP" id="QW1-Qo-exe"/>
-                <outlet property="viewinfo" destination="KpU-oX-44p" id="1lA-d5-2Ve"/>
                 <outlet property="viewmaininfo" destination="aiC-BP-1oF" id="LTt-ZC-Ms7"/>
             </connections>
         </placeholder>
@@ -78,21 +77,8 @@
                     <rect key="frame" x="0.0" y="44" width="1024" height="674"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <view contentMode="scaleToFill" id="KpU-oX-44p" userLabel="View subheader">
-                            <rect key="frame" x="0.0" y="0.0" width="1024" height="40"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="THÊM MỚI SẢN PHẨM ĐỀ XUẤT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vSa-QO-fbd">
-                                    <rect key="frame" x="20" y="0.0" width="580" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        </view>
                         <view contentMode="scaleToFill" id="eZp-zX-WoB" userLabel="View body info">
-                            <rect key="frame" x="20" y="64" width="984" height="580"/>
+                            <rect key="frame" x="20" y="20" width="984" height="634"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_require-1.png" id="xbW-2h-KUt">

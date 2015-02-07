@@ -100,8 +100,10 @@
     
     dataId = 0;
     if (self.dataSend) {
-        
         [self loadEdit];
+        self.fullNameLB.text = @"CHỈNH SỬA CÔNG VIỆC";
+    }else{
+        self.fullNameLB.text = @"THÊM MỚI CÔNG VIỆC";
     }
     
 }
@@ -112,7 +114,6 @@
     
 
     if (_dataSend) {
-        _lbTitle.text=@"CẬP NHẬP CÔNG VIỆC";
         _txtName.text=[_dataSend objectForKey:DTOTASK_title];
         if ([[_dataSend objectForKey:DTOTASK_taskStatus] isEqualToString:@"3244"]) {
             _txtStatus.text =@"Đang thực hiện";

@@ -108,8 +108,9 @@
     dataId = 0;
     if (self.dataSend) {
         [self loadEditData];
+        self.lblFormTitle.text = @"CHỈNH SỬA SẢN PHẨM ĐỀ XUẤT";
     }else{
-        
+        self.lblFormTitle.text = @"THÊM MỚI SẢN PHẨM ĐỀ XUẤT";
     }
     
 }
@@ -117,11 +118,7 @@
 //Load thong tin len form sua
 -(void) loadEditData {
     
-    if (self.dataSend) {
         
-        self.lblFormTitle.text = @"CHỈNH SỬA SẢN PHẨM ĐỀ XUẤT";
-    }
-    
     //product
     NSString *productMasterId = [_dataSend objectForKey:DTOOPPORTUNITYPRODUCT_productMasterId];
 

@@ -121,7 +121,13 @@
     
     searchBarController.isValid = NO;
     
-    
+    if (self.dataSend) {
+        
+        self.fullNameLB.text = @"CHỈNH SỬA CƠ HỘI";
+    }
+    else{
+        self.fullNameLB.text = @"THÊM MỚI CƠ HỘI";
+    }
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -188,10 +194,7 @@
 //Load thong tin len form sua
 -(void) loadEditData {
     
-    if (self.dataSend) {
-        
-        self.lblFormTitle.text = @"CHỈNH SỬA CƠ HỘI";
-    }
+    
     
     //Customer
     

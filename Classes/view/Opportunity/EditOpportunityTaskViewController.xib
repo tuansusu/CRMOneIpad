@@ -18,9 +18,7 @@
                 <outlet property="btnSave" destination="c6R-cr-s4D" id="deg-vc-ulO"/>
                 <outlet property="footerView" destination="PMr-iQ-fZJ" id="f2Z-lx-JBh"/>
                 <outlet property="fullNameLB" destination="AMu-TF-B2Z" id="ORu-XC-vCy"/>
-                <outlet property="headerMainView" destination="Gm6-P8-1Ln" id="Tm0-JL-C4E"/>
                 <outlet property="headerViewBar" destination="9fu-7H-Ndt" id="LhP-Tt-6JL"/>
-                <outlet property="lbTitle" destination="1iN-0E-mHJ" id="2mi-a8-J1p"/>
                 <outlet property="mainView" destination="VXS-MS-wxP" id="w4X-AU-4tb"/>
                 <outlet property="txtDateFrom" destination="Mdn-LD-1Q5" id="dYn-gv-xIg"/>
                 <outlet property="txtDateTo" destination="in8-mR-kKg" id="Gfu-68-WtB"/>
@@ -80,22 +78,8 @@
                     <rect key="frame" x="0.0" y="44" width="1024" height="674"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <view contentMode="scaleToFill" id="Gm6-P8-1Ln" userLabel="header main view">
-                            <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THÊM MỚI CÔNG VIỆC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1iN-0E-mHJ">
-                                    <rect key="frame" x="20" y="11" width="446" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
                         <view contentMode="scaleToFill" id="fR6-xD-amg" userLabel="body view">
-                            <rect key="frame" x="20" y="64" width="984" height="580"/>
+                            <rect key="frame" x="20" y="20" width="984" height="634"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" id="dk4-nP-HcL" userLabel="View body main info">

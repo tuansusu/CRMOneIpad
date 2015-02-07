@@ -110,13 +110,13 @@
         arrayData =[dtoFileProcess filterWithKey:DTOATTACHMENT_clientObjectId withValue:[_dataSend objectForKey:DTONOTE_clientNoteId]];
         NSLog(@"data gui tu form chi tiet %@", self.dataSend);
         
-        self.lbTieudeghichu.text=@"CẬP NHẬP GHI CHÚ";
+        self.fullNameLB.text=@"CẬP NHẬT GHI CHÚ";
         
         [self loadDataEdit];
         [self.tbData reloadData];
     }
     else{
-        self.lbTieudeghichu.text=@"THÊM MƠI GHI CHÚ";
+        self.fullNameLB.text=@"THÊM MƠI GHI CHÚ";
     }
     
 }

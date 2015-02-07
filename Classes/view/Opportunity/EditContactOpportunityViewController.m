@@ -107,7 +107,13 @@
     if (self.dataSend) {
         
         [self loadEdit];
+        
+        self.fullNameLB.text = @"CHỈNH SỬA LIÊN HỆ";
+    }else{
+        self.fullNameLB.text = @"THÊM MỚI LIÊN HỆ";
     }
+    
+    
     
 }
 

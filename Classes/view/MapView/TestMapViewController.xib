@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TestMapViewController">
             <connections>
                 <outlet property="barLabel" destination="GPR-eA-AUH" id="nhU-1D-8aE"/>
-                <outlet property="btnCar" destination="eJU-He-4sA" id="3jT-li-es8"/>
+                <outlet property="btnCar" destination="Rsx-Yy-YCb" id="XOx-Bz-qNX"/>
                 <outlet property="btnKH360" destination="0XO-wr-eoZ" id="eie-21-EhI"/>
                 <outlet property="btnKHDM" destination="sHb-t2-eqe" id="iTD-fH-xFh"/>
-                <outlet property="btnMoto" destination="KoZ-yI-E3I" id="kCQ-va-2Z4"/>
-                <outlet property="btnWalking" destination="FLD-8r-J4K" id="aER-3S-yJ0"/>
+                <outlet property="btnMoto" destination="ARj-Qn-WS0" id="4bN-La-ZZj"/>
+                <outlet property="btnWalking" destination="zmN-A4-kJK" id="Civ-ow-KiG"/>
                 <outlet property="containerOptionView" destination="io0-GQ-8BC" id="TsM-eX-9rr"/>
                 <outlet property="customerTbv" destination="nIB-u2-m6N" id="Hxp-s6-5WW"/>
                 <outlet property="customerView" destination="MmT-V6-xcl" id="xof-BK-2dW"/>
@@ -55,6 +56,13 @@
                             <rect key="frame" x="20" y="6" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mHd-6v-cd7">
+                            <rect key="frame" x="20" y="6" width="32" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="icon_menu-1.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zKk-63-3lP" userLabel="BTNHome">
                             <rect key="frame" x="0.0" y="0.0" width="69" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -270,10 +278,17 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Rsx-Yy-YCb">
+                                            <rect key="frame" x="175" y="12" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" backgroundImage="iconCar.png">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eJU-He-4sA">
                                             <rect key="frame" x="165" y="0.0" width="45" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" image="iconCar.png">
+                                            <state key="normal">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -285,10 +300,17 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ARj-Qn-WS0">
+                                            <rect key="frame" x="220" y="12" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" backgroundImage="iconMoto.png">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="KoZ-yI-E3I">
                                             <rect key="frame" x="210" y="0.0" width="45" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" image="iconMoto.png">
+                                            <state key="normal">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -300,10 +322,17 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zmN-A4-kJK">
+                                            <rect key="frame" x="270" y="12" width="16" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" backgroundImage="iconWalking.png">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FLD-8r-J4K">
                                             <rect key="frame" x="255" y="0.0" width="45" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" image="iconWalking.png">
+                                            <state key="normal">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -429,7 +458,7 @@
     </objects>
     <resources>
         <image name="Mobile_GPS_MyLocationIcon.png" width="48" height="48"/>
-        <image name="ic-add-sub-1.png" width="90" height="90"/>
+        <image name="ic-add-sub-1.png" width="32" height="32"/>
         <image name="iconBranchArrow.png" width="25" height="25"/>
         <image name="iconCar.png" width="25" height="25"/>
         <image name="iconDirection.png" width="24" height="25"/>

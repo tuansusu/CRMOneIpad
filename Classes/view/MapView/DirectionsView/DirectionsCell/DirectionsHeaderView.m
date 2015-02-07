@@ -29,6 +29,7 @@
 */
 
 -(void)loadViewWithTittle:(NSString*)title withImage:(UIImage*)image{
+    [imgIconDirection setAlpha:1];
     [imgIconDirection setImage:image];
     [lblTitle setText:title];
 }

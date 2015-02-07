@@ -24,32 +24,32 @@
 {
     NSUserDefaults *defaults;
     int smgSelect ; //option layout
-    
+
     GMSMapView *mapView_;
     GMSCameraPosition *camera;
     CLLocationManager *locationManager;
-    
+
     NSMutableArray *waypoints_;
     NSMutableDictionary *polyLineDic_;
     NSMutableDictionary *wayPointDic_;
     NSMutableArray *waypointStrings_;
     NSMutableDictionary *wayPointStrDic_;
-    
+
     NSMutableArray *listRoutes;
     NSMutableDictionary *listRoutesDic;
-    
+
     IBOutlet UIView *mainView;
     float zoomRatio;
     CLLocation *currentLocation;
-    
+
     IBOutlet UIView *containerOptionView;
     IBOutlet UIView *customerView;
     IBOutlet UITableView *customerTbv;
-    
+
     IBOutlet UIView *directionView;
     IBOutlet RoutesDirectionsView *routesDirectionsView;
     BOOL expandOptionSelected;
-    
+
     NSMutableArray *listCustomerDirections;
     NSMutableArray *listKH360Flag;
     NSMutableArray *listKHDMFlag;
@@ -57,16 +57,16 @@
     BOOL khdmSelected;
     IBOutlet UIButton *btnKHDM;
     IBOutlet UIButton *btnKH360;
-    
+
     IBOutlet UIButton *btnCar;
     IBOutlet UIButton *btnMoto;
     IBOutlet UIButton *btnWalking;
     IBOutlet UIImageView *imgCarSelected;
     IBOutlet UIImageView *imgMotoSelected;
     IBOutlet UIImageView *imgWalkingSelected;
-    
+
     IBOutlet UISearchBar *searchBarCustomer;
-    
+
     IBOutlet UIImageView *imgCusSelected;
     IBOutlet UIImageView *imgDirSelected;
     CustomerType customerType;
@@ -90,7 +90,7 @@
     [super viewDidLoad];
     // init mode vehicles
     [[NSUserDefaults standardUserDefaults] setValue:VEHICLES_DRIVING forKey:VEHICLES_SELECTED];
-    
+
     _mapModel = [[MapsModel alloc] init];
     listCustomerDirections = [[NSMutableArray alloc] init];
     listKH360Flag = [[NSMutableArray alloc] init];
@@ -100,44 +100,44 @@
     wayPointDic_ = [[NSMutableDictionary alloc] init];
     wayPointStrDic_ = [[NSMutableDictionary alloc] init];
     waypointStrings_ = [[NSMutableArray alloc]init];
-    
+
     listRoutes = [[NSMutableArray alloc]init];
     listRoutesDic = [[NSMutableDictionary alloc] init];
-    
+
     if ([UIDevice getCurrentSysVer] >= 7.0) {
         [UIDevice updateLayoutInIOs7OrAfter:self];
-        
+
     }
-    
+
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
-    
+
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
-    
+
     zoomRatio = ZOOM_RATIO;
-    
-    
+
+
     // add start location
     NSLog(@"_lan = %f : _lon = %f", _lan, _lon);
-    _lan = 21.032439554704172;
-    _lon = 105.79308874905109;
-    
-    camera = [GMSCameraPosition cameraWithLatitude:_lan
-                                         longitude:_lon
-                                              zoom:zoomRatio];
-    
-    mapView_ = [GMSMapView mapWithFrame:CGRectMake(0, 0, mainView.frame.size.width, mainView.frame.size.height)  camera:camera];
+    //    _lan = 21.032439554704172;
+    //    _lon = 105.79308874905109;
+
+//        camera = [GMSCameraPosition cameraWithLatitude:_lan
+//                                             longitude:_lon
+//                                                  zoom:zoomRatio];
+
+    mapView_ = [GMSMapView mapWithFrame:CGRectMake(0, 0, mainView.frame.size.width, mainView.frame.size.height)  camera:nil];
     mapView_.myLocationEnabled = YES;
     mapView_.delegate = self;
     [mainView addSubview:mapView_];
-    
+
     // Creates a marker in the center of the map.
-    
-    
+
+
     [self initLocation];
-    
-    
+
+
     if (self.typeMapView == typeMapView_Manager) {
         [self initDataKH];
     }else{
@@ -145,11 +145,11 @@
         self.viewMap2.hidden = YES;
         self.imgHomeMenu.image = [UIImage imageNamed:@"btn-back-1-1.png"];
     }
-    
+
 }
 
 -(void)initDataKH{
-    
+
     [_mapModel getFirstPageCustomerKHDMWithKey:searchBarCustomer.text];
     [_mapModel getFirstPageCustomerKH360WithKey:searchBarCustomer.text];
     [customerTbv reloadData];
@@ -159,14 +159,14 @@
 
 //Home button
 - (IBAction)homeBack:(id)sender {
-    
-    
+
+
     if (self.typeMapView == typeMapView_Manager) {
         [Util backToHome:self];
     }else{
         [self dismissViewControllerAnimated:YES completion:nil];
     }
-    
+
 }
 
 - (void) updateInterFaceWithOption : (int) option
@@ -179,18 +179,26 @@
             [((UIImageView*) viewTemp) setAlpha:1.0f];
         }
 
-           }
-    
+    }
+
+    for (UIView *viewTemp in directionView.subviews) {
+        for (UIView *subview in viewTemp.subviews) {
+            if ([subview isKindOfClass:[UIImageView class]]) {
+
+                [((UIImageView*) subview) setAlpha:1.0f];
+            }
+        }
+    }
     //self.fullNameLB.text = TITLE_APPLICATION;
     [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
     self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
     self.footerView.backgroundColor = TOOLBAR_VIEW_COLOR;
     self.barLabel.textColor = TEXT_TOOLBAR_COLOR1;
-    
-    
+
+
     self.barLabel.text = [NSString stringWithFormat:@"%@ %@, %@",VOFFICE,[defaults objectForKey:@"versionSoftware"],COPY_OF_SOFTWARE];
 
-    
+
 }
 
 
@@ -214,7 +222,7 @@
     }
 }
 -(void)updateNextPageKHDMDirectionsFlag{
-    
+
     for (int i=listKHDMFlag.count;i<_mapModel.listCustomerKHDM.count;i++) {
         DTOAcountLeadProcessObject *khdmOB = [_mapModel.listCustomerKHDM objectAtIndex:i];
         if (khdmOB.lat && khdmOB.lon) {
@@ -222,7 +230,7 @@
         }
         [listKHDMFlag addObject:@"NO"];
     }
-    
+
 }
 
 -(void)initFirstPageKHD360irectionsFlag{
@@ -255,14 +263,14 @@
     }else{
         [listKH360Flag replaceObjectAtIndex:index withObject:status];
     }
-    
+
 }
 
 #pragma mark add Marker customer to map view
 
 -(void)addMarkerCustomerithKHDMOB:(DTOAcountLeadProcessObject*)khdmOB{
     GMSMarker *marker = [[GMSMarker alloc] init];
-    
+
     marker.position = CLLocationCoordinate2DMake([khdmOB.lat floatValue], [khdmOB.lon floatValue]);
     DTOAcountLeadProcessObject *customerData=khdmOB;
     [marker setUserData:customerData];
@@ -271,7 +279,7 @@
 
 -(void)addMarkerCustomerithKH360OB:(DTOAccountProcessObject*)kh360OB{
     GMSMarker *marker = [[GMSMarker alloc] init];
-    
+
     marker.position = CLLocationCoordinate2DMake([kh360OB.lat floatValue], [kh360OB.lon floatValue]);
     DTOAccountProcessObject *customerData=kh360OB;
     [marker setUserData:customerData];
@@ -302,7 +310,7 @@
 -(IBAction)btnKH360Selected:(id)sender{
     [btnKH360 setBackgroundColor:BUTTON_KH_COLOR_SELECTED];
     [btnKH360 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    
+
     [btnKHDM setBackgroundColor:BUTTON_KH_COLOR_DEFAULT];
     [btnKHDM setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     if (khdmSelected) {
@@ -313,7 +321,7 @@
 }
 
 -(IBAction)btnKHDMSelected:(id)sender{
-    
+
     [btnKHDM setBackgroundColor:BUTTON_KH_COLOR_SELECTED];
     [btnKHDM setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     if (!khdmSelected) {
@@ -321,10 +329,10 @@
         [_mapModel getFirstPageCustomerKHDMWithKey:searchBarCustomer.text];
         [customerTbv reloadData];
     }
-    
+
     [btnKH360 setBackgroundColor:BUTTON_KH_COLOR_DEFAULT];
     [btnKH360 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    
+
 }
 
 #pragma mark vehicles action
@@ -351,10 +359,10 @@
 
 #pragma mark tab action
 -(IBAction)btnCustomerTabAction:(id)sender{
-    
+
     [customerView setHidden:NO];
     [directionView setHidden:YES];
-    
+
     [imgCusSelected setHidden:NO];
     [imgDirSelected setHidden:YES];
 }
@@ -362,7 +370,7 @@
 -(IBAction)btnDirectionTabAction:(id)sender{
     [directionView setHidden:NO];
     [customerView setHidden:YES];
-    
+
     [imgCusSelected setHidden:YES];
     [imgDirSelected setHidden:NO];
     [routesDirectionsView loadDataTableWithRoutesList:listRoutes];
@@ -422,10 +430,10 @@
     locationManager.delegate = self;
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    
+
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
         [locationManager requestWhenInUseAuthorization];
-    
+
     [locationManager startUpdatingLocation];
 }
 
@@ -434,7 +442,7 @@
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations {
     currentLocation = [locations lastObject];
-    
+
     GMSMarker *currentLocationMarker = [[GMSMarker alloc] init];
     currentLocationMarker.position = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
     if (waypoints_.count>0 && waypointStrings_.count>0) {
@@ -446,7 +454,7 @@
         NSString *currentPositionString = [[NSString alloc] initWithFormat:@"%f,%f",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude];
         [waypointStrings_ addObject:currentPositionString];
     }
-    
+
     NSLog(@"currentLocation lat : %f - currentLocation lon : %f", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
 }
 
@@ -463,19 +471,19 @@ didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate{
         NSLog(@"reverse geocoding results: %d", [[response results] count] );
         for(GMSAddress* addressObj in [response results])
         {
-            
+
             if (self.selectMapDelegate && [self.selectMapDelegate respondsToSelector:@selector(selectAddress:)]) {
                 [self.selectMapDelegate selectAddress:addressObj];
-                
+
                 [self dismissViewControllerAnimated:YES completion:nil];
                 return;
             }
-            
-           
-            
-            
-            
-            
+
+
+
+
+
+
         }
     }];
 }
@@ -501,11 +509,11 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
         for (NSDictionary *routeDic in Legs) {
             UICGRoute *routesOB = [UICGRoute routeWithDictionaryRepresentation:routeDic];
             NSLog(@"address : %@",routesOB.endAddress);
-            
+
             [listRoutes addObject:routesOB];
             [listRoutesDic setObject:routesOB forKey:[NSString stringWithFormat:@"%@%d",KEY_POLYLINE_KHDM,indexDirectionSelected]];
         }
-        
+
         NSDictionary *route = [routes objectForKey:@"overview_polyline"];
         NSString *overview_route = [route objectForKey:@"points"];
         GMSPath *path = [GMSPath pathFromEncodedPath:overview_route];
@@ -523,29 +531,29 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
 - (void)removeDirectionsWithTypeCustomer:(CustomerType)cusType withInxex:(NSInteger)index {
     GMSPolyline *polyline;
     if (cusType==typeKHDM) {
-        
+
         // remove Polyline dictionary KHDM
         polyline =[polyLineDic_ objectForKey:[NSString stringWithFormat:@"%@%d",KEY_POLYLINE_KHDM,index]];
-        
+
         // remove GMSMarker string KHDM
         GMSMarker *marker = [wayPointDic_ objectForKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_KHDM,index]];
         [waypoints_ removeObject:marker];
         [wayPointDic_ removeObjectForKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_KHDM,index]];
-        
+
         // remove marker string KHDM
         NSString *markerStr = [wayPointStrDic_ objectForKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_STRING_KHDM,index]];
         [waypointStrings_ removeObject:markerStr];
         [wayPointStrDic_ removeObjectForKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_STRING_KHDM,index]];
-        
+
     }else if(cusType==typeKH360){
         // remove Polyline dictionary kh360
         polyline =[polyLineDic_ objectForKey:[NSString stringWithFormat:@"%@%d",KEY_POLYLINE_KH360,index]];
-        
+
         // remove GMSMarker string kh360
         GMSMarker *marker = [wayPointDic_ objectForKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_KH360,index]];
         [waypoints_ removeObject:marker];
         [wayPointDic_ removeObjectForKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_KH360,index]];
-        
+
         // remove marker string kh360
         NSString *markerStr = [wayPointStrDic_ objectForKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_STRING_KH360,index]];
         [waypointStrings_ removeObject:markerStr];
@@ -557,7 +565,7 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
     UICGRoute *routesOB = [listRoutesDic objectForKey:[NSString stringWithFormat:@"%@%d",KEY_POLYLINE_KHDM,index]];
     [listRoutes removeObject:routesOB];
     [listRoutesDic removeObjectForKey:[NSString stringWithFormat:@"%@%d",KEY_POLYLINE_KHDM,index]];
-    
+
 }
 
 
@@ -571,7 +579,7 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
         DTOAccountProcessObject *customerData= marker.userData;
         [infoView loadViewWithKH360OB:customerData];
     }
-    
+
     return infoView;
 }
 
@@ -583,24 +591,24 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
 didTapInfoWindowOfMarker:(GMSMarker *)marker{
     if ([marker.userData isKindOfClass:[DTOAcountLeadProcessObject class]]) {
         DTOAcountLeadProcessObject *customerData= marker.userData;
-        
+
         NSDictionary *dicData = [NSDictionary dictionaryWithObjectsAndKeys:customerData.clientLeadId,@"clientLeadId",customerData.leadType,@"leadType",customerData.address,@"address",customerData.name,@"name",customerData.id,@"id",customerData.updatedBy,@"updatedBy",customerData.mobile,@"mobile",customerData.code,@"code",customerData.email,@"email",customerData.leadId,@"leadId", nil];
-        
+
         DetailLeadViewController *viewController = [[DetailLeadViewController alloc]initWithNibName:@"DetailLeadViewController" bundle:nil];
         viewController.dataSend = dicData;
         [self presentViewController:viewController animated:YES completion:nil];
-        
+
     }else if ([marker.userData isKindOfClass:[DTOAccountProcessObject class]]) {
         DTOAccountProcessObject *customerData= marker.userData;
-        
+
         NSDictionary *dicData = [NSDictionary dictionaryWithObjectsAndKeys:customerData.name,@"name",customerData.mobile,@"mobile",customerData.updatedBy,@"updatedBy",customerData.id,@"id",customerData.clientAccountId,@"clientAccountId", nil];
-        
+
         DetailLeadViewController *viewController = [[DetailLeadViewController alloc]initWithNibName:@"DetailLeadViewController" bundle:nil];
-        
+
         viewController.dataSend = dicData;
         [self presentViewController:viewController animated:YES completion:nil];
     }
-    
+
 }
 
 #pragma mark tableview delegate
@@ -608,15 +616,15 @@ didTapInfoWindowOfMarker:(GMSMarker *)marker{
 
 //thêm cái line đến tận left margin
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+
     if ([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         [tableView setSeparatorInset:UIEdgeInsetsZero];
     }
-    
+
     if ([tableView respondsToSelector:@selector(setLayoutMargins:)]) {
         [tableView setLayoutMargins:UIEdgeInsetsZero];
     }
-    
+
     if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
         [cell setLayoutMargins:UIEdgeInsetsZero];
     }
@@ -632,7 +640,7 @@ didTapInfoWindowOfMarker:(GMSMarker *)marker{
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
+
     if (khdmSelected) {
         return  _mapModel.listCustomerKHDM.count;
     }else{
@@ -643,10 +651,10 @@ didTapInfoWindowOfMarker:(GMSMarker *)marker{
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     static NSString *cellId = @"CustomerViewCell";
     CustomerViewCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
-    
+
     if (!cell) {
         cell = [CustomerViewCell initNibCell];
         cell.delegate = self;
@@ -655,7 +663,7 @@ didTapInfoWindowOfMarker:(GMSMarker *)marker{
         if (_mapModel.listCustomerKHDM.count>0) {
             DTOAcountLeadProcessObject *khdmOB = [_mapModel.listCustomerKHDM objectAtIndex:indexPath.row];
             [cell loadDataToCellWithKHDMOB:khdmOB withStatus:[listKHDMFlag objectAtIndex:indexPath.row]];
-            
+
         }
     }else{
         if (_mapModel.listCustomerKH360.count>0) {
@@ -663,41 +671,66 @@ didTapInfoWindowOfMarker:(GMSMarker *)marker{
             [cell loadDataToCellWithKH360OB:kh360OB withStatus:[listKH360Flag objectAtIndex:indexPath.row]];
         }
     }
-    
+
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+
+    if (khdmSelected) {
+        DTOAcountLeadProcessObject *khdmOB = [_mapModel.listCustomerKHDM objectAtIndex:indexPath.row];
+
+        if (khdmOB.lat && khdmOB.lon) {
+            _lan = [khdmOB.lat floatValue];
+            _lon = [khdmOB.lon floatValue];
+        }
+    }else{
+        DTOAccountProcessObject *kh360OB = [_mapModel.listCustomerKH360 objectAtIndex:indexPath.row];
+        if (kh360OB.lat && kh360OB.lon) {
+            _lan = [kh360OB.lat floatValue];
+            _lon = [kh360OB.lon floatValue];
+        }
+    }
+    zoomRatio = ZOOM_RATIO*2;
+    camera = [GMSCameraPosition cameraWithLatitude:_lan
+                                         longitude:_lon
+                                              zoom:zoomRatio];
+    mapView_.camera = camera;
+
+}
 #pragma mark Customer Cell Delegate
 
 - (void)didSelectedAtCell:(id)cell withStatus:(NSString *)status
 {
     CustomerViewCell *currentCell = (CustomerViewCell *)cell;
     NSIndexPath *indexPath = [customerTbv indexPathForCell:currentCell];
-    
+
     [self updatelistCustomerDirectionsFlagAtIndex:indexPath.row withStatus:status];
     [customerTbv reloadData];
     if (khdmSelected) {
         DTOAcountLeadProcessObject *khdmOB = [_mapModel.listCustomerKHDM objectAtIndex:indexPath.row];
-        
+
         if ([status isEqualToString:@"YES"]) {
             [listCustomerDirections addObject:khdmOB];
-            
+
             if (khdmOB.lat && khdmOB.lon) {
-                
+
                 // add GMSMarker KHDM
                 GMSMarker *marker = [[GMSMarker alloc] init];
                 marker.position = CLLocationCoordinate2DMake([khdmOB.lat floatValue], [khdmOB.lon floatValue]);
                 [marker setUserData:khdmOB];
                 [waypoints_ addObject:marker];
                 [wayPointDic_ setObject:marker forKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_KHDM,indexPath.row]];
-                
+
                 // add marker string KHDM
                 NSString *positionString = [[NSString alloc] initWithFormat:@"%f,%f",
                                             [khdmOB.lat floatValue],[khdmOB.lon floatValue]];
                 [waypointStrings_ addObject:positionString];
                 [wayPointStrDic_ setObject:positionString forKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_STRING_KHDM,indexPath.row]];
                 // implement Routes of Directions with Google API
-                
+
                 if([waypoints_ count]>1){
                     [SVProgressHUD show];
                     NSString *sensor = @"false";
@@ -715,7 +748,7 @@ didTapInfoWindowOfMarker:(GMSMarker *)marker{
                         if (result) {
                             [self addDirections:result];
                         }
-                        
+
                     } failure:^(NSError *error) {
                         [self.view setUserInteractionEnabled:YES];
                         [SVProgressHUD dismiss];
@@ -723,33 +756,33 @@ didTapInfoWindowOfMarker:(GMSMarker *)marker{
                     }];
                 }
             }
-            
+
         }else{
             // remove Routes of Directions
             [self removeDirectionsWithTypeCustomer:typeKHDM withInxex:indexPath.row];
             [listCustomerDirections removeObject:khdmOB];
         }
-        
+
     }else{
         DTOAccountProcessObject *kh360OB = [_mapModel.listCustomerKH360 objectAtIndex:indexPath.row];
         if ([status isEqualToString:@"YES"]) {
-            
+
             [listCustomerDirections addObject:kh360OB];
             if (kh360OB.lat && kh360OB.lon) {
-                
+
                 // add GMSMarker kh360
                 GMSMarker *marker = [[GMSMarker alloc] init];
                 marker.position = CLLocationCoordinate2DMake([kh360OB.lat floatValue], [kh360OB.lon floatValue]);
                 [marker setUserData:kh360OB];
                 [waypoints_ addObject:marker];
                 [wayPointDic_ setObject:marker forKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_KH360,indexPath.row]];
-                
+
                 // add marker string kh360
                 NSString *positionString = [[NSString alloc] initWithFormat:@"%f,%f",
                                             [kh360OB.lat floatValue],[kh360OB.lon floatValue]];
                 [waypointStrings_ addObject:positionString];
                 [wayPointStrDic_ setObject:positionString forKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_STRING_KH360,indexPath.row]];
-                
+
                 // implement Routes of Directions with Google API
                 if([waypoints_ count]>1){
                     [SVProgressHUD show];
@@ -768,7 +801,7 @@ didTapInfoWindowOfMarker:(GMSMarker *)marker{
                         if (result) {
                             [self addDirections:result];
                         }
-                        
+
                     } failure:^(NSError *error) {
                         [self.view setUserInteractionEnabled:YES];
                         [SVProgressHUD dismiss];
@@ -785,7 +818,7 @@ didTapInfoWindowOfMarker:(GMSMarker *)marker{
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    
+
     NSInteger currentOffset = scrollView.contentOffset.y;
     NSInteger maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height;
     

@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 typedef enum
 {
-    OO_RepeatMode_Day,
-    OO_RepeatMode_Week,
-    OO_RepeatMode_Month,
-    OO_RepeatMode_Year
+    OO_RepeatMode_Day = 0,
+    OO_RepeatMode_Week = 1,
+    OO_RepeatMode_Month = 2,
+    OO_RepeatMode_Year = 3
 }OO_RepeatMode;
 
 @interface RepeatCalendarConfig : NSObject
@@ -41,5 +41,7 @@ typedef enum
 
 
 - (NSString *)toReadableText;
-//- (NSDictionary *)toDictionary;
+- (NSDictionary *)toDictionary;
+- (instancetype)initFromDictionary:(NSDictionary *)dictEntity;
+
 @end

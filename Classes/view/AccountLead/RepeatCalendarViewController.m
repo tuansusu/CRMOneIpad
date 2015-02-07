@@ -303,7 +303,8 @@
 
 - (void)confirmBtnPressed
 {
-    if (_delegate &&
+    if ([self validateCurrentConfigForSave] &&
+        _delegate &&
         [_delegate respondsToSelector:@selector(repeatCalendarView:confirmConfig:)] &&
         [_delegate respondsToSelector:@selector(dismissPopoverView)])
     {
@@ -322,29 +323,28 @@
 }
 
 #pragma mark -
+- (BOOL)validateCurrentConfigForSave
+{
+    if (_config.isRepeat && _config.repeatMode == OO_RepeatMode_Week
+        && !(_config.repeatWeekMon || _config.repeatWeekTue || _config.repeatWeekWed || _config.repeatWeekThu || _config.repeatWeekFri || _config.repeatWeekSat || _config.repeatWeekSun))
+    {
+        // currently all defaults value are set, only if repeat week is set & non of week day is selected
+        [[[UIAlertView alloc] initWithTitle:@"Thông báo"
+                                    message:@"Ít nhất 1 ngày trong tuần cần được chọn cho lặp hàng tuần"
+                                   delegate:nil
+                          cancelButtonTitle:@"Đồng ý"
+                          otherButtonTitles:nil] show];
+        return false;
+    }
+    return true;
+}
+#pragma mark -
 - (void)setupViewForConfig
 {
     if (_config == nil)
     {
         // create _config for new
         _config = [[RepeatCalendarConfig alloc] init];
-        _config.isRepeat = false;
-        _config.repeatDuration = 1;
-        _config.repeatMode = OO_RepeatMode_Day;
-        _config.repeatUntil = [NSDate date];
-        
-        _config.repeatWeekMon = false;
-        _config.repeatWeekTue = false;
-        _config.repeatWeekWed = false;
-        _config.repeatWeekThu = false;
-        _config.repeatWeekFri = false;
-        _config.repeatWeekSat = false;
-        _config.repeatWeekSun = false;
-        
-        _config.rpMonthRdIndexDay = true;
-        _config.rpMonthDayOfWeek = 2;
-        _config.rpMonthFirstDay = true;
-        _config.rpMonthIndexDay = 1;
     }
     
     [self displayConfig:_config];

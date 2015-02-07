@@ -18,5 +18,7 @@
 //reminderUnit - minutes
 
 - (NSString *)toReadableText;
+- (NSDictionary *)toDictionary;
+- (instancetype)initFromDictionary:(NSDictionary *)dictEntity;
 
 @end

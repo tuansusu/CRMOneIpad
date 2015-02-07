@@ -299,6 +299,32 @@
 
         NSString *endDateStr = [_dataSend objectForKey:DTOTASK_endDate];
         [self setEndDateTime:[DateUtil getDateFromString:endDateStr :FORMAT_DATE_AND_TIME]];
+        
+        _alarmConfig = [[AlarmCalendarConfig alloc] initFromDictionary:_dataSend];
+        if (_alarmConfig != nil)
+        {
+            if (_alarmConfig.isReminder)
+            {
+                _txtAlarm.text = [_alarmConfig toReadableText];
+            }
+            else
+            {
+                _txtAlarm.text = @"";
+            }
+        }
+        
+        _repeatConfig = [[RepeatCalendarConfig alloc] initFromDictionary:_dataSend];
+        if (_repeatConfig != nil)
+        {
+            if (_repeatConfig.isRepeat)
+            {
+                _txtRepeat.text = [_repeatConfig toReadableText];
+            }
+            else
+            {
+                _txtRepeat.text = @"";
+            }
+        }
     }
 
 }
@@ -593,6 +619,16 @@
         }
 
         [dicEntity setObject:[_dataSend objectForKey:DTOTASK_id] forKey:DTOTASK_id];
+    }
+    
+    if (_alarmConfig != nil)
+    {
+        [dicEntity addEntriesFromDictionary:[_alarmConfig toDictionary]];
+    }
+    
+    if (_repeatConfig != nil)
+    {
+        [dicEntity addEntriesFromDictionary:[_repeatConfig toDictionary]];
     }
 
     succsess = [dtoProcess insertToDBWithEntity:dicEntity];

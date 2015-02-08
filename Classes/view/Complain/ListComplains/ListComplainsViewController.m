@@ -97,6 +97,13 @@
 
             [((UIImageView*) viewTemp) setAlpha:1.0f];
         }
+
+        for (UIView *subview in viewTemp.subviews) {
+            if ([subview isKindOfClass:[UIImageView class]]) {
+
+                [((UIImageView*) subview) setAlpha:1.0f];
+            }
+        }
     }
 
     //self.fullNameLB.text = TITLE_APPLICATION;

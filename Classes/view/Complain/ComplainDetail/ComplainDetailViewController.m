@@ -10,7 +10,7 @@
 #import "Globals.h"
 #import "DTOComplainObject.h"
 #import "CMPopTipView.h"
-
+#import "TPKeyboardAvoidingScrollView.h"
 
 @interface ComplainDetailViewController ()<CMPopTipViewDelegate>
 {
@@ -47,7 +47,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *bodyMainView;
 
-@property (weak, nonatomic) IBOutlet UIView *viewMainBodyInfo;
+@property (weak, nonatomic) IBOutlet TPKeyboardAvoidingScrollView *viewMainBodyInfo;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnSave;
 - (IBAction)actionSave:(id)sender;
@@ -110,7 +110,7 @@
 
 - (void) updateInterFaceWithOption : (int) option
 {
-    _fullNameLB.text                = TITLE_APPLICATION;
+    _fullNameLB.text                = TITLE_ADD_COMPLAIN;
     _headerViewBar.backgroundColor  = HEADER_VIEW_COLOR1;
     _fullNameLB.textColor           = TEXT_COLOR_HEADER_APP;
 

@@ -149,12 +149,18 @@
 }
 
 -(void)initDataKH{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [_mapModel getFirstPageCustomerKHDMWithKey:searchBarCustomer.text];
+        [_mapModel getFirstPageCustomerKH360WithKey:searchBarCustomer.text];
+        [self initFirstPageKHDMDirectionsFlag];
+        [self initFirstPageKHD360irectionsFlag];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [customerTbv reloadData];
 
-    [_mapModel getFirstPageCustomerKHDMWithKey:searchBarCustomer.text];
-    [_mapModel getFirstPageCustomerKH360WithKey:searchBarCustomer.text];
-    [customerTbv reloadData];
-    [self initFirstPageKHDMDirectionsFlag];
-    [self initFirstPageKHD360irectionsFlag];
+        });
+    });
+
+
 }
 
 //Home button
@@ -693,7 +699,7 @@ didTapInfoWindowOfMarker:(GMSMarker *)marker{
             _lon = [kh360OB.lon floatValue];
         }
     }
-    zoomRatio = ZOOM_RATIO*2;
+    zoomRatio = ZOOM_RATIO*1.3;
     camera = [GMSCameraPosition cameraWithLatitude:_lan
                                          longitude:_lon
                                               zoom:zoomRatio];

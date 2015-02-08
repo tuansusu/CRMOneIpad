@@ -223,6 +223,15 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 
 #define NO_CONFIG_TITLE_DEPARTMENT @"HỆ THỐNG THỬ NGHIỆM"
 #define ALL_DEPARTMENT @"Tất cả đơn vị"
+
+// title text task
+
+#define TITLE_TASK @"QUẢN LÝ CÔNG VIỆC"
+
+//title complain
+
+#define TITLE_ADD_COMPLAIN @"THÊM MỚI Ý KIẾN PHẢN HỒI"
+
 // title calendar
 #define TITLE_ADD_CALENDAR @"THÊM MỚI HOẠT ĐỘNG BÁN HÀNG"
 

@@ -332,7 +332,7 @@
 
 - (void) updateInterFaceWithOption : (int) option
 {
-    _fullNameLB.text                = TITLE_APPLICATION;
+    _fullNameLB.text                = TITLE_ADD_CALENDAR;
     _headerViewBar.backgroundColor  = HEADER_VIEW_COLOR1;
     _fullNameLB.textColor           = TEXT_COLOR_HEADER_APP;
 

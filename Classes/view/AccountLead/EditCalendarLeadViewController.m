@@ -713,6 +713,29 @@
                 event.endDate   = _endDateTime;
 
                 [event setCalendar:[eventStore defaultCalendarForNewEvents]];
+                
+                // set alarm
+                // remove all alarms first
+                for (EKAlarm *anAlarm in event.alarms) {
+                    [event removeAlarm:anAlarm];
+                }
+                if (_alarmConfig != nil && _alarmConfig.isReminder && _alarmConfig.reminderNofify)
+                {
+                    NSDate *alarmDate = [NSDate dateWithTimeInterval:(-_alarmConfig.reminderTime*60) sinceDate:_startDateTime];
+                    EKAlarm *alarm = [EKAlarm alarmWithAbsoluteDate:alarmDate];
+                    [event addAlarm:alarm];
+                }
+                
+                // set recurrence
+                // remove all rules first
+                for (EKRecurrenceRule *aRule in event.recurrenceRules) {
+                    [event removeRecurrenceRule:aRule];
+                }
+                if (_repeatConfig != nil && _repeatConfig.isRepeat)
+                {
+                    [event addRecurrenceRule:_repeatConfig.toEKRecurrenceRule];
+                }
+                
                 NSError *err;
                 [eventStore saveEvent:event span:EKSpanThisEvent error:&err];
                 if (!err) {

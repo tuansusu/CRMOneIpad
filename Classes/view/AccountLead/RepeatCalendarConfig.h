@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <EventKit/EventKit.h>
 typedef enum
 {
     OO_RepeatMode_Day = 0,
@@ -35,7 +36,7 @@ typedef enum
 @property (nonatomic, assign) NSUInteger rpMonthDayOfWeek; /* 1 for sunday, 2-7 for weekday */
 @property (nonatomic, assign) BOOL rpMonthFirstDay; /* first or last day */
 @property (nonatomic, assign) NSUInteger rpMonthIndexDay; //?? SMALLINT
-@property (nonatomic, assign) BOOL rpMonthRdIndexDay; //?? INTEGER
+@property (nonatomic, assign) BOOL rpMonthRdIndexDay; //?? INTEGER // currently true - repeatMonthDate, false - repeat month weekday
 
 //@property (nonatomic, assign) BOOL rpMonthRdFirstDay; //?? INTEGER
 
@@ -43,5 +44,7 @@ typedef enum
 - (NSString *)toReadableText;
 - (NSDictionary *)toDictionary;
 - (instancetype)initFromDictionary:(NSDictionary *)dictEntity;
+
+- (EKRecurrenceRule *)toEKRecurrenceRule;
 
 @end

@@ -150,7 +150,12 @@
 }
 - (void) updateInterFaceWithOption : (int) option
 {
-    self.fullNameLB.text = TITLE_APPLICATION;
+    if (_dataSend) {
+        self.fullNameLB.text = TITLE_EDIT_NOTES;
+    }else{
+        self.fullNameLB.text = TITLE_ADD_NOTES;
+    }
+    
     [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
     self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
     
@@ -253,7 +258,7 @@
 }
 - (IBAction)actionSave:(id)sender {
     
-    if (![util checkValidToSave:self.txtTitle :@"Anh/Chị chưa nhập tiêu đề ghi chú" :self.viewMainBodyInfo] ) {
+    if (![util checkValidToSave:self.txtTitle :MSG_INPUT_TITLE_NOTES :self.viewMainBodyInfo] ) {
         return;
     }
     

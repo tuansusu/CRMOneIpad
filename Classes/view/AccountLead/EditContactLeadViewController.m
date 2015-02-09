@@ -94,6 +94,10 @@
     [self updateInterFaceWithOption:smgSelect];
     [self initData];
     [self setLanguage];
+    if(_dataSend.count >0){
+    
+        _btnDelContact.hidden=NO;
+    }
     
 }
 
@@ -164,7 +168,7 @@
     }
     
     [self.btnSave setStyleNormalWithOption:smgSelect];
-    
+    _btnChoicePhoto.titleLabel.textColor=[UIColor blueColor];
     
     [self.mainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
     
@@ -410,6 +414,21 @@
         
         //reset lai form
         [self resetForm];
+    }
+    if(buttonIndex==0 && alertView.tag==55){
+        NSMutableDictionary *dicEntity = [NSMutableDictionary new];
+        [dicEntity setObject:@"0" forKey:DTOCONTACT_isActive];
+        [dicEntity setObject:[_dataSend objectForKey:DTOCONTACT_id] forKey:DTOCONTACT_id];
+        succsess = [dtoProcess insertToDBWithEntity:dicEntity];
+        if (succsess) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+            
+        }else{
+            //khong bao nhap loi - lien he quan tri
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Sảy ra lỗi, vui lòng thử lại hoặc gửi log đến quản trị" delegate:self cancelButtonTitle:@"Thoát" otherButtonTitles:nil];
+            alert.tag = 6;
+            [alert show];
+        }
     }
 }
 
@@ -709,10 +728,10 @@
 }
 -(void) setLanguage{
     if (_dataSend.count>0) {
-        [_fullNameLB setText:LocalizedString(@"KEY_CONTACT_EDIT")];
+        [_fullNameLB setText:[LocalizedString(@"KEY_CONTACT_EDIT") uppercaseString]];
     }
     else{
-    [_fullNameLB setText:LocalizedString(@"KEY_CONTACT_ADD")];
+    [_fullNameLB setText:[LocalizedString(@"KEY_CONTACT_ADD") uppercaseString]];
     }
     [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
     [_lbFullname setText:LocalizedString(@"KEY_CONTACT_NAME")];
@@ -726,6 +745,15 @@
     [_lbDiaChi setText:LocalizedString(@"KEY_CONTACT_ADDRESS")];
     [_lbNote setText:LocalizedString(@"KEY_CONTACT_NOTE")];
     [_btnChoicePhoto setTitle:LocalizedString(@"KEY_CONTACT_AVARTAR") forState:UIControlStateNormal];
+    
+}
+- (IBAction)actionDel:(id)sender {
+
+        //Thong bao cap nhat thanh cong va thoat
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Bạn có muốn xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles:@"Không", nil];
+        alert.tag = 55;
+        [alert show];
+
     
 }
 @end

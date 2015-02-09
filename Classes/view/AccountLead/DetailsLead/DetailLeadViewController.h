@@ -156,6 +156,28 @@ enum TypeLeaderView{
 
 - (IBAction)actionDel:(id)sender;
 
+//button CN
+@property (weak, nonatomic) IBOutlet UIButton *btnCallCN;
+- (IBAction)actionCallCN:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnSMSCN;
+- (IBAction)actionSMSCN:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnEmailCN;
+- (IBAction)actionEmailCN:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnAddCN;
+@property (weak, nonatomic) IBOutlet UIImageView *imgCalendar;
+
+- (IBAction)actionAddCN:(id)sender;
+//button DN
+@property (weak, nonatomic) IBOutlet UIButton *btnCallDN;
+- (IBAction)actionCallDN:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnSMSDN;
+- (IBAction)actionCallDN:(id)sender;
+- (IBAction)actionAddDN:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnAddDN;
+
+- (IBAction)actionSMSDN:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnEmailDN;
+- (IBAction)actionEmailDN:(id)sender;
 
 @end

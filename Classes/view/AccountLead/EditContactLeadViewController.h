@@ -52,6 +52,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btnSave;
 - (IBAction)actionSave:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnDelContact;
+- (IBAction)actionDel:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnClose;
 - (IBAction)actionClose:(id)sender;

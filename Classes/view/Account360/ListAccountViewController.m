@@ -701,22 +701,22 @@
  */
 -(void)tableView:(UITableView *)tableView swipeAccessoryButtonPushedForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"sua item at index = %d", indexPath.row);
-    
-    NSDictionary *dicDataTemp = [arrayData objectAtIndex:indexPath.row];
-    
-    NSDictionary *dicData = [dtoProcess getDataWithKey:DTOACCOUNT_id withValue:[dicDataTemp objectForKey:DTOACCOUNT_id]];
-    
-    if ([ObjectToStr([dicDataTemp objectForKey:DTOACCOUNT_accountType]) isEqualToString:FIX_LEADTYPE_PERSON]) {
-        
-        EditAccount360ViewController *viewController = [[EditAccount360ViewController alloc]initWithNibName:@"EditAccount360ViewController" bundle:nil];
-        viewController.dataSend = dicData;
-        [self presentViewController:viewController animated:YES completion:nil];
-    }else{
-        EditBussiness360ViewController *viewController = [[EditBussiness360ViewController alloc]initWithNibName:@"EditBussiness360ViewController" bundle:nil];
-        // viewController.dataSend = dicDataTemp;
-        [self presentViewController:viewController animated:YES completion:nil];
-    }
+//    NSLog(@"sua item at index = %d", indexPath.row);
+//    
+//    NSDictionary *dicDataTemp = [arrayData objectAtIndex:indexPath.row];
+//    
+//    NSDictionary *dicData = [dtoProcess getDataWithKey:DTOACCOUNT_id withValue:[dicDataTemp objectForKey:DTOACCOUNT_id]];
+//    
+//    if ([ObjectToStr([dicDataTemp objectForKey:DTOACCOUNT_accountType]) isEqualToString:FIX_LEADTYPE_PERSON]) {
+//        
+//        EditAccount360ViewController *viewController = [[EditAccount360ViewController alloc]initWithNibName:@"EditAccount360ViewController" bundle:nil];
+//        viewController.dataSend = dicData;
+//        [self presentViewController:viewController animated:YES completion:nil];
+//    }else{
+//        EditBussiness360ViewController *viewController = [[EditBussiness360ViewController alloc]initWithNibName:@"EditBussiness360ViewController" bundle:nil];
+//        // viewController.dataSend = dicDataTemp;
+//        [self presentViewController:viewController animated:YES completion:nil];
+//    }
     
     
 }

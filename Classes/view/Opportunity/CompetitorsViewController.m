@@ -105,6 +105,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
     [self initData];
+    [self loadData];
     [self actionClueContact:self.btnClueContact];
     
     [self.scrollViewInfo setBackGroundNormalColorWithOption:smgSelect];
@@ -120,7 +121,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     // calendar
     calendarIsTimeline = YES;
     
-    [self loadData];
+    
 }
 -(void) loadData{
     
@@ -128,46 +129,59 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     [DateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.S"];
     NSDateFormatter *DateToDisplayFormatter=[[NSDateFormatter alloc] init];
     [DateToDisplayFormatter setDateFormat:@"dd/MM/yyyy"];
-    
+    float fyDN=self.lblCode.frame.origin.y;
     //Hien thi chi tiet thong tin co hoi
     //code
-    self.lblCode.text = [opportunity objectForKey:DTOOPPORTUNITY_clientOpportunityId];
+    //self.lblCode.text = [opportunity objectForKey:DTOOPPORTUNITY_clientOpportunityId];
+    fyDN = [self setFrameLabelTitle:self.lblTitleCode withLabelValue:self.lblCode withFY:fyDN :[opportunity objectForKey:DTOOPPORTUNITY_clientOpportunityId]];
     //name
-    self.lblName.text = [opportunity objectForKey:DTOOPPORTUNITY_name];
+    //self.lblName.text = [opportunity objectForKey:DTOOPPORTUNITY_name];
+     fyDN = [self setFrameLabelTitle:self.lblTitleName withLabelValue:self.lblName withFY:fyDN :[opportunity objectForKey:DTOOPPORTUNITY_name]];
     //startDate
     NSString *strStartDate= [opportunity objectForKey:DTOOPPORTUNITY_startDate];
     NSDate *startDate =[DateFormatter dateFromString:strStartDate];
-    self.lblStartDateDetail.text = [DateToDisplayFormatter stringFromDate:startDate];
+    //self.lblStartDateDetail.text = [DateToDisplayFormatter stringFromDate:startDate];
+    [self.imgStartDate setFrame:CGRectMake(self.imgStartDate.frame.origin.x,fyDN, self.imgStartDate.frame.size.width, self.imgStartDate.frame.size.height)];
+    fyDN = [self setFrameLabelTitle:self.lblStartDateTitle withLabelValue:self.lblStartDateDetail withFY:fyDN :[DateToDisplayFormatter stringFromDate:startDate]];
+    
     //endDateReal
     NSString *strEndDateReal = [opportunity objectForKey:DTOOPPORTUNITY_endDateReal];
     NSDate *endDateReal = [DateFormatter dateFromString:strEndDateReal];
-    self.lblEndDateDetail.text = [DateToDisplayFormatter stringFromDate:endDateReal];
+    //self.lblEndDateDetail.text = [DateToDisplayFormatter stringFromDate:endDateReal];
+    [self.imgEndDateReal setFrame:CGRectMake(self.imgEndDateReal.frame.origin.x,fyDN, self.imgEndDateReal.frame.size.width, self.imgEndDateReal.frame.size.height)];
+     fyDN = [self setFrameLabelTitle:self.lblEndDateRealTitle withLabelValue:self.lblEndDateRealDetail withFY:fyDN :[DateToDisplayFormatter stringFromDate:endDateReal]];
+    
     //endDate
     NSString *strEndDate = [opportunity objectForKey:DTOOPPORTUNITY_endDate];
     NSDate *endDate = [DateFormatter dateFromString:strEndDate];
-    self.lblEndDateDetail.text = [DateToDisplayFormatter stringFromDate:endDate];
+    //self.lblEndDateDetail.text = [DateToDisplayFormatter stringFromDate:endDate];
+    [self.imgEndDate setFrame:CGRectMake(self.imgEndDate.frame.origin.x,fyDN, self.imgEndDate.frame.size.width, self.imgEndDate.frame.size.height)];
+    fyDN = [self setFrameLabelTitle:self.lblEndDateTitle withLabelValue:self.lblEndDateDetail withFY:fyDN :[DateToDisplayFormatter stringFromDate:endDate]];
+    
     //Level
-    self.lblOpporttunityLevelDetail.text = [opportunity objectForKey:@"Level"];
+    //self.lblOpporttunityLevelDetail.text = [opportunity objectForKey:@"Level"];
+    fyDN = [self setFrameLabelTitle:self.lblOpportunityLevelTitle withLabelValue:self.lblOpporttunityLevelDetail withFY:fyDN :[opportunity objectForKey:@"Level"]];
     //NextTask
-    self.lblNextTaskDetail.text = [opportunity objectForKey:@"NextTaskName"];
+    //self.lblNextTaskDetail.text = [opportunity objectForKey:@"NextTaskName"];
+    fyDN = [self setFrameLabelTitle:self.lblNextTaskTitle withLabelValue:self.lblNextTaskDetail withFY:fyDN :[opportunity objectForKey:@"NextTaskName"]];
     //Type
-    self.lblTypeDetail.text = [opportunity objectForKey:@"Type"];
+    //self.lblTypeDetail.text = [opportunity objectForKey:@"Type"];
+    fyDN = [self setFrameLabelTitle:self.lblTypeTitle withLabelValue:self.lblTypeDetail withFY:fyDN :[opportunity objectForKey:@"Type"]];
     //Customer
-    self.lblCustomerDetail.text = [opportunity objectForKey:@"Customer"];
+    //self.lblCustomerDetail.text = [opportunity objectForKey:@"Customer"];
+    fyDN = [self setFrameLabelTitle:self.lblCustomerTitle withLabelValue:self.lblCustomerDetail withFY:fyDN :[opportunity objectForKey:@"Customer"]];
     //Description
     NSString *description = [opportunity objectForKey:@"Description"];
-    if(![StringUtil stringIsEmpty:description]){
-        self.lblNoteDetail.text = [opportunity objectForKey:@"Description"];
-    }else{
-        self.lblNoteDetail.text = @"NA";
+    if([StringUtil stringIsEmpty:description]){
+        description = @"NA";
     }
+    fyDN = [self setFrameLabelTitle:self.lblNoteTitle withLabelValue:self.lblNoteDetail withFY:fyDN :description];
     //ResultDescription
     NSString *resultDescription = [opportunity objectForKey:@"ResultDescription"];
-    if(![StringUtil stringIsEmpty:resultDescription]){
-        self.lblDescriptionDetail.text = resultDescription;
-    }else{
-        self.lblDescriptionDetail.text = @"NA";
+    if([StringUtil stringIsEmpty:resultDescription]){
+        resultDescription = @"NA";
     }
+    fyDN = [self setFrameLabelTitle:self.lblDescriptionTitle withLabelValue:self.lblDescriptionDetail withFY:fyDN :resultDescription];
 }
 
 -(void) viewWillAppear:(BOOL)animated{
@@ -1052,10 +1066,61 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
 -(void) addBottomLineWithBottomControl : (CGRect) bottomViewFrame withInControl : (UIView*) containView {
     
-    UIView *viewLine = [[UIView alloc] initWithFrame:CGRectMake(0, bottomViewFrame.origin.y + bottomViewFrame.size.height, containView.frame.size.width, BORDER_WITH)];
+    UIView *viewLine = [[UIView alloc] initWithFrame:CGRectMake(0, bottomViewFrame.origin.y + bottomViewFrame.size.height + 4, containView.frame.size.width, BORDER_WITH)];
     viewLine.backgroundColor = BORDER_COLOR;
     [viewLine setBorderWithOption:smgSelect];
     [containView addSubview:viewLine];
     
+}
+#pragma mark set frame label
+-(void) setFrameLabelTitle : (UILabel*) labelTitle withLabelValue : (UILabel*) lableValue withFY : (float) fY {
+    
+    CGRect frame = labelTitle.frame;
+    labelTitle.frame = CGRectMake(frame.origin.x,fY, frame.size.width, frame.size.height);
+    frame =lableValue.frame;
+    lableValue.frame = CGRectMake(frame.origin.x,fY, frame.size.width, frame.size.height);
+}
+
+
+-(float) setFrameLabelTitle : (UILabel*) labelTitle withLabelValue : (UILabel*) lableValue withFY : (float) fY : (NSString*) strValue {
+    
+    CGRect frame = labelTitle.frame;
+    labelTitle.frame = CGRectMake(frame.origin.x,fY, frame.size.width, frame.size.height);
+    frame =lableValue.frame;
+    lableValue.frame = CGRectMake(frame.origin.x,fY, frame.size.width, frame.size.height);
+    
+    float heightLabelCN = 25.0f;
+    
+    if (![StringUtil stringIsEmpty:strValue]) {
+        lableValue.text=strValue;
+        heightLabelCN =  [self getHeightLabel:strValue];
+        
+        if (heightLabelCN>25) {
+            [UILabel setMultiline:lableValue];}
+    }
+    else{
+        lableValue.text=@"";
+    }
+    return  lableValue.frame.origin.y + lableValue.frame.size.height + 15;
+}
+-(CGFloat) getHeightLabel : (NSString*) strMessage{
+    
+    CGSize maximumSize =CGSizeMake(185, 9999);
+    
+    CGFloat heightLabel = 0;
+    
+    UIFont *myFont = [UIFont fontWithName:@"Helvetica" size:16];
+    CGSize myStringSize = [strMessage sizeWithFont:myFont
+                                 constrainedToSize:maximumSize
+                                     lineBreakMode:UILineBreakModeWordWrap];
+    
+    if( myStringSize.height>25){
+        heightLabel = myStringSize.height;
+    }
+    else
+        heightLabel =  25;
+    
+    
+    return heightLabel;
 }
 @end

@@ -116,6 +116,17 @@ enum TypeActionEvent{
 - (IBAction)actionNote:(id)sender;
 
 
+@property (weak, nonatomic) IBOutlet UILabel *lblTitleCode;
+@property (weak, nonatomic) IBOutlet UILabel *lblTitleName;
+@property (weak, nonatomic) IBOutlet UILabel *lblEndDateRealTitle;
+@property (weak, nonatomic) IBOutlet UILabel *lblTypeTitle;
+@property (weak, nonatomic) IBOutlet UILabel *lblNoteTitle;
+@property (weak, nonatomic) IBOutlet UILabel *lblDescriptionTitle;
+@property (weak, nonatomic) IBOutlet UIImageView *imgStartDate;
+@property (weak, nonatomic) IBOutlet UIImageView *imgEndDateReal;
+@property (weak, nonatomic) IBOutlet UIImageView *imgEndDate;
+
+
 @property (weak, nonatomic) IBOutlet UITableView *tbData;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnAdd;

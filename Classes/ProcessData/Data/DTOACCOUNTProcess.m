@@ -187,8 +187,12 @@
 /*
  *Ham tim kiem theo nhieu dieu kien or
  */
--(NSMutableArray*) filterWithOrArrayCondition : (NSDictionary *) dicCondition{
-    NSArray *allFields =[NSArray arrayWithObjects:DTOACCOUNT_accountId, DTOACCOUNT_address, DTOACCOUNT_email, DTOACCOUNT_mobile, DTOACCOUNT_name,DTOACCOUNT_updatedBy,DTOACCOUNT_code, DTOACCOUNT_accountType,DTOACCOUNT_clientAccountId, DTOACCOUNT_lat, DTOACCOUNT_lon, DTOACCOUNT_id, nil];
+/*
+ *Ham tim kiem theo nhieu dieu kien or (phan trang)
+ */
+-(NSMutableArray*) filterWithOrArrayCondition : (NSDictionary *) dicCondition withStart : (int) start withLimit : (int) limit withOutTotal : (int*) totalCount{
+    
+       NSArray *allFields =[NSArray arrayWithObjects:DTOACCOUNT_accountId, DTOACCOUNT_address, DTOACCOUNT_email, DTOACCOUNT_mobile, DTOACCOUNT_name,DTOACCOUNT_updatedBy,DTOACCOUNT_code, DTOACCOUNT_accountType,DTOACCOUNT_clientAccountId, DTOACCOUNT_lat, DTOACCOUNT_lon, DTOACCOUNT_id, nil];
     
     
     
@@ -224,12 +228,60 @@
     }
     
     
-    query = [query stringByAppendingString:[NSString stringWithFormat:@" order by %@ desc", DTOACCOUNT_updatedDate]];
+    query = [query stringByAppendingString:[NSString stringWithFormat:@" order by %@ desc", DTONOTE_updatedDate]];
     
+    
+    
+    
+    if (start == 0) {
+        NSString *countQuery = [NSString stringWithFormat:@"Select count(*) from %@ where status = 1 " , TABLENAME_DTOACCOUNT];
+        
+        
+        
+        isCheckCondition = NO;
+        
+        for (NSString *strKey in dicCondition.allKeys) {
+            if ([StringUtil stringIsEmpty:[dicCondition objectForKey:strKey]]) {
+                continue;
+            }
+            
+            if (isCheckCondition==NO) {
+                countQuery = [countQuery stringByAppendingString:@" and ( "];
+                isCheckCondition = YES;
+                countQuery = [countQuery stringByAppendingString:[NSString stringWithFormat:@" %@ like ?", strKey]];
+            }else{
+                countQuery = [countQuery stringByAppendingString:[NSString stringWithFormat:@" or %@ like ?", strKey]];
+            }
+        }
+        
+        if (isCheckCondition) {
+            countQuery = [countQuery stringByAppendingString:@" ) "];
+        }
+        
+        *totalCount = [DataUtil getCountItemsselectQuery:countQuery valueParamemter:arrayValue] ;
+    }
+    
+    query = [query stringByAppendingString:[NSString stringWithFormat:@" limit %d offset %d", limit,start ]];
     
     return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:arrayValue];
     
 }
-
-
+//filter(all) co phan trang
+-(NSMutableArray*) filterWithStart : (int) start withLimit : (int) limit withOutTotal : (int*) totalCount {
+       NSArray *allFields =[NSArray arrayWithObjects:DTOACCOUNT_accountId, DTOACCOUNT_address, DTOACCOUNT_email, DTOACCOUNT_mobile, DTOACCOUNT_name,DTOACCOUNT_updatedBy,DTOACCOUNT_code, DTOACCOUNT_accountType,DTOACCOUNT_clientAccountId, DTOACCOUNT_lat, DTOACCOUNT_lon, DTOACCOUNT_id, nil];
+    
+    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where status = 1 order by %@ desc",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOACCOUNT, DTOACCOUNT_updatedDate];
+    
+    
+    if (start == 0) {
+        NSString *countQuery = [NSString stringWithFormat:@"Select count(*) from %@ where status = 1 order by %@ desc", TABLENAME_DTOACCOUNT, DTOACCOUNT_updatedDate];
+        
+        *totalCount = [DataUtil getCountItemsselectQuery:countQuery valueParamemter:nil] ;
+    }
+    
+    query = [query stringByAppendingString:[NSString stringWithFormat:@" limit %d offset %d", limit,start ]];
+    
+    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:nil];
+    
+}
 @end

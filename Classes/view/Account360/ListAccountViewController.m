@@ -38,7 +38,7 @@
 @interface ListAccountViewController ()
 {
     int smgSelect ; //option layout
-    NSArray *arrayData; //mang luu tru du lieu
+    NSMutableArray *arrayData; //mang luu tru du lieu
     
     DTOACCOUNTProcess *dtoProcess;
     
@@ -62,6 +62,10 @@
     
     NSUserDefaults *defaults;
     NSString *accountfollowId;
+    int loaded,perload, totalCount;
+    //them phan phan trang
+    BOOL loading, noMoreResultsAvail;
+    UIActivityIndicatorView *spinner;
 }
 @end
 
@@ -168,7 +172,7 @@
     strSearchText = @"";
     
     dtoProcess = [DTOACCOUNTProcess new];
-    arrayData  = [NSArray new];
+    arrayData  = [NSMutableArray new];
     
     //[self filterData];
     
@@ -258,6 +262,51 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+   
+    //Cell loading
+    if((arrayData.count) == indexPath.row){
+        static NSString *cellIndentifier =@"cell";
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
+        if(cell == nil){
+            
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
+        }
+        if (!noMoreResultsAvail) {
+            
+            
+            spinner.hidden =NO;
+            cell.textLabel.text=nil;
+            
+            
+            spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            spinner.frame = CGRectMake(tableView.frame.size.width/2-12, 0, 24, 50);
+            [cell addSubview:spinner];
+            
+            if (arrayData.count >= 10) {
+                [spinner startAnimating];
+            }
+        }
+        else{
+            [spinner stopAnimating];
+            spinner.hidden=YES;
+            
+            cell.textLabel.text=nil;
+            
+            UILabel* loadingLabel = [[UILabel alloc]init];
+            loadingLabel.font=[UIFont boldSystemFontOfSize:14.0f];
+            loadingLabel.textAlignment = UITextAlignmentLeft;
+            loadingLabel.textColor = [UIColor colorWithRed:87.0/255.0 green:108.0/255.0 blue:137.0/255.0 alpha:1.0];
+            loadingLabel.numberOfLines = 0;
+            loadingLabel.text=@"No More data Available";
+            loadingLabel.frame=CGRectMake(85,20, 302,25);
+            [cell addSubview:loadingLabel];
+        }
+        
+        return cell;
+    }
+    
+    
     static NSString *cellId = @"Account360Cell";
     Account360Cell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
     
@@ -272,7 +321,27 @@
     return cell;
     
 }
-
+//phan trang
+-(void) resetLoadData {
+    loaded = 0;
+    arrayData  = [NSMutableArray new];
+    self.lbTotal.text = @"";
+}
+//phân trang
+#pragma UIScroll View Method::
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if (arrayData.count<totalCount) {
+        loaded = loaded + PAGESIZE;
+        
+        float endScrolling = scrollView.contentOffset.y + scrollView.frame.size.height;
+        if (endScrolling >= scrollView.contentSize.height)
+        {
+            [self performSelector:@selector(filterData) withObject:nil afterDelay:1];
+            
+        }
+    }
+}
 - (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return YES;
@@ -421,6 +490,7 @@
     arrayData=[dtoProcess filterWithKey:DTOACCOUNT_name withValue:searchText];
     // _lbTotal.text=arrayData.count;
     _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
+    [self resetLoadData];
     [_tbData reloadData];
 }
 
@@ -434,6 +504,7 @@
 {
     NSLog(@"seach click");
     [SVProgressHUD show];
+    [self resetLoadData];
     [self filterData];
     
     [searchBar resignFirstResponder];
@@ -447,61 +518,81 @@
 //ham loc du lieu
 -(void) filterData {
     
+//    if ([StringUtil stringIsEmpty:strSearchText]) {
+//        arrayData = [dtoProcess filter];
+//    }else{
+//        
+//        //        switch (iSearchOption) {
+//        //            case SCOPE_ALL:
+//        //                break;
+//        //            case SCOPE_CODE:{
+//        //                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_code withValue: strSearchText];
+//        //            }
+//        //                break;
+//        //            case SCOPE_EMAIL:{
+//        //                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_email withValue: strSearchText];
+//        //            }
+//        //                break;
+//        //            case SCOPE_NAME:
+//        //            {
+//        //                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_name withValue: strSearchText];
+//        //            }
+//        //                break;
+//        //            case SCOPE_PHONE:
+//        //            {
+//        //                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_mobile withValue: strSearchText];
+//        //            }
+//        //                break;
+//        //            default:
+//        //                break;
+//        //        }
+//        
+//        
+//        NSMutableDictionary *dicCondition = [[NSMutableDictionary alloc]init];
+//        
+//        [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOACCOUNT_code];
+//        
+//        
+//        
+//        [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOACCOUNT_name];
+//        
+//        
+//        
+//        [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOACCOUNT_mobile];
+//        
+//        
+//        
+//        [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOACCOUNT_email];
+//        
+//        
+//        
+//        arrayData = [dtoProcess filterWithOrArrayCondition:dicCondition];
+//        
+//    }
+//    //load data from db
+//    _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
+//    
+//    //NSLog(@"list data = %@", arrayData);
+//    [self.tbData reloadData];
+//    [SVProgressHUD dismiss];
     if ([StringUtil stringIsEmpty:strSearchText]) {
-        arrayData = [dtoProcess filter];
+        //arrayData = [dtoLeadProcess filter];
+        //arrayData =  [dtoLeadProcess filterWithStart:loaded withLimit:PAGESIZE withOutTotal:&totalCount];
+        [arrayData addObjectsFromArray:[dtoProcess filterWithStart:loaded withLimit:PAGESIZE withOutTotal:&totalCount]];
     }else{
         
-        //        switch (iSearchOption) {
-        //            case SCOPE_ALL:
-        //                break;
-        //            case SCOPE_CODE:{
-        //                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_code withValue: strSearchText];
-        //            }
-        //                break;
-        //            case SCOPE_EMAIL:{
-        //                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_email withValue: strSearchText];
-        //            }
-        //                break;
-        //            case SCOPE_NAME:
-        //            {
-        //                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_name withValue: strSearchText];
-        //            }
-        //                break;
-        //            case SCOPE_PHONE:
-        //            {
-        //                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_mobile withValue: strSearchText];
-        //            }
-        //                break;
-        //            default:
-        //                break;
-        //        }
-        
-        
         NSMutableDictionary *dicCondition = [[NSMutableDictionary alloc]init];
-        
         [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOACCOUNT_code];
-        
-        
-        
         [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOACCOUNT_name];
-        
-        
-        
         [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOACCOUNT_mobile];
-        
-        
-        
         [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOACCOUNT_email];
-        
-        
-        
-        arrayData = [dtoProcess filterWithOrArrayCondition:dicCondition];
+        //arrayData = [dtoLeadProcess filterWithOrArrayCondition:dicCondition];
+        [arrayData addObjectsFromArray:[dtoProcess filterWithOrArrayCondition:dicCondition withStart:loaded withLimit:PAGESIZE withOutTotal:&totalCount]];
         
     }
     //load data from db
-    _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
-    
-    //NSLog(@"list data = %@", arrayData);
+    //_lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
+    self.lbTotal.text = [NSString stringWithFormat:@"Tổng số %d / %d", arrayData.count, totalCount ];
     [self.tbData reloadData];
     [SVProgressHUD dismiss];
 }
@@ -753,7 +844,7 @@
     }
     
     
-    arrayData = [dtoProcess filterWithArrayCondition:dicCondition];
+    //arrayData = [dtoProcess filterWithArrayCondition:dicCondition];
     _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
     
     [self.tbData reloadData];

@@ -32,13 +32,8 @@
 
 
 -(NSInteger) getClientId ;
-
-/*
- * Tim kiem theo nhieu dieu kien and
- */
 -(NSMutableArray*) filterWithArrayCondition : (NSDictionary *) dicCondition;
-/*
- * Tim kiem theo nhieu dieu kien or
- */
--(NSMutableArray*) filterWithOrArrayCondition : (NSDictionary *) dicCondition;
+
+-(NSMutableArray*) filterWithOrArrayCondition : (NSDictionary *) dicCondition withStart : (int) start withLimit : (int) limit withOutTotal : (int*) totalCount;
+-(NSMutableArray*) filterWithStart : (int) start withLimit : (int) limit withOutTotal : (int*) totalCount;
 @end

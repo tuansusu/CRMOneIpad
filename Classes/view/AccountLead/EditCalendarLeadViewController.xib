@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditCalendarLeadViewController">
@@ -11,7 +11,6 @@
                 <outlet property="_btnChoiceEventType" destination="9k5-Ww-KBI" id="FdR-a0-2vq"/>
                 <outlet property="_btnChoiceLocation" destination="AQn-CM-gcT" id="rBX-vX-LlH"/>
                 <outlet property="_btnChoiceRepeat" destination="UT9-WG-tFf" id="cL3-P2-zfm"/>
-                <outlet property="_titleLabel" destination="RnN-sF-abE" id="P9W-vo-xj1"/>
                 <outlet property="_txtAlarm" destination="7mK-oZ-MOV" id="nCH-qH-6mu"/>
                 <outlet property="_txtDescription" destination="Sto-IK-rz0" id="jqu-qh-XaO"/>
                 <outlet property="_txtEventType" destination="kma-2J-Snv" id="X6o-qp-SK1"/>
@@ -25,10 +24,8 @@
                 <outlet property="btnChoiceTimeFrom" destination="C07-z1-9lO" id="dZU-CO-iBy"/>
                 <outlet property="btnChoiceTimeTo" destination="2FE-Dw-wOa" id="o2R-Tc-OFD"/>
                 <outlet property="btnHome" destination="3RN-si-kfA" id="zaY-fM-vVJ"/>
-                <outlet property="btnSave" destination="eMK-bK-sWR" id="xfD-eZ-SBV"/>
                 <outlet property="footerView" destination="kL8-py-pNE" id="yxi-Q1-UBc"/>
                 <outlet property="fullNameLB" destination="4Bb-en-0g0" id="WoP-FS-MJh"/>
-                <outlet property="headerMainView" destination="z9R-xg-z27" id="CG6-2F-5Bn"/>
                 <outlet property="headerViewBar" destination="cJb-IX-Fpv" id="xwN-iQ-M0P"/>
                 <outlet property="mainView" destination="1Qd-d7-gQe" id="gk2-xH-K6s"/>
                 <outlet property="txtDateFrom" destination="7rL-B4-dni" id="4cI-98-NqD"/>
@@ -53,7 +50,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tống Viết Trung" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4Bb-en-0g0">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="THÊM MỚI HOẠT ĐỘNG BÁN HÀNG" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4Bb-en-0g0">
                             <rect key="frame" x="67" y="0.0" width="500" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
@@ -75,6 +72,16 @@
                                 <action selector="homeBack:" destination="-1" eventType="touchUpInside" id="l5Z-n4-YHW"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Wi0-1k-Ci7" userLabel="btnSave">
+                            <rect key="frame" x="893" y="2" width="110" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Cập nhật">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actionSave:" destination="-1" eventType="touchUpInside" id="tje-GO-wCC"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
@@ -82,36 +89,12 @@
                     <rect key="frame" x="0.0" y="44" width="1024" height="674"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <view contentMode="scaleToFill" id="z9R-xg-z27" userLabel="header main view">
-                            <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eMK-bK-sWR" userLabel="btnSave">
-                                    <rect key="frame" x="893" y="2" width="110" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Cập nhật">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="actionSave:" destination="-1" eventType="touchUpInside" id="TnY-CQ-ccD"/>
-                                    </connections>
-                                </button>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THÊM MỚI HOẠT ĐỘNG BÁN HÀNG" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RnN-sF-abE">
-                                    <rect key="frame" x="20" y="11" width="446" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
                         <view contentMode="scaleToFill" id="Xwl-zj-fSc" userLabel="body view">
-                            <rect key="frame" x="20" y="64" width="984" height="580"/>
+                            <rect key="frame" x="20" y="19" width="984" height="636"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" id="NCD-CQ-60F" userLabel="View body main info">
-                                    <rect key="frame" x="0.0" y="10" width="984" height="570"/>
+                                    <rect key="frame" x="0.0" y="66" width="984" height="570"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_require-1.png" id="eDV-Ds-Q7Z">

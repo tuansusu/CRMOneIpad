@@ -22,24 +22,24 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="I9o-YX-tS8">
-                        <rect key="frame" x="0.0" y="0.0" width="50" height="59.5"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="m3B-9u-CfF">
+                        <rect key="frame" x="10" y="15" width="30" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" image="iconMarkerLocation.png">
+                        <state key="normal" backgroundImage="iconMarkerLocation.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="iconDerections" destination="I9o-YX-tS8" id="vQW-8S-McA"/>
+                <outlet property="iconDerections" destination="m3B-9u-CfF" id="HU8-9K-703"/>
                 <outlet property="lblDescription" destination="JQ9-1b-Jde" id="6va-LJ-wuD"/>
             </connections>
             <point key="canvasLocation" x="-109" y="329"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="iconMarkerLocation.png" width="40" height="40"/>
+        <image name="iconMarkerLocation.png" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -19,6 +19,7 @@
 @interface CustomerViewCell : UITableViewCell{
     IBOutlet UILabel *lblName;
     IBOutlet UIButton *btnDirection;
+    IBOutlet UIImageView *iconDirection;
 }
 +(CustomerViewCell*) initNibCell;
 

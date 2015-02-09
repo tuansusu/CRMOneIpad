@@ -21,17 +21,14 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5r4-zB-NtG">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="W1r-Og-eEk">
                         <rect key="frame" x="262" y="9" width="24" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" backgroundImage="iconDirection.png">
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
+                    </imageView>
                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hLx-gw-n1F">
                         <rect key="frame" x="247" y="3" width="53" height="38"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" image="iconDirection.png">
+                        <state key="normal">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
@@ -41,15 +38,13 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="btnDirection" destination="5r4-zB-NtG" id="t7a-jM-1z3"/>
+                <outlet property="btnDirection" destination="hLx-gw-n1F" id="kts-eo-dS1"/>
+                <outlet property="iconDirection" destination="W1r-Og-eEk" id="Pxe-FG-9TZ"/>
                 <outlet property="lblName" destination="rfe-oU-J6j" id="mnA-w6-IAc"/>
             </connections>
             <point key="canvasLocation" x="241" y="312"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="iconDirection.png" width="24" height="25"/>
-    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

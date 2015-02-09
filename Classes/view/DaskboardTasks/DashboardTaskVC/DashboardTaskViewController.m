@@ -131,7 +131,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
 - (void) updateInterFaceWithOption : (int) option
 {
-    self.fullNameLB.text = @"KHÁCH HÀNG 360";
+    self.fullNameLB.text = TITLE_TASK;
     [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
     self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
     self.lbTotal.textColor = TEXT_COLOR_HEADER_APP;
@@ -145,6 +145,22 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     self.leftLabelHeader.textColor = TEXT_COLOR_HEADER_APP;
     self.txtSearchBar.barTintColor = HEADER_VIEW_COLOR1;
 
+    for (UIView *viewSubTemp in self.view.subviews)
+    {
+        if ([viewSubTemp isKindOfClass:[UIImageView class]]) {
+            [((UIImageView*) viewSubTemp) setAlpha:1.0f];
+            continue;
+        }
+        for (UIView *subview in viewSubTemp.subviews)
+        {
+
+            if ([subview isKindOfClass:[UIImageView class]]) {
+                [((UIImageView*) subview) setAlpha:1.0f];
+                continue;
+            }
+        }
+
+    }
 
     for (UIView *viewTemp in self.leftInMainView.subviews) {
         if ([viewTemp isKindOfClass:[UILabel class]]) {
@@ -452,7 +468,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             }else{
                 [_dashboardTaskModel getFirstPageWithKey:strSearchText];
             }
-
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tbData reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPathToReload] withRowAnimation:UITableViewRowAnimationAutomatic];
             });

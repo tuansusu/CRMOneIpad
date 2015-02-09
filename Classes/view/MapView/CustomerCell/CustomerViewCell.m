@@ -40,16 +40,21 @@
 }
 
 -(void) loadDataToCellWithKH360OB:(DTOAccountProcessObject *)kh360OB withStatus:(NSString *)status{
+    [iconDirection setAlpha:1];
+
     if (kh360OB.lat && kh360OB.lon) {
+        [iconDirection setAlpha:1];
         if ([status isEqual:@"YES"]) {
-            [btnDirection setBackgroundImage:[UIImage imageNamed:@"iconDirectionSelected"] forState:UIControlStateNormal];
+            [iconDirection setImage:[UIImage imageNamed:@"iconDirectionSelected"]];
             _isCellSelected = YES;
         }else{
-            [btnDirection setBackgroundImage:[UIImage imageNamed:@"iconDirection"] forState:UIControlStateNormal];
+            [iconDirection setImage:[UIImage imageNamed:@"iconDirection"]];
             _isCellSelected = NO;
         }
     }else{
         [btnDirection setEnabled:NO];
+        [iconDirection setAlpha:0.5];
+        [iconDirection setImage:[UIImage imageNamed:@"iconDirection"]];
     }
 
     if (kh360OB.name) {
@@ -58,21 +63,24 @@
         }else{
             lblName.text = [NSString stringWithFormat:@"%@",kh360OB.name];
         }
-
     }
 }
 
 -(void) loadDataToCellWithKHDMOB:(DTOAcountLeadProcessObject *)khdmOB withStatus:(NSString *)status{
+    [iconDirection setAlpha:1];
     if (khdmOB.lat && khdmOB.lon) {
+        [iconDirection setAlpha:1];
         if ([status isEqual:@"YES"]) {
-            [btnDirection setBackgroundImage:[UIImage imageNamed:@"iconDirectionSelected"] forState:UIControlStateNormal];
+            [iconDirection setImage:[UIImage imageNamed:@"iconDirectionSelected"]];
             _isCellSelected = YES;
         }else{
-            [btnDirection setBackgroundImage:[UIImage imageNamed:@"iconDirection"] forState:UIControlStateNormal];
+            [iconDirection setImage:[UIImage imageNamed:@"iconDirection"]];
             _isCellSelected = NO;
         }
     }else{
         [btnDirection setEnabled:NO];
+        [iconDirection setAlpha:0.5];
+        [iconDirection setImage:[UIImage imageNamed:@"iconDirection"]];
     }
 
     if (khdmOB.name) {
@@ -94,11 +102,11 @@
            [CLLocationManager authorizationStatus] != kCLAuthorizationStatusDenied)
         {
             if (_isCellSelected) {
-                [btnDirection setBackgroundImage:[UIImage imageNamed:@"iconDirection"] forState:UIControlStateNormal];
+                [iconDirection setImage:[UIImage imageNamed:@"iconDirection"]];
                 _isCellSelected= NO;
                 statusSelect = @"NO";
             }else{
-                [btnDirection setBackgroundImage:[UIImage imageNamed:@"iconDirectionSelected"] forState:UIControlStateNormal];
+                [iconDirection setImage:[UIImage imageNamed:@"iconDirectionSelected"] ];
                 _isCellSelected = YES;
                 statusSelect = @"YES";
             }

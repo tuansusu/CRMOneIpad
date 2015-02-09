@@ -224,7 +224,26 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 #define NO_CONFIG_TITLE_DEPARTMENT @"HỆ THỐNG THỬ NGHIỆM"
 #define ALL_DEPARTMENT @"Tất cả đơn vị"
 
+// title dashboard
 
+#define TITLE_DASHBOARD @"DASHBOARD"
+
+// title text task
+
+#define TITLE_TASK @"QUẢN LÝ CÔNG VIỆC"
+
+//title complain
+
+#define TITLE_ADD_COMPLAIN @"THÊM MỚI Ý KIẾN PHẢN HỒI"
+
+// title calendar
+#define TITLE_ADD_CALENDAR @"THÊM MỚI HOẠT ĐỘNG BÁN HÀNG"
+
+// title notes
+#define TITLE_ADD_NOTES @"THÊM MỚI GHI CHÚ"
+#define TITLE_EDIT_NOTES @"CẬP NHẬT GHI CHÚ"
+
+#define MSG_INPUT_TITLE_NOTES @"Nhập tiêu đề ghi chú"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 

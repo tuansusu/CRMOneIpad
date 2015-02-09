@@ -51,10 +51,14 @@
                                 <action selector="homeCloseView:" destination="-1" eventType="touchUpInside" id="hQ6-A0-K97"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VDL-QP-BV2" userLabel="BTNADD">
-                            <rect key="frame" x="972" y="7" width="32" height="32"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_plus-1.png" id="hgM-Sd-UNk">
+                            <rect key="frame" x="972" y="6" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" backgroundImage="ic_plus-1.png"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VDL-QP-BV2" userLabel="BTNADD">
+                            <rect key="frame" x="958" y="0.0" width="66" height="45.5"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="btnAddComplainAction:" destination="-1" eventType="touchUpInside" id="wHL-yQ-675"/>
                             </connections>
@@ -76,7 +80,7 @@
                             </connections>
                         </searchBar>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.039215686270000001" green="0.43137254899999999" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <view contentMode="scaleToFill" id="emo-ou-Dar" userLabel="main view">
                     <rect key="frame" x="0.0" y="64" width="1024" height="674"/>
@@ -122,8 +126,8 @@
         </view>
     </objects>
     <resources>
-        <image name="ic_plus-1.png" width="48" height="48"/>
-        <image name="icon_menu-1.png" width="96" height="96"/>
+        <image name="ic_plus-1.png" width="90" height="90"/>
+        <image name="icon_menu-1.png" width="48" height="48"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

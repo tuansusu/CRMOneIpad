@@ -167,7 +167,7 @@ NSString* emptyText = @"";
 - (void) updateInterFaceWithOption : (int) option
 {
     
-    self.fullNameLB.text = TITLE_APPLICATION;
+    self.fullNameLB.text = TITLE_DASHBOARD;
     [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
     self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
 
@@ -397,12 +397,23 @@ NSString* emptyText = @"";
 
     DTOWidgetObject *widgetOB = [[DTOWidgetObject alloc] init];
     widgetOB.accountName = @"demo";
-    widgetOB.typeGraphically = [NSString stringWithFormat:@"%d",0];
     widgetOB.colorDisplay1 = @"0, 105, 178";
     widgetOB.createDate= [[NSDate date] description];
-    widgetOB.isShowData = @"0";
-    widgetOB.colorDisplay2 = @"13, 35, 58";
+    widgetOB.isShowData = @"1";
+    if ([dtoWidgetTypeOB.widgetId intValue]==WIDGET_TYPE_HUY_DONG_VON) {
+        widgetOB.typeGraphically = [NSString stringWithFormat:@"%d",1];
 
+        widgetOB.colorDisplay2 = @"242, 0, 0";
+    }
+    else if ([dtoWidgetTypeOB.widgetId intValue]==WIDGET_TYPE_TIN_DUNG)
+    {
+        widgetOB.typeGraphically = [NSString stringWithFormat:@"%d",1];
+
+        widgetOB.colorDisplay2 = @"242, 0, 0";
+    }else{
+        widgetOB.typeGraphically = [NSString stringWithFormat:@"%d",0];
+        widgetOB.colorDisplay2 = @"13, 35, 58";
+    }
     widgetOB.widgetId = dtoWidgetTypeOB.widgetId;
     widgetOB.widgetName = dtoWidgetTypeOB.widgetName;
     widgetOB.widgetType = dtoWidgetTypeOB.widgetType;

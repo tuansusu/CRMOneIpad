@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <EventKit/EventKit.h>
 typedef enum
 {
-    OO_RepeatMode_Day,
-    OO_RepeatMode_Week,
-    OO_RepeatMode_Month,
-    OO_RepeatMode_Year
+    OO_RepeatMode_Day = 0,
+    OO_RepeatMode_Week = 1,
+    OO_RepeatMode_Month = 2,
+    OO_RepeatMode_Year = 3
 }OO_RepeatMode;
 
 @interface RepeatCalendarConfig : NSObject
@@ -35,11 +36,15 @@ typedef enum
 @property (nonatomic, assign) NSUInteger rpMonthDayOfWeek; /* 1 for sunday, 2-7 for weekday */
 @property (nonatomic, assign) BOOL rpMonthFirstDay; /* first or last day */
 @property (nonatomic, assign) NSUInteger rpMonthIndexDay; //?? SMALLINT
-@property (nonatomic, assign) BOOL rpMonthRdIndexDay; //?? INTEGER
+@property (nonatomic, assign) BOOL rpMonthRdIndexDay; //?? INTEGER // currently true - repeatMonthDate, false - repeat month weekday
 
 //@property (nonatomic, assign) BOOL rpMonthRdFirstDay; //?? INTEGER
 
 
 - (NSString *)toReadableText;
-//- (NSDictionary *)toDictionary;
+- (NSDictionary *)toDictionary;
+- (instancetype)initFromDictionary:(NSDictionary *)dictEntity;
+
+- (EKRecurrenceRule *)toEKRecurrenceRule;
+
 @end

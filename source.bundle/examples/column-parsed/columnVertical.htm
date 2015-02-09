@@ -1,62 +1,70 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>Highcharts Example</title>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+            <title>Highcharts Example</title>
 
-		<script src="../../js/columnJquery.js"></script>
-		<script type="text/javascript">
-function updateData(data,types) {
+            <script src="../../js/columnJquery.js"></script>
+            <script type="text/javascript">
+                function updateData(data,types) {
 
-        $('#container').highcharts({
-    
-            chart: {
-                type: 'column'
-            },
-    
-            title: {
-                text: ''
-            },
-    
-            xAxis: {
-                categories: types
-            },
-    
-            yAxis: {
-                allowDecimals: false,
-                min: 0,
-                title: {
-                    text: 'Amount'
+                    $('#container').highcharts({
+
+                                               chart: {
+                                               type: 'column'
+                                               },
+
+                                               title: {
+                                               text: ''
+                                               },
+
+                                               xAxis: {
+                                               categories: types
+                                               },
+
+                                               yAxis: {
+                                               allowDecimals: false,
+                                               min: 0,
+                                               title: {
+                                               text: 'Đơn vị (tỉ đồng)'
+                                               }
+                                               },
+
+                                               tooltip: {
+                                               formatter: function() {
+                                               return '<b>'+ this.x +'</b><br/>'+
+                                               this.series.name +': '+ this.y +' tỉ đồng<br/>';
+                                               //+'Total: '+ this.point.stackTotal;
+                                               }
+                                               },
+                                               plotOptions: {
+                                               column: {
+                                               stacking: 'normal',
+                                               dataLabels: {
+                                               enabled: true,
+                                               rotation: -90,
+                                               x: 4,
+                                               color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                                               style: {
+                                               textShadow: '0 0 3px black'
+                                               }
+                                               }
+                                               }
+                                               },
+
+                                               series: data
+                                               });
                 }
-            },
-    
-            tooltip: {
-                formatter: function() {
-                    return '<b>'+ this.x +'</b><br/>'+
-                        this.series.name +': '+ this.y +'<br/>';
-                                   //+'Total: '+ this.point.stackTotal;
-                }
-            },
-    
-            plotOptions: {
-                column: {
-                    stacking: 'normal'
-                }
-            },
-    
-            series: data
-        });
-}
-    
-
-		</script>
-	</head>
-	<body>
-<script src="../../js/highcharts.js"></script>
 
 
-
-<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-
-	</body>
+                </script>
+            </head>
+    <body>
+        <script src="../../js/highcharts.js"></script>
+        
+        
+        
+        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+        
+    </body>
 </html>

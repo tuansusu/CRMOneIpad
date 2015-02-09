@@ -188,9 +188,14 @@ static NSString *MMDrawerOpenSideKey = @"MMDrawerOpenSide";
     [self setShowsShadow:NO];
     [self setShouldStretchDrawer:YES];
     
+    //[self setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
+    //tuannv
     [self setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
+    
     [self setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeNone];
-    [self setCenterHiddenInteractionMode:MMDrawerOpenCenterInteractionModeNavigationBarOnly];
+    //[self setCenterHiddenInteractionMode:MMDrawerOpenCenterInteractionModeNavigationBarOnly];
+    //tuannv
+    [self setCenterHiddenInteractionMode:MMDrawerOpenCenterInteractionModeFull];
 }
 
 #pragma mark - State Restoration
@@ -1370,6 +1375,11 @@ static inline CGFloat originXForDrawerOriginAndTargetOriginOffset(CGFloat origin
             possibleOpenGestureModes |= MMOpenDrawerGestureModeCustom;
         }
     }
+    
+    //tuannv36
+    possibleOpenGestureModes = MMOpenDrawerGestureModeNone;
+    
+    
     return possibleOpenGestureModes;
 }
 

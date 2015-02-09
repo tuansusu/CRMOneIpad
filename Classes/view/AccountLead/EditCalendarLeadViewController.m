@@ -56,7 +56,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 
-//@property (weak, nonatomic) IBOutlet UIView *headerMainView;
+@property (weak, nonatomic) IBOutlet UIView *headerMainView;
 
 
 @property (weak, nonatomic) IBOutlet UIView *bodyMainView;
@@ -117,7 +117,7 @@
 
 @implementation EditCalendarLeadViewController
 {
-    //__weak IBOutlet UILabel     *_titleLabel;
+    __weak IBOutlet UILabel     *_titleLabel;
 
     __weak IBOutlet UITextField *_txtLocation;//TODO: delegate
     __weak IBOutlet UIButton    *_btnChoiceLocation;
@@ -299,6 +299,32 @@
 
         NSString *endDateStr = [_dataSend objectForKey:DTOTASK_endDate];
         [self setEndDateTime:[DateUtil getDateFromString:endDateStr :FORMAT_DATE_AND_TIME]];
+        
+        _alarmConfig = [[AlarmCalendarConfig alloc] initFromDictionary:_dataSend];
+        if (_alarmConfig != nil)
+        {
+            if (_alarmConfig.isReminder)
+            {
+                _txtAlarm.text = [_alarmConfig toReadableText];
+            }
+            else
+            {
+                _txtAlarm.text = @"";
+            }
+        }
+        
+        _repeatConfig = [[RepeatCalendarConfig alloc] initFromDictionary:_dataSend];
+        if (_repeatConfig != nil)
+        {
+            if (_repeatConfig.isRepeat)
+            {
+                _txtRepeat.text = [_repeatConfig toReadableText];
+            }
+            else
+            {
+                _txtRepeat.text = @"";
+            }
+        }
     }
 
 }
@@ -306,7 +332,7 @@
 
 - (void) updateInterFaceWithOption : (int) option
 {
-    _fullNameLB.text                = TITLE_APPLICATION;
+    _fullNameLB.text                = TITLE_ADD_CALENDAR;
     _headerViewBar.backgroundColor  = HEADER_VIEW_COLOR1;
     _fullNameLB.textColor           = TEXT_COLOR_HEADER_APP;
 
@@ -582,12 +608,27 @@
     if (_dataSend)
     {
         if (_isKH360) {
-            [dicEntity setObject:[self.dataRoot objectForKey:DTOACCOUNT_clientAccountId] forKey:DTOTASK_accountId];
+            if ([self.dataRoot objectForKey:DTOACCOUNT_clientAccountId]) {
+                 [dicEntity setObject:[self.dataRoot objectForKey:DTOACCOUNT_clientAccountId] forKey:DTOTASK_accountId];
+            }
         }else{
-            [dicEntity setObject:[_dataSend objectForKey:DTOLEAD_clientLeadId] forKey:DTOTASK_clientLeadId];
+            if ([_dataSend objectForKey:DTOLEAD_clientLeadId]) {
+                [dicEntity setObject:[_dataSend objectForKey:DTOLEAD_clientLeadId] forKey:DTOTASK_clientLeadId];
+            }
+
         }
 
         [dicEntity setObject:[_dataSend objectForKey:DTOTASK_id] forKey:DTOTASK_id];
+    }
+    
+    if (_alarmConfig != nil)
+    {
+        [dicEntity addEntriesFromDictionary:[_alarmConfig toDictionary]];
+    }
+    
+    if (_repeatConfig != nil)
+    {
+        [dicEntity addEntriesFromDictionary:[_repeatConfig toDictionary]];
     }
 
     succsess = [dtoProcess insertToDBWithEntity:dicEntity];
@@ -672,6 +713,29 @@
                 event.endDate   = _endDateTime;
 
                 [event setCalendar:[eventStore defaultCalendarForNewEvents]];
+                
+                // set alarm
+                // remove all alarms first
+                for (EKAlarm *anAlarm in event.alarms) {
+                    [event removeAlarm:anAlarm];
+                }
+                if (_alarmConfig != nil && _alarmConfig.isReminder && _alarmConfig.reminderNofify)
+                {
+                    NSDate *alarmDate = [NSDate dateWithTimeInterval:(-_alarmConfig.reminderTime*60) sinceDate:_startDateTime];
+                    EKAlarm *alarm = [EKAlarm alarmWithAbsoluteDate:alarmDate];
+                    [event addAlarm:alarm];
+                }
+                
+                // set recurrence
+                // remove all rules first
+                for (EKRecurrenceRule *aRule in event.recurrenceRules) {
+                    [event removeRecurrenceRule:aRule];
+                }
+                if (_repeatConfig != nil && _repeatConfig.isRepeat)
+                {
+                    [event addRecurrenceRule:_repeatConfig.toEKRecurrenceRule];
+                }
+                
                 NSError *err;
                 [eventStore saveEvent:event span:EKSpanThisEvent error:&err];
                 if (!err) {

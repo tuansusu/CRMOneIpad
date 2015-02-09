@@ -36,7 +36,7 @@
     
     [lblDescription setText:stepOB.htmlInstructions];
     if (stepOB.maneuver) {
-        [iconDerections setImage:[UIImage imageNamed:[maneuverDic valueForKey:stepOB.maneuver]] forState:UIControlStateNormal];
+        [iconDerections setBackgroundImage:[UIImage imageNamed:[maneuverDic valueForKey:stepOB.maneuver]] forState:UIControlStateNormal];
     }
 
 }

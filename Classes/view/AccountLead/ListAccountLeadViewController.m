@@ -356,9 +356,6 @@
     }
 }
 
-
-
-
 - (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return YES;
@@ -937,7 +934,6 @@
         }else{
             viewController.address = @"";
         }
-        
         
         [self presentViewController:viewController animated:YES completion:nil];
         

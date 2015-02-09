@@ -149,11 +149,6 @@ typedef enum {
         pickerType = pickerType_day;
         
         _config = [[AlarmCalendarConfig alloc] init];
-        _config.isReminder = FALSE;
-        _config.reminderEmail = FALSE;
-        _config.reminderSMS   = FALSE;
-        _config.reminderNofify= TRUE;
-        _config.reminderTime  = 15;
     }
     
     [self displayConfig:_config];

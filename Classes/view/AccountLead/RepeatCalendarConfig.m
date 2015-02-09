@@ -178,4 +178,85 @@
     return self;
 }
 
+- (EKRecurrenceRule *)toEKRecurrenceRule
+{
+    if (_isRepeat)
+    {
+        EKRecurrenceEnd *recurrenceEnd = [EKRecurrenceEnd recurrenceEndWithEndDate:_repeatUntil];
+        switch (_repeatMode) {
+            case OO_RepeatMode_Day:
+            {
+                EKRecurrenceRule * rule = [[EKRecurrenceRule alloc] initRecurrenceWithFrequency:EKRecurrenceFrequencyDaily interval:_repeatDuration end:recurrenceEnd];
+                return rule;
+            }
+                break;
+                
+            case OO_RepeatMode_Week:
+            {
+                NSMutableArray * repeatDayOfWeek = [[NSMutableArray alloc] initWithCapacity:7];
+                if (_repeatWeekSun)
+                {
+                    [repeatDayOfWeek addObject:[EKRecurrenceDayOfWeek dayOfWeek:EKSunday]];
+                }
+                if (_repeatWeekMon)
+                {
+                    [repeatDayOfWeek addObject:[EKRecurrenceDayOfWeek dayOfWeek:EKMonday]];
+                }
+                if (_repeatWeekTue)
+                {
+                    [repeatDayOfWeek addObject:[EKRecurrenceDayOfWeek dayOfWeek:EKTuesday]];
+                }
+                if (_repeatWeekWed)
+                {
+                    [repeatDayOfWeek addObject:[EKRecurrenceDayOfWeek dayOfWeek:EKWednesday]];
+                }
+                if (_repeatWeekThu)
+                {
+                    [repeatDayOfWeek addObject:[EKRecurrenceDayOfWeek dayOfWeek:EKThursday]];
+                }
+                if (_repeatWeekFri)
+                {
+                    [repeatDayOfWeek addObject:[EKRecurrenceDayOfWeek dayOfWeek:EKFriday]];
+                }
+                if (_repeatWeekSat)
+                {
+                    [repeatDayOfWeek addObject:[EKRecurrenceDayOfWeek dayOfWeek:EKSaturday]];
+                }
+                
+                EKRecurrenceRule * rule = [[EKRecurrenceRule alloc] initRecurrenceWithFrequency:EKRecurrenceFrequencyWeekly interval:_repeatDuration daysOfTheWeek:[NSArray arrayWithArray:repeatDayOfWeek] daysOfTheMonth:nil monthsOfTheYear:nil weeksOfTheYear:nil daysOfTheYear:nil setPositions:nil end:recurrenceEnd];
+                return rule;
+            }
+                break;
+                
+            case OO_RepeatMode_Month:
+            {
+                if (_rpMonthRdIndexDay)
+                {
+                    EKRecurrenceRule * rule = [[EKRecurrenceRule alloc] initRecurrenceWithFrequency:EKRecurrenceFrequencyMonthly interval:_repeatDuration daysOfTheWeek:nil daysOfTheMonth:[NSArray arrayWithObject:[NSNumber numberWithUnsignedInteger:_rpMonthIndexDay]] monthsOfTheYear:nil weeksOfTheYear:nil daysOfTheYear:nil setPositions:nil end:recurrenceEnd];
+                    return rule;
+                }
+                else
+                {
+                    NSNumber * position = [NSNumber numberWithInt:_rpMonthFirstDay?1:(-1)];
+                    EKRecurrenceDayOfWeek * weekDay = [EKRecurrenceDayOfWeek dayOfWeek:_rpMonthDayOfWeek];
+                    EKRecurrenceRule * rule = [[EKRecurrenceRule alloc] initRecurrenceWithFrequency:EKRecurrenceFrequencyMonthly interval:_repeatDuration daysOfTheWeek:[NSArray arrayWithObject:weekDay] daysOfTheMonth:nil monthsOfTheYear:nil weeksOfTheYear:nil daysOfTheYear:nil setPositions:[NSArray arrayWithObject:position] end:recurrenceEnd];
+                    return rule;
+                }
+            }
+                break;
+                
+            case OO_RepeatMode_Year:
+            {
+                EKRecurrenceRule * rule = [[EKRecurrenceRule alloc] initRecurrenceWithFrequency:EKRecurrenceFrequencyYearly interval:_repeatDuration end:recurrenceEnd];
+                return rule;
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
+    return nil;
+}
 @end

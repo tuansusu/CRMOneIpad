@@ -188,7 +188,10 @@ static NSString *MMDrawerOpenSideKey = @"MMDrawerOpenSide";
     [self setShowsShadow:NO];
     [self setShouldStretchDrawer:YES];
     
+    //[self setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
+    //tuannv
     [self setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
+    
     [self setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeNone];
     //[self setCenterHiddenInteractionMode:MMDrawerOpenCenterInteractionModeNavigationBarOnly];
     //tuannv
@@ -1372,6 +1375,11 @@ static inline CGFloat originXForDrawerOriginAndTargetOriginOffset(CGFloat origin
             possibleOpenGestureModes |= MMOpenDrawerGestureModeCustom;
         }
     }
+    
+    //tuannv36
+    possibleOpenGestureModes = MMOpenDrawerGestureModeNone;
+    
+    
     return possibleOpenGestureModes;
 }
 

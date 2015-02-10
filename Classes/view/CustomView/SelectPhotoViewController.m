@@ -191,4 +191,8 @@
 }
 
 
+- (IBAction)actionCancel:(id)sender {
+    [self.view removeFromSuperview];
+    [_delegate delegateCancel];
+}
 @end

@@ -704,4 +704,9 @@
     mylert.tag = 11;
     [mylert show];
 }
+-(void) delegateCancel{
+    //[self dismissPopoverView];
+    [self viewWhenRemoveSubView];
+    //[self dismissViewControllerAnimated:YES completion:nil];
+}
 @end

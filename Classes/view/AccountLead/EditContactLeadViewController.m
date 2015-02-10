@@ -589,10 +589,10 @@
     
     [self viewWhenAddSubView];
     SelectPhotoViewController *detail = [[SelectPhotoViewController alloc] initWithNibName:@"SelectPhotoViewController" bundle:nil];
-    detail.delegate = self;
+    detail.delegate =(id<SelectPhotoDelegate>) self;
     detail.typeImage = @"Lead";
     detail.index = 0;
-    detail.view.frame = CGRectMake(380, 80, 320,480);
+    detail.view.frame = CGRectMake(380, 80, 320,380);
     [self addChildViewController: detail];
     [detail didMoveToParentViewController:self];
     //[InterfaceUtil setBorderWithCornerAndBorder:detail.view :10 :0.5 :nil];
@@ -755,5 +755,10 @@
         [alert show];
 
     
+}
+-(void) delegateCancel{
+    //[self dismissPopoverView];
+     [self viewWhenRemoveSubView];
+    //[self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

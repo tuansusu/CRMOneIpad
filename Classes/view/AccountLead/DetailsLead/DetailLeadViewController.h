@@ -115,6 +115,10 @@ enum TypeLeaderView{
 @property (weak, nonatomic) IBOutlet UILabel *lbLabelPhone;
 @property (weak, nonatomic) IBOutlet UILabel *lbLabelEmail;
 @property (weak, nonatomic) IBOutlet UILabel *lbLabelAddress;
+@property (weak, nonatomic) IBOutlet UILabel *lbLabelThuNhapCN;
+@property (weak, nonatomic) IBOutlet UILabel *lbLableTongThuNhap;
+@property (weak, nonatomic) IBOutlet UILabel *lbLableKhongLienLacQua;
+
 
 ////////////VALUE///////////////
 @property (weak, nonatomic) IBOutlet UILabel *lbCode;
@@ -127,6 +131,11 @@ enum TypeLeaderView{
 @property (weak, nonatomic) IBOutlet UILabel *lbPhone;
 @property (weak, nonatomic) IBOutlet UILabel *lbEmail;
 @property (weak, nonatomic) IBOutlet UILabel *lbAddress;
+@property (weak, nonatomic) IBOutlet UILabel *lbThuNhapCN;
+@property (weak, nonatomic) IBOutlet UILabel *lbTongThuNhap;
+@property (weak, nonatomic) IBOutlet UILabel *lbKhongLienLacQua;
+
+
 ////////////LEFT MENU////////////
 
 ////////KHAI BAO BIẾN THÔNG TIN KHÁCH HÀNG CÁ NHÂN///////
@@ -147,6 +156,22 @@ enum TypeLeaderView{
 @property (weak, nonatomic) IBOutlet UILabel *lbBussinessEmail;
 @property (weak, nonatomic) IBOutlet UILabel *lbLabelBussinessAddress;
 @property (weak, nonatomic) IBOutlet UILabel *lbBussinessAddress;
+@property (weak, nonatomic) IBOutlet UILabel *lbLableBussinessNgayThanhLap;
+@property (weak, nonatomic) IBOutlet UILabel *lbBussinessNgayThanhLap;
+@property (weak, nonatomic) IBOutlet UILabel *lbLableBussinessDKKD;
+@property (weak, nonatomic) IBOutlet UILabel *lbBussinessDKKD;
+@property (weak, nonatomic) IBOutlet UILabel *lbLabelBussinessVoChuSoHuu;
+@property (weak, nonatomic) IBOutlet UILabel *lbBussinessVoChuSoHuu;
+@property (weak, nonatomic) IBOutlet UILabel *lbLableBussinessVonDieuLe;
+@property (weak, nonatomic) IBOutlet UILabel *lbBussinessVonDieuLe;
+@property (weak, nonatomic) IBOutlet UILabel *lbLableBussinessTongTaiSan;
+@property (weak, nonatomic) IBOutlet UILabel *lbBussinessTongTaiSan;
+@property (weak, nonatomic) IBOutlet UILabel *lbLabelBussinessDoanhThu;
+@property (weak, nonatomic) IBOutlet UILabel *lbBussinessDoanhThu;
+@property (weak, nonatomic) IBOutlet UILabel *lbLableBussniessLoiNhuan;
+@property (weak, nonatomic) IBOutlet UILabel *lbBussinessLoiNhuan;
+@property (weak, nonatomic) IBOutlet UILabel *lbLableBussinessKhongLienLacQua;
+@property (weak, nonatomic) IBOutlet UILabel *lbBussinessKhongLienLacQuaa;
 
 ////////KHAI BAO BIẾN THÔNG TIN KHÁCH HÀNG DOANH NGHIEP///////
 

@@ -33,34 +33,54 @@
                 <outlet property="lbBirthDay" destination="8Yl-wo-z9O" id="ZTi-mq-hKX"/>
                 <outlet property="lbBussinessAddress" destination="1xw-sb-ZIA" id="G3f-f6-lwq"/>
                 <outlet property="lbBussinessCode" destination="e1P-9e-nln" id="B9h-Ey-isK"/>
+                <outlet property="lbBussinessDKKD" destination="Anq-Z8-MAk" id="oUE-9L-y8A"/>
+                <outlet property="lbBussinessDoanhThu" destination="PlP-IR-bKJ" id="CMV-Lk-kKG"/>
                 <outlet property="lbBussinessEmail" destination="1YO-u8-922" id="qP5-vq-wms"/>
+                <outlet property="lbBussinessKhongLienLacQuaa" destination="Eyr-CW-BhU" id="e6i-k4-e8K"/>
+                <outlet property="lbBussinessLoiNhuan" destination="BoJ-S7-72u" id="CAg-97-LAl"/>
                 <outlet property="lbBussinessName" destination="R8h-Zc-db4" id="Uq6-DS-SmG"/>
+                <outlet property="lbBussinessNgayThanhLap" destination="rPW-pb-aAX" id="Lan-Hp-eYl"/>
                 <outlet property="lbBussinessPhone" destination="Ahw-PD-mEz" id="iWx-Gb-idX"/>
                 <outlet property="lbBussinessTaxCode" destination="4lw-RH-EjM" id="A98-v6-bVH"/>
+                <outlet property="lbBussinessTongTaiSan" destination="90j-DN-EKB" id="7si-Pq-4kS"/>
+                <outlet property="lbBussinessVoChuSoHuu" destination="ytU-T7-MRF" id="s7d-IY-gyu"/>
+                <outlet property="lbBussinessVonDieuLe" destination="ZiM-cG-S4s" id="AF0-sQ-X0c"/>
                 <outlet property="lbCode" destination="y2v-Zg-vDw" id="wed-gW-fd0"/>
                 <outlet property="lbEmail" destination="rZQ-SI-KLd" id="9LA-UU-lwh"/>
+                <outlet property="lbKhongLienLacQua" destination="13R-F4-cRu" id="6om-mT-J55"/>
                 <outlet property="lbLabelAddress" destination="Lr2-L5-ou3" id="C9f-Gw-ipY"/>
                 <outlet property="lbLabelAlias" destination="oMG-7t-CBK" id="64f-zt-a44"/>
                 <outlet property="lbLabelBirthDay" destination="F3y-9g-Y5l" id="ARS-JS-Sej"/>
                 <outlet property="lbLabelBussinessAddress" destination="653-ES-T70" id="ih3-20-pgR"/>
                 <outlet property="lbLabelBussinessCode" destination="clY-x1-56h" id="fOH-Y1-GeX"/>
+                <outlet property="lbLabelBussinessDoanhThu" destination="LvZ-Qc-Lha" id="1RJ-In-2FI"/>
                 <outlet property="lbLabelBussinessEmail" destination="2gU-ZV-F9k" id="ASq-DL-xL3"/>
                 <outlet property="lbLabelBussinessName" destination="c82-cq-TpO" id="3ch-gt-l7s"/>
                 <outlet property="lbLabelBussinessPhone" destination="skF-Vn-d7K" id="fc8-YB-tUH"/>
                 <outlet property="lbLabelBussinessTaxCode" destination="8xR-aX-Ut3" id="VdX-S7-sCc"/>
+                <outlet property="lbLabelBussinessVoChuSoHuu" destination="Ydh-SI-UAt" id="Ngi-qi-9Lu"/>
                 <outlet property="lbLabelCode" destination="KXw-M2-f3c" id="2k1-wa-14e"/>
                 <outlet property="lbLabelEmail" destination="If9-rf-q6q" id="Cyk-lu-D0x"/>
                 <outlet property="lbLabelMarialStatus" destination="kTm-kr-qHA" id="gi2-oO-PTb"/>
                 <outlet property="lbLabelName" destination="PNk-eu-MVw" id="wao-1p-piJ"/>
                 <outlet property="lbLabelPhone" destination="StX-jK-WAG" id="6zx-tj-set"/>
-                <outlet property="lbLabelSector" destination="Cy4-Li-LcW" id="FNO-iQ-aaS"/>
                 <outlet property="lbLabelSex" destination="6Nw-Fv-c87" id="ZmC-E9-y8X"/>
+                <outlet property="lbLabelThuNhapCN" destination="cqY-Vp-dJj" id="Lpm-G3-5y5"/>
+                <outlet property="lbLableBussinessDKKD" destination="GQZ-1r-TjF" id="dWN-da-ZFI"/>
+                <outlet property="lbLableBussinessKhongLienLacQua" destination="3tB-J0-fSR" id="WIb-av-QR9"/>
+                <outlet property="lbLableBussinessNgayThanhLap" destination="pw5-7K-1dh" id="DCz-CU-37f"/>
+                <outlet property="lbLableBussinessTongTaiSan" destination="rqS-Yw-UpV" id="DYO-So-4xo"/>
+                <outlet property="lbLableBussinessVonDieuLe" destination="Rtr-P7-y1i" id="tHn-8j-ben"/>
+                <outlet property="lbLableBussniessLoiNhuan" destination="yhb-ny-Fdx" id="YgT-ug-QHd"/>
+                <outlet property="lbLableKhongLienLacQua" destination="M5e-83-rKA" id="RjF-XA-0Rk"/>
+                <outlet property="lbLableTongThuNhap" destination="0BG-mT-kOE" id="3fF-sZ-ZTl"/>
                 <outlet property="lbLeftInfo" destination="j75-Cb-SIa" id="hQ5-lo-d9M"/>
                 <outlet property="lbMarialStatus" destination="ncr-Jq-Knv" id="BuC-YQ-uai"/>
                 <outlet property="lbName" destination="bHn-tg-4eP" id="ces-qw-443"/>
                 <outlet property="lbPhone" destination="F8k-t9-7j4" id="Rth-3G-6aO"/>
-                <outlet property="lbSector" destination="uDi-xE-gqr" id="AgM-UR-znE"/>
                 <outlet property="lbSex" destination="kZz-kz-S1l" id="ocO-jk-3Yz"/>
+                <outlet property="lbThuNhapCN" destination="Wuj-FK-HyB" id="Vnl-lt-2OW"/>
+                <outlet property="lbTongThuNhap" destination="HDC-C1-rnH" id="e4Y-Qf-bLQ"/>
                 <outlet property="mainView" destination="1v2-8o-oTW" id="yGj-iE-mQa"/>
                 <outlet property="scrollViewBussiness" destination="i2s-QG-6DP" id="EnD-pr-xZl"/>
                 <outlet property="scrollViewHeaderExpandInfo" destination="PBA-ds-hKb" id="zkq-FA-sNj"/>
@@ -164,10 +184,88 @@
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </view>
-                                <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="i2s-QG-6DP" userLabel="ScrollView - Bussiness">
+                                <scrollView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="i2s-QG-6DP" userLabel="ScrollView - Bussiness">
                                     <rect key="frame" x="0.0" y="40" width="320" height="634"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                     <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Doanh thu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LvZ-Qc-Lha" userLabel="Doanh thu">
+                                            <rect key="frame" x="20" y="438" width="130" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="511" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Doanh thu" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PlP-IR-bKJ" userLabel="Label - Doanh thu">
+                                            <rect key="frame" x="160" y="438" width="149" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tổng tài sản" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rqS-Yw-UpV" userLabel="Tổng tài sản">
+                                            <rect key="frame" x="20" y="400" width="130" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="511" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tổng tài sản" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="90j-DN-EKB" userLabel="Label - Tổng tài sản">
+                                            <rect key="frame" x="160" y="400" width="149" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vốn điều lệ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Rtr-P7-y1i" userLabel="Vốn điêu lệ">
+                                            <rect key="frame" x="20" y="324" width="130" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="511" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vốn điều lệ" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZiM-cG-S4s" userLabel="Label - Vốn điều lệ">
+                                            <rect key="frame" x="160" y="324" width="149" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vốn chử sở hữu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ydh-SI-UAt" userLabel="Vốn chủ sở hữu">
+                                            <rect key="frame" x="20" y="362" width="130" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="511" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vốn chủ sở hữu" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ytU-T7-MRF" userLabel="Label - Vốn chủ sở hữu">
+                                            <rect key="frame" x="160" y="362" width="149" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="511" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="số dkkd" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Anq-Z8-MAk" userLabel="Label - Số DKKD">
+                                            <rect key="frame" x="160" y="286" width="149" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số đăng ký" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GQZ-1r-TjF" userLabel="Số DKKD">
+                                            <rect key="frame" x="20" y="286" width="130" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="511" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" ngày thành lập" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rPW-pb-aAX" userLabel="Label - Ngày thành lập">
+                                            <rect key="frame" x="160" y="248" width="149" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngày thành lập" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pw5-7K-1dh" userLabel="Ngày thành lập">
+                                            <rect key="frame" x="20" y="248" width="130" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="v67-7m-Tfo">
                                             <rect key="frame" x="280" y="172" width="32" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -277,6 +375,19 @@
                                                 <action selector="actionSMSDN:" destination="-1" eventType="touchUpInside" id="1JO-X2-tzX"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Không liên lạc qua" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3tB-J0-fSR" userLabel="Không liên lạc qua">
+                                            <rect key="frame" x="20" y="514" width="130" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="511" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SMS,Email" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Eyr-CW-BhU" userLabel="Label - Không liên lạc qua">
+                                            <rect key="frame" x="160" y="514" width="149" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sTZ-rd-yWV" userLabel="btnAdd">
                                             <rect key="frame" x="281" y="210" width="32" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -287,12 +398,51 @@
                                                 <action selector="actionAddDN:" destination="-1" eventType="touchUpInside" id="kII-Us-oCC"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lợi nhuận" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yhb-ny-Fdx" userLabel="Lợi nhuận">
+                                            <rect key="frame" x="20" y="476" width="130" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="511" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lợi nhuận" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BoJ-S7-72u" userLabel="Label - Lợi nhuận">
+                                            <rect key="frame" x="160" y="476" width="149" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </scrollView>
-                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="ILf-m8-nq4" userLabel="Scroll View - personal">
+                                <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="ILf-m8-nq4" userLabel="Scroll View - personal">
                                     <rect key="frame" x="0.0" y="40" width="320" height="634"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                     <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Không liên lạc qua" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="M5e-83-rKA" userLabel="Không liên lạc qua">
+                                            <rect key="frame" x="20" y="438" width="130" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="511" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SMS,Email" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="13R-F4-cRu" userLabel="Label - Không liên lạc qua">
+                                            <rect key="frame" x="161" y="438" width="150" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tổng thu nhập" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0BG-mT-kOE" userLabel="Tổng thu nhập">
+                                            <rect key="frame" x="20" y="400" width="130" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="511" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tổng thu nhập" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HDC-C1-rnH" userLabel="Label - Tổng thu nhập">
+                                            <rect key="frame" x="161" y="400" width="150" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mã khách hàng" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KXw-M2-f3c">
                                             <rect key="frame" x="20" y="20" width="130" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -302,6 +452,19 @@
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="511" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="y2v-Zg-vDw" userLabel="Label - ma khach hag">
                                             <rect key="frame" x="162" y="20" width="150" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thu nhập cá nhân" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cqY-Vp-dJj" userLabel="Thu nhập cá nhân">
+                                            <rect key="frame" x="20" y="362" width="130" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="511" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thu nhập cá nhân" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wuj-FK-HyB" userLabel="Label - Thu nhập cá nhân">
+                                            <rect key="frame" x="161" y="362" width="150" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="highlightedColor"/>
@@ -319,110 +482,97 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sector" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cy4-Li-LcW">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CMT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oMG-7t-CBK" userLabel="CMT">
                                             <rect key="frame" x="20" y="96" width="100" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="511" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uDi-xE-gqr" userLabel="Label - sector">
-                                            <rect key="frame" x="86" y="96" width="225" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tên gợi nhớ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oMG-7t-CBK">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Giới tính" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6Nw-Fv-c87">
                                             <rect key="frame" x="20" y="134" width="100" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Giới tính" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6Nw-Fv-c87">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="511" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kZz-kz-S1l" userLabel="Label - gioi tinh">
+                                            <rect key="frame" x="97" y="134" width="214" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngày sinh" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F3y-9g-Y5l">
                                             <rect key="frame" x="20" y="172" width="100" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="511" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kZz-kz-S1l" userLabel="Label - gioi tinh">
-                                            <rect key="frame" x="97" y="172" width="214" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngày sinh" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F3y-9g-Y5l">
-                                            <rect key="frame" x="20" y="210" width="100" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="511" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Yl-wo-z9O" userLabel="Label - ngay sinh">
-                                            <rect key="frame" x="144" y="210" width="130" height="30"/>
+                                            <rect key="frame" x="144" y="172" width="130" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tình trạng hôn nhân" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kTm-kr-qHA">
-                                            <rect key="frame" x="20" y="248" width="150" height="30"/>
+                                            <rect key="frame" x="20" y="210" width="150" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="511" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ncr-Jq-Knv" userLabel="Label - tinh trang hon nhan">
-                                            <rect key="frame" x="182" y="248" width="130" height="30"/>
+                                            <rect key="frame" x="182" y="210" width="130" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số điện thoại" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="StX-jK-WAG">
-                                            <rect key="frame" x="20" y="286" width="100" height="30"/>
+                                            <rect key="frame" x="20" y="248" width="100" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="511" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F8k-t9-7j4">
-                                            <rect key="frame" x="118" y="286" width="126" height="30"/>
+                                            <rect key="frame" x="118" y="248" width="126" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="If9-rf-q6q">
-                                            <rect key="frame" x="20" y="324" width="80" height="30"/>
+                                            <rect key="frame" x="20" y="286" width="80" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="511" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rZQ-SI-KLd">
-                                            <rect key="frame" x="112" y="324" width="160" height="30"/>
+                                            <rect key="frame" x="112" y="286" width="160" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Địa chỉ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lr2-L5-ou3">
-                                            <rect key="frame" x="20" y="362" width="80" height="30"/>
+                                            <rect key="frame" x="20" y="324" width="80" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="511" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xb5-mg-5PL">
-                                            <rect key="frame" x="112" y="362" width="160" height="30"/>
+                                            <rect key="frame" x="112" y="324" width="160" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar_small_new.png" id="7Zh-TD-oFt">
-                                            <rect key="frame" x="282" y="210" width="30" height="30"/>
+                                            <rect key="frame" x="282" y="172" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="87g-Ka-RZS">
-                                            <rect key="frame" x="247" y="287" width="30" height="27"/>
+                                            <rect key="frame" x="247" y="249" width="30" height="27"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="call.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -432,7 +582,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2mm-Nz-CaG">
-                                            <rect key="frame" x="282" y="286" width="30" height="30"/>
+                                            <rect key="frame" x="282" y="248" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="email_icon_hide.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -442,7 +592,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="flq-3N-4xU">
-                                            <rect key="frame" x="282" y="324" width="30" height="30"/>
+                                            <rect key="frame" x="282" y="286" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="email_icon_hide.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -452,7 +602,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="49n-KV-k23">
-                                            <rect key="frame" x="281" y="362" width="30" height="30"/>
+                                            <rect key="frame" x="281" y="324" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="pin.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -461,8 +611,8 @@
                                                 <action selector="actionAddCN:" destination="-1" eventType="touchUpInside" id="7jl-J1-pGl"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="511" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="81O-TA-ZJA">
-                                            <rect key="frame" x="124" y="134" width="187" height="30"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="511" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123456" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="81O-TA-ZJA" userLabel="Label - CMT">
+                                            <rect key="frame" x="124" y="96" width="187" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="highlightedColor"/>

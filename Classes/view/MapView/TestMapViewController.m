@@ -117,16 +117,6 @@
 
     zoomRatio = ZOOM_RATIO;
 
-
-    // add start location
-    NSLog(@"_lan = %f : _lon = %f", _lan, _lon);
-    //    _lan = 21.032439554704172;
-    //    _lon = 105.79308874905109;
-
-//        camera = [GMSCameraPosition cameraWithLatitude:_lan
-//                                             longitude:_lon
-//                                                  zoom:zoomRatio];
-
     mapView_ = [GMSMapView mapWithFrame:CGRectMake(0, 0, mainView.frame.size.width, mainView.frame.size.height)  camera:nil];
     mapView_.myLocationEnabled = YES;
     mapView_.delegate = self;
@@ -149,18 +139,11 @@
 }
 
 -(void)initDataKH{
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [_mapModel getFirstPageCustomerKHDMWithKey:searchBarCustomer.text];
-        [_mapModel getFirstPageCustomerKH360WithKey:searchBarCustomer.text];
-        [self initFirstPageKHDMDirectionsFlag];
-        [self initFirstPageKHD360irectionsFlag];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [customerTbv reloadData];
-
-        });
-    });
-
-
+    [_mapModel getFirstPageCustomerKHDMWithKey:searchBarCustomer.text];
+    [_mapModel getFirstPageCustomerKH360WithKey:searchBarCustomer.text];
+    [customerTbv reloadData];
+    [self initFirstPageKHDMDirectionsFlag];
+    [self initFirstPageKHD360irectionsFlag];
 }
 
 //Home button
@@ -474,7 +457,7 @@
 - (void)mapView:(GMSMapView *)mapView
 didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate{
     [[GMSGeocoder geocoder] reverseGeocodeCoordinate:coordinate completionHandler:^(GMSReverseGeocodeResponse* response, NSError* error) {
-        NSLog(@"reverse geocoding results: %d", [[response results] count] );
+        NSLog(@"reverse geocoding results: %lu", (unsigned long)[[response results] count] );
         for(GMSAddress* addressObj in [response results])
         {
 
@@ -517,7 +500,7 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
             NSLog(@"address : %@",routesOB.endAddress);
 
             [listRoutes addObject:routesOB];
-            [listRoutesDic setObject:routesOB forKey:[NSString stringWithFormat:@"%@%d",KEY_POLYLINE_KHDM,indexDirectionSelected]];
+            [listRoutesDic setObject:routesOB forKey:[NSString stringWithFormat:@"%@%ld",KEY_POLYLINE_KHDM,(long)indexDirectionSelected]];
         }
 
         NSDictionary *route = [routes objectForKey:@"overview_polyline"];
@@ -527,9 +510,9 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
         polyline.map = mapView_;
         // add Polyline Dictionary
         if (customerType==typeKHDM) {
-            [polyLineDic_ setObject:polyline forKey:[NSString stringWithFormat:@"%@%d",KEY_POLYLINE_KHDM,indexDirectionSelected]];
+            [polyLineDic_ setObject:polyline forKey:[NSString stringWithFormat:@"%@%ld",KEY_POLYLINE_KHDM,(long)indexDirectionSelected]];
         }else if(customerType==typeKH360){
-            [polyLineDic_ setObject:polyline forKey:[NSString stringWithFormat:@"%@%d",KEY_POLYLINE_KH360,indexDirectionSelected]];
+            [polyLineDic_ setObject:polyline forKey:[NSString stringWithFormat:@"%@%ld",KEY_POLYLINE_KH360,(long)indexDirectionSelected]];
         }
     }
 }
@@ -539,38 +522,38 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
     if (cusType==typeKHDM) {
 
         // remove Polyline dictionary KHDM
-        polyline =[polyLineDic_ objectForKey:[NSString stringWithFormat:@"%@%d",KEY_POLYLINE_KHDM,index]];
+        polyline =[polyLineDic_ objectForKey:[NSString stringWithFormat:@"%@%ld",KEY_POLYLINE_KHDM,(long)index]];
 
         // remove GMSMarker string KHDM
-        GMSMarker *marker = [wayPointDic_ objectForKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_KHDM,index]];
+        GMSMarker *marker = [wayPointDic_ objectForKey:[NSString stringWithFormat:@"%@%ld",KEY_MARKER_KHDM,(long)index]];
         [waypoints_ removeObject:marker];
-        [wayPointDic_ removeObjectForKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_KHDM,index]];
+        [wayPointDic_ removeObjectForKey:[NSString stringWithFormat:@"%@%ld",KEY_MARKER_KHDM,(long)index]];
 
         // remove marker string KHDM
-        NSString *markerStr = [wayPointStrDic_ objectForKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_STRING_KHDM,index]];
+        NSString *markerStr = [wayPointStrDic_ objectForKey:[NSString stringWithFormat:@"%@%ld",KEY_MARKER_STRING_KHDM,(long)index]];
         [waypointStrings_ removeObject:markerStr];
-        [wayPointStrDic_ removeObjectForKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_STRING_KHDM,index]];
+        [wayPointStrDic_ removeObjectForKey:[NSString stringWithFormat:@"%@%ld",KEY_MARKER_STRING_KHDM,(long)index]];
 
     }else if(cusType==typeKH360){
         // remove Polyline dictionary kh360
-        polyline =[polyLineDic_ objectForKey:[NSString stringWithFormat:@"%@%d",KEY_POLYLINE_KH360,index]];
+        polyline =[polyLineDic_ objectForKey:[NSString stringWithFormat:@"%@%ld",KEY_POLYLINE_KH360,(long)index]];
 
         // remove GMSMarker string kh360
-        GMSMarker *marker = [wayPointDic_ objectForKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_KH360,index]];
+        GMSMarker *marker = [wayPointDic_ objectForKey:[NSString stringWithFormat:@"%@%ld",KEY_MARKER_KH360,(long)index]];
         [waypoints_ removeObject:marker];
-        [wayPointDic_ removeObjectForKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_KH360,index]];
+        [wayPointDic_ removeObjectForKey:[NSString stringWithFormat:@"%@%ld",KEY_MARKER_KH360,(long)index]];
 
         // remove marker string kh360
-        NSString *markerStr = [wayPointStrDic_ objectForKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_STRING_KH360,index]];
+        NSString *markerStr = [wayPointStrDic_ objectForKey:[NSString stringWithFormat:@"%@%ld",KEY_MARKER_STRING_KH360,(long)index]];
         [waypointStrings_ removeObject:markerStr];
-        [wayPointStrDic_ removeObjectForKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_STRING_KH360,index]];
+        [wayPointStrDic_ removeObjectForKey:[NSString stringWithFormat:@"%@%ld",KEY_MARKER_STRING_KH360,(long)index]];
     }
     if (polyline) {
         polyline.map = nil;
     }
-    UICGRoute *routesOB = [listRoutesDic objectForKey:[NSString stringWithFormat:@"%@%d",KEY_POLYLINE_KHDM,index]];
+    UICGRoute *routesOB = [listRoutesDic objectForKey:[NSString stringWithFormat:@"%@%ld",KEY_POLYLINE_KHDM,(long)index]];
     [listRoutes removeObject:routesOB];
-    [listRoutesDic removeObjectForKey:[NSString stringWithFormat:@"%@%d",KEY_POLYLINE_KHDM,index]];
+    [listRoutesDic removeObjectForKey:[NSString stringWithFormat:@"%@%ld",KEY_POLYLINE_KHDM,(long)index]];
 
 }
 
@@ -728,13 +711,13 @@ didTapInfoWindowOfMarker:(GMSMarker *)marker{
                 marker.position = CLLocationCoordinate2DMake([khdmOB.lat floatValue], [khdmOB.lon floatValue]);
                 [marker setUserData:khdmOB];
                 [waypoints_ addObject:marker];
-                [wayPointDic_ setObject:marker forKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_KHDM,indexPath.row]];
+                [wayPointDic_ setObject:marker forKey:[NSString stringWithFormat:@"%@%ld",KEY_MARKER_KHDM,(long)indexPath.row]];
 
                 // add marker string KHDM
                 NSString *positionString = [[NSString alloc] initWithFormat:@"%f,%f",
                                             [khdmOB.lat floatValue],[khdmOB.lon floatValue]];
                 [waypointStrings_ addObject:positionString];
-                [wayPointStrDic_ setObject:positionString forKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_STRING_KHDM,indexPath.row]];
+                [wayPointStrDic_ setObject:positionString forKey:[NSString stringWithFormat:@"%@%ld",KEY_MARKER_STRING_KHDM,(long)indexPath.row]];
                 // implement Routes of Directions with Google API
 
                 if([waypoints_ count]>1){
@@ -781,13 +764,13 @@ didTapInfoWindowOfMarker:(GMSMarker *)marker{
                 marker.position = CLLocationCoordinate2DMake([kh360OB.lat floatValue], [kh360OB.lon floatValue]);
                 [marker setUserData:kh360OB];
                 [waypoints_ addObject:marker];
-                [wayPointDic_ setObject:marker forKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_KH360,indexPath.row]];
+                [wayPointDic_ setObject:marker forKey:[NSString stringWithFormat:@"%@%ld",KEY_MARKER_KH360,(long)indexPath.row]];
 
                 // add marker string kh360
                 NSString *positionString = [[NSString alloc] initWithFormat:@"%f,%f",
                                             [kh360OB.lat floatValue],[kh360OB.lon floatValue]];
                 [waypointStrings_ addObject:positionString];
-                [wayPointStrDic_ setObject:positionString forKey:[NSString stringWithFormat:@"%@%d",KEY_MARKER_STRING_KH360,indexPath.row]];
+                [wayPointStrDic_ setObject:positionString forKey:[NSString stringWithFormat:@"%@%ld",KEY_MARKER_STRING_KH360,(long)indexPath.row]];
 
                 // implement Routes of Directions with Google API
                 if([waypoints_ count]>1){
@@ -827,7 +810,7 @@ didTapInfoWindowOfMarker:(GMSMarker *)marker{
 
     NSInteger currentOffset = scrollView.contentOffset.y;
     NSInteger maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height;
-    
+
     if (currentOffset - maximumOffset >= 40) {
         if (khdmSelected) {
             [_mapModel getNextPageCustomerKHDMWithKey:searchBarCustomer.text];

@@ -14,7 +14,7 @@
 
 
 
-@interface EditContactLeadViewController : BaseViewController<UITextFieldDelegate, SelectPhotoDelegate,SelectIndexDelegate,UITextFieldDelegate>
+@interface EditContactLeadViewController : BaseViewController<UITextFieldDelegate, SelectPhotoDelegate,SelectIndexDelegate>
 
 //DATA
 /*

@@ -525,23 +525,56 @@
 }// may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    NSLog(@"text thay doi");
-    if(textField==self.txtPhone){
-        NSLog(@"text phone thay doi");
-        NSNumberFormatter *nf=[[NSNumberFormatter alloc]init];
-        [nf setNumberStyle:NSNumberFormatterNoStyle];
-        NSString *newString =[NSString stringWithFormat:@"%@%@",textField.text,string];
-        NSNumber *number =[nf numberFromString:newString];
-        if(number){
+    if(textField == _txtPhone &&![StringUtil stringIsEmpty:_txtPhone.text])
+    {
+        if(_txtPhone.text.length<=20){
+            return YES;}
+        else {
+            [util showTooltip:_txtPhone withText:@"Không quá 20 ký tự" showview:_bodyMainView];
+            return NO;
+        }
+    }
+    //check ho ten
+    if(textField==_txtName && ![StringUtil stringIsEmpty:_txtName.text] ){
+        
+        if(_txtName.text.length<=50){
             return YES;
         }
         else{
-            return  NO;
+            [util showTooltip:_txtName withText:@"Không quá 50 ký tự" showview:_bodyMainView];
+            return NO;
         }
     }
-    else{
-        NSLog(@"khong phai text phone");
-        return YES;
+    //chuc danh
+    if(textField==_txtPosition && ![StringUtil stringIsEmpty:_txtPosition.text]){
+        if(_txtPosition.text.length<=100){
+            return YES;}
+        else{
+            [util showTooltip:_txtPosition withText:@"Không quá 100 ký tự" showview:_bodyMainView];
+            return NO;
+        }
+    }
+    
+    //chung minh thu
+    if(textField==_txtNumberIdentity && ![StringUtil stringIsEmpty:_txtNumberIdentity.text]){
+        if(_txtNumberIdentity.text.length <=20){
+            return YES;
+        }
+        else{
+            [util showTooltip:_txtNumberIdentity withText:@"Không quá 20 ký tự" showview:_bodyMainView];
+            return NO;
+        }
+    }
+    
+    //noi cap
+    if(textField==_txtWhereBorn && ![StringUtil stringIsEmpty:_txtWhereBorn.text]){
+        if(_txtWhereBorn.text.length<=100){
+            return YES;
+        }
+        else{
+            [util showTooltip:_txtWhereBorn withText:@"Không quá 100 ký tự" showview:_bodyMainView];
+            return NO;
+        }
     }
     
 }// return NO to not change text

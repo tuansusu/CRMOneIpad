@@ -95,7 +95,7 @@
     [self initData];
     [self setLanguage];
     if(_dataSend.count >0){
-    
+        
         _btnDelContact.hidden=NO;
     }
     
@@ -203,8 +203,8 @@
             if ([viewSubTemp isKindOfClass:[UITextField class]]) {
                 ((UITextField*) viewSubTemp).textColor = TEXT_COLOR_REPORT;
                 ((UITextField*) viewSubTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
-//                ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
-//                ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
+                //                ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
+                //                ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
                 
                 [((UITextField*) viewSubTemp) setPaddingLeft];
                 [((UITextField*) viewSubTemp) setBorderWithOption:smgSelect];
@@ -552,25 +552,59 @@
 }// may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    NSLog(@"text thay doi");
-    if(textField==self.txtPhone){
-        NSLog(@"text phone thay doi");
-        NSNumberFormatter *nf=[[NSNumberFormatter alloc]init];
-        [nf setNumberStyle:NSNumberFormatterNoStyle];
-        NSString *newString =[NSString stringWithFormat:@"%@%@",textField.text,string];
-        NSNumber *number =[nf numberFromString:newString];
-        if(number){
+    //check sdt
+    
+    if(textField == _txtPhone &&![StringUtil stringIsEmpty:_txtPhone.text])
+    {
+        if(_txtPhone.text.length<=20){
+            return YES;}
+        else {
+            [util showTooltip:_txtPhone withText:@"Không quá 20 ký tự" showview:_bodyMainView];
+            return NO;
+        }
+    }
+    //check ho ten
+    if(textField==_txtName && ![StringUtil stringIsEmpty:_txtName.text] ){
+        
+        if(_txtName.text.length<=50){
             return YES;
         }
         else{
-            return  NO;
+            [util showTooltip:_txtName withText:@"Không quá 50 ký tự" showview:_bodyMainView];
+            return NO;
         }
     }
-    else{
-        NSLog(@"khong phai text phone");
-        return YES;
+    //chuc danh
+    if(textField==_txtPosition && ![StringUtil stringIsEmpty:_txtPosition.text]){
+        if(_txtPosition.text.length<=100){
+            return YES;}
+        else{
+            [util showTooltip:_txtPosition withText:@"Không quá 100 ký tự" showview:_bodyMainView];
+            return NO;
+        }
     }
     
+    //chung minh thu
+    if(textField==_txtNumberIdentity && ![StringUtil stringIsEmpty:_txtNumberIdentity.text]){
+        if(_txtNumberIdentity.text.length <=20){
+        return YES;
+        }
+        else{
+            [util showTooltip:_txtNumberIdentity withText:@"Không quá 20 ký tự" showview:_bodyMainView];
+            return NO;
+        }
+    }
+
+    //noi cap
+    if(textField==_txtWhereBorn && ![StringUtil stringIsEmpty:_txtWhereBorn.text]){
+        if(_txtWhereBorn.text.length<=100){
+        return YES;
+        }
+        else{
+            [util showTooltip:_txtWhereBorn withText:@"Không quá 100 ký tự" showview:_bodyMainView];
+            return NO;
+        }
+    }
 }// return NO to not change text
 
 - (BOOL)textFieldShouldClear:(UITextField *)textField{
@@ -731,7 +765,7 @@
         [_fullNameLB setText:[LocalizedString(@"KEY_CONTACT_EDIT") uppercaseString]];
     }
     else{
-    [_fullNameLB setText:[LocalizedString(@"KEY_CONTACT_ADD") uppercaseString]];
+        [_fullNameLB setText:[LocalizedString(@"KEY_CONTACT_ADD") uppercaseString]];
     }
     [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
     [_lbFullname setText:LocalizedString(@"KEY_CONTACT_NAME")];
@@ -748,17 +782,17 @@
     
 }
 - (IBAction)actionDel:(id)sender {
-
-        //Thong bao cap nhat thanh cong va thoat
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Bạn có muốn xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles:@"Không", nil];
-        alert.tag = 55;
-        [alert show];
-
+    
+    //Thong bao cap nhat thanh cong va thoat
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Bạn có muốn xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles:@"Không", nil];
+    alert.tag = 55;
+    [alert show];
+    
     
 }
 -(void) delegateCancel{
     //[self dismissPopoverView];
-     [self viewWhenRemoveSubView];
+    [self viewWhenRemoveSubView];
     //[self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

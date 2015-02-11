@@ -11,6 +11,7 @@
 @protocol SelectPhotoDelegate <NSObject>
 
 -(void) selectPhoto : (NSString*) fileName;
+-(void) delegateCancel;
 
 @end
 
@@ -40,5 +41,8 @@
 @property (nonatomic, retain) IBOutlet UIButton * takePhotoBtn;
 
 -(IBAction) getPhoto:(id) sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnHuy;
+
+- (IBAction)actionCancel:(id)sender;
 
 @end

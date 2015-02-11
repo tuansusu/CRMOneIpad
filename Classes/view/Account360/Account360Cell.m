@@ -97,20 +97,20 @@ NSDateFormatter *df,*dfTime;
     }
     if ([self checkFollowAccount:leadId]==1) {
         //dang theo doi
-        [_btnFollow setImage:[UIImage imageNamed:@"task_done.png"] forState:UIControlStateNormal];
+        [_btnFollow setBackgroundImage:[UIImage imageNamed:@"task_done.png"] forState:UIControlStateNormal];
     }
     else if([self checkFollowAccount:leadId]==2){
         //qua han
-        [_btnFollow setImage:[UIImage imageNamed:@"task_not_done.png"] forState:UIControlStateNormal];
+        [_btnFollow setBackgroundImage:[UIImage imageNamed:@"task_not_done.png"] forState:UIControlStateNormal];
         
     }
     else if([self checkFollowAccount:leadId]==3){
         //hoan thanh
-        [_btnFollow setImage:[UIImage imageNamed:@"flag_disable.png"] forState:UIControlStateNormal];
+        [_btnFollow setBackgroundImage:[UIImage imageNamed:@"flag_disable.png"] forState:UIControlStateNormal];
         
     }
     else{
-        [_btnFollow setImage:[UIImage imageNamed:@"flag_enable.png"] forState:UIControlStateNormal];
+        [_btnFollow setBackgroundImage:[UIImage imageNamed:@"flag_enable.png"] forState:UIControlStateNormal];
         
     }
     

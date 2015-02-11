@@ -85,6 +85,9 @@
     obj.str = [defaults objectForKey:@"Language"];
     LocalizationSetLanguage(obj.str);
     [self setLanguage];
+    if(_dataSend.count>0){
+        _btnDelNote.hidden=NO;
+    }
     
 }
 
@@ -163,15 +166,15 @@
     self.barLabel.textColor = TEXT_TOOLBAR_COLOR1;
     //    [self.leftViewHeader setBackgroundColor:BACKGROUND_COLOR_TOP_LEFT_HEADER];
     //    self.leftLabelHeader.textColor = TEXT_COLOR_HEADER_APP;
-//    [self.headerMainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
-//    [self.headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
-//    for (UIView *viewSubTemp in self.headerMainView.subviews) {
-//        
-//        
-//        if ([viewSubTemp isKindOfClass:[UILabel class]]) {
-//            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
-//        }
-//    }
+    //    [self.headerMainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
+    //    [self.headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
+    //    for (UIView *viewSubTemp in self.headerMainView.subviews) {
+    //
+    //
+    //        if ([viewSubTemp isKindOfClass:[UILabel class]]) {
+    //            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+    //        }
+    //    }
     
     [self.btnSave setStyleNormalWithOption:smgSelect];
     
@@ -390,7 +393,50 @@
         else if(buttonIndex==1){
             NSLog(@"Khong  xoa file");
         }
-    }else{
+    }
+    else if(alertView.tag==55 && buttonIndex==0){
+        NSMutableDictionary *dicEntity = [NSMutableDictionary new];
+        
+        [dicEntity setObject:@"0" forKey:DTONOTE_isActive];
+        //truong hop sua
+        [dicEntity setObject:[_dataSend objectForKey:DTONOTE_id] forKey:DTONOTE_id];
+        
+        succsess = [dtoProcess insertToDBWithEntity:dicEntity];
+        if(succsess){
+            
+            NSMutableDictionary *entiFile= [NSMutableDictionary new];
+            if(arrayData.count>0){
+                for (NSDictionary *path in arrayData) {
+                    //  NSLog(@"%@", path);
+                    
+                    [entiFile setObject:@"0" forKey:DTOATTACHMENT_isActive];
+                    [entiFile setObject:[path objectForKey:DTOATTACHMENT_id] forKey:DTOATTACHMENT_id];
+                    
+                    @try {
+                        BOOL   dt = [dtoFileProcess insertToDBWithEntity:entiFile];
+                        if (!dt) {
+                            NSLog(@"Loi roi");
+                        }
+                    }
+                    @catch (NSException *exception) {
+                        NSLog(@"log:%@", exception);            }
+                    @finally {
+                        NSLog(@"OK");            }
+                    
+                    
+                }
+            }
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+        else{
+            NSLog(@"Error");
+        }
+        
+    }
+    else if(alertView.tag==55 && buttonIndex==1){
+        
+    }
+    else{
         if(buttonIndex==0){
             NSLog(@"Ban khong tiep tuc");
             [self dismissViewControllerAnimated:YES completion:nil];
@@ -412,7 +458,9 @@
 #pragma mark text delegate
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    ////NSLog(@"edit ting : %@", self.t\\\);
+    if(self.txtTitle.text.length>0){
+    NSLog(@"edit ting : %@", self.txtTitle.text);
+    }
     return  YES;
 }// return NO to not change text
 
@@ -656,4 +704,10 @@
     }
     [_lbFileAttachment setText:LocalizedString(@"KEY_NOTE_FILE")];
 };
+- (IBAction)actionDelNote:(id)sender {
+    
+    UIAlertView * myAler=[[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Anh/chị có muốn xoá ghi chú này không?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles:@"Huỷ", nil];
+    myAler.tag=55;
+    [myAler show];
+}
 @end

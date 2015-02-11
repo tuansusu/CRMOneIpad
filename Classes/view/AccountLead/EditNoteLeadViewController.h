@@ -75,5 +75,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lbContent;
 @property (weak, nonatomic) IBOutlet UILabel *lbFileAttachment;
+@property (weak, nonatomic) IBOutlet UIButton *btnDelNote;
+- (IBAction)actionDelNote:(id)sender;
+
 
 @end

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="barLabel" destination="reH-Ql-Gj8" id="zsN-n4-b5j"/>
                 <outlet property="bodyMainView" destination="XSw-TN-t0I" id="3ef-Vz-oxS"/>
+                <outlet property="btnDelNote" destination="FOi-Ba-U4E" id="fA4-qs-pY4"/>
                 <outlet property="btnHome" destination="a7d-it-5GR" id="LaL-QH-3CW"/>
                 <outlet property="btnSave" destination="Awy-Pp-n2G" id="Kfn-du-RvG"/>
                 <outlet property="choosePhotoBtn" destination="Zla-gZ-Cqd" id="VfG-Wg-wxz"/>
@@ -59,14 +60,24 @@
                                 <action selector="homeBack:" destination="-1" eventType="touchUpInside" id="jAD-ri-Qab"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Awy-Pp-n2G">
-                            <rect key="frame" x="906" y="2" width="110" height="40"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Awy-Pp-n2G">
+                            <rect key="frame" x="890" y="2" width="110" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Cập nhập">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="actionSave:" destination="-1" eventType="touchUpInside" id="eoy-4X-hPb"/>
+                            </connections>
+                        </button>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FOi-Ba-U4E">
+                            <rect key="frame" x="772" y="2" width="110" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Xoá">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actionDelNote:" destination="-1" eventType="touchUpInside" id="Iwt-6S-Cjp"/>
                             </connections>
                         </button>
                     </subviews>
@@ -135,22 +146,22 @@
                                             <rect key="frame" x="0.0" y="530" width="984" height="40"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Zla-gZ-Cqd">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Zla-gZ-Cqd">
                                                     <rect key="frame" x="34" y="9" width="128" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.039215686270000001" green="0.43137254899999999" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <state key="normal" title="Choice Photo">
+                                                    <state key="normal" title="Chọn ảnh">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="getPhoto:" destination="-1" eventType="touchUpInside" id="Dpz-N3-2uL"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="K02-si-2Zb">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="K02-si-2Zb">
                                                     <rect key="frame" x="475" y="10" width="122" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.039215686270000001" green="0.43137254899999999" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <state key="normal" title="Take Photo">
+                                                    <state key="normal" title="Chụp ảnh">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>

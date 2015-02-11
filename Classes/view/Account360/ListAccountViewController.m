@@ -127,17 +127,17 @@
     
     UIMenuItem *viewMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Xem", nil) action:@selector(view:) image:[UIImage imageNamed:@"menuview.png"]];
     
-     UIMenuItem *editMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Sửa", nil) action:@selector(edit:) image:[UIImage imageNamed:@"menuedit.png"]];
+    UIMenuItem *editMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Sửa", nil) action:@selector(edit:) image:[UIImage imageNamed:@"menuedit.png"]];
     
-     UIMenuItem *delMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Xoá", nil) action:@selector(del:) image:[UIImage imageNamed:@"menudelete.png"]];
+    UIMenuItem *delMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Xoá", nil) action:@selector(del:) image:[UIImage imageNamed:@"menudelete.png"]];
     
-     UIMenuItem *callMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Gọi điện", nil) action:@selector(call:) image:[UIImage imageNamed:@"menuphone.png"]];
+    UIMenuItem *callMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Gọi điện", nil) action:@selector(call:) image:[UIImage imageNamed:@"menuphone.png"]];
     
-     UIMenuItem *smsMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"SMS", nil) action:@selector(sms:) image:[UIImage imageNamed:@"menumessage.png"]];
+    UIMenuItem *smsMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"SMS", nil) action:@selector(sms:) image:[UIImage imageNamed:@"menumessage.png"]];
     
-     UIMenuItem *emailMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Email", nil) action:@selector(email:) image:[UIImage imageNamed:@"menuemail.png"]];
+    UIMenuItem *emailMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Email", nil) action:@selector(email:) image:[UIImage imageNamed:@"menuemail.png"]];
     
-     UIMenuItem *fowlMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Theo dõi", nil) action:@selector(follow:) image:[UIImage imageNamed:@"menuflag.png"]];
+    UIMenuItem *fowlMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Theo dõi", nil) action:@selector(follow:) image:[UIImage imageNamed:@"menuflag.png"]];
     
     
     UIMenuItem *mapMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Bản đồ", nil) action:@selector(map:) image:[UIImage imageNamed:@"menumap.png"]];
@@ -262,7 +262,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-   
+    
     //Cell loading
     if((arrayData.count) == indexPath.row){
         static NSString *cellIndentifier =@"cell";
@@ -274,7 +274,7 @@
         }
         if (!noMoreResultsAvail) {
             
-            
+            NSLog(@"VT1");
             spinner.hidden =NO;
             cell.textLabel.text=nil;
             
@@ -288,6 +288,7 @@
             }
         }
         else{
+            NSLog(@"VT2");
             [spinner stopAnimating];
             spinner.hidden=YES;
             
@@ -485,13 +486,14 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText   // called when text changes (including clear)
 {
-    NSLog(@"text did change %@", searchText);
+    //NSLog(@"text did change %@", searchText);
     strSearchText = searchText;
-    arrayData=[dtoProcess filterWithKey:DTOACCOUNT_name withValue:searchText];
-    // _lbTotal.text=arrayData.count;
-    _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
+    //strSearchText = @"1010";
+    //arrayData=[dtoLeadProcess filterWithKey:DTOLEAD_name withValue:searchText];
+    //_lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
     [self resetLoadData];
-    [_tbData reloadData];
+    [self filterData];
+    //[_tbData reloadData];
 }
 
 
@@ -517,64 +519,6 @@
 }
 //ham loc du lieu
 -(void) filterData {
-    
-//    if ([StringUtil stringIsEmpty:strSearchText]) {
-//        arrayData = [dtoProcess filter];
-//    }else{
-//        
-//        //        switch (iSearchOption) {
-//        //            case SCOPE_ALL:
-//        //                break;
-//        //            case SCOPE_CODE:{
-//        //                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_code withValue: strSearchText];
-//        //            }
-//        //                break;
-//        //            case SCOPE_EMAIL:{
-//        //                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_email withValue: strSearchText];
-//        //            }
-//        //                break;
-//        //            case SCOPE_NAME:
-//        //            {
-//        //                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_name withValue: strSearchText];
-//        //            }
-//        //                break;
-//        //            case SCOPE_PHONE:
-//        //            {
-//        //                arrayData = [dtoProcess filterWithKey:DTOACCOUNT_mobile withValue: strSearchText];
-//        //            }
-//        //                break;
-//        //            default:
-//        //                break;
-//        //        }
-//        
-//        
-//        NSMutableDictionary *dicCondition = [[NSMutableDictionary alloc]init];
-//        
-//        [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOACCOUNT_code];
-//        
-//        
-//        
-//        [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOACCOUNT_name];
-//        
-//        
-//        
-//        [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOACCOUNT_mobile];
-//        
-//        
-//        
-//        [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOACCOUNT_email];
-//        
-//        
-//        
-//        arrayData = [dtoProcess filterWithOrArrayCondition:dicCondition];
-//        
-//    }
-//    //load data from db
-//    _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
-//    
-//    //NSLog(@"list data = %@", arrayData);
-//    [self.tbData reloadData];
-//    [SVProgressHUD dismiss];
     if ([StringUtil stringIsEmpty:strSearchText]) {
         //arrayData = [dtoLeadProcess filter];
         //arrayData =  [dtoLeadProcess filterWithStart:loaded withLimit:PAGESIZE withOutTotal:&totalCount];
@@ -701,22 +645,22 @@
  */
 -(void)tableView:(UITableView *)tableView swipeAccessoryButtonPushedForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSLog(@"sua item at index = %d", indexPath.row);
-//    
-//    NSDictionary *dicDataTemp = [arrayData objectAtIndex:indexPath.row];
-//    
-//    NSDictionary *dicData = [dtoProcess getDataWithKey:DTOACCOUNT_id withValue:[dicDataTemp objectForKey:DTOACCOUNT_id]];
-//    
-//    if ([ObjectToStr([dicDataTemp objectForKey:DTOACCOUNT_accountType]) isEqualToString:FIX_LEADTYPE_PERSON]) {
-//        
-//        EditAccount360ViewController *viewController = [[EditAccount360ViewController alloc]initWithNibName:@"EditAccount360ViewController" bundle:nil];
-//        viewController.dataSend = dicData;
-//        [self presentViewController:viewController animated:YES completion:nil];
-//    }else{
-//        EditBussiness360ViewController *viewController = [[EditBussiness360ViewController alloc]initWithNibName:@"EditBussiness360ViewController" bundle:nil];
-//        // viewController.dataSend = dicDataTemp;
-//        [self presentViewController:viewController animated:YES completion:nil];
-//    }
+    //    NSLog(@"sua item at index = %d", indexPath.row);
+    //
+    //    NSDictionary *dicDataTemp = [arrayData objectAtIndex:indexPath.row];
+    //
+    //    NSDictionary *dicData = [dtoProcess getDataWithKey:DTOACCOUNT_id withValue:[dicDataTemp objectForKey:DTOACCOUNT_id]];
+    //
+    //    if ([ObjectToStr([dicDataTemp objectForKey:DTOACCOUNT_accountType]) isEqualToString:FIX_LEADTYPE_PERSON]) {
+    //
+    //        EditAccount360ViewController *viewController = [[EditAccount360ViewController alloc]initWithNibName:@"EditAccount360ViewController" bundle:nil];
+    //        viewController.dataSend = dicData;
+    //        [self presentViewController:viewController animated:YES completion:nil];
+    //    }else{
+    //        EditBussiness360ViewController *viewController = [[EditBussiness360ViewController alloc]initWithNibName:@"EditBussiness360ViewController" bundle:nil];
+    //        // viewController.dataSend = dicDataTemp;
+    //        [self presentViewController:viewController animated:YES completion:nil];
+    //    }
     
     
 }

@@ -291,7 +291,7 @@
         }
         if (!noMoreResultsAvail) {
             
-            
+            NSLog(@"VT1");
             spinner.hidden =NO;
             cell.textLabel.text=nil;
             
@@ -305,6 +305,7 @@
             }
         }
         else{
+            NSLog(@"VT2");
             [spinner stopAnimating];
             spinner.hidden=YES;
             

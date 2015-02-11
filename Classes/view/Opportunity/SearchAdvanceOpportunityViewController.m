@@ -137,9 +137,11 @@
     if (((UIButton*) sender).tag == 103) {
         //xoa ngay bat dau
         _txtStartDate.text = @"";
+        dateFrom = nil;
     }else if (((UIButton*) sender).tag == 104){
         //xoa ngay ket thuc
         _txtEndDate.text = @"";
+        dateTo = nil;
     }
     
 }

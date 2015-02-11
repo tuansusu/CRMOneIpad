@@ -105,6 +105,9 @@
     [self.viewRdCustomerRoot addSubview:rdCustomerRoot];
 
 }
+-(void) filterData:(NSString*)keyword withStartDate:(NSDate*) startDate withEndDate:(NSDate*) endDate withType:(int)type{
+    arrayData = [dtoOpportunityProcess filterOpportunity:keyword addStartDate:startDate addEndDate:endDate userType:type];
+}
 
 
 #pragma mark check radio
@@ -138,7 +141,8 @@
     dtoOpportunityProcess = [DTOOPPORTUNITYProcess new];
     arrayData  = [NSArray new];
 
-    arrayData = [dtoOpportunityProcess filterOpportunity:nil addStartDate:nil addEndDate:nil userType:nil];
+    //arrayData = [dtoOpportunityProcess filterOpportunity:nil addStartDate:nil addEndDate:nil userType:nil];
+    [self filterData:nil withStartDate:nil withEndDate: nil withType:nil];
     _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
     //load data from db
     
@@ -284,7 +288,8 @@
 }
 
 -(void) viewDidAppear:(BOOL)animated{
-    arrayData = [dtoOpportunityProcess filterOpportunity:nil addStartDate:nil addEndDate:nil userType:nil];
+    //arrayData = [dtoOpportunityProcess filterOpportunity:nil addStartDate:nil addEndDate:nil userType:nil];
+    [self filterData:nil withStartDate:nil withEndDate: nil withType:nil];
     
     _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
     [self.tbData reloadData];
@@ -392,7 +397,8 @@
         //reload lai csdl
         if (result) {
             
-            arrayData = [dtoOpportunityProcess filterOpportunity:nil addStartDate:nil addEndDate:nil userType:nil];
+            //arrayData = [dtoOpportunityProcess filterOpportunity:nil addStartDate:nil addEndDate:nil userType:nil];
+            [self filterData:nil withStartDate:nil withEndDate: nil withType:nil];
             [self.tbData reloadData];
             //thong bao cap nhat thanh cong
             UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:KEY_NOTIFICATION_TITLE message:SYS_Notification_UpdateSuccess delegate:self cancelButtonTitle:KEY_NOTIFICATION_ACCEPT otherButtonTitles:  nil];
@@ -473,13 +479,16 @@
 
 - (IBAction)search:(id)sender {
     NSString *keyword = self.txtKeyword.text;
-    arrayData = [dtoOpportunityProcess filterOpportunity:keyword addStartDate:startDate addEndDate:endDate userType:userType];
+    //arrayData = [dtoOpportunityProcess filterOpportunity:keyword addStartDate:startDate addEndDate:endDate userType:userType];
+    [self filterData:keyword withStartDate:startDate withEndDate: endDate withType:userType];
     [self.tbData reloadData];
 }
 
 -(void) actionSearchAdvance:(NSString*)keyword addStartDate:(NSDate*)startDate addEndDate:(NSDate*)endDate userType:(int)type{
     
-    arrayData = [dtoOpportunityProcess filterOpportunity:keyword addStartDate:startDate addEndDate:endDate userType:type];
+    //arrayData = [dtoOpportunityProcess filterOpportunity:keyword addStartDate:startDate addEndDate:endDate userType:type];
+    [self filterData:keyword withStartDate:startDate withEndDate: endDate withType:type];
+    
     //_lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
     
     [self.tbData reloadData];
@@ -550,7 +559,8 @@
     NSLog(@"text did change %@", searchText);
     //strSearchText = searchText;
     if(self.txtSearchBar.text.length == 0){
-        arrayData = [dtoOpportunityProcess filterOpportunity:self.txtSearchBar.text addStartDate:nil addEndDate:nil userType:nil];
+        //arrayData = [dtoOpportunityProcess filterOpportunity:self.txtSearchBar.text addStartDate:nil addEndDate:nil userType:nil];
+        [self filterData:self.txtSearchBar.text withStartDate:nil withEndDate: nil withType:nil];
         _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
         
         [self.tbData reloadData];
@@ -570,7 +580,8 @@
     //[SVProgressHUD show];
     NSString *keyword = self.txtSearchBar.text;
     keyword = [StringUtil trimString:keyword];
-    arrayData = [dtoOpportunityProcess filterOpportunity:keyword addStartDate:nil addEndDate:nil userType:nil];
+    //arrayData = [dtoOpportunityProcess filterOpportunity:keyword addStartDate:nil addEndDate:nil userType:nil];
+    [self filterData:keyword withStartDate:nil withEndDate: nil withType:nil];
     _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
     [self.tbData reloadData];
     [searchBar resignFirstResponder];

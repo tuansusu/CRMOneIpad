@@ -201,7 +201,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     //khoi tao du lieu!
     listArr  = [NSArray arrayWithObjects:SELECT_TEXT_ADD_CONTACT,SELECT_TEXT_ADD_PRODUCT, SELECT_TEXT_ADD_CALENDAR,SELECT_TEXT_ADD_COMPETITOR,SELECT_TEXT_ADD_NOTE,SELECT_TEXT_ADD_SUPORT, nil];
     
-    [self actionClueContact:self.btnClueContact];
+   // [self actionClueContact:self.btnClueContact];
     
     dtoOpportunityProcess = [DTOOPPORTUNITYProcess new];
     dtoCompetitorProcess = [DTOCOMPETITORProcess new];
@@ -264,7 +264,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
 - (void) updateInterFaceWithOption : (int) option
 {
-    self.fullNameLB.text = TITLE_APPLICATION;
+    self.fullNameLB.text = @"CƠ HỘI BÁN HÀNG"; //TITLE_APPLICATION;
     [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
     self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
     //[self.btnSearch setStyleNormalWithOption:smgSelect];

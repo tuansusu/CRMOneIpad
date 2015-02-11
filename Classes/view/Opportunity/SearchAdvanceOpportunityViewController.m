@@ -111,7 +111,9 @@
 - (IBAction)actionSearch:(id)sender {
     
     if (self.advanceSearchDelegate && [self.advanceSearchDelegate respondsToSelector:@selector(actionSearchAdvance:addStartDate:addEndDate:userType:)]) {
-        [self.advanceSearchDelegate actionSearchAdvance:self.txtName.text addStartDate:dateFrom addEndDate:dateTo userType:selectAccountTypeIndex];
+        NSString *name = self.txtName.text;
+        name = [StringUtil trimString:name];
+        [self.advanceSearchDelegate actionSearchAdvance:name addStartDate:dateFrom addEndDate:dateTo userType:selectAccountTypeIndex];
     }
     
 }

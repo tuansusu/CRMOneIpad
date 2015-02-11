@@ -90,6 +90,11 @@
     }
     searchBarController.active = NO;
 }
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    UITapGestureRecognizer *tapImageRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(dismissPopUp)];
+    [self.view addGestureRecognizer:tapImageRecognizer];
+}
 //khoi tao gia tri mac dinh cua form
 -(void) initData {
     
@@ -229,6 +234,7 @@
 
 #pragma mark action button
 - (IBAction)actionHome:(id)sender{
+    searchBarController.active = NO;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

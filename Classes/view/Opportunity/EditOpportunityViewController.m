@@ -834,6 +834,13 @@
         
     }
     
+    if(startDate > endDate){
+        [self showTooltip:self.dtEndDate withText:@"Ngày kết thúc không được nhỏ hơn ngày bắt đầu"];
+        [self.dtEndDate becomeFirstResponder];
+        [self setBorder:self.dtEndDate];
+        return NO;
+    }
+    
     return YES;
 }
 
@@ -844,6 +851,7 @@
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    //return 80;
     return 40;
 }
 
@@ -851,8 +859,25 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell) cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-    cell.textLabel.text = [[listArrCustomerFilter objectAtIndex:indexPath.row] objectForKey:@"name"]; //[NSString stringWithFormat:@"%d",indexPath.row];
+    cell.textLabel.text = [[listArrCustomerFilter objectAtIndex:indexPath.row] objectForKey:@"name"];
     return cell;
+    
+    
+//    static NSString *cellId = @"CustomerCell";
+//    CustomerCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+//    
+//    
+//    if (!cell) {
+//        cell = [CustomerCell initNibCell];
+//    }
+//    
+//    NSDictionary *customer = [listArrCustomerFilter objectAtIndex:indexPath.row];
+//    
+//    cell.lblName.text = [customer objectForKey:@"name"];
+//    cell.lblMobile.text = [customer objectForKey:@"mobile"];
+//    cell.lblCode.text =[customer objectForKey:@"code"];
+//    return cell;
+
 }
 
 

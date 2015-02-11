@@ -887,7 +887,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             if (arrayData.count>0) {
                 [cell loadDataToCellWithData:[arrayData objectAtIndex:indexPath.row] withOption:smgSelect];
             }
-            
+            cell.delegate=(id<ContactDelegate>)self;
             return cell;
         }
             break;
@@ -1497,20 +1497,124 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     return heightLabel;
 }
 - (IBAction)actionCallCN:(id)sender {
+    if(![StringUtil stringIsEmpty:_lbPhone.text]){
+        [self delegate_callContact:_lbPhone.text];}
 }
 - (IBAction)actionSMSCN:(id)sender {
+    if(![StringUtil stringIsEmpty:_lbPhone.text]){
+        [self delegate_sendSMSContact:_lbPhone.text];
+    }
 }
 - (IBAction)actionEmailCN:(id)sender {
+    if(![StringUtil stringIsEmpty:_lbEmail.text]){
+        [self delegate_sendMailContact:_lbEmail.text];
+    }
 }
 - (IBAction)actionAddCN:(id)sender {
+    if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_lat]]) {
+        float fLon = [[dicData objectForKey:DTOLEAD_lon] floatValue];
+        float fLan =[[dicData objectForKey:DTOLEAD_lat] floatValue];
+        
+        TestMapViewController *viewController = [[TestMapViewController alloc]initWithNibName:@"TestMapViewController" bundle:nil];
+        viewController.typeMapView = typeMapView_View;
+        viewController.lan = fLan;
+        viewController.lon = fLon;
+        //viewController.address = [dicData objectForKey:DTOLEAD_address];
+        if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_address]]) {
+            viewController.address = [dicData objectForKey:DTOLEAD_address];
+        }else{
+            viewController.address = @"";
+        }
+        
+        [self presentViewController:viewController animated:YES completion:nil];
+        
+    }
 }
 - (IBAction)actionCallDN:(id)sender {
 }
 - (IBAction)actionAddDN:(id)sender {
+    if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_lat]]) {
+        float fLon = [[dicData objectForKey:DTOLEAD_lon] floatValue];
+        float fLan =[[dicData objectForKey:DTOLEAD_lat] floatValue];
+        
+        TestMapViewController *viewController = [[TestMapViewController alloc]initWithNibName:@"TestMapViewController" bundle:nil];
+        viewController.typeMapView = typeMapView_View;
+        viewController.lan = fLan;
+        viewController.lon = fLon;
+        //viewController.address = [dicData objectForKey:DTOLEAD_address];
+        if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_address]]) {
+            viewController.address = [dicData objectForKey:DTOLEAD_address];
+        }else{
+            viewController.address = @"";
+        }
+        
+        [self presentViewController:viewController animated:YES completion:nil];
+        
+    }
+
 }
 
 - (IBAction)actionSMSDN:(id)sender {
 }
 - (IBAction)actionEmailDN:(id)sender {
+}
+#pragma mark sendmail
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+    
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            //NSLog(@"Cancelled");
+            break;
+        case MFMailComposeResultSaved:
+            //NSLog(@"Saved");
+            break;
+        case MFMailComposeResultSent:
+        {
+            UIAlertView *alert = [[UIAlertView alloc] init];
+            [alert setTitle:@"Gửi email thành công!"];
+            [alert setMessage:nil];
+            [alert setDelegate:self];
+            [alert addButtonWithTitle:@"Thoát"];
+            
+            [alert show];
+            
+        }
+            break;
+        case MFMailComposeResultFailed:
+        {
+            UIAlertView *alert = [[UIAlertView alloc] init];
+            [alert setTitle:@"Không gửi được email!"];
+            [alert setMessage:nil];
+            [alert setDelegate:self];
+            [alert addButtonWithTitle:@"Thoát"];
+            
+            [alert show];
+            
+        }
+            break;
+            
+            //NSLog(@"Not send");
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+-(void) delegate_sendMailContact:(NSString *)email{
+    [Util sendMail:self withEmail:email];
+}
+- (void)delegate_callContact:(NSString *)mobile {
+    if(![StringUtil stringIsEmpty:mobile]){
+        NSString *callnumber=[NSString stringWithFormat:@"telprompt://%@",mobile];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callnumber]];
+    }
+}
+
+- (void)delegate_sendSMSContact:(NSString *)mobile {
+    if(![StringUtil stringIsEmpty:mobile]){
+        NSString *sendSMS=[NSString stringWithFormat:@"sms://%@",mobile];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:sendSMS]];
+    }
 }
 @end

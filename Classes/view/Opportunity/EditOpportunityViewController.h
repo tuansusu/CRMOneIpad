@@ -11,6 +11,7 @@
 #import "SelectIndexViewController.h"
 #import "MDSearchBarController.h"
 #import "CMPopTipView.h"
+#import "CustomerCell.h"
 
 @interface EditOpportunityViewController : BaseViewController<UITextFieldDelegate, SelectIndexDelegate,MDSearchBarViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 

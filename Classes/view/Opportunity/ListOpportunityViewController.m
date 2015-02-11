@@ -568,8 +568,9 @@
 {
     NSLog(@"seach click");
     //[SVProgressHUD show];
-    
-    arrayData = [dtoOpportunityProcess filterOpportunity:self.txtSearchBar.text addStartDate:nil addEndDate:nil userType:nil];
+    NSString *keyword = self.txtSearchBar.text;
+    keyword = [StringUtil trimString:keyword];
+    arrayData = [dtoOpportunityProcess filterOpportunity:keyword addStartDate:nil addEndDate:nil userType:nil];
     _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
     [self.tbData reloadData];
     [searchBar resignFirstResponder];

@@ -945,6 +945,8 @@
 		94A2A7731A80F89F00C412E7 /* EditNoteOpportunityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A2A7711A80F89F00C412E7 /* EditNoteOpportunityViewController.xib */; };
 		94A2A7771A80F9F900C412E7 /* NoteOpportunityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A2A7751A80F9F900C412E7 /* NoteOpportunityCell.m */; };
 		94A2A7781A80F9F900C412E7 /* NoteOpportunityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A2A7761A80F9F900C412E7 /* NoteOpportunityCell.xib */; };
+		94A8C0031A890CA900E9EBA4 /* CustomerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A8C0011A890CA900E9EBA4 /* CustomerCell.m */; };
+		94A8C0041A890CA900E9EBA4 /* CustomerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A8C0021A890CA900E9EBA4 /* CustomerCell.xib */; };
 		94BA8D771A2DF3710082AE9E /* EditOpportunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA8D751A2DF3710082AE9E /* EditOpportunityViewController.m */; };
 		94BA8D781A2DF3710082AE9E /* EditOpportunityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BA8D761A2DF3710082AE9E /* EditOpportunityViewController.xib */; };
 		94BA8D7C1A2DF3CF0082AE9E /* CalendarPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA8D7A1A2DF3CF0082AE9E /* CalendarPickerViewController.m */; };
@@ -2547,6 +2549,9 @@
 		94A2A7741A80F9F900C412E7 /* NoteOpportunityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteOpportunityCell.h; sourceTree = "<group>"; };
 		94A2A7751A80F9F900C412E7 /* NoteOpportunityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteOpportunityCell.m; sourceTree = "<group>"; };
 		94A2A7761A80F9F900C412E7 /* NoteOpportunityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteOpportunityCell.xib; sourceTree = "<group>"; };
+		94A8C0001A890CA900E9EBA4 /* CustomerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerCell.h; sourceTree = "<group>"; };
+		94A8C0011A890CA900E9EBA4 /* CustomerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerCell.m; sourceTree = "<group>"; };
+		94A8C0021A890CA900E9EBA4 /* CustomerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerCell.xib; sourceTree = "<group>"; };
 		94BA8D741A2DF3710082AE9E /* EditOpportunityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditOpportunityViewController.h; sourceTree = "<group>"; };
 		94BA8D751A2DF3710082AE9E /* EditOpportunityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditOpportunityViewController.m; sourceTree = "<group>"; };
 		94BA8D761A2DF3710082AE9E /* EditOpportunityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditOpportunityViewController.xib; sourceTree = "<group>"; };
@@ -4273,6 +4278,9 @@
 				7622D2ED1A43246700DC9309 /* ContactOpportunityCell.h */,
 				7622D2EE1A43246700DC9309 /* ContactOpportunityCell.m */,
 				7622D2EF1A43246700DC9309 /* ContactOpportunityCell.xib */,
+				94A8C0001A890CA900E9EBA4 /* CustomerCell.h */,
+				94A8C0011A890CA900E9EBA4 /* CustomerCell.m */,
+				94A8C0021A890CA900E9EBA4 /* CustomerCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -6114,6 +6122,7 @@
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				92C68E551519D4F100981728 /* License.md in Resources */,
 				2D0AD497173219510048A239 /* Default-568h@2x.png in Resources */,
+				94A8C0041A890CA900E9EBA4 /* CustomerCell.xib in Resources */,
 				8E44BC341A73A89B00EDCD1A /* ProEMBDetailViewController.xib in Resources */,
 				76F3289C1A34B88B00E0F2C4 /* task_not_done.png in Resources */,
 				8E44BC381A73A89B00EDCD1A /* ProTaiKhoanTietKiemDetailViewController.xib in Resources */,
@@ -6675,6 +6684,7 @@
 				92C68E501519D4F100981728 /* BaseViewController.m in Sources */,
 				8434BEFD1A2F485700C29815 /* DetailContactLeadViewController.m in Sources */,
 				8E44BC2E1A73A89B00EDCD1A /* ProductsLeadView.m in Sources */,
+				94A8C0031A890CA900E9EBA4 /* CustomerCell.m in Sources */,
 				92C68E511519D4F100981728 /* Constants.m in Sources */,
 				8EC4B90D1A505A7D0078BF13 /* DirectionsViewCell.m in Sources */,
 				8EC972911A5D71300021DCA3 /* FFHeaderMonthForYearCell.m in Sources */,

@@ -489,28 +489,28 @@
     }
     if([StringUtil trimString:self.txtName.text].length==0)
     {
-        [self showTooltip:self.txtName withText:@"Tên công việc không được để trống"];
+        [self showTooltip:self.txtName withText:@"Anh/Chị chưa nhập tên công việc"];
         [self.txtName becomeFirstResponder];
         [self setBorder:self.txtName];
         return NO;
     }
     
     if(selectStatusIndex < 0){
-        [self showTooltip:self.txtStatus withText:@"Bạn chưa nhập trạng thái"];
+        [self showTooltip:self.txtStatus withText:@"Anh/Chị chưa nhập trạng thái"];
         [self.txtStatus becomeFirstResponder];
         [self setBorder:self.txtStatus];
         return NO;
     }
     
     if(dateFrom == nil){
-        [self showTooltip:self.txtDateFrom withText:@"Ngày bắt đầu không được để trống"];
+        [self showTooltip:self.txtDateFrom withText:@"Anh/Chị chưa nhập ngày bắt đầu"];
         [self.txtDateFrom becomeFirstResponder];
         [self setBorder:self.txtDateFrom];
         return NO;
         
     }
     if(dateTo == nil){
-        [self showTooltip:self.txtDateTo withText:@"Ngày kết thúc không được để trống"];
+        [self showTooltip:self.txtDateTo withText:@"Anh/Chị chưa nhập ngày kết thúc"];
         [self.txtDateTo becomeFirstResponder];
         [self setBorder:self.txtDateTo];
         return NO;

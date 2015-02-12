@@ -649,7 +649,7 @@
 -(BOOL) checkValidToSave {
     BOOL isValidate = YES;
     if ([StringUtil trimString: self.txtName.text].length==0) {
-        [self showTooltip:self.txtName withText:@"Bạn chưa nhập tên liên hệ"];
+        [self showTooltip:self.txtName withText:@"Anh/Chị chưa nhập tên liên hệ"];
         
         [self.txtName  becomeFirstResponder];
         [self setBorder:self.txtName];
@@ -658,7 +658,7 @@
     }
     if([StringUtil trimString:self.txtPosition.text].length==0){
         
-        [self showTooltip:self.txtPosition  withText:@"Bạn chưa nhập chức danh"];
+        [self showTooltip:self.txtPosition  withText:@"Anh/Chị chưa nhập chức danh"];
         [self.txtPosition becomeFirstResponder];
         [self setBorder:self.txtPosition];
         isValidate=NO;
@@ -666,7 +666,7 @@
     }
     if([StringUtil trimString:self.txtPhone.text].length==0){
         
-        [self showTooltip:self.txtPhone  withText:@"Bạn chưa nhập số điện thoại"];
+        [self showTooltip:self.txtPhone  withText:@"Anh/Chị chưa nhập số điện thoại"];
         [self.txtPhone becomeFirstResponder];
         [self setBorder:self.txtPhone];
         isValidate=NO;

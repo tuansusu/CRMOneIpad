@@ -21,6 +21,8 @@
     int smgSelect ; //option layout
     NSMutableArray *arrayData; //mang luu tru du lieu (file)
     NSDictionary *dicData; //luu tru du lieu sua
+    NSDictionary *fileDel;//luu tru file de xoa
+    NSMutableArray *arrayDelFile;//file luu tru del
     
     DTONOTEProcess *dtoProcess;
     DTOATTACHMENTProcess *dtoFileProcess;
@@ -70,7 +72,7 @@
     util =[Util new];
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
-    
+    arrayDelFile =[NSMutableArray new];
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
     [self initData];
@@ -320,8 +322,8 @@
         NSString *strClientFileId = IntToStr(([dtoProcess getClientId]));
         //NSDictionary *dicRow = [arrayData objectAtIndex:indexPath.row];
         for (NSDictionary *path in arrayData) {
-            //  NSLog(@"%@", path);
-            if([path objectForKey:DTOATTACHMENT_id]==0){
+           int itemId=[[path objectForKey:DTOATTACHMENT_id] intValue];
+            if(itemId < 0){
                 [entiFile setObject:@"" forKey:DTOATTACHMENT_attachmentId];
                 [entiFile setObject:strClientFileId forKey:DTOATTACHMENT_clientAttachmentId];
                 if (self.dataSend.count>0) {
@@ -361,6 +363,18 @@
     }
     
     
+    //xoa file
+    if (succsess && arrayDelFile.count>0) {
+        for (NSDictionary *item in arrayDelFile) {
+            int itemId=[[item objectForKey:DTOATTACHMENT_id] intValue];
+            if (itemId>0) {
+                BOOL result=[dtoFileProcess deleteEntity:[NSString stringWithFormat:@"%d",itemId]];
+                if (result) {
+                    NSLog(@"Delete OK");
+                }
+            }
+        }
+    }
     
     if (succsess) {
         //Thong bao cap nhat thanh cong va thoat
@@ -383,12 +397,12 @@
         NSLog(@"Xoa file dinh kem");
         if(buttonIndex==0){
             
-            NSLog(@"Xoa file dinh kem:%@",deleteFile);
-            BOOL result=[dtoFileProcess deleteEntity:deleteFile];
-            if (result) {
-                arrayData =[dtoFileProcess filterWithKey:DTOATTACHMENT_clientObjectId withValue:[_dataSend objectForKey:DTONOTE_clientNoteId]];
-                [self.tbData reloadData];
-            }
+            [arrayData removeObject:fileDel];
+            NSMutableDictionary *addItem=[NSMutableDictionary new];
+            [addItem setValue:deleteFile forKey:DTOATTACHMENT_id];
+            [arrayDelFile addObject:addItem];
+            [_tbData reloadData];
+
         }
         else if(buttonIndex==1){
             NSLog(@"Khong  xoa file");
@@ -504,21 +518,14 @@
     [imageData writeToFile:dbPath atomically:YES];
     
     
-    //luu file thanh cong
-    
+    //luu file thanh con
     NSMutableDictionary *dicFile = [[NSMutableDictionary alloc]init];
-    
-    //    if (self.dataSend.count>0) {
-    //        [dicData setValue:strFileName forKey:DTOATTACHMENT_fileName];
-    //        [dicData setValue:0 forKey:DTOATTACHMENT_id];
-    //
-    //        [arrayData addObject: dicData];
-    //        [self.tbData reloadData];
-    //    }
+    int i = rand()%100+1;
+    NSLog(@"Random Number: %i", -i);
     dicData=[NSMutableDictionary new];
     [dicData setValue:strFileName forKey:DTOATTACHMENT_fileName];
     [dicData setValue:dbPath forKey:DTOATTACHMENT_clientFilePath];
-    [dicData setValue:0 forKey:DTOATTACHMENT_id];
+    [dicData setValue:[NSString stringWithFormat:@"%i",-i] forKey:DTOATTACHMENT_id];
     
     [arrayData addObject: dicData];
     NSLog(@"data:%@",arrayData);
@@ -631,7 +638,8 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
-        
+        fileDel=[NSDictionary new];
+        fileDel =[arrayData objectAtIndex:indexPath.row];
         NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
         //deleteLeadId = [dicData objectForKey:DTOLEAD_id];
         deleteFile =[dicData objectForKey:DTOATTACHMENT_id];

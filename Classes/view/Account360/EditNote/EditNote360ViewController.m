@@ -21,6 +21,8 @@
     int smgSelect ; //option layout
     NSMutableArray *arrayData; //mang luu tru du lieu (file)
     NSDictionary *dicData; //luu tru du lieu sua
+    NSMutableArray *arrayDelFile;//mang luu tru file del
+    NSDictionary *fileItemDel;
     
     DTONOTEProcess *dtoProcess;
     DTOATTACHMENTProcess *dtoFileProcess;
@@ -46,6 +48,7 @@
     
     NSString *strClientContactId;
     NSString *deleteFile;
+    NSString *index;
     
     BOOL succsess;//Trang thai acap nhat
 }
@@ -65,7 +68,7 @@
     if ([UIDevice getCurrentSysVer] >= 7.0) {
         [UIDevice updateLayoutInIOs7OrAfter:self];
     }
-    
+    arrayDelFile=[NSMutableArray new];
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
     util=[Util new];
@@ -114,6 +117,7 @@
         
         [self loadDataEdit];
         [self.tbData reloadData];
+        NSLog(@"data File %@",arrayData);
     }
     else{
         self.fullNameLB.text=@"THÊM MƠI GHI CHÚ";
@@ -122,7 +126,7 @@
 }
 //load du lieu khi sua
 -(void) loadDataEdit{
-
+    
     if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTONOTE_title]]) {
         txtTitle.text =[_dataSend objectForKey:DTONOTE_title];
     }
@@ -137,7 +141,7 @@
     }else{
         self.fullNameLB.text = TITLE_ADD_NOTES;
     }
-
+    
     [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
     self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
     
@@ -231,8 +235,8 @@
     if (![util checkValidToSave:self.txtTitle:MSG_INPUT_TITLE_NOTES :self.bodyMainView]) {
         return;
     }
-
-
+    
+    
     strClientContactId = IntToStr(([dtoProcess getClientId]));
     //neu qua duoc check thi tien hanh luu du lieu
     NSMutableDictionary *dicEntity = [NSMutableDictionary new];
@@ -261,10 +265,11 @@
         NSMutableDictionary *entiFile= [NSMutableDictionary new];
         
         NSString *strClientFileId = IntToStr(([dtoProcess getClientId]));
-        //NSDictionary *dicRow = [arrayData objectAtIndex:indexPath.row];
+        //them moi file
         for (NSDictionary *path in arrayData) {
             //  NSLog(@"%@", path);
-            if([path objectForKey:DTOATTACHMENT_id]==0){
+            int itemid=[[path objectForKey:DTOATTACHMENT_id] intValue];
+            if(itemid<0){
                 [entiFile setObject:@"" forKey:DTOATTACHMENT_attachmentId];
                 [entiFile setObject:strClientFileId forKey:DTOATTACHMENT_clientAttachmentId];
                 if (self.dataSend.count>0) {
@@ -303,7 +308,18 @@
         }
     }
     
-    
+    //xoa file
+    if (succsess && arrayDelFile.count>0) {
+        for (NSDictionary *item in arrayDelFile) {
+            int itemId=[[item objectForKey:DTOATTACHMENT_id] intValue];
+            if (itemId>0) {
+                BOOL result=[dtoFileProcess deleteEntity:[NSString stringWithFormat:@"%d",itemId]];
+                if (result) {
+                    NSLog(@"Delete OK");
+                }
+            }
+        }
+    }
     
     if (succsess) {
         //Thong bao cap nhat thanh cong va thoat
@@ -362,13 +378,11 @@
         if (alertView.tag==TAG_DELETE_ITEM) {
             NSLog(@"Xoa file dinh kem");
             if(buttonIndex==0){
-                
-                NSLog(@"Xoa file dinh kem:%@",deleteFile);
-                BOOL result=[dtoFileProcess deleteEntity:deleteFile];
-                if (result) {
-                    arrayData =[dtoFileProcess filterWithKey:DTOATTACHMENT_clientObjectId withValue:[_dataSend objectForKey:DTONOTE_clientNoteId]];
-                    [self.tbData reloadData];
-                }
+                [arrayData removeObject:fileItemDel];
+                NSMutableDictionary *addItem=[NSMutableDictionary new];
+                [addItem setValue:deleteFile forKey:DTOATTACHMENT_id];
+                [arrayDelFile addObject:addItem];
+                [_tbData reloadData];
             }
             else if(buttonIndex==1){
                 NSLog(@"Khong  xoa file");
@@ -444,25 +458,16 @@
     //luu file thanh cong
     
     NSMutableDictionary *dicFile = [[NSMutableDictionary alloc]init];
-    
-    //    if (self.dataSend.count>0) {
-    //        [dicData setValue:strFileName forKey:DTOATTACHMENT_fileName];
-    //        [dicData setValue:0 forKey:DTOATTACHMENT_id];
-    //
-    //        [arrayData addObject: dicData];
-    //        [self.tbData reloadData];
-    //    }
+    int i = rand()%100+1;
+    NSLog(@"Random Number: %i", -i);
     dicData=[NSMutableDictionary new];
     [dicData setValue:strFileName forKey:DTOATTACHMENT_fileName];
     [dicData setValue:dbPath forKey:DTOATTACHMENT_clientFilePath];
-    [dicData setValue:0 forKey:DTOATTACHMENT_id];
+    [dicData setValue:[NSString stringWithFormat:@"%i",-i] forKey:DTOATTACHMENT_id];
     
     [arrayData addObject: dicData];
     [self.tbData reloadData];
-    
-    
-    
-    
+    NSLog(@"data File %@",arrayData);
 }
 
 
@@ -568,9 +573,9 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
-        
+        fileItemDel =[NSDictionary new];
+        fileItemDel=[arrayData objectAtIndex:indexPath.row];
         NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
-        //deleteLeadId = [dicData objectForKey:DTOLEAD_id];
         deleteFile =[dicData objectForKey:DTOATTACHMENT_id];
         UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xác nhận đồng ý xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
         mylert.tag = TAG_DELETE_ITEM;

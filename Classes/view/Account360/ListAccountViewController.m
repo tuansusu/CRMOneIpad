@@ -255,8 +255,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    
-    return  arrayData.count;
+    if(arrayData.count >= totalCount){
+        return arrayData.count;
+    }
+    else {
+        return arrayData.count +1;
+    }
     
     
 }

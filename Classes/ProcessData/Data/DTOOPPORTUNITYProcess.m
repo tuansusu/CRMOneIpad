@@ -53,7 +53,7 @@ DTOOPPORTUNITY_updatedDate, //VARCHAR
     return [super addToDBWithTableName:TableName_DTOOPPORTUNTITY dictionary:entity];
     
 }
--(NSMutableArray*) filterOpportunity:(NSString*)keyword addStartDate:(NSDate*)startDate addEndDate:(NSDate*)endDate userType:(int)type{
+-(NSMutableArray*) filterOpportunity:(NSString*)keyword addStartDate:(NSDate*)startDate addEndDate:(NSDate*)endDate userType:(int)type withStart : (int) start withLimit : (int) limit withOutTotal : (int*) totalCount{
     
     
     NSArray *allFields =[NSArray arrayWithObjects:DTOOPPORTUNITY_id, DTOOPPORTUNITY_clientOpportunityId, DTOCONTACT_fullName, DTOOPPORTUNITY_code, DTOOPPORTUNITY_name, DTOOPPORTUNITY_endDate, DTOOPPORTUNITY_startDate,@"StatusName", DTOOPPORTUNITY_status,@"Contact",@"ContactCode",@"Level",@"LevelValue",@"Type", nil];
@@ -83,9 +83,14 @@ DTOOPPORTUNITY_updatedDate, //VARCHAR
                 LEFT JOIN dtosyscat catType on op.type = catType.value and catType.sysCatTypeId = 9 \
         WHERE op.isActive = 1 "];
     
+    NSMutableString *countQuery = [[NSMutableString alloc] initWithString:@"SELECT count(*) \
+                              FROM  dtoopportunity op \
+                              WHERE op.isActive = 1 "];
+    
     if(![StringUtil stringIsEmpty:keyword])
     {
         [query appendString:[NSString stringWithFormat:@"AND (op.name like '%%%@%%'or op.code like '%%%@%%')  ",keyword,keyword]];
+        [countQuery appendString:[NSString stringWithFormat:@"AND (op.name like '%%%@%%'or op.code like '%%%@%%')  ",keyword,keyword]];
     }
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
@@ -93,26 +98,32 @@ DTOOPPORTUNITY_updatedDate, //VARCHAR
     if(startDate != nil)
     {
         [query appendString:[NSString stringWithFormat:@"AND op.startDate >= '%@' ",[NSString stringWithFormat:@"%@",[df stringFromDate:startDate]]]];
+        [countQuery appendString:[NSString stringWithFormat:@"AND op.startDate >= '%@' ",[NSString stringWithFormat:@"%@",[df stringFromDate:startDate]]]];
     }
     if(endDate != nil)
     {
         [query appendString:[NSString stringWithFormat:@"AND op.endDate <= '%@' ",[NSString stringWithFormat:@"%@",[df stringFromDate:endDate]]]];
+        [countQuery appendString:[NSString stringWithFormat:@"AND op.endDate <= '%@' ",[NSString stringWithFormat:@"%@",[df stringFromDate:endDate]]]];
     }
     if(type != 0)
     {
         if(type == 1) //Khachs hang 360
         {
             [query appendString:@"AND op.accountId is not null "];
+            [countQuery appendString:@"AND op.accountId is not null "];
         }
-        else if(type == 2)
+        else if(type == 2) //Lead
         {
             [query appendString:@"AND op.leadId is not null "];
+            [countQuery appendString:@"AND op.leadId is not null "];
         }
     }
     
-    [query appendString:@"ORDER BY op.id DESC"];
+    [query appendString:@"ORDER BY op.id DESC  "];
+    *totalCount = [DataUtil getCountItemsselectQuery:countQuery valueParamemter:nil];
+    query = [query stringByAppendingString:[NSString stringWithFormat:@" limit %d offset %d", limit,start ]];
     
-      return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:nil];
+    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:nil];
 }
 
 -(NSDictionary*) getById:(NSString*)itemId {

@@ -814,20 +814,20 @@
     }
     if([StringUtil trimString:self.txtName.text].length==0)
     {
-        [self showTooltip:self.txtName withText:@"Tên cơ hội không được rỗng"];
+        [self showTooltip:self.txtName withText:@"Anh/Chị chưa nhập tên cơ hội"];
         [self.txtName becomeFirstResponder];
         [self setBorder:self.txtName];
         return NO;
     }
     if(startDate == nil){
-        [self showTooltip:self.dtStartDate withText:@"Ngày bắt đầu không được để trống"];//Ngày kết thúc không được để trống
+        [self showTooltip:self.dtStartDate withText:@"Anh/Chị chưa nhập ngày bắt đầu"];
         [self.dtStartDate becomeFirstResponder];
         [self setBorder:self.dtStartDate];
         return NO;
 
     }
     if(endDate == nil){
-        [self showTooltip:self.dtEndDate withText:@"Ngày kết thúc không được để trống"];
+        [self showTooltip:self.dtEndDate withText:@"Anh/Chị chưa nhập ngày kết thúc"];
         [self.dtEndDate becomeFirstResponder];
         [self setBorder:self.dtEndDate];
         return NO;

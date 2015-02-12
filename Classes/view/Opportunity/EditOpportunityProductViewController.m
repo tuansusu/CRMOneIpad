@@ -425,7 +425,7 @@
    // }
     
     if (!searchBarController.isValid) {
-        [self showTooltip:self.txtSearchCustomer.textField withText:@"Bạn chưa nhập sản phẩm"];
+        [self showTooltip:self.txtSearchCustomer.textField withText:@"Anh/Chị chưa nhập sản phẩm"];
         
         [self.txtSearchCustomer.textField  becomeFirstResponder];
         [self setBorder:self.txtSearchCustomer.textField];
@@ -434,7 +434,7 @@
     }
     if([StringUtil trimString:self.txtQuantity.text].length==0){
         
-        [self showTooltip:self.txtQuantity  withText:@"Bạn chưa nhập số lượng"];
+        [self showTooltip:self.txtQuantity  withText:@"Anh/Chị chưa nhập số lượng"];
         [self.txtQuantity becomeFirstResponder];
         [self setBorder:self.txtQuantity];
         isValidate=NO;
@@ -442,7 +442,7 @@
     }
     if([StringUtil trimString:self.txtRevenue.text].length==0){
         
-        [self showTooltip:self.txtRevenue  withText:@"Bạn chưa nhập doanh thu"];
+        [self showTooltip:self.txtRevenue  withText:@"Anh/Chị chưa nhập doanh thu"];
         [self.txtRevenue becomeFirstResponder];
         [self setBorder:self.txtRevenue];
         isValidate=NO;

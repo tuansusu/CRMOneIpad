@@ -22,7 +22,7 @@
     int smgSelect ; //option layout
     
     NSString *userType;
-    NSArray *arrayData; //mang luu tru du lieu
+    NSMutableArray  *arrayData; //mang luu tru du lieu
     NSString *nowStr;
     NSDate *now,*startDate,*endDate ;
     NSDateFormatter *df;
@@ -34,6 +34,12 @@
     VTRadio *rdCustomerRoot; //radio khach hang dau moi
     
     NSUserDefaults *defaults;
+    
+    //them phan phan trang
+    BOOL loading, noMoreResultsAvail;
+    UIActivityIndicatorView *spinner;
+    int loaded,perload, totalCount;
+    
 }
 @end
 
@@ -105,6 +111,21 @@
     [self.viewRdCustomerRoot addSubview:rdCustomerRoot];
 
 }
+-(void) filterData:(NSString*)keyword withStartDate:(NSDate*) subStartDate withEndDate:(NSDate*) subEndDate withType:(int)type{
+    [arrayData addObjectsFromArray: [dtoOpportunityProcess filterOpportunity:keyword addStartDate:subStartDate addEndDate:subEndDate userType:type withStart:loaded withLimit:PAGESIZE withOutTotal:&totalCount]];
+    
+    self.lbTotal.text = [NSString stringWithFormat:@"Tổng số %d / %d", arrayData.count, totalCount ];
+    [self.tbData reloadData];
+    [SVProgressHUD dismiss];
+}
+-(void) filterData:(NSMutableDictionary*)params{
+    NSString *keyword = [params objectForKey:@"keyword"];
+    NSDate *startDate = [params objectForKey:@"startDate"];
+    NSDate *endDate = [params objectForKey:@"endDate"];
+    int type = [params objectForKey:@"type"];
+    
+    [self filterData:keyword withStartDate:startDate withEndDate:endDate withType:type];
+}
 
 
 #pragma mark check radio
@@ -136,11 +157,9 @@
     
     
     dtoOpportunityProcess = [DTOOPPORTUNITYProcess new];
-    arrayData  = [NSArray new];
-
-    arrayData = [dtoOpportunityProcess filterOpportunity:nil addStartDate:nil addEndDate:nil userType:nil];
-    _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
-    //load data from db
+    arrayData  = [NSMutableArray new];
+    //arrayData = [dtoOpportunityProcess filterOpportunity:nil addStartDate:nil addEndDate:nil userType:nil];
+    [self filterData:nil withStartDate:nil withEndDate: nil withType:nil];
     
 }
 
@@ -235,14 +254,65 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    
-        return  arrayData.count;
-        
-    
+    if(arrayData.count >= totalCount){
+        return arrayData.count;
+    }
+    else {
+        return arrayData.count +1;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    //Cell loading
+    if((arrayData.count) == indexPath.row){
+        static NSString *cellIndentifier =@"cell";
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
+        if(cell == nil){
+            
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
+        }
+        if (!noMoreResultsAvail) {
+            
+            NSLog(@"VT1");
+            spinner.hidden =NO;
+            cell.textLabel.text=nil;
+            
+            
+            spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            spinner.frame = CGRectMake(tableView.frame.size.width/2-12, 0, 24, 50);
+            [cell addSubview:spinner];
+            
+            if (arrayData.count >= 10) {
+                [spinner startAnimating];
+            }
+        }
+        else{
+            NSLog(@"VT2");
+            [spinner stopAnimating];
+            spinner.hidden=YES;
+            
+            cell.textLabel.text=nil;
+            
+            UILabel* loadingLabel = [[UILabel alloc]init];
+            loadingLabel.font=[UIFont boldSystemFontOfSize:14.0f];
+            loadingLabel.textAlignment = UITextAlignmentLeft;
+            loadingLabel.textColor = [UIColor colorWithRed:87.0/255.0 green:108.0/255.0 blue:137.0/255.0 alpha:1.0];
+            loadingLabel.numberOfLines = 0;
+            loadingLabel.text=@"No More data Available";
+            loadingLabel.frame=CGRectMake(85,20, 302,25);
+            [cell addSubview:loadingLabel];
+        }
+        
+        return cell;
+    }
+
+    
+    
+    
+    
+    
         static NSString *cellId = @"OpportunityCell";
         OpportunityCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
     
@@ -268,6 +338,39 @@
     
 }
 
+//phan trang
+-(void) resetLoadData {
+    loaded = 0;
+    arrayData  = [NSMutableArray new];
+    self.lbTotal.text = @"";
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if (arrayData.count<totalCount) {
+        loaded = loaded + PAGESIZE;
+        
+        float endScrolling = scrollView.contentOffset.y + scrollView.frame.size.height;
+        if (endScrolling >= scrollView.contentSize.height)
+        {
+            //[self performSelector:@selector(filterData) withObject:nil afterDelay:1];
+           // keyword withStartDate:startDate withEndDate: endDate withType:userType];
+            NSString *keyword = self.txtSearchBar.text;
+            keyword = [StringUtil trimString:keyword];
+            NSMutableDictionary *params = [NSMutableDictionary new];
+            [params setValue:keyword forKey:@"keyword"];
+            [params setValue:startDate forKey:@"startDate"];
+            [params setValue:endDate forKey:@"endDate"];
+            [params setValue:userType forKey:@"userType"];
+            
+            [self performSelector:@selector(filterData:) withObject:params afterDelay:1];
+            //[self performSelector:@selector(filterData:withStartDate:withEndDate:withType:) withObject:] ;
+        }
+        
+        //filterData:self.txtSearchBar.text withStartDate:startDate withEndDate:endDate withType:userType
+    }
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSIndexPath* selection = [tableView indexPathForSelectedRow];
@@ -284,10 +387,10 @@
 }
 
 -(void) viewDidAppear:(BOOL)animated{
-    arrayData = [dtoOpportunityProcess filterOpportunity:nil addStartDate:nil addEndDate:nil userType:nil];
+    //arrayData = [dtoOpportunityProcess filterOpportunity:nil addStartDate:nil addEndDate:nil userType:nil];
+    [self filterData:nil withStartDate:nil withEndDate: nil withType:nil];
     
-    _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
-    [self.tbData reloadData];
+  
 }
 
 
@@ -392,8 +495,9 @@
         //reload lai csdl
         if (result) {
             
-            arrayData = [dtoOpportunityProcess filterOpportunity:nil addStartDate:nil addEndDate:nil userType:nil];
-            [self.tbData reloadData];
+            //arrayData = [dtoOpportunityProcess filterOpportunity:nil addStartDate:nil addEndDate:nil userType:nil];
+            [self filterData:nil withStartDate:nil withEndDate: nil withType:nil];
+           
             //thong bao cap nhat thanh cong
             UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:KEY_NOTIFICATION_TITLE message:SYS_Notification_UpdateSuccess delegate:self cancelButtonTitle:KEY_NOTIFICATION_ACCEPT otherButtonTitles:  nil];
             
@@ -473,16 +577,15 @@
 
 - (IBAction)search:(id)sender {
     NSString *keyword = self.txtKeyword.text;
-    arrayData = [dtoOpportunityProcess filterOpportunity:keyword addStartDate:startDate addEndDate:endDate userType:userType];
-    [self.tbData reloadData];
+    //arrayData = [dtoOpportunityProcess filterOpportunity:keyword addStartDate:startDate addEndDate:endDate userType:userType];
+    [self filterData:keyword withStartDate:startDate withEndDate: endDate withType:userType];
 }
 
 -(void) actionSearchAdvance:(NSString*)keyword addStartDate:(NSDate*)startDate addEndDate:(NSDate*)endDate userType:(int)type{
-    
-    arrayData = [dtoOpportunityProcess filterOpportunity:keyword addStartDate:startDate addEndDate:endDate userType:type];
-    //_lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
-    
-    [self.tbData reloadData];
+    [arrayData removeAllObjects];
+    loaded = 0;
+    //arrayData = [dtoOpportunityProcess filterOpportunity:keyword addStartDate:startDate addEndDate:endDate userType:type];
+    [self filterData:keyword withStartDate:startDate withEndDate: endDate withType:type];
 }
 
 - (IBAction)actionAdvanceSearch:(id)sender {
@@ -547,14 +650,12 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText   // called when text changes (including clear)
 {
-    NSLog(@"text did change %@", searchText);
+    [arrayData removeAllObjects];
+    loaded = 0;
     //strSearchText = searchText;
     if(self.txtSearchBar.text.length == 0){
-        arrayData = [dtoOpportunityProcess filterOpportunity:self.txtSearchBar.text addStartDate:nil addEndDate:nil userType:nil];
-        _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
-        
-        [self.tbData reloadData];
-
+        //arrayData = [dtoOpportunityProcess filterOpportunity:self.txtSearchBar.text addStartDate:nil addEndDate:nil userType:nil];
+        [self filterData:self.txtSearchBar.text withStartDate:nil withEndDate: nil withType:nil];
     }
 }
 
@@ -566,13 +667,13 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar                     // called when keyboard search button pressed
 {
-    NSLog(@"seach click");
-    //[SVProgressHUD show];
+    [arrayData removeAllObjects];
+    loaded = 0;
     NSString *keyword = self.txtSearchBar.text;
     keyword = [StringUtil trimString:keyword];
-    arrayData = [dtoOpportunityProcess filterOpportunity:keyword addStartDate:nil addEndDate:nil userType:nil];
-    _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
-    [self.tbData reloadData];
+    //arrayData = [dtoOpportunityProcess filterOpportunity:keyword addStartDate:nil addEndDate:nil userType:nil];
+    [self filterData:keyword withStartDate:nil withEndDate: nil withType:nil];
+   
     [searchBar resignFirstResponder];
     
 }

@@ -9,6 +9,7 @@
 #import "MainViewListCell.h"
 
 #import "DTOWidgetObject.h"
+#import "Globals.h"
 
 @implementation MainViewListCell
 
@@ -19,7 +20,7 @@
         // Initialization code
         self = [[[NSBundle mainBundle] loadNibNamed:[[self class] description] owner:self options:Nil] objectAtIndex:0];
         [subListMainView initDataWithWidgetObject:_widgetOB];
-        btnDelete.layer.cornerRadius = 5;
+        btnDelete.layer.cornerRadius = CORNER_RADIUS_BUTTON*3;
         btnDelete.clipsToBounds = YES;
     }
     return self;
@@ -58,6 +59,8 @@
     _widgetOB = widgetOB;
     [lblTitle setText:widgetOB.widgetName];
     [subListMainView initDataWithWidgetObject:widgetOB];
+    btnDelete.layer.cornerRadius = CORNER_RADIUS_BUTTON*3;
+    btnDelete.clipsToBounds = YES;
 }
 
 #pragma mark button action

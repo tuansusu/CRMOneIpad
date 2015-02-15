@@ -46,6 +46,8 @@
     btnCancel.layer.cornerRadius = CORNER_RADIUS_BUTTON;
     btnCancel.clipsToBounds = YES;
 
+    btnDelete.layer.cornerRadius = CORNER_RADIUS_BUTTON*3;
+    btnDelete.clipsToBounds = YES;
 }
 
 #pragma mark button action
@@ -135,8 +137,6 @@
 
     [mLineGraph drawMIMLineGraph];
 
-    btnDelete.layer.cornerRadius = 5;
-    btnDelete.clipsToBounds = YES;
 }
 
 -(void)loadDataCellWithWidgetObject:(DTOWidgetObject*)widgetOB{
@@ -146,8 +146,6 @@
 
     self.contentView.layer.cornerRadius = CORNER_RADIUS_VIEW;
     self.contentView.clipsToBounds = YES;
-    btnDelete.layer.cornerRadius = CORNER_RADIUS_BUTTON;
-    btnDelete.clipsToBounds = YES;
     _typeGraph = [widgetOB.typeGraphically intValue];
     [self setWidgetSelectedWithTypeGraph:_typeGraph];
 

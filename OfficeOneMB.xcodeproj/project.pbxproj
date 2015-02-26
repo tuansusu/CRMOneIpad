@@ -911,6 +911,7 @@
 		8ED402881A41DF3C00CCBE6D /* ic_qu_direction_mylocation@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ED402851A41DF3C00CCBE6D /* ic_qu_direction_mylocation@3x.png */; };
 		8ED4028D1A41E18800CCBE6D /* CustomerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED4028B1A41E18800CCBE6D /* CustomerViewCell.m */; };
 		8ED4028E1A41E18800CCBE6D /* CustomerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ED4028C1A41E18800CCBE6D /* CustomerViewCell.xib */; };
+		8EEE88E81A9C2303007EDE2A /* RootViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EEE88E71A9C2303007EDE2A /* RootViewController~iphone.xib */; };
 		8EFE69011A565BDF003D55CE /* DTOProTindungDetailObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE69001A565BDF003D55CE /* DTOProTindungDetailObject.m */; };
 		8EFE69041A56604F003D55CE /* DTOProTindungDetailProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE69031A56604F003D55CE /* DTOProTindungDetailProcess.m */; };
 		92C68E501519D4F100981728 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C68E0D1519D4F100981728 /* BaseViewController.m */; };
@@ -2488,6 +2489,7 @@
 		8ED4028A1A41E18800CCBE6D /* CustomerViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerViewCell.h; sourceTree = "<group>"; };
 		8ED4028B1A41E18800CCBE6D /* CustomerViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerViewCell.m; sourceTree = "<group>"; };
 		8ED4028C1A41E18800CCBE6D /* CustomerViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerViewCell.xib; sourceTree = "<group>"; };
+		8EEE88E71A9C2303007EDE2A /* RootViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "RootViewController~iphone.xib"; sourceTree = "<group>"; };
 		8EFE68FF1A565BDF003D55CE /* DTOProTindungDetailObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOProTindungDetailObject.h; sourceTree = "<group>"; };
 		8EFE69001A565BDF003D55CE /* DTOProTindungDetailObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOProTindungDetailObject.m; sourceTree = "<group>"; };
 		8EFE69021A56604F003D55CE /* DTOProTindungDetailProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOProTindungDetailProcess.h; sourceTree = "<group>"; };
@@ -5738,6 +5740,7 @@
 				2DBE93E51753391400627804 /* CustomView */,
 				92C68E4B1519D4F100981728 /* RootViewController.h */,
 				92C68E4C1519D4F100981728 /* RootViewController.m */,
+				8EEE88E71A9C2303007EDE2A /* RootViewController~iphone.xib */,
 				2D161065174F6D920083F301 /* RootViewController.xib */,
 				B3D87B3918962C8C00C53DCE /* DismissPoperverDelegate.h */,
 				B38A9128194697480002E654 /* ClockViewDelegate.h */,
@@ -6496,6 +6499,7 @@
 				8497BFB81A295A2300A5ED3C /* InfoPlist.strings in Resources */,
 				762133AF1A3DF7420049771C /* TestEditViewController.xib in Resources */,
 				8ED4027A1A41D2DC00CCBE6D /* iconExpand@2xpng in Resources */,
+				8EEE88E81A9C2303007EDE2A /* RootViewController~iphone.xib in Resources */,
 				849788041A2BE1A400384566 /* TaskCalendarCell.xib in Resources */,
 				B3157889188D5E5200C0ED01 /* ic-work-fw-person-1-1.png in Resources */,
 				8497BFDE1A295A2300A5ED3C /* popup_santa.png in Resources */,
@@ -7282,7 +7286,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "ldap/openldap-2.4.22/include include";
 			};
 			name = Debug;
@@ -7332,7 +7336,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "ldap/openldap-2.4.22/include include";
 				VALIDATE_PRODUCT = YES;
 			};

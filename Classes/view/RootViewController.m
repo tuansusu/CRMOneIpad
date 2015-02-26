@@ -76,6 +76,14 @@
 
                 [((UIImageView*) subview) setAlpha:1.0f];
             }
+
+            for (UIView *subviewLev2 in subview.subviews) {
+
+                if ([subviewLev2 isKindOfClass:[UIImageView class]]) {
+
+                    [((UIImageView*) subviewLev2) setAlpha:1.0f];
+                }
+            }
         }
     }
     [self.navigationController setNavigationBarHidden:YES];

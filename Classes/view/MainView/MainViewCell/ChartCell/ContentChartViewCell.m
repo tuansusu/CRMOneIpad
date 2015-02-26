@@ -138,9 +138,25 @@
 }
 -(void)updateData
 {
+
     NSString *data = @"";
     NSString *types =@"";
-    data =[NSString stringWithFormat:@"[ {"
+
+    if ([_widgetOB.widgetId intValue]==WIDGET_TYPE_HUY_DONG_VON) {
+        data =[NSString stringWithFormat:@"[ {"
+               @"name: 'HĐV Thời Điểm',"
+               @"data: [10, 32, 23, 36, 47, 65, 55, 39, 66, 100, 80, 22],"
+               @"color:'rgb(%@)',"
+               @"stack: '1'"
+               @"},{"
+               @"name: 'HĐV Bình Quân',"
+               @"data: [10, 30, 20, 30, 40, 50, 60, 80, 70, 100, 90, 80],"
+               @"color:'rgb(%@)',"
+               @"stack: '2'"
+               @"}]",_widgetOB.colorDisplay2,_widgetOB.colorDisplay1];
+    }else
+    {
+        data =[NSString stringWithFormat:@"[ {"
            @"name: 'Năm 2014',"
            @"data: [10, 32, 23, 36, 47, 65, 55, 39, 66, 100, 80, 22],"
            @"color:'rgb(%@)',"
@@ -151,7 +167,7 @@
            @"color:'rgb(%@)',"
            @"stack: '2'"
            @"}]",_widgetOB.colorDisplay2,_widgetOB.colorDisplay1];
-
+    }
     types = @"['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12', ]";
 
     NSMutableString* jsStr = [[NSMutableString alloc] initWithCapacity:0];

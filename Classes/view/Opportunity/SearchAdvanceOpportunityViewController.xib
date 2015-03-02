@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7515.2" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7512"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchAdvanceOpportunityViewController">
             <connections>
+                <outlet property="btnCance" destination="ItQ-cR-oX8" id="9V8-y6-iWJ"/>
                 <outlet property="btnChoiceAccountType" destination="TgL-dB-FMs" id="kMZ-Wa-3Qd"/>
                 <outlet property="btnEndDate" destination="u5P-JP-PJY" id="3b5-XC-FR7"/>
+                <outlet property="btnSearch" destination="FOV-MG-fr8" id="gn4-Kh-Nlb"/>
                 <outlet property="btnStartDate" destination="rKT-2b-LeP" id="IQB-AA-iCY"/>
+                <outlet property="lblCustomerType" destination="YnR-z7-mkF" id="713-Yp-Dvx"/>
+                <outlet property="lblEndDate" destination="IiK-rj-bFd" id="P6l-B6-BbT"/>
+                <outlet property="lblStartDate" destination="Hlu-n7-IbX" id="LbG-BQ-7Hn"/>
+                <outlet property="lblTitle" destination="f6X-wm-mqY" id="oiY-gK-Syw"/>
                 <outlet property="txtAccountType" destination="iyG-Ft-0Q8" id="FLS-R2-KUF"/>
                 <outlet property="txtEndDate" destination="tmF-HS-m9U" id="tyO-5Z-yE1"/>
                 <outlet property="txtName" destination="DCt-Qd-nUc" id="3SY-HL-IPZ"/>

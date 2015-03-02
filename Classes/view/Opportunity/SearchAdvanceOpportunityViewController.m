@@ -60,6 +60,8 @@
     
      selectAccountTypeIndex = 0;
     self.txtAccountType.text= @"Tất cả";
+    
+    [self setLanguage];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -289,4 +291,14 @@
 }
 */
 
+
+#pragma mark - Phần đa ngôn ngữ
+-(void) setLanguage{
+    [_lblTitle setText:LocalizedString(@"KEY_OPPORTUNITY_SEARCH_TITLE")];
+    [_lblStartDate setText:LocalizedString(@"KEY_OPPORTUNITY_SEARCH_STARTDATE")];
+    [_lblEndDate setText:LocalizedString(@"KEY_OPPORTUNITY_SEARCH_ENDATE")];
+    [_lblCustomerType setText:LocalizedString(@"KEY_OPPORTUNITY_SEARCH_CUSTOMER_TYPE")];
+    [_btnSearch setTitle:LocalizedString(@"KEY_OPPORTUNITY_SEARCH_SEARCH_BUTTON") forState:UIControlStateNormal];
+    [_btnCance setTitle:LocalizedString(@"KEY_OPPORTUNITY_SEARCH_CANCE_BUTTON") forState:UIControlStateNormal];
+}
 @end

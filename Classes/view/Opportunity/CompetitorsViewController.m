@@ -121,7 +121,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     // calendar
     calendarIsTimeline = YES;
     
-    
+    [self setLanguage];
 }
 -(void) loadData{
     
@@ -1122,5 +1122,26 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     
     return heightLabel;
+}
+-(void)setLanguage{
+    [_fullNameLB setText:LocalizedString(@"KEY_OPPORTUNITY_DETAIL_TITLE")];
+    [_leftLabelHeader setText:LocalizedString(@"KEY_OPPORTUNITY_DETAIL_HEADER")];
+    [_lblTitleCode setText:LocalizedString(@"KEY_OPPORTUNITY_DETAIL_CODE")];
+    [_lblTitleName setText:LocalizedString(@"KEY_OPPORTUNITY_DETAIL_NAME")];
+    [_lblStartDateTitle setText:LocalizedString(@"KEY_OPPORTUNITY_DETAIL_STARTDATE")];
+    [_lblEndDateRealTitle setText:LocalizedString(@"KEY_OPPORTUNITY_DETAIL_ENDDATEREAD")];
+    [_lblEndDateTitle setText:LocalizedString(@"KEY_OPPORTUNITY_DETAIL_ENDDATE")];
+    [_lblOpportunityLevelTitle setText:LocalizedString(@"KEY_OPPORTUNITY_DETAIL_LEVEL")];
+    [_lblNextTaskTitle setText:LocalizedString(@"KEY_OPPORTUNITY_DETAIL_NEXT_TASK")];
+    [_lblTypeTitle setText:LocalizedString(@"KEY_OPPORTUNITY_DETAIL_TYPE")];
+    [_lblCustomerTitle setText:LocalizedString(@"KEY_OPPORTUNITY_DETAIL_CUSTOMER")];
+    [_lblNoteTitle setText:LocalizedString(@"KEY_OPPORTUNITY_DETAIL_NOTE")];
+    [_lblDescriptionTitle setText:LocalizedString(@"KEY_OPPORTUNITY_DETAIL_DESCRIPTION")];
+    [_btnClueContact setTitle:LocalizedString(@"KEY_OPPORTUNITY_DETAIL_TAB_CONTACT") forState:UIControlStateNormal];
+    [_btnProposeProduct setTitle:LocalizedString(@"KEY_OPPORTUNITY_DETAIL_TAB_PROPOSE_PRODUCT") forState:UIControlStateNormal];
+    [_btnActionSale setTitle:LocalizedString(@"KEY_OPPORTUNITY_DETAIL_TAB_PRODUCT_SALE") forState:UIControlStateNormal];
+    [_btnTask setTitle:LocalizedString(@"KEY_OPPORTUNITY_DETAIL_TAB_TASK") forState:UIControlStateNormal];
+    [_btnNote setTitle:LocalizedString(@"KEY_OPPORTUNITY_DETAIL_TAB_NOTE") forState:UIControlStateNormal];
+    [_btnCalendar setTitle:LocalizedString(@"KEY_OPPORTUNTIY_DETAIL_TAB_CALENDAR") forState:UIControlStateNormal];
 }
 @end

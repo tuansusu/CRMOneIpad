@@ -19,6 +19,16 @@
                 <outlet property="fullNameLB" destination="QuQ-NR-ShW" id="Ehe-5X-XkN"/>
                 <outlet property="headerViewBar" destination="bZC-rS-PvP" id="yXi-js-2Bf"/>
                 <outlet property="imgAvartar" destination="T8P-oU-cVd" id="MEy-dF-L6f"/>
+                <outlet property="lbDiaChi" destination="sah-JH-1G1" id="m2D-yr-b3e"/>
+                <outlet property="lbEmail" destination="ijK-dx-Hg8" id="ww2-2J-5NL"/>
+                <outlet property="lbFullname" destination="6cV-jJ-tX4" id="Quy-ZW-t4r"/>
+                <outlet property="lbNgayCap" destination="mou-dP-e4a" id="ZEE-sX-OmU"/>
+                <outlet property="lbNgaySinh" destination="DXm-jq-bbS" id="kpX-G0-lTg"/>
+                <outlet property="lbNoiSinh" destination="hDQ-xQ-l4b" id="sAG-OD-s51"/>
+                <outlet property="lbNote" destination="yYs-tS-mJS" id="lM0-Xt-vvg"/>
+                <outlet property="lbPosition" destination="GrG-01-qWY" id="Dq9-G0-pbn"/>
+                <outlet property="lbmobile" destination="eLo-4s-sB2" id="ffb-QT-ijU"/>
+                <outlet property="lbpassport" destination="zdh-NS-fMj" id="obx-2y-Mhi"/>
                 <outlet property="mainView" destination="IXH-hN-C3h" id="Xeb-iB-eW9"/>
                 <outlet property="tvNote" destination="Jpr-7v-MBs" id="4jm-0s-5A1"/>
                 <outlet property="txtAddress" destination="b0L-pQ-l67" id="S2a-f0-OE5"/>
@@ -66,9 +76,9 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="c4K-Iz-IxO" userLabel="btnSave">
-                            <rect key="frame" x="893" y="2" width="110" height="40"/>
+                            <rect key="frame" x="958" y="2" width="40" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Cập nhật">
+                            <state key="normal" backgroundImage="icon_save_90x90.png">
                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -77,9 +87,9 @@
                             </connections>
                         </button>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Vo1-cs-gQR">
-                            <rect key="frame" x="775" y="2" width="110" height="40"/>
+                            <rect key="frame" x="910" y="2" width="40" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Xoá">
+                            <state key="normal" backgroundImage="icon_delete_90x90.png">
                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -127,7 +137,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngày cấp" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mou-dP-e4a">
-                                            <rect key="frame" x="510" y="210" width="78" height="30"/>
+                                            <rect key="frame" x="510" y="210" width="109" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <nil key="highlightedColor"/>
@@ -188,7 +198,7 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nơi sinh" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hDQ-xQ-l4b">
-                                            <rect key="frame" x="50" y="270" width="93" height="30"/>
+                                            <rect key="frame" x="50" y="270" width="123" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <nil key="highlightedColor"/>
@@ -341,7 +351,9 @@
         <image name="avatar.png" width="120" height="120"/>
         <image name="btn-back-1-1.png" width="40" height="40"/>
         <image name="ic_cbx-1.png" width="60" height="60"/>
+        <image name="icon_delete_90x90.png" width="90" height="90"/>
         <image name="icon_require-1.png" width="16" height="16"/>
+        <image name="icon_save_90x90.png" width="90" height="90"/>
         <image name="pin.png" width="48" height="48"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

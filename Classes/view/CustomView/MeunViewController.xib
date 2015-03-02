@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="7515.2" systemVersion="14C109" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7512"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MeunViewController">
@@ -14,7 +14,6 @@
                 <outlet property="TienIchView" destination="9gg-Dt-91i" id="J05-mw-4CA"/>
                 <outlet property="btnAccount360" destination="hDr-4H-c9s" id="wPc-sK-Y8L"/>
                 <outlet property="btnCalendar" destination="VRm-IT-azz" id="s5f-hd-1Tp"/>
-                <outlet property="btnCancel" destination="1zz-cW-I6h" id="kjp-Hf-ptm"/>
                 <outlet property="btnCustomer" destination="nuk-5r-dc6" id="XZW-Wy-T7N"/>
                 <outlet property="btnHelp" destination="AkI-Rh-j3R" id="3Ws-Sq-kto"/>
                 <outlet property="btnLogOut" destination="1zz-cW-I6h" id="ucu-rm-Nhe"/>
@@ -32,7 +31,6 @@
                 <outlet property="lbGroupUtility" destination="sxb-Tt-USF" id="M0N-3R-bRL"/>
                 <outlet property="lbMeetingSchedule" destination="PoC-of-nJw" id="izS-Qh-Dvv"/>
                 <outlet property="lbSystem" destination="CHq-h3-Bt0" id="BQh-zP-C0W"/>
-                <outlet property="lbTask" destination="N74-Np-zzE" id="UbW-C0-NfI"/>
                 <outlet property="lbUtility" destination="sxb-Tt-USF" id="vVd-Yb-5vF"/>
                 <outlet property="menuScrolview" destination="dPW-2P-u7s" id="T05-a5-9LA"/>
                 <outlet property="menuView2" destination="pAc-mN-lZX" id="mrn-sN-1br"/>

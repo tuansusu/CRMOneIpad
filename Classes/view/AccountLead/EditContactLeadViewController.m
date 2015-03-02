@@ -167,7 +167,7 @@
         }
     }
     
-    [self.btnSave setStyleNormalWithOption:smgSelect];
+    //[self.btnSave setStyleNormalWithOption:smgSelect];
     _btnChoicePhoto.titleLabel.textColor=[UIColor blueColor];
     
     [self.mainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
@@ -587,18 +587,18 @@
     //chung minh thu
     if(textField==_txtNumberIdentity && ![StringUtil stringIsEmpty:_txtNumberIdentity.text]){
         if(_txtNumberIdentity.text.length <=20){
-        return YES;
+            return YES;
         }
         else{
             [util showTooltip:_txtNumberIdentity withText:@"Không quá 20 ký tự" showview:_bodyMainView];
             return NO;
         }
     }
-
+    
     //noi cap
     if(textField==_txtWhereBorn && ![StringUtil stringIsEmpty:_txtWhereBorn.text]){
         if(_txtWhereBorn.text.length<=100){
-        return YES;
+            return YES;
         }
         else{
             [util showTooltip:_txtWhereBorn withText:@"Không quá 100 ký tự" showview:_bodyMainView];
@@ -767,7 +767,8 @@
     else{
         [_fullNameLB setText:[LocalizedString(@"KEY_CONTACT_ADD") uppercaseString]];
     }
-    [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+    //[_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+    //[_btnDelContact setTitle:LocalizedString(@"KEY_Delete") forState:UIControlStateNormal];
     [_lbFullname setText:LocalizedString(@"KEY_CONTACT_NAME")];
     [_lbPosition setText:LocalizedString(@"KEY_CONTACT_POSITION")];
     [_lbmobile setText:LocalizedString(@"KEY_CONTACT_PHONE")];

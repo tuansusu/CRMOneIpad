@@ -70,7 +70,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     DTOOPPORTUNITYProcess *dtoOpportunityProcess;
     
     NSUserDefaults *defaults ;
-    
+    NSString *type;
     
     UIColor *textColorButtonNormal; //mau chu button binh thuong
     UIColor *textColorButtonSelected; //mau chu button select
@@ -133,7 +133,6 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         
         [self.tbData setSeparatorInset:UIEdgeInsetsZero];
     }
-    
     /* set defaults cell for Task Calendar */
     [self.tbData registerNib:[TaskCalendarCell nib] forCellReuseIdentifier:TaskCalendarNormalCellId];
     [self.tbData registerNib:[TaskCalTLineCell nib] forCellReuseIdentifier:TaskCalendarTimelineCellId];
@@ -215,10 +214,10 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 //khoi tao gia tri mac dinh cua form
 -(void) initData {
     
-    _fullNameLB.text=@"KHÁCH HÀNG 360";
+   // _fullNameLB.text=@"KHÁCH HÀNG 360 100";
     //khoi tao du lieu!
-    listArr  = [NSArray arrayWithObjects:SELECT_TEXT_ADD_CONTACT,SELECT_TEXT_ADD_NOTE, SELECT_TEXT_ADD_CALENDAR, SELECT_TEXT_ADD_TASK, SELECT_TEXT_ADD_OPPORTUNITY, nil];
-    
+    listArr  = [NSArray arrayWithObjects:LocalizedString(@"KEY_360_CONTACT"),LocalizedString(@"KEY_360_NOTE"), LocalizedString(@"KEY_360_CALENDAR")
+                , LocalizedString(@"KEY_360_NHIEMVU"), LocalizedString(@"KEY_360_COHOI"), nil];
     dtoAccoutProcess = [DTOACCOUNTProcess new];
     dtoContactProcess = [DTOCONTACTProcess new];
     dtoTaskProcess= [DTOTASKProcess new];
@@ -229,7 +228,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     dicData = [dtoAccoutProcess getDataWithKey:DTOACCOUNT_id withValue:[_dataSend objectForKey:DTOACCOUNT_id]];
     //dicData = [dtoLeadProcess getDataWithKey:DTOLEAD_id withValue:[self.dataSend objectForKey:DTOLEAD_id]];
     NSLog(@"Get detail = %@", dicData);
-    
+    type=[dicData objectForKey:DTOACCOUNT_accountType];
     if ([dicData isKindOfClass:[NSNull class]] || dicData==nil ) {
         [self dismissViewControllerAnimated:YES completion:nil];
         return;
@@ -239,6 +238,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     [self actionExpandInfo:self.btnExpandInfo];
     arrayData  = [NSArray new];
     [self loadDetailCustomerPersonalData];
+     [self setLanguage];
     
 }
 
@@ -279,7 +279,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
  *Load danh sach khach hang ca nhan
  */
 -(void) loadDetailCustomerPersonalData {
-    NSString*type=[dicData objectForKey:DTOACCOUNT_accountType];
+    
     
     
     float fyCN=_lbCode.frame.origin.y;
@@ -383,14 +383,16 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         if ([disableMetting isEqualToString:@"0"]) {
             metting=@"Metting";
         }
-        if(![StringUtil stringIsEmpty:sms] || ![StringUtil stringIsEmpty:phone] || ![StringUtil stringIsEmpty:email] || ![StringUtil stringIsEmpty:metting]){
-            NSString *tmp=[NSString stringWithFormat:@"%@,%@,%@,%@",sms,phone,email,metting];
-            fyCN = [self setFrameLabelTitle:_khonglienlacCN withLabelValue:_lbKhongLienLacQua withFY:fyCN :tmp];
-        }
-        else{
-            _khonglienlacCN.hidden=YES;
-            _lbKhongLienLacQua.hidden=YES;
-        }
+        NSString *tmp=[NSString stringWithFormat:@"%@,%@,%@,%@",sms,phone,email,metting];
+        fyCN = [self setFrameLabelTitle:_khonglienlacCN withLabelValue:_lbKhongLienLacQua withFY:fyCN :tmp];
+        //        if(![StringUtil stringIsEmpty:sms] || ![StringUtil stringIsEmpty:phone] || ![StringUtil stringIsEmpty:email] || ![StringUtil stringIsEmpty:metting]){
+        //            NSString *tmp=[NSString stringWithFormat:@"%@,%@,%@,%@",sms,phone,email,metting];
+        //            fyCN = [self setFrameLabelTitle:_khonglienlacCN withLabelValue:_lbKhongLienLacQua withFY:fyCN :tmp];
+        //        }
+        //        else{
+        //            _khonglienlacCN.hidden=YES;
+        //            _lbKhongLienLacQua.hidden=YES;
+        //        }
         _scrollViewBodyLeft.contentSize=CGSizeMake(0, self.view.frame.size.height + fyCN);
     }
     else{
@@ -400,7 +402,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         //code
         fyDN = [self setFrameLabelTitle:_codeDN withLabelValue:_lbcodeDN withFY:fyDN :[dicData objectForKey:DTOACCOUNT_code]];
         //ten khach hang
-          fyDN = [self setFrameLabelTitle:_nameDN withLabelValue:_lbnameDN withFY:fyDN :[dicData objectForKey:DTOACCOUNT_name]];
+        fyDN = [self setFrameLabelTitle:_nameDN withLabelValue:_lbnameDN withFY:fyDN :[dicData objectForKey:DTOACCOUNT_name]];
         //loai khach hang
         fyDN = [self setFrameLabelTitle:_loaiDN withLabelValue:_lbloaiDN withFY:fyDN :[dicData objectForKey:DTOACCOUNT_accountType]];
         //so dkkd
@@ -428,7 +430,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         //goi nho
         fyDN = [self setFrameLabelTitle:_ngaymocodeDN withLabelValue:_lbngaymocodeDN withFY:fyDN :[dicData objectForKey:DTOACCOUNT_openCodeDate]];
         
-       
+        
         //
         fyDN = [self setFrameLabelTitle:_quocgiaDN withLabelValue:_lbquocgiaDN withFY:fyDN :@""];
         
@@ -439,7 +441,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         
         
         fyDN = [self setFrameLabelTitle:_phuongxaDN withLabelValue:_lbphuongxaDN withFY:fyDN :@""];
-  
+        
         NSString *sms =@"";
         NSString *disableSms = [dicData objectForKey:DTOACCOUNT_disableSms];
         if([disableSms isEqualToString:@"0"])
@@ -461,15 +463,18 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         if ([disableMetting isEqualToString:@"0"]) {
             metting=@"Metting";
         }
-        if(![StringUtil stringIsEmpty:sms]||![StringUtil stringIsEmpty:phone]||![StringUtil stringIsEmpty:email]||![StringUtil stringIsEmpty:metting]){
-            NSString *tmp=[NSString stringWithFormat:@"%@,%@,%@,%@",sms,phone,email,metting];
-            //goi nho
-            fyDN = [self setFrameLabelTitle:_khonglienlacDN withLabelValue:_lbkhonglienlacDN withFY:fyDN :tmp];
-        }
-        else{
-            _khonglienlacDN.hidden=YES;
-            _lbkhonglienlacDN.hidden=YES;
-        }
+        NSString *tmp=[NSString stringWithFormat:@"%@,%@,%@,%@",sms,phone,email,metting];
+        //goi nho
+        fyDN = [self setFrameLabelTitle:_khonglienlacDN withLabelValue:_lbkhonglienlacDN withFY:fyDN :tmp];
+        //        if(![StringUtil stringIsEmpty:sms]||![StringUtil stringIsEmpty:phone]||![StringUtil stringIsEmpty:email]||![StringUtil stringIsEmpty:metting]){
+        //            NSString *tmp=[NSString stringWithFormat:@"%@,%@,%@,%@",sms,phone,email,metting];
+        //            //goi nho
+        //            fyDN = [self setFrameLabelTitle:_khonglienlacDN withLabelValue:_lbkhonglienlacDN withFY:fyDN :tmp];
+        //        }
+        //        else{
+        //            _khonglienlacDN.hidden=YES;
+        //            _lbkhonglienlacDN.hidden=YES;
+        //        }
         _scollviewDN.contentSize=CGSizeMake(0, self.view.frame.size.height + fyDN);
     }
     
@@ -1469,14 +1474,6 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     [mylert show];
     
 }
--(void)setLanguage{
-    //    _codeDN.text=LocalizedString(@"KEY_360_CODE");
-    //    _makhachhangCN.text=LocalizedString(@"KEY_360_CODE");
-    //
-    //    _nameDN.text=LocalizedString(@"KEY_360_NAME");
-    //     _tenkhachangCN.text=LocalizedString(@"KEY_360_NAME");
-    
-};
 - (IBAction)actionCallCN:(id)sender {
     if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_mobile]]){
         NSString *callnumber=[NSString stringWithFormat:@"telprompt://%@",[dicData objectForKey:DTOACCOUNT_mobile]];
@@ -1614,6 +1611,52 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     if(![StringUtil stringIsEmpty:mobile]){
         NSString *sendSMS=[NSString stringWithFormat:@"sms://%@",mobile];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:sendSMS]];
+    }
+}
+-(void) setLanguage{
+    [_btnExpandInfo setTitle:LocalizedString(@"KEY_360_CONTACT") forState:UIControlStateNormal];
+    [_btnNote setTitle: LocalizedString(@"KEY_360_NOTE") forState:UIControlStateNormal];
+    [_btnCalendar setTitle:LocalizedString(@"KEY_360_CALENDAR") forState:UIControlStateNormal];
+    [_btnTask setTitle:LocalizedString(@"KEY_360_NHIEMVU") forState:UIControlStateNormal];
+    [_btnOpportunity setTitle:LocalizedString(@"KEY_360_COHOI") forState:UIControlStateNormal];
+    [_btnComplains setTitle:LocalizedString(@"KEY_360_YKIEN") forState:UIControlStateNormal];
+    [_btnProductService setTitle:LocalizedString(@"KEY_360_SPDV") forState:UIControlStateNormal];
+    [_fullNameLB setText:LocalizedString(@"KEY_LIST_360_TITLE")];
+    _leftInfomenu.text=LocalizedString(@"KEY_INFO_360");
+    if([type isEqualToString:@"INDIV"]){
+        _makhachhangCN.text=LocalizedString(@"KEY_360_CODE");
+        _tenkhachangCN.text=LocalizedString(@"KEY_360_NAME");
+        _gioitinhCN.text=LocalizedString(@"KEY_360_GIOI_TINH");
+        _dienthoaiCN.text=LocalizedString(@"KEY_360_MOBILE");
+        _diachiCN.text=LocalizedString(@"KEY_360_ADDRESS");
+        _sectorCN.text=LocalizedString(@"KEY_360_SECTOR");
+        _nghenghiepCN.text=LocalizedString(@"KEY_360_JOB");
+        _chinhanhquanlyCN.text=LocalizedString(@"KEY_360_CHI_NHANH_QL");
+        _ngamocodeCN.text=LocalizedString(@"KEY_360_NGAY_MO_CODE");
+        _quocgiaCN.text=LocalizedString(@"KEY_360_QUOCGIA");
+        _tinhthanhphoCN.text=LocalizedString(@"KEY_360_TINH_THANHPHO");
+        _quanhuyenCN.text=LocalizedString(@"KEY_360_QUAN_HUYEN");
+        _phuongxaCN.text=LocalizedString(@"KEY_360_PHUONG_XA");
+        _khonglienlacCN.text=LocalizedString(@"KEY_360_KHONG_LIEN_LAC");
+    }
+    else{
+        _codeDN.text=LocalizedString(@"KEY_360_CODE");
+        _nameDN.text=LocalizedString(@"KEY_360_NAME");
+        _loaihinhDN.text=LocalizedString(@"KEY_360_LOAI_DN");
+        _soDKKD.text=LocalizedString(@"KEY_360_SO_DKKD");
+        _ngaycapDKKD.text=LocalizedString(@"KEY_360_NGAY_DKKD");
+        _dienthoaiDN.text=LocalizedString(@"KEY_360_MOBILE");
+        _diachiDN.text=LocalizedString(@"KEY_360_ADDRESS");
+        _sectorDN.text=LocalizedString(@"KEY_360_SECTOR");
+        _loaiDN.text=LocalizedString(@"KEY_360_LOAI_KH");
+        _chinhanhquanlyDN.text=LocalizedString(@"KEY_360_CHI_NHANH_QL");
+        _ngaymocodeDN.text=LocalizedString(@"KEY_360_NGAY_MO_CODE");
+        _quocgiaDN.text=LocalizedString(@"KEY_360_QUOCGIA");
+        _tinhthanhphoDN.text=LocalizedString(@"KEY_360_TINH_THANHPHO");
+        _quanhuyenDN.text=LocalizedString(@"KEY_360_QUAN_HUYEN");
+        _phuongxaDN.text=LocalizedString(@"KEY_360_PHUONG_XA");
+        _khonglienlacDN.text=LocalizedString(@"KEY_360_KHONG_LIEN_LAC");
+        
     }
 }
 @end

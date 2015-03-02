@@ -66,6 +66,7 @@
     //them phan phan trang
     BOOL loading, noMoreResultsAvail;
     UIActivityIndicatorView *spinner;
+    Language *obj;
 }
 @end
 
@@ -94,6 +95,10 @@
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
     
+    obj=[Language getInstance];
+    obj.str=[defaults objectForKey:@"Language"];
+    LocalizationSetLanguage(obj.str);
+    [self setLanguage];
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
     
@@ -104,26 +109,6 @@
     [self initData];
     
     [SVProgressHUD show];
-    //set menu
-    //    UIMenuItem *viewMenu = [[UIMenuItem alloc] initWithTitle:@"Xem" action:@selector(view:)];
-    //
-    //
-    //    UIMenuItem *editMenu = [[UIMenuItem alloc] initWithTitle:@"Sửa" action:@selector(edit:)];
-    //
-    //
-    //    UIMenuItem *delMenu = [[UIMenuItem alloc] initWithTitle:@"Xoá" action:@selector(del:)];
-    //
-    //    UIMenuItem *callMenu = [[UIMenuItem alloc] initWithTitle:@"Gọi điện" action:@selector(call:)];
-    //
-    //    UIMenuItem *smsMenu = [[UIMenuItem alloc] initWithTitle:@"SMS" action:@selector(sms:)];
-    //
-    //    UIMenuItem *emailMenu = [[UIMenuItem alloc] initWithTitle:@"Email" action:@selector(email:)];
-    //
-    //    UIMenuItem *fowlMenu = [[UIMenuItem alloc] initWithTitle:@"Theo dõi" action:@selector(follow:)];
-    //
-    //    UIMenuItem *mapMenu = [[UIMenuItem alloc] initWithTitle:@"Bản đồ" action:@selector(map:)];
-    //    [[UIMenuController sharedMenuController] setMenuItems: @[viewMenu,editMenu,delMenu,callMenu,smsMenu,emailMenu,fowlMenu,mapMenu]];
-    //    [[UIMenuController sharedMenuController] update];
     
     UIMenuItem *viewMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Xem", nil) action:@selector(view:) image:[UIImage imageNamed:@"menuview.png"]];
     
@@ -181,7 +166,8 @@
 
 - (void) updateInterFaceWithOption : (int) option
 {
-    self.fullNameLB.text = @"KHÁCH HÀNG 360";
+    //self.fullNameLB.text = @"KHÁCH HÀNG 360";
+    [self setLanguage];
     [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
     self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
     self.lbTotal.textColor = TEXT_COLOR_HEADER_APP;
@@ -540,7 +526,7 @@
     }
     //load data from db
     //_lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
-    self.lbTotal.text = [NSString stringWithFormat:@"Tổng số %d / %d", arrayData.count, totalCount ];
+    self.lbTotal.text = [NSString stringWithFormat:@"%@ %d / %d",LocalizedString(@"KEY_LIST_360_TOTAL"), arrayData.count, totalCount ];
     [self.tbData reloadData];
     [SVProgressHUD dismiss];
 }
@@ -548,17 +534,6 @@
 #pragma mark UISearch bar
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
-    //    searchBar.showsScopeBar = YES;
-    //    [searchBar sizeToFit];
-    //
-    //    NSLog(@"start search");
-    //
-    //    CGRect frame = self.tbData.frame;
-    //    frame.origin.y = frame.origin.y + searchBar.bounds.size.height;
-    //    self.tbData.frame = frame;
-    //
-    //
-    //    [searchBar setShowsCancelButton:NO animated:YES];
     
     return YES;
 }
@@ -609,7 +584,7 @@
         NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
         deleteLeadId = [dicData objectForKey:DTOACCOUNT_id];
         
-        UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xác nhận đồng ý xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
+        UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERTVIEW_DELETE_MESSAGE")  delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERTVIEW_DELETE_OK") otherButtonTitles:LocalizedString(@"KEY_ALERTVIEW_DELETE_CANCEL"), nil];
         mylert.tag = TAG_DELETE_ITEM;
         [mylert show];
         
@@ -793,7 +768,7 @@
     
     
     //arrayData = [dtoProcess filterWithArrayCondition:dicCondition];
-    _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
+    _lbTotal.text = [NSString stringWithFormat:@"%@ %d",LocalizedString(@"KEY_LIST_360_TOTAL"), arrayData.count];
     
     [self.tbData reloadData];
 }
@@ -816,7 +791,7 @@
     
     deleteLeadId = [dicData objectForKey:DTOACCOUNT_id];
     
-    UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xác nhận đồng ý xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
+    UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERTVIEW_DELETE_MESSAGE")  delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERTVIEW_DELETE_OK") otherButtonTitles:LocalizedString(@"KEY_ALERTVIEW_DELETE_CANCEL"), nil];
     mylert.tag = TAG_DELETE_ITEM;
     [mylert show];
     
@@ -868,9 +843,9 @@
 -(void) delegate_changeStatusFollow:(NSString *)followid{
     
     accountfollowId=followid;
-    UIAlertView *aler=[[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Hoàn thành theo dõi" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles:@"Huỷ", nil];
-    aler.tag=22;
-    [aler show];
+   UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_INFO_MESSAGE_1")  delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERTVIEW_DELETE_OK") otherButtonTitles:LocalizedString(@"KEY_ALERTVIEW_DELETE_CANCEL"), nil];
+    mylert.tag=22;
+    [mylert show];
 }
 -(void)delegate_dismisFollow:(int)item{
     NSLog(@"abc");
@@ -927,5 +902,11 @@
     }
     [self dismissViewControllerAnimated:YES completion:nil];
     
+}
+//set language
+-(void) setLanguage{
+    [_lbTotal setText:LocalizedString(@"KEY_LIST_360_TOTAL")];
+    [_fullNameLB setText:LocalizedString(@"KEY_LIST_360_TITLE")];
+    [_txtSearchBar setPlaceholder:LocalizedString(@"KEY_LIST_360_TOTAL")];
 }
 @end

@@ -47,6 +47,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnSave;
 - (IBAction)actionSave:(id)sender;
 
+- (IBAction)actionDel:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnClose;
 - (IBAction)actionClose:(id)sender;
@@ -113,7 +114,23 @@
 
 
 //display image in ipad air
+@property (weak, nonatomic) IBOutlet UILabel *lbThongtinchinh;
+@property (weak, nonatomic) IBOutlet UILabel *lbtenkhachhang;
 
+@property (weak, nonatomic) IBOutlet UILabel *lbchungminhthu;
 
+@property (weak, nonatomic) IBOutlet UILabel *lbdidong;
+@property (weak, nonatomic) IBOutlet UILabel *lbCongty;
+@property (weak, nonatomic) IBOutlet UILabel *lbchucdanh;
+@property (weak, nonatomic) IBOutlet UILabel *lbNgaysinh;
+@property (weak, nonatomic) IBOutlet UILabel *lbthongtinkhacs;
+@property (weak, nonatomic) IBOutlet UILabel *lbgioitinh;
+@property (weak, nonatomic) IBOutlet UILabel *lbtinhtranghonnhan;
+@property (weak, nonatomic) IBOutlet UILabel *lbnghenghiep;
+@property (weak, nonatomic) IBOutlet UILabel *lbthunhap;
+@property (weak, nonatomic) IBOutlet UILabel *lbdiachi;
+@property (weak, nonatomic) IBOutlet UILabel *lbkhongllq;
+@property (weak, nonatomic) IBOutlet UILabel *lbdienthoai;
 
+@property (weak, nonatomic) IBOutlet UILabel *lbtongtaisan;
 @end

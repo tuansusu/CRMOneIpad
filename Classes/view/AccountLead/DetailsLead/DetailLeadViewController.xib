@@ -15,6 +15,7 @@
                 <outlet property="btnCalendar" destination="cS7-DR-iO8" id="Kbr-dD-TsQ"/>
                 <outlet property="btnCallCN" destination="87g-Ka-RZS" id="51B-O2-kbl"/>
                 <outlet property="btnCallDN" destination="gMi-Cb-BmN" id="rDH-OM-XVZ"/>
+                <outlet property="btnComplains" destination="JN2-ut-veh" id="mMv-yJ-t3E"/>
                 <outlet property="btnEmailCN" destination="flq-3N-4xU" id="yfu-ye-jIa"/>
                 <outlet property="btnEmailDN" destination="v67-7m-Tfo" id="pYa-n2-gbv"/>
                 <outlet property="btnExpandInfo" destination="6nx-Of-KNu" id="Pe1-Jx-F4k"/>
@@ -142,7 +143,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eha-nT-73g" userLabel="btn del">
                             <rect key="frame" x="934" y="6" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" backgroundImage="menudelete.png">
+                            <state key="normal" backgroundImage="icon_delete_90x90.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -152,7 +153,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="u7C-7Z-6du" userLabel="btn edit">
                             <rect key="frame" x="894" y="6" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" backgroundImage="menuedit.png">
+                            <state key="normal" backgroundImage="icon_sua_90x90.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -803,8 +804,8 @@
         <image name="call.png" width="30" height="27"/>
         <image name="email_icon_hide.png" width="32" height="32"/>
         <image name="ic-add-sub-1.png" width="90" height="90"/>
-        <image name="menudelete.png" width="32" height="32"/>
-        <image name="menuedit.png" width="32" height="32"/>
+        <image name="icon_delete_90x90.png" width="90" height="90"/>
+        <image name="icon_sua_90x90.png" width="90" height="90"/>
         <image name="pin.png" width="48" height="48"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

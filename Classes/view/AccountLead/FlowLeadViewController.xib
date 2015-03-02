@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FlowLeadViewController">
@@ -17,7 +17,14 @@
                 <outlet property="btnRemind" destination="SLQ-XF-bdr" id="jXs-pf-PId"/>
                 <outlet property="btnSMS" destination="dFM-QF-vHD" id="i1g-ne-xV5"/>
                 <outlet property="btnSave" destination="fZs-0r-Xio" id="qrc-io-hea"/>
+                <outlet property="lbGuiNhacNho" destination="bo9-s1-kaZ" id="EMQ-Xv-Gqi"/>
+                <outlet property="lbHinhThucNhacNho" destination="TJy-aV-qPh" id="F8Q-Hi-2YL"/>
+                <outlet property="lbMucDich" destination="zjA-96-LX7" id="NlJ-au-agV"/>
+                <outlet property="lbNgayBatDau" destination="KId-Yv-TPe" id="dJf-eg-lYj"/>
+                <outlet property="lbNgayHoanThanh" destination="7Y5-Q4-jdg" id="6HU-2X-SX3"/>
+                <outlet property="lbThietLapTheoDoi" destination="IG5-sL-rgu" id="5At-hW-OuE"/>
                 <outlet property="lbTitel" destination="B6K-AQ-Khk" id="DQ8-5X-dB4"/>
+                <outlet property="lbTrangChu" destination="vqP-CN-yy8" id="t0K-6N-Zzv"/>
                 <outlet property="txtMucDich" destination="7mp-GY-kTg" id="Rlw-S6-Nmp"/>
                 <outlet property="txtNgaybatdau" destination="L6Q-i0-R8k" id="nCh-Eb-dih"/>
                 <outlet property="txtNgayhoanthanh" destination="XB5-FZ-KmD" id="KBL-SH-Aqq"/>

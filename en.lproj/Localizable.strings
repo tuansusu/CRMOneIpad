@@ -14,7 +14,7 @@
 //menu
 "MENU_FUNCTION_DASHBOARD" = "     DASHBOARD";
 "MENU_GROUP_CUSTOMER" = "    CUSTOMER";
-"MENU_FUNCTION_ACCOUNTLEAD" = "       Potential customer";
+"MENU_FUNCTION_ACCOUNTLEAD" = "          Potential customer";
 "MENU_FUNCTION_ACCOUNT360" = "           360 customer";
 "MENU_FUNCTION_OPPORTUNITY" = "           Sale opportunities";
 "MENU_FUNCTION_MAP" = "           Customer map";
@@ -82,22 +82,5 @@
 "KEY_CONTACT_NOTE"="Note";
 "KEY_CONTACT_AVARTAR"="Avartar";
 //chi tiết khách hàng 360
-"KEY_360_CODE"="Code";
-"KEY_360_NAME"="Full name";
-"KEY_360_SO_DKKD"="Số ĐKKD";
-"KEY_360_NGAY_DKKD"="Ngày ĐKKD";
-"KEY_360_MOBILE"="Mobile";
-"KEY_360_FAX"="Fax";
-"KEY_360_ADDRESS"="Address";
-"KEY_360_SECTOR"="Sector";
-"KEY_360_LOAI_HINH_DN"="Loại hình doanh nghiệp";
-"KEY_360_CHI_NHANH_QUAN_LY"="Chi nhánh quản lý";
-"KEY_360_NGAY_MO_CODE"="Ngày mở code";
-"KEY_360_QUOCGIA"="Quốc gia";
-"KEY_360_TINH_THANHPHO"="Tỉnh/thành phố";
-"KEY_360_QUAN_HUYEN"="Quận/huyện";
-"KEY_360_PHUONG_XA"="Phường/xã";
-"KEY_360_KHONG_LIEN_LAC"="Không liên lạc qua";
-"KEY_360_THONG_TIN_KHACH_HANG"="Thông tin khách hàng";
 
 

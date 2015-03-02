@@ -89,6 +89,7 @@ enum TypeLeaderView{
 @property (weak, nonatomic) IBOutlet UIButton *btnTask;
 @property (weak, nonatomic) IBOutlet UIButton *btnOpportunity;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnComplains;
 
 - (IBAction)actionExpandInfo:(UIButton *)sender;
 - (IBAction)actionNote:(UIButton *)sender;

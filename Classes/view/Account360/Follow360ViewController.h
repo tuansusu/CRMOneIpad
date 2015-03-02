@@ -90,6 +90,13 @@
 
 ////////////// KHAI BAO BIEN CHUNG//////////
 @property (nonatomic, retain) UIPopoverController *listPopover;
+@property (weak, nonatomic) IBOutlet UILabel *lbThietLapTheoDoi;
+@property (weak, nonatomic) IBOutlet UILabel *lbMucDich;
+@property (weak, nonatomic) IBOutlet UILabel *lbNgayBatDau;
+@property (weak, nonatomic) IBOutlet UILabel *lbNgayHoanThanh;
+@property (weak, nonatomic) IBOutlet UILabel *lbGuiNhacNho;
+@property (weak, nonatomic) IBOutlet UILabel *lbHinhThucNhacNho;
+@property (weak, nonatomic) IBOutlet UILabel *lbTrangChu;
 
 @end
 

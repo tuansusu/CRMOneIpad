@@ -31,6 +31,7 @@
     NSString *catId;
     BOOL success;
     Util*util;
+    Language *obj;
     
 }
 
@@ -86,6 +87,10 @@
     newDay=[dateFormatter stringFromDate:addNew];
     _txtNgayhoanthanh.text=newDay;
     _txtThoigiannhacnho.text=MyString;
+    obj=[Language getInstance];
+    obj.str = [defaults objectForKey:@"Language"];
+    LocalizationSetLanguage(obj.str);
+    [self setLanguage:name];
 }
 
 
@@ -448,4 +453,20 @@
         [_delegate delegate_dismisFollow:0];
     }
 }
+-(void) setLanguage:(NSString *)name{
+    _lbTitel.text=[NSString stringWithFormat:@"%@ - %@",LocalizedString(@"KEY_FOLLOW_360_TITLE"),name];
+    [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+    [_btnCancel setTitle:LocalizedString(@"KEY_CANCEL") forState:UIControlStateNormal];
+    [_lbThietLapTheoDoi setText:LocalizedString(@"KEY_FOLLOW_SETTING")];
+    _lbMucDich.text=LocalizedString(@"KEY_FOLLOW_MD");
+    [_txtMucDich setPlaceholder:LocalizedString(@"KEY_FOLLOW_MD")];
+    _lbNgayBatDau.text=LocalizedString(@"KEY_FOLLOW_DATE_START");
+    [_txtNgaybatdau setPlaceholder:LocalizedString(@"KEY_FOLLOW_DATE_START")];
+    _lbNgayHoanThanh.text=LocalizedString(@"KEY_FOLLOW_DATE_END");
+    [_txtNgayhoanthanh setPlaceholder:LocalizedString(@"KEY_FOLLOW_DATE_END")];
+    _lbGuiNhacNho.text=LocalizedString(@"KEY_FOLLOW_READMIND");
+    _lbHinhThucNhacNho.text=LocalizedString(@"KEY_FOLLOW_HT");
+    _lbTrangChu.text=LocalizedString(@"KEY_FOLLOW_HOME");
+}
+
 @end

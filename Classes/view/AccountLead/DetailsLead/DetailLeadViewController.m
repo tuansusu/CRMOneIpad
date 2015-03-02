@@ -102,6 +102,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     IBOutlet UIScrollView *scrollViewHeaderExpandInfo;
     IBOutlet  ComplainsView* viewComplain;
+    Language *obj;
 }
 @end
 
@@ -136,7 +137,9 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
-    
+    obj=[Language getInstance];
+    obj.str=[defaults objectForKey:@"Language"];
+    LocalizationSetLanguage(obj.str);
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
     [self initData];
@@ -149,6 +152,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     self.tbData.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     //scrollViewHeaderExpandInfo.contentSize = CGSizeMake(910, scrollViewHeaderExpandInfo.frame.size.height);
+       [self setLanguage];
 }
 
 -(void) viewWillAppear:(BOOL)animated{
@@ -210,6 +214,8 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     //khoi tao du lieu!
     listArr  = [NSArray arrayWithObjects:SELECT_TEXT_ADD_CONTACT,SELECT_TEXT_ADD_NOTE, SELECT_TEXT_ADD_CALENDAR, SELECT_TEXT_ADD_TASK, SELECT_TEXT_ADD_OPPORTUNITY,SELECT_TEXT_ADD_COMPLAIN, nil];
+    listArr  = [NSArray arrayWithObjects:LocalizedString(@"KEY_360_CONTACT"),LocalizedString(@"KEY_360_NOTE"), LocalizedString(@"KEY_360_CALENDAR")
+                , LocalizedString(@"KEY_360_NHIEMVU"), LocalizedString(@"KEY_360_COHOI"), LocalizedString(@"KEY_360_YKIEN"), nil];
     
     dtoLeadProcess = [DTOACCOUNTLEADProcess new];
     dtoContactProcess = [DTOCONTACTProcess new];
@@ -314,7 +320,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     fyCN = [self setFrameLabelTitle:_lbLabelAddress withLabelValue:_lbAddress withFY:fyCN :[dicData objectForKey:DTOLEAD_address]];
     ///thu nhap ca nha
     if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_monthlyIncome]]){
-    fyCN = [self setFrameLabelTitle:_lbLabelThuNhapCN withLabelValue:_lbThuNhapCN withFY:fyCN :[dicData objectForKey:DTOLEAD_monthlyIncome]];
+        fyCN = [self setFrameLabelTitle:_lbLabelThuNhapCN withLabelValue:_lbThuNhapCN withFY:fyCN :[dicData objectForKey:DTOLEAD_monthlyIncome]];
     }
     else{
         _lbLabelThuNhapCN.hidden=YES;
@@ -389,60 +395,73 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     [_btnAddDN setFrame:CGRectMake(_btnAddDN.frame.origin.x,fyCN, _btnAddDN.frame.size.width, _btnAddDN.frame.size.height)];
     fyCN = [self setFrameLabelTitle:_lbLabelBussinessAddress withLabelValue:_lbBussinessAddress withFY:fyCN :[dicData objectForKey:DTOLEAD_address]];
     //ngày thành lập
-    _lbLableBussinessNgayThanhLap.hidden=YES;
-    _lbBussinessNgayThanhLap.hidden=YES;
+    fyCN = [self setFrameLabelTitle:_lbLableBussinessNgayThanhLap withLabelValue:_lbBussinessNgayThanhLap withFY:fyCN :[dicData objectForKey:DTOLEAD_updatedDate]];
+    //    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_updatedDate]]){
+    //        fyCN = [self setFrameLabelTitle:_lbLableBussinessNgayThanhLap withLabelValue:_lbBussinessNgayThanhLap withFY:fyCN :[dicData objectForKey:DTOLEAD_updatedDate]];
+    //    }
+    //    else{
+    ////        _lbLableBussinessNgayThanhLap.hidden=YES;
+    ////        _lbBussinessNgayThanhLap.hidden=YES;
+    //    }
     //so dang ky
-    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_registrationNumber]]){
-        fyCN = [self setFrameLabelTitle:_lbLableBussinessDKKD withLabelValue:_lbBussinessDKKD withFY:fyCN :[dicData objectForKey:DTOLEAD_registrationNumber]];
-    }
-    else{
-        _lbLableBussinessDKKD.hidden=YES;
-        _lbBussinessDKKD.hidden=YES;
-    }
+    fyCN = [self setFrameLabelTitle:_lbLableBussinessDKKD withLabelValue:_lbBussinessDKKD withFY:fyCN :[dicData objectForKey:DTOLEAD_registrationNumber]];
+    //    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_registrationNumber]]){
+    //        fyCN = [self setFrameLabelTitle:_lbLableBussinessDKKD withLabelValue:_lbBussinessDKKD withFY:fyCN :[dicData objectForKey:DTOLEAD_registrationNumber]];
+    //    }
+    //    else{
+    //       // _lbLableBussinessDKKD.hidden=YES;
+    //       // _lbBussinessDKKD.hidden=YES;
+    //    }
     //von dieu le
-    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_charter]]){
-        fyCN = [self setFrameLabelTitle:_lbLableBussinessVonDieuLe withLabelValue:_lbBussinessVonDieuLe withFY:fyCN :[dicData objectForKey:DTOLEAD_charter]];
-    }
-    else{
-        _lbLableBussinessVonDieuLe.hidden=YES;
-        _lbBussinessVonDieuLe.hidden=YES;
-    }
+    fyCN = [self setFrameLabelTitle:_lbLableBussinessVonDieuLe withLabelValue:_lbBussinessVonDieuLe withFY:fyCN :[dicData objectForKey:DTOLEAD_charter]];
+    //    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_charter]]){
+    //        fyCN = [self setFrameLabelTitle:_lbLableBussinessVonDieuLe withLabelValue:_lbBussinessVonDieuLe withFY:fyCN :[dicData objectForKey:DTOLEAD_charter]];
+    //    }
+    //    else{
+    ////        _lbLableBussinessVonDieuLe.hidden=YES;
+    ////        _lbBussinessVonDieuLe.hidden=YES;
+    //    }
     //von chu so huu
-    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_equityOwner]])
-    {
-      fyCN = [self setFrameLabelTitle:_lbLabelBussinessVoChuSoHuu withLabelValue:_lbBussinessVoChuSoHuu withFY:fyCN :[dicData objectForKey:DTOLEAD_equityOwner]];
-    }
-    else{
-        _lbLabelBussinessVoChuSoHuu.hidden=YES;
-        _lbBussinessVoChuSoHuu.hidden=YES;
-    }
+    fyCN = [self setFrameLabelTitle:_lbLabelBussinessVoChuSoHuu withLabelValue:_lbBussinessVoChuSoHuu withFY:fyCN :[dicData objectForKey:DTOLEAD_equityOwner]];
+    //    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_equityOwner]])
+    //    {
+    //      fyCN = [self setFrameLabelTitle:_lbLabelBussinessVoChuSoHuu withLabelValue:_lbBussinessVoChuSoHuu withFY:fyCN :[dicData objectForKey:DTOLEAD_equityOwner]];
+    //    }
+    //    else{
+    ////        _lbLabelBussinessVoChuSoHuu.hidden=YES;
+    ////        _lbBussinessVoChuSoHuu.hidden=YES;
+    //    }
     //tong tai san
-    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_assetTotal]])
-    {
-        fyCN = [self setFrameLabelTitle:_lbLableBussinessTongTaiSan withLabelValue:_lbBussinessTongTaiSan withFY:fyCN :[dicData objectForKey:DTOLEAD_assetTotal]];
-    }
-    else{
-        _lbLableBussinessTongTaiSan.hidden=YES;
-        _lbBussinessTongTaiSan.hidden=YES;
-    }
+    fyCN = [self setFrameLabelTitle:_lbLableBussinessTongTaiSan withLabelValue:_lbBussinessTongTaiSan withFY:fyCN :[dicData objectForKey:DTOLEAD_assetTotal]];
+    //    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_assetTotal]])
+    //    {
+    //        fyCN = [self setFrameLabelTitle:_lbLableBussinessTongTaiSan withLabelValue:_lbBussinessTongTaiSan withFY:fyCN :[dicData objectForKey:DTOLEAD_assetTotal]];
+    //    }
+    //    else{
+    ////        _lbLableBussinessTongTaiSan.hidden=YES;
+    ////        _lbBussinessTongTaiSan.hidden=YES;
+    //    }
     //doanh thu
-    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_profitNonTax]])
-    {
-        fyCN = [self setFrameLabelTitle:_lbLabelBussinessDoanhThu withLabelValue:_lbBussinessDoanhThu withFY:fyCN :[dicData objectForKey:DTOLEAD_profitNonTax]];
-    }
-    else{
-        _lbLabelBussinessDoanhThu.hidden=YES;
-        _lbBussinessDoanhThu.hidden=YES;
-    }
+    
+    fyCN = [self setFrameLabelTitle:_lbLabelBussinessDoanhThu withLabelValue:_lbBussinessDoanhThu withFY:fyCN :[dicData objectForKey:DTOLEAD_profitNonTax]];
+    //    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_profitNonTax]])
+    //    {
+    //        fyCN = [self setFrameLabelTitle:_lbLabelBussinessDoanhThu withLabelValue:_lbBussinessDoanhThu withFY:fyCN :[dicData objectForKey:DTOLEAD_profitNonTax]];
+    //    }
+    //    else{
+    ////        _lbLabelBussinessDoanhThu.hidden=YES;
+    ////        _lbBussinessDoanhThu.hidden=YES;
+    //    }
     //loi nhuan
-    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_revenue]])
-    {
-        fyCN = [self setFrameLabelTitle:_lbLableBussniessLoiNhuan withLabelValue:_lbBussinessLoiNhuan withFY:fyCN :[dicData objectForKey:DTOLEAD_revenue]];
-    }
-    else{
-        _lbLableBussniessLoiNhuan.hidden=YES;
-        _lbBussinessLoiNhuan.hidden=YES;
-    }
+    fyCN = [self setFrameLabelTitle:_lbLableBussniessLoiNhuan withLabelValue:_lbBussinessLoiNhuan withFY:fyCN :[dicData objectForKey:DTOLEAD_revenue]];
+    //    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_revenue]])
+    //    {
+    //        fyCN = [self setFrameLabelTitle:_lbLableBussniessLoiNhuan withLabelValue:_lbBussinessLoiNhuan withFY:fyCN :[dicData objectForKey:DTOLEAD_revenue]];
+    //    }
+    //    else{
+    ////        _lbLableBussniessLoiNhuan.hidden=YES;
+    ////        _lbBussinessLoiNhuan.hidden=YES;
+    //    }
     NSString *sms =@"";
     NSString *disableSms = [dicData objectForKey:DTOLEAD_disableSms];
     if([disableSms isEqualToString:@"0"])
@@ -464,15 +483,18 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     if ([disableMetting isEqualToString:@"0"]) {
         metting=@"Metting";
     }
-    if(![StringUtil stringIsEmpty:sms]||![StringUtil stringIsEmpty:phone]||![StringUtil stringIsEmpty:email]||![StringUtil stringIsEmpty:metting]){
-        NSString *tmp=[NSString stringWithFormat:@"%@,%@,%@,%@",sms,phone,email,metting];
-        //goi nho
-        fyCN = [self setFrameLabelTitle:_lbLableBussinessKhongLienLacQua withLabelValue:_lbBussinessKhongLienLacQuaa withFY:fyCN :tmp];
-    }
-    else{
-        _lbLableBussinessKhongLienLacQua.hidden=YES;
-        _lbBussinessKhongLienLacQuaa.hidden=YES;
-    }
+    NSString *tmp=[NSString stringWithFormat:@"%@,%@,%@,%@",sms,phone,email,metting];
+    //goi nho
+    fyCN = [self setFrameLabelTitle:_lbLableBussinessKhongLienLacQua withLabelValue:_lbBussinessKhongLienLacQuaa withFY:fyCN :tmp];
+    //    if(![StringUtil stringIsEmpty:sms]||![StringUtil stringIsEmpty:phone]||![StringUtil stringIsEmpty:email]||![StringUtil stringIsEmpty:metting]){
+    //        NSString *tmp=[NSString stringWithFormat:@"%@,%@,%@,%@",sms,phone,email,metting];
+    //        //goi nho
+    //        fyCN = [self setFrameLabelTitle:_lbLableBussinessKhongLienLacQua withLabelValue:_lbBussinessKhongLienLacQuaa withFY:fyCN :tmp];
+    //    }
+    //    else{
+    ////        _lbLableBussinessKhongLienLacQua.hidden=YES;
+    ////        _lbBussinessKhongLienLacQuaa.hidden=YES;
+    //    }
     _scrollViewBussiness.contentSize=CGSizeMake(0, self.view.frame.size.height + fyCN);
 }
 
@@ -565,7 +587,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     [self.viewBodyExpandInfo setBorderWithOption:smgSelect];
     
     
-    self.fullNameLB.text = TITLE_APP;
+    // self.fullNameLB.text = TITLE_APP;
     
     [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
     self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
@@ -1551,7 +1573,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         [self presentViewController:viewController animated:YES completion:nil];
         
     }
-
+    
 }
 
 - (IBAction)actionSMSDN:(id)sender {
@@ -1616,5 +1638,46 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         NSString *sendSMS=[NSString stringWithFormat:@"sms://%@",mobile];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:sendSMS]];
     }
+}
+-(void)setLanguage{
+    
+    [_btnExpandInfo setTitle:LocalizedString(@"KEY_360_CONTACT") forState:UIControlStateNormal];
+    [_btnNote setTitle: LocalizedString(@"KEY_360_NOTE") forState:UIControlStateNormal];
+    [_btnCalendar setTitle:LocalizedString(@"KEY_360_CALENDAR") forState:UIControlStateNormal];
+    [_btnTask setTitle:LocalizedString(@"KEY_360_NHIEMVU") forState:UIControlStateNormal];
+    [_btnOpportunity setTitle:LocalizedString(@"KEY_360_COHOI") forState:UIControlStateNormal];
+    [_btnComplains setTitle:LocalizedString(@"KEY_360_YKIEN") forState:UIControlStateNormal];
+    //[_btnProductService setTitle:LocalizedString(@"KEY_360_SPDV") forState:UIControlStateNormal];
+    [_fullNameLB setText:LocalizedString(@"KEY_LEAD_TITLE")];
+    _lbLeftInfo.text=LocalizedString(@"KEY_LEAD_INFO_BASSIC");
+    if ([leadType isEqualToString:FIX_LEADTYPE_BUSSINESS]) {
+        _lbLabelBussinessCode.text=LocalizedString(@"KEY_LEAD_CODE");
+        _lbLabelBussinessName.text=LocalizedString(@"KEY_LEAD_NAME");
+        _lbLabelBussinessTaxCode.text=LocalizedString(@"KEY_LEAD_SOTHUE");
+        _lbLabelBussinessPhone.text=LocalizedString(@"KEY_LEAD_PHONE");
+        _lbLabelBussinessAddress.text=LocalizedString(@"KEY_LEAD_ADDRESS");
+        _lbLableBussinessNgayThanhLap.text=LocalizedString(@"KEY_LEAD_NGAY_TL");
+        _lbLableBussinessDKKD.text=LocalizedString(@"KEY_LEAD_SO_DK");
+        _lbLableBussinessVonDieuLe.text=LocalizedString(@"KEY_LEAD_VON_DL");
+        _lbLabelBussinessVoChuSoHuu.text=LocalizedString(@"KEY_LEAD_VON_CHU_SH");
+        _lbLableBussinessTongTaiSan.text=LocalizedString(@"KEY_LEAD_TONG_TS");
+        _lbLabelBussinessDoanhThu.text=LocalizedString(@"KEY_LEAD_DOANH_THU");
+        _lbLableBussniessLoiNhuan.text=LocalizedString(@"KEY_LEAD_LOI_NHUAN");
+        _lbLableBussinessKhongLienLacQua.text=LocalizedString(@"KEY_LEAD_KLLQ");
+    }
+    else{
+        _lbLabelCode.text=LocalizedString(@"KEY_LEAD_CODE");
+        _lbLabelName.text=LocalizedString(@"KEY_LEAD_NAME");
+        _lbLabelAlias.text=LocalizedString(@"KEY_LEAD_SO_CMT");
+        _lbLabelSex.text=LocalizedString(@"KEY_LEAD_GT");
+        _lbLabelBirthDay.text=LocalizedString(@"KEY_LEAD_BIRTH_DAY");
+        _lbLabelMarialStatus.text=LocalizedString(@"KEY_LEAD_TINH_TRANG_HN");
+        _lbLabelPhone.text=LocalizedString(@"KEY_LEAD_PHONE");
+        _lbLabelAddress.text=LocalizedString(@"KEY_LEAD_CODE");
+        _lbLabelThuNhapCN.text=LocalizedString(@"KEY_LEAD_THU_NHAP_CN");
+        _lbLableTongThuNhap.text=LocalizedString(@"KEY_LEAD_TONG_THU_NHAP");
+        _lbLableKhongLienLacQua.text=LocalizedString(@"KEY_LEAD_KLLQ");
+    }
+    
 }
 @end

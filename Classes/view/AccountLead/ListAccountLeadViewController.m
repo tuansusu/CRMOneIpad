@@ -155,7 +155,7 @@
     self.lbTypeCustomer.text = [listTypeArr objectAtIndex:selectTypeIndex];
     
     
-    listArr  = [NSArray arrayWithObjects:SELECT_TEXT_ADD_PERSON, SELECT_TEXT_ADD_BUSSINESS, nil];
+    listArr  = [NSArray arrayWithObjects:LocalizedString(@"KEY_LEAD_ADD_CN"), LocalizedString(@"KEY_LEAD_ADD_DN"), nil];
     iSearchOption = SCOPE_CODE; //
     strSearchText = @"";
     
@@ -543,7 +543,7 @@
     }
     //load data from db
     //_lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
-    self.lbTotal.text = [NSString stringWithFormat:@"Tổng số %d / %d", arrayData.count, totalCount ];
+    self.lbTotal.text = [NSString stringWithFormat:@"%@ %d / %d",LocalizedString(@"KEY_LIST_360_TOTAL"), arrayData.count, totalCount ];
     [self.tbData reloadData];
     [SVProgressHUD dismiss];
 }
@@ -611,7 +611,7 @@
         NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
         deleteLeadId = [dicData objectForKey:DTOLEAD_id];
         
-        UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xác nhận đồng ý xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
+        UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERT_DEL") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERTVIEW_DELETE_OK") otherButtonTitles: LocalizedString(@"KEY_ALERTVIEW_DELETE_CANCEL"), nil];
         mylert.tag = TAG_DELETE_ITEM;
         [mylert show];
         
@@ -883,7 +883,7 @@
     
     deleteLeadId = [dicData objectForKey:DTOACCOUNT_id];
     
-    UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xác nhận đồng ý xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
+   UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERT_DEL") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERTVIEW_DELETE_OK") otherButtonTitles: LocalizedString(@"KEY_ALERTVIEW_DELETE_CANCEL"), nil];
     mylert.tag = TAG_DELETE_ITEM;
     [mylert show];
     
@@ -893,7 +893,7 @@
 -(void) delegate_changeStatusFollow:(NSString *)followid{
     
     followId=followid;
-    UIAlertView *aler=[[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Hoàn thành theo dõi" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles:@"Huỷ", nil];
+    UIAlertView *aler = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERT_DEL") delegate:self cancelButtonTitle:LocalizedString(@"KEY_INFO_MESSAGE_1") otherButtonTitles: LocalizedString(@"KEY_ALERTVIEW_DELETE_CANCEL"), nil];
     aler.tag=22;
     [aler show];
 }
@@ -952,5 +952,7 @@
     }
 }
 -(void) setLanguage{
+    _fullNameLB.text=LocalizedString(@"KEY_LEAD_TITLE");
+    
 }
 @end

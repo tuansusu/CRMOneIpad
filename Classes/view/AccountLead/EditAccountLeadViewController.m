@@ -12,6 +12,7 @@
 #import "DataField.h"
 #import "FlowLeadViewController.h"
 #import "SelectAddInMapsViewController.h"
+#import "ListAccountLeadViewController.h"
 
 #define TAG_SELECT_PERSONAL_POSITION 1
 #define TAG_SELECT_PERSONAL_JOB 2
@@ -62,6 +63,7 @@
     
     //luu lai thong tin chon dia chi cua ban do
     float _longitude, _latitude;
+    Language *obj;
     
 }
 @end
@@ -93,10 +95,12 @@
     util=[Util new];
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
-    
+    obj=[Language getInstance];
+    obj.str=[defaults objectForKey:@"Language"];
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
     [self initData];
+    [self setLanguage];
 }
 
 //khoi tao gia tri mac dinh cua form
@@ -251,7 +255,7 @@
     self.bodyMainView.layer.borderWidth = BORDER_WITH;
     self.bodyMainView.layer.borderColor = [BORDER_COLOR CGColor];
     
-    [self.btnSave setStyleNormalWithOption:smgSelect];
+    //[self.btnSave setStyleNormalWithOption:smgSelect];
     
     for (UIView *viewTemp in self.bodyMainView.subviews) {
         
@@ -316,15 +320,15 @@
 -(void) actionSave:(id)sender{
     //check valid to save
     
-    if (![util checkValidToSave:_txtName :@"Anh/Chị chưa nhập tên khách hàng" :self.viewMainBodyInfo]) {
+    if (![util checkValidToSave:_txtName :LocalizedString(@"KEY_LEAD_CN_CHECK_NAME") :self.viewMainBodyInfo]) {
         return;
     }
-    if(![util checkValidToSave:_txtPhone :@"Anh/Chị chưa nhập số điện thoại khách hàng" :_viewMainBodyInfo]){
+    if(![util checkValidToSave:_txtPhone :LocalizedString(@"KEY_LEAD_CN_CHECK_MOBILE") :_viewMainBodyInfo]){
         return;
     }
     if(_txtEmail.text.length>0 && ![util validateEmail:_txtEmail.text]){
     
-        [util showTooltip:_txtEmail withText:@"Email không đúng định dạng" showview:_viewMainBodyInfo];
+        [util showTooltip:_txtEmail withText:LocalizedString(@"KEY_LEAD_CN_CHECK_EMAIL") showview:_viewMainBodyInfo];
         [util setBorder:_txtEmail];
         return;
     }
@@ -416,17 +420,23 @@
     
     if (succsess) {
         //Thong bao cap nhat thanh cong va thoat
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Cập nhật thành công, tiếp tục nhập?" delegate:self cancelButtonTitle:@"Không" otherButtonTitles:@"Có", nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE")  message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:LocalizedString(@"KEY_NO") otherButtonTitles:LocalizedString(@"KEY_YES"), nil];
         alert.tag = 5;
         [alert show];
         
     }else{
         //khong bao nhap loi - lien he quan tri
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Sảy ra lỗi, vui lòng thử lại hoặc gửi log đến quản trị" delegate:self cancelButtonTitle:@"Thoát" otherButtonTitles:nil];
+         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERT_ERROR") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERT_EXIT") otherButtonTitles:nil];
         alert.tag = 6;
         [alert show];
     }
     
+}
+
+- (IBAction)actionDel:(id)sender {
+    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERT_DEL") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERTVIEW_DELETE_OK") otherButtonTitles:LocalizedString(@"KEY_ALERTVIEW_DELETE_CANCEL"), nil];
+    alert.tag=11;
+    [alert show];
 }
 
 -(void) actionClose:(id)sender{
@@ -450,6 +460,16 @@
     if (succsess && alertView.tag == 5 && buttonIndex == 1) {
         //reset lai form
         [self resetForm];
+    }
+    if(alertView.tag==11){
+        if(buttonIndex==0){
+            BOOL result =    [dtoLeadProcess deleteEntity:[_dataSend objectForKey:DTOLEAD_id]];
+            if(result){
+                //[self dismissViewControllerAnimated:YES completion:nil];
+                ListAccountLeadViewController *viewControler=[[ListAccountLeadViewController alloc]initWithNibName:@"ListAccountLeadViewController" bundle:nil];
+                [self presentViewController:viewControler animated:YES completion:nil];
+            }
+        }
     }
 }
 
@@ -825,5 +845,43 @@
     if ([self.listPopover isPopoverVisible])
         [self.listPopover dismissPopoverAnimated:YES];
 }
+-(void)setLanguage{
 
+    if(_dataSend.count>0){
+    _fullNameLB.text = LocalizedString(@"KEY_LEAD_EDIT_CN_NEW");
+    }
+    else{
+    _fullNameLB.text = LocalizedString(@"KEY_LEAD_ADD_CN_NEW");
+    }
+    _lbThongtinchinh.text=LocalizedString(@"KEY_LEAD_ADD_NEW");
+    //ten khach hang
+    _lbtenkhachhang.text=LocalizedString(@"KEY_LEAD_CN_NAME");
+    _txtName.placeholder=LocalizedString(@"KEY_LEAD_CN_NAME");
+    //cmt
+    _lbchungminhthu.text=LocalizedString(@"KEY_LEAD_CN_PASSPORT");
+    _txtNumberIdentity.placeholder=LocalizedString(@"KEY_LEAD_CN_PASSPORT");
+    //di dong
+    _lbdidong.text=LocalizedString(@"KEY_LEAD_CN_PHONE");
+    _txtPhone.placeholder=LocalizedString(@"KEY_LEAD_CN_PHONE");
+    //cong ty
+    _lbCongty.text=LocalizedString(@"KEY_LEAD_CN_COMPANY");
+    _txtCompany.placeholder=LocalizedString(@"KEY_LEAD_CN_COMPANY");
+    //ngay sinh
+    _lbNgaysinh.text=LocalizedString(@"KEY_LEAD_CN_BIRTHDAY");
+    _txtDateOfBirth.placeholder=LocalizedString(@"KEY_LEAD_CN_BIRTHDAY");
+    _lbthongtinkhacs.text=LocalizedString(@"KEY_LEAD_CN_ORTHER");
+    _lbgioitinh.text=LocalizedString(@"KEY_LEAD_CN_GT");
+    _lbtinhtranghonnhan.text=LocalizedString(@"KEY_LEAD_CN_GD");
+    //dia chi
+    _lbdiachi.text=LocalizedString(@"KEY_LEAD_CN_ADDRESS");
+    _txtAddress.placeholder=LocalizedString(@"KEY_LEAD_CN_ADDRESS");
+    _lbthunhap.text=LocalizedString(@"KEY_LEAD_CN_THUNHAP");
+    _txtMonthlyIncom.placeholder=LocalizedString(@"KEY_LEAD_CN_THUNHAP");
+    _lbtongtaisan.text=LocalizedString(@"KEY_LEAD_CN_TOTAL_TS");
+    _txtTotalassets.placeholder=LocalizedString(@"KEY_LEAD_CN_TOTAL_TS");
+    _lbkhongllq.text=LocalizedString(@"KEY_LEAD_CN_KLLQ");
+    _lbdienthoai.text=LocalizedString(@"KEY_LEAD_CN_MOBIE");
+    _txtPersonPosition.placeholder=LocalizedString(@"KEY_LEAD_CN_CHUCDANH");
+    
+}
 @end

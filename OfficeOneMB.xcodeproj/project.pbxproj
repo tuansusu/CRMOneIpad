@@ -383,6 +383,11 @@
 		769F24851A6F1C5500427A8F /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F247D1A6F1C5500427A8F /* UIViewController+MMDrawerController.m */; };
 		769F24891A6F1F3F00427A8F /* MeunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F24871A6F1F3F00427A8F /* MeunViewController.m */; };
 		769F248A1A6F1F3F00427A8F /* MeunViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769F24881A6F1F3F00427A8F /* MeunViewController.xib */; };
+		76BE29381AA3F55800663803 /* icon_delete_90x90.png in Resources */ = {isa = PBXBuildFile; fileRef = 76BE29351AA3F55800663803 /* icon_delete_90x90.png */; };
+		76BE29391AA3F55800663803 /* icon_save_90x90.png in Resources */ = {isa = PBXBuildFile; fileRef = 76BE29361AA3F55800663803 /* icon_save_90x90.png */; };
+		76BE293A1AA3F55800663803 /* icon_sua_90x90.png in Resources */ = {isa = PBXBuildFile; fileRef = 76BE29371AA3F55800663803 /* icon_sua_90x90.png */; };
+		76BE293D1AA3F91600663803 /* flag_en-us.png in Resources */ = {isa = PBXBuildFile; fileRef = 76BE293B1AA3F91600663803 /* flag_en-us.png */; };
+		76BE293E1AA3F91600663803 /* flag_vi-vn.png in Resources */ = {isa = PBXBuildFile; fileRef = 76BE293C1AA3F91600663803 /* flag_vi-vn.png */; };
 		76C962941A16DB8200029978 /* DTOACCOUNTLEADProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C962931A16DB8200029978 /* DTOACCOUNTLEADProcess.m */; };
 		76C9629C1A16DBA500029978 /* AccountLeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C962971A16DBA500029978 /* AccountLeadCell.m */; };
 		76C9629D1A16DBA500029978 /* AccountLeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C962981A16DBA500029978 /* AccountLeadCell.xib */; };
@@ -1649,6 +1654,11 @@
 		769F24861A6F1F3F00427A8F /* MeunViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeunViewController.h; path = CustomView/MeunViewController.h; sourceTree = "<group>"; };
 		769F24871A6F1F3F00427A8F /* MeunViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeunViewController.m; path = CustomView/MeunViewController.m; sourceTree = "<group>"; };
 		769F24881A6F1F3F00427A8F /* MeunViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MeunViewController.xib; path = CustomView/MeunViewController.xib; sourceTree = "<group>"; };
+		76BE29351AA3F55800663803 /* icon_delete_90x90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_delete_90x90.png; sourceTree = "<group>"; };
+		76BE29361AA3F55800663803 /* icon_save_90x90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_save_90x90.png; sourceTree = "<group>"; };
+		76BE29371AA3F55800663803 /* icon_sua_90x90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_sua_90x90.png; sourceTree = "<group>"; };
+		76BE293B1AA3F91600663803 /* flag_en-us.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flag_en-us.png"; sourceTree = "<group>"; };
+		76BE293C1AA3F91600663803 /* flag_vi-vn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flag_vi-vn.png"; sourceTree = "<group>"; };
 		76C962921A16DB8200029978 /* DTOACCOUNTLEADProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOACCOUNTLEADProcess.h; sourceTree = "<group>"; };
 		76C962931A16DB8200029978 /* DTOACCOUNTLEADProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOACCOUNTLEADProcess.m; sourceTree = "<group>"; };
 		76C962961A16DBA500029978 /* AccountLeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountLeadCell.h; sourceTree = "<group>"; };
@@ -5754,6 +5764,11 @@
 		92C68E6D1519DC7D00981728 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				76BE293B1AA3F91600663803 /* flag_en-us.png */,
+				76BE293C1AA3F91600663803 /* flag_vi-vn.png */,
+				76BE29351AA3F55800663803 /* icon_delete_90x90.png */,
+				76BE29361AA3F55800663803 /* icon_save_90x90.png */,
+				76BE29371AA3F55800663803 /* icon_sua_90x90.png */,
 				8E1CF2BB1A71488F00AD3349 /* Menu */,
 				8E2980F31A6AB5E00068B66C /* imageDefault.png */,
 				8E568F9F1A59228B0002A3C4 /* complain */,
@@ -6135,6 +6150,7 @@
 				94A2A7781A80F9F900C412E7 /* NoteOpportunityCell.xib in Resources */,
 				8497BFD71A295A2300A5ED3C /* spitfire.png in Resources */,
 				76C964731A17731900029978 /* RightTriangleIconBlack.png in Resources */,
+				76BE293D1AA3F91600663803 /* flag_en-us.png in Resources */,
 				8E6A10231A62257B00D98AE3 /* source.bundle in Resources */,
 				B316D698188FFA91009B751B /* login-ic-user-1.png in Resources */,
 				8497BFCD1A295A2300A5ED3C /* Default.png in Resources */,
@@ -6250,6 +6266,7 @@
 				2D2D212A17A6291700A87364 /* Icon-Reload.png in Resources */,
 				8E8B3F261A49AA4300241360 /* MainViewController.xib in Resources */,
 				8E7554601A52EFC8001940FB /* iconStraight.png in Resources */,
+				76BE29381AA3F55800663803 /* icon_delete_90x90.png in Resources */,
 				2D2D213417A6291700A87364 /* Line-box_doanh_thu_cac_dich_vu.png in Resources */,
 				8E0B07D21A4475CF00CF7A78 /* iconMessage@2x.png in Resources */,
 				2D2D214617A66DB800A87364 /* Box-Header_chi_tiet.png in Resources */,
@@ -6372,6 +6389,7 @@
 				B3A066D717D1AB8200BA6487 /* background_1.png in Resources */,
 				B315789C188D5E5200C0ED01 /* logo-small-1.png in Resources */,
 				8E1CF2C11A71488F00AD3349 /* iconMenu in Resources */,
+				76BE29391AA3F55800663803 /* icon_save_90x90.png in Resources */,
 				B3A066D817D1AB8200BA6487 /* background_2.png in Resources */,
 				177885941A84699100C71551 /* menudelete.png in Resources */,
 				8497BFD41A295A2300A5ED3C /* museum-exhibits.json in Resources */,
@@ -6385,6 +6403,7 @@
 				B3A066DC17D1AB8200BA6487 /* btn_choose_list.png in Resources */,
 				8ED402861A41DF3C00CCBE6D /* ic_qu_direction_mylocation.png in Resources */,
 				7644306C1A7000CC007741BA /* menu_lead.png in Resources */,
+				76BE293E1AA3F91600663803 /* flag_vi-vn.png in Resources */,
 				8E75545D1A52EFC8001940FB /* iconRoundAboutLeft@2x.png in Resources */,
 				B313F1D818A65107001FDEC6 /* popover-bg-1.png in Resources */,
 				2DD29F161876C3B70066B883 /* menu-list-bg-1.png in Resources */,
@@ -6663,6 +6682,7 @@
 				8E75546A1A52EFC8001940FB /* iconTurnSlightRight.png in Resources */,
 				2DD29EE918769C260066B883 /* menu-ic-ca-1.png in Resources */,
 				B3157882188D5E5200C0ED01 /* ic-viewpdf-bookmark-1.png in Resources */,
+				76BE293A1AA3F55800663803 /* icon_sua_90x90.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

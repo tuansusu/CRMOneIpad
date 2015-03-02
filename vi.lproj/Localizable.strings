@@ -32,15 +32,26 @@
 "MENU_FUNCTION_SYNC" = "           Đồng bộ";
 "MENU_FUNCTION_CANCEL" = "           Thoát";
 
-
+//phan chung
+"KEY_INFO_TITLE"="Thông báo";
+"KEY_INFO_MESSAGE_1"="Hoàn thành theo dõi";
 "KEY_ALERTVIEW_DELETE_MESSAGE" = "chắc chắn muốn xóa công việc?";
 "KEY_ALERTVIEW_DELETE_CANCEL" = "Hủy";
 "KEY_ALERTVIEW_DELETE_OK" = "Đồng ý";
+"KEY_ALERT_DEL"="Xác nhận đồng ý xoá?";
+"KEY_ALERT_SUCCESS"="Thành công";
+"KEY_ALERT_ERROR"="Sảy ra lỗi, vui lòng thử lại hoặc gửi log đến quản trị";
+"KEY_ALERT_EXIT"="Thoát";
+"KEY_ALERT_SUCCESS2"="Cập nhật thành công, tiếp tục nhập?";
 
 "KEY_Edit" = "Sửa";
 "KEY_Delete" = "Xóa";
+"KEY_CHOICE_IMAGE"="Chọn ảnh";
+"KEY_CAMERA"="Chụp ảnh";
 
 //ALL
+"KEY_YES"="Có";
+"KEY_NO"="Không";
 "KEY_UPDATE" = "Cập nhật";
 "KEY_CANCEL" = "Hủy";
 "KEY_SEARCH" = "Tìm kiếm";
@@ -84,8 +95,18 @@
 "KEY_CONTACT_NOTE"="Ghi chú";
 "KEY_CONTACT_AVARTAR"="Chọn ảnh";
 //chi tiết khách hàng 360
+"KEY_INFO_360"="THÔNG TIN KHÁCH HÀNG";
+"KEY_360_CONTACT"="LIÊN HỆ";
+"KEY_360_NOTE"="GHI CHÚ";
+"KEY_360_CALENDAR"="LỊCH";
+"KEY_360_NHIEMVU"="NHIỆM VỤ";
+"KEY_360_COHOI"="CƠ HỘI";
+"KEY_360_YKIEN"="Ý KIẾN PHẢN HỒI";
+"KEY_360_SPDV"="SẢN PHẨM DỊCH VỤ";
 "KEY_360_CODE"="Mã khách hàng";
 "KEY_360_NAME"="Tên khách hàng";
+"KEY_360_LOAI_KH"="Loại hình khách hàng";
+"KEY_360_LOAI_DN"="Loại hình DN";
 "KEY_360_SO_DKKD"="Số ĐKKD";
 "KEY_360_NGAY_DKKD"="Ngày ĐKKD";
 "KEY_360_MOBILE"="Điện thoại";
@@ -101,5 +122,97 @@
 "KEY_360_PHUONG_XA"="Phường/xã";
 "KEY_360_KHONG_LIEN_LAC"="Không liên lạc qua";
 "KEY_360_THONG_TIN_KHACH_HANG"="Thông tin khách hàng";
+//khach hang 360 CÁ NHÂN
+"KEY_360_GIOI_TINH"="Giới tính";
+"KEY_360_JOB"="Nghề nghiệp";
+"KEY_360_CHI_NHANH_QL"="Chi nhánh quản lý";
+// danh sách khách hàng 360
+"KEY_LIST_360_TITLE"="KHÁCH HÀNG 360";
+"KEY_LIST_360_TOTAL"="Tổng số ";
+"KEY_LIST_360_TITLE_SEARCH"="Từ khoá tìm kiếm";
+//tìm kiếm nâng cao
+"KEY_SEARCH_CODE"="Mã khách hàng";
+"KEY_SEARCH_NAME"="Tên khách hàng";
+"KEY_SEARCH_PHONE"="Số điện thoại";
+"KEY_SEARCH_BUTTON_OK"="Tìm kiếm";
+"KEY_SEARCH_BUTTON_CANCEL"="Huỷ";
+//danh sách khách hàng tiềm năng
+"KEY_LEAD_TITLE"="KHÁCH HÀNG TIỀM NĂNG";
+"KEY_LEAD_ADD_CN"="Khách hàng cá nhân";
+"KEY_LEAD_ADD_DN"="Khách hàng doanh nghiệp";
+//THÊM MỚI KHÁCH HÀNG CÁ NHÂN
+"KEY_LEAD_ADD_NEW"="Thông tin chính";
+"KEY_LEAD_ADD_CN_NEW"="THÊM MỚI KHÁCH HÀNG TIỀM NĂNG (CÁ NHÂN)";
+"KEY_LEAD_EDIT_CN_NEW"="CẬP NHẬP THÔNG TIN KHÁCH HÀNG TIỀM NĂNG (CÁ NHÂN)";
+"KEY_LEAD_CN_NAME"="Tên khách hàng";
+"KEY_LEAD_CN_PASSPORT"="Số chứng minh thư";
+"KEY_LEAD_CN_PHONE"="Di động";
+"KEY_LEAD_CN_COMPANY"="Công ty";
+"KEY_LEAD_CN_CHUCDANH"="Chức danh";
+"KEY_LEAD_CN_BIRTHDAY"="Ngày sinh";
+"KEY_LEAD_CN_ORTHER"="Thông tin khác";
+"KEY_LEAD_CN_GT"="Giới tính";
+"KEY_LEAD_CN_GT_NAM"="Nam";
+"KEY_LEAD_CN_GT_NU"="Nữ";
+"KEY_LEAD_CN_GD"="Tình trạng hôn nhân";
+"KEY_LEAD_CN_GD_OK"="Đã kết hôn";
+"KEY_LEAD_CN_GD_CANCEL"="Chưa kết hôn";
+"KEY_LEAD_CN_JOB"="Nghề nghiệp";
+"KEY_LEAD_CN_TOTAL_TS"="Tổng tài sản";
+"KEY_LEAD_CN_THUNHAP"="Thu nhập";
+"KEY_LEAD_CN_ADDRESS"="Địa chỉ";
+"KEY_LEAD_CN_KLLQ"="Không liên lạc qua";
+"KEY_LEAD_CN_MOBIE"="Điện thoại";
+"KEY_LEAD_CN_CHECK_NAME"="Bạn chưa nhập tên khách hàng";
+"KEY_LEAD_CN_CHECK_MOBILE"="Bạn chưa nhập số điện thoại khách hàng";
+"KEY_LEAD_CN_CHECK_EMAIL"="Email không đúng định dạng";
+
+//THÊM MỚI KHÁCH HÀNG DOANH NGHIÊP
+"KEY_LEAD_ADD_DN_NEW"="THÊM MỚI KHÁCH HÀNG TIỀM NĂNG (DOANH NGHIỆP)";
+"KEY_LEAD_EDIT_DN_NEW"="CẬP NHẬP THÔNG TIN KHÁCH HÀNG TIỀM NĂNG (DOANH NGHIỆP)";
+"KEY_LEAD_DN_NAME"="Tên khách hàng";
+"KEY_LEAD_DN_THUE"="Mã số thuế";
+"KEY_LEAD_DN_DKKD"="Số đăng ký kinh doanh";
+"KEY_LEAD_DN_PHONE"="Di động";
+"KEY_LEAD_DN_LOAI"="Loại hình doanh nghiệp";
+"KEY_LEAD_DN_DOANHTHU"="Doanh thu";
+"KEY_LEAD_DN_LOINHUAN"="Lợi nhuận trước thuế";
+"KEY_LEAD_DN_VONDL"="Vốn điều lệ";
+"KEY_LEAD_DN_GT_VONSH"="Vốn sở hữu";
+"KEY_LEAD_DN_GT_SL_NV"="Số lượng nhân viên";
+"KEY_LEAD_DN_SL_CD"="Số lượng cổ đông";
+//THEO DÕI KHÁCH HAHG
+"KEY_FOLLOW_LEAD_TITLE"="THEO DÕI KHÁCH HÀNG ĐẦU MỐI";
+"KEY_FOLLOW_360_TITLE"="THEO DÕI KHÁCH HÀNG 360";
+"KEY_FOLLOW_SETTING"="Thiết lập theo dõi";
+"KEY_FOLLOW_MD"="Mục đích";
+"KEY_FOLLOW_DATE_START"="Ngày bắt đầu";
+"KEY_FOLLOW_DATE_END"="Ngày hoàn thành";
+"KEY_FOLLOW_READMIND"="Gửi nhắc nhở";
+"KEY_FOLLOW_HT"="Hình thức nhắc nhở";
+"KEY_FOLLOW_HOME"="Trang chủ";
+//CHI TIẾT KHÁCH HÀNG TIỀM NĂNG (DOANH NGHIỆP)
+"KEY_LEAD_INFO_BASSIC"="THÔNG TIN KHÁCH HÀNG";
+"KEY_LEAD_CODE"="Mã khách hàng";
+"KEY_LEAD_NAME"="Tên khách hàng";
+"KEY_LEAD_SOTHUE"="Mã số thuế";
+"KEY_LEAD_PHONE"="Điện thoại";
+"KEY_LEAD_ADDRESS"="Địa chỉ";
+"KEY_LEAD_NGAY_TL"="Ngày thành lập";
+"KEY_LEAD_SO_DK"="Số đăng ký";
+"KEY_LEAD_VON_DL"="Vốn điều lệ";
+"KEY_LEAD_VON_CHU_SH"="Vốn chủ sở hữu";
+"KEY_LEAD_TONG_TS"="Tổng tài sản";
+"KEY_LEAD_DOANH_THU"="Doanh thu";
+"KEY_LEAD_LOI_NHUAN"="Lợi nhuận";
+"KEY_LEAD_KLLQ"="Không liên lạc qua";
+//CHI TIET KHACH HANG TIEM NANG(CA NHAN)
+"KEY_LEAD_SO_CMT"="CMT";
+"KEY_LEAD_GT"="Giới tính";
+"KEY_LEAD_BIRTH_DAY"="Ngày sinh";
+"KEY_LEAD_TINH_TRANG_HN"="Tình trạng hôn nhân";
+"KEY_LEAD_THU_NHAP_CN"="Thu nhập cá nhân";
+"KEY_LEAD_TONG_THU_NHAP"="Tổng thu nhập";
+
 
 

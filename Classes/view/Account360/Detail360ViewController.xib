@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -70,6 +70,7 @@
                 <outlet property="lbsoDKKD" destination="sOg-8a-aN4" id="Nq4-eM-epB"/>
                 <outlet property="lbtinhthanhphoDN" destination="mSp-Uv-dnN" id="iGC-Ux-5Yx"/>
                 <outlet property="ldDateOpenCode" destination="Jlw-nT-FnR" id="Rt5-wm-NCu"/>
+                <outlet property="leftInfomenu" destination="Hcs-8L-Nvq" id="acB-XZ-7fF"/>
                 <outlet property="loaiDN" destination="pBC-gn-1ho" id="qHd-xp-W7R"/>
                 <outlet property="loaihinhDN" destination="QDv-sO-XL0" id="dVz-aN-ZAL"/>
                 <outlet property="mainView" destination="Tnz-9n-Pd2" id="ZHj-4y-i8K"/>
@@ -112,7 +113,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="KHÁCH HÀNG 360" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hHx-Je-PYm">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hHx-Je-PYm">
                             <rect key="frame" x="67" y="0.0" width="300" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
@@ -149,14 +150,14 @@
                                 <action selector="actionAdd:" destination="-1" eventType="touchUpInside" id="yhq-ig-8YT"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4uZ-9X-7eB">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4uZ-9X-7eB">
                             <rect key="frame" x="934" y="6" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" backgroundImage="menudelete.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Pb1-5y-PR6">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Pb1-5y-PR6">
                             <rect key="frame" x="894" y="6" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" backgroundImage="menuedit.png">

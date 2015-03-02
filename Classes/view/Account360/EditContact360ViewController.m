@@ -60,6 +60,7 @@
     //key board
     float heightKeyboard;
     UITextField *_txt;
+    Language *obj;
 }
 @end
 
@@ -88,6 +89,10 @@
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
     [self initData];
+    obj=[Language getInstance];
+    obj.str=[defaults objectForKey:@"Language"];
+    LocalizationSetLanguage(obj.str);
+    [self setLanguage];
 }
 
 //khoi tao gia tri mac dinh cua form
@@ -146,21 +151,21 @@
     //    self.leftLabelHeader.textColor = TEXT_COLOR_HEADER_APP;
     
     
-//    [self.headerMainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
-//    [self.headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
+    //    [self.headerMainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
+    //    [self.headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
     
     
-    [self.btnSave setStyleNormalWithOption:smgSelect];
+    // [self.btnSave setStyleNormalWithOption:smgSelect];
     
-    [self.btnDel setStyleNormalWithOption:smgSelect];
+    //[self.btnDel setStyleNormalWithOption:smgSelect];
     
-//    for (UIView *viewSubTemp in self.headerMainView.subviews) {
-//        
-//        
-//        if ([viewSubTemp isKindOfClass:[UILabel class]]) {
-//            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
-//        }
-//    }
+    //    for (UIView *viewSubTemp in self.headerMainView.subviews) {
+    //
+    //
+    //        if ([viewSubTemp isKindOfClass:[UILabel class]]) {
+    //            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+    //        }
+    //    }
     
     
     [self.mainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
@@ -397,9 +402,9 @@
         
         [dicEntity setObject:@"0" forKey:DTOACCOUNTCONTACT_isActive];
         
-      BOOL  succsess = [dtoProcess insertToDBWithEntity:dicEntity];
+        BOOL  succsess = [dtoProcess insertToDBWithEntity:dicEntity];
         if(succsess){
-          [self dismissViewControllerAnimated:YES completion:nil];
+            [self dismissViewControllerAnimated:YES completion:nil];
         }
         else{
             NSLog(@"Error");
@@ -502,8 +507,8 @@
     
     _txt = textField;
     
-//    [self keyboardWillBeHidden:nil];
-//    [self keyboardWasShown:nil];
+    //    [self keyboardWillBeHidden:nil];
+    //    [self keyboardWasShown:nil];
     
     
     return  YES;
@@ -721,8 +726,8 @@
     NSLog(@"lines=%@", addressObj.lines);
     
     
-   // _longitude = addressObj.coordinate.longitude;
-   // _latitude = addressObj.coordinate.latitude;
+    // _longitude = addressObj.coordinate.longitude;
+    // _latitude = addressObj.coordinate.latitude;
     
     
     
@@ -741,5 +746,27 @@
     //[self dismissPopoverView];
     [self viewWhenRemoveSubView];
     //[self dismissViewControllerAnimated:YES completion:nil];
+}
+-(void) setLanguage{
+    if (_dataSend.count>0) {
+        [_fullNameLB setText:[LocalizedString(@"KEY_CONTACT_EDIT") uppercaseString]];
+    }
+    else{
+        [_fullNameLB setText:[LocalizedString(@"KEY_CONTACT_ADD") uppercaseString]];
+    }
+    //[_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+    //  [_btnDel setTitle:LocalizedString(@"KEY_Delete") forState:UIControlStateNormal];
+    [_lbFullname setText:LocalizedString(@"KEY_CONTACT_NAME")];
+    [_lbPosition setText:LocalizedString(@"KEY_CONTACT_POSITION")];
+    [_lbmobile setText:LocalizedString(@"KEY_CONTACT_PHONE")];
+    [_lbpassport setText:LocalizedString(@"KEY_CONTACT_CMT")];
+    [_lbNgayCap setText:LocalizedString(@"KEY_CONTACT_CMT_DATE")];
+    [_lbNoiSinh setText:LocalizedString(@"KEY_CONTACT_BIRTH")];
+    [_lbNgaySinh setText:LocalizedString(@"KEY_CONTACT_BIRTH_DAY")];
+    [_lbEmail setText:LocalizedString(@"KEY_CONTACT_EMAIL")];
+    [_lbDiaChi setText:LocalizedString(@"KEY_CONTACT_ADDRESS")];
+    [_lbNote setText:LocalizedString(@"KEY_CONTACT_NOTE")];
+    [_btnChoicePhoto setTitle:LocalizedString(@"KEY_CONTACT_AVARTAR") forState:UIControlStateNormal];
+    
 }
 @end

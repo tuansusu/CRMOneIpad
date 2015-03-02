@@ -31,6 +31,7 @@
     NSString *catId;
     BOOL success;
     Util *util;
+    Language *obj;
 }
 
 @end
@@ -85,6 +86,10 @@
     newDay=[dateFormatter stringFromDate:addNew];
     _txtNgayhoanthanh.text=newDay;
     _txtThoigiannhacnho.text=MyString;
+    obj=[Language getInstance];
+    obj.str=[defaults objectForKey:@"Language"];
+    LocalizationSetLanguage(obj.str);
+    [self setLanguage:name];
 }
 
 
@@ -215,13 +220,14 @@
     success=[dtoFollowProcess insertToDBWithEntity:dicEntity];
     if (success) {
         //Thong bao cap nhat thanh cong va thoat
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Thực hiện thành công!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS") delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         alert.tag = 5;
         [alert show];
+        //luonghv2
     }
     else{
         //khong bao nhap loi - lien he quan tri
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Sảy ra lỗi, vui lòng thử lại hoặc gửi log đến quản trị" delegate:self cancelButtonTitle:@"Thoát" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERT_ERROR") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERT_EXIT") otherButtonTitles:nil];
         alert.tag = 6;
         [alert show];
     }
@@ -443,5 +449,20 @@
     else if(alertView.tag==6){
         [_delegate delegate_dismisFollow:0];
     }
+}
+-(void) setLanguage:(NSString *)name{
+    _lbTitel.text=[NSString stringWithFormat:@"%@ - %@",LocalizedString(@"KEY_FOLLOW_LEAD_TITLE"),name];
+    [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+    [_btnCancel setTitle:LocalizedString(@"KEY_CANCEL") forState:UIControlStateNormal];
+    [_lbThietLapTheoDoi setText:LocalizedString(@"KEY_FOLLOW_SETTING")];
+    _lbMucDich.text=LocalizedString(@"KEY_FOLLOW_MD");
+    [_txtMucDich setPlaceholder:LocalizedString(@"KEY_FOLLOW_MD")];
+    _lbNgayBatDau.text=LocalizedString(@"KEY_FOLLOW_DATE_START");
+    [_txtNgaybatdau setPlaceholder:LocalizedString(@"KEY_FOLLOW_DATE_START")];
+    _lbNgayHoanThanh.text=LocalizedString(@"KEY_FOLLOW_DAT  QE_END");
+    [_txtNgayhoanthanh setPlaceholder:LocalizedString(@"KEY_FOLLOW_DATE_END")];
+    _lbGuiNhacNho.text=LocalizedString(@"KEY_FOLLOW_READMIND");
+    _lbHinhThucNhacNho.text=LocalizedString(@"KEY_FOLLOW_HT");
+    _lbTrangChu.text=LocalizedString(@"KEY_FOLLOW_HOME");
 }
 @end

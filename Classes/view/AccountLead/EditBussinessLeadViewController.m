@@ -11,6 +11,7 @@
 #import "DTOSYSCATProcess.h"
 #import "Util.h"
 #import "TestMapViewController.h"
+#import "ListAccountLeadViewController.h"
 
 @interface EditBussinessLeadViewController ()
 {
@@ -40,6 +41,7 @@
     UITextField *_txt;
     //luu lai thong tin chon dia chi cua ban do
     float _longitude, _latitude;
+    Language *obj;
 }
 @end
 
@@ -69,6 +71,10 @@
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
     [self initData];
+    obj=[Language getInstance];
+    obj.str=[defaults objectForKey:@"Language"];
+    LocalizationSetLanguage(obj.str);
+    [self setLanguage];
 }
 
 //khoi tao gia tri mac dinh cua form
@@ -192,7 +198,7 @@
     }
     
     
-    [self.btnSave setStyleNormalWithOption:smgSelect];
+    //[self.btnSave setStyleNormalWithOption:smgSelect];
     
     [self.mainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
     
@@ -265,10 +271,10 @@
 
 -(void) actionSave:(id)sender{
     //check valid to save
-    if(![util checkValidToSave:_txtName :@"Anh/Chị chưa nhập tên khách hàng" :self.bodyMainView]){
+    if(![util checkValidToSave:_txtName :LocalizedString(@"KEY_LEAD_CN_CHECK_NAME") :self.bodyMainView]){
         return;
     }
-    if(![util checkValidToSave:_txtPhone :@"Anh/Chị chưa nhập số điện thoại khách hàng" :self.bodyMainView]){
+    if(![util checkValidToSave:_txtPhone :LocalizedString(@"KEY_LEAD_CN_CHECK_MOBILE") :self.bodyMainView]){
         return;
     }
     //neu qua duoc check thi tien hanh luu du lieu
@@ -310,17 +316,23 @@
     succsess = [dtoLeadProcess insertToDBWithEntity:dicEntity];
     if (succsess) {
         //Thong bao cap nhat thanh cong va thoat
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Cập nhật thành công, tiếp tục nhập?" delegate:self cancelButtonTitle:@"Không" otherButtonTitles:@"Có", nil];
+           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE")  message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:LocalizedString(@"KEY_NO") otherButtonTitles:LocalizedString(@"KEY_YES"), nil];
         alert.tag = 5;
         [alert show];
         
     }else{
         //khong bao nhap loi - lien he quan tri
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xảy ra lỗi, vui lòng thử lại hoặc gửi log đến quản trị" delegate:self cancelButtonTitle:@"Thoát" otherButtonTitles:nil];
+       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERT_ERROR") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERT_EXIT") otherButtonTitles:nil];
         alert.tag = 6;
         [alert show];
     }
     
+}
+
+- (IBAction)actionDel:(id)sender {
+    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERT_DEL") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERTVIEW_DELETE_OK") otherButtonTitles:LocalizedString(@"KEY_ALERTVIEW_DELETE_CANCEL"), nil];
+    alert.tag=11;
+    [alert show];
 }
 
 -(void) actionClose:(id)sender{
@@ -344,6 +356,16 @@
     if (succsess && alertView.tag == 5 && buttonIndex == 1) {
         //reset lai form
         [self resetForm];
+    }
+    if(alertView.tag==11){
+        if(buttonIndex==0){
+            BOOL result =    [dtoLeadProcess deleteEntity:[_dataSend objectForKey:DTOLEAD_id]];
+            if(result){
+                //[self dismissViewControllerAnimated:YES completion:nil];
+                ListAccountLeadViewController *viewControler=[[ListAccountLeadViewController alloc] initWithNibName:@"ListAccountLeadViewController" bundle:nil];
+                [self presentViewController:viewControler animated:YES completion:nil];
+            }
+        }
     }
 }
 
@@ -588,5 +610,42 @@
         self.txtAddress.text =[addressObj.lines objectAtIndex:0];
     }
     
+}
+-(void) setLanguage{
+
+    if(_dataSend.count>0){
+        _fullNameLB.text=LocalizedString(@"KEY_LEAD_EDIT_DN_NEW");
+    }
+    else{
+    _fullNameLB.text=LocalizedString(@"KEY_LEAD_ADD_DN_NEW");
+    }
+    _lbthongtinchinh.text=LocalizedString(@"KEY_LEAD_ADD_NEW");
+    _lbtenkhachhang.text=LocalizedString(@"KEY_LEAD_DN_NAME");
+    _txtName.placeholder=LocalizedString(@"KEY_LEAD_DN_NAME");
+    _lbsodienthoai.text=LocalizedString(@"KEY_LEAD_CN_MOBIE");
+    _txtPhone.placeholder=LocalizedString(@"KEY_LEAD_CN_MOBIE");
+    _lbmasothue.text=LocalizedString(@"KEY_LEAD_DN_THUE");
+    _txtTaxCode.placeholder=LocalizedString(@"KEY_LEAD_DN_THUE");
+    _lbsodkkd.text=LocalizedString(@"KEY_LEAD_DN_DKKD");
+    _txtRegisterCodeBussiness.placeholder=LocalizedString(@"KEY_LEAD_DN_DKKD");
+    _lbdiachi.text=LocalizedString(@"KEY_LEAD_CN_ADDRESS");
+    _txtAddress.placeholder=LocalizedString(@"KEY_LEAD_CN_ADDRESS");
+    _lbloahinhdn.text=LocalizedString(@"KEY_LEAD_DN_LOAI");
+    _txtSysCatType.placeholder=LocalizedString(@"KEY_LEAD_DN_LOAI");
+    _lbdoanhthu.text=LocalizedString(@"KEY_LEAD_DN_DOANHTHU");
+    _txtRevenue.placeholder=LocalizedString(@"KEY_LEAD_DN_DOANHTHU");
+    _lbloinhuantruocthue.text=LocalizedString(@"KEY_LEAD_DN_LOINHUAN");
+    _txtProfitBeforeTax.placeholder=LocalizedString(@"KEY_LEAD_DN_LOINHUAN");
+    _lbvondieule.text=LocalizedString(@"KEY_LEAD_DN_VONDL");
+    _txtCharterCapital.placeholder=LocalizedString(@"KEY_LEAD_DN_VONDL");
+    _lbvonsohuu.text=LocalizedString(@"KEY_LEAD_DN_GT_VONSH");
+    _txtCapital.placeholder=LocalizedString(@"KEY_LEAD_DN_GT_VONSH");
+    _lbsoluongnv.text=LocalizedString(@"KEY_LEAD_DN_GT_SL_NV");
+    _txtNumberEmployee.placeholder=LocalizedString(@"KEY_LEAD_DN_GT_SL_NV");
+    _lbsoluongcodong.text=LocalizedString(@"KEY_LEAD_DN_SL_CD");
+    _txtNumberShareholders.placeholder=LocalizedString(@"KEY_LEAD_DN_SL_CD");
+    _lbtongtaisan.text=LocalizedString(@"KEY_LEAD_CN_TOTAL_TS");
+    _txtTotalassets.placeholder=LocalizedString(@"KEY_LEAD_CN_TOTAL_TS");
+    _lbthongtinkhac.text=LocalizedString(@"KEY_LEAD_CN_ORTHER");
 }
 @end

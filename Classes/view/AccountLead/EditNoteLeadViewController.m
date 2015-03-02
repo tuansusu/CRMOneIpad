@@ -178,7 +178,7 @@
     //        }
     //    }
     
-    [self.btnSave setStyleNormalWithOption:smgSelect];
+  //  [self.btnSave setStyleNormalWithOption:smgSelect];
     
     
     [self.mainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
@@ -701,9 +701,12 @@
 }
 //set language
 -(void) setLanguage{
-    [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+    //[_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
     [_lbContent setText:LocalizedString(@"KEY_NOTE_CONTENT")];
     [_lbTitle setText:LocalizedString(@"KEY_NOTE_TITLE")];
+   // [_btnDelNote setTitle:LocalizedString(@"KEY_Delete") forState:UIControlStateNormal];
+    [self.choosePhotoBtn setTitle:LocalizedString(@"KEY_CHOICE_IMAGE") forState:(UIControlStateNormal)];
+    [self.takePhotoBtn setTitle:LocalizedString(@"KEY_CAMERA") forState:(UIControlStateNormal)];
     if (_dataSend.count>0) {
         [_fullNameLB setText:LocalizedString(@"KEY_NOTE_EDIT")];
     }

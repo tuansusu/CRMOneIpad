@@ -63,6 +63,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnSave;
 - (IBAction)actionSave:(id)sender;
 
+- (IBAction)actionDel:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnClose;
 - (IBAction)actionClose:(id)sender;
@@ -76,5 +77,20 @@
 ////////////// KHAI BAO BIEN CHUNG//////////
 
 - (IBAction)actionChoiseAddress:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *lbthongtinchinh;
+@property (weak, nonatomic) IBOutlet UILabel *lbtenkhachhang;
+@property (weak, nonatomic) IBOutlet UILabel *lbsodienthoai;
+@property (weak, nonatomic) IBOutlet UILabel *lbmasothue;
+@property (weak, nonatomic) IBOutlet UILabel *lbsodkkd;
+@property (weak, nonatomic) IBOutlet UILabel *lbthongtinkhac;
+@property (weak, nonatomic) IBOutlet UILabel *lbdiachi;
+@property (weak, nonatomic) IBOutlet UILabel *lbloahinhdn;
+@property (weak, nonatomic) IBOutlet UILabel *lbdoanhthu;
+@property (weak, nonatomic) IBOutlet UILabel *lbvondieule;
+@property (weak, nonatomic) IBOutlet UILabel *lbsoluongnv;
+@property (weak, nonatomic) IBOutlet UILabel *lbloinhuantruocthue;
+@property (weak, nonatomic) IBOutlet UILabel *lbvonsohuu;
+@property (weak, nonatomic) IBOutlet UILabel *lbsoluongcodong;
 
+@property (weak, nonatomic) IBOutlet UILabel *lbtongtaisan;
 @end

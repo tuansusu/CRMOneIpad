@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Follow360ViewController">
@@ -17,7 +17,14 @@
                 <outlet property="btnRemind" destination="yXB-9C-dLb" id="pkl-N9-fBY"/>
                 <outlet property="btnSMS" destination="bMI-ir-U2N" id="dgp-JA-uRc"/>
                 <outlet property="btnSave" destination="vkA-2a-UOS" id="nXL-m0-7UI"/>
+                <outlet property="lbGuiNhacNho" destination="arv-rd-ckQ" id="jKA-MU-fbI"/>
+                <outlet property="lbHinhThucNhacNho" destination="eph-oU-5tD" id="hFv-vW-vly"/>
+                <outlet property="lbMucDich" destination="U6p-ok-ZVt" id="pJ6-Ov-69p"/>
+                <outlet property="lbNgayBatDau" destination="GxC-4r-bQz" id="UwE-AM-kzZ"/>
+                <outlet property="lbNgayHoanThanh" destination="ufd-EH-pnx" id="xSO-5t-Cz4"/>
+                <outlet property="lbThietLapTheoDoi" destination="Nnl-7B-pRg" id="gyd-ek-KdV"/>
                 <outlet property="lbTitel" destination="S9E-dK-zbn" id="UXs-yd-aNw"/>
+                <outlet property="lbTrangChu" destination="uVF-LO-Ggw" id="M1a-ca-c3h"/>
                 <outlet property="txtMucDich" destination="1xa-KO-0uW" id="2Mj-ni-8lp"/>
                 <outlet property="txtNgaybatdau" destination="zW8-jS-4W4" id="HTY-gK-l4V"/>
                 <outlet property="txtNgayhoanthanh" destination="NjK-CL-rmz" id="DWd-ed-Af0"/>

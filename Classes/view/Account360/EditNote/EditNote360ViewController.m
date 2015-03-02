@@ -51,6 +51,7 @@
     NSString *index;
     
     BOOL succsess;//Trang thai acap nhat
+    Language *obj;
 }
 
 @end
@@ -76,7 +77,10 @@
     [self updateInterFaceWithOption:smgSelect];
     [self initData];
     
-    
+    obj=[Language getInstance];
+    obj.str=[defaults objectForKey:@"Language"];
+    LocalizationSetLanguage(obj.str);
+    [self setLanguage];
     //remove footer view
     //(xoá dòng thừa không hiển thị của table)
     self.tbData.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -160,7 +164,7 @@
     //    }
     
     
-    [self.btnSave setStyleNormalWithOption:smgSelect];
+    //[self.btnSave setStyleNormalWithOption:smgSelect];
     
     [self.mainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
     
@@ -307,7 +311,7 @@
             }
         }
     }
-    
+    //thêm đoạn mới này
     //xoa file
     if (succsess && arrayDelFile.count>0) {
         for (NSDictionary *item in arrayDelFile) {
@@ -633,6 +637,22 @@
     NSLog(@"btnSender = %d", btnSender.tag);
     
 }
+//set language
+-(void) setLanguage{
+   // [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+    [_lbContent setText:LocalizedString(@"KEY_NOTE_CONTENT")];
+    [_lbTitle setText:LocalizedString(@"KEY_NOTE_TITLE")];
+   // [_btnDel setTitle:LocalizedString(@"KEY_Delete") forState:UIControlStateNormal];
+    [self.choosePhotoBtn setTitle:LocalizedString(@"KEY_CHOICE_IMAGE") forState:(UIControlStateNormal)];
+    [self.takePhotoBtn setTitle:LocalizedString(@"KEY_CAMERA") forState:(UIControlStateNormal)];
+    if (_dataSend.count>0) {
+        [_fullNameLB setText:LocalizedString(@"KEY_NOTE_EDIT")];
+    }
+    else{
+        [_fullNameLB setText:LocalizedString(@"KEY_NOTE_ADD")];
+    }
+    [_lbFileAttachment setText:LocalizedString(@"KEY_NOTE_FILE")];
+};
 
 
 - (IBAction)actionDel:(id)sender {

@@ -86,6 +86,7 @@
     //(xoá dòng thừa không hiển thị của table)
     self.tbData.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
+    [self setLanguage];
 }
 
 /*
@@ -388,6 +389,8 @@
 
 -(void) viewDidAppear:(BOOL)animated{
     //arrayData = [dtoOpportunityProcess filterOpportunity:nil addStartDate:nil addEndDate:nil userType:nil];
+    loaded = 0;
+    [arrayData removeAllObjects];
     [self filterData:nil withStartDate:nil withEndDate: nil withType:nil];
     
   
@@ -682,5 +685,15 @@
     NSLog(@"selectedScopeButtonIndexDidChange = %d", selectedScope);
     //iSearchOption = selectedScope;
 }
+
+#pragma mark - Phần đa ngôn ngữ
+-(void) setLanguage{
+    //[_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+    //  [_btnDel setTitle:LocalizedString(@"KEY_Delete") forState:UIControlStateNormal];
+    [_fullNameLB setText:LocalizedString(@"KEY_OPPORTUNITY_TITLE")];
+   
+    
+}
+
 
 @end

@@ -834,7 +834,22 @@
         
     }
     
-    if(startDate > endDate){
+    
+    NSDateComponents *componentsStartDate = [[NSCalendar currentCalendar]
+                                    components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit
+                                    fromDate:startDate];
+    startDate = [[NSCalendar currentCalendar]
+                 dateFromComponents:componentsStartDate];
+    
+    NSDateComponents *componentsEndDate = [[NSCalendar currentCalendar]
+                                             components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit
+                                             fromDate:endDate];
+    endDate = [[NSCalendar currentCalendar]
+                 dateFromComponents:componentsEndDate];
+    
+    NSComparisonResult result = [startDate compare:endDate];
+    
+    if(result==NSOrderedDescending){
         [self showTooltip:self.dtEndDate withText:@"Ngày kết thúc không được nhỏ hơn ngày bắt đầu"];
         [self.dtEndDate becomeFirstResponder];
         [self setBorder:self.dtEndDate];

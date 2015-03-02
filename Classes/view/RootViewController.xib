@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -86,7 +86,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="thG-lm-cfJ">
-                            <rect key="frame" x="932" y="20" width="40" height="30"/>
+                            <rect key="frame" x="921" y="20" width="40" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" backgroundImage="flag_vi-vn.png">
@@ -97,7 +97,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="x4X-u2-U1n">
-                            <rect key="frame" x="972" y="20" width="40" height="30"/>
+                            <rect key="frame" x="966" y="20" width="40" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" backgroundImage="flag_en-us.png">
@@ -143,8 +143,8 @@
     </objects>
     <resources>
         <image name="bg-login-1.png" width="2048" height="1536"/>
-        <image name="flag_en-us.png" width="16" height="16"/>
-        <image name="flag_vi-vn.png" width="16" height="16"/>
+        <image name="flag_en-us.png" width="48" height="48"/>
+        <image name="flag_vi-vn.png" width="48" height="48"/>
         <image name="login-id.png" width="550" height="92"/>
         <image name="login-pass.png" width="550" height="92"/>
         <image name="logo_login-1.png" width="78" height="78"/>

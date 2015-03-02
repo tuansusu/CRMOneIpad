@@ -845,6 +845,7 @@
     if ([self.listPopover isPopoverVisible])
         [self.listPopover dismissPopoverAnimated:YES];
 }
+//set multilanguage
 -(void)setLanguage{
 
     if(_dataSend.count>0){

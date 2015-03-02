@@ -115,7 +115,7 @@
 -(void) filterData:(NSString*)keyword withStartDate:(NSDate*) subStartDate withEndDate:(NSDate*) subEndDate withType:(int)type{
     [arrayData addObjectsFromArray: [dtoOpportunityProcess filterOpportunity:keyword addStartDate:subStartDate addEndDate:subEndDate userType:type withStart:loaded withLimit:PAGESIZE withOutTotal:&totalCount]];
     
-    self.lbTotal.text = [NSString stringWithFormat:@"Tổng số %d / %d", arrayData.count, totalCount ];
+    self.lbTotal.text = [NSString stringWithFormat:LocalizedString(@"KEY_OPPORTUNITY_LIST_TOTALFORMAT"), arrayData.count, totalCount ];
     [self.tbData reloadData];
     [SVProgressHUD dismiss];
 }
@@ -690,8 +690,8 @@
 -(void) setLanguage{
     //[_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
     //  [_btnDel setTitle:LocalizedString(@"KEY_Delete") forState:UIControlStateNormal];
-    [_fullNameLB setText:LocalizedString(@"KEY_OPPORTUNITY_TITLE")];
-   
+    [_fullNameLB setText:LocalizedString(@"KEY_OPPORTUNITY_LIST_TITLE")];
+    [_txtSearchBar setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_LIST_SEARCH_TEXT")];
     
 }
 

@@ -17,5 +17,10 @@
 @interface SearchAdvanceLeadViewController : UIViewController
 
 @property (weak,nonatomic) id <SearchAdvanceDelegate> advanceSearchDelegate;
+@property (weak, nonatomic) IBOutlet UILabel *lbmakh;
+@property (weak, nonatomic) IBOutlet UILabel *lbtenkh;
+@property (weak, nonatomic) IBOutlet UILabel *lbsdt;
+@property (weak, nonatomic) IBOutlet UIButton *btnSearch;
+@property (weak, nonatomic) IBOutlet UIButton *btnCancel;
 
 @end

@@ -22,6 +22,7 @@
     //khai báo biến
     int smgSelect ; //option layout
     NSUserDefaults *defaults ;
+    Language *obj;
     
 }
 @end
@@ -43,7 +44,10 @@
     
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
-    
+    obj=[Language getInstance];
+    obj.str=[defaults objectForKey:@"Language"];
+    LocalizationSetLanguage(obj.str);
+    [self setLanguage];
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
 }
@@ -111,5 +115,11 @@
         [self.advanceSearchDelegate dismissPopoverView];
     }
 }
-
+-(void)setLanguage{
+    [_btnSearch setTitle:LocalizedString(@"KEY_SEARCH") forState:UIControlStateNormal];
+    [_btnCancel setTitle:LocalizedString(@"KEY_CANCEL") forState:UIControlStateNormal];
+    _lbmakh.text=LocalizedString(@"KEY_SEARCH_CODE");
+    _lbsdt.text=LocalizedString(@"KEY_SEARCH_PHONE");
+    _lbtenkh.text=LocalizedString(@"KEY_SEARCH_NAME");
+}
 @end

@@ -63,13 +63,30 @@
     
     //Hien thi anh cua form
     for (UIView *viewTemp in self.childView.subviews) {
-                
+
+
         if ([viewTemp isKindOfClass:[UIImageView class]]) {
             
             [((UIImageView*) viewTemp) setAlpha:1.0f];
         }
+
+        for (UIView *subview in viewTemp.subviews) {
+
+            if ([subview isKindOfClass:[UIImageView class]]) {
+
+                [((UIImageView*) subview) setAlpha:1.0f];
+            }
+
+            for (UIView *subviewLev2 in subview.subviews) {
+
+                if ([subviewLev2 isKindOfClass:[UIImageView class]]) {
+
+                    [((UIImageView*) subviewLev2) setAlpha:1.0f];
+                }
+            }
+        }
     }
-    
+    [self.navigationController setNavigationBarHidden:YES];
 }
 
 
@@ -463,9 +480,6 @@
         [myAlert show];
         [FileManagerUtil removeFileWithName:theFileName];
     }
-    
-    
-    
 }
 
 

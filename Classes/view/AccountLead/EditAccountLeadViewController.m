@@ -76,7 +76,7 @@
     if (self) {
         // Custom initialization
     }
-   [self registerForKeyboardNotifications];
+    [self registerForKeyboardNotifications];
     return self;
 }
 
@@ -237,13 +237,13 @@
     
     //[self.headerMainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
     //[self.headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
-//    for (UIView *viewSubTemp in self.headerMainView.subviews) {
-//        
-//        
-//        if ([viewSubTemp isKindOfClass:[UILabel class]]) {
-//            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
-//        }
-//    }
+    //    for (UIView *viewSubTemp in self.headerMainView.subviews) {
+    //
+    //
+    //        if ([viewSubTemp isKindOfClass:[UILabel class]]) {
+    //            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+    //        }
+    //    }
     
     
     
@@ -292,8 +292,8 @@
             if ([viewSubTemp isKindOfClass:[UITextField class]]) {
                 ((UITextField*) viewSubTemp).textColor = TEXT_COLOR_REPORT;
                 ((UITextField*) viewSubTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
-//                ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
-//                ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
+                //                ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
+                //                ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
                 [((UITextField*) viewSubTemp) setBorderWithOption:smgSelect];
                 [((UITextField*) viewSubTemp) setPaddingLeft];
             }
@@ -302,7 +302,7 @@
         
         if ([viewTemp isKindOfClass:[UIButton class]]) {
             if(viewTemp.tag!=10){
-            [((UIButton*) viewTemp) setStyleNormalWithOption:smgSelect];
+                [((UIButton*) viewTemp) setStyleNormalWithOption:smgSelect];
             }
         }
         
@@ -327,7 +327,7 @@
         return;
     }
     if(_txtEmail.text.length>0 && ![util validateEmail:_txtEmail.text]){
-    
+        
         [util showTooltip:_txtEmail withText:LocalizedString(@"KEY_LEAD_CN_CHECK_EMAIL") showview:_viewMainBodyInfo];
         [util setBorder:_txtEmail];
         return;
@@ -345,7 +345,7 @@
     [dicEntity setObject:[StringUtil trimString:_txtCompany.text] forKey:DTOLEAD_organization];
     
     
-     [dicEntity setObject:[StringUtil trimString:_txtDateOfBirth.text] forKey:DTOLEAD_birthday];
+    [dicEntity setObject:[StringUtil trimString:_txtDateOfBirth.text] forKey:DTOLEAD_birthday];
     
     [dicEntity setObject:[StringUtil trimString:_txtEmail.text] forKey:DTOLEAD_email];
     if(_longitude>0){
@@ -426,7 +426,7 @@
         
     }else{
         //khong bao nhap loi - lien he quan tri
-         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERT_ERROR") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERT_EXIT") otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERT_ERROR") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERT_EXIT") otherButtonTitles:nil];
         alert.tag = 6;
         [alert show];
     }
@@ -574,19 +574,19 @@
         return YES;
     }
     
-//    float height = 190;
-//    if (textField == _txtTotalassets || textField == _txtAddress) {
-//        height = 230;
-//    }
-//    
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationDuration:0.25f];
-//    
-//    CGRect frame = self.mainView.frame;
-//    frame.origin.y = frame.origin.y - height;
-//    [self.mainView setFrame:frame];
-//    
-//    [UIView commitAnimations];
+    //    float height = 190;
+    //    if (textField == _txtTotalassets || textField == _txtAddress) {
+    //        height = 230;
+    //    }
+    //
+    //    [UIView beginAnimations:nil context:NULL];
+    //    [UIView setAnimationDuration:0.25f];
+    //
+    //    CGRect frame = self.mainView.frame;
+    //    frame.origin.y = frame.origin.y - height;
+    //    [self.mainView setFrame:frame];
+    //
+    //    [UIView commitAnimations];
     
     return  YES;
     
@@ -600,26 +600,92 @@
 }// return YES to allow editing to stop and to resign first responder status. NO to disallow the editing session to end
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     
-//    if (textField == self.txtName) {
-//        return;
-//    }
-//    
-//    float height = 190;
-//    if (textField == _txtTotalassets || textField == _txtAddress) {
-//        height = 230;
-//    }
-//    
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationDuration:0.25f];
-//    CGRect frame = self.mainView.frame;
-//    frame.origin.y = frame.origin.y + height;
-//    [self.mainView setFrame:frame];
-//    
-//    [UIView commitAnimations];
+    //    if (textField == self.txtName) {
+    //        return;
+    //    }
+    //
+    //    float height = 190;
+    //    if (textField == _txtTotalassets || textField == _txtAddress) {
+    //        height = 230;
+    //    }
+    //
+    //    [UIView beginAnimations:nil context:NULL];
+    //    [UIView setAnimationDuration:0.25f];
+    //    CGRect frame = self.mainView.frame;
+    //    frame.origin.y = frame.origin.y + height;
+    //    [self.mainView setFrame:frame];
+    //
+    //    [UIView commitAnimations];
     
 }// may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    NSCharacterSet *numberOnly=[NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+    NSCharacterSet *charactersetText=[NSCharacterSet characterSetWithCharactersInString:textField.text];
+    BOOL checkNumber=[numberOnly isSupersetOfSet:charactersetText];
+    if(textField==_txtName){
+        if(_txtName.text.length>=100 && range.length==0){
+            return NO;
+        }
+        else {
+            return YES;
+        }
+    }
+    if(textField==_txtCompany){
+        if(_txtCompany.text.length>=100 && range.length==0){
+            return NO;
+        }
+        else{
+            return YES;
+        }
+    }
+    if(textField==_txtPhone){
+        if(checkNumber && range.length==0){
+            if(_txtPhone.text.length>=20 && range.length==0){
+                return NO;
+            }
+            else{
+                return YES;
+            }
+        }else{
+            NSString *str=textField.text;
+            _txtPhone.text=[str substringToIndex:textField.text.length-1];
+            return NO;
+        }
+    }
+    if(textField==_txtEmail){
+        
+        if(_txtEmail.text.length>=50 && range.length==0){
+            return NO;
+        }
+        else{
+            return YES;
+        }
+    }
+    if(textField==_txtAddress){
+        if(_txtAddress.text.length>=200 && range.length==0){
+            return NO;
+        }
+        else{
+            return YES;
+        }
+    }
+    if(textField==_txtNumberIdentity){
+        if(checkNumber && range.length==0){
+            if(_txtNumberIdentity.text.length>=20 && range.length==0){
+                return NO;
+            }
+            else{
+                return YES;
+            }
+        }
+        else{
+            NSString *str=textField.text;
+            _txtNumberIdentity.text=[str substringToIndex:textField.text.length-1];
+            return NO;
+        }
+    }
+    
     return  YES;
 }// return NO to not change text
 
@@ -753,7 +819,7 @@
 
 #pragma mark SelectMap Delegate
 -(void) selectAddress:(GMSAddress *)addressObj{
-
+    
     NSLog(@"coordinate.latitude=%f", addressObj.coordinate.latitude);
     NSLog(@"coordinate.longitude=%f", addressObj.coordinate.longitude);
     NSLog(@"thoroughfare=%@", addressObj.thoroughfare);
@@ -834,9 +900,9 @@
 -(void) selectDatePickerWithDate:(NSDate *)date
 {
     
-            self.txtDateOfBirth.text = [NSString stringWithFormat:@"%@",
-                                        [df stringFromDate:date]];
-            dateBirthday = date;
+    self.txtDateOfBirth.text = [NSString stringWithFormat:@"%@",
+                                [df stringFromDate:date]];
+    dateBirthday = date;
     
 }
 
@@ -847,12 +913,12 @@
 }
 //set multilanguage
 -(void)setLanguage{
-
+    
     if(_dataSend.count>0){
-    _fullNameLB.text = LocalizedString(@"KEY_LEAD_EDIT_CN_NEW");
+        _fullNameLB.text = LocalizedString(@"KEY_LEAD_EDIT_CN_NEW");
     }
     else{
-    _fullNameLB.text = LocalizedString(@"KEY_LEAD_ADD_CN_NEW");
+        _fullNameLB.text = LocalizedString(@"KEY_LEAD_ADD_CN_NEW");
     }
     _lbThongtinchinh.text=LocalizedString(@"KEY_LEAD_ADD_NEW");
     //ten khach hang

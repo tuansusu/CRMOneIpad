@@ -441,6 +441,49 @@
 }// may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    NSCharacterSet *numberOnly=[NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+    NSCharacterSet *characterSetText=[NSCharacterSet characterSetWithCharactersInString:textField.text];
+    BOOL checkNumber=[numberOnly isSupersetOfSet:characterSetText];
+    if (textField==_txtTaxCode) {
+        if(_txtTaxCode.text.length>=20 && range.length==0){
+            return  NO;
+        }
+        else{
+            return YES;
+        }
+    }
+    if(textField == _txtPhone){
+        if(checkNumber && range.length==0){
+        
+            if(_txtPhone.text.length >=20 && range.length==0){
+                return NO;
+            }
+            else{
+                return YES;
+            }
+        }
+        else{
+            NSString *str=textField.text;
+            _txtPhone.text=[str substringToIndex:textField.text.length-1];
+            return NO;
+        }
+    }
+    if(textField==_txtAddress){
+        if(_txtAddress.text.length>=200 && range.length==0){
+            return NO;
+        }
+        else{
+            return YES;
+        }
+    }
+    if(textField==_txtRegisterCodeBussiness){
+        if(_txtRegisterCodeBussiness.text.length>=50 && range.length==0){
+            return  NO;
+        }
+        else{
+            return YES;
+        }
+    }
     return  YES;
 }// return NO to not change text
 

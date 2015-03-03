@@ -83,6 +83,8 @@
     //(xoá dòng thừa không hiển thị của table)
     self.tbData.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
+    
+    [self setLanguage];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -115,13 +117,13 @@
         arrayData =[dtoFileProcess filterWithKey:DTOATTACHMENT_clientObjectId withValue:[_dataSend objectForKey:DTONOTE_clientNoteId]];
         NSLog(@"data gui tu form chi tiet %@", self.dataSend);
         
-        self.fullNameLB.text=@"CẬP NHẬT GHI CHÚ";
+        self.fullNameLB.text= LocalizedString(@"KEY_OPPORTUNITY_NOTE_EDIT_HEADER_EDIT");
         
         [self loadDataEdit];
         [self.tbData reloadData];
     }
     else{
-        self.fullNameLB.text=@"THÊM MƠI GHI CHÚ";
+        self.fullNameLB.text=LocalizedString(@"KEY_OPPORTUNITY_NOTE_EDIT_HEADER_ADD");
     }
     
 }
@@ -646,5 +648,16 @@
     
     NSLog(@"btnSender = %d", btnSender.tag);
     
+}
+
+#pragma mark - Phần đa ngôn ngữ
+-(void) setLanguage{
+    [_lblTitle setText:LocalizedString(@"KEY_OPPORTUNITY_NOTE_EDIT_TITLE")];
+    [txtTitle setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_NOTE_EDIT_TITLE")];
+    [_lblSummary setText:LocalizedString(@"KEY_OPPORTUNITY_NOTE_EDIT_SUMMARY")];
+    [_lblAttachment setText:LocalizedString(@"KEY_OPPORTUNITY_NOTE_EDIT_ATTACHMENT")];
+    [choosePhotoBtn setTitle:LocalizedString(@"KEY_OPPORTUNITY_NOTE_EDIT_CHOOSE_IMAGE_BUTTON") forState:UIControlStateNormal];
+    [takePhotoBtn setTitle:LocalizedString(@"KEY_OPPORTUNITY_NOTE_EDIT_TAKE_PHOTO") forState:UIControlStateNormal];
+    [_btnSave setTitle:LocalizedString(@"KEY_OPPORTUNITY_NOTE_EDIT_SAVE") forState:UIControlStateNormal];
 }
 @end

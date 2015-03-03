@@ -15,6 +15,9 @@
                 <outlet property="footerView" destination="hJe-bw-6Dw" id="Xxb-vz-hCX"/>
                 <outlet property="fullNameLB" destination="6IQ-if-gwC" id="nd9-kP-N3E"/>
                 <outlet property="headerViewBar" destination="vBH-mc-NeY" id="WOr-uD-qWc"/>
+                <outlet property="lblAttachment" destination="1dZ-hs-e4U" id="qIe-t8-hwb"/>
+                <outlet property="lblSummary" destination="Ucx-qD-lcu" id="rDA-8W-gCt"/>
+                <outlet property="lblTitle" destination="Ucx-qD-lcu" id="PCj-hV-CR2"/>
                 <outlet property="mainView" destination="bb3-M1-S36" id="1Pb-Yb-ozN"/>
                 <outlet property="takePhotoBtn" destination="K02-si-2Zb" id="5mm-Jy-BNZ"/>
                 <outlet property="tbData" destination="tUm-sZ-wgM" id="fqu-he-YKk"/>

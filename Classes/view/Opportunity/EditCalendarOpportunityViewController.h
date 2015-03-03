@@ -34,4 +34,16 @@
 
 @property (nonatomic,assign) id<EditCalendarOpportunityViewControllerDelegate>delegate;
 
+@property (weak, nonatomic) IBOutlet UILabel *lblName;
+@property (weak, nonatomic) IBOutlet UILabel *lblPosition;
+@property (weak, nonatomic) IBOutlet UILabel *lblStartDate;
+@property (weak, nonatomic) IBOutlet UILabel *lblEndDate;
+@property (weak, nonatomic) IBOutlet UILabel *lblStatus;
+@property (weak, nonatomic) IBOutlet UILabel *lblEventType;
+@property (weak, nonatomic) IBOutlet UILabel *lblDescription;
+@property (weak, nonatomic) IBOutlet UILabel *lblRepeat;
+@property (weak, nonatomic) IBOutlet UILabel *lblReminder;
+@property (weak, nonatomic) IBOutlet UILabel *lblTypeObject;
+
+
 @end

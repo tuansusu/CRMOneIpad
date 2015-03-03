@@ -201,6 +201,8 @@
     {
         // ??
     }
+    
+    [self setLanguage];
 }
 
 -(void) renderControl {
@@ -245,7 +247,7 @@
 #pragma mark - new view: load defaults data into view
 - (void) loadDefaults
 {
-    self.fullNameLB.text  = @"THÊM MỚI SỰ KIỆN";
+    self.fullNameLB.text  = LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_HEADERTITLE_ADD");
 
     _txtName.text     = @"";
     _txtStatus.text   = [[statusArray objectAtIndex:0] objectForKey:DTOSYSCAT_name];
@@ -278,7 +280,7 @@
 {
     NSLog(@"send:%@",_dataSend);
 
-    self.fullNameLB.text = @"CẬP NHẬP SỰ KIỆN";
+    self.fullNameLB.text = LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_HEADERTITLE_EDIT");
     if (_dataSend) {
         isEditTask = YES;
         _txtName.text    = [_dataSend objectForKey:DTOTASK_title];
@@ -870,6 +872,34 @@
         }
     }
     [self dismissPopoverView];
+}
+
+#pragma mark - Phần đa ngôn ngư
+-(void)setLanguage{
+    [_lblName setText:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_TITLE")];
+    [_txtName setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_TITLE")];
+    [_lblPosition setText:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_LOCATION")];
+    [_txtLocation setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_LOCATION")];
+    [_lblStartDate setText:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_STARTTIME")];
+    [_txtDateFrom setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_STARTTIME_DETAIL_DATE")];
+    [_txtTimeFrom setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_STARTTIME_DETAIL_TIME")];
+    [_lblEndDate setText:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_ENDTIME")];
+    [_txtDateTo setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_ENDTIME_DETAIL_DATE")];
+    [_txtTimeTo setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_ENDTIME_DETAIL_TIME")];
+    [_lblStatus setText:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_STATE")];
+    [_txtStatus setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_STATE")];
+    [_lblEventType setText:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_EVENTTYPE")];
+    [_txtEventType setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_EVENTTYPE")];
+    [_lblDescription setText:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_DESCRIPTION")];
+    [_txtDescription setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_DESCRIPTION")];
+    [_lblRepeat setText:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_REPEAT")];
+    [_txtRepeat setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_REPEAT")];
+    [_lblReminder setText:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_REMINDER")];
+    [_txtAlarm setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_REMINDER")];
+    [_lblTypeObject setText:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_TYPEOBJECT_TITLE")];
+    [_txtTypeObject setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_TYPEOBJECT_DETAIL_1")];
+    [_txtNameObject setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_TYPEOBJECT_DETAIL_2")];
+    [_btnSave setTitle:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_SAVE") forState:UIControlStateNormal];
 }
 
 @end

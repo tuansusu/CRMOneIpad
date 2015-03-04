@@ -574,6 +574,7 @@
 #define DTOPRODUCTMASTER_crossPercent @"crossPercent" //INTEGER
 #define DTOPRODUCTMASTER_id @"id" //INTEGER
 
+
 ///dtocompalin Field
 #define DTOCOMPLAIN_casesId @"casesId" //VARCHAR
 #define DTOCOMPLAIN_code @"code" //VARCHAR

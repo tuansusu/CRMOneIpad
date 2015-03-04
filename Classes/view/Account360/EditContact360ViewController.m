@@ -288,17 +288,17 @@
 
 -(void) actionSave:(id)sender{
     //check valid to save
-    if (![util checkValidToSave:_txtName :@"Anh/Chị chưa nhập tên liên hệ" :self.bodyMainView]) {
+    if (![util checkValidToSave:_txtName :LocalizedString(@"KEY_LEAD_CN_CHECK_NAME") :self.bodyMainView]) {
         return;
     }
-    if(![util checkValidToSave:_txtPhone :@"Anh/Chị chưa nhập số điện thoại liên hệ" :self.bodyMainView]){
+    if(![util checkValidToSave:_txtPhone :LocalizedString(@"KEY_LEAD_CN_CHECK_MOBILE") :self.bodyMainView]){
         return;
     }
-    if(![util checkValidToSave:_txtPosition :@"Anh/Chị chưa nhập chức danh liên hệ" :self.bodyMainView]){
+    if(![util checkValidToSave:_txtPosition :LocalizedString(@"KEY_LEAD_CN_CHECK_POSITION") :self.bodyMainView]){
         return;
     }
     if(_txtEmail.text.length>0 && ![util validateEmail:_txtEmail.text]){
-        [util showTooltip:_txtEmail withText:@"Email không đúng định dạng" showview:_bodyMainView];
+        [util showTooltip:_txtEmail withText:LocalizedString(@"KEY_LEAD_CN_CHECK_EMAIL") showview:_bodyMainView];
         [util setBorder:_txtEmail];
         return;
     }
@@ -361,13 +361,13 @@
     }
     if (succsess) {
         //Thong bao cap nhat thanh cong va thoat
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Cập nhật thành công, tiếp tục nhập?" delegate:self cancelButtonTitle:@"Không" otherButtonTitles:@"Có", nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:LocalizedString(@"KEY_NO") otherButtonTitles:LocalizedString(@"KEY_YES"), nil];
         alert.tag = 5;
         [alert show];
         
     }else{
         //khong bao nhap loi - lien he quan tri
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Sảy ra lỗi, vui lòng thử lại hoặc gửi log đến quản trị" delegate:self cancelButtonTitle:@"Thoát" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE")  message:LocalizedString(@"KEY_ALERT_ERROR") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERT_EXIT") otherButtonTitles:nil];
         alert.tag = 6;
         [alert show];
     }
@@ -407,7 +407,10 @@
             [self dismissViewControllerAnimated:YES completion:nil];
         }
         else{
-            NSLog(@"Error");
+            //khong bao nhap loi - lien he quan tri
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE")  message:LocalizedString(@"KEY_ALERT_ERROR") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERT_EXIT") otherButtonTitles:nil];
+            alert.tag = 6;
+            [alert show];
         }
     }
 }
@@ -530,54 +533,66 @@
 }// may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    NSCharacterSet *numberOnly=[NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+    NSCharacterSet *charactersetText=[NSCharacterSet characterSetWithCharactersInString:textField.text];
+    BOOL checkNumber=[numberOnly isSupersetOfSet:charactersetText];
     if(textField == _txtPhone &&![StringUtil stringIsEmpty:_txtPhone.text])
     {
-        if(_txtPhone.text.length<=20){
-            return YES;}
-        else {
-            [util showTooltip:_txtPhone withText:@"Không quá 20 ký tự" showview:_bodyMainView];
+        if(checkNumber && range.length==0){
+            if(_txtPhone.text.length>=20 && range.length==0){
+                return NO;
+            }
+            else{
+                return YES;
+            }
+        }else{
+            NSString *str=textField.text;
+            _txtPhone.text=[str substringToIndex:textField.text.length-1];
             return NO;
         }
     }
     //check ho ten
     if(textField==_txtName && ![StringUtil stringIsEmpty:_txtName.text] ){
         
-        if(_txtName.text.length<=50){
+        if(_txtName.text.length<=50 && range.length==0){
             return YES;
         }
         else{
-            [util showTooltip:_txtName withText:@"Không quá 50 ký tự" showview:_bodyMainView];
             return NO;
         }
     }
     //chuc danh
     if(textField==_txtPosition && ![StringUtil stringIsEmpty:_txtPosition.text]){
-        if(_txtPosition.text.length<=100){
+        if(_txtPosition.text.length<=100 && range.length==0){
             return YES;}
         else{
-            [util showTooltip:_txtPosition withText:@"Không quá 100 ký tự" showview:_bodyMainView];
             return NO;
         }
     }
     
     //chung minh thu
     if(textField==_txtNumberIdentity && ![StringUtil stringIsEmpty:_txtNumberIdentity.text]){
-        if(_txtNumberIdentity.text.length <=20){
-            return YES;
+        if(checkNumber && range.length==0){
+            if(_txtNumberIdentity.text.length>=20 && range.length==0){
+                return NO;
+            }
+            else{
+                return YES;
+            }
         }
         else{
-            [util showTooltip:_txtNumberIdentity withText:@"Không quá 20 ký tự" showview:_bodyMainView];
+            NSString *str=textField.text;
+            _txtNumberIdentity.text=[str substringToIndex:textField.text.length-1];
             return NO;
         }
     }
     
     //noi cap
     if(textField==_txtWhereBorn && ![StringUtil stringIsEmpty:_txtWhereBorn.text]){
-        if(_txtWhereBorn.text.length<=100){
+        if(_txtWhereBorn.text.length<=100 && range.length==0){
             return YES;
         }
         else{
-            [util showTooltip:_txtWhereBorn withText:@"Không quá 100 ký tự" showview:_bodyMainView];
             return NO;
         }
     }
@@ -738,7 +753,7 @@
 }
 - (IBAction)actionDel:(id)sender {
     //deleteContact = [dicDataItem objectForKey:DTOCONTACT_id];
-    UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Bạn có muốn xoá liên hệ?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
+    UIAlertView *mylert=[[UIAlertView alloc]initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERT_DEL") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERTVIEW_DELETE_OK") otherButtonTitles:LocalizedString(@"KEY_ALERTVIEW_DELETE_CANCEL"), nil];
     mylert.tag = 11;
     [mylert show];
 }

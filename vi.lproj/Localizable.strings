@@ -163,10 +163,10 @@
 "KEY_LEAD_CN_ADDRESS"="Địa chỉ";
 "KEY_LEAD_CN_KLLQ"="Không liên lạc qua";
 "KEY_LEAD_CN_MOBIE"="Điện thoại";
-"KEY_LEAD_CN_CHECK_NAME"="Bạn chưa nhập tên khách hàng";
-"KEY_LEAD_CN_CHECK_MOBILE"="Bạn chưa nhập số điện thoại khách hàng";
+"KEY_LEAD_CN_CHECK_NAME"="Chưa nhập tên khách hàng";
+"KEY_LEAD_CN_CHECK_MOBILE"="Chưa nhập số điện thoại khách hàng";
 "KEY_LEAD_CN_CHECK_EMAIL"="Email không đúng định dạng";
-
+"KEY_LEAD_CN_CHECK_POSITION"="Chưa nhập chức danh";
 //THÊM MỚI KHÁCH HÀNG DOANH NGHIÊP
 "KEY_LEAD_ADD_DN_NEW"="THÊM MỚI KHÁCH HÀNG TIỀM NĂNG (DOANH NGHIỆP)";
 "KEY_LEAD_EDIT_DN_NEW"="CẬP NHẬP THÔNG TIN KHÁCH HÀNG TIỀM NĂNG (DOANH NGHIỆP)";

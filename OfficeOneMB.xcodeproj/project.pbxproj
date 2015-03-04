@@ -917,6 +917,7 @@
 		8ED4028D1A41E18800CCBE6D /* CustomerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED4028B1A41E18800CCBE6D /* CustomerViewCell.m */; };
 		8ED4028E1A41E18800CCBE6D /* CustomerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ED4028C1A41E18800CCBE6D /* CustomerViewCell.xib */; };
 		8EEE88E81A9C2303007EDE2A /* RootViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EEE88E71A9C2303007EDE2A /* RootViewController~iphone.xib */; };
+		8EFA1D2A1AA4A54300F9982D /* WidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA1D291AA4A54300F9982D /* WidgetModel.m */; };
 		8EFE69011A565BDF003D55CE /* DTOProTindungDetailObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE69001A565BDF003D55CE /* DTOProTindungDetailObject.m */; };
 		8EFE69041A56604F003D55CE /* DTOProTindungDetailProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE69031A56604F003D55CE /* DTOProTindungDetailProcess.m */; };
 		92C68E501519D4F100981728 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C68E0D1519D4F100981728 /* BaseViewController.m */; };
@@ -2500,6 +2501,8 @@
 		8ED4028B1A41E18800CCBE6D /* CustomerViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerViewCell.m; sourceTree = "<group>"; };
 		8ED4028C1A41E18800CCBE6D /* CustomerViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerViewCell.xib; sourceTree = "<group>"; };
 		8EEE88E71A9C2303007EDE2A /* RootViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "RootViewController~iphone.xib"; sourceTree = "<group>"; };
+		8EFA1D281AA4A54300F9982D /* WidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WidgetModel.h; sourceTree = "<group>"; };
+		8EFA1D291AA4A54300F9982D /* WidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WidgetModel.m; sourceTree = "<group>"; };
 		8EFE68FF1A565BDF003D55CE /* DTOProTindungDetailObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOProTindungDetailObject.h; sourceTree = "<group>"; };
 		8EFE69001A565BDF003D55CE /* DTOProTindungDetailObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOProTindungDetailObject.m; sourceTree = "<group>"; };
 		8EFE69021A56604F003D55CE /* DTOProTindungDetailProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOProTindungDetailProcess.h; sourceTree = "<group>"; };
@@ -5063,6 +5066,7 @@
 		8E8B3F211A49AA4300241360 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
+				8EFA1D271AA4A34100F9982D /* WidgetModel */,
 				8EBFF2721A6E97520009D9E1 /* WidgetDetail */,
 				17C67D361A5D72FA00EECD66 /* SelectAddInMapsViewController.h */,
 				17C67D371A5D72FA00EECD66 /* SelectAddInMapsViewController.m */,
@@ -5610,6 +5614,15 @@
 				8ED4028C1A41E18800CCBE6D /* CustomerViewCell.xib */,
 			);
 			path = CustomerCell;
+			sourceTree = "<group>";
+		};
+		8EFA1D271AA4A34100F9982D /* WidgetModel */ = {
+			isa = PBXGroup;
+			children = (
+				8EFA1D281AA4A54300F9982D /* WidgetModel.h */,
+				8EFA1D291AA4A54300F9982D /* WidgetModel.m */,
+			);
+			path = WidgetModel;
 			sourceTree = "<group>";
 		};
 		92C68E0B1519D4F100981728 /* Classes */ = {
@@ -7052,6 +7065,7 @@
 				76F328971A34B11E00E0F2C4 /* EditTaskLeadViewController.m in Sources */,
 				8E6021A71A872162006801C4 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				76C9646F1A17731900029978 /* PermanentScroller.m in Sources */,
+				8EFA1D2A1AA4A54300F9982D /* WidgetModel.m in Sources */,
 				2D4B92C917ACD7DE002A9AC5 /* DABoxesLayer.m in Sources */,
 				76C964601A17731900029978 /* DefaultInfoBox.m in Sources */,
 				76C964591A17731900029978 /* BasicPie.m in Sources */,

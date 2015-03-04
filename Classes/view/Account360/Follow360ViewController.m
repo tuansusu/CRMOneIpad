@@ -14,6 +14,8 @@
 
 #define FOLLOW_UP_LEAD_ITEM 44
 #define TAG_SELECT_DATE_START 11
+#define TAG_SELECT_DATE_END 22
+#define TAG_SELECT_DATE_REMIND 33
 
 @interface Follow360ViewController (){
     int smgSelect ; //option layout
@@ -303,7 +305,7 @@
         dateRemind = [DateUtil getDateFromString:self.txtThoigiannhacnho.text :FORMAT_DATE];
     }
     
-    SELECTED_TAG = TAG_SELECT_DATE_START;
+    SELECTED_TAG = TAG_SELECT_DATE_REMIND;
     CalendarPickerViewController *detail = [[CalendarPickerViewController alloc] initWithNibName:@"CalendarPickerViewController" bundle:nil];
     detail.dateSelected = dateStart;
     self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
@@ -332,7 +334,7 @@
         dateEnd = [DateUtil getDateFromString:_txtNgayhoanthanh.text :FORMAT_DATE];
     }
     
-    SELECTED_TAG = TAG_SELECT_DATE_START;
+    SELECTED_TAG = TAG_SELECT_DATE_END;
     CalendarPickerViewController *detail = [[CalendarPickerViewController alloc] initWithNibName:@"CalendarPickerViewController" bundle:nil];
     detail.dateSelected = dateEnd;
     self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
@@ -434,15 +436,24 @@
 }
 -(void) selectDatePickerWithDate:(NSDate *)date
 {
-    switch (SELECTED_TAG) {
-        case TAG_SELECT_DATE_START:
-            self.txtNgaybatdau.text = [NSString stringWithFormat:@"%@",
-                                       [df stringFromDate:date]];
-            dateStart = date;
-            break;
-            
-        default:
-            break;
+    if(SELECTED_TAG==TAG_SELECT_DATE_START){
+        dateStart = date;
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"dd/MM/yyyy HH:mm"];
+        self.txtNgaybatdau.text = [dateFormatter stringFromDate:date];
+        
+    }
+    else if(SELECTED_TAG==TAG_SELECT_DATE_END){
+        dateEnd = date;
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"dd/MM/yyyy HH:mm"];
+        self.txtNgayhoanthanh.text = [dateFormatter stringFromDate:date];
+    }
+    else{
+        dateRemind = date;
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"dd/MM/yyyy HH:mm"];
+        self.txtThoigiannhacnho.text = [dateFormatter stringFromDate:date];
     }
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -468,5 +479,9 @@
     _lbHinhThucNhacNho.text=LocalizedString(@"KEY_FOLLOW_HT");
     _lbTrangChu.text=LocalizedString(@"KEY_FOLLOW_HOME");
 }
-
+-(void) dismissPopoverView
+{
+    if ([self.listPopover isPopoverVisible])
+        [self.listPopover dismissPopoverAnimated:YES];
+}
 @end

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="7515.2" systemVersion="14C109" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7512"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditOpportunityProductViewController">
@@ -14,6 +14,9 @@
                 <outlet property="btnSave" destination="qja-qQ-pC7" id="AkJ-cn-vKy"/>
                 <outlet property="footerView" destination="VEF-WM-HRR" id="Wgz-7d-IuN"/>
                 <outlet property="lblFormTitle" destination="eNf-x7-geH" id="qOK-uu-Jq3"/>
+                <outlet property="lblProduct" destination="EnJ-Wh-vFL" id="uXs-9u-FhY"/>
+                <outlet property="lblQuantity" destination="pwI-AO-xX5" id="can-i0-53C"/>
+                <outlet property="lblRevenue" destination="1f9-tx-93s" id="5QI-fv-zef"/>
                 <outlet property="txtCurrency" destination="B6d-xg-DDC" id="yVf-dO-dUp"/>
                 <outlet property="txtQuantity" destination="vwa-i4-Ccg" id="nWg-rQ-g2V"/>
                 <outlet property="txtRevenue" destination="Fbe-L7-6Tn" id="uz8-fG-ceV"/>

@@ -86,6 +86,7 @@
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
     [self initData];
+    [self setLanguage];
 }
 
 //khoi tao gia tri mac dinh cua form
@@ -108,9 +109,9 @@
         
         [self loadEdit];
         
-        self.fullNameLB.text = @"CHỈNH SỬA LIÊN HỆ";
+        self.fullNameLB.text = LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_HEADER_EDIT");
     }else{
-        self.fullNameLB.text = @"THÊM MỚI LIÊN HỆ";
+        self.fullNameLB.text = LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_HEADER_ADD");
     }
     
     
@@ -120,7 +121,7 @@
 -(void) loadEdit{
     
     NSLog(@"data:%@", _dataSend);
-    _lbTitle.text=@"CẬP NHẬP LIÊN HỆ";
+    _lbTitle.text=LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_HEADER_EDIT");
 
     NSString *avartar = [dicData objectForKey:DTOCONTACT_avartar];
     if (![StringUtil stringIsEmpty:avartar]) {
@@ -369,13 +370,13 @@
     
     if (succsess) {
         //Thong bao cap nhat thanh cong va thoat
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Cập nhật thành công, tiếp tục nhập?" delegate:self cancelButtonTitle:@"Không" otherButtonTitles:@"Có", nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERT_NO") otherButtonTitles:LocalizedString(@"KEY_ALERT_YES"), nil];
         alert.tag = 5;
         [alert show];
         
     }else{
         //khong bao nhap loi - lien he quan tri
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Sảy ra lỗi, vui lòng thử lại hoặc gửi log đến quản trị" delegate:self cancelButtonTitle:@"Thoát" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE") message:LocalizedString(@"KEY_ALERT_ERROR") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERT_EXIT") otherButtonTitles:nil];
         alert.tag = 6;
         [alert show];
     }
@@ -649,7 +650,7 @@
 -(BOOL) checkValidToSave {
     BOOL isValidate = YES;
     if ([StringUtil trimString: self.txtName.text].length==0) {
-        [self showTooltip:self.txtName withText:@"Anh/Chị chưa nhập tên liên hệ"];
+        [self showTooltip:self.txtName withText:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_ERR_BLANK_NAME")];
         
         [self.txtName  becomeFirstResponder];
         [self setBorder:self.txtName];
@@ -658,7 +659,7 @@
     }
     if([StringUtil trimString:self.txtPosition.text].length==0){
         
-        [self showTooltip:self.txtPosition  withText:@"Anh/Chị chưa nhập chức danh"];
+        [self showTooltip:self.txtPosition  withText:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_ERR_BLANK_POSITION")];
         [self.txtPosition becomeFirstResponder];
         [self setBorder:self.txtPosition];
         isValidate=NO;
@@ -666,7 +667,7 @@
     }
     if([StringUtil trimString:self.txtPhone.text].length==0){
         
-        [self showTooltip:self.txtPhone  withText:@"Anh/Chị chưa nhập số điện thoại"];
+        [self showTooltip:self.txtPhone  withText:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_ERR_BLANK_PHONE")];
         [self.txtPhone becomeFirstResponder];
         [self setBorder:self.txtPhone];
         isValidate=NO;
@@ -675,7 +676,7 @@
     
     if(self.txtEmail.text.length > 0 && [self validateEmail:self.txtEmail.text]==NO)
     {
-        [self showTooltip:self.txtEmail withText:@"Email không đúng"];
+        [self showTooltip:self.txtEmail withText:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_ERR_EMAIL_NOT_VALID")];
         [self.txtEmail becomeFirstResponder];
         [self setBorder:self.txtEmail];
         isValidate=NO;
@@ -779,4 +780,27 @@
     [txtView becomeFirstResponder];
 }
 
+#pragma mark - Phần đa ngôn ngữu
+-(void) setLanguage{
+    [_btnChoicePhoto setTitle:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_CHOOSE_PHOTO") forState:UIControlStateNormal];
+    [_lblName setText:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_NAME")];
+    [_txtName setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_NAME")];
+    [_lblPhone setText:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_PHONE")];
+    [_txtPhone setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_PHONE")];
+    [_lblIdentityNumber setText:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_IDENTITYNUMBER")];
+    [_txtNumberIdentity setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_IDENTITYNUMBER")];
+    [_lblWhereBorn setText:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_WHERE_BORN")];
+    [_txtWhereBorn setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_WHERE_BORN")];
+    [_lblEmail setText:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_EMAIL")];
+    [_txtEmail setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_EMAIL")];
+    [_lblNote setText:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_NOTE")];
+    [_lblPositioin setText:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_POSITION")];
+    [_lblCreateDate setText:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_DATE_CREATE")];
+    [_txtDateCreate setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_DATE_CREATE")];
+    [_lblBirthday setText:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_BIRTHDAY")];
+    [_txtDateOfBirth setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_BIRTHDAY")];
+    [_lblLocation setText:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_ADDRESS")];
+    [_txtAddress setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_ADDRESS")];
+    [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+}
 @end

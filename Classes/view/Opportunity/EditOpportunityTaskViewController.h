@@ -83,4 +83,12 @@
 @property (nonatomic, retain) NSMutableArray *visiblePopTipViews;
 @property (nonatomic, strong) id currentPopTipViewTarget;
 
+
+
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle;
+@property (weak, nonatomic) IBOutlet UILabel *lblStatus;
+@property (weak, nonatomic) IBOutlet UILabel *lblStartDate;
+@property (weak, nonatomic) IBOutlet UILabel *lblEndDate;
+
+
 @end

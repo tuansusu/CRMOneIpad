@@ -123,11 +123,13 @@
     
     if (self.dataSend) {
         
-        self.fullNameLB.text = @"CHỈNH SỬA CƠ HỘI";
+        self.fullNameLB.text = LocalizedString(@"KEY_OPPORTUNITY_EDIT_HEADER_EDIT");
     }
     else{
-        self.fullNameLB.text = @"THÊM MỚI CƠ HỘI";
+        self.fullNameLB.text = LocalizedString(@"KEY_OPPORTUNITY_EDIT_HEADER_ADD");
     }
+    
+    [self setLanguage];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -790,16 +792,17 @@
     succsess = [dtoOpportunityProcess insertToDBWithEntity:dicEntity];
     if (succsess) {
         //Thong bao cap nhat thanh cong va thoat
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Cập nhật thành công, tiếp tục nhập?" delegate:self cancelButtonTitle:@"Không" otherButtonTitles:@"Có", nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERT_NO") otherButtonTitles:LocalizedString(@"KEY_ALERT_YES"), nil];
         alert.tag = 5;
         [alert show];
         
     }else{
         //khong bao nhap loi - lien he quan tri
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Sảy ra lỗi, vui lòng thử lại hoặc gửi log đến quản trị" delegate:self cancelButtonTitle:@"Thoát" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE") message:LocalizedString(@"KEY_ALERT_ERROR") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERT_EXIT") otherButtonTitles:nil];
         alert.tag = 6;
         [alert show];
     }
+
 }
 
 -(BOOL)checkValidToSave{
@@ -814,20 +817,20 @@
     }
     if([StringUtil trimString:self.txtName.text].length==0)
     {
-        [self showTooltip:self.txtName withText:@"Anh/Chị chưa nhập tên cơ hội"];
+        [self showTooltip:self.txtName withText:LocalizedString(@"KEY_OPPORTUNITY_EDIT_ERR_BLANK_NAME")];
         [self.txtName becomeFirstResponder];
         [self setBorder:self.txtName];
         return NO;
     }
     if(startDate == nil){
-        [self showTooltip:self.dtStartDate withText:@"Anh/Chị chưa nhập ngày bắt đầu"];
+        [self showTooltip:self.dtStartDate withText:LocalizedString(@"KEY_OPPORTUNITY_EDIT_ERR_BLANK_STARTDATE")];
         [self.dtStartDate becomeFirstResponder];
         [self setBorder:self.dtStartDate];
         return NO;
 
     }
     if(endDate == nil){
-        [self showTooltip:self.dtEndDate withText:@"Anh/Chị chưa nhập ngày kết thúc"];
+        [self showTooltip:self.dtEndDate withText:LocalizedString(@"KEY_OPPORTUNITY_EDIT_ERR_BLANK_ENDDATE")];
         [self.dtEndDate becomeFirstResponder];
         [self setBorder:self.dtEndDate];
         return NO;
@@ -850,7 +853,7 @@
     NSComparisonResult result = [startDate compare:endDate];
     
     if(result==NSOrderedDescending){
-        [self showTooltip:self.dtEndDate withText:@"Ngày kết thúc không được nhỏ hơn ngày bắt đầu"];
+        [self showTooltip:self.dtEndDate withText:LocalizedString(@"KEY_OPPORTUNITY_EDIT_ERR_STARTDATE_GREATE_ENDDATE")];
         [self.dtEndDate becomeFirstResponder];
         [self setBorder:self.dtEndDate];
         return NO;
@@ -900,7 +903,7 @@
     if(selectTypeIndex < 0)
     {
         listArrCustomerFilter = [NSMutableArray new];
-        [self showTooltip:self.txtSearchCustomer withText:@"Bạn cần chọn loại cơ hội trước khi chọn khách hàng"];
+        [self showTooltip:self.txtSearchCustomer withText:LocalizedString(@"KEY_OPPORTUNITY_EDIT_ERR_OPPORTUNITY_TYPE_MUST_BE_REQUIRE")];
         [self.txtType becomeFirstResponder];
         return;
     }
@@ -992,5 +995,26 @@
     txtView.layer.borderColor=[[UIColor redColor]CGColor ];
     txtView.layer.borderWidth=1.0f;
     [txtView becomeFirstResponder];
+}
+-(void)setLanguage{
+    [_lblDetailInfo setText:LocalizedString(@"KEY_OPPORTUNITY_EDIT_BODYNAME")];
+    [_lblName  setText:LocalizedString(@"KEY_OPPORTUNITY_EDIT_TITLE")];
+    [_txtName  setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_EDIT_TITLE")];
+    [_lblLevel  setText:LocalizedString(@"KEY_OPPORTUNITY_EDIT_LEVEL")];
+    [_txtLevel  setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_EDIT_LEVEL")];
+    [_lblStartDate  setText:LocalizedString(@"KEY_OPPORTUNITY_EDIT_STARTDATE")];
+    [_dtStartDate setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_EDIT_STARTDATE")];
+    [_lblEndDate  setText:LocalizedString(@"KEY_OPPORTUNITY_EDIT_ENDDATE")];
+    [_dtEndDate  setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_EDIT_ENDDATE")];
+    [_lblType  setText:LocalizedString(@"KEY_OPPORTUNITY_EDIT_TYPE")];
+    [_txtType  setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_EDIT_TYPE")];
+    [_lblNextTask  setText:LocalizedString(@"KEY_OPPORTUNITY_EDIT_NEXTTASK")];
+    [_txtNextTask  setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_EDIT_NEXTTASK")];
+    [_lblCustomer  setText:LocalizedString(@"KEY_OPPORTUNITY_EDIT_CUSTOMER")];
+    [searchBarController.searchBarView.textField setPlaceholder:@"KEY_OPPORTUNITY_EDIT_CUSTOMER_SEARCH"];
+    [_lblNote  setText:LocalizedString(@"KEY_OPPORTUNITY_EDIT_NOTE")];
+    [_txtNote  setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_EDIT_NOTE")];
+    [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+     
 }
 @end

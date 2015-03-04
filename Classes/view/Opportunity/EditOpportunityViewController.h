@@ -80,6 +80,21 @@
 @property (nonatomic) int searchResultCount;
 
 
+@property (weak, nonatomic) IBOutlet UILabel *lblDetailInfo;
+@property (weak, nonatomic) IBOutlet UILabel *lblName;
+@property (weak, nonatomic) IBOutlet UILabel *lblStartDate;
+
+@property (weak, nonatomic) IBOutlet UILabel *lblType;
+@property (weak, nonatomic) IBOutlet UILabel *lblCustomer;
+@property (weak, nonatomic) IBOutlet UILabel *lblLevel;
+@property (weak, nonatomic) IBOutlet UILabel *lblEndDate;
+@property (weak, nonatomic) IBOutlet UILabel *lblNextTask;
+@property (weak, nonatomic) IBOutlet UILabel *lblNote;
+@property (weak, nonatomic) IBOutlet UIButton *btnSave;
+
+
+
+
 
 ////////////// KHAI BAO BIEN CHUNG//////////
 @property (nonatomic, retain) UIPopoverController *listPopover;

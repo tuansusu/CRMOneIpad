@@ -617,7 +617,7 @@
                     }
 
                 }];
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Cập nhật thành công, tiếp tục nhập?" delegate:self cancelButtonTitle:@"Không" otherButtonTitles:@"Có", nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:LocalizedString(@"KEY_NO") otherButtonTitles:LocalizedString(@"KEY_YES"), nil];
                 alert.tag = 5;
                 [alert show];
                 
@@ -626,7 +626,7 @@
             [self addNewEvent];
             [self setEditing:NO animated:YES];
             //Thong bao cap nhat thanh cong va thoat
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Cập nhật thành công, tiếp tục nhập?" delegate:self cancelButtonTitle:@"Không" otherButtonTitles:@"Có", nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE")  message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:LocalizedString(@"KEY_NO") otherButtonTitles:LocalizedString(@"KEY_YES"), nil];
             alert.tag = 5;
             [alert show];
         }
@@ -637,7 +637,7 @@
     else
     {
         //khong bao nhap loi - lien he quan tri
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Sảy ra lỗi, vui lòng thử lại hoặc gửi log đến quản trị" delegate:self cancelButtonTitle:@"Thoát" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE")  message:LocalizedString(@"KEY_ALERT_ERROR") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERT_EXIT") otherButtonTitles:nil];
         alert.tag = 6;
         [alert show];
     }
@@ -899,7 +899,7 @@
     [_lblTypeObject setText:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_TYPEOBJECT_TITLE")];
     [_txtTypeObject setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_TYPEOBJECT_DETAIL_1")];
     [_txtNameObject setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_TYPEOBJECT_DETAIL_2")];
-    [_btnSave setTitle:LocalizedString(@"KEY_OPPORTUNITY_CALENDAR_EDIT_SAVE") forState:UIControlStateNormal];
+    [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
 }
 
 @end

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="7515.2" systemVersion="14C109" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7512"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditOpportunityViewController">
@@ -13,6 +13,7 @@
                 <outlet property="btnHome" destination="Ezg-G9-y01" id="Zdv-Oi-Kw5"/>
                 <outlet property="btnLevel" destination="L3g-Xw-41K" id="4Zc-C9-f9L"/>
                 <outlet property="btnNextTask" destination="ktH-e8-j64" id="TpZ-Am-6GO"/>
+                <outlet property="btnSave" destination="vcl-Qs-xc6" id="gFX-Qn-bpY"/>
                 <outlet property="btnStartDate" destination="02p-uf-dzb" id="phG-Or-DU1"/>
                 <outlet property="btnStartDateClear" destination="bQa-oq-sKR" id="7PG-iT-cG6"/>
                 <outlet property="btnType" destination="NbO-1G-Uef" id="2hP-Ho-vXC"/>
@@ -22,6 +23,15 @@
                 <outlet property="footerView" destination="rXU-MU-zcn" id="eFa-oo-8tM"/>
                 <outlet property="fullNameLB" destination="cag-dB-QuZ" id="Cup-ab-tLr"/>
                 <outlet property="headerViewBar" destination="oqY-Oi-L8z" id="8OT-qX-hLZ"/>
+                <outlet property="lblCustomer" destination="mN4-2q-8ek" id="GfT-WM-eUV"/>
+                <outlet property="lblDetailInfo" destination="Oz2-XA-VWP" id="bE2-Fb-zTL"/>
+                <outlet property="lblEndDate" destination="5pc-go-XjX" id="bnd-k8-diT"/>
+                <outlet property="lblLevel" destination="3Ih-d9-cFv" id="VSj-1c-EnQ"/>
+                <outlet property="lblName" destination="PKp-g6-3Kd" id="EMt-Q6-QIs"/>
+                <outlet property="lblNextTask" destination="fIL-VI-Js2" id="Yac-Ma-9op"/>
+                <outlet property="lblNote" destination="J2Y-Gd-8eG" id="rHG-gq-HEP"/>
+                <outlet property="lblStartDate" destination="w5O-cC-5Ja" id="PFf-65-ORP"/>
+                <outlet property="lblType" destination="T6Y-vg-YXh" id="8QA-SX-CiG"/>
                 <outlet property="mainView" destination="cLF-NJ-ACN" id="6uE-Mb-snA"/>
                 <outlet property="pgLevel" destination="h4I-xh-s8n" id="OZn-Fa-HAm"/>
                 <outlet property="searchDisplayController" destination="mmr-Ap-yqq" id="eBk-mp-GsW"/>

@@ -71,6 +71,12 @@
 @property (weak, nonatomic) IBOutlet UIView *footerView;
 @property (nonatomic,retain) IBOutlet UILabel *barLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *lblProduct;
+@property (weak, nonatomic) IBOutlet UILabel *lblQuantity;
+@property (weak, nonatomic) IBOutlet UILabel *lblRevenue;
+
+
+
 
 
 @property (weak,nonatomic) id <OpportunityProductDelegate> delegateOpportunityProduct;

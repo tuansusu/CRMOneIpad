@@ -658,6 +658,6 @@
     [_lblAttachment setText:LocalizedString(@"KEY_OPPORTUNITY_NOTE_EDIT_ATTACHMENT")];
     [choosePhotoBtn setTitle:LocalizedString(@"KEY_OPPORTUNITY_NOTE_EDIT_CHOOSE_IMAGE_BUTTON") forState:UIControlStateNormal];
     [takePhotoBtn setTitle:LocalizedString(@"KEY_OPPORTUNITY_NOTE_EDIT_TAKE_PHOTO") forState:UIControlStateNormal];
-    [_btnSave setTitle:LocalizedString(@"KEY_OPPORTUNITY_NOTE_EDIT_SAVE") forState:UIControlStateNormal];
+    [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
 }
 @end

@@ -78,6 +78,8 @@
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
     [self initData];
+    
+    [self setLanguage];
 }
 
 //khoi tao gia tri mac dinh cua form
@@ -101,9 +103,9 @@
     dataId = 0;
     if (self.dataSend) {
         [self loadEdit];
-        self.fullNameLB.text = @"CHỈNH SỬA CÔNG VIỆC";
+        self.fullNameLB.text = LocalizedString(@"KEY_OPPORTUNITY_TASK_EDIT_HEADER_EDIT");
     }else{
-        self.fullNameLB.text = @"THÊM MỚI CÔNG VIỆC";
+        self.fullNameLB.text = LocalizedString(@"KEY_OPPORTUNITY_TASK_EDIT_HEADER_ADD");
     }
     
 }
@@ -489,28 +491,28 @@
     }
     if([StringUtil trimString:self.txtName.text].length==0)
     {
-        [self showTooltip:self.txtName withText:@"Anh/Chị chưa nhập tên công việc"];
+        [self showTooltip:self.txtName withText:LocalizedString(@"KEY_OPPORTUNITY_TASK_EDIT_ERR_BLANK_NAME")];
         [self.txtName becomeFirstResponder];
         [self setBorder:self.txtName];
         return NO;
     }
     
     if(selectStatusIndex < 0){
-        [self showTooltip:self.txtStatus withText:@"Anh/Chị chưa nhập trạng thái"];
+        [self showTooltip:self.txtStatus withText:LocalizedString(@"KEY_OPPORTUNITY_TASK_EDIT_ERR_BLANK_STATUS")];
         [self.txtStatus becomeFirstResponder];
         [self setBorder:self.txtStatus];
         return NO;
     }
     
     if(dateFrom == nil){
-        [self showTooltip:self.txtDateFrom withText:@"Anh/Chị chưa nhập ngày bắt đầu"];
+        [self showTooltip:self.txtDateFrom withText:LocalizedString(@"KEY_OPPORTUNITY_TASK_EDIT_ERR_BLANK_STARTDATE")];
         [self.txtDateFrom becomeFirstResponder];
         [self setBorder:self.txtDateFrom];
         return NO;
         
     }
     if(dateTo == nil){
-        [self showTooltip:self.txtDateTo withText:@"Anh/Chị chưa nhập ngày kết thúc"];
+        [self showTooltip:self.txtDateTo withText:LocalizedString(@"KEY_OPPORTUNITY_TASK_EDIT_ERR_BLANK_ENDDATE")];
         [self.txtDateTo becomeFirstResponder];
         [self setBorder:self.txtDateTo];
         return NO;
@@ -679,5 +681,20 @@
 {
     [self.visiblePopTipViews removeObject:popTipView];
     self.currentPopTipViewTarget = nil;
+}
+
+#pragma mark - Phần đa ngôn ngữ
+-(void)setLanguage{
+    [_lblTitle setText:LocalizedString(@"KEY_OPPORTUNITY_TASK_EDIT_TITLE")];
+    [_txtName setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_TASK_EDIT_TITLE")];
+    [_lblStatus setText:LocalizedString(@"KEY_OPPORTUNITY_TASK_EDIT_STATUS")];
+    [_txtStatus setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_TASK_EDIT_STATUS")];
+    [_lblStartDate setText:LocalizedString(@"KEY_OPPORTUNITY_TASK_EDIT_STARTDATE_TITLE")];
+    [_txtDateFrom setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_TASK_EDIT_STARTDATE_DETAIL_DATE")];
+    [_txtTimeFrom setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_TASK_EDIT_STARTDATE_DETAIL_TIME")];
+    [_lblEndDate setText:LocalizedString(@"KEY_OPPORTUNITY_TASK_EDIT_ENDDATE_TITLE")];
+    [_txtDateTo setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_TASK_EDIT_ENDDATE_DETAIL_DATE")];
+    [_txtTimeTo setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_TASK_EDIT_ENDDATE_DETAIL_TIME")];
+    [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
 }
 @end

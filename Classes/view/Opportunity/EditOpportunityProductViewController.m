@@ -81,6 +81,7 @@
     self.txtQuantity.delegate = self;
     self.txtRevenue.delegate = self;
 
+    [self setLanguage];
 }
 -(void)dismissPopUp
 {
@@ -113,9 +114,9 @@
     dataId = 0;
     if (self.dataSend) {
         [self loadEditData];
-        self.lblFormTitle.text = @"CHỈNH SỬA SẢN PHẨM ĐỀ XUẤT";
+        self.lblFormTitle.text = LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_HEADER_EDIT");
     }else{
-        self.lblFormTitle.text = @"THÊM MỚI SẢN PHẨM ĐỀ XUẤT";
+        self.lblFormTitle.text = LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_HEADER_ADD");
     }
     
 }
@@ -290,13 +291,13 @@
     
     if (succsess) {
         //Thong bao cap nhat thanh cong va thoat
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Cập nhật thành công, tiếp tục nhập?" delegate:self cancelButtonTitle:@"Không" otherButtonTitles:@"Có", nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERT_NO") otherButtonTitles:LocalizedString(@"KEY_ALERT_YES"), nil];
         alert.tag = 5;
         [alert show];
         
     }else{
         //khong bao nhap loi - lien he quan tri
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Sảy ra lỗi, vui lòng thử lại hoặc gửi log đến quản trị" delegate:self cancelButtonTitle:@"Thoát" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE") message:LocalizedString(@"KEY_ALERT_ERROR") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERT_EXIT") otherButtonTitles:nil];
         alert.tag = 6;
         [alert show];
     }
@@ -425,7 +426,7 @@
    // }
     
     if (!searchBarController.isValid) {
-        [self showTooltip:self.txtSearchCustomer.textField withText:@"Anh/Chị chưa nhập sản phẩm"];
+        [self showTooltip:self.txtSearchCustomer.textField withText:LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_ERR_BLANK_PRODUCT")];
         
         [self.txtSearchCustomer.textField  becomeFirstResponder];
         [self setBorder:self.txtSearchCustomer.textField];
@@ -434,7 +435,7 @@
     }
     if([StringUtil trimString:self.txtQuantity.text].length==0){
         
-        [self showTooltip:self.txtQuantity  withText:@"Anh/Chị chưa nhập số lượng"];
+        [self showTooltip:self.txtQuantity  withText:LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_ERR_BLANK_QUANTITY")];
         [self.txtQuantity becomeFirstResponder];
         [self setBorder:self.txtQuantity];
         isValidate=NO;
@@ -442,7 +443,7 @@
     }
     if([StringUtil trimString:self.txtRevenue.text].length==0){
         
-        [self showTooltip:self.txtRevenue  withText:@"Anh/Chị chưa nhập doanh thu"];
+        [self showTooltip:self.txtRevenue  withText:LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_ERR_BLANK_REVENUE")];
         [self.txtRevenue becomeFirstResponder];
         [self setBorder:self.txtRevenue];
         isValidate=NO;
@@ -639,4 +640,15 @@
     }
 }
 
+
+#pragma mark - Phần đa ngôn ngữ
+-(void)setLanguage{
+    [_lblProduct setText:LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_PRODUCT_TITLE")];
+    [searchBarController.searchBarView.textField setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_PRODUCT_DETAIL")];
+    [_lblQuantity setText:LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_QUANTITY")];
+    [_txtQuantity setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_QUANTITY")];
+    [_lblRevenue setText:LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_REVENUE")];
+    [_txtRevenue setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_REVENUE")];
+    [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+}
 @end

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="7515.2" systemVersion="14C109" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7512"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditContactOpportunityViewController">
@@ -18,6 +18,16 @@
                 <outlet property="fullNameLB" destination="jQO-GL-fTJ" id="nwg-D0-9F2"/>
                 <outlet property="headerViewBar" destination="JzE-cv-riX" id="1l1-GA-D9b"/>
                 <outlet property="imgAvartar" destination="bwz-fK-CVu" id="fv8-I6-LUn"/>
+                <outlet property="lblBirthday" destination="3Nz-3h-PhB" id="woh-Qu-d2l"/>
+                <outlet property="lblCreateDate" destination="dai-kh-v80" id="zL2-7G-BP2"/>
+                <outlet property="lblEmail" destination="GlB-UZ-whz" id="0Bb-MS-DQb"/>
+                <outlet property="lblIdentityNumber" destination="S89-C1-R7j" id="26v-Lc-aa9"/>
+                <outlet property="lblLocation" destination="ipC-x4-yyD" id="k4P-EK-eQO"/>
+                <outlet property="lblName" destination="kKJ-l6-xOb" id="LbR-x7-H6c"/>
+                <outlet property="lblNote" destination="46N-J0-84C" id="3e7-qb-vy8"/>
+                <outlet property="lblPhone" destination="TFT-Lm-EMS" id="ggV-Mm-dxs"/>
+                <outlet property="lblPositioin" destination="RHm-Lz-6wo" id="W7w-cI-vWT"/>
+                <outlet property="lblWhereBorn" destination="Gti-g2-WDI" id="GeR-Xe-TZd"/>
                 <outlet property="mainView" destination="AiA-dP-6tQ" id="oyn-KZ-ja4"/>
                 <outlet property="tvNote" destination="goU-TQ-Wqe" id="0v9-zR-XiL"/>
                 <outlet property="txtAddress" destination="lPl-Lv-BFq" id="qOI-Nr-BzW"/>

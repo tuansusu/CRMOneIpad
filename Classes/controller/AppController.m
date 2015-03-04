@@ -57,7 +57,7 @@ static AppController *appController = nil;
                 
                 FrameworkAppDelegate *appDel = (FrameworkAppDelegate*)[[UIApplication sharedApplication] delegate];
                 
-                RootViewController *rootView = [[[RootViewController alloc] init] autorelease];
+                RootViewController *rootView = [[RootViewController alloc] init];
                 
                 [appDel.window setRootViewController:rootView];
                 
@@ -133,7 +133,7 @@ static AppController *appController = nil;
                 
                 FrameworkAppDelegate *appDel = (FrameworkAppDelegate*)[[UIApplication sharedApplication] delegate];
                 
-                RootViewController *rootView = [[[RootViewController alloc] init] autorelease];
+                RootViewController *rootView = [[RootViewController alloc] init];
                 
                 
                     [rootView.view makeToast:SYS_Notification_InputConfigKey

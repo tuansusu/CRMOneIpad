@@ -14,16 +14,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view hidden="YES" contentMode="scaleToFill" id="q1q-4f-Kas" customClass="MIMLineGraph">
-                        <rect key="frame" x="0.0" y="50" width="2816" height="6697.5"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <view contentMode="scaleToFill" id="d1D-sU-dWL" customClass="MIMBarGraph">
-                        <rect key="frame" x="0.0" y="50" width="1024" height="400"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
                     <view contentMode="scaleToFill" id="EPG-GG-N5A" customClass="ContentChartViewCell">
                         <rect key="frame" x="0.0" y="50" width="1024" height="449.5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -261,8 +251,6 @@
                 <outlet property="btnSave" destination="G1y-Sv-HAi" id="pKu-T9-f63"/>
                 <outlet property="configurationView" destination="7H2-yL-9Cw" id="VA5-He-pT9"/>
                 <outlet property="contentChartView" destination="EPG-GG-N5A" id="u34-PO-pKK"/>
-                <outlet property="mBarGraph" destination="d1D-sU-dWL" id="pCD-EA-DIA"/>
-                <outlet property="mLineGraph" destination="q1q-4f-Kas" id="XSj-al-pLo"/>
                 <outlet property="titleGraph" destination="eAi-hb-nC8" id="Gol-8B-AcT"/>
                 <outlet property="widgetTypeView" destination="B1U-fV-f9e" id="s5k-Xt-TWs"/>
             </connections>

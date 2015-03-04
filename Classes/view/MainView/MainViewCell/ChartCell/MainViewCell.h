@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "MIMLineGraph.h"
-#import "MIMBarGraph.h"
 #import "Globals.h"
 #import "ContentChartViewCell.h"
 
@@ -24,12 +22,10 @@
 
 @end
 
-@interface MainViewCell : UITableViewCell<LineGraphDelegate,BarGraphDelegate>
+@interface MainViewCell : UITableViewCell
 {
 
-    IBOutlet MIMLineGraph *mLineGraph;
-    IBOutlet MIMBarGraph *mBarGraph;
-    IBOutlet ContentChartViewCell *contentChartView;
+   IBOutlet ContentChartViewCell *contentChartView;
 
     IBOutlet UILabel *titleGraph;
 

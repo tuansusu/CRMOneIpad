@@ -7292,7 +7292,7 @@
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Volumes/PROJECTS/OfficeOne/Distribu/OfficeOne,
+					/Users/admin/CRMOneIpad,
 					final,
 					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
 					/Volumes/PROJECTS/Ca,
@@ -7344,7 +7344,7 @@
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Volumes/PROJECTS/OfficeOne/Distribu/OfficeOne,
+					/Users/admin/CRMOneIpad,
 					final,
 					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
 					/Volumes/PROJECTS/Ca,

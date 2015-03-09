@@ -388,6 +388,7 @@
 		76BE293A1AA3F55800663803 /* icon_sua_90x90.png in Resources */ = {isa = PBXBuildFile; fileRef = 76BE29371AA3F55800663803 /* icon_sua_90x90.png */; };
 		76BE293D1AA3F91600663803 /* flag_en-us.png in Resources */ = {isa = PBXBuildFile; fileRef = 76BE293B1AA3F91600663803 /* flag_en-us.png */; };
 		76BE293E1AA3F91600663803 /* flag_vi-vn.png in Resources */ = {isa = PBXBuildFile; fileRef = 76BE293C1AA3F91600663803 /* flag_vi-vn.png */; };
+		76C931BF1AA997B900C87DBD /* DTOEMPLOYEEProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C931BE1AA997B900C87DBD /* DTOEMPLOYEEProcess.m */; };
 		76C962941A16DB8200029978 /* DTOACCOUNTLEADProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C962931A16DB8200029978 /* DTOACCOUNTLEADProcess.m */; };
 		76C9629C1A16DBA500029978 /* AccountLeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C962971A16DBA500029978 /* AccountLeadCell.m */; };
 		76C9629D1A16DBA500029978 /* AccountLeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C962981A16DBA500029978 /* AccountLeadCell.xib */; };
@@ -1661,6 +1662,8 @@
 		76BE29371AA3F55800663803 /* icon_sua_90x90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_sua_90x90.png; sourceTree = "<group>"; };
 		76BE293B1AA3F91600663803 /* flag_en-us.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flag_en-us.png"; sourceTree = "<group>"; };
 		76BE293C1AA3F91600663803 /* flag_vi-vn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flag_vi-vn.png"; sourceTree = "<group>"; };
+		76C931BD1AA997B900C87DBD /* DTOEMPLOYEEProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOEMPLOYEEProcess.h; sourceTree = "<group>"; };
+		76C931BE1AA997B900C87DBD /* DTOEMPLOYEEProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOEMPLOYEEProcess.m; sourceTree = "<group>"; };
 		76C962921A16DB8200029978 /* DTOACCOUNTLEADProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOACCOUNTLEADProcess.h; sourceTree = "<group>"; };
 		76C962931A16DB8200029978 /* DTOACCOUNTLEADProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOACCOUNTLEADProcess.m; sourceTree = "<group>"; };
 		76C962961A16DBA500029978 /* AccountLeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountLeadCell.h; sourceTree = "<group>"; };
@@ -3798,6 +3801,8 @@
 				8E44BC681A73B9BB00EDCD1A /* DTOProBPDetailProcess.m */,
 				8E44BC6A1A73B9D300EDCD1A /* DTOProEMBDetailProcess.h */,
 				8E44BC6B1A73B9D300EDCD1A /* DTOProEMBDetailProcess.m */,
+				76C931BD1AA997B900C87DBD /* DTOEMPLOYEEProcess.h */,
+				76C931BE1AA997B900C87DBD /* DTOEMPLOYEEProcess.m */,
 			);
 			name = Data;
 			path = ProcessData/Data;
@@ -4696,6 +4701,7 @@
 		8E44BBF81A73A89B00EDCD1A /* ProductsService */ = {
 			isa = PBXGroup;
 			children = (
+				8E8B3F211A49AA4300241360 /* MainView */,
 				8E44BBF91A73A89B00EDCD1A /* ProductsLeadCell */,
 				8E44BC001A73A89B00EDCD1A /* ProductsLeadView.h */,
 				8E44BC011A73A89B00EDCD1A /* ProductsLeadView.m */,
@@ -5076,7 +5082,8 @@
 				8E8B3F231A49AA4300241360 /* MainViewController.m */,
 				8E8B3F241A49AA4300241360 /* MainViewController.xib */,
 			);
-			path = MainView;
+			name = MainView;
+			path = ../MainView;
 			sourceTree = "<group>";
 		};
 		8E8B3F271A49AA5F00241360 /* MainViewCell */ = {
@@ -5752,7 +5759,6 @@
 				8E8D7FC31A5ADE060084BCA3 /* DashboardCalendar */,
 				8E6105F51A5986A9003D1C0C /* Profile */,
 				8E568F791A58EE950002A3C4 /* Complain */,
-				8E8B3F211A49AA4300241360 /* MainView */,
 				8495DDCA1A30A0AF00C4E922 /* Account360 */,
 				8497C0111A295A6700A5ED3C /* MapView */,
 				76C962951A16DBA500029978 /* AccountLead */,
@@ -7109,6 +7115,7 @@
 				8EC972941A5D71300021DCA3 /* FFYearCell.m in Sources */,
 				849788081A2BE1BF00384566 /* TaskActionCell.m in Sources */,
 				8497C0151A295A8500A5ED3C /* TestMapViewController.m in Sources */,
+				76C931BF1AA997B900C87DBD /* DTOEMPLOYEEProcess.m in Sources */,
 				8497C00D1A295A2300A5ED3C /* TrafficMapViewController.m in Sources */,
 				2D3643931859996700190EE7 /* AFNetworkRequestHelper.m in Sources */,
 				8495DDCE1A30A10A00C4E922 /* ListAccountViewController.m in Sources */,

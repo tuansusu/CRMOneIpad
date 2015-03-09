@@ -433,9 +433,9 @@
 }
 
 - (IBAction)btnProfileAction:(id)sender {
-//    ProfileViewController *profileVC = [[ProfileViewController alloc] init];
-//    [profileVC.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-//    [self presentViewController:profileVC animated:YES completion:nil];
+    ProfileViewController *profileVC = [[ProfileViewController alloc] init];
+    [profileVC.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [self presentViewController:profileVC animated:YES completion:nil];
     
 }
 

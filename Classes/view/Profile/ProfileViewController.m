@@ -58,13 +58,13 @@
     _lblAccountDetail.text = [employee objectForKey:@"userLogin"];
     _lblFullnameDetail.text = [employee objectForKey:@"fullName"];
     _lblSexDetail.text = [employee objectForKey:@"sex"];
-    _lblBirthdayDetail.text = [employee objectForKey:@"birthday"];
-    _lblEnterOrgDateDetail.text = [employee objectForKey:@"enterOrgDate"];
+    _lblBirthdayDetail.text = [[employee objectForKey:@"birthday"] substringToIndex:10];
+    _lblEnterOrgDateDetail.text = [[employee objectForKey:@"enterOrgDate"] substringToIndex:10];
     _lblBranchDetail.text = [employee objectForKey:@"branch"];
     _lblDepartmentDetail.text = [employee objectForKey:@"department"];
     _lblTitleDetail.text = [employee objectForKey:@"title"];
     _lblPositionDetail.text =[employee objectForKey:@"position"];
-    _lblDayStartPositionDetail.text = [employee objectForKey:@"dayStartPosition"];
+    _lblDayStartPositionDetail.text = [[employee objectForKey:@"dayStartPosition"] substringToIndex:10];
     _lblMobileDetail.text = [employee objectForKey:@"mobile"];
     _lblPhoneOrgDetail.text = [employee objectForKey:@"phoneOrg"];
     _lblPhoneRetailDetail.text = [employee objectForKey:@"phoneRetail"];

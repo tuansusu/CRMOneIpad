@@ -33,6 +33,7 @@
                 <outlet property="lblFaxDetail" destination="xbC-Vd-aAx" id="dXC-kY-k3Y"/>
                 <outlet property="lblFaxTitle" destination="vTo-wA-RsE" id="0lx-tA-8Cg"/>
                 <outlet property="lblFullnameDetail" destination="bf9-Et-68E" id="BZF-RN-khX"/>
+                <outlet property="lblInfo" destination="S7l-fP-9sT" id="zVV-zO-u3n"/>
                 <outlet property="lblMobileDetail" destination="bMq-LI-BVG" id="8Lr-Vv-Sba"/>
                 <outlet property="lblMobileTitle" destination="uqE-Ot-V28" id="KoC-px-tHD"/>
                 <outlet property="lblPhoneOrgDetail" destination="c0O-ye-mZ5" id="ENV-TV-oXV"/>
@@ -424,8 +425,9 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thông tin " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="S7l-fP-9sT">
-                            <rect key="frame" x="53" y="251" width="531" height="30"/>
+                            <rect key="frame" x="53" y="251" width="75" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>

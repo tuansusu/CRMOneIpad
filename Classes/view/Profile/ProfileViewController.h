@@ -51,5 +51,6 @@
 
 @property (weak, nonatomic) IBOutlet UIView *footerView;
 @property (weak, nonatomic) IBOutlet UILabel *barLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lblInfo;
 
 @end

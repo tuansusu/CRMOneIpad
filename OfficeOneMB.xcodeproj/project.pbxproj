@@ -383,6 +383,7 @@
 		769F24851A6F1C5500427A8F /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F247D1A6F1C5500427A8F /* UIViewController+MMDrawerController.m */; };
 		769F24891A6F1F3F00427A8F /* MeunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F24871A6F1F3F00427A8F /* MeunViewController.m */; };
 		769F248A1A6F1F3F00427A8F /* MeunViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769F24881A6F1F3F00427A8F /* MeunViewController.xib */; };
+		76A9883D1AAF3E6000F53304 /* MainViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76A9883B1AAF3E6000F53304 /* MainViewController~iphone.xib */; };
 		76BE29381AA3F55800663803 /* icon_delete_90x90.png in Resources */ = {isa = PBXBuildFile; fileRef = 76BE29351AA3F55800663803 /* icon_delete_90x90.png */; };
 		76BE29391AA3F55800663803 /* icon_save_90x90.png in Resources */ = {isa = PBXBuildFile; fileRef = 76BE29361AA3F55800663803 /* icon_save_90x90.png */; };
 		76BE293A1AA3F55800663803 /* icon_sua_90x90.png in Resources */ = {isa = PBXBuildFile; fileRef = 76BE29371AA3F55800663803 /* icon_sua_90x90.png */; };
@@ -1657,6 +1658,7 @@
 		769F24861A6F1F3F00427A8F /* MeunViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeunViewController.h; path = CustomView/MeunViewController.h; sourceTree = "<group>"; };
 		769F24871A6F1F3F00427A8F /* MeunViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeunViewController.m; path = CustomView/MeunViewController.m; sourceTree = "<group>"; };
 		769F24881A6F1F3F00427A8F /* MeunViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MeunViewController.xib; path = CustomView/MeunViewController.xib; sourceTree = "<group>"; };
+		76A9883B1AAF3E6000F53304 /* MainViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainViewController~iphone.xib"; sourceTree = "<group>"; };
 		76BE29351AA3F55800663803 /* icon_delete_90x90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_delete_90x90.png; sourceTree = "<group>"; };
 		76BE29361AA3F55800663803 /* icon_save_90x90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_save_90x90.png; sourceTree = "<group>"; };
 		76BE29371AA3F55800663803 /* icon_sua_90x90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_sua_90x90.png; sourceTree = "<group>"; };
@@ -4701,7 +4703,6 @@
 		8E44BBF81A73A89B00EDCD1A /* ProductsService */ = {
 			isa = PBXGroup;
 			children = (
-				8E8B3F211A49AA4300241360 /* MainView */,
 				8E44BBF91A73A89B00EDCD1A /* ProductsLeadCell */,
 				8E44BC001A73A89B00EDCD1A /* ProductsLeadView.h */,
 				8E44BC011A73A89B00EDCD1A /* ProductsLeadView.m */,
@@ -5081,9 +5082,9 @@
 				8E8B3F221A49AA4300241360 /* MainViewController.h */,
 				8E8B3F231A49AA4300241360 /* MainViewController.m */,
 				8E8B3F241A49AA4300241360 /* MainViewController.xib */,
+				76A9883B1AAF3E6000F53304 /* MainViewController~iphone.xib */,
 			);
-			name = MainView;
-			path = ../MainView;
+			path = MainView;
 			sourceTree = "<group>";
 		};
 		8E8B3F271A49AA5F00241360 /* MainViewCell */ = {
@@ -5753,6 +5754,7 @@
 		92C68E4A1519D4F100981728 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				8E8B3F211A49AA4300241360 /* MainView */,
 				769E1FC31A7C7DB300545F63 /* Help */,
 				8EB93CF91A791EDE002875F2 /* DaskboardTasks */,
 				8E44BBF81A73A89B00EDCD1A /* ProductsService */,
@@ -6266,6 +6268,7 @@
 				8434BF041A2F61B200C29815 /* calendar_small_new.png in Resources */,
 				2D60B07B17A27AA400848776 /* checkbox_ticked.png in Resources */,
 				76D29B2B1A1397EE004B9CF6 /* ProductViewController.xib in Resources */,
+				76A9883D1AAF3E6000F53304 /* MainViewController~iphone.xib in Resources */,
 				8E5AA9BB1A503F02007D9C8A /* iconArrowUp.png in Resources */,
 				8E75545E1A52EFC8001940FB /* iconRoundAboutRight.png in Resources */,
 				8497BFC01A295A2300A5ED3C /* boat.png in Resources */,

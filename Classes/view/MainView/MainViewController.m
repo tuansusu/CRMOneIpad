@@ -73,7 +73,7 @@ NSString* emptyText = @"";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     dtoWidgetProcess = [DTOWidgetProcess new];
     arrayData = [[NSMutableArray alloc] init];
     arrayWidgetDashboard = [[NSMutableArray alloc] init];

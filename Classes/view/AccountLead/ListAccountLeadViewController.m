@@ -112,26 +112,29 @@
     [SVProgressHUD show];
     [self setLanguage];
     //set menu
-
-    UIMenuItem *viewMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Xem", nil) action:@selector(view:) image:[UIImage imageNamed:@"menuview.png"]];
-    
-    UIMenuItem *editMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Sửa", nil) action:@selector(edit:) image:[UIImage imageNamed:@"menuedit.png"]];
-    
-    UIMenuItem *delMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Xoá", nil) action:@selector(del:) image:[UIImage imageNamed:@"menudelete.png"]];
-    
-    UIMenuItem *callMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Gọi điện", nil) action:@selector(call:) image:[UIImage imageNamed:@"menuphone.png"]];
-    
-    UIMenuItem *smsMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"SMS", nil) action:@selector(sms:) image:[UIImage imageNamed:@"menumessage.png"]];
-    
-    UIMenuItem *emailMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Email", nil) action:@selector(email:) image:[UIImage imageNamed:@"menuemail.png"]];
-    
-    UIMenuItem *fowlMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Theo dõi", nil) action:@selector(follow:) image:[UIImage imageNamed:@"menuflag.png"]];
-    
-    
-    UIMenuItem *mapMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Bản đồ", nil) action:@selector(map:) image:[UIImage imageNamed:@"menumap.png"]];
-    
-    [[UIMenuController sharedMenuController] setMenuItems: @[viewMenu,editMenu,delMenu,callMenu,smsMenu,emailMenu,fowlMenu,mapMenu]];
-    [[UIMenuController sharedMenuController] update];
+    NSString*device=[UIDevice currentDevice].model;
+    if([device isEqualToString:@"iPad"]|| [device isEqualToString:@"iPad Simulator"]){
+        
+        UIMenuItem *viewMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Xem", nil) action:@selector(view:) image:[UIImage imageNamed:@"menuview.png"]];
+        
+        UIMenuItem *editMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Sửa", nil) action:@selector(edit:) image:[UIImage imageNamed:@"menuedit.png"]];
+        
+        UIMenuItem *delMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Xoá", nil) action:@selector(del:) image:[UIImage imageNamed:@"menudelete.png"]];
+        
+        UIMenuItem *callMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Gọi điện", nil) action:@selector(call:) image:[UIImage imageNamed:@"menuphone.png"]];
+        
+        UIMenuItem *smsMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"SMS", nil) action:@selector(sms:) image:[UIImage imageNamed:@"menumessage.png"]];
+        
+        UIMenuItem *emailMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Email", nil) action:@selector(email:) image:[UIImage imageNamed:@"menuemail.png"]];
+        
+        UIMenuItem *fowlMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Theo dõi", nil) action:@selector(follow:) image:[UIImage imageNamed:@"menuflag.png"]];
+        
+        
+        UIMenuItem *mapMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Bản đồ", nil) action:@selector(map:) image:[UIImage imageNamed:@"menumap.png"]];
+        
+        [[UIMenuController sharedMenuController] setMenuItems: @[viewMenu,editMenu,delMenu,callMenu,smsMenu,emailMenu,fowlMenu,mapMenu]];
+        [[UIMenuController sharedMenuController] update];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -252,10 +255,18 @@
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if((arrayData.count) == indexPath.row){
+        
         return 50.0f;
     }
     else {
-        return 100.0f;
+        
+        NSString  *currentDevice = [UIDevice currentDevice].model;
+        if([currentDevice isEqualToString:@"iPhone"] || [currentDevice isEqualToString:@"iPhone Simulator"]){
+            return 50.0f;
+        }
+        else{
+            return 100.0f;
+        }
     }
     
     
@@ -395,20 +406,34 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSIndexPath* selection = [tableView indexPathForSelectedRow];
-    if (selection){
+    NSString  *currentDevice = [UIDevice currentDevice].model;
+    if([currentDevice isEqualToString:@"iPhone"] || [currentDevice isEqualToString:@"iPhone Simulator"]){
         
-        [tableView deselectRowAtIndexPath:selection animated:YES];
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:LocalizedString(@"MENU_ACTIONSHEET_TITLE")
+                                                                 delegate:self
+                                                        cancelButtonTitle:LocalizedString(@"KEY_CANCEL")
+                                                   destructiveButtonTitle:LocalizedString(@"MENU_ACTIONSHEET_VIEW")
+                                                        otherButtonTitles:LocalizedString(@"MENU_ACTIONSHEET_EDIT"),LocalizedString(@"MENU_ACTIONSHEET_DEL"),LocalizedString(@"MENU_ACTIONSHEET_CALL"),LocalizedString(@"MENU_ACTIONSHEET_SMS"),LocalizedString(@"MENU_ACTIONSHEET_Email"),LocalizedString(@"MENU_ACTIONSHEET_FOLLOW"),LocalizedString(@"MENU_ACTIONSHEET_MAPS"), nil];
+        // [actionSheet showFromRect:cellRect inView:[UIApplication sharedApplication].keyWindow animated:YES];
+        [actionSheet showInView:self.view];
     }
-    
-    NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
-    
-    
-    
-    DetailLeadViewController *viewController = [[DetailLeadViewController alloc]initWithNibName:@"DetailLeadViewController" bundle:nil];
-    viewController.dataSend = dicData;
-    
-    [self presentViewController:viewController animated:YES completion:nil];
+    else{
+        
+        NSIndexPath* selection = [tableView indexPathForSelectedRow];
+        if (selection){
+            
+            [tableView deselectRowAtIndexPath:selection animated:YES];
+        }
+        
+        NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
+        
+        
+        
+        DetailLeadViewController *viewController = [[DetailLeadViewController alloc]initWithNibName:@"DetailLeadViewController" bundle:nil];
+        viewController.dataSend = dicData;
+        
+        [self presentViewController:viewController animated:YES completion:nil];
+    }
     
 }
 
@@ -883,7 +908,7 @@
     
     deleteLeadId = [dicData objectForKey:DTOACCOUNT_id];
     
-   UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERT_DEL") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERTVIEW_DELETE_OK") otherButtonTitles: LocalizedString(@"KEY_ALERTVIEW_DELETE_CANCEL"), nil];
+    UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERT_DEL") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERTVIEW_DELETE_OK") otherButtonTitles: LocalizedString(@"KEY_ALERTVIEW_DELETE_CANCEL"), nil];
     mylert.tag = TAG_DELETE_ITEM;
     [mylert show];
     
@@ -954,5 +979,22 @@
 -(void) setLanguage{
     _fullNameLB.text=LocalizedString(@"KEY_LEAD_TITLE");
     
+}
+- (IBAction)actionAdd_IP:(id)sender {
+    UIActionSheet *actionSheer=[[UIActionSheet alloc] initWithTitle:LocalizedString(@"KEY_LEAD_ADD_TITEL") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERTVIEW_DELETE_CANCEL")destructiveButtonTitle:LocalizedString(@"KEY_LEAD_ADD_CN") otherButtonTitles:LocalizedString(@"KEY_LEAD_ADD_DN"), nil];
+    [actionSheer showInView:self.view];
+}
+//ham thuc thi cua actiosheet tren IP
+-(void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSLog(@"Index = %d - Title = %@", buttonIndex, [actionSheet buttonTitleAtIndex:buttonIndex]);
+    if(buttonIndex==0){
+        EditAccountLeadViewController *viewController=[[EditAccountLeadViewController alloc] initWithNibName:@"EditAccountLeadViewController" bundle:nil];
+        [self presentViewController:viewController animated:YES completion:nil];
+    }
+    else if (buttonIndex ==1){
+        
+        EditBussinessLeadViewController *viewController=[[EditBussinessLeadViewController alloc] initWithNibName:@"EditBussinessLeadViewController" bundle:nil];
+        [self presentViewController:viewController animated:YES completion:nil];
+    }
 }
 @end

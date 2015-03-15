@@ -231,8 +231,20 @@
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 100.0f;
-}
+    if((arrayData.count) == indexPath.row){
+        
+        return 50.0f;
+    }
+    else {
+        
+        NSString  *currentDevice = [UIDevice currentDevice].model;
+        if([currentDevice isEqualToString:@"iPhone"] || [currentDevice isEqualToString:@"iPhone Simulator"]){
+            return 50.0f;
+        }
+        else{
+            return 100.0f;
+        }
+    }}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.

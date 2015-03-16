@@ -92,6 +92,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     NSString *deleteContact;
     NSString *deleteCalenda;
     NSString *delTask;
+    NSString*myDevice;
     
     //controll
     
@@ -153,6 +154,11 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     //scrollViewHeaderExpandInfo.contentSize = CGSizeMake(910, scrollViewHeaderExpandInfo.frame.size.height);
        [self setLanguage];
+    myDevice=[UIDevice currentDevice].model;
+    if([myDevice isEqualToString:@"iPhone"] || [myDevice isEqualToString:@"iPhone Simulator"]){
+        [_myTabbar setSelectedItem:0];
+         self.mySearchBar.barTintColor = HEADER_VIEW_COLOR1;
+    }
 }
 
 -(void) viewWillAppear:(BOOL)animated{
@@ -1679,5 +1685,68 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         _lbLableKhongLienLacQua.text=LocalizedString(@"KEY_LEAD_KLLQ");
     }
     
+}
+-(void) tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
+    NSUInteger indexOfTab = [[tabBar items] indexOfObject:item];
+    NSLog(@"Tab index = %i", indexOfTab);
+    NSLog(@"Tab bar: did select tab %@", item.title);
+    //chi tiết khách hàng
+    if(indexOfTab==0){
+        if ([leadType isEqualToString:FIX_LEADTYPE_BUSSINESS]) {
+            _scrollViewBussiness.hidden=NO;
+            _mySearchBar.hidden=YES;
+        }else{
+            _scrollViewPersonal.hidden=NO;
+            _mySearchBar.hidden=YES;
+        }
+    }
+    else if(indexOfTab==1){
+        _scrollViewBussiness.hidden=YES;
+        _scrollViewBussiness.hidden=YES;
+        _mySearchBar.hidden=NO;
+    }
+    else if(indexOfTab==2){
+        _scrollViewBussiness.hidden=YES;
+        _scrollViewBussiness.hidden=YES;
+        _mySearchBar.hidden=NO;
+    }
+    else if(indexOfTab==3){
+        _scrollViewBussiness.hidden=YES;
+        _scrollViewBussiness.hidden=YES;
+        _mySearchBar.hidden=NO;
+    }
+    else if(indexOfTab==4){
+        _scrollViewBussiness.hidden=YES;
+        _scrollViewBussiness.hidden=YES;
+        _mySearchBar.hidden=NO;
+    }
+    else if(indexOfTab==5){
+        _scrollViewBussiness.hidden=YES;
+        _scrollViewBussiness.hidden=YES;
+        _mySearchBar.hidden=NO;
+    }
+    else if(indexOfTab==6){
+        _scrollViewBussiness.hidden=YES;
+        _scrollViewBussiness.hidden=YES;
+        _mySearchBar.hidden=NO;
+    }
+    else if(indexOfTab==7){
+        _scrollViewBussiness.hidden=YES;
+        _scrollViewBussiness.hidden=YES;
+        _mySearchBar.hidden=NO;
+    }
+    else if(indexOfTab==8){
+    
+        UIActionSheet *actionSheet=[[UIActionSheet alloc] initWithTitle:@"Chức năng" delegate:self cancelButtonTitle:@"Huỷ" destructiveButtonTitle:nil otherButtonTitles:@"Sửa",@"Xoá", nil];
+        actionSheet.tag=11;
+        [actionSheet showInView:self.view];
+    }
+}
+- (IBAction)myactionAdd:(id)sender {
+    
+    UIActionSheet *action=[[UIActionSheet alloc]initWithTitle:@"Menu" delegate:self cancelButtonTitle:@"Huỷ" destructiveButtonTitle:nil otherButtonTitles:LocalizedString(@"KEY_360_CONTACT"),LocalizedString(@"KEY_360_NOTE"), LocalizedString(@"KEY_360_CALENDAR")
+                           , LocalizedString(@"KEY_360_NHIEMVU"), LocalizedString(@"KEY_360_COHOI"), LocalizedString(@"KEY_360_YKIEN"), nil];
+    action.tag=22;
+    [action showInView:self.view];
 }
 @end

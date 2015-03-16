@@ -48,6 +48,7 @@
 		177885991A84699100C71551 /* menumessage.png in Resources */ = {isa = PBXBuildFile; fileRef = 177885911A84699100C71551 /* menumessage.png */; };
 		1778859A1A84699100C71551 /* menuphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 177885921A84699100C71551 /* menuphone.png */; };
 		1778859B1A84699100C71551 /* menuview.png in Resources */ = {isa = PBXBuildFile; fileRef = 177885931A84699100C71551 /* menuview.png */; };
+		1783BDB81AB713C100DB90BF /* DetailLeadViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1783BDB61AB713C100DB90BF /* DetailLeadViewController~iphone.xib */; };
 		17C67D391A5D72FA00EECD66 /* SelectAddInMapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C67D371A5D72FA00EECD66 /* SelectAddInMapsViewController.m */; };
 		17C67D3A1A5D72FA00EECD66 /* SelectAddInMapsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17C67D381A5D72FA00EECD66 /* SelectAddInMapsViewController.xib */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
@@ -1164,6 +1165,7 @@
 		177885911A84699100C71551 /* menumessage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menumessage.png; sourceTree = "<group>"; };
 		177885921A84699100C71551 /* menuphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuphone.png; sourceTree = "<group>"; };
 		177885931A84699100C71551 /* menuview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuview.png; sourceTree = "<group>"; };
+		1783BDB61AB713C100DB90BF /* DetailLeadViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DetailLeadViewController~iphone.xib"; sourceTree = "<group>"; };
 		17C67D361A5D72FA00EECD66 /* SelectAddInMapsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectAddInMapsViewController.h; sourceTree = "<group>"; };
 		17C67D371A5D72FA00EECD66 /* SelectAddInMapsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAddInMapsViewController.m; sourceTree = "<group>"; };
 		17C67D381A5D72FA00EECD66 /* SelectAddInMapsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectAddInMapsViewController.xib; sourceTree = "<group>"; };
@@ -5630,6 +5632,7 @@
 				8ED38D6E1A5447C500D95A3B /* DetailLeadViewController.h */,
 				8ED38D6F1A5447C500D95A3B /* DetailLeadViewController.m */,
 				8ED38D701A5447C500D95A3B /* DetailLeadViewController.xib */,
+				1783BDB61AB713C100DB90BF /* DetailLeadViewController~iphone.xib */,
 			);
 			path = DetailsLead;
 			sourceTree = "<group>";
@@ -6450,6 +6453,7 @@
 				B3A066DA17D1AB8200BA6487 /* background_4.png in Resources */,
 				764430671A7000CC007741BA /* menu_campaign.png in Resources */,
 				849794681A1FB19300ACC568 /* DetailCustomBussinessViewController.xib in Resources */,
+				1783BDB81AB713C100DB90BF /* DetailLeadViewController~iphone.xib in Resources */,
 				B3A066DC17D1AB8200BA6487 /* btn_choose_list.png in Resources */,
 				8ED402861A41DF3C00CCBE6D /* ic_qu_direction_mylocation.png in Resources */,
 				7644306C1A7000CC007741BA /* menu_lead.png in Resources */,

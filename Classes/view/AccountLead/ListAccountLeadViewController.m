@@ -56,7 +56,7 @@
     NSString *strSearchText ;
     NSInteger iSearchOption;
     
-    
+    NSDictionary *dataDetail;
     NSString *followId;
     
     Language *obj;
@@ -415,6 +415,8 @@
                                                    destructiveButtonTitle:LocalizedString(@"MENU_ACTIONSHEET_VIEW")
                                                         otherButtonTitles:LocalizedString(@"MENU_ACTIONSHEET_EDIT"),LocalizedString(@"MENU_ACTIONSHEET_DEL"),LocalizedString(@"MENU_ACTIONSHEET_CALL"),LocalizedString(@"MENU_ACTIONSHEET_SMS"),LocalizedString(@"MENU_ACTIONSHEET_Email"),LocalizedString(@"MENU_ACTIONSHEET_FOLLOW"),LocalizedString(@"MENU_ACTIONSHEET_MAPS"), nil];
         // [actionSheet showFromRect:cellRect inView:[UIApplication sharedApplication].keyWindow animated:YES];
+        actionSheet.tag=11;
+        dataDetail =[arrayData objectAtIndex:indexPath.row];
         [actionSheet showInView:self.view];
     }
     else{
@@ -987,14 +989,24 @@
 //ham thuc thi cua actiosheet tren IP
 -(void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSLog(@"Index = %d - Title = %@", buttonIndex, [actionSheet buttonTitleAtIndex:buttonIndex]);
-    if(buttonIndex==0){
-        EditAccountLeadViewController *viewController=[[EditAccountLeadViewController alloc] initWithNibName:@"EditAccountLeadViewController" bundle:nil];
-        [self presentViewController:viewController animated:YES completion:nil];
+    if(actionSheet.tag==11)
+    {
+        if(buttonIndex==0){
+            DetailLeadViewController *detail=[[DetailLeadViewController alloc] initWithNibName:@"DetailLeadViewController" bundle:nil];
+            detail.dataSend=dataDetail;
+            [self presentViewController:detail animated:YES completion:nil];
+        }
     }
-    else if (buttonIndex ==1){
-        
-        EditBussinessLeadViewController *viewController=[[EditBussinessLeadViewController alloc] initWithNibName:@"EditBussinessLeadViewController" bundle:nil];
-        [self presentViewController:viewController animated:YES completion:nil];
+    else{
+        if(buttonIndex==0){
+            EditAccountLeadViewController *viewController=[[EditAccountLeadViewController alloc] initWithNibName:@"EditAccountLeadViewController" bundle:nil];
+            [self presentViewController:viewController animated:YES completion:nil];
+        }
+        else if (buttonIndex ==1){
+            
+            EditBussinessLeadViewController *viewController=[[EditBussinessLeadViewController alloc] initWithNibName:@"EditBussinessLeadViewController" bundle:nil];
+            [self presentViewController:viewController animated:YES completion:nil];
+        }
     }
 }
 @end

@@ -396,6 +396,7 @@
 		76BE293A1AA3F55800663803 /* icon_sua_90x90.png in Resources */ = {isa = PBXBuildFile; fileRef = 76BE29371AA3F55800663803 /* icon_sua_90x90.png */; };
 		76BE293D1AA3F91600663803 /* flag_en-us.png in Resources */ = {isa = PBXBuildFile; fileRef = 76BE293B1AA3F91600663803 /* flag_en-us.png */; };
 		76BE293E1AA3F91600663803 /* flag_vi-vn.png in Resources */ = {isa = PBXBuildFile; fileRef = 76BE293C1AA3F91600663803 /* flag_vi-vn.png */; };
+		76C06E661AB71B08003F9D91 /* CompetitorsViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C06E651AB71B08003F9D91 /* CompetitorsViewController~iphone.xib */; };
 		76C931BF1AA997B900C87DBD /* DTOEMPLOYEEProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C931BE1AA997B900C87DBD /* DTOEMPLOYEEProcess.m */; };
 		76C962941A16DB8200029978 /* DTOACCOUNTLEADProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C962931A16DB8200029978 /* DTOACCOUNTLEADProcess.m */; };
 		76C9629C1A16DBA500029978 /* AccountLeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C962971A16DBA500029978 /* AccountLeadCell.m */; };
@@ -1681,6 +1682,7 @@
 		76BE29371AA3F55800663803 /* icon_sua_90x90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_sua_90x90.png; sourceTree = "<group>"; };
 		76BE293B1AA3F91600663803 /* flag_en-us.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flag_en-us.png"; sourceTree = "<group>"; };
 		76BE293C1AA3F91600663803 /* flag_vi-vn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flag_vi-vn.png"; sourceTree = "<group>"; };
+		76C06E651AB71B08003F9D91 /* CompetitorsViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "CompetitorsViewController~iphone.xib"; sourceTree = "<group>"; };
 		76C931BD1AA997B900C87DBD /* DTOEMPLOYEEProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOEMPLOYEEProcess.h; sourceTree = "<group>"; };
 		76C931BE1AA997B900C87DBD /* DTOEMPLOYEEProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOEMPLOYEEProcess.m; sourceTree = "<group>"; };
 		76C962921A16DB8200029978 /* DTOACCOUNTLEADProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOACCOUNTLEADProcess.h; sourceTree = "<group>"; };
@@ -5912,6 +5914,7 @@
 				762048731A0D246600AAA917 /* CompetitorsViewController.h */,
 				762048741A0D246600AAA917 /* CompetitorsViewController.m */,
 				762048751A0D246600AAA917 /* CompetitorsViewController.xib */,
+				76C06E651AB71B08003F9D91 /* CompetitorsViewController~iphone.xib */,
 			);
 			name = Detail;
 			sourceTree = "<group>";
@@ -6436,6 +6439,7 @@
 				8497BFB51A295A2300A5ED3C /* iTunesArtwork-1024.png in Resources */,
 				8EC972AA1A5D71300021DCA3 /* blackCircle.png in Resources */,
 				8E0B07D61A4479EF00CF7A78 /* bgPopup@2x.png in Resources */,
+				76C06E661AB71B08003F9D91 /* CompetitorsViewController~iphone.xib in Resources */,
 				B346C25817C4688D00433B07 /* arrow_right.png in Resources */,
 				8E7554231A52E3A2001940FB /* iconTurnSharpLeft@2x.png in Resources */,
 				B313F1D118A51414001FDEC6 /* notification-long-bg-1.png in Resources */,

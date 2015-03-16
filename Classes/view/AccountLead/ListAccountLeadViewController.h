@@ -22,7 +22,7 @@
 
 #import "TestMapViewController.h"
 
-@interface ListAccountLeadViewController : BaseViewController<SelectIndexDelegate, UISearchBarDelegate, UISearchDisplayDelegate, AccountLeadCellDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface ListAccountLeadViewController : BaseViewController<SelectIndexDelegate, UISearchBarDelegate, UISearchDisplayDelegate, AccountLeadCellDelegate, UITableViewDataSource, UITableViewDelegate,UIActionSheetDelegate>
 
 //Header
 @property (weak, nonatomic) IBOutlet UIView *headerViewBar;
@@ -65,5 +65,8 @@
 @property (nonatomic, retain) UIPopoverController *listPopover;
 
 ////////////// KHAI BAO BIEN CHUNG//////////
+//iphone
+- (IBAction)actionAdd_IP:(id)sender;
+
 
 @end

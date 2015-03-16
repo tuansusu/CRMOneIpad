@@ -31,6 +31,16 @@
 "MENU_GROUP_SYSTEM" = "     HỆ THỐNG";
 "MENU_FUNCTION_SYNC" = "           Đồng bộ";
 "MENU_FUNCTION_CANCEL" = "           Thoát";
+//menu actiosheet list
+"MENU_ACTIONSHEET_TITLE"="THAO TÁC";
+"MENU_ACTIONSHEET_VIEW"="Xem chi tiết";
+"MENU_ACTIONSHEET_EDIT"="Sửa thông tin KH";
+"MENU_ACTIONSHEET_DEL"="Xoá khách hàng";
+"MENU_ACTIONSHEET_CALL"="Gọi điện";
+"MENU_ACTIONSHEET_SMS"="Nhắn tin";
+"MENU_ACTIONSHEET_Email"="Email";
+"MENU_ACTIONSHEET_FOLLOW"="Theo dõi khách hàng";
+"MENU_ACTIONSHEET_MAPS"="Bản đồ khách hàng";
 
 //phan chung
 "KEY_INFO_TITLE"="Thông báo";
@@ -140,6 +150,7 @@
 "KEY_LEAD_TITLE"="KHÁCH HÀNG TIỀM NĂNG";
 "KEY_LEAD_ADD_CN"="Khách hàng cá nhân";
 "KEY_LEAD_ADD_DN"="Khách hàng doanh nghiệp";
+"KEY_LEAD_ADD_TITEL"="THÊM MỚI LOẠI KHÁCH HÀNG";
 //THÊM MỚI KHÁCH HÀNG CÁ NHÂN
 "KEY_LEAD_ADD_NEW"="Thông tin chính";
 "KEY_LEAD_ADD_CN_NEW"="THÊM MỚI KHÁCH HÀNG TIỀM NĂNG (CÁ NHÂN)";

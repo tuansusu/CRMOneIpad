@@ -252,6 +252,7 @@
 		764430701A7000CC007741BA /* menu_report.png in Resources */ = {isa = PBXBuildFile; fileRef = 764430631A7000CC007741BA /* menu_report.png */; };
 		764430711A7000CC007741BA /* menu_rm_360.png in Resources */ = {isa = PBXBuildFile; fileRef = 764430641A7000CC007741BA /* menu_rm_360.png */; };
 		764430721A7000CC007741BA /* menu_sales_activity.png in Resources */ = {isa = PBXBuildFile; fileRef = 764430651A7000CC007741BA /* menu_sales_activity.png */; };
+		764E3A071AB46E9F00960DA4 /* OpportunityCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 764E3A051AB46E9F00960DA4 /* OpportunityCell~iphone.xib */; };
 		7657E8841A5AEAB1008A62F9 /* DTOOPPORTUNITYPRODUCTProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 7657E8831A5AEAB1008A62F9 /* DTOOPPORTUNITYPRODUCTProcess.m */; };
 		7657E8AF1A5AEB3A008A62F9 /* Contact360Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7657E8861A5AEB3A008A62F9 /* Contact360Cell.m */; };
 		7657E8B01A5AEB3A008A62F9 /* Contact360Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7657E8871A5AEB3A008A62F9 /* Contact360Cell.xib */; };
@@ -497,6 +498,7 @@
 		76D29B301A13AD88004B9CF6 /* ProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D29B2E1A13AD88004B9CF6 /* ProductCell.m */; };
 		76D29B311A13AD88004B9CF6 /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76D29B2F1A13AD88004B9CF6 /* ProductCell.xib */; };
 		76D6281C1A3DA741009C3A0C /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D6281B1A3DA741009C3A0C /* CMPopTipView.m */; };
+		76E23E5A1AB07D9800B4B849 /* ListOpportunityViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76E23E591AB07D9800B4B849 /* ListOpportunityViewController~iphone.xib */; };
 		76EE207219FA829200A80414 /* ic-add-sub-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EE206E19FA829200A80414 /* ic-add-sub-1.png */; };
 		76EE207319FA829200A80414 /* ic-move-user-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EE206F19FA829200A80414 /* ic-move-user-1.png */; };
 		76EE207419FA829200A80414 /* ic-reply-task-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EE207019FA829200A80414 /* ic-reply-task-1.png */; };
@@ -504,6 +506,8 @@
 		76EE210E19FF4D7100A80414 /* icon-accept-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EE210B19FF4D7100A80414 /* icon-accept-1.png */; };
 		76EE210F19FF4D7100A80414 /* icon-clock-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EE210C19FF4D7100A80414 /* icon-clock-1.png */; };
 		76EE211019FF4D7100A80414 /* icon-confirm-process-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EE210D19FF4D7100A80414 /* icon-confirm-process-1.png */; };
+		76EE68FC1AB49834001F3A7E /* SearchBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE68FA1AB49834001F3A7E /* SearchBarCell.m */; };
+		76EE68FD1AB49834001F3A7E /* SearchBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76EE68FB1AB49834001F3A7E /* SearchBarCell.xib */; };
 		76F31E821A36A4160010606A /* AMRatingControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F31E811A36A4160010606A /* AMRatingControl.m */; };
 		76F328931A34B10B00E0F2C4 /* DTOTASKProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F328921A34B10B00E0F2C4 /* DTOTASKProcess.m */; };
 		76F328971A34B11E00E0F2C4 /* EditTaskLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F328951A34B11E00E0F2C4 /* EditTaskLeadViewController.m */; };
@@ -1461,6 +1465,7 @@
 		764430631A7000CC007741BA /* menu_report.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_report.png; sourceTree = "<group>"; };
 		764430641A7000CC007741BA /* menu_rm_360.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_rm_360.png; sourceTree = "<group>"; };
 		764430651A7000CC007741BA /* menu_sales_activity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_sales_activity.png; sourceTree = "<group>"; };
+		764E3A051AB46E9F00960DA4 /* OpportunityCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "OpportunityCell~iphone.xib"; sourceTree = "<group>"; };
 		7657E8821A5AEAB1008A62F9 /* DTOOPPORTUNITYPRODUCTProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOOPPORTUNITYPRODUCTProcess.h; sourceTree = "<group>"; };
 		7657E8831A5AEAB1008A62F9 /* DTOOPPORTUNITYPRODUCTProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOOPPORTUNITYPRODUCTProcess.m; sourceTree = "<group>"; };
 		7657E8851A5AEB3A008A62F9 /* Contact360Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact360Cell.h; sourceTree = "<group>"; };
@@ -1846,6 +1851,7 @@
 		76D29B371A14C47F004B9CF6 /* OfficeOneMB-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OfficeOneMB-Info.plist"; sourceTree = "<group>"; };
 		76D6281A1A3DA741009C3A0C /* CMPopTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPopTipView.h; sourceTree = "<group>"; };
 		76D6281B1A3DA741009C3A0C /* CMPopTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPopTipView.m; sourceTree = "<group>"; };
+		76E23E591AB07D9800B4B849 /* ListOpportunityViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ListOpportunityViewController~iphone.xib"; sourceTree = "<group>"; };
 		76EE206E19FA829200A80414 /* ic-add-sub-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic-add-sub-1.png"; path = "VofficeImage/Option1/ic-add-sub-1.png"; sourceTree = "<group>"; };
 		76EE206F19FA829200A80414 /* ic-move-user-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic-move-user-1.png"; path = "VofficeImage/Option1/ic-move-user-1.png"; sourceTree = "<group>"; };
 		76EE207019FA829200A80414 /* ic-reply-task-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic-reply-task-1.png"; path = "VofficeImage/Option1/ic-reply-task-1.png"; sourceTree = "<group>"; };
@@ -1853,6 +1859,9 @@
 		76EE210B19FF4D7100A80414 /* icon-accept-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-accept-1.png"; path = "VofficeImage/Option1/icon-accept-1.png"; sourceTree = "<group>"; };
 		76EE210C19FF4D7100A80414 /* icon-clock-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-clock-1.png"; path = "VofficeImage/Option1/icon-clock-1.png"; sourceTree = "<group>"; };
 		76EE210D19FF4D7100A80414 /* icon-confirm-process-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-confirm-process-1.png"; path = "VofficeImage/Option1/icon-confirm-process-1.png"; sourceTree = "<group>"; };
+		76EE68F91AB49834001F3A7E /* SearchBarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBarCell.h; sourceTree = "<group>"; };
+		76EE68FA1AB49834001F3A7E /* SearchBarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBarCell.m; sourceTree = "<group>"; };
+		76EE68FB1AB49834001F3A7E /* SearchBarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchBarCell.xib; sourceTree = "<group>"; };
 		76F31E801A36A4160010606A /* AMRatingControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMRatingControl.h; sourceTree = "<group>"; };
 		76F31E811A36A4160010606A /* AMRatingControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMRatingControl.m; sourceTree = "<group>"; };
 		76F328911A34B10B00E0F2C4 /* DTOTASKProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOTASKProcess.h; sourceTree = "<group>"; };
@@ -3740,6 +3749,17 @@
 			name = PDFReader;
 			sourceTree = "<group>";
 		};
+		766E1BA91AB1E4BC00AA1F68 /* OpportunityCell */ = {
+			isa = PBXGroup;
+			children = (
+				843BF0BC1A03ECC500EA1D8A /* OpportunityCell.h */,
+				843BF0BD1A03ECC500EA1D8A /* OpportunityCell.m */,
+				843BF0BE1A03ECC500EA1D8A /* OpportunityCell.xib */,
+				764E3A051AB46E9F00960DA4 /* OpportunityCell~iphone.xib */,
+			);
+			name = OpportunityCell;
+			sourceTree = "<group>";
+		};
 		76977D521A0284770029F297 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -4265,6 +4285,7 @@
 				843BF0B61A03EC3200EA1D8A /* ListOpportunityViewController.h */,
 				843BF0B71A03EC3200EA1D8A /* ListOpportunityViewController.m */,
 				843BF0B81A03EC3200EA1D8A /* ListOpportunityViewController.xib */,
+				76E23E591AB07D9800B4B849 /* ListOpportunityViewController~iphone.xib */,
 				94A2A76E1A80F83E00C412E7 /* Detail */,
 				94A2A76C1A80F7D300C412E7 /* Edit */,
 				843BF0BB1A03ECB100EA1D8A /* Cell */,
@@ -4276,6 +4297,7 @@
 		843BF0BB1A03ECB100EA1D8A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				766E1BA91AB1E4BC00AA1F68 /* OpportunityCell */,
 				9438AE531A826E9000FED3EB /* CalendarOpportunityCell.h */,
 				9438AE541A826E9000FED3EB /* CalendarOpportunityCell.m */,
 				9438AE551A826E9000FED3EB /* CalendarOpportunityCell.xib */,
@@ -4285,9 +4307,6 @@
 				7657E8CE1A5AEBE2008A62F9 /* TaskOpportunityCell.h */,
 				7657E8CF1A5AEBE2008A62F9 /* TaskOpportunityCell.m */,
 				7657E8D01A5AEBE2008A62F9 /* TaskOpportunityCell.xib */,
-				843BF0BC1A03ECC500EA1D8A /* OpportunityCell.h */,
-				843BF0BD1A03ECC500EA1D8A /* OpportunityCell.m */,
-				843BF0BE1A03ECC500EA1D8A /* OpportunityCell.xib */,
 				76D29AB71A110F8D004B9CF6 /* CompetionorCell.h */,
 				76D29AB81A110F8D004B9CF6 /* CompetionorCell.m */,
 				76D29AB91A110F8D004B9CF6 /* CompetionorCell.xib */,
@@ -4303,6 +4322,9 @@
 				94A8C0001A890CA900E9EBA4 /* CustomerCell.h */,
 				94A8C0011A890CA900E9EBA4 /* CustomerCell.m */,
 				94A8C0021A890CA900E9EBA4 /* CustomerCell.xib */,
+				76EE68F91AB49834001F3A7E /* SearchBarCell.h */,
+				76EE68FA1AB49834001F3A7E /* SearchBarCell.m */,
+				76EE68FB1AB49834001F3A7E /* SearchBarCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -6260,6 +6282,7 @@
 				76D29B181A126C9B004B9CF6 /* ClueContactCell.xib in Resources */,
 				8497C0161A295A8500A5ED3C /* TestMapViewController.xib in Resources */,
 				177885991A84699100C71551 /* menumessage.png in Resources */,
+				76EE68FD1AB49834001F3A7E /* SearchBarCell.xib in Resources */,
 				8E75544D1A52EFC8001940FB /* iconFerryTrain@2x.png in Resources */,
 				8E69BDEB1A584B5500C6924D /* iconWalking.png in Resources */,
 				8497BFC21A295A2300A5ED3C /* botswana-large.png in Resources */,
@@ -6342,6 +6365,7 @@
 				B315789B188D5E5200C0ED01 /* logo-big-1.png in Resources */,
 				8497BFC41A295A2300A5ED3C /* bulgaria-large.png in Resources */,
 				2DD29EF418769C260066B883 /* menu-ic-tech-data-1.png in Resources */,
+				764E3A071AB46E9F00960DA4 /* OpportunityCell~iphone.xib in Resources */,
 				8E0B07CD1A4475CF00CF7A78 /* iconEmail.png in Resources */,
 				B3F727AF17B512CC0024DC0D /* arrow_table.png in Resources */,
 				76D29B221A13567D004B9CF6 /* TestTableViewController.xib in Resources */,
@@ -6580,6 +6604,7 @@
 				2D2F75A2185801E000EC76EE /* Button_Dong_y.png in Resources */,
 				2DE2D2541829060700034877 /* ic-notsign.png in Resources */,
 				769F248A1A6F1F3F00427A8F /* MeunViewController.xib in Resources */,
+				76E23E5A1AB07D9800B4B849 /* ListOpportunityViewController~iphone.xib in Resources */,
 				849078931A1E4D5B009D5D5F /* icon_Line-1.png in Resources */,
 				8E75544E1A52EFC8001940FB /* iconForkLeft.png in Resources */,
 				8E2980F21A6AAB470068B66C /* EditNoteViewCell.xib in Resources */,
@@ -6925,6 +6950,7 @@
 				7657E8BB1A5AEB3A008A62F9 /* EditBussiness360ViewController.m in Sources */,
 				8499B2DD1A2C9BC4004D9ACB /* EditContactLeadViewController.m in Sources */,
 				B315784F188912D800C0ED01 /* NSString+extend.m in Sources */,
+				76EE68FC1AB49834001F3A7E /* SearchBarCell.m in Sources */,
 				76C964631A17731900029978 /* InfoBoxStyle1.m in Sources */,
 				2D47E80F1761CACC00F291D6 /* Base64.m in Sources */,
 				9424A7391A846849003CB212 /* EditCalendarOpportunityViewController.m in Sources */,

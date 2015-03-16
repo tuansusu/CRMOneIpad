@@ -398,6 +398,8 @@
 		76BE293D1AA3F91600663803 /* flag_en-us.png in Resources */ = {isa = PBXBuildFile; fileRef = 76BE293B1AA3F91600663803 /* flag_en-us.png */; };
 		76BE293E1AA3F91600663803 /* flag_vi-vn.png in Resources */ = {isa = PBXBuildFile; fileRef = 76BE293C1AA3F91600663803 /* flag_vi-vn.png */; };
 		76C06E661AB71B08003F9D91 /* CompetitorsViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C06E651AB71B08003F9D91 /* CompetitorsViewController~iphone.xib */; };
+		76C06E681AB72D35003F9D91 /* ic-contact.png in Resources */ = {isa = PBXBuildFile; fileRef = 76C06E671AB72D35003F9D91 /* ic-contact.png */; };
+		76C06E6A1AB72EAE003F9D91 /* icon_test_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76C06E691AB72EAE003F9D91 /* icon_test_1.png */; };
 		76C931BF1AA997B900C87DBD /* DTOEMPLOYEEProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C931BE1AA997B900C87DBD /* DTOEMPLOYEEProcess.m */; };
 		76C962941A16DB8200029978 /* DTOACCOUNTLEADProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C962931A16DB8200029978 /* DTOACCOUNTLEADProcess.m */; };
 		76C9629C1A16DBA500029978 /* AccountLeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C962971A16DBA500029978 /* AccountLeadCell.m */; };
@@ -1685,6 +1687,8 @@
 		76BE293B1AA3F91600663803 /* flag_en-us.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flag_en-us.png"; sourceTree = "<group>"; };
 		76BE293C1AA3F91600663803 /* flag_vi-vn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flag_vi-vn.png"; sourceTree = "<group>"; };
 		76C06E651AB71B08003F9D91 /* CompetitorsViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "CompetitorsViewController~iphone.xib"; sourceTree = "<group>"; };
+		76C06E671AB72D35003F9D91 /* ic-contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic-contact.png"; path = "VofficeImage/Option1/ic-contact.png"; sourceTree = "<group>"; };
+		76C06E691AB72EAE003F9D91 /* icon_test_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_test_1.png; path = VofficeImage/Option1/icon_test_1.png; sourceTree = "<group>"; };
 		76C931BD1AA997B900C87DBD /* DTOEMPLOYEEProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOEMPLOYEEProcess.h; sourceTree = "<group>"; };
 		76C931BE1AA997B900C87DBD /* DTOEMPLOYEEProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOEMPLOYEEProcess.m; sourceTree = "<group>"; };
 		76C962921A16DB8200029978 /* DTOACCOUNTLEADProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOACCOUNTLEADProcess.h; sourceTree = "<group>"; };
@@ -3315,6 +3319,8 @@
 		2D6D764B1876709D0051AD9E /* Option1 */ = {
 			isa = PBXGroup;
 			children = (
+				76C06E691AB72EAE003F9D91 /* icon_test_1.png */,
+				76C06E671AB72D35003F9D91 /* ic-contact.png */,
 				7697BBD21A7FD0640023F118 /* icon_menu-1@2x.png */,
 				849662C41A24D19F001B3776 /* logo_login-1.png */,
 				849078921A1E4D5B009D5D5F /* icon_Line-1.png */,
@@ -6284,6 +6290,7 @@
 				7697BBCD1A7FB1700023F118 /* menu-ic-setting-1@2x.png in Resources */,
 				B315789A188D5E5200C0ED01 /* flag-btn-2-1.png in Resources */,
 				8E69BDE91A584A2F00C6924D /* iconWalking@2x.png in Resources */,
+				76C06E681AB72D35003F9D91 /* ic-contact.png in Resources */,
 				76601A53194BE90F001D4C01 /* Left-1.png in Resources */,
 				B3157891188D5E5200C0ED01 /* btn-back-1-1.png in Resources */,
 				8E0B07CF1A4475CF00CF7A78 /* iconInfo.png in Resources */,
@@ -6738,6 +6745,7 @@
 				2DE2D2951829060700034877 /* login-id.png in Resources */,
 				2D32B5C0187B8B0C0065C305 /* tab-data-btn-3-1.png in Resources */,
 				76C964521A17731900029978 /* monotone_position_marker.png in Resources */,
+				76C06E6A1AB72EAE003F9D91 /* icon_test_1.png in Resources */,
 				8E6A10291A6226F500D98AE3 /* MainViewCell.xib in Resources */,
 				B3157885188D5E5200C0ED01 /* ic-viewpdf-rotateleft-1.png in Resources */,
 				B313F1D718A65107001FDEC6 /* arrow-1.png in Resources */,

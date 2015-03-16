@@ -72,6 +72,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     NSUserDefaults *defaults ;
     
+    NSString *currentDevice;
 }
 @end
 
@@ -102,6 +103,20 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
     
+    
+    
+    currentDevice = [UIDevice currentDevice].model;
+    
+    //Load table cua iphone
+    if([currentDevice isEqualToString:@"iPhone"] || [currentDevice isEqualToString:@"iPhone Simulator"]){
+        [self.leftInMainView addSubview: self.viewTableIphone];
+        self.viewTableIphone.frame  = CGRectMake(0, self.scrollViewInfo.frame.origin.y, self.viewTableIphone.frame.size.width, self.viewTableIphone.frame.size.height);
+    }
+    
+    self.viewTableIphone.hidden = YES;
+    
+    [self.tabBarItems setSelectedItem:self.tabBarItems.items[0]];
+    
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
     [self initData];
@@ -120,6 +135,10 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     // calendar
     calendarIsTimeline = YES;
+    
+
+    
+   
     
     [self setLanguage];
 }
@@ -1123,6 +1142,23 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     return heightLabel;
 }
+#pragma mark - Phan tab bar tren iphone
+-(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
+    switch (item.tag) {
+        case 0: //Thong tin
+            self.scrollViewInfo.hidden = NO;
+            self.viewTableIphone.hidden =YES;
+            break;
+        case 1://Lien he
+            self.scrollViewInfo.hidden = YES;
+            self.viewTableIphone.hidden = NO;
+            break;
+            
+        default:
+            break;
+    }
+}
+
 -(void)setLanguage{
     [_fullNameLB setText:LocalizedString(@"KEY_OPPORTUNITY_DETAIL_TITLE")];
     [_leftLabelHeader setText:LocalizedString(@"KEY_OPPORTUNITY_DETAIL_HEADER")];

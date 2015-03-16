@@ -37,7 +37,7 @@ enum TypeActionEvent{
 };
 
 
-@interface CompetitorsViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate,SelectIndexDelegate,OpportunityProductDelegate,TaskActionCellDelegate,ComplainDetailViewControllerDelegate,EditCalendarOpportunityViewControllerDelegate,ComplainsViewDelegate>
+@interface CompetitorsViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate,SelectIndexDelegate,OpportunityProductDelegate,TaskActionCellDelegate,ComplainDetailViewControllerDelegate,EditCalendarOpportunityViewControllerDelegate,ComplainsViewDelegate,UITabBarDelegate>
 
 
 @property (nonatomic) enum TypeActionEvent typeActionEvent;
@@ -137,5 +137,7 @@ enum TypeActionEvent{
 ////////////// KHAI BAO BIEN CHUNG//////////
 
 
+@property (strong, nonatomic) IBOutlet UIView *viewTableIphone;
+@property (weak, nonatomic) IBOutlet UITabBar *tabBarItems;
 
 @end

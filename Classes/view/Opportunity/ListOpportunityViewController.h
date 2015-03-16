@@ -63,6 +63,7 @@
 //footer
 @property (weak, nonatomic) IBOutlet UIView *footerView;
 @property (nonatomic,retain) IBOutlet UILabel *barLabel;
+@property (weak, nonatomic) IBOutlet UIView *searchbarView;
 
 
 

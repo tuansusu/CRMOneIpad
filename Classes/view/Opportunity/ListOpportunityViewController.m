@@ -40,7 +40,12 @@
     UIActivityIndicatorView *spinner;
     int loaded,perload, totalCount;
     
+    NSString *currentDevice;
+    
+    CGPoint lastContentOffset;
+    
 }
+@property (strong, nonatomic) NSArray *navBarItems;
 @end
 
 @implementation ListOpportunityViewController
@@ -67,6 +72,8 @@
         
         
     }
+    
+    currentDevice = [UIDevice currentDevice].model;
    
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
@@ -85,6 +92,7 @@
     //remove footer view
     //(xoá dòng thừa không hiển thị của table)
     self.tbData.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    lastContentOffset = self.tbData.contentOffset;
 
     [self setLanguage];
 }
@@ -245,8 +253,12 @@
 }
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    return 120.0f;
+    if([currentDevice isEqualToString:@"iPhone"] || [currentDevice isEqualToString:@"iPhone Simulator"]){
+            return 80.0f;
+    }
+    else{
+        return 120.0f;
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -331,8 +343,18 @@
                                      , self.view.frame.size.width - 40
                                      , cell.progress.frame.size.height);
 
-    CGAffineTransform transform = CGAffineTransformMakeScale(1.0, 5.0f);
-    cell.progress.transform = transform;
+    if([currentDevice isEqualToString:@"iPhone"] || [currentDevice isEqualToString:@"iPhone Simulator"]){
+        CGAffineTransform transform = CGAffineTransformMakeScale(1.0, 2.0f);
+        cell.progress.transform = transform;
+    }
+    else{
+        CGAffineTransform transform = CGAffineTransformMakeScale(1.0, 5.0f);
+        cell.progress.transform = transform;
+    }
+
+    
+    
+    
 
     
         return cell;
@@ -385,6 +407,87 @@
     CompetitorsViewController *viewController = [[CompetitorsViewController alloc] initWithNibName:@"CompetitorsViewController" bundle:nil];
     viewController.itemId = [selectedItem objectForKey:DTOOPPORTUNITY_id];
     [self presentViewController:viewController animated:YES completion:nil];
+}
+
+-(void)scrollViewDidScrollToTop:(UIScrollView *)scrollView
+{
+}
+
+-(void) scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    return;
+    CGPoint currentOffset = scrollView.contentOffset;
+    if (currentOffset.y > lastContentOffset.y)
+    {
+        // Downward
+       // NSLog(@"Downward");
+        CGRect rect = self.tbData.frame;
+        if(rect.origin.y > self.searchbarView.frame.origin.y){
+            rect.origin = CGPointMake(rect.origin.x, rect.origin.y - 64);
+            rect.size = CGSizeMake(rect.size.width, rect.size.height + 64);
+           // self.tbData.frame = rect;
+            
+            [UIView animateWithDuration:0.5 animations:^{
+                
+                CGRect rectHeader = self.headerViewBar.frame;
+                self.headerViewBar.frame = CGRectMake(rectHeader.origin.x, rectHeader.origin.y, rectHeader.size.width, rectHeader.size.height - 10);
+                
+                self.fullNameLB.font = [self.fullNameLB.font fontWithSize:9];
+                
+                CGRect rectLabel = self.fullNameLB.frame;
+                self.fullNameLB.frame = CGRectMake(rectLabel.origin.x, rectLabel.origin.y, rectLabel.size.width, rectLabel.size.height - 10);
+                
+                NSLog([NSString stringWithFormat:@"position:%f",self.fullNameLB.frame.origin.y]);
+                
+                self.searchbarView.alpha = 0.0f;
+                
+                //self.searchbarView.frame = CGRectMake(self.searchbarView.frame.origin.x, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
+                
+                self.btnAdd.hidden = true;
+                self.btnHome.hidden = true;
+                self.tbData.frame = rect;
+            }completion:^(BOOL finished) {
+                
+            }];
+        }
+        
+    }
+    else
+    {
+        // Upward
+       // NSLog(@"Upward");
+        
+        CGRect rect = self.tbData.frame;
+        if(rect.origin.y < self.headerViewBar.frame.origin.y){
+            rect.origin = CGPointMake(rect.origin.x, rect.origin.y + 64);
+            rect.size = CGSizeMake(rect.size.width, rect.size.height - 64);
+            
+            [UIView animateWithDuration:0.5 animations:^{
+                
+                CGRect rectHeader = self.headerViewBar.frame;
+                self.headerViewBar.frame = CGRectMake(rectHeader.origin.x, rectHeader.origin.y, rectHeader.size.width, rectHeader.size.height + 10);
+                
+                self.fullNameLB.font = [self.fullNameLB.font fontWithSize:17];
+                
+                CGRect rectLabel = self.fullNameLB.frame;
+                self.fullNameLB.frame = CGRectMake(rectLabel.origin.x, rectLabel.origin.y, rectLabel.size.width, rectLabel.size.height + 10);
+                
+                
+                self.searchbarView.alpha = 1.0f;
+
+                self.tbData.frame = rect;
+                
+                
+                self.btnAdd.hidden = false;
+                self.btnHome.hidden = false;
+            }completion:^(BOOL finished) {
+                
+            }];
+
+        }
+    }
+    lastContentOffset = currentOffset;
+    
 }
 
 -(void) viewDidAppear:(BOOL)animated{

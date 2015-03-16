@@ -207,6 +207,7 @@
     MainViewController *viewController =   [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
     //viewController.userData = modelEvent.modelData;
     UINavigationController * navi = [[UINavigationController alloc] initWithRootViewController:viewController];
+
     
     [navi setNavigationBarHidden:YES];
     

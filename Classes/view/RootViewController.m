@@ -202,45 +202,38 @@
 }
 - (void) logIn
 {
-    ListOpportunityViewController *viewController = [[ListOpportunityViewController alloc]initWithNibName:@"ListOpportunityViewController" bundle:nil];
-     //MainViewController *viewController = [[MainViewController alloc]initWithNibName:@"MainViewController" bundle:nil];
     
-    [self presentViewController:viewController animated:YES completion:nil];
+    FrameworkAppDelegate *appDel = (FrameworkAppDelegate*)[[UIApplication sharedApplication] delegate];
+    MainViewController *viewController =   [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+    //viewController.userData = modelEvent.modelData;
+    UINavigationController * navi = [[UINavigationController alloc] initWithRootViewController:viewController];
+
+    
+    [navi setNavigationBarHidden:YES];
+    
+    MeunViewController *leftController = [[MeunViewController alloc] init];
+    
+    MMDrawerController *drawerControllerMainProgramHome = [[MMDrawerController alloc]
+                                                           initWithCenterViewController:navi
+                                                           leftDrawerViewController:leftController
+                                                           rightDrawerViewController:NULL];
+    [drawerControllerMainProgramHome setShouldStretchDrawer:FALSE];
+    [drawerControllerMainProgramHome setMaximumLeftDrawerWidth:259];
+    [drawerControllerMainProgramHome setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [drawerControllerMainProgramHome setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+    
+    [UIView transitionWithView:appDel.window
+                      duration:0.8
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    animations:^(void) {
+                        BOOL oldState = [UIView areAnimationsEnabled];
+                        [UIView setAnimationsEnabled:NO];
+                        [appDel.window setRootViewController:drawerControllerMainProgramHome];
+                        [UIView setAnimationsEnabled:oldState];
+                    }
+                    completion:nil];
     
     return;
-    
-    
-//    FrameworkAppDelegate *appDel = (FrameworkAppDelegate*)[[UIApplication sharedApplication] delegate];
-//    MainViewController *viewController =   [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
-//    //viewController.userData = modelEvent.modelData;
-//    UINavigationController * navi = [[UINavigationController alloc] initWithRootViewController:viewController];
-//
-//    
-//    [navi setNavigationBarHidden:YES];
-//    
-//    MeunViewController *leftController = [[MeunViewController alloc] init];
-//    
-//    MMDrawerController *drawerControllerMainProgramHome = [[MMDrawerController alloc]
-//                                                           initWithCenterViewController:navi
-//                                                           leftDrawerViewController:leftController
-//                                                           rightDrawerViewController:NULL];
-//    [drawerControllerMainProgramHome setShouldStretchDrawer:FALSE];
-//    [drawerControllerMainProgramHome setMaximumLeftDrawerWidth:259];
-//    [drawerControllerMainProgramHome setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
-//    [drawerControllerMainProgramHome setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
-//    
-//    [UIView transitionWithView:appDel.window
-//                      duration:0.8
-//                       options:UIViewAnimationOptionTransitionCrossDissolve
-//                    animations:^(void) {
-//                        BOOL oldState = [UIView areAnimationsEnabled];
-//                        [UIView setAnimationsEnabled:NO];
-//                        [appDel.window setRootViewController:drawerControllerMainProgramHome];
-//                        [UIView setAnimationsEnabled:oldState];
-//                    }
-//                    completion:nil];
-//    
-//    return;
     
     if ([self validate]) {
         

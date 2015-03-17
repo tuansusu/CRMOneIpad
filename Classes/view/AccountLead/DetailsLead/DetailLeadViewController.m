@@ -158,6 +158,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     if([myDevice isEqualToString:@"iPhone"] || [myDevice isEqualToString:@"iPhone Simulator"]){
         [_myTabbar setSelectedItem:0];
          self.mySearchBar.barTintColor = HEADER_VIEW_COLOR1;
+       // self.myTabbar.barTintColor=HEADER_VIEW_COLOR1;
     }
 }
 
@@ -844,7 +845,16 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         }
             break;
         case typeLeaderView_Task:
+            if([myDevice isEqualToString:@"iPhone"] || [myDevice isEqualToString:@"iPhone Simulator"]){
+                return 50.0f;
+            }else{
             return 60.0f;
+                }
+            break;
+        case typeLeaderView_Contact:
+            if([myDevice isEqualToString:@"iPhone"] || [myDevice isEqualToString:@"iPhone Simulator"]){
+                return 50.0f;
+            }
             break;
         default:
             break;
@@ -1699,45 +1709,48 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             _scrollViewPersonal.hidden=NO;
             _mySearchBar.hidden=YES;
         }
+         _viewData.hidden=YES;
+          _fullNameLB.text=@"KHÁCH HÀNG TIỀM NĂNG";
     }
     else if(indexOfTab==1){
         _scrollViewBussiness.hidden=YES;
-        _scrollViewBussiness.hidden=YES;
+        _scrollViewPersonal.hidden=YES;
         _mySearchBar.hidden=NO;
+        _viewData.hidden=NO;
+        _fullNameLB.text=@"LIÊN HỆ";
+        [self loadDataWithTypeAction:typeLeaderView_Contact];
     }
     else if(indexOfTab==2){
         _scrollViewBussiness.hidden=YES;
-        _scrollViewBussiness.hidden=YES;
+        _scrollViewPersonal.hidden=YES;
         _mySearchBar.hidden=NO;
+        _viewData.hidden=NO;
+        _fullNameLB.text=@"GHI CHÚ";
+        [self loadDataWithTypeAction:typeLeaderView_Note];
     }
     else if(indexOfTab==3){
         _scrollViewBussiness.hidden=YES;
-        _scrollViewBussiness.hidden=YES;
+        _scrollViewPersonal.hidden=YES;
         _mySearchBar.hidden=NO;
+        _viewData.hidden=NO;
+        _fullNameLB.text=@"LỊCH";
+        if (typeActionEvent == typeLeaderView_Calendar)
+        {
+            calendarIsTimeline = !calendarIsTimeline;
+        }
+        [self loadDataWithTypeAction:typeLeaderView_Calendar];
     }
     else if(indexOfTab==4){
         _scrollViewBussiness.hidden=YES;
-        _scrollViewBussiness.hidden=YES;
+        _scrollViewPersonal.hidden=YES;
         _mySearchBar.hidden=NO;
+        _viewData.hidden=NO;
+        _fullNameLB.text=@"Ý KIẾN";
+        [self loadDataWithTypeAction:typeLeaderView_Complains];
     }
     else if(indexOfTab==5){
-        _scrollViewBussiness.hidden=YES;
-        _scrollViewBussiness.hidden=YES;
-        _mySearchBar.hidden=NO;
-    }
-    else if(indexOfTab==6){
-        _scrollViewBussiness.hidden=YES;
-        _scrollViewBussiness.hidden=YES;
-        _mySearchBar.hidden=NO;
-    }
-    else if(indexOfTab==7){
-        _scrollViewBussiness.hidden=YES;
-        _scrollViewBussiness.hidden=YES;
-        _mySearchBar.hidden=NO;
-    }
-    else if(indexOfTab==8){
-    
-        UIActionSheet *actionSheet=[[UIActionSheet alloc] initWithTitle:@"Chức năng" delegate:self cancelButtonTitle:@"Huỷ" destructiveButtonTitle:nil otherButtonTitles:@"Sửa",@"Xoá", nil];
+        
+        UIActionSheet *actionSheet=[[UIActionSheet alloc] initWithTitle:@"Chức năng" delegate:self cancelButtonTitle:@"Huỷ" destructiveButtonTitle:nil otherButtonTitles:@"Công việc",@"Cơ hội",@"Sản phẩm", nil];
         actionSheet.tag=11;
         [actionSheet showInView:self.view];
     }

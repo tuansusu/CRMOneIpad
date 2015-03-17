@@ -208,5 +208,6 @@ enum TypeLeaderView{
 @property (weak, nonatomic) IBOutlet UITabBar *myTabbar;
 @property (weak, nonatomic) IBOutlet UISearchBar *mySearchBar;
 - (IBAction)myactionAdd:(id)sender;
+@property (weak, nonatomic) IBOutlet UIView *viewData;
 
 @end

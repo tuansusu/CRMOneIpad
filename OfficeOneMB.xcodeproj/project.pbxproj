@@ -33,6 +33,11 @@
 		15C6A1971A6FDC4800F19B30 /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C6A1951A6FDC4800F19B30 /* PickerViewController.m */; };
 		15C6A1981A6FDC4800F19B30 /* PickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15C6A1961A6FDC4800F19B30 /* PickerViewController.xib */; };
 		170862EA1A3F3CB30021705D /* attach_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 170862E91A3F3CB30021705D /* attach_icon.png */; };
+		171D91941AB86E06005AB422 /* tabbar_details.png in Resources */ = {isa = PBXBuildFile; fileRef = 171D91921AB86E06005AB422 /* tabbar_details.png */; };
+		171D91951AB86E06005AB422 /* tabbar_notes.png in Resources */ = {isa = PBXBuildFile; fileRef = 171D91931AB86E06005AB422 /* tabbar_notes.png */; };
+		171D91991AB8741A005AB422 /* calendar_tabbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 171D91961AB8741A005AB422 /* calendar_tabbar.png */; };
+		171D919A1AB8741A005AB422 /* comment_tabbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 171D91971AB8741A005AB422 /* comment_tabbar.png */; };
+		171D919B1AB8741A005AB422 /* note_tabbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 171D91981AB8741A005AB422 /* note_tabbar.png */; };
 		172CE5531A8480530023F52F /* UIMenuItem+CXAImageSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 172CE5521A8480530023F52F /* UIMenuItem+CXAImageSupport.m */; };
 		17487C2D1AB082B500948E73 /* ListAccountLeadViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17487C2B1AB082B500948E73 /* ListAccountLeadViewController~iphone.xib */; };
 		1755B0001AB5BF4B00F543DA /* EditAccountLeadViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1755AFFE1AB5BF4B00F543DA /* EditAccountLeadViewController~iphone.xib */; };
@@ -51,6 +56,8 @@
 		1783BDB81AB713C100DB90BF /* DetailLeadViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1783BDB61AB713C100DB90BF /* DetailLeadViewController~iphone.xib */; };
 		17C67D391A5D72FA00EECD66 /* SelectAddInMapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C67D371A5D72FA00EECD66 /* SelectAddInMapsViewController.m */; };
 		17C67D3A1A5D72FA00EECD66 /* SelectAddInMapsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17C67D381A5D72FA00EECD66 /* SelectAddInMapsViewController.xib */; };
+		17E1DC921AB881CC009B683B /* ContactLeadCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17E1DC901AB881CC009B683B /* ContactLeadCell~iphone.xib */; };
+		17E1DC971AB8890B009B683B /* NoteLeadCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17E1DC951AB8890B009B683B /* NoteLeadCell~iphone.xib */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -1156,6 +1163,11 @@
 		15C6A1951A6FDC4800F19B30 /* PickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PickerViewController.m; path = CustomView/PickerViewController.m; sourceTree = "<group>"; };
 		15C6A1961A6FDC4800F19B30 /* PickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PickerViewController.xib; path = CustomView/PickerViewController.xib; sourceTree = "<group>"; };
 		170862E91A3F3CB30021705D /* attach_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attach_icon.png; sourceTree = "<group>"; };
+		171D91921AB86E06005AB422 /* tabbar_details.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tabbar_details.png; path = VofficeImage/tabbar_details.png; sourceTree = "<group>"; };
+		171D91931AB86E06005AB422 /* tabbar_notes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tabbar_notes.png; path = VofficeImage/tabbar_notes.png; sourceTree = "<group>"; };
+		171D91961AB8741A005AB422 /* calendar_tabbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = calendar_tabbar.png; path = VofficeImage/calendar_tabbar.png; sourceTree = "<group>"; };
+		171D91971AB8741A005AB422 /* comment_tabbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = comment_tabbar.png; path = VofficeImage/comment_tabbar.png; sourceTree = "<group>"; };
+		171D91981AB8741A005AB422 /* note_tabbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = note_tabbar.png; path = VofficeImage/note_tabbar.png; sourceTree = "<group>"; };
 		172CE5511A8480530023F52F /* UIMenuItem+CXAImageSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIMenuItem+CXAImageSupport.h"; sourceTree = "<group>"; };
 		172CE5521A8480530023F52F /* UIMenuItem+CXAImageSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIMenuItem+CXAImageSupport.m"; sourceTree = "<group>"; };
 		17487C2B1AB082B500948E73 /* ListAccountLeadViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ListAccountLeadViewController~iphone.xib"; sourceTree = "<group>"; };
@@ -1176,6 +1188,8 @@
 		17C67D361A5D72FA00EECD66 /* SelectAddInMapsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectAddInMapsViewController.h; sourceTree = "<group>"; };
 		17C67D371A5D72FA00EECD66 /* SelectAddInMapsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAddInMapsViewController.m; sourceTree = "<group>"; };
 		17C67D381A5D72FA00EECD66 /* SelectAddInMapsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectAddInMapsViewController.xib; sourceTree = "<group>"; };
+		17E1DC901AB881CC009B683B /* ContactLeadCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ContactLeadCell~iphone.xib"; sourceTree = "<group>"; };
+		17E1DC951AB8890B009B683B /* NoteLeadCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "NoteLeadCell~iphone.xib"; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* OfficeOneMB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OfficeOneMB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -3581,6 +3595,11 @@
 		2DE2D1E7182905F000034877 /* VofficeImages */ = {
 			isa = PBXGroup;
 			children = (
+				171D91961AB8741A005AB422 /* calendar_tabbar.png */,
+				171D91971AB8741A005AB422 /* comment_tabbar.png */,
+				171D91981AB8741A005AB422 /* note_tabbar.png */,
+				171D91921AB86E06005AB422 /* tabbar_details.png */,
+				171D91931AB86E06005AB422 /* tabbar_notes.png */,
 				2D6D76421876706D0051AD9E /* Option0 */,
 				2D6D764B1876709D0051AD9E /* Option1 */,
 				2D6D76441876707D0051AD9E /* Option2 */,
@@ -4417,9 +4436,11 @@
 				8496FB241A2DE34200F4A641 /* ContactLeadCell.h */,
 				8496FB251A2DE34200F4A641 /* ContactLeadCell.m */,
 				8496FB261A2DE34200F4A641 /* ContactLeadCell.xib */,
+				17E1DC901AB881CC009B683B /* ContactLeadCell~iphone.xib */,
 				769C0A271A35F3E90008CC4B /* NoteLeadCell.h */,
 				769C0A281A35F3E90008CC4B /* NoteLeadCell.m */,
 				769C0A291A35F3E90008CC4B /* NoteLeadCell.xib */,
+				17E1DC951AB8890B009B683B /* NoteLeadCell~iphone.xib */,
 				15A92D261A446F6B005DC9CA /* CalendarNormalCell */,
 				15A92D281A44700D005DC9CA /* CalendarTimelineCell */,
 				15A92D271A446F79005DC9CA /* TaskCell */,
@@ -6227,6 +6248,7 @@
 				B315788C188D5E5200C0ED01 /* ic-work-order-group-2-1.png in Resources */,
 				94A2A7781A80F9F900C412E7 /* NoteOpportunityCell.xib in Resources */,
 				8497BFD71A295A2300A5ED3C /* spitfire.png in Resources */,
+				171D91951AB86E06005AB422 /* tabbar_notes.png in Resources */,
 				76C964731A17731900029978 /* RightTriangleIconBlack.png in Resources */,
 				76BE293D1AA3F91600663803 /* flag_en-us.png in Resources */,
 				8E6A10231A62257B00D98AE3 /* source.bundle in Resources */,
@@ -6317,6 +6339,7 @@
 				8497C0161A295A8500A5ED3C /* TestMapViewController.xib in Resources */,
 				177885991A84699100C71551 /* menumessage.png in Resources */,
 				76EE68FD1AB49834001F3A7E /* SearchBarCell.xib in Resources */,
+				17E1DC921AB881CC009B683B /* ContactLeadCell~iphone.xib in Resources */,
 				8E75544D1A52EFC8001940FB /* iconFerryTrain@2x.png in Resources */,
 				8E69BDEB1A584B5500C6924D /* iconWalking.png in Resources */,
 				8497BFC21A295A2300A5ED3C /* botswana-large.png in Resources */,
@@ -6353,6 +6376,7 @@
 				8E0B07D21A4475CF00CF7A78 /* iconMessage@2x.png in Resources */,
 				1755B00F1AB5DA4600F543DA /* Account360Cell~iphone.xib in Resources */,
 				2D2D214617A66DB800A87364 /* Box-Header_chi_tiet.png in Resources */,
+				17E1DC971AB8890B009B683B /* NoteLeadCell~iphone.xib in Resources */,
 				159599421A592BF600D87BD4 /* AlarmCalendarViewController.xib in Resources */,
 				849662C51A24D19F001B3776 /* logo_login-1.png in Resources */,
 				849788091A2BE1BF00384566 /* TaskActionCell.xib in Resources */,
@@ -6388,6 +6412,7 @@
 				76EE207219FA829200A80414 /* ic-add-sub-1.png in Resources */,
 				8497BFCB1A295A2300A5ED3C /* Default-Portrait@2x~ipad.png in Resources */,
 				1778859B1A84699100C71551 /* menuview.png in Resources */,
+				171D91991AB8741A005AB422 /* calendar_tabbar.png in Resources */,
 				2D4B92CB17ACD7DE002A9AC5 /* DAFontSet.plist in Resources */,
 				2DFEFC0917AD075800D684FB /* arrow_up.png in Resources */,
 				8E5AA9B81A503C86007D9C8A /* iconMarker@2x.png in Resources */,
@@ -6399,6 +6424,7 @@
 				2DFEFC0A17AD075800D684FB /* down_arrow.png in Resources */,
 				76601A4E194BE90F001D4C01 /* Reader-Mark-Y@2x.png in Resources */,
 				B315789B188D5E5200C0ED01 /* logo-big-1.png in Resources */,
+				171D91941AB86E06005AB422 /* tabbar_details.png in Resources */,
 				8497BFC41A295A2300A5ED3C /* bulgaria-large.png in Resources */,
 				2DD29EF418769C260066B883 /* menu-ic-tech-data-1.png in Resources */,
 				764E3A071AB46E9F00960DA4 /* OpportunityCell~iphone.xib in Resources */,
@@ -6638,6 +6664,7 @@
 				7697BBCC1A7FB1700023F118 /* menu_sync@2x.png in Resources */,
 				2D6D7640187658BA0051AD9E /* Button-Tim kiem.png in Resources */,
 				76C964701A17731900029978 /* pie_pop_over_gradient.jpg in Resources */,
+				171D919A1AB8741A005AB422 /* comment_tabbar.png in Resources */,
 				8E69BDE51A58458500C6924D /* iconMoto@2x.png in Resources */,
 				7644306D1A7000CC007741BA /* menu_map.png in Resources */,
 				2DE2D2531829060700034877 /* ic-pdf.png in Resources */,
@@ -6752,6 +6779,7 @@
 				76EE207519FA829200A80414 /* ic-view-history-1.png in Resources */,
 				7697BBC81A7FB1700023F118 /* menu_report@2x.png in Resources */,
 				2D9A3B18182CED4F00B6E606 /* btn-bg-3.png in Resources */,
+				171D919B1AB8741A005AB422 /* note_tabbar.png in Resources */,
 				8497BFC51A295A2300A5ED3C /* bulgaria.png in Resources */,
 				B315789D188D5E5200C0ED01 /* write-btn-1-1.png in Resources */,
 				76C963B51A17403600029978 /* MainBISViewController.xib in Resources */,

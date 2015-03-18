@@ -44,6 +44,8 @@ enum TypeActionEvent{
 
 @property (nonatomic,retain) NSString *itemId;
 
+@property (nonatomic) BOOL isIphone;
+
 
 //Header
 @property (weak, nonatomic) IBOutlet UIView *headerViewBar;

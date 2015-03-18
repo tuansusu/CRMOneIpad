@@ -100,15 +100,19 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         [self.tbData setSeparatorInset:UIEdgeInsetsZero];
     }
     
+    currentDevice = [UIDevice currentDevice].model;
+    
+    self.isIphone = ([currentDevice isEqualToString:@"iPhone"] || [currentDevice isEqualToString:@"iPhone Simulator"]);
+    
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
     
     
     
-    currentDevice = [UIDevice currentDevice].model;
+    
     
     //Load table cua iphone
-    if([currentDevice isEqualToString:@"iPhone"] || [currentDevice isEqualToString:@"iPhone Simulator"]){
+    if(self.isIphone){
         [self.leftInMainView addSubview: self.viewTableIphone];
         self.viewTableIphone.frame  = CGRectMake(0, self.scrollViewInfo.frame.origin.y, self.viewTableIphone.frame.size.width, self.viewTableIphone.frame.size.height);
     }
@@ -484,19 +488,36 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     switch (typeActionEvent) {
         case type_ProposeProduct:{
-            return 50.0f;
+            if(self.isIphone){
+                return 40.0f;
+            }else{
+                return 50.0f;
+            }
         }break;
             
         case type_ClueContact:{
-            return 100.0f;
+            if(self.isIphone){
+                return 60.0f;
+            }else{
+                return 100.0f;
+            }
         }
             break;
         case type_Task:{
-            return 80.0f;
+            if(self.isIphone){
+                return 50.0f;
+            }else{
+                return 80.0f;
+            }
         }
             break;
         case type_Note:{
-            return 60.0f;
+            if(self.isIphone){
+                return 45.0f;
+            }else{
+                return 60.0f;
+            }
+            
         }
             break;
         case type_Calendar:{
@@ -1152,8 +1173,38 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         case 1://Lien he
             self.scrollViewInfo.hidden = YES;
             self.viewTableIphone.hidden = NO;
-            break;
             
+            [self loadDataWithTypeAction:type_ClueContact];
+            
+            break;
+        case 2: //Sản phẩm
+            self.scrollViewInfo.hidden = YES;
+            self.viewTableIphone.hidden = NO;
+            
+            [self loadDataWithTypeAction:type_ProposeProduct];
+            
+            break;
+        case 3: //Công việc
+            self.scrollViewInfo.hidden = YES;
+            self.viewTableIphone.hidden = NO;
+            
+            [self loadDataWithTypeAction:type_Task];
+            
+            break;
+        case 4: //Ghi chú
+            self.scrollViewInfo.hidden = YES;
+            self.viewTableIphone.hidden = NO;
+            
+            [self loadDataWithTypeAction:type_Note];
+            
+            break;
+        case 5: //Lịch
+            self.scrollViewInfo.hidden = YES;
+            self.viewTableIphone.hidden = NO;
+            
+            [self loadDataWithTypeAction:type_Calendar];
+            
+            break;
         default:
             break;
     }

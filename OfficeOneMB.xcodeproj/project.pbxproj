@@ -352,6 +352,7 @@
 		767E80D01AB9C6F30098F76E /* ProposeProductCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 767E80CE1AB9C6F30098F76E /* ProposeProductCell~iphone.xib */; };
 		767E80D61AB9C9510098F76E /* NoteOpportunityCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 767E80D41AB9C9510098F76E /* NoteOpportunityCell~iphone.xib */; };
 		767E80DB1AB9CC760098F76E /* EmptyCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 767E80D91AB9CC760098F76E /* EmptyCell~iphone.xib */; };
+		767E80DF1AB9D4750098F76E /* EditOpportunityViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 767E80DE1AB9D4750098F76E /* EditOpportunityViewController~iphone.xib */; };
 		7693EE071A355593004E0178 /* EditCalendarLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7693EE051A355593004E0178 /* EditCalendarLeadViewController.m */; };
 		7693EE081A355593004E0178 /* EditCalendarLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7693EE061A355593004E0178 /* EditCalendarLeadViewController.xib */; };
 		7693EE0F1A35587E004E0178 /* icon_start.png in Resources */ = {isa = PBXBuildFile; fileRef = 7693EE0E1A35587E004E0178 /* icon_start.png */; };
@@ -1627,6 +1628,7 @@
 		767E80CE1AB9C6F30098F76E /* ProposeProductCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ProposeProductCell~iphone.xib"; sourceTree = "<group>"; };
 		767E80D41AB9C9510098F76E /* NoteOpportunityCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "NoteOpportunityCell~iphone.xib"; sourceTree = "<group>"; };
 		767E80D91AB9CC760098F76E /* EmptyCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EmptyCell~iphone.xib"; sourceTree = "<group>"; };
+		767E80DE1AB9D4750098F76E /* EditOpportunityViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EditOpportunityViewController~iphone.xib"; sourceTree = "<group>"; };
 		7693EE041A355593004E0178 /* EditCalendarLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCalendarLeadViewController.h; sourceTree = "<group>"; };
 		7693EE051A355593004E0178 /* EditCalendarLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCalendarLeadViewController.m; sourceTree = "<group>"; };
 		7693EE061A355593004E0178 /* EditCalendarLeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditCalendarLeadViewController.xib; sourceTree = "<group>"; };
@@ -5968,6 +5970,7 @@
 				94BA8D741A2DF3710082AE9E /* EditOpportunityViewController.h */,
 				94BA8D751A2DF3710082AE9E /* EditOpportunityViewController.m */,
 				94BA8D761A2DF3710082AE9E /* EditOpportunityViewController.xib */,
+				767E80DE1AB9D4750098F76E /* EditOpportunityViewController~iphone.xib */,
 				7623F04F1A41C98400F99DA0 /* EditContactOpportunityViewController.h */,
 				7623F0501A41C98400F99DA0 /* EditContactOpportunityViewController.m */,
 				7623F0511A41C98400F99DA0 /* EditContactOpportunityViewController.xib */,
@@ -6324,6 +6327,7 @@
 				2D6D7662187670B00051AD9E /* ic-work-fw-person-1.png in Resources */,
 				8497BFD91A295A2300A5ED3C /* voyager.png in Resources */,
 				8E44BC2D1A73A89B00EDCD1A /* ProductLeadViewCell.xib in Resources */,
+				767E80DF1AB9D4750098F76E /* EditOpportunityViewController~iphone.xib in Resources */,
 				15A92D2D1A447049005DC9CA /* TaskCalTLineCell.xib in Resources */,
 				76C964551A17731900029978 /* lines1.png in Resources */,
 				76961E511A3B306B008B5CE7 /* avatar.png in Resources */,

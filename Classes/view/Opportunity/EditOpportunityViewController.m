@@ -346,7 +346,12 @@
             
             
             if ([viewSubTemp isKindOfClass:[UILabel class]]) {
-                ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+                if(viewSubTemp.tag == 505){
+                    ((UILabel*) viewSubTemp).textColor = [UIColor redColor];
+                   
+                }else{
+                    ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+                }
             }
             
             

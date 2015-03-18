@@ -351,6 +351,7 @@
 		767E80CA1AB9C4E60098F76E /* TaskOpportunityCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 767E80C81AB9C4E60098F76E /* TaskOpportunityCell~iphone.xib */; };
 		767E80D01AB9C6F30098F76E /* ProposeProductCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 767E80CE1AB9C6F30098F76E /* ProposeProductCell~iphone.xib */; };
 		767E80D61AB9C9510098F76E /* NoteOpportunityCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 767E80D41AB9C9510098F76E /* NoteOpportunityCell~iphone.xib */; };
+		767E80DB1AB9CC760098F76E /* EmptyCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 767E80D91AB9CC760098F76E /* EmptyCell~iphone.xib */; };
 		7693EE071A355593004E0178 /* EditCalendarLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7693EE051A355593004E0178 /* EditCalendarLeadViewController.m */; };
 		7693EE081A355593004E0178 /* EditCalendarLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7693EE061A355593004E0178 /* EditCalendarLeadViewController.xib */; };
 		7693EE0F1A35587E004E0178 /* icon_start.png in Resources */ = {isa = PBXBuildFile; fileRef = 7693EE0E1A35587E004E0178 /* icon_start.png */; };
@@ -1625,6 +1626,7 @@
 		767E80C81AB9C4E60098F76E /* TaskOpportunityCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "TaskOpportunityCell~iphone.xib"; sourceTree = "<group>"; };
 		767E80CE1AB9C6F30098F76E /* ProposeProductCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ProposeProductCell~iphone.xib"; sourceTree = "<group>"; };
 		767E80D41AB9C9510098F76E /* NoteOpportunityCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "NoteOpportunityCell~iphone.xib"; sourceTree = "<group>"; };
+		767E80D91AB9CC760098F76E /* EmptyCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EmptyCell~iphone.xib"; sourceTree = "<group>"; };
 		7693EE041A355593004E0178 /* EditCalendarLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCalendarLeadViewController.h; sourceTree = "<group>"; };
 		7693EE051A355593004E0178 /* EditCalendarLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCalendarLeadViewController.m; sourceTree = "<group>"; };
 		7693EE061A355593004E0178 /* EditCalendarLeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditCalendarLeadViewController.xib; sourceTree = "<group>"; };
@@ -3596,6 +3598,7 @@
 				762F01B11A74962A0062FADF /* EmptyCell.h */,
 				762F01B21A74962A0062FADF /* EmptyCell.m */,
 				762F01B31A74962A0062FADF /* EmptyCell.xib */,
+				767E80D91AB9CC760098F76E /* EmptyCell~iphone.xib */,
 			);
 			name = CustomView;
 			sourceTree = "<group>";
@@ -6656,6 +6659,7 @@
 				8E7554671A52EFC8001940FB /* iconTurnSharpRight@2x.png in Resources */,
 				8E69BDE41A58458500C6924D /* iconCar@2x.png in Resources */,
 				B39DD45D18A9F66300FFA8EB /* ic_no_image1.png in Resources */,
+				767E80DB1AB9CC760098F76E /* EmptyCell~iphone.xib in Resources */,
 				2DE6B97B17FD242C00DC0D4E /* icon_radio-button_off.png in Resources */,
 				B316D68E188E927A009B751B /* bg-doc.png in Resources */,
 				7657E8BA1A5AEB3A008A62F9 /* EditAccount360ViewController.xib in Resources */,

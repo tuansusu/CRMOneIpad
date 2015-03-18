@@ -92,6 +92,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     NSString *deleteContact;
     NSString *deleteCalenda;
     NSString *delTask;
+    NSString*myDevice;
     
     //controll
     
@@ -153,6 +154,12 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     //scrollViewHeaderExpandInfo.contentSize = CGSizeMake(910, scrollViewHeaderExpandInfo.frame.size.height);
        [self setLanguage];
+    myDevice=[UIDevice currentDevice].model;
+    if([myDevice isEqualToString:@"iPhone"] || [myDevice isEqualToString:@"iPhone Simulator"]){
+        [_myTabbar setSelectedItem:0];
+         self.mySearchBar.barTintColor = HEADER_VIEW_COLOR1;
+       // self.myTabbar.barTintColor=HEADER_VIEW_COLOR1;
+    }
 }
 
 -(void) viewWillAppear:(BOOL)animated{
@@ -838,7 +845,16 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         }
             break;
         case typeLeaderView_Task:
+            if([myDevice isEqualToString:@"iPhone"] || [myDevice isEqualToString:@"iPhone Simulator"]){
+                return 50.0f;
+            }else{
             return 60.0f;
+                }
+            break;
+        case typeLeaderView_Contact:
+            if([myDevice isEqualToString:@"iPhone"] || [myDevice isEqualToString:@"iPhone Simulator"]){
+                return 50.0f;
+            }
             break;
         default:
             break;
@@ -1679,5 +1695,71 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         _lbLableKhongLienLacQua.text=LocalizedString(@"KEY_LEAD_KLLQ");
     }
     
+}
+-(void) tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
+    NSUInteger indexOfTab = [[tabBar items] indexOfObject:item];
+    NSLog(@"Tab index = %i", indexOfTab);
+    NSLog(@"Tab bar: did select tab %@", item.title);
+    //chi tiết khách hàng
+    if(indexOfTab==0){
+        if ([leadType isEqualToString:FIX_LEADTYPE_BUSSINESS]) {
+            _scrollViewBussiness.hidden=NO;
+            _mySearchBar.hidden=YES;
+        }else{
+            _scrollViewPersonal.hidden=NO;
+            _mySearchBar.hidden=YES;
+        }
+         _viewData.hidden=YES;
+          _fullNameLB.text=@"KHÁCH HÀNG TIỀM NĂNG";
+    }
+    else if(indexOfTab==1){
+        _scrollViewBussiness.hidden=YES;
+        _scrollViewPersonal.hidden=YES;
+        _mySearchBar.hidden=NO;
+        _viewData.hidden=NO;
+        _fullNameLB.text=@"LIÊN HỆ";
+        [self loadDataWithTypeAction:typeLeaderView_Contact];
+    }
+    else if(indexOfTab==2){
+        _scrollViewBussiness.hidden=YES;
+        _scrollViewPersonal.hidden=YES;
+        _mySearchBar.hidden=NO;
+        _viewData.hidden=NO;
+        _fullNameLB.text=@"GHI CHÚ";
+        [self loadDataWithTypeAction:typeLeaderView_Note];
+    }
+    else if(indexOfTab==3){
+        _scrollViewBussiness.hidden=YES;
+        _scrollViewPersonal.hidden=YES;
+        _mySearchBar.hidden=NO;
+        _viewData.hidden=NO;
+        _fullNameLB.text=@"LỊCH";
+        if (typeActionEvent == typeLeaderView_Calendar)
+        {
+            calendarIsTimeline = !calendarIsTimeline;
+        }
+        [self loadDataWithTypeAction:typeLeaderView_Calendar];
+    }
+    else if(indexOfTab==4){
+        _scrollViewBussiness.hidden=YES;
+        _scrollViewPersonal.hidden=YES;
+        _mySearchBar.hidden=NO;
+        _viewData.hidden=NO;
+        _fullNameLB.text=@"Ý KIẾN";
+        [self loadDataWithTypeAction:typeLeaderView_Complains];
+    }
+    else if(indexOfTab==5){
+        
+        UIActionSheet *actionSheet=[[UIActionSheet alloc] initWithTitle:@"Chức năng" delegate:self cancelButtonTitle:@"Huỷ" destructiveButtonTitle:nil otherButtonTitles:@"Công việc",@"Cơ hội",@"Sản phẩm", nil];
+        actionSheet.tag=11;
+        [actionSheet showInView:self.view];
+    }
+}
+- (IBAction)myactionAdd:(id)sender {
+    
+    UIActionSheet *action=[[UIActionSheet alloc]initWithTitle:@"Menu" delegate:self cancelButtonTitle:@"Huỷ" destructiveButtonTitle:nil otherButtonTitles:LocalizedString(@"KEY_360_CONTACT"),LocalizedString(@"KEY_360_NOTE"), LocalizedString(@"KEY_360_CALENDAR")
+                           , LocalizedString(@"KEY_360_NHIEMVU"), LocalizedString(@"KEY_360_COHOI"), LocalizedString(@"KEY_360_YKIEN"), nil];
+    action.tag=22;
+    [action showInView:self.view];
 }
 @end

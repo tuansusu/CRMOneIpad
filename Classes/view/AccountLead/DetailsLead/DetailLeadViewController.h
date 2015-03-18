@@ -40,7 +40,7 @@ enum TypeLeaderView{
     typeLeaderView_ProductsLead // sản phẩm dịch vụ
 };
 
-@interface DetailLeadViewController : BaseViewController<SelectIndexDelegate,UIAlertViewDelegate>
+@interface DetailLeadViewController : BaseViewController<SelectIndexDelegate,UIAlertViewDelegate,UITabBarDelegate,UITabBarControllerDelegate>
 
 //DATA
 @property (nonatomic, retain) NSDictionary *dataSend;
@@ -205,5 +205,9 @@ enum TypeLeaderView{
 - (IBAction)actionSMSDN:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *btnEmailDN;
 - (IBAction)actionEmailDN:(id)sender;
+@property (weak, nonatomic) IBOutlet UITabBar *myTabbar;
+@property (weak, nonatomic) IBOutlet UISearchBar *mySearchBar;
+- (IBAction)myactionAdd:(id)sender;
+@property (weak, nonatomic) IBOutlet UIView *viewData;
 
 @end

@@ -93,6 +93,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     NSString *deleteCalenda;
     NSString *delTask;
     Language *obj;
+    NSString*myDevice;
     //controll
     
     __weak IBOutlet UIButton *btnAdd;
@@ -137,7 +138,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     [self.tbData registerNib:[TaskCalendarCell nib] forCellReuseIdentifier:TaskCalendarNormalCellId];
     [self.tbData registerNib:[TaskCalTLineCell nib] forCellReuseIdentifier:TaskCalendarTimelineCellId];
     [self.tbData registerNib:[TaskActionCell   nib] forCellReuseIdentifier:TaskActionCellId];
-    
+    myDevice=[UIDevice currentDevice].model;
     // calendar
     calendarIsTimeline = YES;
     
@@ -155,8 +156,8 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     //remove footer view
     //(xoá dòng thừa không hiển thị của table)
     self.tbData.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    _scollviewDN.contentSize=CGSizeMake(0, self.view.frame.size.height);
-    _scrollViewBodyLeft.contentSize=CGSizeMake(0, self.view.frame.size.height);
+    //_scollviewDN.contentSize=CGSizeMake(0, self.view.frame.size.height);
+    //_scrollViewBodyLeft.contentSize=CGSizeMake(0, self.view.frame.size.height);
     //[self setLanguage];
     
     [self updateInterFaceWithOption:smgSelect];
@@ -258,20 +259,21 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     labelTitle.frame = CGRectMake(frame.origin.x,fY, frame.size.width, frame.size.height);
     frame =lableValue.frame;
     lableValue.frame = CGRectMake(frame.origin.x,fY, frame.size.width, frame.size.height);
-    
     float heightLabelCN = 25.0f;
+    if([myDevice isEqualToString:@"iPhone"] || [myDevice isEqualToString:@"iPhone Simulator"]){
+        heightLabelCN=21.0f;
+    }
     
     if (![StringUtil stringIsEmpty:strValue]) {
         lableValue.text=strValue;
         heightLabelCN =  [self getHeightLabel:strValue];
         
-        if (heightLabelCN>25) {
+        if (heightLabelCN>25 || heightLabelCN>21) {
             [UILabel setMultiline:lableValue];}
     }
     else{
         lableValue.text=@"";
-    }
-    return  lableValue.frame.origin.y + lableValue.frame.size.height + 10;
+    }    return  lableValue.frame.origin.y + lableValue.frame.size.height + 10;
 }
 
 

@@ -45,6 +45,7 @@
 		1755B00A1AB5D22700F543DA /* ListAccountViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1755B0081AB5D22700F543DA /* ListAccountViewController~iphone.xib */; };
 		1755B00F1AB5DA4600F543DA /* Account360Cell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1755B00D1AB5DA4600F543DA /* Account360Cell~iphone.xib */; };
 		1777BB101AB482BE004E0951 /* AccountLeadCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1777BB0E1AB482BE004E0951 /* AccountLeadCell~iphone.xib */; };
+		177851DC1AB9C165003020DE /* Detail360ViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 177851DA1AB9C165003020DE /* Detail360ViewController~iphone.xib */; };
 		177885941A84699100C71551 /* menudelete.png in Resources */ = {isa = PBXBuildFile; fileRef = 1778858C1A84699100C71551 /* menudelete.png */; };
 		177885951A84699100C71551 /* menuedit.png in Resources */ = {isa = PBXBuildFile; fileRef = 1778858D1A84699100C71551 /* menuedit.png */; };
 		177885961A84699100C71551 /* menuemail.png in Resources */ = {isa = PBXBuildFile; fileRef = 1778858E1A84699100C71551 /* menuemail.png */; };
@@ -1182,6 +1183,7 @@
 		1755B0081AB5D22700F543DA /* ListAccountViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ListAccountViewController~iphone.xib"; sourceTree = "<group>"; };
 		1755B00D1AB5DA4600F543DA /* Account360Cell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Account360Cell~iphone.xib"; sourceTree = "<group>"; };
 		1777BB0E1AB482BE004E0951 /* AccountLeadCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "AccountLeadCell~iphone.xib"; sourceTree = "<group>"; };
+		177851DA1AB9C165003020DE /* Detail360ViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Detail360ViewController~iphone.xib"; sourceTree = "<group>"; };
 		1778858C1A84699100C71551 /* menudelete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menudelete.png; sourceTree = "<group>"; };
 		1778858D1A84699100C71551 /* menuedit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuedit.png; sourceTree = "<group>"; };
 		1778858E1A84699100C71551 /* menuemail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuemail.png; sourceTree = "<group>"; };
@@ -4443,6 +4445,7 @@
 				7657E8911A5AEB3A008A62F9 /* Detail360ViewController.h */,
 				7657E8921A5AEB3A008A62F9 /* Detail360ViewController.m */,
 				7657E8931A5AEB3A008A62F9 /* Detail360ViewController.xib */,
+				177851DA1AB9C165003020DE /* Detail360ViewController~iphone.xib */,
 				7657E8941A5AEB3A008A62F9 /* EditAccount360ViewController.h */,
 				7657E8951A5AEB3A008A62F9 /* EditAccount360ViewController.m */,
 				7657E8961A5AEB3A008A62F9 /* EditAccount360ViewController.xib */,
@@ -6409,6 +6412,7 @@
 				764430681A7000CC007741BA /* menu_customer_360.png in Resources */,
 				9418D69E1A7BE26400A5C9AA /* EditOpportunityLeadViewController.xib in Resources */,
 				762048721A0BDE8000AAA917 /* icon_menu-1.png in Resources */,
+				177851DC1AB9C165003020DE /* Detail360ViewController~iphone.xib in Resources */,
 				8E7554611A52EFC8001940FB /* iconStraight@2x.png in Resources */,
 				2D0DCEE617A37ADC004FDBBC /* Icon-Refresh.png in Resources */,
 				2D0DCEE717A37ADC004FDBBC /* Icon-Search.png in Resources */,

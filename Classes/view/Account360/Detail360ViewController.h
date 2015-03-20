@@ -237,5 +237,7 @@ enum Type360View{
 @property (weak, nonatomic) IBOutlet UIButton *btnAddCN;
 @property (weak, nonatomic) IBOutlet UIButton *btnAddDN;
 @property (weak, nonatomic) IBOutlet UILabel *leftInfomenu;
+@property (weak, nonatomic) IBOutlet UITabBar *myTabbar;
+@property (weak, nonatomic) IBOutlet UISearchBar *mySearch;
 
 @end

@@ -71,8 +71,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     BOOL calendarIsTimeline;
     
     NSUserDefaults *defaults ;
-    
-    NSString *currentDevice;
+ 
 }
 @end
 
@@ -100,10 +99,6 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         [self.tbData setSeparatorInset:UIEdgeInsetsZero];
     }
     
-    currentDevice = [UIDevice currentDevice].model;
-    
-    self.isIphone = ([currentDevice isEqualToString:@"iPhone"] || [currentDevice isEqualToString:@"iPhone Simulator"]);
-    
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
     
@@ -112,7 +107,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     
     //Load table cua iphone
-    if(self.isIphone){
+    if(self.currentDeviceType == iPhone){
         [self.leftInMainView addSubview: self.viewTableIphone];
         self.viewTableIphone.frame  = CGRectMake(0, self.scrollViewInfo.frame.origin.y, self.viewTableIphone.frame.size.width, self.viewTableIphone.frame.size.height);
     }
@@ -488,7 +483,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     switch (typeActionEvent) {
         case type_ProposeProduct:{
-            if(self.isIphone){
+            if(self.currentDeviceType == iPhone){
                 return 40.0f;
             }else{
                 return 50.0f;
@@ -496,7 +491,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         }break;
             
         case type_ClueContact:{
-            if(self.isIphone){
+            if(self.currentDeviceType == iPhone){
                 return 60.0f;
             }else{
                 return 100.0f;
@@ -504,7 +499,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         }
             break;
         case type_Task:{
-            if(self.isIphone){
+            if(self.currentDeviceType == iPhone){
                 return 50.0f;
             }else{
                 return 80.0f;
@@ -512,7 +507,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         }
             break;
         case type_Note:{
-            if(self.isIphone){
+            if(self.currentDeviceType == iPhone){
                 return 45.0f;
             }else{
                 return 60.0f;

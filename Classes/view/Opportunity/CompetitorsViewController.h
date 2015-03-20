@@ -25,6 +25,7 @@
 #import "EmptyCell.h"
 #import "ComplainsView.h"
 #import "TaskActionCell.h"
+#import "EnumClass.h"
 
 
 enum TypeActionEvent{
@@ -44,7 +45,6 @@ enum TypeActionEvent{
 
 @property (nonatomic,retain) NSString *itemId;
 
-@property (nonatomic) BOOL isIphone;
 
 
 //Header

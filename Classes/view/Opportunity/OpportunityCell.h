@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "NZLabel.h"
+#import "EnumClass.h"
 
 @interface OpportunityCell : UITableViewCell
 
@@ -27,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIProgressView *progress;
 @property (weak, nonatomic) IBOutlet UIView *viewStatus;
 @property (weak, nonatomic) IBOutlet UILabel *lbStatus;
+@property (nonatomic,assign) enum DeviceType currentDeviceType;
 
 
 -(void) loadDataToCellWithData : (NSDictionary*) dicData withOption : (int) smgSelect ;

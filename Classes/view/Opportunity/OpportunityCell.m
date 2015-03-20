@@ -109,12 +109,20 @@
     }
     CGSize textSize = [[self.lbStatus text] sizeWithFont:[self.lbStatus font]];
     float widthLabel = textSize.width;
-    float xx = self.viewStatus.frame.origin.x + self.viewStatus.frame.size.width -widthLabel -20;
+    if(self.currentDeviceType == iPad){
+        float xx = self.viewStatus.frame.origin.x + self.viewStatus.frame.size.width -widthLabel -20;
     
-    self.viewStatus.frame = CGRectMake(xx, self.viewStatus.frame.origin.y, (widthLabel + 20), self.viewStatus.frame.size.height);
+        self.viewStatus.frame = CGRectMake(xx, self.viewStatus.frame.origin.y, (widthLabel + 20), self.viewStatus.frame.size.height);
 
-    self.lbStatus.frame = CGRectMake(5, self.lbStatus.frame.origin.y, (widthLabel + 10), self.lbStatus.frame.size.height);
+        self.lbStatus.frame = CGRectMake(5, self.lbStatus.frame.origin.y, (widthLabel + 10), self.lbStatus.frame.size.height);
+    }else{
+    //iphone
+        float xx = self.viewStatus.frame.origin.x + self.viewStatus.frame.size.width -widthLabel - 10;
     
+        self.viewStatus.frame = CGRectMake(xx, self.viewStatus.frame.origin.y, (widthLabel + 10), self.viewStatus.frame.size.height);
+    
+        self.lbStatus.frame = CGRectMake(5, self.lbStatus.frame.origin.y, self.viewStatus.frame.size.width - 10, self.lbStatus.frame.size.height);
+    }
     if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOOPPORTUNITY_endDate]]) {
         self.lbDate.text = [[dicData objectForKey:DTOOPPORTUNITY_endDate] substringToIndex:10];
     }else{

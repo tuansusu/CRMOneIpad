@@ -249,11 +249,11 @@
                             <rect key="frame" x="0.0" y="499" width="320" height="49"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <items>
-                                <tabBarItem title="Thông tin" image="icon_test_1.png" id="kPF-gY-3GJ"/>
+                                <tabBarItem title="Thông tin" image="icon_opp_detail.png" id="kPF-gY-3GJ"/>
                                 <tabBarItem tag="1" title="Liên hệ" image="ic-contact.png" id="bsF-V9-V74"/>
                                 <tabBarItem tag="2" title="Sản phẩm" image="icon_test_1.png" id="9m0-Yx-rzk"/>
-                                <tabBarItem tag="3" title="Công việc" image="icon_test_1.png" id="hbN-Hw-wuu"/>
-                                <tabBarItem tag="4" title="Ghi chú" image="icon_test_1.png" id="iMD-zL-ihP"/>
+                                <tabBarItem tag="3" title="Công việc" image="icon_opp_task.png" id="hbN-Hw-wuu"/>
+                                <tabBarItem tag="4" title="Ghi chú" image="icon_opp_note.png" id="iMD-zL-ihP"/>
                                 <tabBarItem tag="5" title="Lịch" image="icon_test_1.png" selectedImage="ic-add-sub-1.png" id="bLZ-Ux-JRi"/>
                             </items>
                             <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -292,6 +292,9 @@
         <image name="calendar_small_new.png" width="16" height="16"/>
         <image name="ic-add-sub-1.png" width="90" height="90"/>
         <image name="ic-contact.png" width="30" height="30"/>
+        <image name="icon_opp_detail.png" width="30" height="30"/>
+        <image name="icon_opp_note.png" width="30" height="30"/>
+        <image name="icon_opp_task.png" width="30" height="30"/>
         <image name="icon_test_1.png" width="30" height="30"/>
     </resources>
 </document>

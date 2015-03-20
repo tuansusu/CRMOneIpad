@@ -253,7 +253,7 @@
 }
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if([currentDevice isEqualToString:@"iPhone"] || [currentDevice isEqualToString:@"iPhone Simulator"]){
+    if(self.currentDeviceType == iPhone){
             return 80.0f;
     }
     else{
@@ -343,7 +343,7 @@
                                      , self.view.frame.size.width - 40
                                      , cell.progress.frame.size.height);
 
-    if([currentDevice isEqualToString:@"iPhone"] || [currentDevice isEqualToString:@"iPhone Simulator"]){
+    if(self.currentDeviceType == iPhone){
         CGAffineTransform transform = CGAffineTransformMakeScale(1.0, 2.0f);
         cell.progress.transform = transform;
     }

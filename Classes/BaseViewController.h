@@ -16,7 +16,7 @@
 
     int numOfSmallWaiting;
 }
-
+@property (nonatomic,assign) enum DeviceType currentDeviceType;
 //- (void) closeViewWithAnimation: (BOOL) animation;
 //- (void) closeView;
 //receive data from model

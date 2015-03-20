@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+enum DeviceType {
+    iPhone,
+    iPad
+};
+
 @interface EnumClass : NSObject
 
 @end

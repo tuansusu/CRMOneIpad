@@ -33,6 +33,13 @@
 	// Do any additional setup after loading the view.
     numOfSmallWaiting = 0;
     
+    NSString *deviceName = [UIDevice currentDevice].model;
+    if([deviceName isEqualToString:@"iPhone"] || [deviceName isEqualToString:@"iPhone Simulator"]){
+        self.currentDeviceType = iPhone;
+    }else{
+        self.currentDeviceType = iPad;
+    }
+    
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     self.view.backgroundColor = [UIColor blackColor];

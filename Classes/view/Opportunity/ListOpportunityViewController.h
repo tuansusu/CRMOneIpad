@@ -11,6 +11,7 @@
 #import "OpportunityCell.h"
 #import "CompetitorsViewController.h"
 #import "EditOpportunityViewController.h"
+#import "EnumClass.h"
 
 @interface ListOpportunityViewController : BaseViewController<VTCheckBoxDelegate,UISearchBarDelegate>
 

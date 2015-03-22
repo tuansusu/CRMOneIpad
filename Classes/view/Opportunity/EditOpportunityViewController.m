@@ -460,22 +460,38 @@
 - (IBAction)actionChooseType:(id)sender {
     
     [self hiddenKeyBoard];
-    
     SELECTED_TAG = TAG_SELECT_TYPE;
     
-    SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
+    if(self.currentDeviceType == iPad){
+        SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
+        
+        detail.selectIndex = selectTypeIndex;
+        
+        detail.listData = [listArrType valueForKey:DTOSYSCAT_name];
+        
+        self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+        CGRect popoverFrame = self.btnType.frame;
+        
+        detail.delegate =(id<SelectIndexDelegate>) self;
+        self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
+        [self.listPopover setPopoverContentSize:CGSizeMake(320,250) animated:NO];
+        [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    }else{
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:LocalizedString(@"KEY_OPPORTUNITY_EDIT_TYPE")
+                                                                 delegate:self
+                                                        cancelButtonTitle:LocalizedString(@"KEY_CANCEL")
+                                                   destructiveButtonTitle:nil
+                                                        otherButtonTitles:nil];
+        
+        NSArray *lsType = [listArrType valueForKey:DTOSYSCAT_name];
+        
+        for(NSString *title in lsType){
+            [actionSheet addButtonWithTitle:title];
+        }
+        [actionSheet showInView:self.view];
+        
+    }
     
-    detail.selectIndex = selectTypeIndex;
-    
-    detail.listData = [listArrType valueForKey:DTOSYSCAT_name];
-    
-    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
-    CGRect popoverFrame = self.btnType.frame;
-    
-    detail.delegate =(id<SelectIndexDelegate>) self;
-    self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(320,250) animated:NO];
-    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
     
 }
 
@@ -489,22 +505,6 @@
             break;
         }
     }
-    //
-    //    QuickSearchViewcontroller *detail = [[QuickSearchViewcontroller alloc] initWithNibName:@"QuickSearchViewcontroller" bundle:nil];
-    //    detail.delegate =(id<SelectIdDelegate>) self;
-    //    //self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-    //
-    //    NSPredicate *keyPred = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"name contains[c] '%@'",self.txtCustomer.text]];
-    //
-    //    detail.listData = [[listArrAccount filteredArrayUsingPredicate: keyPred] valueForKey:DTOACCOUNT_name];
-    //
-    //
-    //
-    ////    detail.view.frame = CGRectMake(self.txtCustomer.frame.origin.x -20, self.txtCustomer.frame.origin.y + self.txtCustomer.frame.size.height, self.txtCustomer.frame.size.width + 20, 400);
-    ////    [self.viewMainBodyInfo addSubview:detail.view];
-    //
-    //
-    //    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
     CGRect popoverFrame = self.txtCustomer.frame;
     
     [self.listPopover setPopoverContentSize:CGSizeMake(320,250) animated:NO];
@@ -519,6 +519,7 @@
     
     SELECTED_TAG = TAG_SELECT_NEXT_JOB;
     
+    if(self.currentDeviceType == iPad){
     SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
     
     detail.selectIndex = selectNextTaskIndex;
@@ -532,26 +533,58 @@
     self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
     [self.listPopover setPopoverContentSize:CGSizeMake(320,250) animated:NO];
     [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    }else{
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:LocalizedString(@"KEY_OPPORTUNITY_EDIT_NEXTTASK")
+                                                                 delegate:self
+                                                        cancelButtonTitle:LocalizedString(@"KEY_CANCEL")
+                                                   destructiveButtonTitle:nil
+                                                        otherButtonTitles:nil];
+        
+        NSArray *lsType = [listArrNextTask valueForKey:DTOSYSCAT_name];
+        
+        for(NSString *title in lsType){
+            [actionSheet addButtonWithTitle:title];
+        }
+        [actionSheet showInView:self.view];
+        
+    }
+
 }
 - (IBAction)actionChooseLevel:(id)sender {
     
     [self hiddenKeyBoard];
-    
     SELECTED_TAG = TAG_SELECT_LEVEL;
+
     
-    SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
-    
-    detail.selectIndex = selectLevelIndex;
-    
-    detail.listData = [listArrLevel valueForKey:DTOSYSCAT_name];
-    
-    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
-    CGRect popoverFrame = self.btnLevel.frame;
-    
-    detail.delegate =(id<SelectIndexDelegate>) self;
-    self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(320,250) animated:NO];
-    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    if(self.currentDeviceType == iPad){
+        SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
+        
+        detail.selectIndex = selectLevelIndex;
+        
+        detail.listData = [listArrLevel valueForKey:DTOSYSCAT_name];
+        
+        self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+        CGRect popoverFrame = self.btnLevel.frame;
+        
+        detail.delegate =(id<SelectIndexDelegate>) self;
+        self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
+        [self.listPopover setPopoverContentSize:CGSizeMake(320,250) animated:NO];
+        [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    }else{
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:LocalizedString(@"KEY_OPPORTUNITY_EDIT_LEVEL")
+                                                                 delegate:self
+                                                        cancelButtonTitle:LocalizedString(@"KEY_CANCEL")
+                                                   destructiveButtonTitle:nil
+                                                        otherButtonTitles:nil];
+        
+        NSArray *lsLevel = [listArrLevel valueForKey:DTOSYSCAT_name];
+
+        for(NSString *title in lsLevel){
+            [actionSheet addButtonWithTitle:title];
+        }
+        [actionSheet showInView:self.view];
+
+    }
 }
 
 #pragma mark SelectIdDelegate
@@ -571,6 +604,19 @@
     if (self.listPopover) {
         [ self.listPopover dismissPopoverAnimated:YES];
     }
+    
+    
+    [self setSelectedValue:index];
+}
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex <1 )
+        return;
+    
+    [self setSelectedValue:buttonIndex - 1];
+}
+
+
+-(void) setSelectedValue:(NSInteger)index {
     switch (SELECTED_TAG) {
         case TAG_SELECT_TYPE:
         {
@@ -603,9 +649,7 @@
         default:
             break;
     }
-    
-    
-    
+
 }
 
 

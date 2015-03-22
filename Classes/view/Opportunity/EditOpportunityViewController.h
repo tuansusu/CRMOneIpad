@@ -12,8 +12,9 @@
 #import "MDSearchBarController.h"
 #import "CMPopTipView.h"
 #import "CustomerCell.h"
+#import "EnumClass.h"
 
-@interface EditOpportunityViewController : BaseViewController<UITextFieldDelegate, SelectIndexDelegate,MDSearchBarViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface EditOpportunityViewController : BaseViewController<UITextFieldDelegate, SelectIndexDelegate,MDSearchBarViewControllerDelegate, UITableViewDelegate, UITableViewDataSource,UIActionSheetDelegate>
 
 //DATA
 @property (nonatomic, retain) NSDictionary *dataSend;

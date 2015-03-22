@@ -80,6 +80,9 @@
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4F-6O-o4j" userLabel="BTNADD">
                                     <rect key="frame" x="287" y="22" width="25" height="25"/>
                                     <state key="normal" backgroundImage="ic-add-sub-1.png"/>
+                                    <connections>
+                                        <action selector="actionAdd:" destination="-1" eventType="touchUpInside" id="M88-F3-p3O"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

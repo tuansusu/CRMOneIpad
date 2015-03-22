@@ -337,13 +337,21 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 }
 
 #pragma mark SelectIndexDelegate
-
+//For ipad
 -(void) selectAtIndex:(NSInteger)index{
     
     if (self.listPopover) {
         [ self.listPopover dismissPopoverAnimated:YES];
     }
     
+    [self showFormAddNew:index];
+}
+//For iPhone
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    [self showFormAddNew:buttonIndex];
+}
+
+-(void)showFormAddNew:(NSInteger) index{
     switch (index) {
         case SELECT_INDEX_ADD_CONTACT:
         {
@@ -390,8 +398,8 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         default:
             break;
     }
-}
 
+}
 
 
 #pragma mark action button
@@ -854,20 +862,31 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 //Thêm phần sửa, xoá hiển thị trên row của table
 
 - (IBAction)actionAdd:(id)sender {
-    SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
     
-    detail.selectIndex = selectIndex;
-    
-    detail.listData = listArr;
-    
-    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
-    CGRect popoverFrame = self.btnAdd.frame;
-    
-    detail.delegate =(id<SelectIndexDelegate>) self;
-    self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(320, HEIGHT_SELECT_INDEX_ROW*listArr.count) animated:NO];
-    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.headerViewBar permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
-    
+    if(self.currentDeviceType == iPad){
+        
+        SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
+        
+        detail.selectIndex = selectIndex;
+        
+        detail.listData = listArr;
+        
+        self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+        CGRect popoverFrame = self.btnAdd.frame;
+        
+        detail.delegate =(id<SelectIndexDelegate>) self;
+        self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
+        [self.listPopover setPopoverContentSize:CGSizeMake(320, HEIGHT_SELECT_INDEX_ROW*listArr.count) animated:NO];
+        [self.listPopover presentPopoverFromRect:popoverFrame inView:self.headerViewBar permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    }else{
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:LocalizedString(@"KEY_ADDNEW")
+                                                                 delegate:self
+                                                        cancelButtonTitle:LocalizedString(@"KEY_CANCEL")
+                                                   destructiveButtonTitle:nil
+                                            otherButtonTitles:LocalizedString(@"KEY_OPPORTUNITY_DETAIL_MENU_ADD_CONTACT"),LocalizedString(@"KEY_OPPORTUNITY_DETAIL_MENU_ADD_PROPOSEPRODUCT"),LocalizedString(@"KEY_OPPORTUNITY_DETAIL_MENU_ADD_TASK"),LocalizedString(@"KEY_OPPORTUNITY_DETAIL_MENU_ADD_NOTE"),LocalizedString(@"KEY_OPPORTUNITY_DETAIL_MENU_ADD_CALENDAR"), nil];
+        [actionSheet showInView:self.view];
+        
+    }
 }
 
 //

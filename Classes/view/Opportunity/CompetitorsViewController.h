@@ -38,7 +38,7 @@ enum TypeActionEvent{
 };
 
 
-@interface CompetitorsViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate,SelectIndexDelegate,OpportunityProductDelegate,TaskActionCellDelegate,ComplainDetailViewControllerDelegate,EditCalendarOpportunityViewControllerDelegate,ComplainsViewDelegate,UITabBarDelegate>
+@interface CompetitorsViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate,SelectIndexDelegate,OpportunityProductDelegate,TaskActionCellDelegate,ComplainDetailViewControllerDelegate,EditCalendarOpportunityViewControllerDelegate,ComplainsViewDelegate,UITabBarDelegate,UIActionSheetDelegate>
 
 
 @property (nonatomic) enum TypeActionEvent typeActionEvent;

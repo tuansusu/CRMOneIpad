@@ -111,11 +111,11 @@ NSString* emptyText = @"";
     //[self.btnHome.]
     //[self.btnHome.imageView setAlpha:1.0f];
 
-    [self initData];
+    [self initDataWithReloadTableView:YES];
 }
 
 //khoi tao gia tri mac dinh cua form
--(void) initData {
+-(void) initDataWithReloadTableView:(BOOL)isReload {
     //load data from db
     [arrayData removeAllObjects];
 
@@ -129,9 +129,9 @@ NSString* emptyText = @"";
     }else{
         [lblMessageWidget setHidden:NO];
     }
-
-    [_tbData reloadData];
-
+    if (isReload) {
+        [_tbData reloadData];
+    }
 
     [listWidgetTypeNotUse removeAllObjects];
     [listWidgetTypeNotUseStr removeAllObjects];
@@ -245,7 +245,7 @@ NSString* emptyText = @"";
 #pragma mark EditWidgetViewController Delegate
 
 - (void)closeEditWidgetViewController:(EditWidgetViewController*)editWidgetViewController{
-    [self initData];
+    [self initDataWithReloadTableView:YES];
 }
 
 #pragma mark Event
@@ -326,17 +326,20 @@ NSString* emptyText = @"";
 - (void)deleteWidgetObject:(DTOWidgetObject*)widgetOB{
     if ([dtoWidgetProcess deleteEntityWithConfId:widgetOB.confId]) {
         [arrayWidgetDashboard removeAllObjects];
-        [self initData];
+        [self initDataWithReloadTableView:YES];
     }
 }
 
-- (void)updateWidgetObject:(DTOWidgetObject*)widgetOB{
+- (void)MainViewCell:(MainViewCell*)mainViewCell updateWidgetObject:(DTOWidgetObject*)widgetOB{
+    NSIndexPath *indexPath = [self.tbData indexPathForCell:mainViewCell];
+
     Items *items = [widgetOB itemObject];
     NSMutableDictionary * widgetDic = [items itemDictionary];
 
     if ([dtoWidgetProcess insertToDBWithEntity:widgetDic]) {
         [arrayWidgetDashboard removeAllObjects];
-        [self initData];
+        [self initDataWithReloadTableView:NO];
+         [self.tbData reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
     }else{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Sảy ra lỗi, vui lòng thử lại hoặc gửi log đến quản trị" delegate:self cancelButtonTitle:@"Thoát" otherButtonTitles:nil];
         alert.tag = 6;
@@ -421,7 +424,7 @@ NSString* emptyText = @"";
     NSMutableDictionary * widgetDic = [items itemDictionary];
 
     if ([dtoWidgetProcess insertToDBWithEntity:widgetDic]) {
-        [self initData];
+        [self initDataWithReloadTableView:YES];
     }else{
         //khong bao nhap loi - lien he quan tri
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:SYS_Notification_Title message:SYS_Notification_UpdateDbFail delegate:self cancelButtonTitle:SYS_Notification_OKButton otherButtonTitles:nil];

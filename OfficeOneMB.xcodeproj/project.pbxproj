@@ -4701,7 +4701,6 @@
 		8E44BBF81A73A89B00EDCD1A /* ProductsService */ = {
 			isa = PBXGroup;
 			children = (
-				8E8B3F211A49AA4300241360 /* MainView */,
 				8E44BBF91A73A89B00EDCD1A /* ProductsLeadCell */,
 				8E44BC001A73A89B00EDCD1A /* ProductsLeadView.h */,
 				8E44BC011A73A89B00EDCD1A /* ProductsLeadView.m */,
@@ -5082,8 +5081,7 @@
 				8E8B3F231A49AA4300241360 /* MainViewController.m */,
 				8E8B3F241A49AA4300241360 /* MainViewController.xib */,
 			);
-			name = MainView;
-			path = ../MainView;
+			path = MainView;
 			sourceTree = "<group>";
 		};
 		8E8B3F271A49AA5F00241360 /* MainViewCell */ = {
@@ -5755,6 +5753,7 @@
 			children = (
 				769E1FC31A7C7DB300545F63 /* Help */,
 				8EB93CF91A791EDE002875F2 /* DaskboardTasks */,
+				8E8B3F211A49AA4300241360 /* MainView */,
 				8E44BBF81A73A89B00EDCD1A /* ProductsService */,
 				8E8D7FC31A5ADE060084BCA3 /* DashboardCalendar */,
 				8E6105F51A5986A9003D1C0C /* Profile */,

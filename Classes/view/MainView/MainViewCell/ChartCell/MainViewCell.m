@@ -12,6 +12,8 @@
 #import "Globals.h"
 #import "Items.h"
 
+#define COLOR_ICON (UIColor *)[UIColor colorWithRed:10.0/255.0 green:110.0/255.0 blue:188.0/255.0 alpha:1]
+
 @implementation MainViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier WithType:(TypeGraphs)typeGraph
@@ -48,8 +50,18 @@
 
     btnDelete.layer.cornerRadius = CORNER_RADIUS_BUTTON*3;
     btnDelete.clipsToBounds = YES;
+
+//    [self customIconView:btnColumnHorizontal withColor:COLOR_ICON];
+
 }
 
+-(void)customIconView:(UIView*)view withColor:(UIColor*)color{
+    [view.layer setCornerRadius:view.frame.size.height/2];
+    [view.layer setBorderWidth:0];
+    [view.layer setBorderColor:(CGColorRef)color.CGColor];
+    [view setBackgroundColor:color];
+    [view.layer setMasksToBounds:YES];
+}
 #pragma mark button action
 
 -(IBAction) actionSave:(id)sender{
@@ -69,8 +81,8 @@
     widgetOB.widgetType = _widgetOB.widgetType;
     widgetOB.status = _widgetOB.status;
     [configurationView setHidden:YES];
-    if (self.delegate && [self.delegate respondsToSelector:@selector(updateWidgetObject:)]) {
-        [self.delegate updateWidgetObject:widgetOB];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(MainViewCell:updateWidgetObject:)]) {
+        [self.delegate MainViewCell:self updateWidgetObject:widgetOB];
     }
 }
 
@@ -79,21 +91,27 @@
 }
 
 -(void)setWidgetSelectedWithTypeGraph:(TypeGraphs)typeGraph{
-    if (typeGraph == typeGraphLine) {
-        [btnLine setImage:[UIImage imageNamed:@"checkbox_ticked.png"] forState:UIControlStateNormal];
+    if (typeGraph == typeGraphLine)
+    {
+        [btnLine setBackgroundImage:[UIImage imageNamed:@"checkbox_ticked.png"] forState:UIControlStateNormal];
 
-        [btnColumnVertical setImage:[UIImage imageNamed:@"checkbox_not_ticked.png"] forState:UIControlStateNormal];
-        [btnColumnHorizontal setImage:[UIImage imageNamed:@"checkbox_not_ticked.png"] forState:UIControlStateNormal];
-    } else if (typeGraph == typeGraphColumnVertical) {
-        [btnColumnVertical setImage:[UIImage imageNamed:@"checkbox_ticked.png"] forState:UIControlStateNormal];
+        [btnColumnVertical setBackgroundImage:[UIImage imageNamed:@"checkbox_not_ticked.png"] forState:UIControlStateNormal];
+        [btnColumnHorizontal setBackgroundImage:[UIImage imageNamed:@"checkbox_not_ticked.png"] forState:UIControlStateNormal];
+    }
+    else if (typeGraph == typeGraphColumnVertical)
+    {
+        [btnColumnVertical setBackgroundImage:[UIImage imageNamed:@"checkbox_ticked.png"] forState:UIControlStateNormal];
 
-        [btnLine setImage:[UIImage imageNamed:@"checkbox_not_ticked.png"] forState:UIControlStateNormal];
-        [btnColumnHorizontal setImage:[UIImage imageNamed:@"checkbox_not_ticked.png"] forState:UIControlStateNormal];
-    } else if (typeGraph == typeGraphColumnHorizontal) {
-        [btnColumnHorizontal setImage:[UIImage imageNamed:@"checkbox_ticked.png"] forState:UIControlStateNormal];
+        [btnLine setBackgroundImage:[UIImage imageNamed:@"checkbox_not_ticked.png"] forState:UIControlStateNormal];
+        [btnColumnHorizontal setBackgroundImage:[UIImage imageNamed:@"checkbox_not_ticked.png"] forState:UIControlStateNormal];
 
-        [btnColumnVertical setImage:[UIImage imageNamed:@"checkbox_not_ticked.png"] forState:UIControlStateNormal];
-        [btnLine setImage:[UIImage imageNamed:@"checkbox_not_ticked.png"] forState:UIControlStateNormal];
+    }
+    else if (typeGraph == typeGraphColumnHorizontal)
+    {
+        [btnColumnHorizontal setBackgroundImage:[UIImage imageNamed:@"checkbox_ticked.png"] forState:UIControlStateNormal];
+
+        [btnColumnVertical setBackgroundImage:[UIImage imageNamed:@"checkbox_not_ticked.png"] forState:UIControlStateNormal];
+        [btnLine setBackgroundImage:[UIImage imageNamed:@"checkbox_not_ticked.png"] forState:UIControlStateNormal];
     }
 }
 

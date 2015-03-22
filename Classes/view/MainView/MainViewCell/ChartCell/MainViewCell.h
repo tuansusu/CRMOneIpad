@@ -12,13 +12,14 @@
 #import "ContentChartViewCell.h"
 
 @class DTOWidgetObject;
+@class MainViewCell;
 
 @protocol MainViewCellDelegate <NSObject>
 
 @optional
 
 - (void)deleteWidgetObject:(DTOWidgetObject*)widgetOB;
-- (void)updateWidgetObject:(DTOWidgetObject*)widgetOB;
+- (void)MainViewCell:(MainViewCell*)mainViewCell updateWidgetObject:(DTOWidgetObject*)widgetOB;
 
 @end
 

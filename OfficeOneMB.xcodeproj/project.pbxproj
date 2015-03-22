@@ -222,6 +222,9 @@
 		2DF7C8871821FE7F0020D4CC /* MonthPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DF7C8851821FE7F0020D4CC /* MonthPickerViewController.xib */; };
 		2DFEFC0917AD075800D684FB /* arrow_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DFEFC0717AD075800D684FB /* arrow_up.png */; };
 		2DFEFC0A17AD075800D684FB /* down_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DFEFC0817AD075800D684FB /* down_arrow.png */; };
+		76008E6A1ABC7FFE00BCFA92 /* icon_opp_detail.png in Resources */ = {isa = PBXBuildFile; fileRef = 76008E671ABC7FFE00BCFA92 /* icon_opp_detail.png */; };
+		76008E6B1ABC7FFE00BCFA92 /* icon_opp_note.png in Resources */ = {isa = PBXBuildFile; fileRef = 76008E681ABC7FFE00BCFA92 /* icon_opp_note.png */; };
+		76008E6C1ABC7FFE00BCFA92 /* icon_opp_task.png in Resources */ = {isa = PBXBuildFile; fileRef = 76008E691ABC7FFE00BCFA92 /* icon_opp_task.png */; };
 		7617F07F193DE30A00BB7073 /* GlobalVars.m in Sources */ = {isa = PBXBuildFile; fileRef = 7617F07E193DE30A00BB7073 /* GlobalVars.m */; };
 		76199E111A471DA900B792C5 /* MDSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 76199E0A1A471DA900B792C5 /* MDSearchBar.m */; };
 		76199E121A471DA900B792C5 /* MDSearchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76199E0B1A471DA900B792C5 /* MDSearchBar.xib */; };
@@ -1439,6 +1442,9 @@
 		3E990E5D19480DD500F0D276 /* 29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 29x29.png; path = images/29x29.png; sourceTree = "<group>"; };
 		3E990E5E19480DDE00F0D276 /* 58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 58x58.png; path = images/58x58.png; sourceTree = "<group>"; };
 		3E990E5F19480DEC00F0D276 /* 58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 58x58.png; path = images/58x58.png; sourceTree = "<group>"; };
+		76008E671ABC7FFE00BCFA92 /* icon_opp_detail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_opp_detail.png; sourceTree = "<group>"; };
+		76008E681ABC7FFE00BCFA92 /* icon_opp_note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_opp_note.png; sourceTree = "<group>"; };
+		76008E691ABC7FFE00BCFA92 /* icon_opp_task.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_opp_task.png; sourceTree = "<group>"; };
 		7617F07D193DE30A00BB7073 /* GlobalVars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalVars.h; sourceTree = "<group>"; };
 		7617F07E193DE30A00BB7073 /* GlobalVars.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalVars.m; sourceTree = "<group>"; };
 		76199E091A471DA900B792C5 /* MDSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSearchBar.h; sourceTree = "<group>"; };
@@ -3347,6 +3353,9 @@
 		2D6D764B1876709D0051AD9E /* Option1 */ = {
 			isa = PBXGroup;
 			children = (
+				76008E671ABC7FFE00BCFA92 /* icon_opp_detail.png */,
+				76008E681ABC7FFE00BCFA92 /* icon_opp_note.png */,
+				76008E691ABC7FFE00BCFA92 /* icon_opp_task.png */,
 				76C06E691AB72EAE003F9D91 /* icon_test_1.png */,
 				76C06E671AB72D35003F9D91 /* ic-contact.png */,
 				7697BBD21A7FD0640023F118 /* icon_menu-1@2x.png */,
@@ -5883,6 +5892,7 @@
 				8E8B3F211A49AA4300241360 /* MainView */,
 				769E1FC31A7C7DB300545F63 /* Help */,
 				8EB93CF91A791EDE002875F2 /* DaskboardTasks */,
+				8E8B3F211A49AA4300241360 /* MainView */,
 				8E44BBF81A73A89B00EDCD1A /* ProductsService */,
 				8E8D7FC31A5ADE060084BCA3 /* DashboardCalendar */,
 				8E568F791A58EE950002A3C4 /* Complain */,
@@ -6495,6 +6505,7 @@
 				76601A42194BE90F001D4C01 /* AppIcon-144.png in Resources */,
 				7693EE081A355593004E0178 /* EditCalendarLeadViewController.xib in Resources */,
 				8497BFE71A295A2300A5ED3C /* step4@2x.png in Resources */,
+				76008E6A1ABC7FFE00BCFA92 /* icon_opp_detail.png in Resources */,
 				B301F1E717C382D80004650C /* e_Background-over.png in Resources */,
 				B301F1E817C382D80004650C /* f_Bg_header.png in Resources */,
 				B315787F188D5E5200C0ED01 /* ic-signed-1.png in Resources */,
@@ -6546,6 +6557,7 @@
 				B3A0669F17D1A72400BA6487 /* WCGridViewCell.xib in Resources */,
 				B315789E188D5E5200C0ED01 /* write-btn-2-1.png in Resources */,
 				8EB708771A407A1C001861A0 /* Mobile_GPS_MyLocationIcon.png in Resources */,
+				76008E6C1ABC7FFE00BCFA92 /* icon_opp_task.png in Resources */,
 				767E80D61AB9C9510098F76E /* NoteOpportunityCell~iphone.xib in Resources */,
 				76EE207319FA829200A80414 /* ic-move-user-1.png in Resources */,
 				76C964801A17A15C00029978 /* call.png in Resources */,
@@ -6621,6 +6633,7 @@
 				8EC972AB1A5D71300021DCA3 /* DailyCalendar.png in Resources */,
 				B3157884188D5E5200C0ED01 /* ic-viewpdf-mutilpages-1.png in Resources */,
 				76C964751A17731900029978 /* sectioned_pie_chart.png in Resources */,
+				76008E6B1ABC7FFE00BCFA92 /* icon_opp_note.png in Resources */,
 				B3ECBA2517D1EFF300AF40CF /* icon_capnhattiendo.png in Resources */,
 				76601A50194BE90F001D4C01 /* Reader-Print@2x.png in Resources */,
 				B3157886188D5E5200C0ED01 /* ic-viewpdf-rotateright-1.png in Resources */,

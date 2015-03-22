@@ -8,9 +8,25 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditAccountLeadViewController">
             <connections>
                 <outlet property="barLabel" destination="AL7-7W-szN" id="NiD-xc-ZsC"/>
+                <outlet property="btnCheckEmail" destination="t29-Hc-kcB" id="Tj6-5F-xnn"/>
+                <outlet property="btnCheckMobile" destination="lQ4-jF-9TI" id="HTp-li-qtL"/>
+                <outlet property="btnCheckSMS" destination="Qi9-Eb-8j4" id="Vrh-fL-3Qo"/>
+                <outlet property="btnSave" destination="lmV-gQ-bDO" id="Vj6-Xb-Q71"/>
                 <outlet property="footerView" destination="8O8-VI-SSt" id="nb8-8z-zs0"/>
                 <outlet property="fullNameLB" destination="JxP-U8-YUf" id="tPJ-TC-WMy"/>
                 <outlet property="headerViewBar" destination="5p0-3X-iO5" id="bZx-Rx-O2T"/>
+                <outlet property="segMarialStatus" destination="riI-Kl-EvB" id="JzG-E7-y6o"/>
+                <outlet property="segSex" destination="Nlg-MZ-twe" id="cSQ-Dn-cW3"/>
+                <outlet property="txtAddress" destination="izm-ay-Q14" id="6O2-de-Iab"/>
+                <outlet property="txtCompany" destination="sKY-hN-I3B" id="AID-4e-kp5"/>
+                <outlet property="txtDateOfBirth" destination="Qe2-tW-xnW" id="xFf-vN-SNn"/>
+                <outlet property="txtEmail" destination="VQi-gF-eBd" id="nWb-tB-3eQ"/>
+                <outlet property="txtMonthlyIncom" destination="DL6-1o-JSA" id="R0R-NS-W5Y"/>
+                <outlet property="txtName" destination="Pdc-Ie-6Ub" id="pFZ-0P-7MH"/>
+                <outlet property="txtNumberIdentity" destination="XBM-Fo-Myu" id="6y6-yu-hU1"/>
+                <outlet property="txtPersonPosition" destination="zoc-Sn-xSq" id="6JR-Ll-uAK"/>
+                <outlet property="txtPhone" destination="75P-bt-tCd" id="sRy-mD-kG5"/>
+                <outlet property="txtTotalassets" destination="hhq-uf-Lr0" id="Ekb-BO-hsw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -37,9 +53,9 @@
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5p0-3X-iO5" userLabel="View-header">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="KHÁCH HÀNG TIỀM NĂNG (CN)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JxP-U8-YUf">
-                                    <rect key="frame" x="38" y="22" width="274" height="30"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CẬP NHẬP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JxP-U8-YUf">
+                                    <rect key="frame" x="38" y="22" width="109" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -52,9 +68,181 @@
                                         <action selector="homeBack:" destination="-1" eventType="touchUpInside" id="cbG-gI-HqR"/>
                                     </connections>
                                 </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lmV-gQ-bDO" userLabel="btnSave">
+                                    <rect key="frame" x="282" y="22" width="30" height="30"/>
+                                    <state key="normal" backgroundImage="icon_save_90x90.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="actionSave:" destination="-1" eventType="touchUpInside" id="MAu-JQ-ShN"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0xK-tY-uQi">
+                                    <rect key="frame" x="244" y="22" width="30" height="30"/>
+                                    <state key="normal" backgroundImage="icon_delete_90x90.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="actionDel:" destination="-1" eventType="touchUpInside" id="AK4-5I-VIg"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EwK-lN-v4R">
+                            <rect key="frame" x="0.0" y="60" width="320" height="478"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thông tin chính" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdN-Gl-pAd">
+                                    <rect key="frame" x="25" y="8" width="287" height="14"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thông tin khác" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7K-bG-FEu">
+                                    <rect key="frame" x="25" y="294" width="287" height="14"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQp-Qo-FKE">
+                                    <rect key="frame" x="8" y="294" width="14" height="14"/>
+                                    <state key="normal" backgroundImage="icon_down.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tên khách hàng" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pdc-Ie-6Ub">
+                                    <rect key="frame" x="8" y="30" width="304" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                </textField>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Số điện thoại" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="75P-bt-tCd">
+                                    <rect key="frame" x="8" y="63" width="304" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                </textField>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Chứng minh thư" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XBM-Fo-Myu">
+                                    <rect key="frame" x="8" y="96" width="304" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                </textField>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VQi-gF-eBd">
+                                    <rect key="frame" x="8" y="129" width="304" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                </textField>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Công ty" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sKY-hN-I3B">
+                                    <rect key="frame" x="8" y="162" width="304" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                </textField>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Chức danh" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zoc-Sn-xSq">
+                                    <rect key="frame" x="8" y="195" width="304" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                </textField>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ngày sinh" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qe2-tW-xnW">
+                                    <rect key="frame" x="8" y="228" width="304" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                </textField>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Địa chỉ" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="izm-ay-Q14">
+                                    <rect key="frame" x="7" y="261" width="304" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                </textField>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Thu nhập cá nhân" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DL6-1o-JSA">
+                                    <rect key="frame" x="8" y="381" width="304" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                </textField>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Giới tính" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bD-nW-jxp">
+                                    <rect key="frame" x="8" y="316" width="64" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Nlg-MZ-twe">
+                                    <rect key="frame" x="171" y="313" width="141" height="29"/>
+                                    <segments>
+                                        <segment title="Nam"/>
+                                        <segment title="Nữ"/>
+                                    </segments>
+                                </segmentedControl>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tình trạng hôn nhân" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1SB-1X-tY0">
+                                    <rect key="frame" x="8" y="345" width="139" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="riI-Kl-EvB">
+                                    <rect key="frame" x="171" y="345" width="140" height="29"/>
+                                    <segments>
+                                        <segment title="Không"/>
+                                        <segment title="Có"/>
+                                    </segments>
+                                </segmentedControl>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tổng tài sản" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hhq-uf-Lr0">
+                                    <rect key="frame" x="7" y="414" width="304" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                </textField>
+                                <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0L0-9k-Z3i">
+                                    <rect key="frame" x="-90" y="451" width="30" height="20"/>
+                                    <state key="normal" title="Email" image="checkbox_not_ticked.png">
+                                        <color key="titleColor" red="0.44313728810000003" green="0.56078433989999998" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t29-Hc-kcB">
+                                    <rect key="frame" x="126" y="451" width="20" height="20"/>
+                                    <state key="normal" title="Button" backgroundImage="checkbox_not_ticked.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="actionCheckMail:" destination="-1" eventType="touchUpInside" id="GFa-LP-197"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lQ4-jF-9TI">
+                                    <rect key="frame" x="8" y="452" width="20" height="20"/>
+                                    <state key="normal" title="Button" backgroundImage="checkbox_not_ticked.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="actionCheckMobile:" destination="-1" eventType="touchUpInside" id="QlE-1X-C1b"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qi9-Eb-8j4">
+                                    <rect key="frame" x="253" y="451" width="20" height="20"/>
+                                    <state key="normal" title="Button" backgroundImage="checkbox_not_ticked.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="actionCheckSMS:" destination="-1" eventType="touchUpInside" id="xeB-20-hXO"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cjz-v6-YDN">
+                                    <rect key="frame" x="154" y="451" width="45" height="20"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SMS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rdo-kn-X80">
+                                    <rect key="frame" x="281" y="452" width="30" height="20"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Điện thoại" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="das-eJ-7C0">
+                                    <rect key="frame" x="36" y="451" width="75" height="20"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keI-wo-3z9">
+                                    <rect key="frame" x="7" y="8" width="14" height="14"/>
+                                    <state key="normal" backgroundImage="icon_down.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                        </scrollView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
@@ -64,6 +252,10 @@
         </view>
     </objects>
     <resources>
+        <image name="checkbox_not_ticked.png" width="56" height="56"/>
+        <image name="icon_delete_90x90.png" width="90" height="90"/>
+        <image name="icon_down.png" width="19" height="11"/>
         <image name="icon_menu-1.png" width="48" height="48"/>
+        <image name="icon_save_90x90.png" width="90" height="90"/>
     </resources>
 </document>

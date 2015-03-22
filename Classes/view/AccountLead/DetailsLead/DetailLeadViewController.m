@@ -159,6 +159,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         [_myTabbar setSelectedItem:0];
          self.mySearchBar.barTintColor = HEADER_VIEW_COLOR1;
        // self.myTabbar.barTintColor=HEADER_VIEW_COLOR1;
+        [self.myTabbar setSelectedItem:self.myTabbar.items[0]];
     }
 }
 

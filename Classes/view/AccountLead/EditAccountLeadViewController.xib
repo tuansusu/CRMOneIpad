@@ -14,7 +14,6 @@
                 <outlet property="btnCheckEmail" destination="3Vm-iH-QSz" id="WUQ-X4-9um"/>
                 <outlet property="btnCheckMobile" destination="X5w-1x-92h" id="3yO-4y-v7B"/>
                 <outlet property="btnCheckSMS" destination="zLL-OU-TFz" id="a2X-jJ-FLa"/>
-                <outlet property="btnClose" destination="fU5-Hy-1lh" id="9Yp-SW-HJB"/>
                 <outlet property="btnHome" destination="fGR-h3-5JZ" id="ToL-xv-vpV"/>
                 <outlet property="btnPersonalPosition" destination="bIy-hK-ha2" id="0dc-tY-UXe"/>
                 <outlet property="btnSave" destination="fU5-Hy-1lh" id="qcw-GV-l0E"/>
@@ -92,7 +91,6 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="actionClose:" destination="-1" eventType="touchUpInside" id="U6B-oI-PLw"/>
                                 <action selector="actionSave:" destination="-1" eventType="touchUpInside" id="kgh-Gv-xZv"/>
                             </connections>
                         </button>

@@ -64,6 +64,7 @@
 "KEY_NO"="Không";
 "KEY_UPDATE" = "Cập nhật";
 "KEY_CANCEL" = "Hủy";
+"KEY_SAVE" = "Lưu";
 "KEY_SEARCH" = "Tìm kiếm";
 "KEY_TOTAL" = "Tổng số";
 "KEY_ADDNEW" = "Thêm mới";

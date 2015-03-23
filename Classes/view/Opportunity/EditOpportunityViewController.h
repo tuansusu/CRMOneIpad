@@ -94,6 +94,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnSave;
 
 
+//For iPhone only
+@property(strong,nonatomic) IBOutlet UIDatePicker* datePicker;
+
 
 
 

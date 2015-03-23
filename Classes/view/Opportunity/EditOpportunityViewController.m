@@ -83,8 +83,9 @@
     
     
     if ([UIDevice getCurrentSysVer] >= 7.0) {
-        [UIDevice updateLayoutInIOs7OrAfter:self];
-        
+        if(self.currentDeviceType == iPad){
+            [UIDevice updateLayoutInIOs7OrAfter:self];
+        }
         //  [self.tbData setSeparatorInset:UIEdgeInsetsZero];
         
         
@@ -121,16 +122,38 @@
     
     searchBarController.isValid = NO;
     
-    if (self.dataSend) {
-        
-        self.fullNameLB.text = LocalizedString(@"KEY_OPPORTUNITY_EDIT_HEADER_EDIT");
+    if(self.currentDeviceType == iPad){
+        if (self.dataSend) {
+            
+            self.fullNameLB.text = LocalizedString(@"KEY_OPPORTUNITY_EDIT_HEADER_EDIT");
+        }
+        else{
+            self.fullNameLB.text = LocalizedString(@"KEY_OPPORTUNITY_EDIT_HEADER_ADD");
+        }
+    }else{
+        self.fullNameLB.text = LocalizedString(@"KEY_ADDNEW");
     }
-    else{
-        self.fullNameLB.text = LocalizedString(@"KEY_OPPORTUNITY_EDIT_HEADER_ADD");
-    }
-    
     [self setLanguage];
+    
+    //for iphone only
+    if(self.currentDeviceType == iPhone){
+        self.datePicker = [[UIDatePicker alloc] init];
+        
+        self.datePicker.datePickerMode = UIDatePickerModeDate;
+        [self.dtStartDate setInputView:self.datePicker];
+        [self.dtEndDate setInputView:self.datePicker];
+        
+        UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+        [toolBar setTintColor:[UIColor blackColor]];
+        UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(setSelectedDate)];
+        UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        [toolBar setItems:[NSArray arrayWithObjects:space,doneBtn, nil]];
+        [self.dtStartDate setInputAccessoryView:toolBar];
+        [self.dtEndDate setInputAccessoryView:toolBar];
+    }
 }
+
+
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
@@ -747,6 +770,22 @@
     
     
 }
+//For iPhone only
+-(void) setSelectedDate{
+    NSDate *date = self.datePicker.date;
+    //[self.dtStartDate resignFirstResponder];
+    if([self.dtStartDate isFirstResponder]){
+        [self.dtStartDate resignFirstResponder];
+        self.dtStartDate.text = [NSString stringWithFormat:@"%@",
+                                 [df stringFromDate:date]];
+        startDate = date;
+    }else if([self.dtEndDate isFirstResponder]){
+        [self.dtEndDate resignFirstResponder];
+        self.dtEndDate.text = [NSString stringWithFormat:@"%@",
+                               [df stringFromDate:date]];
+        endDate = date;
+    }
+}
 -(void) dismissPopoverView
 {
     [self dismissPopover];
@@ -1063,7 +1102,11 @@
     [searchBarController.searchBarView.textField setPlaceholder:@"KEY_OPPORTUNITY_EDIT_CUSTOMER_SEARCH"];
     [_lblNote  setText:LocalizedString(@"KEY_OPPORTUNITY_EDIT_NOTE")];
     [_txtNote  setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_EDIT_NOTE")];
-    [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
-     
+    if(self.currentDeviceType == iPad){
+        [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+    }else{
+        [_btnSave setTitle:LocalizedString(@"KEY_SAVE") forState:UIControlStateNormal];
+    }
+    
 }
 @end

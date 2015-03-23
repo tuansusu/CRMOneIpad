@@ -77,7 +77,9 @@
 {
     [super viewDidLoad];
     if ([UIDevice getCurrentSysVer] >= 7.0) {
-        [UIDevice updateLayoutInIOs7OrAfter:self];
+        if(self.currentDeviceType == iPad){
+            [UIDevice updateLayoutInIOs7OrAfter:self];
+        }
     }
     
     defaults = [NSUserDefaults standardUserDefaults];

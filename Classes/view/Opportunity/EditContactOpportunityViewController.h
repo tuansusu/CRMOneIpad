@@ -11,6 +11,7 @@
 #import "SelectPhotoViewController.h"
 #import "SelectIndexViewController.h"
 #import "CMPopTipView.h"
+#import "EnumClass.h"
 
 
 

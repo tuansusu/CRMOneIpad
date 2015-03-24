@@ -115,11 +115,17 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 </textField>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_require-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="389-Nb-8Xe">
+                                    <rect key="frame" x="295" y="37" width="16" height="16"/>
+                                </imageView>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Số điện thoại" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="75P-bt-tCd">
                                     <rect key="frame" x="8" y="63" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 </textField>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_require-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="ViS-Ox-bxX">
+                                    <rect key="frame" x="295" y="70" width="16" height="16"/>
+                                </imageView>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Chứng minh thư" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XBM-Fo-Myu">
                                     <rect key="frame" x="8" y="96" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -256,6 +262,7 @@
         <image name="icon_delete_90x90.png" width="90" height="90"/>
         <image name="icon_down.png" width="19" height="11"/>
         <image name="icon_menu-1.png" width="48" height="48"/>
+        <image name="icon_require-1.png" width="16" height="16"/>
         <image name="icon_save_90x90.png" width="90" height="90"/>
     </resources>
 </document>

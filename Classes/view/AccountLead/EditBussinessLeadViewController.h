@@ -93,4 +93,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbsoluongcodong;
 
 @property (weak, nonatomic) IBOutlet UILabel *lbtongtaisan;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollviewIphone;
+
+
 @end

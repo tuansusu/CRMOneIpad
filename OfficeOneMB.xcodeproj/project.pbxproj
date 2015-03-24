@@ -33,6 +33,9 @@
 		15C6A1971A6FDC4800F19B30 /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C6A1951A6FDC4800F19B30 /* PickerViewController.m */; };
 		15C6A1981A6FDC4800F19B30 /* PickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15C6A1961A6FDC4800F19B30 /* PickerViewController.xib */; };
 		170862EA1A3F3CB30021705D /* attach_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 170862E91A3F3CB30021705D /* attach_icon.png */; };
+		1719B7021AC1A9ED0061BD7B /* EditNoteLeadViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1719B7001AC1A9ED0061BD7B /* EditNoteLeadViewController~iphone.xib */; };
+		1719B7071AC1AE2A0061BD7B /* EditContact360ViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1719B7051AC1AE2A0061BD7B /* EditContact360ViewController~iphone.xib */; };
+		1719B70C1AC1AF9F0061BD7B /* EditNote360ViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1719B70A1AC1AF9F0061BD7B /* EditNote360ViewController~iphone.xib */; };
 		171D91941AB86E06005AB422 /* tabbar_details.png in Resources */ = {isa = PBXBuildFile; fileRef = 171D91921AB86E06005AB422 /* tabbar_details.png */; };
 		171D91951AB86E06005AB422 /* tabbar_notes.png in Resources */ = {isa = PBXBuildFile; fileRef = 171D91931AB86E06005AB422 /* tabbar_notes.png */; };
 		171D91991AB8741A005AB422 /* calendar_tabbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 171D91961AB8741A005AB422 /* calendar_tabbar.png */; };
@@ -44,6 +47,7 @@
 		1755B0051AB5C28200F543DA /* EditBussinessLeadViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1755B0031AB5C28200F543DA /* EditBussinessLeadViewController~iphone.xib */; };
 		1755B00A1AB5D22700F543DA /* ListAccountViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1755B0081AB5D22700F543DA /* ListAccountViewController~iphone.xib */; };
 		1755B00F1AB5DA4600F543DA /* Account360Cell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1755B00D1AB5DA4600F543DA /* Account360Cell~iphone.xib */; };
+		1772C8401AC1A04800906FFB /* EditContactLeadViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1772C83E1AC1A04800906FFB /* EditContactLeadViewController~iphone.xib */; };
 		1777BB101AB482BE004E0951 /* AccountLeadCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1777BB0E1AB482BE004E0951 /* AccountLeadCell~iphone.xib */; };
 		177851DC1AB9C165003020DE /* Detail360ViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 177851DA1AB9C165003020DE /* Detail360ViewController~iphone.xib */; };
 		177885941A84699100C71551 /* menudelete.png in Resources */ = {isa = PBXBuildFile; fileRef = 1778858C1A84699100C71551 /* menudelete.png */; };
@@ -1174,6 +1178,9 @@
 		15C6A1951A6FDC4800F19B30 /* PickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PickerViewController.m; path = CustomView/PickerViewController.m; sourceTree = "<group>"; };
 		15C6A1961A6FDC4800F19B30 /* PickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PickerViewController.xib; path = CustomView/PickerViewController.xib; sourceTree = "<group>"; };
 		170862E91A3F3CB30021705D /* attach_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attach_icon.png; sourceTree = "<group>"; };
+		1719B7001AC1A9ED0061BD7B /* EditNoteLeadViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EditNoteLeadViewController~iphone.xib"; sourceTree = "<group>"; };
+		1719B7051AC1AE2A0061BD7B /* EditContact360ViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EditContact360ViewController~iphone.xib"; sourceTree = "<group>"; };
+		1719B70A1AC1AF9F0061BD7B /* EditNote360ViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EditNote360ViewController~iphone.xib"; sourceTree = "<group>"; };
 		171D91921AB86E06005AB422 /* tabbar_details.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tabbar_details.png; path = VofficeImage/tabbar_details.png; sourceTree = "<group>"; };
 		171D91931AB86E06005AB422 /* tabbar_notes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tabbar_notes.png; path = VofficeImage/tabbar_notes.png; sourceTree = "<group>"; };
 		171D91961AB8741A005AB422 /* calendar_tabbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = calendar_tabbar.png; path = VofficeImage/calendar_tabbar.png; sourceTree = "<group>"; };
@@ -1186,6 +1193,7 @@
 		1755B0031AB5C28200F543DA /* EditBussinessLeadViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EditBussinessLeadViewController~iphone.xib"; sourceTree = "<group>"; };
 		1755B0081AB5D22700F543DA /* ListAccountViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ListAccountViewController~iphone.xib"; sourceTree = "<group>"; };
 		1755B00D1AB5DA4600F543DA /* Account360Cell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Account360Cell~iphone.xib"; sourceTree = "<group>"; };
+		1772C83E1AC1A04800906FFB /* EditContactLeadViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EditContactLeadViewController~iphone.xib"; sourceTree = "<group>"; };
 		1777BB0E1AB482BE004E0951 /* AccountLeadCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "AccountLeadCell~iphone.xib"; sourceTree = "<group>"; };
 		177851DA1AB9C165003020DE /* Detail360ViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Detail360ViewController~iphone.xib"; sourceTree = "<group>"; };
 		1778858C1A84699100C71551 /* menudelete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menudelete.png; sourceTree = "<group>"; };
@@ -2979,9 +2987,11 @@
 				8499B2DA1A2C9BC4004D9ACB /* EditContactLeadViewController.h */,
 				8499B2DB1A2C9BC4004D9ACB /* EditContactLeadViewController.m */,
 				8499B2DC1A2C9BC4004D9ACB /* EditContactLeadViewController.xib */,
+				1772C83E1AC1A04800906FFB /* EditContactLeadViewController~iphone.xib */,
 				76F7DFAB1A3B44620003D720 /* EditNoteLeadViewController.h */,
 				76F7DFAC1A3B44620003D720 /* EditNoteLeadViewController.m */,
 				76F7DFAD1A3B44620003D720 /* EditNoteLeadViewController.xib */,
+				1719B7001AC1A9ED0061BD7B /* EditNoteLeadViewController~iphone.xib */,
 				76F328941A34B11E00E0F2C4 /* EditTaskLeadViewController.h */,
 				76F328951A34B11E00E0F2C4 /* EditTaskLeadViewController.m */,
 				76F328961A34B11E00E0F2C4 /* EditTaskLeadViewController.xib */,
@@ -4468,6 +4478,7 @@
 				7657E8881A5AEB3A008A62F9 /* EditContact360ViewController.h */,
 				7657E8891A5AEB3A008A62F9 /* EditContact360ViewController.m */,
 				7657E88A1A5AEB3A008A62F9 /* EditContact360ViewController.xib */,
+				1719B7051AC1AE2A0061BD7B /* EditContact360ViewController~iphone.xib */,
 				7657E88B1A5AEB3A008A62F9 /* Account360Cell.h */,
 				7657E88C1A5AEB3A008A62F9 /* Account360Cell.m */,
 				7657E88D1A5AEB3A008A62F9 /* Account360Cell.xib */,
@@ -4840,6 +4851,7 @@
 				8E2980E91A6AAB350068B66C /* EditNote360ViewController.h */,
 				8E2980EA1A6AAB350068B66C /* EditNote360ViewController.m */,
 				8E2980EB1A6AAB350068B66C /* EditNote360ViewController.xib */,
+				1719B70A1AC1AF9F0061BD7B /* EditNote360ViewController~iphone.xib */,
 				8E2980EE1A6AAB470068B66C /* EditNoteViewCell.h */,
 				8E2980EF1A6AAB470068B66C /* EditNoteViewCell.m */,
 				8E2980F01A6AAB470068B66C /* EditNoteViewCell.xib */,
@@ -6387,6 +6399,7 @@
 				76199E151A471DA900B792C5 /* MDSearchView.xib in Resources */,
 				76C9646B1A17731900029978 /* otherspart2.png in Resources */,
 				76601A4C194BE90F001D4C01 /* Reader-Mark-N@2x.png in Resources */,
+				1719B7021AC1A9ED0061BD7B /* EditNoteLeadViewController~iphone.xib in Resources */,
 				76199E121A471DA900B792C5 /* MDSearchBar.xib in Resources */,
 				76601A3D194BE90F001D4C01 /* AppIcon-057.png in Resources */,
 				76C964821A17A15C00029978 /* vtmap_ic_marker_default.png in Resources */,
@@ -6400,6 +6413,7 @@
 				B3157891188D5E5200C0ED01 /* btn-back-1-1.png in Resources */,
 				8E0B07CF1A4475CF00CF7A78 /* iconInfo.png in Resources */,
 				B3157883188D5E5200C0ED01 /* ic-viewpdf-close-1.png in Resources */,
+				1719B7071AC1AE2A0061BD7B /* EditContact360ViewController~iphone.xib in Resources */,
 				B316D695188FFA91009B751B /* bg-login-1.png in Resources */,
 				2D32B5CC187BDAA10065C305 /* Button_Normal-1.png in Resources */,
 				76C962A41A16DD0D00029978 /* EditAccountLeadViewController.xib in Resources */,
@@ -6573,6 +6587,7 @@
 				76961E561A3B3170008B5CE7 /* SelectPhotoViewController.xib in Resources */,
 				06FE2E151A4528B3004A1D16 /* iconDirection3.png in Resources */,
 				06FE2E181A4528B3004A1D16 /* iconDirectionSelected@2x.png in Resources */,
+				1772C8401AC1A04800906FFB /* EditContactLeadViewController~iphone.xib in Resources */,
 				B3A0669F17D1A72400BA6487 /* WCGridViewCell.xib in Resources */,
 				B315789E188D5E5200C0ED01 /* write-btn-2-1.png in Resources */,
 				8EB708771A407A1C001861A0 /* Mobile_GPS_MyLocationIcon.png in Resources */,
@@ -6666,6 +6681,7 @@
 				8E7554511A52EFC8001940FB /* iconForkRight@2x.png in Resources */,
 				B30E4DAE18A7A3E7009BB834 /* toolbar-bg-1.png in Resources */,
 				B3ECBA2B17D1EFF300AF40CF /* icon_thongtintiendo.png in Resources */,
+				1719B70C1AC1AF9F0061BD7B /* EditNote360ViewController~iphone.xib in Resources */,
 				94A2A7731A80F89F00C412E7 /* EditNoteOpportunityViewController.xib in Resources */,
 				8497BFDD1A295A2300A5ED3C /* newark_nj_1922.jpg in Resources */,
 				7697BBC41A7FB1700023F118 /* menu_help@2x.png in Resources */,

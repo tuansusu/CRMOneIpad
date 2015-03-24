@@ -12,6 +12,7 @@
 #import "Util.h"
 #import "TestMapViewController.h"
 #import "ListAccountLeadViewController.h"
+#import "EnumClass.h"
 
 @interface EditBussinessLeadViewController ()
 {
@@ -75,6 +76,12 @@
     obj.str=[defaults objectForKey:@"Language"];
     LocalizationSetLanguage(obj.str);
     [self setLanguage];
+    if(self.currentDeviceType==iPhone){
+//        [_scrollviewIphone setContentSize:CGSizeMake(0, self.view.frame.size.height)];
+         _scrollviewIphone.contentSize=CGSizeMake(0, self.view.frame.size.height);
+
+    }
+    
 }
 
 //khoi tao gia tri mac dinh cua form

@@ -8,9 +8,24 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditBussinessLeadViewController">
             <connections>
                 <outlet property="barLabel" destination="fol-eU-qx1" id="6lT-E9-U96"/>
+                <outlet property="btnSave" destination="Kyn-az-j8t" id="ZgA-cQ-taX"/>
                 <outlet property="footerView" destination="feR-ii-WVY" id="M9x-gk-p44"/>
                 <outlet property="fullNameLB" destination="uhJ-4s-No9" id="h7f-Yk-Tpz"/>
                 <outlet property="headerViewBar" destination="x1W-Q4-cdV" id="sxJ-3i-5oc"/>
+                <outlet property="scrollviewIphone" destination="oq5-GF-5c3" id="agl-W6-hkb"/>
+                <outlet property="txtAddress" destination="0Rt-Pf-GfH" id="0tT-hU-wQ8"/>
+                <outlet property="txtCapital" destination="ll1-ng-jOG" id="Ckq-wf-fuR"/>
+                <outlet property="txtCharterCapital" destination="iC3-7z-JpN" id="AA6-1X-2e9"/>
+                <outlet property="txtFax" destination="jQt-Gq-qjY" id="UIx-Ku-JFA"/>
+                <outlet property="txtName" destination="EEU-8T-nHP" id="igM-DK-kf5"/>
+                <outlet property="txtNumberEmployee" destination="oWs-Sa-Y9V" id="hFz-w9-TZV"/>
+                <outlet property="txtNumberShareholders" destination="w6g-rL-PbR" id="J1k-m0-qrp"/>
+                <outlet property="txtPhone" destination="4XA-sO-Iqu" id="Y5P-w1-C9K"/>
+                <outlet property="txtProfitBeforeTax" destination="AVb-uO-sSY" id="U8W-fF-J6d"/>
+                <outlet property="txtRegisterCodeBussiness" destination="vHa-e1-Epv" id="MuL-u7-2bq"/>
+                <outlet property="txtSysCatType" destination="JN2-JC-nlr" id="f2v-hC-UQU"/>
+                <outlet property="txtTaxCode" destination="FRx-ik-1Xh" id="yIf-eV-BIx"/>
+                <outlet property="txtTotalassets" destination="P0G-bV-pmV" id="hRm-Mb-UW7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -37,8 +52,26 @@
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x1W-Q4-cdV" userLabel="View-header">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                             <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kyn-az-j8t" userLabel="btnSave">
+                                    <rect key="frame" x="282" y="22" width="30" height="30"/>
+                                    <state key="normal" backgroundImage="icon_save_90x90.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="actionSave:" destination="-1" eventType="touchUpInside" id="gPo-oz-fcr"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKo-e3-DNY">
+                                    <rect key="frame" x="244" y="22" width="30" height="30"/>
+                                    <state key="normal" backgroundImage="icon_delete_90x90.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="actionDel:" destination="-1" eventType="touchUpInside" id="5f3-2m-eBr"/>
+                                    </connections>
+                                </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="KHÁCH HÀNG TIỀM NĂNG (CN)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uhJ-4s-No9">
-                                    <rect key="frame" x="38" y="22" width="274" height="30"/>
+                                    <rect key="frame" x="38" y="22" width="111" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
@@ -55,6 +88,121 @@
                             </subviews>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oq5-GF-5c3">
+                            <rect key="frame" x="0.0" y="60" width="320" height="478"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thông tin chính" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NeX-PJ-Tlt">
+                                    <rect key="frame" x="25" y="8" width="287" height="14"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iq7-CN-cad">
+                                    <rect key="frame" x="8" y="8" width="14" height="14"/>
+                                    <state key="normal" backgroundImage="icon_down.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thông tin khác" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3G-XD-T1q">
+                                    <rect key="frame" x="25" y="182" width="287" height="14"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvS-of-0Ku">
+                                    <rect key="frame" x="8" y="182" width="14" height="14"/>
+                                    <state key="normal" backgroundImage="icon_down.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tên khách hàng" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EEU-8T-nHP">
+                                    <rect key="frame" x="8" y="30" width="304" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_require-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="GHn-aK-DkQ">
+                                    <rect key="frame" x="296" y="37" width="16" height="16"/>
+                                </imageView>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Số điện thoại" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4XA-sO-Iqu">
+                                    <rect key="frame" x="8" y="68" width="304" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_require-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="et0-qJ-9O6">
+                                    <rect key="frame" x="296" y="75" width="16" height="16"/>
+                                </imageView>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mã số thuế" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FRx-ik-1Xh">
+                                    <rect key="frame" x="8" y="106" width="304" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Số đăng ký KD" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vHa-e1-Epv">
+                                    <rect key="frame" x="8" y="144" width="304" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Fax" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jQt-Gq-qjY">
+                                    <rect key="frame" x="8" y="204" width="304" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lợi nhuận trước thuế" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AVb-uO-sSY">
+                                    <rect key="frame" x="8" y="318" width="304" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tổng tài sản" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P0G-bV-pmV">
+                                    <rect key="frame" x="8" y="508" width="304" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Địa chỉ" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Rt-Pf-GfH">
+                                    <rect key="frame" x="8" y="242" width="304" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDO-W7-1ep">
+                                    <rect key="frame" x="282" y="242" width="30" height="30"/>
+                                    <state key="normal" title="Button" backgroundImage="pin.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="actionChoiseAddress:" destination="-1" eventType="touchUpInside" id="cUp-fq-n2F"/>
+                                    </connections>
+                                </button>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Loại hình doanh nghiệp" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JN2-JC-nlr">
+                                    <rect key="frame" x="8" y="280" width="304" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ihh-Zb-xhP" userLabel="btnSysCat">
+                                    <rect key="frame" x="282" y="280" width="30" height="30"/>
+                                    <state key="normal" backgroundImage="ic_cbx-1.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Vốn điều lệ" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iC3-7z-JpN">
+                                    <rect key="frame" x="8" y="356" width="304" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Vốn chủ sở hữu" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ll1-ng-jOG">
+                                    <rect key="frame" x="8" y="394" width="304" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Số cổ đông" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w6g-rL-PbR">
+                                    <rect key="frame" x="8" y="432" width="304" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Số lượng nhân viên" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oWs-Sa-Y9V">
+                                    <rect key="frame" x="8" y="470" width="304" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                            </subviews>
+                        </scrollView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
@@ -64,6 +212,12 @@
         </view>
     </objects>
     <resources>
+        <image name="ic_cbx-1.png" width="60" height="60"/>
+        <image name="icon_delete_90x90.png" width="90" height="90"/>
+        <image name="icon_down.png" width="19" height="11"/>
         <image name="icon_menu-1.png" width="48" height="48"/>
+        <image name="icon_require-1.png" width="16" height="16"/>
+        <image name="icon_save_90x90.png" width="90" height="90"/>
+        <image name="pin.png" width="48" height="48"/>
     </resources>
 </document>

@@ -10,6 +10,12 @@
 
 #import "Globals.h"
 
+#define TEXT_HDVTD @"HĐV Thời Điểm"
+#define TEXT_HDVBQ @"HĐV Bình Quân"
+
+#define TEXT_DNTD @"Dư nợ thời điểm"
+#define TEXT_DNBQ @"Dư nợ bình quân"
+
 @class WidgetModel;
 
 @class DTOWidgetObject;

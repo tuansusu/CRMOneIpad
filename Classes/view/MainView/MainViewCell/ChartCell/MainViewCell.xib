@@ -15,11 +15,11 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" id="EPG-GG-N5A" customClass="ContentChartViewCell">
-                        <rect key="frame" x="0.0" y="50" width="1024" height="449.5"/>
+                        <rect key="frame" x="0.0" y="50" width="1024" height="450"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" id="eNe-Lu-3WE">
-                                <rect key="frame" x="112" y="0.0" width="800" height="449.5"/>
+                                <rect key="frame" x="112" y="0.0" width="800" height="450"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -106,7 +106,7 @@
                                         <color key="backgroundColor" red="0.039215686270000001" green="0.43137254899999999" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <view contentMode="scaleToFill" id="o6a-kF-jyH">
-                                        <rect key="frame" x="0.0" y="133" width="600" height="70"/>
+                                        <rect key="frame" x="0.0" y="69" width="600" height="70"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loại biểu đồ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TiX-ay-qHy">
@@ -200,6 +200,82 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
+                                    <view contentMode="scaleToFill" id="ksb-nZ-5nk">
+                                        <rect key="frame" x="0.0" y="147" width="600" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" id="T58-0a-DkG">
+                                                <rect key="frame" x="52" y="4" width="250" height="44"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fhz-0G-TUn" userLabel="btnColorLeft">
+                                                        <rect key="frame" x="11" y="2" width="40" height="40"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" red="0.94509803920000002" green="0.33333333329999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <state key="normal">
+                                                            <color key="titleColor" red="0.44313728810000003" green="0.56078433989999998" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="actionWidgetLineSelected:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="I7M-fk-ZBf"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Huy động vốn thời điểm" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4bH-5Q-B0C">
+                                                        <rect key="frame" x="59" y="7" width="190" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="T29-Jx-lnL">
+                                                        <rect key="frame" x="0.0" y="0.0" width="250" height="44"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <state key="normal">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="btnChooseColorAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="avh-Vo-f94"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" id="Sj6-VW-vTE">
+                                                <rect key="frame" x="312" y="4" width="250" height="44"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="a82-MR-nU7" userLabel="btnColorRight">
+                                                        <rect key="frame" x="11" y="2" width="40" height="40"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <state key="normal">
+                                                            <color key="titleColor" red="0.44313728810000003" green="0.56078433989999998" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                    </button>
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Huy động vốn bình quân" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QcY-2n-6sI">
+                                                        <rect key="frame" x="59" y="7" width="190" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PBf-A8-bFi">
+                                                        <rect key="frame" x="0.0" y="0.0" width="250" height="44"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <state key="normal">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="btnChooseColorAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8dn-GD-rxa"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
                                     <view contentMode="scaleToFill" id="Qkl-3b-6RE">
                                         <rect key="frame" x="0.0" y="242" width="600" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -244,6 +320,8 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="btnCancel" destination="fk4-sV-KC6" id="tek-VF-sy9"/>
+                <outlet property="btnChooseColorLeft" destination="fhz-0G-TUn" id="yaL-Bf-UfI"/>
+                <outlet property="btnChooseColorRight" destination="a82-MR-nU7" id="hKW-A8-v7a"/>
                 <outlet property="btnColumnHorizontal" destination="Ggk-SR-ecj" id="Euu-YK-Vyd"/>
                 <outlet property="btnColumnVertical" destination="ysu-UC-rWV" id="Jep-oX-eHt"/>
                 <outlet property="btnDelete" destination="fag-d7-but" id="6LN-iq-uvY"/>
@@ -251,6 +329,8 @@
                 <outlet property="btnSave" destination="G1y-Sv-HAi" id="pKu-T9-f63"/>
                 <outlet property="configurationView" destination="7H2-yL-9Cw" id="VA5-He-pT9"/>
                 <outlet property="contentChartView" destination="EPG-GG-N5A" id="u34-PO-pKK"/>
+                <outlet property="lblTitleColorLeft" destination="4bH-5Q-B0C" id="tRr-FX-Nro"/>
+                <outlet property="lblTitleColorRight" destination="QcY-2n-6sI" id="82i-ZO-9AJ"/>
                 <outlet property="titleGraph" destination="eAi-hb-nC8" id="Gol-8B-AcT"/>
                 <outlet property="widgetTypeView" destination="B1U-fV-f9e" id="s5k-Xt-TWs"/>
             </connections>

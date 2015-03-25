@@ -10,6 +10,8 @@
 #import "DTOWidgetObject.h"
 #import "Globals.h"
 #import "WidgetModel.h"
+
+
 @implementation ContentChartViewCell
 - (id)initWithFrame:(CGRect)frame
 {
@@ -154,16 +156,16 @@
 
 
         data =[NSString stringWithFormat:@"[ {"
-               @"name: 'HĐV Thời Điểm',"
+               @"name: '%@',"
                @"data: [%@],"
                @"color:'rgb(%@)',"
                @"stack: '1'"
                @"},{"
-               @"name: 'HĐV Bình Quân',"
+               @"name: '%@',"
                @"data: [%@],"
                @"color:'rgb(%@)',"
                @"stack: '2'"
-               @"}]",dataHDVThoiDiemStr, _widgetOB.colorDisplay2, dataHDVBinhQuanStr,_widgetOB.colorDisplay1];
+               @"}]",TEXT_HDVTD,dataHDVThoiDiemStr, _widgetOB.colorDisplay2,TEXT_HDVBQ, dataHDVBinhQuanStr,_widgetOB.colorDisplay1];
 
         types = [NSString stringWithFormat:@"[%@]",monthHDVBinhQuanStr];
 
@@ -174,16 +176,16 @@
     else if ([_widgetOB.widgetId intValue]==WIDGET_TYPE_TIN_DUNG)
     {
         data =[NSString stringWithFormat:@"[ {"
-               @"name: 'Dư nợ thời điểm',"
+               @"name: '%@',"
                @"data: [%@],"
                @"color:'rgb(%@)',"
                @"stack: '1'"
                @"},{"
-               @"name: 'Dư nợ bình quân',"
+               @"name: '%@',"
                @"data: [%@],"
                @"color:'rgb(%@)',"
                @"stack: '2'"
-               @"}]",dataTinDungDuNoThoiDiemStr,_widgetOB.colorDisplay2,dataTinDungDuNoBinhQuanStr,_widgetOB.colorDisplay1];
+               @"}]",TEXT_DNTD,dataTinDungDuNoThoiDiemStr,_widgetOB.colorDisplay2,TEXT_DNBQ,dataTinDungDuNoBinhQuanStr,_widgetOB.colorDisplay1];
         types = [NSString stringWithFormat:@"[%@]",monthTinDungNoThoiDiemStr];
 
         NSMutableString* jsStr = [[NSMutableString alloc] initWithCapacity:0];

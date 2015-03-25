@@ -116,7 +116,9 @@
         self.fullNameLB.text = LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_HEADER_ADD");
     }
     
-    
+    if(self.currentDeviceType == iPhone){
+        self.fullNameLB.text = @"";
+    }
     
 }
 
@@ -197,7 +199,12 @@
             
             
             if ([viewSubTemp isKindOfClass:[UILabel class]]) {
-                ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+                if(viewSubTemp.tag == 505){
+                    ((UILabel*) viewSubTemp).textColor = [UIColor redColor];
+                    
+                }else{
+                    ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+                }
             }
             
             
@@ -227,6 +234,12 @@
         
     }
     
+    //For iPhone only
+    if(self.currentDeviceType == iPhone){
+        [self.viewMainBodyInfo setScrollEnabled:YES];
+        [self.viewMainBodyInfo setContentSize:CGSizeMake(self.view.frame.size.width, self.tvNote.frame.origin.y + self.tvNote.frame.size.height + 100)];
+        [self.viewMainBodyInfo setFrame:CGRectMake(self.viewMainBodyInfo.frame.origin.x, self.viewMainBodyInfo.frame.origin.y, self.viewMainBodyInfo.frame.size.width, self.viewMainBodyInfo.frame.size.height - self.headerViewBar.frame.size.height) ];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -564,22 +577,34 @@
     
     [self hiddenKeyBoard];
     
-    [self viewWhenAddSubView];
-    SelectPhotoViewController *detail = [[SelectPhotoViewController alloc] initWithNibName:@"SelectPhotoViewController" bundle:nil];
-    detail.delegate = self;
-    detail.typeImage = @"Lead";
-    detail.index = 0;
-    detail.view.frame = CGRectMake(380, 80, 320,480);
-    [self addChildViewController: detail];
-    [detail didMoveToParentViewController:self];
-    //[InterfaceUtil setBorderWithCornerAndBorder:detail.view :10 :0.5 :nil];
-    
-    [UIView transitionWithView:self.view
-                      duration:0.2
-                       options:UIViewAnimationOptionCurveEaseIn //any animation
-                    animations:^ { [self.view addSubview:detail.view];
-                    }
-                    completion:nil];
+    if(self.currentDeviceType == iPad){
+        
+        
+        [self viewWhenAddSubView];
+        SelectPhotoViewController *detail = [[SelectPhotoViewController alloc] initWithNibName:@"SelectPhotoViewController" bundle:nil];
+        detail.delegate = self;
+        detail.typeImage = @"Lead";
+        detail.index = 0;
+        detail.view.frame = CGRectMake(380, 80, 320,480);
+        [self addChildViewController: detail];
+        [detail didMoveToParentViewController:self];
+        //[InterfaceUtil setBorderWithCornerAndBorder:detail.view :10 :0.5 :nil];
+        
+        [UIView transitionWithView:self.view
+                          duration:0.2
+                           options:UIViewAnimationOptionCurveEaseIn //any animation
+                        animations:^ { [self.view addSubview:detail.view];
+                        }
+                        completion:nil];
+    }else{
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                                 delegate:self
+                                                        cancelButtonTitle:LocalizedString(@"KEY_CANCEL")
+                                                   destructiveButtonTitle:nil
+                                                        otherButtonTitles:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_CHOOSE_PHOTO"),@"Camera", nil];
+        [actionSheet showInView:self.view];
+        
+    }
 }
 
 
@@ -758,6 +783,41 @@
         [self.visiblePopTipViews removeObjectAtIndex:0];
     }
 }
+#pragma mark - Phan chon anh tren iphone
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    UIImagePickerController * picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    
+    if(buttonIndex == 0) {
+        picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    } else {
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+    
+    [self presentModalViewController:picker animated:YES];
+}
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [picker dismissModalViewControllerAnimated:YES];
+    self.imgAvartar.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+   	[df setDateFormat:@"yyyyMMdd_HHmmss"];
+    NSDate *now = [NSDate date];
+    NSString *nowStr = [df stringFromDate:now];
+
+    
+    //luu file
+    NSString *strFileName = [NSString stringWithFormat:@"%@_%@.jpg", @"", nowStr];    NSData* imageData = UIImageJPEGRepresentation(self.imgAvartar.image, 1.0);
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *dbPath = [documentsDirectory stringByAppendingPathComponent:strFileName];
+
+    
+    [imageData writeToFile:dbPath atomically:YES];
+    fileAvartar = strFileName;
+    imagePath=[[self applicationDocumentsDirectory] stringByAppendingPathComponent:strFileName];
+}
 #pragma mark - CMPopTipViewDelegate methods
 
 - (void)popTipViewWasDismissedByUser:(CMPopTipView *)popTipView
@@ -803,6 +863,10 @@
     [_txtDateOfBirth setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_BIRTHDAY")];
     [_lblLocation setText:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_ADDRESS")];
     [_txtAddress setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_ADDRESS")];
-    [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+    if(self.currentDeviceType == iPad){
+        [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+    }else{
+        [_btnSave setTitle:LocalizedString(@"KEY_SAVE") forState:UIControlStateNormal];
+    }
 }
 @end

@@ -15,7 +15,7 @@
 
 
 
-@interface EditContactOpportunityViewController : BaseViewController<UITextFieldDelegate, SelectPhotoDelegate,SelectIndexDelegate, CMPopTipViewDelegate,UITextFieldDelegate>
+@interface EditContactOpportunityViewController : BaseViewController<UITextFieldDelegate, SelectPhotoDelegate,SelectIndexDelegate, CMPopTipViewDelegate,UITextFieldDelegate,UIActionSheetDelegate>
 
 //DATA
 /*

@@ -10,6 +10,9 @@
 
 #import "Globals.h"
 #import "ContentChartViewCell.h"
+#import <QuartzCore/QuartzCore.h>
+#import "WEPopoverController.h"
+#import "ColorViewController.h"
 
 @class DTOWidgetObject;
 @class MainViewCell;
@@ -23,7 +26,7 @@
 
 @end
 
-@interface MainViewCell : UITableViewCell
+@interface MainViewCell : UITableViewCell<WEPopoverControllerDelegate, UIPopoverControllerDelegate, ColorViewControllerDelegate>
 {
 
    IBOutlet ContentChartViewCell *contentChartView;
@@ -52,9 +55,20 @@
 
     IBOutlet UIButton *btnSave;
     IBOutlet UIButton *btnCancel;
-    IBOutlet UIView *configurationView;
 
+    IBOutlet UIButton *btnChooseColorLeft;
+    IBOutlet UIButton *btnChooseColorRight;
+
+    IBOutlet UIView *configurationView;
+    NSInteger tagChooseCollor;
+    NSString *colorDisplay1;
+    NSString *colorDisplay2;
+
+    IBOutlet UILabel *lblTitleColorLeft;
+    IBOutlet UILabel *lblTitleColorRight;
 }
+
+@property (nonatomic, strong) WEPopoverController *wePopoverController;
 
 @property (nonatomic,assign) id<MainViewCellDelegate>delegate;
 

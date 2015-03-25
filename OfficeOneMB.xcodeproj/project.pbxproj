@@ -856,6 +856,31 @@
 		8E8269C81A7A7317001D0E4B /* DashboardTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8269C61A7A7317001D0E4B /* DashboardTaskViewController.m */; };
 		8E8269C91A7A7317001D0E4B /* DashboardTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E8269C71A7A7317001D0E4B /* DashboardTaskViewController.xib */; };
 		8E8269CC1A7A7342001D0E4B /* DashboardTaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8269CB1A7A7342001D0E4B /* DashboardTaskModel.m */; };
+		8E875FB11AC2E390002B89AD /* ColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E875F8E1AC2E390002B89AD /* ColorButton.m */; };
+		8E875FB21AC2E390002B89AD /* ColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E875F901AC2E390002B89AD /* ColorViewController.m */; };
+		8E875FB31AC2E390002B89AD /* ColorPopoverLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8E875F911AC2E390002B89AD /* ColorPopoverLocalizable.strings */; };
+		8E875FB41AC2E390002B89AD /* GzColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E875F941AC2E390002B89AD /* GzColors.m */; };
+		8E875FB51AC2E390002B89AD /* UIBarButtonItem+WEPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E875F971AC2E390002B89AD /* UIBarButtonItem+WEPopover.m */; };
+		8E875FB61AC2E390002B89AD /* WEPopoverContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E875F991AC2E390002B89AD /* WEPopoverContainerView.m */; };
+		8E875FB71AC2E390002B89AD /* WEPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E875F9B1AC2E390002B89AD /* WEPopoverController.m */; };
+		8E875FB81AC2E390002B89AD /* WETouchableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E875F9E1AC2E390002B89AD /* WETouchableView.m */; };
+		8E875FB91AC2E390002B89AD /* cache2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E875FA01AC2E390002B89AD /* cache2.png */; };
+		8E875FBA1AC2E390002B89AD /* popoverArrowDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E875FA11AC2E390002B89AD /* popoverArrowDown.png */; };
+		8E875FBB1AC2E390002B89AD /* popoverArrowDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E875FA21AC2E390002B89AD /* popoverArrowDown@2x.png */; };
+		8E875FBC1AC2E390002B89AD /* popoverArrowDownSimple.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E875FA31AC2E390002B89AD /* popoverArrowDownSimple.png */; };
+		8E875FBD1AC2E390002B89AD /* popoverArrowLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E875FA41AC2E390002B89AD /* popoverArrowLeft.png */; };
+		8E875FBE1AC2E390002B89AD /* popoverArrowLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E875FA51AC2E390002B89AD /* popoverArrowLeft@2x.png */; };
+		8E875FBF1AC2E390002B89AD /* popoverArrowLeftSimple.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E875FA61AC2E390002B89AD /* popoverArrowLeftSimple.png */; };
+		8E875FC01AC2E390002B89AD /* popoverArrowRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E875FA71AC2E390002B89AD /* popoverArrowRight.png */; };
+		8E875FC11AC2E390002B89AD /* popoverArrowRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E875FA81AC2E390002B89AD /* popoverArrowRight@2x.png */; };
+		8E875FC21AC2E390002B89AD /* popoverArrowRightSimple.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E875FA91AC2E390002B89AD /* popoverArrowRightSimple.png */; };
+		8E875FC31AC2E390002B89AD /* popoverArrowUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E875FAA1AC2E390002B89AD /* popoverArrowUp.png */; };
+		8E875FC41AC2E390002B89AD /* popoverArrowUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E875FAB1AC2E390002B89AD /* popoverArrowUp@2x.png */; };
+		8E875FC51AC2E390002B89AD /* popoverArrowUpSimple.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E875FAC1AC2E390002B89AD /* popoverArrowUpSimple.png */; };
+		8E875FC61AC2E390002B89AD /* popoverBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E875FAD1AC2E390002B89AD /* popoverBg.png */; };
+		8E875FC71AC2E390002B89AD /* popoverBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E875FAE1AC2E390002B89AD /* popoverBg@2x.png */; };
+		8E875FC81AC2E390002B89AD /* popoverBgSimple.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E875FAF1AC2E390002B89AD /* popoverBgSimple.png */; };
+		8E875FC91AC2E390002B89AD /* README in Resources */ = {isa = PBXBuildFile; fileRef = 8E875FB01AC2E390002B89AD /* README */; };
 		8E87C9321A45B29700CB0918 /* DTOAccountProcessObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E87C9311A45B29700CB0918 /* DTOAccountProcessObject.m */; };
 		8E8B3F251A49AA4300241360 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8B3F231A49AA4300241360 /* MainViewController.m */; };
 		8E8B3F261A49AA4300241360 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E8B3F241A49AA4300241360 /* MainViewController.xib */; };
@@ -2406,6 +2431,39 @@
 		8E8269C71A7A7317001D0E4B /* DashboardTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardTaskViewController.xib; sourceTree = "<group>"; };
 		8E8269CA1A7A7342001D0E4B /* DashboardTaskModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardTaskModel.h; sourceTree = "<group>"; };
 		8E8269CB1A7A7342001D0E4B /* DashboardTaskModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardTaskModel.m; sourceTree = "<group>"; };
+		8E875F8D1AC2E390002B89AD /* ColorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorButton.h; sourceTree = "<group>"; };
+		8E875F8E1AC2E390002B89AD /* ColorButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorButton.m; sourceTree = "<group>"; };
+		8E875F8F1AC2E390002B89AD /* ColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorViewController.h; sourceTree = "<group>"; };
+		8E875F901AC2E390002B89AD /* ColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorViewController.m; sourceTree = "<group>"; };
+		8E875F921AC2E390002B89AD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ColorPopoverLocalizable.strings; sourceTree = "<group>"; };
+		8E875F931AC2E390002B89AD /* GzColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GzColors.h; sourceTree = "<group>"; };
+		8E875F941AC2E390002B89AD /* GzColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GzColors.m; sourceTree = "<group>"; };
+		8E875F961AC2E390002B89AD /* UIBarButtonItem+WEPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+WEPopover.h"; sourceTree = "<group>"; };
+		8E875F971AC2E390002B89AD /* UIBarButtonItem+WEPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+WEPopover.m"; sourceTree = "<group>"; };
+		8E875F981AC2E390002B89AD /* WEPopoverContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverContainerView.h; sourceTree = "<group>"; };
+		8E875F991AC2E390002B89AD /* WEPopoverContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverContainerView.m; sourceTree = "<group>"; };
+		8E875F9A1AC2E390002B89AD /* WEPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverController.h; sourceTree = "<group>"; };
+		8E875F9B1AC2E390002B89AD /* WEPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverController.m; sourceTree = "<group>"; };
+		8E875F9C1AC2E390002B89AD /* WEPopoverParentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverParentView.h; sourceTree = "<group>"; };
+		8E875F9D1AC2E390002B89AD /* WETouchableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WETouchableView.h; sourceTree = "<group>"; };
+		8E875F9E1AC2E390002B89AD /* WETouchableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WETouchableView.m; sourceTree = "<group>"; };
+		8E875FA01AC2E390002B89AD /* cache2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cache2.png; sourceTree = "<group>"; };
+		8E875FA11AC2E390002B89AD /* popoverArrowDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowDown.png; sourceTree = "<group>"; };
+		8E875FA21AC2E390002B89AD /* popoverArrowDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverArrowDown@2x.png"; sourceTree = "<group>"; };
+		8E875FA31AC2E390002B89AD /* popoverArrowDownSimple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowDownSimple.png; sourceTree = "<group>"; };
+		8E875FA41AC2E390002B89AD /* popoverArrowLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowLeft.png; sourceTree = "<group>"; };
+		8E875FA51AC2E390002B89AD /* popoverArrowLeft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverArrowLeft@2x.png"; sourceTree = "<group>"; };
+		8E875FA61AC2E390002B89AD /* popoverArrowLeftSimple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowLeftSimple.png; sourceTree = "<group>"; };
+		8E875FA71AC2E390002B89AD /* popoverArrowRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowRight.png; sourceTree = "<group>"; };
+		8E875FA81AC2E390002B89AD /* popoverArrowRight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverArrowRight@2x.png"; sourceTree = "<group>"; };
+		8E875FA91AC2E390002B89AD /* popoverArrowRightSimple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowRightSimple.png; sourceTree = "<group>"; };
+		8E875FAA1AC2E390002B89AD /* popoverArrowUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowUp.png; sourceTree = "<group>"; };
+		8E875FAB1AC2E390002B89AD /* popoverArrowUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverArrowUp@2x.png"; sourceTree = "<group>"; };
+		8E875FAC1AC2E390002B89AD /* popoverArrowUpSimple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowUpSimple.png; sourceTree = "<group>"; };
+		8E875FAD1AC2E390002B89AD /* popoverBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverBg.png; sourceTree = "<group>"; };
+		8E875FAE1AC2E390002B89AD /* popoverBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverBg@2x.png"; sourceTree = "<group>"; };
+		8E875FAF1AC2E390002B89AD /* popoverBgSimple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverBgSimple.png; sourceTree = "<group>"; };
+		8E875FB01AC2E390002B89AD /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		8E87C9301A45B29700CB0918 /* DTOAccountProcessObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOAccountProcessObject.h; sourceTree = "<group>"; };
 		8E87C9311A45B29700CB0918 /* DTOAccountProcessObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOAccountProcessObject.m; sourceTree = "<group>"; };
 		8E8B3F221A49AA4300241360 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -3153,6 +3211,7 @@
 		2D0E2ED21798018E0081D44A /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				8E875F8C1AC2E390002B89AD /* ColorPopover */,
 				8E60219E1A872162006801C4 /* TPKeyboardAvoiding */,
 				8E6EF7A51A7FB9C2008C8824 /* SDWebImage */,
 				8E6EF7901A7FB935008C8824 /* MJPhotoBrowser */,
@@ -5203,6 +5262,62 @@
 			path = DashboardTaskVC;
 			sourceTree = "<group>";
 		};
+		8E875F8C1AC2E390002B89AD /* ColorPopover */ = {
+			isa = PBXGroup;
+			children = (
+				8E875F8D1AC2E390002B89AD /* ColorButton.h */,
+				8E875F8E1AC2E390002B89AD /* ColorButton.m */,
+				8E875F8F1AC2E390002B89AD /* ColorViewController.h */,
+				8E875F901AC2E390002B89AD /* ColorViewController.m */,
+				8E875F911AC2E390002B89AD /* ColorPopoverLocalizable.strings */,
+				8E875F931AC2E390002B89AD /* GzColors.h */,
+				8E875F941AC2E390002B89AD /* GzColors.m */,
+				8E875F951AC2E390002B89AD /* Popover */,
+				8E875F9F1AC2E390002B89AD /* popoverImages */,
+			);
+			path = ColorPopover;
+			sourceTree = "<group>";
+		};
+		8E875F951AC2E390002B89AD /* Popover */ = {
+			isa = PBXGroup;
+			children = (
+				8E875F961AC2E390002B89AD /* UIBarButtonItem+WEPopover.h */,
+				8E875F971AC2E390002B89AD /* UIBarButtonItem+WEPopover.m */,
+				8E875F981AC2E390002B89AD /* WEPopoverContainerView.h */,
+				8E875F991AC2E390002B89AD /* WEPopoverContainerView.m */,
+				8E875F9A1AC2E390002B89AD /* WEPopoverController.h */,
+				8E875F9B1AC2E390002B89AD /* WEPopoverController.m */,
+				8E875F9C1AC2E390002B89AD /* WEPopoverParentView.h */,
+				8E875F9D1AC2E390002B89AD /* WETouchableView.h */,
+				8E875F9E1AC2E390002B89AD /* WETouchableView.m */,
+			);
+			path = Popover;
+			sourceTree = "<group>";
+		};
+		8E875F9F1AC2E390002B89AD /* popoverImages */ = {
+			isa = PBXGroup;
+			children = (
+				8E875FA01AC2E390002B89AD /* cache2.png */,
+				8E875FA11AC2E390002B89AD /* popoverArrowDown.png */,
+				8E875FA21AC2E390002B89AD /* popoverArrowDown@2x.png */,
+				8E875FA31AC2E390002B89AD /* popoverArrowDownSimple.png */,
+				8E875FA41AC2E390002B89AD /* popoverArrowLeft.png */,
+				8E875FA51AC2E390002B89AD /* popoverArrowLeft@2x.png */,
+				8E875FA61AC2E390002B89AD /* popoverArrowLeftSimple.png */,
+				8E875FA71AC2E390002B89AD /* popoverArrowRight.png */,
+				8E875FA81AC2E390002B89AD /* popoverArrowRight@2x.png */,
+				8E875FA91AC2E390002B89AD /* popoverArrowRightSimple.png */,
+				8E875FAA1AC2E390002B89AD /* popoverArrowUp.png */,
+				8E875FAB1AC2E390002B89AD /* popoverArrowUp@2x.png */,
+				8E875FAC1AC2E390002B89AD /* popoverArrowUpSimple.png */,
+				8E875FAD1AC2E390002B89AD /* popoverBg.png */,
+				8E875FAE1AC2E390002B89AD /* popoverBg@2x.png */,
+				8E875FAF1AC2E390002B89AD /* popoverBgSimple.png */,
+				8E875FB01AC2E390002B89AD /* README */,
+			);
+			path = popoverImages;
+			sourceTree = "<group>";
+		};
 		8E8B3F211A49AA4300241360 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
@@ -5889,7 +6004,6 @@
 		92C68E4A1519D4F100981728 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				8E8B3F211A49AA4300241360 /* MainView */,
 				769E1FC31A7C7DB300545F63 /* Help */,
 				8EB93CF91A791EDE002875F2 /* DaskboardTasks */,
 				8E8B3F211A49AA4300241360 /* MainView */,
@@ -6330,6 +6444,7 @@
 				8E44BC361A73A89B00EDCD1A /* ProTaiKhoanThanhToanDetailViewController.xib in Resources */,
 				2D161064174F69780083F301 /* MainWindow-iPad.xib in Resources */,
 				2D21067A187AA1BB0022681B /* WeekPickerViewController.xib in Resources */,
+				8E875FC01AC2E390002B89AD /* popoverArrowRight.png in Resources */,
 				7622D2F11A43246700DC9309 /* ContactOpportunityCell.xib in Resources */,
 				76C964541A17731900029978 /* lines.png in Resources */,
 				2D161066174F6D920083F301 /* RootViewController.xib in Resources */,
@@ -6346,7 +6461,9 @@
 				76961E511A3B306B008B5CE7 /* avatar.png in Resources */,
 				B31AFAA8187ADB5800D366B5 /* ic-show-path-2-1.png in Resources */,
 				B3157893188D5E5200C0ED01 /* btn-refresh-1-1.png in Resources */,
+				8E875FBD1AC2E390002B89AD /* popoverArrowLeft.png in Resources */,
 				8E2640B51A4C7A4C0047073B /* MainViewListCell.xib in Resources */,
+				8E875FC81AC2E390002B89AD /* popoverBgSimple.png in Resources */,
 				8497BFBE1A295A2300A5ED3C /* australia-large@2x.png in Resources */,
 				2D87F5F5175AD862007F861D /* SVProgressHUD.bundle in Resources */,
 				2DD29EF318769C260066B883 /* menu-ic-setting-1.png in Resources */,
@@ -6425,6 +6542,7 @@
 				177851DC1AB9C165003020DE /* Detail360ViewController~iphone.xib in Resources */,
 				8E7554611A52EFC8001940FB /* iconStraight@2x.png in Resources */,
 				2D0DCEE617A37ADC004FDBBC /* Icon-Refresh.png in Resources */,
+				8E875FC41AC2E390002B89AD /* popoverArrowUp@2x.png in Resources */,
 				2D0DCEE717A37ADC004FDBBC /* Icon-Search.png in Resources */,
 				8E7554731A52F599001940FB /* iconMarkerLocation@2x.png in Resources */,
 				2D0DCEE817A37ADC004FDBBC /* Line-Phong kinhdoanh.png in Resources */,
@@ -6436,6 +6554,7 @@
 				2D2D212A17A6291700A87364 /* Icon-Reload.png in Resources */,
 				8E8B3F261A49AA4300241360 /* MainViewController.xib in Resources */,
 				8E7554601A52EFC8001940FB /* iconStraight.png in Resources */,
+				8E875FC61AC2E390002B89AD /* popoverBg.png in Resources */,
 				767E80CA1AB9C4E60098F76E /* TaskOpportunityCell~iphone.xib in Resources */,
 				76BE29381AA3F55800663803 /* icon_delete_90x90.png in Resources */,
 				2D2D213417A6291700A87364 /* Line-box_doanh_thu_cac_dich_vu.png in Resources */,
@@ -6481,18 +6600,22 @@
 				171D91991AB8741A005AB422 /* calendar_tabbar.png in Resources */,
 				2D4B92CB17ACD7DE002A9AC5 /* DAFontSet.plist in Resources */,
 				2DFEFC0917AD075800D684FB /* arrow_up.png in Resources */,
+				8E875FBF1AC2E390002B89AD /* popoverArrowLeftSimple.png in Resources */,
 				8E5AA9B81A503C86007D9C8A /* iconMarker@2x.png in Resources */,
 				8ED4028E1A41E18800CCBE6D /* CustomerViewCell.xib in Resources */,
 				8497BFE41A295A2300A5ED3C /* step3.png in Resources */,
 				7657E8C41A5AEB3A008A62F9 /* Follow360ViewController.xib in Resources */,
 				7657E8B01A5AEB3A008A62F9 /* Contact360Cell.xib in Resources */,
+				8E875FC51AC2E390002B89AD /* popoverArrowUpSimple.png in Resources */,
 				76601A3E194BE90F001D4C01 /* AppIcon-072.png in Resources */,
+				8E875FC71AC2E390002B89AD /* popoverBg@2x.png in Resources */,
 				2DFEFC0A17AD075800D684FB /* down_arrow.png in Resources */,
 				76601A4E194BE90F001D4C01 /* Reader-Mark-Y@2x.png in Resources */,
 				B315789B188D5E5200C0ED01 /* logo-big-1.png in Resources */,
 				171D91941AB86E06005AB422 /* tabbar_details.png in Resources */,
 				8497BFC41A295A2300A5ED3C /* bulgaria-large.png in Resources */,
 				2DD29EF418769C260066B883 /* menu-ic-tech-data-1.png in Resources */,
+				8E875FBE1AC2E390002B89AD /* popoverArrowLeft@2x.png in Resources */,
 				764E3A071AB46E9F00960DA4 /* OpportunityCell~iphone.xib in Resources */,
 				8E0B07CD1A4475CF00CF7A78 /* iconEmail.png in Resources */,
 				B3F727AF17B512CC0024DC0D /* arrow_table.png in Resources */,
@@ -6504,6 +6627,7 @@
 				8EBBC2521A4EF67C00F17BEE /* SubListViewCell.xib in Resources */,
 				76601A42194BE90F001D4C01 /* AppIcon-144.png in Resources */,
 				7693EE081A355593004E0178 /* EditCalendarLeadViewController.xib in Resources */,
+				8E875FC21AC2E390002B89AD /* popoverArrowRightSimple.png in Resources */,
 				8497BFE71A295A2300A5ED3C /* step4@2x.png in Resources */,
 				76008E6A1ABC7FFE00BCFA92 /* icon_opp_detail.png in Resources */,
 				B301F1E717C382D80004650C /* e_Background-over.png in Resources */,
@@ -6531,6 +6655,7 @@
 				1755B00A1AB5D22700F543DA /* ListAccountViewController~iphone.xib in Resources */,
 				2D6D7663187670B00051AD9E /* ic-work-order-group-1.png in Resources */,
 				7633080E1A048962000E190B /* VTCheckBox.xib in Resources */,
+				8E875FC11AC2E390002B89AD /* popoverArrowRight@2x.png in Resources */,
 				76601A3F194BE90F001D4C01 /* AppIcon-076.png in Resources */,
 				943296B91A7CE9970097592D /* OpportunityLeadCell.xib in Resources */,
 				8E0B07CB1A4475CF00CF7A78 /* iconCall.png in Resources */,
@@ -6580,6 +6705,7 @@
 				8EB708781A407A1C001861A0 /* Mobile_GPS_MyLocationIcon@2x.png in Resources */,
 				8497BFCE1A295A2300A5ED3C /* Default@2x.png in Resources */,
 				B3A066D917D1AB8200BA6487 /* background_3.png in Resources */,
+				8E875FBB1AC2E390002B89AD /* popoverArrowDown@2x.png in Resources */,
 				8E75546C1A52EFC8001940FB /* iconUturnLeft.png in Resources */,
 				B3A066DA17D1AB8200BA6487 /* background_4.png in Resources */,
 				764430671A7000CC007741BA /* menu_campaign.png in Resources */,
@@ -6721,6 +6847,7 @@
 				8E0B07C21A44710000CF7A78 /* popup_bg.png in Resources */,
 				2DE2D2451829060700034877 /* tab-data-bg.png in Resources */,
 				2DD29EEC18769C260066B883 /* menu-ic-list-doc-1.png in Resources */,
+				8E875FBC1AC2E390002B89AD /* popoverArrowDownSimple.png in Resources */,
 				84912AC51A1F6A3300E99FF7 /* DetailCustomPersonViewController.xib in Resources */,
 				8497BFE11A295A2300A5ED3C /* step1@2x.png in Resources */,
 				769E1FCD1A7C7ED200545F63 /* HelpViewController.xib in Resources */,
@@ -6733,6 +6860,7 @@
 				2DE2D2521829060700034877 /* ic-cancel.png in Resources */,
 				177885961A84699100C71551 /* menuemail.png in Resources */,
 				76C9629D1A16DBA500029978 /* AccountLeadCell.xib in Resources */,
+				8E875FB91AC2E390002B89AD /* cache2.png in Resources */,
 				2D6D76781876726A0051AD9E /* icon_noread-1.png in Resources */,
 				7697BBCC1A7FB1700023F118 /* menu_sync@2x.png in Resources */,
 				2D6D7640187658BA0051AD9E /* Button-Tim kiem.png in Resources */,
@@ -6746,7 +6874,9 @@
 				769F248A1A6F1F3F00427A8F /* MeunViewController.xib in Resources */,
 				76E23E5A1AB07D9800B4B849 /* ListOpportunityViewController~iphone.xib in Resources */,
 				849078931A1E4D5B009D5D5F /* icon_Line-1.png in Resources */,
+				8E875FB31AC2E390002B89AD /* ColorPopoverLocalizable.strings in Resources */,
 				8E75544E1A52EFC8001940FB /* iconForkLeft.png in Resources */,
+				8E875FC91AC2E390002B89AD /* README in Resources */,
 				8E2980F21A6AAB470068B66C /* EditNoteViewCell.xib in Resources */,
 				2DE2D2551829060700034877 /* ic-signed.png in Resources */,
 				7657E8B81A5AEB3A008A62F9 /* Detail360ViewController.xib in Resources */,
@@ -6768,6 +6898,7 @@
 				8E44BC3A1A73A89B00EDCD1A /* ProThanhToanQuocTeViewCell.xib in Resources */,
 				2DE2D25D1829060700034877 /* btn-bg-1.png in Resources */,
 				8EC972AD1A5D71300021DCA3 /* redCircle.png in Resources */,
+				8E875FC31AC2E390002B89AD /* popoverArrowUp.png in Resources */,
 				762048771A0D246600AAA917 /* CompetitorsViewController.xib in Resources */,
 				76D29AC81A1124C9004B9CF6 /* ProposeProductCell.xib in Resources */,
 				76C964771A17731900029978 /* trophy.png in Resources */,
@@ -6875,6 +7006,7 @@
 				8E75546A1A52EFC8001940FB /* iconTurnSlightRight.png in Resources */,
 				2DD29EE918769C260066B883 /* menu-ic-ca-1.png in Resources */,
 				B3157882188D5E5200C0ED01 /* ic-viewpdf-bookmark-1.png in Resources */,
+				8E875FBA1AC2E390002B89AD /* popoverArrowDown.png in Resources */,
 				76BE293A1AA3F55800663803 /* icon_sua_90x90.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6900,6 +7032,7 @@
 				94A8C0031A890CA900E9EBA4 /* CustomerCell.m in Sources */,
 				92C68E511519D4F100981728 /* Constants.m in Sources */,
 				8EC4B90D1A505A7D0078BF13 /* DirectionsViewCell.m in Sources */,
+				8E875FB81AC2E390002B89AD /* WETouchableView.m in Sources */,
 				8EC972911A5D71300021DCA3 /* FFHeaderMonthForYearCell.m in Sources */,
 				76D29B301A13AD88004B9CF6 /* ProductCell.m in Sources */,
 				76C9645E1A17731900029978 /* BiTransPieChart.m in Sources */,
@@ -7006,6 +7139,7 @@
 				8E44BC631A73B99800EDCD1A /* DTOProTTQTDetailProcess.m in Sources */,
 				DDBC470F1715412D00CCFB94 /* OAConsumer.m in Sources */,
 				DDBC47101715412D00CCFB94 /* OADataFetcher.m in Sources */,
+				8E875FB61AC2E390002B89AD /* WEPopoverContainerView.m in Sources */,
 				76977D551A0284DE0029F297 /* TableTestProcess.m in Sources */,
 				76C964611A17731900029978 /* DefaultPopOverForPieChart.m in Sources */,
 				769F24891A6F1F3F00427A8F /* MeunViewController.m in Sources */,
@@ -7145,6 +7279,8 @@
 				76601A30194BE90F001D4C01 /* ReaderMainToolbar.m in Sources */,
 				0648C62F1A4C3D020002F9FE /* StringRemoval.m in Sources */,
 				2DA084F9179C1B9F00EB986D /* AUISelectiveBordersLayer.m in Sources */,
+				8E875FB51AC2E390002B89AD /* UIBarButtonItem+WEPopover.m in Sources */,
+				8E875FB11AC2E390002B89AD /* ColorButton.m in Sources */,
 				06FE2E1F1A4566DD004A1D16 /* DTOAcountLeadProcessObject.m in Sources */,
 				2DA084FA179C1B9F00EB986D /* UIView+AUISelectiveBorder.m in Sources */,
 				8EC4B9161A505B0E0078BF13 /* RoutesDirectionsView.m in Sources */,
@@ -7355,6 +7491,7 @@
 				8490788B1A1E463C009D5D5F /* DetailBussinessLeadViewController.m in Sources */,
 				76601A28194BE90F001D4C01 /* CGPDFDocument.m in Sources */,
 				2D044C7F18025D8D00FBC073 /* NSNull+extend.m in Sources */,
+				8E875FB71AC2E390002B89AD /* WEPopoverController.m in Sources */,
 				8497C0021A295A2300A5ED3C /* MarkerEventsViewController.m in Sources */,
 				8E44BC411A73A89B00EDCD1A /* ProTindungDetailViewController.m in Sources */,
 				769C1A1319FFFBE100F015A5 /* AlertViewUtils.m in Sources */,
@@ -7385,8 +7522,10 @@
 				94A2A7771A80F9F900C412E7 /* NoteOpportunityCell.m in Sources */,
 				2DF7C8861821FE7F0020D4CC /* MonthPickerViewController.m in Sources */,
 				849125D01A1CE68500949FC8 /* DTOSYSCATProcess.m in Sources */,
+				8E875FB41AC2E390002B89AD /* GzColors.m in Sources */,
 				8EC972A51A5D71300021DCA3 /* FFGuestsTableView.m in Sources */,
 				76C9644C1A17731900029978 /* MIMColor.m in Sources */,
+				8E875FB21AC2E390002B89AD /* ColorViewController.m in Sources */,
 				8EC972891A5D71300021DCA3 /* FFWeekHeaderCollectionView.m in Sources */,
 				8EC972971A5D71300021DCA3 /* FFBlueButton.m in Sources */,
 				7657E8D41A5AEBE2008A62F9 /* EditOpportunityProductViewController.m in Sources */,
@@ -7447,6 +7586,14 @@
 				8497BF731A295A2300A5ED3C /* zh_TW */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		8E875F911AC2E390002B89AD /* ColorPopoverLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8E875F921AC2E390002B89AD /* en */,
+			);
+			name = ColorPopoverLocalizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

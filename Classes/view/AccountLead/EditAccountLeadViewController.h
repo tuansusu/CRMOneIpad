@@ -19,7 +19,7 @@
 #import "UIViewController+MJPopupViewController.h"
 
 
-@interface EditAccountLeadViewController : BaseViewController<UITextFieldDelegate, SelectIndexDelegate>
+@interface EditAccountLeadViewController : BaseViewController<UITextFieldDelegate, SelectIndexDelegate,UITableViewDataSource,UITableViewDelegate>
 
 //DATA
 @property (nonatomic, retain) NSDictionary *dataSend;

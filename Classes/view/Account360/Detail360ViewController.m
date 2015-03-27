@@ -26,6 +26,7 @@
 #import "TaskActionCell.h"
 #import "MJDetailViewController.h"
 #import "TestMapViewController.h"
+#import "EnumClass.h"
 
 ////remove
 #import "StringUtil.h"
@@ -215,7 +216,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 //khoi tao gia tri mac dinh cua form
 -(void) initData {
     
-   // _fullNameLB.text=@"KHÁCH HÀNG 360 100";
+    // _fullNameLB.text=@"KHÁCH HÀNG 360 100";
     //khoi tao du lieu!
     listArr  = [NSArray arrayWithObjects:LocalizedString(@"KEY_360_CONTACT"),LocalizedString(@"KEY_360_NOTE"), LocalizedString(@"KEY_360_CALENDAR")
                 , LocalizedString(@"KEY_360_NHIEMVU"), LocalizedString(@"KEY_360_COHOI"), nil];
@@ -239,7 +240,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     [self actionExpandInfo:self.btnExpandInfo];
     arrayData  = [NSArray new];
     [self loadDetailCustomerPersonalData];
-     [self setLanguage];
+    [self setLanguage];
     
 }
 
@@ -737,19 +738,28 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 }
 
 - (IBAction)actionAdd:(id)sender{
-    SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
-    
-    detail.selectIndex = selectIndex;
-    
-    detail.listData = listArr;
-    
-    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
-    CGRect popoverFrame = _btnAdd.frame;
-    
-    detail.delegate =(id<SelectIndexDelegate>) self;
-    self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(320, HEIGHT_SELECT_INDEX_ROW*listArr.count) animated:NO];
-    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.headerViewBar permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    if([self currentDeviceType]==iPhone){
+        
+        UIActionSheet *action=[[UIActionSheet alloc]initWithTitle:@"Menu" delegate:self cancelButtonTitle:@"Huỷ" destructiveButtonTitle:nil otherButtonTitles:LocalizedString(@"KEY_360_CONTACT"),LocalizedString(@"KEY_360_NOTE"), LocalizedString(@"KEY_360_CALENDAR")
+                               , LocalizedString(@"KEY_360_NHIEMVU"), LocalizedString(@"KEY_360_COHOI"), LocalizedString(@"KEY_360_YKIEN"), nil];
+        action.tag=22;
+        [action showInView:self.view];
+    }
+    else{
+        SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
+        
+        detail.selectIndex = selectIndex;
+        
+        detail.listData = listArr;
+        
+        self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+        CGRect popoverFrame = _btnAdd.frame;
+        
+        detail.delegate =(id<SelectIndexDelegate>) self;
+        self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
+        [self.listPopover setPopoverContentSize:CGSizeMake(320, HEIGHT_SELECT_INDEX_ROW*listArr.count) animated:NO];
+        [self.listPopover presentPopoverFromRect:popoverFrame inView:self.headerViewBar permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    }
 }
 #pragma mark action button - action tab
 

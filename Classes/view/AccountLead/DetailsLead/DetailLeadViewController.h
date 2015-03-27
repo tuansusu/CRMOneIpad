@@ -40,7 +40,7 @@ enum TypeLeaderView{
     typeLeaderView_ProductsLead // sản phẩm dịch vụ
 };
 
-@interface DetailLeadViewController : BaseViewController<SelectIndexDelegate,UIAlertViewDelegate,UITabBarDelegate,UITabBarControllerDelegate>
+@interface DetailLeadViewController : BaseViewController<SelectIndexDelegate,UIAlertViewDelegate,UITabBarDelegate,UITabBarControllerDelegate,UIActionSheetDelegate>
 
 //DATA
 @property (nonatomic, retain) NSDictionary *dataSend;

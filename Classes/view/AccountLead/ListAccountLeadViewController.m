@@ -10,6 +10,7 @@
 #import "DTOACCOUNTLEADProcess.h"
 #import "DTOFLLOWUPProcess.h"
 #import "UIMenuItem+CXAImageSupport.h"
+#import "EnumClass.h"
 
 #define SELECT_INDEX_ADD_PERSON 0
 #define SELECT_INDEX_ADD_BUSSINESS 1
@@ -943,7 +944,12 @@
 -(void) delegate_follow:(NSDictionary *)dicData{
     FlowLeadViewController *detail = [[FlowLeadViewController alloc] initWithNibName:@"FlowLeadViewController" bundle:nil];
     detail.dataSend=dicData;
-    detail.view.frame = CGRectMake(0, 0, 600, 500);
+    if([self currentDeviceType]==iPhone){
+        detail.view.frame = CGRectMake(0, 0, 240, 280);
+    }
+    else{
+        detail.view.frame = CGRectMake(0, 0, 600, 500);
+    }
     //[InterfaceUtil setBorderWithCornerAndBorder:detail.view :6 :0.2 :nil];
     [self presentPopupViewController:detail animationType:1];
 }
@@ -995,6 +1001,37 @@
             DetailLeadViewController *detail=[[DetailLeadViewController alloc] initWithNibName:@"DetailLeadViewController" bundle:nil];
             detail.dataSend=dataDetail;
             [self presentViewController:detail animated:YES completion:nil];
+        }
+        else if(buttonIndex == 1){
+            if( [[dataDetail objectForKey:DTOLEAD_leadType] isEqualToString:@"0"]){
+                EditAccountLeadViewController *edit=[[EditAccountLeadViewController alloc] initWithNibName:@"EditAccountLeadViewController"
+                                                                                                    bundle:nil];
+                edit.dataSend = dataDetail;
+                [self presentViewController:edit animated:YES completion:nil];
+            }
+            else{
+                EditBussinessLeadViewController *edit=[[EditBussinessLeadViewController alloc] initWithNibName:@"EditBussinessLeadViewController" bundle:nil];
+                edit.dataSend=dataDetail;
+                [self presentViewController:edit animated:YES completion:nil];
+            }
+        }
+        else if(buttonIndex==2){
+            [self delegate_del:dataDetail];
+        }
+        else if(buttonIndex==3){
+            [self delegate_call:dataDetail];
+        }
+        else if(buttonIndex==4){
+            [self delegate_sms:dataDetail];
+        }
+        else if(buttonIndex==5){
+            [self delegate_email:dataDetail];
+        }
+        else if(buttonIndex==6){
+            [self delegate_follow:dataDetail];
+        }
+        else if(buttonIndex==7){
+            [self delegate_maps:dataDetail];
         }
     }
     else{

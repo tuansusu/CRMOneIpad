@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Detail360ViewController">
             <connections>
                 <outlet property="barLabel" destination="yAy-gC-UGQ" id="zeP-8a-8Ac"/>
+                <outlet property="btnAdd" destination="L0M-Qh-t6b" id="Ag0-ig-gnr"/>
                 <outlet property="btnHome" destination="8N9-Fg-bTN" id="wzZ-aD-YaT"/>
                 <outlet property="chinhanhquanlyCN" destination="8Gh-nJ-5Z5" id="7d9-r9-O6f"/>
                 <outlet property="diachiCN" destination="sm6-wO-xIC" id="GhN-09-oSf"/>
@@ -319,8 +320,11 @@
                                     <state key="normal" backgroundImage="ic-add-sub-1.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="actionAdd:" destination="-1" eventType="touchUpInside" id="YSC-5r-h4R"/>
+                                    </connections>
                                 </button>
-                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZU9-kK-ovx" userLabel="btn del">
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZU9-kK-ovx" userLabel="btn del">
                                     <rect key="frame" x="244" y="22" width="30" height="30"/>
                                     <state key="normal" backgroundImage="icon_delete_90x90.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>

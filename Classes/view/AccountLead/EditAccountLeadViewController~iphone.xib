@@ -8,9 +8,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditAccountLeadViewController">
             <connections>
                 <outlet property="barLabel" destination="AL7-7W-szN" id="NiD-xc-ZsC"/>
+                <outlet property="btnBirthDay" destination="wpH-bv-XBv" id="Mvd-LS-I9K"/>
                 <outlet property="btnCheckEmail" destination="t29-Hc-kcB" id="Tj6-5F-xnn"/>
                 <outlet property="btnCheckMobile" destination="lQ4-jF-9TI" id="HTp-li-qtL"/>
                 <outlet property="btnCheckSMS" destination="Qi9-Eb-8j4" id="Vrh-fL-3Qo"/>
+                <outlet property="btnPersonalPosition" destination="cRR-PJ-LWE" id="ITB-8e-i3u"/>
                 <outlet property="btnSave" destination="lmV-gQ-bDO" id="Vj6-Xb-Q71"/>
                 <outlet property="footerView" destination="8O8-VI-SSt" id="nb8-8z-zs0"/>
                 <outlet property="fullNameLB" destination="JxP-U8-YUf" id="tPJ-TC-WMy"/>
@@ -146,16 +148,40 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 </textField>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRR-PJ-LWE" userLabel="btnSysCat">
+                                    <rect key="frame" x="281" y="195" width="30" height="30"/>
+                                    <state key="normal" backgroundImage="ic_cbx-1.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="actionChoicePersonalPosition:" destination="-1" eventType="touchUpInside" id="6Be-Of-Gen"/>
+                                    </connections>
+                                </button>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ngày sinh" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qe2-tW-xnW">
                                     <rect key="frame" x="8" y="228" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 </textField>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wpH-bv-XBv" userLabel="btnSysCat">
+                                    <rect key="frame" x="282" y="228" width="30" height="30"/>
+                                    <state key="normal" backgroundImage="ic_cbx-1.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="actionChoiceDateOfBirth:" destination="-1" eventType="touchUpInside" id="aam-t5-4kP"/>
+                                    </connections>
+                                </button>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Địa chỉ" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="izm-ay-Q14">
                                     <rect key="frame" x="7" y="261" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 </textField>
+                                <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bb8-rN-I1i">
+                                    <rect key="frame" x="281" y="261" width="30" height="30"/>
+                                    <state key="normal" title="Button" backgroundImage="pin.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Thu nhập cá nhân" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DL6-1o-JSA">
                                     <rect key="frame" x="8" y="381" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -259,10 +285,12 @@
     </objects>
     <resources>
         <image name="checkbox_not_ticked.png" width="56" height="56"/>
+        <image name="ic_cbx-1.png" width="60" height="60"/>
         <image name="icon_delete_90x90.png" width="90" height="90"/>
         <image name="icon_down.png" width="19" height="11"/>
         <image name="icon_menu-1.png" width="48" height="48"/>
         <image name="icon_require-1.png" width="16" height="16"/>
         <image name="icon_save_90x90.png" width="90" height="90"/>
+        <image name="pin.png" width="48" height="48"/>
     </resources>
 </document>

@@ -13,6 +13,7 @@
 #import "FlowLeadViewController.h"
 #import "SelectAddInMapsViewController.h"
 #import "ListAccountLeadViewController.h"
+#import "EnumClass.h"
 
 #define TAG_SELECT_PERSONAL_POSITION 1
 #define TAG_SELECT_PERSONAL_JOB 2
@@ -448,6 +449,9 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(alertView.tag==111){
+        
+    }
     
     if (buttonIndex == 0 && alertView.tag ==1) {
         
@@ -535,21 +539,35 @@
     
     //hide all key
     [self hiddenKeyBoard];
-    
-    SELECTED_TAG = TAG_SELECT_PERSONAL_POSITION;
-    SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
-    
-    detail.selectIndex = selectPersonPositionIndex;
-    
-    detail.listData = [listArrPersonPosition valueForKey:DTOSYSCAT_name];
-    
-    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
-    CGRect popoverFrame = _btnPersonalPosition.frame;
-    
-    detail.delegate =(id<SelectIndexDelegate>) self;
-    self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(320,250) animated:NO];
-    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    if([self currentDeviceType]==iPhone){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Chọn chức danh" message:@"" delegate:self cancelButtonTitle:@"Huỷ" otherButtonTitles:@"OK", nil];
+        UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 250, 230)];
+        
+        table.delegate=self;
+        table.dataSource=self;
+        
+        [alert addSubview:table];
+        alert.tag=222;
+        alert.bounds = CGRectMake(0, 0, 300 ,200);
+        [alert setValue:table forKey:@"accessoryView"];
+        [alert show];
+    }
+    else{
+        SELECTED_TAG = TAG_SELECT_PERSONAL_POSITION;
+        SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
+        
+        detail.selectIndex = selectPersonPositionIndex;
+        
+        detail.listData = [listArrPersonPosition valueForKey:DTOSYSCAT_name];
+        
+        self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+        CGRect popoverFrame = _btnPersonalPosition.frame;
+        
+        detail.delegate =(id<SelectIndexDelegate>) self;
+        self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
+        [self.listPopover setPopoverContentSize:CGSizeMake(320,250) animated:NO];
+        [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    }
 }
 
 #pragma mark check valid data
@@ -876,24 +894,42 @@
 - (IBAction)actionChoiceDateOfBirth:(id)sender {
     
     [self hiddenKeyBoard];
-    
-    if (self.txtDateOfBirth.text.length==0) {
-        dateBirthday = [DateUtil getDateFromString:@"01/01/2000" :FORMAT_DATE];
-    }else{
-        dateBirthday = [DateUtil getDateFromString:self.txtDateOfBirth.text :FORMAT_DATE];
+    if([self currentDeviceType]==iPhone){
+        if (self.txtDateOfBirth.text.length==0) {
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Chọn ngày sinh" message:@"" delegate:self cancelButtonTitle:@"Huỷ" otherButtonTitles:@"OK", nil];
+            UIDatePicker *picker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0,0, 250, 200)];
+            
+            picker = [[UIDatePicker alloc] init];
+            picker.datePickerMode = UIDatePickerModeDate;
+            
+            [picker setDate:[NSDate date]];
+            [alert addSubview:picker];
+            alert.tag=111;
+            alert.bounds = CGRectMake(0, 0, 300 ,200);
+            [alert setValue:picker forKey:@"accessoryView"];
+            [alert show];
+        }
     }
-    
-    //SELECTED_DATE_TAG = TAG_SELECT_DATE_BIRTHDAY;
-    CalendarPickerViewController *detail = [[CalendarPickerViewController alloc] initWithNibName:@"CalendarPickerViewController" bundle:nil];
-    detail.dateSelected = dateBirthday;
-    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
-    CGRect popoverFrame = self.btnBirthDay.frame;
-    
-    detail.delegateDatePicker =(id<CalendarSelectDatePickerDelegate>) self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(320, 260) animated:NO];
-    
-    
-    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    else{
+        if (self.txtDateOfBirth.text.length==0) {
+            dateBirthday = [DateUtil getDateFromString:@"01/01/2000" :FORMAT_DATE];
+        }else{
+            dateBirthday = [DateUtil getDateFromString:self.txtDateOfBirth.text :FORMAT_DATE];
+        }
+        
+        //SELECTED_DATE_TAG = TAG_SELECT_DATE_BIRTHDAY;
+        CalendarPickerViewController *detail = [[CalendarPickerViewController alloc] initWithNibName:@"CalendarPickerViewController" bundle:nil];
+        detail.dateSelected = dateBirthday;
+        self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+        CGRect popoverFrame = self.btnBirthDay.frame;
+        
+        detail.delegateDatePicker =(id<CalendarSelectDatePickerDelegate>) self;
+        [self.listPopover setPopoverContentSize:CGSizeMake(320, 260) animated:NO];
+        
+        
+        [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    }
 }
 
 #pragma mark select date
@@ -951,5 +987,36 @@
     _txtPersonPosition.placeholder=LocalizedString(@"KEY_LEAD_CN_CHUCDANH");
     
 }
+
+#pragma mark - Table view data source
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    return 0;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell;
+    //get customer from collection of customers
+   // Customer *customer = self.customers.result.value[indexPath.row];
+    
+    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
+    cell.textLabel.text =@"Luong";
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath) {
+//        self.selectedCustomer = self.customers.result.value[indexPath.row];
+    } else {
+//        self.selectedCustomer = nil;
+    }
+}
 @end
-//luonghv2

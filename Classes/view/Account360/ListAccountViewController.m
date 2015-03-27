@@ -11,6 +11,7 @@
 #import "EditAccount360ViewController.h"
 #import "DTOFLLOWUPProcess.h"
 #import "UIMenuItem+CXAImageSupport.h"
+#import "EnumClass.h"
 //Xoa
 #import "DataField.h"
 
@@ -67,6 +68,7 @@
     BOOL loading, noMoreResultsAvail;
     UIActivityIndicatorView *spinner;
     Language *obj;
+    NSDictionary *dataDetail;
 }
 @end
 
@@ -389,19 +391,32 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSIndexPath* selection = [tableView indexPathForSelectedRow];
-    if (selection){
+    if([self currentDeviceType]==iPhone){
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:LocalizedString(@"MENU_ACTIONSHEET_TITLE")
+                                                                 delegate:self
+                                                        cancelButtonTitle:LocalizedString(@"KEY_CANCEL")
+                                                   destructiveButtonTitle:LocalizedString(@"MENU_ACTIONSHEET_VIEW")
+                                                        otherButtonTitles:LocalizedString(@"MENU_ACTIONSHEET_DEL"),LocalizedString(@"MENU_ACTIONSHEET_CALL"),LocalizedString(@"MENU_ACTIONSHEET_SMS"),LocalizedString(@"MENU_ACTIONSHEET_Email"),LocalizedString(@"MENU_ACTIONSHEET_FOLLOW"),LocalizedString(@"MENU_ACTIONSHEET_MAPS"), nil];
+        actionSheet.tag=11;
+        dataDetail =[arrayData objectAtIndex:indexPath.row];
+        [actionSheet showInView:self.view];
         
-        [tableView deselectRowAtIndexPath:selection animated:YES];
     }
-    
-    NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
-    
-    
-    
-    Detail360ViewController *viewController = [[Detail360ViewController alloc]initWithNibName:@"Detail360ViewController" bundle:nil];
-    viewController.dataSend = dicData;
-    [self presentViewController:viewController animated:YES completion:nil];
+    else{
+        NSIndexPath* selection = [tableView indexPathForSelectedRow];
+        if (selection){
+            
+            [tableView deselectRowAtIndexPath:selection animated:YES];
+        }
+        
+        NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
+        
+        
+        
+        Detail360ViewController *viewController = [[Detail360ViewController alloc]initWithNibName:@"Detail360ViewController" bundle:nil];
+        viewController.dataSend = dicData;
+        [self presentViewController:viewController animated:YES completion:nil];
+    }
     
 }
 
@@ -855,7 +870,7 @@
 -(void) delegate_changeStatusFollow:(NSString *)followid{
     
     accountfollowId=followid;
-   UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_INFO_MESSAGE_1")  delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERTVIEW_DELETE_OK") otherButtonTitles:LocalizedString(@"KEY_ALERTVIEW_DELETE_CANCEL"), nil];
+    UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_INFO_MESSAGE_1")  delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERTVIEW_DELETE_OK") otherButtonTitles:LocalizedString(@"KEY_ALERTVIEW_DELETE_CANCEL"), nil];
     mylert.tag=22;
     [mylert show];
 }
@@ -920,5 +935,33 @@
     [_lbTotal setText:LocalizedString(@"KEY_LIST_360_TOTAL")];
     [_fullNameLB setText:LocalizedString(@"KEY_LIST_360_TITLE")];
     [_txtSearchBar setPlaceholder:LocalizedString(@"KEY_LIST_360_TOTAL")];
+}
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(actionSheet.tag==11){
+        if (buttonIndex==0) {
+            Detail360ViewController *detail=[[Detail360ViewController alloc]initWithNibName:@"Detail360ViewController" bundle:nil];
+            detail.dataSend=dataDetail;
+            [self presentViewController:detail animated:YES completion:nil];
+        }
+        else if(buttonIndex==1){
+        
+            [self delegate_del:dataDetail];
+        }
+        else if(buttonIndex==2){
+            [self delegate_call:dataDetail];
+        }
+        else if(buttonIndex == 3){
+            [self delegate_sms:dataDetail];
+        }
+        else if(buttonIndex == 4){
+            [self delegate_email:dataDetail];
+        }
+        else if(buttonIndex==5){
+            [self delegate_follow:dataDetail];
+        }
+        else if(buttonIndex==6){
+            [self delegate_maps:dataDetail];
+        }
+    }
 }
 @end

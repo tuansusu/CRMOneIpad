@@ -153,12 +153,12 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     self.tbData.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     //scrollViewHeaderExpandInfo.contentSize = CGSizeMake(910, scrollViewHeaderExpandInfo.frame.size.height);
-       [self setLanguage];
+    [self setLanguage];
     myDevice=[UIDevice currentDevice].model;
     if([myDevice isEqualToString:@"iPhone"] || [myDevice isEqualToString:@"iPhone Simulator"]){
         [_myTabbar setSelectedItem:0];
-         self.mySearchBar.barTintColor = HEADER_VIEW_COLOR1;
-       // self.myTabbar.barTintColor=HEADER_VIEW_COLOR1;
+        self.mySearchBar.barTintColor = HEADER_VIEW_COLOR1;
+        // self.myTabbar.barTintColor=HEADER_VIEW_COLOR1;
         [self.myTabbar setSelectedItem:self.myTabbar.items[0]];
     }
 }
@@ -849,8 +849,8 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             if([myDevice isEqualToString:@"iPhone"] || [myDevice isEqualToString:@"iPhone Simulator"]){
                 return 50.0f;
             }else{
-            return 60.0f;
-                }
+                return 60.0f;
+            }
             break;
         case typeLeaderView_Contact:
             if([myDevice isEqualToString:@"iPhone"] || [myDevice isEqualToString:@"iPhone Simulator"]){
@@ -1710,8 +1710,8 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             _scrollViewPersonal.hidden=NO;
             _mySearchBar.hidden=YES;
         }
-         _viewData.hidden=YES;
-          _fullNameLB.text=@"KHÁCH HÀNG TIỀM NĂNG";
+        _viewData.hidden=YES;
+        _fullNameLB.text=@"KHÁCH HÀNG TIỀM NĂNG";
     }
     else if(indexOfTab==1){
         _scrollViewBussiness.hidden=YES;
@@ -1762,5 +1762,59 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
                            , LocalizedString(@"KEY_360_NHIEMVU"), LocalizedString(@"KEY_360_COHOI"), LocalizedString(@"KEY_360_YKIEN"), nil];
     action.tag=22;
     [action showInView:self.view];
+}
+-(void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(actionSheet.tag==11){
+        if(buttonIndex==0){
+            
+            _scrollViewBussiness.hidden=YES;
+            _scrollViewPersonal.hidden=YES;
+            _mySearchBar.hidden=NO;
+            _viewData.hidden=NO;
+            _fullNameLB.text=@"CÔNG VIỆC";
+            [self loadDataWithTypeAction:typeLeaderView_Task];
+            
+        }
+        else if (buttonIndex ==1){
+            _scrollViewBussiness.hidden=YES;
+            _scrollViewPersonal.hidden=YES;
+            _mySearchBar.hidden=NO;
+            _viewData.hidden=NO;
+            _fullNameLB.text=@"CƠ HỘI";
+            [self loadDataWithTypeAction:typeLeaderView_Opportunity];
+        }
+        else if (buttonIndex == 2){
+            _scrollViewBussiness.hidden=YES;
+            _scrollViewPersonal.hidden=YES;
+            _mySearchBar.hidden=NO;
+            _viewData.hidden=NO;
+            _fullNameLB.text=@"SẢN PHẨM";
+            [self loadDataWithTypeAction:typeLeaderView_ProductsLead];
+        }
+    }
+    else if(actionSheet.tag==22){
+        if(buttonIndex==0){
+            EditContactLeadViewController *edit=[[EditContactLeadViewController alloc]initWithNibName:@"EditContactLeadViewController" bundle:nil];
+            [self presentViewController:edit animated:YES completion:nil];
+        }
+        else if (buttonIndex==1){
+            EditNoteLeadViewController *edit=[[EditNoteLeadViewController alloc] initWithNibName:@"EditNoteLeadViewController" bundle:nil];
+            [self presentViewController:edit animated:YES completion:nil];
+        }
+        else if (buttonIndex == 2){
+            EditCalendarLeadViewController *edit=[[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
+            [self presentViewController:edit animated:YES completion:nil];
+        }
+        else if(buttonIndex == 4){
+            EditOpportunityLeadViewController *edit=[[EditOpportunityLeadViewController alloc] initWithNibName:@"EditOpportunityLeadViewController" bundle:nil];
+            [self presentViewController:edit animated:YES completion:nil];
+        }
+        else if (buttonIndex == 3){
+            EditTaskLeadViewController *edit=[[EditTaskLeadViewController alloc] initWithNibName:@"EditTaskLeadViewController" bundle:nil];
+            [self presentViewController:edit animated:YES completion:nil];
+        }
+        else if(buttonIndex == 5){
+        }
+    }
 }
 @end

@@ -67,7 +67,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     if ([UIDevice getCurrentSysVer] >= 7.0) {
-        [UIDevice updateLayoutInIOs7OrAfter:self];
+        if(self.currentDeviceType == iPad){
+           [UIDevice updateLayoutInIOs7OrAfter:self];
+        }
     }
     util =[Util new];
     defaults = [NSUserDefaults standardUserDefaults];
@@ -188,7 +190,12 @@
             
             
             if ([viewSubTemp isKindOfClass:[UILabel class]]) {
-                ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+                if(viewSubTemp.tag == 505){
+                    ((UILabel*) viewSubTemp).textColor = [UIColor redColor];
+                    
+                }else{
+                    ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+                }
             }
             
             
@@ -645,9 +652,7 @@
 - (void) customButtonAccessoryTapped:(id)sender
 {
     UIButton *btnSender = (UIButton *) sender;
-    
-    NSLog(@"btnSender = %d", btnSender.tag);
-    
+  
 }
 
 #pragma mark - Phần đa ngôn ngữ
@@ -658,6 +663,11 @@
     [_lblAttachment setText:LocalizedString(@"KEY_OPPORTUNITY_NOTE_EDIT_ATTACHMENT")];
     [choosePhotoBtn setTitle:LocalizedString(@"KEY_OPPORTUNITY_NOTE_EDIT_CHOOSE_IMAGE_BUTTON") forState:UIControlStateNormal];
     [takePhotoBtn setTitle:LocalizedString(@"KEY_OPPORTUNITY_NOTE_EDIT_TAKE_PHOTO") forState:UIControlStateNormal];
-    [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+    
+    if(self.currentDeviceType == iPad){
+        [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+    }else{
+        [_btnSave setTitle:LocalizedString(@"KEY_SAVE") forState:UIControlStateNormal];
+    }
 }
 @end

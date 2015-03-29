@@ -69,7 +69,9 @@
 {
     [super viewDidLoad];
     if ([UIDevice getCurrentSysVer] >= 7.0) {
-        [UIDevice updateLayoutInIOs7OrAfter:self];
+        if(self.currentDeviceType == iPad){
+            [UIDevice updateLayoutInIOs7OrAfter:self];
+        }
     }
     
     defaults = [NSUserDefaults standardUserDefaults];
@@ -80,6 +82,42 @@
     [self initData];
     
     [self setLanguage];
+    
+    //for iphone only
+    if(self.currentDeviceType == iPhone){
+        
+        //Phan chon ngay
+        self.datePicker = [[UIDatePicker alloc] init];
+        
+        self.datePicker.datePickerMode = UIDatePickerModeDate;
+        [self.txtDateFrom setInputView:self.datePicker];
+        [self.txtDateTo setInputView:self.datePicker];
+        
+        UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+        [toolBar setTintColor:[UIColor blackColor]];
+        UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(setSelectedDate)];
+        UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        [toolBar setItems:[NSArray arrayWithObjects:space,doneBtn, nil]];
+        [self.txtDateFrom setInputAccessoryView:toolBar];
+        [self.txtDateTo setInputAccessoryView:toolBar];
+        
+        
+        //Phan chon gio
+        self.timePicker = [[UIDatePicker alloc] init];
+        
+        self.timePicker.datePickerMode = UIDatePickerModeTime;
+        [self.txtTimeFrom setInputView:self.timePicker];
+        [self.txtTimeTo setInputView:self.timePicker];
+        
+        UIToolbar *toolBar2 = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+        [toolBar2 setTintColor:[UIColor blackColor]];
+        UIBarButtonItem *doneBtn2 = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(setSelectedTime)];
+        UIBarButtonItem *space2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        [toolBar2 setItems:[NSArray arrayWithObjects:space2,doneBtn2, nil]];
+        [self.txtTimeFrom setInputAccessoryView:toolBar2];
+        [self.txtTimeTo setInputAccessoryView:toolBar2];
+    }
+
 }
 
 //khoi tao gia tri mac dinh cua form
@@ -101,11 +139,21 @@
     listArrStatus = [dtoSyscatProcess filterWithCatType:FIX_SYS_CAT_TYPE_TASK_STATUS];
     
     dataId = 0;
-    if (self.dataSend) {
-        [self loadEdit];
-        self.fullNameLB.text = LocalizedString(@"KEY_OPPORTUNITY_TASK_EDIT_HEADER_EDIT");
+    if(self.currentDeviceType == iPad){
+        if (self.dataSend) {
+            [self loadEdit];
+            self.fullNameLB.text = LocalizedString(@"KEY_OPPORTUNITY_TASK_EDIT_HEADER_EDIT");
+        }else{
+            self.fullNameLB.text = LocalizedString(@"KEY_OPPORTUNITY_TASK_EDIT_HEADER_ADD");
+        }
     }else{
-        self.fullNameLB.text = LocalizedString(@"KEY_OPPORTUNITY_TASK_EDIT_HEADER_ADD");
+        if (self.dataSend) {
+            [self loadEdit];
+        }
+        
+        self.fullNameLB.text = @"";
+        
+
     }
     
 }
@@ -199,7 +247,12 @@
             
             
             if ([viewSubTemp isKindOfClass:[UILabel class]]) {
-                ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+                if(viewSubTemp.tag == 505){
+                    ((UILabel*) viewSubTemp).textColor = [UIColor redColor];
+                    
+                }else{
+                    ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+                }
             }
             
             
@@ -245,21 +298,37 @@
 - (IBAction)actionChoiceStatus:(id)sender {
     [self hiddenKeyBoard];
     
-    SELECTED_DATE_TAG = TAG_SELECT_STATUS;
-    
-    SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
-    
-    detail.selectIndex = selectStatusIndex;
-    
-    detail.listData = [listArrStatus valueForKey:DTOSYSCAT_name];
-    
-    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
-    CGRect popoverFrame = self.btnChoiceStatus.frame;
-    
-    detail.delegate =(id<SelectIndexDelegate>) self;
-    self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(320,250) animated:NO];
-    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    if(self.currentDeviceType == iPad){
+        SELECTED_DATE_TAG = TAG_SELECT_STATUS;
+        
+        SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
+        
+        detail.selectIndex = selectStatusIndex;
+        
+        detail.listData = [listArrStatus valueForKey:DTOSYSCAT_name];
+        
+        self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+        CGRect popoverFrame = self.btnChoiceStatus.frame;
+        
+        detail.delegate =(id<SelectIndexDelegate>) self;
+        self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
+        [self.listPopover setPopoverContentSize:CGSizeMake(320,250) animated:NO];
+        [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    }else{
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:LocalizedString(@"KEY_OPPORTUNITY_TASK_EDIT_STATUS")
+                                                                 delegate:self
+                                                        cancelButtonTitle:LocalizedString(@"KEY_CANCEL")
+                                                   destructiveButtonTitle:nil
+                                                        otherButtonTitles:nil];
+        
+        NSArray *lsStatus = [listArrStatus valueForKey:DTOSYSCAT_name];
+        
+        for(NSString *title in lsStatus){
+            [actionSheet addButtonWithTitle:title];
+        }
+        [actionSheet showInView:self.view];
+
+    }
     
 }
 
@@ -414,6 +483,45 @@
             break;
     }
 }
+-(void) setSelectedTime{
+    NSDate *date = self.timePicker.date;
+    //[self.dtStartDate resignFirstResponder];
+    if([self.txtTimeFrom isFirstResponder]){
+        [self.txtTimeFrom resignFirstResponder];
+        self.txtTimeFrom.text = [NSString stringWithFormat:@"%@", [dfTime stringFromDate:date]];
+        
+        NSString *strTimeFrom = [NSString stringWithFormat:@"%@ %@",self.txtDateFrom.text,self.txtTimeFrom.text];
+        timeFrom = [DateUtil getDateFromString:strTimeFrom :@"dd/MM/yyyy HH:mm"];
+        
+    }else if([self.txtTimeTo isFirstResponder]){
+        [self.txtTimeTo resignFirstResponder];
+        [self.txtTimeTo resignFirstResponder];
+        self.txtTimeTo.text = [NSString stringWithFormat:@"%@", [dfTime stringFromDate:date]];
+        
+        NSString *strTimeTo = [NSString stringWithFormat:@"%@ %@",self.txtDateTo.text,self.txtTimeTo.text];
+        timeTo = [DateUtil getDateFromString:strTimeTo :@"dd/MM/yyyy HH:mm"];
+    }
+}
+
+-(void) setSelectedDate{
+    NSDate *date = self.datePicker.date;
+    //[self.dtStartDate resignFirstResponder];
+    if([self.txtDateFrom isFirstResponder]){
+        [self.txtDateFrom resignFirstResponder];
+        self.txtDateFrom.text = [NSString stringWithFormat:@"%@",
+                                 [df stringFromDate:date]];
+        dateFrom = date;
+        timeFrom = date;
+    }else if([self.txtDateTo isFirstResponder]){
+        [self.txtDateTo resignFirstResponder];
+        self.txtDateTo.text = [NSString stringWithFormat:@"%@",
+                               [df stringFromDate:date]];
+        dateTo = date;
+        timeTo = date;
+    }
+}
+
+
 -(void) dismissPopoverView
 {
     if ([self.listPopover isPopoverVisible])
@@ -600,6 +708,18 @@
     
     
 }
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex < 1)
+        return;
+    buttonIndex -=1;
+    selectStatusIndex = buttonIndex;
+    if (buttonIndex<listArrStatus.count) {
+        NSDictionary *dic = [listArrStatus objectAtIndex:buttonIndex];
+        self.txtStatus.text = [dic objectForKey:DTOSYSCAT_name];
+    }
+}
+
+
 
 #pragma mark Tooltip
 -(void) showTooltip : (UIView*) inputTooltipView withText : (NSString*) inputMessage {
@@ -695,6 +815,10 @@
     [_lblEndDate setText:LocalizedString(@"KEY_OPPORTUNITY_TASK_EDIT_ENDDATE_TITLE")];
     [_txtDateTo setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_TASK_EDIT_ENDDATE_DETAIL_DATE")];
     [_txtTimeTo setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_TASK_EDIT_ENDDATE_DETAIL_TIME")];
-    [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+    if(self.currentDeviceType == iPad){
+        [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+    }else{
+        [_btnSave setTitle:LocalizedString(@"KEY_SAVE") forState:UIControlStateNormal];
+    }
 }
 @end

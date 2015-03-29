@@ -10,6 +10,7 @@
 
 #import "SelectIndexViewController.h"
 #import "Util.h"
+#import "EnumClass.h"
 
 @interface EditNoteOpportunityViewController : BaseViewController<UITextFieldDelegate,UIAlertViewDelegate, UIImagePickerControllerDelegate,SelectIndexDelegate>
 

@@ -7,10 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CompetitorsViewController">
             <connections>
-                <outlet property="barLabel" destination="0If-hx-spB" id="2S4-Zp-CyL"/>
                 <outlet property="btnAdd" destination="v4F-6O-o4j" id="eJt-fl-3jW"/>
                 <outlet property="btnHome" destination="IUh-xB-m5V" id="7xF-la-AYP"/>
-                <outlet property="footeView" destination="774-PI-ULb" id="D1H-2s-0u7"/>
                 <outlet property="fullNameLB" destination="90B-S4-dEQ" id="uvK-9W-mG8"/>
                 <outlet property="headerViewBar" destination="cYg-oh-egh" id="NcJ-zo-xz4"/>
                 <outlet property="imgEndDate" destination="Kp2-Tq-LF8" id="rj5-C6-ARI"/>
@@ -88,7 +86,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kNC-Go-zbw" userLabel="Scroll View - Info">
-                            <rect key="frame" x="0.0" y="50" width="320" height="450"/>
+                            <rect key="frame" x="0.0" y="50" width="320" height="470"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="511" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mã" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bX5-fu-0vL">
                                     <rect key="frame" x="140" y="8" width="174" height="21"/>
@@ -236,20 +234,8 @@
                                 </label>
                             </subviews>
                         </scrollView>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="774-PI-ULb" userLabel="FOOTER VIEW">
-                            <rect key="frame" x="0.0" y="548" width="320" height="20"/>
-                            <subviews>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="VOFFICE-iPad 2.0, copyright Viettel ICT, Viettel Group" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0If-hx-spB">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
                         <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cpi-hh-Pu2">
-                            <rect key="frame" x="0.0" y="499" width="320" height="49"/>
+                            <rect key="frame" x="0.0" y="518" width="320" height="49"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <items>
                                 <tabBarItem title="Thông tin" image="icon_opp_detail.png" id="kPF-gY-3GJ"/>

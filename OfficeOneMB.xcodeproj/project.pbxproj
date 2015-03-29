@@ -529,6 +529,9 @@
 		76D29B301A13AD88004B9CF6 /* ProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D29B2E1A13AD88004B9CF6 /* ProductCell.m */; };
 		76D29B311A13AD88004B9CF6 /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76D29B2F1A13AD88004B9CF6 /* ProductCell.xib */; };
 		76D6281C1A3DA741009C3A0C /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D6281B1A3DA741009C3A0C /* CMPopTipView.m */; };
+		76DB17621AC78C5400D10878 /* EditOpportunityProductViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76DB17611AC78C5400D10878 /* EditOpportunityProductViewController~iphone.xib */; };
+		76DB17651AC7958400D10878 /* EditOpportunityTaskViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76DB17641AC7958400D10878 /* EditOpportunityTaskViewController~iphone.xib */; };
+		76DB17681AC7A5F400D10878 /* EditNoteOpportunityViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76DB17671AC7A5F400D10878 /* EditNoteOpportunityViewController~iphone.xib */; };
 		76DB85871AC065AB00E3FB60 /* EditContactOpportunityViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76DB85861AC065AB00E3FB60 /* EditContactOpportunityViewController~iphone.xib */; };
 		76E23E5A1AB07D9800B4B849 /* ListOpportunityViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76E23E591AB07D9800B4B849 /* ListOpportunityViewController~iphone.xib */; };
 		76EE207219FA829200A80414 /* ic-add-sub-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EE206E19FA829200A80414 /* ic-add-sub-1.png */; };
@@ -1939,6 +1942,9 @@
 		76D29B371A14C47F004B9CF6 /* OfficeOneMB-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OfficeOneMB-Info.plist"; sourceTree = "<group>"; };
 		76D6281A1A3DA741009C3A0C /* CMPopTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPopTipView.h; sourceTree = "<group>"; };
 		76D6281B1A3DA741009C3A0C /* CMPopTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPopTipView.m; sourceTree = "<group>"; };
+		76DB17611AC78C5400D10878 /* EditOpportunityProductViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EditOpportunityProductViewController~iphone.xib"; sourceTree = "<group>"; };
+		76DB17641AC7958400D10878 /* EditOpportunityTaskViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EditOpportunityTaskViewController~iphone.xib"; sourceTree = "<group>"; };
+		76DB17671AC7A5F400D10878 /* EditNoteOpportunityViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EditNoteOpportunityViewController~iphone.xib"; sourceTree = "<group>"; };
 		76DB85861AC065AB00E3FB60 /* EditContactOpportunityViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EditContactOpportunityViewController~iphone.xib"; sourceTree = "<group>"; };
 		76E23E591AB07D9800B4B849 /* ListOpportunityViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ListOpportunityViewController~iphone.xib"; sourceTree = "<group>"; };
 		76EE206E19FA829200A80414 /* ic-add-sub-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic-add-sub-1.png"; path = "VofficeImage/Option1/ic-add-sub-1.png"; sourceTree = "<group>"; };
@@ -4476,6 +4482,39 @@
 			path = CMPopTipView;
 			sourceTree = "<group>";
 		};
+		76DB175C1AC78B5C00D10878 /* EditProposeProduct */ = {
+			isa = PBXGroup;
+			children = (
+				7657E8D11A5AEBE2008A62F9 /* EditOpportunityProductViewController.h */,
+				7657E8CB1A5AEBE2008A62F9 /* EditOpportunityProductViewController.m */,
+				7657E8D21A5AEBE2008A62F9 /* EditOpportunityProductViewController.xib */,
+				76DB17611AC78C5400D10878 /* EditOpportunityProductViewController~iphone.xib */,
+			);
+			name = EditProposeProduct;
+			sourceTree = "<group>";
+		};
+		76DB17631AC794AA00D10878 /* EditTask */ = {
+			isa = PBXGroup;
+			children = (
+				7657E8CC1A5AEBE2008A62F9 /* EditOpportunityTaskViewController.h */,
+				7657E8CD1A5AEBE2008A62F9 /* EditOpportunityTaskViewController.m */,
+				7657E8D31A5AEBE2008A62F9 /* EditOpportunityTaskViewController.xib */,
+				76DB17641AC7958400D10878 /* EditOpportunityTaskViewController~iphone.xib */,
+			);
+			name = EditTask;
+			sourceTree = "<group>";
+		};
+		76DB17661AC7A53D00D10878 /* EditNote */ = {
+			isa = PBXGroup;
+			children = (
+				94A2A76F1A80F89F00C412E7 /* EditNoteOpportunityViewController.h */,
+				94A2A7701A80F89F00C412E7 /* EditNoteOpportunityViewController.m */,
+				94A2A7711A80F89F00C412E7 /* EditNoteOpportunityViewController.xib */,
+				76DB17671AC7A5F400D10878 /* EditNoteOpportunityViewController~iphone.xib */,
+			);
+			name = EditNote;
+			sourceTree = "<group>";
+		};
 		76F31E7F1A36A4150010606A /* RatingStart */ = {
 			isa = PBXGroup;
 			children = (
@@ -6118,20 +6157,14 @@
 		94A2A76C1A80F7D300C412E7 /* Edit */ = {
 			isa = PBXGroup;
 			children = (
+				76DB17631AC794AA00D10878 /* EditTask */,
+				76DB175C1AC78B5C00D10878 /* EditProposeProduct */,
 				76814B031AC0642200D7C063 /* EditContact */,
 				76814B021AC0640D00D7C063 /* EditOpportunity */,
 				9424A7361A846849003CB212 /* EditCalendarOpportunityViewController.h */,
 				9424A7371A846849003CB212 /* EditCalendarOpportunityViewController.m */,
 				9424A7381A846849003CB212 /* EditCalendarOpportunityViewController.xib */,
-				94A2A76F1A80F89F00C412E7 /* EditNoteOpportunityViewController.h */,
-				94A2A7701A80F89F00C412E7 /* EditNoteOpportunityViewController.m */,
-				94A2A7711A80F89F00C412E7 /* EditNoteOpportunityViewController.xib */,
-				7657E8CC1A5AEBE2008A62F9 /* EditOpportunityTaskViewController.h */,
-				7657E8CD1A5AEBE2008A62F9 /* EditOpportunityTaskViewController.m */,
-				7657E8D31A5AEBE2008A62F9 /* EditOpportunityTaskViewController.xib */,
-				7657E8D11A5AEBE2008A62F9 /* EditOpportunityProductViewController.h */,
-				7657E8CB1A5AEBE2008A62F9 /* EditOpportunityProductViewController.m */,
-				7657E8D21A5AEBE2008A62F9 /* EditOpportunityProductViewController.xib */,
+				76DB17661AC7A53D00D10878 /* EditNote */,
 			);
 			name = Edit;
 			sourceTree = "<group>";
@@ -6547,6 +6580,7 @@
 				76977D601A02A72E0029F297 /* ListEmployeeAccountViewController.xib in Resources */,
 				B315788A188D5E5200C0ED01 /* ic-work-fw-person-2-1.png in Resources */,
 				1755B0051AB5C28200F543DA /* EditBussinessLeadViewController~iphone.xib in Resources */,
+				76DB17621AC78C5400D10878 /* EditOpportunityProductViewController~iphone.xib in Resources */,
 				2D60B07A17A27AA400848776 /* checkbox_not_ticked.png in Resources */,
 				8E75545B1A52EFC8001940FB /* iconRampRight@2x.png in Resources */,
 				84945FFF1A2B383E002EF8BD /* follow_success.png in Resources */,
@@ -6824,6 +6858,7 @@
 				7697BBC61A7FB1700023F118 /* menu_map@2x.png in Resources */,
 				8E75545A1A52EFC8001940FB /* iconRampRight.png in Resources */,
 				8E44BC401A73A89B00EDCD1A /* ProTheDetailViewController.xib in Resources */,
+				76DB17651AC7958400D10878 /* EditOpportunityTaskViewController~iphone.xib in Resources */,
 				2D32B5CD187BDAA10065C305 /* Button_Selected-1.png in Resources */,
 				8497BFBD1A295A2300A5ED3C /* australia-large.png in Resources */,
 				76C9645F1A17731900029978 /* BiTransPieCHartSample.png in Resources */,
@@ -6939,6 +6974,7 @@
 				76D29AC81A1124C9004B9CF6 /* ProposeProductCell.xib in Resources */,
 				76C964771A17731900029978 /* trophy.png in Resources */,
 				8497BFE91A295A2300A5ED3C /* step5@2x.png in Resources */,
+				76DB17681AC7A5F400D10878 /* EditNoteOpportunityViewController~iphone.xib in Resources */,
 				9424A73A1A846849003CB212 /* EditCalendarOpportunityViewController.xib in Resources */,
 				B31AFAA5187ADB5800D366B5 /* ic-show-column-1-1.png in Resources */,
 				17C67D3A1A5D72FA00EECD66 /* SelectAddInMapsViewController.xib in Resources */,

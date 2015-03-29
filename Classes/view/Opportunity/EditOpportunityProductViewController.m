@@ -56,7 +56,11 @@
     [super viewDidLoad];
     
     if ([UIDevice getCurrentSysVer] >= 7.0) {
-        [UIDevice updateLayoutInIOs7OrAfter:self];
+        if(self.currentDeviceType == iPad){
+            [UIDevice updateLayoutInIOs7OrAfter:self];
+        }else{
+            //Nothing!
+        }
     }
     
     defaults = [NSUserDefaults standardUserDefaults];
@@ -112,11 +116,18 @@
     listArrCurrency = [dtoSysCatProcess filterWithCatType:FIX_SYS_CAT_TYPE_CURRENCY];
     
     dataId = 0;
-    if (self.dataSend) {
-        [self loadEditData];
-        self.lblFormTitle.text = LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_HEADER_EDIT");
+    if(self.currentDeviceType == iPad){
+        if (self.dataSend) {
+            [self loadEditData];
+            self.lblFormTitle.text = LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_HEADER_EDIT");
+        }else{
+            self.lblFormTitle.text = LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_HEADER_ADD");
+        }
     }else{
-        self.lblFormTitle.text = LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_HEADER_ADD");
+        if(self.dataSend){
+            [self loadEditData];
+        }
+        self.lblFormTitle.text = @"";
     }
     
 }
@@ -191,7 +202,12 @@
         for (UIView *viewSubTemp in [viewTemp subviews]) {
             
             if ([viewSubTemp isKindOfClass:[UILabel class]]) {
-                ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+                if(viewSubTemp.tag == 505){
+                    ((UILabel*) viewSubTemp).textColor = [UIColor redColor];
+                    
+                }else{
+                    ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+                }
             }
             
             if ([viewSubTemp isKindOfClass:[UITextView class]]) {
@@ -312,19 +328,34 @@
     
     [self hiddenKeyBoard];
     
-    SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
-    
-    detail.selectIndex = selectCurrencyIndex;
-    
-    detail.listData = [listArrCurrency valueForKey:DTOSYSCAT_name];
-    
-    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
-    CGRect popoverFrame = self.btnCurrency.frame;
-    
-    detail.delegate =(id<SelectIndexDelegate>) self;
-    self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(320,250) animated:NO];
-    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.bodyMainView permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    if(self.currentDeviceType == iPad){
+        SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
+        
+        detail.selectIndex = selectCurrencyIndex;
+        
+        detail.listData = [listArrCurrency valueForKey:DTOSYSCAT_name];
+        
+        self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+        CGRect popoverFrame = self.btnCurrency.frame;
+        
+        detail.delegate =(id<SelectIndexDelegate>) self;
+        self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
+        [self.listPopover setPopoverContentSize:CGSizeMake(320,250) animated:NO];
+        [self.listPopover presentPopoverFromRect:popoverFrame inView:self.bodyMainView permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    }else{
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                                 delegate:self
+                                                        cancelButtonTitle:LocalizedString(@"KEY_CANCEL")
+                                                   destructiveButtonTitle:nil
+                                                        otherButtonTitles:nil];
+        
+        NSArray *lsCurrency = [listArrCurrency valueForKey:DTOSYSCAT_name];
+        
+        for(NSString *title in lsCurrency){
+            [actionSheet addButtonWithTitle:title];
+        }
+        [actionSheet showInView:self.view];
+    }
 }
 -(void) selectAtIndex:(NSInteger)index{
     
@@ -337,22 +368,17 @@
         self.txtCurrency.text = [dic objectForKey:DTOSYSCAT_name];
     }
 
-//    switch (SELECTED_TAG) {
-//        case FOLLOW_UP_LEAD_ITEM:
-//        {
-//            selectMucDich = index;
-//            if (index<listArrPersonPosition.count) {
-//                NSDictionary *dic = [listArrPersonPosition objectAtIndex:index];
-//                catId=[dic objectForKey:DTOSYSCAT_sysCatId];
-//                _txtMucDich.text = [dic objectForKey:DTOSYSCAT_name];
-//                
-//            }
-//        }
-//            
-//        default:
-//            break;
-//    }
-    
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex < 1)
+        return;
+    buttonIndex -=1;
+    selectCurrencyIndex = buttonIndex;
+    if (buttonIndex<listArrCurrency.count) {
+        NSDictionary *dic = [listArrCurrency objectAtIndex:buttonIndex];
+        self.txtCurrency.text = [dic objectForKey:DTOSYSCAT_name];
+    }
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -649,6 +675,10 @@
     [_txtQuantity setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_QUANTITY")];
     [_lblRevenue setText:LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_REVENUE")];
     [_txtRevenue setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_REVENUE")];
-    [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+    if(self.currentDeviceType == iPad){
+        [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+    }else{
+        [_btnSave setTitle:LocalizedString(@"KEY_SAVE") forState:UIControlStateNormal];
+    }
 }
 @end

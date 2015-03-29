@@ -10,6 +10,7 @@
 #import "CalendarPickerViewController.h"
 #import "SelectIndexViewController.h"
 #import "CMPopTipView.h"
+#import "EnumClass.h"
 
 @interface EditOpportunityTaskViewController : BaseViewController
 
@@ -74,6 +75,10 @@
 
 @property (nonatomic,retain) IBOutlet UILabel *barLabel;
 @property (weak, nonatomic) IBOutlet UIView *footerView;
+
+//For iPhone only
+@property(strong,nonatomic) IBOutlet UIDatePicker* datePicker;
+@property(strong,nonatomic) IBOutlet UIDatePicker* timePicker;
 
 ////////////// KHAI BAO BIEN CHUNG//////////
 @property (nonatomic, retain) UIPopoverController *listPopover;

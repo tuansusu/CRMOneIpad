@@ -7,7 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditOpportunityViewController">
             <connections>
-                <outlet property="barLabel" destination="Cdb-bM-VEg" id="Glc-Ns-LOP"/>
                 <outlet property="bodyMainView" destination="kpg-5a-ZeD" id="t78-aS-Vcl"/>
                 <outlet property="btnHome" destination="Ezg-G9-y01" id="Zdv-Oi-Kw5"/>
                 <outlet property="btnLevel" destination="L3g-Xw-41K" id="4Zc-C9-f9L"/>
@@ -18,7 +17,6 @@
                 <outlet property="dfEndDateClear" destination="G9E-Pb-qCL" id="cLp-kp-51r"/>
                 <outlet property="dtEndDate" destination="sHb-jh-PnJ" id="CHO-PU-AbQ"/>
                 <outlet property="dtStartDate" destination="J9v-ci-N6a" id="0ed-Tx-muP"/>
-                <outlet property="footerView" destination="rXU-MU-zcn" id="eFa-oo-8tM"/>
                 <outlet property="fullNameLB" destination="cag-dB-QuZ" id="Cup-ab-tLr"/>
                 <outlet property="headerViewBar" destination="oqY-Oi-L8z" id="8OT-qX-hLZ"/>
                 <outlet property="mainView" destination="cLF-NJ-ACN" id="6uE-Mb-snA"/>
@@ -83,11 +81,11 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="kpg-5a-ZeD" userLabel="body view">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="634"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="518"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" id="A2L-1A-C1D" userLabel="View body main info">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="526"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="518"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tên cơ hội" minimumFontSize="17" id="rZ9-bd-fbA">
@@ -225,20 +223,6 @@
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                </view>
-                <view contentMode="scaleToFill" id="rXU-MU-zcn" userLabel="FOOTER VIEW">
-                    <rect key="frame" x="0.0" y="548" width="320" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="VOFFICE-iPad 2.0, copyright Viettel ICT, Viettel Group" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Cdb-bM-VEg">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

@@ -883,7 +883,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
                                                                  delegate:self
                                                         cancelButtonTitle:LocalizedString(@"KEY_CANCEL")
                                                    destructiveButtonTitle:nil
-                                            otherButtonTitles:LocalizedString(@"KEY_OPPORTUNITY_DETAIL_MENU_ADD_CONTACT"),LocalizedString(@"KEY_OPPORTUNITY_DETAIL_MENU_ADD_PROPOSEPRODUCT"),LocalizedString(@"KEY_OPPORTUNITY_DETAIL_MENU_ADD_TASK"),LocalizedString(@"KEY_OPPORTUNITY_DETAIL_MENU_ADD_NOTE"),LocalizedString(@"KEY_OPPORTUNITY_DETAIL_MENU_ADD_CALENDAR"), nil];
+                                            otherButtonTitles:LocalizedString(@"KEY_OPPORTUNITY_DETAIL_MENU_ADD_CONTACT"),LocalizedString(@"KEY_OPPORTUNITY_DETAIL_MENU_ADD_PROPOSEPRODUCT"),LocalizedString(@"KEY_OPPORTUNITY_DETAIL_MENU_ADD_SALEPRODUCT"),LocalizedString(@"KEY_OPPORTUNITY_DETAIL_MENU_ADD_TASK"),LocalizedString(@"KEY_OPPORTUNITY_DETAIL_MENU_ADD_NOTE"),LocalizedString(@"KEY_OPPORTUNITY_DETAIL_MENU_ADD_CALENDAR"), nil];
         [actionSheet showInView:self.view];
         
     }

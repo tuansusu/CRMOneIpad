@@ -10,6 +10,7 @@
 #import "MDSearchBarController.h"
 #import "SelectIndexViewController.h"
 #import "CMPopTipView.h"
+#import "EnumClass.h"
 
 @protocol OpportunityProductDelegate <NSObject>
 @optional

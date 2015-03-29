@@ -18,6 +18,9 @@
 #define TAG_SELECT_PERSONAL_POSITION 1
 #define TAG_SELECT_PERSONAL_JOB 2
 
+#define TAG_ALERTVIEW_DATEOFBIRTH 233
+#define TAG_ALERTVIEW_DATEOFBIRTH_PICKER 2332
+
 
 #define TEXT_HEADER_ADD_LEADER_PERSON @"THÊM MỚI KHÁCH HÀNG CÁ NHÂN"
 #define TEXT_HEADER_EDIT_LEADER_PERSON @"SỬA KHÁCH HÀNG CÁ NHÂN"
@@ -448,22 +451,42 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+
+- (void) dateChanged:(id)sender
+{
+    NSDateFormatter *birthDateFormatter;
+    UIDatePicker *birthDatePicker = (UIDatePicker *)sender;
+    
+    birthDateFormatter = [[NSDateFormatter alloc] init];
+    [birthDateFormatter setDateStyle:NSDateFormatterShortStyle];
+    NSLog(@"birthdateformat = %@",[birthDateFormatter stringFromDate:birthDatePicker.date] );
+}
+
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if(alertView.tag==111){
+    
+    if(alertView.tag==TAG_ALERTVIEW_DATEOFBIRTH && buttonIndex == 1){ //CHON NGAY THANG
         
+        for (UIView *viewTemp in alertView.subviews) {
+            if (viewTemp.tag == TAG_ALERTVIEW_DATEOFBIRTH_PICKER) {
+                UIDatePicker *picker = (UIDatePicker*) viewTemp;
+                NSLog(@"picker = %@", [picker date]);
+            }
+        }
+        
+        return;
     }
     
-    if (buttonIndex == 0 && alertView.tag ==1) {
-        
-        
-    }
+    
     if (succsess && alertView.tag == 5 && buttonIndex == 0) { //thong bao dong form
         [self dismissViewControllerAnimated:YES completion:nil];
+        return;
     }
     
     if (succsess && alertView.tag == 5 && buttonIndex == 1) {
         //reset lai form
         [self resetForm];
+        return;
     }
     if(alertView.tag==11){
         if(buttonIndex==0){
@@ -902,10 +925,14 @@
             
             picker = [[UIDatePicker alloc] init];
             picker.datePickerMode = UIDatePickerModeDate;
-            
+            picker.tag =TAG_ALERTVIEW_DATEOFBIRTH_PICKER;
             [picker setDate:[NSDate date]];
+            
+            
+            [picker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
+            
             [alert addSubview:picker];
-            alert.tag=111;
+            alert.tag=TAG_ALERTVIEW_DATEOFBIRTH;
             alert.bounds = CGRectMake(0, 0, 300 ,200);
             [alert setValue:picker forKey:@"accessoryView"];
             [alert show];

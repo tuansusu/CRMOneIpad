@@ -211,14 +211,18 @@
     
     [navi setNavigationBarHidden:YES];
     
-    MeunViewController *leftController = [[MeunViewController alloc] init];
+    MenuViewController *leftController = [[MenuViewController alloc] init];
     
     MMDrawerController *drawerControllerMainProgramHome = [[MMDrawerController alloc]
                                                            initWithCenterViewController:navi
                                                            leftDrawerViewController:leftController
                                                            rightDrawerViewController:NULL];
     [drawerControllerMainProgramHome setShouldStretchDrawer:FALSE];
-    [drawerControllerMainProgramHome setMaximumLeftDrawerWidth:259];
+    if(self.currentDeviceType == iPad){
+        [drawerControllerMainProgramHome setMaximumLeftDrawerWidth:259];
+    }else{
+        [drawerControllerMainProgramHome setMaximumLeftDrawerWidth:210];
+    }
     [drawerControllerMainProgramHome setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [drawerControllerMainProgramHome setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
     

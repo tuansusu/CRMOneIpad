@@ -236,6 +236,7 @@
 		76199E141A471DA900B792C5 /* MDSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76199E0F1A471DA900B792C5 /* MDSearchView.m */; };
 		76199E151A471DA900B792C5 /* MDSearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76199E101A471DA900B792C5 /* MDSearchView.xib */; };
 		76199E181A472AE700B792C5 /* DTOFLLOWUPProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76199E171A472AE700B792C5 /* DTOFLLOWUPProcess.m */; };
+		761DA3951AC7B0AB004AA0BC /* MenuViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 761DA3941AC7B0AB004AA0BC /* MenuViewController~iphone.xib */; };
 		762048721A0BDE8000AAA917 /* icon_menu-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 762048711A0BDE8000AAA917 /* icon_menu-1.png */; };
 		762048761A0D246600AAA917 /* CompetitorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 762048741A0D246600AAA917 /* CompetitorsViewController.m */; };
 		762048771A0D246600AAA917 /* CompetitorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 762048751A0D246600AAA917 /* CompetitorsViewController.xib */; };
@@ -410,8 +411,8 @@
 		769F24831A6F1C5500427A8F /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F247A1A6F1C5500427A8F /* MMDrawerVisualState.m */; };
 		769F24841A6F1C5500427A8F /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 769F247B1A6F1C5500427A8F /* README.md */; };
 		769F24851A6F1C5500427A8F /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F247D1A6F1C5500427A8F /* UIViewController+MMDrawerController.m */; };
-		769F24891A6F1F3F00427A8F /* MeunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F24871A6F1F3F00427A8F /* MeunViewController.m */; };
-		769F248A1A6F1F3F00427A8F /* MeunViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769F24881A6F1F3F00427A8F /* MeunViewController.xib */; };
+		769F24891A6F1F3F00427A8F /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F24871A6F1F3F00427A8F /* MenuViewController.m */; };
+		769F248A1A6F1F3F00427A8F /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769F24881A6F1F3F00427A8F /* MenuViewController.xib */; };
 		76A9883D1AAF3E6000F53304 /* MainViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76A9883B1AAF3E6000F53304 /* MainViewController~iphone.xib */; };
 		76BE29381AA3F55800663803 /* icon_delete_90x90.png in Resources */ = {isa = PBXBuildFile; fileRef = 76BE29351AA3F55800663803 /* icon_delete_90x90.png */; };
 		76BE29391AA3F55800663803 /* icon_save_90x90.png in Resources */ = {isa = PBXBuildFile; fileRef = 76BE29361AA3F55800663803 /* icon_save_90x90.png */; };
@@ -1494,6 +1495,7 @@
 		76199E101A471DA900B792C5 /* MDSearchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MDSearchView.xib; sourceTree = "<group>"; };
 		76199E161A472AE700B792C5 /* DTOFLLOWUPProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOFLLOWUPProcess.h; sourceTree = "<group>"; };
 		76199E171A472AE700B792C5 /* DTOFLLOWUPProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOFLLOWUPProcess.m; sourceTree = "<group>"; };
+		761DA3941AC7B0AB004AA0BC /* MenuViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "MenuViewController~iphone.xib"; path = "CustomView/MenuViewController~iphone.xib"; sourceTree = "<group>"; };
 		762048711A0BDE8000AAA917 /* icon_menu-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_menu-1.png"; path = "VofficeImage/Option1/icon_menu-1.png"; sourceTree = "<group>"; };
 		762048731A0D246600AAA917 /* CompetitorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompetitorsViewController.h; sourceTree = "<group>"; };
 		762048741A0D246600AAA917 /* CompetitorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompetitorsViewController.m; sourceTree = "<group>"; };
@@ -1748,9 +1750,9 @@
 		769F247B1A6F1C5500427A8F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		769F247C1A6F1C5500427A8F /* UIViewController+MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MMDrawerController.h"; sourceTree = "<group>"; };
 		769F247D1A6F1C5500427A8F /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
-		769F24861A6F1F3F00427A8F /* MeunViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeunViewController.h; path = CustomView/MeunViewController.h; sourceTree = "<group>"; };
-		769F24871A6F1F3F00427A8F /* MeunViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeunViewController.m; path = CustomView/MeunViewController.m; sourceTree = "<group>"; };
-		769F24881A6F1F3F00427A8F /* MeunViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MeunViewController.xib; path = CustomView/MeunViewController.xib; sourceTree = "<group>"; };
+		769F24861A6F1F3F00427A8F /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuViewController.h; path = CustomView/MenuViewController.h; sourceTree = "<group>"; };
+		769F24871A6F1F3F00427A8F /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuViewController.m; path = CustomView/MenuViewController.m; sourceTree = "<group>"; };
+		769F24881A6F1F3F00427A8F /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuViewController.xib; path = CustomView/MenuViewController.xib; sourceTree = "<group>"; };
 		76A9883B1AAF3E6000F53304 /* MainViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainViewController~iphone.xib"; sourceTree = "<group>"; };
 		76BE29351AA3F55800663803 /* icon_delete_90x90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_delete_90x90.png; sourceTree = "<group>"; };
 		76BE29361AA3F55800663803 /* icon_save_90x90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_save_90x90.png; sourceTree = "<group>"; };
@@ -3672,9 +3674,10 @@
 				15C6A1941A6FDC4800F19B30 /* PickerViewController.h */,
 				15C6A1951A6FDC4800F19B30 /* PickerViewController.m */,
 				15C6A1961A6FDC4800F19B30 /* PickerViewController.xib */,
-				769F24861A6F1F3F00427A8F /* MeunViewController.h */,
-				769F24871A6F1F3F00427A8F /* MeunViewController.m */,
-				769F24881A6F1F3F00427A8F /* MeunViewController.xib */,
+				769F24861A6F1F3F00427A8F /* MenuViewController.h */,
+				769F24871A6F1F3F00427A8F /* MenuViewController.m */,
+				769F24881A6F1F3F00427A8F /* MenuViewController.xib */,
+				761DA3941AC7B0AB004AA0BC /* MenuViewController~iphone.xib */,
 				76199E081A471D7800B792C5 /* MDSearchBarController */,
 				94BA8D791A2DF3CF0082AE9E /* CalendarPickerViewController.h */,
 				94BA8D7A1A2DF3CF0082AE9E /* CalendarPickerViewController.m */,
@@ -6942,7 +6945,7 @@
 				2DE2D2531829060700034877 /* ic-pdf.png in Resources */,
 				2D2F75A2185801E000EC76EE /* Button_Dong_y.png in Resources */,
 				2DE2D2541829060700034877 /* ic-notsign.png in Resources */,
-				769F248A1A6F1F3F00427A8F /* MeunViewController.xib in Resources */,
+				769F248A1A6F1F3F00427A8F /* MenuViewController.xib in Resources */,
 				76E23E5A1AB07D9800B4B849 /* ListOpportunityViewController~iphone.xib in Resources */,
 				849078931A1E4D5B009D5D5F /* icon_Line-1.png in Resources */,
 				8E875FB31AC2E390002B89AD /* ColorPopoverLocalizable.strings in Resources */,
@@ -7052,6 +7055,7 @@
 				8E6A10291A6226F500D98AE3 /* MainViewCell.xib in Resources */,
 				B3157885188D5E5200C0ED01 /* ic-viewpdf-rotateleft-1.png in Resources */,
 				B313F1D718A65107001FDEC6 /* arrow-1.png in Resources */,
+				761DA3951AC7B0AB004AA0BC /* MenuViewController~iphone.xib in Resources */,
 				76EE207519FA829200A80414 /* ic-view-history-1.png in Resources */,
 				7697BBC81A7FB1700023F118 /* menu_report@2x.png in Resources */,
 				2D9A3B18182CED4F00B6E606 /* btn-bg-3.png in Resources */,
@@ -7214,7 +7218,7 @@
 				8E875FB61AC2E390002B89AD /* WEPopoverContainerView.m in Sources */,
 				76977D551A0284DE0029F297 /* TableTestProcess.m in Sources */,
 				76C964611A17731900029978 /* DefaultPopOverForPieChart.m in Sources */,
-				769F24891A6F1F3F00427A8F /* MeunViewController.m in Sources */,
+				769F24891A6F1F3F00427A8F /* MenuViewController.m in Sources */,
 				06FE2E2A1A45816D004A1D16 /* MapsModel.m in Sources */,
 				8EC4B90B1A505A7D0078BF13 /* DirectionsHeaderView.m in Sources */,
 				DDBC47111715412D00CCFB94 /* OAHMAC_SHA1SignatureProvider.m in Sources */,

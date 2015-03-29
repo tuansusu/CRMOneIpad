@@ -59,6 +59,8 @@ typedef enum {
 
 - (id)initWithRootViewController:(UIViewController*)controller;
 
+@property(nonatomic,assign) BOOL isIphone;
+
 @property(nonatomic,assign) id <DDMenuControllerDelegate> delegate;
 
 @property(nonatomic,strong) UIViewController *leftViewController;

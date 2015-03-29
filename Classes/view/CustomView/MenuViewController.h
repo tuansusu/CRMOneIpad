@@ -11,9 +11,11 @@
 #import "FrameworkAppDelegate.h"
 #import "MainViewController.h"
 #import "HelpViewController.h"
+#import "EnumClass.h"
 
-@interface MeunViewController : BaseViewController
+@interface MenuViewController : BaseViewController
 
+@property (weak, nonatomic) IBOutlet UIView *menuView;
 @property (weak, nonatomic) IBOutlet UIView *menuView2;
 
 @property (weak, nonatomic) IBOutlet UIView *footerView;

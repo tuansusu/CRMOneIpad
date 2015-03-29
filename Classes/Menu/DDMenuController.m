@@ -27,14 +27,17 @@
 #import "DDMenuController.h"
 
 #define kMenuFullWidth 259.0f
+#define kMenuiPhoneFullWith 210.0f
 #define kMenuDisplayedWidth 259.0f
-#define kMenuOverlayWidth (self.view.bounds.size.width - kMenuDisplayedWidth)
+#define kMenuiPhoneDisplayedWidth 210.0f
+#define kMenuOverlayWidth (self.view.bounds.size.width - (self.isIphone ? kMenuiPhoneDisplayedWidth : kMenuDisplayedWidth))
 #define kMenuBounceOffset 10.0f
 #define kMenuBounceDuration .3f
 #define kMenuSlideDuration .3f
 
 
 @interface DDMenuController (Internal)
+
 - (void)showShadow:(BOOL)val;
 @end
 
@@ -74,6 +77,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setRootViewController:_root]; // reset root
+    
+    
+    NSString *deviceName = [UIDevice currentDevice].model;
+    self.isIphone = ([deviceName isEqualToString:@"iPhone"] || [deviceName isEqualToString:@"iPhone Simulator"]);
+
     
     if (!_tap) {
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
@@ -195,7 +203,7 @@
                 
                 _menuFlags.showingLeftView = YES;
                 CGRect frame = self.view.bounds;
-				frame.size.width = kMenuFullWidth;
+                frame.size.width = self.isIphone ? kMenuiPhoneFullWith : kMenuFullWidth;
                 self.leftViewController.view.frame = frame;
                 [self.view insertSubview:self.leftViewController.view atIndex:0];
                 
@@ -214,8 +222,8 @@
                 
                 _menuFlags.showingRightView = YES;
                 CGRect frame = self.view.bounds;
-				frame.origin.x += frame.size.width - kMenuFullWidth;
-				frame.size.width = kMenuFullWidth;
+                frame.origin.x += frame.size.width -(self.isIphone ? kMenuiPhoneFullWith : kMenuFullWidth);
+                frame.size.width = self.isIphone ? kMenuiPhoneFullWith : kMenuFullWidth;
                 self.rightViewController.view.frame = frame;
                 [self.view insertSubview:self.rightViewController.view atIndex:0];
                 
@@ -490,13 +498,14 @@
     
     UIView *view = self.leftViewController.view;
 	CGRect frame = self.view.bounds;
-	frame.size.width = kMenuFullWidth;
+    frame.size.width = self.isIphone ? kMenuiPhoneFullWith : kMenuFullWidth;
     view.frame = frame;
     [self.view insertSubview:view atIndex:0];
     [self.leftViewController viewWillAppear:animated];
     
     frame = _root.view.frame;
-    frame.origin.x = CGRectGetMaxX(view.frame) - (kMenuFullWidth - kMenuDisplayedWidth);
+    
+    frame.origin.x = CGRectGetMaxX(view.frame) - ((self.isIphone ? kMenuiPhoneFullWith : kMenuFullWidth) - (self.isIphone ? kMenuiPhoneDisplayedWidth : kMenuDisplayedWidth));
     
     BOOL _enabled = [UIView areAnimationsEnabled];
     if (!animated) {
@@ -532,8 +541,8 @@
     
     UIView *view = self.rightViewController.view;
     CGRect frame = self.view.bounds;
-	frame.origin.x += frame.size.width - kMenuFullWidth;
-	frame.size.width = kMenuFullWidth;
+    frame.origin.x += frame.size.width - (self.isIphone ? kMenuiPhoneFullWith : kMenuFullWidth);
+    frame.size.width = self.isIphone ? kMenuiPhoneFullWith : kMenuFullWidth;
     view.frame = frame;
     [self.view insertSubview:view atIndex:0];
     

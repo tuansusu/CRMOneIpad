@@ -6,7 +6,7 @@
 //
 //
 
-#import "MeunViewController.h"
+#import "MenuViewController.h"
 #import "Language.h"
 #import "LocalizeHelper.h"
 
@@ -16,7 +16,7 @@
 #import "DashboardTaskViewController.h"
 #import "UIImageView+ForScrollView.h"
 
-@interface MeunViewController ()
+@interface MenuViewController ()
 {
     
     __weak IBOutlet UILabel *lbGroupCustomer;
@@ -58,7 +58,7 @@
 }
 @end
 
-@implementation MeunViewController
+@implementation MenuViewController
 
 
 @synthesize CongViecView,LichHopView,TienIchView,HeThongView;
@@ -81,18 +81,21 @@
    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
 //    [self.lbDashboard setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
-    [self.lbTask setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
-    [self.lbMeetingSchedule setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
-    [self.lbUtility setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
-    [self.lbSystem setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
-    
+    if(self.currentDeviceType == iPad){
+        [self.lbTask setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
+        [self.lbMeetingSchedule setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
+        [self.lbUtility setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
+        [self.lbSystem setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
+    }
    NSString *interfaceOption = [defaults objectForKey:INTERFACE_OPTION];
     
     if (!interfaceOption || [interfaceOption isEqualToString:@"(null)"]) {
         [defaults setObject:@"1" forKey:INTERFACE_OPTION];
         interfaceOption = @"1";
     }
-    [self.menuView2 setBackgroundColor:TOOLBAR_VIEW_COLOR];
+    if(self.currentDeviceType == iPad){
+        [self.menuView2 setBackgroundColor:TOOLBAR_VIEW_COLOR];
+    }
     
     obj=[Language getInstance];
     defaults = [NSUserDefaults standardUserDefaults];
@@ -114,16 +117,22 @@
     [super viewWillAppear:animated];
     CGRect frame = self.view.frame;
     if ([UIDevice getCurrentSysVer] >= 7.0) {
-        frame.origin.y = 20;
-        self.view.frame = frame;
+        if(self.currentDeviceType == iPad){
+            frame.origin.y = 20;
+            self.view.frame = frame;
+        }
     }
     CALayer *sublayer = [CALayer layer];
     sublayer.backgroundColor = [UIColor lightGrayColor].CGColor;
     sublayer.frame = CGRectMake(frame.size.width - 1.f, 0, .5f, frame.size.height);
     [self.view.layer addSublayer:sublayer];
+    
+    
+    lbSystem.backgroundColor =[UIColor colorWithRed:57.0f/255.0f green:60.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
 }
 
 -(void)setupLanguage{
+    
     
     [lbGroupCustomer setText:LocalizedString(@"MENU_GROUP_CUSTOMER")];
     [btnCustomer setTitle:LocalizedString(@"MENU_FUNCTION_ACCOUNTLEAD") forState:UIControlStateNormal];
@@ -149,7 +158,12 @@
     
     [btnCancel setTitle:LocalizedString(@"MENU_FUNCTION_CANCEL") forState:UIControlStateNormal];
     
-
+    if(self.currentDeviceType == iPhone){
+     [lbGroupCustomer setText: [NSString stringWithFormat:@"  %@",[StringUtil trimString:LocalizedString(@"MENU_GROUP_CUSTOMER") ]]];
+     [lbGroupAction setText: [NSString stringWithFormat:@"  %@",[StringUtil trimString:LocalizedString(@"MENU_GROUP_ACTION_SALE") ]]];
+     [lbGroupUtility setText: [NSString stringWithFormat:@"  %@",[StringUtil trimString:LocalizedString(@"MENU_GROUP_UTILITY") ]]];
+     [lbSystem setText: [NSString stringWithFormat:@"  %@",[StringUtil trimString:LocalizedString(@"MENU_GROUP_SYSTEM") ]]];
+    }
 }
 
 - (void) updateInterFaceWithOption : (int) option
@@ -164,103 +178,172 @@
         
     }
     
-    
-    self.footerView.backgroundColor = TOOLBAR_VIEW_COLOR;
-    self.CongViecView.backgroundColor = [UIColor whiteColor];
+    if(self.currentDeviceType == iPad){
+        self.footerView.backgroundColor = TOOLBAR_VIEW_COLOR;
+        self.CongViecView.backgroundColor = [UIColor whiteColor];
+        
+        for (UIView *viewTemp in self.DashboardView.subviews) {
+            if ([viewTemp isKindOfClass:[UIButton class]]) {
+                [viewTemp setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagTop];
+                [((UIButton*) viewTemp) setTitleColor:TEXT_COLOR_MENU_SUB forState:UIControlStateNormal];
+            }
+            if ([viewTemp isKindOfClass:[UILabel class]]) {
+                
+                [((UILabel*) viewTemp) setTextColor:TEXT_COLOR_HOME];
+            }
+            
+        }
+        
+        for (UIView *viewTemp in self.CongViecView.subviews) {
+            if ([viewTemp isKindOfClass:[UIButton class]]) {
+                [viewTemp setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagTop];
+                [((UIButton*) viewTemp) setTitleColor:TEXT_COLOR_MENU_SUB forState:UIControlStateNormal];
+            }
+            if ([viewTemp isKindOfClass:[UILabel class]]) {
+                
+                [((UILabel*) viewTemp) setTextColor:TEXT_COLOR_HOME];
+            }
+            
+            if ([viewTemp isKindOfClass:[UIImageView class]]) {
+                
+                [((UIImageView*) viewTemp) setAlpha:1.0f];
+            }
+            
+            
+        }
+        
+        self.LichHopView.backgroundColor = [UIColor whiteColor];
+        
+        for (UIView *viewTemp in self.LichHopView.subviews) {
+            if ([viewTemp isKindOfClass:[UIButton class]]) {
+                [viewTemp setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagTop];
+                [((UIButton*) viewTemp) setTitleColor:TEXT_COLOR_MENU_SUB forState:UIControlStateNormal];
+            }
+            if ([viewTemp isKindOfClass:[UILabel class]]) {
+                
+                [((UILabel*) viewTemp) setTextColor:TEXT_COLOR_HOME];
+            }
+            
+            if ([viewTemp isKindOfClass:[UIImageView class]]) {
+                
+                [((UIImageView*) viewTemp) setAlpha:1.0f];
+            }
+            
+        }
+        
+        self.TienIchView.backgroundColor = [UIColor whiteColor];
+        
+        for (UIView *viewTemp in self.TienIchView.subviews) {
+            if ([viewTemp isKindOfClass:[UIButton class]]) {
+                [viewTemp setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagTop];
+                [((UIButton*) viewTemp) setTitleColor:TEXT_COLOR_MENU_SUB forState:UIControlStateNormal];
+            }
+            if ([viewTemp isKindOfClass:[UILabel class]]) {
+                
+                [((UILabel*) viewTemp) setTextColor:TEXT_COLOR_HOME];
+            }
+            
+            if ([viewTemp isKindOfClass:[UIImageView class]]) {
+                
+                [((UIImageView*) viewTemp) setAlpha:1.0f];
+            }
+            
+        }
+        
+        self.HeThongView.backgroundColor = [UIColor whiteColor];
+        
+        for (UIView *viewTemp in self.HeThongView.subviews) {
+            if ([viewTemp isKindOfClass:[UIButton class]]) {
+                [viewTemp setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagTop];
+                [((UIButton*) viewTemp) setTitleColor:TEXT_COLOR_MENU_SUB forState:UIControlStateNormal];
+            }
+            if ([viewTemp isKindOfClass:[UILabel class]]) {
+                
+                [((UILabel*) viewTemp) setTextColor:TEXT_COLOR_HOME];
+            }
+            if ([viewTemp isKindOfClass:[UIImageView class]]) {
+                
+                [((UIImageView*) viewTemp) setAlpha:1.0f];
+            }
+        }
+        
+        
+        
+        
+        [self.lbDashboard setTextColor:TEXT_COLOR_HOMEPAGE];
+        [self.lbTask setTextColor:TEXT_COLOR_HOMEPAGE];
+        [self.lbMeetingSchedule setTextColor:TEXT_COLOR_HOMEPAGE];
+        [self.lbUtility setTextColor:TEXT_COLOR_HOMEPAGE];
+        [self.lbSystem setTextColor:TEXT_COLOR_HOMEPAGE];
+    }else{
+        
+        [self.menuView setBackgroundColor:[UIColor colorWithRed:62.0f/255.0f green:64.0f/255.0f blue:70.0f/255.0f alpha:1.0f]];
+        
+        //self.lbDashboard.backgroundColor =[UIColor colorWithRed:57.0f/255.0f green:60.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
+        
+        lbGroupCustomer.backgroundColor =[UIColor colorWithRed:57.0f/255.0f green:60.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
+        for (UIView *viewTemp in self.CongViecView.subviews) {
+           if ([viewTemp isKindOfClass:[UIButton class]] && viewTemp.tag != 520) {
+            [self addBottomLineWithBottomControl:viewTemp.frame withInControl:CongViecView];
+          
+           }
+            
+            if ([viewTemp isKindOfClass:[UIImageView class]]) {
+                
+                [((UIImageView*) viewTemp) setAlpha:1.0f];
+            }
+        }
+        
+        
+        lbGroupAction.backgroundColor =[UIColor colorWithRed:57.0f/255.0f green:60.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
+        for (UIView *viewTemp in self.LichHopView.subviews) {
+            if ([viewTemp isKindOfClass:[UIButton class]] && viewTemp.tag != 520) {
+                [self addBottomLineWithBottomControl:viewTemp.frame withInControl:LichHopView];
+                
+            }
+            if ([viewTemp isKindOfClass:[UIImageView class]]) {
+                
+                [((UIImageView*) viewTemp) setAlpha:1.0f];
+            }
+        }
+        
+        
+        lbGroupUtility.backgroundColor =[UIColor colorWithRed:57.0f/255.0f green:60.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
+        for (UIView *viewTemp in self.TienIchView.subviews) {
+            if ([viewTemp isKindOfClass:[UIButton class]] && viewTemp.tag != 520) {
+                [self addBottomLineWithBottomControl:viewTemp.frame withInControl:TienIchView];
+                
+            }
+            if ([viewTemp isKindOfClass:[UIImageView class]]) {
+                
+                [((UIImageView*) viewTemp) setAlpha:1.0f];
+            }
+        }
 
-    for (UIView *viewTemp in self.DashboardView.subviews) {
-        if ([viewTemp isKindOfClass:[UIButton class]]) {
-            [viewTemp setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagTop];
-            [((UIButton*) viewTemp) setTitleColor:TEXT_COLOR_MENU_SUB forState:UIControlStateNormal];
-        }
-        if ([viewTemp isKindOfClass:[UILabel class]]) {
 
-            [((UILabel*) viewTemp) setTextColor:TEXT_COLOR_HOME];
+        lbSystem.backgroundColor =[UIColor colorWithRed:57.0f/255.0f green:60.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
+        for (UIView *viewTemp in self.HeThongView.subviews) {
+            if ([viewTemp isKindOfClass:[UIButton class]] && viewTemp.tag != 520) {
+                [self addBottomLineWithBottomControl:viewTemp.frame withInControl:HeThongView];
+                
+            }
+            if ([viewTemp isKindOfClass:[UIImageView class]]) {
+                
+                [((UIImageView*) viewTemp) setAlpha:1.0f];
+               // ((UIImageView*) viewTemp)
+            }
         }
+        
+    }
+}
 
-    }
+-(void) addBottomLineWithBottomControl : (CGRect) bottomViewFrame withInControl : (UIView*) containView {
     
-    for (UIView *viewTemp in self.CongViecView.subviews) {
-        if ([viewTemp isKindOfClass:[UIButton class]]) {
-            [viewTemp setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagTop];
-            [((UIButton*) viewTemp) setTitleColor:TEXT_COLOR_MENU_SUB forState:UIControlStateNormal];
-        }
-        if ([viewTemp isKindOfClass:[UILabel class]]) {
-            
-            [((UILabel*) viewTemp) setTextColor:TEXT_COLOR_HOME];
-        }
-        
-        if ([viewTemp isKindOfClass:[UIImageView class]]) {
-            
-            [((UIImageView*) viewTemp) setAlpha:1.0f];
-        }
-
-        
-    }
+    UIView *viewLine = [[UIView alloc] initWithFrame:CGRectMake(45, bottomViewFrame.origin.y + bottomViewFrame.size.height + 2, containView.frame.size.width - 48 - 10, 0.3f)];
+    viewLine.backgroundColor = [UIColor grayColor];
+    [viewLine setBorderWithOption:0];
+    [containView addSubview:viewLine];
     
-    self.LichHopView.backgroundColor = [UIColor whiteColor];
-    
-    for (UIView *viewTemp in self.LichHopView.subviews) {
-        if ([viewTemp isKindOfClass:[UIButton class]]) {
-            [viewTemp setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagTop];
-            [((UIButton*) viewTemp) setTitleColor:TEXT_COLOR_MENU_SUB forState:UIControlStateNormal];
-        }
-        if ([viewTemp isKindOfClass:[UILabel class]]) {
-            
-            [((UILabel*) viewTemp) setTextColor:TEXT_COLOR_HOME];
-        }
-        
-        if ([viewTemp isKindOfClass:[UIImageView class]]) {
-            
-            [((UIImageView*) viewTemp) setAlpha:1.0f];
-        }
-        
-    }
-    
-    self.TienIchView.backgroundColor = [UIColor whiteColor];
-    
-    for (UIView *viewTemp in self.TienIchView.subviews) {
-        if ([viewTemp isKindOfClass:[UIButton class]]) {
-            [viewTemp setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagTop];
-            [((UIButton*) viewTemp) setTitleColor:TEXT_COLOR_MENU_SUB forState:UIControlStateNormal];
-        }
-        if ([viewTemp isKindOfClass:[UILabel class]]) {
-            
-            [((UILabel*) viewTemp) setTextColor:TEXT_COLOR_HOME];
-        }
-        
-        if ([viewTemp isKindOfClass:[UIImageView class]]) {
-            
-            [((UIImageView*) viewTemp) setAlpha:1.0f];
-        }
-        
-    }
-    
-    self.HeThongView.backgroundColor = [UIColor whiteColor];
-    
-    for (UIView *viewTemp in self.HeThongView.subviews) {
-        if ([viewTemp isKindOfClass:[UIButton class]]) {
-            [viewTemp setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagTop];
-            [((UIButton*) viewTemp) setTitleColor:TEXT_COLOR_MENU_SUB forState:UIControlStateNormal];
-        }
-        if ([viewTemp isKindOfClass:[UILabel class]]) {
-            
-            [((UILabel*) viewTemp) setTextColor:TEXT_COLOR_HOME];
-        }
-        if ([viewTemp isKindOfClass:[UIImageView class]]) {
-            
-            [((UIImageView*) viewTemp) setAlpha:1.0f];
-        }
-    }
-    
-    
-    
-    
-    [self.lbDashboard setTextColor:TEXT_COLOR_HOMEPAGE];
-    [self.lbTask setTextColor:TEXT_COLOR_HOMEPAGE];
-    [self.lbMeetingSchedule setTextColor:TEXT_COLOR_HOMEPAGE];
-    [self.lbUtility setTextColor:TEXT_COLOR_HOMEPAGE];
-    [self.lbSystem setTextColor:TEXT_COLOR_HOMEPAGE];
 }
 
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

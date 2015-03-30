@@ -68,6 +68,8 @@
     //luu lai thong tin chon dia chi cua ban do
     float _longitude, _latitude;
     Language *obj;
+    UIAlertView *alertView ;
+    
     
 }
 @end
@@ -459,6 +461,8 @@
     
     birthDateFormatter = [[NSDateFormatter alloc] init];
     [birthDateFormatter setDateStyle:NSDateFormatterShortStyle];
+    NSString *date=[birthDateFormatter stringFromDate:birthDatePicker.date];
+    _txtDateOfBirth.text=date;
     NSLog(@"birthdateformat = %@",[birthDateFormatter stringFromDate:birthDatePicker.date] );
 }
 
@@ -563,17 +567,18 @@
     //hide all key
     [self hiddenKeyBoard];
     if([self currentDeviceType]==iPhone){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Chọn chức danh" message:@"" delegate:self cancelButtonTitle:@"Huỷ" otherButtonTitles:@"OK", nil];
-        UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 250, 230)];
+        alertView = [[UIAlertView alloc] initWithTitle:@"Chọn chức danh" message:@"" delegate:self cancelButtonTitle:@"Huỷ" otherButtonTitles:nil, nil];
+        UITableView *tableAlert = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 250, 230)];
+        tableAlert.delegate=self;
+        tableAlert.dataSource=self;
+        [tableAlert reloadData];
+        //tableAlert.dataSource=[listArrPersonPosition valueForKey:DTOSYSCAT_name];
         
-        table.delegate=self;
-        table.dataSource=self;
-        
-        [alert addSubview:table];
-        alert.tag=222;
-        alert.bounds = CGRectMake(0, 0, 300 ,200);
-        [alert setValue:table forKey:@"accessoryView"];
-        [alert show];
+        [alertView addSubview:tableAlert];
+        alertView.tag=222;
+        alertView.bounds = CGRectMake(0, 0, 300 ,200);
+        [alertView setValue:tableAlert forKey:@"accessoryView"];
+        [alertView show];
     }
     else{
         SELECTED_TAG = TAG_SELECT_PERSONAL_POSITION;
@@ -929,12 +934,13 @@
             [picker setDate:[NSDate date]];
             
             
-            [picker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
+            [picker addTarget:self action: @selector(dateChanged:) forControlEvents:UIControlEventAllEvents];
             
             [alert addSubview:picker];
             alert.tag=TAG_ALERTVIEW_DATEOFBIRTH;
             alert.bounds = CGRectMake(0, 0, 300 ,200);
             [alert setValue:picker forKey:@"accessoryView"];
+            alert.tag=123;
             [alert show];
         }
     }
@@ -1025,25 +1031,45 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return 0;
+    return [[listArrPersonPosition valueForKey:DTOSYSCAT_name]  count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell;
-    //get customer from collection of customers
-   // Customer *customer = self.customers.result.value[indexPath.row];
     
-    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
-    cell.textLabel.text =@"Luong";
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    // Set the data for this cell:
+    
+    cell.textLabel.text = [[listArrPersonPosition valueForKey:DTOSYSCAT_name] objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = @"More text";
+    //cell.imageView.image = [UIImage imageNamed:@"flower.png"];
+    cell.accessoryType=UITableViewCellAccessoryCheckmark;
+    
+    // set the accessory view:
+    cell.accessoryType =  UITableViewCellAccessoryDisclosureIndicator;
+    
+    
     return cell;
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath) {
-//        self.selectedCustomer = self.customers.result.value[indexPath.row];
-    } else {
-//        self.selectedCustomer = nil;
+    NSIndexPath* selection = [tableView indexPathForSelectedRow];
+    if (selection){
+        
+        [tableView deselectRowAtIndexPath:selection animated:YES];
     }
+    
+    NSDictionary *dicData = [[listArrPersonPosition valueForKey:DTOSYSCAT_name] objectAtIndex:indexPath.row];
+    _txtPersonPosition.text=dicData;
+    [alertView dismissWithClickedButtonIndex:0 animated:YES];
+    
+    NSLog(@"Item %@",dicData);
 }
 @end

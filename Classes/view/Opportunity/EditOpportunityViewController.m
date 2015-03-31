@@ -1099,7 +1099,7 @@
     [_lblNextTask  setText:LocalizedString(@"KEY_OPPORTUNITY_EDIT_NEXTTASK")];
     [_txtNextTask  setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_EDIT_NEXTTASK")];
     [_lblCustomer  setText:LocalizedString(@"KEY_OPPORTUNITY_EDIT_CUSTOMER")];
-    [searchBarController.searchBarView.textField setPlaceholder:@"KEY_OPPORTUNITY_EDIT_CUSTOMER_SEARCH"];
+    [searchBarController.searchBarView.textField setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_EDIT_CUSTOMER_SEARCH")];
     [_lblNote  setText:LocalizedString(@"KEY_OPPORTUNITY_EDIT_NOTE")];
     [_txtNote  setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_EDIT_NOTE")];
     if(self.currentDeviceType == iPad){

@@ -74,7 +74,14 @@
     if ([self.delegate respondsToSelector:_cmd]){
         int number = [self.delegate tableView:tableView numberOfRowsInSection:section];
         self.searchView.searchTable.hidden = number>0 ? NO : YES;
-        self.searchView.frame = CGRectMake(self.searchView.frame.origin.x, self.searchView.frame.origin.y, self.searchView.frame.size.width, number * 40);
+        //self.searchView.frame = CGRectMake(self.searchView.frame.origin.x, self.searchView.frame.origin.y, self.searchView.frame.size.width, number * 40);
+        self.searchView.frame = CGRectMake(self.searchView.frame.origin.x, (389-self.searchView.frame.size.height - self.searchBarView.frame.size.height), self.searchView.frame.size.width, number * 40);
+//        int height = self.searchBarView.frame.origin.y - self.searchView.frame.size.height;
+        NSLog([NSString stringWithFormat:@"%f",self.searchView.frame.size.height]);
+        NSLog([NSString stringWithFormat:@"%f",self.searchView.frame.origin.y]);
+//        if(height < 0)
+//            height = self.searchView.frame.size.height;
+//        self.searchView.frame = CGRectMake(self.searchView.frame.origin.x, height, self.searchView.frame.size.width, number * 40);
 
         return number;
     }

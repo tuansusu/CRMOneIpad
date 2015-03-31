@@ -259,11 +259,11 @@
             <point key="canvasLocation" x="220" y="318"/>
         </view>
         <view contentMode="scaleToFill" id="XgX-nJ-Uuf">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="450"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="470"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="jSD-ba-t0W">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="450"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="470"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="9K5-u2-ZQZ"/>

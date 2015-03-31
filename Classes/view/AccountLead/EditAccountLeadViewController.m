@@ -18,6 +18,9 @@
 #define TAG_SELECT_PERSONAL_POSITION 1
 #define TAG_SELECT_PERSONAL_JOB 2
 
+#define TAG_ALERTVIEW_DATEOFBIRTH 233
+#define TAG_ALERTVIEW_DATEOFBIRTH_PICKER 2332
+
 
 #define TEXT_HEADER_ADD_LEADER_PERSON @"THÊM MỚI KHÁCH HÀNG CÁ NHÂN"
 #define TEXT_HEADER_EDIT_LEADER_PERSON @"SỬA KHÁCH HÀNG CÁ NHÂN"
@@ -65,6 +68,8 @@
     //luu lai thong tin chon dia chi cua ban do
     float _longitude, _latitude;
     Language *obj;
+    UIAlertView *alertView ;
+    
     
 }
 @end
@@ -448,22 +453,44 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+
+- (void) dateChanged:(id)sender
+{
+    NSDateFormatter *birthDateFormatter;
+    UIDatePicker *birthDatePicker = (UIDatePicker *)sender;
+    
+    birthDateFormatter = [[NSDateFormatter alloc] init];
+    [birthDateFormatter setDateStyle:NSDateFormatterShortStyle];
+    NSString *date=[birthDateFormatter stringFromDate:birthDatePicker.date];
+    _txtDateOfBirth.text=date;
+    NSLog(@"birthdateformat = %@",[birthDateFormatter stringFromDate:birthDatePicker.date] );
+}
+
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if(alertView.tag==111){
+    
+    if(alertView.tag==TAG_ALERTVIEW_DATEOFBIRTH && buttonIndex == 1){ //CHON NGAY THANG
         
+        for (UIView *viewTemp in alertView.subviews) {
+            if (viewTemp.tag == TAG_ALERTVIEW_DATEOFBIRTH_PICKER) {
+                UIDatePicker *picker = (UIDatePicker*) viewTemp;
+                NSLog(@"picker = %@", [picker date]);
+            }
+        }
+        
+        return;
     }
     
-    if (buttonIndex == 0 && alertView.tag ==1) {
-        
-        
-    }
+    
     if (succsess && alertView.tag == 5 && buttonIndex == 0) { //thong bao dong form
         [self dismissViewControllerAnimated:YES completion:nil];
+        return;
     }
     
     if (succsess && alertView.tag == 5 && buttonIndex == 1) {
         //reset lai form
         [self resetForm];
+        return;
     }
     if(alertView.tag==11){
         if(buttonIndex==0){
@@ -540,17 +567,18 @@
     //hide all key
     [self hiddenKeyBoard];
     if([self currentDeviceType]==iPhone){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Chọn chức danh" message:@"" delegate:self cancelButtonTitle:@"Huỷ" otherButtonTitles:@"OK", nil];
-        UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 250, 230)];
+        alertView = [[UIAlertView alloc] initWithTitle:@"Chọn chức danh" message:@"" delegate:self cancelButtonTitle:@"Huỷ" otherButtonTitles:nil, nil];
+        UITableView *tableAlert = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 250, 230)];
+        tableAlert.delegate=self;
+        tableAlert.dataSource=self;
+        [tableAlert reloadData];
+        //tableAlert.dataSource=[listArrPersonPosition valueForKey:DTOSYSCAT_name];
         
-        table.delegate=self;
-        table.dataSource=self;
-        
-        [alert addSubview:table];
-        alert.tag=222;
-        alert.bounds = CGRectMake(0, 0, 300 ,200);
-        [alert setValue:table forKey:@"accessoryView"];
-        [alert show];
+        [alertView addSubview:tableAlert];
+        alertView.tag=222;
+        alertView.bounds = CGRectMake(0, 0, 300 ,200);
+        [alertView setValue:tableAlert forKey:@"accessoryView"];
+        [alertView show];
     }
     else{
         SELECTED_TAG = TAG_SELECT_PERSONAL_POSITION;
@@ -902,12 +930,17 @@
             
             picker = [[UIDatePicker alloc] init];
             picker.datePickerMode = UIDatePickerModeDate;
-            
+            picker.tag =TAG_ALERTVIEW_DATEOFBIRTH_PICKER;
             [picker setDate:[NSDate date]];
+            
+            
+            [picker addTarget:self action: @selector(dateChanged:) forControlEvents:UIControlEventAllEvents];
+            
             [alert addSubview:picker];
-            alert.tag=111;
+            alert.tag=TAG_ALERTVIEW_DATEOFBIRTH;
             alert.bounds = CGRectMake(0, 0, 300 ,200);
             [alert setValue:picker forKey:@"accessoryView"];
+            alert.tag=123;
             [alert show];
         }
     }
@@ -998,25 +1031,45 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return 0;
+    return [[listArrPersonPosition valueForKey:DTOSYSCAT_name]  count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell;
-    //get customer from collection of customers
-   // Customer *customer = self.customers.result.value[indexPath.row];
     
-    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
-    cell.textLabel.text =@"Luong";
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    // Set the data for this cell:
+    
+    cell.textLabel.text = [[listArrPersonPosition valueForKey:DTOSYSCAT_name] objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = @"More text";
+    //cell.imageView.image = [UIImage imageNamed:@"flower.png"];
+    cell.accessoryType=UITableViewCellAccessoryCheckmark;
+    
+    // set the accessory view:
+    cell.accessoryType =  UITableViewCellAccessoryDisclosureIndicator;
+    
+    
     return cell;
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath) {
-//        self.selectedCustomer = self.customers.result.value[indexPath.row];
-    } else {
-//        self.selectedCustomer = nil;
+    NSIndexPath* selection = [tableView indexPathForSelectedRow];
+    if (selection){
+        
+        [tableView deselectRowAtIndexPath:selection animated:YES];
     }
+    
+    NSDictionary *dicData = [[listArrPersonPosition valueForKey:DTOSYSCAT_name] objectAtIndex:indexPath.row];
+    _txtPersonPosition.text=dicData;
+    [alertView dismissWithClickedButtonIndex:0 animated:YES];
+    
+    NSLog(@"Item %@",dicData);
 }
 @end

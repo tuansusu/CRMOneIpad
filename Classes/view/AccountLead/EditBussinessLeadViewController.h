@@ -9,7 +9,7 @@
 #import "BaseViewController.h"
 #import "SelectIndexViewController.h"
 
-@interface EditBussinessLeadViewController : BaseViewController<UITextFieldDelegate, SelectIndexDelegate>
+@interface EditBussinessLeadViewController : BaseViewController<UITextFieldDelegate, SelectIndexDelegate,UITableViewDelegate,UITableViewDataSource>
 
 //DATA
 @property (nonatomic, retain) NSDictionary *dataSend;
@@ -70,6 +70,7 @@
 
 @property (nonatomic,retain) IBOutlet UILabel *barLabel;
 @property (weak, nonatomic) IBOutlet UIView *footerView;
+@property (weak, nonatomic) IBOutlet UIButton *btnDel;
 
 
 ////////////// KHAI BAO BIEN CHUNG//////////

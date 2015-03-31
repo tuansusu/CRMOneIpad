@@ -43,6 +43,7 @@
     //luu lai thong tin chon dia chi cua ban do
     float _longitude, _latitude;
     Language *obj;
+    UIAlertView *alertView;
 }
 @end
 
@@ -77,9 +78,9 @@
     LocalizationSetLanguage(obj.str);
     [self setLanguage];
     if(self.currentDeviceType==iPhone){
-//        [_scrollviewIphone setContentSize:CGSizeMake(0, self.view.frame.size.height)];
-         _scrollviewIphone.contentSize=CGSizeMake(0, self.view.frame.size.height);
-
+        //        [_scrollviewIphone setContentSize:CGSizeMake(0, self.view.frame.size.height)];
+        _scrollviewIphone.contentSize=CGSizeMake(0, self.view.frame.size.height);
+        
     }
     
 }
@@ -104,44 +105,56 @@
     
     dataId = 0;
     if (self.dataSend) {
-        self.fullNameLB.text=@"CẬP NHẬP KHÁCH HÀNG TIỀM NĂNG (DOANH NGHIỆP)";
+        if([self currentDeviceType]==iPhone)
+        {
+            self.fullNameLB.text = @"CẬP NHẬP";
+        }
+        else{
+            self.fullNameLB.text=@"CẬP NHẬP KHÁCH HÀNG TIỀM NĂNG (DOANH NGHIỆP)";
+        }
         [self loadEditData];
     }
-    
+    else{
+        if([self currentDeviceType]==iPhone)
+        {
+            self.fullNameLB.text = @"THÊM MỚI";
+        }
+    }
 }
 
 //Load thong tin len form sua
 -(void) loadEditData {
     
-    NSLog(@"dataSend:%@",_dataSend);
+    _btnDel.hidden=NO;
+    NSDictionary * getData = [dtoLeadProcess getDataWithKey:DTOLEAD_id withValue:[self.dataSend objectForKey:DTOLEAD_id]];
     
-    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_name]]) {
-        _txtName.text =[_dataSend objectForKey:DTOLEAD_name];
+    if (![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_name]]) {
+        _txtName.text =[getData objectForKey:DTOLEAD_name];
     }
-    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_address]]) {
-        _txtAddress.text =[_dataSend objectForKey:DTOLEAD_address];
+    if (![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_address]]) {
+        _txtAddress.text =[getData objectForKey:DTOLEAD_address];
     }
-    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_mobile]]) {
-        _txtPhone.text =[_dataSend objectForKey:DTOLEAD_mobile];
-    }
-    
-    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_registrationNumber]]) {
-        _txtRegisterCodeBussiness.text =[_dataSend objectForKey:DTOLEAD_registrationNumber];
+    if (![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_mobile]]) {
+        _txtPhone.text =[getData objectForKey:DTOLEAD_mobile];
     }
     
-
-    
-    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_taxCode]]) {
-        _txtTaxCode.text =[_dataSend objectForKey:DTOLEAD_taxCode];
-    }
-    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_fax]]) {
-        _txtFax.text =[_dataSend objectForKey:DTOLEAD_fax];
-    }
-    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_revenue]]) {
-        _txtRevenue.text =[_dataSend objectForKey:DTOLEAD_revenue];
+    if (![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_registrationNumber]]) {
+        _txtRegisterCodeBussiness.text =[getData objectForKey:DTOLEAD_registrationNumber];
     }
     
-    NSString *strPersonalJob = [_dataSend objectForKey:DTOLEAD_orgTypeId];
+    
+    
+    if (![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_taxCode]]) {
+        _txtTaxCode.text =[getData objectForKey:DTOLEAD_taxCode];
+    }
+    if (![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_fax]]) {
+        _txtFax.text =[getData objectForKey:DTOLEAD_fax];
+    }
+    if (![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_revenue]]) {
+        _txtRevenue.text =[getData objectForKey:DTOLEAD_revenue];
+    }
+    
+    NSString *strPersonalJob = [getData objectForKey:DTOLEAD_orgTypeId];
     if (![StringUtil stringIsEmpty:strPersonalJob]) {
         NSArray *arrayPersonJobID = [listArrOrgType valueForKey:DTOSYSCAT_sysCatId];
         selectOrgTypeIdIndex = [arrayPersonJobID indexOfObject:strPersonalJob];
@@ -151,33 +164,33 @@
         }
     }
     
-    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_profitNonTax]]) {
-        _txtProfitBeforeTax.text =[_dataSend objectForKey:DTOLEAD_profitNonTax];
+    if (![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_profitNonTax]]) {
+        _txtProfitBeforeTax.text =[getData objectForKey:DTOLEAD_profitNonTax];
     }
     
-    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_charter]]) {
-        _txtCharterCapital.text =[_dataSend objectForKey:DTOLEAD_charter];
+    if (![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_charter]]) {
+        _txtCharterCapital.text =[getData objectForKey:DTOLEAD_charter];
     }
-    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_equityOwner]]) {
-        _txtCapital.text =[_dataSend objectForKey:DTOLEAD_equityOwner];
-    }
-    
-    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_employeeNumber]]) {
-        _txtNumberEmployee.text =[_dataSend objectForKey:DTOLEAD_employeeNumber];
+    if (![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_equityOwner]]) {
+        _txtCapital.text =[getData objectForKey:DTOLEAD_equityOwner];
     }
     
-    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_shareholderNumber]]) {
-        _txtNumberShareholders.text =[_dataSend objectForKey:DTOLEAD_shareholderNumber];
+    if (![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_employeeNumber]]) {
+        _txtNumberEmployee.text =[getData objectForKey:DTOLEAD_employeeNumber];
     }
     
-    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_assetTotal]]) {
-        _txtTotalassets.text =[_dataSend objectForKey:DTOLEAD_assetTotal];
+    if (![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_shareholderNumber]]) {
+        _txtNumberShareholders.text =[getData objectForKey:DTOLEAD_shareholderNumber];
     }
-    if(![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_lon]]){
-        _longitude =[[_dataSend objectForKey:DTOLEAD_lon] floatValue];
+    
+    if (![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_assetTotal]]) {
+        _txtTotalassets.text =[getData objectForKey:DTOLEAD_assetTotal];
     }
-    if(![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_lat]]){
-        _latitude=[[_dataSend objectForKey:DTOLEAD_lat] floatValue];
+    if(![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_lon]]){
+        _longitude =[[getData objectForKey:DTOLEAD_lon] floatValue];
+    }
+    if(![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_lat]]){
+        _latitude=[[getData objectForKey:DTOLEAD_lat] floatValue];
     }
 }
 
@@ -246,8 +259,8 @@
             if ([viewSubTemp isKindOfClass:[UITextField class]]) {
                 ((UITextField*) viewSubTemp).textColor = TEXT_COLOR_REPORT;
                 ((UITextField*) viewSubTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
-//                ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
-//                ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
+                //                ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
+                //                ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
                 
                 [((UITextField*) viewSubTemp) setPaddingLeft];
                 [((UITextField*) viewSubTemp) setBorderWithOption:smgSelect];
@@ -323,13 +336,13 @@
     succsess = [dtoLeadProcess insertToDBWithEntity:dicEntity];
     if (succsess) {
         //Thong bao cap nhat thanh cong va thoat
-           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE")  message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:LocalizedString(@"KEY_NO") otherButtonTitles:LocalizedString(@"KEY_YES"), nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE")  message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:LocalizedString(@"KEY_NO") otherButtonTitles:LocalizedString(@"KEY_YES"), nil];
         alert.tag = 5;
         [alert show];
         
     }else{
         //khong bao nhap loi - lien he quan tri
-       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERT_ERROR") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERT_EXIT") otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERT_ERROR") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERT_EXIT") otherButtonTitles:nil];
         alert.tag = 6;
         [alert show];
     }
@@ -406,19 +419,19 @@
     
     
     
-//    float height = 190;
-//    if (textField == _txtTotalassets || textField == _txtNumberShareholders) {
-//        height = 230;
-//    }
-//    
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationDuration:0.25f];
-//    
-//    CGRect frame = self.mainView.frame;
-//    frame.origin.y = frame.origin.y - height;
-//    [self.mainView setFrame:frame];
-//    
-//    [UIView commitAnimations];
+    //    float height = 190;
+    //    if (textField == _txtTotalassets || textField == _txtNumberShareholders) {
+    //        height = 230;
+    //    }
+    //
+    //    [UIView beginAnimations:nil context:NULL];
+    //    [UIView setAnimationDuration:0.25f];
+    //
+    //    CGRect frame = self.mainView.frame;
+    //    frame.origin.y = frame.origin.y - height;
+    //    [self.mainView setFrame:frame];
+    //
+    //    [UIView commitAnimations];
     
     return  YES;
 }// return NO to disallow editing.
@@ -432,18 +445,18 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     
     
-//    float height = 190;
-//    if (textField == _txtTotalassets || textField == _txtNumberShareholders) {
-//        height = 230;
-//    }
-//    
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationDuration:0.25f];
-//    CGRect frame = self.mainView.frame;
-//    frame.origin.y = frame.origin.y + height;
-//    [self.mainView setFrame:frame];
-//    
-//    [UIView commitAnimations];
+    //    float height = 190;
+    //    if (textField == _txtTotalassets || textField == _txtNumberShareholders) {
+    //        height = 230;
+    //    }
+    //
+    //    [UIView beginAnimations:nil context:NULL];
+    //    [UIView setAnimationDuration:0.25f];
+    //    CGRect frame = self.mainView.frame;
+    //    frame.origin.y = frame.origin.y + height;
+    //    [self.mainView setFrame:frame];
+    //
+    //    [UIView commitAnimations];
     
 }// may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
 
@@ -461,7 +474,7 @@
     }
     if(textField == _txtPhone){
         if(checkNumber && range.length==0){
-        
+            
             if(_txtPhone.text.length >=20 && range.length==0){
                 return NO;
             }
@@ -534,19 +547,37 @@
 }
 
 - (IBAction)actionChoiceOrgType:(id)sender {
-    SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
-    
-    detail.selectIndex = selectOrgTypeIdIndex;
-    
-    detail.listData = [listArrOrgType valueForKey:DTOSYSCAT_name];
-    
-    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
-    CGRect popoverFrame = _btnOrgType.frame;
-    
-    detail.delegate =(id<SelectIndexDelegate>) self;
-    self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(320,250) animated:NO];
-    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewExpandInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    if([self currentDeviceType]==iPhone)
+    {
+        alertView = [[UIAlertView alloc] initWithTitle:@"Chọn chức danh" message:@"" delegate:self cancelButtonTitle:@"Huỷ" otherButtonTitles:nil, nil];
+        UITableView *tableAlert = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 250, 230)];
+        tableAlert.delegate=self;
+        tableAlert.dataSource=self;
+        [tableAlert reloadData];
+        //tableAlert.dataSource=[listArrPersonPosition valueForKey:DTOSYSCAT_name];
+        
+        [alertView addSubview:tableAlert];
+        alertView.tag=222;
+        alertView.bounds = CGRectMake(0, 0, 300 ,200);
+        [alertView setValue:tableAlert forKey:@"accessoryView"];
+        [alertView show];
+        
+    }
+    else{
+        SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
+        
+        detail.selectIndex = selectOrgTypeIdIndex;
+        
+        detail.listData = [listArrOrgType valueForKey:DTOSYSCAT_name];
+        
+        self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+        CGRect popoverFrame = _btnOrgType.frame;
+        
+        detail.delegate =(id<SelectIndexDelegate>) self;
+        self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
+        [self.listPopover setPopoverContentSize:CGSizeMake(320,250) animated:NO];
+        [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewExpandInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    }
 }
 
 
@@ -662,12 +693,22 @@
     
 }
 -(void) setLanguage{
-
+    
     if(_dataSend.count>0){
+        if ([self currentDeviceType]==iPhone) {
+             _fullNameLB.text=LocalizedString(@"KEY_UPDATE");
+        }
+        else{
         _fullNameLB.text=LocalizedString(@"KEY_LEAD_EDIT_DN_NEW");
+        }
     }
     else{
-    _fullNameLB.text=LocalizedString(@"KEY_LEAD_ADD_DN_NEW");
+        if ([self currentDeviceType]==iPhone) {
+            _fullNameLB.text=LocalizedString(@"KEY_ADDNEW");
+        }
+        else{
+        _fullNameLB.text=LocalizedString(@"KEY_LEAD_ADD_DN_NEW");
+        }
     }
     _lbthongtinchinh.text=LocalizedString(@"KEY_LEAD_ADD_NEW");
     _lbtenkhachhang.text=LocalizedString(@"KEY_LEAD_DN_NAME");
@@ -697,5 +738,58 @@
     _lbtongtaisan.text=LocalizedString(@"KEY_LEAD_CN_TOTAL_TS");
     _txtTotalassets.placeholder=LocalizedString(@"KEY_LEAD_CN_TOTAL_TS");
     _lbthongtinkhac.text=LocalizedString(@"KEY_LEAD_CN_ORTHER");
+}
+
+#pragma mark - Table view data source
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    return [[listArrOrgType valueForKey:DTOSYSCAT_name]  count];
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    // Set the data for this cell:
+    
+    cell.textLabel.text = [[listArrOrgType valueForKey:DTOSYSCAT_name] objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = @"More text";
+    //cell.imageView.image = [UIImage imageNamed:@"flower.png"];
+    cell.accessoryType=UITableViewCellAccessoryCheckmark;
+    
+    // set the accessory view:
+    cell.accessoryType =  UITableViewCellAccessoryDisclosureIndicator;
+    
+    
+    return cell;
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSIndexPath* selection = [tableView indexPathForSelectedRow];
+    if (selection){
+        
+        [tableView deselectRowAtIndexPath:selection animated:YES];
+    }
+    
+    NSDictionary *getData = [[listArrOrgType valueForKey:DTOSYSCAT_name] objectAtIndex:indexPath.row];
+    _txtSysCatType.text=getData;
+    selectOrgTypeIdIndex=indexPath.row;
+    [alertView dismissWithClickedButtonIndex:0 animated:YES];
+    
+    NSLog(@"Item %@",dicData);
 }
 @end

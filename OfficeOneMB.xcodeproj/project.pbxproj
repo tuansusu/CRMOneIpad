@@ -42,6 +42,9 @@
 		171D919A1AB8741A005AB422 /* comment_tabbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 171D91971AB8741A005AB422 /* comment_tabbar.png */; };
 		171D919B1AB8741A005AB422 /* note_tabbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 171D91981AB8741A005AB422 /* note_tabbar.png */; };
 		172CE5531A8480530023F52F /* UIMenuItem+CXAImageSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 172CE5521A8480530023F52F /* UIMenuItem+CXAImageSupport.m */; };
+		172EFAEC1ACB016E00C70E9C /* Back_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 172EFAEB1ACB016E00C70E9C /* Back_32.png */; };
+		172EFC8B1ACB051800C70E9C /* select.png in Resources */ = {isa = PBXBuildFile; fileRef = 172EFC8A1ACB051800C70E9C /* select.png */; };
+		172EFC8D1ACB06CD00C70E9C /* errorVaildate.png in Resources */ = {isa = PBXBuildFile; fileRef = 172EFC8C1ACB06CD00C70E9C /* errorVaildate.png */; };
 		17487C2D1AB082B500948E73 /* ListAccountLeadViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17487C2B1AB082B500948E73 /* ListAccountLeadViewController~iphone.xib */; };
 		1755B0001AB5BF4B00F543DA /* EditAccountLeadViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1755AFFE1AB5BF4B00F543DA /* EditAccountLeadViewController~iphone.xib */; };
 		1755B0051AB5C28200F543DA /* EditBussinessLeadViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1755B0031AB5C28200F543DA /* EditBussinessLeadViewController~iphone.xib */; };
@@ -1217,6 +1220,9 @@
 		171D91981AB8741A005AB422 /* note_tabbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = note_tabbar.png; path = VofficeImage/note_tabbar.png; sourceTree = "<group>"; };
 		172CE5511A8480530023F52F /* UIMenuItem+CXAImageSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIMenuItem+CXAImageSupport.h"; sourceTree = "<group>"; };
 		172CE5521A8480530023F52F /* UIMenuItem+CXAImageSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIMenuItem+CXAImageSupport.m"; sourceTree = "<group>"; };
+		172EFAEB1ACB016E00C70E9C /* Back_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Back_32.png; sourceTree = "<group>"; };
+		172EFC8A1ACB051800C70E9C /* select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select.png; sourceTree = "<group>"; };
+		172EFC8C1ACB06CD00C70E9C /* errorVaildate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = errorVaildate.png; sourceTree = "<group>"; };
 		17487C2B1AB082B500948E73 /* ListAccountLeadViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ListAccountLeadViewController~iphone.xib"; sourceTree = "<group>"; };
 		1755AFFE1AB5BF4B00F543DA /* EditAccountLeadViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EditAccountLeadViewController~iphone.xib"; sourceTree = "<group>"; };
 		1755B0031AB5C28200F543DA /* EditBussinessLeadViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EditBussinessLeadViewController~iphone.xib"; sourceTree = "<group>"; };
@@ -6123,6 +6129,9 @@
 		92C68E6D1519DC7D00981728 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				172EFC8C1ACB06CD00C70E9C /* errorVaildate.png */,
+				172EFC8A1ACB051800C70E9C /* select.png */,
+				172EFAEB1ACB016E00C70E9C /* Back_32.png */,
 				76BE293B1AA3F91600663803 /* flag_en-us.png */,
 				76BE293C1AA3F91600663803 /* flag_vi-vn.png */,
 				76BE29351AA3F55800663803 /* icon_delete_90x90.png */,
@@ -6578,6 +6587,7 @@
 				1719B7071AC1AE2A0061BD7B /* EditContact360ViewController~iphone.xib in Resources */,
 				B316D695188FFA91009B751B /* bg-login-1.png in Resources */,
 				2D32B5CC187BDAA10065C305 /* Button_Normal-1.png in Resources */,
+				172EFC8B1ACB051800C70E9C /* select.png in Resources */,
 				76C962A41A16DD0D00029978 /* EditAccountLeadViewController.xib in Resources */,
 				8497BFC11A295A2300A5ED3C /* boat@2x.png in Resources */,
 				2DD29EF118769C260066B883 /* menu-ic-order-work-1.png in Resources */,
@@ -6854,6 +6864,7 @@
 				B30E4DAE18A7A3E7009BB834 /* toolbar-bg-1.png in Resources */,
 				B3ECBA2B17D1EFF300AF40CF /* icon_thongtintiendo.png in Resources */,
 				1719B70C1AC1AF9F0061BD7B /* EditNote360ViewController~iphone.xib in Resources */,
+				172EFC8D1ACB06CD00C70E9C /* errorVaildate.png in Resources */,
 				94A2A7731A80F89F00C412E7 /* EditNoteOpportunityViewController.xib in Resources */,
 				8497BFDD1A295A2300A5ED3C /* newark_nj_1922.jpg in Resources */,
 				7697BBC41A7FB1700023F118 /* menu_help@2x.png in Resources */,
@@ -7044,6 +7055,7 @@
 				8497BFDB1A295A2300A5ED3C /* x29.png in Resources */,
 				76601A4F194BE90F001D4C01 /* Reader-Print.png in Resources */,
 				2D6D7667187670B00051AD9E /* write-btn-1.png in Resources */,
+				172EFAEC1ACB016E00C70E9C /* Back_32.png in Resources */,
 				76601A47194BE90F001D4C01 /* Reader-Button-N.png in Resources */,
 				8497BFB71A295A2300A5ED3C /* aeroplane@2x.png in Resources */,
 				76C9645D1A17731900029978 /* BevelPieChart.png in Resources */,

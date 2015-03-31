@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIView *headerViewBar;
 @property (weak, nonatomic) IBOutlet UILabel *fullNameLB;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnDel;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *btnHome;

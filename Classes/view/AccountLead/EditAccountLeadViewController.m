@@ -134,41 +134,54 @@
     
     dataId = 0;
     if (self.dataSend) {
-        self.fullNameLB.text = TEXT_HEADER_EDIT_LEADER_PERSON;
+        if([self currentDeviceType]==iPhone)
+        {
+            self.fullNameLB.text = @"CẬP NHẬP";
+        }
+        else{
+            self.fullNameLB.text = TEXT_HEADER_EDIT_LEADER_PERSON;
+        }
         [self loadEditData];
     }else{
-        self.fullNameLB.text = TEXT_HEADER_ADD_LEADER_PERSON;
+        if([self currentDeviceType]==iPhone)
+        {
+            self.fullNameLB.text = @"THÊM MỚI";
+        }
+        else{
+            self.fullNameLB.text = TEXT_HEADER_ADD_LEADER_PERSON;
+        }
     }
     
 }
 
 //Load thong tin len form sua
 -(void) loadEditData {
+    _btnDel.hidden=NO;
+    NSDictionary * getData = [dtoLeadProcess getDataWithKey:DTOLEAD_id withValue:[self.dataSend objectForKey:DTOLEAD_id]];
+    NSLog(@"getData: %@",getData);
+    if (![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_name]]) {
+        _txtName.text =[getData objectForKey:DTOLEAD_name];
+    }
+    if (![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_address]]) {
+        _txtAddress.text =[getData objectForKey:DTOLEAD_address];
+    }
+    if (![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_mobile]]) {
+        _txtPhone.text =[getData objectForKey:DTOLEAD_mobile];
+    }
+    if (![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_organization]]) {
+        _txtCompany.text =[getData objectForKey:DTOLEAD_organization];
+    }
     
-    NSLog(@"dataSen:%@",_dataSend);
-    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_name]]) {
-        _txtName.text =[_dataSend objectForKey:DTOLEAD_name];
+    if (![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_birthday]]) {
+        _txtDateOfBirth.text =[getData objectForKey:DTOLEAD_birthday];
     }
-    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_address]]) {
-        _txtAddress.text =[_dataSend objectForKey:DTOLEAD_address];
+    if (![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_email]]) {
+        _txtEmail.text =[getData objectForKey:DTOLEAD_email];
     }
-    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_mobile]]) {
-        _txtPhone.text =[_dataSend objectForKey:DTOLEAD_mobile];
+    if (![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_identifiedNumber]]) {
+        _txtNumberIdentity.text =[getData objectForKey:DTOLEAD_identifiedNumber];
     }
-    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_organization]]) {
-        _txtCompany.text =[_dataSend objectForKey:DTOLEAD_organization];
-    }
-    
-    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_birthday]]) {
-        _txtDateOfBirth.text =[_dataSend objectForKey:DTOLEAD_birthday];
-    }
-    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_email]]) {
-        _txtEmail.text =[_dataSend objectForKey:DTOLEAD_email];
-    }
-    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_identifiedNumber]]) {
-        _txtNumberIdentity.text =[_dataSend objectForKey:DTOLEAD_identifiedNumber];
-    }
-    NSString *strPersonalJob = [_dataSend objectForKey:DTOLEAD_personalJob];
+    NSString *strPersonalJob = [getData objectForKey:DTOLEAD_personalJob];
     if (![StringUtil stringIsEmpty:strPersonalJob]) {
         NSArray *arrayPersonJobID = [listArrPersonJob valueForKey:DTOSYSCAT_sysCatId];
         selectPersonJobIndex = [arrayPersonJobID indexOfObject:strPersonalJob];
@@ -178,7 +191,7 @@
         }
     }
     
-    NSString *strPersonalPosition = [_dataSend objectForKey:DTOLEAD_personalPosition];
+    NSString *strPersonalPosition = [getData objectForKey:DTOLEAD_personalPosition];
     if (![StringUtil stringIsEmpty:strPersonalPosition]) {
         NSArray *arrayPersonJobID = [listArrPersonPosition valueForKey:DTOSYSCAT_sysCatId];
         selectPersonPositionIndex = [arrayPersonJobID indexOfObject:strPersonalPosition];
@@ -188,43 +201,43 @@
         }
     }
     
-    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_sex]]) {
-        if ([[_dataSend objectForKey:DTOLEAD_sex] isEqualToString:@"Nữ"]) {
+    if (![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_sex]]) {
+        if ([[getData objectForKey:DTOLEAD_sex] isEqualToString:@"Nữ"]) {
             _segSex.selectedSegmentIndex = 1;
         }
     }
     
-    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_marialStatus]]) {
-        if ([[_dataSend objectForKey:DTOLEAD_marialStatus] isEqualToString:@"1"]) {
+    if (![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_marialStatus]]) {
+        if ([[getData objectForKey:DTOLEAD_marialStatus] isEqualToString:@"1"]) {
             _segMarialStatus.selectedSegmentIndex = 1;
         }
     }
     
     
-    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_monthlyIncome]]) {
-        _txtMonthlyIncom.text =[_dataSend objectForKey:DTOLEAD_monthlyIncome];
+    if (![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_monthlyIncome]]) {
+        _txtMonthlyIncom.text =[getData objectForKey:DTOLEAD_monthlyIncome];
     }
     
-    if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_assetTotal]]) {
-        _txtTotalassets.text =[_dataSend objectForKey:DTOLEAD_assetTotal];
+    if (![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_assetTotal]]) {
+        _txtTotalassets.text =[getData objectForKey:DTOLEAD_assetTotal];
     }
-    if ([[_dataSend objectForKey:DTOLEAD_disableEmail] isEqualToString:@"1"]) {
+    if ([[getData objectForKey:DTOLEAD_disableEmail] isEqualToString:@"1"]) {
         isEmail=YES;
         [_btnCheckEmail setImage:[UIImage imageNamed:@"checkbox_ticked.png"] forState:UIControlStateNormal];
     }
-    if ([[_dataSend objectForKey:DTOLEAD_disablePhone] isEqualToString:@"1"]) {
+    if ([[getData objectForKey:DTOLEAD_disablePhone] isEqualToString:@"1"]) {
         isPhone=YES;
         [_btnCheckMobile setImage:[UIImage imageNamed:@"checkbox_ticked.png"] forState:UIControlStateNormal];
     }
-    if ([[_dataSend objectForKey:DTOLEAD_disableSms ] isEqualToString:@"1"]) {
+    if ([[getData objectForKey:DTOLEAD_disableSms ] isEqualToString:@"1"]) {
         isSMS=YES;
         [_btnCheckSMS setImage:[UIImage imageNamed:@"checkbox_ticked.png"] forState:UIControlStateNormal];
     }
-    if(![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_lat]]){
-        _latitude =[[_dataSend objectForKey:DTOLEAD_lat] floatValue];
+    if(![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_lat]]){
+        _latitude =[[dicData objectForKey:DTOLEAD_lat] floatValue];
     }
-    if(![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOLEAD_lon]]){
-        _longitude =[[_dataSend objectForKey:DTOLEAD_lon] floatValue];
+    if(![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_lon]]){
+        _longitude =[[dicData objectForKey:DTOLEAD_lon] floatValue];
     }
 }
 
@@ -984,10 +997,20 @@
 -(void)setLanguage{
     
     if(_dataSend.count>0){
-        _fullNameLB.text = LocalizedString(@"KEY_LEAD_EDIT_CN_NEW");
+        if ([self currentDeviceType]==iPhone) {
+            _fullNameLB.text=LocalizedString(@"KEY_UPDATE");
+        }
+        else{
+            _fullNameLB.text = LocalizedString(@"KEY_LEAD_EDIT_CN_NEW");
+        }
     }
     else{
-        _fullNameLB.text = LocalizedString(@"KEY_LEAD_ADD_CN_NEW");
+        if ([self currentDeviceType]==iPhone) {
+            _fullNameLB.text=LocalizedString(@"KEY_ADDNEW");
+        }
+        else{
+            _fullNameLB.text = LocalizedString(@"KEY_LEAD_ADD_CN_NEW");
+        }
     }
     _lbThongtinchinh.text=LocalizedString(@"KEY_LEAD_ADD_NEW");
     //ten khach hang
@@ -1066,8 +1089,9 @@
         [tableView deselectRowAtIndexPath:selection animated:YES];
     }
     
-    NSDictionary *dicData = [[listArrPersonPosition valueForKey:DTOSYSCAT_name] objectAtIndex:indexPath.row];
-    _txtPersonPosition.text=dicData;
+    NSDictionary *getData = [[listArrPersonPosition valueForKey:DTOSYSCAT_name] objectAtIndex:indexPath.row];
+    _txtPersonPosition.text=getData;
+    selectPersonPositionIndex=indexPath.row;
     [alertView dismissWithClickedButtonIndex:0 animated:YES];
     
     NSLog(@"Item %@",dicData);

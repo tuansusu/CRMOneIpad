@@ -14,7 +14,7 @@
 
 
 
-@interface EditContactLeadViewController : BaseViewController<UITextFieldDelegate, SelectPhotoDelegate,SelectIndexDelegate>
+@interface EditContactLeadViewController : BaseViewController<UITextFieldDelegate, SelectPhotoDelegate,SelectIndexDelegate,UIActionSheetDelegate,UIAlertViewDelegate,UINavigationControllerDelegate,UINavigationBarDelegate,UIImagePickerControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 
 //DATA
 /*
@@ -110,5 +110,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbNgayCap;
 @property (weak, nonatomic) IBOutlet UILabel *lbNgaySinh;
 @property (weak, nonatomic) IBOutlet UILabel *lbDiaChi;
+@property (weak, nonatomic) IBOutlet UIButton *actionChoicePhoto_IP;
+
 
 @end

@@ -18,6 +18,7 @@
 #import "DateUtil.h"
 #import "TestMapViewController.h"
 #import "DTOATTACHMENTProcess.h"
+#import "EnumClass.h"
 
 #define TAG_SELECT_DATE_CREATE 1 //NGAY CAP CHUNG MINH THU
 #define TAG_SELECT_DATE_BIRTHDAY 2 //NGAY SINH
@@ -98,6 +99,13 @@
         
         _btnDelContact.hidden=NO;
     }
+    if([self currentDeviceType]==iPhone)
+    {
+        _tvNote.layer.borderColor = [[UIColor colorWithRed:215.0 / 255.0 green:215.0 / 255.0 blue:215.0 / 255.0 alpha:1] CGColor];
+        _tvNote.layer.borderWidth = 0.6f;
+        _tvNote.layer.cornerRadius = 6.0f;
+        
+    }
     
 }
 
@@ -128,7 +136,7 @@
     
     NSLog(@"data:%@", _dataSend);
     _lbTitle.text=@"CẬP NHẬP LIÊN HỆ";
-    
+    _btnDelContact.hidden=NO;
     _txtAddress.text=[_dataSend objectForKey:DTOCONTACT_address];
     _txtDateOfBirth.text=[_dataSend objectForKey:DTOCONTACT_birthday];
     _txtEmail.text=[_dataSend objectForKey:DTOCONTACT_email];
@@ -230,47 +238,109 @@
 #pragma mark action button
 - (IBAction)actionChoiceDateCreate:(id)sender {
     [self hiddenKeyBoard];
+    if([self currentDeviceType]==iPhone)
+    {
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Ngày cấp" message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIDatePicker *picker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0,0, 250, 200)];
+        
+        picker = [[UIDatePicker alloc] init];
+        picker.datePickerMode = UIDatePickerModeDate;
+        picker.tag =TAG_SELECT_DATE_CREATE;
+        [picker setDate:[NSDate date]];
+        
+        
+        [picker addTarget:self action: @selector(dateChanged:) forControlEvents:UIControlEventAllEvents];
+        
+        [alert addSubview:picker];
+        alert.tag=TAG_SELECT_DATE_CREATE;
+        alert.bounds = CGRectMake(0, 0, 300 ,200);
+        [alert setValue:picker forKey:@"accessoryView"];
+        alert.tag=123;
+        [alert show];
+    }
+    else{
+        if (self.txtDateCreate.text.length==0) {
+            dateCreate = [DateUtil getDateFromString:@"01/01/2000" :FORMAT_DATE];
+        }else{
+            dateCreate = [DateUtil getDateFromString:self.txtDateCreate.text :FORMAT_DATE];
+        }
+        
+        SELECTED_DATE_TAG = TAG_SELECT_DATE_CREATE;
+        CalendarPickerViewController *detail = [[CalendarPickerViewController alloc] initWithNibName:@"CalendarPickerViewController" bundle:nil];
+        detail.dateSelected = dateCreate;
+        self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+        CGRect popoverFrame = self.btnCreateDate.frame;
+        
+        detail.delegateDatePicker =(id<CalendarSelectDatePickerDelegate>) self;
+        [self.listPopover setPopoverContentSize:CGSizeMake(320, 260) animated:NO];
+        
+        
+        [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    }
+}
+-(void) dateChanged:(id) sender{
+    NSDateFormatter *birthDateFormatter;
+    birthDateFormatter = [[NSDateFormatter alloc] init];
+    //[birthDateFormatter setDateStyle:NSDateFormatterShortStyle];
+    birthDateFormatter.dateFormat=@"dd/MM/yyyy";
+    UIDatePicker *birthDatePicker = (UIDatePicker *)sender;
+    NSString *date=[birthDateFormatter stringFromDate:birthDatePicker.date];
     
-    if (self.txtDateCreate.text.length==0) {
-        dateCreate = [DateUtil getDateFromString:@"01/01/2000" :FORMAT_DATE];
-    }else{
-        dateCreate = [DateUtil getDateFromString:self.txtDateCreate.text :FORMAT_DATE];
+    if (birthDatePicker.tag==TAG_SELECT_DATE_CREATE) {
+        _txtDateCreate.text=date;
+    }
+    else{
+        _txtDateOfBirth.text=date;
     }
     
-    SELECTED_DATE_TAG = TAG_SELECT_DATE_CREATE;
-    CalendarPickerViewController *detail = [[CalendarPickerViewController alloc] initWithNibName:@"CalendarPickerViewController" bundle:nil];
-    detail.dateSelected = dateCreate;
-    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
-    CGRect popoverFrame = self.btnCreateDate.frame;
     
-    detail.delegateDatePicker =(id<CalendarSelectDatePickerDelegate>) self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(320, 260) animated:NO];
-    
-    
-    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
-
 - (IBAction)actionChoiceDateBirthday:(id)sender {
     
     [self hiddenKeyBoard];
     
-    if (self.txtDateCreate.text.length==0) {
-        dateBirthday = [DateUtil getDateFromString:@"01/01/2000" :FORMAT_DATE];
-    }else{
-        dateBirthday = [DateUtil getDateFromString:self.txtDateOfBirth.text :FORMAT_DATE];
+    if([self currentDeviceType]==iPhone)
+    {
+        
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Chọn ngày sinh" message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIDatePicker *picker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0,0, 250, 200)];
+        
+        picker = [[UIDatePicker alloc] init];
+        picker.datePickerMode = UIDatePickerModeDate;
+        picker.tag =TAG_SELECT_DATE_BIRTHDAY;
+        [picker setDate:[NSDate date]];
+        
+        
+        [picker addTarget:self action: @selector(dateChanged:) forControlEvents:UIControlEventAllEvents];
+        
+        [alert addSubview:picker];
+        alert.tag=TAG_SELECT_DATE_BIRTHDAY;
+        alert.bounds = CGRectMake(0, 0, 300 ,200);
+        [alert setValue:picker forKey:@"accessoryView"];
+        alert.tag=123;
+        [alert show];
+        
     }
-    
-    SELECTED_DATE_TAG = TAG_SELECT_DATE_BIRTHDAY;
-    CalendarPickerViewController *detail = [[CalendarPickerViewController alloc] initWithNibName:@"CalendarPickerViewController" bundle:nil];
-    detail.dateSelected = dateBirthday;
-    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
-    CGRect popoverFrame = self.btnBirthDay.frame;
-    
-    detail.delegateDatePicker =(id<CalendarSelectDatePickerDelegate>) self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(320, 260) animated:NO];
-    
-    
-    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    else
+    {
+        if (self.txtDateCreate.text.length==0) {
+            dateBirthday = [DateUtil getDateFromString:@"01/01/2000" :FORMAT_DATE];
+        }else{
+            dateBirthday = [DateUtil getDateFromString:self.txtDateOfBirth.text :FORMAT_DATE];
+        }
+        
+        SELECTED_DATE_TAG = TAG_SELECT_DATE_BIRTHDAY;
+        CalendarPickerViewController *detail = [[CalendarPickerViewController alloc] initWithNibName:@"CalendarPickerViewController" bundle:nil];
+        detail.dateSelected = dateBirthday;
+        self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+        CGRect popoverFrame = self.btnBirthDay.frame;
+        
+        detail.delegateDatePicker =(id<CalendarSelectDatePickerDelegate>) self;
+        [self.listPopover setPopoverContentSize:CGSizeMake(320, 260) animated:NO];
+        
+        
+        [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    }
 }
 
 -(void) selectDatePickerWithDate:(NSDate *)date
@@ -632,23 +702,31 @@
 - (IBAction)actionChoicePhoto:(id)sender {
     
     [self hiddenKeyBoard];
-    
-    [self viewWhenAddSubView];
-    SelectPhotoViewController *detail = [[SelectPhotoViewController alloc] initWithNibName:@"SelectPhotoViewController" bundle:nil];
-    detail.delegate =(id<SelectPhotoDelegate>) self;
-    detail.typeImage = @"Lead";
-    detail.index = 0;
-    detail.view.frame = CGRectMake(380, 80, 320,380);
-    [self addChildViewController: detail];
-    [detail didMoveToParentViewController:self];
-    //[InterfaceUtil setBorderWithCornerAndBorder:detail.view :10 :0.5 :nil];
-    
-    [UIView transitionWithView:self.view
-                      duration:0.2
-                       options:UIViewAnimationOptionCurveEaseIn //any animation
-                    animations:^ { [self.view addSubview:detail.view];
-                    }
-                    completion:nil];
+    if([self currentDeviceType]==iPhone)
+    {
+        UIActionSheet *action=[[UIActionSheet alloc]initWithTitle:@"Chọn avartar" delegate:self cancelButtonTitle:@"Huỷ" destructiveButtonTitle:@"Camera" otherButtonTitles:@"Galery", nil ];
+        action.tag=123;
+        [action showInView:self.view];
+    }
+    else{
+        
+        [self viewWhenAddSubView];
+        SelectPhotoViewController *detail = [[SelectPhotoViewController alloc] initWithNibName:@"SelectPhotoViewController" bundle:nil];
+        detail.delegate =(id<SelectPhotoDelegate>) self;
+        detail.typeImage = @"Lead";
+        detail.index = 0;
+        detail.view.frame = CGRectMake(380, 80, 320,380);
+        [self addChildViewController: detail];
+        [detail didMoveToParentViewController:self];
+        //[InterfaceUtil setBorderWithCornerAndBorder:detail.view :10 :0.5 :nil];
+        
+        [UIView transitionWithView:self.view
+                          duration:0.2
+                           options:UIViewAnimationOptionCurveEaseIn //any animation
+                        animations:^ { [self.view addSubview:detail.view];
+                        }
+                        completion:nil];
+    }
 }
 
 
@@ -807,5 +885,39 @@
     //[self dismissPopoverView];
     [self viewWhenRemoveSubView];
     //[self dismissViewControllerAnimated:YES completion:nil];
+}
+-(void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    UIImagePickerController * picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    
+    if(buttonIndex == 1) {
+        picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    } else {
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+    
+    [self presentModalViewController:picker animated:YES];
+}
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [picker dismissModalViewControllerAnimated:YES];
+    self.imgAvartar.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+    
+    NSDateFormatter *dft = [[NSDateFormatter alloc] init];
+   	[dft setDateFormat:@"yyyyMMdd_HHmmss"];
+    NSDate *now = [NSDate date];
+    NSString *nowStr = [dft stringFromDate:now];
+    
+    
+    //luu file
+    NSString *strFileName = [NSString stringWithFormat:@"%@_%@.jpg", @"", nowStr];    NSData* imageData = UIImageJPEGRepresentation(self.imgAvartar.image, 1.0);
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *dbPath = [documentsDirectory stringByAppendingPathComponent:strFileName];
+    
+    
+    [imageData writeToFile:dbPath atomically:YES];
+    fileAvartar = strFileName;
+    imagePath=[[self applicationDocumentsDirectory] stringByAppendingPathComponent:strFileName];
 }
 @end

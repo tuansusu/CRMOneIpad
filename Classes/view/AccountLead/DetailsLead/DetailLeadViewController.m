@@ -1795,6 +1795,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     else if(actionSheet.tag==22){
         if(buttonIndex==0){
             EditContactLeadViewController *edit=[[EditContactLeadViewController alloc]initWithNibName:@"EditContactLeadViewController" bundle:nil];
+            edit.dataRoot=dicData;
             [self presentViewController:edit animated:YES completion:nil];
         }
         else if (buttonIndex==1){

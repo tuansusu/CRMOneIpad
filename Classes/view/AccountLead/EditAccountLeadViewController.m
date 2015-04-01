@@ -470,10 +470,10 @@
 - (void) dateChanged:(id)sender
 {
     NSDateFormatter *birthDateFormatter;
-    UIDatePicker *birthDatePicker = (UIDatePicker *)sender;
-    
     birthDateFormatter = [[NSDateFormatter alloc] init];
-    [birthDateFormatter setDateStyle:NSDateFormatterShortStyle];
+    //[birthDateFormatter setDateStyle:NSDateFormatterShortStyle];
+    birthDateFormatter.dateFormat=@"dd/MM/yyyy";
+    UIDatePicker *birthDatePicker = (UIDatePicker *)sender;
     NSString *date=[birthDateFormatter stringFromDate:birthDatePicker.date];
     _txtDateOfBirth.text=date;
     NSLog(@"birthdateformat = %@",[birthDateFormatter stringFromDate:birthDatePicker.date] );
@@ -481,19 +481,6 @@
 
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    
-    if(alertView.tag==TAG_ALERTVIEW_DATEOFBIRTH && buttonIndex == 1){ //CHON NGAY THANG
-        
-        for (UIView *viewTemp in alertView.subviews) {
-            if (viewTemp.tag == TAG_ALERTVIEW_DATEOFBIRTH_PICKER) {
-                UIDatePicker *picker = (UIDatePicker*) viewTemp;
-                NSLog(@"picker = %@", [picker date]);
-            }
-        }
-        
-        return;
-    }
-    
     
     if (succsess && alertView.tag == 5 && buttonIndex == 0) { //thong bao dong form
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -936,26 +923,24 @@
     
     [self hiddenKeyBoard];
     if([self currentDeviceType]==iPhone){
-        if (self.txtDateOfBirth.text.length==0) {
-            
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Chọn ngày sinh" message:@"" delegate:self cancelButtonTitle:@"Huỷ" otherButtonTitles:@"OK", nil];
-            UIDatePicker *picker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0,0, 250, 200)];
-            
-            picker = [[UIDatePicker alloc] init];
-            picker.datePickerMode = UIDatePickerModeDate;
-            picker.tag =TAG_ALERTVIEW_DATEOFBIRTH_PICKER;
-            [picker setDate:[NSDate date]];
-            
-            
-            [picker addTarget:self action: @selector(dateChanged:) forControlEvents:UIControlEventAllEvents];
-            
-            [alert addSubview:picker];
-            alert.tag=TAG_ALERTVIEW_DATEOFBIRTH;
-            alert.bounds = CGRectMake(0, 0, 300 ,200);
-            [alert setValue:picker forKey:@"accessoryView"];
-            alert.tag=123;
-            [alert show];
-        }
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Chọn ngày sinh" message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIDatePicker *picker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0,0, 250, 200)];
+        
+        picker = [[UIDatePicker alloc] init];
+        picker.datePickerMode = UIDatePickerModeDate;
+        picker.tag =TAG_ALERTVIEW_DATEOFBIRTH_PICKER;
+        [picker setDate:[NSDate date]];
+        
+        
+        [picker addTarget:self action: @selector(dateChanged:) forControlEvents:UIControlEventAllEvents];
+        
+        [alert addSubview:picker];
+        alert.tag=TAG_ALERTVIEW_DATEOFBIRTH;
+        alert.bounds = CGRectMake(0, 0, 300 ,200);
+        [alert setValue:picker forKey:@"accessoryView"];
+        alert.tag=123;
+        [alert show];
     }
     else{
         if (self.txtDateOfBirth.text.length==0) {

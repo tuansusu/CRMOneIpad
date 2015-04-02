@@ -44,7 +44,7 @@
                                 <action selector="homeBack:" destination="-1" eventType="touchUpInside" id="mDo-j1-qLM"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KkZ-IB-fJz" userLabel="BTNADD">
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KkZ-IB-fJz" userLabel="BTNADD">
                             <rect key="frame" x="287" y="22" width="25" height="25"/>
                             <state key="normal" backgroundImage="ic-add-sub-1.png"/>
                             <connections>

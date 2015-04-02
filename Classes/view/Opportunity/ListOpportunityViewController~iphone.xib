@@ -13,6 +13,7 @@
                 <outlet property="headerViewBar" destination="N5J-8v-g1v" id="Tj7-ec-TzY"/>
                 <outlet property="searchbarView" destination="C7c-mo-etU" id="MjK-Zu-0lW"/>
                 <outlet property="tbData" destination="SP1-aW-gg8" id="Gf6-ec-Llw"/>
+                <outlet property="txtSearchBar" destination="acP-4W-Q4z" id="AhR-Zk-pua"/>
                 <outlet property="view" destination="iN0-l3-epB" id="xRJ-Tp-wLK"/>
             </connections>
         </placeholder>
@@ -64,6 +65,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="3Wa-fz-YBN"/>
+                                    </connections>
                                 </searchBar>
                             </subviews>
                             <color key="backgroundColor" red="0.039215686270000001" green="0.43137254899999999" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>

@@ -8,9 +8,16 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditNoteLeadViewController">
             <connections>
                 <outlet property="barLabel" destination="FjY-M2-VkM" id="trp-b2-fmN"/>
+                <outlet property="btnDelNote" destination="BDY-PT-S5q" id="vsz-ce-EUQ"/>
+                <outlet property="btnHome" destination="UD2-0q-d5e" id="qHc-0P-N57"/>
+                <outlet property="choosePhotoBtn" destination="3fm-zr-ICS" id="3nf-cK-9yS"/>
                 <outlet property="footerView" destination="N46-Q9-VKy" id="gwM-aT-Nzu"/>
                 <outlet property="fullNameLB" destination="4h9-nO-fJj" id="3oI-rN-B0y"/>
                 <outlet property="headerViewBar" destination="m03-pt-YOu" id="Q1C-7I-aHX"/>
+                <outlet property="takePhotoBtn" destination="uo2-if-NIf" id="tg7-bC-aku"/>
+                <outlet property="tbData" destination="8lb-CR-1sD" id="bIa-go-CcY"/>
+                <outlet property="txtContent" destination="qgx-fu-1cw" id="NJ5-eG-d9G"/>
+                <outlet property="txtTitle" destination="2wh-Kf-9zq" id="35v-M2-Z1g"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -27,12 +34,18 @@
                             <state key="normal" backgroundImage="icon_save_90x90.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="actionSave:" destination="-1" eventType="touchUpInside" id="Eon-tA-nhP"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDY-PT-S5q">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDY-PT-S5q">
                             <rect key="frame" x="244" y="22" width="30" height="30"/>
                             <state key="normal" backgroundImage="icon_delete_90x90.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="actionDelNote:" destination="-1" eventType="touchUpInside" id="IBU-Xq-OAW"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="KHÁCH HÀNG TIỀM NĂNG (CN)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4h9-nO-fJj">
                             <rect key="frame" x="38" y="22" width="111" height="30"/>
@@ -42,9 +55,12 @@
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UD2-0q-d5e" userLabel="btnHome">
                             <rect key="frame" x="0.0" y="22" width="30" height="30"/>
-                            <state key="normal" backgroundImage="icon_menu-1.png">
+                            <state key="normal" backgroundImage="Back_32.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="homeBack:" destination="-1" eventType="touchUpInside" id="uGV-Ys-5Qv"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -68,19 +84,20 @@
                             <rect key="frame" x="8" y="8" width="304" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="o6l-Lj-jZk"/>
+                            </connections>
                         </textField>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_require-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="CZl-Jf-ZpV">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="errorVaildate.png" translatesAutoresizingMaskIntoConstraints="NO" id="CZl-Jf-ZpV">
                             <rect key="frame" x="296" y="15" width="16" height="16"/>
                         </imageView>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ghi chú" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Fp6-AE-sfM">
-                            <rect key="frame" x="8" y="46" width="304" height="30"/>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8lb-CR-1sD">
                             <rect key="frame" x="8" y="128" width="304" height="306"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="cAT-S8-C0X"/>
+                                <outlet property="delegate" destination="-1" id="smb-Mg-FhG"/>
+                            </connections>
                         </tableView>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fm-zr-ICS">
                             <rect key="frame" x="8" y="442" width="128" height="30"/>
@@ -88,6 +105,9 @@
                             <state key="normal" title="Chọn ảnh">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="getPhoto:" destination="-1" eventType="touchUpInside" id="tCH-OU-ebM"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uo2-if-NIf">
                             <rect key="frame" x="190" y="442" width="122" height="30"/>
@@ -95,6 +115,9 @@
                             <state key="normal" title="Chụp ảnh">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="getPhoto:" destination="-1" eventType="touchUpInside" id="7Yd-Gz-9j2"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="File đính kèm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRs-4a-XY0">
                             <rect key="frame" x="25" y="106" width="287" height="14"/>
@@ -108,6 +131,15 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qgx-fu-1cw">
+                            <rect key="frame" x="8" y="46" width="304" height="47"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="65L-Wk-MU6"/>
+                            </connections>
+                        </textView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
@@ -117,10 +149,10 @@
         </view>
     </objects>
     <resources>
+        <image name="Back_32.png" width="32" height="32"/>
+        <image name="errorVaildate.png" width="24" height="24"/>
         <image name="icon_delete_90x90.png" width="90" height="90"/>
         <image name="icon_down.png" width="19" height="11"/>
-        <image name="icon_menu-1.png" width="48" height="48"/>
-        <image name="icon_require-1.png" width="16" height="16"/>
         <image name="icon_save_90x90.png" width="90" height="90"/>
     </resources>
 </document>

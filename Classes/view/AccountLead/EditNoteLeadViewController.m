@@ -15,6 +15,7 @@
 #import "MJPhotoBrowser.h"
 #import "MJPhoto.h"
 #import "FileManagerUtil.h"
+#import "EnumClass.h"
 
 @interface EditNoteLeadViewController ()
 {
@@ -89,6 +90,13 @@
     [self setLanguage];
     if(_dataSend.count>0){
         _btnDelNote.hidden=NO;
+    }
+    if([self currentDeviceType]==iPhone)
+    {
+        txtContent.layer.borderColor = [[UIColor colorWithRed:215.0 / 255.0 green:215.0 / 255.0 blue:215.0 / 255.0 alpha:1] CGColor];
+        txtContent.layer.borderWidth = 0.6f;
+        txtContent.layer.cornerRadius = 6.0f;
+        
     }
     
 }

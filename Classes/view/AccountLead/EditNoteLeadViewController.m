@@ -11,7 +11,6 @@
 #import "DTONOTEProcess.h"
 #import "DTOATTACHMENTProcess.h"
 #import "EditNoteViewCell.h"
-
 #import "MJPhotoBrowser.h"
 #import "MJPhoto.h"
 #import "FileManagerUtil.h"

@@ -7,8 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListAccountViewController">
             <connections>
-                <outlet property="barLabel" destination="Jx5-d4-p7Q" id="Jhu-Ps-QxW"/>
-                <outlet property="footerView" destination="NKj-Cf-Amv" id="UEN-3N-f4f"/>
                 <outlet property="fullNameLB" destination="OT8-nA-0Jm" id="VwX-eA-i7v"/>
                 <outlet property="headerViewBar" destination="JYs-Q7-fL5" id="Onj-iD-d0B"/>
                 <outlet property="lbTotal" destination="j5g-ad-TLR" id="pz3-KL-6EM"/>
@@ -56,20 +54,8 @@
                             <rect key="frame" x="0.0" y="65" width="320" height="44"/>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NKj-Cf-Amv" userLabel="view-footer">
-                            <rect key="frame" x="0.0" y="538" width="320" height="30"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bản quyền" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jx5-d4-p7Q">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HPA-x2-kZD">
-                            <rect key="frame" x="0.0" y="109" width="320" height="421"/>
+                            <rect key="frame" x="0.0" y="109" width="320" height="459"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="uIS-Mp-F7I"/>

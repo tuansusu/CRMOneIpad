@@ -13,7 +13,7 @@
 
 
 
-@interface EditContact360ViewController : BaseViewController<UITextFieldDelegate, SelectPhotoDelegate,SelectIndexDelegate>
+@interface EditContact360ViewController : BaseViewController<UITextFieldDelegate, SelectPhotoDelegate,SelectIndexDelegate,UIActionSheetDelegate,UIAlertViewDelegate,UINavigationControllerDelegate,UINavigationBarDelegate,UIImagePickerControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 
 //DATA
 /*

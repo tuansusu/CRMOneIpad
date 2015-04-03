@@ -195,7 +195,9 @@
     self.leftLabelHeader.textColor = TEXT_COLOR_HEADER_APP;
     
     
+    if([self currentDeviceType]==iPad){
     self.txtSearchBar.barTintColor = HEADER_VIEW_COLOR1;
+    }
     
     
     for (UIView *viewTemp in self.leftInMainView.subviews) {

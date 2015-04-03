@@ -20,6 +20,7 @@
 #import "ComplainModel.h"
 #import "Globals.h"
 #import "EditCalendarLeadViewController.h"
+#import "EditTask360ViewController.h"
 
 #import "TaskCalendarCell.h"
 #import "TaskCalTLineCell.h"
@@ -162,6 +163,14 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     //[self setLanguage];
     
     [self updateInterFaceWithOption:smgSelect];
+    if([self currentDeviceType]==iPhone)
+    {
+        [_myTabbar setSelectedItem:0];
+        //self.mySearch.barTintColor = HEADER_VIEW_COLOR1;
+        self.myTabbar.barTintColor=[UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:1.0];
+        [self.myTabbar setSelectedItem:self.myTabbar.items[0]];
+        
+    }
 }
 
 -(void) viewWillAppear:(BOOL)animated{
@@ -1669,6 +1678,120 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         _phuongxaDN.text=LocalizedString(@"KEY_360_PHUONG_XA");
         _khonglienlacDN.text=LocalizedString(@"KEY_360_KHONG_LIEN_LAC");
         
+    }
+}
+//delegate tabbar
+-(void) tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
+    
+    NSUInteger indexOfTab = [[tabBar items] indexOfObject:item];
+    //chi tiết khách hàng
+    if(indexOfTab==0){
+        if ([leadType isEqualToString:FIX_LEADTYPE_BUSSINESS]) {
+            _scollviewDN.hidden=NO;
+            _mySearch.hidden=YES;
+        }else{
+            _scrollViewBodyLeft.hidden=NO;
+            _mySearch.hidden=YES;
+        }
+        _viewData.hidden=YES;
+        _fullNameLB.text=@"KHÁCH HÀNG TIỀM NĂNG";
+    }
+    else if(indexOfTab==1){
+        _scollviewDN.hidden=YES;
+        _scrollViewBodyLeft.hidden=YES;
+        _mySearch.hidden=NO;
+        _viewData.hidden=NO;
+        _fullNameLB.text=@"LIÊN HỆ";
+        [self loadDataWithTypeAction:typeLeaderView_Contact];
+    }
+    else if(indexOfTab==2){
+        _scollviewDN.hidden=YES;
+        _scrollViewBodyLeft.hidden=YES;
+        _mySearch.hidden=NO;
+        _viewData.hidden=NO;
+        _fullNameLB.text=@"GHI CHÚ";
+        [self loadDataWithTypeAction:typeLeaderView_Note];
+    }
+    else if(indexOfTab==3){
+        _scollviewDN.hidden=YES;
+        _scrollViewBodyLeft.hidden=YES;
+        _mySearch.hidden=NO;
+        _viewData.hidden=NO;
+        _fullNameLB.text=@"LỊCH";
+        if (typeActionEvent == typeLeaderView_Calendar)
+        {
+            calendarIsTimeline = !calendarIsTimeline;
+        }
+        [self loadDataWithTypeAction:typeLeaderView_Calendar];
+    }
+    else if(indexOfTab==4){
+        _scollviewDN.hidden=YES;
+        _scrollViewBodyLeft.hidden=YES;
+        _mySearch.hidden=NO;
+        _viewData.hidden=NO;
+        _fullNameLB.text=@"Ý KIẾN";
+        [self loadDataWithTypeAction:typeLeaderView_Complains];
+    }
+    else if (indexOfTab==5){
+        UIActionSheet *action=[[UIActionSheet alloc] initWithTitle:@"Chức năng" delegate:self cancelButtonTitle:@"Huỷ" destructiveButtonTitle:nil otherButtonTitles:@"Công việc",@"Cơ hội",@"Sản phẩm", nil];
+        action.tag=123;
+        [action showInView:self.view];
+    }
+}
+
+-(void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(actionSheet.tag==11){
+        if(buttonIndex==0){
+            
+            _scollviewDN.hidden=YES;
+            _scrollViewBodyLeft.hidden=YES;
+            _mySearch.hidden=NO;
+            _viewData.hidden=NO;
+            _fullNameLB.text=@"CÔNG VIỆC";
+            [self loadDataWithTypeAction:typeLeaderView_Task];
+            
+        }
+        else if (buttonIndex ==1){
+            _scollviewDN.hidden=YES;
+            _scrollViewBodyLeft.hidden=YES;
+            _mySearch.hidden=NO;
+            _viewData.hidden=NO;
+            _fullNameLB.text=@"CƠ HỘI";
+            [self loadDataWithTypeAction:typeLeaderView_Opportunity];
+        }
+        else if (buttonIndex == 2){
+            _scollviewDN.hidden=YES;
+            _scrollViewBodyLeft.hidden=YES;
+            _mySearch.hidden=NO;
+            _viewData.hidden=NO;
+            _fullNameLB.text=@"SẢN PHẨM";
+            [self loadDataWithTypeAction:typeLeaderView_ProductsLead];
+        }
+    }
+    else if(actionSheet.tag==22){
+        if(buttonIndex==0){
+            EditContact360ViewController *edit=[[EditContact360ViewController alloc]initWithNibName:@"EditContact360ViewController" bundle:nil];
+            edit.dataRoot=dicData;
+            [self presentViewController:edit animated:YES completion:nil];
+        }
+        else if (buttonIndex==1){
+            EditNote360ViewController *edit=[[EditNote360ViewController alloc] initWithNibName:@"EditNote360ViewController" bundle:nil];
+            [self presentViewController:edit animated:YES completion:nil];
+        }
+        else if (buttonIndex == 2){
+            EditCalendar360ViewController *edit=[[EditCalendar360ViewController alloc]initWithNibName:@"EditCalendar360ViewController" bundle:nil];
+            [self presentViewController:edit animated:YES completion:nil];
+        }
+        else if(buttonIndex == 4){
+            EditOpportunity360ViewController *edit=[[EditOpportunity360ViewController alloc] initWithNibName:@"EditOpportunity360ViewController" bundle:nil];
+            [self presentViewController:edit animated:YES completion:nil];
+        }
+        else if (buttonIndex == 3){
+            EditTask360ViewController *edit=[[EditTask360ViewController alloc] initWithNibName:@"EditTask360ViewController" bundle:nil];
+            [self presentViewController:edit animated:YES completion:nil];
+        }
+        else if(buttonIndex == 5){
+        }
     }
 }
 @end

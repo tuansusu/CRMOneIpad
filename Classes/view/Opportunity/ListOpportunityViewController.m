@@ -186,8 +186,9 @@
     [self.btnSearch setStyleNormalWithOption:smgSelect];
     [self.leftViewHeader setBackgroundColor:BACKGROUND_COLOR_TOP_LEFT_HEADER];
     self.leftLabelHeader.textColor = TEXT_COLOR_HEADER_APP;
-    
-    self.txtSearchBar.barTintColor = HEADER_VIEW_COLOR1;
+    if(self.currentDeviceType == iPad){
+        self.txtSearchBar.barTintColor = HEADER_VIEW_COLOR1;
+    }
     
     self.footerView.backgroundColor = TOOLBAR_VIEW_COLOR;
     self.barLabel.textColor = TEXT_TOOLBAR_COLOR1;

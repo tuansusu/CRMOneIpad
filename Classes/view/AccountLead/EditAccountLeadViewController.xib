@@ -14,13 +14,13 @@
                 <outlet property="btnCheckEmail" destination="3Vm-iH-QSz" id="WUQ-X4-9um"/>
                 <outlet property="btnCheckMobile" destination="X5w-1x-92h" id="3yO-4y-v7B"/>
                 <outlet property="btnCheckSMS" destination="zLL-OU-TFz" id="a2X-jJ-FLa"/>
+                <outlet property="btnDel" destination="tIU-Ry-HR0" id="XQ5-Dd-wUG"/>
                 <outlet property="btnHome" destination="fGR-h3-5JZ" id="ToL-xv-vpV"/>
                 <outlet property="btnPersonalPosition" destination="bIy-hK-ha2" id="0dc-tY-UXe"/>
                 <outlet property="btnSave" destination="fU5-Hy-1lh" id="qcw-GV-l0E"/>
                 <outlet property="footerView" destination="3fl-Rz-FEH" id="8Do-jP-ceu"/>
                 <outlet property="fullNameLB" destination="p3I-UV-91r" id="4Kx-K7-Q3E"/>
                 <outlet property="headerViewBar" destination="RRI-wG-e3T" id="aeW-Is-bK8"/>
-                <outlet property="lbCongty" destination="kUp-K3-Ob3" id="ctV-XJ-oeX"/>
                 <outlet property="lbNgaysinh" destination="qSw-VQ-Nen" id="YI7-py-MXU"/>
                 <outlet property="lbThongtinchinh" destination="p2Y-ET-ZcL" id="L2M-PV-I7K"/>
                 <outlet property="lbchucdanh" destination="kUp-K3-Ob3" id="5xx-6a-R0v"/>
@@ -94,7 +94,7 @@
                                 <action selector="actionSave:" destination="-1" eventType="touchUpInside" id="kgh-Gv-xZv"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="tIU-Ry-HR0">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="tIU-Ry-HR0">
                             <rect key="frame" x="915" y="2" width="40" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" backgroundImage="icon_delete_90x90.png">

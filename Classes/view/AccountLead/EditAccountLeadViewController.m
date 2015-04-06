@@ -351,7 +351,16 @@
         [util setBorder:_txtEmail];
         return;
     }
-    
+    if (_txtNumberIdentity.text.length<9 || _txtNumberIdentity.text.length >=20) {
+        [util showTooltip:_txtNumberIdentity withText:LocalizedString(@"MIN_NUMBERIDENTITY") showview:_viewMainBodyInfo];
+        [util setBorder:_txtNumberIdentity];
+        return;
+    }
+    if (_txtPhone.text.length > 20 || _txtPhone.text.length <9 ) {
+        [util showTooltip:_txtPhone withText:LocalizedString(@"MAXLENG_PHONE") showview:_viewMainBodyInfo];
+        [util setBorder:_txtPhone];
+        return;
+    }
     //neu qua duoc check thi tien hanh luu du lieu
     NSMutableDictionary *dicEntity = [NSMutableDictionary new];
     
@@ -483,7 +492,9 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     if (succsess && alertView.tag == 5 && buttonIndex == 0) { //thong bao dong form
-        [self dismissViewControllerAnimated:YES completion:nil];
+        // [self dismissViewControllerAnimated:YES completion:nil];
+        NSMutableArray *array = [dtoLeadProcess filterTop];
+        _dataSend =[array objectAtIndex:0];
         return;
     }
     
@@ -666,9 +677,6 @@
 }// may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    NSCharacterSet *numberOnly=[NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
-    NSCharacterSet *charactersetText=[NSCharacterSet characterSetWithCharactersInString:textField.text];
-    BOOL checkNumber=[numberOnly isSupersetOfSet:charactersetText];
     if(textField==_txtName){
         if(_txtName.text.length>=100 && range.length==0){
             return NO;
@@ -686,18 +694,16 @@
         }
     }
     if(textField==_txtPhone){
-        if(checkNumber && range.length==0){
-            if(_txtPhone.text.length>=20 && range.length==0){
-                return NO;
-            }
-            else{
-                return YES;
-            }
-        }else{
-            NSString *str=textField.text;
-            _txtPhone.text=[str substringToIndex:textField.text.length-1];
+        if ([string length] == 0 && range.length > 0)
+        {
+            textField.text = [textField.text stringByReplacingCharactersInRange:range withString:string];
             return NO;
         }
+        
+        NSCharacterSet *nonNumberSet = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet];
+        if ([string stringByTrimmingCharactersInSet:nonNumberSet].length > 0)return YES;
+        
+        return NO;
     }
     if(textField==_txtEmail){
         
@@ -717,19 +723,20 @@
         }
     }
     if(textField==_txtNumberIdentity){
-        if(checkNumber && range.length==0){
-            if(_txtNumberIdentity.text.length>=20 && range.length==0){
-                return NO;
-            }
-            else{
-                return YES;
-            }
-        }
-        else{
-            NSString *str=textField.text;
-            _txtNumberIdentity.text=[str substringToIndex:textField.text.length-1];
+        if ([string length] == 0 && range.length > 0)
+        {
+            textField.text = [textField.text stringByReplacingCharactersInRange:range withString:string];
             return NO;
         }
+        
+        NSCharacterSet *nonNumberSet = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet];
+        if ([string stringByTrimmingCharactersInSet:nonNumberSet].length > 0)return YES;
+        
+        return NO;
+    }
+    if(textField==_txtMonthlyIncom){
+        double val=[_txtMonthlyIncom.text doubleValue];
+        _txtMonthlyIncom.text = [NSString stringWithFormat:@"%0.4f", val];
     }
     
     return  YES;

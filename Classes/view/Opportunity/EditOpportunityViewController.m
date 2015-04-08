@@ -1103,7 +1103,8 @@
     [_lblNote  setText:LocalizedString(@"KEY_OPPORTUNITY_EDIT_NOTE")];
     [_txtNote  setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_EDIT_NOTE")];
     if(self.currentDeviceType == iPad){
-        [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+        //[_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+        [_btnSave setTitle:@"" forState:UIControlStateNormal];
     }else{
         [_btnSave setTitle:LocalizedString(@"KEY_SAVE") forState:UIControlStateNormal];
     }

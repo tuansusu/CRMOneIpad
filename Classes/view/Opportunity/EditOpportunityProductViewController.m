@@ -195,7 +195,8 @@
     self.viewinfo.layer.borderColor = [BORDER_COLOR CGColor];
     
     
-    [self.btnSave setStyleNormalWithOption:smgSelect];
+    //[self.btnSave setStyleNormalWithOption:smgSelect];
+    
     
     for (UIView *viewTemp in self.viewmaininfo.subviews) {
         
@@ -676,7 +677,8 @@
     [_lblRevenue setText:LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_REVENUE")];
     [_txtRevenue setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_REVENUE")];
     if(self.currentDeviceType == iPad){
-        [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+        //[_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+        [_btnSave setTitle:@"" forState:UIControlStateNormal];
     }else{
         [_btnSave setTitle:LocalizedString(@"KEY_SAVE") forState:UIControlStateNormal];
     }

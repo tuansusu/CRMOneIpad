@@ -231,7 +231,7 @@
         }
     }
     
-    [self.btnSave setStyleNormalWithOption:smgSelect];
+    //[self.btnSave setStyleNormalWithOption:smgSelect];
     
     
     [self.mainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
@@ -816,7 +816,8 @@
     [_txtDateTo setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_TASK_EDIT_ENDDATE_DETAIL_DATE")];
     [_txtTimeTo setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_TASK_EDIT_ENDDATE_DETAIL_TIME")];
     if(self.currentDeviceType == iPad){
-        [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+        //[_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+        [_btnSave setTitle:@"" forState:UIControlStateNormal];
     }else{
         [_btnSave setTitle:LocalizedString(@"KEY_SAVE") forState:UIControlStateNormal];
     }

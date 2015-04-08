@@ -864,7 +864,8 @@
     [_lblLocation setText:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_ADDRESS")];
     [_txtAddress setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_CONTACT_EDIT_ADDRESS")];
     if(self.currentDeviceType == iPad){
-        [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+        //[_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+        [_btnSave setTitle:@"" forState:UIControlStateNormal];
     }else{
         [_btnSave setTitle:LocalizedString(@"KEY_SAVE") forState:UIControlStateNormal];
     }

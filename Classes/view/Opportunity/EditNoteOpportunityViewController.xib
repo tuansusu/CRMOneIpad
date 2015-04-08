@@ -59,10 +59,10 @@
                                 <action selector="homeBack:" destination="-1" eventType="touchUpInside" id="jAD-ri-Qab"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Awy-Pp-n2G">
-                            <rect key="frame" x="899" y="2" width="110" height="40"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Awy-Pp-n2G">
+                            <rect key="frame" x="963" y="2" width="40" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Cập nhật">
+                            <state key="normal" title="Cập nhật" backgroundImage="icon_save_90x90.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -192,6 +192,7 @@
     <resources>
         <image name="btn-back-1-1.png" width="40" height="40"/>
         <image name="icon_require-1.png" width="16" height="16"/>
+        <image name="icon_save_90x90.png" width="90" height="90"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

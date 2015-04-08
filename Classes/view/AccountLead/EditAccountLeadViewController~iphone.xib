@@ -7,7 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditAccountLeadViewController">
             <connections>
-                <outlet property="barLabel" destination="AL7-7W-szN" id="NiD-xc-ZsC"/>
                 <outlet property="btnAddAddress" destination="bb8-rN-I1i" id="lTb-uN-A6z"/>
                 <outlet property="btnBirthDay" destination="wpH-bv-XBv" id="Mvd-LS-I9K"/>
                 <outlet property="btnCheckEmail" destination="t29-Hc-kcB" id="Tj6-5F-xnn"/>
@@ -16,7 +15,6 @@
                 <outlet property="btnDel" destination="0xK-tY-uQi" id="ZFv-U6-dvD"/>
                 <outlet property="btnPersonalPosition" destination="cRR-PJ-LWE" id="ITB-8e-i3u"/>
                 <outlet property="btnSave" destination="lmV-gQ-bDO" id="Vj6-Xb-Q71"/>
-                <outlet property="footerView" destination="8O8-VI-SSt" id="nb8-8z-zs0"/>
                 <outlet property="fullNameLB" destination="JxP-U8-YUf" id="tPJ-TC-WMy"/>
                 <outlet property="headerViewBar" destination="5p0-3X-iO5" id="bZx-Rx-O2T"/>
                 <outlet property="segMarialStatus" destination="riI-Kl-EvB" id="JzG-E7-y6o"/>
@@ -42,18 +40,6 @@
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FIg-wG-CKn" userLabel="View-iphone">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <subviews>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8O8-VI-SSt" userLabel="view-footer">
-                            <rect key="frame" x="0.0" y="538" width="320" height="30"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bản quyền" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AL7-7W-szN">
-                                    <rect key="frame" x="0.0" y="-1" width="320" height="30"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5p0-3X-iO5" userLabel="View-header">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                             <subviews>
@@ -94,7 +80,7 @@
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EwK-lN-v4R">
-                            <rect key="frame" x="0.0" y="60" width="320" height="478"/>
+                            <rect key="frame" x="0.0" y="60" width="320" height="508"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thông tin chính" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdN-Gl-pAd">
                                     <rect key="frame" x="25" y="8" width="287" height="14"/>
@@ -252,7 +238,7 @@
                                     </state>
                                 </button>
                                 <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t29-Hc-kcB">
-                                    <rect key="frame" x="126" y="451" width="20" height="20"/>
+                                    <rect key="frame" x="126" y="479" width="20" height="20"/>
                                     <state key="normal" title="Button" backgroundImage="checkbox_not_ticked.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -261,7 +247,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lQ4-jF-9TI">
-                                    <rect key="frame" x="8" y="452" width="20" height="20"/>
+                                    <rect key="frame" x="8" y="480" width="20" height="20"/>
                                     <state key="normal" title="Button" backgroundImage="checkbox_not_ticked.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -270,7 +256,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qi9-Eb-8j4">
-                                    <rect key="frame" x="253" y="451" width="20" height="20"/>
+                                    <rect key="frame" x="253" y="479" width="20" height="20"/>
                                     <state key="normal" title="Button" backgroundImage="checkbox_not_ticked.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -279,17 +265,17 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cjz-v6-YDN">
-                                    <rect key="frame" x="154" y="451" width="45" height="20"/>
+                                    <rect key="frame" x="154" y="479" width="45" height="20"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SMS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rdo-kn-X80">
-                                    <rect key="frame" x="281" y="452" width="30" height="20"/>
+                                    <rect key="frame" x="281" y="480" width="30" height="20"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Điện thoại" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="das-eJ-7C0">
-                                    <rect key="frame" x="36" y="451" width="75" height="20"/>
+                                    <rect key="frame" x="36" y="479" width="75" height="20"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -299,6 +285,12 @@
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                 </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Theo dõi khách hàng" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2A-dP-vbO">
+                                    <rect key="frame" x="8" y="452" width="303" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                         </scrollView>
                     </subviews>

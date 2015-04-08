@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="barLabel" destination="in5-wm-72b" id="0wN-ke-Q3L"/>
                 <outlet property="bodyMainView" destination="j0z-CN-oHP" id="K8B-kE-cbS"/>
+                <outlet property="btnDel" destination="RRb-NN-6Eg" id="FRI-WV-TAj"/>
                 <outlet property="btnHome" destination="dZY-es-mvv" id="xje-0u-uYY"/>
                 <outlet property="btnOrgType" destination="eyO-p1-Hmj" id="k51-aR-kFL"/>
                 <outlet property="btnSave" destination="tbz-k4-iYe" id="bIf-GJ-sec"/>
@@ -90,7 +91,7 @@
                                 <action selector="actionSave:" destination="-1" eventType="touchUpInside" id="oK0-CV-YKK"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RRb-NN-6Eg">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RRb-NN-6Eg">
                             <rect key="frame" x="914" y="2" width="40" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" backgroundImage="icon_delete_90x90.png">

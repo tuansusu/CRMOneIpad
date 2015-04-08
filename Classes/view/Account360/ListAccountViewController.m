@@ -181,7 +181,10 @@
     [self.btnSearch setStyleNormalWithOption:smgSelect];
     [self.leftViewHeader setBackgroundColor:BACKGROUND_COLOR_TOP_LEFT_HEADER];
     self.leftLabelHeader.textColor = TEXT_COLOR_HEADER_APP;
-    self.txtSearchBar.barTintColor = HEADER_VIEW_COLOR1;
+    if ([self currentDeviceType]==iPad) {
+        self.txtSearchBar.barTintColor = HEADER_VIEW_COLOR1;
+    }
+    
     
     
     for (UIView *viewTemp in self.leftInMainView.subviews) {
@@ -944,7 +947,7 @@
             [self presentViewController:detail animated:YES completion:nil];
         }
         else if(buttonIndex==1){
-        
+            
             [self delegate_del:dataDetail];
         }
         else if(buttonIndex==2){

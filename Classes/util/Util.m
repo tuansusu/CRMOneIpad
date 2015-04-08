@@ -28,13 +28,13 @@
 
 
 +(void) backToHome : (UIViewController*) viewController {
-//    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    MainViewController *view = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
-//    //action.sender = view;
-//    //view.userData = [defaults objectForKey:USER_LOGIN];
-//    //view.versionTypeCheck = [defaults objectForKey:KEY_VERSION];
-//    view.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-//    [viewController presentViewController:view animated:YES completion:nil];
+    //    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //    MainViewController *view = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+    //    //action.sender = view;
+    //    //view.userData = [defaults objectForKey:USER_LOGIN];
+    //    //view.versionTypeCheck = [defaults objectForKey:KEY_VERSION];
+    //    view.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    //    [viewController presentViewController:view animated:YES completion:nil];
     
     [viewController.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
@@ -58,32 +58,32 @@
     
     
     MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
-	picker.mailComposeDelegate =(id<MFMailComposeViewControllerDelegate>) viewController;
+    picker.mailComposeDelegate =(id<MFMailComposeViewControllerDelegate>) viewController;
     
     //NSArray *address = [NSArray arrayWithObjects:@"tuannv36@viettel.com.vn", nil];
     
     NSArray *toRecipients = [NSArray arrayWithObjects:strEmailTo,nil];
-	NSArray *ccRecipients = [NSArray arrayWithObjects:@"", nil];
-	NSArray *bccRecipients = [NSArray arrayWithObjects:@"",nil];
-	
+    NSArray *ccRecipients = [NSArray arrayWithObjects:@"", nil];
+    NSArray *bccRecipients = [NSArray arrayWithObjects:@"",nil];
     
     
-	[picker setToRecipients:toRecipients];
-	[picker setCcRecipients:ccRecipients];
-	[picker setBccRecipients:bccRecipients];
-	
     
-//    NSData *myData = [NSData dataWithContentsOfFile:filePath];
-//    
-//    [picker addAttachmentData:myData mimeType:@"text/plain" fileName :fileName];
-	
-	// Fill out the email body text
+    [picker setToRecipients:toRecipients];
+    [picker setCcRecipients:ccRecipients];
+    [picker setBccRecipients:bccRecipients];
+    
+    
+    //    NSData *myData = [NSData dataWithContentsOfFile:filePath];
+    //
+    //    [picker addAttachmentData:myData mimeType:@"text/plain" fileName :fileName];
+    
+    // Fill out the email body text
     NSString *emailBody = [NSString stringWithFormat:@""];
-	[picker setMessageBody:emailBody isHTML:NO];
+    [picker setMessageBody:emailBody isHTML:NO];
     
-	picker.modalPresentationStyle = UIModalPresentationPageSheet;
+    picker.modalPresentationStyle = UIModalPresentationPageSheet;
     
-	[viewController presentViewController:picker animated:YES completion:nil];
+    [viewController presentViewController:picker animated:YES completion:nil];
 }
 
 +(void) rerenderFrameWithImage : (UIImageView*)  inputImage withLabel : (UILabel*) inputLabel withOption : (int) smgSelect{
@@ -97,7 +97,7 @@
         inputImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%d.png",IMG_NOTIFICATION,smgSelect]];
         
     }else{
-       
+        
         if (inputImage.isAccessibilityElement==NO) {
             inputImage.isAccessibilityElement = YES;
             inputLabel.frame = CGRectMake(inputLabel.frame.origin.x - 20, inputLabel.frame.origin.y, inputLabel.frame.size.width + 20, inputLabel.frame.size.height);
@@ -237,10 +237,12 @@
 }
 //kiểm tra email có đúng định dạng hay không?
 -(BOOL) validateEmail:(NSString *)email{
-    
-    NSString *emailRegex=@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9]+\\.[A-Za-z]{2,6}";
-    NSPredicate *emailtext=[NSPredicate predicateWithFormat:@"SELF MATCHES %@",emailRegex];
-    return [emailtext evaluateWithObject:email];
+    BOOL stricterFilter = NO;
+    NSString *stricterFilterString = @"[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}";
+    NSString *laxString = @".+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2}[A-Za-z]*";
+    NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:email];
 }
 //set border cho textview
 

@@ -351,4 +351,6 @@
 "KEY_OPPORTUNITY_CONTACT_EDIT_ERR_BLANK_POSITION"="Anh/Chị chưa nhập chức danh";
 "KEY_OPPORTUNITY_CONTACT_EDIT_ERR_BLANK_PHONE"="Anh/Chị chưa nhập số điện thoại";
 "KEY_OPPORTUNITY_CONTACT_EDIT_ERR_EMAIL_NOT_VALID"="Email không hợp lệ";
+"MIN_NUMBERIDENTITY"="Số CMT phải lớn hơn 9  ký tự và nhỏ hơn 20 ký";
+"MAXLENG_PHONE"="Số điện thoại phải lớn hơn 9 và nhỏ hơn 20 ký tự";
 

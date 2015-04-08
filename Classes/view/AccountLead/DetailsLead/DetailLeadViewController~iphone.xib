@@ -7,8 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailLeadViewController">
             <connections>
-                <outlet property="barLabel" destination="72Y-7p-EFM" id="l8f-3c-EP1"/>
-                <outlet property="footerView" destination="ovr-nt-qUR" id="tMH-Dy-PrV"/>
                 <outlet property="fullNameLB" destination="i0Z-bo-PYC" id="VVr-kL-Q8b"/>
                 <outlet property="headerViewBar" destination="myH-a6-Iem" id="2Lg-Gb-ue9"/>
                 <outlet property="lbAddress" destination="zyq-VA-DqM" id="Sq0-aW-OWH"/>
@@ -81,10 +79,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <subviews>
                         <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GzW-M1-XsH" userLabel="View-data">
-                            <rect key="frame" x="0.0" y="104" width="320" height="383"/>
+                            <rect key="frame" x="0.0" y="104" width="320" height="415"/>
                             <subviews>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5vj-j4-tJ4">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="383"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="415"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <connections>
                                         <outlet property="dataSource" destination="-1" id="Yo5-1t-SMW"/>
@@ -99,7 +97,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YZd-at-E1X" userLabel="Scroll View-CN">
-                            <rect key="frame" x="8" y="68" width="304" height="419"/>
+                            <rect key="frame" x="8" y="68" width="304" height="451"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lbCode" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28Z-BY-5bI">
                                     <rect key="frame" x="113" y="8" width="183" height="21"/>
@@ -284,7 +282,7 @@
                             </subviews>
                         </scrollView>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y2e-dm-7d1" userLabel="Scroll View-DN">
-                            <rect key="frame" x="8" y="68" width="304" height="419"/>
+                            <rect key="frame" x="8" y="68" width="304" height="451"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lbCode" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1j-0n-bga">
                                     <rect key="frame" x="113" y="8" width="183" height="21"/>
@@ -465,9 +463,9 @@
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="myH-a6-Iem" userLabel="View-header">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="KHÁCH HÀNG TIỀM NĂNG (CN)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0Z-bo-PYC">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="KH TIỀM NĂNG (CN)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0Z-bo-PYC">
                                     <rect key="frame" x="38" y="22" width="162" height="30"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -494,30 +492,24 @@
                                     <state key="normal" backgroundImage="icon_delete_90x90.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="actionDel:" destination="-1" eventType="touchUpInside" id="0Hs-ac-pqD"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NuO-QM-2eV" userLabel="btn edit">
                                     <rect key="frame" x="206" y="22" width="30" height="30"/>
                                     <state key="normal" backgroundImage="icon_sua_90x90.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="actionEdit:" destination="-1" eventType="touchUpInside" id="W17-zt-cwy"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ovr-nt-qUR" userLabel="view-footer">
-                            <rect key="frame" x="0.0" y="538" width="320" height="30"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bản quyền" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72Y-7p-EFM">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
                         <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3No-IB-RE3">
-                            <rect key="frame" x="0.0" y="487" width="320" height="49"/>
+                            <rect key="frame" x="0.0" y="519" width="320" height="49"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <items>
                                 <tabBarItem title="Thông tin" image="tabbar_details.png" id="l3L-gZ-slA" userLabel="Chi tiết"/>

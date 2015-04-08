@@ -195,7 +195,9 @@
     self.leftLabelHeader.textColor = TEXT_COLOR_HEADER_APP;
     
     
+    if([self currentDeviceType]==iPad){
     self.txtSearchBar.barTintColor = HEADER_VIEW_COLOR1;
+    }
     
     
     for (UIView *viewTemp in self.leftInMainView.subviews) {
@@ -312,7 +314,7 @@
             spinner.frame = CGRectMake(tableView.frame.size.width/2-12, 0, 24, 50);
             [cell addSubview:spinner];
             
-            if (arrayData.count >= 10) {
+            if (arrayData.count >= 10 && arrayData.count !=0) {
                 [spinner startAnimating];
             }
         }
@@ -511,7 +513,7 @@
     detail.advanceSearchDelegate =(id<SearchAdvanceDelegate>) self;
     
     self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(250, 370) animated:NO];
+    [self.listPopover setPopoverContentSize:CGSizeMake(250, 300) animated:NO];
     [self.listPopover presentPopoverFromRect:popoverFrame inView:self.headerViewBar permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
@@ -521,16 +523,17 @@
     return YES;
 }
 
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText   // called when text changes (including clear)
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    //NSLog(@"text did change %@", searchText);
-    strSearchText = searchText;
-    //strSearchText = @"1010";
-    //arrayData=[dtoLeadProcess filterWithKey:DTOLEAD_name withValue:searchText];
-    //_lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
-    [self resetLoadData];
-    [self filterData];
-    //[_tbData reloadData];
+    NSString *specialCharacterString = @"!~`@#$%^&*-+();:={}[],.<>?\\/\"\'";
+    NSCharacterSet *specialCharacterSet = [NSCharacterSet
+                                           characterSetWithCharactersInString:specialCharacterString];
+    
+    if (![searchText.lowercaseString rangeOfCharacterFromSet:specialCharacterSet].length) {
+        strSearchText = searchText;
+        [self resetLoadData];
+        [self filterData];
+    }
 }
 
 

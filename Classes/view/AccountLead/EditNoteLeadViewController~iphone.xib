@@ -7,11 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditNoteLeadViewController">
             <connections>
-                <outlet property="barLabel" destination="FjY-M2-VkM" id="trp-b2-fmN"/>
                 <outlet property="btnDelNote" destination="BDY-PT-S5q" id="vsz-ce-EUQ"/>
                 <outlet property="btnHome" destination="UD2-0q-d5e" id="qHc-0P-N57"/>
                 <outlet property="choosePhotoBtn" destination="3fm-zr-ICS" id="3nf-cK-9yS"/>
-                <outlet property="footerView" destination="N46-Q9-VKy" id="gwM-aT-Nzu"/>
                 <outlet property="fullNameLB" destination="4h9-nO-fJj" id="3oI-rN-B0y"/>
                 <outlet property="headerViewBar" destination="m03-pt-YOu" id="Q1C-7I-aHX"/>
                 <outlet property="takePhotoBtn" destination="uo2-if-NIf" id="tg7-bC-aku"/>
@@ -48,8 +46,8 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="KHÁCH HÀNG TIỀM NĂNG (CN)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4h9-nO-fJj">
-                            <rect key="frame" x="38" y="22" width="111" height="30"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <rect key="frame" x="38" y="22" width="198" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -65,20 +63,8 @@
                     </subviews>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N46-Q9-VKy" userLabel="view-footer">
-                    <rect key="frame" x="0.0" y="538" width="320" height="30"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bản quyền" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FjY-M2-VkM">
-                            <rect key="frame" x="0.0" y="-1" width="320" height="30"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Of-dz-e41" userLabel="View-content">
-                    <rect key="frame" x="0.0" y="60" width="320" height="480"/>
+                    <rect key="frame" x="0.0" y="60" width="320" height="508"/>
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tiêu đề" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2wh-Kf-9zq">
                             <rect key="frame" x="8" y="8" width="304" height="30"/>
@@ -92,7 +78,7 @@
                             <rect key="frame" x="296" y="15" width="16" height="16"/>
                         </imageView>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8lb-CR-1sD">
-                            <rect key="frame" x="8" y="128" width="304" height="306"/>
+                            <rect key="frame" x="8" y="156" width="304" height="306"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="cAT-S8-C0X"/>
@@ -100,7 +86,7 @@
                             </connections>
                         </tableView>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fm-zr-ICS">
-                            <rect key="frame" x="8" y="442" width="128" height="30"/>
+                            <rect key="frame" x="8" y="470" width="128" height="30"/>
                             <color key="backgroundColor" red="0.039215686270000001" green="0.43137254899999999" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="Chọn ảnh">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -110,7 +96,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uo2-if-NIf">
-                            <rect key="frame" x="190" y="442" width="122" height="30"/>
+                            <rect key="frame" x="190" y="470" width="122" height="30"/>
                             <color key="backgroundColor" red="0.039215686270000001" green="0.43137254899999999" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="Chụp ảnh">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -120,19 +106,19 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="File đính kèm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRs-4a-XY0">
-                            <rect key="frame" x="25" y="106" width="287" height="14"/>
+                            <rect key="frame" x="25" y="134" width="287" height="14"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O5i-Qh-9r8">
-                            <rect key="frame" x="8" y="106" width="14" height="14"/>
+                            <rect key="frame" x="8" y="134" width="14" height="14"/>
                             <state key="normal" backgroundImage="icon_down.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qgx-fu-1cw">
-                            <rect key="frame" x="8" y="46" width="304" height="47"/>
+                            <rect key="frame" x="8" y="46" width="304" height="70"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

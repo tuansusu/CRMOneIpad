@@ -40,7 +40,7 @@ enum Type360View{
     type360View_ProductsLead // sản phẩm dịch vụ
 };
 
-@interface Detail360ViewController : BaseViewController<SelectIndexDelegate,UIAlertViewDelegate>
+@interface Detail360ViewController : BaseViewController<SelectIndexDelegate,UIAlertViewDelegate,UIActionSheetDelegate,UITabBarDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *view;
 
@@ -239,5 +239,6 @@ enum Type360View{
 @property (weak, nonatomic) IBOutlet UILabel *leftInfomenu;
 @property (weak, nonatomic) IBOutlet UITabBar *myTabbar;
 @property (weak, nonatomic) IBOutlet UISearchBar *mySearch;
+@property (weak, nonatomic) IBOutlet UIView *viewData;
 
 @end

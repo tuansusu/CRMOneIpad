@@ -7,11 +7,25 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditContact360ViewController">
             <connections>
-                <outlet property="barLabel" destination="8mi-C9-xth" id="93D-Jc-B2r"/>
+                <outlet property="btnBirthDay" destination="1r2-Rb-wan" id="lml-0o-7cl"/>
+                <outlet property="btnChoicePhoto" destination="4c1-RR-mZd" id="dzo-zy-lsL"/>
+                <outlet property="btnCreateDate" destination="dB7-QD-TMO" id="SHc-lQ-FbS"/>
+                <outlet property="btnDel" destination="xEz-Ej-MTB" id="xlX-xH-Oj1"/>
                 <outlet property="btnHome" destination="PFg-hI-HNy" id="yMu-mz-vtL"/>
-                <outlet property="footerView" destination="nzN-dy-vc1" id="HQD-es-BrH"/>
+                <outlet property="btnSave" destination="WAi-sv-oXh" id="o16-x2-7dj"/>
                 <outlet property="fullNameLB" destination="CXF-li-OCf" id="obI-m4-xio"/>
                 <outlet property="headerViewBar" destination="Ayi-U2-xvm" id="a8o-Em-Log"/>
+                <outlet property="imgAvartar" destination="6rI-DU-Hr5" id="9Rc-z5-ULc"/>
+                <outlet property="tvNote" destination="vxI-m8-avk" id="Cgs-Vv-cLB"/>
+                <outlet property="txtAddress" destination="4Nu-jq-LMh" id="Bg0-tZ-Q8e"/>
+                <outlet property="txtDateCreate" destination="c7D-GL-KBK" id="ghU-8c-YiU"/>
+                <outlet property="txtDateOfBirth" destination="fe0-oA-lge" id="yih-HV-C91"/>
+                <outlet property="txtEmail" destination="3Mk-bc-5xi" id="hJ4-zB-Wcx"/>
+                <outlet property="txtName" destination="33h-pP-Y7e" id="iAP-TH-wY3"/>
+                <outlet property="txtNumberIdentity" destination="kP2-D3-Ygc" id="ypJ-h9-j23"/>
+                <outlet property="txtPhone" destination="aVn-dj-i0r" id="sfm-Oc-w4h"/>
+                <outlet property="txtPosition" destination="ieC-KA-tVT" id="Bmf-xI-wYk"/>
+                <outlet property="txtWhereBorn" destination="m7d-Lr-Erx" id="HZS-ay-Gd7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,86 +35,126 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dzm-57-FS4" userLabel="View-content">
-                    <rect key="frame" x="0.0" y="60" width="320" height="480"/>
+                    <rect key="frame" x="0.0" y="60" width="320" height="508"/>
                     <subviews>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v2N-kT-zci">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="508"/>
                             <subviews>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ngày sinh" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fe0-oA-lge">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ngày sinh" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fe0-oA-lge">
                                     <rect key="frame" x="8" y="327" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="wSm-IM-VXH"/>
+                                    </connections>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1r2-Rb-wan" userLabel="btnSysCat">
                                     <rect key="frame" x="282" y="327" width="30" height="30"/>
-                                    <state key="normal" backgroundImage="ic_cbx-1.png">
+                                    <state key="normal" backgroundImage="select.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="actionChoiceDateBirthday:" destination="-1" eventType="touchUpInside" id="TGH-gp-uuQ"/>
+                                    </connections>
                                 </button>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ghi chú" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ufi-xf-ucK">
-                                    <rect key="frame" x="8" y="441" width="304" height="30"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </textField>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Địa chỉ" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Nu-jq-LMh">
                                     <rect key="frame" x="8" y="403" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="RFO-Kw-r1g"/>
+                                    </connections>
                                 </textField>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vxI-m8-avk">
+                                    <rect key="frame" x="8" y="440" width="304" height="60"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="16y-yP-8Zl"/>
+                                    </connections>
+                                </textView>
                                 <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSo-Lm-DTM">
                                     <rect key="frame" x="282" y="403" width="30" height="30"/>
                                     <state key="normal" title="Button" image="pin.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="actionSelectAddress:" destination="-1" eventType="touchUpInside" id="n2o-j6-5Ec"/>
+                                    </connections>
                                 </button>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Mk-bc-5xi">
                                     <rect key="frame" x="8" y="365" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="OOX-SL-ixE"/>
+                                    </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nơi sinh" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m7d-Lr-Erx">
                                     <rect key="frame" x="8" y="289" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="0do-Ii-NcH"/>
+                                    </connections>
                                 </textField>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ngày cấp" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c7D-GL-KBK">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ngày cấp" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c7D-GL-KBK">
                                     <rect key="frame" x="8" y="252" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="qCM-df-QhQ"/>
+                                    </connections>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dB7-QD-TMO" userLabel="btnSysCat">
                                     <rect key="frame" x="282" y="252" width="30" height="30"/>
-                                    <state key="normal" backgroundImage="ic_cbx-1.png">
+                                    <state key="normal" backgroundImage="select.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="actionChoiceDateCreate:" destination="-1" eventType="touchUpInside" id="MuL-WH-AgT"/>
+                                    </connections>
                                 </button>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Chứng minh thư" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kP2-D3-Ygc">
                                     <rect key="frame" x="8" y="214" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="1HD-kS-fbG"/>
+                                    </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Số điện thoại" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aVn-dj-i0r">
                                     <rect key="frame" x="8" y="176" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="MSG-04-qBb"/>
+                                    </connections>
                                 </textField>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_require-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="pS8-P2-UoZ">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="errorVaildate.png" translatesAutoresizingMaskIntoConstraints="NO" id="pS8-P2-UoZ">
                                     <rect key="frame" x="296" y="183" width="16" height="16"/>
                                 </imageView>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Chức danh" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ieC-KA-tVT">
                                     <rect key="frame" x="8" y="138" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="rWi-Xz-gXw"/>
+                                    </connections>
                                 </textField>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_require-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="UcM-AQ-zcB">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="errorVaildate.png" translatesAutoresizingMaskIntoConstraints="NO" id="UcM-AQ-zcB">
                                     <rect key="frame" x="296" y="145" width="16" height="16"/>
                                 </imageView>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Họ tên" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="33h-pP-Y7e">
                                     <rect key="frame" x="8" y="100" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="6by-5K-vz7"/>
+                                    </connections>
                                 </textField>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_require-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="fi4-fU-OqU">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="errorVaildate.png" translatesAutoresizingMaskIntoConstraints="NO" id="fi4-fU-OqU">
                                     <rect key="frame" x="296" y="107" width="16" height="16"/>
                                 </imageView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="avatar.png" translatesAutoresizingMaskIntoConstraints="NO" id="6rI-DU-Hr5">
@@ -111,23 +165,14 @@
                                     <state key="normal" title="Chọn ảnh">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="actionChoicePhoto:" destination="-1" eventType="touchUpInside" id="66W-oa-d82"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </scrollView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nzN-dy-vc1" userLabel="view-footer">
-                    <rect key="frame" x="0.0" y="538" width="320" height="30"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bản quyền" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mi-C9-xth">
-                            <rect key="frame" x="0.0" y="-1" width="320" height="30"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ayi-U2-xvm" userLabel="View-header">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
@@ -138,21 +183,24 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEz-Ej-MTB">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEz-Ej-MTB">
                             <rect key="frame" x="244" y="22" width="30" height="30"/>
                             <state key="normal" backgroundImage="icon_delete_90x90.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="actionDel:" destination="-1" eventType="touchUpInside" id="zAw-4i-owp"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="KHÁCH HÀNG TIỀM NĂNG (CN)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CXF-li-OCf">
-                            <rect key="frame" x="38" y="22" width="111" height="30"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <rect key="frame" x="38" y="22" width="198" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PFg-hI-HNy" userLabel="btnHome">
                             <rect key="frame" x="0.0" y="22" width="30" height="30"/>
-                            <state key="normal" backgroundImage="icon_menu-1.png">
+                            <state key="normal" backgroundImage="Back_32.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -168,12 +216,12 @@
         </view>
     </objects>
     <resources>
+        <image name="Back_32.png" width="32" height="32"/>
         <image name="avatar.png" width="120" height="120"/>
-        <image name="ic_cbx-1.png" width="60" height="60"/>
+        <image name="errorVaildate.png" width="24" height="24"/>
         <image name="icon_delete_90x90.png" width="90" height="90"/>
-        <image name="icon_menu-1.png" width="48" height="48"/>
-        <image name="icon_require-1.png" width="16" height="16"/>
         <image name="icon_save_90x90.png" width="90" height="90"/>
         <image name="pin.png" width="48" height="48"/>
+        <image name="select.png" width="26" height="26"/>
     </resources>
 </document>

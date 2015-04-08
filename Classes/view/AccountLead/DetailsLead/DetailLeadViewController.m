@@ -157,7 +157,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     myDevice=[UIDevice currentDevice].model;
     if([myDevice isEqualToString:@"iPhone"] || [myDevice isEqualToString:@"iPhone Simulator"]){
         [_myTabbar setSelectedItem:0];
-        self.mySearchBar.barTintColor = HEADER_VIEW_COLOR1;
+        //self.mySearchBar.barTintColor = HEADER_VIEW_COLOR1;
         self.myTabbar.barTintColor=[UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:1.0];
         [self.myTabbar setSelectedItem:self.myTabbar.items[0]];
     }

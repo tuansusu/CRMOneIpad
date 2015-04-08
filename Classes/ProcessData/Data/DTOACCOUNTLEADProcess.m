@@ -113,7 +113,15 @@
     
     return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:nil];
 }
-
+-(NSMutableArray*) filterTop{
+    
+    NSArray *allFields =[NSArray arrayWithObjects:DTOLEAD_accountId, DTOLEAD_address, DTOLEAD_companyPhone, DTOLEAD_email, DTOLEAD_mobile, DTOLEAD_name,DTOLEAD_updatedBy,DTOLEAD_code, DTOLEAD_leadId, DTOLEAD_leadType,DTOLEAD_clientLeadId, DTOLEAD_lat, DTOLEAD_lon, DTOLEAD_id,DTOLEAD_clientLeadId, nil];
+    
+    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where status = 1 order by %@ desc LIMIT 1",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOACCOUNTLEAD, DTOLEAD_updatedDate];
+    
+    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:nil];
+    
+}
 //filter(all) co phan trang
 -(NSMutableArray*) filterWithStart : (int) start withLimit : (int) limit withOutTotal : (int*) totalCount {
     NSArray *allFields =[NSArray arrayWithObjects:DTOLEAD_accountId, DTOLEAD_address, DTOLEAD_companyPhone, DTOLEAD_email, DTOLEAD_mobile, DTOLEAD_name,DTOLEAD_updatedBy,DTOLEAD_code, DTOLEAD_leadId, DTOLEAD_leadType,DTOLEAD_clientLeadId, DTOLEAD_lat, DTOLEAD_lon, DTOLEAD_id,DTOLEAD_clientLeadId, nil];

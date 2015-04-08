@@ -32,6 +32,7 @@
  * Lọc khách hàng đầu mối (chưa có tìm kiếm và phân trang)
  */
 -(NSMutableArray*) filter;
+-(NSMutableArray*) filterTop;
 -(NSMutableArray*) filterWithStart : (int) start withLimit : (int) limit withOutTotal : (int*) totalCount;
 
 -(NSMutableArray*) filterWithKey : (NSString*) strKey withValue : (NSString*) strValue;

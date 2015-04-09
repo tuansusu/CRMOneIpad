@@ -199,7 +199,7 @@
     // fixed contents
     // header + footer
     _headerView.backgroundColor = HEADER_VIEW_COLOR1;
-    _headerLabel.text           = TITLE_APPLICATION;
+    //_headerLabel.text           = TITLE_APPLICATION;
     _headerLabel.textColor      = TEXT_COLOR_HEADER_APP;
 
     _footerView.backgroundColor = TOOLBAR_VIEW_COLOR;

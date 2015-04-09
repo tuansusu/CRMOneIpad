@@ -844,6 +844,7 @@
 -(void) delegate_follow:(NSDictionary *)dicData{
     Follow360ViewController *detail = [[Follow360ViewController alloc] initWithNibName:@"Follow360ViewController" bundle:nil];
     detail.dataSend=dicData;
+    detail.delegate=self;
     detail.view.frame = CGRectMake(0, 0, 600, 500);
     //[InterfaceUtil setBorderWithCornerAndBorder:detail.view :6 :0.2 :nil];
     [self presentPopupViewController:detail animationType:1];

@@ -361,15 +361,12 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     if([disableEmail isEqualToString:@"0"]){
         email=@"Email";
     }
-    NSString *metting=@"";
-    NSString *disableMetting = [dicData objectForKey:DTOLEAD_disableMeeting];
-    if ([disableMetting isEqualToString:@"0"]) {
-        metting=@"Metting";
-    }
-    if(![StringUtil stringIsEmpty:sms]||![StringUtil stringIsEmpty:phone]||![StringUtil stringIsEmpty:email]||![StringUtil stringIsEmpty:metting]){
-        NSString *tmp=[NSString stringWithFormat:@"%@,%@,%@,%@",sms,phone,email,metting];
+    if(![StringUtil stringIsEmpty:sms]||![StringUtil stringIsEmpty:phone]||![StringUtil stringIsEmpty:email]){
+        NSString *tmp=[NSString stringWithFormat:@"%@,%@,%@",sms,phone,email];
         //goi nho
+        if (tmp.length>3) {
         fyCN = [self setFrameLabelTitle:_lbLableKhongLienLacQua withLabelValue:_lbKhongLienLacQua withFY:fyCN :tmp];
+        }
     }
     else{
         _lbLableKhongLienLacQua.hidden=YES;

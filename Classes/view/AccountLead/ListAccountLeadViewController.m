@@ -947,6 +947,7 @@
 -(void) delegate_follow:(NSDictionary *)dicData{
     FlowLeadViewController *detail = [[FlowLeadViewController alloc] initWithNibName:@"FlowLeadViewController" bundle:nil];
     detail.dataSend=dicData;
+    detail.delegate=self;
     if([self currentDeviceType]==iPhone){
         detail.view.frame = CGRectMake(0, 0, 240, 280);
     }

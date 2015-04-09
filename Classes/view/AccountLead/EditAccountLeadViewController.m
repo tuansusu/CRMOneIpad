@@ -677,50 +677,50 @@
 }// may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    NSUInteger oldLength = [textField.text length];
+    NSUInteger replacementLength = [string length];
+    NSUInteger rangeLength = range.length;
+    
+    NSUInteger newLength = oldLength - rangeLength + replacementLength;
     if(textField==_txtName){
-        if(_txtName.text.length>=100 && range.length==0){
-            return NO;
-        }
-        else {
-            return YES;
-        }
+        BOOL returnKey = [string rangeOfString: @"\n"].location != NSNotFound;
+        
+        return newLength <= 100 || returnKey;
     }
     if(textField==_txtCompany){
-        if(_txtCompany.text.length>=100 && range.length==0){
-            return NO;
-        }
-        else{
-            return YES;
-        }
+        BOOL returnKey = [string rangeOfString: @"\n"].location != NSNotFound;
+        
+        return newLength <= 100 || returnKey;
     }
     if(textField==_txtPhone){
+        
         if ([string length] == 0 && range.length > 0)
         {
             textField.text = [textField.text stringByReplacingCharactersInRange:range withString:string];
             return NO;
         }
-        
         NSCharacterSet *nonNumberSet = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet];
-        if ([string stringByTrimmingCharactersInSet:nonNumberSet].length > 0)return YES;
+        if ([string stringByTrimmingCharactersInSet:nonNumberSet].length > 0)
+        {
+            
+            BOOL returnKey = [string rangeOfString: @"\n"].location != NSNotFound;
+            
+            return newLength <= 20 || returnKey;
+        }
         
         return NO;
     }
     if(textField==_txtEmail){
         
-        if(_txtEmail.text.length>=50 && range.length==0){
-            return NO;
-        }
-        else{
-            return YES;
-        }
+        BOOL returnKey = [string rangeOfString: @"\n"].location != NSNotFound;
+        
+        return newLength <= 50 || returnKey;
     }
     if(textField==_txtAddress){
-        if(_txtAddress.text.length>=200 && range.length==0){
-            return NO;
-        }
-        else{
-            return YES;
-        }
+        BOOL returnKey = [string rangeOfString: @"\n"].location != NSNotFound;
+        
+        return newLength <= 200 || returnKey;
     }
     if(textField==_txtNumberIdentity){
         if ([string length] == 0 && range.length > 0)
@@ -728,9 +728,14 @@
             textField.text = [textField.text stringByReplacingCharactersInRange:range withString:string];
             return NO;
         }
-        
         NSCharacterSet *nonNumberSet = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet];
-        if ([string stringByTrimmingCharactersInSet:nonNumberSet].length > 0)return YES;
+        if ([string stringByTrimmingCharactersInSet:nonNumberSet].length > 0)
+        {
+            
+            BOOL returnKey = [string rangeOfString: @"\n"].location != NSNotFound;
+            
+            return newLength <= 20 || returnKey;
+        }
         
         return NO;
     }

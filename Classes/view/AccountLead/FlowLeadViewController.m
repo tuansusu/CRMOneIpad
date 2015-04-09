@@ -164,7 +164,7 @@
     //check validate
     if([StringUtil stringIsEmpty:_txtMucDich.text] && [StringUtil stringIsEmpty:catId]){
         
-        [util showTooltip:_txtMucDich withText:@"Anh/Chị chưa chọn mục đích theo dõi" showview:_viewmaininfo];
+        [util showTooltip:_txtMucDich withText:@"Chưa chọn mục đích theo dõi" showview:_viewmaininfo];
         [util setBorder:_txtMucDich];
         return;
     }
@@ -470,7 +470,7 @@
     [_txtMucDich setPlaceholder:LocalizedString(@"KEY_FOLLOW_MD")];
     _lbNgayBatDau.text=LocalizedString(@"KEY_FOLLOW_DATE_START");
     [_txtNgaybatdau setPlaceholder:LocalizedString(@"KEY_FOLLOW_DATE_START")];
-    _lbNgayHoanThanh.text=LocalizedString(@"KEY_FOLLOW_DAT  QE_END");
+    _lbNgayHoanThanh.text=LocalizedString(@"KEY_FOLLOW_DATE_END");
     [_txtNgayhoanthanh setPlaceholder:LocalizedString(@"KEY_FOLLOW_DATE_END")];
     _lbGuiNhacNho.text=LocalizedString(@"KEY_FOLLOW_READMIND");
     _lbHinhThucNhacNho.text=LocalizedString(@"KEY_FOLLOW_HT");

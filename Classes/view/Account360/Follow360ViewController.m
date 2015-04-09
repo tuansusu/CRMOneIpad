@@ -168,7 +168,7 @@
     //check validate
     if([StringUtil stringIsEmpty:_txtMucDich.text] && [StringUtil stringIsEmpty:catId]){
         
-        [util showTooltip:_txtMucDich withText:@"Anh/Chị chưa chọn mục đích theo dõi" showview:_viewmaininfo];
+        [util showTooltip:_txtMucDich withText:@"Chưa chọn mục đích theo dõi" showview:_viewmaininfo];
         [util setBorder:_txtMucDich];
         return;
     }

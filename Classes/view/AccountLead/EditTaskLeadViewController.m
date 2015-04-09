@@ -208,7 +208,7 @@
     _mainView.backgroundColor = HEADER_SUB_VIEW_COLOR1;
     // - header
 
-    [self.btnSave setStyleNormalWithOption:smgSelect];
+    //[self.btnSave setStyleNormalWithOption:smgSelect];
 
 //    _headerMainView.backgroundColor = HEADER_SUB_VIEW_COLOR1;
 //    [_headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -8,7 +8,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListAccountViewController">
             <connections>
                 <outlet property="barLabel" destination="sxm-be-gDJ" id="k7n-mD-qIH"/>
-                <outlet property="btnAdd" destination="Bn7-kb-2LM" id="dj4-a2-0L7"/>
                 <outlet property="btnHome" destination="AWh-1f-Sz9" id="N4Q-kz-19h"/>
                 <outlet property="footerView" destination="yqF-Eb-Ut5" id="HgM-3M-Fyo"/>
                 <outlet property="fullNameLB" destination="6NN-qm-fpN" id="ZAQ-vM-MnU"/>
@@ -72,7 +71,7 @@
                             </state>
                         </button>
                         <searchBar contentMode="redraw" placeholder="Từ khoá tìm kiếm" id="eaO-4L-TnH">
-                            <rect key="frame" x="639" y="0.0" width="258" height="44"/>
+                            <rect key="frame" x="710" y="0.0" width="258" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -81,16 +80,8 @@
                                 <outlet property="delegate" destination="-1" id="DA8-dp-ird"/>
                             </connections>
                         </searchBar>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Bn7-kb-2LM" userLabel="BTNADD">
-                            <rect key="frame" x="958" y="7" width="32" height="32"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" backgroundImage="ic_plus-1.png"/>
-                            <connections>
-                                <action selector="actionAdd:" destination="-1" eventType="touchUpInside" id="D02-Ju-YVl"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vRD-ta-COl" userLabel="BTN_SEARCH">
-                            <rect key="frame" x="913" y="7" width="32" height="32"/>
+                            <rect key="frame" x="984" y="7" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" backgroundImage="ic-search-1.png"/>
                             <connections>
@@ -151,7 +142,6 @@
     <resources>
         <image name="ic-search-1.png" width="90" height="90"/>
         <image name="ic_cbx-1.png" width="60" height="60"/>
-        <image name="ic_plus-1.png" width="90" height="90"/>
         <image name="icon_menu-1.png" width="48" height="48"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

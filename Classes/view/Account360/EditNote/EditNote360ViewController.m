@@ -327,9 +327,16 @@
     
     if (succsess) {
         //Thong bao cap nhat thanh cong va thoat
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:LocalizedString(@"KEY_NO") otherButtonTitles:LocalizedString(@"KEY_YES"), nil];
-        alert.tag = 5;
-        [alert show];
+        if(_dataSend.count>0){
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            alert.tag = 6;
+            [alert show];
+        }
+        else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:LocalizedString(@"KEY_NO") otherButtonTitles:LocalizedString(@"KEY_YES"), nil];
+            alert.tag = 5;
+            [alert show];
+        }
         
         
     }else{
@@ -407,6 +414,9 @@
             }
         }
     }
+    if (alertView.tag==6) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
     
 }
 
@@ -414,9 +424,24 @@
 #pragma mark text delegate
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    ////NSLog(@"edit ting : %@", self.t\\\);
-    txtContent.text=txtTitle.text;
-    return  YES;
+    NSUInteger oldLength = [textField.text length];
+    NSUInteger replacementLength = [string length];
+    NSUInteger rangeLength = range.length;
+    
+    NSUInteger newLength = oldLength - rangeLength + replacementLength;
+    if(textField==self.txtTitle){
+        self.txtContent.text=textField.text;
+        BOOL returnKey = [string rangeOfString: @"\n"].location != NSNotFound;
+        
+        return newLength <= 200 || returnKey;
+    }
+    if(textField==self.txtTitle){
+        
+        BOOL returnKey = [string rangeOfString: @"\n"].location != NSNotFound;
+        
+        return newLength <= 2000 || returnKey;
+    }
+    return YES;
 }// return NO to not change text
 
 
@@ -639,10 +664,10 @@
 }
 //set language
 -(void) setLanguage{
-   // [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
+    // [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
     [_lbContent setText:LocalizedString(@"KEY_NOTE_CONTENT")];
     [_lbTitle setText:LocalizedString(@"KEY_NOTE_TITLE")];
-   // [_btnDel setTitle:LocalizedString(@"KEY_Delete") forState:UIControlStateNormal];
+    // [_btnDel setTitle:LocalizedString(@"KEY_Delete") forState:UIControlStateNormal];
     [self.choosePhotoBtn setTitle:LocalizedString(@"KEY_CHOICE_IMAGE") forState:(UIControlStateNormal)];
     [self.takePhotoBtn setTitle:LocalizedString(@"KEY_CAMERA") forState:(UIControlStateNormal)];
     if (_dataSend.count>0) {

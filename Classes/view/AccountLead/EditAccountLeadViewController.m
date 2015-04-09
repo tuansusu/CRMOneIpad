@@ -351,10 +351,12 @@
         [util setBorder:_txtEmail];
         return;
     }
-    if (_txtNumberIdentity.text.length<9 || _txtNumberIdentity.text.length >=20) {
-        [util showTooltip:_txtNumberIdentity withText:LocalizedString(@"MIN_NUMBERIDENTITY") showview:_viewMainBodyInfo];
-        [util setBorder:_txtNumberIdentity];
-        return;
+    if (_txtNumberIdentity.text.length>0){
+        if(_txtNumberIdentity.text.length<9 || _txtNumberIdentity.text.length >=20) {
+            [util showTooltip:_txtNumberIdentity withText:LocalizedString(@"MIN_NUMBERIDENTITY") showview:_viewMainBodyInfo];
+            [util setBorder:_txtNumberIdentity];
+            return;
+        }
     }
     if (_txtPhone.text.length > 20 || _txtPhone.text.length <9 ) {
         [util showTooltip:_txtPhone withText:LocalizedString(@"MAXLENG_PHONE") showview:_viewMainBodyInfo];
@@ -448,9 +450,16 @@
     
     if (succsess) {
         //Thong bao cap nhat thanh cong va thoat
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE")  message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:LocalizedString(@"KEY_NO") otherButtonTitles:LocalizedString(@"KEY_YES"), nil];
-        alert.tag = 5;
-        [alert show];
+        if (_dataSend.count>0) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE")  message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            alert.tag = 6;
+            [alert show];
+        }
+        else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE")  message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:LocalizedString(@"KEY_NO") otherButtonTitles:LocalizedString(@"KEY_YES"), nil];
+            alert.tag = 5;
+            [alert show];
+        }
         
     }else{
         //khong bao nhap loi - lien he quan tri
@@ -502,6 +511,9 @@
         //reset lai form
         [self resetForm];
         return;
+    }
+    if(alertView.tag==6){
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
     if(alertView.tag==11){
         if(buttonIndex==0){
@@ -677,50 +689,50 @@
 }// may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    NSUInteger oldLength = [textField.text length];
+    NSUInteger replacementLength = [string length];
+    NSUInteger rangeLength = range.length;
+    
+    NSUInteger newLength = oldLength - rangeLength + replacementLength;
     if(textField==_txtName){
-        if(_txtName.text.length>=100 && range.length==0){
-            return NO;
-        }
-        else {
-            return YES;
-        }
+        BOOL returnKey = [string rangeOfString: @"\n"].location != NSNotFound;
+        
+        return newLength <= 100 || returnKey;
     }
     if(textField==_txtCompany){
-        if(_txtCompany.text.length>=100 && range.length==0){
-            return NO;
-        }
-        else{
-            return YES;
-        }
+        BOOL returnKey = [string rangeOfString: @"\n"].location != NSNotFound;
+        
+        return newLength <= 100 || returnKey;
     }
     if(textField==_txtPhone){
+        
         if ([string length] == 0 && range.length > 0)
         {
             textField.text = [textField.text stringByReplacingCharactersInRange:range withString:string];
             return NO;
         }
-        
         NSCharacterSet *nonNumberSet = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet];
-        if ([string stringByTrimmingCharactersInSet:nonNumberSet].length > 0)return YES;
+        if ([string stringByTrimmingCharactersInSet:nonNumberSet].length > 0)
+        {
+            
+            BOOL returnKey = [string rangeOfString: @"\n"].location != NSNotFound;
+            
+            return newLength <= 20 || returnKey;
+        }
         
         return NO;
     }
     if(textField==_txtEmail){
         
-        if(_txtEmail.text.length>=50 && range.length==0){
-            return NO;
-        }
-        else{
-            return YES;
-        }
+        BOOL returnKey = [string rangeOfString: @"\n"].location != NSNotFound;
+        
+        return newLength <= 50 || returnKey;
     }
     if(textField==_txtAddress){
-        if(_txtAddress.text.length>=200 && range.length==0){
-            return NO;
-        }
-        else{
-            return YES;
-        }
+        BOOL returnKey = [string rangeOfString: @"\n"].location != NSNotFound;
+        
+        return newLength <= 200 || returnKey;
     }
     if(textField==_txtNumberIdentity){
         if ([string length] == 0 && range.length > 0)
@@ -728,9 +740,14 @@
             textField.text = [textField.text stringByReplacingCharactersInRange:range withString:string];
             return NO;
         }
-        
         NSCharacterSet *nonNumberSet = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet];
-        if ([string stringByTrimmingCharactersInSet:nonNumberSet].length > 0)return YES;
+        if ([string stringByTrimmingCharactersInSet:nonNumberSet].length > 0)
+        {
+            
+            BOOL returnKey = [string rangeOfString: @"\n"].location != NSNotFound;
+            
+            return newLength <= 20 || returnKey;
+        }
         
         return NO;
     }

@@ -138,6 +138,8 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     [self.lbTypeCustomer setBorderWithOption:option];
 
     self.footerView.backgroundColor = TOOLBAR_VIEW_COLOR;
+    self.barLabel.text = [NSString stringWithFormat:@"%@ %@, %@",VOFFICE,[defaults objectForKey:@"versionSoftware"],COPY_OF_SOFTWARE];
+
     self.barLabel.textColor = TEXT_TOOLBAR_COLOR1;
 
     [self.btnSearch setStyleNormalWithOption:smgSelect];
@@ -463,14 +465,15 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         NSIndexPath *indexPathToReload = [self.tbData indexPathForCell:taskActionCell];
 
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            if ([strSearchText isEqualToString:@""]) {
+            if ([StringUtil stringIsEmpty:strSearchText] || [strSearchText isEqualToString:@""]) {
                 [_dashboardTaskModel getFirstPageWithKey:@""];
             }else{
                 [_dashboardTaskModel getFirstPageWithKey:strSearchText];
             }
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.tbData reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPathToReload] withRowAnimation:UITableViewRowAnimationAutomatic];
+                //[self.tbData reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPathToReload] withRowAnimation:UITableViewRowAnimationAutomatic];
+                [self.tbData reloadData];
             });
         });
     }

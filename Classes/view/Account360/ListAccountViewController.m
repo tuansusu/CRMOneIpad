@@ -494,7 +494,7 @@
     detail.advanceSearchDelegate =(id<SearchAdvanceDelegate>) self;
     
     self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(250, 370) animated:NO];
+    [self.listPopover setPopoverContentSize:CGSizeMake(250, 300) animated:NO];
     [self.listPopover presentPopoverFromRect:popoverFrame inView:self.headerViewBar permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
@@ -797,7 +797,7 @@
     }
     
     
-    //arrayData = [dtoProcess filterWithArrayCondition:dicCondition];
+    arrayData = [dtoProcess filterWithArrayCondition:dicCondition];
     _lbTotal.text = [NSString stringWithFormat:@"%@ %d",LocalizedString(@"KEY_LIST_360_TOTAL"), arrayData.count];
     
     [self.tbData reloadData];
@@ -844,6 +844,7 @@
 -(void) delegate_follow:(NSDictionary *)dicData{
     Follow360ViewController *detail = [[Follow360ViewController alloc] initWithNibName:@"Follow360ViewController" bundle:nil];
     detail.dataSend=dicData;
+    detail.delegate=self;
     detail.view.frame = CGRectMake(0, 0, 600, 500);
     //[InterfaceUtil setBorderWithCornerAndBorder:detail.view :6 :0.2 :nil];
     [self presentPopupViewController:detail animationType:1];

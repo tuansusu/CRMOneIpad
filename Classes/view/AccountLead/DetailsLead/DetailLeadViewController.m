@@ -327,23 +327,9 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     [_btnAddCN setFrame:CGRectMake(_btnAddCN.frame.origin.x,fyCN, _btnAddCN.frame.size.width, _btnAddCN.frame.size.height)];
     fyCN = [self setFrameLabelTitle:_lbLabelAddress withLabelValue:_lbAddress withFY:fyCN :[dicData objectForKey:DTOLEAD_address]];
     ///thu nhap ca nha
-    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_monthlyIncome]]){
-        fyCN = [self setFrameLabelTitle:_lbLabelThuNhapCN withLabelValue:_lbThuNhapCN withFY:fyCN :[dicData objectForKey:DTOLEAD_monthlyIncome]];
-    }
-    else{
-        _lbLabelThuNhapCN.hidden=YES;
-        _lbThuNhapCN.hidden=YES;
-        
-    }
+    fyCN = [self setFrameLabelTitle:_lbLabelThuNhapCN withLabelValue:_lbThuNhapCN withFY:fyCN :[dicData objectForKey:DTOLEAD_monthlyIncome]];
     ///thu nhap ca nha
-    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_assetTotal]]){
-        fyCN = [self setFrameLabelTitle:_lbLableTongThuNhap withLabelValue:_lbTongThuNhap withFY:fyCN :[dicData objectForKey:DTOLEAD_assetTotal]];
-    }
-    else{
-        _lbLableTongThuNhap.hidden=YES;
-        _lbTongThuNhap.hidden=YES;
-        
-    }
+    fyCN = [self setFrameLabelTitle:_lbLableTongThuNhap withLabelValue:_lbTongThuNhap withFY:fyCN :[dicData objectForKey:DTOLEAD_assetTotal]];
     
     NSString *sms =@"";
     NSString *disableSms = [dicData objectForKey:DTOLEAD_disableSms];
@@ -361,20 +347,15 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     if([disableEmail isEqualToString:@"0"]){
         email=@"Email";
     }
-    NSString *metting=@"";
-    NSString *disableMetting = [dicData objectForKey:DTOLEAD_disableMeeting];
-    if ([disableMetting isEqualToString:@"0"]) {
-        metting=@"Metting";
-    }
-    if(![StringUtil stringIsEmpty:sms]||![StringUtil stringIsEmpty:phone]||![StringUtil stringIsEmpty:email]||![StringUtil stringIsEmpty:metting]){
-        NSString *tmp=[NSString stringWithFormat:@"%@,%@,%@,%@",sms,phone,email,metting];
-        //goi nho
+    NSString *tmp=[NSString stringWithFormat:@"%@,%@,%@",sms,phone,email];
+    //goi nho
+    if (tmp.length>3) {
         fyCN = [self setFrameLabelTitle:_lbLableKhongLienLacQua withLabelValue:_lbKhongLienLacQua withFY:fyCN :tmp];
     }
     else{
-        _lbLableKhongLienLacQua.hidden=YES;
-        _lbKhongLienLacQua.hidden=YES;
+        fyCN = [self setFrameLabelTitle:_lbLableKhongLienLacQua withLabelValue:_lbKhongLienLacQua withFY:fyCN :@""];
     }
+    
     _scrollViewPersonal.contentSize=CGSizeMake(0, self.view.frame.size.height + fyCN);
 }
 

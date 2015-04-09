@@ -11,7 +11,7 @@
 #import "SelectIndexViewController.h"
 #import "Util.h"
 
-@interface EditNoteLeadViewController : BaseViewController<UITextFieldDelegate,UIAlertViewDelegate, UIImagePickerControllerDelegate,SelectIndexDelegate>
+@interface EditNoteLeadViewController : BaseViewController<UITextFieldDelegate,UIAlertViewDelegate, UIImagePickerControllerDelegate,SelectIndexDelegate,UITextViewDelegate>
 
 
 //DATA

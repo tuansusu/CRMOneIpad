@@ -71,7 +71,7 @@
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mục đích" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1xa-KO-0uW">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mục đích" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1xa-KO-0uW">
                             <rect key="frame" x="228" y="20" width="250" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" returnKeyType="next"/>
@@ -90,7 +90,7 @@
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" placeholder="Ngày bắt đầu" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zW8-jS-4W4">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="right" contentVerticalAlignment="center" placeholder="Ngày bắt đầu" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zW8-jS-4W4">
                             <rect key="frame" x="228" y="58" width="250" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" returnKeyType="next"/>
@@ -100,7 +100,7 @@
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ngày hoàn thành" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NjK-CL-rmz">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ngày hoàn thành" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NjK-CL-rmz">
                             <rect key="frame" x="228" y="96" width="250" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" returnKeyType="next"/>
@@ -110,7 +110,7 @@
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Thời gian nhắc nhở" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H5k-fo-r2S">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Thời gian nhắc nhở" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H5k-fo-r2S">
                             <rect key="frame" x="228" y="172" width="250" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" returnKeyType="next"/>

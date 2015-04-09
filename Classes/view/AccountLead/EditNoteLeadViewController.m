@@ -185,7 +185,7 @@
     //        }
     //    }
     
-  //  [self.btnSave setStyleNormalWithOption:smgSelect];
+    //  [self.btnSave setStyleNormalWithOption:smgSelect];
     
     
     [self.mainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
@@ -329,7 +329,7 @@
         NSString *strClientFileId = IntToStr(([dtoProcess getClientId]));
         //NSDictionary *dicRow = [arrayData objectAtIndex:indexPath.row];
         for (NSDictionary *path in arrayData) {
-           int itemId=[[path objectForKey:DTOATTACHMENT_id] intValue];
+            int itemId=[[path objectForKey:DTOATTACHMENT_id] intValue];
             if(itemId < 0){
                 [entiFile setObject:@"" forKey:DTOATTACHMENT_attachmentId];
                 [entiFile setObject:strClientFileId forKey:DTOATTACHMENT_clientAttachmentId];
@@ -385,14 +385,21 @@
     
     if (succsess) {
         //Thong bao cap nhat thanh cong va thoat
-          UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:LocalizedString(@"KEY_NO") otherButtonTitles:LocalizedString(@"KEY_YES"), nil];
-        alert.tag = 5;
-        [alert show];
+        if (_dataSend.count>0) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            alert.tag = 6;
+            [alert show];
+        }
+        else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:LocalizedString(@"KEY_NO") otherButtonTitles:LocalizedString(@"KEY_YES"), nil];
+            alert.tag = 5;
+            [alert show];
+        }
         
         
     }else{
         //khong bao nhap loi - lien he quan tri
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE")  message:LocalizedString(@"KEY_ALERT_ERROR") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERT_EXIT") otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE")  message:LocalizedString(@"KEY_ALERT_ERROR") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERT_EXIT") otherButtonTitles:nil];
         alert.tag = 6;
         [alert show];
     }
@@ -409,7 +416,7 @@
             [addItem setValue:deleteFile forKey:DTOATTACHMENT_id];
             [arrayDelFile addObject:addItem];
             [_tbData reloadData];
-
+            
         }
         else if(buttonIndex==1){
             NSLog(@"Khong  xoa file");
@@ -457,6 +464,10 @@
     else if(alertView.tag==55 && buttonIndex==1){
         
     }
+    else if(alertView.tag==6){
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
     else{
         if(buttonIndex==0){
             NSLog(@"Ban khong tiep tuc");
@@ -479,13 +490,38 @@
 #pragma mark text delegate
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    if(self.txtTitle.text.length>0){
-    NSLog(@"edit ting : %@", self.txtTitle.text);
+    NSUInteger oldLength = [textField.text length];
+    NSUInteger replacementLength = [string length];
+    NSUInteger rangeLength = range.length;
+    
+    NSUInteger newLength = oldLength - rangeLength + replacementLength;
+    if(textField==self.txtTitle){
+        self.txtContent.text=string;
+        BOOL returnKey = [string rangeOfString: @"\n"].location != NSNotFound;
+        
+        return newLength <= 200 || returnKey;
+    }
+    if(textField==self.txtTitle){
+        
+        BOOL returnKey = [string rangeOfString: @"\n"].location != NSNotFound;
+        
+        return newLength <= 2000 || returnKey;
+    }
+    return YES;
+}// return NO to not change text
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    NSUInteger oldLength = [textView.text length];
+    NSUInteger replacementLength = [text length];
+    NSUInteger rangeLength = range.length;
+    
+    NSUInteger newLength = oldLength - rangeLength + replacementLength;
+    if(textView==self.txtContent){
+        BOOL returnKey = [text rangeOfString: @"\n"].location != NSNotFound;
+        
+        return newLength <= 2000 || returnKey;
     }
     return  YES;
-}// return NO to not change text
-
-
+}
 #pragma mark action photo
 
 -(IBAction) getPhoto:(id) sender {
@@ -711,7 +747,7 @@
     //[_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
     [_lbContent setText:LocalizedString(@"KEY_NOTE_CONTENT")];
     [_lbTitle setText:LocalizedString(@"KEY_NOTE_TITLE")];
-   // [_btnDelNote setTitle:LocalizedString(@"KEY_Delete") forState:UIControlStateNormal];
+    // [_btnDelNote setTitle:LocalizedString(@"KEY_Delete") forState:UIControlStateNormal];
     [self.choosePhotoBtn setTitle:LocalizedString(@"KEY_CHOICE_IMAGE") forState:(UIControlStateNormal)];
     [self.takePhotoBtn setTitle:LocalizedString(@"KEY_CAMERA") forState:(UIControlStateNormal)];
     if (_dataSend.count>0) {

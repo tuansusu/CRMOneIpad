@@ -332,7 +332,7 @@
 "KEY_OPPORTUNITY_EDIT_ERR_BLANK_STARTDATE"="Anh/Chị chưa nhập ngày bắt đầu";
 "KEY_OPPORTUNITY_EDIT_ERR_BLANK_ENDDATE"="Anh/Chị chưa nhập ngày kết thúc";
 "KEY_OPPORTUNITY_EDIT_ERR_STARTDATE_GREATE_ENDDATE"="Ngày kết thúc không được nhỏ hơn ngày bắt đầu";
-"KEY_OPPORTUNITY_EDIT_ERR_OPPORTUNITY_TYPE_MUST_BE_REQUIRE"="Anh/Chị cần chọn loại cơ hội trước khi chọn khách hàng";
+"KEY_OPPORTUNITY_EDIT_ERR_OPPORTUNITY_TYPE_MUST_BE_REQUIRE"="Cần chọn kiểu cơ hội trước khi chọn khách hàng";
 //PHẦN LIÊN HỆ (CƠ HỘI)
 "KEY_OPPORTUNITY_CONTACT_EDIT_HEADER_ADD"="THÊM MỚI LIÊN HỆ";
 "KEY_OPPORTUNITY_CONTACT_EDIT_HEADER_EDIT"="CẬP NHẬT LIÊN HỆ";

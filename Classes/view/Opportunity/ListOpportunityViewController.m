@@ -608,7 +608,8 @@
         BOOL result = [dtoOpportunityProcess deleteEntity:deleteOpportunityId];
         //reload lai csdl
         if (result) {
-            
+            [arrayData removeAllObjects];
+            loaded = 0;
             //arrayData = [dtoOpportunityProcess filterOpportunity:nil addStartDate:nil addEndDate:nil userType:nil];
             [self filterData:nil withStartDate:nil withEndDate: nil withType:nil];
            

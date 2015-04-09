@@ -16,9 +16,10 @@
 #import "AUISelectiveBordersLayer.h"
 #import "DataField.h"
 #import "DateUtil.h"
+#import "Util.h"
 
 #define TAG_SELECT_DATE_FROM 1 //NGAY BAT DAU
-#define TAG_SELECT_DATE_TO   2 //NGAY KET THUC
+#define TAG_SELECT_DATE_TO   2 //NGAY KET THUCaction
 #define TAG_SELECT_TIME_FROM 3 //THOI GIAN BAT DAU
 #define TAG_SELECT_TIME_TO   4 //THOI GIAN KET THUC
 #define TAG_SELECT_STATUS    5 //TRANG THAI
@@ -74,6 +75,7 @@
     NSArray *arrayData; //mang luu tru du lieu
     NSDictionary *dicData; //luu tru du lieu sua
 
+    Util *util;
     DTOTASKProcess *dtoProcess;
     DTOSYSCATProcess *dtoSyscatProcess;
 
@@ -139,6 +141,7 @@
 //khoi tao gia tri mac dinh cua form
 - (void) initData
 {
+    util=[Util new];
     dtoProcess = [DTOTASKProcess new];
 
     /* fetch task status values from dtosyscat */
@@ -207,7 +210,7 @@
     _mainView.backgroundColor = HEADER_SUB_VIEW_COLOR1;
     // - header
 
-    [self.btnSave setStyleNormalWithOption:smgSelect];
+    //[self.btnSave setStyleNormalWithOption:smgSelect];
 
 //    _headerMainView.backgroundColor = HEADER_SUB_VIEW_COLOR1;
 //    [_headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
@@ -468,23 +471,28 @@
     /* returns TRUE if all fields validate OK */
     if ([StringUtil stringIsEmpty:_txtName.text])
     {
-        [[[UIAlertView alloc] initWithTitle:@"Lỗi" message:@"Vui lòng nhập tiêu đề cho Công việc" delegate:nil cancelButtonTitle:@"Đóng" otherButtonTitles: nil] show];
+        [util showTooltip:_txtName withText:@"Vui lòng nhập tiêu đề cho Công việc" showview:self.view];
+        [util setBorder:_txtName];
         return FALSE;
     }
     else if ([_txtName.text length] > 200)
     {
-        [[[UIAlertView alloc] initWithTitle:@"Lỗi" message:@"Vui lòng nhập tiêu đề cho Công việc ít hơn 200 kí tự" delegate:nil cancelButtonTitle:@"Đóng" otherButtonTitles: nil] show];
+        [util showTooltip:_txtName withText:@"Vui lòng nhập tiêu đề cho Công việc ít hơn 200 kí tự" showview:self.view];
+        [util setBorder:_txtName];
         return FALSE;
     }
     else if (   [_endDateTime compare:_startDateTime] == NSOrderedAscending
              || [_endDateTime compare:_startDateTime] == NSOrderedSame)
     {
-        [[[UIAlertView alloc] initWithTitle:@"Lỗi" message:@"Vui lòng nhập thời điểm kết thúc sau thời điểm bắt đầu" delegate:nil cancelButtonTitle:@"Đóng" otherButtonTitles: nil] show];
+        
+        [util showTooltip:_txtDateTo withText:@"Vui lòng nhập thời điểm kết thúc sau thời điểm bắt đầu" showview:self.view];
+        [util setBorder:_txtDateTo];
         return FALSE;
     }
     else if (selectStatusIndex < 0)
     {
-        [[[UIAlertView alloc] initWithTitle:@"Lỗi" message:@"Vui lòng nhập trạng thái của Công việc" delegate:nil cancelButtonTitle:@"Đóng" otherButtonTitles: nil] show];
+        [util showTooltip:_txtStatus withText:@"Vui lòng nhập trạng thái của Công việc" showview:self.view];
+        [util setBorder:_txtStatus];
         return FALSE;
     }
 

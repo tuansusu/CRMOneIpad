@@ -494,7 +494,7 @@
     detail.advanceSearchDelegate =(id<SearchAdvanceDelegate>) self;
     
     self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(250, 370) animated:NO];
+    [self.listPopover setPopoverContentSize:CGSizeMake(250, 300) animated:NO];
     [self.listPopover presentPopoverFromRect:popoverFrame inView:self.headerViewBar permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
@@ -797,7 +797,7 @@
     }
     
     
-    //arrayData = [dtoProcess filterWithArrayCondition:dicCondition];
+    arrayData = [dtoProcess filterWithArrayCondition:dicCondition];
     _lbTotal.text = [NSString stringWithFormat:@"%@ %d",LocalizedString(@"KEY_LIST_360_TOTAL"), arrayData.count];
     
     [self.tbData reloadData];

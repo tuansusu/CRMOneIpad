@@ -212,6 +212,32 @@
     }else{
         //
         // _txtCode.text = [NSString stringWithFormat:@"%d", [dtoOpportunityProcess getClientId]];
+        
+        //Load mac dinh khi them moi
+        
+        //Kiểu cơ hội
+        selectTypeIndex=2;
+        NSDictionary *dataType = [listArrType objectAtIndex:selectTypeIndex];
+        self.txtType.text = [dataType objectForKey:DTOSYSCAT_name];
+        
+        
+        
+        //viec tiep theo
+        selectNextTaskIndex=0;
+        NSDictionary *dataNextTask = [listArrNextTask objectAtIndex:selectNextTaskIndex];
+        _txtNextTask.text = [dataNextTask objectForKey:DTOSYSCAT_name];
+
+        
+        //Muc do co hoi
+
+        selectLevelIndex=0;
+        NSDictionary *dataLevel = [listArrLevel objectAtIndex:selectLevelIndex];
+        _txtLevel.text = [dataLevel objectForKey:DTOSYSCAT_name];
+        
+        int value = [[dataLevel objectForKey:DTOSYSCAT_value] intValue];
+        self.pgLevel.progress = (float)value / 100;
+        
+
     }
     
 }
@@ -944,6 +970,23 @@
         [self showTooltip:self.dtEndDate withText:LocalizedString(@"KEY_OPPORTUNITY_EDIT_ERR_STARTDATE_GREATE_ENDDATE")];
         [self.dtEndDate becomeFirstResponder];
         [self setBorder:self.dtEndDate];
+        return NO;
+    }
+    
+    //Check length
+    //Ten co hoi
+    if(self.txtName.text.length > 200){
+        [self showTooltip:self.txtName withText:LocalizedString(@"KEY_VALIDATE_LENGTH_200_ERROR")];
+        [self.txtName becomeFirstResponder];
+        [self setBorder:self.txtName];
+        return NO;
+    }
+    
+    //Ten ghi chú
+    if(self.txtNote.text.length > 2000){
+        [self showTooltip:self.txtNote withText:LocalizedString(@"KEY_VALIDATE_LENGTH_2000_ERROR")];
+        [self.txtNote becomeFirstResponder];
+        [self setBorder:self.txtNote];
         return NO;
     }
     

@@ -710,6 +710,64 @@
         return isValidate;
     }
     
+    if(self.txtName.text.length > 200){
+        [self showTooltip:self.txtName withText:LocalizedString(@"KEY_VALIDATE_LENGTH_200_ERROR")];
+        [self.txtName becomeFirstResponder];
+        [self setBorder:self.txtName];
+        
+        return NO;
+    }
+    
+    if(self.txtPosition.text.length > 200){
+        [self showTooltip:self.txtPosition withText:LocalizedString(@"KEY_VALIDATE_LENGTH_200_ERROR")];
+        [self.txtPosition becomeFirstResponder];
+        [self setBorder:self.txtPosition];
+        
+        return NO;
+    }
+    
+    if(self.txtPhone.text.length > 20 || self.txtPhone.text.length < 10){
+        [self showTooltip:self.txtPhone withText:LocalizedString(@"MAXLENG_PHONE")];
+        [self.txtPhone becomeFirstResponder];
+        [self setBorder:self.txtPhone];
+        
+        return NO;
+    }
+    
+    if(self.txtNumberIdentity.text.length > 200){
+        [self showTooltip:self.txtNumberIdentity withText:LocalizedString(@"KEY_VALIDATE_LENGTH_200_ERROR")];
+        [self.txtNumberIdentity becomeFirstResponder];
+        [self setBorder:self.txtNumberIdentity];
+        
+        return NO;
+    }
+    
+    if(self.txtWhereBorn.text.length > 200){
+        [self showTooltip:self.txtWhereBorn withText:LocalizedString(@"KEY_VALIDATE_LENGTH_200_ERROR")];
+        [self.txtWhereBorn becomeFirstResponder];
+        [self setBorder:self.txtWhereBorn];
+        
+        return NO;
+    }
+    
+    
+    if(self.txtAddress.text.length > 200){
+        [self showTooltip:self.txtAddress withText:LocalizedString(@"KEY_VALIDATE_LENGTH_200_ERROR")];
+        [self.txtAddress becomeFirstResponder];
+        [self setBorder:self.txtAddress];
+        
+        return NO;
+    }
+    
+    if(self.tvNote.text.length > 2000){
+        [self showTooltip:self.tvNote withText:LocalizedString(@"KEY_VALIDATE_LENGTH_2000_ERROR")];
+        [self.tvNote becomeFirstResponder];
+        [self setBorder:self.tvNote];
+        
+        return NO;
+    }
+    
+    
     return isValidate;
 }
 

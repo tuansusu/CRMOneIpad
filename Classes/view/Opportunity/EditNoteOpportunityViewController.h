@@ -78,6 +78,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblAttachment;
 
 
+//danh sách nhưng tooltip
+@property (nonatomic, retain) NSMutableArray *visiblePopTipViews;
+@property (nonatomic, strong) id currentPopTipViewTarget;
+
+
+
 
 
 @end

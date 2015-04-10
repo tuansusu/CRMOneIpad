@@ -262,6 +262,10 @@
         return;
     }
     
+    if(![self checkValidToSave]){
+        return;
+    }
+    
     NSString *title=txtTitle.text;
     strClientNoteId = IntToStr(([dtoProcess getClientId]));
     
@@ -392,6 +396,93 @@
         [alert show];
     }
 }
+-(BOOL)checkValidToSave{
+    if(self.txtTitle.text.length > 200){
+        [self showTooltip:self.txtTitle withText:LocalizedString(@"KEY_VALIDATE_LENGTH_200_ERROR")];
+        [self.txtTitle becomeFirstResponder];
+        [self setBorder:self.txtTitle];
+        return NO;
+    }
+    
+    if(self.txtContent.text.length > 2000){
+        [self showTooltip:self.txtContent withText:LocalizedString(@"KEY_VALIDATE_LENGTH_2000_ERROR")];
+        [self.txtContent becomeFirstResponder];
+        [self setBorder:self.txtContent];
+        return NO;
+    }
+    
+    return  YES;
+}
+
+- (void)dismissAllPopTipViews
+{
+    while ([self.visiblePopTipViews count] > 0) {
+        CMPopTipView *popTipView = [self.visiblePopTipViews objectAtIndex:0];
+        [popTipView dismissAnimated:YES];
+        [self.visiblePopTipViews removeObjectAtIndex:0];
+    }
+}
+- (void)popTipViewWasDismissedByUser:(CMPopTipView *)popTipView
+{
+    [self.visiblePopTipViews removeObject:popTipView];
+    self.currentPopTipViewTarget = nil;
+}
+-(void) showTooltip : (UIView*) inputTooltipView withText : (NSString*) inputMessage {
+    
+    [self dismissAllPopTipViews];
+    
+    
+    NSString *contentMessage = inputMessage;
+    //UIView *contentView = inputTooltipView;
+    
+    UIColor *backgroundColor = [UIColor redColor];
+    
+    UIColor *textColor = [UIColor whiteColor];
+    
+    //NSString *title = inputMessage;
+    
+    CMPopTipView *popTipView;
+    
+    
+    popTipView = [[CMPopTipView alloc] initWithMessage:contentMessage];
+    
+    popTipView.delegate = self;
+    
+    
+    
+    popTipView.preferredPointDirection = PointDirectionDown;
+    popTipView.hasShadow = NO;
+    
+    if (backgroundColor && ![backgroundColor isEqual:[NSNull null]]) {
+        popTipView.backgroundColor = backgroundColor;
+    }
+    if (textColor && ![textColor isEqual:[NSNull null]]) {
+        popTipView.textColor = textColor;
+    }
+    
+    popTipView.animation = arc4random() % 2;
+    popTipView.has3DStyle = (BOOL)(arc4random() % 2);
+    
+    popTipView.dismissTapAnywhere = YES;
+    [popTipView autoDismissAnimated:YES atTimeInterval:3.0];
+    
+    
+    [popTipView presentPointingAtView:inputTooltipView inView:self.viewMainBodyInfo animated:YES];
+    
+    
+    [self.visiblePopTipViews addObject:popTipView];
+    self.currentPopTipViewTarget = inputTooltipView;
+    
+}
+-(void)setBorder:(UITextField *)txtView{
+    
+    txtView .layer.cornerRadius=1.0f;
+    txtView.layer.masksToBounds=YES;
+    txtView.layer.borderColor=[[UIColor redColor]CGColor ];
+    txtView.layer.borderWidth=1.0f;
+    [txtView becomeFirstResponder];
+}
+
 #pragma -mark xử lý thông báo
 -(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
     

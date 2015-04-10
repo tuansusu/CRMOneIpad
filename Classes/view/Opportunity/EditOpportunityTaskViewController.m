@@ -627,6 +627,16 @@
         
     }
     
+    //check length
+    //Ten cong viec
+    if(self.txtName.text.length > 200){
+        [self showTooltip:self.txtName withText:LocalizedString(@"KEY_VALIDATE_LENGTH_200_ERROR")];
+        [self.txtName becomeFirstResponder];
+        [self setBorder:self.txtName];
+
+        return NO;
+    }
+    
     return YES;
 }
 

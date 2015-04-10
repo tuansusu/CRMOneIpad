@@ -54,6 +54,11 @@
 "KEY_ALERT_EXIT"="Thoát";
 "KEY_ALERT_SUCCESS2"="Cập nhật thành công, tiếp tục nhập?";
 
+//validate
+"KEY_VALIDATE_LENGTH_200_ERROR"="Số ký tự không được vượt quá 200";
+"KEY_VALIDATE_LENGTH_2000_ERROR"="Số ký tự không được vượt quá 2000";
+
+
 "KEY_Edit" = "Sửa";
 "KEY_Delete" = "Xóa";
 "KEY_CHOICE_IMAGE"="Chọn ảnh";

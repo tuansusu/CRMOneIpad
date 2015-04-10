@@ -278,6 +278,8 @@
 		764430701A7000CC007741BA /* menu_report.png in Resources */ = {isa = PBXBuildFile; fileRef = 764430631A7000CC007741BA /* menu_report.png */; };
 		764430711A7000CC007741BA /* menu_rm_360.png in Resources */ = {isa = PBXBuildFile; fileRef = 764430641A7000CC007741BA /* menu_rm_360.png */; };
 		764430721A7000CC007741BA /* menu_sales_activity.png in Resources */ = {isa = PBXBuildFile; fileRef = 764430651A7000CC007741BA /* menu_sales_activity.png */; };
+		764BE04E1AD81A3B0048AF37 /* EditOpportunityProductPopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 764BE04D1AD81A3B0048AF37 /* EditOpportunityProductPopupViewController.xib */; };
+		764BE0511AD81A8E0048AF37 /* EditOpportunityProductPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 764BE04F1AD81A8E0048AF37 /* EditOpportunityProductPopupViewController.m */; };
 		764E3A071AB46E9F00960DA4 /* OpportunityCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 764E3A051AB46E9F00960DA4 /* OpportunityCell~iphone.xib */; };
 		7657E8841A5AEAB1008A62F9 /* DTOOPPORTUNITYPRODUCTProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 7657E8831A5AEAB1008A62F9 /* DTOOPPORTUNITYPRODUCTProcess.m */; };
 		7657E8AF1A5AEB3A008A62F9 /* Contact360Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7657E8861A5AEB3A008A62F9 /* Contact360Cell.m */; };
@@ -1555,6 +1557,9 @@
 		764430631A7000CC007741BA /* menu_report.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_report.png; sourceTree = "<group>"; };
 		764430641A7000CC007741BA /* menu_rm_360.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_rm_360.png; sourceTree = "<group>"; };
 		764430651A7000CC007741BA /* menu_sales_activity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_sales_activity.png; sourceTree = "<group>"; };
+		764BE04D1AD81A3B0048AF37 /* EditOpportunityProductPopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditOpportunityProductPopupViewController.xib; sourceTree = "<group>"; };
+		764BE04F1AD81A8E0048AF37 /* EditOpportunityProductPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditOpportunityProductPopupViewController.m; sourceTree = "<group>"; };
+		764BE0501AD81A8E0048AF37 /* EditOpportunityProductPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditOpportunityProductPopupViewController.h; sourceTree = "<group>"; };
 		764E3A051AB46E9F00960DA4 /* OpportunityCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "OpportunityCell~iphone.xib"; sourceTree = "<group>"; };
 		7657E8821A5AEAB1008A62F9 /* DTOOPPORTUNITYPRODUCTProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOOPPORTUNITYPRODUCTProcess.h; sourceTree = "<group>"; };
 		7657E8831A5AEAB1008A62F9 /* DTOOPPORTUNITYPRODUCTProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOOPPORTUNITYPRODUCTProcess.m; sourceTree = "<group>"; };
@@ -4502,6 +4507,9 @@
 		76DB175C1AC78B5C00D10878 /* EditProposeProduct */ = {
 			isa = PBXGroup;
 			children = (
+				764BE04F1AD81A8E0048AF37 /* EditOpportunityProductPopupViewController.m */,
+				764BE0501AD81A8E0048AF37 /* EditOpportunityProductPopupViewController.h */,
+				764BE04D1AD81A3B0048AF37 /* EditOpportunityProductPopupViewController.xib */,
 				7657E8D11A5AEBE2008A62F9 /* EditOpportunityProductViewController.h */,
 				7657E8CB1A5AEBE2008A62F9 /* EditOpportunityProductViewController.m */,
 				7657E8D21A5AEBE2008A62F9 /* EditOpportunityProductViewController.xib */,
@@ -6702,6 +6710,7 @@
 				76601A4E194BE90F001D4C01 /* Reader-Mark-Y@2x.png in Resources */,
 				B315789B188D5E5200C0ED01 /* logo-big-1.png in Resources */,
 				171D91941AB86E06005AB422 /* tabbar_details.png in Resources */,
+				764BE04E1AD81A3B0048AF37 /* EditOpportunityProductPopupViewController.xib in Resources */,
 				8497BFC41A295A2300A5ED3C /* bulgaria-large.png in Resources */,
 				2DD29EF418769C260066B883 /* menu-ic-tech-data-1.png in Resources */,
 				8E875FBE1AC2E390002B89AD /* popoverArrowLeft@2x.png in Resources */,
@@ -7122,6 +7131,7 @@
 				76601A37194BE90F001D4C01 /* ReaderThumbView.m in Sources */,
 				159599461A592C0700D87BD4 /* RepeatCalendarViewController.m in Sources */,
 				8EC972811A5D71300021DCA3 /* FFMonthCalendarView.m in Sources */,
+				764BE0511AD81A8E0048AF37 /* EditOpportunityProductPopupViewController.m in Sources */,
 				92C68E501519D4F100981728 /* BaseViewController.m in Sources */,
 				8434BEFD1A2F485700C29815 /* DetailContactLeadViewController.m in Sources */,
 				8E44BC2E1A73A89B00EDCD1A /* ProductsLeadView.m in Sources */,

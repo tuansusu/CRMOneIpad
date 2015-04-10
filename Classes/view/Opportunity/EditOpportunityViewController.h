@@ -92,6 +92,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblNextTask;
 @property (weak, nonatomic) IBOutlet UILabel *lblNote;
 @property (weak, nonatomic) IBOutlet UIButton *btnSave;
+- (IBAction)actionAddProduct:(id)sender;
+
 
 
 //For iPhone only

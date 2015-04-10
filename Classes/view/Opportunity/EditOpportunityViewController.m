@@ -13,6 +13,8 @@
 #import "DTOACCOUNTLEADProcess.h"
 #import "DTOOPPORTUNITYProcess.h"
 #import "CalendarPickerViewController.h"
+#import "EditOpportunityProductPopupViewController.h"
+#import "UIViewController+MJPopupViewController.h"
 
 #define TAG_SELECT_TYPE 1
 #define TAG_SELECT_NEXT_JOB 2
@@ -1152,5 +1154,13 @@
         [_btnSave setTitle:LocalizedString(@"KEY_SAVE") forState:UIControlStateNormal];
     }
     
+}
+- (IBAction)actionAddProduct:(id)sender {
+    EditOpportunityProductPopupViewController *viewController = [[EditOpportunityProductPopupViewController alloc]initWithNibName:@"EditOpportunityProductPopupViewController" bundle:nil];
+    viewController.view.frame = CGRectMake(154, 100, 700, 630);
+    //viewController.dataRoot = opportunity;
+    viewController.delegateOpportunityProduct = (id<OpportunityProductDelegate>)self;
+    [self presentPopupViewController:viewController animationType:YES dismissed:nil];
+   // [self presentPopupViewController:viewController animated:YES completion:nil];
 }
 @end

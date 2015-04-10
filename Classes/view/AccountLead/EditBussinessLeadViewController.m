@@ -44,6 +44,8 @@
     float _longitude, _latitude;
     Language *obj;
     UIAlertView *alertView;
+    NSDate  *dateBirthday;
+     NSDateFormatter *df;
 }
 @end
 
@@ -88,6 +90,8 @@
 //khoi tao gia tri mac dinh cua form
 -(void) initData {
     
+    df = [[NSDateFormatter alloc] init];
+   	[df setDateFormat:FORMAT_DATE];
     selectOrgTypeIdIndex = -1;
     succsess = NO;
     self.barLabel.text = [NSString stringWithFormat:@"%@ %@, %@",VOFFICE,[defaults objectForKey:@"versionSoftware"],COPY_OF_SOFTWARE];
@@ -141,7 +145,9 @@
     if (![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_registrationNumber]]) {
         _txtRegisterCodeBussiness.text =[getData objectForKey:DTOLEAD_registrationNumber];
     }
-    
+    if (![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_birthday]]) {
+        _txtNgayTL.text =[getData objectForKey:DTOLEAD_birthday];
+    }
     
     
     if (![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_taxCode]]) {
@@ -297,6 +303,12 @@
     if(![util checkValidToSave:_txtPhone :LocalizedString(@"KEY_LEAD_CN_CHECK_MOBILE") :self.bodyMainView]){
         return;
     }
+    if (_txtEmail.text.length>0) {
+        if (![util validateEmail:_txtEmail.text]) {
+            [util showTooltip:_txtEmail withText:@"Email không đúng định dạng" showview:self.bodyMainView];
+            return;
+        }
+    }
     //neu qua duoc check thi tien hanh luu du lieu
     NSMutableDictionary *dicEntity = [NSMutableDictionary new];
     [dicEntity setObject:[StringUtil trimString:_txtName.text] forKey:DTOLEAD_name];
@@ -305,6 +317,8 @@
     [dicEntity setObject:[StringUtil trimString:_txtRegisterCodeBussiness.text] forKey:DTOLEAD_registrationNumber];
     [dicEntity setObject:[StringUtil trimString:_txtTaxCode.text] forKey:DTOLEAD_taxCode];
     [dicEntity setObject:[StringUtil trimString:_txtFax.text] forKey:DTOLEAD_fax];
+    [dicEntity setObject:[StringUtil trimString:_txtEmail.text] forKey:DTOLEAD_email];
+    [dicEntity setObject:_txtNgayTL.text forKey:DTOLEAD_birthday];
     if(_longitude > 0){
         NSString *myLon=[NSString stringWithFormat:@"%f", _longitude];
         [dicEntity setObject:myLon forKey:DTOLEAD_lon];
@@ -800,5 +814,49 @@
     [alertView dismissWithClickedButtonIndex:0 animated:YES];
     
     NSLog(@"Item %@",dicData);
+}
+- (IBAction)actionNgayTL:(id)sender {
+    [self hiddenKeyBoard];
+    if (self.txtNgayTL.text.length==0) {
+        dateBirthday = [DateUtil getDateFromString:@"01/01/2000" :FORMAT_DATE];
+    }else{
+        dateBirthday = [DateUtil getDateFromString:self.txtNgayTL.text :FORMAT_DATE];
+    }
+    CalendarPickerViewController *detail = [[CalendarPickerViewController alloc] initWithNibName:@"CalendarPickerViewController" bundle:nil];
+    detail.dateSelected = dateBirthday;
+    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+    CGRect popoverFrame = self.btnNgayTL.frame;
+    
+    detail.delegateDatePicker =(id<CalendarSelectDatePickerDelegate>) self;
+    [self.listPopover setPopoverContentSize:CGSizeMake(320, 260) animated:NO];
+    
+    
+    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewExpandInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+}
+-(void) selectDatePickerWithDate:(NSDate *)date
+{
+    NSLog(@"%@",date);
+    
+    self.txtNgayTL.text = [NSString stringWithFormat:@"%@",
+                           [df stringFromDate:date]];
+    dateBirthday = date;
+    
+}
+-(void) dismissPopoverView
+{
+    if ([self.listPopover isPopoverVisible])
+        [self.listPopover dismissPopoverAnimated:YES];
+}
+-(void) hiddenKeyBoard {
+    for (UIView *viewTemp in _bodyMainView.subviews) {
+        for (UIView *subViewTemp in viewTemp.subviews) {
+            
+            if([subViewTemp isKindOfClass:[UITextField class]]){
+                [(UITextField *)subViewTemp resignFirstResponder];
+            }
+            
+            
+        }
+    }
 }
 @end

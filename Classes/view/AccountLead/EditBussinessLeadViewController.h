@@ -56,7 +56,11 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtTotalassets; //tổng tài sản
 - (IBAction)actionChoiceOrgType:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *btnOrgType;
+@property (weak, nonatomic) IBOutlet UITextField *txtEmail;
 
+@property (weak, nonatomic) IBOutlet UITextField *txtNgayTL;//ngày thành lập
+- (IBAction)actionNgayTL:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnNgayTL;
 
 /////////////
 
@@ -92,6 +96,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbloinhuantruocthue;
 @property (weak, nonatomic) IBOutlet UILabel *lbvonsohuu;
 @property (weak, nonatomic) IBOutlet UILabel *lbsoluongcodong;
+@property (weak, nonatomic) IBOutlet UILabel *lbNgayTL;
 
 @property (weak, nonatomic) IBOutlet UILabel *lbtongtaisan;
 

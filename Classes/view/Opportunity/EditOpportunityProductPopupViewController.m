@@ -57,7 +57,7 @@
     
     if ([UIDevice getCurrentSysVer] >= 7.0) {
         if(self.currentDeviceType == iPad){
-            [UIDevice updateLayoutInIOs7OrAfter:self];
+          //  [UIDevice updateLayoutInIOs7OrAfter:self];
         }else{
             //Nothing!
         }

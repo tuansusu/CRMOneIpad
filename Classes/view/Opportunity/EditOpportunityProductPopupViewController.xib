@@ -28,11 +28,11 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" id="fKa-Eq-5fP" userLabel="View Header">
-                    <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                    <rect key="frame" x="0.0" y="0.0" width="582" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="HỆ THỐNG QUẢN LÝ QUAN HỆ KHÁCH HÀNG" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eNf-x7-geH">
-                            <rect key="frame" x="0.0" y="0.0" width="649" height="44"/>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="HỆ THỐNG QUẢN LÝ QUAN HỆ KHÁCH HÀNG" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eNf-x7-geH">
+                            <rect key="frame" x="10" y="0.0" width="568" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -42,11 +42,11 @@
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="aiC-BP-1oF" userLabel="View main">
-                    <rect key="frame" x="0.0" y="44" width="582" height="377"/>
+                    <rect key="frame" x="0.0" y="44" width="582" height="391"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="eZp-zX-WoB" userLabel="View body info">
-                            <rect key="frame" x="20" y="20" width="544" height="371"/>
+                            <rect key="frame" x="20" y="20" width="544" height="357"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_require-1.png" id="xbW-2h-KUt">
@@ -60,7 +60,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" id="jXO-jB-cRC" customClass="MDSearchBar">
-                                    <rect key="frame" x="31" y="60" width="182" height="30"/>
+                                    <rect key="frame" x="31" y="60" width="504" height="30"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 </view>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_require-1.png" id="3eH-Uu-XOl">

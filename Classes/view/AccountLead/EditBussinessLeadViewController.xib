@@ -11,11 +11,13 @@
                 <outlet property="bodyMainView" destination="j0z-CN-oHP" id="K8B-kE-cbS"/>
                 <outlet property="btnDel" destination="RRb-NN-6Eg" id="FRI-WV-TAj"/>
                 <outlet property="btnHome" destination="dZY-es-mvv" id="xje-0u-uYY"/>
+                <outlet property="btnNgayTL" destination="Hcg-lH-z5U" id="Sgg-S5-QkR"/>
                 <outlet property="btnOrgType" destination="eyO-p1-Hmj" id="k51-aR-kFL"/>
                 <outlet property="btnSave" destination="tbz-k4-iYe" id="bIf-GJ-sec"/>
                 <outlet property="footerView" destination="CCp-DA-5Mj" id="9DQ-sj-QvE"/>
                 <outlet property="fullNameLB" destination="U63-8u-c4a" id="sxI-ga-v8E"/>
                 <outlet property="headerViewBar" destination="Hrd-cB-DNq" id="RTk-Iu-YVj"/>
+                <outlet property="lbNgayTL" destination="Bie-2Y-9LJ" id="opn-vD-Z6c"/>
                 <outlet property="lbdiachi" destination="NeG-IC-95N" id="9eR-aY-kHf"/>
                 <outlet property="lbdoanhthu" destination="V3q-Nz-0HX" id="kmk-Xb-7XR"/>
                 <outlet property="lbloahinhdn" destination="iHU-Vp-mpw" id="tCb-eg-Gjx"/>
@@ -23,8 +25,6 @@
                 <outlet property="lbmasothue" destination="XaO-lQ-E0l" id="qXq-TS-Xpd"/>
                 <outlet property="lbsodienthoai" destination="d4s-Hs-gff" id="22E-MU-SW5"/>
                 <outlet property="lbsodkkd" destination="kEX-i0-Pyx" id="6Si-bk-m6X"/>
-                <outlet property="lbsoluongcodong" destination="M5z-R6-U1R" id="Uhu-kb-m3M"/>
-                <outlet property="lbsoluongnv" destination="Bie-2Y-9LJ" id="FTP-79-LHL"/>
                 <outlet property="lbtenkhachhang" destination="icp-74-pJp" id="u3U-26-01K"/>
                 <outlet property="lbthongtinchinh" destination="eXH-S7-76W" id="7bk-uV-YWN"/>
                 <outlet property="lbthongtinkhac" destination="xYQ-Vb-ELS" id="FUa-2P-bta"/>
@@ -35,10 +35,9 @@
                 <outlet property="txtAddress" destination="n9L-uf-0kw" id="r2t-TO-jaZ"/>
                 <outlet property="txtCapital" destination="4ZK-ea-MKB" id="qex-Cs-feA"/>
                 <outlet property="txtCharterCapital" destination="QK3-SC-oAM" id="Chc-Ld-e7j"/>
-                <outlet property="txtFax" destination="1ft-oY-utn" id="DTJ-z9-zqH"/>
+                <outlet property="txtEmail" destination="1ft-oY-utn" id="fyv-O5-ahY"/>
                 <outlet property="txtName" destination="QV2-Os-zFv" id="XbP-qd-Ko5"/>
-                <outlet property="txtNumberEmployee" destination="37k-sw-TfH" id="mCf-61-0hB"/>
-                <outlet property="txtNumberShareholders" destination="9gl-Kf-hHy" id="ZRb-FG-og2"/>
+                <outlet property="txtNgayTL" destination="37k-sw-TfH" id="n13-aI-FBX"/>
                 <outlet property="txtPhone" destination="Uam-X4-bdf" id="6dC-De-xON"/>
                 <outlet property="txtProfitBeforeTax" destination="2Cl-Iq-kX8" id="CUl-kw-nsv"/>
                 <outlet property="txtRegisterCodeBussiness" destination="5FC-YR-tyP" id="GgK-79-aKM"/>
@@ -214,7 +213,7 @@
                                     <rect key="frame" x="20" y="205" width="964" height="362"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fax" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4NQ-go-wJ1">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4NQ-go-wJ1">
                                             <rect key="frame" x="30" y="10" width="114" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -239,18 +238,12 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vốn chủ sở hữ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WpC-YR-4MO">
-                                            <rect key="frame" x="30" y="190" width="380" height="30"/>
+                                            <rect key="frame" x="480" y="190" width="380" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số lượng cổ đông" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="M5z-R6-U1R">
-                                            <rect key="frame" x="30" y="250" width="380" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Fax" minimumFontSize="17" id="1ft-oY-utn">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" id="1ft-oY-utn">
                                             <rect key="frame" x="30" y="40" width="380" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -278,21 +271,12 @@
                                             </connections>
                                         </textField>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Vốn chủ sở hữu" minimumFontSize="17" id="4ZK-ea-MKB">
-                                            <rect key="frame" x="30" y="220" width="380" height="30"/>
+                                            <rect key="frame" x="480" y="220" width="380" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             <connections>
                                                 <outlet property="delegate" destination="-1" id="sjs-b0-Hel"/>
-                                            </connections>
-                                        </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số lượng cổ đông" minimumFontSize="17" id="9gl-Kf-hHy">
-                                            <rect key="frame" x="30" y="280" width="380" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                            <connections>
-                                                <outlet property="delegate" destination="-1" id="oTf-sK-ym7"/>
                                             </connections>
                                         </textField>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Doanh thu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="V3q-Nz-0HX">
@@ -307,14 +291,14 @@
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số lượng nhân viên" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bie-2Y-9LJ">
-                                            <rect key="frame" x="480" y="190" width="380" height="30"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngày thành lập" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bie-2Y-9LJ">
+                                            <rect key="frame" x="30" y="190" width="380" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tổng tài sản" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e3c-13-gY0">
-                                            <rect key="frame" x="480" y="250" width="380" height="30"/>
+                                            <rect key="frame" x="30" y="258" width="380" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <nil key="highlightedColor"/>
@@ -334,8 +318,8 @@
                                                 <outlet property="delegate" destination="-1" id="EdH-g4-AgS"/>
                                             </connections>
                                         </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số lượng nhân viên" minimumFontSize="17" id="37k-sw-TfH">
-                                            <rect key="frame" x="480" y="220" width="380" height="30"/>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ngày thành lập" minimumFontSize="17" id="37k-sw-TfH">
+                                            <rect key="frame" x="30" y="220" width="380" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -343,8 +327,18 @@
                                                 <outlet property="delegate" destination="-1" id="0vo-HQ-J7Q"/>
                                             </connections>
                                         </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Hcg-lH-z5U" userLabel="btnSysCat">
+                                            <rect key="frame" x="380" y="220" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" backgroundImage="ic_cbx-1.png">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="actionNgayTL:" destination="-1" eventType="touchUpInside" id="Lfp-qU-0RY"/>
+                                            </connections>
+                                        </button>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tổng tài sản" minimumFontSize="17" id="Flf-cD-4UW">
-                                            <rect key="frame" x="480" y="280" width="380" height="30"/>
+                                            <rect key="frame" x="30" y="288" width="380" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>

@@ -695,6 +695,7 @@
     NSUInteger rangeLength = range.length;
     
     NSUInteger newLength = oldLength - rangeLength + replacementLength;
+    NSCharacterSet *nonNumberSet = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet];
     if(textField==_txtName){
         BOOL returnKey = [string rangeOfString: @"\n"].location != NSNotFound;
         
@@ -712,7 +713,6 @@
             textField.text = [textField.text stringByReplacingCharactersInRange:range withString:string];
             return NO;
         }
-        NSCharacterSet *nonNumberSet = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet];
         if ([string stringByTrimmingCharactersInSet:nonNumberSet].length > 0)
         {
             
@@ -740,7 +740,6 @@
             textField.text = [textField.text stringByReplacingCharactersInRange:range withString:string];
             return NO;
         }
-        NSCharacterSet *nonNumberSet = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet];
         if ([string stringByTrimmingCharactersInSet:nonNumberSet].length > 0)
         {
             
@@ -752,8 +751,20 @@
         return NO;
     }
     if(textField==_txtMonthlyIncom){
-        double val=[_txtMonthlyIncom.text doubleValue];
-        _txtMonthlyIncom.text = [NSString stringWithFormat:@"%0.4f", val];
+        if ([string length] == 0 && range.length > 0)
+        {
+            textField.text = [textField.text stringByReplacingCharactersInRange:range withString:string];
+            return NO;
+        }
+        if ([string stringByTrimmingCharactersInSet:nonNumberSet].length > 0)
+        {
+            
+             //_txtMonthlyIncom.text=[NSString stringWithFormat:@"%@ %@",_txtMonthlyIncom.text, @"VND"];
+            
+            return YES;
+        }
+        
+        return NO;
     }
     
     return  YES;

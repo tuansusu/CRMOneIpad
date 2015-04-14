@@ -215,7 +215,7 @@
                                                 <outlet property="delegate" destination="-1" id="pc6-1Y-u2d"/>
                                             </connections>
                                         </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Chức danh" minimumFontSize="17" id="glp-Qo-Q2s">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Chức danh" minimumFontSize="17" id="glp-Qo-Q2s">
                                             <rect key="frame" x="480" y="160" width="380" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>

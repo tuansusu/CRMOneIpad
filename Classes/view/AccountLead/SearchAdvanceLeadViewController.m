@@ -19,6 +19,12 @@
     
     __weak IBOutlet UITextField *txtEmail;
     
+    __weak IBOutlet UITextField *txtMSThue;
+    
+    __weak IBOutlet UITextField *txtCMT;
+    
+    __weak IBOutlet UITextField *txtSDKKD;
+    
     //khai báo biến
     int smgSelect ; //option layout
     NSUserDefaults *defaults ;
@@ -104,8 +110,8 @@
 
 - (IBAction)actionSearch:(id)sender {
     
-    if (self.advanceSearchDelegate && [self.advanceSearchDelegate respondsToSelector:@selector(actionSearchAdvanceWithCode:withName:withMobile:withEmail:)]) {
-        [self.advanceSearchDelegate actionSearchAdvanceWithCode:txtCode.text withName:txtName.text withMobile:txtMobile.text withEmail:txtEmail.text];
+    if (self.advanceSearchDelegate && [self.advanceSearchDelegate respondsToSelector:@selector(actionSearchAdvanceWithCode:withName:withMobile:withEmail:withmsthue:withCMT:withDKKD:)]) {
+        [self.advanceSearchDelegate actionSearchAdvanceWithCode:txtCode.text withName:txtName.text withMobile:txtMobile.text withEmail:txtEmail.text withmsthue:txtMSThue.text withCMT:txtCMT.text withDKKD:txtSDKKD.text];
     }
     
 }
@@ -121,5 +127,15 @@
     _lbmakh.text=LocalizedString(@"KEY_SEARCH_CODE");
     _lbsdt.text=LocalizedString(@"KEY_SEARCH_PHONE");
     _lbtenkh.text=LocalizedString(@"KEY_SEARCH_NAME");
+    _lbmsthue.text=LocalizedString(@"KEY_SEARCH_THUE");
+    _lbsocmt.text=LocalizedString(@"KEY_SEARCH_CMT");
+    _lbsodk.text=LocalizedString(@"KEY_SEARCH_DKKD");
+    txtCMT.placeholder=LocalizedString(@"KEY_SEARCH_CMT");
+    txtCode.placeholder=LocalizedString(@"KEY_SEARCH_CODE");
+    txtEmail.placeholder=@"Email";
+    txtMobile.placeholder=LocalizedString(@"KEY_SEARCH_PHONE");
+    txtMSThue.text=LocalizedString(@"KEY_SEARCH_THUE");
+    txtName.placeholder=LocalizedString(@"KEY_SEARCH_NAME");
+    txtSDKKD.placeholder=LocalizedString(@"KEY_SEARCH_DKKD");
 }
 @end

@@ -166,7 +166,7 @@
         isValidate = NO;
         return isValidate;
     }
-        
+    
     return isValidate;
 }
 
@@ -255,5 +255,18 @@
     txtView.layer.borderColor=[[UIColor redColor]CGColor ];
     txtView.layer.borderWidth=1.0f;
     [txtView becomeFirstResponder];
+}
+#pragma mark-set character
+-(BOOL) CharacterNoEnter: (NSString *) strValue{
+    
+    NSString *specialCharacterString = @"!~`@#$%^&*-+();:={}[],.<>?\\/\"\'";
+    NSCharacterSet *specialCharacterSet = [NSCharacterSet
+                                           characterSetWithCharactersInString:specialCharacterString];
+    
+    if (![strValue.lowercaseString rangeOfCharacterFromSet:specialCharacterSet].length) {
+        return YES;
+    }else{
+        return NO;
+    }
 }
 @end

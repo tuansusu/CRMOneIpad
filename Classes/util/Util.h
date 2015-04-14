@@ -29,6 +29,9 @@
  */
 +(void) sendMail : (UIViewController*) viewController withEmail : (NSString*) strEmailTo ;
 
+//ham ko cho nhap ky tu dac biet
+-(BOOL) CharacterNoEnter: (NSString *) strValue;
+
 //danh sách nhưng tooltip
 @property (nonatomic, retain) NSMutableArray *visiblePopTipViews;
 @property (nonatomic, strong) id currentPopTipViewTarget;

@@ -167,7 +167,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     //cu quay lai la no load
     NSLog(@"quay lai form");
     [self loadDataWithTypeAction:typeActionEvent];
-    
+    [self initData];
     [self setButtonSelect];
     
 }
@@ -474,6 +474,12 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     }
     NSString *tmp=[NSString stringWithFormat:@"%@,%@,%@,%@",sms,phone,email,metting];
     //goi nho
+    if (tmp.length>3) {
+        tmp=tmp;
+    }
+    else{
+        tmp=@"";
+    }
     fyCN = [self setFrameLabelTitle:_lbLableBussinessKhongLienLacQua withLabelValue:_lbBussinessKhongLienLacQuaa withFY:fyCN :tmp];
     //    if(![StringUtil stringIsEmpty:sms]||![StringUtil stringIsEmpty:phone]||![StringUtil stringIsEmpty:email]||![StringUtil stringIsEmpty:metting]){
     //        NSString *tmp=[NSString stringWithFormat:@"%@,%@,%@,%@",sms,phone,email,metting];
@@ -1671,7 +1677,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         _lbLabelBirthDay.text=LocalizedString(@"KEY_LEAD_BIRTH_DAY");
         _lbLabelMarialStatus.text=LocalizedString(@"KEY_LEAD_TINH_TRANG_HN");
         _lbLabelPhone.text=LocalizedString(@"KEY_LEAD_PHONE");
-        _lbLabelAddress.text=LocalizedString(@"KEY_LEAD_CODE");
+        _lbLabelAddress.text=LocalizedString(@"KEY_LEAD_ADDRESS");
         _lbLabelThuNhapCN.text=LocalizedString(@"KEY_LEAD_THU_NHAP_CN");
         _lbLableTongThuNhap.text=LocalizedString(@"KEY_LEAD_TONG_THU_NHAP");
         _lbLableKhongLienLacQua.text=LocalizedString(@"KEY_LEAD_KLLQ");

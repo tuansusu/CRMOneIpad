@@ -10,18 +10,24 @@
                 <outlet property="btnCancel" destination="sfy-kS-KtH" id="96i-LO-o0q"/>
                 <outlet property="btnSearch" destination="kOa-ZV-kRG" id="0dH-o4-EF7"/>
                 <outlet property="lbmakh" destination="thm-hW-jF4" id="tne-wS-UWS"/>
+                <outlet property="lbmsthue" destination="14Y-zv-MdQ" id="l23-8l-20o"/>
                 <outlet property="lbsdt" destination="DCM-ac-WCk" id="v0i-Wu-wML"/>
+                <outlet property="lbsocmt" destination="vn6-qi-zkd" id="bpc-2h-5Jv"/>
+                <outlet property="lbsodk" destination="7Iy-80-xE0" id="L22-of-X5F"/>
                 <outlet property="lbtenkh" destination="dgW-Dw-O1Y" id="vuy-Xv-kUT"/>
+                <outlet property="txtCMT" destination="a95-M4-c2a" id="bh2-RC-mLp"/>
                 <outlet property="txtCode" destination="y8Q-e1-voN" id="Rge-m0-GGy"/>
                 <outlet property="txtEmail" destination="WnC-dF-6eV" id="Zyj-84-azP"/>
+                <outlet property="txtMSThue" destination="6Az-a8-ezI" id="CqX-1B-KTb"/>
                 <outlet property="txtMobile" destination="vQi-8Y-suc" id="KI0-Om-4jX"/>
                 <outlet property="txtName" destination="HEk-DM-9Ym" id="iUp-i4-US0"/>
+                <outlet property="txtSDKKD" destination="oRD-54-AC3" id="fcZ-lI-pQ3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="250" height="400"/>
+            <rect key="frame" x="0.0" y="0.0" width="250" height="520"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mã khách hàng" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thm-hW-jF4">
@@ -35,37 +41,67 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Số điện thoại" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCM-ac-WCk">
-                    <rect key="frame" x="20" y="125" width="115" height="30"/>
+                    <rect key="frame" x="20" y="337" width="115" height="30"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y8Q-e1-voN">
-                    <rect key="frame" x="20" y="35" width="200" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mã khách hàng" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y8Q-e1-voN">
+                    <rect key="frame" x="20" y="35" width="210" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HEk-DM-9Ym">
-                    <rect key="frame" x="20" y="95" width="200" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tên khách hàng" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HEk-DM-9Ym">
+                    <rect key="frame" x="20" y="95" width="210" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vQi-8Y-suc">
-                    <rect key="frame" x="20" y="155" width="200" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số điện thoại" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vQi-8Y-suc">
+                    <rect key="frame" x="20" y="367" width="210" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Số đăng ký kinh doanh" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Iy-80-xE0">
+                    <rect key="frame" x="20" y="269" width="200" height="30"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số đăng ký kinh doanh" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oRD-54-AC3">
+                    <rect key="frame" x="20" y="299" width="210" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Số CMT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vn6-qi-zkd">
+                    <rect key="frame" x="20" y="201" width="210" height="30"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số chứng minh thư" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a95-M4-c2a">
+                    <rect key="frame" x="20" y="231" width="210" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mã số thuế" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14Y-zv-MdQ">
+                    <rect key="frame" x="20" y="133" width="210" height="30"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mã số thuế" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Az-a8-ezI">
+                    <rect key="frame" x="20" y="163" width="210" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdE-HY-hDW">
-                    <rect key="frame" x="20" y="185" width="115" height="30"/>
+                    <rect key="frame" x="20" y="405" width="115" height="30"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WnC-dF-6eV">
-                    <rect key="frame" x="20" y="215" width="200" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WnC-dF-6eV">
+                    <rect key="frame" x="20" y="435" width="210" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOa-ZV-kRG">
-                    <rect key="frame" x="42" y="266" width="70" height="30"/>
+                    <rect key="frame" x="42" y="482" width="70" height="30"/>
                     <state key="normal" title="Tìm kiếm">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -74,7 +110,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfy-kS-KtH">
-                    <rect key="frame" x="128" y="266" width="70" height="30"/>
+                    <rect key="frame" x="128" y="482" width="70" height="30"/>
                     <state key="normal" title="Huỷ">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -87,6 +123,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="323" y="303"/>
         </view>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

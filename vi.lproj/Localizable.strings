@@ -151,6 +151,9 @@
 "KEY_SEARCH_CODE"="Mã khách hàng";
 "KEY_SEARCH_NAME"="Tên khách hàng";
 "KEY_SEARCH_PHONE"="Số điện thoại";
+"KEY_SEARCH_THUE"="Mã số thuế";
+"KEY_SEARCH_DKKD"="Số đăng ký kinh doanh";
+"KEY_SEARCH_CMT"="Số chứng minh thư";
 "KEY_SEARCH_BUTTON_OK"="Tìm kiếm";
 "KEY_SEARCH_BUTTON_CANCEL"="Huỷ";
 //danh sách khách hàng tiềm năng

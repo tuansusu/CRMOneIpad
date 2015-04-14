@@ -384,7 +384,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     [_btnAddDN setFrame:CGRectMake(_btnAddDN.frame.origin.x,fyCN, _btnAddDN.frame.size.width, _btnAddDN.frame.size.height)];
     fyCN = [self setFrameLabelTitle:_lbLabelBussinessAddress withLabelValue:_lbBussinessAddress withFY:fyCN :[dicData objectForKey:DTOLEAD_address]];
     //ngày thành lập
-    fyCN = [self setFrameLabelTitle:_lbLableBussinessNgayThanhLap withLabelValue:_lbBussinessNgayThanhLap withFY:fyCN :[dicData objectForKey:DTOLEAD_updatedDate]];
+    fyCN = [self setFrameLabelTitle:_lbLableBussinessNgayThanhLap withLabelValue:_lbBussinessNgayThanhLap withFY:fyCN :[dicData objectForKey:DTOLEAD_birthday]];
     //    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_updatedDate]]){
     //        fyCN = [self setFrameLabelTitle:_lbLableBussinessNgayThanhLap withLabelValue:_lbBussinessNgayThanhLap withFY:fyCN :[dicData objectForKey:DTOLEAD_updatedDate]];
     //    }
@@ -432,7 +432,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     //    }
     //doanh thu
     
-    fyCN = [self setFrameLabelTitle:_lbLabelBussinessDoanhThu withLabelValue:_lbBussinessDoanhThu withFY:fyCN :[dicData objectForKey:DTOLEAD_profitNonTax]];
+    fyCN = [self setFrameLabelTitle:_lbLabelBussinessDoanhThu withLabelValue:_lbBussinessDoanhThu withFY:fyCN :[dicData objectForKey:DTOLEAD_revenue]];
     //    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_profitNonTax]])
     //    {
     //        fyCN = [self setFrameLabelTitle:_lbLabelBussinessDoanhThu withLabelValue:_lbBussinessDoanhThu withFY:fyCN :[dicData objectForKey:DTOLEAD_profitNonTax]];

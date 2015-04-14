@@ -279,6 +279,7 @@
 - (void) loadEdit
 {
     NSLog(@"send:%@",_dataSend);
+    _btnDel.hidden=NO;
     
     _fullNameLB.text = @"CẬP NHẬP LỊCH";
     if (_dataSend) {
@@ -568,6 +569,12 @@
         [_listPopover dismissPopoverAnimated:YES];
 }
 
+#pragma mark - Delete
+- (IBAction)actionDel:(id)sender {
+    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERT_DEL") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERTVIEW_DELETE_OK") otherButtonTitles:LocalizedString(@"KEY_ALERTVIEW_DELETE_CANCEL"), nil];
+    alert.tag=11;
+    [alert show];
+}
 #pragma mark - Save
 
 -(void) actionSave:(id)sender{
@@ -816,6 +823,16 @@
     if (alertView.tag==6) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }
+    
+    if(alertView.tag==11){
+        if(buttonIndex==0){
+            BOOL result =    [dtoProcess deleteEntity:[_dataSend objectForKey:DTOTASK_id]];
+            if(result){
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }
+        }
+    }
+    
 }
 
 -(void) resetForm {

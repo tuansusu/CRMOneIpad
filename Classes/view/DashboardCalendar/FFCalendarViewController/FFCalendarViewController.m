@@ -19,6 +19,10 @@
     UIView *_topMenuView;
 
     DTOTASKProcess *dtoTaskProcess;
+    //xac dinh nut gi dang duoc select
+    int tagButtonSelect ;
+    
+    BOOL checkFirstLoadAppear;
 }
 @property (nonatomic) BOOL boolDidLoad;
 @property (nonatomic) BOOL boolYearViewIsShowing;
@@ -85,9 +89,9 @@
     [self addCalendars];
 
     arrayCalendars = [[NSMutableArray alloc] initWithCapacity:arrayButtons.count];
-
-    [self buttonYearMonthWeekDayAction:[arrayButtons objectAtIndex:0]];
-
+    checkFirstLoadAppear = YES;
+    
+    
 
 }
 
@@ -99,6 +103,26 @@
         boolDidLoad = YES;
         [self buttonTodayAction:nil];
     }
+    
+    //view lai data
+    
+}
+
+-(void) viewDidAppear:(BOOL)animated{
+    //reload data
+    if (checkFirstLoadAppear) {
+        checkFirstLoadAppear = NO;
+        
+        [self buttonYearMonthWeekDayAction:[arrayButtons objectAtIndex:1]];
+        tagButtonSelect = 1;
+        
+        
+    }else{
+        //[self buttonYearMonthWeekDayAction:[arrayButtons objectAtIndex:tagButtonSelect]];
+        [self reloadListCalendarTask];
+    }
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

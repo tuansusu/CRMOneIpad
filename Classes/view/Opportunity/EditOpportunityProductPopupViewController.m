@@ -82,6 +82,7 @@
     [self initData];
     
     self.view.backgroundColor = [UIColor clearColor];
+    self.view.layer.shadowColor = [UIColor clearColor].CGColor;
     self.modalPresentationStyle = UIModalPresentationCurrentContext;
     
     self.txtQuantity.delegate = self;
@@ -325,7 +326,8 @@
 
 - (IBAction)actionCancel:(id)sender {
     NSLog(@"dismiss");
-    [self.delegateOpportunityProduct dismissPopoverView];
+    [self.view removeFromSuperview];
+  //  [super];
 }
 -(IBAction)actionChooseCurency:(id)sender{
     
@@ -659,11 +661,7 @@
     [_txtQuantity setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_QUANTITY")];
     [_lblRevenue setText:LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_REVENUE")];
     [_txtRevenue setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_REVENUE")];
-    if(self.currentDeviceType == iPad){
-        //[_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
-        [_btnSave setTitle:@"" forState:UIControlStateNormal];
-    }else{
-        [_btnSave setTitle:LocalizedString(@"KEY_SAVE") forState:UIControlStateNormal];
+    
+    [_btnSave setTitle:LocalizedString(@"KEY_SAVE") forState:UIControlStateNormal];
     }
-}
 @end

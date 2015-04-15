@@ -8,7 +8,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditOpportunityProductPopupViewController">
             <connections>
                 <outlet property="bodyMainView" destination="eZp-zX-WoB" id="xg5-GD-5K8"/>
+                <outlet property="btnCancel" destination="bx4-X5-9Xh" id="cLw-cV-A2n"/>
                 <outlet property="btnCurrency" destination="c2o-hF-Q6w" id="WhP-F8-sZ3"/>
+                <outlet property="btnSave" destination="bPV-DP-YEe" id="ZAW-08-XhP"/>
                 <outlet property="lblFormTitle" destination="eNf-x7-geH" id="qOK-uu-Jq3"/>
                 <outlet property="lblProduct" destination="EnJ-Wh-vFL" id="uXs-9u-FhY"/>
                 <outlet property="lblQuantity" destination="pwI-AO-xX5" id="can-i0-53C"/>
@@ -116,16 +118,24 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.039215686270000001" green="0.43137254899999999" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal" title="Lưu lại">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="actionSave:" destination="-1" eventType="touchUpInside" id="bDB-C1-LiV"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bx4-X5-9Xh">
                                     <rect key="frame" x="120" y="293" width="128" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.039215686270000001" green="0.43137254899999999" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal" title="Huỷ">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="actionCancel:" destination="-1" eventType="touchUpInside" id="KCV-YZ-BIf"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>

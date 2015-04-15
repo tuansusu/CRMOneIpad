@@ -35,6 +35,7 @@
                 <outlet property="mainView" destination="cLF-NJ-ACN" id="6uE-Mb-snA"/>
                 <outlet property="pgLevel" destination="h4I-xh-s8n" id="OZn-Fa-HAm"/>
                 <outlet property="searchDisplayController" destination="mmr-Ap-yqq" id="eBk-mp-GsW"/>
+                <outlet property="tbProduct" destination="q6v-mQ-tvR" id="QSp-IO-f9t"/>
                 <outlet property="txtLevel" destination="A9A-6M-e2o" id="IgJ-tL-tiz"/>
                 <outlet property="txtName" destination="rZ9-bd-fbA" id="qDH-TT-Or0"/>
                 <outlet property="txtNextTask" destination="pmq-g9-yD2" id="Pqt-Gb-bhW"/>
@@ -314,7 +315,7 @@
                                             </connections>
                                         </button>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="q6v-mQ-tvR">
-                                            <rect key="frame" x="65" y="295" width="492" height="213"/>
+                                            <rect key="frame" x="65" y="312" width="492" height="196"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
@@ -332,6 +333,17 @@
                                                 <action selector="actionAddProduct:" destination="-1" eventType="touchUpInside" id="mOS-2V-Nek"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sản phẩm đề xuất" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cpb-bT-Sdk">
+                                            <rect key="frame" x="88" y="280" width="396" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="icon_down.png" id="4aO-Pm-cKV">
+                                            <rect key="frame" x="65" y="290" width="10" height="10"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>

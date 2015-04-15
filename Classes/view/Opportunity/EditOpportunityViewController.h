@@ -94,6 +94,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnSave;
 - (IBAction)actionAddProduct:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UITableView *tbProduct;
 
 
 //For iPhone only

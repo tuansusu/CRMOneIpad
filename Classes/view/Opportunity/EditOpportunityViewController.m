@@ -15,6 +15,8 @@
 #import "CalendarPickerViewController.h"
 #import "EditOpportunityProductPopupViewController.h"
 #import "UIViewController+MJPopupViewController.h"
+#import "ProposeProductCell.h"
+#import "DTOOPPORTUNITYPRODUCTProcess.h"
 
 #define TAG_SELECT_TYPE 1
 #define TAG_SELECT_NEXT_JOB 2
@@ -39,6 +41,7 @@
     NSArray *listArrLead;
     NSArray *listArrAccount;
     NSMutableArray *listArrCustomerFilter;
+    NSMutableArray *listProduct;
     
     NSString *nowStr;
     NSString*nowTimeStr;
@@ -53,6 +56,7 @@
     DTOACCOUNTLEADProcess *dtoLeadProcess;
     DTOACCOUNTProcess *dtoAccountProcess;
     DTOOPPORTUNITYProcess *dtoOpportunityProcess;
+    DTOOPPORTUNITYPRODUCTProcess *dtoOpportunityProductProcess;
     
     int SELECTED_TAG;
     int CUSTOMER_TYPE;
@@ -190,6 +194,7 @@
     dtoLeadProcess = [DTOACCOUNTLEADProcess new];
     dtoAccountProcess = [DTOACCOUNTProcess new];
     dtoOpportunityProcess = [DTOOPPORTUNITYProcess new];
+    dtoOpportunityProductProcess = [DTOOPPORTUNITYPRODUCTProcess new];
     listArrType = [dtoSyscatProcess filterWithCatType:FIX_SYS_CAT_TYPE_OPPORTTUNITY_TYPE];
     listArrNextTask = [dtoSyscatProcess filterWithCatType:FIX_SYS_CAT_TYPE_OPPORTTUNITY_NEXT_TASK];
     listArrLevel = [dtoSyscatProcess filterWithCatType:FIX_SYS_CAT_TYPE_OPPORTTUNITY_LEVEL];
@@ -348,6 +353,14 @@
     if (![StringUtil stringIsEmpty:[_dataSend objectForKey:@"Description"]]) {
         self.txtNote.text =[_dataSend objectForKey:@"Description"];
     }
+    
+    //list product
+    [self loadProduct];
+}
+
+-(void) loadProduct{
+   listProduct = [dtoOpportunityProductProcess filterWithClientOpportunityId:[_dataSend objectForKey:DTOOPPORTUNITY_clientOpportunityId]];
+    [self.tbProduct reloadData];
 }
 
 - (void) updateInterFaceWithOption : (int) option
@@ -996,18 +1009,42 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if(tableView == self.tbProduct){
+        return listProduct.count;
+    }
     return listArrCustomerFilter.count;
 }
 
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(tableView == self.tbProduct){
+        return 40;
+    }
     //return 80;
     return 40;
 }
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if(tableView == self.tbProduct){
+        static NSString *cellId = @"ProposeProductCell";
+        ProposeProductCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+        
+        
+        if (!cell) {
+            cell = [ProposeProductCell getNewCell];
+        }
+        
+        if (listProduct.count>0) {
+            [cell loadDataToCellWithData:[listProduct objectAtIndex:indexPath.row] withOption:smgSelect];
+        }
+        
+        return cell;
+    }
+    
+    
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell) cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     cell.textLabel.text = [[listArrCustomerFilter objectAtIndex:indexPath.row] objectForKey:@"name"];
@@ -1157,7 +1194,7 @@
 }
 - (IBAction)actionAddProduct:(id)sender {
     EditOpportunityProductPopupViewController *viewController = [[EditOpportunityProductPopupViewController alloc]initWithNibName:@"EditOpportunityProductPopupViewController" bundle:nil];
-    viewController.view.frame = CGRectMake(154, 0, 582, 700);//435
+    viewController.view.frame = CGRectMake(154, 0, 582, 675);//435//582
     //viewController.dataRoot = opportunity;
     viewController.delegateOpportunityProduct = (id<OpportunityProductDelegate>)self;
 

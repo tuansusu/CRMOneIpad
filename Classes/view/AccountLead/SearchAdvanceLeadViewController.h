@@ -10,7 +10,7 @@
 
 @protocol SearchAdvanceDelegate <NSObject>
 
--(void) actionSearchAdvanceWithCode : (NSString*) strCode withName : (NSString*) strName withMobile : (NSString*) strMobile withEmail : (NSString*) strEmail;
+-(void) actionSearchAdvanceWithCode : (NSString*) strCode withName : (NSString*) strName withMobile : (NSString*) strMobile withEmail : (NSString*) strEmail  withmsthue:(NSString *)strMSthue withCMT: (NSString *) strCMT withDKKD:(NSString *)soDKKD;
 -(void) dismissPopoverView;
 @end
 
@@ -20,7 +20,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbmakh;
 @property (weak, nonatomic) IBOutlet UILabel *lbtenkh;
 @property (weak, nonatomic) IBOutlet UILabel *lbsdt;
+@property (weak, nonatomic) IBOutlet UILabel *lbmsthue;
+@property (weak, nonatomic) IBOutlet UILabel *lbsocmt;
+@property (weak, nonatomic) IBOutlet UILabel *lbsodk;
 @property (weak, nonatomic) IBOutlet UIButton *btnSearch;
 @property (weak, nonatomic) IBOutlet UIButton *btnCancel;
+//lable
 
 @end

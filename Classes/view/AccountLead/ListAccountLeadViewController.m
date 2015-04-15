@@ -11,6 +11,7 @@
 #import "DTOFLLOWUPProcess.h"
 #import "UIMenuItem+CXAImageSupport.h"
 #import "EnumClass.h"
+#import "Util.h"
 
 #define SELECT_INDEX_ADD_PERSON 0
 #define SELECT_INDEX_ADD_BUSSINESS 1
@@ -38,6 +39,7 @@
     NSMutableArray *arrayData; //mang luu tru du lieu
     
     DTOACCOUNTLEADProcess *dtoLeadProcess;
+    Util *util;
     
     //chon index form them moi
     NSInteger selectIndex;
@@ -100,7 +102,7 @@
     LocalizationSetLanguage(obj.str);
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
-    
+    util=[Util new];
     
     [self initData];
     
@@ -122,9 +124,9 @@
         
         UIMenuItem *delMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Xoá", nil) action:@selector(del:) image:[UIImage imageNamed:@"menudelete.png"]];
         
-        UIMenuItem *callMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Gọi điện", nil) action:@selector(call:) image:[UIImage imageNamed:@"menuphone.png"]];
-        
-        UIMenuItem *smsMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"SMS", nil) action:@selector(sms:) image:[UIImage imageNamed:@"menumessage.png"]];
+        //        UIMenuItem *callMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Gọi điện", nil) action:@selector(call:) image:[UIImage imageNamed:@"menuphone.png"]];
+        //
+        //        UIMenuItem *smsMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"SMS", nil) action:@selector(sms:) image:[UIImage imageNamed:@"menumessage.png"]];
         
         UIMenuItem *emailMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Email", nil) action:@selector(email:) image:[UIImage imageNamed:@"menuemail.png"]];
         
@@ -133,7 +135,7 @@
         
         UIMenuItem *mapMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Bản đồ", nil) action:@selector(map:) image:[UIImage imageNamed:@"menumap.png"]];
         
-        [[UIMenuController sharedMenuController] setMenuItems: @[viewMenu,editMenu,delMenu,callMenu,smsMenu,emailMenu,fowlMenu,mapMenu]];
+        [[UIMenuController sharedMenuController] setMenuItems: @[viewMenu,editMenu,delMenu,emailMenu,fowlMenu,mapMenu]];
         [[UIMenuController sharedMenuController] update];
     }
 }
@@ -196,7 +198,7 @@
     
     
     if([self currentDeviceType]==iPad){
-    self.txtSearchBar.barTintColor = HEADER_VIEW_COLOR1;
+        self.txtSearchBar.barTintColor = HEADER_VIEW_COLOR1;
     }
     
     
@@ -513,7 +515,7 @@
     detail.advanceSearchDelegate =(id<SearchAdvanceDelegate>) self;
     
     self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(250, 300) animated:NO];
+    [self.listPopover setPopoverContentSize:CGSizeMake(250, 520) animated:NO];
     [self.listPopover presentPopoverFromRect:popoverFrame inView:self.headerViewBar permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
@@ -525,11 +527,8 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    NSString *specialCharacterString = @"!~`@#$%^&*-+();:={}[],.<>?\\/\"\'";
-    NSCharacterSet *specialCharacterSet = [NSCharacterSet
-                                           characterSetWithCharactersInString:specialCharacterString];
     
-    if (![searchText.lowercaseString rangeOfCharacterFromSet:specialCharacterSet].length) {
+    if ([util CharacterNoEnter:searchText]) {
         strSearchText = searchText;
         [self resetLoadData];
         [self filterData];
@@ -815,14 +814,14 @@
 }
 
 #pragma mark ADVANCE SEARCH
--(void) actionSearchAdvanceWithCode:(NSString *)strCode withName:(NSString *)strName withMobile:(NSString *)strMobile withEmail:(NSString *)strEmail{
+-(void) actionSearchAdvanceWithCode:(NSString *)strCode withName:(NSString *)strName withMobile:(NSString *)strMobile withEmail:(NSString *)strEmail   withmsthue:(NSString *)strMSthue withCMT: (NSString *) strCMT withDKKD:(NSString *)soDKKD{
     
     NSMutableDictionary *dicCondition = [[NSMutableDictionary alloc]init];
     if (![StringUtil stringIsEmpty:strCode]) {
         [dicCondition setObject:[StringUtil trimString:strCode] forKey:DTOLEAD_code];
     }
     
-    if (![StringUtil stringIsEmpty:strName]) {
+    if (![StringUtil stringIsEmpty:strName] && [util CharacterNoEnter:strName]) {
         [dicCondition setObject:[StringUtil trimString:strName] forKey:DTOLEAD_name];
     }
     
@@ -833,7 +832,15 @@
     if (![StringUtil stringIsEmpty:strEmail]) {
         [dicCondition setObject:[StringUtil trimString:strEmail] forKey:DTOLEAD_email];
     }
-    
+    if (![StringUtil stringIsEmpty:strCMT]) {
+        [dicCondition setObject:[StringUtil trimString:strCMT] forKey:DTOLEAD_identifiedNumber];
+    }
+    if (![StringUtil stringIsEmpty:strMSthue]) {
+        [dicCondition setObject:[StringUtil trimString:strMSthue] forKey:DTOLEAD_taxCode];
+    }
+    if (![StringUtil stringIsEmpty:soDKKD]) {
+        [dicCondition setObject:[StringUtil trimString:soDKKD] forKey:DTOLEAD_registrationNumber];
+    }
     
     arrayData = [dtoLeadProcess filterWithArrayCondition:dicCondition];
     _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];

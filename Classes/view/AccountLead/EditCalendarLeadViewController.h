@@ -34,4 +34,8 @@
 
 @property (nonatomic,assign) id<EditCalendarLeadViewControllerDelegate>delegate;
 
+
+- (IBAction)actionDel:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnDel;
+
 @end

@@ -12,6 +12,7 @@
 #import "DTOFLLOWUPProcess.h"
 #import "UIMenuItem+CXAImageSupport.h"
 #import "EnumClass.h"
+#import "Util.h"
 //Xoa
 #import "DataField.h"
 
@@ -42,7 +43,7 @@
     NSMutableArray *arrayData; //mang luu tru du lieu
     
     DTOACCOUNTProcess *dtoProcess;
-    
+    Util *util;
     //chon index form them moi
     NSInteger selectIndex;
     NSArray *listArr;
@@ -93,7 +94,7 @@
         
         
     }
-    
+    util=[Util new];
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
     
@@ -118,9 +119,9 @@
     
     UIMenuItem *delMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Xoá", nil) action:@selector(del:) image:[UIImage imageNamed:@"menudelete.png"]];
     
-    UIMenuItem *callMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Gọi điện", nil) action:@selector(call:) image:[UIImage imageNamed:@"menuphone.png"]];
-    
-    UIMenuItem *smsMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"SMS", nil) action:@selector(sms:) image:[UIImage imageNamed:@"menumessage.png"]];
+    //    UIMenuItem *callMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Gọi điện", nil) action:@selector(call:) image:[UIImage imageNamed:@"menuphone.png"]];
+    //
+    //    UIMenuItem *smsMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"SMS", nil) action:@selector(sms:) image:[UIImage imageNamed:@"menumessage.png"]];
     
     UIMenuItem *emailMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Email", nil) action:@selector(email:) image:[UIImage imageNamed:@"menuemail.png"]];
     
@@ -129,7 +130,7 @@
     
     UIMenuItem *mapMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Bản đồ", nil) action:@selector(map:) image:[UIImage imageNamed:@"menumap.png"]];
     
-    [[UIMenuController sharedMenuController] setMenuItems: @[viewMenu,editMenu,delMenu,callMenu,smsMenu,emailMenu,fowlMenu,mapMenu]];
+    [[UIMenuController sharedMenuController] setMenuItems: @[viewMenu,editMenu,delMenu,emailMenu,fowlMenu,mapMenu]];
     [[UIMenuController sharedMenuController] update];
 }
 
@@ -494,7 +495,7 @@
     detail.advanceSearchDelegate =(id<SearchAdvanceDelegate>) self;
     
     self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(250, 300) animated:NO];
+    [self.listPopover setPopoverContentSize:CGSizeMake(250, 520) animated:NO];
     [self.listPopover presentPopoverFromRect:popoverFrame inView:self.headerViewBar permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
@@ -506,14 +507,11 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText   // called when text changes (including clear)
 {
-    //NSLog(@"text did change %@", searchText);
-    strSearchText = searchText;
-    //strSearchText = @"1010";
-    //arrayData=[dtoLeadProcess filterWithKey:DTOLEAD_name withValue:searchText];
-    //_lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
-    [self resetLoadData];
-    [self filterData];
-    //[_tbData reloadData];
+    if ([util CharacterNoEnter:searchText]) {
+        strSearchText = searchText;
+        [self resetLoadData];
+        [self filterData];
+    }
 }
 
 
@@ -777,14 +775,14 @@
 
 
 #pragma mark ADVANCE SEARCH
--(void) actionSearchAdvanceWithCode:(NSString *)strCode withName:(NSString *)strName withMobile:(NSString *)strMobile withEmail:(NSString *)strEmail{
+-(void) actionSearchAdvanceWithCode:(NSString *)strCode withName:(NSString *)strName withMobile:(NSString *)strMobile withEmail:(NSString *)strEmail withmsthue:(NSString *)strMSthue withCMT: (NSString *) strCMT withDKKD:(NSString *)soDKKD{
     
     NSMutableDictionary *dicCondition = [[NSMutableDictionary alloc]init];
     if (![StringUtil stringIsEmpty:strCode]) {
         [dicCondition setObject:[StringUtil trimString:strCode] forKey:DTOACCOUNT_code];
     }
     
-    if (![StringUtil stringIsEmpty:strName]) {
+    if (![StringUtil stringIsEmpty:strName] && [util CharacterNoEnter:strName]) {
         [dicCondition setObject:[StringUtil trimString:strName] forKey:DTOACCOUNT_name];
     }
     
@@ -794,6 +792,15 @@
     
     if (![StringUtil stringIsEmpty:strEmail]) {
         [dicCondition setObject:[StringUtil trimString:strEmail] forKey:DTOACCOUNT_email];
+    }
+    if (![StringUtil stringIsEmpty:strCMT]) {
+        [dicCondition setObject:[StringUtil trimString:strCMT] forKey:DTOACCOUNT_identifiedNumber];
+    }
+    if (![StringUtil stringIsEmpty:strMSthue]) {
+        [dicCondition setObject:[StringUtil trimString:strMSthue] forKey:DTOACCOUNT_taxCode];
+    }
+    if (![StringUtil stringIsEmpty:soDKKD]) {
+        [dicCondition setObject:[StringUtil trimString:soDKKD] forKey:DTOACCOUNT_registrationNumber];
     }
     
     

@@ -316,9 +316,9 @@
     [dicEntity setObject:[StringUtil trimString:_txtPhone.text]forKey:DTOLEAD_mobile];
     [dicEntity setObject:[StringUtil trimString:_txtRegisterCodeBussiness.text] forKey:DTOLEAD_registrationNumber];
     [dicEntity setObject:[StringUtil trimString:_txtTaxCode.text] forKey:DTOLEAD_taxCode];
-    [dicEntity setObject:[StringUtil trimString:_txtFax.text] forKey:DTOLEAD_fax];
+    //[dicEntity setObject:[StringUtil trimString:_txtFax.text] forKey:DTOLEAD_fax];
     [dicEntity setObject:[StringUtil trimString:_txtEmail.text] forKey:DTOLEAD_email];
-    [dicEntity setObject:_txtNgayTL.text forKey:DTOLEAD_birthday];
+    [dicEntity setObject:[StringUtil trimString:_txtNgayTL.text]forKey:DTOLEAD_birthday];
     if(_longitude > 0){
         NSString *myLon=[NSString stringWithFormat:@"%f", _longitude];
         [dicEntity setObject:myLon forKey:DTOLEAD_lon];
@@ -334,8 +334,8 @@
     [dicEntity setObject:[StringUtil trimString:_txtProfitBeforeTax.text] forKey:DTOLEAD_profitNonTax];
     [dicEntity setObject:[StringUtil trimString:_txtCharterCapital.text] forKey:DTOLEAD_charter];
     [dicEntity setObject:[StringUtil trimString:_txtCapital.text] forKey:DTOLEAD_equityOwner]; //
-    [dicEntity setObject:[StringUtil trimString:_txtNumberEmployee.text] forKey:DTOLEAD_employeeNumber];
-    [dicEntity setObject:[StringUtil trimString:_txtNumberShareholders.text] forKey:DTOLEAD_shareholderNumber];
+    //[dicEntity setObject:[StringUtil trimString:_txtNumberEmployee.text] forKey:DTOLEAD_employeeNumber];
+    //[dicEntity setObject:[StringUtil trimString:_txtNumberShareholders.text] forKey:DTOLEAD_shareholderNumber];
     [dicEntity setObject:[StringUtil trimString:_txtTotalassets.text] forKey:DTOLEAD_assetTotal];
     [dicEntity setObject:@"1" forKey:DTOLEAD_leadType];
     [dicEntity setObject:@"1" forKey:DTOLEAD_status];

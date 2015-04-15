@@ -396,15 +396,11 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             metting=@"Metting";
         }
         NSString *tmp=[NSString stringWithFormat:@"%@,%@,%@,%@",sms,phone,email,metting];
+        if(tmp.length <= 3)
+        {
+            tmp=@"";
+        }
         fyCN = [self setFrameLabelTitle:_khonglienlacCN withLabelValue:_lbKhongLienLacQua withFY:fyCN :tmp];
-        //        if(![StringUtil stringIsEmpty:sms] || ![StringUtil stringIsEmpty:phone] || ![StringUtil stringIsEmpty:email] || ![StringUtil stringIsEmpty:metting]){
-        //            NSString *tmp=[NSString stringWithFormat:@"%@,%@,%@,%@",sms,phone,email,metting];
-        //            fyCN = [self setFrameLabelTitle:_khonglienlacCN withLabelValue:_lbKhongLienLacQua withFY:fyCN :tmp];
-        //        }
-        //        else{
-        //            _khonglienlacCN.hidden=YES;
-        //            _lbKhongLienLacQua.hidden=YES;
-        //        }
         _scrollViewBodyLeft.contentSize=CGSizeMake(0, self.view.frame.size.height + fyCN);
     }
     else{
@@ -477,16 +473,10 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         }
         NSString *tmp=[NSString stringWithFormat:@"%@,%@,%@,%@",sms,phone,email,metting];
         //goi nho
+        if (tmp.length<=3) {
+            tmp=@"";
+        }
         fyDN = [self setFrameLabelTitle:_khonglienlacDN withLabelValue:_lbkhonglienlacDN withFY:fyDN :tmp];
-        //        if(![StringUtil stringIsEmpty:sms]||![StringUtil stringIsEmpty:phone]||![StringUtil stringIsEmpty:email]||![StringUtil stringIsEmpty:metting]){
-        //            NSString *tmp=[NSString stringWithFormat:@"%@,%@,%@,%@",sms,phone,email,metting];
-        //            //goi nho
-        //            fyDN = [self setFrameLabelTitle:_khonglienlacDN withLabelValue:_lbkhonglienlacDN withFY:fyDN :tmp];
-        //        }
-        //        else{
-        //            _khonglienlacDN.hidden=YES;
-        //            _lbkhonglienlacDN.hidden=YES;
-        //        }
         _scollviewDN.contentSize=CGSizeMake(0, self.view.frame.size.height + fyDN);
     }
     

@@ -63,6 +63,7 @@
         }
     }
     
+    
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
     
@@ -80,7 +81,8 @@
     searchBarController.isValid = NO;
     [self initData];
     
-    
+    self.view.backgroundColor = [UIColor clearColor];
+    self.modalPresentationStyle = UIModalPresentationCurrentContext;
     
     self.txtQuantity.delegate = self;
     self.txtRevenue.delegate = self;

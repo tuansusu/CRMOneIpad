@@ -1157,7 +1157,7 @@
 }
 - (IBAction)actionAddProduct:(id)sender {
     EditOpportunityProductPopupViewController *viewController = [[EditOpportunityProductPopupViewController alloc]initWithNibName:@"EditOpportunityProductPopupViewController" bundle:nil];
-    viewController.view.frame = CGRectMake(154, 0, 582, 435);
+    viewController.view.frame = CGRectMake(154, 0, 582, 700);//435
     //viewController.dataRoot = opportunity;
     viewController.delegateOpportunityProduct = (id<OpportunityProductDelegate>)self;
 

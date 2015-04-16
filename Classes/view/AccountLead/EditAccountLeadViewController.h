@@ -23,6 +23,8 @@
 
 //DATA
 @property (nonatomic, retain) NSDictionary *dataSend;
+//For iPhone only
+@property(strong,nonatomic) IBOutlet UIDatePicker* datePicker;
 
 //Header
 @property (weak, nonatomic) IBOutlet UIView *headerViewBar;

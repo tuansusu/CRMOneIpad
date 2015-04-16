@@ -64,6 +64,8 @@
     //luu lai thong tin chon dia chi cua ban do
     float _longitude, _latitude;
     Language *obj;
+    UIDatePicker *datePicker;
+    UIToolbar *toolBar;
 }
 @end
 
@@ -103,10 +105,65 @@
     {
         _tvNote.layer.borderColor = [[UIColor colorWithRed:215.0 / 255.0 green:215.0 / 255.0 blue:215.0 / 255.0 alpha:1] CGColor];
         _tvNote.layer.borderWidth = 0.6f;
-        _tvNote.layer.cornerRadius = 6.0f;
+        _tvNote.layer.cornerRadius = 1.0f;
+        //text
+        [self setBorderTextfield:_txtName];
+        [self setBorderTextfield:_txtPosition];
+        [self setBorderTextfield:_txtPhone];
+        [self setBorderTextfield:_txtNumberIdentity];
+        [self setBorderTextfield:_txtDateCreate];
+        [self setBorderTextfield:_txtDateOfBirth];
+        [self setBorderTextfield:_txtWhereBorn];
+        [self setBorderTextfield:_txtEmail];
+        [self setBorderTextfield:_txtAddress];
+       // [self setBorderTextfield:_tvNote];
+        
+        //toolbar
+        //show date
+        datePicker = [[UIDatePicker alloc] init];
+        
+        datePicker.datePickerMode = UIDatePickerModeDate;
+        datePicker.tintColor=[UIColor whiteColor];
+        [self.txtDateCreate setInputView:datePicker];
+        [self.txtDateOfBirth setInputView:datePicker];
+        
+        toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+        toolBar.tintColor=HEADER_VIEW_COLOR1;
+        UIBarButtonItem *doneBtn;
+        UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        
+        doneBtn = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(setSelectedDate)];
+        
+        [toolBar setItems:[NSArray arrayWithObjects:space,doneBtn, nil]];
+        [self.txtDateOfBirth setInputAccessoryView:toolBar];
+        [self.txtDateCreate setInputAccessoryView:toolBar];
+
+        
         
     }
     
+}
+//For iPhone only
+-(void) setSelectedDate{
+    NSDate *date = datePicker.date;
+    if([self.txtDateOfBirth isFirstResponder]){
+        [self.txtDateOfBirth resignFirstResponder];
+        self.txtDateOfBirth.text = [NSString stringWithFormat:@"%@",
+                                    [df stringFromDate:date]];
+    }
+    else{
+        [self.txtDateCreate resignFirstResponder];
+        self.txtDateCreate.text = [NSString stringWithFormat:@"%@",
+                                    [df stringFromDate:date]];
+
+    }
+}
+-(void)setBorderTextfield:(UITextField *)txtField{
+    
+    txtField.textColor = TEXT_COLOR_REPORT;
+    txtField.backgroundColor = BACKGROUND_NORMAL_COLOR1;
+    [txtField setBorderWithOption:smgSelect];
+    [txtField setPaddingLeft];
 }
 
 //khoi tao gia tri mac dinh cua form

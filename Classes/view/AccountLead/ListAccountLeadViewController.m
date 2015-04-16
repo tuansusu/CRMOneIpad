@@ -116,7 +116,7 @@
     [self setLanguage];
     //set menu
     NSString*device=[UIDevice currentDevice].model;
-    if([device isEqualToString:@"iPad"]|| [device isEqualToString:@"iPad Simulator"]){
+    if([self currentDeviceType]==iPad){
         
         UIMenuItem *viewMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Xem", nil) action:@selector(view:) image:[UIImage imageNamed:@"menuview.png"]];
         
@@ -411,10 +411,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    NSMutableDictionary *arrayTable = [arrayData objectAtIndex:indexPath.row];
+    NSString *name=[arrayTable objectForKey:DTOLEAD_name];
     NSString  *currentDevice = [UIDevice currentDevice].model;
     if([currentDevice isEqualToString:@"iPhone"] || [currentDevice isEqualToString:@"iPhone Simulator"]){
         
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:LocalizedString(@"MENU_ACTIONSHEET_TITLE")
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:name
                                                                  delegate:self
                                                         cancelButtonTitle:LocalizedString(@"KEY_CANCEL")
                                                    destructiveButtonTitle:LocalizedString(@"MENU_ACTIONSHEET_VIEW")

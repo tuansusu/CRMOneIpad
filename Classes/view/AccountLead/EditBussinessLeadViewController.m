@@ -45,7 +45,10 @@
     Language *obj;
     UIAlertView *alertView;
     NSDate  *dateBirthday;
-     NSDateFormatter *df;
+    UIDatePicker *datePicker;
+    NSDateFormatter *df;
+    UIToolbar *toolBar;
+    UITableView *tableAlert;
 }
 @end
 
@@ -82,9 +85,54 @@
     if(self.currentDeviceType==iPhone){
         //        [_scrollviewIphone setContentSize:CGSizeMake(0, self.view.frame.size.height)];
         _scrollviewIphone.contentSize=CGSizeMake(0, self.view.frame.size.height);
+        //
+        //show date
+        datePicker = [[UIDatePicker alloc] init];
+        
+        datePicker.datePickerMode = UIDatePickerModeDate;
+        datePicker.tintColor=[UIColor whiteColor];
+        [self.txtNgayTL setInputView:datePicker];
+        //show select
+        tableAlert = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 250, 230)];
+        tableAlert.delegate=self;
+        tableAlert.dataSource=self;
+        tableAlert.tag=222;
+        [tableAlert reloadData];
+        [self.txtSysCatType setInputView:tableAlert];
+        toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+        toolBar.tintColor=HEADER_VIEW_COLOR1;
+        UIBarButtonItem *doneBtn;
+        UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        
+        doneBtn = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(setSelectedDate)];
+        
+        [toolBar setItems:[NSArray arrayWithObjects:space,doneBtn, nil]];
+        [self.txtNgayTL setInputAccessoryView:toolBar];
+        [self.txtSysCatType setInputAccessoryView:toolBar];
+        //text
+        [self setBorderTextfield:_txtName];
+        [self setBorderTextfield:_txtPhone];
+        [self setBorderTextfield:_txtTaxCode];
+        [self setBorderTextfield:_txtRegisterCodeBussiness];
+        [self setBorderTextfield:_txtEmail];
+        [self setBorderTextfield:_txtAddress];
+        [self setBorderTextfield:_txtSysCatType];
+        [self setBorderTextfield:_txtRevenue];
+        [self setBorderTextfield:_txtProfitBeforeTax];
+        [self setBorderTextfield:_txtCharterCapital];
+        [self setBorderTextfield:_txtCapital];
+        [self setBorderTextfield:_txtNgayTL];
+        [self setBorderTextfield:_txtTotalassets];
         
     }
     
+}
+-(void)setBorderTextfield:(UITextField *)txtField{
+    
+    txtField.textColor = TEXT_COLOR_REPORT;
+    txtField.backgroundColor = BACKGROUND_NORMAL_COLOR1;
+    [txtField setBorderWithOption:smgSelect];
+    [txtField setPaddingLeft];
 }
 
 //khoi tao gia tri mac dinh cua form
@@ -570,23 +618,7 @@
 }
 
 - (IBAction)actionChoiceOrgType:(id)sender {
-    if([self currentDeviceType]==iPhone)
-    {
-        alertView = [[UIAlertView alloc] initWithTitle:@"Chọn chức danh" message:@"" delegate:self cancelButtonTitle:@"Huỷ" otherButtonTitles:nil, nil];
-        UITableView *tableAlert = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 250, 230)];
-        tableAlert.delegate=self;
-        tableAlert.dataSource=self;
-        [tableAlert reloadData];
-        //tableAlert.dataSource=[listArrPersonPosition valueForKey:DTOSYSCAT_name];
-        
-        [alertView addSubview:tableAlert];
-        alertView.tag=222;
-        alertView.bounds = CGRectMake(0, 0, 300 ,200);
-        [alertView setValue:tableAlert forKey:@"accessoryView"];
-        [alertView show];
-        
-    }
-    else{
+    if([self currentDeviceType]==iPad){
         SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
         
         detail.selectIndex = selectOrgTypeIdIndex;
@@ -811,7 +843,7 @@
     NSDictionary *getData = [[listArrOrgType valueForKey:DTOSYSCAT_name] objectAtIndex:indexPath.row];
     _txtSysCatType.text=getData;
     selectOrgTypeIdIndex=indexPath.row;
-    [alertView dismissWithClickedButtonIndex:0 animated:YES];
+    [_txtSysCatType resignFirstResponder];
     
     NSLog(@"Item %@",dicData);
 }
@@ -857,6 +889,18 @@
             
             
         }
+    }
+}
+//For iPhone only
+-(void) setSelectedDate{
+    NSDate *date = datePicker.date;
+    if([self.txtNgayTL isFirstResponder]){
+        [self.txtNgayTL resignFirstResponder];
+        self.txtNgayTL.text = [NSString stringWithFormat:@"%@",
+                               [df stringFromDate:date]];
+    }
+    else{
+        [self.txtSysCatType resignFirstResponder];
     }
 }
 @end

@@ -69,6 +69,8 @@
     float _longitude, _latitude;
     Language *obj;
     UIAlertView *alertView ;
+    UIToolbar *toolBar;
+    UITableView *tableAlert;
     
     
 }
@@ -107,8 +109,50 @@
     [self updateInterFaceWithOption:smgSelect];
     [self initData];
     [self setLanguage];
+    if ([self currentDeviceType]==iPhone) {
+        [self setBorderTextfield:_txtName];
+        [self setBorderTextfield:_txtPhone];
+        [self setBorderTextfield:_txtNumberIdentity];
+        [self setBorderTextfield:_txtEmail];
+        [self setBorderTextfield:_txtCompany];
+        [self setBorderTextfield:_txtPersonPosition];
+        [self setBorderTextfield:_txtDateOfBirth];
+        [self setBorderTextfield:_txtAddress];
+        [self setBorderTextfield:_txtMonthlyIncom];
+        [self setBorderTextfield:_txtTotalassets];
+        
+        //show date
+        self.datePicker = [[UIDatePicker alloc] init];
+        
+        self.datePicker.datePickerMode = UIDatePickerModeDate;
+        self.datePicker.tintColor=[UIColor whiteColor];
+        [self.txtDateOfBirth setInputView:self.datePicker];
+        //show select
+        tableAlert = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 250, 230)];
+        tableAlert.delegate=self;
+        tableAlert.dataSource=self;
+        [tableAlert reloadData];
+        [self.txtPersonPosition setInputView:tableAlert];
+        toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+        toolBar.tintColor=HEADER_VIEW_COLOR1;
+        UIBarButtonItem *doneBtn;
+        UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        
+        doneBtn = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(setSelectedDate)];
+        
+        [toolBar setItems:[NSArray arrayWithObjects:space,doneBtn, nil]];
+        [self.txtDateOfBirth setInputAccessoryView:toolBar];
+        [self.txtPersonPosition setInputAccessoryView:toolBar];
+        
+    }
 }
-
+-(void)setBorderTextfield:(UITextField *)txtField{
+    
+    txtField.textColor = TEXT_COLOR_REPORT;
+    txtField.backgroundColor = BACKGROUND_NORMAL_COLOR1;
+    [txtField setBorderWithOption:smgSelect];
+    [txtField setPaddingLeft];
+}
 //khoi tao gia tri mac dinh cua form
 -(void) initData {
     
@@ -759,7 +803,7 @@
         if ([string stringByTrimmingCharactersInSet:nonNumberSet].length > 0)
         {
             
-             //_txtMonthlyIncom.text=[NSString stringWithFormat:@"%@ %@",_txtMonthlyIncom.text, @"VND"];
+            //_txtMonthlyIncom.text=[NSString stringWithFormat:@"%@ %@",_txtMonthlyIncom.text, @"VND"];
             
             return YES;
         }
@@ -957,33 +1001,13 @@
 - (IBAction)actionChoiceDateOfBirth:(id)sender {
     
     [self hiddenKeyBoard];
-    if([self currentDeviceType]==iPhone){
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Chọn ngày sinh" message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        UIDatePicker *picker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0,0, 250, 200)];
-        
-        picker = [[UIDatePicker alloc] init];
-        picker.datePickerMode = UIDatePickerModeDate;
-        picker.tag =TAG_ALERTVIEW_DATEOFBIRTH_PICKER;
-        [picker setDate:[NSDate date]];
-        
-        
-        [picker addTarget:self action: @selector(dateChanged:) forControlEvents:UIControlEventAllEvents];
-        
-        [alert addSubview:picker];
-        alert.tag=TAG_ALERTVIEW_DATEOFBIRTH;
-        alert.bounds = CGRectMake(0, 0, 300 ,200);
-        [alert setValue:picker forKey:@"accessoryView"];
-        alert.tag=123;
-        [alert show];
-    }
-    else{
+    if ([self currentDeviceType]==iPad)
+    {
         if (self.txtDateOfBirth.text.length==0) {
             dateBirthday = [DateUtil getDateFromString:@"01/01/2000" :FORMAT_DATE];
         }else{
             dateBirthday = [DateUtil getDateFromString:self.txtDateOfBirth.text :FORMAT_DATE];
         }
-        
         //SELECTED_DATE_TAG = TAG_SELECT_DATE_BIRTHDAY;
         CalendarPickerViewController *detail = [[CalendarPickerViewController alloc] initWithNibName:@"CalendarPickerViewController" bundle:nil];
         detail.dateSelected = dateBirthday;
@@ -1112,8 +1136,20 @@
     NSDictionary *getData = [[listArrPersonPosition valueForKey:DTOSYSCAT_name] objectAtIndex:indexPath.row];
     _txtPersonPosition.text=getData;
     selectPersonPositionIndex=indexPath.row;
-    [alertView dismissWithClickedButtonIndex:0 animated:YES];
+    [self.txtPersonPosition resignFirstResponder];
     
-    NSLog(@"Item %@",dicData);
+}
+
+//For iPhone only
+-(void) setSelectedDate{
+    NSDate *date = self.datePicker.date;
+    if([self.txtDateOfBirth isFirstResponder]){
+        [self.txtDateOfBirth resignFirstResponder];
+        self.txtDateOfBirth.text = [NSString stringWithFormat:@"%@",
+                                    [df stringFromDate:date]];
+    }
+    else{
+        [self.txtPersonPosition resignFirstResponder];
+    }
 }
 @end

@@ -15,7 +15,7 @@
 #import "CalendarPickerViewController.h"
 #import "EditOpportunityProductPopupViewController.h"
 #import "UIViewController+MJPopupViewController.h"
-#import "ProposeProductCell.h"
+#import "ProposeProductPopupCell.h"
 #import "DTOOPPORTUNITYPRODUCTProcess.h"
 
 #define TAG_SELECT_TYPE 1
@@ -1019,7 +1019,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(tableView == self.tbProduct){
-        return 40;
+        return 50;
     }
     //return 80;
     return 40;
@@ -1029,12 +1029,12 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if(tableView == self.tbProduct){
-        static NSString *cellId = @"ProposeProductCell";
-        ProposeProductCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+        static NSString *cellId = @"ProposeProductPopupCell";
+        ProposeProductPopupCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
         
         
         if (!cell) {
-            cell = [ProposeProductCell getNewCell];
+            cell = [ProposeProductPopupCell getNewCell];
         }
         
         if (listProduct.count>0) {
@@ -1192,13 +1192,25 @@
     }
     
 }
+#pragma mark Phan chon san pham
 - (IBAction)actionAddProduct:(id)sender {
     EditOpportunityProductPopupViewController *viewController = [[EditOpportunityProductPopupViewController alloc]initWithNibName:@"EditOpportunityProductPopupViewController" bundle:nil];
     viewController.view.frame = CGRectMake(154, 0, 582, 675);//435//582
-    //viewController.dataRoot = opportunity;
-    viewController.delegateOpportunityProduct = (id<OpportunityProductDelegate>)self;
+    
+    viewController.delegateOpportunityProduct = (id<OpportunityProductPopupDelegate>)self;
 
     [self presentPopupViewController:viewController animationType:YES dismissed:nil];
    // [self presentPopupViewController:viewController animated:YES completion:nil];
 }
+
+-(void)receiveData:(NSDictionary*)value{
+    if(!listProduct){
+        listProduct = [NSMutableArray new];
+    }
+    [listProduct insertObject:value atIndex:0];
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    [self.tbProduct reloadData];
+    
+}
+
 @end

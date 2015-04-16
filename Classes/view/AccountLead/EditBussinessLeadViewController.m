@@ -246,6 +246,9 @@
     if(![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_lat]]){
         _latitude=[[getData objectForKey:DTOLEAD_lat] floatValue];
     }
+    if(![StringUtil stringIsEmpty:[getData objectForKey:DTOLEAD_email]]){
+        _txtEmail.text=[getData objectForKey:DTOLEAD_email];
+    }
 }
 
 

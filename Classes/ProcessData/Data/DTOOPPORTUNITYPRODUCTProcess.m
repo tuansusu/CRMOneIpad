@@ -38,12 +38,13 @@
 }
 
 -(NSMutableArray*) filterWithClientOpportunityId: (NSString*) strValue{
-    NSArray *allFields =[NSArray arrayWithObjects:DTOOPPORTUNITYPRODUCT_id,DTOOPPORTUNITYPRODUCT_clientOpportunityProductId,DTOPRODUCTMASTER_name,DTOOPPORTUNITYPRODUCT_revenue, nil];
+    NSArray *allFields =[NSArray arrayWithObjects:DTOOPPORTUNITYPRODUCT_id,DTOOPPORTUNITYPRODUCT_clientOpportunityProductId,DTOPRODUCTMASTER_name,DTOOPPORTUNITYPRODUCT_revenue,DTOSYSCAT_code, nil];
     
-    NSString *query = [NSString stringWithFormat:@"select opp.id,opp.clientOpportunityProductId,pm.name,opp.revenue \
+    NSString *query = [NSString stringWithFormat:@"select opp.id,opp.clientOpportunityProductId,pm.name,opp.revenue,catCur.Code \
                        from dtoopportunity op \
                        inner join dtoopportunityproduct opp on op.clientOpportunityId = opp.clientOpportunityId \
                        inner join dtoproductmaster pm on pm.productMasterId = opp.productMasterId \
+                       inner join dtosyscat catCur on opp.currencyId = catCur.syscatId and catCur.syscatTypeId = 16 \
                        where op.clientOpportunityId = ? and opp.isActive = 1 \
                        order by opp.Id  desc"];
     

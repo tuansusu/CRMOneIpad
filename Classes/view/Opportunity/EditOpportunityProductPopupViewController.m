@@ -289,11 +289,11 @@
     //isActive
     [dicEntity setObject:@"1" forKey:DTOCONTACT_isActive];
     //clientOpportunityId
-    if(!self.dataSend){
-        [dicEntity setObject:[_dataRoot objectForKey:DTOOPPORTUNITY_clientOpportunityId] forKey:DTOOPPORTUNITY_clientOpportunityId];
-    }else{
-        [dicEntity setObject:[self.dataSend objectForKey:DTOOPPORTUNITY_clientOpportunityId] forKey:DTOOPPORTUNITY_clientOpportunityId];
-    }
+//    if(!self.dataSend){
+//        [dicEntity setObject:[_dataRoot objectForKey:DTOOPPORTUNITY_clientOpportunityId] forKey:DTOOPPORTUNITY_clientOpportunityId];
+//    }else{
+//        [dicEntity setObject:[self.dataSend objectForKey:DTOOPPORTUNITY_clientOpportunityId] forKey:DTOOPPORTUNITY_clientOpportunityId];
+//    }
     //productMasterId
     [dicEntity setObject:[selectedProduct objectForKey:DTOPRODUCTMASTER_productMasterId] forKey:DTOOPPORTUNITYPRODUCT_productMasterId];
     //quantity
@@ -301,26 +301,15 @@
     //revenue
     [dicEntity setObject:[StringUtil trimString:self.txtRevenue.text] forKey:DTOOPPORTUNITYPRODUCT_revenue];
     
-    
-    if (self.dataSend) {
-        
-        [dicEntity setObject:[_dataSend objectForKey:DTOCONTACT_id] forKey:DTOCONTACT_id];
-    }
+//    
+//    if (self.dataSend) {
+//        
+//        [dicEntity setObject:[_dataSend objectForKey:DTOCONTACT_id] forKey:DTOCONTACT_id];
+//    }
     succsess = [dtoOpportunityProductProcess insertToDBWithEntity:dicEntity];
     
-    
-    if (succsess) {
-        //Thong bao cap nhat thanh cong va thoat
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERT_NO") otherButtonTitles:LocalizedString(@"KEY_ALERT_YES"), nil];
-        alert.tag = 5;
-        [alert show];
-        
-    }else{
-        //khong bao nhap loi - lien he quan tri
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE") message:LocalizedString(@"KEY_ALERT_ERROR") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERT_EXIT") otherButtonTitles:nil];
-        alert.tag = 6;
-        [alert show];
-    }
+    [self.delegateOpportunityProduct receiveData:dicEntity];
+   
     
 }
 

@@ -15,10 +15,9 @@
                 <outlet property="txtAddress" destination="0Rt-Pf-GfH" id="0tT-hU-wQ8"/>
                 <outlet property="txtCapital" destination="ll1-ng-jOG" id="Ckq-wf-fuR"/>
                 <outlet property="txtCharterCapital" destination="iC3-7z-JpN" id="AA6-1X-2e9"/>
-                <outlet property="txtFax" destination="jQt-Gq-qjY" id="UIx-Ku-JFA"/>
+                <outlet property="txtEmail" destination="jQt-Gq-qjY" id="nM1-60-ZpR"/>
                 <outlet property="txtName" destination="EEU-8T-nHP" id="igM-DK-kf5"/>
-                <outlet property="txtNumberEmployee" destination="oWs-Sa-Y9V" id="hFz-w9-TZV"/>
-                <outlet property="txtNumberShareholders" destination="w6g-rL-PbR" id="J1k-m0-qrp"/>
+                <outlet property="txtNgayTL" destination="w6g-rL-PbR" id="5Ug-eG-NKf"/>
                 <outlet property="txtPhone" destination="4XA-sO-Iqu" id="Y5P-w1-C9K"/>
                 <outlet property="txtProfitBeforeTax" destination="AVb-uO-sSY" id="U8W-fF-J6d"/>
                 <outlet property="txtRegisterCodeBussiness" destination="vHa-e1-Epv" id="MuL-u7-2bq"/>
@@ -103,7 +102,7 @@
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                 </button>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tên khách hàng" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EEU-8T-nHP">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tên khách hàng" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EEU-8T-nHP">
                                     <rect key="frame" x="8" y="30" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -114,7 +113,7 @@
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="errorVaildate.png" translatesAutoresizingMaskIntoConstraints="NO" id="GHn-aK-DkQ">
                                     <rect key="frame" x="296" y="37" width="16" height="16"/>
                                 </imageView>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Số điện thoại" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4XA-sO-Iqu">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số điện thoại" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4XA-sO-Iqu">
                                     <rect key="frame" x="8" y="68" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -125,7 +124,7 @@
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="errorVaildate.png" translatesAutoresizingMaskIntoConstraints="NO" id="et0-qJ-9O6">
                                     <rect key="frame" x="296" y="75" width="16" height="16"/>
                                 </imageView>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mã số thuế" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FRx-ik-1Xh">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mã số thuế" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FRx-ik-1Xh">
                                     <rect key="frame" x="8" y="106" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -133,7 +132,7 @@
                                         <outlet property="delegate" destination="-1" id="IpD-j3-PfF"/>
                                     </connections>
                                 </textField>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Số đăng ký KD" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vHa-e1-Epv">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số đăng ký KD" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vHa-e1-Epv">
                                     <rect key="frame" x="8" y="144" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -141,7 +140,7 @@
                                         <outlet property="delegate" destination="-1" id="cug-3p-GuL"/>
                                     </connections>
                                 </textField>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Fax" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jQt-Gq-qjY">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jQt-Gq-qjY">
                                     <rect key="frame" x="8" y="204" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -149,7 +148,7 @@
                                         <outlet property="delegate" destination="-1" id="oJI-tE-xta"/>
                                     </connections>
                                 </textField>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lợi nhuận trước thuế" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AVb-uO-sSY">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Lợi nhuận trước thuế" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AVb-uO-sSY">
                                     <rect key="frame" x="8" y="356" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -157,12 +156,12 @@
                                         <outlet property="delegate" destination="-1" id="5Bg-cl-FBQ"/>
                                     </connections>
                                 </textField>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tổng tài sản" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P0G-bV-pmV">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tổng tài sản" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P0G-bV-pmV">
                                     <rect key="frame" x="8" y="508" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Địa chỉ" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Rt-Pf-GfH">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Địa chỉ" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Rt-Pf-GfH">
                                     <rect key="frame" x="8" y="242" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -171,7 +170,7 @@
                                     </connections>
                                 </textField>
                                 <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDO-W7-1ep">
-                                    <rect key="frame" x="282" y="242" width="30" height="30"/>
+                                    <rect key="frame" x="289" y="242" width="30" height="30"/>
                                     <state key="normal" title="Button" backgroundImage="pin.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -179,7 +178,7 @@
                                         <action selector="actionChoiseAddress:" destination="-1" eventType="touchUpInside" id="cUp-fq-n2F"/>
                                     </connections>
                                 </button>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Loại hình doanh nghiệp" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JN2-JC-nlr">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Loại hình doanh nghiệp" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JN2-JC-nlr">
                                     <rect key="frame" x="8" y="280" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -188,15 +187,12 @@
                                     </connections>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ihh-Zb-xhP" userLabel="btnSysCat">
-                                    <rect key="frame" x="282" y="280" width="30" height="30"/>
+                                    <rect key="frame" x="289" y="280" width="30" height="30"/>
                                     <state key="normal" backgroundImage="select.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
-                                    <connections>
-                                        <action selector="actionChoiceOrgType:" destination="-1" eventType="touchUpInside" id="YwZ-nu-Agl"/>
-                                    </connections>
                                 </button>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Vốn điều lệ" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iC3-7z-JpN">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Vốn điều lệ" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iC3-7z-JpN">
                                     <rect key="frame" x="8" y="394" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -204,7 +200,7 @@
                                         <outlet property="delegate" destination="-1" id="aFB-GZ-GTV"/>
                                     </connections>
                                 </textField>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Vốn chủ sở hữu" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ll1-ng-jOG">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Vốn chủ sở hữu" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ll1-ng-jOG">
                                     <rect key="frame" x="8" y="432" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -212,7 +208,7 @@
                                         <outlet property="delegate" destination="-1" id="vtg-nb-imv"/>
                                     </connections>
                                 </textField>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Số cổ đông" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w6g-rL-PbR">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ngay thanh lap" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w6g-rL-PbR">
                                     <rect key="frame" x="8" y="470" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -220,15 +216,13 @@
                                         <outlet property="delegate" destination="-1" id="f8b-Jl-fpb"/>
                                     </connections>
                                 </textField>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Số lượng nhân viên" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oWs-Sa-Y9V">
-                                    <rect key="frame" x="8" y="508" width="304" height="30"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                    <connections>
-                                        <outlet property="delegate" destination="-1" id="BRV-aQ-QyP"/>
-                                    </connections>
-                                </textField>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Doanh thu" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SOG-ri-qv0">
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxB-wO-nMj" userLabel="btnSysCat">
+                                    <rect key="frame" x="289" y="470" width="30" height="30"/>
+                                    <state key="normal" backgroundImage="select.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Doanh thu" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SOG-ri-qv0">
                                     <rect key="frame" x="8" y="318" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>

@@ -12,9 +12,9 @@
 #import "CMPopTipView.h"
 #import "EnumClass.h"
 
-@protocol OpportunityProductDelegate <NSObject>
+@protocol OpportunityProductPopupDelegate <NSObject>
 @optional
--(void) dismissPopoverView;
+-(void)receiveData:(NSDictionary *) value;
 @end
 @interface EditOpportunityProductPopupViewController : BaseViewController<UITextFieldDelegate>
 //DATA
@@ -80,7 +80,7 @@
 
 
 
-@property (weak,nonatomic) id <OpportunityProductDelegate> delegateOpportunityProduct;
+@property (weak,nonatomic) id <OpportunityProductPopupDelegate> delegateOpportunityProduct;
 
 ////////////// KHAI BAO BIEN CHUNG//////////
 @property (nonatomic, retain) UIPopoverController *listPopover;

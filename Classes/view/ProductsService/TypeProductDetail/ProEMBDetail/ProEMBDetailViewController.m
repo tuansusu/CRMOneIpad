@@ -57,6 +57,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSUserDefaults *defaults ;
+    defaults = [NSUserDefaults standardUserDefaults];
+    [defaults synchronize];
+    self.barLabel.text = [NSString stringWithFormat:@"%@ %@, %@",VOFFICE,[defaults objectForKey:@"versionSoftware"],COPY_OF_SOFTWARE];
     // Do any additional setup after loading the view from its nib.
     smgSelect = [[[NSUserDefaults standardUserDefaults] objectForKey:INTERFACE_OPTION] intValue];
 
@@ -137,7 +141,7 @@
         {
             if ([viewSubTemp isKindOfClass:[UILabel class]])
             {
-                ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+               // ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
             }
             else if ([viewSubTemp isKindOfClass:[UITextView class]])
             {

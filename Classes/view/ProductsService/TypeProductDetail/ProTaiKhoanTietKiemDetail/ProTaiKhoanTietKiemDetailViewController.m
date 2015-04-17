@@ -64,6 +64,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    NSUserDefaults *defaults ;
+    defaults = [NSUserDefaults standardUserDefaults];
+    [defaults synchronize];
+    self.barLabel.text = [NSString stringWithFormat:@"%@ %@, %@",VOFFICE,[defaults objectForKey:@"versionSoftware"],COPY_OF_SOFTWARE];
+
     smgSelect = [[[NSUserDefaults standardUserDefaults] objectForKey:INTERFACE_OPTION] intValue];
 
     _fullNameLB.text = TITLE_PRODUCT_DETAIL_TAI_KHOAN_TIET_KIEM;
@@ -144,7 +149,7 @@
         {
             if ([viewSubTemp isKindOfClass:[UILabel class]])
             {
-                ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+                //((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
             }
             else if ([viewSubTemp isKindOfClass:[UITextView class]])
             {

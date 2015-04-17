@@ -30,6 +30,7 @@
     IBOutlet UITextField *txtNgayXuLy;
     
     IBOutlet UILabel     *_titleLabel;
+    NSUserDefaults *defaults;
     int smgSelect;
 }
 
@@ -71,7 +72,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    defaults = [NSUserDefaults standardUserDefaults];
+    [defaults synchronize];
     mainView.layer.cornerRadius = CORNER_RADIUS_VIEW;
     mainView.layer.masksToBounds = YES;
     btnSave.layer.cornerRadius = CORNER_RADIUS_BUTTON;
@@ -93,7 +95,7 @@
     
     if (_complainOB) {
         _btnDel.hidden=NO;
-        [_titleLabel setText:COMPLAIN_TITLE_UPDATE_COMPLAIN];
+        [_fullNameLB setText:COMPLAIN_TITLE_UPDATE_COMPLAIN];
         [txtNoiDungKhieuNai setText:_complainOB.content];
         [txtLiDo setText:_complainOB.reason];
         [txtNoiDungXuLy setText:_complainOB.result];
@@ -102,7 +104,7 @@
         [txtNguoiXuLy setText:_complainOB.processerId];
         [txtNgayXuLy setText:_complainOB.processedDate];
     }else{
-        [_titleLabel setText:COMPLAIN_TITLE_ADD_COMPLAIN];
+        [_fullNameLB setText:COMPLAIN_TITLE_ADD_COMPLAIN];
     }
 }
 
@@ -123,6 +125,8 @@
     _fullNameLB.textColor           = TEXT_COLOR_HEADER_APP;
     
     _footerView.backgroundColor     = TOOLBAR_VIEW_COLOR;
+    
+    _barLabel.text = [NSString stringWithFormat:@"%@ %@, %@",VOFFICE,[defaults objectForKey:@"versionSoftware"],COPY_OF_SOFTWARE];
     _barLabel.textColor             = TEXT_TOOLBAR_COLOR1;
     
     _headerMainView.backgroundColor = HEADER_SUB_VIEW_COLOR1;

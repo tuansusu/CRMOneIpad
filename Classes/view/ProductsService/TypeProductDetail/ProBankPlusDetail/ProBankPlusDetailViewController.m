@@ -143,7 +143,7 @@
         {
             if ([viewSubTemp isKindOfClass:[UILabel class]])
             {
-                ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+                //((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
             }
             else if ([viewSubTemp isKindOfClass:[UITextView class]])
             {

@@ -115,7 +115,6 @@
     [SVProgressHUD show];
     [self setLanguage];
     //set menu
-    NSString*device=[UIDevice currentDevice].model;
     if([self currentDeviceType]==iPad){
         
         UIMenuItem *viewMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Xem", nil) action:@selector(view:) image:[UIImage imageNamed:@"menuview.png"]];

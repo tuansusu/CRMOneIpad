@@ -104,7 +104,7 @@
             [lblChiNhanhPhatHanh setText:[proDetailDic valueForKey:@"BRANCH_CODE"]];
         }
     }
-
+    [self setLanguage];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -170,6 +170,20 @@
             [((UIButton*) viewTemp) setStyleNormalWithOption:smgSelect];
         }
     }
+}
+
+-(void)setLanguage{
+    [self.lblTitle setText:LocalizedString(@"KEY_PROBANKPLUS_TITLE")];
+    [self.lblTitleMaKH setText:LocalizedString(@"KEY_PROBANKPLUS_MAKH")];
+    [self.lblTitleTenKH setText:LocalizedString(@"KEY_PROBANKPLUS_TENKH")];
+    [self.lblTitleTenSanPhamThe setText:LocalizedString(@"KEY_PROBANKPLUS_TENSANPHAM")];
+    [self.lblTitleTinhTrang setText:LocalizedString(@"KEY_PROBANKPLUS_TRANGTHAI")];
+    [self.lblTitleNgayDangKy setText:LocalizedString(@"KEY_PROBANKPLUS_NGAYDANGKY")];
+    [self.lblTitleNgayCapNhat setText:LocalizedString(@"KEY_PROBANKPLUS_NGAYCAPNHAT")];
+    [self.lblTitleSoDienThoaiDangKy setText:LocalizedString(@"KEY_PROBANKPLUS_SODIENTHOAIDANGKY")];
+    [self.lblTitleCMT setText:LocalizedString(@"KEY_PROBANKPLUS_SOCMT")];
+    [self.lblTitleRM setText:LocalizedString(@"KEY_PROBANKPLUS_RM")];
+    [self.lblTitleChiNhanhPhatHanh setText:LocalizedString(@"KEY_PROBANKPLUS_CHINHANHPHATHANH")];
 }
 
 

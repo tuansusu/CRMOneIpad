@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6751" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <objects>
@@ -29,7 +30,7 @@
                 <outlet property="lbGroupCustomer" destination="N74-Np-zzE" id="ViR-XE-haS"/>
                 <outlet property="lbGroupUtility" destination="sxb-Tt-USF" id="M0N-3R-bRL"/>
                 <outlet property="lbMeetingSchedule" destination="PoC-of-nJw" id="izS-Qh-Dvv"/>
-                <outlet property="lbSystem" destination="CHq-h3-Bt0" id="BQh-zP-C0W"/>
+                <outlet property="lbSystem" destination="CHq-h3-Bt0" id="moP-dh-tQA"/>
                 <outlet property="lbUtility" destination="sxb-Tt-USF" id="vVd-Yb-5vF"/>
                 <outlet property="menuScrolview" destination="dPW-2P-u7s" id="T05-a5-9LA"/>
                 <outlet property="menuView2" destination="pAc-mN-lZX" id="mrn-sN-1br"/>
@@ -258,13 +259,6 @@
                             <rect key="frame" x="0.0" y="335" width="259" height="186"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="     TIỆN ÍCH" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sxb-Tt-USF" userLabel="Label -      TIỆN ÍCH">
-                                    <rect key="frame" x="0.0" y="0.0" width="259" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VEI-B1-yXg">
                                     <rect key="frame" x="0.0" y="40" width="259" height="35"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -339,6 +333,13 @@
                                     <rect key="frame" x="13" y="154" width="17" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="     TIỆN ÍCH" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sxb-Tt-USF" userLabel="Label -      TIỆN ÍCH">
+                                    <rect key="frame" x="0.0" y="0.0" width="259" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>

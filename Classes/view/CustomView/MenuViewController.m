@@ -85,7 +85,7 @@
         [self.lbTask setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
         [self.lbMeetingSchedule setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
         [self.lbUtility setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
-        [self.lbSystem setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
+        [lbSystem setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
     }
    NSString *interfaceOption = [defaults objectForKey:INTERFACE_OPTION];
     
@@ -128,7 +128,7 @@
     [self.view.layer addSublayer:sublayer];
     
     
-    lbSystem.backgroundColor =[UIColor colorWithRed:57.0f/255.0f green:60.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
+    //lbSystem.backgroundColor =[UIColor colorWithRed:57.0f/255.0f green:60.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
 }
 
 -(void)setupLanguage{
@@ -274,7 +274,7 @@
         [self.lbTask setTextColor:TEXT_COLOR_HOMEPAGE];
         [self.lbMeetingSchedule setTextColor:TEXT_COLOR_HOMEPAGE];
         [self.lbUtility setTextColor:TEXT_COLOR_HOMEPAGE];
-        [self.lbSystem setTextColor:TEXT_COLOR_HOMEPAGE];
+        [lbSystem setTextColor:TEXT_COLOR_HOMEPAGE];
     }else{
         
         [self.menuView setBackgroundColor:[UIColor colorWithRed:62.0f/255.0f green:64.0f/255.0f blue:70.0f/255.0f alpha:1.0f]];

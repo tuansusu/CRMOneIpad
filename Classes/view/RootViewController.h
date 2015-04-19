@@ -22,6 +22,7 @@
 @interface RootViewController : BaseViewController <ReaderViewControllerDelegate, UIAlertViewDelegate,UITextFieldDelegate>{
     IBOutlet UITextField* tf_username;
     IBOutlet UITextField* tf_password;
+    __weak IBOutlet UILabel *lbAppTitle;
     
     Language *obj;
 

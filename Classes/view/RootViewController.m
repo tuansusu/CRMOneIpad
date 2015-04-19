@@ -530,6 +530,10 @@
     [tf_password setPlaceholder:LocalizedString(@"KEY_PASSWORD")];
     [self.btnLogin setTitle:LocalizedString(@"KEY_LOGIN") forState:UIControlStateNormal];
     [self.btnGioiThieu setTitle:LocalizedString(@"KEY_ABOUT") forState:UIControlStateNormal];
+    //lbAppTitle.text = LocalizedString(@"KEY_ACCOUNT";
+    [lbAppTitle setText:LocalizedString(@"KEY_APP_TITLE" )];
+    
+    
 }
 
 

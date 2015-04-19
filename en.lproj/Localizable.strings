@@ -4,7 +4,12 @@
  
  Created by viettel on 1/26/15.
  
+ 
+ 
  */
+
+"KEY_APP_TITLE" = "SYSTEM CUSTOMER RELATIONSHIP MANAGEMENT";
+
 //login
 "KEY_ACCOUNT" = "Account";
 "KEY_PASSWORD" = "Password";
@@ -31,7 +36,7 @@
 "MENU_FUNCTION_CANCEL" = "           Exit";
 
 
-"KEY_ALERTVIEW_DELETE_MESSAGE" = "chắc chắn muốn xóa công việc?";
+"KEY_ALERTVIEW_DELETE_MESSAGE" = "Confirm to delete task?";
 "KEY_ALERTVIEW_DELETE_CANCEL" = "Cancel";
 "KEY_ALERTVIEW_DELETE_OK" = "OK";
 
@@ -45,10 +50,10 @@
 "KEY_TOTAL" = "Total";
 
 //stop task
-"KEY_STOP_TASK_TITLE" = "XÁC NHẬN LÝ DO DỪNG CÔNG VIỆC";
-"KEY_STOP_TASK_REASON" = "Lý do dừng công việc";
+"KEY_STOP_TASK_TITLE" = "Confirm reason stop task";
+"KEY_STOP_TASK_REASON" = "Reason stop task";
 
-"KEY_ALERT_SUMMARY" = "Đồng chí có muốn đăng xuất không ?";
+"KEY_ALERT_SUMMARY" = "Do you want to cancel ?";
 "KEY_ALERT_YES" = "Yes";
 "KEY_ALERT_NO" = "No";
 "KEY_ALERT_TITLE" = "Notify";
@@ -83,4 +88,5 @@
 "KEY_CONTACT_AVARTAR"="Avartar";
 //chi tiết khách hàng 360
 
-
+//PHAN TRO GIUP
+"KEY_TITLE_HELP" = "HELP";

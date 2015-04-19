@@ -12,6 +12,7 @@
 {
     int smgSelect ; //option layout
     NSUserDefaults *defaults;
+    Language *obj;
 }
 @end
 
@@ -36,6 +37,14 @@
     
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
+    
+    obj=[Language getInstance];
+    defaults = [NSUserDefaults standardUserDefaults];
+    [defaults synchronize];
+    obj=[Language getInstance];
+    obj.str = [defaults objectForKey:@"Language"];
+    LocalizationSetLanguage(obj.str);
+    [self setupLanguage];
     
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
@@ -86,5 +95,12 @@
 }
 
 
+#pragma mark language
+
+-(void)setupLanguage{
+    
+    
+    [self.fullNameLB setText:LocalizedString(@"KEY_TITLE_HELP")];
+}
 
 @end

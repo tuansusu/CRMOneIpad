@@ -5,7 +5,7 @@
  Created by viettel on 1/26/15.
  
  */
-
+"KEY_APP_TITLE" = "HỆ THỐNG QUẢN LÝ QUAN HỆ KHÁCH HÀNG";
 
 //login
 "KEY_ACCOUNT" = "Tài khoản";
@@ -361,4 +361,7 @@
 "KEY_OPPORTUNITY_CONTACT_EDIT_ERR_EMAIL_NOT_VALID"="Email không hợp lệ";
 "MIN_NUMBERIDENTITY"="Số CMT phải lớn hơn 9  ký tự và nhỏ hơn 20 ký";
 "MAXLENG_PHONE"="Số điện thoại phải lớn hơn 9 và nhỏ hơn 20 ký tự";
+
+//PHAN TRO GIUP
+"KEY_TITLE_HELP" = "TRỢ GIÚP";
 

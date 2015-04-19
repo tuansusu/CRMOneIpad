@@ -31,7 +31,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbTask;
 @property (weak, nonatomic) IBOutlet UILabel *lbMeetingSchedule;
 @property (weak, nonatomic) IBOutlet UILabel *lbUtility;
-@property (weak, nonatomic) IBOutlet UILabel *lbSystem;
+//@property (weak, nonatomic) IBOutlet UILabel *lbSystem;
 @property (weak, nonatomic) IBOutlet UIButton *btnLogOut;
 
 

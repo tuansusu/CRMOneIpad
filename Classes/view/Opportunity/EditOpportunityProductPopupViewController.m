@@ -279,34 +279,50 @@
     //currencyId
     if(selectCurrencyIndex >= 0){
         [dicEntity setObject:[[listArrCurrency objectAtIndex:selectCurrencyIndex] objectForKey:DTOSYSCAT_sysCatId] forKey:DTOOPPORTUNITYPRODUCT_currencyId];
+        if (!self.dataSend){
+            [dicEntity setObject:[[listArrCurrency objectAtIndex:selectCurrencyIndex] objectForKey:DTOSYSCAT_code] forKey:DTOSYSCAT_code];
+        }
     }
     else{//Lấy mặc định là đồng việt nam
         
         NSPredicate *bPredicate = [NSPredicate predicateWithFormat:@"code = 'VND'"];
     
         [dicEntity setObject:[[[listArrCurrency filteredArrayUsingPredicate:bPredicate] objectAtIndex:0] objectForKey:DTOSYSCAT_sysCatId] forKey:DTOOPPORTUNITYPRODUCT_currencyId];
+        if (!self.dataSend){
+            [dicEntity setObject:[[[listArrCurrency filteredArrayUsingPredicate:bPredicate] objectAtIndex:0] objectForKey:DTOSYSCAT_code] forKey:DTOSYSCAT_code];
+        }
     }
     //isActive
     [dicEntity setObject:@"1" forKey:DTOCONTACT_isActive];
     //clientOpportunityId
-//    if(!self.dataSend){
-//        [dicEntity setObject:[_dataRoot objectForKey:DTOOPPORTUNITY_clientOpportunityId] forKey:DTOOPPORTUNITY_clientOpportunityId];
-//    }else{
-//        [dicEntity setObject:[self.dataSend objectForKey:DTOOPPORTUNITY_clientOpportunityId] forKey:DTOOPPORTUNITY_clientOpportunityId];
-//    }
+    if(self.dataSend){
+        [dicEntity setObject:[self.dataSend objectForKey:DTOOPPORTUNITY_clientOpportunityId] forKey:DTOOPPORTUNITY_clientOpportunityId];
+    }
     //productMasterId
     [dicEntity setObject:[selectedProduct objectForKey:DTOPRODUCTMASTER_productMasterId] forKey:DTOOPPORTUNITYPRODUCT_productMasterId];
+    if (!self.dataSend){
+        [dicEntity setObject:[selectedProduct objectForKey:DTOPRODUCTMASTER_name] forKey:DTOPRODUCTMASTER_name];
+    }
     //quantity
     [dicEntity setObject:[StringUtil trimString:self.txtQuantity.text] forKey:DTOOPPORTUNITYPRODUCT_quantity];
     //revenue
     [dicEntity setObject:[StringUtil trimString:self.txtRevenue.text] forKey:DTOOPPORTUNITYPRODUCT_revenue];
     
-//    
-//    if (self.dataSend) {
-//        
-//        [dicEntity setObject:[_dataSend objectForKey:DTOCONTACT_id] forKey:DTOCONTACT_id];
-//    }
-    succsess = [dtoOpportunityProductProcess insertToDBWithEntity:dicEntity];
+    if(self.dataSend){
+        succsess = [dtoOpportunityProductProcess insertToDBWithEntity:dicEntity];
+    }
+    
+    [dicEntity setObject:[selectedProduct objectForKey:DTOPRODUCTMASTER_name] forKey:DTOPRODUCTMASTER_name];
+    if(selectCurrencyIndex >= 0){
+        [dicEntity setObject:[[listArrCurrency objectAtIndex:selectCurrencyIndex] objectForKey:DTOSYSCAT_code] forKey:DTOSYSCAT_code];
+        
+    }
+    else{//Lấy mặc định là đồng việt nam
+        NSPredicate *bPredicate = [NSPredicate predicateWithFormat:@"code = 'VND'"];
+        [dicEntity setObject:[[[listArrCurrency filteredArrayUsingPredicate:bPredicate] objectAtIndex:0] objectForKey:DTOSYSCAT_code] forKey:DTOSYSCAT_code];
+    }
+    
+    
     
     [self.delegateOpportunityProduct receiveData:dicEntity];
    
@@ -314,9 +330,7 @@
 }
 
 - (IBAction)actionCancel:(id)sender {
-    NSLog(@"dismiss");
     [self.view removeFromSuperview];
-  //  [super];
 }
 -(IBAction)actionChooseCurency:(id)sender{
     

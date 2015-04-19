@@ -863,11 +863,12 @@
     //client
     [dicEntity setObject:@"1" forKey:DTOOPPORTUNITY_client];
      //clientOpportunityId
+    NSString *strClientOpportunityId;
     if(self.dataSend){
         [dicEntity setObject:[self.dataSend objectForKey:DTOOPPORTUNITY_clientOpportunityId] forKey:DTOOPPORTUNITY_clientOpportunityId];
     }else{
    
-        NSString *strClientOpportunityId = IntToStr(([dtoOpportunityProcess getClientId]));
+        strClientOpportunityId = IntToStr(([dtoOpportunityProcess getClientId]));
         [dicEntity setObject:strClientOpportunityId forKey:DTOOPPORTUNITY_clientOpportunityId];
     }
     //description
@@ -920,11 +921,47 @@
     }
     succsess = [dtoOpportunityProcess insertToDBWithEntity:dicEntity];
     if (succsess) {
-        //Thong bao cap nhat thanh cong va thoat
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERT_NO") otherButtonTitles:LocalizedString(@"KEY_ALERT_YES"), nil];
-        alert.tag = 5;
-        [alert show];
         
+        if(!self.dataSend){
+            for (NSDictionary *item in listProduct) {
+                //neu qua duoc check thi tien hanh luu du lieu
+                NSMutableDictionary *dicEntity = [NSMutableDictionary new];
+                
+                //clientOpportunityProductId
+                NSString *clientOpportunityProductId = IntToStr([dtoOpportunityProductProcess getClientId]);
+                [dicEntity setObject:clientOpportunityProductId forKey:DTOOPPORTUNITYPRODUCT_clientOpportunityProductId];
+                //currencyId
+                
+                [dicEntity setObject:[item objectForKey:DTOOPPORTUNITYPRODUCT_currencyId]forKey:DTOOPPORTUNITYPRODUCT_currencyId];
+                //isActive
+                [dicEntity setObject:@"1" forKey:DTOCONTACT_isActive];
+                //clientOpportunityId
+                [dicEntity setObject:strClientOpportunityId forKey:DTOOPPORTUNITY_clientOpportunityId];
+                //productMasterId
+                [dicEntity setObject: [item objectForKey:DTOOPPORTUNITYPRODUCT_productMasterId] forKey:DTOOPPORTUNITYPRODUCT_productMasterId];
+                
+                //quantity
+                [dicEntity setObject:[item objectForKey:DTOOPPORTUNITYPRODUCT_quantity] forKey:DTOOPPORTUNITYPRODUCT_quantity];
+                //revenue
+                [dicEntity setObject:[item objectForKey:DTOOPPORTUNITYPRODUCT_revenue] forKey:DTOOPPORTUNITYPRODUCT_revenue];
+                
+                
+                succsess = [dtoOpportunityProductProcess insertToDBWithEntity:dicEntity];
+                
+            }
+        }
+        
+        if(succsess){
+            //Thong bao cap nhat thanh cong va thoat
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERT_NO") otherButtonTitles:LocalizedString(@"KEY_ALERT_YES"), nil];
+            alert.tag = 5;
+            [alert show];
+        }
+        else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE") message:LocalizedString(@"KEY_ALERT_ERROR") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERT_EXIT") otherButtonTitles:nil];
+            alert.tag = 6;
+            [alert show];
+        }
     }else{
         //khong bao nhap loi - lien he quan tri
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE") message:LocalizedString(@"KEY_ALERT_ERROR") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERT_EXIT") otherButtonTitles:nil];
@@ -1196,7 +1233,9 @@
 - (IBAction)actionAddProduct:(id)sender {
     EditOpportunityProductPopupViewController *viewController = [[EditOpportunityProductPopupViewController alloc]initWithNibName:@"EditOpportunityProductPopupViewController" bundle:nil];
     viewController.view.frame = CGRectMake(154, 0, 582, 675);//435//582
-    
+    if(self.dataSend){
+        viewController.dataSend = self.dataSend;
+    }
     viewController.delegateOpportunityProduct = (id<OpportunityProductPopupDelegate>)self;
 
     [self presentPopupViewController:viewController animationType:YES dismissed:nil];

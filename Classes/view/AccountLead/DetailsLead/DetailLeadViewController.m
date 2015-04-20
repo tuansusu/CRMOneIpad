@@ -151,16 +151,15 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     //remove footer view
     //(xoá dòng thừa không hiển thị của table)
     self.tbData.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
-    //scrollViewHeaderExpandInfo.contentSize = CGSizeMake(910, scrollViewHeaderExpandInfo.frame.size.height);
     [self setLanguage];
     myDevice=[UIDevice currentDevice].model;
     if([myDevice isEqualToString:@"iPhone"] || [myDevice isEqualToString:@"iPhone Simulator"]){
         [_myTabbar setSelectedItem:0];
-        //self.mySearchBar.barTintColor = HEADER_VIEW_COLOR1;
         self.myTabbar.barTintColor=[UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:1.0];
         [self.myTabbar setSelectedItem:self.myTabbar.items[0]];
     }
+    [_scrollviewCN setContentSize:CGSizeMake(320, _scrollviewCN.frame.size.height+20)];
+    [_scrollviewDN setContentSize:CGSizeMake(320, _scrollviewDN.frame.size.height +60)];
 }
 
 -(void) viewWillAppear:(BOOL)animated{
@@ -234,7 +233,8 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     NSLog(@"datasend detail lead = %@", self.dataSend);
     dicData = [dtoLeadProcess getDataWithKey:DTOLEAD_id withValue:[self.dataSend objectForKey:DTOLEAD_id]];
     NSLog(@"Get detail = %@", dicData);
-    
+    [self actionExpandInfo:self.btnExpandInfo];
+    [self loadDataWithTypeAction:typeActionEvent];
     if ([dicData isKindOfClass:[NSNull class]] || dicData==nil ) {
         [self dismissViewControllerAnimated:YES completion:nil];
         return;
@@ -248,36 +248,13 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         self.lbName.text =[dicData objectForKey:DTOLEAD_name];
     }
     if ([leadType isEqualToString:FIX_LEADTYPE_BUSSINESS]) {
-        NSLog(@"KHACH HANG DOAN NGHIEP");
-        
-        self.scrollViewPersonal.hidden = YES;
-        self.scrollViewBussiness.hidden = NO;
-        
+        [self.viewlef addSubview:_scrollviewDN];
         [self loadDetailCustomerBussinessData];
-        //        DetailCustomBussinessViewController *viewDetailController = [[DetailCustomBussinessViewController alloc]initWithNibName:@"DetailCustomBussinessViewController" bundle:nil];
-        //        viewDetailController.dataSend = dicData;
-        //        [self.viewBodyExpandInfo addSubview:viewDetailController.view];
-        
-        self.lbDescription.text = @"";
-        [self setBottomLineDetail:self.scrollViewBussiness];
         
     }else{
-        NSLog(@"KHACH HANG CA NHAN");
         
-        self.scrollViewPersonal.hidden = NO;
-        self.scrollViewBussiness.hidden = YES;
-        
-        self.scrollViewPersonal.contentSize = CGSizeMake(self.scrollViewPersonal.frame.size.width, 630.0f);
-        
-        
+        [self.viewlef addSubview:_scrollviewCN];
         [self loadDetailCustomerPersonalData];
-        [self setBottomLineDetail:self.scrollViewPersonal];
-        
-        
-        //        DetailCustomPersonViewController *viewDetailController = [[DetailCustomPersonViewController alloc]initWithNibName:@"DetailCustomPersonViewController" bundle:nil];
-        //        viewDetailController.dataSend = dicData;
-        //        [self.viewBodyExpandInfo addSubview:viewDetailController.view];
-        
     }
     
     
@@ -287,50 +264,43 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     [self actionExpandInfo:self.btnExpandInfo];
     arrayData  = [NSArray new];
+    [_tbData reloadData];
 }
 
 /*
  *Load danh sach khach hang ca nhan
  */
 -(void) loadDetailCustomerPersonalData {
-    
-    float  fyCN=_lbLabelCode.frame.origin.y;
     //code
-    fyCN = [self setFrameLabelTitle:_lbLabelCode withLabelValue:_lbCode withFY:fyCN :[dicData objectForKey:DTOLEAD_clientLeadId]];
+    _lbCode.text=[NSString stringWithFormat:@"%@: %@",LocalizedString(@"KEY_LEAD_CODE"),[dicData objectForKey:DTOLEAD_clientLeadId]];
     //name
-    fyCN = [self setFrameLabelTitle:_lbLabelName withLabelValue:_lbName withFY:fyCN :[dicData objectForKey:DTOLEAD_name]];
+    _lbName.text=[dicData objectForKey:DTOLEAD_name];
     //cmt
-    fyCN = [self setFrameLabelTitle:_lbLabelAlias withLabelValue:_lbAlias withFY:fyCN :[dicData objectForKey:DTOLEAD_identifiedNumber]];
+    _lbAlias.text=[dicData objectForKey:DTOLEAD_identifiedNumber];
     //sex
-    fyCN = [self setFrameLabelTitle:_lbLabelSex withLabelValue:_lbSex withFY:fyCN :[dicData objectForKey:DTOLEAD_sex]];
+    _lbSex.text=[dicData objectForKey:DTOLEAD_sex];
     //birth day
-    [_imgCalendar setFrame:CGRectMake(_imgCalendar.frame.origin.x, fyCN, _imgCalendar.frame.size.width, _imgCalendar.frame.size.height)];
-    fyCN = [self setFrameLabelTitle:_lbLabelBirthDay withLabelValue:_lbBirthDay withFY:fyCN :[dicData objectForKey:DTOLEAD_birthday]];
+    _lbBirthDay.text=[dicData objectForKey:DTOLEAD_birthday];
     //staus
     if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_marialStatus]]) {
         
         if ([ObjectToStr([dicData objectForKey:DTOLEAD_marialStatus]) isEqualToString:@"0"]) {
-            fyCN = [self setFrameLabelTitle:_lbLabelMarialStatus withLabelValue:_lbMarialStatus withFY:fyCN :@"Chưa kết hôn"];
+            _lbMarialStatus.text=@"Chưa kết hôn";
         }else if ([ObjectToStr([dicData objectForKey:DTOLEAD_marialStatus]) isEqualToString:@"1"]){
-            fyCN = [self setFrameLabelTitle:_lbLabelMarialStatus withLabelValue:_lbMarialStatus withFY:fyCN :@"Đã kết hôn"];
+            _lbMarialStatus.text=@"Đã kết hôn";
         }
         
     }
     //phone
-    [_btnCallCN setFrame:CGRectMake(_btnCallCN.frame.origin.x,fyCN, _btnCallCN.frame.size.width, _btnCallCN.frame.size.height)];
-    [_btnSMSCN setFrame:CGRectMake(_btnSMSCN.frame.origin.x,fyCN, _btnSMSCN.frame.size.width, _btnSMSCN.frame.size.height)];
-    fyCN = [self setFrameLabelTitle:_lbLabelPhone withLabelValue:_lbPhone withFY:fyCN :[dicData objectForKey:DTOLEAD_mobile]];
+    _lbPhone.text=[dicData objectForKey:DTOLEAD_mobile];
     //mail
-    [_btnEmailCN setFrame:CGRectMake(_btnEmailCN.frame.origin.x,fyCN, _btnEmailCN.frame.size.width, _btnEmailCN.frame.size.height)];
-    fyCN = [self setFrameLabelTitle:_lbLabelEmail withLabelValue:_lbEmail withFY:fyCN :[dicData objectForKey:DTOLEAD_email]];
+    _lbEmail.text=[dicData objectForKey:DTOLEAD_email];
     //address
-    [_btnAddCN setFrame:CGRectMake(_btnAddCN.frame.origin.x,fyCN, _btnAddCN.frame.size.width, _btnAddCN.frame.size.height)];
-    fyCN = [self setFrameLabelTitle:_lbLabelAddress withLabelValue:_lbAddress withFY:fyCN :[dicData objectForKey:DTOLEAD_address]];
+    _lbAddress.text=[dicData objectForKey:DTOLEAD_address];
     ///thu nhap ca nha
-    fyCN = [self setFrameLabelTitle:_lbLabelThuNhapCN withLabelValue:_lbThuNhapCN withFY:fyCN :[dicData objectForKey:DTOLEAD_monthlyIncome]];
+    _lbThuNhapCN.text=[dicData objectForKey:DTOLEAD_monthlyIncome];
     ///thu nhap ca nha
-    fyCN = [self setFrameLabelTitle:_lbLableTongThuNhap withLabelValue:_lbTongThuNhap withFY:fyCN :[dicData objectForKey:DTOLEAD_assetTotal]];
-    
+    _lbTongThuNhap.text=[dicData objectForKey:DTOLEAD_assetTotal];
     NSString *sms =@"";
     NSString *disableSms = [dicData objectForKey:DTOLEAD_disableSms];
     if([disableSms isEqualToString:@"0"])
@@ -350,13 +320,11 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     NSString *tmp=[NSString stringWithFormat:@"%@,%@,%@",sms,phone,email];
     //goi nho
     if (tmp.length>3) {
-        fyCN = [self setFrameLabelTitle:_lbLableKhongLienLacQua withLabelValue:_lbKhongLienLacQua withFY:fyCN :tmp];
+        _lbKhongLienLacQua.text=tmp;
     }
     else{
-        fyCN = [self setFrameLabelTitle:_lbLableKhongLienLacQua withLabelValue:_lbKhongLienLacQua withFY:fyCN :@""];
+        _lbKhongLienLacQua.text=@"";
     }
-    
-    _scrollViewPersonal.contentSize=CGSizeMake(0, self.view.frame.size.height + fyCN);
 }
 
 
@@ -364,93 +332,32 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
  *Load danh sach khach hang doanh nghiep
  */
 -(void) loadDetailCustomerBussinessData {
-    
-    float  fyCN=_lbLabelBussinessCode.frame.origin.y;
     //code
-    fyCN = [self setFrameLabelTitle:_lbLabelBussinessCode withLabelValue:_lbBussinessCode withFY:fyCN :[dicData objectForKey:DTOLEAD_clientLeadId]];
+    _lbBussinessCode.text=[NSString stringWithFormat:@"%@: %@",LocalizedString(@"KEY_LEAD_CODE"),[dicData objectForKey:DTOLEAD_clientLeadId]];
     //name
-    fyCN = [self setFrameLabelTitle:_lbLabelBussinessName withLabelValue:_lbBussinessName withFY:fyCN :[dicData objectForKey:DTOLEAD_name]];
+    _lbBussinessName.text=[dicData objectForKey:DTOLEAD_name];
     //tax code
-    fyCN = [self setFrameLabelTitle:_lbLabelBussinessTaxCode withLabelValue:_lbBussinessTaxCode withFY:fyCN :[dicData objectForKey:DTOLEAD_taxCode]];
-    
+    _lbBussinessTaxCode.text=[dicData objectForKey:DTOLEAD_taxCode];
     //phone
-    [_btnCallDN setFrame:CGRectMake(_btnCallDN.frame.origin.x,fyCN, _btnCallDN.frame.size.width, _btnCallDN.frame.size.height)];
-    [_btnSMSDN setFrame:CGRectMake(_btnSMSDN.frame.origin.x,fyCN, _btnSMSDN.frame.size.width, _btnSMSDN.frame.size.height)];
-    fyCN = [self setFrameLabelTitle:_lbLabelBussinessPhone withLabelValue:_lbBussinessPhone withFY:fyCN :[dicData objectForKey:DTOLEAD_mobile]];
+    _lbBussinessPhone.text=[dicData objectForKey:DTOLEAD_mobile];
     //email
-    [_btnEmailDN setFrame:CGRectMake(_btnEmailDN.frame.origin.x,fyCN, _btnEmailDN.frame.size.width, _btnEmailDN.frame.size.height)];
-    fyCN = [self setFrameLabelTitle:_lbLabelBussinessEmail withLabelValue:_lbBussinessEmail withFY:fyCN :[dicData objectForKey:DTOLEAD_email]];
+    _lbBussinessEmail.text=[dicData objectForKey:DTOLEAD_email];
     //adđ
-    [_btnAddDN setFrame:CGRectMake(_btnAddDN.frame.origin.x,fyCN, _btnAddDN.frame.size.width, _btnAddDN.frame.size.height)];
-    fyCN = [self setFrameLabelTitle:_lbLabelBussinessAddress withLabelValue:_lbBussinessAddress withFY:fyCN :[dicData objectForKey:DTOLEAD_address]];
+    _lbBussinessAddress.text=[dicData objectForKey:DTOLEAD_address];
     //ngày thành lập
-    fyCN = [self setFrameLabelTitle:_lbLableBussinessNgayThanhLap withLabelValue:_lbBussinessNgayThanhLap withFY:fyCN :[dicData objectForKey:DTOLEAD_birthday]];
-    //    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_updatedDate]]){
-    //        fyCN = [self setFrameLabelTitle:_lbLableBussinessNgayThanhLap withLabelValue:_lbBussinessNgayThanhLap withFY:fyCN :[dicData objectForKey:DTOLEAD_updatedDate]];
-    //    }
-    //    else{
-    ////        _lbLableBussinessNgayThanhLap.hidden=YES;
-    ////        _lbBussinessNgayThanhLap.hidden=YES;
-    //    }
+    _lbBussinessNgayThanhLap.text=[dicData objectForKey:DTOLEAD_birthday];
     //so dang ky
-    fyCN = [self setFrameLabelTitle:_lbLableBussinessDKKD withLabelValue:_lbBussinessDKKD withFY:fyCN :[dicData objectForKey:DTOLEAD_registrationNumber]];
-    //    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_registrationNumber]]){
-    //        fyCN = [self setFrameLabelTitle:_lbLableBussinessDKKD withLabelValue:_lbBussinessDKKD withFY:fyCN :[dicData objectForKey:DTOLEAD_registrationNumber]];
-    //    }
-    //    else{
-    //       // _lbLableBussinessDKKD.hidden=YES;
-    //       // _lbBussinessDKKD.hidden=YES;
-    //    }
+    _lbBussinessDKKD.text=[dicData objectForKey:DTOLEAD_registrationNumber];
     //von dieu le
-    fyCN = [self setFrameLabelTitle:_lbLableBussinessVonDieuLe withLabelValue:_lbBussinessVonDieuLe withFY:fyCN :[dicData objectForKey:DTOLEAD_charter]];
-    //    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_charter]]){
-    //        fyCN = [self setFrameLabelTitle:_lbLableBussinessVonDieuLe withLabelValue:_lbBussinessVonDieuLe withFY:fyCN :[dicData objectForKey:DTOLEAD_charter]];
-    //    }
-    //    else{
-    ////        _lbLableBussinessVonDieuLe.hidden=YES;
-    ////        _lbBussinessVonDieuLe.hidden=YES;
-    //    }
+    _lbBussinessVonDieuLe.text=[dicData objectForKey:DTOLEAD_charter];
     //von chu so huu
-    fyCN = [self setFrameLabelTitle:_lbLabelBussinessVoChuSoHuu withLabelValue:_lbBussinessVoChuSoHuu withFY:fyCN :[dicData objectForKey:DTOLEAD_equityOwner]];
-    //    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_equityOwner]])
-    //    {
-    //      fyCN = [self setFrameLabelTitle:_lbLabelBussinessVoChuSoHuu withLabelValue:_lbBussinessVoChuSoHuu withFY:fyCN :[dicData objectForKey:DTOLEAD_equityOwner]];
-    //    }
-    //    else{
-    ////        _lbLabelBussinessVoChuSoHuu.hidden=YES;
-    ////        _lbBussinessVoChuSoHuu.hidden=YES;
-    //    }
+    _lbBussinessVoChuSoHuu.text=[dicData objectForKey:DTOLEAD_equityOwner];
     //tong tai san
-    fyCN = [self setFrameLabelTitle:_lbLableBussinessTongTaiSan withLabelValue:_lbBussinessTongTaiSan withFY:fyCN :[dicData objectForKey:DTOLEAD_assetTotal]];
-    //    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_assetTotal]])
-    //    {
-    //        fyCN = [self setFrameLabelTitle:_lbLableBussinessTongTaiSan withLabelValue:_lbBussinessTongTaiSan withFY:fyCN :[dicData objectForKey:DTOLEAD_assetTotal]];
-    //    }
-    //    else{
-    ////        _lbLableBussinessTongTaiSan.hidden=YES;
-    ////        _lbBussinessTongTaiSan.hidden=YES;
-    //    }
+    _lbBussinessTongTaiSan.text=[dicData objectForKey:DTOLEAD_assetTotal];
     //doanh thu
-    
-    fyCN = [self setFrameLabelTitle:_lbLabelBussinessDoanhThu withLabelValue:_lbBussinessDoanhThu withFY:fyCN :[dicData objectForKey:DTOLEAD_revenue]];
-    //    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_profitNonTax]])
-    //    {
-    //        fyCN = [self setFrameLabelTitle:_lbLabelBussinessDoanhThu withLabelValue:_lbBussinessDoanhThu withFY:fyCN :[dicData objectForKey:DTOLEAD_profitNonTax]];
-    //    }
-    //    else{
-    ////        _lbLabelBussinessDoanhThu.hidden=YES;
-    ////        _lbBussinessDoanhThu.hidden=YES;
-    //    }
+    _lbBussinessDoanhThu.text=[dicData objectForKey:DTOLEAD_revenue];
     //loi nhuan
-    fyCN = [self setFrameLabelTitle:_lbLableBussniessLoiNhuan withLabelValue:_lbBussinessLoiNhuan withFY:fyCN :[dicData objectForKey:DTOLEAD_revenue]];
-    //    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_revenue]])
-    //    {
-    //        fyCN = [self setFrameLabelTitle:_lbLableBussniessLoiNhuan withLabelValue:_lbBussinessLoiNhuan withFY:fyCN :[dicData objectForKey:DTOLEAD_revenue]];
-    //    }
-    //    else{
-    ////        _lbLableBussniessLoiNhuan.hidden=YES;
-    ////        _lbBussinessLoiNhuan.hidden=YES;
-    //    }
+    _lbBussinessLoiNhuan.text=[dicData objectForKey:DTOLEAD_revenue];
     NSString *sms =@"";
     NSString *disableSms = [dicData objectForKey:DTOLEAD_disableSms];
     if([disableSms isEqualToString:@"0"])
@@ -480,17 +387,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     else{
         tmp=@"";
     }
-    fyCN = [self setFrameLabelTitle:_lbLableBussinessKhongLienLacQua withLabelValue:_lbBussinessKhongLienLacQuaa withFY:fyCN :tmp];
-    //    if(![StringUtil stringIsEmpty:sms]||![StringUtil stringIsEmpty:phone]||![StringUtil stringIsEmpty:email]||![StringUtil stringIsEmpty:metting]){
-    //        NSString *tmp=[NSString stringWithFormat:@"%@,%@,%@,%@",sms,phone,email,metting];
-    //        //goi nho
-    //        fyCN = [self setFrameLabelTitle:_lbLableBussinessKhongLienLacQua withLabelValue:_lbBussinessKhongLienLacQuaa withFY:fyCN :tmp];
-    //    }
-    //    else{
-    ////        _lbLableBussinessKhongLienLacQua.hidden=YES;
-    ////        _lbBussinessKhongLienLacQuaa.hidden=YES;
-    //    }
-    _scrollViewBussiness.contentSize=CGSizeMake(0, self.view.frame.size.height + fyCN);
+    _lbBussinessKhongLienLacQuaa.text=tmp;
 }
 
 

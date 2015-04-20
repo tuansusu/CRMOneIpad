@@ -61,6 +61,10 @@ enum TypeLeaderView{
 @property (weak, nonatomic) IBOutlet UILabel *lbLeftInfo;
 @property (weak, nonatomic) IBOutlet UIView *viewHeaderLeft;
 
+@property (weak, nonatomic) IBOutlet UIView *viewlef;
+
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollviewCN;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollviewDN;
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 

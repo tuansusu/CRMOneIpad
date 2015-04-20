@@ -427,7 +427,7 @@ NSString* emptyText = @"";
         [self initDataWithReloadTableView:YES];
     }else{
         //khong bao nhap loi - lien he quan tri
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:SYS_Notification_Title message:SYS_Notification_UpdateDbFail delegate:self cancelButtonTitle:SYS_Notification_OKButton otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:SYS_Notification_Title message:LocalizedString(@"KEY_WIDGET_UPDATEDB_FAIL") delegate:self cancelButtonTitle:SYS_Notification_OKButton otherButtonTitles:nil];
         [alert show];
     }
 }
@@ -452,7 +452,8 @@ NSString* emptyText = @"";
         [self.listPopover setPopoverContentSize:CGSizeMake(320, HEIGHT_SELECT_INDEX_ROW*listWidgetTypeNotUseStr.count) animated:NO];
         [self.listPopover presentPopoverFromRect:popoverFrame inView:self.headerViewBar permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
     }else{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:SYS_Notification_Title message:SYS_Notification_NoWidget delegate:self cancelButtonTitle:SYS_Notification_OKButton otherButtonTitles:nil];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:SYS_Notification_Title message:LocalizedString(@"KEY_WIDGET_ADD_WIDGET_SUCCESS") delegate:self cancelButtonTitle:SYS_Notification_OKButton otherButtonTitles:nil];
         [alert show];
     }
 }

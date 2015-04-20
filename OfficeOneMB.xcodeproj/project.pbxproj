@@ -359,7 +359,6 @@
 		76601A53194BE90F001D4C01 /* Left-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76601A24194BE90E001D4C01 /* Left-1.png */; };
 		76601A54194BE90F001D4C01 /* Right-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76601A26194BE90E001D4C01 /* Right-1.png */; };
 		76601A55194BE90F001D4C01 /* signature.png in Resources */ = {isa = PBXBuildFile; fileRef = 76601A27194BE90E001D4C01 /* signature.png */; };
-		76601A6019540CCD001D4C01 /* Introduct_OfficeOne.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 76601A5F19540CCD001D4C01 /* Introduct_OfficeOne.pdf */; };
 		76746A371A07CF4E005CEDB8 /* DTOOPPORTUNITYProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76746A361A07CF4E005CEDB8 /* DTOOPPORTUNITYProcess.m */; };
 		767E80C41AB9BC180098F76E /* ContactOpportunityCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 767E80C21AB9BC180098F76E /* ContactOpportunityCell~iphone.xib */; };
 		767E80CA1AB9C4E60098F76E /* TaskOpportunityCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 767E80C81AB9C4E60098F76E /* TaskOpportunityCell~iphone.xib */; };
@@ -1682,7 +1681,6 @@
 		76601A25194BE90E001D4C01 /* ReaderViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReaderViewControllerDelegate.h; path = PDFReader/ReaderViewControllerDelegate.h; sourceTree = "<group>"; };
 		76601A26194BE90E001D4C01 /* Right-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Right-1.png"; path = "PDFReader/Right-1.png"; sourceTree = "<group>"; };
 		76601A27194BE90E001D4C01 /* signature.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = signature.png; path = PDFReader/signature.png; sourceTree = "<group>"; };
-		76601A5F19540CCD001D4C01 /* Introduct_OfficeOne.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Introduct_OfficeOne.pdf; sourceTree = "<group>"; };
 		76746A351A07CF4E005CEDB8 /* DTOOPPORTUNITYProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOOPPORTUNITYProcess.h; sourceTree = "<group>"; };
 		76746A361A07CF4E005CEDB8 /* DTOOPPORTUNITYProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOOPPORTUNITYProcess.m; sourceTree = "<group>"; };
 		767E80C21AB9BC180098F76E /* ContactOpportunityCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ContactOpportunityCell~iphone.xib"; sourceTree = "<group>"; };
@@ -3168,8 +3166,8 @@
 				76977D561A0295D60029F297 /* bisone.sqlite */,
 				769C1A1D1A00041200F015A5 /* logo */,
 				28A0AAE50D9B0CCF005BE974 /* OfficeOneMB_Prefix.pch */,
-				29B97316FDCFA39411CA2CEA /* main.m */,
 				769CF23A1A768B8B004BF96E /* Localizable.strings */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -3181,7 +3179,6 @@
 				8497BF041A2959A500A5ED3C /* GoogleMaps.bundle */,
 				76C9647C1A17A15C00029978 /* Bisone */,
 				769C1A0F19FFF7BC00F015A5 /* OfficeOneStudy-Info.plist */,
-				76601A5F19540CCD001D4C01 /* Introduct_OfficeOne.pdf */,
 				B310D31F18BDE24E003772D6 /* Images.xcassets */,
 				2DE2D1E7182905F000034877 /* VofficeImages */,
 				B301F1B917C382D80004650C /* interfaces */,
@@ -6753,7 +6750,6 @@
 				B301F1E917C382D80004650C /* g_bg.png in Resources */,
 				8497BFC91A295A2300A5ED3C /* Default-Landscape@2x~ipad.png in Resources */,
 				2DD29EF218769C260066B883 /* menu-ic-quit-1.png in Resources */,
-				76601A6019540CCD001D4C01 /* Introduct_OfficeOne.pdf in Resources */,
 				764430721A7000CC007741BA /* menu_sales_activity.png in Resources */,
 				8E44BC3C1A73A89B00EDCD1A /* ProThanhToanQuocTeViewHeader.xib in Resources */,
 				76EE210F19FF4D7100A80414 /* icon-clock-1.png in Resources */,

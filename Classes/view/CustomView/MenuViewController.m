@@ -133,7 +133,7 @@
 
 -(void)setupLanguage{
     
-    
+    [self.btnLogOut setTitle:LocalizedString(@"MENU_FUNCTION_CANCEL") forState:UIControlStateNormal];
     [lbGroupCustomer setText:LocalizedString(@"MENU_GROUP_CUSTOMER")];
     [btnCustomer setTitle:LocalizedString(@"MENU_FUNCTION_ACCOUNTLEAD") forState:UIControlStateNormal];
     [btnAccount360 setTitle:LocalizedString(@"MENU_FUNCTION_ACCOUNT360") forState:UIControlStateNormal];

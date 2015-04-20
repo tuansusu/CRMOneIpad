@@ -111,9 +111,9 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 
 //=========================Main ALert ===================================================
 
-#define SYS_Notification_AddWidgetSuccess @"Thêm mới Widget thành công"
-#define SYS_Notification_UpdateDbFail @"Sảy ra lỗi, vui lòng thử lại hoặc gửi log đến quản trị"
-#define SYS_Notification_NoWidget @"Tất cả Widget đã được sử dụng"
+//#define SYS_Notification_AddWidgetSuccess @"Thêm mới Widget thành công"
+//#define SYS_Notification_UpdateDbFail @"Sảy ra lỗi, vui lòng thử lại hoặc gửi log đến quản trị"
+//#define SYS_Notification_NoWidget @"Tất cả Widget đã được sử dụng"
 
 //tuannv
 #define CommentType_CapNhatTienDo @"Cập nhật tiến độ"
@@ -129,7 +129,7 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 #define Code_TimeOut 215
 
 #define Introduction_File_Pdf @"Introduct_OfficeOne.pdf"
-#define SYS_Notification_Title @"Thông báo!"
+#define SYS_Notification_Title LocalizedString(@"KEY_INFO_TITLE")
 #define SYS_Notification_Warming @"Cảnh báo"
 #define SYS_Notification_FileNotExist @"File không tồn tại!"
 #define SYS_Notification_FileNotSupportRead @"Chưa hỗ trợ đọc văn bản"
@@ -140,7 +140,7 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 #define SYS_Notification_UpdateSuccess @"Cập nhật thành công"
 #define SYS_Notification_UpdateFail @"Cập nhật không thành công"
 #define SYS_Notification_CancelTitle @"Thoát"
-#define SYS_Notification_OKButton @"Đồng ý"
+#define SYS_Notification_OKButton LocalizedString(@"KEY_ALERTVIEW_DELETE_OK")
 #define SYS_Notification_CancelButton @"Huỷ"
 
 #define IMAGE_ICON_RIGHT @"icon_right.png"

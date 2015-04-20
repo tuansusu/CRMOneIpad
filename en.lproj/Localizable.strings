@@ -90,3 +90,8 @@
 
 //PHAN TRO GIUP
 "KEY_TITLE_HELP" = "HELP";
+
+//PHẦN WIDGET
+"KEY_WIDGET_ADD_WIDGET_SUCCESS" = "Add Widget success";
+"KEY_WIDGET_UPDATEDB_FAIL" = "Update fail, please retry";
+"KEY_WIDGET_NOWIDGET" = "All Widget is added";

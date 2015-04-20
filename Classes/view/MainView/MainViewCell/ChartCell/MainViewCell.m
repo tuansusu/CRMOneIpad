@@ -42,15 +42,15 @@
 }
 
 -(void)initView{
-    widgetTypeView.layer.cornerRadius = CORNER_RADIUS_VIEW;
-    widgetTypeView.clipsToBounds = YES;
-
-    btnSave.layer.cornerRadius = CORNER_RADIUS_BUTTON;
-    btnSave.clipsToBounds = YES;
-
-    btnCancel.layer.cornerRadius = CORNER_RADIUS_BUTTON;
-    btnCancel.clipsToBounds = YES;
-
+//    widgetTypeView.layer.cornerRadius = CORNER_RADIUS_VIEW;
+//    widgetTypeView.clipsToBounds = YES;
+//
+//    btnSave.layer.cornerRadius = CORNER_RADIUS_BUTTON;
+//    btnSave.clipsToBounds = YES;
+//
+//    btnCancel.layer.cornerRadius = CORNER_RADIUS_BUTTON;
+//    btnCancel.clipsToBounds = YES;
+//
     btnDelete.layer.cornerRadius = CORNER_RADIUS_BUTTON*3;
     btnDelete.clipsToBounds = YES;
 

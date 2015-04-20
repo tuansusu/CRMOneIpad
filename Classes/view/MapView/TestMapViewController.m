@@ -134,6 +134,13 @@
         self.viewMap1.hidden = YES;
         self.viewMap2.hidden = YES;
         self.imgHomeMenu.image = [UIImage imageNamed:@"btn-back-1-1.png"];
+        
+        zoomRatio = ZOOM_RATIO*0.8;
+        camera = [GMSCameraPosition cameraWithLatitude:21.0215447f
+                                             longitude:105.8395089f
+                                                  zoom:zoomRatio];
+        mapView_.camera = camera;
+        
     }
 
 }

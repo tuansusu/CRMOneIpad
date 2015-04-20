@@ -537,6 +537,8 @@
 		76D29B301A13AD88004B9CF6 /* ProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D29B2E1A13AD88004B9CF6 /* ProductCell.m */; };
 		76D29B311A13AD88004B9CF6 /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76D29B2F1A13AD88004B9CF6 /* ProductCell.xib */; };
 		76D6281C1A3DA741009C3A0C /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D6281B1A3DA741009C3A0C /* CMPopTipView.m */; };
+		76D8923F1AE549C2008428D1 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D8923D1AE549C2008428D1 /* EditProfileViewController.m */; };
+		76D892401AE549C2008428D1 /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76D8923E1AE549C2008428D1 /* EditProfileViewController.xib */; };
 		76DB17621AC78C5400D10878 /* EditOpportunityProductViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76DB17611AC78C5400D10878 /* EditOpportunityProductViewController~iphone.xib */; };
 		76DB17651AC7958400D10878 /* EditOpportunityTaskViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76DB17641AC7958400D10878 /* EditOpportunityTaskViewController~iphone.xib */; };
 		76DB17681AC7A5F400D10878 /* EditNoteOpportunityViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76DB17671AC7A5F400D10878 /* EditNoteOpportunityViewController~iphone.xib */; };
@@ -1960,6 +1962,9 @@
 		76D29B371A14C47F004B9CF6 /* OfficeOneMB-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OfficeOneMB-Info.plist"; sourceTree = "<group>"; };
 		76D6281A1A3DA741009C3A0C /* CMPopTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPopTipView.h; sourceTree = "<group>"; };
 		76D6281B1A3DA741009C3A0C /* CMPopTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPopTipView.m; sourceTree = "<group>"; };
+		76D8923C1AE549C2008428D1 /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
+		76D8923D1AE549C2008428D1 /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
+		76D8923E1AE549C2008428D1 /* EditProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
 		76DB17611AC78C5400D10878 /* EditOpportunityProductViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EditOpportunityProductViewController~iphone.xib"; sourceTree = "<group>"; };
 		76DB17641AC7958400D10878 /* EditOpportunityTaskViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EditOpportunityTaskViewController~iphone.xib"; sourceTree = "<group>"; };
 		76DB17671AC7A5F400D10878 /* EditNoteOpportunityViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EditNoteOpportunityViewController~iphone.xib"; sourceTree = "<group>"; };
@@ -5226,6 +5231,9 @@
 				8E6105F61A5986BF003D1C0C /* ProfileViewController.h */,
 				8E6105F71A5986BF003D1C0C /* ProfileViewController.m */,
 				8E6105F81A5986BF003D1C0C /* ProfileViewController.xib */,
+				76D8923C1AE549C2008428D1 /* EditProfileViewController.h */,
+				76D8923D1AE549C2008428D1 /* EditProfileViewController.m */,
+				76D8923E1AE549C2008428D1 /* EditProfileViewController.xib */,
 			);
 			name = Profile;
 			path = ../Profile;
@@ -7039,6 +7047,7 @@
 				2DE2D26B1829060700034877 /* refresh-btn-2.png in Resources */,
 				76EE207419FA829200A80414 /* ic-reply-task-1.png in Resources */,
 				8497BFE01A295A2300A5ED3C /* step1.png in Resources */,
+				76D892401AE549C2008428D1 /* EditProfileViewController.xib in Resources */,
 				8E75544F1A52EFC8001940FB /* iconForkLeft@2x.png in Resources */,
 				7644306A1A7000CC007741BA /* menu_group.png in Resources */,
 				76CD8817196D1E4F00503B99 /* ic-txt-1.png in Resources */,
@@ -7617,6 +7626,7 @@
 				8497BFFB1A295A2300A5ED3C /* GradientPolylinesViewController.m in Sources */,
 				76601A34194BE90F001D4C01 /* ReaderThumbRender.m in Sources */,
 				76C964791A17731900029978 /* MIMRangeGraph.m in Sources */,
+				76D8923F1AE549C2008428D1 /* EditProfileViewController.m in Sources */,
 				8E6021A91A872162006801C4 /* TPKeyboardAvoidingTableView.m in Sources */,
 				76C9629C1A16DBA500029978 /* AccountLeadCell.m in Sources */,
 				2D044C8018025D8D00FBC073 /* UIDevice+extend.m in Sources */,

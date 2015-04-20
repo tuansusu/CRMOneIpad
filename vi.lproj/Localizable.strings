@@ -378,4 +378,9 @@
 "KEY_PROBANKPLUS_RM" = "RM";
 "KEY_PROBANKPLUS_CHINHANHPHATHANH" = "Chi nhánh phát hành";
 
+//PHẦN WIDGET
+"KEY_WIDGET_ADD_WIDGET_SUCCESS" = "Thêm mới Widget thành công";
+"KEY_WIDGET_UPDATEDB_FAIL" = "Sảy ra lỗi, vui lòng thử lại hoặc gửi log đến quản trị";
+"KEY_WIDGET_NOWIDGET" = "Tất cả Widget đã được sử dụng";
+
 

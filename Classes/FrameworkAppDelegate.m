@@ -246,22 +246,8 @@
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *dbPath = [documentsDirectory stringByAppendingPathComponent:Introduction_File_Pdf];
-    
-	//NSString *dbPath = [DataUtil getPathFileSqlLite];
-	BOOL success = [fileManager fileExistsAtPath:dbPath];
-	
-	if(!success) {
-		
-		NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Introduct_OfficeOne.pdf"];
-		success = [fileManager copyItemAtPath:defaultDBPath toPath:dbPath error:&error];
-		
-		if (!success)
-			NSAssert1(0, @"Failed to create writable database file with message '%@'.", [error localizedDescription]);
-        
-	}
-    dbPath =  [documentsDirectory stringByAppendingPathComponent:DATABASE_NAME];
-    success = [fileManager fileExistsAtPath:dbPath];
+    NSString *dbPath =  [documentsDirectory stringByAppendingPathComponent:DATABASE_NAME];
+    BOOL  success = [fileManager fileExistsAtPath:dbPath];
 	
 	if(!success) {
 		

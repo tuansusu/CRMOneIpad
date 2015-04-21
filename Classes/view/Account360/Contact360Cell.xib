@@ -25,7 +25,7 @@
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDg-nn-K9U" userLabel="btn Address">
                         <rect key="frame" x="120" y="70" width="25" height="25"/>
-                        <state key="normal" backgroundImage="pin.png">
+                        <state key="normal" backgroundImage="MapMarker.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
@@ -46,7 +46,7 @@
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tYK-vY-cyf" userLabel="btn Email">
                         <rect key="frame" x="355" y="36" width="25" height="25"/>
-                        <state key="normal" backgroundImage="email_icon_hide.png">
+                        <state key="normal" backgroundImage="Email.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
@@ -61,7 +61,7 @@
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3kd-M0-M1Y" userLabel="btnPhone">
                         <rect key="frame" x="153" y="36" width="25" height="25"/>
-                        <state key="normal" backgroundImage="call.png">
+                        <state key="normal" backgroundImage="Phone.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
@@ -70,7 +70,7 @@
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqV-qf-BB7" userLabel="btnSMS">
                         <rect key="frame" x="120" y="35" width="25" height="25"/>
-                        <state key="normal" backgroundImage="email_icon_hide.png">
+                        <state key="normal" backgroundImage="Message.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
@@ -91,9 +91,10 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="Email.png" width="50" height="50"/>
+        <image name="MapMarker.png" width="50" height="50"/>
+        <image name="Message.png" width="50" height="50"/>
+        <image name="Phone.png" width="50" height="50"/>
         <image name="avatar.png" width="120" height="120"/>
-        <image name="call.png" width="30" height="27"/>
-        <image name="email_icon_hide.png" width="32" height="32"/>
-        <image name="pin.png" width="48" height="48"/>
     </resources>
 </document>

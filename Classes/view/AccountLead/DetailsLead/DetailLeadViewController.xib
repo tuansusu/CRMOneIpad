@@ -431,12 +431,16 @@
                             <color key="backgroundColor" red="0.056506628170000003" green="0.78016493060000003" blue="0.6699078665" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22/12/1991" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2dD-Kd-aIg">
-                            <rect key="frame" x="8" y="34" width="304" height="26"/>
+                            <rect key="frame" x="8" y="34" width="270" height="26"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Calendar.png" id="WVe-ag-mrx">
+                            <rect key="frame" x="286" y="34" width="26" height="26"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
@@ -492,14 +496,14 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bod-F3-7Zw">
                             <rect key="frame" x="286" y="34" width="26" height="26"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" backgroundImage="call.png">
+                            <state key="normal" backgroundImage="Phone.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LFA-vc-TXr">
                             <rect key="frame" x="243" y="34" width="26" height="26"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" backgroundImage="email_icon_hide.png">
+                            <state key="normal" backgroundImage="Message.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
@@ -537,7 +541,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Itg-HG-j8I">
                             <rect key="frame" x="286" y="34" width="26" height="26"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" backgroundImage="email_icon_hide.png">
+                            <state key="normal" backgroundImage="Email.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -573,7 +577,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="10R-Nr-Ku4">
                             <rect key="frame" x="286" y="34" width="26" height="26"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" backgroundImage="pin.png">
+                            <state key="normal" backgroundImage="MapMarker.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -737,12 +741,16 @@
                             <color key="backgroundColor" red="0.056506628170000003" green="0.78016493060000003" blue="0.6699078665" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22/12/1991" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wnz-qg-7ls">
-                            <rect key="frame" x="8" y="34" width="304" height="26"/>
+                            <rect key="frame" x="8" y="34" width="270" height="26"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Calendar.png" id="A8R-Xt-qeg">
+                            <rect key="frame" x="286" y="34" width="26" height="26"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
@@ -798,14 +806,14 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sv1-j7-M7N">
                             <rect key="frame" x="286" y="34" width="26" height="26"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" backgroundImage="call.png">
+                            <state key="normal" backgroundImage="Phone.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Adr-7F-4MP">
                             <rect key="frame" x="243" y="34" width="26" height="26"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" backgroundImage="email_icon_hide.png">
+                            <state key="normal" backgroundImage="Message.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
@@ -843,7 +851,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9QV-t3-3S8">
                             <rect key="frame" x="286" y="34" width="26" height="26"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" backgroundImage="email_icon_hide.png">
+                            <state key="normal" backgroundImage="Email.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -879,7 +887,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Fjn-gS-M4H">
                             <rect key="frame" x="286" y="34" width="26" height="26"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" backgroundImage="pin.png">
+                            <state key="normal" backgroundImage="MapMarker.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -1051,14 +1059,16 @@
         </scrollView>
     </objects>
     <resources>
+        <image name="Calendar.png" width="50" height="50"/>
+        <image name="Email.png" width="50" height="50"/>
+        <image name="MapMarker.png" width="50" height="50"/>
+        <image name="Message.png" width="50" height="50"/>
+        <image name="Phone.png" width="50" height="50"/>
         <image name="avatar.png" width="120" height="120"/>
         <image name="btn-back-1-1.png" width="40" height="40"/>
-        <image name="call.png" width="30" height="27"/>
-        <image name="email_icon_hide.png" width="32" height="32"/>
         <image name="ic-add-sub-1.png" width="90" height="90"/>
         <image name="icon_delete_90x90.png" width="90" height="90"/>
         <image name="icon_sua_90x90.png" width="90" height="90"/>
-        <image name="pin.png" width="48" height="48"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

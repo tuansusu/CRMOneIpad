@@ -31,7 +31,7 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wey-9j-wzp" userLabel="btn Email">
                         <rect key="frame" x="346" y="36" width="25" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" backgroundImage="email_icon_hide.png">
+                        <state key="normal" backgroundImage="Email.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
@@ -55,7 +55,7 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pv8-an-q6c" userLabel="btn Address">
                         <rect key="frame" x="111" y="70" width="25" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" backgroundImage="pin.png">
+                        <state key="normal" backgroundImage="MapMarker.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
@@ -65,7 +65,7 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="z4I-v8-Ueb">
                         <rect key="frame" x="111" y="35" width="25" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" backgroundImage="call.png">
+                        <state key="normal" backgroundImage="Phone.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
@@ -73,7 +73,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8YN-2d-wN8" userLabel="btn Flolow">
-                        <rect key="frame" x="592" y="35" width="24" height="24"/>
+                        <rect key="frame" x="528" y="35" width="24" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <state key="normal" backgroundImage="flag_enable.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -102,11 +102,11 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="Email.png" width="50" height="50"/>
+        <image name="MapMarker.png" width="50" height="50"/>
+        <image name="Phone.png" width="50" height="50"/>
         <image name="avatar.png" width="120" height="120"/>
-        <image name="call.png" width="30" height="27"/>
-        <image name="email_icon_hide.png" width="32" height="32"/>
         <image name="flag_enable.png" width="24" height="24"/>
-        <image name="pin.png" width="48" height="48"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

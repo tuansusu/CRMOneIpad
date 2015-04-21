@@ -62,6 +62,11 @@
 		1778859A1A84699100C71551 /* menuphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 177885921A84699100C71551 /* menuphone.png */; };
 		1778859B1A84699100C71551 /* menuview.png in Resources */ = {isa = PBXBuildFile; fileRef = 177885931A84699100C71551 /* menuview.png */; };
 		1783BDB81AB713C100DB90BF /* DetailLeadViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1783BDB61AB713C100DB90BF /* DetailLeadViewController~iphone.xib */; };
+		17A545C41AE5EFC4007F6B1E /* Email.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A545C01AE5EFC4007F6B1E /* Email.png */; };
+		17A545C51AE5EFC4007F6B1E /* MapMarker.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A545C11AE5EFC4007F6B1E /* MapMarker.png */; };
+		17A545C61AE5EFC4007F6B1E /* Message.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A545C21AE5EFC4007F6B1E /* Message.png */; };
+		17A545C71AE5EFC4007F6B1E /* Phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A545C31AE5EFC4007F6B1E /* Phone.png */; };
+		17A545C91AE5F1BF007F6B1E /* Calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A545C81AE5F1BF007F6B1E /* Calendar.png */; };
 		17C67D391A5D72FA00EECD66 /* SelectAddInMapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C67D371A5D72FA00EECD66 /* SelectAddInMapsViewController.m */; };
 		17C67D3A1A5D72FA00EECD66 /* SelectAddInMapsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17C67D381A5D72FA00EECD66 /* SelectAddInMapsViewController.xib */; };
 		17E1DC921AB881CC009B683B /* ContactLeadCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17E1DC901AB881CC009B683B /* ContactLeadCell~iphone.xib */; };
@@ -1245,6 +1250,11 @@
 		177885921A84699100C71551 /* menuphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuphone.png; sourceTree = "<group>"; };
 		177885931A84699100C71551 /* menuview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuview.png; sourceTree = "<group>"; };
 		1783BDB61AB713C100DB90BF /* DetailLeadViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DetailLeadViewController~iphone.xib"; sourceTree = "<group>"; };
+		17A545C01AE5EFC4007F6B1E /* Email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Email.png; sourceTree = "<group>"; };
+		17A545C11AE5EFC4007F6B1E /* MapMarker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MapMarker.png; sourceTree = "<group>"; };
+		17A545C21AE5EFC4007F6B1E /* Message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Message.png; sourceTree = "<group>"; };
+		17A545C31AE5EFC4007F6B1E /* Phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Phone.png; sourceTree = "<group>"; };
+		17A545C81AE5F1BF007F6B1E /* Calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Calendar.png; sourceTree = "<group>"; };
 		17C67D361A5D72FA00EECD66 /* SelectAddInMapsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectAddInMapsViewController.h; sourceTree = "<group>"; };
 		17C67D371A5D72FA00EECD66 /* SelectAddInMapsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAddInMapsViewController.m; sourceTree = "<group>"; };
 		17C67D381A5D72FA00EECD66 /* SelectAddInMapsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectAddInMapsViewController.xib; sourceTree = "<group>"; };
@@ -6150,6 +6160,11 @@
 		92C68E6D1519DC7D00981728 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				17A545C81AE5F1BF007F6B1E /* Calendar.png */,
+				17A545C01AE5EFC4007F6B1E /* Email.png */,
+				17A545C11AE5EFC4007F6B1E /* MapMarker.png */,
+				17A545C21AE5EFC4007F6B1E /* Message.png */,
+				17A545C31AE5EFC4007F6B1E /* Phone.png */,
 				172EFC8C1ACB06CD00C70E9C /* errorVaildate.png */,
 				172EFC8A1ACB051800C70E9C /* select.png */,
 				172EFAEB1ACB016E00C70E9C /* Back_32.png */,
@@ -6655,6 +6670,7 @@
 				8E875FC41AC2E390002B89AD /* popoverArrowUp@2x.png in Resources */,
 				2D0DCEE717A37ADC004FDBBC /* Icon-Search.png in Resources */,
 				8E7554731A52F599001940FB /* iconMarkerLocation@2x.png in Resources */,
+				17A545C91AE5F1BF007F6B1E /* Calendar.png in Resources */,
 				2D0DCEE817A37ADC004FDBBC /* Line-Phong kinhdoanh.png in Resources */,
 				764430691A7000CC007741BA /* menu_dashboard.png in Resources */,
 				7657E8B61A5AEB3A008A62F9 /* Calendar360Cell.xib in Resources */,
@@ -6665,6 +6681,7 @@
 				8E8B3F261A49AA4300241360 /* MainViewController.xib in Resources */,
 				8E7554601A52EFC8001940FB /* iconStraight.png in Resources */,
 				8E875FC61AC2E390002B89AD /* popoverBg.png in Resources */,
+				17A545C51AE5EFC4007F6B1E /* MapMarker.png in Resources */,
 				767E80CA1AB9C4E60098F76E /* TaskOpportunityCell~iphone.xib in Resources */,
 				76BE29381AA3F55800663803 /* icon_delete_90x90.png in Resources */,
 				2D2D213417A6291700A87364 /* Line-box_doanh_thu_cac_dich_vu.png in Resources */,
@@ -6687,6 +6704,7 @@
 				8497BFC31A295A2300A5ED3C /* botswana.png in Resources */,
 				8497BFCA1A295A2300A5ED3C /* Default-Landscape~ipad.png in Resources */,
 				2D32B5C1187B8B0C0065C305 /* tab-data-btn-4-1.png in Resources */,
+				17A545C61AE5EFC4007F6B1E /* Message.png in Resources */,
 				8497BFDA1A295A2300A5ED3C /* voyager@2x.png in Resources */,
 				76C964651A17731900029978 /* layeredpiechart.jpg in Resources */,
 				2DD29EEE18769C260066B883 /* menu-ic-my-work-1.png in Resources */,
@@ -6873,6 +6891,7 @@
 				76008E6B1ABC7FFE00BCFA92 /* icon_opp_note.png in Resources */,
 				B3ECBA2517D1EFF300AF40CF /* icon_capnhattiendo.png in Resources */,
 				76601A50194BE90F001D4C01 /* Reader-Print@2x.png in Resources */,
+				17A545C71AE5EFC4007F6B1E /* Phone.png in Resources */,
 				B3157886188D5E5200C0ED01 /* ic-viewpdf-rotateright-1.png in Resources */,
 				2D6D7666187670B00051AD9E /* refresh-btn-1.png in Resources */,
 				8E44BC301A73A89B00EDCD1A /* ProBankPlusDetailViewController.xib in Resources */,
@@ -7126,6 +7145,7 @@
 				2DD29EE918769C260066B883 /* menu-ic-ca-1.png in Resources */,
 				B3157882188D5E5200C0ED01 /* ic-viewpdf-bookmark-1.png in Resources */,
 				8E875FBA1AC2E390002B89AD /* popoverArrowDown.png in Resources */,
+				17A545C41AE5EFC4007F6B1E /* Email.png in Resources */,
 				76BE293A1AA3F55800663803 /* icon_sua_90x90.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

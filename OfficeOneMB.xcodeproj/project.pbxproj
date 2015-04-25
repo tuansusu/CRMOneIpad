@@ -61,6 +61,8 @@
 		177885991A84699100C71551 /* menumessage.png in Resources */ = {isa = PBXBuildFile; fileRef = 177885911A84699100C71551 /* menumessage.png */; };
 		1778859A1A84699100C71551 /* menuphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 177885921A84699100C71551 /* menuphone.png */; };
 		1778859B1A84699100C71551 /* menuview.png in Resources */ = {isa = PBXBuildFile; fileRef = 177885931A84699100C71551 /* menuview.png */; };
+		177FFAC41AEBEA0D00B52EF3 /* Contact360Cell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 177FFAC21AEBEA0D00B52EF3 /* Contact360Cell~iphone.xib */; };
+		177FFAC91AEBEC8F00B52EF3 /* Note360Cell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 177FFAC71AEBEC8F00B52EF3 /* Note360Cell~iphone.xib */; };
 		1783BDB81AB713C100DB90BF /* DetailLeadViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1783BDB61AB713C100DB90BF /* DetailLeadViewController~iphone.xib */; };
 		17A545C41AE5EFC4007F6B1E /* Email.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A545C01AE5EFC4007F6B1E /* Email.png */; };
 		17A545C51AE5EFC4007F6B1E /* MapMarker.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A545C11AE5EFC4007F6B1E /* MapMarker.png */; };
@@ -1249,6 +1251,8 @@
 		177885911A84699100C71551 /* menumessage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menumessage.png; sourceTree = "<group>"; };
 		177885921A84699100C71551 /* menuphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuphone.png; sourceTree = "<group>"; };
 		177885931A84699100C71551 /* menuview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuview.png; sourceTree = "<group>"; };
+		177FFAC21AEBEA0D00B52EF3 /* Contact360Cell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Contact360Cell~iphone.xib"; sourceTree = "<group>"; };
+		177FFAC71AEBEC8F00B52EF3 /* Note360Cell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Note360Cell~iphone.xib"; sourceTree = "<group>"; };
 		1783BDB61AB713C100DB90BF /* DetailLeadViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DetailLeadViewController~iphone.xib"; sourceTree = "<group>"; };
 		17A545C01AE5EFC4007F6B1E /* Email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Email.png; sourceTree = "<group>"; };
 		17A545C11AE5EFC4007F6B1E /* MapMarker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MapMarker.png; sourceTree = "<group>"; };
@@ -4618,6 +4622,7 @@
 				7657E8851A5AEB3A008A62F9 /* Contact360Cell.h */,
 				7657E8861A5AEB3A008A62F9 /* Contact360Cell.m */,
 				7657E8871A5AEB3A008A62F9 /* Contact360Cell.xib */,
+				177FFAC21AEBEA0D00B52EF3 /* Contact360Cell~iphone.xib */,
 				7657E8881A5AEB3A008A62F9 /* EditContact360ViewController.h */,
 				7657E8891A5AEB3A008A62F9 /* EditContact360ViewController.m */,
 				7657E88A1A5AEB3A008A62F9 /* EditContact360ViewController.xib */,
@@ -4651,6 +4656,7 @@
 				7657E8A61A5AEB3A008A62F9 /* Note360Cell.h */,
 				7657E8A71A5AEB3A008A62F9 /* Note360Cell.m */,
 				7657E8A81A5AEB3A008A62F9 /* Note360Cell.xib */,
+				177FFAC71AEBEC8F00B52EF3 /* Note360Cell~iphone.xib */,
 				7657E8A91A5AEB3A008A62F9 /* Opportunity360Cell.h */,
 				7657E8AA1A5AEB3A008A62F9 /* Opportunity360Cell.m */,
 				7657E8AB1A5AEB3A008A62F9 /* Opportunity360Cell.xib */,
@@ -6780,6 +6786,7 @@
 				1778859A1A84699100C71551 /* menuphone.png in Resources */,
 				B316D690188FEECC009B751B /* bg-doc-event-1.png in Resources */,
 				7644306B1A7000CC007741BA /* menu_help.png in Resources */,
+				177FFAC41AEBEA0D00B52EF3 /* Contact360Cell~iphone.xib in Resources */,
 				1755B00A1AB5D22700F543DA /* ListAccountViewController~iphone.xib in Resources */,
 				2D6D7663187670B00051AD9E /* ic-work-order-group-1.png in Resources */,
 				7633080E1A048962000E190B /* VTCheckBox.xib in Resources */,
@@ -7020,6 +7027,7 @@
 				2DE2D2571829060700034877 /* search-bg.png in Resources */,
 				849B6D8F1A18EAD9007E3B06 /* EditBussinessLeadViewController.xib in Resources */,
 				B38111E818ACD40600876151 /* update-btn-2-1.png in Resources */,
+				177FFAC91AEBEC8F00B52EF3 /* Note360Cell~iphone.xib in Resources */,
 				7657E8B21A5AEB3A008A62F9 /* EditContact360ViewController.xib in Resources */,
 				76D29ABB1A110F8D004B9CF6 /* CompetionorCell.xib in Resources */,
 				76601A3C194BE90F001D4C01 /* Cancel-PDF.png in Resources */,

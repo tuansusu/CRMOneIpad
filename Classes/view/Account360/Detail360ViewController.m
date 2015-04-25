@@ -170,6 +170,8 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         //self.mySearch.barTintColor = HEADER_VIEW_COLOR1;
         self.myTabbar.barTintColor=[UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:1.0];
         [self.myTabbar setSelectedItem:self.myTabbar.items[0]];
+        [self.scrollviewCN setContentSize:CGSizeMake(320, _scrollviewCN.frame.size.height + 500)];
+        [self.scrollviewDN setContentSize:CGSizeMake(320, _scrollviewDN.frame.size.height + 500)];
         
     }
 }
@@ -299,7 +301,12 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     NSLog(@"type:%@",type);
     if([type isEqualToString:@"INDIV"]){
         NSLog(@"Khach hang ca nhan");
-        [self.viewleft addSubview:self.scrollviewCN];
+        if ([self currentDeviceType]==iPhone) {
+            [_viewDetailIP addSubview:_scrollviewCN];
+        }
+        else{
+            [self.viewleft addSubview:self.scrollviewCN];
+        }
         //code
         _lbCode.text=[NSString stringWithFormat:@"%@: %@",LocalizedString(@"KEY_360_CODE"),[dicData objectForKey:DTOACCOUNT_code]];
         //name
@@ -360,7 +367,12 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         _lbKhongLienLacQua.text=tmp;
     }
     else{
-        [self.viewleft addSubview:self.scrollviewDN];
+        if ([self currentDeviceType]==iPhone) {
+            [_viewDetailIP addSubview:_scrollviewDN];
+        }
+        else{
+            [self.viewleft addSubview:self.scrollviewDN];
+        }
         //        //code
         _lbcodeDN.text=[NSString stringWithFormat:@"%@: %@",LocalizedString(@"KEY_360_CODE"), [dicData objectForKey:DTOACCOUNT_clientAccountId]];
         //ten khach hang
@@ -857,7 +869,20 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             return 60.0f;
             break;
         case type360View_Note:
-            return 60.0f;
+            if ([self currentDeviceType]==iPhone) {
+                return  50.0f;
+            }
+            else{
+                return 60.0f;
+            }
+            break;
+        case type360View_Contact:
+            if ([self currentDeviceType]==iPhone) {
+                return 50.0f;
+            }
+            else{
+                return  100.0f;
+            }
             break;
         default:
             break;
@@ -1630,35 +1655,38 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     //chi tiết khách hàng
     if(indexOfTab==0){
         if ([leadType isEqualToString:FIX_LEADTYPE_BUSSINESS]) {
-            _scollviewDN.hidden=NO;
-            _mySearch.hidden=YES;
+            _viewData.hidden=YES;
+            _scrollviewCN.hidden=YES;
+            _scrollviewDN.hidden=NO;
+            [_viewDetailIP addSubview:_scrollviewDN];
+            
         }else{
-            _scrollViewBodyLeft.hidden=NO;
-            _mySearch.hidden=YES;
+            _viewData.hidden=YES;
+            _scrollviewCN.hidden=NO;
+            _scrollviewDN.hidden=YES;
+            [_viewDetailIP addSubview:_scrollviewCN];
+            
         }
         _viewData.hidden=YES;
-        _fullNameLB.text=@"KHÁCH HÀNG TIỀM NĂNG";
+        _fullNameLB.text=@"KHÁCH HÀNG 360";
     }
     else if(indexOfTab==1){
-        _scollviewDN.hidden=YES;
-        _scrollViewBodyLeft.hidden=YES;
-        _mySearch.hidden=NO;
+        _scrollviewCN.hidden=YES;
+        _scrollviewDN.hidden=YES;
         _viewData.hidden=NO;
         _fullNameLB.text=@"LIÊN HỆ";
         [self loadDataWithTypeAction:typeLeaderView_Contact];
     }
     else if(indexOfTab==2){
-        _scollviewDN.hidden=YES;
-        _scrollViewBodyLeft.hidden=YES;
-        _mySearch.hidden=NO;
+        _scrollviewCN.hidden=YES;
+        _scrollviewDN.hidden=YES;
         _viewData.hidden=NO;
         _fullNameLB.text=@"GHI CHÚ";
         [self loadDataWithTypeAction:typeLeaderView_Note];
     }
     else if(indexOfTab==3){
-        _scollviewDN.hidden=YES;
-        _scrollViewBodyLeft.hidden=YES;
-        _mySearch.hidden=NO;
+        _scrollviewCN.hidden=YES;
+        _scrollviewDN.hidden=YES;
         _viewData.hidden=NO;
         _fullNameLB.text=@"LỊCH";
         if (typeActionEvent == typeLeaderView_Calendar)
@@ -1668,9 +1696,8 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         [self loadDataWithTypeAction:typeLeaderView_Calendar];
     }
     else if(indexOfTab==4){
-        _scollviewDN.hidden=YES;
-        _scrollViewBodyLeft.hidden=YES;
-        _mySearch.hidden=NO;
+        _scrollviewCN.hidden=YES;
+        _scrollviewDN.hidden=YES;
         _viewData.hidden=NO;
         _fullNameLB.text=@"Ý KIẾN";
         [self loadDataWithTypeAction:typeLeaderView_Complains];

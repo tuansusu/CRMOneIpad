@@ -173,7 +173,7 @@ enum Type360View{
 
 //khach hang doanh nghiep
 @property (weak, nonatomic) IBOutlet UIScrollView *scollviewDN;
-
+@property (weak,nonatomic) IBOutlet UIView *viewDetailIP;
 @property (weak, nonatomic) IBOutlet UILabel *codeDN;
 @property (weak, nonatomic) IBOutlet UILabel *nameDN;
 

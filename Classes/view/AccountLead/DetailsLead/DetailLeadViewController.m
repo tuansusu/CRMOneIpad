@@ -16,6 +16,7 @@
 #import "DTONOTEProcess.h"
 #import "DTOATTACHMENTProcess.h"
 #import "DTOOPPORTUNITYProcess.h"
+#import "EnumClass.h"
 
 
 #import "TaskCalendarCell.h"
@@ -147,7 +148,8 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     [self actionExpandInfo:self.btnExpandInfo];
     
     [scrollViewHeaderExpandInfo setContentSize:CGSizeMake(WIDTH_HEADER_EXPAND_INFO, scrollViewHeaderExpandInfo.frame.size.height)];
-    
+    [_scrollviewCN setContentSize:CGSizeMake(320, _scrollviewCN.frame.size.height+20)];
+    [_scrollviewDN setContentSize:CGSizeMake(320, _scrollviewDN.frame.size.height +60)];
     //remove footer view
     //(xoá dòng thừa không hiển thị của table)
     self.tbData.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -155,11 +157,11 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     myDevice=[UIDevice currentDevice].model;
     if([myDevice isEqualToString:@"iPhone"] || [myDevice isEqualToString:@"iPhone Simulator"]){
         [_myTabbar setSelectedItem:0];
+        [_scrollviewCN setContentSize:CGSizeMake(320, _scrollviewCN.frame.size.height+350)];
+        [_scrollviewDN setContentSize:CGSizeMake(320, _scrollviewDN.frame.size.height +450)];
         self.myTabbar.barTintColor=[UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:1.0];
         [self.myTabbar setSelectedItem:self.myTabbar.items[0]];
     }
-    [_scrollviewCN setContentSize:CGSizeMake(320, _scrollviewCN.frame.size.height+20)];
-    [_scrollviewDN setContentSize:CGSizeMake(320, _scrollviewDN.frame.size.height +60)];
 }
 
 -(void) viewWillAppear:(BOOL)animated{
@@ -248,12 +250,20 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         self.lbName.text =[dicData objectForKey:DTOLEAD_name];
     }
     if ([leadType isEqualToString:FIX_LEADTYPE_BUSSINESS]) {
+        if ([self currentDeviceType]==iPhone) {
+            [_viewDetailIP addSubview:_scrollviewDN];
+        }else{
         [self.viewlef addSubview:_scrollviewDN];
+        }
         [self loadDetailCustomerBussinessData];
         
     }else{
         
+        if ([self currentDeviceType]==iPhone) {
+            [_viewDetailIP addSubview:_scrollviewCN];
+        }else{
         [self.viewlef addSubview:_scrollviewCN];
+        }
         [self loadDetailCustomerPersonalData];
     }
     
@@ -1587,36 +1597,40 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     NSLog(@"Tab bar: did select tab %@", item.title);
     //chi tiết khách hàng
     if(indexOfTab==0){
+        _viewDetailIP.hidden=NO;
         if ([leadType isEqualToString:FIX_LEADTYPE_BUSSINESS]) {
-            _scrollViewBussiness.hidden=NO;
-            _mySearchBar.hidden=YES;
+            _viewData.hidden=YES;
+             _scrollviewDN.hidden=NO;
+             _scrollviewCN.hidden=YES;
+            [_viewDetailIP addSubview:_scrollviewDN];
         }else{
-            _scrollViewPersonal.hidden=NO;
-            _mySearchBar.hidden=YES;
+            _scrollviewCN.hidden=NO;
+             _scrollviewDN.hidden=YES;
+            _viewData.hidden=YES;
+            [_viewDetailIP addSubview:_scrollviewCN];
         }
-        _viewData.hidden=YES;
         _fullNameLB.text=@"KHÁCH HÀNG TIỀM NĂNG";
     }
     else if(indexOfTab==1){
-        _scrollViewBussiness.hidden=YES;
-        _scrollViewPersonal.hidden=YES;
-        _mySearchBar.hidden=NO;
+        _scrollviewCN.hidden=YES;
+        _scrollviewDN.hidden=YES;
+        _viewDetailIP.hidden=YES;
         _viewData.hidden=NO;
         _fullNameLB.text=@"LIÊN HỆ";
         [self loadDataWithTypeAction:typeLeaderView_Contact];
     }
     else if(indexOfTab==2){
-        _scrollViewBussiness.hidden=YES;
-        _scrollViewPersonal.hidden=YES;
-        _mySearchBar.hidden=NO;
+        _scrollviewCN.hidden=YES;
+        _scrollviewDN.hidden=YES;
+        _viewDetailIP.hidden=YES;
         _viewData.hidden=NO;
         _fullNameLB.text=@"GHI CHÚ";
         [self loadDataWithTypeAction:typeLeaderView_Note];
     }
     else if(indexOfTab==3){
-        _scrollViewBussiness.hidden=YES;
-        _scrollViewPersonal.hidden=YES;
-        _mySearchBar.hidden=NO;
+        _scrollviewCN.hidden=YES;
+        _scrollviewDN.hidden=YES;
+        _viewDetailIP.hidden=YES;
         _viewData.hidden=NO;
         _fullNameLB.text=@"LỊCH";
         if (typeActionEvent == typeLeaderView_Calendar)
@@ -1626,9 +1640,9 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         [self loadDataWithTypeAction:typeLeaderView_Calendar];
     }
     else if(indexOfTab==4){
-        _scrollViewBussiness.hidden=YES;
-        _scrollViewPersonal.hidden=YES;
-        _mySearchBar.hidden=NO;
+        _scrollviewCN.hidden=YES;
+        _scrollviewDN.hidden=YES;
+        _viewDetailIP.hidden=YES;
         _viewData.hidden=NO;
         _fullNameLB.text=@"Ý KIẾN";
         [self loadDataWithTypeAction:typeLeaderView_Complains];

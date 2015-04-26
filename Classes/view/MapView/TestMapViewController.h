@@ -40,7 +40,10 @@ enum TypeMapView{
 
 
 
-@interface TestMapViewController : UIViewController
+@interface TestMapViewController : UIViewController<CLLocationManagerDelegate>
+{
+    //CLLocationManager *locationManager;
+}
 
 
 @property (weak,nonatomic) id <SelectMapDelegate> selectMapDelegate;

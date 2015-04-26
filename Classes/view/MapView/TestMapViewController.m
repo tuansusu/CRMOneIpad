@@ -135,15 +135,33 @@
         self.viewMap2.hidden = YES;
         self.imgHomeMenu.image = [UIImage imageNamed:@"btn-back-1-1.png"];
         
-        zoomRatio = ZOOM_RATIO*0.8;
+        
+        
+        //fix vi tri mac dinh la HaNoi :d
+        zoomRatio = ZOOM_RATIO*0.9;
         camera = [GMSCameraPosition cameraWithLatitude:21.0215447f
                                              longitude:105.8395089f
                                                   zoom:zoomRatio];
         mapView_.camera = camera;
         
     }
+    
+    
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager startUpdatingLocation];
 
 }
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
+    NSLog(@"OldLocation %f %f", oldLocation.coordinate.latitude, oldLocation.coordinate.longitude);
+    NSLog(@"NewLocation %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
+
+}
+
+
 
 -(void)initDataKH{
     [_mapModel getFirstPageCustomerKHDMWithKey:searchBarCustomer.text];

@@ -1105,6 +1105,10 @@
 
 }
 
+-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return @"Xoa";
+}
+
 
 -(void)searchBar:(MDSearchBarController *)searchBarController searchWithText:(NSString *)text{
     if(selectTypeIndex < 0)

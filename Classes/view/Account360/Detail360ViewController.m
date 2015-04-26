@@ -158,17 +158,20 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     //remove footer view
     //(xoá dòng thừa không hiển thị của table)
     self.tbData.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    //_scollviewDN.contentSize=CGSizeMake(0, self.view.frame.size.height);
-    //_scrollViewBodyLeft.contentSize=CGSizeMake(0, self.view.frame.size.height);
-    //[self setLanguage];
-    
     [self updateInterFaceWithOption:smgSelect];
+    [self.scrollviewCN setContentSize:CGSizeMake(320, _scrollviewCN.frame.size.height + 300)];
+    [self.scrollviewDN setContentSize:CGSizeMake(320, _scrollviewDN.frame.size.height + 300)];
+    
+    
+    
     if([self currentDeviceType]==iPhone)
     {
         [_myTabbar setSelectedItem:0];
         //self.mySearch.barTintColor = HEADER_VIEW_COLOR1;
         self.myTabbar.barTintColor=[UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:1.0];
         [self.myTabbar setSelectedItem:self.myTabbar.items[0]];
+        [self.scrollviewCN setContentSize:CGSizeMake(320, _scrollviewCN.frame.size.height + 500)];
+        [self.scrollviewDN setContentSize:CGSizeMake(320, _scrollviewDN.frame.size.height + 500)];
         
     }
 }
@@ -298,82 +301,43 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     NSLog(@"type:%@",type);
     if([type isEqualToString:@"INDIV"]){
         NSLog(@"Khach hang ca nhan");
-        _scollviewDN.hidden=YES;
-        
-        //        //ma khach hang
-        //        if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_code]]){
-        //            _lbCode.text=[dicData objectForKey:DTOACCOUNT_code];
-        //            heightLabelCN =  [self getHeightLabel:[dicData objectForKey:DTOACCOUNT_code]];
-        //
-        //            if (heightLabelCN>25) {
-        //                [UILabel setMultiline:_lbCode];}
-        //        }
-        //        else{
-        //            _lbCode.text=@"";
-        //        }
-        //        fyCN = _lbCode.frame.origin.y + _lbCode.frame.size.height + 10;
-        
-        
-        
-        //ten khach hang
-        
-        NSString *strValue = @"";
-        
-        fyCN = [self setFrameLabelTitle:_makhachhangCN withLabelValue:_lbCode withFY:fyCN :[dicData objectForKey:DTOACCOUNT_code]];
-        
-        fyCN = [self setFrameLabelTitle:_tenkhachangCN withLabelValue:_lbName withFY:fyCN :[dicData objectForKey:DTOACCOUNT_name]];
-        
-        
+        if ([self currentDeviceType]==iPhone) {
+            [_viewDetailIP addSubview:_scrollviewCN];
+        }
+        else{
+            [self.viewleft addSubview:self.scrollviewCN];
+        }
+        //code
+        _lbCode.text=[NSString stringWithFormat:@"%@: %@",LocalizedString(@"KEY_360_CODE"),[dicData objectForKey:DTOACCOUNT_code]];
+        //name
+        _lbName.text=[dicData objectForKey:DTOACCOUNT_name];
         //gioi tinh
-        [self setFrameLabelTitle:_gioitinhCN withLabelValue:_lbSex withFY:fyCN];
-        
         if([[dicData objectForKey:DTOACCOUNT_sex] isEqualToString:@"1"] || [[dicData objectForKey:DTOACCOUNT_sex] isEqualToString:@"Nam"]){
             _lbSex.text=@"Nam";
         }
         else{
             _lbSex.text=@"Nữ";
         }
-        fyCN = _lbSex.frame.origin.y + _lbSex.frame.size.height + 10;
-        
         //dien thoai
-        [_btnSMS setFrame:CGRectMake(_btnSMS.frame.origin.x,fyCN, _btnSMS.frame.size.width, _btnSMS.frame.size.height)];
-        [_btnCall setFrame:CGRectMake(_btnCall.frame.origin.x,fyCN, _btnCall.frame.size.width, _btnCall.frame.size.height)];
-        fyCN = [self setFrameLabelTitle:_dienthoaiCN withLabelValue:_lbMobile withFY:fyCN :[dicData objectForKey:DTOACCOUNT_mobile]];
-        
+        _lbMobile.text=[dicData objectForKey:DTOACCOUNT_mobile];
         //email
-        [_btnEmail setFrame:CGRectMake(_btnEmail.frame.origin.x,fyCN, _btnEmail.frame.size.width, _btnEmail.frame.size.height)];
-        fyCN = [self setFrameLabelTitle:_emailCN withLabelValue:_lbEmail withFY:fyCN :[dicData objectForKey:DTOACCOUNT_email]];
-        
+        _lbEmail.text=[dicData objectForKey:DTOACCOUNT_email];
         //dia chi
-        [_btnAddCN setFrame:CGRectMake(_btnAddCN.frame.origin.x,fyCN, _btnAddCN.frame.size.width, _btnAddCN.frame.size.height)];
-        fyCN = [self setFrameLabelTitle:_diachiCN withLabelValue:_lbDiaChi withFY:fyCN :[dicData objectForKey:DTOACCOUNT_address]];
-        
+        _lbDiaChi.text=[dicData objectForKey:DTOACCOUNT_address];
         //sector
-        fyCN = [self setFrameLabelTitle:_sectorCN withLabelValue:_lbSector withFY:fyCN :[dicData objectForKey:DTOACCOUNT_sector]];
-        
+        _lbSector.text=[dicData objectForKey:DTOACCOUNT_sector];
         //nghe nghiep
-        fyCN = [self setFrameLabelTitle:_nghenghiepCN withLabelValue:_lbJob withFY:fyCN :[dicData objectForKey:DTOACCOUNT_personalIndustry]];
-        
-        //cong ty
-        fyCN = [self setFrameLabelTitle:_chinhanhquanlyCN withLabelValue:_lbCompany withFY:fyCN :[dicData objectForKey:DTOACCOUNT_branchCode]];
-        
-        //
-        
-        fyCN = [self setFrameLabelTitle:_ngamocodeCN withLabelValue:_ldDateOpenCode withFY:fyCN :[dicData objectForKey:DTOACCOUNT_openCodeDate]];
-        
-        //
-        fyCN = [self setFrameLabelTitle:_quocgiaCN withLabelValue:_lbQuocGia withFY:fyCN :@""];
-        
-        fyCN = [self setFrameLabelTitle:_tinhthanhphoCN withLabelValue:_lbThanhPho withFY:fyCN :@""];
-        
-        
-        fyCN = [self setFrameLabelTitle:_quanhuyenCN withLabelValue:_lbQuanHuyen withFY:fyCN :@""];
-        
-        
-        fyCN = [self setFrameLabelTitle:_phuongxaCN withLabelValue:_lbPhuonXa withFY:fyCN :@""];
-        
-        
-        
+        _lbJob.text=[dicData objectForKey:DTOACCOUNT_personalIndustry];
+        //chi nhanh quan ly
+        _lbCompany.text =[dicData objectForKey:DTOACCOUNT_branchCode];
+        //ngay mo code
+        _ldDateOpenCode.text =[dicData objectForKey:DTOACCOUNT_openCodeDate];
+        //tinh thanh
+        _lbQuocGia.text=@"";
+        _lbQuanHuyen.text=@"";
+        _lbThanhPho.text=@"";
+        _lbPhuonXa.text=@"";
+        //kllq
         NSString *sms =@"";
         NSString *disableSms = [dicData objectForKey:DTOACCOUNT_disableSms];
         if([disableSms isEqualToString:@"0"])
@@ -400,56 +364,58 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         {
             tmp=@"";
         }
-        fyCN = [self setFrameLabelTitle:_khonglienlacCN withLabelValue:_lbKhongLienLacQua withFY:fyCN :tmp];
-        _scrollViewBodyLeft.contentSize=CGSizeMake(0, self.view.frame.size.height + fyCN);
+        _lbKhongLienLacQua.text=tmp;
     }
     else{
-        float fyDN=_lbcodeDN.frame.origin.y;
-        NSLog(@"Khach hang doanh nghiep");
-        _scrollViewBodyLeft.hidden=YES;
-        //code
-        fyDN = [self setFrameLabelTitle:_codeDN withLabelValue:_lbcodeDN withFY:fyDN :[dicData objectForKey:DTOACCOUNT_code]];
+        if ([self currentDeviceType]==iPhone) {
+            [_viewDetailIP addSubview:_scrollviewDN];
+        }
+        else{
+            [self.viewleft addSubview:self.scrollviewDN];
+        }
+        //        //code
+        _lbcodeDN.text=[NSString stringWithFormat:@"%@: %@",LocalizedString(@"KEY_360_CODE"), [dicData objectForKey:DTOACCOUNT_clientAccountId]];
         //ten khach hang
-        fyDN = [self setFrameLabelTitle:_nameDN withLabelValue:_lbnameDN withFY:fyDN :[dicData objectForKey:DTOACCOUNT_name]];
-        //loai khach hang
-        fyDN = [self setFrameLabelTitle:_loaiDN withLabelValue:_lbloaiDN withFY:fyDN :[dicData objectForKey:DTOACCOUNT_accountType]];
-        //so dkkd
-        fyDN = [self setFrameLabelTitle:_soDKKD withLabelValue:_lbsoDKKD withFY:fyDN :[dicData objectForKey:DTOACCOUNT_registrationNumber]];
-        //so dkkd
-        fyDN = [self setFrameLabelTitle:_ngaycapDKKD withLabelValue:_lbngaycapDKKD withFY:fyDN :[dicData objectForKey:DTOACCOUNT_registrationDate]];
-        //so dt
-        fyDN = [self setFrameLabelTitle:_dienthoaiDN withLabelValue:_lbdienthoaiDN withFY:fyDN :[dicData objectForKey:DTOACCOUNT_mobile]];
-        
-        //faxx
-        fyDN = [self setFrameLabelTitle:_faxDN withLabelValue:_lbfaxDN withFY:fyDN :[dicData objectForKey:DTOACCOUNT_fax]];
-        //dia chi
-        [_btnAddDN setFrame:CGRectMake(_btnAddDN.frame.origin.x,fyDN, _btnAddDN.frame.size.width, _btnAddDN.frame.size.height)];
-        fyDN = [self setFrameLabelTitle:_diachiDN withLabelValue:_lbdiachiDN withFY:fyDN :[dicData objectForKey:DTOACCOUNT_address]];
-        //goi nho
-        fyDN = [self setFrameLabelTitle:_sectorDN withLabelValue:_lbsectorDN withFY:fyDN :[dicData objectForKey:DTOACCOUNT_sector]];
-        
-        //goi nho
-        fyDN = [self setFrameLabelTitle:_loaihinhDN withLabelValue:_lbloaihinhDN withFY:fyDN :[dicData objectForKey:DTOACCOUNT_orgType]];
-        
-        
-        //goi nho
-        fyDN = [self setFrameLabelTitle:_chinhanhquanlyDN withLabelValue:_lbchinhanhquanlyDN withFY:fyDN :[dicData objectForKey:DTOACCOUNT_ownerEmployeeId]];
-        
-        //goi nho
-        fyDN = [self setFrameLabelTitle:_ngaymocodeDN withLabelValue:_lbngaymocodeDN withFY:fyDN :[dicData objectForKey:DTOACCOUNT_openCodeDate]];
-        
-        
+        _lbnameDN.text=[dicData objectForKey:DTOACCOUNT_name];
+        //        //loai khach hang
+        _lbloaiDN.text =[dicData objectForKey:DTOACCOUNT_accountType];
+        //        //so dkkd
+        _lbsoDKKD.text =[dicData objectForKey:DTOACCOUNT_registrationNumber];
+        //        //so dkkd
+        _lbngaycapDKKD.text=[dicData objectForKey:DTOACCOUNT_registrationDate];
+        //        //so dt
+        _lbdienthoaiDN.text=[dicData objectForKey:DTOACCOUNT_mobile];
         //
-        fyDN = [self setFrameLabelTitle:_quocgiaDN withLabelValue:_lbquocgiaDN withFY:fyDN :@""];
+        //        //faxx
+        _lbfaxDN.text=[dicData objectForKey:DTOACCOUNT_fax];
+        //        //dia chi
         
-        fyDN = [self setFrameLabelTitle:_tinhthanhphoDN withLabelValue:_lbtinhthanhphoDN withFY:fyDN :@""];
-        
-        
-        fyDN = [self setFrameLabelTitle:_quanhuyenDN withLabelValue:_lbquanhuyenDN withFY:fyDN :@""];
-        
-        
-        fyDN = [self setFrameLabelTitle:_phuongxaDN withLabelValue:_lbphuongxaDN withFY:fyDN :@""];
-        
+        _lbdiachiDN.text=[dicData objectForKey:DTOACCOUNT_address];
+        //        //goi nho
+        _lbsectorDN.text=[dicData objectForKey:DTOACCOUNT_sector];
+        //
+        //        //goi nho
+        _lbloaihinhDN.text=[dicData objectForKey:DTOACCOUNT_orgType];
+        //
+        //
+        //        //goi nho
+        _lbchinhanhquanlyDN.text=[dicData objectForKey:DTOACCOUNT_ownerEmployeeId];
+        //
+        //        //goi nho
+        _lbngaymocodeDN.text=[dicData objectForKey:DTOACCOUNT_openCodeDate];
+        //
+        //
+        //        //
+        _lbquocgiaDN.text=@"";
+        //
+        _lbtinhthanhphoDN.text=@"";
+        //
+        //
+        _lbquanhuyenDN.text=@"";
+        //
+        //
+        _lbphuongxaDN.text=@"";
+        //
         NSString *sms =@"";
         NSString *disableSms = [dicData objectForKey:DTOACCOUNT_disableSms];
         if([disableSms isEqualToString:@"0"])
@@ -476,8 +442,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         if (tmp.length<=3) {
             tmp=@"";
         }
-        fyDN = [self setFrameLabelTitle:_khonglienlacDN withLabelValue:_lbkhonglienlacDN withFY:fyDN :tmp];
-        _scollviewDN.contentSize=CGSizeMake(0, self.view.frame.size.height + fyDN);
+        _lbkhonglienlacDN.text=tmp;
     }
     
 }
@@ -904,7 +869,20 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             return 60.0f;
             break;
         case type360View_Note:
-            return 60.0f;
+            if ([self currentDeviceType]==iPhone) {
+                return  50.0f;
+            }
+            else{
+                return 60.0f;
+            }
+            break;
+        case type360View_Contact:
+            if ([self currentDeviceType]==iPhone) {
+                return 50.0f;
+            }
+            else{
+                return  100.0f;
+            }
             break;
         default:
             break;
@@ -1677,35 +1655,38 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     //chi tiết khách hàng
     if(indexOfTab==0){
         if ([leadType isEqualToString:FIX_LEADTYPE_BUSSINESS]) {
-            _scollviewDN.hidden=NO;
-            _mySearch.hidden=YES;
+            _viewData.hidden=YES;
+            _scrollviewCN.hidden=YES;
+            _scrollviewDN.hidden=NO;
+            [_viewDetailIP addSubview:_scrollviewDN];
+            
         }else{
-            _scrollViewBodyLeft.hidden=NO;
-            _mySearch.hidden=YES;
+            _viewData.hidden=YES;
+            _scrollviewCN.hidden=NO;
+            _scrollviewDN.hidden=YES;
+            [_viewDetailIP addSubview:_scrollviewCN];
+            
         }
         _viewData.hidden=YES;
-        _fullNameLB.text=@"KHÁCH HÀNG TIỀM NĂNG";
+        _fullNameLB.text=@"KHÁCH HÀNG 360";
     }
     else if(indexOfTab==1){
-        _scollviewDN.hidden=YES;
-        _scrollViewBodyLeft.hidden=YES;
-        _mySearch.hidden=NO;
+        _scrollviewCN.hidden=YES;
+        _scrollviewDN.hidden=YES;
         _viewData.hidden=NO;
         _fullNameLB.text=@"LIÊN HỆ";
         [self loadDataWithTypeAction:typeLeaderView_Contact];
     }
     else if(indexOfTab==2){
-        _scollviewDN.hidden=YES;
-        _scrollViewBodyLeft.hidden=YES;
-        _mySearch.hidden=NO;
+        _scrollviewCN.hidden=YES;
+        _scrollviewDN.hidden=YES;
         _viewData.hidden=NO;
         _fullNameLB.text=@"GHI CHÚ";
         [self loadDataWithTypeAction:typeLeaderView_Note];
     }
     else if(indexOfTab==3){
-        _scollviewDN.hidden=YES;
-        _scrollViewBodyLeft.hidden=YES;
-        _mySearch.hidden=NO;
+        _scrollviewCN.hidden=YES;
+        _scrollviewDN.hidden=YES;
         _viewData.hidden=NO;
         _fullNameLB.text=@"LỊCH";
         if (typeActionEvent == typeLeaderView_Calendar)
@@ -1715,9 +1696,8 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         [self loadDataWithTypeAction:typeLeaderView_Calendar];
     }
     else if(indexOfTab==4){
-        _scollviewDN.hidden=YES;
-        _scrollViewBodyLeft.hidden=YES;
-        _mySearch.hidden=NO;
+        _scrollviewCN.hidden=YES;
+        _scrollviewDN.hidden=YES;
         _viewData.hidden=NO;
         _fullNameLB.text=@"Ý KIẾN";
         [self loadDataWithTypeAction:typeLeaderView_Complains];

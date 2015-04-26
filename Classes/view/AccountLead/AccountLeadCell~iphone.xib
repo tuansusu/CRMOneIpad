@@ -35,39 +35,61 @@
                                     <action selector="actionChangeFlow:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="xCd-av-Iyw"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhm-vF-KDn" userLabel="btnMaps">
-                                <rect key="frame" x="55" y="21" width="20" height="20"/>
-                                <state key="normal" backgroundImage="pin.png">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4t-OA-XZc">
+                                <rect key="frame" x="55" y="26" width="20" height="20"/>
+                                <state key="normal" backgroundImage="Phone.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="actionAddress:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="WDH-9u-3Sp"/>
-                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HN" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4XA-BQ-ghz">
-                                <rect key="frame" x="83" y="20" width="201" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4qo-Dr-Qza">
+                                <rect key="frame" x="83" y="26" width="1" height="20"/>
+                                <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="0.5" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i6f-3e-DzB">
+                                <rect key="frame" x="157" y="26" width="1" height="20"/>
+                                <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="0.5" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D7a-eG-YZW">
+                                <rect key="frame" x="92" y="26" width="20" height="20"/>
+                                <state key="normal" backgroundImage="Message.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OXj-ra-J00">
+                                <rect key="frame" x="120" y="26" width="1" height="20"/>
+                                <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="0.5" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3W2-LE-KEi">
+                                <rect key="frame" x="166" y="26" width="20" height="20"/>
+                                <state key="normal" backgroundImage="MapMarker.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Tk-s0-3f4">
+                                <rect key="frame" x="129" y="26" width="20" height="20"/>
+                                <state key="normal" backgroundImage="Email.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="btnAddress" destination="zhm-vF-KDn" id="6Vx-d9-EjU"/>
                 <outlet property="btnFollow" destination="Q48-Jy-tbo" id="bKA-ZU-tmT"/>
                 <outlet property="imgAvatar" destination="1jD-TZ-7jl" id="NLZ-oT-18x"/>
-                <outlet property="lbAddress" destination="4XA-BQ-ghz" id="Tpf-sG-nuy"/>
                 <outlet property="lbName" destination="efV-Km-Xnb" id="RbW-qv-V18"/>
             </connections>
             <point key="canvasLocation" x="372" y="241"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="Email.png" width="50" height="50"/>
+        <image name="MapMarker.png" width="50" height="50"/>
+        <image name="Message.png" width="50" height="50"/>
+        <image name="Phone.png" width="50" height="50"/>
         <image name="avatar.png" width="120" height="120"/>
-        <image name="flag_enable.png" width="24" height="24"/>
-        <image name="pin.png" width="48" height="48"/>
+        <image name="flag_enable.png" width="50" height="50"/>
     </resources>
 </document>

@@ -43,6 +43,9 @@ enum Type360View{
 @interface Detail360ViewController : BaseViewController<SelectIndexDelegate,UIAlertViewDelegate,UIActionSheetDelegate,UITabBarDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *view;
+@property (weak, nonatomic) IBOutlet UIView *viewleft;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollviewDN;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollviewCN;
 
 //DATA
 @property (nonatomic) enum Type360View typeActionEvent;
@@ -170,7 +173,7 @@ enum Type360View{
 
 //khach hang doanh nghiep
 @property (weak, nonatomic) IBOutlet UIScrollView *scollviewDN;
-
+@property (weak,nonatomic) IBOutlet UIView *viewDetailIP;
 @property (weak, nonatomic) IBOutlet UILabel *codeDN;
 @property (weak, nonatomic) IBOutlet UILabel *nameDN;
 

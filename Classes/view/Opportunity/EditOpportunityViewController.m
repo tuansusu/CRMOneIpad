@@ -70,6 +70,8 @@
     BOOL succsess;//Trang thai acap nhat
     
     MDSearchBarController *searchBarController;
+    
+    int deleteProductIndex;
 }
 @end
 @implementation EditOpportunityViewController
@@ -461,6 +463,25 @@
         
         
     }
+    
+    if (buttonIndex == 0 && alertView.tag == TAG_DELETE_ITEM) {
+        
+        if(self.dataSend){
+            NSString *deleteItemId = [[listProduct objectAtIndex:deleteProductIndex] objectForKey:DTOOPPORTUNITYPRODUCT_id];
+            BOOL result = [dtoOpportunityProductProcess deleteEntity:deleteItemId];
+            
+        }
+        
+        
+        
+        [listProduct removeObjectAtIndex:deleteProductIndex];
+        
+        
+        
+        [self.tbProduct reloadData];
+
+    }
+    
     if (succsess && alertView.tag == 5 && buttonIndex == 0) { //thong bao dong form
         [self dismissViewControllerAnimated:YES completion:nil];
     }
@@ -469,6 +490,9 @@
         //reset lai form
         [self resetForm];
     }
+    
+    
+
 }
 
 -(void) resetForm {
@@ -1109,9 +1133,30 @@
     return YES;
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return @"Xoa";
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    
 }
+
+-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return @"Xoá";
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        deleteProductIndex = indexPath.row;
+        
+        UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xác nhận đồng ý xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
+        mylert.tag = TAG_DELETE_ITEM;
+        [mylert show];
+        
+          }
+}
+
+
+
 
 
 -(void)searchBar:(MDSearchBarController *)searchBarController searchWithText:(NSString *)text{
@@ -1137,7 +1182,7 @@
     searchBarController.isValid = NO;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if(self.tbProduct){
+    if(tableView == self.tbProduct){
         
     }else{
         selectedCustomer = [listArrCustomerFilter objectAtIndex:indexPath.row];

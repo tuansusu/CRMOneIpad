@@ -1105,6 +1105,10 @@
 
 }
 
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+
 -(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
     return @"Xoa";
 }
@@ -1133,10 +1137,14 @@
     searchBarController.isValid = NO;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    selectedCustomer = [listArrCustomerFilter objectAtIndex:indexPath.row];
-    self.txtSearchCustomer.textField.text = [selectedCustomer objectForKey:@"name"];
-    searchBarController.active = NO;
-    searchBarController.isValid = YES;
+    if(self.tbProduct){
+        
+    }else{
+        selectedCustomer = [listArrCustomerFilter objectAtIndex:indexPath.row];
+        self.txtSearchCustomer.textField.text = [selectedCustomer objectForKey:@"name"];
+        searchBarController.active = NO;
+        searchBarController.isValid = YES;
+    }
 }
 - (void)dismissAllPopTipViews
 {

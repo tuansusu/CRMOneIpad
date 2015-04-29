@@ -177,9 +177,9 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 
 ///sites/demo/
 #define NO_CONFIG_SITE_URL @""
-#define NO_CONGIG_VOFFICE_PATH    @"http://10.30.6.14:8080/base.svc/"
+#define NO_CONGIG_VOFFICE_PATH    @"http://192.168.93.215:8181/CRMWS/rest/"
 #define URL_DOWNLOAD @"filepath/"
-#define KEY_CONGIG_VOFFICE_PATH    @"http://10.30.6.14:8080/base.svc/"
+#define KEY_CONGIG_VOFFICE_PATH    @"http://192.168.93.215:8181/CRMWS/rest/"
 
 
 #define SYSFONT_NORMAL @"Helvetica"

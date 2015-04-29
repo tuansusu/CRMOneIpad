@@ -12,6 +12,7 @@
 #import "AppController.h"
 #import "SVProgressHUD.h"
 #import "MainViewController.h"
+#import "ModelEvent.h"
 
 
 
@@ -202,50 +203,13 @@
 }
 - (void) logIn
 {
-    
-    FrameworkAppDelegate *appDel = (FrameworkAppDelegate*)[[UIApplication sharedApplication] delegate];
-    MainViewController *viewController =   [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
-    //viewController.userData = modelEvent.modelData;
-    UINavigationController * navi = [[UINavigationController alloc] initWithRootViewController:viewController];
-
-    
-    [navi setNavigationBarHidden:YES];
-    
-    MenuViewController *leftController = [[MenuViewController alloc] init];
-    
-    MMDrawerController *drawerControllerMainProgramHome = [[MMDrawerController alloc]
-                                                           initWithCenterViewController:navi
-                                                           leftDrawerViewController:leftController
-                                                           rightDrawerViewController:NULL];
-    [drawerControllerMainProgramHome setShouldStretchDrawer:FALSE];
-    if(self.currentDeviceType == iPad){
-        [drawerControllerMainProgramHome setMaximumLeftDrawerWidth:259];
-    }else{
-        [drawerControllerMainProgramHome setMaximumLeftDrawerWidth:210];
-    }
-    [drawerControllerMainProgramHome setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
-    [drawerControllerMainProgramHome setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
-    
-    [UIView transitionWithView:appDel.window
-                      duration:0.8
-                       options:UIViewAnimationOptionTransitionCrossDissolve
-                    animations:^(void) {
-                        BOOL oldState = [UIView areAnimationsEnabled];
-                        [UIView setAnimationsEnabled:NO];
-                        [appDel.window setRootViewController:drawerControllerMainProgramHome];
-                        [UIView setAnimationsEnabled:oldState];
-                    }
-                    completion:nil];
-    
-    return;
-    
     if ([self validate]) {
         
-//        if ([[NetworkHelper sharedManager] isNetworkAvaiable] == NO )  {
-//            [AlertViewUtils showAlertViewWithTitle:KEY_NOTIFICATION_TITLE message:VLD_01_005 delegate:self withTag:0 withTitleButtonCancel:nil withTitleButtonOther:KEY_NOTIFICATION_OTHER];
-//        } else  {
+        if ([[NetworkHelper sharedManager] isNetworkAvaiable] == NO )  {
+            [AlertViewUtils showAlertViewWithTitle:KEY_NOTIFICATION_TITLE message:VLD_01_005 delegate:self withTag:0 withTitleButtonCancel:nil withTitleButtonOther:KEY_NOTIFICATION_OTHER];
+        } else  {
             //[ListMeetingProcess deleteAllObject];
-        NSString *username = [[StringUtil trimString:self.tf_username.text] lowercaseString];
+        NSString *username = [StringUtil trimString:self.tf_username.text];
         NSString *password = [StringUtil trimString:self.tf_password.text];
             /**
              *  Tam thoi kiem tra login success/fail bang cach nay
@@ -253,8 +217,9 @@
             
             
                 NSMutableDictionary* dic = [[NSMutableDictionary alloc] init];
-                [dic setObject: username forKey: @"loginName" ];
-                [dic setObject: password forKey: @"password" ];
+                [dic setObject: username forKey: @"username" ];
+                [dic setObject: @"ruwitO2J6kj2HafpsFdQSw==" forKey: @"password" ];
+                [dic setObject:@"1418446742026" forKey:@"sendTime"];
                 ActionEvent* actionEvent = [[ActionEvent alloc] init];
                 actionEvent.action = login;
                 actionEvent.viewData = dic;
@@ -266,7 +231,7 @@
                 [defaults synchronize];
             
             
-        //}
+        }
     }
 }
 
@@ -348,11 +313,41 @@
     switch (modelEvent.actionEvent.action) {
         case login:
         {
-            ActionEvent* action = [[ActionEvent alloc] init];
-            action.action = showMainView;
-            action.sender = self;
-            action.userData = modelEvent.modelData;
-            [self handleViewEvent:action];
+            FrameworkAppDelegate *appDel = (FrameworkAppDelegate*)[[UIApplication sharedApplication] delegate];
+            MainViewController *viewController =   [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+            //viewController.userData = modelEvent.modelData;
+            UINavigationController * navi = [[UINavigationController alloc] initWithRootViewController:viewController];
+            
+            
+            [navi setNavigationBarHidden:YES];
+            
+            MenuViewController *leftController = [[MenuViewController alloc] init];
+            
+            MMDrawerController *drawerControllerMainProgramHome = [[MMDrawerController alloc]
+                                                                   initWithCenterViewController:navi
+                                                                   leftDrawerViewController:leftController
+                                                                   rightDrawerViewController:NULL];
+            [drawerControllerMainProgramHome setShouldStretchDrawer:FALSE];
+            if(self.currentDeviceType == iPad){
+                [drawerControllerMainProgramHome setMaximumLeftDrawerWidth:259];
+            }else{
+                [drawerControllerMainProgramHome setMaximumLeftDrawerWidth:210];
+            }
+            [drawerControllerMainProgramHome setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+            [drawerControllerMainProgramHome setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+            
+            [UIView transitionWithView:appDel.window
+                              duration:0.8
+                               options:UIViewAnimationOptionTransitionCrossDissolve
+                            animations:^(void) {
+                                BOOL oldState = [UIView areAnimationsEnabled];
+                                [UIView setAnimationsEnabled:NO];
+                                [appDel.window setRootViewController:drawerControllerMainProgramHome];
+                                [UIView setAnimationsEnabled:oldState];
+                            }
+                            completion:nil];
+            
+            return;
         }
             break;
             
@@ -366,24 +361,7 @@
 {
 }
 
-- (void) handleViewEvent:(ActionEvent *)action {
-    
-    switch (action.action) {
-        case showMainView:
-        {
-            mainView = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
-            action.sender = mainView;
-            //mainView.userData = action.userData;
-            mainView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-            [self presentViewController:mainView animated:YES completion:nil];
-        }
-            break;
-            
-        default:
-            break;
-            
-    }
-}
+
 
 
 #pragma mark - Methods

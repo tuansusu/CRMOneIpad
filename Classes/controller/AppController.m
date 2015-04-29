@@ -41,9 +41,6 @@ static AppController *appController = nil;
             case login:
             [defaults setObject:[NSDate date] forKey:CONFIG_KEY_TIMEOUT];
             break;
-            case getConfigByKey:
-            [defaults setObject:[NSDate date] forKey:CONFIG_KEY_TIMEOUT];
-            break;
             
         default:
         {
@@ -117,42 +114,15 @@ static AppController *appController = nil;
         
         default:
         {
-            if (modelEvent.modelCode==Code_TimeOut && modelEvent.actionEvent.action != getListNotice && modelEvent.actionEvent.action != getListDocumentInUserNoRead && modelEvent.actionEvent.action != countHomeData) {
-                
-                //xoa nhung cai alert di
-                for (UIWindow* window in [UIApplication sharedApplication].windows) {
-                    NSArray* subviews = window.subviews;
-                    if ([subviews count] > 0)
-                        if ([[subviews objectAtIndex:0] isKindOfClass:[UIAlertView class]])
-                            [(UIAlertView *)[subviews objectAtIndex:0] dismissWithClickedButtonIndex:[(UIAlertView *)[subviews objectAtIndex:0] cancelButtonIndex] animated:NO];
-                }
-                
-                
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Thông báo" message:SYS_TimeOut delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [alert show];
-                
-                FrameworkAppDelegate *appDel = (FrameworkAppDelegate*)[[UIApplication sharedApplication] delegate];
-                
-                RootViewController *rootView = [[RootViewController alloc] init];
-                
-                
-                    [rootView.view makeToast:SYS_Notification_InputConfigKey
-                                duration:5.0
-                                position:@"bottom"
-                                   title:SYS_Notification_Title];
-                
-                
-                [appDel.window setRootViewController:rootView];
-
-            }else{
+            
             BaseViewController* view = (BaseViewController*)modelEvent.actionEvent.sender;
             [view receiveErrorFromModel:modelEvent];
             [view dismissSmallWaiting];
             [view displayErrorData];
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             [SVProgressHUD dismiss];
-            }
         }
+        
             break;
 
     }

@@ -36,5 +36,7 @@
 +(BOOL) getCheckInsertCache ;
 +(BOOL) vacuumDatabase;
 
++(BOOL) checkExistItem : (NSString*)tableName withKeyColumn : (NSString*) keyColumn withKeyValue : (NSString*) keyValue ;
+
 
 @end

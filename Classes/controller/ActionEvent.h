@@ -13,6 +13,9 @@ enum ActionEventEnum {
 	none,
     login,
     logout,
+    sync_get_sysorganization,
+    sync_get_account
+    
 };
 
 @interface ActionEvent : NSObject {

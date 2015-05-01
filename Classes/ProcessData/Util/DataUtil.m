@@ -114,6 +114,49 @@ static BOOL checkInsertCache = NO;
     return  totalCount;
 }
 
++(BOOL) checkExistItem : (NSString*)tableName withKeyColumn : (NSString*) keyColumn withKeyValue : (NSString*) keyValue{
+    @synchronized ([DataUtil databaseLock]) {
+    sqlite3 *database;
+    NSInteger totalCount=0;
+    
+    NSString *filePath = [DataUtil getPathFileSqlLite];
+    if (sqlite3_shutdown() == SQLITE_OK) {
+        if (sqlite3_config(SQLITE_CONFIG_SERIALIZED) == SQLITE_OK) {
+            sqlite3_initialize();
+            if(sqlite3_open([filePath UTF8String], &database) == SQLITE_OK) {
+                
+            }else{
+                //khong mo duoc file database
+                
+                NSLog(@"khong mo fuoc file database");
+                return NO;
+            }
+        }
+    }
+    
+    NSString *query = [NSString stringWithFormat: @"select count(*) from %@ where %@=%@",tableName, keyColumn, keyValue];
+    sqlite3_stmt *statement;
+    if(sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil)==SQLITE_OK){
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            totalCount = sqlite3_column_int(statement, 0);
+        }
+        sqlite3_finalize(statement);
+    }
+    
+    
+    @try {
+        sqlite3_close(database);
+    }
+    @catch (NSException *exception) {
+        [LogUtil writeLogWithContent:@"khong close duoc db"];
+    }
+    
+    
+    return  totalCount>0;
+    }
+}
+
+
 +(NSInteger) getCountItemsselectQuery : (NSString*) query valueParamemter : (NSArray*) paramemters{
     
     sqlite3 *database;

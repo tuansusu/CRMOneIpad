@@ -7,6 +7,7 @@
 //
 
 #import "BaseDataProcess.h"
+#import "SyncDataUtil.h"
 
 #define FIX_LEADTYPE_PERSON @"0"
 #define FIX_LEADTYPE_BUSSINESS @"1"
@@ -36,4 +37,7 @@
 
 -(NSMutableArray*) filterWithOrArrayCondition : (NSDictionary *) dicCondition withStart : (int) start withLimit : (int) limit withOutTotal : (int*) totalCount;
 -(NSMutableArray*) filterWithStart : (int) start withLimit : (int) limit withOutTotal : (int*) totalCount;
+
+-(void) synchonizeDatabase: (id) listData withActionEvent : (ActionEvent*) actionEvent;
+
 @end

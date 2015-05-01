@@ -108,27 +108,6 @@
     self.lblVersion.text = [NSString stringWithFormat:@"%@ %@, %@",VOFFICE,[defaults objectForKey:@"versionSoftware"],COPY_OF_SOFTWARE];
     
     
-    
-    NSString *strSiteUrl = NO_CONFIG_SITE_URL;
-    NSString *strServiceUrl = NO_CONGIG_VOFFICE_PATH;
-    NSString *strDepartmentConfigName = NO_CONFIG_TITLE_DEPARTMENT;
-    NSMutableDictionary *userConfig = [defaults objectForKey:USER_CONFIG];
-    if (!userConfig) {
-        userConfig = [[NSMutableDictionary alloc]init];
-        [userConfig setValue:strSiteUrl forKey:USER_CONFIG_SITEURL];
-        [userConfig setValue:strServiceUrl forKey:USER_CONFIG_SERVICES_URL];
-        [userConfig setValue:NO_CONFIG_TITLE_DEPARTMENT forKey:USER_CONFIG_DEPARTMENT_TITLE];
-        [defaults setObject:userConfig forKey:USER_CONFIG];
-    }
-    strSiteUrl = [userConfig objectForKey:USER_CONFIG_SITEURL];
-    strServiceUrl = [userConfig objectForKey:USER_CONFIG_SERVICES_URL];
-    strDepartmentConfigName = [userConfig objectForKey:USER_CONFIG_DEPARTMENT_TITLE];
-    
-    
-    GlobalVars *globals = [GlobalVars sharedInstance];
-    globals.siteUrl = strSiteUrl;
-    globals.serviceUrl = strServiceUrl;
-    
     //tf_username.text = macAddress;
     if ([UIDevice getCurrentSysVer] >= 7.0) {
         [UIDevice updateLayoutInIOs7OrAfter:self];
@@ -139,17 +118,7 @@
     //self.btnLogin.backgroundColor = BUTTON_ACTIVE_COLOR_1;
     self.lblVersion.textColor = TEXT_TOOLBAR_COLOR1;
     
-    if (![strDepartmentConfigName isEqualToString:NO_CONFIG_TITLE_DEPARTMENT]) {
-        
-        if (userNameStr) {
-            [tf_password becomeFirstResponder];
-        }
-        else
-        {
-            tf_username.text =@"";
-            [tf_username becomeFirstResponder];
-        }
-    }
+    
 }
 
 
@@ -313,6 +282,9 @@
     switch (modelEvent.actionEvent.action) {
         case login:
         {
+            //thuc hien dong bo du lieu o day?
+            [self synchonizeDB];
+            //return;
             FrameworkAppDelegate *appDel = (FrameworkAppDelegate*)[[UIApplication sharedApplication] delegate];
             MainViewController *viewController =   [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
             //viewController.userData = modelEvent.modelData;
@@ -351,11 +323,41 @@
         }
             break;
             
+        case sync_get_sysorganization:{
+            DTOSYSORGANIZATIONProcess *organizationProcess = [DTOSYSORGANIZATIONProcess new];
+            [organizationProcess synchonizeDatabase:modelEvent.modelData withActionEvent:modelEvent.actionEvent];
+        }
+            break;
+            
+        case sync_get_account:{
+            DTOACCOUNTProcess *dtoAccountProcess = [DTOACCOUNTProcess new];
+            [dtoAccountProcess synchonizeDatabase:modelEvent.modelData withActionEvent:modelEvent.actionEvent];
+        }
+            break;
+            
+            
         default:
             break;
     }
-    
+}
 
+-(void) synchonizeDB {
+    
+    [SVProgressHUD showWithStatus:@"sync ..."];
+    
+    NSDictionary *dic = @{@"minTimeStamp": @"0", @"maxTimeStamp": @"1427883636848", @"firstResult":@"0", @"pageSize": @"200", @"includeCount":@"true",@"includeActive":@"true"};
+    ActionEvent* actionEvent = [[ActionEvent alloc] init];
+    actionEvent.action = sync_get_sysorganization;
+    actionEvent.viewData = dic;
+    actionEvent.sender = self;
+    //[[AppController getController] handleViewEvent:actionEvent];
+    
+    
+    actionEvent = [[ActionEvent alloc] init];
+    actionEvent.action = sync_get_account;
+    actionEvent.viewData = dic;
+    actionEvent.sender = self;
+    [[AppController getController] handleViewEvent:actionEvent];
 }
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {

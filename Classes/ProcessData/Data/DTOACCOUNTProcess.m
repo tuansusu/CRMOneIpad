@@ -19,8 +19,8 @@
 
 -(NSArray*) getAllFields {
     
-    return  [NSArray arrayWithObjects: DTOACCOUNT_accountId ,//accountId" //BIGINT
- DTOACCOUNT_accountLevel ,//accountLevel" //VARCHAR
+    return  [NSArray arrayWithObjects: DTOACCOUNT_accountId ,//accountId" //BIGINT -- accountId
+ DTOACCOUNT_accountLevel ,//accountLevel" //VARCHAR  --  clientAccountId
  DTOACCOUNT_accountType ,//accountType" //VARCHAR
  DTOACCOUNT_activityStatus ,//activityStatus" //BIGINT
  DTOACCOUNT_address ,//address" //VARCHAR
@@ -31,7 +31,7 @@
  DTOACCOUNT_charter ,//charter" //VARCHAR
  DTOACCOUNT_clientAccountId ,//clientAccountId" //BIGINT
  DTOACCOUNT_clientId ,//clientId" //BIGINT
- DTOACCOUNT_code ,//code" //VARCHAR
+ DTOACCOUNT_code ,//code" //VARCHAR   --- code
  DTOACCOUNT_createdBy ,//createdBy" //BIGINT
  DTOACCOUNT_createdDate ,//createdDate" //VARCHAR
  DTOACCOUNT_disableEmail ,//disableEmail" //SMALLINT
@@ -53,9 +53,9 @@
  DTOACCOUNT_lat ,//lat" //VARCHAR
  DTOACCOUNT_lon ,//lon" //VARCHAR
  DTOACCOUNT_marialStatus ,//marialStatus" //SMALLINT
- DTOACCOUNT_mnemonic ,//mnemonic" //VARCHAR
+ DTOACCOUNT_mnemonic ,//mnemonic" //VARCHAR  -- mnemonic
  DTOACCOUNT_mobile ,//mobile" //VARCHAR
- DTOACCOUNT_name ,//name" //VARCHAR
+ DTOACCOUNT_name ,//name" //VARCHAR   --- name
  DTOACCOUNT_openCodeDate ,//openCodeDate" //VARCHAR
  DTOACCOUNT_orgType ,//orgType" //BIGINT
  DTOACCOUNT_ownerEmployeeId ,//ownerEmployeeId" //BIGINT
@@ -66,9 +66,9 @@
  DTOACCOUNT_registrationDate ,//registrationDate" //VARCHAR
  DTOACCOUNT_registrationNumber ,//registrationNumber" //VARCHAR
  DTOACCOUNT_revenue ,//revenue" //VARCHAR
- DTOACCOUNT_sector ,//sector" //VARCHAR
+ DTOACCOUNT_sector ,//sector" //VARCHAR  --- sector
  DTOACCOUNT_setupDate ,//setupDate" //VARCHAR
- DTOACCOUNT_sex ,//sex" //VARCHAR
+ DTOACCOUNT_sex ,//sex" //VARCHAR  --  sex
  DTOACCOUNT_shareholderNumber ,//shareholderNumber" //BIGINT
  DTOACCOUNT_status ,//status" //INTEGER
  DTOACCOUNT_swiftCode ,//swiftCode" //VARCHAR
@@ -80,6 +80,8 @@
  DTOACCOUNT_website ,//website" //VARCHAR
  DTOACCOUNT_id , nil];//id" //INTEGER
               //id" //INTEGER, nil]
+    
+    
 }
 
 
@@ -139,9 +141,7 @@
     listDic = [super getAllItemsWithTableName:TABLENAME_DTOACCOUNT withFields:[self getAllFields] withConditionString:[NSString stringWithFormat:@" Where %@ = ?", inputKey] withParameter:[NSArray arrayWithObjects:inputValue, nil] withOrderByFields:orderBy];
     
     if (listDic.count>0) {
-        
         return [listDic objectAtIndex:0];
-        
     }
     
     return nil;
@@ -278,10 +278,400 @@
         
         *totalCount = [DataUtil getCountItemsselectQuery:countQuery valueParamemter:nil] ;
     }
-    
     query = [query stringByAppendingString:[NSString stringWithFormat:@" limit %d offset %d", limit,start ]];
-    
     return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:nil];
     
 }
+
+
+-(void) synchonizeDatabase: (id) listData withActionEvent : (ActionEvent*) actionEvent{
+    
+    
+    sqlite3 *database ;// = [DataUtil openDatabase];
+    @try {
+        NSArray *arrayDataSync = [listData objectForKey:@"accountList"];
+        
+        if ([arrayDataSync isKindOfClass:[NSNull class]] || arrayDataSync == nil) {
+            //khong co du lieu de dong bo
+            return;
+        }
+        
+        if(arrayDataSync.count == 0){
+            //khong co du lieu de dong bo
+            return;
+        }
+        
+        SyncDataUtil *syncDataUtil = [SyncDataUtil new];
+        [syncDataUtil synchonizeDatabase:arrayDataSync withActionEvent:actionEvent withTableName:TABLENAME_DTOACCOUNT withKeyColumn:DTOACCOUNT_accountId withArrayColumn:[self getAllFields]];
+        
+        return;
+        
+        char *sErrMsg = "";
+        clock_t  cStartClock = clock();
+        NSString *filePath = [DataUtil getPathFileSqlLite];
+        if (sqlite3_shutdown() == SQLITE_OK) {
+            if (sqlite3_config(SQLITE_CONFIG_SERIALIZED) == SQLITE_OK) {
+                sqlite3_initialize();
+                if(sqlite3_open([filePath UTF8String], &database) == SQLITE_OK) {
+                    
+                }
+            }
+        }
+        if (database==nil) {
+            NSLog(@"kpi data database nil");
+            return;
+        }
+        
+        NSArray *arrayColumnIrgnoUpdate  =[NSArray arrayWithObjects:DTOACCOUNT_id, nil];
+        
+        NSString *queryListColumns = @"(";
+        NSInteger start = 0;
+        NSInteger countFields = [self getAllFields].count - arrayColumnIrgnoUpdate.count;
+        
+        for (NSInteger i=0; i<countFields; i++) {
+            start = i +1;
+            
+            NSString *fieldName = [[self getAllFields] objectAtIndex:i];
+            
+            if (start != countFields) {
+                queryListColumns = [queryListColumns stringByAppendingString:[NSString stringWithFormat:@"%@,",fieldName]];
+            }else{
+                queryListColumns = [queryListColumns stringByAppendingString:[NSString stringWithFormat:@"%@)", fieldName]];
+            }
+            
+        }
+        
+        NSString *queryListPara = @"(";
+        for (NSInteger i=0; i<countFields; i++) {
+            if (i+1<countFields) {
+                queryListPara = [queryListPara stringByAppendingString:@"?,"];
+            }else{
+                queryListPara = [queryListPara stringByAppendingString:@"?)"];
+            }
+        }
+        NSString *query = [NSString stringWithFormat:@"insert  INTO %@%@ VALUES %@", TABLENAME_DTOACCOUNT, queryListColumns,queryListPara];
+        
+        
+        //sinh ra cau update csdl
+        
+        
+        
+        NSString *queryUpdate = [NSString stringWithFormat:@"update %@ set ", TABLENAME_DTOACCOUNT];
+        
+        for (NSInteger i=0; i<countFields; i++) {
+            NSString *fieldName = [[self getAllFields] objectAtIndex:i];
+            if (i==0) {
+                queryUpdate = [queryUpdate stringByAppendingFormat:@"%@=? ", fieldName];
+            }else{
+                queryUpdate = [queryUpdate stringByAppendingFormat:@", %@=? ", fieldName];
+            }
+        }
+        
+        queryUpdate = [queryUpdate stringByAppendingFormat:@" where %@=?", DTOACCOUNT_accountId];
+        
+        
+        NSMutableArray *arrayUpdate = [NSMutableArray new];
+        NSMutableArray *arrayInsert = [NSMutableArray new];
+        
+        for (int i=0; i<arrayDataSync.count; i++) {
+            NSDictionary *entity = [arrayDataSync objectAtIndex:i];
+            
+            //kiem tra xem dtoaccountid  da ton tai trong csdl hay chua?
+            NSDictionary *dicExistEntity = [self getDataWithKey:DTOACCOUNT_accountId withValue:[entity objectForKey:DTOACCOUNT_accountId]];
+            
+            if (dicExistEntity==nil || ([dicExistEntity isKindOfClass:[NSNull class]])) {
+                //truong hop them moi
+                [arrayInsert addObject:entity];
+            }else{
+                //truong hop sua
+                [arrayUpdate addObject:entity];
+            }
+        }
+        
+        
+        sqlite3_stmt *compiledStatement;
+        
+        
+        //insert vao csdl
+        if (arrayInsert.count>0) {
+            if(sqlite3_prepare_v2(database,[ query UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK )
+            {
+                sqlite3_exec(database, "BEGIN TRANSACTION", NULL, NULL, &sErrMsg);
+                
+                for (int i=0; i<arrayInsert.count; i++) {
+                    
+                    NSDictionary *entity = [arrayInsert objectAtIndex:i];
+                    
+                    int columnIndex = 0;
+                    
+                    for (NSInteger i=0; i<countFields; i++) {
+                        columnIndex ++;
+                        
+                        NSString *keyField = [[self getAllFields] objectAtIndex:i];
+                        if ([[entity allKeys] containsObject:keyField]) {
+                            
+                            sqlite3_bind_text(compiledStatement, columnIndex, [[NSString stringWithFormat:@"%@", [entity objectForKey:keyField]] UTF8String], -1, SQLITE_TRANSIENT);
+                        }else{
+                            sqlite3_bind_text(compiledStatement, columnIndex, [[NSString stringWithFormat:@"%@", @""] UTF8String], -1, SQLITE_TRANSIENT);
+                        }
+                    }
+                    
+                    
+                    
+                    sqlite3_step(compiledStatement) ;
+                    
+                    
+                    sqlite3_clear_bindings(compiledStatement);
+                    sqlite3_reset(compiledStatement);
+                }
+                
+                sqlite3_exec(database, "END TRANSACTION", NULL, NULL, &sErrMsg);
+                
+                NSLog(@"Imported %d records m_kpi in %4ld seconds\n", arrayDataSync.count , (clock() - cStartClock));
+            }  //end of if(sqlite3_prepare_v2
+        }
+        
+        //update vao csdl
+        if (arrayUpdate.count>0) {
+            
+            if(sqlite3_prepare_v2(database,[ queryUpdate UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK )
+            {
+                sqlite3_exec(database, "BEGIN TRANSACTION", NULL, NULL, &sErrMsg);
+                
+                for (int i=0; i<arrayUpdate.count; i++) {
+                    
+                    NSDictionary *entity = [arrayUpdate objectAtIndex:i];
+                    
+                    int columnIndex = 0;
+                    
+                    for (NSInteger i=0; i<countFields; i++) {
+                        columnIndex ++;
+                        
+                        NSString *keyField = [[self getAllFields] objectAtIndex:i];
+                        if ([[entity allKeys] containsObject:keyField]) {
+                            
+                            sqlite3_bind_text(compiledStatement, columnIndex, [[NSString stringWithFormat:@"%@", [entity objectForKey:keyField]] UTF8String], -1, SQLITE_TRANSIENT);
+                        }else{
+                            sqlite3_bind_text(compiledStatement, columnIndex, [[NSString stringWithFormat:@"%@", @""] UTF8String], -1, SQLITE_TRANSIENT);
+                        }
+                    }
+                    
+                    //
+                    columnIndex++;
+                    sqlite3_bind_text(compiledStatement, columnIndex, [[NSString stringWithFormat:@"%@", [entity objectForKey:DTOACCOUNT_accountId]] UTF8String], -1, SQLITE_TRANSIENT);
+                    
+                    sqlite3_step(compiledStatement) ;
+                    
+                    
+                    sqlite3_clear_bindings(compiledStatement);
+                    sqlite3_reset(compiledStatement);
+                }
+                
+                sqlite3_exec(database, "END TRANSACTION", NULL, NULL, &sErrMsg);
+                
+                NSLog(@"Imported %d records m_kpi in %4ld seconds\n", arrayDataSync.count , (clock() - cStartClock));
+            }  //end of if(sqlite3_prepare_v2
+            
+        }
+        
+        
+        
+        
+        
+    }
+    @catch (NSException *exception) {
+        NSLog(@"M_KPI DATA - Exception : %@", exception.description);
+    }
+    @finally {
+        sqlite3_close(database);
+    }
+    
+    
+//    sqlite3 *database ;// = [DataUtil openDatabase];
+//    @try {
+//        NSArray *arrayDataSync = [listData objectForKey:@"accountList"];
+//        char *sErrMsg = "";
+//        clock_t  cStartClock = clock();
+//        NSString *filePath = [DataUtil getPathFileSqlLite];
+//        if (sqlite3_shutdown() == SQLITE_OK) {
+//            if (sqlite3_config(SQLITE_CONFIG_SERIALIZED) == SQLITE_OK) {
+//                sqlite3_initialize();
+//                if(sqlite3_open([filePath UTF8String], &database) == SQLITE_OK) {
+//                    
+//                }
+//            }
+//        }
+//        if (database==nil) {
+//            NSLog(@"kpi data database nil");
+//            return;
+//        }
+//        
+//        NSArray *arrayColumnIrgnoUpdate  =[NSArray arrayWithObjects:DTOACCOUNT_id, nil];
+//        
+//        NSString *queryListColumns = @"(";
+//        NSInteger start = 0;
+//        NSInteger countFields = [self getAllFields].count - arrayColumnIrgnoUpdate.count;
+//        
+//        for (NSInteger i=0; i<countFields; i++) {
+//            start = i +1;
+//            
+//            NSString *fieldName = [[self getAllFields] objectAtIndex:i];
+//            
+//            if (start != countFields) {
+//                queryListColumns = [queryListColumns stringByAppendingString:[NSString stringWithFormat:@"%@,",fieldName]];
+//            }else{
+//                queryListColumns = [queryListColumns stringByAppendingString:[NSString stringWithFormat:@"%@)", fieldName]];
+//            }
+//            
+//        }
+//        
+//        NSString *queryListPara = @"(";
+//        for (NSInteger i=0; i<countFields; i++) {
+//            if (i+1<countFields) {
+//                queryListPara = [queryListPara stringByAppendingString:@"?,"];
+//            }else{
+//                queryListPara = [queryListPara stringByAppendingString:@"?)"];
+//            }
+//        }
+//        NSString *query = [NSString stringWithFormat:@"insert  INTO %@%@ VALUES %@", TABLENAME_DTOACCOUNT, queryListColumns,queryListPara];
+//        
+//        
+//        //sinh ra cau update csdl
+//        
+//        
+//        
+//        NSString *queryUpdate = [NSString stringWithFormat:@"update %@ set ", TABLENAME_DTOACCOUNT];
+//        
+//            for (NSInteger i=0; i<countFields; i++) {
+//                NSString *fieldName = [[self getAllFields] objectAtIndex:i];
+//                if (i==0) {
+//                    queryUpdate = [queryUpdate stringByAppendingFormat:@"%@=? ", fieldName];
+//                }else{
+//                    queryUpdate = [queryUpdate stringByAppendingFormat:@", %@=? ", fieldName];
+//                }
+//            }
+//        
+//        queryUpdate = [queryUpdate stringByAppendingFormat:@" where %@=?", DTOACCOUNT_accountId];
+//        
+//        
+//        NSMutableArray *arrayUpdate = [NSMutableArray new];
+//        NSMutableArray *arrayInsert = [NSMutableArray new];
+//        
+//        for (int i=0; i<arrayDataSync.count; i++) {
+//            NSDictionary *entity = [arrayDataSync objectAtIndex:i];
+//            
+//            //kiem tra xem dtoaccountid  da ton tai trong csdl hay chua?
+//            NSDictionary *dicExistEntity = [self getDataWithKey:DTOACCOUNT_accountId withValue:[entity objectForKey:DTOACCOUNT_accountId]];
+//            
+//            if (dicExistEntity==nil || ([dicExistEntity isKindOfClass:[NSNull class]])) {
+//                //truong hop them moi
+//                [arrayInsert addObject:entity];
+//            }else{
+//                //truong hop sua
+//                [arrayUpdate addObject:entity];
+//            }
+//        }
+//        
+//        
+//        sqlite3_stmt *compiledStatement;
+//        
+//        
+//        //insert vao csdl
+//        if (arrayInsert.count>0) {
+//            if(sqlite3_prepare_v2(database,[ query UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK )
+//            {
+//                sqlite3_exec(database, "BEGIN TRANSACTION", NULL, NULL, &sErrMsg);
+//                
+//                for (int i=0; i<arrayInsert.count; i++) {
+//                    
+//                    NSDictionary *entity = [arrayInsert objectAtIndex:i];
+//                    
+//                    int columnIndex = 0;
+//                    
+//                    for (NSInteger i=0; i<countFields; i++) {
+//                        columnIndex ++;
+//                        
+//                        NSString *keyField = [[self getAllFields] objectAtIndex:i];
+//                        if ([[entity allKeys] containsObject:keyField]) {
+//                            
+//                            sqlite3_bind_text(compiledStatement, columnIndex, [[NSString stringWithFormat:@"%@", [entity objectForKey:keyField]] UTF8String], -1, SQLITE_TRANSIENT);
+//                        }else{
+//                            sqlite3_bind_text(compiledStatement, columnIndex, [[NSString stringWithFormat:@"%@", @""] UTF8String], -1, SQLITE_TRANSIENT);
+//                        }
+//                    }
+//                    
+//                    
+//                    
+//                    sqlite3_step(compiledStatement) ;
+//                    
+//                    
+//                    sqlite3_clear_bindings(compiledStatement);
+//                    sqlite3_reset(compiledStatement);
+//                }
+//                
+//                sqlite3_exec(database, "END TRANSACTION", NULL, NULL, &sErrMsg);
+//                
+//                NSLog(@"Imported %d records m_kpi in %4ld seconds\n", arrayDataSync.count , (clock() - cStartClock));
+//            }  //end of if(sqlite3_prepare_v2
+//        }
+//        
+//        //update vao csdl
+//        if (arrayUpdate.count>0) {
+//            
+//            if(sqlite3_prepare_v2(database,[ queryUpdate UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK )
+//            {
+//                sqlite3_exec(database, "BEGIN TRANSACTION", NULL, NULL, &sErrMsg);
+//                
+//                for (int i=0; i<arrayUpdate.count; i++) {
+//                    
+//                    NSDictionary *entity = [arrayUpdate objectAtIndex:i];
+//                    
+//                    int columnIndex = 0;
+//                    
+//                    for (NSInteger i=0; i<countFields; i++) {
+//                        columnIndex ++;
+//                        
+//                        NSString *keyField = [[self getAllFields] objectAtIndex:i];
+//                        if ([[entity allKeys] containsObject:keyField]) {
+//                            
+//                            sqlite3_bind_text(compiledStatement, columnIndex, [[NSString stringWithFormat:@"%@", [entity objectForKey:keyField]] UTF8String], -1, SQLITE_TRANSIENT);
+//                        }else{
+//                            sqlite3_bind_text(compiledStatement, columnIndex, [[NSString stringWithFormat:@"%@", @""] UTF8String], -1, SQLITE_TRANSIENT);
+//                        }
+//                    }
+//                    
+//                    //
+//                    columnIndex++;
+//                    sqlite3_bind_text(compiledStatement, columnIndex, [[NSString stringWithFormat:@"%@", [entity objectForKey:DTOACCOUNT_accountId]] UTF8String], -1, SQLITE_TRANSIENT);
+//                    
+//                    sqlite3_step(compiledStatement) ;
+//                    
+//                    
+//                    sqlite3_clear_bindings(compiledStatement);
+//                    sqlite3_reset(compiledStatement);
+//                }
+//                
+//                sqlite3_exec(database, "END TRANSACTION", NULL, NULL, &sErrMsg);
+//                
+//                NSLog(@"Imported %d records m_kpi in %4ld seconds\n", arrayDataSync.count , (clock() - cStartClock));
+//            }  //end of if(sqlite3_prepare_v2
+//            
+//        }
+//        
+//        
+//        
+//        
+//        
+//    }
+//    @catch (NSException *exception) {
+//        NSLog(@"M_KPI DATA - Exception : %@", exception.description);
+//    }
+//    @finally {
+//        sqlite3_close(database);
+//    }
+}
+
+
+
+
 @end

@@ -18,6 +18,9 @@
 #import "DDMenuController.h"
 #import "MenuViewController.h"
 
+//syndb
+#import "DTOSYSORGANIZATIONProcess.h"
+
 
 @interface RootViewController : BaseViewController <ReaderViewControllerDelegate, UIAlertViewDelegate,UITextFieldDelegate>{
     IBOutlet UITextField* tf_username;

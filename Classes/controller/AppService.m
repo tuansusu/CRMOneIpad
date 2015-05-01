@@ -36,6 +36,14 @@ static AppService* appService = nil;
             actionEvent.methodName = @"users/login";
         }
             break;
+        case sync_get_sysorganization:{
+            actionEvent.methodName = @"sync/get-sysorganization";
+        }
+            break;
+        case sync_get_account:{
+            actionEvent.methodName = @"sync/get-account";
+        }
+            break;
         default:
             break;
     }
@@ -63,7 +71,6 @@ static AppService* appService = nil;
     [manager POST:uri parameters:[dictionary objectForKey:@"dataPost"]
           success:^(AFHTTPRequestOperation *operation, id responseObject)
      {
-         NSLog(@"JSON login: %@", responseObject);
          //login thanh cong roi. thi tiep tuc lay du lieu
          [self onHttpReceivedData:responseObject andModelEvent:actionEvent];
          

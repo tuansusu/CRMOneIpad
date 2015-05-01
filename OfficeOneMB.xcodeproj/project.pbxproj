@@ -585,6 +585,8 @@
 		845EF59E1AEF31F600C658D7 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 845EF58C1AEF31F600C658D7 /* UIRefreshControl+AFNetworking.m */; };
 		845EF59F1AEF31F600C658D7 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 845EF58E1AEF31F600C658D7 /* UIWebView+AFNetworking.m */; };
 		845EF5A21AEF33FF00C658D7 /* ModelEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 845EF5A11AEF33FF00C658D7 /* ModelEvent.m */; };
+		846344641AF1322500647721 /* DTOSYSORGANIZATIONProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 846344631AF1322500647721 /* DTOSYSORGANIZATIONProcess.m */; };
+		847D9F191AF338990051D60F /* SyncDataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D9F181AF338990051D60F /* SyncDataUtil.m */; };
 		849078861A1E461D009D5D5F /* DetailPersonLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849078841A1E461D009D5D5F /* DetailPersonLeadViewController.m */; };
 		849078871A1E461D009D5D5F /* DetailPersonLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849078851A1E461D009D5D5F /* DetailPersonLeadViewController.xib */; };
 		8490788B1A1E463C009D5D5F /* DetailBussinessLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849078891A1E463C009D5D5F /* DetailBussinessLeadViewController.m */; };
@@ -2027,6 +2029,10 @@
 		845EF58E1AEF31F600C658D7 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		845EF5A01AEF33FF00C658D7 /* ModelEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModelEvent.h; path = Classes/controller/ModelEvent.h; sourceTree = SOURCE_ROOT; };
 		845EF5A11AEF33FF00C658D7 /* ModelEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModelEvent.m; path = Classes/controller/ModelEvent.m; sourceTree = SOURCE_ROOT; };
+		846344621AF1322500647721 /* DTOSYSORGANIZATIONProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTOSYSORGANIZATIONProcess.h; path = ProcessData/Data/DTOSYSORGANIZATIONProcess.h; sourceTree = "<group>"; };
+		846344631AF1322500647721 /* DTOSYSORGANIZATIONProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTOSYSORGANIZATIONProcess.m; path = ProcessData/Data/DTOSYSORGANIZATIONProcess.m; sourceTree = "<group>"; };
+		847D9F171AF338990051D60F /* SyncDataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyncDataUtil.h; path = ProcessData/Data/SyncDataUtil.h; sourceTree = "<group>"; };
+		847D9F181AF338990051D60F /* SyncDataUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SyncDataUtil.m; path = ProcessData/Data/SyncDataUtil.m; sourceTree = "<group>"; };
 		849078831A1E461D009D5D5F /* DetailPersonLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailPersonLeadViewController.h; sourceTree = "<group>"; };
 		849078841A1E461D009D5D5F /* DetailPersonLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailPersonLeadViewController.m; sourceTree = "<group>"; };
 		849078851A1E461D009D5D5F /* DetailPersonLeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailPersonLeadViewController.xib; sourceTree = "<group>"; };
@@ -3543,6 +3549,7 @@
 		2D9B79771749D71200ABD9CF /* ProcessData */ = {
 			isa = PBXGroup;
 			children = (
+				846344611AF1306100647721 /* SyncData */,
 				06FE2E201A456904004A1D16 /* Core */,
 				06FE2E1C1A4565BD004A1D16 /* Objects */,
 				76977D521A0284770029F297 /* Data */,
@@ -4614,6 +4621,17 @@
 			name = "UIKit+AFNetworking";
 			path = "lib/UIKit+AFNetworking";
 			sourceTree = SOURCE_ROOT;
+		};
+		846344611AF1306100647721 /* SyncData */ = {
+			isa = PBXGroup;
+			children = (
+				846344621AF1322500647721 /* DTOSYSORGANIZATIONProcess.h */,
+				846344631AF1322500647721 /* DTOSYSORGANIZATIONProcess.m */,
+				847D9F171AF338990051D60F /* SyncDataUtil.h */,
+				847D9F181AF338990051D60F /* SyncDataUtil.m */,
+			);
+			name = SyncData;
+			sourceTree = "<group>";
 		};
 		8495DDCA1A30A0AF00C4E922 /* Account360 */ = {
 			isa = PBXGroup;
@@ -7202,6 +7220,7 @@
 				8E44BC351A73A89B00EDCD1A /* ProTaiKhoanThanhToanDetailViewController.m in Sources */,
 				1595993C1A58451200D87BD4 /* NSDate+Utilities.m in Sources */,
 				8E44BC661A73B9A900EDCD1A /* DTOProWay4DetailProcess.m in Sources */,
+				847D9F191AF338990051D60F /* SyncDataUtil.m in Sources */,
 				8E44BC511A73B45300EDCD1A /* DTOProWay4DetailObject.m in Sources */,
 				76C964781A17731900029978 /* MIMLongRangeGraph.m in Sources */,
 				76C9629E1A16DBA500029978 /* ListAccountLeadViewController.m in Sources */,
@@ -7598,6 +7617,7 @@
 				B3C13E14180647E700464834 /* UILabel+extend.m in Sources */,
 				8EC9728D1A5D71300021DCA3 /* FFWeekCollectionView.m in Sources */,
 				8497BFFD1A295A2300A5ED3C /* IndoorMuseumNavigationViewController.m in Sources */,
+				846344641AF1322500647721 /* DTOSYSORGANIZATIONProcess.m in Sources */,
 				B313F1CF18A5096C001FDEC6 /* Util.m in Sources */,
 				76601A39194BE90F001D4C01 /* ThumbsMainToolbar.m in Sources */,
 				769F24831A6F1C5500427A8F /* MMDrawerVisualState.m in Sources */,

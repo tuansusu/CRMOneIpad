@@ -48,7 +48,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    
+    //self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     ////////////<<<<GOOGLE MAP>>>////////////////////
     
     if ([kAPIKey length] == 0) {
@@ -78,18 +78,28 @@
 //    [self copyDatabaseIfNeeded];
 //    [window addSubview:navigationController.view];
 //    [window makeKeyAndVisible];
+    
+    //SET COLOR IN STATUSBUAR
+    //window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [application setStatusBarStyle:UIBarStyleBlackTranslucent];
     
     //tuannv call copyDatabaseIfNeeded method
     [self copyDatabaseIfNeeded];
     if (IS_OS_8_OR_LATER) {
+        
+        NSLog(@"height = %f", self.window.frame.size.height);
+        NSLog(@"width = %f", self.window.frame.size.width);
         self.window.frame = [UIScreen mainScreen].bounds;
     }
     
     RootViewController *rootView = [[RootViewController alloc] init];
     
     if (IS_OS_8_OR_LATER) {
+        
+        NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft];
+        [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+        
         //set Landscape io8
         [UIView transitionWithView:window
                           duration:0.5
@@ -106,6 +116,10 @@
         [window setRootViewController:rootView];
     }
     
+    
+    NSLog(@"height = %f", [UIScreen mainScreen].bounds.size.height);
+    NSLog(@"width = %f", [UIScreen mainScreen].bounds.size.width);
+    //[SVProgressHUD show];
     //    [window addSubview:navigationController.view];
     [window addSubview:navigationController.view];
     
@@ -138,7 +152,7 @@
 
 
 -(void) showActivity{
-    [SVProgressHUD show];
+    //[SVProgressHUD show];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -158,7 +172,7 @@
     //[reader deleteFilesFromDocuments];
     //[self.window.rootViewController dismissViewControllerAnimated:NO completion:nil];
     
-    [SVProgressHUD dismiss];
+    //[SVProgressHUD dismiss];
     
    
 }
@@ -188,7 +202,7 @@
 //    NSUserDefaults *defaulst = [NSUserDefaults standardUserDefaults];
 //    [defaulst setBool:NO forKey:@"initiated"];
 //    [defaulst synchronize];
-    [SVProgressHUD dismiss];
+    //[SVProgressHUD dismiss];
     //NSLog(@"applicationDidBecomeActive");
 }
 

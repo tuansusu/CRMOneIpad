@@ -85,7 +85,14 @@ static NSString * DatabaseLock = nil;
 + (SVProgressHUD*)sharedView {
     static dispatch_once_t once;
     static SVProgressHUD *sharedView;
-    dispatch_once(&once, ^ { sharedView = [[SVProgressHUD alloc] initWithFrame:[[UIScreen mainScreen] bounds]]; });
+    
+//    dispatch_once(&once, ^ { sharedView = [[SVProgressHUD alloc] initWithFrame:[[UIScreen mainScreen] bounds]]; });
+    
+//    dispatch_once(&once, ^ { sharedView = [[SVProgressHUD alloc] initWithFrame: CGRectMake(0, 0, 1024, 768)]; });
+    
+    sharedView = [[SVProgressHUD alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    NSLog(@"sharedView height = %f", sharedView.frame.size.height);
     return sharedView;
 }
 
@@ -160,6 +167,8 @@ static NSString * DatabaseLock = nil;
 
 - (id)initWithFrame:(CGRect)frame {
 	
+    NSLog(@"SVProgress initWithFrame: %f %f %f %f", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
+    
     if ((self = [super initWithFrame:frame])) {
 		self.userInteractionEnabled = NO;
         self.backgroundColor = [UIColor clearColor];
@@ -172,6 +181,9 @@ static NSString * DatabaseLock = nil;
 }
 
 - (void)drawRect:(CGRect)rect {
+    
+    
+    NSLog(@"- (void)drawRect:(CGRect)rect: %f ", rect.size.height);
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     
@@ -193,10 +205,11 @@ static NSString * DatabaseLock = nil;
             CGColorSpaceRelease(colorSpace);
             
             CGPoint center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
+            
+            NSLog(@"SVProgress - drawRect:(CGRect)rect: %f %f", center.x, center.y);
             float radius = MIN(self.bounds.size.width , self.bounds.size.height) ;
             CGContextDrawRadialGradient (context, gradient, center, 0, center, radius, kCGGradientDrawsAfterEndLocation);
             CGGradientRelease(gradient);
-            
             break;
         }
     }
@@ -254,7 +267,12 @@ static NSString * DatabaseLock = nil;
             self.backgroundRingLayer.position = self.ringLayer.position = CGPointMake((CGRectGetWidth(self.hudView.bounds)/2), 36);
 	}
     else {
-		self.spinnerView.center = CGPointMake(ceil(CGRectGetWidth(self.hudView.bounds)/2)+0.5, ceil(self.hudView.bounds.size.height/2)+0.5);
+        
+        
+        		self.spinnerView.center = CGPointMake(ceil(CGRectGetWidth(self.hudView.bounds)/2)+0.5, ceil(self.hudView.bounds.size.height/2)+0.5);
+        
+        NSLog(@"self.spinnerView.center = %f - %f", self.spinnerView.center.x, self.spinnerView.center.y);
+        
         
         if(self.progress != -1)
             self.backgroundRingLayer.position = self.ringLayer.position = CGPointMake((CGRectGetWidth(self.hudView.bounds)/2), CGRectGetHeight(self.hudView.bounds)/2);
@@ -334,6 +352,8 @@ static NSString * DatabaseLock = nil;
     CGRect statusBarFrame = [UIApplication sharedApplication].statusBarFrame;
     
     if(UIInterfaceOrientationIsLandscape(orientation)) {
+        
+        NSLog(@"UIInterfaceOrientationIsLandscape(orientation) = %d" , orientation);
         float temp = orientationFrame.size.width;
         orientationFrame.size.width = orientationFrame.size.height;
         orientationFrame.size.height = temp;
@@ -351,6 +371,8 @@ static NSString * DatabaseLock = nil;
     activeHeight -= keyboardHeight;
     CGFloat posY = floor(activeHeight*0.45);
     CGFloat posX = orientationFrame.size.width/2;
+    
+    //thi ra la tai cai bon nay
     
     CGPoint newCenter;
     CGFloat rotateAngle;
@@ -375,6 +397,8 @@ static NSString * DatabaseLock = nil;
     } 
     
     if(notification) {
+        //tuannv test
+        newCenter = CGPointMake(500, 384);
         SVProgressHUD *__weak weakSelf=self;
         [UIView animateWithDuration:animationDuration 
                               delay:0 
@@ -385,6 +409,9 @@ static NSString * DatabaseLock = nil;
     } 
     
     else {
+        
+        //tuannv test
+        newCenter = CGPointMake(500, 384);
         [self moveToPoint:newCenter rotateAngle:rotateAngle];
     }
     
@@ -408,13 +435,23 @@ static NSString * DatabaseLock = nil;
         
         for (UIWindow *window in frontToBackWindows)
             if (window.windowLevel == UIWindowLevelNormal) {
+                
+                NSLog(@"window x= %f y = %f w=%f, h = %f", window.frame.origin.x, window.frame.origin.y, window.frame.size.width, window.frame.size.height);
+                
                 [window addSubview:self.overlayView];
+                
+                NSLog(@"window x= %f y = %f w=%f, h = %f", self.overlayView.frame.origin.x, self.overlayView.frame.origin.y, self.overlayView.frame.size.width, self.overlayView.frame.size.height);
                 break;
             }
     }
     
     if(!self.superview)
         [self.overlayView addSubview:self];
+    
+    
+    
+    NSLog(@"showprogress x= %f y = %f w=%f, h = %f", self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+    
     
     self.fadeOutTimer = nil;
     self.imageView.hidden = YES;

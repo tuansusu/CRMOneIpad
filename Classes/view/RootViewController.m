@@ -47,6 +47,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if (IS_OS_8_OR_LATER) {
+        
+        NSLog(@" login height = %f", [UIScreen mainScreen].bounds.size.height);
+        NSLog(@"width = %f", [UIScreen mainScreen].bounds.size.width);
+        
+    }
+    
     NSDictionary *dTmp=[[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"]];
     versionSoftware = [dTmp objectForKey:@"CFBundleShortVersionString"];
         //set focus

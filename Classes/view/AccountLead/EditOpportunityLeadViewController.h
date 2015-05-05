@@ -59,6 +59,9 @@
 - (IBAction)actionSave:(id)sender;
 @property (strong, nonatomic) IBOutlet UITextField *txtName;
 @property (weak, nonatomic) IBOutlet UITextField *txtNote;
+- (IBAction)actionAddProduct:(id)sender;
+
+@property (strong, nonatomic) IBOutlet UITableView *tbProduct;
 
 
 

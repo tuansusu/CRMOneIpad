@@ -177,6 +177,29 @@
     }else{
         //
         // _txtCode.text = [NSString stringWithFormat:@"%d", [dtoOpportunityProcess getClientId]];
+        
+               //Load mac dinh khi them moi
+        
+//        //Kiểu cơ hội
+//        selectTypeIndex=2;
+//        NSDictionary *dataType = [listArrType objectAtIndex:selectTypeIndex];
+//        self.txtType.text = [dataType objectForKey:DTOSYSCAT_name];
+//        
+        
+        
+        //viec tiep theo
+        selectNextTaskIndex=0;
+        NSDictionary *dataNextTask = [listArrNextTask objectAtIndex:selectNextTaskIndex];
+        _txtNextTask.text = [dataNextTask objectForKey:DTOSYSCAT_name];
+        
+        
+        //Muc do co hoi
+        
+        selectLevelIndex=0;
+        NSDictionary *dataLevel = [listArrLevel objectAtIndex:selectLevelIndex];
+        _txtLevel.text = [dataLevel objectForKey:DTOSYSCAT_name];
+        
+      
     }
     
 }

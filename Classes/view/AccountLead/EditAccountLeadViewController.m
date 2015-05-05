@@ -145,6 +145,10 @@
         [self.txtPersonPosition setInputAccessoryView:toolBar];
         
     }
+    else{
+        [_txtPhone setPaddingRight];
+        [_txtName setPaddingRight];
+    }
 }
 -(void)setBorderTextfield:(UITextField *)txtField{
     

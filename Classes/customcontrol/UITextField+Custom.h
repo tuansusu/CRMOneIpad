@@ -14,4 +14,5 @@
 
 -(void) setPaddingLeft;
 
+-(void) setPaddingRight;
 @end

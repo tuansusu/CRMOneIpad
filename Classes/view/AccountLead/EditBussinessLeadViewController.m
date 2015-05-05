@@ -125,6 +125,10 @@
         [self setBorderTextfield:_txtTotalassets];
         
     }
+    else{
+        [_txtPhone setPaddingRight];
+        [_txtName setPaddingRight];
+    }
     
 }
 -(void)setBorderTextfield:(UITextField *)txtField{

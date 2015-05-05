@@ -37,5 +37,10 @@
     self.leftView = paddingView;
     self.leftViewMode = UITextFieldViewModeAlways;
 }
+-(void) setPaddingRight{
 
+    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 0)];
+    self.rightView = paddingView;
+    self.rightViewMode =UITextFieldViewModeAlways;
+}
 @end

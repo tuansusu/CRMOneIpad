@@ -51,5 +51,9 @@
 - (IBAction)vietnamLanguageChoose:(id)sender;
 - (IBAction)englishLanguageChoose:(id)sender;
 
+- (IBAction)actionAddProduct:(id)sender;
+
+@property (strong, nonatomic) IBOutlet UITableView *tbProduct;
+
 
 @end

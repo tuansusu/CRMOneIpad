@@ -12,7 +12,11 @@
 #import "DTOACCOUNTProcess.h"
 #import "DTOACCOUNTLEADProcess.h"
 #import "DTOOPPORTUNITYProcess.h"
+#import "DTOOPPORTUNITYPRODUCTProcess.h"
 #import "CalendarPickerViewController.h"
+#import "EditOpportunityProductPopupViewController.h"
+#import "UIViewController+MJPopupViewController.h"
+#import "ProposeProductPopupCell.h"
 
 #define TAG_SELECT_TYPE 1
 #define TAG_SELECT_NEXT_JOB 2
@@ -37,6 +41,7 @@
     NSArray *listArrLead;
     NSArray *listArrAccount;
     NSMutableArray *listArrCustomerFilter;
+    NSMutableArray *listProduct;
     
     NSString *nowStr;
     NSString*nowTimeStr;
@@ -51,6 +56,7 @@
     DTOACCOUNTLEADProcess *dtoLeadProcess;
     DTOACCOUNTProcess *dtoAccountProcess;
     DTOOPPORTUNITYProcess *dtoOpportunityProcess;
+    DTOOPPORTUNITYPRODUCTProcess *dtoOpportunityProductProcess;
     
     int SELECTED_TAG;
     int CUSTOMER_TYPE;
@@ -63,6 +69,8 @@
     
     BOOL succsess;//Trang thai acap nhat
 
+    
+    int deleteProductIndex;
 }
 @end
 @implementation EditOpportunityLeadViewController
@@ -144,6 +152,7 @@
     dtoLeadProcess = [DTOACCOUNTLEADProcess new];
     dtoAccountProcess = [DTOACCOUNTProcess new];
     dtoOpportunityProcess = [DTOOPPORTUNITYProcess new];
+    dtoOpportunityProductProcess = [DTOOPPORTUNITYPRODUCTProcess new];
     listArrType = [dtoSyscatProcess filterWithCatType:FIX_SYS_CAT_TYPE_OPPORTTUNITY_TYPE];
     listArrNextTask = [dtoSyscatProcess filterWithCatType:FIX_SYS_CAT_TYPE_OPPORTTUNITY_NEXT_TASK];
     listArrLevel = [dtoSyscatProcess filterWithCatType:FIX_SYS_CAT_TYPE_OPPORTTUNITY_LEVEL];
@@ -232,6 +241,14 @@
     if (![StringUtil stringIsEmpty:[self.dataRoot objectForKey:@"Description"]]) {
         self.txtNote.text =[self.dataRoot objectForKey:@"Description"];
     }
+    
+    //list product
+    [self loadProduct];
+}
+
+-(void) loadProduct{
+    listProduct = [dtoOpportunityProductProcess filterWithClientOpportunityId:[_dataSend objectForKey:DTOOPPORTUNITY_clientOpportunityId]];
+    [self.tbProduct reloadData];
 }
 
 - (void) updateInterFaceWithOption : (int) option
@@ -320,6 +337,27 @@
         
         
     }
+    
+    
+    if (buttonIndex == 0 && alertView.tag == TAG_DELETE_ITEM) {
+        
+        if(self.dataSend){
+            NSString *deleteItemId = [[listProduct objectAtIndex:deleteProductIndex] objectForKey:DTOOPPORTUNITYPRODUCT_id];
+            BOOL result = [dtoOpportunityProductProcess deleteEntity:deleteItemId];
+            
+        }
+        
+        
+        
+        [listProduct removeObjectAtIndex:deleteProductIndex];
+        
+        
+        
+        [self.tbProduct reloadData];
+        
+    }
+
+    
     if (succsess && alertView.tag == 5 && buttonIndex == 0) { //thong bao dong form
         [self dismissViewControllerAnimated:YES completion:nil];
     }
@@ -540,6 +578,7 @@
     //client
     [dicEntity setObject:@"1" forKey:DTOOPPORTUNITY_client];
     //clientOpportunityId
+    NSString *strClientOpportunityId;
     if(self.dataSend)
     { //truogn hop them moi
         
@@ -555,7 +594,7 @@
         {
             [dicEntity setObject:[self.dataSend objectForKey:DTOLEAD_clientLeadId] forKey:DTOOPPORTUNITY_leadId];
         }
-        NSString *strClientOpportunityId = IntToStr(([dtoOpportunityProcess getClientId]));
+        strClientOpportunityId = IntToStr(([dtoOpportunityProcess getClientId]));
         [dicEntity setObject:strClientOpportunityId forKey:DTOOPPORTUNITY_clientOpportunityId];
     }else
     { //truong hop chinh sua
@@ -617,10 +656,44 @@
 
     succsess = [dtoOpportunityProcess insertToDBWithEntity:dicEntity];
     if (succsess) {
-        //Thong bao cap nhat thanh cong va thoat
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Cập nhật thành công, tiếp tục nhập?" delegate:self cancelButtonTitle:@"Không" otherButtonTitles:@"Có", nil];
-        alert.tag = 5;
-        [alert show];
+        if(!self.dataSend){
+            for (NSDictionary *item in listProduct) {
+                //neu qua duoc check thi tien hanh luu du lieu
+                NSMutableDictionary *dicEntity = [NSMutableDictionary new];
+                
+                //clientOpportunityProductId
+                NSString *clientOpportunityProductId = IntToStr([dtoOpportunityProductProcess getClientId]);
+                [dicEntity setObject:clientOpportunityProductId forKey:DTOOPPORTUNITYPRODUCT_clientOpportunityProductId];
+                //currencyId
+                
+                [dicEntity setObject:[item objectForKey:DTOOPPORTUNITYPRODUCT_currencyId]forKey:DTOOPPORTUNITYPRODUCT_currencyId];
+                //isActive
+                [dicEntity setObject:@"1" forKey:DTOCONTACT_isActive];
+                //clientOpportunityId
+                [dicEntity setObject:strClientOpportunityId forKey:DTOOPPORTUNITY_clientOpportunityId];
+                //productMasterId
+                [dicEntity setObject: [item objectForKey:DTOOPPORTUNITYPRODUCT_productMasterId] forKey:DTOOPPORTUNITYPRODUCT_productMasterId];
+                
+                //quantity
+                [dicEntity setObject:[item objectForKey:DTOOPPORTUNITYPRODUCT_quantity] forKey:DTOOPPORTUNITYPRODUCT_quantity];
+                //revenue
+                [dicEntity setObject:[item objectForKey:DTOOPPORTUNITYPRODUCT_revenue] forKey:DTOOPPORTUNITYPRODUCT_revenue];
+                
+                
+                succsess = [dtoOpportunityProductProcess insertToDBWithEntity:dicEntity];
+                
+            }
+        }
+        if(succsess){
+            //Thong bao cap nhat thanh cong va thoat
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Cập nhật thành công, tiếp tục nhập?" delegate:self cancelButtonTitle:@"Không" otherButtonTitles:@"Có", nil];
+            alert.tag = 5;
+            [alert show];
+        }else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE") message:LocalizedString(@"KEY_ALERT_ERROR") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERT_EXIT") otherButtonTitles:nil];
+            alert.tag = 6;
+            [alert show];
+        }
         
     }else{
         //khong bao nhap loi - lien he quan tri
@@ -666,17 +739,41 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if(tableView == self.tbProduct){
+        return listProduct.count;
+    }
     return listArrCustomerFilter.count;
 }
 
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(tableView == self.tbProduct){
+        return 50;
+    }
     return 40;
 }
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(tableView == self.tbProduct){
+        static NSString *cellId = @"ProposeProductPopupCell";
+        ProposeProductPopupCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
+        
+        
+        if (!cell) {
+            cell = [ProposeProductPopupCell getNewCell];
+        }
+        
+        if (listProduct.count>0) {
+            [cell loadDataToCellWithData:[listProduct objectAtIndex:indexPath.row] withOption:smgSelect];
+        }
+        
+        return cell;
+    }
+
+    
+    
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell) cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     cell.textLabel.text = [[listArrCustomerFilter objectAtIndex:indexPath.row] objectForKey:@"name"]; //[NSString stringWithFormat:@"%d",indexPath.row];
@@ -688,6 +785,35 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
    
 }
+
+
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return @"Xoá";
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        deleteProductIndex = indexPath.row;
+        
+        UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Xác nhận đồng ý xoá?" delegate:self cancelButtonTitle:@"Đồng ý" otherButtonTitles: @"Huỷ", nil];
+        mylert.tag = TAG_DELETE_ITEM;
+        [mylert show];
+        
+    }
+}
+
+
 - (void)dismissAllPopTipViews
 {
     while ([self.visiblePopTipViews count] > 0) {
@@ -767,5 +893,29 @@
     txtView.layer.borderColor=[[UIColor redColor]CGColor ];
     txtView.layer.borderWidth=1.0f;
     [txtView becomeFirstResponder];
+}
+
+#pragma mark Phan chon san pham
+- (IBAction)actionAddProduct:(id)sender {
+    EditOpportunityProductPopupViewController *viewController = [[EditOpportunityProductPopupViewController alloc]initWithNibName:@"EditOpportunityProductPopupViewController" bundle:nil];
+    viewController.view.frame = CGRectMake(154, 0, 582, 675);//435//582
+    if(self.dataRoot){
+        viewController.dataSend = self.dataRoot;
+    }
+    viewController.delegateOpportunityProduct = (id<OpportunityProductPopupDelegate>)self;
+    
+    
+    [self presentPopupViewController:viewController animationType:YES dismissed:nil];
+    // [self presentPopupViewController:viewController animated:YES completion:nil];
+}
+
+-(void)receiveData:(NSDictionary*)value{
+    if(!listProduct){
+        listProduct = [NSMutableArray new];
+    }
+    [listProduct insertObject:value atIndex:0];
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    [self.tbProduct reloadData];
+    
 }
 @end

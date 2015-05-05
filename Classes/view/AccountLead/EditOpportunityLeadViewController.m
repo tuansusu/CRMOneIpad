@@ -247,7 +247,7 @@
 }
 
 -(void) loadProduct{
-    listProduct = [dtoOpportunityProductProcess filterWithClientOpportunityId:[_dataSend objectForKey:DTOOPPORTUNITY_clientOpportunityId]];
+    listProduct = [dtoOpportunityProductProcess filterWithClientOpportunityId:[_dataRoot objectForKey:DTOOPPORTUNITY_clientOpportunityId]];
     [self.tbProduct reloadData];
 }
 
@@ -341,7 +341,7 @@
     
     if (buttonIndex == 0 && alertView.tag == TAG_DELETE_ITEM) {
         
-        if(self.dataSend){
+        if(!self.dataSend){
             NSString *deleteItemId = [[listProduct objectAtIndex:deleteProductIndex] objectForKey:DTOOPPORTUNITYPRODUCT_id];
             BOOL result = [dtoOpportunityProductProcess deleteEntity:deleteItemId];
             
@@ -656,7 +656,7 @@
 
     succsess = [dtoOpportunityProcess insertToDBWithEntity:dicEntity];
     if (succsess) {
-        if(!self.dataSend){
+        if(self.dataSend){
             for (NSDictionary *item in listProduct) {
                 //neu qua duoc check thi tien hanh luu du lieu
                 NSMutableDictionary *dicEntity = [NSMutableDictionary new];

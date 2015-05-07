@@ -997,7 +997,10 @@
     }
 }
 -(void) setLanguage{
+    [_lbTotal setText:LocalizedString(@"KEY_LIST_360_TOTAL")];
     _fullNameLB.text=LocalizedString(@"KEY_LEAD_TITLE");
+    [_txtSearchBar setPlaceholder:LocalizedString(@"KEY_LIST_360_TOTAL")];
+    
     
 }
 - (IBAction)actionAdd_IP:(id)sender {

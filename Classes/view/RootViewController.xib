@@ -64,7 +64,7 @@
                                 <action selector="login_click:" destination="-1" eventType="touchUpInside" id="21"/>
                             </connections>
                         </button>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tài khoản" minimumFontSize="17" clearButtonMode="always" id="23">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="crm_admin" placeholder="Tài khoản" minimumFontSize="17" clearButtonMode="always" id="23">
                             <rect key="frame" x="376" y="236" width="284" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -73,7 +73,7 @@
                                 <outlet property="delegate" destination="-1" id="44"/>
                             </connections>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mật khẩu" minimumFontSize="17" id="24">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456a@" placeholder="Mật khẩu" minimumFontSize="17" id="24">
                             <rect key="frame" x="376" y="291" width="284" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>

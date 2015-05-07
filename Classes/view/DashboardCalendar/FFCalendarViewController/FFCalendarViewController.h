@@ -11,4 +11,6 @@
 @property (nonatomic, strong) id <FFCalendarViewControllerProtocol> protocol;
 @property (nonatomic, strong) NSMutableArray *arrayWithEvents;
 
+@property (nonatomic) enum DeviceType currentDeviceType;
+
 @end

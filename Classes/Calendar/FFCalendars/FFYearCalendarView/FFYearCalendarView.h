@@ -19,6 +19,8 @@
 
 @property (nonatomic, strong) id<FFYearCalendarViewProtocol> protocol;
 
+@property (nonatomic) enum DeviceType currentDeviceType;
+
 - (void)invalidateLayout;
 
 @end

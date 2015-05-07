@@ -100,6 +100,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     FFMonthCellForYearCell *cell = (FFMonthCellForYearCell *)[collectionView dequeueReusableCellWithReuseIdentifier:REUSE_IDENTIFIER_MONTH_CELL forIndexPath:indexPath];
+    cell.currentDeviceType = _currentDeviceType;
     [cell initLayout];
     
     id obj = [arrayDates objectAtIndex:indexPath.row];
@@ -124,6 +125,7 @@
     
     if (kind == UICollectionElementKindSectionHeader) {
         FFHeaderMonthForYearCell *headerView = (FFHeaderMonthForYearCell *)[collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:REUSE_IDENTIFIER_MONTH_HEADER forIndexPath:indexPath];
+        headerView.currentDeviceType = _currentDeviceType;
         [headerView setDate:date];
         [headerView addWeekLabelsWithSizeOfCells:sizeOfCells];
         reusableview = headerView;

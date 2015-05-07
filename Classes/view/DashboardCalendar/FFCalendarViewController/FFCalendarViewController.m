@@ -7,6 +7,7 @@
 #import "EditCalendarLeadViewController.h"
 
 #import "Globals.h"
+#import "EnumClass.h"
 
 #define BUTTON_WIDTH 60
 #define BUTTON_MOUNT_WIDTH 80
@@ -378,6 +379,7 @@
     
     viewCalendarYear = [[FFYearCalendarView alloc] initWithFrame:frame];
     [viewCalendarYear setProtocol:self];
+    viewCalendarYear.currentDeviceType = _currentDeviceType;
     [self.view addSubview:viewCalendarYear];
     
     viewCalendarMonth = [[FFMonthCalendarView alloc] initWithFrame:frame];

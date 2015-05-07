@@ -87,7 +87,7 @@
     [cell setProtocol:self];
     [cell initLayout];
     [cell setDate:[NSDate dateWithYear:([[FFDateManager sharedManager] currentDate].componentsOfDate.year+(indexPath.section-1)) month:(indexPath.row+1) day:1]];
-
+    cell.currentDeviceType = _currentDeviceType;
     return cell;
 }
 
@@ -100,9 +100,14 @@
     NSInteger lines = isLandscape?3:4;
     NSInteger columns = isLandscape?4:3;
     
-    sizeOfCell = CGSizeMake((self.frame.size.width-(columns-1)*SPACE_COLLECTIONVIEW_CELL_YEAR)/columns,
-                            (self.frame.size.height-(lines-1)*SPACE_COLLECTIONVIEW_CELL_YEAR)/lines);
     
+    if(_currentDeviceType == iPad){
+        sizeOfCell = CGSizeMake((self.frame.size.width-(columns-1)*SPACE_COLLECTIONVIEW_CELL_YEAR)/columns,
+                                (self.frame.size.height-(lines-1)*SPACE_COLLECTIONVIEW_CELL_YEAR)/lines);
+    }else{
+        sizeOfCell = CGSizeMake((self.frame.size.width-(columns-1)*(SPACE_COLLECTIONVIEW_CELL_YEAR - 20))/columns,
+                                (self.frame.size.height-(lines-1)*(SPACE_COLLECTIONVIEW_CELL_YEAR - 20))/lines);
+    }
     return sizeOfCell;
 }
 

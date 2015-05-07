@@ -60,7 +60,11 @@
             [label setTextAlignment:NSTextAlignmentCenter];
             [label setText:[arrayWeekAbrev objectAtIndex:i]];
             [label setTextColor:[UIColor blackColor]];
-            [label setFont:[UIFont boldSystemFontOfSize:label.font.pointSize-5]];
+            if(_currentDeviceType == iPad){
+                [label setFont:[UIFont boldSystemFontOfSize:label.font.pointSize-5]];
+            }else{
+                [label setFont:[UIFont boldSystemFontOfSize:6]];
+            }
             [self addSubview:label];
         }
     }

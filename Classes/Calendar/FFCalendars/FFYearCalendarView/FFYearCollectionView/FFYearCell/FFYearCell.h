@@ -9,6 +9,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EnumClass.h"
 
 @protocol FFYearCellProtocol <NSObject>
 @required
@@ -19,6 +20,7 @@
 
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong) id<FFYearCellProtocol> protocol;
+@property (nonatomic) enum DeviceType currentDeviceType;
 
 - (void)initLayout;
 

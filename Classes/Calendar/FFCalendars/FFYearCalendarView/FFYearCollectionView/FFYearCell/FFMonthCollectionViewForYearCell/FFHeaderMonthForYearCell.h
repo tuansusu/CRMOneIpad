@@ -9,10 +9,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EnumClass.h"
 
 @interface FFHeaderMonthForYearCell : UICollectionReusableView
 
 @property (nonatomic, strong) NSDate *date;
+@property (nonatomic) enum DeviceType currentDeviceType;
 
 - (void)addWeekLabelsWithSizeOfCells:(CGSize)sizeOfCells;
 

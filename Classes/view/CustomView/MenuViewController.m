@@ -448,6 +448,7 @@
 - (IBAction)actionCalendar:(id)sender {
     
     FFCalendarViewController *targetViewController =[FFCalendarViewController new];
+    targetViewController.currentDeviceType = self.currentDeviceType;
     UINavigationController * navi = [[UINavigationController alloc] initWithRootViewController:targetViewController];
     [navi setNavigationBarHidden:YES];
     

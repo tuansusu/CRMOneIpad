@@ -9,10 +9,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EnumClass.h"
 
 @interface FFMonthCellForYearCell : UICollectionViewCell
 
 @property (nonatomic, strong) UILabel *labelDay;
+@property (nonatomic) enum DeviceType currentDeviceType;
+
 
 - (void)initLayout;
 - (void)markAsCurrentDay;

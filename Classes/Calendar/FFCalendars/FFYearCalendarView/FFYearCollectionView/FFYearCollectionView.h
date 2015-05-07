@@ -9,6 +9,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EnumClass.h"
 
 @protocol FFYearCollectionViewProtocol <NSObject>
 @required
@@ -18,5 +19,7 @@
 @interface FFYearCollectionView : UICollectionView
 
 @property (nonatomic, strong) id<FFYearCollectionViewProtocol> protocol;
+
+@property (nonatomic) enum DeviceType currentDeviceType;
 
 @end

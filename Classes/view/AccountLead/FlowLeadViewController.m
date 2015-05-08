@@ -11,6 +11,7 @@
 #import "CalendarPickerViewController.h"
 #import "DTOFLLOWUPProcess.h"
 #import "Util.h"
+#import "EnumClass.h"
 
 #define FOLLOW_UP_LEAD_ITEM 44
 #define TAG_SELECT_DATE_START 11
@@ -92,6 +93,12 @@
     obj.str=[defaults objectForKey:@"Language"];
     LocalizationSetLanguage(obj.str);
     [self setLanguage:name];
+    if ([self currentDeviceType]==iPhone) {
+        [self setBorderTextfield:_txtMucDich];
+        [self setBorderTextfield:_txtNgaybatdau];
+        [self setBorderTextfield:_txtNgayhoanthanh];
+        [self setBorderTextfield:_txtThoigiannhacnho];
+    }
 }
 
 
@@ -100,7 +107,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)setBorderTextfield:(UITextField *)txtField{
+    
+    txtField.textColor = TEXT_COLOR_REPORT;
+    txtField.backgroundColor = BACKGROUND_NORMAL_COLOR1;
+    [txtField setBorderWithOption:smgSelect];
+    [txtField setPaddingLeft];
+}
 - (void) updateInterFaceWithOption : (int) option
 {
     
@@ -134,8 +147,8 @@
             if ([viewSubTemp isKindOfClass:[UITextField class]]) {
                 ((UITextField*) viewSubTemp).textColor = TEXT_COLOR_REPORT;
                 ((UITextField*) viewSubTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
-//                ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
-//                ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
+                //                ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
+                //                ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
                 
                 [((UITextField*) viewSubTemp) setPaddingLeft];
                 [((UITextField*) viewSubTemp) setBorderWithOption:smgSelect];
@@ -171,12 +184,12 @@
     NSString *strClientContactId = IntToStr(([dtoFollowProcess getClientId]));
     NSMutableDictionary *dicEntity=[NSMutableDictionary new];
     [dicEntity setObject:strClientContactId forKey:DTOFOLLOWUP_clientFollowUpId];
-   // [dicEntity setObject:NULL forKey:DTOFOLLOWUP_createdBy];
-   // [dicEntity setObject:NULL forKey:DTOFOLLOWUP_createdDate];
+    // [dicEntity setObject:NULL forKey:DTOFOLLOWUP_createdBy];
+    // [dicEntity setObject:NULL forKey:DTOFOLLOWUP_createdDate];
     [dicEntity setObject:@"107" forKey:DTOFOLLOWUP_employeeId];
     [dicEntity setObject:[DateUtil formatDate:dateEnd :@"yyyy-MM-dd HH:mm:ss.S"] forKey:DTOFOLLOWUP_endDate];
     //[dicEntity setObject:dateEnd forKey:DTOFOLLOWUP_endDate];
-   // [dicEntity setObject:nil forKey:DTOFOLLOWUP_followUpId];
+    // [dicEntity setObject:nil forKey:DTOFOLLOWUP_followUpId];
     [dicEntity setObject:@"1" forKey:DTOFOLLOWUP_followUpState];
     if (isEMail) {
         [dicEntity setObject:@"1" forKey:DTOFOLLOWUP_isEmail];
@@ -216,8 +229,8 @@
     //[dicEntity setObject:dateStart forKey:DTOFOLLOWUP_startDate];
     [dicEntity setObject:[DateUtil formatDate:dateStart :@"yyyy-MM-dd HH:mm:ss.S"] forKey:DTOFOLLOWUP_startDate];
     [dicEntity setObject:catId forKey:DTOFOLLOWUP_sysCatId];
-   // [dicEntity setObject:NULL forKey:DTOFOLLOWUP_updatedBy];
-   // [dicEntity setObject:NULL forKey:DTOFOLLOWUP_updatedDate];
+    // [dicEntity setObject:NULL forKey:DTOFOLLOWUP_updatedBy];
+    // [dicEntity setObject:NULL forKey:DTOFOLLOWUP_updatedDate];
     
     success=[dtoFollowProcess insertToDBWithEntity:dicEntity];
     if (success) {
@@ -234,12 +247,16 @@
         [alert show];
     }
     
-
+    
     
 }
 - (IBAction)actionCancel:(id)sender {
-    
-    [_delegate delegate_dismisFollow:0];
+    if ([self currentDeviceType]==iPhone) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else{
+        
+        [_delegate delegate_dismisFollow:0];
+    }
 }
 
 - (IBAction)actionRemind:(id)sender {

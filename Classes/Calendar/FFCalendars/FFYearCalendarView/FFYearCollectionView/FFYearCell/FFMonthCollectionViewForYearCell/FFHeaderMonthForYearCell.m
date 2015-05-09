@@ -17,6 +17,10 @@
 @end
 
 @implementation FFHeaderMonthForYearCell
+{
+    NSArray *arrayMonthTitle;
+    NSArray *arrayWeekTitleCompact;
+}
 
 #pragma mark - Synthesize
 
@@ -31,8 +35,33 @@
     if (self) {
         // Initialization code
     }
+    
+    
+    arrayMonthTitle =  @[LocalizedString(@"KEY_CALENDAR_JANUARY")
+                             ,LocalizedString(@"KEY_CALENDAR_FEBRUARY")
+                             ,LocalizedString(@"KEY_CALENDAR_MARCH")
+                             ,LocalizedString(@"KEY_CALENDAR_APRIL")
+                             ,LocalizedString(@"KEY_CALENDAR_MAY")
+                             ,LocalizedString(@"KEY_CALENDAR_JUNE")
+                             ,LocalizedString(@"KEY_CALENDAR_JULY")
+                             ,LocalizedString(@"KEY_CALENDAR_AUGUST")
+                             ,LocalizedString(@"KEY_CALENDAR_SEPTEMBER")
+                             ,LocalizedString(@"KEY_CALENDAR_OCTOBER")
+                             ,LocalizedString(@"KEY_CALENDAR_NOVEMBER")
+                             ,LocalizedString(@"KEY_CALENDAR_DECEMBER")
+                             ];
+    
+    arrayWeekTitleCompact = @[LocalizedString(@"KEY_CALENDAR_SUN")
+                              ,LocalizedString(@"KEY_CALENDAR_MON")
+                              ,LocalizedString(@"KEY_CALENDAR_TUE")
+                              ,LocalizedString(@"KEY_CALENDAR_WED")
+                              ,LocalizedString(@"KEY_CALENDAR_THU")
+                              ,LocalizedString(@"KEY_CALENDAR_FRI")
+                              ,LocalizedString(@"KEY_CALENDAR_SAT")
+                              ];
     return self;
 }
+
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -52,24 +81,24 @@
         CGFloat height = self.frame.size.height/4.;
         
         labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(0., 0., self.frame.size.width, 3*height)];
-        [labelTitle setTextColor:HEADER_VIEW_COLOR1];
+        [labelTitle setTextColor:[UIColor redColor]];
         [self addSubview:labelTitle];
         
-        for (int i = 0; i < [arrayWeekAbrev count]; i++) {
+        for (int i = 0; i < [arrayWeekTitleCompact count]; i++) {
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(i*sizeOfCells.width, labelTitle.frame.size.height, sizeOfCells.width, height)];
             [label setTextAlignment:NSTextAlignmentCenter];
-            [label setText:[arrayWeekAbrev objectAtIndex:i]];
+            [label setText:[arrayWeekTitleCompact objectAtIndex:i]];
             [label setTextColor:[UIColor blackColor]];
             if(_currentDeviceType == iPad){
-                [label setFont:[UIFont boldSystemFontOfSize:label.font.pointSize-5]];
+                [label setFont:[UIFont systemFontOfSize:label.font.pointSize-5]];
             }else{
-                [label setFont:[UIFont boldSystemFontOfSize:6]];
+                [label setFont:[UIFont systemFontOfSize:6]];
             }
             [self addSubview:label];
         }
     }
     
-    [labelTitle setText:[[arrayMonthName objectAtIndex:(date.componentsOfDate.month-1)] uppercaseString]];
+    [labelTitle setText:[[arrayMonthTitle objectAtIndex:(date.componentsOfDate.month-1)] uppercaseString]];
 }
 
 

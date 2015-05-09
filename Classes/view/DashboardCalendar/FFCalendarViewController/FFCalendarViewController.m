@@ -308,15 +308,31 @@
 -(void)addTopMenuView{
 
 
-    FFRedAndWhiteButton *buttonYear = [self calendarButtonWithTitle:@"year"];
+    FFRedAndWhiteButton *buttonYear = [self calendarButtonWithTitle:@"Year"];
 
     UIImageView *imgBackground = [[UIImageView alloc] initWithFrame:CGRectMake(0, 20,APP_SCREEN_WIDTH, buttonYear.frame.size.height*2)];
     //tuannv36
     [imgBackground setBackgroundColor:HEADER_VIEW_COLOR1];
     [self.view addSubview:imgBackground];
+    
+    
+    
+//    buttonYear.layer.cornerRadius = 10;
+//    buttonYear.clipsToBounds =  YES;
 
+    int startPositionButton = 350;
+    
     //[buttonYear setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*4, 0, BUTTON_WIDTH, buttonYear.frame.size.height)];
-    [buttonYear setFrame:CGRectMake(400 + BUTTON_WIDTH * 3 + BUTTON_MOUNT_WIDTH, 0, BUTTON_WIDTH, buttonYear.frame.size.height)];
+    [buttonYear setFont:[UIFont systemFontOfSize:16]];
+    [buttonYear setFrame:CGRectMake(startPositionButton + BUTTON_WIDTH * 3 + BUTTON_MOUNT_WIDTH, 0, BUTTON_WIDTH, buttonYear.frame.size.height)];
+    CAShapeLayer * maskLayer = [CAShapeLayer layer];
+    maskLayer.path = [UIBezierPath bezierPathWithRoundedRect: buttonYear.bounds byRoundingCorners: UIRectCornerTopRight | UIRectCornerBottomRight cornerRadii: (CGSize){5.0, 5.0}].CGPath;
+  
+    //maskLayer.lineWidth   = 4.0f;
+    maskLayer.strokeColor = [UIColor redColor].CGColor;
+    maskLayer.fillColor   = [UIColor redColor].CGColor;
+    buttonYear.layer.mask = maskLayer;
+    
 
     UIButton *btnCloseCalendar = [[UIButton alloc] initWithFrame:CGRectMake(20., 0, 32, 32)];
 
@@ -324,25 +340,33 @@
     //    [btnCloseCalendar setImage:[UIImage imageNamed:@"iconMenu"] forState:UIControlStateNormal];
     [btnCloseCalendar addTarget:self action:@selector(closeCalendar:) forControlEvents:UIControlEventTouchUpInside];
 
-    FFRedAndWhiteButton *buttonMonth = [self calendarButtonWithTitle:@"month"];
+    FFRedAndWhiteButton *buttonMonth = [self calendarButtonWithTitle:@"Month"];
+    [buttonMonth setFont:[UIFont systemFontOfSize:16]];
     //[buttonMonth setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*4-BUTTON_MOUNT_WIDTH, 0, BUTTON_MOUNT_WIDTH, buttonMonth.frame.size.height)];
-    [buttonMonth setFrame:CGRectMake(400 + BUTTON_WIDTH * 3, 0, BUTTON_MOUNT_WIDTH, buttonMonth.frame.size.height)];
+    [buttonMonth setFrame:CGRectMake(startPositionButton + BUTTON_WIDTH * 3, 0, BUTTON_MOUNT_WIDTH, buttonMonth.frame.size.height)];
 
-    FFRedAndWhiteButton *buttonWeek = [self calendarButtonWithTitle:@"week"];
+    FFRedAndWhiteButton *buttonWeek = [self calendarButtonWithTitle:@"Week"];
+    [buttonWeek setFont:[UIFont systemFontOfSize:16]];
     //[buttonWeek setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*5-BUTTON_MOUNT_WIDTH, 0, BUTTON_WIDTH, buttonWeek.frame.size.height)];
-    [buttonWeek setFrame:CGRectMake(400 + BUTTON_WIDTH * 2, 0, BUTTON_WIDTH, buttonWeek.frame.size.height)];
+    [buttonWeek setFrame:CGRectMake(startPositionButton + BUTTON_WIDTH * 2, 0, BUTTON_WIDTH, buttonWeek.frame.size.height)];
 
-    FFRedAndWhiteButton *buttonDay = [self calendarButtonWithTitle:@"day"];
+    FFRedAndWhiteButton *buttonDay = [self calendarButtonWithTitle:@"Day"];
+    [buttonDay setFont:[UIFont systemFontOfSize:16]];
     //[buttonDay setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*6-BUTTON_MOUNT_WIDTH, 0, BUTTON_WIDTH, buttonDay.frame.size.height)];
-    [buttonDay setFrame:CGRectMake(400 + BUTTON_WIDTH, 0, BUTTON_WIDTH, buttonDay.frame.size.height)];
+    [buttonDay setFrame:CGRectMake(startPositionButton + BUTTON_WIDTH, 0, BUTTON_WIDTH, buttonDay.frame.size.height)];
 
 
     FFRedAndWhiteButton *buttonToday = [[FFRedAndWhiteButton alloc] initWithFrame:CGRectMake(0., 0., 80., 30)];
+    [buttonToday setFont:[UIFont systemFontOfSize:16]];
     [buttonToday addTarget:self action:@selector(buttonTodayAction:) forControlEvents:UIControlEventTouchUpInside];
-    [buttonToday setTitle:@"today" forState:UIControlStateNormal];
+    [buttonToday setTitle:@"Today" forState:UIControlStateNormal];
+    CAShapeLayer * maskLayer2 = [CAShapeLayer layer];
+    maskLayer2.path = [UIBezierPath bezierPathWithRoundedRect: buttonToday.bounds byRoundingCorners: UIRectCornerTopLeft | UIRectCornerBottomLeft | UIRectCornerBottomRight cornerRadii: (CGSize){5.0, 5.0}].CGPath;
+    
+    buttonToday.layer.mask = maskLayer2;
 
     //[buttonToday setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*7-BUTTON_MOUNT_WIDTH, 0, BUTTON_WIDTH, buttonToday.frame.size.height)];
-    [buttonToday setFrame:CGRectMake(400, 0, BUTTON_WIDTH, buttonToday.frame.size.height)];
+    [buttonToday setFrame:CGRectMake(startPositionButton, 0, BUTTON_WIDTH, buttonToday.frame.size.height)];
 
 
     FFRedAndWhiteButton *buttonAdd = [[FFRedAndWhiteButton alloc] initWithFrame:CGRectMake(0., 0., 30., 30)];

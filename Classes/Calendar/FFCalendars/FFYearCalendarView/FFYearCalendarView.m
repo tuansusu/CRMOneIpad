@@ -41,6 +41,7 @@
             collectionViewYear = [[FFYearCollectionView alloc] initWithFrame:CGRectMake(SPACE_COLLECTIONVIEW_CELL_YEAR - 15, SPACE_COLLECTIONVIEW_CELL_YEAR - 15, self.frame.size.width-2*(SPACE_COLLECTIONVIEW_CELL_YEAR - 15), self.frame.size.height-2*(SPACE_COLLECTIONVIEW_CELL_YEAR - 15)) collectionViewLayout:[FFYearCollectionViewFlowLayout new]];
         }
         
+        collectionViewYear.currentDeviceType = _currentDeviceType;
         [collectionViewYear setProtocol:self];
         [self addSubview:collectionViewYear];
         

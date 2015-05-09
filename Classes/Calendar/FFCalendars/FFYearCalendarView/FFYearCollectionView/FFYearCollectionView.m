@@ -84,10 +84,11 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 
     FFYearCell *cell = (FFYearCell *)[collectionView dequeueReusableCellWithReuseIdentifier:REUSE_IDENTIFIER_MONTH_CELL forIndexPath:indexPath];
+    cell.currentDeviceType = _currentDeviceType;
     [cell setProtocol:self];
     [cell initLayout];
     [cell setDate:[NSDate dateWithYear:([[FFDateManager sharedManager] currentDate].componentsOfDate.year+(indexPath.section-1)) month:(indexPath.row+1) day:1]];
-    cell.currentDeviceType = _currentDeviceType;
+    
     return cell;
 }
 

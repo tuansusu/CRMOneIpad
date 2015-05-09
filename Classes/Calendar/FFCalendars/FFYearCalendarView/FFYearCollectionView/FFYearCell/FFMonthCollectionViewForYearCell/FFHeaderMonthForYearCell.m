@@ -90,7 +90,7 @@
             [label setText:[arrayWeekTitleCompact objectAtIndex:i]];
             [label setTextColor:[UIColor blackColor]];
             if(_currentDeviceType == iPad){
-                [label setFont:[UIFont systemFontOfSize:label.font.pointSize-5]];
+                [label setFont:[UIFont systemFontOfSize:14]];
             }else{
                 [label setFont:[UIFont systemFontOfSize:6]];
             }

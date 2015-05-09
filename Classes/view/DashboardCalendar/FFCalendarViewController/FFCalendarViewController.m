@@ -315,7 +315,8 @@
     [imgBackground setBackgroundColor:HEADER_VIEW_COLOR1];
     [self.view addSubview:imgBackground];
 
-    [buttonYear setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*4, 0, BUTTON_WIDTH, buttonYear.frame.size.height)];
+    //[buttonYear setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*4, 0, BUTTON_WIDTH, buttonYear.frame.size.height)];
+    [buttonYear setFrame:CGRectMake(400 + BUTTON_WIDTH * 3 + BUTTON_MOUNT_WIDTH, 0, BUTTON_WIDTH, buttonYear.frame.size.height)];
 
     UIButton *btnCloseCalendar = [[UIButton alloc] initWithFrame:CGRectMake(20., 0, 32, 32)];
 
@@ -324,29 +325,39 @@
     [btnCloseCalendar addTarget:self action:@selector(closeCalendar:) forControlEvents:UIControlEventTouchUpInside];
 
     FFRedAndWhiteButton *buttonMonth = [self calendarButtonWithTitle:@"month"];
-    [buttonMonth setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*4-BUTTON_MOUNT_WIDTH, 0, BUTTON_MOUNT_WIDTH, buttonMonth.frame.size.height)];
+    //[buttonMonth setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*4-BUTTON_MOUNT_WIDTH, 0, BUTTON_MOUNT_WIDTH, buttonMonth.frame.size.height)];
+    [buttonMonth setFrame:CGRectMake(400 + BUTTON_WIDTH * 3, 0, BUTTON_MOUNT_WIDTH, buttonMonth.frame.size.height)];
 
     FFRedAndWhiteButton *buttonWeek = [self calendarButtonWithTitle:@"week"];
-    [buttonWeek setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*5-BUTTON_MOUNT_WIDTH, 0, BUTTON_WIDTH, buttonWeek.frame.size.height)];
+    //[buttonWeek setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*5-BUTTON_MOUNT_WIDTH, 0, BUTTON_WIDTH, buttonWeek.frame.size.height)];
+    [buttonWeek setFrame:CGRectMake(400 + BUTTON_WIDTH * 2, 0, BUTTON_WIDTH, buttonWeek.frame.size.height)];
 
     FFRedAndWhiteButton *buttonDay = [self calendarButtonWithTitle:@"day"];
-    [buttonDay setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*6-BUTTON_MOUNT_WIDTH, 0, BUTTON_WIDTH, buttonDay.frame.size.height)];
+    //[buttonDay setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*6-BUTTON_MOUNT_WIDTH, 0, BUTTON_WIDTH, buttonDay.frame.size.height)];
+    [buttonDay setFrame:CGRectMake(400 + BUTTON_WIDTH, 0, BUTTON_WIDTH, buttonDay.frame.size.height)];
 
 
     FFRedAndWhiteButton *buttonToday = [[FFRedAndWhiteButton alloc] initWithFrame:CGRectMake(0., 0., 80., 30)];
     [buttonToday addTarget:self action:@selector(buttonTodayAction:) forControlEvents:UIControlEventTouchUpInside];
     [buttonToday setTitle:@"today" forState:UIControlStateNormal];
 
-    [buttonToday setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*7-BUTTON_MOUNT_WIDTH, 0, BUTTON_WIDTH, buttonToday.frame.size.height)];
+    //[buttonToday setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*7-BUTTON_MOUNT_WIDTH, 0, BUTTON_WIDTH, buttonToday.frame.size.height)];
+    [buttonToday setFrame:CGRectMake(400, 0, BUTTON_WIDTH, buttonToday.frame.size.height)];
 
 
-    FFRedAndWhiteButton *buttonAdd = [[FFRedAndWhiteButton alloc] initWithFrame:CGRectMake(0., 0., 80., 30)];
+    FFRedAndWhiteButton *buttonAdd = [[FFRedAndWhiteButton alloc] initWithFrame:CGRectMake(0., 0., 30., 30)];
     [buttonAdd addTarget:self action:@selector(buttonAddEventAction:) forControlEvents:UIControlEventTouchUpInside];
-    [buttonAdd setTitle:@"Add" forState:UIControlStateNormal];
+    //[buttonAdd setTitle:@"Add" forState:UIControlStateNormal];
+    [buttonAdd setBackgroundImage:[UIImage imageNamed:@"ic-add-sub-1.png"]
+                         forState:UIControlStateNormal];
+    [buttonAdd.layer setBorderWidth:0];
 
-    [buttonAdd setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*8-10-BUTTON_MOUNT_WIDTH, 0, BUTTON_WIDTH, buttonAdd.frame.size.height)];
+    //[buttonAdd setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*8-10-BUTTON_MOUNT_WIDTH, 0, BUTTON_WIDTH, buttonAdd.frame.size.height)];
+    [buttonAdd setFrame:CGRectMake(APP_SCREEN_WIDTH-40, 0, buttonAdd.frame.size.width, buttonAdd.frame.size.height)];
+    
 
-    labelWithMonthAndYear = [[UILabel alloc] initWithFrame:CGRectMake(APP_SCREEN_WIDTH-BUTTON_WIDTH*2.5, 0., 140., 30)];
+    //labelWithMonthAndYear = [[UILabel alloc] initWithFrame:CGRectMake(APP_SCREEN_WIDTH-BUTTON_WIDTH*2.5, 0., 140., 30)];
+    labelWithMonthAndYear = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0., 140., 30)];
     [labelWithMonthAndYear setTextColor:TEXT_COLOR_WHITE_1];
     [labelWithMonthAndYear setFont:[UIFont boldSystemFontOfSize:17]];
     [labelWithMonthAndYear setFont:buttonToday.titleLabel.font];

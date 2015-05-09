@@ -957,13 +957,14 @@
     detail.dataSend=dicData;
     detail.delegate=self;
     if([self currentDeviceType]==iPhone){
-        detail.view.frame = CGRectMake(0, 0, 240, 280);
+        [self presentViewController:detail animated:YES completion:nil];
     }
     else{
         detail.view.frame = CGRectMake(0, 0, 600, 500);
+        [self presentPopupViewController:detail animationType:1];
     }
     //[InterfaceUtil setBorderWithCornerAndBorder:detail.view :6 :0.2 :nil];
-    [self presentPopupViewController:detail animationType:1];
+    
 }
 -(void) delegate_maps:(NSDictionary *)dicData{
     if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOLEAD_lat]]) {
@@ -997,7 +998,10 @@
     }
 }
 -(void) setLanguage{
+    [_lbTotal setText:LocalizedString(@"KEY_LIST_360_TOTAL")];
     _fullNameLB.text=LocalizedString(@"KEY_LEAD_TITLE");
+    [_txtSearchBar setPlaceholder:LocalizedString(@"KEY_LIST_360_TOTAL")];
+    
     
 }
 - (IBAction)actionAdd_IP:(id)sender {

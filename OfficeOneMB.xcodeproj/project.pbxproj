@@ -69,6 +69,8 @@
 		17A545C61AE5EFC4007F6B1E /* Message.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A545C21AE5EFC4007F6B1E /* Message.png */; };
 		17A545C71AE5EFC4007F6B1E /* Phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A545C31AE5EFC4007F6B1E /* Phone.png */; };
 		17A545C91AE5F1BF007F6B1E /* Calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A545C81AE5F1BF007F6B1E /* Calendar.png */; };
+		17B20D641AFD15B40023FCC0 /* FlowLeadViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17B20D621AFD15B40023FCC0 /* FlowLeadViewController~iphone.xib */; };
+		17B20D661AFD1FF70023FCC0 /* Follow360ViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17B20D651AFD1FF70023FCC0 /* Follow360ViewController~iphone.xib */; };
 		17C67D391A5D72FA00EECD66 /* SelectAddInMapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C67D371A5D72FA00EECD66 /* SelectAddInMapsViewController.m */; };
 		17C67D3A1A5D72FA00EECD66 /* SelectAddInMapsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17C67D381A5D72FA00EECD66 /* SelectAddInMapsViewController.xib */; };
 		17E1DC921AB881CC009B683B /* ContactLeadCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17E1DC901AB881CC009B683B /* ContactLeadCell~iphone.xib */; };
@@ -412,7 +414,6 @@
 		769F24851A6F1C5500427A8F /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F247D1A6F1C5500427A8F /* UIViewController+MMDrawerController.m */; };
 		769F24891A6F1F3F00427A8F /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F24871A6F1F3F00427A8F /* MenuViewController.m */; };
 		769F248A1A6F1F3F00427A8F /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769F24881A6F1F3F00427A8F /* MenuViewController.xib */; };
-		76A9883D1AAF3E6000F53304 /* MainViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76A9883B1AAF3E6000F53304 /* MainViewController~iphone.xib */; };
 		76A9D54C1AE00349005E14F6 /* ProposeProductPopupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A9D54A1AE00349005E14F6 /* ProposeProductPopupCell.m */; };
 		76A9D54D1AE00349005E14F6 /* ProposeProductPopupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76A9D54B1AE00349005E14F6 /* ProposeProductPopupCell.xib */; };
 		76BE29381AA3F55800663803 /* icon_delete_90x90.png in Resources */ = {isa = PBXBuildFile; fileRef = 76BE29351AA3F55800663803 /* icon_delete_90x90.png */; };
@@ -1254,6 +1255,8 @@
 		17A545C21AE5EFC4007F6B1E /* Message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Message.png; sourceTree = "<group>"; };
 		17A545C31AE5EFC4007F6B1E /* Phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Phone.png; sourceTree = "<group>"; };
 		17A545C81AE5F1BF007F6B1E /* Calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Calendar.png; sourceTree = "<group>"; };
+		17B20D621AFD15B40023FCC0 /* FlowLeadViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "FlowLeadViewController~iphone.xib"; sourceTree = "<group>"; };
+		17B20D651AFD1FF70023FCC0 /* Follow360ViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Follow360ViewController~iphone.xib"; sourceTree = "<group>"; };
 		17C67D361A5D72FA00EECD66 /* SelectAddInMapsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectAddInMapsViewController.h; sourceTree = "<group>"; };
 		17C67D371A5D72FA00EECD66 /* SelectAddInMapsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAddInMapsViewController.m; sourceTree = "<group>"; };
 		17C67D381A5D72FA00EECD66 /* SelectAddInMapsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectAddInMapsViewController.xib; sourceTree = "<group>"; };
@@ -1750,7 +1753,6 @@
 		769F24861A6F1F3F00427A8F /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuViewController.h; path = CustomView/MenuViewController.h; sourceTree = "<group>"; };
 		769F24871A6F1F3F00427A8F /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuViewController.m; path = CustomView/MenuViewController.m; sourceTree = "<group>"; };
 		769F24881A6F1F3F00427A8F /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuViewController.xib; path = CustomView/MenuViewController.xib; sourceTree = "<group>"; };
-		76A9883B1AAF3E6000F53304 /* MainViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainViewController~iphone.xib"; sourceTree = "<group>"; };
 		76A9D5491AE00349005E14F6 /* ProposeProductPopupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProposeProductPopupCell.h; sourceTree = "<group>"; };
 		76A9D54A1AE00349005E14F6 /* ProposeProductPopupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProposeProductPopupCell.m; sourceTree = "<group>"; };
 		76A9D54B1AE00349005E14F6 /* ProposeProductPopupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProposeProductPopupCell.xib; sourceTree = "<group>"; };
@@ -4159,6 +4161,7 @@
 				8434BF051A2F632000C29815 /* FlowLeadViewController.h */,
 				8434BF061A2F632000C29815 /* FlowLeadViewController.m */,
 				8434BF071A2F632000C29815 /* FlowLeadViewController.xib */,
+				17B20D621AFD15B40023FCC0 /* FlowLeadViewController~iphone.xib */,
 				84918ABC1A34574A00149CB4 /* SearchAdvanceLeadViewController.h */,
 				84918ABD1A34574A00149CB4 /* SearchAdvanceLeadViewController.m */,
 				84918ABE1A34574A00149CB4 /* SearchAdvanceLeadViewController.xib */,
@@ -4671,6 +4674,7 @@
 				7657E8A31A5AEB3A008A62F9 /* Follow360ViewController.h */,
 				7657E8A41A5AEB3A008A62F9 /* Follow360ViewController.m */,
 				7657E8A51A5AEB3A008A62F9 /* Follow360ViewController.xib */,
+				17B20D651AFD1FF70023FCC0 /* Follow360ViewController~iphone.xib */,
 				7657E8A61A5AEB3A008A62F9 /* Note360Cell.h */,
 				7657E8A71A5AEB3A008A62F9 /* Note360Cell.m */,
 				7657E8A81A5AEB3A008A62F9 /* Note360Cell.xib */,
@@ -5477,7 +5481,6 @@
 				8E8B3F221A49AA4300241360 /* MainViewController.h */,
 				8E8B3F231A49AA4300241360 /* MainViewController.m */,
 				8E8B3F241A49AA4300241360 /* MainViewController.xib */,
-				76A9883B1AAF3E6000F53304 /* MainViewController~iphone.xib */,
 				8E6105F51A5986A9003D1C0C /* Profile */,
 			);
 			path = MainView;
@@ -6571,6 +6574,7 @@
 				76601A55194BE90F001D4C01 /* signature.png in Resources */,
 				8EBFF2771A6E97700009D9E1 /* EditWidgetViewController.xib in Resources */,
 				76199E151A471DA900B792C5 /* MDSearchView.xib in Resources */,
+				17B20D661AFD1FF70023FCC0 /* Follow360ViewController~iphone.xib in Resources */,
 				76C9646B1A17731900029978 /* otherspart2.png in Resources */,
 				76601A4C194BE90F001D4C01 /* Reader-Mark-N@2x.png in Resources */,
 				1719B7021AC1A9ED0061BD7B /* EditNoteLeadViewController~iphone.xib in Resources */,
@@ -6621,7 +6625,6 @@
 				8434BF041A2F61B200C29815 /* calendar_small_new.png in Resources */,
 				2D60B07B17A27AA400848776 /* checkbox_ticked.png in Resources */,
 				76D29B2B1A1397EE004B9CF6 /* ProductViewController.xib in Resources */,
-				76A9883D1AAF3E6000F53304 /* MainViewController~iphone.xib in Resources */,
 				8E5AA9BB1A503F02007D9C8A /* iconArrowUp.png in Resources */,
 				8E75545E1A52EFC8001940FB /* iconRoundAboutRight.png in Resources */,
 				8497BFC01A295A2300A5ED3C /* boat.png in Resources */,
@@ -7051,6 +7054,7 @@
 				7657E8BE1A5AEB3A008A62F9 /* EditCalendar360ViewController.xib in Resources */,
 				2DE2D28C1829060700034877 /* footer.png in Resources */,
 				8497BFF01A295A2300A5ED3C /* track.json in Resources */,
+				17B20D641AFD15B40023FCC0 /* FlowLeadViewController~iphone.xib in Resources */,
 				B38111E718ACD40600876151 /* update-btn-1-1.png in Resources */,
 				177885951A84699100C71551 /* menuedit.png in Resources */,
 				7697BBCB1A7FB1700023F118 /* menu_sync.png in Resources */,

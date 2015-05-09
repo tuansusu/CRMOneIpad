@@ -88,9 +88,9 @@
     if (![StringUtil stringIsEmpty:avartar]) {
         _avartar.image=[UIImage imageWithData:[NSData dataWithContentsOfFile:avartar]];
     }
-    else{
-    _avartar.image=[UIImage imageWithData:[NSData dataWithContentsOfFile:@"avatar.png"]];
-    }
+//    else{
+//    _avartar.image=[UIImage imageWithData:[NSData dataWithContentsOfFile:@"avatar.png"]];
+//    }
     switch (smgSelect) {
         case 1:
         {

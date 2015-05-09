@@ -11,6 +11,7 @@
 #import "CalendarPickerViewController.h"
 #import "DTOFLLOWUPProcess.h"
 #import "Util.h"
+#import "EnumClass.h"
 
 #define FOLLOW_UP_LEAD_ITEM 44
 #define TAG_SELECT_DATE_START 11
@@ -93,9 +94,21 @@
     obj.str = [defaults objectForKey:@"Language"];
     LocalizationSetLanguage(obj.str);
     [self setLanguage:name];
+    if ([self currentDeviceType]==iPhone) {
+        [self setBorderTextfield:_txtMucDich];
+        [self setBorderTextfield:_txtNgaybatdau];
+        [self setBorderTextfield:_txtNgayhoanthanh];
+        [self setBorderTextfield:_txtThoigiannhacnho];
+    }
 }
 
-
+-(void)setBorderTextfield:(UITextField *)txtField{
+    
+    txtField.textColor = TEXT_COLOR_REPORT;
+    txtField.backgroundColor = BACKGROUND_NORMAL_COLOR1;
+    [txtField setBorderWithOption:smgSelect];
+    [txtField setPaddingLeft];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -117,49 +130,49 @@
     self.viewinfo.layer.borderColor = [BORDER_COLOR CGColor];
     
     //for (UIView *viewTemp in self.viewmaininfo.subviews) {
+    
+    for (UIView *viewSubTemp in self.viewmaininfo.subviews) {
         
-        for (UIView *viewSubTemp in self.viewmaininfo.subviews) {
+        if ([viewSubTemp isKindOfClass:[UIImageView class]]) {
+            [((UIImageView*) viewSubTemp) setAlpha:1.0f];
+            continue;
+        }
+        
+        if ([viewSubTemp isKindOfClass:[UILabel class]]) {
+            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+            continue;
+        }
+        
+        
+        if ([viewSubTemp isKindOfClass:[UITextView class]]) {
+            ((UITextView*) viewSubTemp).textColor = TEXT_COLOR_REPORT;
+            ((UITextView*) viewSubTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
+            ((UITextView*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
+            ((UITextView*) viewSubTemp).layer.borderWidth = BORDER_WITH;
+            continue;
+        }
+        if ([viewSubTemp isKindOfClass:[UITextField class]]) {
+            ((UITextField*) viewSubTemp).textColor = TEXT_COLOR_REPORT;
+            ((UITextField*) viewSubTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
+            //                ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
+            //                ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
             
-            if ([viewSubTemp isKindOfClass:[UIImageView class]]) {
-                [((UIImageView*) viewSubTemp) setAlpha:1.0f];
-                continue;
-            }
-            
-            if ([viewSubTemp isKindOfClass:[UILabel class]]) {
-                ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
-                continue;
-            }
-            
-            
-            if ([viewSubTemp isKindOfClass:[UITextView class]]) {
-                ((UITextView*) viewSubTemp).textColor = TEXT_COLOR_REPORT;
-                ((UITextView*) viewSubTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
-                ((UITextView*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
-                ((UITextView*) viewSubTemp).layer.borderWidth = BORDER_WITH;
-                continue;
-            }
-            if ([viewSubTemp isKindOfClass:[UITextField class]]) {
-                ((UITextField*) viewSubTemp).textColor = TEXT_COLOR_REPORT;
-                ((UITextField*) viewSubTemp).backgroundColor = BACKGROUND_NORMAL_COLOR1;
-//                ((UITextField*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
-//                ((UITextField*) viewSubTemp).layer.borderWidth = BORDER_WITH;
-                
-                [((UITextField*) viewSubTemp) setPaddingLeft];
-                [((UITextField*) viewSubTemp) setBorderWithOption:smgSelect];
-                continue;
-                
-            }
-            
-            if ([viewSubTemp isKindOfClass:[UIButton class]]) {
-                if(viewSubTemp.tag!=10){
-                    [((UIButton*) viewSubTemp) setStyleNormalWithOption:smgSelect];
-                }
-            }
+            [((UITextField*) viewSubTemp) setPaddingLeft];
+            [((UITextField*) viewSubTemp) setBorderWithOption:smgSelect];
+            continue;
             
         }
         
-    
+        if ([viewSubTemp isKindOfClass:[UIButton class]]) {
+            if(viewSubTemp.tag!=10){
+                [((UIButton*) viewSubTemp) setStyleNormalWithOption:smgSelect];
+            }
+        }
         
+    }
+    
+    
+    
     //}
     
 }
@@ -242,7 +255,12 @@
 }
 - (IBAction)actionCancel:(id)sender {
     NSLog(@"dismiss");
-    [_delegate delegate_dismisFollow:0];
+    if ([self currentDeviceType]==iPhone) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    else{
+        [_delegate delegate_dismisFollow:0];
+    }
 }
 
 - (IBAction)actionRemind:(id)sender {

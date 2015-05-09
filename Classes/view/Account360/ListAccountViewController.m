@@ -768,9 +768,13 @@
     Follow360ViewController *detail = [[Follow360ViewController alloc] initWithNibName:@"Follow360ViewController" bundle:nil];
     detail.dataSend=dicData;
     detail.delegate=self;
-    detail.view.frame = CGRectMake(0, 0, 600, 500);
-    //[InterfaceUtil setBorderWithCornerAndBorder:detail.view :6 :0.2 :nil];
-    [self presentPopupViewController:detail animationType:1];
+    if ([self currentDeviceType]==iPhone) {
+        [self presentViewController:detail animated:YES completion:nil];
+    }else{
+        detail.view.frame = CGRectMake(0, 0, 600, 500);
+        //[InterfaceUtil setBorderWithCornerAndBorder:detail.view :6 :0.2 :nil];
+        [self presentPopupViewController:detail animationType:1];
+    }
 }
 
 
@@ -852,9 +856,14 @@
     Follow360ViewController *detail = [[Follow360ViewController alloc] initWithNibName:@"Follow360ViewController" bundle:nil];
     detail.dataSend=dicData;
     detail.delegate=self;
-    detail.view.frame = CGRectMake(0, 0, 600, 500);
-    //[InterfaceUtil setBorderWithCornerAndBorder:detail.view :6 :0.2 :nil];
-    [self presentPopupViewController:detail animationType:1];
+    if ([self currentDeviceType]==iPhone) {
+        [self presentViewController:detail animated:YES completion:nil];
+    }
+    else{
+        detail.view.frame = CGRectMake(0, 0, 600, 500);
+        //[InterfaceUtil setBorderWithCornerAndBorder:detail.view :6 :0.2 :nil];
+        [self presentPopupViewController:detail animationType:1];
+    }
 }
 -(void) delegate_maps:(NSDictionary *)dicData{
     if (![StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_lat]]) {

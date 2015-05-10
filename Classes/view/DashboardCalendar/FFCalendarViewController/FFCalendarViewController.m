@@ -24,6 +24,8 @@
     int tagButtonSelect ;
     
     BOOL checkFirstLoadAppear;
+    FFRedAndWhiteButton *buttonBack;
+    UIButton *hiddenButtonBack;
 }
 @property (nonatomic) BOOL boolDidLoad;
 @property (nonatomic) BOOL boolYearViewIsShowing;
@@ -133,7 +135,11 @@
     if (checkFirstLoadAppear) {
         checkFirstLoadAppear = NO;
         
-        [self buttonYearMonthWeekDayAction:[arrayButtons objectAtIndex:1]];
+        if(self.currentDeviceType == iPad){
+            [self buttonYearMonthWeekDayAction:[arrayButtons objectAtIndex:1]];
+        }else{
+            [self buttonYearMonthWeekDayAction:[arrayButtons objectAtIndex:0]];//De mac dinh tren iphone la hien thi theo nam
+        }
         tagButtonSelect = 1;
         
         
@@ -228,11 +234,17 @@
 
 - (void)updateLabelWithMonthAndYear {
 
-    NSDateComponents *comp = [NSDate componentsOfDate:[[FFDateManager sharedManager] currentDate]];
-    NSString *string = boolYearViewIsShowing ? [NSString stringWithFormat:@"%@ %li",LocalizedString(@"KEY_CALENDAR_YEAR"), (long)comp.year] : [NSString stringWithFormat:@"%@ %li", [arrayMonthTitle objectAtIndex:comp.month-1], (long)comp.year];
-    [labelWithMonthAndYear setText:string];
-    
-    NSLog(@"[FFDateManager sharedManager] currentDate] %@", [[FFDateManager sharedManager] currentDate]);
+    if(self.currentDeviceType == iPad){
+        NSDateComponents *comp = [NSDate componentsOfDate:[[FFDateManager sharedManager] currentDate]];
+        NSString *string = boolYearViewIsShowing ? [NSString stringWithFormat:@"%@ %li",LocalizedString(@"KEY_CALENDAR_YEAR"), (long)comp.year] : [NSString stringWithFormat:@"%@ %li", [arrayMonthTitle objectAtIndex:comp.month-1], (long)comp.year];
+        [labelWithMonthAndYear setText:string];
+    }else{
+        NSDateComponents *comp = [NSDate componentsOfDate:[[FFDateManager sharedManager] currentDate]];
+        NSString *string = boolYearViewIsShowing ? @"" : [NSString stringWithFormat:@"%@ %li",LocalizedString(@"KEY_CALENDAR_YEAR"), (long)comp.year];
+        [labelWithMonthAndYear setText:string];
+        
+        buttonBack.hidden = boolYearViewIsShowing;
+    }
     
 }
 
@@ -350,8 +362,12 @@
     buttonYear.layer.mask = maskLayer;
     
 
-    UIButton *btnCloseCalendar = [[UIButton alloc] initWithFrame:CGRectMake(20., 0, 32, 32)];
-
+    UIButton *btnCloseCalendar;
+    if(self.currentDeviceType == iPad){
+        btnCloseCalendar = [[UIButton alloc] initWithFrame:CGRectMake(20., 0, 32, 32)];
+    }else{
+        btnCloseCalendar = [[UIButton alloc] initWithFrame:CGRectMake(8.0, 19.0, 32, 32)];
+    }
     [btnCloseCalendar setBackgroundImage:[UIImage imageNamed:@"icon_menu-1.png"] forState:UIControlStateNormal];
     //    [btnCloseCalendar setImage:[UIImage imageNamed:@"iconMenu"] forState:UIControlStateNormal];
     [btnCloseCalendar addTarget:self action:@selector(closeCalendar:) forControlEvents:UIControlEventTouchUpInside];
@@ -393,27 +409,55 @@
     [buttonAdd.layer setBorderWidth:0];
 
     //[buttonAdd setFrame:CGRectMake(self.view.frame.size.width-BUTTON_WIDTH*8-10-BUTTON_MOUNT_WIDTH, 0, BUTTON_WIDTH, buttonAdd.frame.size.height)];
-    [buttonAdd setFrame:CGRectMake(APP_SCREEN_WIDTH-40, 0, buttonAdd.frame.size.width, buttonAdd.frame.size.height)];
-    
+    if(self.currentDeviceType == iPad){
+        [buttonAdd setFrame:CGRectMake(APP_SCREEN_WIDTH-40, 0, buttonAdd.frame.size.width, buttonAdd.frame.size.height)];
+    }else{
+        [buttonAdd setFrame:CGRectMake(self.parentViewController.view.frame.size.width - 27.5, 25, 20, 20)];
+    }
 
     //labelWithMonthAndYear = [[UILabel alloc] initWithFrame:CGRectMake(APP_SCREEN_WIDTH-BUTTON_WIDTH*2.5, 0., 140., 30)];
-    labelWithMonthAndYear = [[UILabel alloc] initWithFrame:CGRectMake(55.0, 0., 140., 30)];
+    if(self.currentDeviceType == iPad){
+        labelWithMonthAndYear = [[UILabel alloc] initWithFrame:CGRectMake(55.0, 0., 140., 30)];
+    }else{
+        labelWithMonthAndYear = [[UILabel alloc] initWithFrame:CGRectMake(60.0, 20., 140., 30)];
+    }
     [labelWithMonthAndYear setTextColor:TEXT_COLOR_WHITE_1];
     [labelWithMonthAndYear setFont:[UIFont boldSystemFontOfSize:17]];
     [labelWithMonthAndYear setFont:buttonToday.titleLabel.font];
     labelWithMonthAndYear.textAlignment = NSTextAlignmentLeft;
+    
+    
+    buttonBack = [[FFRedAndWhiteButton alloc] initWithFrame:CGRectMake(40.0, 25., 20.0, 20.0)];
+    //[buttonBack addTarget:self action:@selector(buttonYearMonthWeekDayAction:) forControlEvents:UIControlEventTouchUpInside];
+    [buttonBack setBackgroundImage:[UIImage imageNamed:@"Back_32.png"]
+                         forState:UIControlStateNormal];
+    //[buttonBack setTitle:@"ok men" forState:UIControlStateNormal];
+    [buttonBack.layer setBorderWidth:0];
+    
+    hiddenButtonBack = [[UIButton alloc] initWithFrame:CGRectMake(40.0, 25., 140., 30)];
+    [hiddenButtonBack addTarget:self action:@selector(buttonYearMonthWeekDayAction:) forControlEvents:UIControlEventTouchUpInside];
 
     arrayButtons = @[buttonYear, buttonMonth, buttonWeek, buttonDay,buttonAdd];
 
 
-    _topMenuView  = [[UIView alloc] initWithFrame:CGRectMake(0, 27, self.view.frame.size.width, buttonYear.frame.size.height*2)];
+    if(self.currentDeviceType == iPad){
+        _topMenuView  = [[UIView alloc] initWithFrame:CGRectMake(0, 27, self.view.frame.size.width, buttonYear.frame.size.height*2)];
+    }else{
+        _topMenuView  = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,50)];
+    }
+    
     [_topMenuView setBackgroundColor:[UIColor whiteColor]];
     [_topMenuView addSubview:btnCloseCalendar];
-    [_topMenuView addSubview:buttonYear];
-    [_topMenuView addSubview:buttonMonth];
-    [_topMenuView addSubview:buttonWeek];
-    [_topMenuView addSubview:buttonDay];
-    [_topMenuView addSubview:buttonToday];
+    if(self.currentDeviceType == iPad){
+        [_topMenuView addSubview:buttonYear];
+        [_topMenuView addSubview:buttonMonth];
+        [_topMenuView addSubview:buttonWeek];
+        [_topMenuView addSubview:buttonDay];
+        [_topMenuView addSubview:buttonToday];
+    }else{
+        [_topMenuView addSubview:buttonBack];
+        [_topMenuView addSubview:hiddenButtonBack];
+    }
     [_topMenuView addSubview:buttonAdd];
     [_topMenuView addSubview:labelWithMonthAndYear];
     //[_topMenuView setBackgroundColor:[UIColor clearColor]];
@@ -426,7 +470,7 @@
 #pragma mark - Add Calendars
 
 - (void)addCalendars {
-    CGRect frame = CGRectMake(0., 64, self.view.frame.size.width, self.view.frame.size.height-64);
+    CGRect frame = CGRectMake(0., 50, self.view.frame.size.width, self.view.frame.size.height-50);
     
     
     viewCalendarYear = [FFYearCalendarView alloc];
@@ -463,6 +507,9 @@
 
 - (IBAction)buttonYearMonthWeekDayAction:(id)sender {
     
+    if(sender == hiddenButtonBack){
+        sender = [arrayButtons objectAtIndex:0];//fix tam la nam
+    }
     long index = [arrayButtons indexOfObject:sender];
     
     [self.view bringSubviewToFront:[arrayCalendars objectAtIndex:index]];

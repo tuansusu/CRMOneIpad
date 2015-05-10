@@ -115,27 +115,34 @@
     [SVProgressHUD show];
     [self setLanguage];
     //set menu
+    UIMenuController *menuControler =  [UIMenuController sharedMenuController];
+    
+    
+    UIMenuItem *viewMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Xem", nil) action:@selector(view:) image:[UIImage imageNamed:@"menuview.png"]];
+    
+    UIMenuItem *editMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Sửa", nil) action:@selector(edit:) image:[UIImage imageNamed:@"menuedit.png"]];
+    
+    UIMenuItem *delMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Xoá", nil) action:@selector(del:) image:[UIImage imageNamed:@"menudelete.png"]];
+    
+    UIMenuItem *emailMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Email", nil) action:@selector(email:) image:[UIImage imageNamed:@"menuemail.png"]];
+    
+    UIMenuItem *fowlMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Theo dõi", nil) action:@selector(follow:) image:[UIImage imageNamed:@"menuflag.png"]];
+    
+    
+    UIMenuItem *mapMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Bản đồ", nil) action:@selector(map:) image:[UIImage imageNamed:@"menumap.png"]];
+    
+    
     if([self currentDeviceType]==iPad){
-        
-        UIMenuItem *viewMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Xem", nil) action:@selector(view:) image:[UIImage imageNamed:@"menuview.png"]];
-        
-        UIMenuItem *editMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Sửa", nil) action:@selector(edit:) image:[UIImage imageNamed:@"menuedit.png"]];
-        
-        UIMenuItem *delMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Xoá", nil) action:@selector(del:) image:[UIImage imageNamed:@"menudelete.png"]];
-        
-        //        UIMenuItem *callMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Gọi điện", nil) action:@selector(call:) image:[UIImage imageNamed:@"menuphone.png"]];
-        //
-        //        UIMenuItem *smsMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"SMS", nil) action:@selector(sms:) image:[UIImage imageNamed:@"menumessage.png"]];
-        
-        UIMenuItem *emailMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Email", nil) action:@selector(email:) image:[UIImage imageNamed:@"menuemail.png"]];
-        
-        UIMenuItem *fowlMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Theo dõi", nil) action:@selector(follow:) image:[UIImage imageNamed:@"menuflag.png"]];
-        
-        
-        UIMenuItem *mapMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Bản đồ", nil) action:@selector(map:) image:[UIImage imageNamed:@"menumap.png"]];
-        
-        [[UIMenuController sharedMenuController] setMenuItems: @[viewMenu,editMenu,delMenu,emailMenu,fowlMenu,mapMenu]];
+        [menuControler setMenuItems: @[viewMenu,editMenu,delMenu,emailMenu,fowlMenu,mapMenu]];
         [[UIMenuController sharedMenuController] update];
+    }
+    if ([self currentDeviceType]==iPhone) {
+        UIMenuItem *callMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Gọi điện", nil) action:@selector(call:) image:[UIImage imageNamed:@"menuphone.png"]];
+        
+        UIMenuItem *smsMenu = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"SMS", nil) action:@selector(sms:) image:[UIImage imageNamed:@"menumessage.png"]];
+        [menuControler setMenuItems: @[viewMenu,editMenu,delMenu,callMenu,smsMenu,emailMenu,fowlMenu,mapMenu]];
+        [menuControler update];
+        
     }
 }
 
@@ -412,36 +419,36 @@
     
     NSMutableDictionary *arrayTable = [arrayData objectAtIndex:indexPath.row];
     NSString *name=[arrayTable objectForKey:DTOLEAD_name];
-    NSString  *currentDevice = [UIDevice currentDevice].model;
-    if([currentDevice isEqualToString:@"iPhone"] || [currentDevice isEqualToString:@"iPhone Simulator"]){
+    //    NSString  *currentDevice = [UIDevice currentDevice].model;
+    //    if([currentDevice isEqualToString:@"iPhone"] || [currentDevice isEqualToString:@"iPhone Simulator"]){
+    //
+    //        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:name
+    //                                                                 delegate:self
+    //                                                        cancelButtonTitle:LocalizedString(@"KEY_CANCEL")
+    //                                                   destructiveButtonTitle:LocalizedString(@"MENU_ACTIONSHEET_VIEW")
+    //                                                        otherButtonTitles:LocalizedString(@"MENU_ACTIONSHEET_EDIT"),LocalizedString(@"MENU_ACTIONSHEET_DEL"),LocalizedString(@"MENU_ACTIONSHEET_CALL"),LocalizedString(@"MENU_ACTIONSHEET_SMS"),LocalizedString(@"MENU_ACTIONSHEET_Email"),LocalizedString(@"MENU_ACTIONSHEET_FOLLOW"),LocalizedString(@"MENU_ACTIONSHEET_MAPS"), nil];
+    //        // [actionSheet showFromRect:cellRect inView:[UIApplication sharedApplication].keyWindow animated:YES];
+    //        actionSheet.tag=11;
+    //        dataDetail =[arrayData objectAtIndex:indexPath.row];
+    //        [actionSheet showInView:self.view];
+    //    }
+    //    else{
+    
+    NSIndexPath* selection = [tableView indexPathForSelectedRow];
+    if (selection){
         
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:name
-                                                                 delegate:self
-                                                        cancelButtonTitle:LocalizedString(@"KEY_CANCEL")
-                                                   destructiveButtonTitle:LocalizedString(@"MENU_ACTIONSHEET_VIEW")
-                                                        otherButtonTitles:LocalizedString(@"MENU_ACTIONSHEET_EDIT"),LocalizedString(@"MENU_ACTIONSHEET_DEL"),LocalizedString(@"MENU_ACTIONSHEET_CALL"),LocalizedString(@"MENU_ACTIONSHEET_SMS"),LocalizedString(@"MENU_ACTIONSHEET_Email"),LocalizedString(@"MENU_ACTIONSHEET_FOLLOW"),LocalizedString(@"MENU_ACTIONSHEET_MAPS"), nil];
-        // [actionSheet showFromRect:cellRect inView:[UIApplication sharedApplication].keyWindow animated:YES];
-        actionSheet.tag=11;
-        dataDetail =[arrayData objectAtIndex:indexPath.row];
-        [actionSheet showInView:self.view];
+        [tableView deselectRowAtIndexPath:selection animated:YES];
     }
-    else{
-        
-        NSIndexPath* selection = [tableView indexPathForSelectedRow];
-        if (selection){
-            
-            [tableView deselectRowAtIndexPath:selection animated:YES];
-        }
-        
-        NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
-        
-        
-        
-        DetailLeadViewController *viewController = [[DetailLeadViewController alloc]initWithNibName:@"DetailLeadViewController" bundle:nil];
-        viewController.dataSend = dicData;
-        
-        [self presentViewController:viewController animated:YES completion:nil];
-    }
+    
+    NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
+    
+    
+    
+    DetailLeadViewController *viewController = [[DetailLeadViewController alloc]initWithNibName:@"DetailLeadViewController" bundle:nil];
+    viewController.dataSend = dicData;
+    
+    [self presentViewController:viewController animated:YES completion:nil];
+    //}
     
 }
 

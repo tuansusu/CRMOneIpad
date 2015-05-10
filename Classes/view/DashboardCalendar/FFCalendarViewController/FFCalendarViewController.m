@@ -39,6 +39,9 @@
 @end
 
 @implementation FFCalendarViewController
+{
+    NSArray *arrayMonthTitle;
+}
 
 #pragma mark - Synthesize
 
@@ -94,6 +97,20 @@
     
     checkFirstLoadAppear = YES;
     
+    
+    arrayMonthTitle =  @[LocalizedString(@"KEY_CALENDAR_JANUARY")
+                         ,LocalizedString(@"KEY_CALENDAR_FEBRUARY")
+                         ,LocalizedString(@"KEY_CALENDAR_MARCH")
+                         ,LocalizedString(@"KEY_CALENDAR_APRIL")
+                         ,LocalizedString(@"KEY_CALENDAR_MAY")
+                         ,LocalizedString(@"KEY_CALENDAR_JUNE")
+                         ,LocalizedString(@"KEY_CALENDAR_JULY")
+                         ,LocalizedString(@"KEY_CALENDAR_AUGUST")
+                         ,LocalizedString(@"KEY_CALENDAR_SEPTEMBER")
+                         ,LocalizedString(@"KEY_CALENDAR_OCTOBER")
+                         ,LocalizedString(@"KEY_CALENDAR_NOVEMBER")
+                         ,LocalizedString(@"KEY_CALENDAR_DECEMBER")
+                         ];
     
 
 }
@@ -212,7 +229,7 @@
 - (void)updateLabelWithMonthAndYear {
 
     NSDateComponents *comp = [NSDate componentsOfDate:[[FFDateManager sharedManager] currentDate]];
-    NSString *string = boolYearViewIsShowing ? [NSString stringWithFormat:@"%li", (long)comp.year] : [NSString stringWithFormat:@"%@ %li", [arrayMonthName objectAtIndex:comp.month-1], (long)comp.year];
+    NSString *string = boolYearViewIsShowing ? [NSString stringWithFormat:@"%@ %li",LocalizedString(@"KEY_CALENDAR_YEAR"), (long)comp.year] : [NSString stringWithFormat:@"%@ %li", [arrayMonthTitle objectAtIndex:comp.month-1], (long)comp.year];
     [labelWithMonthAndYear setText:string];
     
     NSLog(@"[FFDateManager sharedManager] currentDate] %@", [[FFDateManager sharedManager] currentDate]);
@@ -328,7 +345,6 @@
     CAShapeLayer * maskLayer = [CAShapeLayer layer];
     maskLayer.path = [UIBezierPath bezierPathWithRoundedRect: buttonYear.bounds byRoundingCorners: UIRectCornerTopRight | UIRectCornerBottomRight cornerRadii: (CGSize){5.0, 5.0}].CGPath;
   
-    //maskLayer.lineWidth   = 4.0f;
     maskLayer.strokeColor = [UIColor redColor].CGColor;
     maskLayer.fillColor   = [UIColor redColor].CGColor;
     buttonYear.layer.mask = maskLayer;
@@ -381,11 +397,11 @@
     
 
     //labelWithMonthAndYear = [[UILabel alloc] initWithFrame:CGRectMake(APP_SCREEN_WIDTH-BUTTON_WIDTH*2.5, 0., 140., 30)];
-    labelWithMonthAndYear = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0., 140., 30)];
+    labelWithMonthAndYear = [[UILabel alloc] initWithFrame:CGRectMake(55.0, 0., 140., 30)];
     [labelWithMonthAndYear setTextColor:TEXT_COLOR_WHITE_1];
     [labelWithMonthAndYear setFont:[UIFont boldSystemFontOfSize:17]];
     [labelWithMonthAndYear setFont:buttonToday.titleLabel.font];
-    labelWithMonthAndYear.textAlignment = NSTextAlignmentRight;
+    labelWithMonthAndYear.textAlignment = NSTextAlignmentLeft;
 
     arrayButtons = @[buttonYear, buttonMonth, buttonWeek, buttonDay,buttonAdd];
 

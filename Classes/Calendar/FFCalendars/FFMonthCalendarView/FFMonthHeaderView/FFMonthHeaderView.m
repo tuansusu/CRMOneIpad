@@ -13,12 +13,24 @@
 #import "FFImportantFilesForCalendar.h"
 
 @implementation FFMonthHeaderView
+{
+    NSArray *arrayWeekAbrev;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        
+        arrayWeekAbrev =  @[LocalizedString(@"KEY_CALENDAR_SUN")
+                            ,LocalizedString(@"KEY_CALENDAR_MON")
+                            ,LocalizedString(@"KEY_CALENDAR_TUE")
+                            ,LocalizedString(@"KEY_CALENDAR_WED")
+                            ,LocalizedString(@"KEY_CALENDAR_THU")
+                            ,LocalizedString(@"KEY_CALENDAR_FRI")
+                            ,LocalizedString(@"KEY_CALENDAR_SAT")
+                            ];
         
         NSArray *arrayColor = @[[UIColor grayColor], [UIColor blackColor], [UIColor blackColor], [UIColor blackColor], [UIColor blackColor], [UIColor blackColor], [UIColor grayColor]];
         CGFloat width = (self.frame.size.width-6*SPACE_COLLECTIONVIEW_CELL)/7.;
@@ -29,12 +41,15 @@
             [label setTextAlignment:NSTextAlignmentRight];
             [label setText:[arrayWeekAbrev objectAtIndex:i]];
             [label setTextColor:[arrayColor objectAtIndex:i]];
-            [label setFont:[UIFont boldSystemFontOfSize:label.font.pointSize]];
+            [label setFont:[UIFont systemFontOfSize:label.font.pointSize]];
             [label setAutoresizingMask:AR_LEFT_RIGHT | UIViewAutoresizingFlexibleWidth];
             [self addSubview:label];
         }
 
     }
+    
+    
+    
     return self;
 }
 

@@ -21,6 +21,9 @@
 @end
 
 @implementation FFWeekHeaderCollectionView
+{
+    NSArray *arrayWeekAbrev;
+}
 
 @synthesize lastContentOffset;
 @synthesize protocol;
@@ -33,6 +36,16 @@
     if (self) {
         // Initialization code
     }
+    
+    arrayWeekAbrev =  @[LocalizedString(@"KEY_CALENDAR_SUN")
+                        ,LocalizedString(@"KEY_CALENDAR_MON")
+                        ,LocalizedString(@"KEY_CALENDAR_TUE")
+                        ,LocalizedString(@"KEY_CALENDAR_WED")
+                        ,LocalizedString(@"KEY_CALENDAR_THU")
+                        ,LocalizedString(@"KEY_CALENDAR_FRI")
+                        ,LocalizedString(@"KEY_CALENDAR_SAT")
+                        ];
+    
     return self;
 }
 

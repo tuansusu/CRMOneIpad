@@ -82,19 +82,24 @@
         
         labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(0., 0., self.frame.size.width, 3*height)];
         [labelTitle setTextColor:[UIColor redColor]];
+        if(self.currentDeviceType == iPhone){
+            [labelTitle setFont:[UIFont systemFontOfSize:12]];
+        }
         [self addSubview:labelTitle];
         
-        for (int i = 0; i < [arrayWeekTitleCompact count]; i++) {
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(i*sizeOfCells.width, labelTitle.frame.size.height, sizeOfCells.width, height)];
-            [label setTextAlignment:NSTextAlignmentCenter];
-            [label setText:[arrayWeekTitleCompact objectAtIndex:i]];
-            [label setTextColor:[UIColor blackColor]];
-            if(_currentDeviceType == iPad){
-                [label setFont:[UIFont systemFontOfSize:14]];
-            }else{
-                [label setFont:[UIFont systemFontOfSize:6]];
+        if(self.currentDeviceType == iPad){
+            for (int i = 0; i < [arrayWeekTitleCompact count]; i++) {
+                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(i*sizeOfCells.width, labelTitle.frame.size.height, sizeOfCells.width, height)];
+                [label setTextAlignment:NSTextAlignmentCenter];
+                [label setText:[arrayWeekTitleCompact objectAtIndex:i]];
+                [label setTextColor:[UIColor blackColor]];
+                if(_currentDeviceType == iPad){
+                    [label setFont:[UIFont systemFontOfSize:14]];
+                }else{
+                    [label setFont:[UIFont systemFontOfSize:6]];
+                }
+                [self addSubview:label];
             }
-            [self addSubview:label];
         }
     }
     

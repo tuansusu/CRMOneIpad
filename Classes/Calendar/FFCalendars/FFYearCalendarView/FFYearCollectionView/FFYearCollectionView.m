@@ -107,7 +107,7 @@
                                 (self.frame.size.height-(lines-1)*SPACE_COLLECTIONVIEW_CELL_YEAR)/lines);
     }else{
         sizeOfCell = CGSizeMake((self.frame.size.width-(columns-1)*(SPACE_COLLECTIONVIEW_CELL_YEAR - 20))/columns,
-                                (self.frame.size.height-(lines-1)*(SPACE_COLLECTIONVIEW_CELL_YEAR - 20))/lines);
+                                (self.frame.size.height-(lines-1)*(SPACE_COLLECTIONVIEW_CELL_YEAR))/lines);
     }
     return sizeOfCell;
 }
@@ -138,6 +138,8 @@
     } else {
         scrollDirection = ScrollDirectionNone;
     }
+    
+    
 }
 
 #pragma mark - UICollectionView Delegate

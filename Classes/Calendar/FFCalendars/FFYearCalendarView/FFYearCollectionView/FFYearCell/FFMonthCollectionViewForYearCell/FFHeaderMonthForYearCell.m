@@ -87,6 +87,8 @@
         }
         [self addSubview:labelTitle];
         
+    
+        
         if(self.currentDeviceType == iPad){
             for (int i = 0; i < [arrayWeekTitleCompact count]; i++) {
                 UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(i*sizeOfCells.width, labelTitle.frame.size.height, sizeOfCells.width, height)];
@@ -104,6 +106,7 @@
     }
     
     [labelTitle setText:[[arrayMonthTitle objectAtIndex:(date.componentsOfDate.month-1)] uppercaseString]];
+    NSLog(labelTitle.text);
 }
 
 

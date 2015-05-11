@@ -240,7 +240,7 @@
         [labelWithMonthAndYear setText:string];
     }else{
         NSDateComponents *comp = [NSDate componentsOfDate:[[FFDateManager sharedManager] currentDate]];
-        NSString *string = boolYearViewIsShowing ? @"" : [NSString stringWithFormat:@"%@ %li",LocalizedString(@"KEY_CALENDAR_YEAR"), (long)comp.year];
+        NSString *string = boolYearViewIsShowing ? [NSString stringWithFormat:@"%@ %li",LocalizedString(@"KEY_CALENDAR_YEAR"), (long)comp.year] : [NSString stringWithFormat:@"%@ %li",LocalizedString(@"KEY_CALENDAR_YEAR"), (long)comp.year];
         [labelWithMonthAndYear setText:string];
         
         buttonBack.hidden = boolYearViewIsShowing;
@@ -470,8 +470,12 @@
 #pragma mark - Add Calendars
 
 - (void)addCalendars {
-    CGRect frame = CGRectMake(0., 50, self.view.frame.size.width, self.view.frame.size.height-50);
-    
+    CGRect frame;
+    if(self.currentDeviceType == iPad){
+        frame = CGRectMake(0., 66, self.view.frame.size.width, self.view.frame.size.height-66);
+    }else{
+        frame = CGRectMake(0., 50, self.view.frame.size.width, self.view.frame.size.height-50);
+    }
     
     viewCalendarYear = [FFYearCalendarView alloc];
     viewCalendarYear.currentDeviceType = _currentDeviceType;

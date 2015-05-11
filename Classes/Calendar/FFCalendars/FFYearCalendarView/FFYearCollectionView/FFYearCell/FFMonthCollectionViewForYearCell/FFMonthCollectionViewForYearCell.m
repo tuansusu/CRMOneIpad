@@ -143,7 +143,12 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
     
-    CGSize headerViewSize = CGSizeMake(self.frame.size.width, 50.);
+    CGSize headerViewSize;
+    if(self.currentDeviceType == iPad){
+        headerViewSize = CGSizeMake(self.frame.size.width, 50.);
+    }else{
+        headerViewSize = CGSizeMake(self.frame.size.width, 20.);
+    }
     
     return headerViewSize;
 }

@@ -45,7 +45,11 @@
     if (!collectionView) {
         collectionView = [FFMonthCollectionViewForYearCell alloc];
         collectionView.currentDeviceType = _currentDeviceType;
-        collectionView = [collectionView initWithFrame:CGRectMake(0., 0., self.frame.size.width, self.frame.size.height) collectionViewLayout:[UICollectionViewLayout new]];
+        if(self.currentDeviceType == iPad){
+            collectionView = [collectionView initWithFrame:CGRectMake(0., 0., self.frame.size.width, self.frame.size.height) collectionViewLayout:[UICollectionViewLayout new]];
+        }else{
+            collectionView = [collectionView initWithFrame:CGRectMake(0., 0., self.frame.size.width, self.frame.size.height + 50) collectionViewLayout:[UICollectionViewLayout new]];
+        }
         [collectionView setProtocol:self];
         
         [self addSubview:collectionView];

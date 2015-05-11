@@ -38,7 +38,7 @@
         if(_currentDeviceType == iPad){
             collectionViewYear = [[FFYearCollectionView alloc] initWithFrame:CGRectMake(SPACE_COLLECTIONVIEW_CELL_YEAR, SPACE_COLLECTIONVIEW_CELL_YEAR, self.frame.size.width-2*SPACE_COLLECTIONVIEW_CELL_YEAR, self.frame.size.height-2*SPACE_COLLECTIONVIEW_CELL_YEAR) collectionViewLayout:[FFYearCollectionViewFlowLayout new]];
         }else{
-            collectionViewYear = [[FFYearCollectionView alloc] initWithFrame:CGRectMake(SPACE_COLLECTIONVIEW_CELL_YEAR - 15, SPACE_COLLECTIONVIEW_CELL_YEAR - 15, self.frame.size.width-2*(SPACE_COLLECTIONVIEW_CELL_YEAR - 15), self.frame.size.height-2*(SPACE_COLLECTIONVIEW_CELL_YEAR - 15)) collectionViewLayout:[FFYearCollectionViewFlowLayout new]];
+            collectionViewYear = [[FFYearCollectionView alloc] initWithFrame:CGRectMake(5 , 0, self.frame.size.width-2*(SPACE_COLLECTIONVIEW_CELL_YEAR - 25), self.frame.size.height-3*(SPACE_COLLECTIONVIEW_CELL_YEAR - 25)) collectionViewLayout:[FFYearCollectionViewFlowLayout new]];
         }
         
         collectionViewYear.currentDeviceType = _currentDeviceType;

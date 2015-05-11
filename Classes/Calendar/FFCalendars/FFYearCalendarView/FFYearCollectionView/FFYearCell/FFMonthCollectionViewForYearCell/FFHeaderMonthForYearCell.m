@@ -80,7 +80,7 @@
         
         CGFloat height = self.frame.size.height/4.;
         
-        labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(0., 0., self.frame.size.width, 3*height)];
+        labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(10., 0., self.frame.size.width, 3*height)];
         [labelTitle setTextColor:[UIColor redColor]];
         if(self.currentDeviceType == iPhone){
             [labelTitle setFont:[UIFont systemFontOfSize:12]];

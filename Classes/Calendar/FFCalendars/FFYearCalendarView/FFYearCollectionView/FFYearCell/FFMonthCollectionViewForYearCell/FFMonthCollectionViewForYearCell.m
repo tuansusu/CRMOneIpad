@@ -92,8 +92,11 @@
         [arrayDates addObject:(i>=1 && i<=lastDayMonth)?[NSDate dateWithYear:compDateManeger.year month:compDateManeger.month day:i]:[NSNull null]];
     }
     
-    sizeOfCells =  CGSizeMake((self.frame.size.width)/7, (self.frame.size.height-50.)/6);
-    
+    if(self.currentDeviceType == iPad){
+        sizeOfCells =  CGSizeMake((self.frame.size.width)/7, (self.frame.size.height - 50.)/6);
+    }else{
+        sizeOfCells =  CGSizeMake((self.frame.size.width)/7, (self.frame.size.height - 20)/6);
+    }
     return [arrayDates count];
 }
 

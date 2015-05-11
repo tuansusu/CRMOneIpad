@@ -49,7 +49,9 @@
 
 - (id)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout {
     
-    self = [super initWithFrame:frame collectionViewLayout:[FFYearCollectionViewFlowLayout new]];
+    FFYearCollectionViewFlowLayout *yearCollectionViewFlowLayout = [FFYearCollectionViewFlowLayout new];
+    yearCollectionViewFlowLayout.currentDeviceType = self.currentDeviceType;
+    self = [super initWithFrame:frame collectionViewLayout:yearCollectionViewFlowLayout];
     
     if (self) {
         // Initialization code
@@ -107,14 +109,17 @@
                                 (self.frame.size.height-(lines-1)*SPACE_COLLECTIONVIEW_CELL_YEAR)/lines);
     }else{
         sizeOfCell = CGSizeMake((self.frame.size.width-(columns-1)*(SPACE_COLLECTIONVIEW_CELL_YEAR - 20))/columns,
-                                (self.frame.size.height-(lines-1)*(SPACE_COLLECTIONVIEW_CELL_YEAR))/lines);
+                                (self.frame.size.height-(lines-1)*(SPACE_COLLECTIONVIEW_CELL_YEAR))/lines + 25);
     }
     return sizeOfCell;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-
-    return SPACE_COLLECTIONVIEW_CELL_YEAR;
+    if(self.currentDeviceType == iPad){
+        return SPACE_COLLECTIONVIEW_CELL_YEAR;
+    }else{
+        return SPACE_COLLECTIONVIEW_CELL_YEAR - 25;
+    }
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {

@@ -13,7 +13,6 @@
 @implementation FFYearCollectionViewFlowLayout
 
 - (CGSize)collectionViewContentSize {
-    
     return CGSizeMake(self.collectionView.frame.size.width, 3*(self.collectionView.frame.size.height));
 }
 

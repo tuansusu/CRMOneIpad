@@ -9,12 +9,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EnumClass.h"
 
 @interface FFWeekHeaderCell : UICollectionViewCell
 
 @property (nonatomic, strong) UILabel *label;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) NSDate *date;
+@property (nonatomic) enum DeviceType currentDeviceType;
 
 - (void)cleanCell;
 

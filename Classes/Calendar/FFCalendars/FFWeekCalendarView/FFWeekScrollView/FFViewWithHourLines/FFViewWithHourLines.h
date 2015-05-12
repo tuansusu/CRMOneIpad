@@ -9,11 +9,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EnumClass.h"
 
 @interface FFViewWithHourLines : UIView
 
 @property (nonatomic, strong) UILabel *labelWithSameYOfCurrentHour;
 @property (nonatomic) CGFloat totalHeight;
+@property (nonatomic) enum DeviceType currentDeviceType;
 
 - (UILabel *)labelWithCurrentHourWithWidth:(CGFloat)_width;
 - (void)reloadLabelRedAndShow:(BOOL)show;

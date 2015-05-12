@@ -9,6 +9,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EnumClass.h"
 
 @protocol FFWeekCollectionViewProtocol <NSObject>
 @required
@@ -21,5 +22,6 @@
 
 @property (nonatomic, strong) id<FFWeekCollectionViewProtocol> protocol;
 @property (nonatomic, strong) NSMutableDictionary *dictEvents;
+@property (nonatomic) enum DeviceType currentDeviceType;
 
 @end

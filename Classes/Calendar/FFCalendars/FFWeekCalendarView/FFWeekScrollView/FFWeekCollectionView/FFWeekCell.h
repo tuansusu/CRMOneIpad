@@ -10,6 +10,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FFEvent.h"
+#import "EnumClass.h"
 
 @protocol FFWeekCellProtocol <NSObject>
 @required
@@ -23,6 +24,7 @@
 
 @property (nonatomic, strong) id<FFWeekCellProtocol>protocol;
 @property (nonatomic, strong) NSDate *date;
+@property (nonatomic) enum DeviceType currentDeviceType;
 
 - (void)clean;
 

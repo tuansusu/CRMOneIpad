@@ -9,7 +9,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EnumClass.h"
 
 @interface FFMonthCollectionViewFlowLayout : UICollectionViewFlowLayout
+
+@property (nonatomic) enum DeviceType currentDeviceType;
 
 @end

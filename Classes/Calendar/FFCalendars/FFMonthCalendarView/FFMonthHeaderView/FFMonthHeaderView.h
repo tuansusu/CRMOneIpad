@@ -9,7 +9,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EnumClass.h"
 
 @interface FFMonthHeaderView : UIView
-
+@property (nonatomic) enum DeviceType currentDeviceType;
 @end

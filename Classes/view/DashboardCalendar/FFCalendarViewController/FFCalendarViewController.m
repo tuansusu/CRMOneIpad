@@ -484,7 +484,9 @@
     
     [self.view addSubview:viewCalendarYear];
     
-    viewCalendarMonth = [[FFMonthCalendarView alloc] initWithFrame:frame];
+    viewCalendarMonth = [FFMonthCalendarView alloc];
+    viewCalendarMonth.currentDeviceType = self.currentDeviceType;
+    viewCalendarMonth = [viewCalendarMonth initWithFrame:frame];
     [viewCalendarMonth setProtocol:self];
     [viewCalendarMonth setDictEvents:dictEvents];
     [self.view addSubview:viewCalendarMonth];

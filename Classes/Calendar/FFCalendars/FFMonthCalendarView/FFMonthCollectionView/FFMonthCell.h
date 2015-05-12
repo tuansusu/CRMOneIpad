@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 
 #import "FFEvent.h"
+#import "EnumClass.h"
 
 @protocol FFMonthCellProtocol <NSObject>
 @required
@@ -25,6 +26,7 @@
 
 @property (strong, nonatomic) UILabel *labelDay;
 @property (strong, nonatomic) UIImageView *imageViewCircle;
+@property (nonatomic) enum DeviceType currentDeviceType;
 
 - (void)initLayout;
 - (void)markAsWeekend;

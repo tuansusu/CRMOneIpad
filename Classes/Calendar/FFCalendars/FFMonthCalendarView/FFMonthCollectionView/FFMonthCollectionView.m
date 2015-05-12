@@ -46,7 +46,9 @@
 
 - (id)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout {
 
-    self = [super initWithFrame:frame collectionViewLayout:[FFMonthCollectionViewFlowLayout new]];
+    FFMonthCollectionViewFlowLayout *flowLayout = [FFMonthCollectionViewFlowLayout new];
+    flowLayout.currentDeviceType = self.currentDeviceType;
+    self = [super initWithFrame:frame collectionViewLayout:flowLayout];
 
     if (self) {
         // Initialization code
@@ -102,7 +104,12 @@
         }
     }
     
-    CGSize sizeOfCells =  CGSizeMake((self.frame.size.width-7*SPACE_COLLECTIONVIEW_CELL)/7, (self.frame.size.height-([dateFirstDayOfMonth numberOfWeekInMonthCount]-1)*SPACE_COLLECTIONVIEW_CELL-SPACE_COLLECTIONVIEW_CELL)/[dateFirstDayOfMonth numberOfWeekInMonthCount]);
+    CGSize sizeOfCells;
+    if(self.currentDeviceType == iPad){
+        sizeOfCells =  CGSizeMake((self.frame.size.width-7*SPACE_COLLECTIONVIEW_CELL)/7, (self.frame.size.height-([dateFirstDayOfMonth numberOfWeekInMonthCount]-1)*SPACE_COLLECTIONVIEW_CELL-SPACE_COLLECTIONVIEW_CELL)/[dateFirstDayOfMonth numberOfWeekInMonthCount]);
+    }else{
+        sizeOfCells =  CGSizeMake((self.frame.size.width-7*0)/7, (self.frame.size.height-([dateFirstDayOfMonth numberOfWeekInMonthCount]-1)*(SPACE_COLLECTIONVIEW_CELL -1.5f) -(SPACE_COLLECTIONVIEW_CELL - 1.5f))/[dateFirstDayOfMonth numberOfWeekInMonthCount]);
+    }
     
     [arraySizeOfCells replaceObjectAtIndex:section withObject:[NSValue valueWithCGSize:sizeOfCells]];
     
@@ -114,11 +121,16 @@
     NSMutableArray *arrayDates = [array objectAtIndex:indexPath.section];
     
     FFMonthCell *cell = (FFMonthCell *)[collectionView dequeueReusableCellWithReuseIdentifier:REUSE_IDENTIFIER_MONTH_CELL forIndexPath:indexPath];
+    cell.currentDeviceType = self.currentDeviceType;
     [cell initLayout];
     [cell setProtocol:self];
     
     if (indexPath.row % 7 == 0 || (indexPath.row + 1) % 7 == 0) {
-        [cell markAsWeekend];
+        if(self.currentDeviceType == iPad){
+            [cell markAsWeekend];
+        }else{
+            [cell.labelDay setTextColor:[UIColor grayColor]];
+        }
     }
     
     id obj = [arrayDates objectAtIndex:indexPath.row];
@@ -129,6 +141,9 @@
         
         [cell setArrayEvents:[dictEvents objectForKey:date]];
         [cell.labelDay setText:[NSString stringWithFormat:@"%li", (long)[components day]]];
+        if(self.currentDeviceType == iPhone){
+            [cell.labelDay setFont:[UIFont systemFontOfSize:14]];
+        }
         
         if ([NSDate isTheSameDateTheCompA:components compB:[NSDate componentsOfCurrentDate]]) {
             [cell markAsCurrentDay];
@@ -153,11 +168,16 @@
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return SPACE_COLLECTIONVIEW_CELL;
+    if(self.currentDeviceType == iPad){
+        return SPACE_COLLECTIONVIEW_CELL;
+    }else{
+        return SPACE_COLLECTIONVIEW_CELL - 1.5f;
+    }
 }
 
+
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return SPACE_COLLECTIONVIEW_CELL;
+    return 0;
 }
 
 #pragma mark - UIScrollView Delegate

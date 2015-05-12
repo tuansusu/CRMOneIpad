@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 
 #import "FFEvent.h"
+#import "EnumClass.h"
 
 @protocol FFButtonWithEditAndDetailPopoversForMonthCellProtocol <NSObject>
 @required
@@ -22,5 +23,6 @@
 
 @property (nonatomic, strong) id<FFButtonWithEditAndDetailPopoversForMonthCellProtocol> protocol;
 @property (nonatomic, strong) FFEvent *event;
+@property (nonatomic) enum DeviceType currentDeviceType;
 
 @end

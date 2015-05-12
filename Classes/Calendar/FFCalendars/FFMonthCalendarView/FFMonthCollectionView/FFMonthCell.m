@@ -101,7 +101,9 @@
         for (int i = 0; i < [arrayEvents count] ; i++) {
             
             buttonOfNumber++;
-            FFButtonWithEditAndDetailPopoversForMonthCell *button = [[FFButtonWithEditAndDetailPopoversForMonthCell alloc] initWithFrame:CGRectMake(0, yFirstButton+(buttonOfNumber-1)*height, self.frame.size.width, height)];
+            FFButtonWithEditAndDetailPopoversForMonthCell *button = [FFButtonWithEditAndDetailPopoversForMonthCell alloc];
+            button.currentDeviceType = self.currentDeviceType;
+            button = [button initWithFrame:CGRectMake(0, yFirstButton+(buttonOfNumber-1)*height, self.frame.size.width, height)];
             [button setAutoresizingMask:AR_TOP_BOTTOM | UIViewAutoresizingFlexibleWidth];
             [self addSubview:button];
             [arrayButtons addObject:button];

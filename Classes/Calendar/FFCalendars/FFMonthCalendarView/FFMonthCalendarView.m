@@ -36,10 +36,14 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dateChanged:) name:DATE_MANAGER_DATE_CHANGED object:nil];
         [self setBackgroundColor:[UIColor whiteColor]];
         
-        FFMonthHeaderView *view = [[FFMonthHeaderView alloc] initWithFrame:CGRectMake(0., 0., self.frame.size.width, HEADER_HEIGHT_MONTH)];
+        FFMonthHeaderView *view = [FFMonthHeaderView alloc];
+        view.currentDeviceType = self.currentDeviceType;
+        view = [view  initWithFrame:CGRectMake(0., 0., self.frame.size.width, HEADER_HEIGHT_MONTH)];
         [self addSubview:view];
         
-        collectionViewMonth = [[FFMonthCollectionView alloc] initWithFrame:CGRectMake(0., HEADER_HEIGHT_MONTH, self.frame.size.width, self.frame.size.height-HEADER_HEIGHT_MONTH) collectionViewLayout:[UICollectionViewLayout new]];
+        collectionViewMonth = [FFMonthCollectionView alloc];
+        collectionViewMonth.currentDeviceType = self.currentDeviceType;
+        collectionViewMonth = [collectionViewMonth initWithFrame:CGRectMake(0., HEADER_HEIGHT_MONTH, self.frame.size.width, self.frame.size.height-HEADER_HEIGHT_MONTH) collectionViewLayout:[UICollectionViewLayout new]];
         [collectionViewMonth setProtocol:self];
         [self addSubview:collectionViewMonth];
         

@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 
 #import "FFWeekCollectionView.h"
+#import "EnumClass.h"
 
 @interface FFWeekScrollView : UIScrollView
 
@@ -18,6 +19,7 @@
 @property (nonatomic, strong) FFWeekCollectionView *collectionViewWeek;
 @property (nonatomic, strong) UILabel *labelWithActualHour;
 @property (nonatomic, strong) UILabel *labelGrayWithActualHour;
+@property (nonatomic) enum DeviceType currentDeviceType;
 
 - (void)showlabelsWithActualHourWithAlpha:(BOOL)show;
 

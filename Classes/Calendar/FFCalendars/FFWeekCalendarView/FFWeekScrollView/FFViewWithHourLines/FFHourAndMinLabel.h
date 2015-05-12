@@ -9,10 +9,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EnumClass.h"
 
 @interface FFHourAndMinLabel : UILabel
 
 @property (nonatomic, strong) NSDate *dateHourAndMin;
+@property (nonatomic) enum DeviceType currentDeviceType;
 
 - (id)initWithFrame:(CGRect)frame date:(NSDate *)date;
 - (void)showText;

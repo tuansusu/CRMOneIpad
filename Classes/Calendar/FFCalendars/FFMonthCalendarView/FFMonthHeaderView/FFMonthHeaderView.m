@@ -41,7 +41,11 @@
             [label setTextAlignment:NSTextAlignmentRight];
             [label setText:[arrayWeekAbrev objectAtIndex:i]];
             [label setTextColor:[arrayColor objectAtIndex:i]];
-            [label setFont:[UIFont systemFontOfSize:label.font.pointSize]];
+            if(self.currentDeviceType == iPad){
+                [label setFont:[UIFont systemFontOfSize:label.font.pointSize]];
+            }else{
+                [label setFont:[UIFont systemFontOfSize:12]];
+            }
             [label setAutoresizingMask:AR_LEFT_RIGHT | UIViewAutoresizingFlexibleWidth];
             [self addSubview:label];
         }

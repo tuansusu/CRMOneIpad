@@ -47,6 +47,7 @@
 - (id)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout {
 
     FFMonthCollectionViewFlowLayout *flowLayout = [FFMonthCollectionViewFlowLayout new];
+    flowLayout.currentDeviceType = self.currentDeviceType;
     self = [super initWithFrame:frame collectionViewLayout:flowLayout];
 
     if (self) {

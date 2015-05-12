@@ -44,6 +44,87 @@ static AppService* appService = nil;
             actionEvent.methodName = @"sync/get-account";
         }
             break;
+        case sync_get_group:{
+            actionEvent.methodName = @"sync/get-group";
+        }break;
+        case sync_get_industry:{
+            actionEvent.methodName = @"sync/get-industry";
+        }break;
+        case sync_get_employee:{
+            actionEvent.methodName = @"sync/get-employee";
+        }break;
+        case sync_get_lead:{
+            actionEvent.methodName = @"sync/get-lead";
+        }break;
+        case sync_get_accountCrosssell:{
+            actionEvent.methodName = @"sync/get-accountCrosssell";
+        }break;
+        case sync_get_leadCrosssell:{
+            actionEvent.methodName = @"sync/get-leadCrosssell";
+        }break;
+        case sync_get_contact:{
+            actionEvent.methodName = @"sync/get-contact";
+        }break;
+        case  sync_get_oppContact:{
+            actionEvent.methodName = @"sync/get-oppContact";
+        }break;
+        case  sync_get_accContact:{
+            actionEvent.methodName = @"sync/get-accContact";
+        }break;
+        case  sync_get_leadContact:{
+            actionEvent.methodName = @"sync/get-leadContact";
+        }break;
+        case  sync_get_oppCompetitor:{
+            actionEvent.methodName = @"sync/get-oppCompetitor";
+        }break;
+        case  sync_get_competitor:{
+            actionEvent.methodName = @"sync/get-competitor";
+        }break;
+        case  sync_get_industryAccount:{
+            actionEvent.methodName = @"sync/get-industryAccount";
+        }break;
+        case  sync_get_industryLead:{
+            actionEvent.methodName = @"sync/get-industryLead";
+        }break;
+        case sync_get_employeeAccount:{
+            actionEvent.methodName = @"sync/get-employeeAccount";
+        }break;
+        case sync_get_relationship:{
+            actionEvent.methodName = @"sync/get-relationship";
+        }break;
+        case  sync_get_accRelationship:{
+            actionEvent.methodName = @"sync/get-accRelationship";
+        }break;
+        case  sync_get_leadRelationship:{
+            actionEvent.methodName = @"sync/get-leadRelationship";
+        }break;
+        case   sync_get_relationshipType:{
+            actionEvent.methodName = @"sync/get-relationshipType";
+        }break;
+        case   sync_get_rmDailyKh:{
+            actionEvent.methodName = @"sync/get-rmDailyKh";
+        }break;
+        case   sync_get_orgType:{
+            actionEvent.methodName = @"sync/get-orgType";
+        }break;
+        case  sync_get_rmDailyCard:{
+            actionEvent.methodName = @"sync/get-rmDailyCard";
+        }break;
+        case  sync_get_rmDailyThanhtoan:{
+            actionEvent.methodName = @"sync/get-rmDailyThanhtoan";
+        }break;
+        case sync_get_rmDailyTietkiem:{
+            actionEvent.methodName = @"sync/get-rmDailyTietkiem";
+        }break;
+        case sync_get_rmDailyTindung:{
+            actionEvent.methodName = @"sync/get-rmDailyTindung";
+        }break;
+        case  sync_get_rmMonthlyHdv:{
+            actionEvent.methodName = @"sync/get-rmMonthlyHdv";
+        }break;
+        case  sync_get_rmMonthlyTindung:{
+            actionEvent.methodName = @"sync/get-rmMonthlyTindung";
+        }break;
         default:
             break;
     }

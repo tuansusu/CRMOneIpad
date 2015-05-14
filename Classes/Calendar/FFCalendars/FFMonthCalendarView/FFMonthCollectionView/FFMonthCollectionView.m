@@ -152,6 +152,15 @@
     
     return cell;
 }
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSMutableArray *arrayDates = [array objectAtIndex:indexPath.section];
+    id obj = [arrayDates objectAtIndex:indexPath.row];
+    
+    if (obj != [NSNull null] && protocol != nil && [protocol respondsToSelector:@selector(showDayCalendar)]) {
+        [[FFDateManager sharedManager] setCurrentDate:(NSDate *)obj];
+        [protocol showDayCalendar];
+    }
+}
 
 #pragma mark - UICollectionView Delegate FlowLayout
 

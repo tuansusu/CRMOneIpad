@@ -14,6 +14,8 @@
 @protocol FFMonthCalendarViewProtocol <NSObject>
 @required
 - (void)setNewDictionary:(NSDictionary *)dict;
+- (void)showDayCalendar;
+
 @end
 
 @interface FFMonthCalendarView : UIView

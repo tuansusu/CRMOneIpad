@@ -96,5 +96,11 @@
     }
 }
 
+- (void)showDayCalendar{
+    if (protocol != nil && [protocol respondsToSelector:@selector(showDayCalendar)]) {
+        [protocol showDayCalendar];
+    }
+}
+
 
 @end

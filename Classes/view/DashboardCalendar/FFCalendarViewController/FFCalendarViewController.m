@@ -663,6 +663,12 @@
     [self buttonYearMonthWeekDayAction:[arrayButtons objectAtIndex:1]];
 }
 
+#pragma mark - FFMonthCalendarView Protocol
+
+-(void)showDayCalendar{
+    [self buttonYearMonthWeekDayAction:[arrayButtons objectAtIndex:3]];
+}
+
 #pragma mark - Sending Updated Array to FFCalendarViewController Protocol
 
 - (void)arrayUpdatedWithAllEvents {

@@ -167,6 +167,7 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 #define customQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) //1
 
 //#define NoDateBefore 2
+#define CONFIG_REQUEST_TIMEOUT 20
 #define CONFIG_TIMEOUT 1800  //2*60 dang de config time out la 2phut
 #define CONFIG_KEY_TIMEOUT @"key_timeout"
 

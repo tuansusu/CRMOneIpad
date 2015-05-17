@@ -7,6 +7,7 @@
 //
 
 #import "AppService.h"
+#import "CRMAFHTTPRequestSerializer.h"
 
 
 @implementation AppService
@@ -34,6 +35,11 @@ static AppService* appService = nil;
         case login:
         {
             actionEvent.methodName = @"users/login";
+        }
+            break;
+            
+        case sync_get_timestamp:{
+            actionEvent.methodName = @"sync/get-timestamp";
         }
             break;
         case sync_get_sysorganization:{
@@ -147,22 +153,41 @@ static AppService* appService = nil;
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     //manager.responseSerializer = [AFJSONResponseSerializer serializer];
+
     
     
-    [manager POST:uri parameters:[dictionary objectForKey:@"dataPost"]
-          success:^(AFHTTPRequestOperation *operation, id responseObject)
-     {
-         //login thanh cong roi. thi tiep tuc lay du lieu
-         [self onHttpReceivedData:responseObject andModelEvent:actionEvent];
-         
-     }
-          failure:
-     ^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"Error: %@", error);
-         
-         
-         
-     }];
+    
+    
+    NSMutableURLRequest *request = [manager.requestSerializer requestWithMethod:@"POST" URLString:uri parameters:[dictionary objectForKey:@"dataPost"]];
+    [request setTimeoutInterval:CONFIG_REQUEST_TIMEOUT];
+    
+    AFHTTPRequestOperation *operation = [manager HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        [self onHttpReceivedData:responseObject andModelEvent:actionEvent];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error  ---- TUANKK: %@", operation.responseString);
+        [SVProgressHUD dismiss];
+//        [self performSelectorOnMainThread:@selector(failedWithContactsDownload) withObject:nil waitUntilDone:YES];
+    }];
+    [manager.operationQueue addOperation:operation];
+    
+    
+    
+    
+    
+    //TUANNV TAM COMMENT TO TEST
+    
+//    [manager POST:uri parameters:[dictionary objectForKey:@"dataPost"]
+//          success:^(AFHTTPRequestOperation *operation, id responseObject)
+//     {
+//         //login thanh cong roi. thi tiep tuc lay du lieu
+//         [self onHttpReceivedData:responseObject andModelEvent:actionEvent];
+//         
+//     }
+//          failure:
+//     ^(AFHTTPRequestOperation *operation, NSError *error) {
+//         NSLog(@"Error: %@", error);
+//     }];
     
 #ifdef LOG_ERROR
     NSLog(@"uri = %@", uri);
@@ -170,8 +195,6 @@ static AppService* appService = nil;
     
     
 }
-
-
 
 #pragma mark received data
 

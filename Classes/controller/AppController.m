@@ -11,8 +11,9 @@
 #import "AppController.h"
 #import "AppService.h"
 #import "BaseViewController.h"
-#import "MainViewController.h"
+#import "SyncDataUtil.h"
 #import "SVProgressHUD.h"
+#import "RootViewController.h"
 
 
 @implementation AppController
@@ -88,8 +89,18 @@ static AppController *appController = nil;
 
 - (void) handleModelEvent:(ModelEvent*) modelEvent {
     
-            BaseViewController* view = (BaseViewController*)modelEvent.actionEvent.sender;
-            [view receiveDataFromModel:modelEvent];
+    if ([modelEvent.actionEvent.sender isKindOfClass:[BaseViewController class]]) {
+        BaseViewController* view = (BaseViewController*)modelEvent.actionEvent.sender;
+        [view receiveDataFromModel:modelEvent];
+    }else if ([modelEvent.actionEvent.sender isKindOfClass:[SyncDataUtil class]]){
+        SyncDataUtil* view = (SyncDataUtil*)modelEvent.actionEvent.sender;
+        [view receiveDataFromModel:modelEvent];
+    }else{
+        NSLog(@"chua ho tro");
+    }
+    
+    
+    
         
 }
 
@@ -115,12 +126,26 @@ static AppController *appController = nil;
         default:
         {
             
-            BaseViewController* view = (BaseViewController*)modelEvent.actionEvent.sender;
-            [view receiveErrorFromModel:modelEvent];
-            [view dismissSmallWaiting];
-            [view displayErrorData];
-            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-            [SVProgressHUD dismiss];
+            if ([modelEvent.actionEvent.sender isKindOfClass:[BaseViewController class]]) {
+                BaseViewController* view = (BaseViewController*)modelEvent.actionEvent.sender;
+                [view receiveErrorFromModel:modelEvent];
+                [view dismissSmallWaiting];
+                [view displayErrorData];
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                [SVProgressHUD dismiss];
+            }else if ([modelEvent.actionEvent.sender isKindOfClass:[SyncDataUtil class]]){
+                SyncDataUtil* view = (SyncDataUtil*)modelEvent.actionEvent.sender;
+                [view receiveErrorFromModel:modelEvent];
+                [view dismissSmallWaiting];
+                [view displayErrorData];
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                [SVProgressHUD dismiss];
+
+            }else{
+                NSLog(@"chua ho tro");
+            }
+            
+            
         }
         
             break;

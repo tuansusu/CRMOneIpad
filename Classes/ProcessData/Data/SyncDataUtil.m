@@ -11,9 +11,35 @@
 //remove
 #import "DataField.h"
 
+
+
+#define KEY_objectCode @"objectCode"
+#define KEY_includeActive @"includeActive"
+#define KEY_maxTimeStamp @"maxTimeStamp"
+
+@interface SyncDataUtil ()
+{
+    BaseViewController *senderViewController;
+    NSUserDefaults *defaults;
+    NSMutableDictionary *dicDataCode_Sync;
+}
+@end
+
 @implementation SyncDataUtil
 
 
+
+-(id) initWithViewController:(BaseViewController *)viewController{
+    
+    if (self = [super init]) {
+        defaults= [NSUserDefaults standardUserDefaults];
+        senderViewController = viewController;
+        
+        [self GetDicData];
+        
+    }
+    return self;
+}
 
 
 -(void) synchonizeDatabase: (NSArray*) arrayDataSync withActionEvent : (ActionEvent*) actionEvent withTableName : (NSString *) tabelName withKeyColumn : (NSString*) keyColumn withArrayColumn : (NSArray*) arrayAllColumn{
@@ -254,11 +280,11 @@
 /*
  * Lấy mã code tương ứng với ActionEvent
  */
--(NSString*) getObjectCode: ( ActionEvent*) actionEvent{
+-(NSString*) getObjectCode: ( enum ActionEventEnum) actionEventEnum{
     
     NSString *strResult = @"";
     
-    switch (actionEvent.action) {
+    switch (actionEventEnum) {
         case sync_get_sysorganization:{
             strResult = @"sysorganization";
         }
@@ -286,7 +312,7 @@
             strResult = @"leadCrosssell";
         }break;
         case sync_get_contact:{
-            strResult = @"sync/get-contact";
+            strResult = @"contact";
         }break;
         case  sync_get_oppContact:{
             strResult = @"oppContact";
@@ -356,6 +382,42 @@
 }
 
 
+-(void) GetDicData {
+    dicDataCode_Sync = [[NSMutableDictionary alloc]init];
+    
+    
+    [dicDataCode_Sync setValue:@(sync_get_sysorganization) forKey:@"sysorganization"];
+    [dicDataCode_Sync setValue:@(sync_get_account) forKey:@"account"];
+    [dicDataCode_Sync setValue:@(sync_get_group) forKey:@"group"];
+    [dicDataCode_Sync setValue:@(sync_get_industry) forKey:@"industry"];
+    [dicDataCode_Sync setValue:@(sync_get_employee) forKey:@"employee"];
+    [dicDataCode_Sync setValue:@(sync_get_lead) forKey:@"lead"];
+    [dicDataCode_Sync setValue:@(sync_get_accountCrosssell) forKey:@"accountCrosssell"];
+    [dicDataCode_Sync setValue:@(sync_get_leadCrosssell) forKey:@"leadCrosssell"];
+    [dicDataCode_Sync setValue:@(sync_get_contact) forKey:@"contact"];
+    [dicDataCode_Sync setValue:@(sync_get_oppContact) forKey:@"oppContact"];
+    [dicDataCode_Sync setValue:@(sync_get_accContact) forKey:@"accContact"];
+    [dicDataCode_Sync setValue:@(sync_get_leadContact) forKey:@"leadContact"];
+    [dicDataCode_Sync setValue:@(sync_get_oppCompetitor) forKey:@"oppCompetitor"];
+    [dicDataCode_Sync setValue:@(sync_get_competitor) forKey:@"competitor"];
+    [dicDataCode_Sync setValue:@(sync_get_industryAccount) forKey:@"industryAccount"];
+    [dicDataCode_Sync setValue:@(sync_get_industryLead) forKey:@"industryLead"];
+    [dicDataCode_Sync setValue:@(sync_get_employeeAccount) forKey:@"employeeAccount"];
+    [dicDataCode_Sync setValue:@(sync_get_relationship) forKey:@"relationship"];
+    [dicDataCode_Sync setValue:@(sync_get_accRelationship) forKey:@"accRelationship"];
+    [dicDataCode_Sync setValue:@(sync_get_leadRelationship) forKey:@"leadRelationship"];
+    [dicDataCode_Sync setValue:@(sync_get_relationshipType) forKey:@"relationshipType"];
+    [dicDataCode_Sync setValue:@(sync_get_rmDailyKh) forKey:@"rmDailyKh"];
+    [dicDataCode_Sync setValue:@(sync_get_orgType) forKey:@"orgType"];
+    [dicDataCode_Sync setValue:@(sync_get_rmDailyCard) forKey:@"rmDailyCard"];
+    [dicDataCode_Sync setValue:@(sync_get_rmDailyThanhtoan) forKey:@"rmDailyThanhtoan"];
+    [dicDataCode_Sync setValue:@(sync_get_rmDailyTietkiem) forKey:@"rmDailyTietkiem"];
+    [dicDataCode_Sync setValue:@(sync_get_rmDailyTindung) forKey:@"rmDailyTindung"];
+    [dicDataCode_Sync setValue:@(sync_get_rmMonthlyHdv) forKey:@"rmMonthlyHdv"];
+    [dicDataCode_Sync setValue:@(sync_get_rmMonthlyTindung) forKey:@"rmMonthlyTindung"];
+}
+
+
 /*
  * Thực hiện việc đồng bộ tất cả các bảng - tu server ve client
  */
@@ -364,6 +426,162 @@
     
     //
     
+    //[defaults setObject:versionSoftware forKey:@"versionSoftware"];
+//    NSString *userNameStr = [defaults objectForKey:POST_USERNAME];
+//    if (userNameStr) {
+//        tf_username.text = userNameStr;
+//    }
+//    else
+//    {
+//        tf_username.text =@"";
+//    }
+    
+    
+    NSArray *arraySync = [self getArrayTableToSync];
+    
+    
+    NSNumber *tmpSync = [arraySync objectAtIndex:0];
+    enum ActionEventEnum actionSync = [tmpSync intValue];
+    
+    NSString *strObjectCode = [self getObjectCode:actionSync];
+    //Lấy MaxTime của objectCode sau đó thực hiện đồng bộ ObjectCode đó
+    NSLog(@"object code = %@", strObjectCode);
+    [self getMaxTimeWithObjectCode:strObjectCode  withActionEventEnum:actionSync];
+    
+//    for (int i=0; i<arraySync.count; i++) {
+//        NSNumber *tmpSync = [arraySync objectAtIndex:i];
+//        enum ActionEventEnum actionSync = [tmpSync intValue];
+//        
+//        NSString *strObjectCode = [self getObjectCode:actionSync];
+//        //Lấy MaxTime của objectCode sau đó thực hiện đồng bộ ObjectCode đó
+//        NSLog(@"object code = %@", strObjectCode);
+//        [self getMaxTimeWithObjectCode:strObjectCode withActionEventEnum:actionSync];
+//    }
+    
+    
+}
+
+
+- (void) receiveDataFromModel: (ModelEvent*) modelEvent {
+    
+    switch (modelEvent.actionEvent.action) {
+        case sync_get_timestamp:
+        {
+            //Lay thong tin MaxTime ve se thuc hien dong bo du lieu cua ObjectCode
+            //modelEvent.modelData -  du lieu truyen ve
+            NSString *objectCodeSync = [modelEvent.actionEvent.viewData objectForKey:KEY_objectCode];
+            objectCodeSync  = [objectCodeSync lowercaseString];
+            NSNumber *tmpSync =[dicDataCode_Sync objectForKey:objectCodeSync];
+            enum ActionEventEnum actionSync = [tmpSync intValue];
+            
+            id minTime =  [defaults objectForKey:[NSString stringWithFormat:@"minTime_%@", objectCodeSync]];
+            if(!minTime){
+                minTime = @"0";
+            }
+            
+            [self synchonizeDBWithSync:actionSync withMinTime:minTime withMaxTime:[modelEvent.modelData objectForKey:KEY_maxTimeStamp] withFirstResult:@"0"];
+            
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+- (void) receiveErrorFromModel: (ModelEvent*) modelEvent {
+    
+}
+
+
+/*
+ * Lay thong tin maxtime tu objectCode
+ */
+
+-(void) getMaxTimeWithObjectCode: (NSString *) strObjectCode  withActionEventEnum : (enum ActionEventEnum) actionEventEnum {
+    NSDictionary *dic = @{@"objectCode": strObjectCode, @"includeActive":@"true"};
+    
+    ActionEvent* actionEvent = [[ActionEvent alloc] init];
+    actionEvent.action = sync_get_timestamp;
+    actionEvent.viewData = dic;
+    actionEvent.sender = self;
+    NSLog(@"Sync Get Time = %@", dic);
+    [[AppController getController] handleViewEvent:actionEvent];
+}
+
+
+-(void) synchonizeDBWithSync : (enum ActionEventEnum) syncObject withMinTime : (NSString*) strMinTime withMaxTime : (NSString*) strMaxTime withFirstResult : (NSString*) iFirstResult{
+    
+    [SVProgressHUD showWithStatus:@"sync ..."];
+    
+    NSDictionary *dic = @{@"minTimeStamp": strMinTime, @"maxTimeStamp": strMaxTime, @"firstResult":iFirstResult, @"pageSize": @"200", @"includeCount":@"true",@"includeActive":@"true"};
+    ActionEvent* actionEvent = [[ActionEvent alloc] init];
+    actionEvent.action = syncObject;
+    actionEvent.viewData = dic;
+    actionEvent.sender = self;
+    
+    NSLog(@"Sync DB = %@", dic);
+    
+    [[AppController getController] handleViewEvent:actionEvent];
+    
+}
+
+
+
+#pragma mark baseview controller
+
+-(void) timeOutAction{
+    
+    
+//    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Thông báo" message:Title_TimeOut_Exception delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    [alert show];
+//    
+//    FrameworkAppDelegate *appDel = (FrameworkAppDelegate*)[[UIApplication sharedApplication] delegate];
+//    
+//    RootViewController *rootView = [[RootViewController alloc] init];
+//    
+//    [appDel.window setRootViewController:rootView];
+    
+    
+}
+
+
+- (void) receiveErrorInternetFromModel: (ModelEvent*) modelEvent
+{
+    
+}
+
+
+//waiting network
+- (void) presentSmallWaiting {
+    //numOfSmallWaiting ++;
+    [SVProgressHUD show];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
+
+- (void) dismissSmallWaiting {
+    
+    [SVProgressHUD dismiss];
+    
+//    numOfSmallWaiting --;
+//    if (numOfSmallWaiting < 0) {
+//        numOfSmallWaiting = 0;
+//    }
+//    if (numOfSmallWaiting > 0) {
+//        [SVProgressHUD show];
+//        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+//    } else {
+//        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+//        [SVProgressHUD dismiss];
+//    }
+}
+
+-(void) displayErrorData{
+    
+    // Make toast with a title
+    [senderViewController.view makeToast:@"Có lỗi dữ liệu trả về từ máy chủ"
+                duration:3.0
+                position:@"bottom"
+                   title:@"Cảnh báo !"];
     
 }
 

@@ -54,6 +54,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="btnAddress" destination="t0i-1s-6ZX" id="AE5-U9-ZIv"/>
+                <outlet property="btnFollow" destination="QXS-w0-Ztb" id="fZK-oI-OfA"/>
                 <outlet property="imgAvatar" destination="kix-a7-N6f" id="9JQ-22-7bi"/>
                 <outlet property="lbAddress" destination="Z8K-aO-Ee0" id="plS-kh-jgn"/>
                 <outlet property="lbName" destination="bId-wi-UBW" id="Nvm-6R-fo1"/>

@@ -587,6 +587,7 @@
 		845EF59F1AEF31F600C658D7 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 845EF58E1AEF31F600C658D7 /* UIWebView+AFNetworking.m */; };
 		845EF5A21AEF33FF00C658D7 /* ModelEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 845EF5A11AEF33FF00C658D7 /* ModelEvent.m */; };
 		846344641AF1322500647721 /* DTOSYSORGANIZATIONProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 846344631AF1322500647721 /* DTOSYSORGANIZATIONProcess.m */; };
+		846F5A9A1B039F1000119B6B /* CRMAFHTTPRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 846F5A991B039F1000119B6B /* CRMAFHTTPRequestSerializer.m */; };
 		847D9F191AF338990051D60F /* SyncDataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D9F181AF338990051D60F /* SyncDataUtil.m */; };
 		849078861A1E461D009D5D5F /* DetailPersonLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849078841A1E461D009D5D5F /* DetailPersonLeadViewController.m */; };
 		849078871A1E461D009D5D5F /* DetailPersonLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849078851A1E461D009D5D5F /* DetailPersonLeadViewController.xib */; };
@@ -2033,6 +2034,8 @@
 		845EF5A11AEF33FF00C658D7 /* ModelEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModelEvent.m; path = Classes/controller/ModelEvent.m; sourceTree = SOURCE_ROOT; };
 		846344621AF1322500647721 /* DTOSYSORGANIZATIONProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTOSYSORGANIZATIONProcess.h; path = ProcessData/Data/DTOSYSORGANIZATIONProcess.h; sourceTree = "<group>"; };
 		846344631AF1322500647721 /* DTOSYSORGANIZATIONProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTOSYSORGANIZATIONProcess.m; path = ProcessData/Data/DTOSYSORGANIZATIONProcess.m; sourceTree = "<group>"; };
+		846F5A981B039F1000119B6B /* CRMAFHTTPRequestSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRMAFHTTPRequestSerializer.h; path = Classes/controller/CRMAFHTTPRequestSerializer.h; sourceTree = SOURCE_ROOT; };
+		846F5A991B039F1000119B6B /* CRMAFHTTPRequestSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRMAFHTTPRequestSerializer.m; path = Classes/controller/CRMAFHTTPRequestSerializer.m; sourceTree = SOURCE_ROOT; };
 		847D9F171AF338990051D60F /* SyncDataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyncDataUtil.h; path = ProcessData/Data/SyncDataUtil.h; sourceTree = "<group>"; };
 		847D9F181AF338990051D60F /* SyncDataUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SyncDataUtil.m; path = ProcessData/Data/SyncDataUtil.m; sourceTree = "<group>"; };
 		849078831A1E461D009D5D5F /* DetailPersonLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailPersonLeadViewController.h; sourceTree = "<group>"; };
@@ -6116,6 +6119,8 @@
 				845EF5671AEF2DF800C658D7 /* AppService.m */,
 				845EF5A01AEF33FF00C658D7 /* ModelEvent.h */,
 				845EF5A11AEF33FF00C658D7 /* ModelEvent.m */,
+				846F5A981B039F1000119B6B /* CRMAFHTTPRequestSerializer.h */,
+				846F5A991B039F1000119B6B /* CRMAFHTTPRequestSerializer.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -7244,6 +7249,7 @@
 				8E875FB61AC2E390002B89AD /* WEPopoverContainerView.m in Sources */,
 				76977D551A0284DE0029F297 /* TableTestProcess.m in Sources */,
 				76C964611A17731900029978 /* DefaultPopOverForPieChart.m in Sources */,
+				846F5A9A1B039F1000119B6B /* CRMAFHTTPRequestSerializer.m in Sources */,
 				769F24891A6F1F3F00427A8F /* MenuViewController.m in Sources */,
 				06FE2E2A1A45816D004A1D16 /* MapsModel.m in Sources */,
 				8EC4B90B1A505A7D0078BF13 /* DirectionsHeaderView.m in Sources */,

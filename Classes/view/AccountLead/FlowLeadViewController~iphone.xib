@@ -18,7 +18,7 @@
                 <outlet property="lbMucDich" destination="ra3-9o-7mi" id="bZj-xV-GM4"/>
                 <outlet property="lbNgayBatDau" destination="y6a-fx-TCI" id="v5z-Ir-hcH"/>
                 <outlet property="lbNgayHoanThanh" destination="ux1-JB-LL8" id="ess-nG-n5h"/>
-                <outlet property="lbTitel" destination="lAU-Ld-aAJ" id="bjv-Bt-OJ8"/>
+                <outlet property="lbTitel" destination="Xl9-yT-0eP" id="GwA-zK-xHy"/>
                 <outlet property="lbTrangChu" destination="k5b-BM-kZ3" id="yZi-7D-eEw"/>
                 <outlet property="txtMucDich" destination="tDl-GX-a4M" id="QBf-su-h0T"/>
                 <outlet property="txtNgaybatdau" destination="Mvy-1M-t4F" id="bch-w1-f2d"/>
@@ -39,70 +39,77 @@
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5eT-kL-m4D">
                             <rect key="frame" x="0.0" y="60" width="320" height="508"/>
                             <subviews>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mục đích" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tDl-GX-a4M">
-                                    <rect key="frame" x="8" y="83" width="304" height="30"/>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mục đích" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tDl-GX-a4M">
+                                    <rect key="frame" x="8" y="107" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="cNX-7x-CjO"/>
+                                    </connections>
                                 </textField>
                                 <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j99-mh-4Yx" userLabel="btnChoice Date from">
-                                    <rect key="frame" x="282" y="83" width="30" height="30"/>
-                                    <state key="normal" backgroundImage="select.png">
+                                    <rect key="frame" x="297" y="114" width="15" height="15"/>
+                                    <state key="normal" backgroundImage="icon_down.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                 </button>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mục đích" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ra3-9o-7mi">
-                                    <rect key="frame" x="8" y="45" width="108" height="30"/>
+                                    <rect key="frame" x="8" y="69" width="108" height="30"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="errorVaildate.png" translatesAutoresizingMaskIntoConstraints="NO" id="HFO-DU-1ed">
-                                    <rect key="frame" x="124" y="52" width="16" height="16"/>
+                                    <rect key="frame" x="124" y="76" width="16" height="16"/>
                                 </imageView>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="right" contentVerticalAlignment="center" placeholder="Ngày bắt đầu" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mvy-1M-t4F">
-                                    <rect key="frame" x="8" y="159" width="304" height="30"/>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" placeholder="Ngày bắt đầu" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mvy-1M-t4F">
+                                    <rect key="frame" x="8" y="183" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 </textField>
                                 <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MFm-8H-7Xt" userLabel="btnChoice Date from">
-                                    <rect key="frame" x="282" y="159" width="30" height="30"/>
-                                    <state key="normal" backgroundImage="select.png">
+                                    <rect key="frame" x="297" y="190" width="15" height="15"/>
+                                    <state key="normal" backgroundImage="icon_down.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                 </button>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ngày bắt đầu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6a-fx-TCI">
-                                    <rect key="frame" x="8" y="121" width="108" height="30"/>
+                                    <rect key="frame" x="8" y="145" width="108" height="30"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="errorVaildate.png" translatesAutoresizingMaskIntoConstraints="NO" id="KqC-iW-zmk">
-                                    <rect key="frame" x="124" y="128" width="16" height="16"/>
+                                    <rect key="frame" x="124" y="152" width="16" height="16"/>
                                 </imageView>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ngày hoàn thành" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6op-fO-BSW">
-                                    <rect key="frame" x="8" y="235" width="304" height="30"/>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ngày hoàn thành" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6op-fO-BSW">
+                                    <rect key="frame" x="8" y="259" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 </textField>
                                 <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZeZ-xc-ING" userLabel="btnChoice Date from">
-                                    <rect key="frame" x="282" y="235" width="30" height="30"/>
-                                    <state key="normal" backgroundImage="select.png">
+                                    <rect key="frame" x="297" y="266" width="15" height="15"/>
+                                    <state key="normal" backgroundImage="icon_down.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                 </button>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ngày hoàn thành" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ux1-JB-LL8">
-                                    <rect key="frame" x="8" y="197" width="133" height="30"/>
+                                    <rect key="frame" x="8" y="221" width="133" height="30"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="errorVaildate.png" translatesAutoresizingMaskIntoConstraints="NO" id="Uqs-ga-Ixt">
-                                    <rect key="frame" x="149" y="204" width="16" height="16"/>
+                                    <rect key="frame" x="149" y="228" width="16" height="16"/>
                                 </imageView>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gửi nhắc nhở" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qc4-82-sCC">
-                                    <rect key="frame" x="8" y="273" width="133" height="30"/>
+                                    <rect key="frame" x="8" y="297" width="133" height="30"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oc2-K3-vzC">
-                                    <rect key="frame" x="149" y="281" width="20" height="20"/>
+                                    <rect key="frame" x="149" y="305" width="20" height="20"/>
                                     <state key="normal" image="checkbox_not_ticked.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -110,39 +117,43 @@
                                         <action selector="actionRemind:" destination="-1" eventType="touchUpInside" id="xX8-zh-tc4"/>
                                     </connections>
                                 </button>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Thời gian nhắc nhở" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aNM-DN-ODI">
-                                    <rect key="frame" x="8" y="309" width="304" height="30"/>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Thời gian nhắc nhở" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aNM-DN-ODI">
+                                    <rect key="frame" x="8" y="333" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 </textField>
                                 <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D2O-09-nG2" userLabel="btnChoice Date from">
-                                    <rect key="frame" x="282" y="309" width="30" height="30"/>
-                                    <state key="normal" backgroundImage="select.png">
+                                    <rect key="frame" x="297" y="340" width="15" height="15"/>
+                                    <state key="normal" backgroundImage="icon_down.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                 </button>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hình thức nhắc nhở" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iaj-s6-YjM">
-                                    <rect key="frame" x="8" y="347" width="147" height="30"/>
+                                    <rect key="frame" x="8" y="371" width="147" height="30"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fX-L1-eqU">
-                                    <rect key="frame" x="31" y="385" width="57" height="30"/>
+                                    <rect key="frame" x="31" y="409" width="57" height="30"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="sms" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mpk-S1-CPk">
-                                    <rect key="frame" x="110" y="385" width="57" height="30"/>
+                                    <rect key="frame" x="110" y="409" width="57" height="30"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="trang chủ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5b-BM-kZ3">
-                                    <rect key="frame" x="197" y="385" width="75" height="30"/>
+                                    <rect key="frame" x="197" y="409" width="75" height="30"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLx-zc-R3m">
-                                    <rect key="frame" x="8" y="390" width="20" height="20"/>
+                                    <rect key="frame" x="8" y="414" width="20" height="20"/>
                                     <state key="normal" image="checkbox_ticked.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -151,7 +162,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9g8-Gr-ftX">
-                                    <rect key="frame" x="88" y="390" width="20" height="20"/>
+                                    <rect key="frame" x="88" y="414" width="20" height="20"/>
                                     <state key="normal" image="checkbox_not_ticked.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -160,7 +171,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5Y-f3-uG3">
-                                    <rect key="frame" x="175" y="390" width="20" height="20"/>
+                                    <rect key="frame" x="175" y="414" width="20" height="20"/>
                                     <state key="normal" image="checkbox_ticked.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -197,6 +208,12 @@
                                         <action selector="actionCancel:" destination="-1" eventType="touchUpInside" id="iW6-XV-1SQ"/>
                                     </connections>
                                 </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hoang Van Luong" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xl9-yT-0eP">
+                                    <rect key="frame" x="8" y="8" width="304" height="42"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                    <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
@@ -233,7 +250,7 @@
         <image name="Back_32.png" width="32" height="32"/>
         <image name="checkbox_not_ticked.png" width="56" height="56"/>
         <image name="checkbox_ticked.png" width="56" height="56"/>
-        <image name="errorVaildate.png" width="24" height="24"/>
-        <image name="select.png" width="26" height="26"/>
+        <image name="errorVaildate.png" width="50" height="50"/>
+        <image name="icon_down.png" width="19" height="11"/>
     </resources>
 </document>

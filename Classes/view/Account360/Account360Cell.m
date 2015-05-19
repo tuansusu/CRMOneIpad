@@ -222,7 +222,7 @@ NSDateFormatter *df,*dfTime;
         NSLog(@"chua xu ly");
         NSDictionary *data;
         DTOFLLOWUPProcess *followProcess=[DTOFLLOWUPProcess new];
-        data= [followProcess getDataWithKey:DTOFOLLOWUP_objectId withValue:leadId];
+        data= [followProcess getDataAccountWithKey:DTOFOLLOWUP_objectId withValue:leadId];
         NSString *followid;
         if(data.count>0){
             followid = [data objectForKey:DTOFOLLOWUP_id];

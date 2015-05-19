@@ -35,6 +35,9 @@
     BOOL success;
     Util *util;
     Language *obj;
+    UIToolbar *toolBar;
+    UITableView *tableAlert;
+    UIDatePicker *datePicker;
 }
 
 @end
@@ -55,7 +58,11 @@
     NSLog(@"dataSend:%@",self.dataSend);
     
     NSString *name= [_dataSend objectForKey:DTOLEAD_name];
-    _lbTitel.text=[NSString stringWithFormat:@"THEO DÕI KHÁCH HÀNG ĐẦU MỐI - %@",name];
+    if ([self currentDeviceType]==iPhone) {
+        _lbTitel.text=[name uppercaseString];
+    }else{
+        _lbTitel.text=[NSString stringWithFormat:@"THEO DÕI KHÁCH HÀNG ĐẦU MỐI - %@",name];
+    }
     dtoSyscatProcess=[DTOSYSCATProcess new];
     dtoFollowProcess=[DTOFLLOWUPProcess new];
     isRemind=NO;
@@ -98,6 +105,32 @@
         [self setBorderTextfield:_txtNgaybatdau];
         [self setBorderTextfield:_txtNgayhoanthanh];
         [self setBorderTextfield:_txtThoigiannhacnho];
+        //show date
+        datePicker = [[UIDatePicker alloc] init];
+        
+        datePicker.datePickerMode = UIDatePickerModeDate;
+        datePicker.tintColor=[UIColor whiteColor];
+        [self.txtNgaybatdau setInputView:datePicker];
+        [self.txtNgayhoanthanh setInputView:datePicker];
+        [self.txtThoigiannhacnho setInputView:datePicker];
+        //show select
+        tableAlert = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 250, 230)];
+        tableAlert.delegate=self;
+        tableAlert.dataSource=self;
+        [tableAlert reloadData];
+        [self.txtMucDich setInputView:tableAlert];
+        toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+        toolBar.tintColor=HEADER_VIEW_COLOR1;
+        UIBarButtonItem *doneBtn;
+        UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        
+        doneBtn = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(setSelectedDate)];
+        
+        [toolBar setItems:[NSArray arrayWithObjects:space,doneBtn, nil]];
+        [self.txtMucDich setInputAccessoryView:toolBar];
+        [self.txtNgaybatdau setInputAccessoryView:toolBar];
+        [self.txtNgayhoanthanh setInputAccessoryView:toolBar];
+        [self.txtThoigiannhacnho setInputAccessoryView:toolBar];
     }
 }
 
@@ -234,10 +267,14 @@
     
     success=[dtoFollowProcess insertToDBWithEntity:dicEntity];
     if (success) {
-        //Thong bao cap nhat thanh cong va thoat
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS") delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        alert.tag = 5;
-        [alert show];
+        if ([self currentDeviceType]==iPhone) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }else{
+            //Thong bao cap nhat thanh cong va thoat
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS") delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            alert.tag = 5;
+            [alert show];
+        }
         //luonghv2
     }
     else{
@@ -479,7 +516,8 @@
     }
 }
 -(void) setLanguage:(NSString *)name{
-    _lbTitel.text=[NSString stringWithFormat:@"%@ - %@",LocalizedString(@"KEY_FOLLOW_LEAD_TITLE"),name];
+    if ([self currentDeviceType]==iPad) {
+        _lbTitel.text=[NSString stringWithFormat:@"%@ - %@",LocalizedString(@"KEY_FOLLOW_LEAD_TITLE"),name];}
     [_btnSave setTitle:LocalizedString(@"KEY_UPDATE") forState:UIControlStateNormal];
     [_btnCancel setTitle:LocalizedString(@"KEY_CANCEL") forState:UIControlStateNormal];
     [_lbThietLapTheoDoi setText:LocalizedString(@"KEY_FOLLOW_SETTING")];
@@ -497,5 +535,83 @@
 {
     if ([self.listPopover isPopoverVisible])
         [self.listPopover dismissPopoverAnimated:YES];
+}
+#pragma mark - Table view data source
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    return [[listArrPersonPosition valueForKey:DTOSYSCAT_name]  count];
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    // Set the data for this cell:
+    
+    cell.textLabel.text = [[listArrPersonPosition valueForKey:DTOSYSCAT_name] objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = @"More text";
+    //cell.imageView.image = [UIImage imageNamed:@"flower.png"];
+    cell.accessoryType=UITableViewCellAccessoryCheckmark;
+    
+    // set the accessory view:
+    cell.accessoryType =  UITableViewCellAccessoryDisclosureIndicator;
+    
+    
+    return cell;
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSIndexPath* selection = [tableView indexPathForSelectedRow];
+    if (selection){
+        
+        [tableView deselectRowAtIndexPath:selection animated:YES];
+    }
+    
+    NSDictionary *getData = [[listArrPersonPosition valueForKey:DTOSYSCAT_name] objectAtIndex:indexPath.row];
+    _txtMucDich.text=getData;
+    catId=[[listArrPersonPosition valueForKey:DTOSYSCAT_sysCatId] objectAtIndex:indexPath.row];
+    selectPersonPositionIndex=indexPath.row;
+    [self.txtMucDich resignFirstResponder];
+    
+}
+//For iPhone only
+-(void) setSelectedDate{
+    NSDate *date = datePicker.date;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd/MM/yyyy HH:mm"];
+    if([self.txtNgaybatdau isFirstResponder]){
+        [self.txtNgaybatdau resignFirstResponder];
+        self.txtNgaybatdau.text = [NSString stringWithFormat:@"%@",
+                                   [dateFormatter stringFromDate:date]];
+    }
+    else if ([self.txtNgayhoanthanh isFirstResponder]){
+        [self.txtNgayhoanthanh resignFirstResponder];
+        self.txtNgayhoanthanh.text = [NSString stringWithFormat:@"%@",
+                                      [dateFormatter stringFromDate:date]];
+        
+    }
+    else if ([self.txtThoigiannhacnho isFirstResponder]){
+        [self.txtThoigiannhacnho resignFirstResponder];
+        self.txtThoigiannhacnho.text = [NSString stringWithFormat:@"%@",
+                                        [dateFormatter stringFromDate:date]];
+        
+    }
+    else if ([self.txtMucDich isFirstResponder]){
+        [self.txtMucDich resignFirstResponder];
+    }
 }
 @end

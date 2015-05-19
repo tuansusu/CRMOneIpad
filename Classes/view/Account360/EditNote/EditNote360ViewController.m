@@ -15,6 +15,7 @@
 #import "MJPhotoBrowser.h"
 #import "MJPhoto.h"
 #import "FileManagerUtil.h"
+#import "EnumClass.h"
 
 @interface EditNote360ViewController ()
 {
@@ -84,9 +85,23 @@
     //remove footer view
     //(xoá dòng thừa không hiển thị của table)
     self.tbData.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    if ([self currentDeviceType]==iPhone) {
+        self.txtContent.layer.borderColor = [[UIColor colorWithRed:215.0 / 255.0 green:215.0 / 255.0 blue:215.0 / 255.0 alpha:1] CGColor];
+        self.txtContent.layer.borderWidth = 0.6f;
+        self.txtContent.layer.cornerRadius = 1.0f;
+        //text
+        [self setBorderTextfield:self.txtTitle];
+
+    }
     
 }
-
+-(void)setBorderTextfield:(UITextField *)txtField{
+    
+    txtField.textColor = TEXT_COLOR_REPORT;
+    txtField.backgroundColor = BACKGROUND_NORMAL_COLOR1;
+    [txtField setBorderWithOption:smgSelect];
+    [txtField setPaddingLeft];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -327,17 +342,21 @@
     
     if (succsess) {
         //Thong bao cap nhat thanh cong va thoat
-        if(_dataSend.count>0){
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            alert.tag = 6;
-            [alert show];
+        if ([self currentDeviceType]==iPhone) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }else{
+            if(_dataSend.count>0){
+                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                alert.tag = 6;
+                [alert show];
+            }
+            else{
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:LocalizedString(@"KEY_NO") otherButtonTitles:LocalizedString(@"KEY_YES"), nil];
+                alert.tag = 5;
+                [alert show];
+            }
         }
-        else{
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:LocalizedString(@"KEY_NO") otherButtonTitles:LocalizedString(@"KEY_YES"), nil];
-            alert.tag = 5;
-            [alert show];
-        }
-        
         
     }else{
         //khong bao nhap loi - lien he quan tri

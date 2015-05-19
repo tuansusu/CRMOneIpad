@@ -281,6 +281,8 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
  *Load danh sach khach hang ca nhan
  */
 -(void) loadDetailCustomerPersonalData {
+    _lbAddress.numberOfLines = 2;
+    [_lbAddress sizeToFit];
     //code
     _lbCode.text=[NSString stringWithFormat:@"%@: %@",LocalizedString(@"KEY_LEAD_CODE"),[dicData objectForKey:DTOLEAD_clientLeadId]];
     //name

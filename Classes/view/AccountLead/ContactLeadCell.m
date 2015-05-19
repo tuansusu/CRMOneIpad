@@ -12,6 +12,7 @@
 #import "GraphicName.h"
 #import "Constant.h"
 #import "DataField.h"
+#import "EnumClass.h"
 
 
 @implementation ContactLeadCell
@@ -49,7 +50,6 @@
     
     _dicData = dicData;
     
-    NSLog(@"Avartar:%@",[dicData objectForKey:DTOCONTACT_avartar]);
     
     if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOCONTACT_fullName]]) {
         self.lbName.text = @"";
@@ -79,29 +79,35 @@
     }else{
         self.lbEmail.text = [dicData objectForKey:DTOCONTACT_email];
     }
+    NSString *avartar = [dicData objectForKey:DTOCONTACT_avartar];
+    if (![StringUtil stringIsEmpty:avartar]) {
+        _avartar.image=[UIImage imageWithData:[NSData dataWithContentsOfFile:avartar]];
+    }
+    if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOCONTACT_position]]) {
+        self.lbPosition.text = @"";
+    }else{
+        self.lbPosition.text = [dicData objectForKey:DTOCONTACT_position];
+    }
+    
     if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOCONTACT_address]]) {
         self.lbAddress.text = @"";
     }else{
         self.lbAddress.text = [dicData objectForKey:DTOCONTACT_address];
     }
-    NSString *avartar = [dicData objectForKey:DTOCONTACT_avartar];
-    if (![StringUtil stringIsEmpty:avartar]) {
-        _avartar.image=[UIImage imageWithData:[NSData dataWithContentsOfFile:avartar]];
-    }
-//    else{
-//    _avartar.image=[UIImage imageWithData:[NSData dataWithContentsOfFile:@"avatar.png"]];
-//    }
+    
     switch (smgSelect) {
         case 1:
         {
             for (UIView *viewTemp in self.contentView.subviews) {
-                if ([viewTemp isKindOfClass:[UILabel class]]) {
-                    ((UILabel*) viewTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
-                }
                 
                 if ([viewTemp isKindOfClass:[UIImageView class]]) {
-                    
                     [((UIImageView*) viewTemp) setAlpha:1.0f];
+                    continue;
+                }
+                
+                
+                if ([viewTemp isKindOfClass:[UILabel class]]) {
+                    ((UILabel*) viewTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
                 }
             }
             self.lbName.textColor = TEXT_COLOR_HIGHLIGHT;
@@ -129,7 +135,7 @@
 - (IBAction)actionSendSMS:(id)sender {
     if(![StringUtil stringIsEmpty:self.lbPhone.text]){
         [_delegate delegate_sendSMSContact:self.lbPhone.text];
-
+        
     }
 }
 

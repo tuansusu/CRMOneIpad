@@ -70,6 +70,9 @@
                                     <state key="normal" title="Button" backgroundImage="MapMarker.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="actionSelectAddress:" destination="-1" eventType="touchUpInside" id="Y75-Rp-n14"/>
+                                    </connections>
                                 </button>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="arN-5V-eno">
                                     <rect key="frame" x="8" y="365" width="304" height="30"/>

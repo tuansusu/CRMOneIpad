@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditNote360ViewController">
             <connections>
+                <outlet property="btnDel" destination="CmU-j4-4uw" id="MdV-Z4-AnJ"/>
                 <outlet property="btnHome" destination="u5J-3m-lUB" id="ZV5-x7-0dZ"/>
                 <outlet property="btnSave" destination="Ulv-UA-ifg" id="hsV-dz-A4E"/>
                 <outlet property="choosePhotoBtn" destination="W6p-1M-2Lq" id="VVi-qN-RWZ"/>
@@ -32,12 +33,18 @@
                             <state key="normal" backgroundImage="icon_save_90x90.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="actionSave:" destination="-1" eventType="touchUpInside" id="Qx5-0I-mqi"/>
+                            </connections>
                         </button>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CmU-j4-4uw">
                             <rect key="frame" x="244" y="22" width="30" height="30"/>
                             <state key="normal" backgroundImage="icon_delete_90x90.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="actionDel:" destination="-1" eventType="touchUpInside" id="Kyc-SS-xb3"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="KHÁCH HÀNG TIỀM NĂNG (CN)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhQ-Jd-vxW">
                             <rect key="frame" x="38" y="22" width="198" height="30"/>
@@ -60,7 +67,7 @@
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gf8-sb-9CU" userLabel="View-content">
                     <rect key="frame" x="0.0" y="60" width="320" height="508"/>
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tiêu đề" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UBN-Fd-FCN">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tiêu đề" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UBN-Fd-FCN">
                             <rect key="frame" x="8" y="8" width="304" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
@@ -69,11 +76,15 @@
                             </connections>
                         </textField>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="errorVaildate.png" translatesAutoresizingMaskIntoConstraints="NO" id="PCe-Nk-mQM">
-                            <rect key="frame" x="296" y="15" width="16" height="16"/>
+                            <rect key="frame" x="297" y="15" width="15" height="15"/>
                         </imageView>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="PcI-K2-tbH">
                             <rect key="frame" x="0.0" y="156" width="320" height="306"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="35q-7C-3i4"/>
+                                <outlet property="delegate" destination="-1" id="vn2-nt-sXZ"/>
+                            </connections>
                         </tableView>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6p-1M-2Lq">
                             <rect key="frame" x="8" y="470" width="128" height="30"/>
@@ -112,6 +123,9 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="clH-XH-QJn"/>
+                            </connections>
                         </textView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -123,7 +137,7 @@
     </objects>
     <resources>
         <image name="Back_32.png" width="32" height="32"/>
-        <image name="errorVaildate.png" width="24" height="24"/>
+        <image name="errorVaildate.png" width="50" height="50"/>
         <image name="icon_delete_90x90.png" width="90" height="90"/>
         <image name="icon_down.png" width="19" height="11"/>
         <image name="icon_save_90x90.png" width="90" height="90"/>

@@ -128,11 +128,26 @@
     NSDateComponents *compDateOfLabel = [NSDate componentsOfDate:dateOfLabel];
     
     FFDayHeaderCell *cell = (FFDayHeaderCell *)[collectionView dequeueReusableCellWithReuseIdentifier:REUSE_IDENTIFIER_MONTH_CELL forIndexPath:indexPath];
+    cell.currentDeviceType = self.currentDeviceType;
     [cell.button addTarget:self action:@selector(dayButton:) forControlEvents:UIControlEventTouchUpInside];
     cell.date = dateOfLabel;
-    [cell.button setTitle:[NSString stringWithFormat:@"%@, %li", [arrayWeekAbrev objectAtIndex:compDateOfLabel.weekday-1], (long)compDateOfLabel.day] forState:UIControlStateNormal];
-    [cell.button setSelected:([NSDate isTheSameDateTheCompA:compDateOfLabel compB:[[FFDateManager sharedManager] currentDate].componentsOfDate])];
-    cell.button.tag = indexPath.row;
+    if(self.currentDeviceType == iPad){
+        [cell.button setTitle:[NSString stringWithFormat:@"%@, %li", [arrayWeekAbrev objectAtIndex:compDateOfLabel.weekday-1], (long)compDateOfLabel.day] forState:UIControlStateNormal];
+        [cell.button setSelected:([NSDate isTheSameDateTheCompA:compDateOfLabel compB:[[FFDateManager sharedManager] currentDate].componentsOfDate])];
+        cell.button.tag = indexPath.row;
+    }else{
+        [cell.button2 addTarget:self action:@selector(dayButton:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.button setTitle:[NSString stringWithFormat:@"%@", [arrayWeekAbrev objectAtIndex:compDateOfLabel.weekday-1]] forState:UIControlStateNormal];
+        [cell.button2 setTitle:[NSString stringWithFormat:@"%li",(long)compDateOfLabel.day] forState:UIControlStateNormal];
+        
+        BOOL isSelected = ([NSDate isTheSameDateTheCompA:compDateOfLabel compB:[[FFDateManager sharedManager] currentDate].componentsOfDate]);
+        [cell.button setSelected:isSelected];
+        cell.button.tag = indexPath.row;
+        
+        [cell.button2 setSelected:isSelected];
+        cell.button2.tag = indexPath.row;
+    }
+    
     
     if (cell.isSelected && protocol && [protocol respondsToSelector:@selector(daySelected:)]) {
         [protocol daySelected:cell.date];

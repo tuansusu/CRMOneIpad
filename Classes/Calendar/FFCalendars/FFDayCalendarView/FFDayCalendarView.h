@@ -9,6 +9,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EnumClass.h"
 
 @class FFEvent;
 
@@ -23,6 +24,7 @@
 
 @property (nonatomic, strong) id<FFDayCalendarViewProtocol> protocol;
 @property (nonatomic, strong) NSMutableDictionary *dictEvents;
+@property (nonatomic) enum DeviceType currentDeviceType;
 
 - (void)invalidateLayout;
 

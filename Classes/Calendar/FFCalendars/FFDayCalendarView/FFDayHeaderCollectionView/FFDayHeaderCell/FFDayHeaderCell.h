@@ -10,10 +10,13 @@
 
 #import <UIKit/UIKit.h>
 #import "FFDayHeaderButton.h"
+#import "EnumClass.h"
 
 @interface FFDayHeaderCell : UICollectionViewCell
 
 @property (nonatomic, strong) FFDayHeaderButton *button;
+@property (nonatomic,strong) FFDayHeaderButton *button2;
 @property (nonatomic, strong) NSDate *date;
+@property (nonatomic) enum DeviceType currentDeviceType;
 
 @end

@@ -37,6 +37,7 @@ typedef enum ScrollDirection {
 #define SPACE_COLLECTIONVIEW_CELL 2.
 #define HEADER_HEIGHT_MONTH 32.
 #define HEADER_HEIGHT_SCROLL 100.
+#define HEADER_HEIGHT_SCROLL_IPHONE_SUB 40.
 #define REUSE_IDENTIFIER_MONTH_CELL @"monthCell"
 #define REUSE_IDENTIFIER_MONTH_HEADER @"headerCollection"
 
@@ -45,6 +46,7 @@ typedef enum ScrollDirection {
 #define MINUTES_INTERVAL 4.
 #define HEIGHT_CELL_HOUR 100.
 #define HEIGHT_CELL_MIN HEIGHT_CELL_HOUR/MINUTES_INTERVAL
+#define HEIGHT_CELL_MIN_IPHONE 25.
 #define MINUTES_PER_LABEL 60./MINUTES_INTERVAL
 
 #define Customer_ID @"idCustomer"

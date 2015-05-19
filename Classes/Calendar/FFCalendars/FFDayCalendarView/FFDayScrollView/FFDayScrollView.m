@@ -54,7 +54,10 @@
         
         FFViewWithHourLines *viewWithHourLines = [[FFViewWithHourLines alloc] initWithFrame:CGRectZero];
         
-        collectionViewDay = [[FFDayCollectionView alloc] initWithFrame:CGRectMake(10.,0.,self.frame.size.width-10,viewWithHourLines.totalHeight+HEIGHT_CELL_HOUR)collectionViewLayout:[UICollectionViewFlowLayout new]];
+        collectionViewDay = [FFDayCollectionView alloc];
+        collectionViewDay.currentDeviceType = self.currentDeviceType;
+        collectionViewDay = [collectionViewDay
+                             initWithFrame:CGRectMake(10.,0.,self.frame.size.width-10,viewWithHourLines.totalHeight+HEIGHT_CELL_HOUR)collectionViewLayout:[UICollectionViewFlowLayout new]];
         [collectionViewDay scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:[NSDate componentsOfDate:[[FFDateManager sharedManager] currentDate]].day-1+7 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
         [self addSubview:collectionViewDay];
         

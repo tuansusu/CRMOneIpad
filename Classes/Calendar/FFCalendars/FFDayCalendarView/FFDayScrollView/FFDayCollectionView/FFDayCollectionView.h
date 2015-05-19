@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 
 #import "FFDayCell.h"
+#import "EnumClass.h"
 
 @protocol FFDayCollectionViewProtocol <NSObject>
 - (void)updateHeader;
@@ -20,5 +21,6 @@
 
 @property (nonatomic, strong) id<FFDayCollectionViewProtocol> protocol;
 @property (nonatomic, strong) NSMutableDictionary *dictEvents;
+@property (nonatomic) enum DeviceType currentDeviceType;
 
 @end

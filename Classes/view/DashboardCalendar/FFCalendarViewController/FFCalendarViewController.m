@@ -496,7 +496,9 @@
     [viewCalendarWeek setDictEvents:dictEvents];
     [self.view addSubview:viewCalendarWeek];
     
-    viewCalendarDay = [[FFDayCalendarView alloc] initWithFrame:frame];
+    viewCalendarDay = [FFDayCalendarView alloc];
+    viewCalendarDay.currentDeviceType = self.currentDeviceType;
+    viewCalendarDay = [viewCalendarDay initWithFrame:frame];
     [viewCalendarDay setProtocol:self];
     [viewCalendarDay setDictEvents:dictEvents];
     [self.view addSubview:viewCalendarDay];

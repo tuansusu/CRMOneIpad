@@ -99,7 +99,6 @@
 #pragma mark - UICollectionView Delegate FlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     return CGSizeMake((self.frame.size.width-1), self.frame.size.height);
 }
 

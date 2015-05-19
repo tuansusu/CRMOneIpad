@@ -9,6 +9,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EnumClass.h"
 
 #import "FFEvent.h"
 
@@ -21,6 +22,7 @@
 
 @property (nonatomic, strong) id<FFDayCellProtocol> protocol;
 @property (nonatomic, strong) NSDate *date;
+@property (nonatomic) enum DeviceType currentDeviceType;
 
 - (void)showEvents:(NSArray *)array;
 

@@ -14,7 +14,7 @@
 
 @implementation FFDayHeaderCell
 
-@synthesize button;
+@synthesize button,button2;
 @synthesize date;
 
 - (id)initWithFrame:(CGRect)frame
@@ -23,9 +23,37 @@
     if (self) {
         // Initialization code
         
-        button = [[FFDayHeaderButton alloc] initWithFrame:CGRectMake(0., 0., self.frame.size.width, self.frame.size.height)];
-        [self addSubview:button];
+        NSString *deviceName = [UIDevice currentDevice].model;
+        if([deviceName isEqualToString:@"iPhone"] || [deviceName isEqualToString:@"iPhone Simulator"]){
+            self.currentDeviceType = iPhone;
+        }else{
+            self.currentDeviceType = iPad;
+        }
         
+        
+        
+        if(self.currentDeviceType == iPad){
+            button = [FFDayHeaderButton alloc];
+            button.currentDeviceType = self.currentDeviceType;
+            button.isSecondButton = NO;
+            button = [button initWithFrame:CGRectMake(0., 0., self.frame.size.width, self.frame.size.height)];
+            [self addSubview:button];
+        }else{
+            
+            button = [FFDayHeaderButton alloc];
+            button.currentDeviceType = self.currentDeviceType;
+            button.isSecondButton = NO;
+            button = [button initWithFrame:CGRectMake(0., 0., 20, 20)];
+            [self addSubview:button];
+            
+            
+            button2 = [FFDayHeaderButton alloc];
+            button2.currentDeviceType = self.currentDeviceType;
+            button2.isSecondButton = YES;
+            button2 = [button2 initWithFrame:CGRectMake(0., 20.0, 20.0,20.0)];
+            [self addSubview:button2];
+            
+        }
         [self setAutoresizingMask:AR_LEFT_RIGHT | UIViewAutoresizingFlexibleWidth];
     }
     return self;
@@ -35,6 +63,7 @@
     
     date = _date;
     [button setDate:_date];
+    [button2 setDate:_date];
 }
 
 @end

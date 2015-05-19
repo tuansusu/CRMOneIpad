@@ -40,6 +40,14 @@
     if (self) {
         // Initialization code
         
+        
+        NSString *deviceName = [UIDevice currentDevice].model;
+        if([deviceName isEqualToString:@"iPhone"] || [deviceName isEqualToString:@"iPhone Simulator"]){
+            self.currentDeviceType = iPhone;
+        }else{
+            self.currentDeviceType = iPad;
+        }
+        
         [self setBackgroundColor:[UIColor whiteColor]];
         
         arrayLabelsHourAndMin = [NSMutableArray new];
@@ -65,29 +73,56 @@
         
         for (int min=0; min<=45; min=min+MINUTES_PER_LABEL) {
             
-            FFHourAndMinLabel *labelHourMin = [[FFHourAndMinLabel alloc] initWithFrame:CGRectMake(0, y, self.frame.size.width, HEIGHT_CELL_MIN) date:[NSDate dateWithHour:hour min:min]];
-            [labelHourMin setTextColor:[UIColor grayColor]];
-            if (min == 0) {
-                [labelHourMin showText];
-                CGFloat width = [labelHourMin widthThatWouldFit];
+            if(self.currentDeviceType == iPad){
+                FFHourAndMinLabel *labelHourMin = [[FFHourAndMinLabel alloc] initWithFrame:CGRectMake(0, y, self.frame.size.width, HEIGHT_CELL_MIN) date:[NSDate dateWithHour:hour min:min]];
+                [labelHourMin setTextColor:[UIColor grayColor]];
+                if (min == 0) {
+                    [labelHourMin showText];
+                    CGFloat width = [labelHourMin widthThatWouldFit];
+                    
+                    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(labelHourMin.frame.origin.x+width+10, HEIGHT_CELL_MIN/2., self.frame.size.width-labelHourMin.frame.origin.x-width-20, 1.)];
+                    [view setAutoresizingMask:AR_WIDTH_HEIGHT];
+                    [view setBackgroundColor:[UIColor lightGrayCustom]];
+                    [labelHourMin addSubview:view];
+                }
+                [self addSubview:labelHourMin];
+                [arrayLabelsHourAndMin addObject:labelHourMin];
                 
-                UIView *view = [[UIView alloc] initWithFrame:CGRectMake(labelHourMin.frame.origin.x+width+10, HEIGHT_CELL_MIN/2., self.frame.size.width-labelHourMin.frame.origin.x-width-20, 1.)];
-                [view setAutoresizingMask:AR_WIDTH_HEIGHT];
-                [view setBackgroundColor:[UIColor lightGrayCustom]];
-                [labelHourMin addSubview:view];
+                NSDateComponents *compLabel = [NSDate componentsWithHour:hour min:min];
+                if (compLabel.hour == compNow.hour && min <= compNow.minute && compNow.minute < min+MINUTES_PER_LABEL) {
+                    labelRed = [self labelWithCurrentHourWithWidth:labelHourMin.frame.size.width yCurrent:labelHourMin.frame.origin.y];
+                    [self addSubview:labelRed];
+                    [labelRed setAlpha:0];
+                    labelWithSameYOfCurrentHour = labelHourMin;
+                }
+                
+                y += HEIGHT_CELL_MIN;
+            }else{
+                
+                FFHourAndMinLabel *labelHourMin = [[FFHourAndMinLabel alloc] initWithFrame:CGRectMake(0, y, self.frame.size.width, HEIGHT_CELL_MIN_IPHONE) date:[NSDate dateWithHour:hour min:min]];
+                [labelHourMin setTextColor:[UIColor grayColor]];
+                if (min == 0) {
+                    [labelHourMin showText];
+                    CGFloat width = [labelHourMin widthThatWouldFit];
+                    
+                    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(labelHourMin.frame.origin.x+width+10, HEIGHT_CELL_MIN_IPHONE/2., self.frame.size.width-labelHourMin.frame.origin.x-width-20, 1.)];
+                    [view setAutoresizingMask:AR_WIDTH_HEIGHT];
+                    [view setBackgroundColor:[UIColor lightGrayCustom]];
+                    [labelHourMin addSubview:view];
+                }
+                [self addSubview:labelHourMin];
+                [arrayLabelsHourAndMin addObject:labelHourMin];
+                
+                NSDateComponents *compLabel = [NSDate componentsWithHour:hour min:min];
+                if (compLabel.hour == compNow.hour && min <= compNow.minute && compNow.minute < min+MINUTES_PER_LABEL) {
+                    labelRed = [self labelWithCurrentHourWithWidth:labelHourMin.frame.size.width yCurrent:labelHourMin.frame.origin.y];
+                    [self addSubview:labelRed];
+                    [labelRed setAlpha:0];
+                    labelWithSameYOfCurrentHour = labelHourMin;
+                }
+                
+                y += HEIGHT_CELL_MIN_IPHONE;
             }
-            [self addSubview:labelHourMin];
-            [arrayLabelsHourAndMin addObject:labelHourMin];
-            
-            NSDateComponents *compLabel = [NSDate componentsWithHour:hour min:min];
-            if (compLabel.hour == compNow.hour && min <= compNow.minute && compNow.minute < min+MINUTES_PER_LABEL) {
-                labelRed = [self labelWithCurrentHourWithWidth:labelHourMin.frame.size.width yCurrent:labelHourMin.frame.origin.y];
-                [self addSubview:labelRed];
-                [labelRed setAlpha:0];
-                labelWithSameYOfCurrentHour = labelHourMin;
-            }
-            
-            y += HEIGHT_CELL_MIN;
         }
     }
 }

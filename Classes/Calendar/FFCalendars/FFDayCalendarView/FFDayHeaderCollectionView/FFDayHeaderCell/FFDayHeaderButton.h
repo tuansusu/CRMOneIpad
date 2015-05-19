@@ -9,9 +9,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EnumClass.h"
 
 @interface FFDayHeaderButton : UIButton
 
 @property (nonatomic, strong) NSDate *date;
+@property (nonatomic) enum DeviceType currentDeviceType;
+@property (nonatomic) BOOL isSecondButton; //For iPhone only
 
 @end

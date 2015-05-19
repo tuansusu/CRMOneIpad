@@ -40,6 +40,14 @@ static UIImage *imageCircleBlack;
         }
         
         [self setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
+        
+        if(self.currentDeviceType == iPad){
+            
+        }else{
+            [self setFont:[UIFont systemFontOfSize:self.isSecondButton ? 12 : 8]];
+            
+            
+        }
     }
     return self;
 }
@@ -49,24 +57,47 @@ static UIImage *imageCircleBlack;
 
 -(void)setSelected:(BOOL)selected {
     
-    if (selected) {
-        
-        [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        
-        if ([NSDate isTheSameDateTheCompA:[NSDate componentsOfDate:date] compB:[NSDate componentsOfCurrentDate]]) {
-            [self setBackgroundImage:imageCircleRed forState:UIControlStateNormal];
+    if(self.currentDeviceType == iPad){
+        if (selected) {
+            
+            [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            
+            if ([NSDate isTheSameDateTheCompA:[NSDate componentsOfDate:date] compB:[NSDate componentsOfCurrentDate]]) {
+                [self setBackgroundImage:imageCircleRed forState:UIControlStateNormal];
+            } else {
+                [self setBackgroundImage:imageCircleBlack forState:UIControlStateNormal];
+            }
+            
         } else {
-            [self setBackgroundImage:imageCircleBlack forState:UIControlStateNormal];
+            if (date.componentsOfDate.weekday == 1 || date.componentsOfDate.weekday == 7) {
+                [self setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+            } else {
+                [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            }
+            
+            [self setBackgroundImage:nil forState:UIControlStateNormal];
         }
-        
-    } else {
-        if (date.componentsOfDate.weekday == 1 || date.componentsOfDate.weekday == 7) {
-            [self setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    }else{
+        if (selected & self.isSecondButton) {
+            
+            [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            
+            if ([NSDate isTheSameDateTheCompA:[NSDate componentsOfDate:date] compB:[NSDate componentsOfCurrentDate]]) {
+                [self setBackgroundImage:imageCircleRed forState:UIControlStateNormal];
+            } else {
+                [self setBackgroundImage:imageCircleBlack forState:UIControlStateNormal];
+            }
+            
         } else {
-            [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            if (date.componentsOfDate.weekday == 1 || date.componentsOfDate.weekday == 7) {
+                [self setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+            } else {
+                [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            }
+            
+            [self setBackgroundImage:nil forState:UIControlStateNormal];
         }
-        
-        [self setBackgroundImage:nil forState:UIControlStateNormal];
+
     }
 }
 

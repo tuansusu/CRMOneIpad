@@ -11,11 +11,13 @@
 #import <UIKit/UIKit.h>
 
 #import "FFDayCollectionView.h"
+#import "EnumClass.h"
 
 @interface FFDayScrollView : UIScrollView 
 
 @property (nonatomic, strong) NSMutableDictionary *dictEvents;
 @property (nonatomic, strong) FFDayCollectionView *collectionViewDay;
 @property (nonatomic, strong) UILabel *labelWithActualHour;
+@property (nonatomic) enum DeviceType currentDeviceType;
 
 @end

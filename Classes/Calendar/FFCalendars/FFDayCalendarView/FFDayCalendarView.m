@@ -75,13 +75,33 @@
     dictEvents = _dictEvents;
     
     if (!dayContainerScroll) {
-        collectionViewHeaderDay = [[FFDayHeaderCollectionView alloc] initWithFrame:CGRectMake(0., 0., self.frame.size.width, HEADER_HEIGHT_SCROLL)];
-        [collectionViewHeaderDay setProtocol:self];
-        [collectionViewHeaderDay scrollToDate:[[FFDateManager sharedManager] currentDate]];
-        [self addSubview:collectionViewHeaderDay];
-        
-        dayContainerScroll = [[FFDayScrollView alloc] initWithFrame:CGRectMake(0, HEADER_HEIGHT_SCROLL, self.frame.size.width/2., self.frame.size.height-HEADER_HEIGHT_SCROLL)];
-        [self addSubview:dayContainerScroll];
+        collectionViewHeaderDay = [FFDayHeaderCollectionView alloc];
+        collectionViewHeaderDay.currentDeviceType = self.currentDeviceType;
+        if(self.currentDeviceType == iPad){
+            collectionViewHeaderDay = [collectionViewHeaderDay initWithFrame:CGRectMake(0., 0., self.frame.size.width, HEADER_HEIGHT_SCROLL)];
+            [collectionViewHeaderDay setProtocol:self];
+            [collectionViewHeaderDay scrollToDate:[[FFDateManager sharedManager] currentDate]];
+            [self addSubview:collectionViewHeaderDay];
+            
+            dayContainerScroll = [FFDayScrollView alloc];
+            dayContainerScroll.currentDeviceType = self.currentDeviceType;
+            dayContainerScroll = [dayContainerScroll
+                                  initWithFrame:CGRectMake(0, HEADER_HEIGHT_SCROLL , self.frame.size.width/2., self.frame.size.height-HEADER_HEIGHT_SCROLL)];
+            [self addSubview:dayContainerScroll];
+            
+        }else{
+            collectionViewHeaderDay = [collectionViewHeaderDay initWithFrame:CGRectMake(0., 0., self.frame.size.width, HEADER_HEIGHT_SCROLL - HEADER_HEIGHT_SCROLL_IPHONE_SUB)];
+            [collectionViewHeaderDay setProtocol:self];
+            [collectionViewHeaderDay scrollToDate:[[FFDateManager sharedManager] currentDate]];
+            [self addSubview:collectionViewHeaderDay];
+            
+            dayContainerScroll = [FFDayScrollView alloc];
+            dayContainerScroll.currentDeviceType = self.currentDeviceType;
+            dayContainerScroll = [dayContainerScroll
+                                  initWithFrame:CGRectMake(0, (HEADER_HEIGHT_SCROLL - HEADER_HEIGHT_SCROLL_IPHONE_SUB), self.frame.size.width/1., self.frame.size.height-(HEADER_HEIGHT_SCROLL - HEADER_HEIGHT_SCROLL_IPHONE_SUB))];
+            [self addSubview:dayContainerScroll];
+            
+        }
     }
     [dayContainerScroll setDictEvents:dictEvents];
     [dayContainerScroll.collectionViewDay setProtocol:self];

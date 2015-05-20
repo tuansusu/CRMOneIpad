@@ -50,6 +50,7 @@
 		1755B0051AB5C28200F543DA /* EditBussinessLeadViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1755B0031AB5C28200F543DA /* EditBussinessLeadViewController~iphone.xib */; };
 		1755B00A1AB5D22700F543DA /* ListAccountViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1755B0081AB5D22700F543DA /* ListAccountViewController~iphone.xib */; };
 		1755B00F1AB5DA4600F543DA /* Account360Cell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1755B00D1AB5DA4600F543DA /* Account360Cell~iphone.xib */; };
+		176367A81B0CEDB800282C1E /* EditCalendarLeadViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 176367A61B0CEDB800282C1E /* EditCalendarLeadViewController~iphone.xib */; };
 		1772C8401AC1A04800906FFB /* EditContactLeadViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1772C83E1AC1A04800906FFB /* EditContactLeadViewController~iphone.xib */; };
 		1777BB101AB482BE004E0951 /* AccountLeadCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1777BB0E1AB482BE004E0951 /* AccountLeadCell~iphone.xib */; };
 		177851DC1AB9C165003020DE /* Detail360ViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 177851DA1AB9C165003020DE /* Detail360ViewController~iphone.xib */; };
@@ -1238,6 +1239,7 @@
 		1755B0031AB5C28200F543DA /* EditBussinessLeadViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EditBussinessLeadViewController~iphone.xib"; sourceTree = "<group>"; };
 		1755B0081AB5D22700F543DA /* ListAccountViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ListAccountViewController~iphone.xib"; sourceTree = "<group>"; };
 		1755B00D1AB5DA4600F543DA /* Account360Cell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Account360Cell~iphone.xib"; sourceTree = "<group>"; };
+		176367A61B0CEDB800282C1E /* EditCalendarLeadViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EditCalendarLeadViewController~iphone.xib"; sourceTree = "<group>"; };
 		1772C83E1AC1A04800906FFB /* EditContactLeadViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EditContactLeadViewController~iphone.xib"; sourceTree = "<group>"; };
 		1777BB0E1AB482BE004E0951 /* AccountLeadCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "AccountLeadCell~iphone.xib"; sourceTree = "<group>"; };
 		177851DA1AB9C165003020DE /* Detail360ViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Detail360ViewController~iphone.xib"; sourceTree = "<group>"; };
@@ -3075,6 +3077,7 @@
 				7693EE041A355593004E0178 /* EditCalendarLeadViewController.h */,
 				7693EE051A355593004E0178 /* EditCalendarLeadViewController.m */,
 				7693EE061A355593004E0178 /* EditCalendarLeadViewController.xib */,
+				176367A61B0CEDB800282C1E /* EditCalendarLeadViewController~iphone.xib */,
 				8499B2DA1A2C9BC4004D9ACB /* EditContactLeadViewController.h */,
 				8499B2DB1A2C9BC4004D9ACB /* EditContactLeadViewController.m */,
 				8499B2DC1A2C9BC4004D9ACB /* EditContactLeadViewController.xib */,
@@ -6698,6 +6701,7 @@
 				B3157897188D5E5200C0ED01 /* extra-btn-1-1.png in Resources */,
 				8E75545F1A52EFC8001940FB /* iconRoundAboutRight@2x.png in Resources */,
 				8E568F8A1A58F70C0002A3C4 /* ComplainViewHeader.xib in Resources */,
+				176367A81B0CEDB800282C1E /* EditCalendarLeadViewController~iphone.xib in Resources */,
 				8EC972AE1A5D71300021DCA3 /* WeeklyCalendar.png in Resources */,
 				76CD8819196D1E4F00503B99 /* ic-xls-1.png in Resources */,
 				76EE207219FA829200A80414 /* ic-add-sub-1.png in Resources */,

@@ -30,6 +30,7 @@
 #import "NSDate+Utilities.h"
 #import "Validator.h"
 #import "Util.h"
+#import "EnumClass.h"
 
 #define TAG_SELECT_DATE_FROM  1//NGAY BAT DAU
 #define TAG_SELECT_DATE_TO    2//NGAY KET THUC
@@ -203,8 +204,29 @@
     {
         // ??
     }
+    if ([self currentDeviceType]==iPhone) {
+        [self setBorderTextfield:_txtAlarm];
+        [self setBorderTextfield:_txtDateFrom];
+        [self setBorderTextfield:_txtDateTo];
+        [self setBorderTextfield:_txtDescription];
+        [self setBorderTextfield:_txtEventType];
+        [self setBorderTextfield:_txtLocation];
+        [self setBorderTextfield:_txtName];
+        [self setBorderTextfield:_txtNameObject];
+        [self setBorderTextfield:_txtRepeat];
+        [self setBorderTextfield:_txtStatus];
+        [self setBorderTextfield:_txtTimeFrom];
+        [self setBorderTextfield:_txtTimeTo];
+        [self setBorderTextfield:_txtTypeObject];
+    }
 }
-
+-(void)setBorderTextfield:(UITextField *)txtField{
+    
+    txtField.textColor = TEXT_COLOR_REPORT;
+    txtField.backgroundColor = BACKGROUND_NORMAL_COLOR1;
+    [txtField setBorderWithOption:smgSelect];
+    [txtField setPaddingLeft];
+}
 -(void) renderControl {
     
     AMRatingControl *coloredRatingControl = [[AMRatingControl alloc] initWithLocation:CGPointMake(0, 0)

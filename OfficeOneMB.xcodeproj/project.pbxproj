@@ -414,6 +414,7 @@
 		769F24851A6F1C5500427A8F /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F247D1A6F1C5500427A8F /* UIViewController+MMDrawerController.m */; };
 		769F24891A6F1F3F00427A8F /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769F24871A6F1F3F00427A8F /* MenuViewController.m */; };
 		769F248A1A6F1F3F00427A8F /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769F24881A6F1F3F00427A8F /* MenuViewController.xib */; };
+		76A2570F1B0C631100C7C579 /* ProfileViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76A2570E1B0C631100C7C579 /* ProfileViewController~iphone.xib */; };
 		76A9D54C1AE00349005E14F6 /* ProposeProductPopupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A9D54A1AE00349005E14F6 /* ProposeProductPopupCell.m */; };
 		76A9D54D1AE00349005E14F6 /* ProposeProductPopupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76A9D54B1AE00349005E14F6 /* ProposeProductPopupCell.xib */; };
 		76BE29381AA3F55800663803 /* icon_delete_90x90.png in Resources */ = {isa = PBXBuildFile; fileRef = 76BE29351AA3F55800663803 /* icon_delete_90x90.png */; };
@@ -1754,6 +1755,7 @@
 		769F24861A6F1F3F00427A8F /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuViewController.h; path = CustomView/MenuViewController.h; sourceTree = "<group>"; };
 		769F24871A6F1F3F00427A8F /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuViewController.m; path = CustomView/MenuViewController.m; sourceTree = "<group>"; };
 		769F24881A6F1F3F00427A8F /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuViewController.xib; path = CustomView/MenuViewController.xib; sourceTree = "<group>"; };
+		76A2570E1B0C631100C7C579 /* ProfileViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ProfileViewController~iphone.xib"; sourceTree = "<group>"; };
 		76A9D5491AE00349005E14F6 /* ProposeProductPopupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProposeProductPopupCell.h; sourceTree = "<group>"; };
 		76A9D54A1AE00349005E14F6 /* ProposeProductPopupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProposeProductPopupCell.m; sourceTree = "<group>"; };
 		76A9D54B1AE00349005E14F6 /* ProposeProductPopupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProposeProductPopupCell.xib; sourceTree = "<group>"; };
@@ -5269,6 +5271,7 @@
 				8E6105F61A5986BF003D1C0C /* ProfileViewController.h */,
 				8E6105F71A5986BF003D1C0C /* ProfileViewController.m */,
 				8E6105F81A5986BF003D1C0C /* ProfileViewController.xib */,
+				76A2570E1B0C631100C7C579 /* ProfileViewController~iphone.xib */,
 				76D8923C1AE549C2008428D1 /* EditProfileViewController.h */,
 				76D8923D1AE549C2008428D1 /* EditProfileViewController.m */,
 				76D8923E1AE549C2008428D1 /* EditProfileViewController.xib */,
@@ -6773,6 +6776,7 @@
 				8E0B07D61A4479EF00CF7A78 /* bgPopup@2x.png in Resources */,
 				76C06E661AB71B08003F9D91 /* CompetitorsViewController~iphone.xib in Resources */,
 				B346C25817C4688D00433B07 /* arrow_right.png in Resources */,
+				76A2570F1B0C631100C7C579 /* ProfileViewController~iphone.xib in Resources */,
 				8E7554231A52E3A2001940FB /* iconTurnSharpLeft@2x.png in Resources */,
 				B313F1D118A51414001FDEC6 /* notification-long-bg-1.png in Resources */,
 				767E80D01AB9C6F30098F76E /* ProposeProductCell~iphone.xib in Resources */,

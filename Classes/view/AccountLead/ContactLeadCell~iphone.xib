@@ -44,6 +44,7 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="avartar" destination="xLE-dw-p6U" id="NVS-Tf-5bU"/>
                 <outlet property="lbAddress" destination="uQ9-jd-V7x" id="dVz-h5-lRi"/>
                 <outlet property="lbName" destination="bWN-X3-AJi" id="7VH-dF-s0e"/>
             </connections>

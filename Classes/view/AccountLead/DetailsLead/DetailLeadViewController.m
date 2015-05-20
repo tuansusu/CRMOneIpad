@@ -235,8 +235,8 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     NSLog(@"datasend detail lead = %@", self.dataSend);
     dicData = [dtoLeadProcess getDataWithKey:DTOLEAD_id withValue:[self.dataSend objectForKey:DTOLEAD_id]];
     NSLog(@"Get detail = %@", dicData);
-    [self actionExpandInfo:self.btnExpandInfo];
-    [self loadDataWithTypeAction:typeActionEvent];
+    //[self actionExpandInfo:self.btnExpandInfo];
+    //[self loadDataWithTypeAction:typeActionEvent];
     if ([dicData isKindOfClass:[NSNull class]] || dicData==nil ) {
         [self dismissViewControllerAnimated:YES completion:nil];
         return;
@@ -272,8 +272,8 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     self.barLabel.text = [NSString stringWithFormat:@"%@ %@, %@",VOFFICE,[defaults objectForKey:@"versionSoftware"],COPY_OF_SOFTWARE];
     
-    [self actionExpandInfo:self.btnExpandInfo];
-    arrayData  = [NSArray new];
+    //[self actionExpandInfo:self.btnExpandInfo];
+    //arrayData  = [NSArray new];
     [_tbData reloadData];
 }
 
@@ -281,6 +281,8 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
  *Load danh sach khach hang ca nhan
  */
 -(void) loadDetailCustomerPersonalData {
+    _lbAddress.numberOfLines = 2;
+    [_lbAddress sizeToFit];
     //code
     _lbCode.text=[NSString stringWithFormat:@"%@: %@",LocalizedString(@"KEY_LEAD_CODE"),[dicData objectForKey:DTOLEAD_clientLeadId]];
     //name

@@ -116,7 +116,7 @@
         [self setBorderTextfield:_txtWhereBorn];
         [self setBorderTextfield:_txtEmail];
         [self setBorderTextfield:_txtAddress];
-       // [self setBorderTextfield:_tvNote];
+        // [self setBorderTextfield:_tvNote];
         
         //toolbar
         //show date
@@ -137,7 +137,7 @@
         [toolBar setItems:[NSArray arrayWithObjects:space,doneBtn, nil]];
         [self.txtDateOfBirth setInputAccessoryView:toolBar];
         [self.txtDateCreate setInputAccessoryView:toolBar];
-
+        
         
         
     }
@@ -154,8 +154,8 @@
     else{
         [self.txtDateCreate resignFirstResponder];
         self.txtDateCreate.text = [NSString stringWithFormat:@"%@",
-                                    [df stringFromDate:date]];
-
+                                   [df stringFromDate:date]];
+        
     }
 }
 -(void)setBorderTextfield:(UITextField *)txtField{
@@ -502,16 +502,21 @@
     
     
     if (succsess) {
-        //Thong bao cap nhat thanh cong va thoat
-        if (_dataSend.count>0) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            alert.tag = 6;
-            [alert show];
+        if ([self currentDeviceType]==iPhone) {
+            [self dismissViewControllerAnimated:YES completion:nil];
         }
         else{
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:LocalizedString(@"KEY_NO") otherButtonTitles:LocalizedString(@"KEY_YES"), nil];
-            alert.tag = 5;
-            [alert show];
+            //Thong bao cap nhat thanh cong va thoat
+            if (_dataSend.count>0) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                alert.tag = 6;
+                [alert show];
+            }
+            else{
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:LocalizedString(@"KEY_NO") otherButtonTitles:LocalizedString(@"KEY_YES"), nil];
+                alert.tag = 5;
+                [alert show];
+            }
         }
         
     }else{

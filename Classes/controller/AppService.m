@@ -150,6 +150,8 @@ static AppService* appService = nil;
     //VOFFICE_REQUEST_PATH
     NSString * uri =[NSString stringWithFormat:@"%@%@", KEY_CONGIG_VOFFICE_PATH, actionEvent.methodName];
     
+    NSLog(@"url = %@", uri);
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     //manager.responseSerializer = [AFJSONResponseSerializer serializer];

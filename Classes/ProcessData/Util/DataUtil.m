@@ -382,4 +382,51 @@ static BOOL checkInsertCache = NO;
 }
 
 
+
++(NSMutableArray*) GetAllColumnWithTable  : (NSString*) strTableName   {
+    
+    sqlite3 *database = [DataUtil openDatabase];
+    
+    
+    strTableName =   [strTableName uppercaseString];
+    NSString *query = [NSString stringWithFormat:@"PRAGMA table_info('%@')", strTableName] ;
+    
+    NSArray *allFields = [[NSArray alloc]initWithObjects:@"cid", @"name", @"type", nil];
+    
+    
+    NSMutableArray *arrayResultColumn = [[NSMutableArray alloc]init];
+    
+    
+    @try {
+        sqlite3_stmt *statement;
+        NSMutableDictionary *dic;
+        if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
+            
+            NSInteger start = 0;
+            
+            while (sqlite3_step(statement) == SQLITE_ROW) {
+                
+                dic = [[NSMutableDictionary alloc]init];
+                start = 0;
+                for (NSString* field in allFields) {
+                    if (sqlite3_column_text(statement, start) != NULL) {
+                        NSString *value = [NSString stringWithUTF8String:( char *) sqlite3_column_text(statement, start)];
+                        [dic setObject:value forKey:field];
+                    }
+                    start++;
+                }
+                //[listDic addObject:dic];
+                [arrayResultColumn addObject:[dic objectForKey:@"name"]];
+            }
+            sqlite3_finalize(statement);
+        }
+    }
+    @catch (NSException *exception) {
+        [LogUtil writeLogWithException:exception ];
+    }
+    [DataUtil closeDatabase];
+    
+    return arrayResultColumn;
+}
+
 @end

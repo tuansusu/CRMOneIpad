@@ -17,6 +17,8 @@
 #define KEY_includeActive @"includeActive"
 #define KEY_maxTimeStamp @"maxTimeStamp"
 
+#define PAGESIZE_LIMIT 200
+
 @interface SyncDataUtil ()
 {
     BaseViewController *senderViewController;
@@ -42,6 +44,64 @@
 }
 
 
+-(void) synchonizeDatabase: (NSArray*) arrayDataSync withModelEvent : (ModelEvent*) modelEvent withTableName : strTableName{
+    
+    NSArray *arrayColumn = [DataUtil GetAllColumnWithTable:strTableName];
+    
+    [self synchonizeDatabase:arrayDataSync withActionEvent:modelEvent.actionEvent withTableName:strTableName withKeyColumn:DTOSYSORGANIZATION_sysOrganizationId withArrayColumn:arrayColumn];
+    
+    
+    int start = [[modelEvent.actionEvent.viewData objectForKey:@"firstResult"] intValue];
+    start = PAGESIZE + start;
+    
+    int totalRecord = [[modelEvent.modelData objectForKey:@"totalRecord"] intValue];
+    
+    //
+    if (totalRecord> PAGESIZE && arrayDataSync.count == PAGESIZE) {
+        //tiep tuc dong bo voi start moi
+        
+//        NSDictionary *dic = @{@"minTimeStamp": strMinTime, @"maxTimeStamp": strMaxTime, @"firstResult":iFirstResult, @"pageSize": @"200", @"includeCount":@"true",@"includeActive":@"true"};
+        
+        [self synchonizeDBWithSync:modelEvent.actionEvent.action withMinTime:[modelEvent.actionEvent.viewData objectForKey:@"minTimeStamp"] withMaxTime:[modelEvent.actionEvent.viewData objectForKey:@"maxTimeStamp"] withFirstResult:[NSString stringWithFormat:@"%d", start]];
+        
+        
+    }else{
+        NSArray *arraySync = [self getArrayTableToSync];
+        
+        NSNumber *tmpAkdfjdkf =@(modelEvent.actionEvent.action);
+        NSLog(@"tmpAkdfjdkf  ===   %@", tmpAkdfjdkf);
+        
+       int indexOfObject =  [arraySync indexOfObject:@(modelEvent.actionEvent.action)];
+        indexOfObject = indexOfObject +1;
+        if (indexOfObject<arraySync.count) {
+            
+            
+            NSNumber *tmpSync = [arraySync objectAtIndex:indexOfObject];
+            enum ActionEventEnum actionSync = [tmpSync intValue];
+            
+            NSString *strObjectCode = [self getObjectCode:actionSync];
+            //Lấy MaxTime của objectCode sau đó thực hiện đồng bộ ObjectCode đó
+            NSLog(@"object code = %@", strObjectCode);
+            [self getMaxTimeWithObjectCode:strObjectCode  withActionEventEnum:actionSync];
+        }else{
+            NSLog(@"dong bo xong");
+        }
+        
+        
+        
+    }
+    
+    
+}
+
+
+/*
+ *arrayDataSync: Danh sach gia tri
+ *actionEvent: Lay thong tin day
+ *tableName: Ten bang
+ *keyColumn: Ten cot khoa chinh
+ *arrayAllColumn: Danh sach ten cot
+ */
 -(void) synchonizeDatabase: (NSArray*) arrayDataSync withActionEvent : (ActionEvent*) actionEvent withTableName : (NSString *) tabelName withKeyColumn : (NSString*) keyColumn withArrayColumn : (NSArray*) arrayAllColumn{
     
     sqlite3 *database ;// = [DataUtil openDatabase];
@@ -392,29 +452,29 @@
     [dicDataCode_Sync setValue:@(sync_get_industry) forKey:@"industry"];
     [dicDataCode_Sync setValue:@(sync_get_employee) forKey:@"employee"];
     [dicDataCode_Sync setValue:@(sync_get_lead) forKey:@"lead"];
-    [dicDataCode_Sync setValue:@(sync_get_accountCrosssell) forKey:@"accountCrosssell"];
-    [dicDataCode_Sync setValue:@(sync_get_leadCrosssell) forKey:@"leadCrosssell"];
+    [dicDataCode_Sync setValue:@(sync_get_accountCrosssell) forKey:@"accountcrosssell"];
+    [dicDataCode_Sync setValue:@(sync_get_leadCrosssell) forKey:@"leadcrosssell"];
     [dicDataCode_Sync setValue:@(sync_get_contact) forKey:@"contact"];
-    [dicDataCode_Sync setValue:@(sync_get_oppContact) forKey:@"oppContact"];
-    [dicDataCode_Sync setValue:@(sync_get_accContact) forKey:@"accContact"];
-    [dicDataCode_Sync setValue:@(sync_get_leadContact) forKey:@"leadContact"];
-    [dicDataCode_Sync setValue:@(sync_get_oppCompetitor) forKey:@"oppCompetitor"];
+    [dicDataCode_Sync setValue:@(sync_get_oppContact) forKey:@"oppcontact"];
+    [dicDataCode_Sync setValue:@(sync_get_accContact) forKey:@"acccontact"];
+    [dicDataCode_Sync setValue:@(sync_get_leadContact) forKey:@"leadcontact"];
+    [dicDataCode_Sync setValue:@(sync_get_oppCompetitor) forKey:@"oppcompetitor"];
     [dicDataCode_Sync setValue:@(sync_get_competitor) forKey:@"competitor"];
-    [dicDataCode_Sync setValue:@(sync_get_industryAccount) forKey:@"industryAccount"];
-    [dicDataCode_Sync setValue:@(sync_get_industryLead) forKey:@"industryLead"];
-    [dicDataCode_Sync setValue:@(sync_get_employeeAccount) forKey:@"employeeAccount"];
+    [dicDataCode_Sync setValue:@(sync_get_industryAccount) forKey:@"industryaccount"];
+    [dicDataCode_Sync setValue:@(sync_get_industryLead) forKey:@"industrylead"];
+    [dicDataCode_Sync setValue:@(sync_get_employeeAccount) forKey:@"employeeaccount"];
     [dicDataCode_Sync setValue:@(sync_get_relationship) forKey:@"relationship"];
     [dicDataCode_Sync setValue:@(sync_get_accRelationship) forKey:@"accRelationship"];
     [dicDataCode_Sync setValue:@(sync_get_leadRelationship) forKey:@"leadRelationship"];
-    [dicDataCode_Sync setValue:@(sync_get_relationshipType) forKey:@"relationshipType"];
-    [dicDataCode_Sync setValue:@(sync_get_rmDailyKh) forKey:@"rmDailyKh"];
-    [dicDataCode_Sync setValue:@(sync_get_orgType) forKey:@"orgType"];
-    [dicDataCode_Sync setValue:@(sync_get_rmDailyCard) forKey:@"rmDailyCard"];
-    [dicDataCode_Sync setValue:@(sync_get_rmDailyThanhtoan) forKey:@"rmDailyThanhtoan"];
-    [dicDataCode_Sync setValue:@(sync_get_rmDailyTietkiem) forKey:@"rmDailyTietkiem"];
-    [dicDataCode_Sync setValue:@(sync_get_rmDailyTindung) forKey:@"rmDailyTindung"];
-    [dicDataCode_Sync setValue:@(sync_get_rmMonthlyHdv) forKey:@"rmMonthlyHdv"];
-    [dicDataCode_Sync setValue:@(sync_get_rmMonthlyTindung) forKey:@"rmMonthlyTindung"];
+    [dicDataCode_Sync setValue:@(sync_get_relationshipType) forKey:@"relationshiptype"];//die o day
+    [dicDataCode_Sync setValue:@(sync_get_rmDailyKh) forKey:@"rmdailykh"];
+    [dicDataCode_Sync setValue:@(sync_get_orgType) forKey:@"orgtype"];
+    [dicDataCode_Sync setValue:@(sync_get_rmDailyCard) forKey:@"rmdailycard"];
+    [dicDataCode_Sync setValue:@(sync_get_rmDailyThanhtoan) forKey:@"rmdailythanhtoan"];
+    [dicDataCode_Sync setValue:@(sync_get_rmDailyTietkiem) forKey:@"rmdailytietkiem"];
+    [dicDataCode_Sync setValue:@(sync_get_rmDailyTindung) forKey:@"rmdailytindung"];
+    [dicDataCode_Sync setValue:@(sync_get_rmMonthlyHdv) forKey:@"rmmonthlyhdv"];
+    [dicDataCode_Sync setValue:@(sync_get_rmMonthlyTindung) forKey:@"rmmonthlytindung"];
 }
 
 
@@ -424,39 +484,23 @@
 
 -(void) getDBFromServerToClien:(BaseViewController *)viewController{
     
-    //
     
-    //[defaults setObject:versionSoftware forKey:@"versionSoftware"];
-//    NSString *userNameStr = [defaults objectForKey:POST_USERNAME];
-//    if (userNameStr) {
-//        tf_username.text = userNameStr;
-//    }
-//    else
-//    {
-//        tf_username.text =@"";
-//    }
+//    NSArray *arraySync = [self getArrayTableToSync];
+//    
+//    
+//    NSNumber *tmpSync = [arraySync objectAtIndex:0];
+//    enum ActionEventEnum actionSync = [tmpSync intValue];
+//    
+//    NSString *strObjectCode = [self getObjectCode:actionSync];
     
+    enum ActionEventEnum actionSync = sync_get_rmMonthlyTindung;
+    NSString *strObjectCode = @"rmMonthlyTindung";
+    strObjectCode = [strObjectCode uppercaseString];
     
-    NSArray *arraySync = [self getArrayTableToSync];
-    
-    
-    NSNumber *tmpSync = [arraySync objectAtIndex:0];
-    enum ActionEventEnum actionSync = [tmpSync intValue];
-    
-    NSString *strObjectCode = [self getObjectCode:actionSync];
     //Lấy MaxTime của objectCode sau đó thực hiện đồng bộ ObjectCode đó
     NSLog(@"object code = %@", strObjectCode);
     [self getMaxTimeWithObjectCode:strObjectCode  withActionEventEnum:actionSync];
-    
-//    for (int i=0; i<arraySync.count; i++) {
-//        NSNumber *tmpSync = [arraySync objectAtIndex:i];
-//        enum ActionEventEnum actionSync = [tmpSync intValue];
-//        
-//        NSString *strObjectCode = [self getObjectCode:actionSync];
-//        //Lấy MaxTime của objectCode sau đó thực hiện đồng bộ ObjectCode đó
-//        NSLog(@"object code = %@", strObjectCode);
-//        [self getMaxTimeWithObjectCode:strObjectCode withActionEventEnum:actionSync];
-//    }
+
     
     
 }
@@ -464,6 +508,8 @@
 
 - (void) receiveDataFromModel: (ModelEvent*) modelEvent {
     
+    NSString *  strTableName = @"";
+    NSString * strKeyListArray = @"";
     switch (modelEvent.actionEvent.action) {
         case sync_get_timestamp:
         {
@@ -478,21 +524,148 @@
             if(!minTime){
                 minTime = @"0";
             }
-            
             [self synchonizeDBWithSync:actionSync withMinTime:minTime withMaxTime:[modelEvent.modelData objectForKey:KEY_maxTimeStamp] withFirstResult:@"0"];
+            
+            return;
             
         }
             break;
+            
+            case sync_get_sysorganization:
+        {
+            strTableName = @"dtosysorganization";
+            strKeyListArray = @"sysOrganizationList";
+        }
+            break;
+        case sync_get_account:{
+            strTableName = @"dtoaccount";
+            strKeyListArray = @"accountList";
+        }
+            break;
+        case sync_get_group:{
+            strTableName = @"dtogroup";
+            strKeyListArray = @"groupList";
+        }break;
+        case sync_get_industry:{
+            strTableName = @"dtoindustry";
+            strKeyListArray = @"industryList";
+        }break;
+        case sync_get_employee:{
+            strTableName = @"dtoemployee";
+            strKeyListArray = @"employeeList";
+        }break;
+        case sync_get_lead:{
+            strTableName = @"dtolead";
+            strKeyListArray = @"leadList";
+        }break;
+        case sync_get_accountCrosssell:{
+            strTableName = @"dtoaccountCrosssell";
+            strKeyListArray = @"accountCrosssellList";
+        }break;
+        case sync_get_leadCrosssell:{
+            strTableName = @"dtoleadCrosssell";
+            strKeyListArray = @"leadCrosssellList";
+        }break;
+        case sync_get_contact:{
+            strTableName = @"dtocontact";
+            strKeyListArray = @"contactList";
+        }break;
+        case  sync_get_oppContact:{
+            strTableName = @"dtooppContact";
+            strKeyListArray = @"oppContactList";
+        }break;
+        case  sync_get_accContact:{
+            strTableName = @"dtoaccContact";
+            strKeyListArray = @"accContactList";
+            
+        }break;
+        case  sync_get_leadContact:{
+            strTableName = @"dtoleadContact";
+            strKeyListArray = @"leadContactList";
+        }break;
+        case  sync_get_oppCompetitor:{
+            strTableName = @"dtooppCompetitor";
+            strKeyListArray = @"oppCompetitorList";
+        }break;
+        case  sync_get_competitor:{
+            strTableName = @"dtocompetitor";
+            strKeyListArray = @"competitorList";
+        }break;
+        case  sync_get_industryAccount:{
+            strTableName = @"dtoindustryAccount";
+            strKeyListArray = @"industryAccountList";
+        }break;
+        case  sync_get_industryLead:{
+            strTableName = @"dtoindustryLead";
+            strKeyListArray = @"industryLeadList";
+        }break;
+        case sync_get_employeeAccount:{
+            strTableName = @"dtoemployeeAccount";
+            strKeyListArray = @"employeeAccountList";
+        }break;
+        case sync_get_relationship:{
+            strTableName = @"dtorelationship";
+            strKeyListArray = @"relationshipList";
+        }break;
+        case  sync_get_accRelationship:{
+            strTableName = @"dtoaccRelationship";
+            strKeyListArray = @"accRelationshipList";
+        }break;
+        case  sync_get_leadRelationship:{
+            strTableName = @"dtoleadRelationship";
+            strKeyListArray = @"leadRelationshipList";
+        }break;
+        case   sync_get_relationshipType:{
+            strTableName = @"dtorelationshipType";
+            strKeyListArray = @"relationshipTypeList"; //relationshipTypeList
+        }break;
+        case   sync_get_rmDailyKh:{
+            strTableName = @"dtormDailyKh";
+            strKeyListArray = @"rmDailyKhList"; //rmDailyKhList
+        }break;
+        case   sync_get_orgType:{
+            strTableName = @"dtoorgType";
+            strKeyListArray = @"orgTypeList";//orgTypeList
+        }break;
+        case  sync_get_rmDailyCard:{
+            strTableName = @"dtormDailyCard";
+            strKeyListArray = @"rmDailyCards";//rmDailyCards
+        }break;
+        case  sync_get_rmDailyThanhtoan:{
+            strTableName = @"dtormDailyThanhtoan";
+            strKeyListArray = @"rmDailyThanhtoans";//rmDailyThanhtoans
+        }break;
+        case sync_get_rmDailyTietkiem:{
+            strTableName = @"dtormDailyTietkiem";
+            strKeyListArray = @"rmDailyTietkiemList";//rmDailyTietkiems
+        }break;
+        case sync_get_rmDailyTindung:{
+            
+            strTableName = @"dtormDailyTindung";
+            strKeyListArray = @"rmDailyTindungs";//rmDailyTindungs
+        }break;
+        case  sync_get_rmMonthlyHdv:{
+            
+            strTableName = @"dtormMonthlyHdv";
+            strKeyListArray = @"rmMonthlyHdvs"; //rmMonthlyHdvs
+        }break;
+        case  sync_get_rmMonthlyTindung:{
+            
+            strTableName = @"dtormMonthlyTindung";
+            strKeyListArray = @"rmMonthlyTindungs"; //rmMonthlyTindungs
+        }break;
+            
+            
         default:
             break;
     }
+    [self synchonizeDatabase:[modelEvent.modelData objectForKey:strKeyListArray]  withModelEvent:modelEvent withTableName:strTableName];
+    
 }
 
 - (void) receiveErrorFromModel: (ModelEvent*) modelEvent {
     
 }
-
-
 /*
  * Lay thong tin maxtime tu objectCode
  */

@@ -57,7 +57,7 @@ typedef void(^onDismiss)(BOOL); //định kiểu block function
 #define DOCUMENT_HEIGHT_TBV_HISTORY  60
 #define DOCUMENT_HEIGHT_TBV_TASK_ASSIGN  160
 
-#define PAGESIZE 10
+#define PAGESIZE 200
 
 
 #define KEY_NOTIFICATION_CENTER_TASK_VIEWDETAIL_REMOVEVIEW @"TaskViewDetailNotification"  //

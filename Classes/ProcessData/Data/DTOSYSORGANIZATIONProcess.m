@@ -76,12 +76,6 @@
         
         NSString *query = [NSString stringWithFormat:@"insert or replace  INTO %@%@ VALUES %@", TABLENAME_DTOSYSORGANIZATION, queryListColumns,queryListPara];
         
-        
-        
-        
-        
-        
-        
         sqlite3_stmt *compiledStatement;
         
         if(sqlite3_prepare_v2(database,[ query UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK )

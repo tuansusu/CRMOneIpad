@@ -38,5 +38,7 @@
 
 +(BOOL) checkExistItem : (NSString*)tableName withKeyColumn : (NSString*) keyColumn withKeyValue : (NSString*) keyValue ;
 
++(NSMutableArray*) GetAllColumnWithTable  : (NSString*) strTableName ;
+
 
 @end

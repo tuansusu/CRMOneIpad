@@ -200,6 +200,15 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         resultDescription = @"NA";
     }
     fyDN = [self setFrameLabelTitle:self.lblDescriptionTitle withLabelValue:self.lblDescriptionDetail withFY:fyDN :resultDescription];
+    
+    //Neu trang thai cua co hoi la phe duyet ke hoach thi ko cho sua, xoa
+    if([[opportunity objectForKey:@"status"] isEqualToString:@"3"]){ //Phe duyet ke hoach
+        self.btnDelete.hidden = YES;
+        self.btnEdit.hidden =YES;
+    }else{
+        self.btnDelete.hidden = NO;
+        self.btnEdit.hidden = NO;
+    }
 }
 
 -(void) viewWillAppear:(BOOL)animated{

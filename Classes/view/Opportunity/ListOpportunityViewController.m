@@ -96,7 +96,7 @@
 
     [self setLanguage];
    // [SVProgressHUD setStatus:@"jiodjofi"];
-    [SVProgressHUD showWithStatus:@"Loading..."];
+    ///[SVProgressHUD showWithStatus:@"Loading..."];
    // [SVProgressHUD show];
 }
 

@@ -125,6 +125,10 @@
     dtoFileProcess=[DTOATTACHMENTProcess new];
     arrayData  = [NSMutableArray new];
     //arrayData = [dtoLeadProcess filter];
+    arrayData  = [NSMutableArray new];
+    self.txtContent.text = @"Nội dung";
+    self.txtContent.textColor = [UIColor lightGrayColor];
+    self.txtContent.tag = 0;
     NSLog(@"dataRoot %@",self.dataRoot);
     dataId = 0;
     if (self.dataSend) {

@@ -253,7 +253,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         if ([self currentDeviceType]==iPhone) {
             [_viewDetailIP addSubview:_scrollviewDN];
         }else{
-        [self.viewlef addSubview:_scrollviewDN];
+            [self.viewlef addSubview:_scrollviewDN];
         }
         [self loadDetailCustomerBussinessData];
         
@@ -262,7 +262,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         if ([self currentDeviceType]==iPhone) {
             [_viewDetailIP addSubview:_scrollviewCN];
         }else{
-        [self.viewlef addSubview:_scrollviewCN];
+            [self.viewlef addSubview:_scrollviewCN];
         }
         [self loadDetailCustomerPersonalData];
     }
@@ -1602,12 +1602,12 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         _viewDetailIP.hidden=NO;
         if ([leadType isEqualToString:FIX_LEADTYPE_BUSSINESS]) {
             _viewData.hidden=YES;
-             _scrollviewDN.hidden=NO;
-             _scrollviewCN.hidden=YES;
+            _scrollviewDN.hidden=NO;
+            _scrollviewCN.hidden=YES;
             [_viewDetailIP addSubview:_scrollviewDN];
         }else{
             _scrollviewCN.hidden=NO;
-             _scrollviewDN.hidden=YES;
+            _scrollviewDN.hidden=YES;
             _viewData.hidden=YES;
             [_viewDetailIP addSubview:_scrollviewCN];
         }
@@ -1703,8 +1703,10 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             [self presentViewController:edit animated:YES completion:nil];
         }
         else if (buttonIndex == 2){
-            EditCalendarLeadViewController *edit=[[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
-            [self presentViewController:edit animated:YES completion:nil];
+            EditCalendarLeadViewController *viewCalendarController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
+            [viewCalendarController setDelegate:self];
+            viewCalendarController.dataRoot = dicData;
+            [self presentViewController:viewCalendarController animated:YES completion:nil];
         }
         else if(buttonIndex == 4){
             EditOpportunityLeadViewController *edit=[[EditOpportunityLeadViewController alloc] initWithNibName:@"EditOpportunityLeadViewController" bundle:nil];

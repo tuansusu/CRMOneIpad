@@ -136,7 +136,7 @@
     </objects>
     <resources>
         <image name="Back_32.png" width="32" height="32"/>
-        <image name="errorVaildate.png" width="24" height="24"/>
+        <image name="errorVaildate.png" width="50" height="50"/>
         <image name="icon_delete_90x90.png" width="90" height="90"/>
         <image name="icon_down.png" width="19" height="11"/>
         <image name="icon_save_90x90.png" width="90" height="90"/>

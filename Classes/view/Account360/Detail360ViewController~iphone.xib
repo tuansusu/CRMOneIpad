@@ -93,18 +93,6 @@
                                         <action selector="actionAdd:" destination="-1" eventType="touchUpInside" id="YSC-5r-h4R"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZU9-kK-ovx" userLabel="btn del">
-                                    <rect key="frame" x="244" y="22" width="30" height="30"/>
-                                    <state key="normal" backgroundImage="icon_delete_90x90.png">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                </button>
-                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dv0-5X-zbn" userLabel="btn edit">
-                                    <rect key="frame" x="206" y="22" width="30" height="30"/>
-                                    <state key="normal" backgroundImage="icon_sua_90x90.png">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
@@ -861,9 +849,7 @@
         <image name="comment_tabbar.png" width="32" height="24"/>
         <image name="ic-add-sub-1.png" width="90" height="90"/>
         <image name="ic-contact.png" width="30" height="30"/>
-        <image name="icon_delete_90x90.png" width="90" height="90"/>
         <image name="icon_menu-1.png" width="48" height="48"/>
-        <image name="icon_sua_90x90.png" width="90" height="90"/>
         <image name="note_tabbar.png" width="32" height="32"/>
         <image name="tabbar_details.png" width="32" height="32"/>
     </resources>

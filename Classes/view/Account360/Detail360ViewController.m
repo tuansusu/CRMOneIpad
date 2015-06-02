@@ -1749,9 +1749,11 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             [self presentViewController:edit animated:YES completion:nil];
         }
         else if (buttonIndex == 2){
-            EditCalendar360ViewController *edit=[[EditCalendar360ViewController alloc]initWithNibName:@"EditCalendar360ViewController" bundle:nil];
-            [self presentViewController:edit animated:YES completion:nil];
-        }
+            EditCalendarLeadViewController *viewController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
+            [viewController setDelegate:self];
+            viewController.dataRoot = dicData;
+            viewController.isKH360 = YES;
+            [self presentViewController:viewController animated:YES completion:nil];        }
         else if(buttonIndex == 4){
             EditOpportunity360ViewController *edit=[[EditOpportunity360ViewController alloc] initWithNibName:@"EditOpportunity360ViewController" bundle:nil];
             [self presentViewController:edit animated:YES completion:nil];

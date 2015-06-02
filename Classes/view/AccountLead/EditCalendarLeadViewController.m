@@ -698,30 +698,38 @@
                     }
                     
                 }];
-                if(_dataSend.count>0){
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Cập nhật thành công" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                    alert.tag = 6;
-                    [alert show];
+                if ([self currentDeviceType]==iPhone) {
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }else{
+                    if(_dataSend.count>0){
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Cập nhật thành công" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                        alert.tag = 6;
+                        [alert show];
+                    }
+                    else{
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Cập nhật thành công, tiếp tục nhập?" delegate:self cancelButtonTitle:@"Không" otherButtonTitles:@"Có", nil];
+                        alert.tag = 5;
+                        [alert show];
+                    }
+                    
                 }
-                else{
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Cập nhật thành công, tiếp tục nhập?" delegate:self cancelButtonTitle:@"Không" otherButtonTitles:@"Có", nil];
-                    alert.tag = 5;
-                    [alert show];
-                }
-                
             }
         }else {
             [self addNewEvent];
             [self setEditing:NO animated:YES];
             //Thong bao cap nhat thanh cong va thoat
-            if(_dataSend.count>0){
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Cập nhật thành công" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                alert.tag = 6;
-                [alert show];
-            }else {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Cập nhật thành công, tiếp tục nhập?" delegate:self cancelButtonTitle:@"Không" otherButtonTitles:@"Có", nil];
-                alert.tag = 5;
-                [alert show];
+            if ([self currentDeviceType]==iPhone) {
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }else{
+                if(_dataSend.count>0){
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Cập nhật thành công" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                    alert.tag = 6;
+                    [alert show];
+                }else {
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Cập nhật thành công, tiếp tục nhập?" delegate:self cancelButtonTitle:@"Không" otherButtonTitles:@"Có", nil];
+                    alert.tag = 5;
+                    [alert show];
+                }
             }
         }
         if (_delegate && [_delegate respondsToSelector:@selector(reloadListCalendarTask)]) {

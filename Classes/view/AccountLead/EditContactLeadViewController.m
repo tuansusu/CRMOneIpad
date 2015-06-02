@@ -19,6 +19,7 @@
 #import "TestMapViewController.h"
 #import "DTOATTACHMENTProcess.h"
 #import "EnumClass.h"
+#import "DTOSYSCATProcess.h"
 
 #define TAG_SELECT_DATE_CREATE 1 //NGAY CAP CHUNG MINH THU
 #define TAG_SELECT_DATE_BIRTHDAY 2 //NGAY SINH
@@ -66,6 +67,8 @@
     Language *obj;
     UIDatePicker *datePicker;
     UIToolbar *toolBar;
+    UITableView *tableAlert;
+    DTOSYSCATProcess *dtoSyscatProcess;
 }
 @end
 
@@ -96,6 +99,8 @@
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
     [self initData];
+    dtoSyscatProcess = [DTOSYSCATProcess new];
+    listArrPersonPosition = [dtoSyscatProcess filterWithCatType:FIX_SYS_CAT_TYPE_PERSONAL_POSITION];
     [self setLanguage];
     if(_dataSend.count >0){
         
@@ -126,7 +131,11 @@
         datePicker.tintColor=[UIColor whiteColor];
         [self.txtDateCreate setInputView:datePicker];
         [self.txtDateOfBirth setInputView:datePicker];
-        
+        tableAlert = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 250, 230)];
+        tableAlert.delegate=self;
+        tableAlert.dataSource=self;
+        [tableAlert reloadData];
+        [self.txtPosition setInputView:tableAlert];
         toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
         toolBar.tintColor=HEADER_VIEW_COLOR1;
         UIBarButtonItem *doneBtn;
@@ -137,6 +146,7 @@
         [toolBar setItems:[NSArray arrayWithObjects:space,doneBtn, nil]];
         [self.txtDateOfBirth setInputAccessoryView:toolBar];
         [self.txtDateCreate setInputAccessoryView:toolBar];
+        [self.txtPosition setInputAccessoryView:toolBar];
         
         
         
@@ -150,6 +160,9 @@
         [self.txtDateOfBirth resignFirstResponder];
         self.txtDateOfBirth.text = [NSString stringWithFormat:@"%@",
                                     [df stringFromDate:date]];
+    }
+    else if([self.txtPosition isFirstResponder]){
+        [self.txtPosition resignFirstResponder];
     }
     else{
         [self.txtDateCreate resignFirstResponder];
@@ -996,4 +1009,58 @@
     fileAvartar = strFileName;
     imagePath=[[self applicationDocumentsDirectory] stringByAppendingPathComponent:strFileName];
 }
+
+
+#pragma mark - Table view data source
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    return [[listArrPersonPosition valueForKey:DTOSYSCAT_name]  count];
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    // Set the data for this cell:
+    
+    cell.textLabel.text = [[listArrPersonPosition valueForKey:DTOSYSCAT_name] objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = @"More text";
+    //cell.imageView.image = [UIImage imageNamed:@"flower.png"];
+    cell.accessoryType=UITableViewCellAccessoryCheckmark;
+    
+    // set the accessory view:
+    cell.accessoryType =  UITableViewCellAccessoryDisclosureIndicator;
+    
+    
+    return cell;
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSIndexPath* selection = [tableView indexPathForSelectedRow];
+    if (selection){
+        
+        [tableView deselectRowAtIndexPath:selection animated:YES];
+    }
+    
+    NSDictionary *getData = [[listArrPersonPosition valueForKey:DTOSYSCAT_name] objectAtIndex:indexPath.row];
+    _txtPosition.text=getData;
+    selectPersonPositionIndex=indexPath.row;
+    [self.txtPosition resignFirstResponder];
+    
+}
+
 @end

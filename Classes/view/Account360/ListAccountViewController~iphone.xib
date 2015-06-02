@@ -53,6 +53,9 @@
                         <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jkK-0t-cHa">
                             <rect key="frame" x="0.0" y="65" width="320" height="44"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="SLJ-Z0-vB9"/>
+                            </connections>
                         </searchBar>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HPA-x2-kZD">
                             <rect key="frame" x="0.0" y="109" width="320" height="459"/>

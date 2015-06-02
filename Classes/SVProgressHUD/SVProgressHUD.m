@@ -387,7 +387,7 @@ static NSString * DatabaseLock = nil;
             newCenter = CGPointMake(posY, posX);
             break;
         case UIInterfaceOrientationLandscapeRight:
-            rotateAngle = M_PI/2.0f;
+            rotateAngle = 0/M_PI;
             newCenter = CGPointMake(orientationFrame.size.height-posY, posX);
             break;
         default: // as UIInterfaceOrientationPortrait

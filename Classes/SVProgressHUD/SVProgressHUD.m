@@ -398,7 +398,7 @@ static NSString * DatabaseLock = nil;
     
     if(notification) {
         //tuannv test
-        newCenter = CGPointMake(500, 384);
+        //newCenter = CGPointMake(500, 384);
         SVProgressHUD *__weak weakSelf=self;
         [UIView animateWithDuration:animationDuration 
                               delay:0 
@@ -411,7 +411,7 @@ static NSString * DatabaseLock = nil;
     else {
         
         //tuannv test
-        newCenter = CGPointMake(500, 384);
+        //newCenter = CGPointMake(500, 384);
         [self moveToPoint:newCenter rotateAngle:rotateAngle];
     }
     

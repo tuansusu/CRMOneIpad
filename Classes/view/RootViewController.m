@@ -105,7 +105,7 @@
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:versionSoftware forKey:@"versionSoftware"];
     
-    NSString *userNameStr = [defaults objectForKey:@"userName"];
+    NSString *userNameStr = [defaults objectForKey:POST_USERNAME];
     if (userNameStr) {
         tf_username.text = userNameStr;
     }
@@ -182,41 +182,41 @@
 - (void) logIn
 {
     
-    FrameworkAppDelegate *appDel = (FrameworkAppDelegate*)[[UIApplication sharedApplication] delegate];
-    MainViewController *viewController =   [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
-    //viewController.userData = modelEvent.modelData;
-    UINavigationController * navi = [[UINavigationController alloc] initWithRootViewController:viewController];
-    
-    
-    [navi setNavigationBarHidden:YES];
-    
-    MenuViewController *leftController = [[MenuViewController alloc] init];
-    
-    MMDrawerController *drawerControllerMainProgramHome = [[MMDrawerController alloc]
-                                                           initWithCenterViewController:navi
-                                                           leftDrawerViewController:leftController
-                                                           rightDrawerViewController:NULL];
-    [drawerControllerMainProgramHome setShouldStretchDrawer:FALSE];
-    if(self.currentDeviceType == iPad){
-        [drawerControllerMainProgramHome setMaximumLeftDrawerWidth:259];
-    }else{
-        [drawerControllerMainProgramHome setMaximumLeftDrawerWidth:210];
-    }
-    [drawerControllerMainProgramHome setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
-    [drawerControllerMainProgramHome setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
-    
-    [UIView transitionWithView:appDel.window
-                      duration:0.8
-                       options:UIViewAnimationOptionTransitionCrossDissolve
-                    animations:^(void) {
-                        BOOL oldState = [UIView areAnimationsEnabled];
-                        [UIView setAnimationsEnabled:NO];
-                        [appDel.window setRootViewController:drawerControllerMainProgramHome];
-                        [UIView setAnimationsEnabled:oldState];
-                    }
-                    completion:nil];
-    
-    return;
+//    FrameworkAppDelegate *appDel = (FrameworkAppDelegate*)[[UIApplication sharedApplication] delegate];
+//    MainViewController *viewController =   [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+//    //viewController.userData = modelEvent.modelData;
+//    UINavigationController * navi = [[UINavigationController alloc] initWithRootViewController:viewController];
+//    
+//    
+//    [navi setNavigationBarHidden:YES];
+//    
+//    MenuViewController *leftController = [[MenuViewController alloc] init];
+//    
+//    MMDrawerController *drawerControllerMainProgramHome = [[MMDrawerController alloc]
+//                                                           initWithCenterViewController:navi
+//                                                           leftDrawerViewController:leftController
+//                                                           rightDrawerViewController:NULL];
+//    [drawerControllerMainProgramHome setShouldStretchDrawer:FALSE];
+//    if(self.currentDeviceType == iPad){
+//        [drawerControllerMainProgramHome setMaximumLeftDrawerWidth:259];
+//    }else{
+//        [drawerControllerMainProgramHome setMaximumLeftDrawerWidth:210];
+//    }
+//    [drawerControllerMainProgramHome setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+//    [drawerControllerMainProgramHome setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+//    
+//    [UIView transitionWithView:appDel.window
+//                      duration:0.8
+//                       options:UIViewAnimationOptionTransitionCrossDissolve
+//                    animations:^(void) {
+//                        BOOL oldState = [UIView areAnimationsEnabled];
+//                        [UIView setAnimationsEnabled:NO];
+//                        [appDel.window setRootViewController:drawerControllerMainProgramHome];
+//                        [UIView setAnimationsEnabled:oldState];
+//                    }
+//                    completion:nil];
+//    
+//    return;
 
     
     
@@ -333,39 +333,39 @@
             //thuc hien dong bo du lieu o day?
             [self synchonizeDB];
             //return;
-            FrameworkAppDelegate *appDel = (FrameworkAppDelegate*)[[UIApplication sharedApplication] delegate];
-            MainViewController *viewController =   [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
-            //viewController.userData = modelEvent.modelData;
-            UINavigationController * navi = [[UINavigationController alloc] initWithRootViewController:viewController];
-            
-            
-            [navi setNavigationBarHidden:YES];
-            
-            MenuViewController *leftController = [[MenuViewController alloc] init];
-            
-            MMDrawerController *drawerControllerMainProgramHome = [[MMDrawerController alloc]
-                                                                   initWithCenterViewController:navi
-                                                                   leftDrawerViewController:leftController
-                                                                   rightDrawerViewController:NULL];
-            [drawerControllerMainProgramHome setShouldStretchDrawer:FALSE];
-            if(self.currentDeviceType == iPad){
-                [drawerControllerMainProgramHome setMaximumLeftDrawerWidth:259];
-            }else{
-                [drawerControllerMainProgramHome setMaximumLeftDrawerWidth:210];
-            }
-            [drawerControllerMainProgramHome setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
-            [drawerControllerMainProgramHome setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
-            
-            [UIView transitionWithView:appDel.window
-                              duration:0.8
-                               options:UIViewAnimationOptionTransitionCrossDissolve
-                            animations:^(void) {
-                                BOOL oldState = [UIView areAnimationsEnabled];
-                                [UIView setAnimationsEnabled:NO];
-                                [appDel.window setRootViewController:drawerControllerMainProgramHome];
-                                [UIView setAnimationsEnabled:oldState];
-                            }
-                            completion:nil];
+//            FrameworkAppDelegate *appDel = (FrameworkAppDelegate*)[[UIApplication sharedApplication] delegate];
+//            MainViewController *viewController =   [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+//            //viewController.userData = modelEvent.modelData;
+//            UINavigationController * navi = [[UINavigationController alloc] initWithRootViewController:viewController];
+//            
+//            
+//            [navi setNavigationBarHidden:YES];
+//            
+//            MenuViewController *leftController = [[MenuViewController alloc] init];
+//            
+//            MMDrawerController *drawerControllerMainProgramHome = [[MMDrawerController alloc]
+//                                                                   initWithCenterViewController:navi
+//                                                                   leftDrawerViewController:leftController
+//                                                                   rightDrawerViewController:NULL];
+//            [drawerControllerMainProgramHome setShouldStretchDrawer:FALSE];
+//            if(self.currentDeviceType == iPad){
+//                [drawerControllerMainProgramHome setMaximumLeftDrawerWidth:259];
+//            }else{
+//                [drawerControllerMainProgramHome setMaximumLeftDrawerWidth:210];
+//            }
+//            [drawerControllerMainProgramHome setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+//            [drawerControllerMainProgramHome setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+//            
+//            [UIView transitionWithView:appDel.window
+//                              duration:0.8
+//                               options:UIViewAnimationOptionTransitionCrossDissolve
+//                            animations:^(void) {
+//                                BOOL oldState = [UIView areAnimationsEnabled];
+//                                [UIView setAnimationsEnabled:NO];
+//                                [appDel.window setRootViewController:drawerControllerMainProgramHome];
+//                                [UIView setAnimationsEnabled:oldState];
+//                            }
+//                            completion:nil];
             
             return;
         }
@@ -391,21 +391,25 @@
 
 -(void) synchonizeDB {
     
-    [SVProgressHUD showWithStatus:@"sync ..."];
-    
-    NSDictionary *dic = @{@"minTimeStamp": @"0", @"maxTimeStamp": @"1427883636848", @"firstResult":@"0", @"pageSize": @"200", @"includeCount":@"true",@"includeActive":@"true"};
-    ActionEvent* actionEvent = [[ActionEvent alloc] init];
-    actionEvent.action = sync_get_sysorganization;
-    actionEvent.viewData = dic;
-    actionEvent.sender = self;
-    //[[AppController getController] handleViewEvent:actionEvent];
+    SyncDataUtil *syncDataUtil = [[SyncDataUtil alloc]initWithViewController:self];
+    [syncDataUtil getDBFromServerToClien:self];
     
     
-    actionEvent = [[ActionEvent alloc] init];
-    actionEvent.action = sync_get_account;
-    actionEvent.viewData = dic;
-    actionEvent.sender = self;
-    [[AppController getController] handleViewEvent:actionEvent];
+//    [SVProgressHUD showWithStatus:@"sync ..."];
+//    
+//    NSDictionary *dic = @{@"minTimeStamp": @"0", @"maxTimeStamp": @"1427883636848", @"firstResult":@"0", @"pageSize": @"200", @"includeCount":@"true",@"includeActive":@"true"};
+//    ActionEvent* actionEvent = [[ActionEvent alloc] init];
+//    actionEvent.action = sync_get_sysorganization;
+//    actionEvent.viewData = dic;
+//    actionEvent.sender = self;
+//    //[[AppController getController] handleViewEvent:actionEvent];
+//    
+//    
+//    actionEvent = [[ActionEvent alloc] init];
+//    actionEvent.action = sync_get_account;
+//    actionEvent.viewData = dic;
+//    actionEvent.sender = self;
+//    [[AppController getController] handleViewEvent:actionEvent];
 }
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {

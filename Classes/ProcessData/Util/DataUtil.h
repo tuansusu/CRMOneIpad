@@ -40,5 +40,5 @@
 
 +(NSMutableArray*) GetAllColumnWithTable  : (NSString*) strTableName ;
 
-
+-(void) RenderDataField;
 @end

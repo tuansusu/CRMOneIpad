@@ -38,6 +38,11 @@ static AppService* appService = nil;
         }
             break;
             
+        case sync_post_object:{
+            actionEvent.methodName = @"sync_post_object";
+        }break;
+            
+            
         case sync_get_timestamp:{
             actionEvent.methodName = @"sync/get-timestamp";
         }
@@ -156,10 +161,6 @@ static AppService* appService = nil;
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     //manager.responseSerializer = [AFJSONResponseSerializer serializer];
 
-    
-    
-    
-    
     NSMutableURLRequest *request = [manager.requestSerializer requestWithMethod:@"POST" URLString:uri parameters:[dictionary objectForKey:@"dataPost"]];
     [request setTimeoutInterval:CONFIG_REQUEST_TIMEOUT];
     

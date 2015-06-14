@@ -291,8 +291,11 @@
 //    
 //    NSLog(@"%@", [dicGetEntity objectForKey:DTOEMPLOYEEACCOUNT_id]);
     
-//    DTOCONTACTProcess *contactProcess = [DTOCONTACTProcess new];
-//    [contactProcess RenderDataField];
+   // DTOCONTACTProcess *contactProcess = [DTOCONTACTProcess new];
+    //[contactProcess RenderDataField];
+    
+    DataUtil *dataUtil = [DataUtil new];
+    [dataUtil RenderDataField];
     
     
 }

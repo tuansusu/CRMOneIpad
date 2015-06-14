@@ -369,7 +369,6 @@
 		76961E511A3B306B008B5CE7 /* avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 76961E501A3B306B008B5CE7 /* avatar.png */; };
 		76961E551A3B3170008B5CE7 /* SelectPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76961E531A3B3170008B5CE7 /* SelectPhotoViewController.m */; };
 		76961E561A3B3170008B5CE7 /* SelectPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76961E541A3B3170008B5CE7 /* SelectPhotoViewController.xib */; };
-		76977D551A0284DE0029F297 /* TableTestProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76977D541A0284DE0029F297 /* TableTestProcess.m */; };
 		76977D571A0295D60029F297 /* bisone.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 76977D561A0295D60029F297 /* bisone.sqlite */; };
 		76977D5A1A029E6F0029F297 /* DTOEMPLOYEEACCOUNTProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 76977D591A029E6F0029F297 /* DTOEMPLOYEEACCOUNTProcess.m */; };
 		76977D5F1A02A72E0029F297 /* ListEmployeeAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76977D5D1A02A72E0029F297 /* ListEmployeeAccountViewController.m */; };
@@ -1689,8 +1688,6 @@
 		76961E521A3B3170008B5CE7 /* SelectPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectPhotoViewController.h; path = CustomView/SelectPhotoViewController.h; sourceTree = "<group>"; };
 		76961E531A3B3170008B5CE7 /* SelectPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectPhotoViewController.m; path = CustomView/SelectPhotoViewController.m; sourceTree = "<group>"; };
 		76961E541A3B3170008B5CE7 /* SelectPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectPhotoViewController.xib; path = CustomView/SelectPhotoViewController.xib; sourceTree = "<group>"; };
-		76977D531A0284DE0029F297 /* TableTestProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableTestProcess.h; sourceTree = "<group>"; };
-		76977D541A0284DE0029F297 /* TableTestProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableTestProcess.m; sourceTree = "<group>"; };
 		76977D561A0295D60029F297 /* bisone.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = bisone.sqlite; sourceTree = "<group>"; };
 		76977D581A029E6F0029F297 /* DTOEMPLOYEEACCOUNTProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTOEMPLOYEEACCOUNTProcess.h; sourceTree = "<group>"; };
 		76977D591A029E6F0029F297 /* DTOEMPLOYEEACCOUNTProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTOEMPLOYEEACCOUNTProcess.m; sourceTree = "<group>"; };
@@ -3996,8 +3993,6 @@
 				76F328921A34B10B00E0F2C4 /* DTOTASKProcess.m */,
 				76C962921A16DB8200029978 /* DTOACCOUNTLEADProcess.h */,
 				76C962931A16DB8200029978 /* DTOACCOUNTLEADProcess.m */,
-				76977D531A0284DE0029F297 /* TableTestProcess.h */,
-				76977D541A0284DE0029F297 /* TableTestProcess.m */,
 				76977D581A029E6F0029F297 /* DTOEMPLOYEEACCOUNTProcess.h */,
 				76977D591A029E6F0029F297 /* DTOEMPLOYEEACCOUNTProcess.m */,
 				762DCF151A0336FB00C7E416 /* DTOCONTACTProcess.h */,
@@ -7264,7 +7259,6 @@
 				DDBC470F1715412D00CCFB94 /* OAConsumer.m in Sources */,
 				DDBC47101715412D00CCFB94 /* OADataFetcher.m in Sources */,
 				8E875FB61AC2E390002B89AD /* WEPopoverContainerView.m in Sources */,
-				76977D551A0284DE0029F297 /* TableTestProcess.m in Sources */,
 				76C964611A17731900029978 /* DefaultPopOverForPieChart.m in Sources */,
 				846F5A9A1B039F1000119B6B /* CRMAFHTTPRequestSerializer.m in Sources */,
 				769F24891A6F1F3F00427A8F /* MenuViewController.m in Sources */,

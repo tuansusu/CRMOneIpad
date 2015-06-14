@@ -7,6 +7,7 @@
 //
 
 #import "BaseDataProcess.h"
+#import "DataField.h"
 
 @interface DTOComplainProcess : BaseDataProcess
 

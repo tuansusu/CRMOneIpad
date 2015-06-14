@@ -13,6 +13,7 @@ enum ActionEventEnum {
 	none,
     login,
     logout,
+    sync_post_object,
     sync_get_timestamp,
     sync_get_sysorganization,
     sync_get_account,

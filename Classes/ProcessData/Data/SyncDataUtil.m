@@ -24,6 +24,7 @@
     BaseViewController *senderViewController;
     NSUserDefaults *defaults;
     NSMutableDictionary *dicDataCode_Sync;
+    NSMutableDictionary *dicTableKeyColumn;
 }
 @end
 
@@ -442,6 +443,117 @@
 }
 
 
+
+/*
+ * Lấy cột khoá tương ứng với bảng trong csdl
+ */
+-(NSString*) getKeyColumnWithTableName: (NSString*) strTableName{
+    
+    NSString *strResult = @"";
+    
+   // NSMutableDictionary *dic
+    
+    
+//    switch (strTableName) {
+//        case sync_get_sysorganization:{
+//            strResult = @"sysorganization";
+//        }
+//            break;
+//        case sync_get_account:{
+//            strResult = @"account";
+//        }
+//            break;
+//        case sync_get_group:{
+//            strResult = @"group";
+//        }break;
+//        case sync_get_industry:{
+//            strResult = @"industry";
+//        }break;
+//        case sync_get_employee:{
+//            strResult = @"employee";
+//        }break;
+//        case sync_get_lead:{
+//            strResult = @"lead";
+//        }break;
+//        case sync_get_accountCrosssell:{
+//            strResult = @"accountCrosssell";
+//        }break;
+//        case sync_get_leadCrosssell:{
+//            strResult = @"leadCrosssell";
+//        }break;
+//        case sync_get_contact:{
+//            strResult = @"contact";
+//        }break;
+//        case  sync_get_oppContact:{
+//            strResult = @"oppContact";
+//        }break;
+//        case  sync_get_accContact:{
+//            strResult = @"accContact";
+//        }break;
+//        case  sync_get_leadContact:{
+//            strResult = @"leadContact";
+//        }break;
+//        case  sync_get_oppCompetitor:{
+//            strResult = @"oppCompetitor";
+//        }break;
+//        case  sync_get_competitor:{
+//            strResult= @"competitor";
+//        }break;
+//        case  sync_get_industryAccount:{
+//            strResult = @"industryAccount";
+//        }break;
+//        case  sync_get_industryLead:{
+//            strResult = @"industryLead";
+//        }break;
+//        case sync_get_employeeAccount:{
+//            strResult = @"employeeAccount";
+//        }break;
+//        case sync_get_relationship:{
+//            strResult= @"relationship";
+//        }break;
+//        case  sync_get_accRelationship:{
+//            strResult = @"accRelationship";
+//        }break;
+//        case  sync_get_leadRelationship:{
+//            strResult = @"leadRelationship";
+//        }break;
+//        case   sync_get_relationshipType:{
+//            strResult = @"relationshipType";
+//        }break;
+//        case   sync_get_rmDailyKh:{
+//            strResult = @"rmDailyKh";
+//        }break;
+//        case   sync_get_orgType:{
+//            strResult = @"orgType";
+//        }break;
+//        case  sync_get_rmDailyCard:{
+//            strResult = @"rmDailyCard";
+//        }break;
+//        case  sync_get_rmDailyThanhtoan:{
+//            strResult = @"rmDailyThanhtoan";
+//        }break;
+//        case sync_get_rmDailyTietkiem:{
+//            strResult = @"rmDailyTietkiem";
+//        }break;
+//        case sync_get_rmDailyTindung:{
+//            strResult = @"rmDailyTindung";
+//        }break;
+//        case  sync_get_rmMonthlyHdv:{
+//            strResult = @"rmMonthlyHdv";
+//        }break;
+//        case  sync_get_rmMonthlyTindung:{
+//            strResult = @"rmMonthlyTindung";
+//        }break;
+//        default:
+//            break;
+//    }
+    
+    return [strResult uppercaseString];
+}
+
+
+
+
 -(void) GetDicData {
     dicDataCode_Sync = [[NSMutableDictionary alloc]init];
     
@@ -478,6 +590,43 @@
 }
 
 
+-(void) GetDicTableKeyColumn {
+    dicTableKeyColumn = [[NSMutableDictionary alloc]init];
+    
+    
+    [dicTableKeyColumn setValue:DTOSYSORGANIZATION_sysOrganizationId forKey:@"sysorganization"];
+    [dicTableKeyColumn setValue:DTOACCOUNT_accountId forKey:@"account"];
+    [dicTableKeyColumn setValue:DTOGROUP_groupId forKey:@"group"];
+    [dicTableKeyColumn setValue:DTOINDUSTRY_industryId forKey:@"industry"];
+    [dicTableKeyColumn setValue:DTOEMPLOYEE_employeeId forKey:@"employee"];
+    [dicTableKeyColumn setValue:DTOLEAD_leadId forKey:@"lead"];
+    [dicTableKeyColumn setValue:DTOACCOUNTCROSSSELL_accountCrossSellingId forKey:@"accountcrosssell"];
+    [dicTableKeyColumn setValue:DTOLEADCROSSSELL_leadCrossSellingId forKey:@"leadcrosssell"];
+    [dicTableKeyColumn setValue:DTOCONTACT_contactId forKey:@"contact"];
+    [dicTableKeyColumn setValue:DTOOPPORTUNITYCONTACT_opportunityContactId forKey:@"oppcontact"]; //opportunityContact
+    [dicTableKeyColumn setValue:DTOACCOUNTCONTACT_accountContactId forKey:@"acccontact"];  //accountContact
+    //[dicTableKeyColumn setValue:@(sync_get_leadContact) forKey:@"leadcontact"];
+    [dicTableKeyColumn setValue:DTOOPPORTUNITYCOMPETITOR_clientOpportunityCompetitorId forKey:@"opportunityCompetitor"];//oppcompetitor
+    [dicTableKeyColumn setValue:DTOCOMPETITOR_competitorId forKey:@"competitor"];
+    [dicTableKeyColumn setValue:DTOINDUSTRYACCOUNT_industryAccountId forKey:@"industryaccount"];
+    [dicTableKeyColumn setValue:@(sync_get_industryLead) forKey:@"industrylead"];
+    [dicTableKeyColumn setValue:@(sync_get_employeeAccount) forKey:@"employeeaccount"];
+    [dicTableKeyColumn setValue:@(sync_get_relationship) forKey:@"relationship"];
+    [dicTableKeyColumn setValue:@(sync_get_accRelationship) forKey:@"accRelationship"];
+    [dicTableKeyColumn setValue:@(sync_get_leadRelationship) forKey:@"leadRelationship"];
+    [dicTableKeyColumn setValue:@(sync_get_relationshipType) forKey:@"relationshiptype"];//die o day
+    [dicTableKeyColumn setValue:@(sync_get_rmDailyKh) forKey:@"rmdailykh"];
+    [dicTableKeyColumn setValue:@(sync_get_orgType) forKey:@"orgtype"];
+    [dicTableKeyColumn setValue:@(sync_get_rmDailyCard) forKey:@"rmdailycard"];
+    [dicTableKeyColumn setValue:@(sync_get_rmDailyThanhtoan) forKey:@"rmdailythanhtoan"];
+    [dicTableKeyColumn setValue:@(sync_get_rmDailyTietkiem) forKey:@"rmdailytietkiem"];
+    [dicTableKeyColumn setValue:@(sync_get_rmDailyTindung) forKey:@"rmdailytindung"];
+    [dicTableKeyColumn setValue:@(sync_get_rmMonthlyHdv) forKey:@"rmmonthlyhdv"];
+    //[dicTableKeyColumn setValue:dtorm forKey:@"rmmonthlytindung"];
+}
+
+
+
 /*
  * Thực hiện việc đồng bộ tất cả các bảng - tu server ve client
  */
@@ -511,6 +660,12 @@
     NSString *  strTableName = @"";
     NSString * strKeyListArray = @"";
     switch (modelEvent.actionEvent.action) {
+            
+        case sync_post_object:{
+            //neu la post thi ?
+        }
+            break;
+            
         case sync_get_timestamp:
         {
             //Lay thong tin MaxTime ve se thuc hien dong bo du lieu cua ObjectCode

@@ -391,6 +391,7 @@
 		7697BBCD1A7FB1700023F118 /* menu-ic-setting-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7697BBC01A7FB1700023F118 /* menu-ic-setting-1@2x.png */; };
 		7697BBD11A7FB92C0023F118 /* UIImageView+ForScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7697BBD01A7FB92C0023F118 /* UIImageView+ForScrollView.m */; };
 		7697BBD31A7FD0640023F118 /* icon_menu-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7697BBD21A7FD0640023F118 /* icon_menu-1@2x.png */; };
+		769BB1791B2B10D300F3AB6C /* TestMapViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769BB1781B2B10D300F3AB6C /* TestMapViewController~iphone.xib */; };
 		769C0A261A35E4220008CC4B /* DTONOTEProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 769C0A251A35E4220008CC4B /* DTONOTEProcess.m */; };
 		769C0A2A1A35F3E90008CC4B /* NoteLeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 769C0A281A35F3E90008CC4B /* NoteLeadCell.m */; };
 		769C0A2B1A35F3E90008CC4B /* NoteLeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769C0A291A35F3E90008CC4B /* NoteLeadCell.xib */; };
@@ -1715,6 +1716,7 @@
 		7697BBCF1A7FB92C0023F118 /* UIImageView+ForScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ForScrollView.h"; sourceTree = "<group>"; };
 		7697BBD01A7FB92C0023F118 /* UIImageView+ForScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ForScrollView.m"; sourceTree = "<group>"; };
 		7697BBD21A7FD0640023F118 /* icon_menu-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_menu-1@2x.png"; path = "VofficeImage/Option1/icon_menu-1@2x.png"; sourceTree = "<group>"; };
+		769BB1781B2B10D300F3AB6C /* TestMapViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "TestMapViewController~iphone.xib"; sourceTree = "<group>"; };
 		769C0A241A35E4220008CC4B /* DTONOTEProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTONOTEProcess.h; sourceTree = "<group>"; };
 		769C0A251A35E4220008CC4B /* DTONOTEProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTONOTEProcess.m; sourceTree = "<group>"; };
 		769C0A271A35F3E90008CC4B /* NoteLeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteLeadCell.h; sourceTree = "<group>"; };
@@ -4996,6 +4998,7 @@
 				8497C0121A295A8500A5ED3C /* TestMapViewController.h */,
 				8497C0131A295A8500A5ED3C /* TestMapViewController.m */,
 				8497C0141A295A8500A5ED3C /* TestMapViewController.xib */,
+				769BB1781B2B10D300F3AB6C /* TestMapViewController~iphone.xib */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -7039,6 +7042,7 @@
 				849125CA1A1CDAE400949FC8 /* icon_save-1.png in Resources */,
 				8E69BDE71A58467100C6924D /* iconMoto.png in Resources */,
 				8E568FA21A59228B0002A3C4 /* iconSave.png in Resources */,
+				769BB1791B2B10D300F3AB6C /* TestMapViewController~iphone.xib in Resources */,
 				7644306F1A7000CC007741BA /* menu_product.png in Resources */,
 				76601A4B194BE90F001D4C01 /* Reader-Mark-N.png in Resources */,
 				8E7554721A52F599001940FB /* iconMarkerLocation.png in Resources */,

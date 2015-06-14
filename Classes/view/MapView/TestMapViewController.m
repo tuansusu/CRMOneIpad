@@ -414,9 +414,15 @@
 
 -(IBAction)btnExpandTabAction:(id)sender{
     if(self.currentDeviceType == iPhone){
-        expandOptionSelected = YES;
-        self.viewMap1.hidden = NO;
-        self.viewMap2.hidden = NO;
+        if (!expandOptionSelected) {
+            expandOptionSelected = YES;
+            self.viewMap1.hidden = NO;
+            self.viewMap2.hidden = NO;
+        }else{
+            expandOptionSelected = NO;
+            self.viewMap1.hidden = YES;
+            self.viewMap2.hidden = YES;
+        }
     }else{
         if (expandOptionSelected) {
             [containerOptionView setHidden:NO];

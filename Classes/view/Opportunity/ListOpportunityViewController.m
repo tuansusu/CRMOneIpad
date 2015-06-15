@@ -525,11 +525,24 @@
  *  @return YES: If you want the specified item to be editable.
  */
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *deletePermission =@"1";
-    if ([deletePermission isEqualToString:@"1"]) {
-        return YES;
+    
+    //kiem tra xem trang thai cua co hoi (neu la trang thai da phe duyet thi khong cho sua)
+    NSDictionary *dicEntity = [arrayData objectAtIndex:indexPath.row];
+    
+    NSString *status = [dicEntity objectForKey:DTOOPPORTUNITY_status];
+    
+    //1 - dang soan thao
+    //2 - cho phe duyet
+    //3 - phe duyet ke hoach
+    //4 - khong phe duyet ket qua
+    //5 - cho phe duyet ket qua
+    //6 - phe duyet ket qua
+    // khong xac dinh
+    if ([status isEqualToString:@"6"]){\
+        return NO;
     }
-    return NO;
+    return YES;
+    
 }
 
 /**

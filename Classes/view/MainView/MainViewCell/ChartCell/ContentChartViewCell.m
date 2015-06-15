@@ -171,6 +171,9 @@
 
         NSMutableString* jsStr = [[NSMutableString alloc] initWithCapacity:0];
         [jsStr appendFormat:@"updateData(%@,%@)",data,types];
+        
+        NSLog(@"data huy dong von: %@", jsStr);
+        
         [wvChart stringByEvaluatingJavaScriptFromString:jsStr];
     }
     else if ([_widgetOB.widgetId intValue]==WIDGET_TYPE_TIN_DUNG)
@@ -190,6 +193,10 @@
 
         NSMutableString* jsStr = [[NSMutableString alloc] initWithCapacity:0];
         [jsStr appendFormat:@"updateData(%@,%@)",data,types];
+        
+        NSLog(@"WIDGET_TYPE_TIN_DUNG: %@", jsStr);
+        
+        
         [wvChart stringByEvaluatingJavaScriptFromString:jsStr];
     }
 

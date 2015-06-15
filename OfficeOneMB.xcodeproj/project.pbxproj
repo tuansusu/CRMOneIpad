@@ -591,6 +591,8 @@
 		845EF5A21AEF33FF00C658D7 /* ModelEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 845EF5A11AEF33FF00C658D7 /* ModelEvent.m */; };
 		846344641AF1322500647721 /* DTOSYSORGANIZATIONProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 846344631AF1322500647721 /* DTOSYSORGANIZATIONProcess.m */; };
 		846F5A9A1B039F1000119B6B /* CRMAFHTTPRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 846F5A991B039F1000119B6B /* CRMAFHTTPRequestSerializer.m */; };
+		847873651B2F1DB6003B033E /* MainViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847873641B2F1DB6003B033E /* MainViewController~iphone.xib */; };
+		847873691B2F3578003B033E /* MainViewCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847873681B2F3578003B033E /* MainViewCell~iphone.xib */; };
 		847D9F191AF338990051D60F /* SyncDataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D9F181AF338990051D60F /* SyncDataUtil.m */; };
 		849078861A1E461D009D5D5F /* DetailPersonLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849078841A1E461D009D5D5F /* DetailPersonLeadViewController.m */; };
 		849078871A1E461D009D5D5F /* DetailPersonLeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849078851A1E461D009D5D5F /* DetailPersonLeadViewController.xib */; };
@@ -2042,6 +2044,8 @@
 		846344631AF1322500647721 /* DTOSYSORGANIZATIONProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTOSYSORGANIZATIONProcess.m; path = ProcessData/Data/DTOSYSORGANIZATIONProcess.m; sourceTree = "<group>"; };
 		846F5A981B039F1000119B6B /* CRMAFHTTPRequestSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRMAFHTTPRequestSerializer.h; path = Classes/controller/CRMAFHTTPRequestSerializer.h; sourceTree = SOURCE_ROOT; };
 		846F5A991B039F1000119B6B /* CRMAFHTTPRequestSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRMAFHTTPRequestSerializer.m; path = Classes/controller/CRMAFHTTPRequestSerializer.m; sourceTree = SOURCE_ROOT; };
+		847873641B2F1DB6003B033E /* MainViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainViewController~iphone.xib"; sourceTree = "<group>"; };
+		847873681B2F3578003B033E /* MainViewCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainViewCell~iphone.xib"; sourceTree = "<group>"; };
 		847D9F171AF338990051D60F /* SyncDataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyncDataUtil.h; path = ProcessData/Data/SyncDataUtil.h; sourceTree = "<group>"; };
 		847D9F181AF338990051D60F /* SyncDataUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SyncDataUtil.m; path = ProcessData/Data/SyncDataUtil.m; sourceTree = "<group>"; };
 		849078831A1E461D009D5D5F /* DetailPersonLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailPersonLeadViewController.h; sourceTree = "<group>"; };
@@ -5292,6 +5296,7 @@
 				8E6A10251A6226F500D98AE3 /* MainViewCell.h */,
 				8E6A10261A6226F500D98AE3 /* MainViewCell.m */,
 				8E6A10271A6226F500D98AE3 /* MainViewCell.xib */,
+				847873681B2F3578003B033E /* MainViewCell~iphone.xib */,
 				8E6A102A1A62271C00D98AE3 /* ContentChartViewCell.h */,
 				8E6A102B1A62271C00D98AE3 /* ContentChartViewCell.m */,
 			);
@@ -5493,6 +5498,7 @@
 				8E8B3F221A49AA4300241360 /* MainViewController.h */,
 				8E8B3F231A49AA4300241360 /* MainViewController.m */,
 				8E8B3F241A49AA4300241360 /* MainViewController.xib */,
+				847873641B2F1DB6003B033E /* MainViewController~iphone.xib */,
 				8E6105F51A5986A9003D1C0C /* Profile */,
 			);
 			path = MainView;
@@ -6696,6 +6702,7 @@
 				76601A45194BE90F001D4C01 /* Reader-Button-H.png in Resources */,
 				76C964811A17A15C00029978 /* pin.png in Resources */,
 				8E7554681A52EFC8001940FB /* iconTurnSlightLeft.png in Resources */,
+				847873691B2F3578003B033E /* MainViewCell~iphone.xib in Resources */,
 				8E8269C91A7A7317001D0E4B /* DashboardTaskViewController.xib in Resources */,
 				76D29B241A136E4A004B9CF6 /* ic_plus-1.png in Resources */,
 				B3157895188D5E5200C0ED01 /* del-btn-1-1.png in Resources */,
@@ -7035,6 +7042,7 @@
 				8E568F851A58F5170002A3C4 /* ComplainViewCell.xib in Resources */,
 				8E75544C1A52EFC8001940FB /* iconFerryTrain.png in Resources */,
 				849125CA1A1CDAE400949FC8 /* icon_save-1.png in Resources */,
+				847873651B2F1DB6003B033E /* MainViewController~iphone.xib in Resources */,
 				8E69BDE71A58467100C6924D /* iconMoto.png in Resources */,
 				8E568FA21A59228B0002A3C4 /* iconSave.png in Resources */,
 				769BB17B1B2DB6AE00F3AB6C /* TestMapViewController~iphone.xib in Resources */,

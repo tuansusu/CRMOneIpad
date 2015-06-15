@@ -104,7 +104,7 @@
     listRoutes = [[NSMutableArray alloc]init];
     listRoutesDic = [[NSMutableDictionary alloc] init];
 
-    if ([UIDevice getCurrentSysVer] >= 7.0) {
+    if ([UIDevice getCurrentSysVer] >= 7.0 && self.currentDeviceType == iPad) {
         [UIDevice updateLayoutInIOs7OrAfter:self];
 
     }
@@ -152,12 +152,26 @@
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
+    
+    
+    if(self.currentDeviceType == iPhone){
+        expandOptionSelected = NO;
+        self.viewMap1.hidden = YES;
+        self.viewMap2.hidden = YES;
+    }
 
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [mainView bringSubviewToFront:self.btnCurrentLocation];
+    [mainView bringSubviewToFront:self.viewMap3];
+    [mainView bringSubviewToFront:self.btnExpandTab];
 }
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
     NSLog(@"OldLocation %f %f", oldLocation.coordinate.latitude, oldLocation.coordinate.longitude);
     NSLog(@"NewLocation %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
+    
 
 }
 
@@ -185,6 +199,14 @@
 
 - (void) updateInterFaceWithOption : (int) option
 {
+    for (UIView *viewTemp in self.headerViewBar.subviews) {
+        
+        if ([viewTemp isKindOfClass:[UIImageView class]]) {
+            
+            [((UIImageView*) viewTemp) setAlpha:1.0f];
+        }
+        
+    }
 
     for (UIView *viewTemp in self.viewMap1.subviews) {
 
@@ -391,12 +413,24 @@
 }
 
 -(IBAction)btnExpandTabAction:(id)sender{
-    if (expandOptionSelected) {
-        [containerOptionView setHidden:NO];
-        expandOptionSelected= NO;
+    if(self.currentDeviceType == iPhone){
+        if (!expandOptionSelected) {
+            expandOptionSelected = YES;
+            self.viewMap1.hidden = NO;
+            self.viewMap2.hidden = NO;
+        }else{
+            expandOptionSelected = NO;
+            self.viewMap1.hidden = YES;
+            self.viewMap2.hidden = YES;
+        }
     }else{
-        [containerOptionView setHidden:YES];
-        expandOptionSelected= YES;
+        if (expandOptionSelected) {
+            [containerOptionView setHidden:NO];
+            expandOptionSelected= NO;
+        }else{
+            [containerOptionView setHidden:YES];
+            expandOptionSelected= YES;
+        }
     }
 }
 

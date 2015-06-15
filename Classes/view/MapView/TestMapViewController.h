@@ -25,6 +25,7 @@
 
 #import "RoutesDirectionsView.h"
 #import "DetailLeadViewController.h"
+#import "EnumClass.h"
 
 
 enum TypeMapView{
@@ -40,7 +41,7 @@ enum TypeMapView{
 
 
 
-@interface TestMapViewController : UIViewController<CLLocationManagerDelegate>
+@interface TestMapViewController : BaseViewController<CLLocationManagerDelegate>
 {
     //CLLocationManager *locationManager;
 }
@@ -71,5 +72,7 @@ enum TypeMapView{
 @property (weak, nonatomic) IBOutlet UIView *viewMap2;
 @property (weak, nonatomic) IBOutlet UIView *viewMap3;
 
+@property (strong, nonatomic) IBOutlet UIButton *btnCurrentLocation;
+@property (strong, nonatomic) IBOutlet UIButton *btnExpandTab;
 
 @end

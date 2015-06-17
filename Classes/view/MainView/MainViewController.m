@@ -91,6 +91,8 @@ NSString* emptyText = @"";
     [self updateInterFaceWithOption:smgSelect];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localeDidChange) name:NSCurrentLocaleDidChangeNotification object:nil];
+    
+    
     self.barLabel.text = [NSString stringWithFormat:@"%@ %@, %@",VOFFICE,[defaults objectForKey:@"versionSoftware"],COPY_OF_SOFTWARE];
     //
     dtoWidgetTypeProcess = [DTOWidgetTypeProcess new];
@@ -261,10 +263,21 @@ NSString* emptyText = @"";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DTOWidgetObject *widgetOB = [arrayData objectAtIndex:indexPath.row];
+    
     if ([widgetOB.widgetType integerValue]==0) {
         return 500;
     }
     return 450;
+    
+//    if(self.currentDeviceType == iPhone){
+//        if ([widgetOB.widgetType integerValue]==0) {
+//            return 340;
+//        }
+//        return 300;
+//    }
+//    else{
+//        
+//    }
 }
 
 
@@ -289,6 +302,9 @@ NSString* emptyText = @"";
     DTOWidgetObject *widgetOB = [arrayData objectAtIndex:indexPath.row];
 
     if ([widgetOB.widgetType intValue]==0) {
+        
+        NSLog(@"main view cell %d", indexPath.row);
+        
         static NSString *cellId = @"MainViewCell";
         MainViewCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
         if ([arrayWidgetDashboard containsObject:cell]) {
@@ -304,6 +320,9 @@ NSString* emptyText = @"";
             return cell;
         }
     } else if ([widgetOB.widgetType intValue]==1) {
+        
+        NSLog(@"main view list cell %d", indexPath.row);
+        
 
         static NSString *cellId = @"MainViewListCell";
 

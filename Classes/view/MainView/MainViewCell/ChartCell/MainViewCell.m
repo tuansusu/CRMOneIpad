@@ -181,7 +181,7 @@
     _typeGraph = [widgetOB.typeGraphically intValue];
     [self setWidgetSelectedWithTypeGraph:_typeGraph];
 
-    [self setWidgetSelectedWithTypeGraph:_typeGraph];
+    //[self setWidgetSelectedWithTypeGraph:_typeGraph];
    [contentChartView setHidden:NO];
     [contentChartView loadChartViewWithWidgetObject:widgetOB];
 }

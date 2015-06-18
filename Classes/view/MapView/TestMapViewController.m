@@ -127,6 +127,14 @@
 
     [self initLocation];
 
+    
+    //fix vi tri mac dinh la HaNoi :d
+    zoomRatio = ZOOM_RATIO*0.9;
+    camera = [GMSCameraPosition cameraWithLatitude:21.0215447f
+                                         longitude:105.8395089f
+                                              zoom:zoomRatio];
+    mapView_.camera = camera;
+
 
     if (self.typeMapView == typeMapView_Manager) {
         [self initDataKH];
@@ -137,12 +145,6 @@
         
         
         
-        //fix vi tri mac dinh la HaNoi :d
-        zoomRatio = ZOOM_RATIO*0.9;
-        camera = [GMSCameraPosition cameraWithLatitude:21.0215447f
-                                             longitude:105.8395089f
-                                                  zoom:zoomRatio];
-        mapView_.camera = camera;
         
     }
     

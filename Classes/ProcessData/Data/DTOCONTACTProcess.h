@@ -34,6 +34,8 @@
 
 -(NSInteger) getClientId ;
 
+-(NSMutableArray*) filterWithArrayCondition : (NSString *) strValue : (NSString *)clientLeadID;
+
 /*
  * Lọc danh sach lien he theo clientLeaderId 
  */

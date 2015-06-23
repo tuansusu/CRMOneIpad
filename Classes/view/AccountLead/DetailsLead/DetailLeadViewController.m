@@ -174,6 +174,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 }
 
 -(void) setButtonSelect {
+    self.mySearchBar.text=@"";
     switch (typeActionEvent) {
         case typeLeaderView_ExpandInfo:{
             
@@ -1718,6 +1719,40 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         }
         else if(buttonIndex == 5){
         }
+    }
+}
+///search cac thong tin lien quan toi khach hang
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    
+    NSLog(@"%@",searchText);
+    switch (typeActionEvent) {
+        case typeLeaderView_ExpandInfo:{
+            
+        }
+            break;
+        case typeLeaderView_Contact:{
+            NSLog(@"lien he");
+            //            arrayData = [dtoContactProcess filterWithArrayCondition:searchText :[dicData objectForKey:DTOLEAD_clientLeadId]];
+            //
+            //            [self.tbData reloadData];
+            
+        }break;
+        case typeLeaderView_Note:{
+            NSLog(@"ghi chu");
+        }break;
+        case typeLeaderView_Opportunity:{
+            NSLog(@"San pham");
+        }break;
+        case typeLeaderView_Calendar:{
+        }break;
+        case typeLeaderView_Task:{
+        }break;
+        case typeLeaderView_Complains:{
+        }break;
+        case typeLeaderView_ProductsLead:{
+        }break;
+        default:
+            break;
     }
 }
 @end

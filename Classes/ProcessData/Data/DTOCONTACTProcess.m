@@ -80,6 +80,16 @@
     
     return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:nil];
 }
+//search
+-(NSMutableArray*) filterWithArrayCondition : (NSString *) strValue : (NSString *)clientLeadID{
+    NSArray *allFields =[NSArray arrayWithObjects:DTOCONTACT_id,DTOCONTACT_fullName,DTOCONTACT_address,DTOCONTACT_birthday,DTOCONTACT_mobile,DTOCONTACT_position,DTOCONTACT_identifiedNumber,DTOCONTACT_identifiedIssueDate,DTOCONTACT_identifiedIssueArea,DTOCONTACT_email,DTOCONTACT_roleDescription,DTOCONTACT_clientContactId,DTOCONTACT_avartar, nil];
+    
+    NSString *query = [NSString stringWithFormat:@"SELECT dtocontact.id,fullName,address,birthday,mobile,position,identifiedNumber,identifiedIssueDate,identifiedIssueArea,email,roleDescription,dtocontact.clientContactId,avartar FROM dtoaccountcontact inner join dtocontact on clientAccountId = dtocontact.clientContactId where clientLeadId = %@ and fullName like ? and dtocontact.isactive = 1 order by dtocontact.updatedDate  desc",clientLeadID];
+    
+    NSLog(@"%@",query);
+    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:[NSArray arrayWithObjects:strValue, nil]];
+    
+}
 
 
 -(NSMutableArray*) filterWithKey : (NSString*) strKey withValue : (NSString*) strValue{

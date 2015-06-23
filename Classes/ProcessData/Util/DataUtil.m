@@ -163,6 +163,7 @@ static BOOL checkInsertCache = NO;
     NSInteger totalCount=0;
     
     NSString *filePath = [DataUtil getPathFileSqlLite];
+    NSLog(@"%@",filePath);
     if (sqlite3_shutdown() == SQLITE_OK) {
         if (sqlite3_config(SQLITE_CONFIG_SERIALIZED) == SQLITE_OK) {
             sqlite3_initialize();

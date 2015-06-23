@@ -9,13 +9,73 @@
             <connections>
                 <outlet property="btnAdd" destination="L0M-Qh-t6b" id="Ag0-ig-gnr"/>
                 <outlet property="btnHome" destination="8N9-Fg-bTN" id="wzZ-aD-YaT"/>
+                <outlet property="chinhanhquanlyCN" destination="2Qz-ZR-JyA" id="gds-gc-Cv7"/>
+                <outlet property="chinhanhquanlyDN" destination="GZ7-78-33L" id="tPH-mN-o5i"/>
+                <outlet property="diachiCN" destination="bl8-eV-Ve8" id="pvu-1N-QEf"/>
+                <outlet property="diachiDN" destination="hXp-Ct-A3E" id="sOX-Bh-fgu"/>
+                <outlet property="dienthoaiCN" destination="bvA-UJ-nGX" id="GEs-ct-kZB"/>
+                <outlet property="dienthoaiDN" destination="R1x-4K-xf3" id="XKZ-iX-a0W"/>
+                <outlet property="emailCN" destination="BGO-Q7-20Q" id="rny-I5-lOJ"/>
+                <outlet property="faxDN" destination="RSw-10-Or5" id="5vM-3K-QVl"/>
                 <outlet property="fullNameLB" destination="m7E-du-AjE" id="7lU-xZ-UPr"/>
+                <outlet property="gioitinhCN" destination="TOr-Eh-pxo" id="4YT-jY-SFt"/>
                 <outlet property="headerViewBar" destination="BjE-PP-9uR" id="qRJ-T7-xDW"/>
+                <outlet property="khonglienlacCN" destination="Wk9-q7-zqi" id="5uE-3D-e1E"/>
+                <outlet property="khonglienlacDN" destination="16N-Fc-Grc" id="gDC-oS-BtN"/>
+                <outlet property="lbCode" destination="kGd-aV-G1l" id="vFa-pN-YUd"/>
+                <outlet property="lbCompany" destination="VEk-mI-SoJ" id="mjB-hn-GQp"/>
+                <outlet property="lbDiaChi" destination="FBP-DT-0VW" id="2wd-oJ-LTO"/>
+                <outlet property="lbEmail" destination="IL2-th-MRj" id="dd6-eS-Wc4"/>
+                <outlet property="lbJob" destination="c47-e3-BtI" id="Kw8-qH-4eO"/>
+                <outlet property="lbKhongLienLacQua" destination="qAg-S0-z6O" id="EMD-hw-0Fg"/>
+                <outlet property="lbMobile" destination="Iit-2u-dTz" id="yWl-lc-WSs"/>
+                <outlet property="lbName" destination="rCc-Yp-k9p" id="rM6-tS-nDr"/>
+                <outlet property="lbPhuonXa" destination="dZo-XU-pbB" id="NUD-rF-NyN"/>
+                <outlet property="lbQuanHuyen" destination="YKv-PY-dcC" id="VHa-Kx-PA6"/>
+                <outlet property="lbQuocGia" destination="vyC-Pg-u0p" id="np3-hK-Bfi"/>
+                <outlet property="lbSector" destination="kXo-le-hSh" id="lXd-0h-xsz"/>
+                <outlet property="lbSex" destination="oz4-nL-58L" id="9wo-KB-Fum"/>
+                <outlet property="lbThanhPho" destination="eUZ-u5-gYR" id="3cY-qC-FyO"/>
+                <outlet property="lbchinhanhquanlyDN" destination="mVU-7x-t9Z" id="77g-71-z4l"/>
+                <outlet property="lbcodeDN" destination="NKA-vr-i2s" id="7Dj-ZY-1gg"/>
+                <outlet property="lbdiachiDN" destination="Oln-iG-tNJ" id="sWB-ln-v4G"/>
+                <outlet property="lbdienthoaiDN" destination="WsP-hn-rgC" id="NWg-7n-y32"/>
+                <outlet property="lbfaxDN" destination="Dkg-Pa-XnL" id="HMb-Fr-1PB"/>
+                <outlet property="lbkhonglienlacDN" destination="LyH-75-I9P" id="5ZH-6Y-Zdm"/>
+                <outlet property="lbloaiDN" destination="4cj-9S-pFS" id="hXG-rO-Hgx"/>
+                <outlet property="lbloaihinhDN" destination="X51-NW-i9X" id="ZRZ-mC-JTg"/>
+                <outlet property="lbnameDN" destination="j0B-KP-890" id="q4W-Vx-1rP"/>
+                <outlet property="lbngaycapDKKD" destination="dO3-u3-oQr" id="hkz-0m-MnJ"/>
+                <outlet property="lbngaymocodeDN" destination="t5D-ik-iFn" id="NF6-j6-5TH"/>
+                <outlet property="lbphuongxaDN" destination="Cbd-io-iFE" id="jUS-mJ-X9I"/>
+                <outlet property="lbquanhuyenDN" destination="1YY-ab-dKo" id="6tw-Zd-ab4"/>
+                <outlet property="lbquocgiaDN" destination="vdl-vg-f9f" id="qHK-ln-jDc"/>
+                <outlet property="lbsectorDN" destination="BRE-uu-4gL" id="0ud-sS-Mm7"/>
+                <outlet property="lbsoDKKD" destination="QNn-in-l9J" id="d0f-t0-5J8"/>
+                <outlet property="lbtinhthanhphoDN" destination="mcZ-yj-iTd" id="IPy-xe-Ce2"/>
+                <outlet property="ldDateOpenCode" destination="3aT-PU-dTm" id="zzM-9K-1gp"/>
+                <outlet property="loaiDN" destination="1Ln-Aa-Ea5" id="uuq-lw-SoP"/>
+                <outlet property="loaihinhDN" destination="iAH-Yr-df3" id="Cgc-mT-TzZ"/>
                 <outlet property="mySearch" destination="hvx-V5-UKt" id="cXd-cQ-3CL"/>
                 <outlet property="myTabbar" destination="t5K-h4-oOx" id="9IK-cH-qgX"/>
+                <outlet property="ngamocodeCN" destination="KRc-Ua-L2t" id="U1N-lP-N4f"/>
+                <outlet property="ngaycapDKKD" destination="FtP-SM-6TK" id="KKf-eI-Eb6"/>
+                <outlet property="ngaymocodeDN" destination="B8O-r3-0Na" id="zAt-4J-SBM"/>
+                <outlet property="nghenghiepCN" destination="7qA-Qz-6FV" id="nbt-Qg-ZaC"/>
+                <outlet property="phuongxaCN" destination="3iI-FU-t9M" id="mgT-SN-1bA"/>
+                <outlet property="phuongxaDN" destination="xIj-5C-8NK" id="dEs-Ht-jHT"/>
+                <outlet property="quanhuyenCN" destination="k33-Xo-zzd" id="knQ-Xt-XJ3"/>
+                <outlet property="quanhuyenDN" destination="McR-a8-V0v" id="1Tk-Hh-kcw"/>
+                <outlet property="quocgiaCN" destination="ggh-TA-rs7" id="M4J-5l-jO9"/>
+                <outlet property="quocgiaDN" destination="kF7-nw-iay" id="ooM-W4-t3I"/>
                 <outlet property="scrollviewCN" destination="60o-f7-xgD" id="2tc-9m-cA7"/>
                 <outlet property="scrollviewDN" destination="x4U-S4-GgW" id="eZL-y2-tUG"/>
+                <outlet property="sectorCN" destination="ano-rb-ksA" id="fnO-c1-ZQz"/>
+                <outlet property="sectorDN" destination="g0n-vC-V5a" id="765-2w-WSW"/>
+                <outlet property="soDKKD" destination="Un5-HF-b8d" id="AUy-VZ-iP9"/>
                 <outlet property="tbData" destination="jnd-u2-NKv" id="9Dt-x9-hY8"/>
+                <outlet property="tinhthanhphoCN" destination="mFW-GV-6xA" id="6Sb-Nk-Vff"/>
+                <outlet property="tinhthanhphoDN" destination="Yf6-Sn-ydX" id="8VC-o2-yDD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewData" destination="h0d-LK-04P" id="ggo-kL-dN5"/>
                 <outlet property="viewDetailIP" destination="W29-oU-fPz" id="Q9P-4P-eRm"/>

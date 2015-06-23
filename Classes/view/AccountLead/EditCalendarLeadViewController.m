@@ -65,6 +65,10 @@
 
 @property (weak, nonatomic) IBOutlet UIView *viewMainBodyInfo;
 
+@property (weak, nonatomic) IBOutlet UIScrollView *viewScroll;
+
+@property (weak,nonatomic) IBOutlet UIView *viewRepeat;
+
 @property (weak, nonatomic) IBOutlet UIButton *btnSave;
 - (IBAction)actionSave:(id)sender;
 
@@ -218,6 +222,7 @@
         [self setBorderTextfield:_txtTimeFrom];
         [self setBorderTextfield:_txtTimeTo];
         [self setBorderTextfield:_txtTypeObject];
+        _txtName.inputView=_viewRepeat;
     }
 }
 -(void)setBorderTextfield:(UITextField *)txtField{
@@ -541,14 +546,24 @@
 
 - (IBAction)actionChoiceRepeat:(id)sender
 {
+    
     RepeatCalendarViewController * detail = [[RepeatCalendarViewController alloc] init];
     detail.delegate = self;
     detail.config = _repeatConfig;
-    UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:detail];
-    _listPopover = [[UIPopoverController alloc] initWithContentViewController:nav];
-    _listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-    _listPopover.popoverContentSize = detail.view.frame.size;
-    [_listPopover presentPopoverFromRect:_txtRepeat.frame inView:_viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    if([self currentDeviceType]==iPad){
+        UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:detail];
+        _listPopover = [[UIPopoverController alloc] initWithContentViewController:nav];
+        _listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
+        _listPopover.popoverContentSize = detail.view.frame.size;
+        [_listPopover presentPopoverFromRect:_txtRepeat.frame inView:_viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }else{
+        UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:detail];
+        _listPopover = [[UIPopoverController alloc] initWithContentViewController:nav];
+        _listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
+        _listPopover.popoverContentSize = detail.view.frame.size;
+        [_listPopover presentPopoverFromRect:_txtRepeat.frame inView:_viewScroll permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        //[self presentViewController:detail animated:YES completion:nil];
+    }
 }
 
 - (IBAction)actionChoiceAlarm:(id)sender
@@ -975,7 +990,6 @@
     
     return FALSE;
 }
-
 #pragma mark - AlarmCalendarViewDelegate
 - (void)alarmCalendarView:(AlarmCalendarViewController *)alarmCalendarView confirmConfig:(AlarmCalendarConfig *)alarmConfig
 {

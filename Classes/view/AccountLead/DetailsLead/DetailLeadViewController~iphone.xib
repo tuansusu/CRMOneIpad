@@ -80,6 +80,9 @@
                                 <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e41-ks-xqX">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="iWV-g1-T7c"/>
+                                    </connections>
                                 </searchBar>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5vj-j4-tJ4">
                                     <rect key="frame" x="0.0" y="44" width="320" height="415"/>

@@ -59,7 +59,7 @@
                 <outlet property="lbngaymocodeDN" destination="Wt7-SC-Vu4" id="ptW-ii-KBy"/>
                 <outlet property="lbphuongxaDN" destination="ZRf-m7-gLg" id="2q4-Q9-3yZ"/>
                 <outlet property="lbquanhuyenDN" destination="qhx-KM-1PC" id="mBK-4B-5xY"/>
-                <outlet property="lbquocgiaDN" destination="o9j-cS-bdK" id="SV0-Bq-Jrx"/>
+                <outlet property="lbquocgiaDN" destination="wBH-wy-5S4" id="98o-WE-mAa"/>
                 <outlet property="lbsectorDN" destination="psB-qu-dWP" id="9o7-3W-MVX"/>
                 <outlet property="lbsoDKKD" destination="14M-Qp-EZ5" id="kBE-rL-bIy"/>
                 <outlet property="lbtinhthanhphoDN" destination="o9j-cS-bdK" id="dMi-Ml-9cF"/>

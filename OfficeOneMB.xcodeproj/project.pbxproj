@@ -589,6 +589,8 @@
 		845EF59E1AEF31F600C658D7 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 845EF58C1AEF31F600C658D7 /* UIRefreshControl+AFNetworking.m */; };
 		845EF59F1AEF31F600C658D7 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 845EF58E1AEF31F600C658D7 /* UIWebView+AFNetworking.m */; };
 		845EF5A21AEF33FF00C658D7 /* ModelEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 845EF5A11AEF33FF00C658D7 /* ModelEvent.m */; };
+		84606E1D1B3016E700701EF9 /* MainViewListCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84606E1C1B3016E700701EF9 /* MainViewListCell~iphone.xib */; };
+		84606E1F1B301A7900701EF9 /* SubListViewCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84606E1E1B301A7900701EF9 /* SubListViewCell~iphone.xib */; };
 		846344641AF1322500647721 /* DTOSYSORGANIZATIONProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 846344631AF1322500647721 /* DTOSYSORGANIZATIONProcess.m */; };
 		846F5A9A1B039F1000119B6B /* CRMAFHTTPRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 846F5A991B039F1000119B6B /* CRMAFHTTPRequestSerializer.m */; };
 		847873651B2F1DB6003B033E /* MainViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847873641B2F1DB6003B033E /* MainViewController~iphone.xib */; };
@@ -2040,6 +2042,8 @@
 		845EF58E1AEF31F600C658D7 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		845EF5A01AEF33FF00C658D7 /* ModelEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModelEvent.h; path = Classes/controller/ModelEvent.h; sourceTree = SOURCE_ROOT; };
 		845EF5A11AEF33FF00C658D7 /* ModelEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModelEvent.m; path = Classes/controller/ModelEvent.m; sourceTree = SOURCE_ROOT; };
+		84606E1C1B3016E700701EF9 /* MainViewListCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainViewListCell~iphone.xib"; sourceTree = "<group>"; };
+		84606E1E1B301A7900701EF9 /* SubListViewCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "SubListViewCell~iphone.xib"; sourceTree = "<group>"; };
 		846344621AF1322500647721 /* DTOSYSORGANIZATIONProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTOSYSORGANIZATIONProcess.h; path = ProcessData/Data/DTOSYSORGANIZATIONProcess.h; sourceTree = "<group>"; };
 		846344631AF1322500647721 /* DTOSYSORGANIZATIONProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTOSYSORGANIZATIONProcess.m; path = ProcessData/Data/DTOSYSORGANIZATIONProcess.m; sourceTree = "<group>"; };
 		846F5A981B039F1000119B6B /* CRMAFHTTPRequestSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRMAFHTTPRequestSerializer.h; path = Classes/controller/CRMAFHTTPRequestSerializer.h; sourceTree = SOURCE_ROOT; };
@@ -5027,6 +5031,7 @@
 				8E2640AE1A4C7A4C0047073B /* MainViewListCell.h */,
 				8E2640AF1A4C7A4C0047073B /* MainViewListCell.m */,
 				8E2640B01A4C7A4C0047073B /* MainViewListCell.xib */,
+				84606E1C1B3016E700701EF9 /* MainViewListCell~iphone.xib */,
 			);
 			path = ListViewCell;
 			sourceTree = "<group>";
@@ -5584,6 +5589,7 @@
 				8EBBC24D1A4EF67C00F17BEE /* SubListViewCell.h */,
 				8EBBC24E1A4EF67C00F17BEE /* SubListViewCell.m */,
 				8EBBC24F1A4EF67C00F17BEE /* SubListViewCell.xib */,
+				84606E1E1B301A7900701EF9 /* SubListViewCell~iphone.xib */,
 			);
 			path = SubListMainView;
 			sourceTree = "<group>";
@@ -6699,6 +6705,7 @@
 				76C964651A17731900029978 /* layeredpiechart.jpg in Resources */,
 				2DD29EEE18769C260066B883 /* menu-ic-my-work-1.png in Resources */,
 				2D2D215F17A6946800A87364 /* InfColorPickerView.xib in Resources */,
+				84606E1D1B3016E700701EF9 /* MainViewListCell~iphone.xib in Resources */,
 				76601A45194BE90F001D4C01 /* Reader-Button-H.png in Resources */,
 				76C964811A17A15C00029978 /* pin.png in Resources */,
 				8E7554681A52EFC8001940FB /* iconTurnSlightLeft.png in Resources */,
@@ -6863,6 +6870,7 @@
 				8E75546F1A52EFC8001940FB /* iconUturnRight@2x.png in Resources */,
 				B3A066E617D1AB8200BA6487 /* icon_left.png in Resources */,
 				B3A066E717D1AB8200BA6487 /* icon_list_task.png in Resources */,
+				84606E1F1B301A7900701EF9 /* SubListViewCell~iphone.xib in Resources */,
 				2DD29EF018769C260066B883 /* menu-ic-now-calendar-1.png in Resources */,
 				8ED402711A41CF1900CCBE6D /* iconDirection.png in Resources */,
 				B3A066E817D1AB8200BA6487 /* icon_right.png in Resources */,

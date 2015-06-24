@@ -456,6 +456,12 @@ NSString* emptyText = @"";
 
 -(IBAction)actionAddWidget:(id)sender
 {
+    
+    if(self.currentDeviceType == iPad){
+    }else{
+        
+    }
+    
     if (listWidgetTypeNotUse.count>0) {
         SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
 

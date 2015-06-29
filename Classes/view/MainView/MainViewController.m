@@ -407,13 +407,18 @@ NSString* emptyText = @"";
     if (self.listPopover) {
         [ self.listPopover dismissPopoverAnimated:YES];
     }
+    [self addWidgetWithWidgetIndex:index];
+
+}
+
+-(void) addWidgetWithWidgetIndex : (NSInteger) index{
     if (listWidgetTypeNotUse.count>0) {
         DTOWidgetTypeObject *widgetTypeOB = [listWidgetTypeNotUse objectAtIndex:index];
         [self addWidgetWithWidgetTypeOB:widgetTypeOB];
-
+        
     }
-
 }
+
 
 -(void)addWidgetWithWidgetTypeOB:(DTOWidgetTypeObject*)dtoWidgetTypeOB{
 
@@ -457,30 +462,52 @@ NSString* emptyText = @"";
 -(IBAction)actionAddWidget:(id)sender
 {
     
-    if(self.currentDeviceType == iPad){
-    }else{
-        
-    }
-    
     if (listWidgetTypeNotUse.count>0) {
-        SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
-
-        detail.selectIndex = selectIndex;
-
-        detail.listData = listWidgetTypeNotUseStr;
-
-        self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
-        CGRect popoverFrame = btnAddWidget.frame;
-
-        detail.delegate =(id<SelectIndexDelegate>) self;
-        self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-        [self.listPopover setPopoverContentSize:CGSizeMake(320, HEIGHT_SELECT_INDEX_ROW*listWidgetTypeNotUseStr.count) animated:NO];
-        [self.listPopover presentPopoverFromRect:popoverFrame inView:self.headerViewBar permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+        
+        
+        if(self.currentDeviceType == iPad){
+            SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
+            
+            detail.selectIndex = selectIndex;
+            
+            detail.listData = listWidgetTypeNotUseStr;
+            
+            self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+            CGRect popoverFrame = btnAddWidget.frame;
+            
+            detail.delegate =(id<SelectIndexDelegate>) self;
+            self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
+            [self.listPopover setPopoverContentSize:CGSizeMake(320, HEIGHT_SELECT_INDEX_ROW*listWidgetTypeNotUseStr.count) animated:NO];
+            [self.listPopover presentPopoverFromRect:popoverFrame inView:self.headerViewBar permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+        }else{
+            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:LocalizedString(@"KEY_OPPORTUNITY_EDIT_LEVEL")
+                                                                     delegate:self
+                                                            cancelButtonTitle:LocalizedString(@"KEY_CANCEL")
+                                                       destructiveButtonTitle:nil
+                                                            otherButtonTitles:nil];
+            
+            
+            
+            for(NSString *title in listWidgetTypeNotUseStr){
+                [actionSheet addButtonWithTitle:title];
+            }
+            [actionSheet showInView:self.view];        }
+        
+        
     }else{
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:SYS_Notification_Title message:LocalizedString(@"KEY_WIDGET_ADD_WIDGET_SUCCESS") delegate:self cancelButtonTitle:SYS_Notification_OKButton otherButtonTitles:nil];
         [alert show];
     }
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex <1 )
+        return;
+    
+    NSLog(@"buttonIndex = %ld", (long)buttonIndex);
+   // [self setSelectedValue:buttonIndex - 1];
+    [self addWidgetWithWidgetIndex:buttonIndex - 1];
 }
 
 

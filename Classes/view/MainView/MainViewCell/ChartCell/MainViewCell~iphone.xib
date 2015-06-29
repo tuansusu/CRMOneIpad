@@ -45,6 +45,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="deleteAction:" destination="ud1-C3-Gwq" eventType="touchUpInside" id="wKN-ZY-DJ4"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
@@ -68,6 +71,7 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btnDelete" destination="mtS-oy-Ax1" id="iD6-Xz-Ktt"/>
                 <outlet property="contentChartView" destination="uhO-5X-N7m" id="8jU-ik-zzN"/>
             </connections>
             <point key="canvasLocation" x="242" y="281"/>

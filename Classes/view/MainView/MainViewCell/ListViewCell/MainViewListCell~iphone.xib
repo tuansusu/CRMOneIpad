@@ -50,6 +50,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="deleteAction:" destination="Pd6-jg-swg" eventType="touchUpInside" id="MRC-Ju-B98"/>
+                                </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lnn-RZ-iIB">
                                 <rect key="frame" x="922" y="9" width="32" height="32"/>
@@ -69,6 +72,8 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btnDelete" destination="3ee-m4-3an" id="dPA-Fa-KUA"/>
+                <outlet property="lblTitle" destination="JY5-Dd-OK9" id="2Ce-1L-RfN"/>
                 <outlet property="subListMainView" destination="NsD-1f-evh" id="Beh-bv-NGF"/>
             </connections>
             <point key="canvasLocation" x="234" y="170.5"/>

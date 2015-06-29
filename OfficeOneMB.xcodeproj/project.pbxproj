@@ -239,8 +239,6 @@
 		762048721A0BDE8000AAA917 /* icon_menu-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 762048711A0BDE8000AAA917 /* icon_menu-1.png */; };
 		762048761A0D246600AAA917 /* CompetitorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 762048741A0D246600AAA917 /* CompetitorsViewController.m */; };
 		762048771A0D246600AAA917 /* CompetitorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 762048751A0D246600AAA917 /* CompetitorsViewController.xib */; };
-		762133AE1A3DF7420049771C /* TestEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 762133AC1A3DF7420049771C /* TestEditViewController.m */; };
-		762133AF1A3DF7420049771C /* TestEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 762133AD1A3DF7420049771C /* TestEditViewController.xib */; };
 		7622D2F01A43246700DC9309 /* ContactOpportunityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7622D2EE1A43246700DC9309 /* ContactOpportunityCell.m */; };
 		7622D2F11A43246700DC9309 /* ContactOpportunityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7622D2EF1A43246700DC9309 /* ContactOpportunityCell.xib */; };
 		7623F0521A41C98400F99DA0 /* EditContactOpportunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7623F0501A41C98400F99DA0 /* EditContactOpportunityViewController.m */; };
@@ -589,6 +587,7 @@
 		84606E1F1B301A7900701EF9 /* SubListViewCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84606E1E1B301A7900701EF9 /* SubListViewCell~iphone.xib */; };
 		846344641AF1322500647721 /* DTOSYSORGANIZATIONProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 846344631AF1322500647721 /* DTOSYSORGANIZATIONProcess.m */; };
 		846C0D101B418AA000ACC205 /* HelpViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846C0D0F1B418AA000ACC205 /* HelpViewController~iphone.xib */; };
+		846C0D121B4198E500ACC205 /* ListComplainsViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846C0D111B4198E500ACC205 /* ListComplainsViewController~iphone.xib */; };
 		846F5A9A1B039F1000119B6B /* CRMAFHTTPRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 846F5A991B039F1000119B6B /* CRMAFHTTPRequestSerializer.m */; };
 		847873651B2F1DB6003B033E /* MainViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847873641B2F1DB6003B033E /* MainViewController~iphone.xib */; };
 		847873691B2F3578003B033E /* MainViewCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847873681B2F3578003B033E /* MainViewCell~iphone.xib */; };
@@ -1499,9 +1498,6 @@
 		762048731A0D246600AAA917 /* CompetitorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompetitorsViewController.h; sourceTree = "<group>"; };
 		762048741A0D246600AAA917 /* CompetitorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompetitorsViewController.m; sourceTree = "<group>"; };
 		762048751A0D246600AAA917 /* CompetitorsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompetitorsViewController.xib; sourceTree = "<group>"; };
-		762133AB1A3DF7420049771C /* TestEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestEditViewController.h; sourceTree = "<group>"; };
-		762133AC1A3DF7420049771C /* TestEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestEditViewController.m; sourceTree = "<group>"; };
-		762133AD1A3DF7420049771C /* TestEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestEditViewController.xib; sourceTree = "<group>"; };
 		7622D2ED1A43246700DC9309 /* ContactOpportunityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactOpportunityCell.h; sourceTree = "<group>"; };
 		7622D2EE1A43246700DC9309 /* ContactOpportunityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactOpportunityCell.m; sourceTree = "<group>"; };
 		7622D2EF1A43246700DC9309 /* ContactOpportunityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactOpportunityCell.xib; sourceTree = "<group>"; };
@@ -2036,6 +2032,7 @@
 		846344621AF1322500647721 /* DTOSYSORGANIZATIONProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTOSYSORGANIZATIONProcess.h; path = ProcessData/Data/DTOSYSORGANIZATIONProcess.h; sourceTree = "<group>"; };
 		846344631AF1322500647721 /* DTOSYSORGANIZATIONProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTOSYSORGANIZATIONProcess.m; path = ProcessData/Data/DTOSYSORGANIZATIONProcess.m; sourceTree = "<group>"; };
 		846C0D0F1B418AA000ACC205 /* HelpViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "HelpViewController~iphone.xib"; sourceTree = "<group>"; };
+		846C0D111B4198E500ACC205 /* ListComplainsViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ListComplainsViewController~iphone.xib"; sourceTree = "<group>"; };
 		846F5A981B039F1000119B6B /* CRMAFHTTPRequestSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRMAFHTTPRequestSerializer.h; path = Classes/controller/CRMAFHTTPRequestSerializer.h; sourceTree = SOURCE_ROOT; };
 		846F5A991B039F1000119B6B /* CRMAFHTTPRequestSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRMAFHTTPRequestSerializer.m; path = Classes/controller/CRMAFHTTPRequestSerializer.m; sourceTree = SOURCE_ROOT; };
 		847873641B2F1DB6003B033E /* MainViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainViewController~iphone.xib"; sourceTree = "<group>"; };
@@ -4171,9 +4168,6 @@
 				84918ABC1A34574A00149CB4 /* SearchAdvanceLeadViewController.h */,
 				84918ABD1A34574A00149CB4 /* SearchAdvanceLeadViewController.m */,
 				84918ABE1A34574A00149CB4 /* SearchAdvanceLeadViewController.xib */,
-				762133AB1A3DF7420049771C /* TestEditViewController.h */,
-				762133AC1A3DF7420049771C /* TestEditViewController.m */,
-				762133AD1A3DF7420049771C /* TestEditViewController.xib */,
 			);
 			path = AccountLead;
 			sourceTree = "<group>";
@@ -5197,6 +5191,7 @@
 				8E568F7B1A58EEDF0002A3C4 /* ListComplainsViewController.h */,
 				8E568F7C1A58EEDF0002A3C4 /* ListComplainsViewController.m */,
 				8E568F7D1A58EEDF0002A3C4 /* ListComplainsViewController.xib */,
+				846C0D111B4198E500ACC205 /* ListComplainsViewController~iphone.xib */,
 			);
 			path = ListComplains;
 			sourceTree = "<group>";
@@ -6628,6 +6623,7 @@
 				84918AC01A34574A00149CB4 /* SearchAdvanceLeadViewController.xib in Resources */,
 				763B68901A5C2E8900397A19 /* EditOpportunity360ViewController.xib in Resources */,
 				8434BF041A2F61B200C29815 /* calendar_small_new.png in Resources */,
+				846C0D121B4198E500ACC205 /* ListComplainsViewController~iphone.xib in Resources */,
 				2D60B07B17A27AA400848776 /* checkbox_ticked.png in Resources */,
 				76D29B2B1A1397EE004B9CF6 /* ProductViewController.xib in Resources */,
 				8E5AA9BB1A503F02007D9C8A /* iconArrowUp.png in Resources */,
@@ -6940,7 +6936,6 @@
 				7657E8C21A5AEB3A008A62F9 /* EditTask360ViewController.xib in Resources */,
 				7693EE0F1A35587E004E0178 /* icon_start.png in Resources */,
 				8497BFB81A295A2300A5ED3C /* InfoPlist.strings in Resources */,
-				762133AF1A3DF7420049771C /* TestEditViewController.xib in Resources */,
 				8ED4027A1A41D2DC00CCBE6D /* iconExpand@2xpng in Resources */,
 				8EEE88E81A9C2303007EDE2A /* RootViewController~iphone.xib in Resources */,
 				849788041A2BE1A400384566 /* TaskCalendarCell.xib in Resources */,
@@ -7551,7 +7546,6 @@
 				B3A066A017D1A72400BA6487 /* WCGridViewController.m in Sources */,
 				B3F7EA8317DEC24F00504705 /* LogUtil.m in Sources */,
 				76601A2C194BE90F001D4C01 /* ReaderContentView.m in Sources */,
-				762133AE1A3DF7420049771C /* TestEditViewController.m in Sources */,
 				7693EE071A355593004E0178 /* EditCalendarLeadViewController.m in Sources */,
 				8E44BC6C1A73B9D300EDCD1A /* DTOProEMBDetailProcess.m in Sources */,
 				8496FB271A2DE34200F4A641 /* ContactLeadCell.m in Sources */,

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ListComplainsViewController : UIViewController
+@interface ListComplainsViewController : BaseViewController
 
 @end

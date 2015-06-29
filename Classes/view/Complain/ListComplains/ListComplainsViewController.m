@@ -23,6 +23,7 @@
     ComplainDetailViewController *complainDetailVC;
 
     DTOComplainObject *complainEditOB;
+    NSUserDefaults *defaults;
     int smgSelect;
 }
 
@@ -64,7 +65,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    defaults = [NSUserDefaults standardUserDefaults];
+    [defaults synchronize];
     complainModel = [[ComplainModel alloc] init];
     [complainModel getFirstPagePageComplainsWithKey:searchBarComplain.text WithLeadID:@""];
     [tbvListComplains reloadData];
@@ -78,15 +80,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
- #pragma mark - Navigation
-
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 
 - (void) updateInterFaceWithOption : (int) option
@@ -107,6 +100,8 @@
     }
 
     //self.fullNameLB.text = TITLE_APPLICATION;
+    self.barLabel.text = [NSString stringWithFormat:@"%@ %@, %@",VOFFICE,[defaults objectForKey:@"versionSoftware"],COPY_OF_SOFTWARE];
+    
     [self.headerViewBar setBackgroundColor:HEADER_VIEW_COLOR1];
     self.fullNameLB.textColor = TEXT_COLOR_HEADER_APP;
     self.lbTotal.textColor = TEXT_COLOR_HEADER_APP;

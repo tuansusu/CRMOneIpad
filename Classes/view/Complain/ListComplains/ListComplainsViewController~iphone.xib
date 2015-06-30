@@ -12,6 +12,7 @@
                 <outlet property="headerViewBar" destination="lza-h9-0vu" id="gNn-p8-VzJ"/>
                 <outlet property="mainView" destination="9Tc-Gc-Ljx" id="ngA-u7-SR9"/>
                 <outlet property="searchBarComplain" destination="6dP-KC-2Th" id="G3b-3L-Xkp"/>
+                <outlet property="tbvListComplains" destination="66s-5g-ku3" id="9q8-mn-ltR"/>
                 <outlet property="view" destination="dNZ-KV-SlO" id="kQR-cO-ZTq"/>
             </connections>
         </placeholder>
@@ -84,6 +85,10 @@
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="66s-5g-ku3">
                             <rect key="frame" x="0.0" y="44" width="320" height="474"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="r0n-VW-3FE"/>
+                                <outlet property="delegate" destination="-1" id="rMU-1m-62p"/>
+                            </connections>
                         </tableView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

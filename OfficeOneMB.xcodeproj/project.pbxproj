@@ -76,6 +76,8 @@
 		17C67D3A1A5D72FA00EECD66 /* SelectAddInMapsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17C67D381A5D72FA00EECD66 /* SelectAddInMapsViewController.xib */; };
 		17E1DC921AB881CC009B683B /* ContactLeadCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17E1DC901AB881CC009B683B /* ContactLeadCell~iphone.xib */; };
 		17E1DC971AB8890B009B683B /* NoteLeadCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17E1DC951AB8890B009B683B /* NoteLeadCell~iphone.xib */; };
+		17EC08BB1B43E445006194FE /* ComplainDetailViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17EC08B91B43E445006194FE /* ComplainDetailViewController~iphone.xib */; };
+		17EC08C01B43F659006194FE /* EditTaskLeadViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17EC08BE1B43F659006194FE /* EditTaskLeadViewController~iphone.xib */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -1265,6 +1267,8 @@
 		17C67D381A5D72FA00EECD66 /* SelectAddInMapsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectAddInMapsViewController.xib; sourceTree = "<group>"; };
 		17E1DC901AB881CC009B683B /* ContactLeadCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ContactLeadCell~iphone.xib"; sourceTree = "<group>"; };
 		17E1DC951AB8890B009B683B /* NoteLeadCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "NoteLeadCell~iphone.xib"; sourceTree = "<group>"; };
+		17EC08B91B43E445006194FE /* ComplainDetailViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ComplainDetailViewController~iphone.xib"; sourceTree = "<group>"; };
+		17EC08BE1B43F659006194FE /* EditTaskLeadViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EditTaskLeadViewController~iphone.xib"; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* OfficeOneMB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OfficeOneMB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -3083,6 +3087,7 @@
 				76F328941A34B11E00E0F2C4 /* EditTaskLeadViewController.h */,
 				76F328951A34B11E00E0F2C4 /* EditTaskLeadViewController.m */,
 				76F328961A34B11E00E0F2C4 /* EditTaskLeadViewController.xib */,
+				17EC08BE1B43F659006194FE /* EditTaskLeadViewController~iphone.xib */,
 			);
 			name = "Add+Edit";
 			sourceTree = "<group>";
@@ -5224,6 +5229,7 @@
 				8E568F9A1A591CC80002A3C4 /* ComplainDetailViewController.h */,
 				8E568F9B1A591CC80002A3C4 /* ComplainDetailViewController.m */,
 				8E568F9C1A591CC80002A3C4 /* ComplainDetailViewController.xib */,
+				17EC08B91B43E445006194FE /* ComplainDetailViewController~iphone.xib */,
 			);
 			path = ComplainDetail;
 			sourceTree = "<group>";
@@ -6644,6 +6650,7 @@
 				17A545C91AE5F1BF007F6B1E /* Calendar.png in Resources */,
 				2D0DCEE817A37ADC004FDBBC /* Line-Phong kinhdoanh.png in Resources */,
 				764430691A7000CC007741BA /* menu_dashboard.png in Resources */,
+				17EC08BB1B43E445006194FE /* ComplainDetailViewController~iphone.xib in Resources */,
 				7657E8B61A5AEB3A008A62F9 /* Calendar360Cell.xib in Resources */,
 				B31AFAA7187ADB5800D366B5 /* ic-show-path-1-1.png in Resources */,
 				76CD8816196D1E4F00503B99 /* ic-ppt-1.png in Resources */,
@@ -7061,6 +7068,7 @@
 				2DE2D28C1829060700034877 /* footer.png in Resources */,
 				8497BFF01A295A2300A5ED3C /* track.json in Resources */,
 				17B20D641AFD15B40023FCC0 /* FlowLeadViewController~iphone.xib in Resources */,
+				17EC08C01B43F659006194FE /* EditTaskLeadViewController~iphone.xib in Resources */,
 				B38111E718ACD40600876151 /* update-btn-1-1.png in Resources */,
 				177885951A84699100C71551 /* menuedit.png in Resources */,
 				7697BBCB1A7FB1700023F118 /* menu_sync.png in Resources */,

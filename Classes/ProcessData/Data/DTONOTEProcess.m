@@ -130,6 +130,16 @@
     
     
 }
+-(NSMutableArray*) filterContainWithClientLeaderId: (NSString*) strValue : (NSString *)clientId{
+    NSArray *allFields =[NSArray arrayWithObjects:DTONOTE_id, DTONOTE_content, DTONOTE_title, DTONOTE_noteId, DTONOTE_contentFormated,DTOATTACHMENT_clientObjectId, DTONOTE_createdDate, DTONOTE_updatedDate,DTONOTE_clientNoteId, nil];
+    
+    NSString *query = [NSString stringWithFormat:@"SELECT %@ FROM %@ where isActive=1 and objectType='Lead' and clientObjectId = %@ and title like ? order by updatedDate  desc", [allFields componentsJoinedByString:@"," ], TABLENAME_DTONOTE,clientId];
+    NSString *value = @"%";
+    value = [value stringByAppendingString:[strValue stringByAppendingString:@"%"]];
+    NSLog(@"query:%@",query);
+    
+    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:[NSArray arrayWithObjects:value, nil]];
+}
 //filter with lay danh sach lien he cua 1 cai khach hang dau moi
 -(NSMutableArray*) filterWithClient360Id: (NSString*) strValue{
     NSArray *allFields =[NSArray arrayWithObjects:DTONOTE_id, DTONOTE_content, DTONOTE_title, DTONOTE_noteId, DTONOTE_contentFormated,DTOATTACHMENT_clientObjectId, DTONOTE_createdDate, DTONOTE_updatedDate,DTONOTE_clientNoteId, nil];
@@ -139,6 +149,16 @@
     return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:[NSArray arrayWithObjects:strValue, nil]];
     
     
+}
+-(NSMutableArray*) filterContainWithClient360Id: (NSString*) strValue : (NSString *)clientId{
+    NSArray *allFields =[NSArray arrayWithObjects:DTONOTE_id, DTONOTE_content, DTONOTE_title, DTONOTE_noteId, DTONOTE_contentFormated,DTOATTACHMENT_clientObjectId, DTONOTE_createdDate, DTONOTE_updatedDate,DTONOTE_clientNoteId, nil];
+    
+    NSString *query = [NSString stringWithFormat:@"SELECT %@ FROM %@ where isActive=1 and objectType='360' and clientObjectId = %@ and title like ? order by updatedDate  desc", [allFields componentsJoinedByString:@"," ], TABLENAME_DTONOTE,clientId];
+    NSString *value = @"%";
+    value = [value stringByAppendingString:[strValue stringByAppendingString:@"%"]];
+    NSLog(@"query:%@",query);
+    
+    return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:[NSArray arrayWithObjects:value, nil]];
 }
 //filter with lay danh sach lien he cua 1 co hoi
 -(NSMutableArray*) filterWithOpportunityId: (NSString*) strValue{

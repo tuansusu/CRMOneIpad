@@ -12,7 +12,7 @@
 
 @class EditTaskLeadViewController;
 
-@protocol EditTaskLeadViewControllerDelegate <NSObject>
+@protocol EditTaskLeadViewControllerDelegate <NSObject,UITableViewDataSource,UITableViewDelegate>
 
 @optional
 - (void)closeEditTaskLeadViewController:(EditTaskLeadViewController*)editTaskLeadViewController;

@@ -40,7 +40,7 @@ enum Type360View{
     type360View_ProductsLead // sản phẩm dịch vụ
 };
 
-@interface Detail360ViewController : BaseViewController<SelectIndexDelegate,UIAlertViewDelegate,UIActionSheetDelegate,UITabBarDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface Detail360ViewController : BaseViewController<SelectIndexDelegate,UIAlertViewDelegate,UIActionSheetDelegate,UITabBarDelegate,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *view;
 @property (weak, nonatomic) IBOutlet UIView *viewleft;

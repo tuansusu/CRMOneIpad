@@ -452,6 +452,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             [viewComplain setHidden:NO];
             [viewComplain setDelegate:self];
             [viewComplain initDataWithLeaderId:[[dicData objectForKey:DTOLEAD_clientLeadId] description]];
+            NSLog(@"complanins count = %ld", (unsigned long)arrayData.count);
         }
             break;
         default:
@@ -1718,6 +1719,12 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             [self presentViewController:edit animated:YES completion:nil];
         }
         else if(buttonIndex == 5){
+            
+            ComplainDetailViewController *viewController = [[ComplainDetailViewController alloc]initWithNibName:@"ComplainDetailViewController" bundle:nil];
+            viewController.delegate= self;
+            //            viewController.dataRoot = dicData;
+            viewController.leadId = [[dicData objectForKey:DTOLEAD_clientLeadId] description];
+            [self presentViewController:viewController animated:YES completion:nil];
         }
     }
 }
@@ -1732,13 +1739,14 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             break;
         case typeLeaderView_Contact:{
             NSLog(@"lien he");
-            //            arrayData = [dtoContactProcess filterWithArrayCondition:searchText :[dicData objectForKey:DTOLEAD_clientLeadId]];
-            //
-            //            [self.tbData reloadData];
+            arrayData = [dtoContactProcess filterWithArrayCondition:searchText :[dicData objectForKey:DTOLEAD_clientLeadId]];
+            [self.tbData reloadData];
             
         }break;
         case typeLeaderView_Note:{
             NSLog(@"ghi chu");
+            arrayData = [dtoNoteProcess filterContainWithClientLeaderId:searchText : [dicData objectForKey:DTOLEAD_clientLeadId]];
+            [self.tbData reloadData];
         }break;
         case typeLeaderView_Opportunity:{
             NSLog(@"San pham");

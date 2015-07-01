@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "EnumClass.h"
 @class DTOComplainObject;
 @class ComplainDetailViewController;
 

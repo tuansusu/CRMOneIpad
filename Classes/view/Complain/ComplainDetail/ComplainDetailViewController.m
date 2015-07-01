@@ -12,6 +12,7 @@
 #import "CMPopTipView.h"
 #import "TPKeyboardAvoidingScrollView.h"
 #import "Util.h"
+#import "EnumClass.h"
 
 @interface ComplainDetailViewController ()<CMPopTipViewDelegate>
 {
@@ -32,6 +33,9 @@
     IBOutlet UILabel     *_titleLabel;
     NSUserDefaults *defaults;
     int smgSelect;
+    UIDatePicker *datePicker;
+    UIToolbar *toolBar;
+    NSDateFormatter *df;
 }
 
 //Header
@@ -83,8 +87,52 @@
     smgSelect = [[[NSUserDefaults standardUserDefaults] objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
     util=[Util new];
+    df = [[NSDateFormatter alloc] init];
+   	[df setDateFormat:FORMAT_DATE];
+    NSString  *currentDevice = [UIDevice currentDevice].model;
+    if([currentDevice isEqualToString:@"iPhone"] || [currentDevice isEqualToString:@"iPhone Simulator"]){
+        [self setBorderTextfield:txtNoiDungKhieuNai];
+        [self setBorderTextfield:txtNoiDungXuLy];
+        [self setBorderTextfield:txtLiDo];
+        [self setBorderTextfield:txtMaKhieuNai];
+        [self setBorderTextfield:txtNgayNhan];
+        [self setBorderTextfield:txtNgayXuLy];
+        [self setBorderTextfield:txtNguoiNhan];
+        [self setBorderTextfield:txtNguoiXuLy];
+        //
+        //show date
+        datePicker = [[UIDatePicker alloc] init];
+        datePicker.datePickerMode = UIDatePickerModeDate;
+        datePicker.tintColor=[UIColor whiteColor];
+        [txtNgayXuLy setInputView:datePicker];
+        [txtNgayNhan setInputView:datePicker];
+        toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+        toolBar.tintColor=HEADER_VIEW_COLOR1;
+        UIBarButtonItem *doneBtn;
+        UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        
+        doneBtn = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(setSelectedDate)];
+        
+        [toolBar setItems:[NSArray arrayWithObjects:space,doneBtn, nil]];
+        [txtNgayNhan setInputAccessoryView:toolBar];
+        [txtNgayXuLy setInputAccessoryView:toolBar];
+    }
 }
-
+//For iPhone only
+-(void) setSelectedDate{
+    NSDate *date = datePicker.date;
+    if([txtNgayNhan isFirstResponder]){
+        [txtNgayNhan resignFirstResponder];
+        txtNgayNhan.text = [NSString stringWithFormat:@"%@",
+                                    [df stringFromDate:date]];
+    }
+    else{
+        [txtNgayXuLy resignFirstResponder];
+        txtNgayXuLy.text = [NSString stringWithFormat:@"%@",
+                                   [df stringFromDate:date]];
+        
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -106,6 +154,13 @@
     }else{
         [_fullNameLB setText:COMPLAIN_TITLE_ADD_COMPLAIN];
     }
+}
+-(void)setBorderTextfield:(UITextField *)txtField{
+    
+    txtField.textColor = TEXT_COLOR_REPORT;
+    txtField.backgroundColor = BACKGROUND_NORMAL_COLOR1;
+    [txtField setBorderWithOption:smgSelect];
+    [txtField setPaddingLeft];
 }
 
 /*

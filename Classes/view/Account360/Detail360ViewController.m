@@ -705,7 +705,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     if([self currentDeviceType]==iPhone){
         
         UIActionSheet *action=[[UIActionSheet alloc]initWithTitle:@"Menu" delegate:self cancelButtonTitle:@"Huỷ" destructiveButtonTitle:nil otherButtonTitles:LocalizedString(@"KEY_360_CONTACT"),LocalizedString(@"KEY_360_NOTE"), LocalizedString(@"KEY_360_CALENDAR")
-                               , LocalizedString(@"KEY_360_NHIEMVU"), LocalizedString(@"KEY_360_COHOI"), LocalizedString(@"KEY_360_YKIEN"), nil];
+                               , LocalizedString(@"KEY_360_NHIEMVU"), LocalizedString(@"KEY_360_COHOI"),nil];
         action.tag=22;
         [action showInView:self.view];
     }
@@ -1762,8 +1762,41 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             EditTask360ViewController *edit=[[EditTask360ViewController alloc] initWithNibName:@"EditTask360ViewController" bundle:nil];
             [self presentViewController:edit animated:YES completion:nil];
         }
-        else if(buttonIndex == 5){
+    }
+}
+///search cac thong tin lien quan toi khach hang
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    
+    NSLog(@"%@",searchText);
+    switch (typeActionEvent) {
+        case typeLeaderView_ExpandInfo:{
+            
         }
+            break;
+        case typeLeaderView_Contact:{
+            NSLog(@"lien he");
+            arrayData = [dtoContactProcess filterWithArrayCondition:searchText :[dicData objectForKey:DTOACCOUNT_clientAccountId]];
+            [self.tbData reloadData];
+            
+        }break;
+        case typeLeaderView_Note:{
+            NSLog(@"ghi chu");
+            arrayData = [dtoNoteProcess filterContainWithClient360Id:searchText : [dicData objectForKey:DTOACCOUNT_clientAccountId]];
+            [self.tbData reloadData];
+        }break;
+        case typeLeaderView_Opportunity:{
+            NSLog(@"San pham");
+        }break;
+        case typeLeaderView_Calendar:{
+        }break;
+        case typeLeaderView_Task:{
+        }break;
+        case typeLeaderView_Complains:{
+        }break;
+        case typeLeaderView_ProductsLead:{
+        }break;
+        default:
+            break;
     }
 }
 @end

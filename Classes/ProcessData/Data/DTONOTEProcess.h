@@ -40,9 +40,11 @@
  * Lọc danh sach lien he theo clientLeaderId
  */
 -(NSMutableArray*) filterWithClientLeaderId: (NSString*) strValue;
+-(NSMutableArray*) filterContainWithClientLeaderId: (NSString*) strValue : (NSString *)clientId;
 /* Lọc danh sach lien he theo client360Id
 */
 -(NSMutableArray*) filterWithClient360Id: (NSString*) strValue;
+-(NSMutableArray*) filterContainWithClient360Id: (NSString*) strValue : (NSString *)clientId;
 //lay danh sach theo id co hoi
 -(NSMutableArray*) filterWithOpportunityId: (NSString*) strValue;
 

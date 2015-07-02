@@ -211,7 +211,7 @@
         [_txtStatus setInputAccessoryView:toolBar];
         [_txtTimeFrom setInputAccessoryView:toolBar];
         [_txtTimeTo setInputAccessoryView:toolBar];
-        if (_dataRoot.count==0) {
+        if (_dataSend.count==0) {
             [self loadDefaults];
         }else{
             [self loadEdit];

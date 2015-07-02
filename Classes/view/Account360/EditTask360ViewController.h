@@ -10,7 +10,7 @@
 #import "CalendarPickerViewController.h"
 #import "SelectIndexViewController.h"
 
-@interface EditTask360ViewController : BaseViewController<SelectIndexDelegate>
+@interface EditTask360ViewController : BaseViewController<SelectIndexDelegate,UITableViewDataSource,UITableViewDelegate>
 
 //DATA
 /*

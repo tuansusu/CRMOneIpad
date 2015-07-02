@@ -5,123 +5,122 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditTaskLeadViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditTask360ViewController">
             <connections>
-                <outlet property="_btnHome" destination="WTn-Mq-5zy" id="r6i-UU-LKQ"/>
-                <outlet property="_btnSave" destination="rGD-cK-gaN" id="xjs-IB-9w9"/>
-                <outlet property="_headerLabel" destination="t5k-PU-4rk" id="rSx-S8-j0x"/>
-                <outlet property="_headerView" destination="M7S-Ru-fnV" id="Rwd-ee-qFg"/>
-                <outlet property="_txtDateFrom" destination="Puj-IQ-bXn" id="bdr-Gh-OJU"/>
-                <outlet property="_txtDateTo" destination="cpb-bD-eGE" id="u9Z-yb-h4t"/>
-                <outlet property="_txtName" destination="lAT-aX-Slu" id="v1K-xZ-52m"/>
-                <outlet property="_txtStatus" destination="7yx-gV-2Kc" id="bkF-Io-Hfj"/>
-                <outlet property="_txtTimeFrom" destination="iWb-Da-6u8" id="V73-Uk-p5v"/>
-                <outlet property="_txtTimeTo" destination="r4X-kh-QaM" id="fSO-qY-bWw"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="btnHome" destination="lw3-KE-67F" id="Clg-0O-q71"/>
+                <outlet property="fullNameLB" destination="p8a-zo-Xa9" id="OPc-Qg-C63"/>
+                <outlet property="headerViewBar" destination="TZE-RZ-kGP" id="OdH-gm-bIi"/>
+                <outlet property="txtDateFrom" destination="igY-Z2-hcV" id="pIl-oc-qc7"/>
+                <outlet property="txtDateTo" destination="Bry-QK-s7s" id="sdZ-NZ-3eF"/>
+                <outlet property="txtName" destination="o0u-lU-n02" id="tX5-A8-5gX"/>
+                <outlet property="txtStatus" destination="Th8-9z-B3n" id="SVA-t7-RWH"/>
+                <outlet property="txtTimeFrom" destination="B6v-fz-3wS" id="5go-GO-DeA"/>
+                <outlet property="txtTimeTo" destination="8po-Yh-OfI" id="xHe-FF-Edg"/>
+                <outlet property="view" destination="XZ8-uC-UoS" id="xkT-wU-M7D"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="XZ8-uC-UoS">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qaW-Ln-oVT" userLabel="View-content">
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="An0-wO-pCq" userLabel="View-content">
                     <rect key="frame" x="0.0" y="60" width="320" height="508"/>
                     <subviews>
-                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6du-3j-9qp">
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fBH-jY-3m1">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="508"/>
                             <subviews>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Giờ" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iWb-Da-6u8">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Giờ" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="B6v-fz-3wS">
                                     <rect key="frame" x="183" y="142" width="129" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhm-y8-CPa" userLabel="btnSysCat">
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrt-Xc-8ga" userLabel="btnSysCat">
                                     <rect key="frame" x="297" y="149" width="15" height="15"/>
                                     <state key="normal" backgroundImage="icon_down.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                 </button>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ngày" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Puj-IQ-bXn">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ngày" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="igY-Z2-hcV">
                                     <rect key="frame" x="8" y="142" width="168" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6NB-MM-ezL" userLabel="btnSysCat">
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zf2-S0-cJ5" userLabel="btnSysCat">
                                     <rect key="frame" x="160" y="149" width="15" height="15"/>
                                     <state key="normal" backgroundImage="icon_down.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                 </button>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Trạng thái" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7yx-gV-2Kc">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Trạng thái" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Th8-9z-B3n">
                                     <rect key="frame" x="8" y="75" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="errorVaildate.png" translatesAutoresizingMaskIntoConstraints="NO" id="g3T-wR-lAX">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="errorVaildate.png" translatesAutoresizingMaskIntoConstraints="NO" id="Hll-kR-Xuq">
                                     <rect key="frame" x="296" y="82" width="16" height="16"/>
                                 </imageView>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tiêu đề" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lAT-aX-Slu">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tiêu đề" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o0u-lU-n02">
                                     <rect key="frame" x="8" y="37" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="errorVaildate.png" translatesAutoresizingMaskIntoConstraints="NO" id="0xW-m5-10S">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="errorVaildate.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ng4-50-TCI">
                                     <rect key="frame" x="296" y="44" width="16" height="16"/>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thông tin chung" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1mN-HH-9sS">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thông tin chung" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVO-Eb-1fo">
                                     <rect key="frame" x="29" y="8" width="283" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGk-8L-n6D" userLabel="btnSysCat">
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qzr-WJ-Ufu" userLabel="btnSysCat">
                                     <rect key="frame" x="8" y="11" width="15" height="15"/>
                                     <state key="normal" backgroundImage="icon_down.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ngày bắt đầu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NU5-Vq-6Kb">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ngày bắt đầu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIs-r9-7d0">
                                     <rect key="frame" x="29" y="113" width="283" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95n-vK-rhe" userLabel="btnSysCat">
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YNY-5f-5Aq" userLabel="btnSysCat">
                                     <rect key="frame" x="8" y="116" width="15" height="15"/>
                                     <state key="normal" backgroundImage="icon_down.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                 </button>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Giờ" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="r4X-kh-QaM">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Giờ" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8po-Yh-OfI">
                                     <rect key="frame" x="183" y="209" width="129" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dR-b6-VMc" userLabel="btnSysCat">
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ls9-z5-lRe" userLabel="btnSysCat">
                                     <rect key="frame" x="297" y="216" width="15" height="15"/>
                                     <state key="normal" backgroundImage="icon_down.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                 </button>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ngày" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cpb-bD-eGE">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ngày" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bry-QK-s7s">
                                     <rect key="frame" x="8" y="209" width="168" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tu5-Jm-Xr0" userLabel="btnSysCat">
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jkN-1O-eBt" userLabel="btnSysCat">
                                     <rect key="frame" x="160" y="216" width="15" height="15"/>
                                     <state key="normal" backgroundImage="icon_down.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ngày kết thúc" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yQ-JK-3dx">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ngày kết thúc" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMi-Pv-cPZ">
                                     <rect key="frame" x="29" y="180" width="283" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkM-AF-5gy" userLabel="btnSysCat">
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B2L-iW-dc7" userLabel="btnSysCat">
                                     <rect key="frame" x="8" y="183" width="15" height="15"/>
                                     <state key="normal" backgroundImage="icon_down.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -132,37 +131,37 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M7S-Ru-fnV" userLabel="View-header">
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TZE-RZ-kGP" userLabel="View-header">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGD-cK-gaN" userLabel="btnSave">
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkI-XK-G2u" userLabel="btnSave">
                             <rect key="frame" x="282" y="22" width="30" height="30"/>
                             <state key="normal" backgroundImage="icon_save_90x90.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="actionSave:" destination="-1" eventType="touchUpInside" id="7kH-EV-BGb"/>
+                                <action selector="actionSave:" destination="-1" eventType="touchUpInside" id="Yrh-FR-P57"/>
                             </connections>
                         </button>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8yd-wk-0Bw">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ARD-g1-QK2">
                             <rect key="frame" x="244" y="22" width="30" height="30"/>
                             <state key="normal" backgroundImage="icon_delete_90x90.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="them moi  cong viec" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5k-PU-4rk">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="them moi  cong viec" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8a-zo-Xa9">
                             <rect key="frame" x="38" y="22" width="191" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WTn-Mq-5zy" userLabel="btnHome">
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lw3-KE-67F" userLabel="btnHome">
                             <rect key="frame" x="0.0" y="22" width="30" height="30"/>
                             <state key="normal" backgroundImage="Back_32.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="homeBack:" destination="-1" eventType="touchUpInside" id="0JJ-P8-7ZY"/>
+                                <action selector="homeBack:" destination="-1" eventType="touchUpInside" id="cZ6-yp-ips"/>
                             </connections>
                         </button>
                     </subviews>

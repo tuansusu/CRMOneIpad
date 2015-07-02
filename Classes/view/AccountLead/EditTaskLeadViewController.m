@@ -98,9 +98,11 @@
     
     
     UIDatePicker *datePicker;
+    UIDatePicker *timePicker;
     UIToolbar *toolBar;
     UITableView *tableAlert;
     NSDateFormatter *df;
+    NSDateFormatter *dfTime;
     
     BOOL succsess;//Trang thai acap nhat
 }
@@ -163,7 +165,20 @@
     dataId = 0;
     //======
     if ([self currentDeviceType]==iPhone) {
+        
+        //set boder textfield
+        [self setBorderTextfield:_txtDateFrom];
+        [self setBorderTextfield:_txtDateTo];
+        [self setBorderTextfield:_txtName];
+        [self setBorderTextfield:_txtStatus];
+        [self setBorderTextfield:_txtTimeFrom];
+        [self setBorderTextfield:_txtTimeTo];
         //toolbar
+        df = [[NSDateFormatter alloc] init];
+        [df setDateFormat:FORMAT_DATE];
+        
+        dfTime = [[NSDateFormatter alloc] init];
+        [dfTime setDateFormat:FORMAT_TIME];
         //show date
         datePicker = [[UIDatePicker alloc] init];
         
@@ -171,6 +186,13 @@
         datePicker.tintColor=[UIColor whiteColor];
         [_txtDateFrom setInputView:datePicker];
         [_txtDateTo setInputView:datePicker];
+        
+        timePicker =[[UIDatePicker alloc] init];
+        timePicker.datePickerMode=UIDatePickerModeTime;
+        timePicker.tintColor=[UIColor whiteColor];
+        [_txtTimeFrom setInputView:timePicker];
+        [_txtTimeTo setInputView:timePicker];
+        
         tableAlert = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
         tableAlert.delegate=self;
         tableAlert.dataSource=self;
@@ -187,10 +209,51 @@
         [_txtDateFrom setInputAccessoryView:toolBar];
         [_txtDateTo setInputAccessoryView:toolBar];
         [_txtStatus setInputAccessoryView:toolBar];
+        [_txtTimeFrom setInputAccessoryView:toolBar];
+        [_txtTimeTo setInputAccessoryView:toolBar];
+        if (_dataRoot.count==0) {
+            [self loadDefaults];
+        }else{
+            [self loadEdit];
+        }
         
     }
 }
-
+//For iPhone only
+-(void) setSelectedDate{
+    NSDate *date = datePicker.date;
+    if([_txtDateFrom isFirstResponder]){
+        [_txtDateFrom resignFirstResponder];
+        _txtDateFrom.text = [NSString stringWithFormat:@"%@",
+                             [df stringFromDate:date]];
+        _startDateTime = [date copy];
+    }
+    else if([_txtDateTo isFirstResponder]){
+        [_txtDateTo resignFirstResponder];
+        _txtDateTo.text= [NSString stringWithFormat:@"%@",[df stringFromDate:date]];
+        _endDateTime = [date copy];
+    }
+    else if([_txtTimeFrom isFirstResponder]){
+        [_txtTimeFrom resignFirstResponder];
+        _txtTimeFrom.text=[NSString stringWithFormat:@"%@",[dfTime stringFromDate:date]];
+        
+    }
+    else if([_txtTimeTo isFirstResponder]){
+        [_txtTimeTo resignFirstResponder];
+        _txtTimeTo.text=[NSString stringWithFormat:@"%@",[dfTime stringFromDate:date]];
+        
+    }
+    else{
+        [_txtStatus resignFirstResponder];
+    }
+}
+-(void)setBorderTextfield:(UITextField *)txtField{
+    
+    txtField.textColor = TEXT_COLOR_REPORT;
+    txtField.backgroundColor = BACKGROUND_NORMAL_COLOR1;
+    [txtField setBorderWithOption:smgSelect];
+    [txtField setPaddingLeft];
+}
 #pragma mark - new view: load defaults data into view
 - (void) loadDefaults
 {
@@ -488,10 +551,15 @@
     
     if (succsess)
     {
-        //Thong bao cap nhat thanh cong va thoat
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Cập nhật thành công, tiếp tục nhập?" delegate:self cancelButtonTitle:@"Không" otherButtonTitles:@"Có", nil];
-        alert.tag = 5;
-        [alert show];
+        if ([self currentDeviceType]==iPhone) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+        else{
+            //Thong bao cap nhat thanh cong va thoat
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Cập nhật thành công, tiếp tục nhập?" delegate:self cancelButtonTitle:@"Không" otherButtonTitles:@"Có", nil];
+            alert.tag = 5;
+            [alert show];
+        }
     }
     else
     {

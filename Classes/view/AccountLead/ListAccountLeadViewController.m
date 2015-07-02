@@ -535,21 +535,26 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    
-    if ([util CharacterNoEnter:searchText]) {
-        strSearchText = searchText;
-        [self resetLoadData];
-        [self filterData];
-    }
+//    
+//    if ([util CharacterNoEnter:searchText]) {
+//        strSearchText = searchText;
+//        [self resetLoadData];
+//        [self filterData];
+//    }
 }
 
 
 -(void) searchBarCancelButtonClicked:(UISearchBar *)searchBar{
     strSearchText = @"";
+    [SVProgressHUD show];
+    [self resetLoadData];
+    [self filterData];
+    [searchBar resignFirstResponder];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar                     // called when keyboard search button pressed
 {
+    strSearchText = searchBar.text;
     [SVProgressHUD show];
     [self resetLoadData];
     [self filterData];

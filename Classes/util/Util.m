@@ -26,6 +26,16 @@
     return YES;
 }
 
+-(void)setBorderTextfield:(UITextField *)txtField{
+    NSUserDefaults *defaults ;
+    defaults = [NSUserDefaults standardUserDefaults];
+    [defaults synchronize];
+    int smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
+    txtField.textColor = TEXT_COLOR_REPORT;
+    txtField.backgroundColor = BACKGROUND_NORMAL_COLOR1;
+    [txtField setBorderWithOption:smgSelect];
+    [txtField setPaddingLeft];
+}
 
 +(void) backToHome : (UIViewController*) viewController {
     //    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

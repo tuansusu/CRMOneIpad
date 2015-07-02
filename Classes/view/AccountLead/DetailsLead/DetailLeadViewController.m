@@ -1712,6 +1712,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         }
         else if(buttonIndex == 4){
             EditOpportunityLeadViewController *edit=[[EditOpportunityLeadViewController alloc] initWithNibName:@"EditOpportunityLeadViewController" bundle:nil];
+            edit.dataSend = dicData;
             [self presentViewController:edit animated:YES completion:nil];
         }
         else if (buttonIndex == 3){

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditOpportunity360ViewController">
+            <connections>
+                <outlet property="btnHome" destination="l7V-9k-TVo" id="HjU-Vq-QDZ"/>
+                <outlet property="dtEndDate" destination="vpK-lp-B5e" id="dsB-9l-qlP"/>
+                <outlet property="dtStartDate" destination="qZ8-nm-9hN" id="HOl-MG-b3h"/>
+                <outlet property="fullNameLB" destination="FE1-g2-Cad" id="Vls-kX-laA"/>
+                <outlet property="headerViewBar" destination="lCB-qQ-RvG" id="w90-cf-p22"/>
+                <outlet property="txtLevel" destination="xYA-ag-9WJ" id="oyC-Sm-J5p"/>
+                <outlet property="txtName" destination="lDB-3K-H2L" id="U2Q-62-i2T"/>
+                <outlet property="txtNextTask" destination="nw9-Zn-00D" id="mI6-aN-oJP"/>
+                <outlet property="txtNote" destination="tC8-oM-1he" id="FVR-cc-OPg"/>
+                <outlet property="view" destination="crG-Zz-1HD" id="FdM-yO-m2q"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="crG-Zz-1HD">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B9w-CK-DB8" userLabel="View-content">
+                    <rect key="frame" x="0.0" y="60" width="320" height="508"/>
+                    <subviews>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yRR-TU-Jfb">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="508"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V40-AI-JfX" userLabel="btnSysCat">
+                                    <rect key="frame" x="8" y="11" width="15" height="15"/>
+                                    <state key="normal" backgroundImage="icon_down.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Công việc tiếp theo" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nw9-Zn-00D">
+                                    <rect key="frame" x="8" y="151" width="304" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2so-NK-iv1" userLabel="btnSysCat">
+                                    <rect key="frame" x="297" y="158" width="15" height="15"/>
+                                    <state key="normal" backgroundImage="icon_down.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ghi chú" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tC8-oM-1he">
+                                    <rect key="frame" x="8" y="189" width="304" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ngày kết thúc" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vpK-lp-B5e">
+                                    <rect key="frame" x="162" y="113" width="150" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ngày bắt đầu" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qZ8-nm-9hN">
+                                    <rect key="frame" x="8" y="113" width="150" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JHH-uJ-8WD" userLabel="btnSysCat">
+                                    <rect key="frame" x="139" y="120" width="15" height="15"/>
+                                    <state key="normal" backgroundImage="icon_down.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ng7-jW-cb8" userLabel="btnSysCat">
+                                    <rect key="frame" x="297" y="120" width="15" height="15"/>
+                                    <state key="normal" backgroundImage="icon_down.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mức độ cơ hội" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xYA-ag-9WJ">
+                                    <rect key="frame" x="8" y="75" width="304" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="errorVaildate.png" translatesAutoresizingMaskIntoConstraints="NO" id="Lhv-7g-sYA">
+                                    <rect key="frame" x="296" y="82" width="16" height="16"/>
+                                </imageView>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tên cơ hội" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lDB-3K-H2L">
+                                    <rect key="frame" x="8" y="37" width="304" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="errorVaildate.png" translatesAutoresizingMaskIntoConstraints="NO" id="TUF-Bm-Ibn">
+                                    <rect key="frame" x="296" y="44" width="16" height="16"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thông tin chung" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUQ-Oo-Dsr">
+                                    <rect key="frame" x="29" y="8" width="283" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </scrollView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lCB-qQ-RvG" userLabel="View-header">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="28z-qB-buS" userLabel="btnSave">
+                            <rect key="frame" x="282" y="22" width="30" height="30"/>
+                            <state key="normal" backgroundImage="icon_save_90x90.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actionSave:" destination="-1" eventType="touchUpInside" id="3mL-gd-JPT"/>
+                            </connections>
+                        </button>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u4E-Sy-oCB">
+                            <rect key="frame" x="244" y="22" width="30" height="30"/>
+                            <state key="normal" backgroundImage="icon_delete_90x90.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="KHÁCH HÀNG TIỀM NĂNG (CN)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FE1-g2-Cad">
+                            <rect key="frame" x="38" y="22" width="191" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7V-9k-TVo" userLabel="btnHome">
+                            <rect key="frame" x="0.0" y="22" width="30" height="30"/>
+                            <state key="normal" backgroundImage="Back_32.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="homeBack:" destination="-1" eventType="touchUpInside" id="Mov-1b-30x"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Back_32.png" width="32" height="32"/>
+        <image name="errorVaildate.png" width="50" height="50"/>
+        <image name="icon_delete_90x90.png" width="90" height="90"/>
+        <image name="icon_down.png" width="19" height="11"/>
+        <image name="icon_save_90x90.png" width="90" height="90"/>
+    </resources>
+</document>

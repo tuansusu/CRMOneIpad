@@ -10,6 +10,8 @@
 #import "DTOOPPORTUNITYPRODUCTProcess.h"
 #import "DTOPRODUCTMASTERProcess.h"
 #import "DTOSYSCATProcess.h"
+#import "Util.h"
+#import "EnumClass.h"
 
 @interface EditOpportunityProductPopupViewController ()
 {
@@ -20,6 +22,8 @@
     DTOOPPORTUNITYPRODUCTProcess *dtoOpportunityProductProcess;
     DTOPRODUCTMASTERProcess *dtoProductMasterProcess;
     DTOSYSCATProcess *dtoSysCatProcess;
+    
+    Util *util;
     
     //chon index form them moi
     NSInteger selectIndex;
@@ -35,7 +39,7 @@
     
     //Product da duoc chon
     NSDictionary *selectedProduct;
-
+    
     //thong tin chon cho loai tien te
     NSInteger selectCurrencyIndex;
     NSArray *listArrCurrency;
@@ -45,6 +49,8 @@
     //key board
     float heightKeyboard;
     UITextField *_txt;
+    UIToolbar *toolBar;
+    UITableView *tableAlert;
     
     MDSearchBarController *searchBarController;
 }
@@ -57,13 +63,13 @@
     
     if ([UIDevice getCurrentSysVer] >= 7.0) {
         if(self.currentDeviceType == iPad){
-          //  [UIDevice updateLayoutInIOs7OrAfter:self];
+            //  [UIDevice updateLayoutInIOs7OrAfter:self];
         }else{
             //Nothing!
         }
     }
     
-    
+    util=[Util new];
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
     
@@ -87,14 +93,35 @@
     
     self.txtQuantity.delegate = self;
     self.txtRevenue.delegate = self;
-
+    
     [self setLanguage];
+    if ([self currentDeviceType]==iPhone) {
+        [util setBorderTextfield:_txtCurrency];
+        [util setBorderTextfield:_txtQuantity];
+        [util setBorderTextfield:_txtRevenue];
+        
+        tableAlert = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 250, 230)];
+        tableAlert.delegate=self;
+        tableAlert.dataSource=self;
+        [tableAlert reloadData];
+        [_txtCurrency setInputView:tableAlert];
+        toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+        toolBar.tintColor=HEADER_VIEW_COLOR1;
+        UIBarButtonItem *doneBtn;
+        UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        
+        doneBtn = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(setSelectedDate)];
+        
+        [toolBar setItems:[NSArray arrayWithObjects:space,doneBtn, nil]];
+        [_txtCurrency setInputAccessoryView:toolBar];
+        
+    }
 }
 -(void)dismissPopUp
 {
     //your dimiss code here
     if(!searchBarController.isValid){
-       // self.txtCustomer.text = @"";
+        // self.txtCustomer.text = @"";
     }
     searchBarController.active = NO;
 }
@@ -119,18 +146,11 @@
     listArrCurrency = [dtoSysCatProcess filterWithCatType:FIX_SYS_CAT_TYPE_CURRENCY];
     
     dataId = 0;
-    if(self.currentDeviceType == iPad){
-        if (self.dataSend) {
-            [self loadEditData];
-            self.lblFormTitle.text = LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_HEADER_EDIT");
-        }else{
-            self.lblFormTitle.text = LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_HEADER_ADD");
-        }
+    if (self.dataSend) {
+        [self loadEditData];
+        self.lblFormTitle.text = LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_HEADER_EDIT");
     }else{
-        if(self.dataSend){
-            [self loadEditData];
-        }
-        self.lblFormTitle.text = @"";
+        self.lblFormTitle.text = LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_HEADER_ADD");
     }
     
 }
@@ -138,18 +158,18 @@
 //Load thong tin len form sua
 -(void) loadEditData {
     
-        
+    
     //product
     NSString *productMasterId = [_dataSend objectForKey:DTOOPPORTUNITYPRODUCT_productMasterId];
-
-        NSArray *arrayProductMasterID = [listProduct valueForKey:DTOOPPORTUNITYPRODUCT_productMasterId];
-        NSInteger selectProductIndex = [arrayProductMasterID indexOfObject:productMasterId];
-        if (selectProductIndex>=0) {
-            selectedProduct = [listProduct objectAtIndex:selectProductIndex];
-            self.txtSearchCustomer.textField.text = [selectedProduct objectForKey:DTOPRODUCTMASTER_name];
-            searchBarController.isValid = YES;
-        }
-  
+    
+    NSArray *arrayProductMasterID = [listProduct valueForKey:DTOOPPORTUNITYPRODUCT_productMasterId];
+    NSInteger selectProductIndex = [arrayProductMasterID indexOfObject:productMasterId];
+    if (selectProductIndex>=0) {
+        selectedProduct = [listProduct objectAtIndex:selectProductIndex];
+        self.txtSearchCustomer.textField.text = [selectedProduct objectForKey:DTOPRODUCTMASTER_name];
+        searchBarController.isValid = YES;
+    }
+    
     //quantity
     if (![StringUtil stringIsEmpty:[_dataSend objectForKey:DTOOPPORTUNITYPRODUCT_quantity]]) {
         self.txtQuantity.text =[_dataSend objectForKey:DTOOPPORTUNITYPRODUCT_quantity];
@@ -235,11 +255,11 @@
             
         }
         
-//        if ([viewTemp isKindOfClass:[UIButton class]]) {
-//            if(viewTemp.tag!=10){
-//                [((UIButton*) viewTemp) setStyleNormalWithOption:smgSelect];
-//            }
-//        }
+        //        if ([viewTemp isKindOfClass:[UIButton class]]) {
+        //            if(viewTemp.tag!=10){
+        //                [((UIButton*) viewTemp) setStyleNormalWithOption:smgSelect];
+        //            }
+        //        }
         
     }
     
@@ -286,7 +306,7 @@
     else{//Lấy mặc định là đồng việt nam
         
         NSPredicate *bPredicate = [NSPredicate predicateWithFormat:@"code = 'VND'"];
-    
+        
         [dicEntity setObject:[[[listArrCurrency filteredArrayUsingPredicate:bPredicate] objectAtIndex:0] objectForKey:DTOSYSCAT_sysCatId] forKey:DTOOPPORTUNITYPRODUCT_currencyId];
         if (!self.dataSend){
             [dicEntity setObject:[[[listArrCurrency filteredArrayUsingPredicate:bPredicate] objectAtIndex:0] objectForKey:DTOSYSCAT_code] forKey:DTOSYSCAT_code];
@@ -325,7 +345,7 @@
     
     
     [self.delegateOpportunityProduct receiveData:dicEntity];
-   
+    
     
 }
 
@@ -375,7 +395,7 @@
         NSDictionary *dic = [listArrCurrency objectAtIndex:index];
         self.txtCurrency.text = [dic objectForKey:DTOSYSCAT_name];
     }
-
+    
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -451,13 +471,13 @@
     
     //clear all boder red
     //for (UIView *viewTemp in self.viewmaininfo.subviews) {
-        
-        for (UIView *viewSubTemp in self.viewmaininfo.subviews) {
-            if ([viewSubTemp isKindOfClass:[UITextField class]]) {
-                ((UITextView*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
-            }
+    
+    for (UIView *viewSubTemp in self.viewmaininfo.subviews) {
+        if ([viewSubTemp isKindOfClass:[UITextField class]]) {
+            ((UITextView*) viewSubTemp).layer.borderColor = [BORDER_COLOR CGColor];
         }
-   // }
+    }
+    // }
     
     if (!searchBarController.isValid) {
         [self showTooltip:self.txtSearchCustomer.textField withText:LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_ERR_BLANK_PRODUCT")];
@@ -494,7 +514,7 @@
         return YES;
     }
     if(theTextField == self.txtQuantity ||  theTextField == self.txtRevenue){
-    //for Decimal value start//////This code use use for allowing single decimal value
+        //for Decimal value start//////This code use use for allowing single decimal value
         if ([theTextField.text rangeOfString:@"."].location == NSNotFound)
         {
             if ([string isEqualToString:@"."]) {
@@ -523,7 +543,7 @@
     
     
     
-
+    
 }
 
 
@@ -547,7 +567,12 @@
 #pragma mark-phan tim kiem san pham
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return listProductFilter.count;
+    if (tableView==tableAlert) {
+        return [[listArrCurrency valueForKey:DTOSYSCAT_name]  count];
+    }
+    else{
+        return listProductFilter.count;
+    }
 }
 
 
@@ -558,10 +583,34 @@
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    if (!cell) cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-    cell.textLabel.text = [[listProductFilter objectAtIndex:indexPath.row] objectForKey:@"name"]; //[NSString stringWithFormat:@"%d",indexPath.row];
-    return cell;
+    
+    if (tableView==tableAlert) {
+        static NSString *CellIdentifier = @"Cell";
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        
+        // Set the data for this cell:
+        
+        cell.textLabel.text = [[listArrCurrency valueForKey:DTOSYSCAT_name] objectAtIndex:indexPath.row];
+        cell.detailTextLabel.text = @"More text";
+        //cell.imageView.image = [UIImage imageNamed:@"flower.png"];
+        cell.accessoryType=UITableViewCellAccessoryCheckmark;
+        
+        // set the accessory view:
+        cell.accessoryType =  UITableViewCellAccessoryDisclosureIndicator;
+        
+        
+        return cell;
+    }
+    else{
+        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+        if (!cell) cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell.textLabel.text = [[listProductFilter objectAtIndex:indexPath.row] objectForKey:@"name"]; //[NSString stringWithFormat:@"%d",indexPath.row];
+        return cell;
+    }
 }
 
 -(void)searchBar:(MDSearchBarController *)searchBarController searchWithText:(NSString *)text{
@@ -571,10 +620,18 @@
     searchBarController.isValid = NO;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    selectedProduct = [listProductFilter objectAtIndex:indexPath.row];
-    self.txtSearchCustomer.textField.text = [selectedProduct objectForKey:@"name"];
-    searchBarController.active = NO;
-    searchBarController.isValid = YES;
+    if (tableView==tableAlert) {
+        NSDictionary *getData = [[listArrCurrency valueForKey:DTOSYSCAT_name] objectAtIndex:indexPath.row];
+        _txtCurrency.text=getData;
+        selectCurrencyIndex=indexPath.row;
+        [_txtCurrency resignFirstResponder];
+    }
+    else{
+        selectedProduct = [listProductFilter objectAtIndex:indexPath.row];
+        self.txtSearchCustomer.textField.text = [selectedProduct objectForKey:@"name"];
+        searchBarController.active = NO;
+        searchBarController.isValid = YES;
+    }
 }
 #pragma mark-toolip
 - (void)dismissAllPopTipViews
@@ -645,16 +702,21 @@
 -(void) hiddenKeyBoard {
     for (UIView *viewTemp in _bodyMainView.subviews) {
         
-            
-            if([viewTemp isKindOfClass:[UITextField class]]){
-                [(UITextField *)viewTemp resignFirstResponder];
-            }
-            
-            
+        
+        if([viewTemp isKindOfClass:[UITextField class]]){
+            [(UITextField *)viewTemp resignFirstResponder];
+        }
+        
+        
         
     }
 }
+#pragma mark - Table view data source
 
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
 
 #pragma mark - Phần đa ngôn ngữ
 -(void)setLanguage{
@@ -666,5 +728,5 @@
     [_txtRevenue setPlaceholder:LocalizedString(@"KEY_OPPORTUNITY_PROPOSEPRODUCT_EDIT_REVENUE")];
     
     [_btnSave setTitle:LocalizedString(@"KEY_SAVE") forState:UIControlStateNormal];
-    }
+}
 @end

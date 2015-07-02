@@ -1810,6 +1810,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         [self presentViewController:viewController animated:YES completion:nil];        }
     else if(buttonIndex == 4){
         EditOpportunity360ViewController *edit=[[EditOpportunity360ViewController alloc] initWithNibName:@"EditOpportunity360ViewController" bundle:nil];
+        edit.dataSend=dicData;
         [self presentViewController:edit animated:YES completion:nil];
     }
     else if (buttonIndex == 3){

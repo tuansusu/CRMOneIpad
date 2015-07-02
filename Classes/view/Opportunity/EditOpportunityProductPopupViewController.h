@@ -16,7 +16,7 @@
 @optional
 -(void)receiveData:(NSDictionary *) value;
 @end
-@interface EditOpportunityProductPopupViewController : BaseViewController<UITextFieldDelegate>
+@interface EditOpportunityProductPopupViewController : BaseViewController<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate>
 //DATA
 /*
  * chuyen tu form danh sahc lien he(co ca clientLeaderId)

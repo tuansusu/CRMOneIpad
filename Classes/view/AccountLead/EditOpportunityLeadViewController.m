@@ -17,7 +17,7 @@
 #import "EditOpportunityProductPopupViewController.h"
 #import "UIViewController+MJPopupViewController.h"
 #import "ProposeProductPopupCell.h"
-
+#import "EnumClass.h"
 #define TAG_SELECT_TYPE 1
 #define TAG_SELECT_NEXT_JOB 2
 #define TAG_SELECT_LEVEL 3
@@ -67,8 +67,12 @@
     NSInteger selectCustomerIndex;
     NSDictionary *selectedCustomer;
     
+    UIDatePicker *datePicker;
+    UIToolbar *toolBar;
+    UITableView *tableAlert, *tableNextTask;
+    
     BOOL succsess;//Trang thai acap nhat
-
+    
     
     int deleteProductIndex;
 }
@@ -113,13 +117,54 @@
     now = [NSDate date];
     nowStr = [df stringFromDate:now];
     nowTimeStr = [dfTime stringFromDate:now];
-   
+    
     
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
     [self initData];
+    if ([self currentDeviceType]==iPhone) {
+        [self setBorderTextfield:_txtLevel];
+        [self setBorderTextfield:_txtName];
+        [self setBorderTextfield:_txtNextTask];
+        [self setBorderTextfield:_dtEndDate];
+        [self setBorderTextfield:_dtStartDate];
+        [self setBorderTextfield:_txtNote];
+        //show toolbar
+        datePicker = [[UIDatePicker alloc] init];
+        
+        datePicker.datePickerMode = UIDatePickerModeDate;
+        datePicker.tintColor=[UIColor whiteColor];
+        [_dtStartDate setInputView:datePicker];
+        [_dtEndDate setInputView:datePicker];
+        //table muc do co hoi
+        tableAlert = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 250, 230)];
+        tableAlert.delegate=self;
+        tableAlert.dataSource=self;
+        [tableAlert reloadData];
+        [_txtLevel setInputView:tableAlert];
+        //table cong viec tiep theo
+        tableNextTask=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, 250, 230)];
+        tableNextTask.delegate=self;
+        tableNextTask.dataSource=self;
+        [tableNextTask reloadData];
+        [_txtNextTask setInputView:tableNextTask];
+        
+        toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+        toolBar.tintColor=HEADER_VIEW_COLOR1;
+        UIBarButtonItem *doneBtn;
+        UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        
+        doneBtn = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(setSelectedDate)];
+        
+        [toolBar setItems:[NSArray arrayWithObjects:space,doneBtn, nil]];
+        [_dtStartDate setInputAccessoryView:toolBar];
+        [_dtEndDate setInputAccessoryView:toolBar];
+        [_txtLevel setInputAccessoryView:toolBar];
+        [_txtNextTask setInputAccessoryView:toolBar];
+        
+    }
     
-
+    
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -129,10 +174,40 @@
     [self.view addGestureRecognizer:tapImageRecognizer];
 }
 
+//For iPhone only
+-(void) setSelectedDate{
+    NSDate *date = datePicker.date;
+    if([_dtStartDate isFirstResponder]){
+        [_dtStartDate resignFirstResponder];
+        _dtStartDate.text = [NSString stringWithFormat:@"%@",
+                             [df stringFromDate:date]];
+        startDate = [date copy];
+    }
+    else if([_dtEndDate isFirstResponder]){
+        [_dtEndDate resignFirstResponder];
+        _dtEndDate.text=[NSString stringWithFormat:@"%@",[df stringFromDate:date]];
+        endDate = [date copy];
+    }
+    else if ([_txtLevel isFirstResponder]){
+        
+        [_txtLevel resignFirstResponder];
+    }
+    else{
+        [_txtNextTask resignFirstResponder];
+    }
+}
+
+-(void)setBorderTextfield:(UITextField *)txtField{
+    
+    txtField.textColor = TEXT_COLOR_REPORT;
+    txtField.backgroundColor = BACKGROUND_NORMAL_COLOR1;
+    [txtField setBorderWithOption:smgSelect];
+    [txtField setPaddingLeft];
+}
 -(void)dismissPopUp
 {
     //your dimiss code here
-
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -178,13 +253,13 @@
         //
         // _txtCode.text = [NSString stringWithFormat:@"%d", [dtoOpportunityProcess getClientId]];
         
-               //Load mac dinh khi them moi
+        //Load mac dinh khi them moi
         
-//        //Kiểu cơ hội
-//        selectTypeIndex=2;
-//        NSDictionary *dataType = [listArrType objectAtIndex:selectTypeIndex];
-//        self.txtType.text = [dataType objectForKey:DTOSYSCAT_name];
-//        
+        //        //Kiểu cơ hội
+        //        selectTypeIndex=2;
+        //        NSDictionary *dataType = [listArrType objectAtIndex:selectTypeIndex];
+        //        self.txtType.text = [dataType objectForKey:DTOSYSCAT_name];
+        //
         
         
         //viec tiep theo
@@ -199,7 +274,7 @@
         NSDictionary *dataLevel = [listArrLevel objectAtIndex:selectLevelIndex];
         _txtLevel.text = [dataLevel objectForKey:DTOSYSCAT_name];
         
-      
+        
     }
     
 }
@@ -212,7 +287,7 @@
         self.fullNameLB.text = @"CHỈNH SỬA CƠ HỘI";
     }
     
-   
+    
     
     if (![StringUtil stringIsEmpty:[self.dataRoot objectForKey:DTOOPPORTUNITY_name]]) {
         _txtName.text =[self.dataRoot objectForKey:DTOOPPORTUNITY_name];
@@ -236,7 +311,7 @@
                            [df stringFromDate:startDate]];
         
     }
-
+    
     
     //viec tiep theo
     NSString *strNextTask = [self.dataRoot objectForKey:DTOOPPORTUNITY_nextTask];
@@ -257,7 +332,7 @@
         if (selectLevelIndex>=0) {
             NSDictionary *dataLevel = [listArrLevel objectAtIndex:selectLevelIndex];
             _txtLevel.text = [dataLevel objectForKey:DTOSYSCAT_name];
-                    }
+        }
     }
     
     //Description
@@ -286,15 +361,15 @@
     //    self.leftLabelHeader.textColor = TEXT_COLOR_HEADER_APP;
     
     
-//    [self.headerMainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
-//    [self.headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
-//    for (UIView *viewSubTemp in self.headerMainView.subviews) {
-//        
-//        
-//        if ([viewSubTemp isKindOfClass:[UILabel class]]) {
-//            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
-//        }
-//    }
+    //    [self.headerMainView setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
+    //    [self.headerMainView setSelectiveBorderWithColor:BORDER_COLOR withBorderWith:BORDER_WITH withBorderFlag:AUISelectiveBordersFlagBottom];
+    //    for (UIView *viewSubTemp in self.headerMainView.subviews) {
+    //
+    //
+    //        if ([viewSubTemp isKindOfClass:[UILabel class]]) {
+    //            ((UILabel*) viewSubTemp).textColor = TEXT_COLOR_REPORT_TITLE_1;
+    //        }
+    //    }
     
     
     
@@ -379,7 +454,7 @@
         [self.tbProduct reloadData];
         
     }
-
+    
     
     if (succsess && alertView.tag == 5 && buttonIndex == 0) { //thong bao dong form
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -479,7 +554,7 @@
         [ self.listPopover dismissPopoverAnimated:YES];
     }
     switch (SELECTED_TAG) {
-        
+            
         case TAG_SELECT_NEXT_JOB:{
             selectNextTaskIndex = index;
             if (index<listArrNextTask.count) {
@@ -676,7 +751,7 @@
     if(selectTypeIndex >=0){
         [dicEntity setObject:[[listArrType objectAtIndex:selectTypeIndex] objectForKey:DTOSYSCAT_value] forKey:DTOOPPORTUNITY_type];
     }
-
+    
     succsess = [dtoOpportunityProcess insertToDBWithEntity:dicEntity];
     if (succsess) {
         if(self.dataSend){
@@ -709,9 +784,13 @@
         }
         if(succsess){
             //Thong bao cap nhat thanh cong va thoat
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Cập nhật thành công, tiếp tục nhập?" delegate:self cancelButtonTitle:@"Không" otherButtonTitles:@"Có", nil];
-            alert.tag = 5;
-            [alert show];
+            if ([self currentDeviceType]==iPhone) {
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }else{
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Cập nhật thành công, tiếp tục nhập?" delegate:self cancelButtonTitle:@"Không" otherButtonTitles:@"Có", nil];
+                alert.tag = 5;
+                [alert show];
+            }
         }else{
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE") message:LocalizedString(@"KEY_ALERT_ERROR") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERT_EXIT") otherButtonTitles:nil];
             alert.tag = 6;
@@ -765,6 +844,12 @@
     if(tableView == self.tbProduct){
         return listProduct.count;
     }
+    if (tableView==tableAlert) {
+        return [[listArrLevel valueForKey:DTOSYSCAT_name]  count];
+    }
+    if (tableView==tableNextTask) {
+        return [[listArrNextTask valueForKey:DTOSYSCAT_name] count];
+    }
     return listArrCustomerFilter.count;
 }
 
@@ -794,7 +879,48 @@
         
         return cell;
     }
-
+    if (tableView==tableAlert) {
+        static NSString *CellIdentifier = @"Cell";
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        
+        // Set the data for this cell:
+        
+        cell.textLabel.text = [[listArrLevel valueForKey:DTOSYSCAT_name] objectAtIndex:indexPath.row];
+        cell.detailTextLabel.text = @"More text";
+        //cell.imageView.image = [UIImage imageNamed:@"flower.png"];
+        cell.accessoryType=UITableViewCellAccessoryCheckmark;
+        
+        // set the accessory view:
+        cell.accessoryType =  UITableViewCellAccessoryDisclosureIndicator;
+        
+        
+        return cell;
+    }
+    if (tableView==tableNextTask) {
+        static NSString *CellIdentifier = @"Cell";
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        
+        // Set the data for this cell:
+        
+        cell.textLabel.text = [[listArrNextTask valueForKey:DTOSYSCAT_name] objectAtIndex:indexPath.row];
+        cell.detailTextLabel.text = @"More text";
+        //cell.imageView.image = [UIImage imageNamed:@"flower.png"];
+        cell.accessoryType=UITableViewCellAccessoryCheckmark;
+        
+        // set the accessory view:
+        cell.accessoryType =  UITableViewCellAccessoryDisclosureIndicator;
+        
+        
+        return cell;
+    }
     
     
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
@@ -806,7 +932,20 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-   
+    if (tableView==tableAlert) {
+        NSDictionary *getData = [[listArrLevel valueForKey:DTOSYSCAT_name] objectAtIndex:indexPath.row];
+        _txtLevel.text=getData;
+        selectLevelIndex=indexPath.row;
+        [_txtLevel resignFirstResponder];
+    }
+    
+    if (tableView==tableNextTask) {
+        
+        NSDictionary *getData = [[listArrNextTask valueForKey:DTOSYSCAT_name] objectAtIndex:indexPath.row];
+        _txtNextTask.text=getData;
+        selectNextTaskIndex=indexPath.row;
+        [_txtNextTask resignFirstResponder];
+    }
 }
 
 
@@ -921,7 +1060,12 @@
 #pragma mark Phan chon san pham
 - (IBAction)actionAddProduct:(id)sender {
     EditOpportunityProductPopupViewController *viewController = [[EditOpportunityProductPopupViewController alloc]initWithNibName:@"EditOpportunityProductPopupViewController" bundle:nil];
-    viewController.view.frame = CGRectMake(154, 0, 582, 675);//435//582
+    if ([self currentDeviceType]==iPhone) {
+        viewController.view.frame = CGRectMake(0, 0, 320, 300);
+    }
+    else{
+        viewController.view.frame = CGRectMake(154, 0, 582, 675);//435//582
+    }
     if(self.dataRoot){
         viewController.dataSend = self.dataRoot;
     }
@@ -940,5 +1084,12 @@
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
     [self.tbProduct reloadData];
     
+}
+
+#pragma mark - Table view data source
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
 }
 @end

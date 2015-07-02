@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Detail360ViewController">
@@ -89,46 +89,6 @@
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ush-Dp-z29" userLabel="View-iphone">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <subviews>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W29-oU-fPz" userLabel="View-detail">
-                            <rect key="frame" x="0.0" y="60" width="320" height="459"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
-                        <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h0d-LK-04P" userLabel="View-data">
-                            <rect key="frame" x="0.0" y="60" width="320" height="459"/>
-                            <subviews>
-                                <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hvx-V5-UKt">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                    <connections>
-                                        <outlet property="delegate" destination="-1" id="oRJ-ZY-u5j"/>
-                                    </connections>
-                                </searchBar>
-                                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="jnd-u2-NKv">
-                                    <rect key="frame" x="0.0" y="44" width="320" height="415"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <connections>
-                                        <outlet property="dataSource" destination="-1" id="UJl-tc-qht"/>
-                                        <outlet property="delegate" destination="-1" id="kd1-jG-Vud"/>
-                                    </connections>
-                                </tableView>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
-                        <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t5K-h4-oOx">
-                            <rect key="frame" x="0.0" y="519" width="320" height="49"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <items>
-                                <tabBarItem title="Thông tin" image="tabbar_details.png" id="KA4-Cu-iwu" userLabel="Chi tiết"/>
-                                <tabBarItem title="Liên hệ" image="ic-contact.png" id="qbM-q6-OH3"/>
-                                <tabBarItem title="Ghi chú" image="note_tabbar.png" id="Lxe-qy-KE6"/>
-                                <tabBarItem title="Lịch" image="calendar_tabbar.png" id="AId-8z-pxM"/>
-                                <tabBarItem title="Ý kiến" image="comment_tabbar.png" id="vpu-cB-t2E"/>
-                                <tabBarItem systemItem="more" id="DtK-df-CHF"/>
-                            </items>
-                            <connections>
-                                <outlet property="delegate" destination="-1" id="AXy-FT-Y2i"/>
-                            </connections>
-                        </tabBar>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BjE-PP-9uR" userLabel="View-header">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                             <subviews>
@@ -159,6 +119,54 @@
                             </subviews>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W29-oU-fPz" userLabel="View-detail">
+                            <rect key="frame" x="0.0" y="60" width="320" height="459"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h0d-LK-04P" userLabel="View-data">
+                            <rect key="frame" x="0.0" y="60" width="320" height="459"/>
+                            <subviews>
+                                <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hvx-V5-UKt">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="oRJ-ZY-u5j"/>
+                                    </connections>
+                                </searchBar>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="jnd-u2-NKv">
+                                    <rect key="frame" x="0.0" y="44" width="320" height="415"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="UJl-tc-qht"/>
+                                        <outlet property="delegate" destination="-1" id="kd1-jG-Vud"/>
+                                    </connections>
+                                </tableView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mlS-9c-KiD" userLabel="View-complain">
+                            <rect key="frame" x="0.0" y="60" width="320" height="459"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SsN-b1-EX5" userLabel="View-product" customClass="ProductsLeadView">
+                            <rect key="frame" x="0.0" y="60" width="320" height="459"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t5K-h4-oOx">
+                            <rect key="frame" x="0.0" y="519" width="320" height="49"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <items>
+                                <tabBarItem title="Thông tin" image="tabbar_details.png" id="KA4-Cu-iwu" userLabel="Chi tiết"/>
+                                <tabBarItem title="Liên hệ" image="ic-contact.png" id="qbM-q6-OH3"/>
+                                <tabBarItem title="Ghi chú" image="note_tabbar.png" id="Lxe-qy-KE6"/>
+                                <tabBarItem title="Lịch" image="calendar_tabbar.png" id="AId-8z-pxM"/>
+                                <tabBarItem title="Ý kiến" image="comment_tabbar.png" id="vpu-cB-t2E"/>
+                                <tabBarItem systemItem="more" id="DtK-df-CHF"/>
+                            </items>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="AXy-FT-Y2i"/>
+                            </connections>
+                        </tabBar>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>

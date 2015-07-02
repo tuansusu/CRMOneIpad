@@ -56,6 +56,17 @@
 #define DELETE_COHOI 55
 #define DELETE_LEAD 66
 
+#define TAG_ACTIONSHEET_MOREINFO 123
+#define TAG_ACTIONSHEET_ADD 22
+
+#define TAG_ACTIONSHEET_MOREINFO_INDEX_TASK 0
+#define TAG_ACTIONSHEET_MOREINFO_INDEX_OPPORTUNITY 1
+#define TAG_ACTIONSHEET_MOREINFO_INDEX_PRODUCT 2
+#define TAG_ACTIONSHEET_MOREINFO_INDEX_CANCEL 3
+
+
+
+
 static NSString* const TaskCalendarNormalCellId   = @"TaskCalendarCellId";
 static NSString* const TaskCalendarTimelineCellId = @"TaskCalTLineCellId";
 static NSString* const TaskActionCellId           = @"TaskActionCellId";
@@ -706,7 +717,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         
         UIActionSheet *action=[[UIActionSheet alloc]initWithTitle:@"Menu" delegate:self cancelButtonTitle:@"Huỷ" destructiveButtonTitle:nil otherButtonTitles:LocalizedString(@"KEY_360_CONTACT"),LocalizedString(@"KEY_360_NOTE"), LocalizedString(@"KEY_360_CALENDAR")
                                , LocalizedString(@"KEY_360_NHIEMVU"), LocalizedString(@"KEY_360_COHOI"),nil];
-        action.tag=22;
+        action.tag=TAG_ACTIONSHEET_ADD;
         [action showInView:self.view];
     }
     else{
@@ -1704,66 +1715,109 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     }
     else if (indexOfTab==5){
         UIActionSheet *action=[[UIActionSheet alloc] initWithTitle:@"Chức năng" delegate:self cancelButtonTitle:@"Huỷ" destructiveButtonTitle:nil otherButtonTitles:@"Công việc",@"Cơ hội",@"Sản phẩm", nil];
-        action.tag=123;
+        action.tag=TAG_ACTIONSHEET_MOREINFO;
         [action showInView:self.view];
     }
 }
 
 -(void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if(actionSheet.tag==11){
-        if(buttonIndex==0){
+    
+    
+    switch (actionSheet.tag) {
+        case 11:
+            [self loadDataActionSheetWithButtonIndex: buttonIndex];
+            break;
+            case TAG_ACTIONSHEET_ADD:
+            [self loadFormActionSheetWithButtonIndex:buttonIndex];
+            break;
+        case TAG_ACTIONSHEET_MOREINFO:{
+            [self loadFormActionSheetMoreInfoWithButtonIndex: buttonIndex];
+        }
+            break;
             
-            _scollviewDN.hidden=YES;
-            _scrollViewBodyLeft.hidden=YES;
-            _mySearch.hidden=NO;
-            _viewData.hidden=NO;
-            _fullNameLB.text=@"CÔNG VIỆC";
-            [self loadDataWithTypeAction:typeLeaderView_Task];
-            
-        }
-        else if (buttonIndex ==1){
-            _scollviewDN.hidden=YES;
-            _scrollViewBodyLeft.hidden=YES;
-            _mySearch.hidden=NO;
-            _viewData.hidden=NO;
-            _fullNameLB.text=@"CƠ HỘI";
-            [self loadDataWithTypeAction:typeLeaderView_Opportunity];
-        }
-        else if (buttonIndex == 2){
-            _scollviewDN.hidden=YES;
-            _scrollViewBodyLeft.hidden=YES;
-            _mySearch.hidden=NO;
-            _viewData.hidden=NO;
-            _fullNameLB.text=@"SẢN PHẨM";
-            [self loadDataWithTypeAction:typeLeaderView_ProductsLead];
-        }
+        default:
+            break;
     }
-    else if(actionSheet.tag==22){
-        if(buttonIndex==0){
-            EditContact360ViewController *edit=[[EditContact360ViewController alloc]initWithNibName:@"EditContact360ViewController" bundle:nil];
-            edit.dataRoot=dicData;
-            [self presentViewController:edit animated:YES completion:nil];
+    
+    
+}
+
+-(void) loadFormActionSheetMoreInfoWithButtonIndex :(NSInteger)buttonIndex{
+    switch (buttonIndex) {
+        case TAG_ACTIONSHEET_MOREINFO_INDEX_TASK:
+            break;
+        case TAG_ACTIONSHEET_MOREINFO_INDEX_OPPORTUNITY:
+        {
+            
         }
-        else if (buttonIndex==1){
-            EditNote360ViewController *edit=[[EditNote360ViewController alloc] initWithNibName:@"EditNote360ViewController" bundle:nil];
-            [self presentViewController:edit animated:YES completion:nil];
-        }
-        else if (buttonIndex == 2){
-            EditCalendarLeadViewController *viewController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
-            [viewController setDelegate:self];
-            viewController.dataRoot = dicData;
-            viewController.isKH360 = YES;
-            [self presentViewController:viewController animated:YES completion:nil];        }
-        else if(buttonIndex == 4){
-            EditOpportunity360ViewController *edit=[[EditOpportunity360ViewController alloc] initWithNibName:@"EditOpportunity360ViewController" bundle:nil];
-            [self presentViewController:edit animated:YES completion:nil];
-        }
-        else if (buttonIndex == 3){
-            EditTask360ViewController *edit=[[EditTask360ViewController alloc] initWithNibName:@"EditTask360ViewController" bundle:nil];
-            [self presentViewController:edit animated:YES completion:nil];
-        }
+            break;
+        case TAG_ACTIONSHEET_MOREINFO_INDEX_PRODUCT:
+            break;
+        default:
+            break;
     }
 }
+
+
+//Ham load du lieu du theo buttonIndex
+-(void) loadDataActionSheetWithButtonIndex :(NSInteger)buttonIndex{
+    
+    if(buttonIndex==0){
+        
+        _scollviewDN.hidden=YES;
+        _scrollViewBodyLeft.hidden=YES;
+        _mySearch.hidden=NO;
+        _viewData.hidden=NO;
+        _fullNameLB.text=@"CÔNG VIỆC";
+        [self loadDataWithTypeAction:typeLeaderView_Task];
+        
+    }
+    else if (buttonIndex ==1){
+        _scollviewDN.hidden=YES;
+        _scrollViewBodyLeft.hidden=YES;
+        _mySearch.hidden=NO;
+        _viewData.hidden=NO;
+        _fullNameLB.text=@"CƠ HỘI";
+        [self loadDataWithTypeAction:typeLeaderView_Opportunity];
+    }
+    else if (buttonIndex == 2){
+        _scollviewDN.hidden=YES;
+        _scrollViewBodyLeft.hidden=YES;
+        _mySearch.hidden=NO;
+        _viewData.hidden=NO;
+        _fullNameLB.text=@"SẢN PHẨM";
+        [self loadDataWithTypeAction:typeLeaderView_ProductsLead];
+    }
+    
+}
+
+
+-(void) loadFormActionSheetWithButtonIndex :(NSInteger)buttonIndex{
+    if(buttonIndex==0){
+        EditContact360ViewController *edit=[[EditContact360ViewController alloc]initWithNibName:@"EditContact360ViewController" bundle:nil];
+        edit.dataRoot=dicData;
+        [self presentViewController:edit animated:YES completion:nil];
+    }
+    else if (buttonIndex==1){
+        EditNote360ViewController *edit=[[EditNote360ViewController alloc] initWithNibName:@"EditNote360ViewController" bundle:nil];
+        [self presentViewController:edit animated:YES completion:nil];
+    }
+    else if (buttonIndex == 2){
+        EditCalendarLeadViewController *viewController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
+        [viewController setDelegate:self];
+        viewController.dataRoot = dicData;
+        viewController.isKH360 = YES;
+        [self presentViewController:viewController animated:YES completion:nil];        }
+    else if(buttonIndex == 4){
+        EditOpportunity360ViewController *edit=[[EditOpportunity360ViewController alloc] initWithNibName:@"EditOpportunity360ViewController" bundle:nil];
+        [self presentViewController:edit animated:YES completion:nil];
+    }
+    else if (buttonIndex == 3){
+        EditTask360ViewController *edit=[[EditTask360ViewController alloc] initWithNibName:@"EditTask360ViewController" bundle:nil];
+        [self presentViewController:edit animated:YES completion:nil];
+    }
+}
+
 ///search cac thong tin lien quan toi khach hang
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     

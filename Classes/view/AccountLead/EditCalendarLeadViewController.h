@@ -7,10 +7,12 @@
 //
 
 #import "BaseViewController.h"
+#import "MJDetailViewController.h"
+#import "UIViewController+MJPopupViewController.h"
 
 @class EditCalendarLeadViewController;
 
-@protocol EditCalendarLeadViewControllerDelegate <NSObject>
+@protocol EditCalendarLeadViewControllerDelegate <NSObject,UITableViewDataSource,UITableViewDelegate>
 
 @optional
 - (void)reloadListCalendarTask;

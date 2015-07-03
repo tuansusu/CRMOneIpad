@@ -12,7 +12,6 @@
 @protocol AlarmCalendarViewDelegate;
 
 @interface AlarmCalendarViewController : UIViewController
-
 @property (nonatomic, assign) id <AlarmCalendarViewDelegate> delegate;
 @property (nonatomic, strong) AlarmCalendarConfig *config;
 @end

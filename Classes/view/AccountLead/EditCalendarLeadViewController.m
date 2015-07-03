@@ -167,6 +167,11 @@
     AlarmCalendarConfig * _alarmConfig;
     RepeatCalendarConfig * _repeatConfig;
     Util *util;
+    
+    UIDatePicker *datePicker, *timePicker;
+    UIToolbar *toolBar;
+    NSDateFormatter *df, *dfTime;
+    UITableView *tableAlert;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -184,6 +189,12 @@
     if ([UIDevice getCurrentSysVer] >= 7.0) {
         [UIDevice updateLayoutInIOs7OrAfter:self];
     }
+    
+    df = [[NSDateFormatter alloc] init];
+   	[df setDateFormat:@"dd/MM/yyyy"];
+    dfTime = [[NSDateFormatter alloc] init];
+    [dfTime setDateFormat:@"HH:mm"];
+    
     util = [Util new];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
@@ -223,6 +234,41 @@
         [self setBorderTextfield:_txtTimeTo];
         [self setBorderTextfield:_txtTypeObject];
         _txtName.inputView=_viewRepeat;
+        _txtLocation.enabled=YES;
+        
+        //show date
+        datePicker = [[UIDatePicker alloc] init];
+        
+        datePicker.datePickerMode = UIDatePickerModeDate;
+        datePicker.backgroundColor=[UIColor whiteColor];
+        [_txtDateFrom setInputView:datePicker];
+        [_txtDateTo setInputView:datePicker];
+        
+        timePicker  = [[UIDatePicker alloc] init];
+        timePicker.datePickerMode=UIDatePickerModeTime;
+        timePicker.backgroundColor=[UIColor whiteColor];
+        [_txtTimeFrom setInputView:timePicker];
+        [_txtTimeTo setInputView:timePicker];
+        
+        tableAlert = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 250, 230)];
+        tableAlert.delegate=self;
+        tableAlert.dataSource=self;
+        [tableAlert reloadData];
+        [_txtStatus setInputView:tableAlert];
+        toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+        toolBar.backgroundColor=HEADER_VIEW_COLOR1;
+        UIBarButtonItem *doneBtn;
+        UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        
+        doneBtn = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(setSelectedDate)];
+        
+        [toolBar setItems:[NSArray arrayWithObjects:space,doneBtn, nil]];
+        [_txtDateFrom setInputAccessoryView:toolBar];
+        [_txtDateTo setInputAccessoryView:toolBar];
+        [_txtStatus setInputAccessoryView:toolBar];
+        [_txtTimeFrom setInputAccessoryView:toolBar];
+        [_txtTimeTo setInputAccessoryView:toolBar];
+        
     }
 }
 -(void)setBorderTextfield:(UITextField *)txtField{
@@ -232,6 +278,37 @@
     [txtField setBorderWithOption:smgSelect];
     [txtField setPaddingLeft];
 }
+
+//For iPhone only
+-(void) setSelectedDate{
+    NSDate *date = datePicker.date;
+    if([_txtDateFrom isFirstResponder]){
+        [_txtDateFrom resignFirstResponder];
+        _txtDateFrom.text = [NSString stringWithFormat:@"%@",
+                             [df stringFromDate:date]];
+    }
+    else if([_txtDateTo isFirstResponder]){
+        [_txtDateTo resignFirstResponder];
+        _txtDateTo.text = [NSString stringWithFormat:@"%@",
+                           [df stringFromDate:date]];
+    }
+    else if([_txtTimeFrom isFirstResponder]){
+        [_txtTimeFrom resignFirstResponder];
+        _txtTimeFrom.text=[NSString stringWithFormat:@"%@",[dfTime stringFromDate:date]];
+    }
+    else if ([_txtTimeTo isFirstResponder]){
+        
+        [_txtTimeTo resignFirstResponder];
+        _txtTimeTo.text = [NSString stringWithFormat:@"%@",[dfTime stringFromDate:date]];
+    }
+    else{
+        [_txtStatus resignFirstResponder];
+        _txtStatus.text = [NSString stringWithFormat:@"%@",
+                           [df stringFromDate:date]];
+        
+    }
+}
+
 -(void) renderControl {
     
     AMRatingControl *coloredRatingControl = [[AMRatingControl alloc] initWithLocation:CGPointMake(0, 0)
@@ -557,12 +634,8 @@
         _listPopover.popoverContentSize = detail.view.frame.size;
         [_listPopover presentPopoverFromRect:_txtRepeat.frame inView:_viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }else{
-        UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:detail];
-        _listPopover = [[UIPopoverController alloc] initWithContentViewController:nav];
-        _listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-        _listPopover.popoverContentSize = detail.view.frame.size;
-        [_listPopover presentPopoverFromRect:_txtRepeat.frame inView:_viewScroll permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-        //[self presentViewController:detail animated:YES completion:nil];
+        detail.view.frame=CGRectMake(0, 100, 320, 420);
+        [self presentPopupViewController:detail animationType:nil];
     }
 }
 
@@ -571,12 +644,18 @@
     AlarmCalendarViewController * detail = [[AlarmCalendarViewController alloc] init];
     detail.delegate = self;
     detail.config = _alarmConfig;
-    _listPopover = [[UIPopoverController alloc] initWithContentViewController:detail];
-    _listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-    _listPopover.popoverContentSize = detail.view.frame.size;
-    [_listPopover presentPopoverFromRect:_txtAlarm.frame inView:_viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    if ([self currentDeviceType]==iPhone) {
+        detail.view.frame=CGRectMake(0, 100, 320, 438);
+        [self presentPopupViewController:detail animationType:nil];
+    }
+    else{
+        
+        _listPopover = [[UIPopoverController alloc] initWithContentViewController:detail];
+        _listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
+        _listPopover.popoverContentSize = detail.view.frame.size;
+        [_listPopover presentPopoverFromRect:_txtAlarm.frame inView:_viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
 }
-
 #pragma mark - CalendarSelectDatePickerDelegate
 
 -(void) selectDatePickerWithDate:(NSDate *)date
@@ -602,8 +681,13 @@
 }
 -(void) dismissPopoverView
 {
-    if ([_listPopover isPopoverVisible])
-        [_listPopover dismissPopoverAnimated:YES];
+    if ([self currentDeviceType]==iPhone) {
+        [self dismissPopupViewControllerWithanimationType:nil];
+    }
+    else{
+        if ([_listPopover isPopoverVisible])
+            [_listPopover dismissPopoverAnimated:YES];
+    }
 }
 
 #pragma mark - Delete
@@ -1024,6 +1108,58 @@
         }
     }
     [self dismissPopoverView];
+}
+
+#pragma mark - Table view data source
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    return [[statusArray valueForKey:DTOSYSCAT_name]  count];
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    // Set the data for this cell:
+    
+    cell.textLabel.text = [[statusArray valueForKey:DTOSYSCAT_name] objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = @"More text";
+    //cell.imageView.image = [UIImage imageNamed:@"flower.png"];
+    cell.accessoryType=UITableViewCellAccessoryCheckmark;
+    
+    // set the accessory view:
+    cell.accessoryType =  UITableViewCellAccessoryDisclosureIndicator;
+    
+    
+    return cell;
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //    NSIndexPath* selection = [tableView indexPathForSelectedRow];
+    //    if (selection){
+    //
+    //        [tableView deselectRowAtIndexPath:selection animated:YES];
+    //    }
+    //
+    NSDictionary *getData = [[statusArray valueForKey:DTOSYSCAT_name] objectAtIndex:indexPath.row];
+    _txtStatus.text=getData;
+    selectStatusIndex = indexPath.row;
+    [_txtStatus resignFirstResponder];
+    
 }
 
 @end

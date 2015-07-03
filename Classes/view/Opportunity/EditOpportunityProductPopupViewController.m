@@ -106,7 +106,7 @@
         [tableAlert reloadData];
         [_txtCurrency setInputView:tableAlert];
         toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
-        toolBar.tintColor=HEADER_VIEW_COLOR1;
+        toolBar.backgroundColor=HEADER_VIEW_COLOR1;
         UIBarButtonItem *doneBtn;
         UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         

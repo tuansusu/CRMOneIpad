@@ -125,7 +125,7 @@
         self.datePicker = [[UIDatePicker alloc] init];
         
         self.datePicker.datePickerMode = UIDatePickerModeDate;
-        self.datePicker.tintColor=[UIColor whiteColor];
+        self.datePicker.backgroundColor=[UIColor whiteColor];
         [self.txtDateOfBirth setInputView:self.datePicker];
         //show select
         tableAlert = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 250, 230)];
@@ -134,7 +134,7 @@
         [tableAlert reloadData];
         [self.txtPersonPosition setInputView:tableAlert];
         toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-        toolBar.tintColor=HEADER_VIEW_COLOR1;
+        toolBar.backgroundColor=HEADER_VIEW_COLOR1;
         UIBarButtonItem *doneBtn;
         UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         

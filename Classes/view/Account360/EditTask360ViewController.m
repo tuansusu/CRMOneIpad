@@ -135,13 +135,13 @@
         datePicker = [[UIDatePicker alloc] init];
         
         datePicker.datePickerMode = UIDatePickerModeDate;
-        datePicker.tintColor=[UIColor whiteColor];
+        datePicker.backgroundColor=[UIColor whiteColor];
         [_txtDateFrom setInputView:datePicker];
         [_txtDateTo setInputView:datePicker];
         
         timePicker =[[UIDatePicker alloc] init];
         timePicker.datePickerMode=UIDatePickerModeTime;
-        timePicker.tintColor=[UIColor whiteColor];
+        timePicker.backgroundColor=[UIColor whiteColor];
         [_txtTimeFrom setInputView:timePicker];
         [_txtTimeTo setInputView:timePicker];
         
@@ -151,7 +151,7 @@
         [tableAlert reloadData];
         [_txtStatus setInputView:tableAlert];
         toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
-        toolBar.tintColor=HEADER_VIEW_COLOR1;
+        toolBar.backgroundColor=HEADER_VIEW_COLOR1;
         UIBarButtonItem *doneBtn;
         UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         

@@ -8,6 +8,7 @@
 
 #import "AlarmCalendarViewController.h"
 #import "VTRadio.h"
+#import "EnumClass.h"
 
 @interface AlarmCalendarViewController ()
 <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
@@ -67,14 +68,14 @@ typedef enum {
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (IBAction)onOffSwitchChanged:(UISegmentedControl *)sender
 {
@@ -97,12 +98,12 @@ typedef enum {
     if (sender == _dayDDBtn)
     {
         pickerType = pickerType_day;
-
+        
     }
     else if (sender == _hourDDBtn)
     {
         pickerType = pickerType_hour;
-
+        
     }
     else if (sender == _minuteDDBtn)
     {
@@ -129,12 +130,13 @@ typedef enum {
         [_delegate respondsToSelector:@selector(dismissPopoverView)])
     {
         [_delegate alarmCalendarView:self confirmConfig:_config];
-//        [_delegate dismissPopoverView];
+        //        [_delegate dismissPopoverView];
     }
 }
 
 - (IBAction)cancelBtnPressed:(id)sender
 {
+    
     if (_delegate &&
         [_delegate respondsToSelector:@selector(dismissPopoverView)])
     {
@@ -165,7 +167,7 @@ typedef enum {
     _hourDDBtn.enabled   = configEnable;
     _minuteTF.enabled    = configEnable;
     _minuteDDBtn.enabled = configEnable;
-
+    
     _emailSwitch.enabled = configEnable;
     _smsSwitch.enabled   = configEnable;
     _notifSwitch.enabled = configEnable;

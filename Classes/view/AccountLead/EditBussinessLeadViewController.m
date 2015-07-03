@@ -90,7 +90,7 @@
         datePicker = [[UIDatePicker alloc] init];
         
         datePicker.datePickerMode = UIDatePickerModeDate;
-        datePicker.tintColor=[UIColor whiteColor];
+        datePicker.backgroundColor=[UIColor whiteColor];
         [self.txtNgayTL setInputView:datePicker];
         //show select
         tableAlert = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 250, 230)];
@@ -100,7 +100,7 @@
         [tableAlert reloadData];
         [self.txtSysCatType setInputView:tableAlert];
         toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-        toolBar.tintColor=HEADER_VIEW_COLOR1;
+        toolBar.backgroundColor=HEADER_VIEW_COLOR1;
         UIBarButtonItem *doneBtn;
         UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         

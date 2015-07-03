@@ -73,6 +73,7 @@
 "KEY_SEARCH" = "Tìm kiếm";
 "KEY_TOTAL" = "Tổng số";
 "KEY_ADDNEW" = "Thêm mới";
+"KEY_FUNCTION" = "Chức năng";
 
 //stop task
 "KEY_STOP_TASK_TITLE" = "XÁC NHẬN LÝ DO DỪNG CÔNG VIỆC";

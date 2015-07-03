@@ -1679,27 +1679,27 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             
         }
         _viewData.hidden=YES;
-        _fullNameLB.text=@"KHÁCH HÀNG 360";
+        _fullNameLB.text=LocalizedString(@"KEY_LIST_360_TITLE");
     }
     else if(indexOfTab==1){
         _scrollviewCN.hidden=YES;
         _scrollviewDN.hidden=YES;
         _viewData.hidden=NO;
-        _fullNameLB.text=@"LIÊN HỆ";
+        _fullNameLB.text=LocalizedString(@"KEY_360_CONTACT");
         [self loadDataWithTypeAction:typeLeaderView_Contact];
     }
     else if(indexOfTab==2){
         _scrollviewCN.hidden=YES;
         _scrollviewDN.hidden=YES;
         _viewData.hidden=NO;
-        _fullNameLB.text=@"GHI CHÚ";
+        _fullNameLB.text=LocalizedString(@"KEY_360_NOTE");
         [self loadDataWithTypeAction:typeLeaderView_Note];
     }
     else if(indexOfTab==3){
         _scrollviewCN.hidden=YES;
         _scrollviewDN.hidden=YES;
         _viewData.hidden=NO;
-        _fullNameLB.text=@"LỊCH";
+        _fullNameLB.text=LocalizedString(@"KEY_360_CALENDAR");
         if (typeActionEvent == typeLeaderView_Calendar)
         {
             calendarIsTimeline = !calendarIsTimeline;
@@ -1710,11 +1710,11 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         _scrollviewCN.hidden=YES;
         _scrollviewDN.hidden=YES;
         _viewData.hidden=NO;
-        _fullNameLB.text=@"Ý KIẾN";
+        _fullNameLB.text=LocalizedString(@"KEY_360_YKIEN");
         [self loadDataWithTypeAction:typeLeaderView_Complains];
     }
     else if (indexOfTab==5){
-        UIActionSheet *action=[[UIActionSheet alloc] initWithTitle:@"Chức năng" delegate:self cancelButtonTitle:@"Huỷ" destructiveButtonTitle:nil otherButtonTitles:@"Công việc",@"Cơ hội",@"Sản phẩm", nil];
+        UIActionSheet *action=[[UIActionSheet alloc] initWithTitle:LocalizedString(@"KEY_FUNCTION") delegate:self cancelButtonTitle:LocalizedString(@"KEY_CANCEL") destructiveButtonTitle:nil otherButtonTitles:LocalizedString(@"KEY_360_NHIEMVU"),LocalizedString(@"KEY_360_COHOI"),LocalizedString(@"KEY_360_SPDV"), nil];
         action.tag=TAG_ACTIONSHEET_MOREINFO;
         [action showInView:self.view];
     }
@@ -1741,7 +1741,6 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     
 }
-
 -(void) loadFormActionSheetMoreInfoWithButtonIndex :(NSInteger)buttonIndex{
     switch (buttonIndex) {
         case TAG_ACTIONSHEET_MOREINFO_INDEX_TASK:
@@ -1751,7 +1750,10 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             
         }
             break;
-        case TAG_ACTIONSHEET_MOREINFO_INDEX_PRODUCT:
+        case TAG_ACTIONSHEET_MOREINFO_INDEX_PRODUCT:{
+            _fullNameLB.text=LocalizedString(@"KEY_360_SPDV");
+            [self loadDataWithTypeAction:typeLeaderView_ProductsLead];
+        }
             break;
         default:
             break;
@@ -1768,7 +1770,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         _scrollViewBodyLeft.hidden=YES;
         _mySearch.hidden=NO;
         _viewData.hidden=NO;
-        _fullNameLB.text=@"CÔNG VIỆC";
+        _fullNameLB.text=LocalizedString(@"KEY_360_NHIEMVU");
         [self loadDataWithTypeAction:typeLeaderView_Task];
         
     }
@@ -1777,7 +1779,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         _scrollViewBodyLeft.hidden=YES;
         _mySearch.hidden=NO;
         _viewData.hidden=NO;
-        _fullNameLB.text=@"CƠ HỘI";
+        _fullNameLB.text=LocalizedString(@"KEY_360_COHOI");
         [self loadDataWithTypeAction:typeLeaderView_Opportunity];
     }
     else if (buttonIndex == 2){
@@ -1785,7 +1787,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         _scrollViewBodyLeft.hidden=YES;
         _mySearch.hidden=NO;
         _viewData.hidden=NO;
-        _fullNameLB.text=@"SẢN PHẨM";
+        _fullNameLB.text=LocalizedString(@"KEY_360_SPDV");
         [self loadDataWithTypeAction:typeLeaderView_ProductsLead];
     }
     

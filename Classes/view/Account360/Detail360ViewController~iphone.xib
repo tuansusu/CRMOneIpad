@@ -77,8 +77,10 @@
                 <outlet property="tinhthanhphoCN" destination="mFW-GV-6xA" id="6Sb-Nk-Vff"/>
                 <outlet property="tinhthanhphoDN" destination="Yf6-Sn-ydX" id="8VC-o2-yDD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewBodyExpandInfo" destination="T3Q-YV-Vh0" id="sIE-hc-UBz"/>
                 <outlet property="viewData" destination="h0d-LK-04P" id="ggo-kL-dN5"/>
                 <outlet property="viewDetailIP" destination="W29-oU-fPz" id="Q9P-4P-eRm"/>
+                <outlet property="viewProductsLead" destination="SsN-b1-EX5" id="Cjc-fq-B9C"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -93,7 +95,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="KHÁCH HÀNG TIỀM NĂNG (CN)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m7E-du-AjE">
-                                    <rect key="frame" x="38" y="22" width="162" height="30"/>
+                                    <rect key="frame" x="38" y="22" width="229" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -144,12 +146,31 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mlS-9c-KiD" userLabel="View-complain">
-                            <rect key="frame" x="0.0" y="60" width="320" height="459"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SsN-b1-EX5" userLabel="View-product" customClass="ProductsLeadView">
-                            <rect key="frame" x="0.0" y="60" width="320" height="459"/>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T3Q-YV-Vh0" userLabel="View-body Expand info">
+                            <rect key="frame" x="0.0" y="55" width="320" height="459"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mlS-9c-KiD" userLabel="View-complain">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="459"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SsN-b1-EX5" userLabel="View-product" customClass="ProductsLeadView">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="459"/>
+                                    <subviews>
+                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="daB-dc-E3v">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="459"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <outlet property="dataSource" destination="SsN-b1-EX5" id="g0x-TK-Uml"/>
+                                                <outlet property="delegate" destination="SsN-b1-EX5" id="nlt-4q-Rff"/>
+                                            </connections>
+                                        </tableView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <connections>
+                                        <outlet property="tbvProductsLead" destination="daB-dc-E3v" id="CiF-X9-roY"/>
+                                    </connections>
+                                </view>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t5K-h4-oOx">

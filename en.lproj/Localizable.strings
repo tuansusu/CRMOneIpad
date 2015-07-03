@@ -48,6 +48,7 @@
 "KEY_CANCEL" = "Cancel";
 "KEY_SEARCH" = "Search";
 "KEY_TOTAL" = "Total";
+"KEY_FUNCTION" = "Function";
 
 //stop task
 "KEY_STOP_TASK_TITLE" = "Confirm reason stop task";

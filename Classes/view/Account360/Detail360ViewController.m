@@ -177,6 +177,11 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     if([self currentDeviceType]==iPhone)
     {
+        [[_myTabbar.items objectAtIndex:0] setTitle:LocalizedString(@"KEY_DETAIL")];
+        [[_myTabbar.items objectAtIndex:1] setTitle:LocalizedString(@"KEY_360_CONTACT")];
+        [[_myTabbar.items objectAtIndex:2] setTitle:LocalizedString(@"KEY_360_NOTE")];
+        [[_myTabbar.items objectAtIndex:3] setTitle:LocalizedString(@"KEY_360_CALENDAR")];
+        [[_myTabbar.items objectAtIndex:4] setTitle:LocalizedString(@"KEY_360_YKIEN")];
         [_myTabbar setSelectedItem:0];
         //self.mySearch.barTintColor = HEADER_VIEW_COLOR1;
         self.myTabbar.barTintColor=[UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:1.0];
@@ -895,6 +900,13 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
                 return  100.0f;
             }
             break;
+        case type360View_ProductsLead:
+            if ([self currentDeviceType]==iPhone) {
+                return  40.0f;
+            }
+            else{
+                return  100.0f;
+            }
         default:
             break;
     }

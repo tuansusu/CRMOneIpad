@@ -12,6 +12,7 @@
 
 #import "DTOACCOUNTProcess.h"
 #import "DTOProductDetailObject.h"
+#import "EnumClass.h"
 
 @interface ProBaoLanhDetailViewController ()
 {
@@ -37,6 +38,7 @@
     IBOutlet UILabel *lblDienGiai;
     IBOutlet UILabel *lblRM;
     IBOutlet UILabel *lblChiNhanhPhatHanh;
+    IBOutlet UIScrollView *scrollview;
 
     DTOProBaoLanhDetailProcess *dtoProBaoLanhDetailProcess;
 }
@@ -82,7 +84,7 @@
     _fullNameLB.text = TITLE_PRODUCT_DETAIL_BAO_LANH;
     [self updateInterFaceWithOption:smgSelect];
     dtoProBaoLanhDetailProcess = [DTOProBaoLanhDetailProcess new];
-
+    [scrollview setContentSize:CGSizeMake(320, scrollview.frame.size.height + 200)];
     if (_dtoProductDetailObject) {
         NSMutableArray *resultArr = [dtoProBaoLanhDetailProcess filterProductDetailWithClientId:_dtoProductDetailObject.clientId WithProductCode:_dtoProductDetailObject.productCode];
         if (resultArr.count>0) {

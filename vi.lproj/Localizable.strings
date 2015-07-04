@@ -69,6 +69,7 @@
 "KEY_NO"="Không";
 "KEY_UPDATE" = "Cập nhật";
 "KEY_CANCEL" = "Hủy";
+"KEY_DETAIL" = "THÔNG TIN";
 "KEY_SAVE" = "Lưu";
 "KEY_SEARCH" = "Tìm kiếm";
 "KEY_TOTAL" = "Tổng số";
@@ -117,9 +118,9 @@
 "KEY_360_CONTACT"="LIÊN HỆ";
 "KEY_360_NOTE"="GHI CHÚ";
 "KEY_360_CALENDAR"="LỊCH";
-"KEY_360_NHIEMVU"="NHIỆM VỤ";
+"KEY_360_NHIEMVU"="CÔNG VIỆC";
 "KEY_360_COHOI"="CƠ HỘI";
-"KEY_360_YKIEN"="Ý KIẾN PHẢN HỒI";
+"KEY_360_YKIEN"="Ý KIẾN";
 "KEY_360_SPDV"="SẢN PHẨM DỊCH VỤ";
 "KEY_360_CODE"="Mã khách hàng";
 "KEY_360_NAME"="Tên khách hàng";

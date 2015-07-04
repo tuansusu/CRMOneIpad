@@ -41,6 +41,10 @@
 		171D91991AB8741A005AB422 /* calendar_tabbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 171D91961AB8741A005AB422 /* calendar_tabbar.png */; };
 		171D919A1AB8741A005AB422 /* comment_tabbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 171D91971AB8741A005AB422 /* comment_tabbar.png */; };
 		171D919B1AB8741A005AB422 /* note_tabbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 171D91981AB8741A005AB422 /* note_tabbar.png */; };
+		17246E291B478017002424A0 /* ProductLeadViewCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17246E271B478017002424A0 /* ProductLeadViewCell~iphone.xib */; };
+		17246E331B4785EC002424A0 /* ProductLeadCellHeader~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17246E321B4785EC002424A0 /* ProductLeadCellHeader~iphone.xib */; };
+		17246E381B478869002424A0 /* ProBankPlusDetailViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17246E361B478869002424A0 /* ProBankPlusDetailViewController~iphone.xib */; };
+		17246E3D1B47904E002424A0 /* ProBaoLanhDetailViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17246E3B1B47904E002424A0 /* ProBaoLanhDetailViewController~iphone.xib */; };
 		172CE5531A8480530023F52F /* UIMenuItem+CXAImageSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 172CE5521A8480530023F52F /* UIMenuItem+CXAImageSupport.m */; };
 		172EFAEC1ACB016E00C70E9C /* Back_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 172EFAEB1ACB016E00C70E9C /* Back_32.png */; };
 		172EFC8B1ACB051800C70E9C /* select.png in Resources */ = {isa = PBXBuildFile; fileRef = 172EFC8A1ACB051800C70E9C /* select.png */; };
@@ -1234,6 +1238,10 @@
 		171D91961AB8741A005AB422 /* calendar_tabbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = calendar_tabbar.png; path = VofficeImage/calendar_tabbar.png; sourceTree = "<group>"; };
 		171D91971AB8741A005AB422 /* comment_tabbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = comment_tabbar.png; path = VofficeImage/comment_tabbar.png; sourceTree = "<group>"; };
 		171D91981AB8741A005AB422 /* note_tabbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = note_tabbar.png; path = VofficeImage/note_tabbar.png; sourceTree = "<group>"; };
+		17246E271B478017002424A0 /* ProductLeadViewCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ProductLeadViewCell~iphone.xib"; sourceTree = "<group>"; };
+		17246E321B4785EC002424A0 /* ProductLeadCellHeader~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ProductLeadCellHeader~iphone.xib"; sourceTree = "<group>"; };
+		17246E361B478869002424A0 /* ProBankPlusDetailViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ProBankPlusDetailViewController~iphone.xib"; sourceTree = "<group>"; };
+		17246E3B1B47904E002424A0 /* ProBaoLanhDetailViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ProBaoLanhDetailViewController~iphone.xib"; sourceTree = "<group>"; };
 		172CE5511A8480530023F52F /* UIMenuItem+CXAImageSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIMenuItem+CXAImageSupport.h"; sourceTree = "<group>"; };
 		172CE5521A8480530023F52F /* UIMenuItem+CXAImageSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIMenuItem+CXAImageSupport.m"; sourceTree = "<group>"; };
 		172EFAEB1ACB016E00C70E9C /* Back_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Back_32.png; sourceTree = "<group>"; };
@@ -5072,12 +5080,14 @@
 		8E44BBF91A73A89B00EDCD1A /* ProductsLeadCell */ = {
 			isa = PBXGroup;
 			children = (
+				17246E321B4785EC002424A0 /* ProductLeadCellHeader~iphone.xib */,
 				8E44BBFA1A73A89B00EDCD1A /* ProductLeadCellHeader.h */,
 				8E44BBFB1A73A89B00EDCD1A /* ProductLeadCellHeader.m */,
 				8E44BBFC1A73A89B00EDCD1A /* ProductLeadCellHeader.xib */,
 				8E44BBFD1A73A89B00EDCD1A /* ProductLeadViewCell.h */,
 				8E44BBFE1A73A89B00EDCD1A /* ProductLeadViewCell.m */,
 				8E44BBFF1A73A89B00EDCD1A /* ProductLeadViewCell.xib */,
+				17246E271B478017002424A0 /* ProductLeadViewCell~iphone.xib */,
 			);
 			path = ProductsLeadCell;
 			sourceTree = "<group>";
@@ -5103,6 +5113,7 @@
 				8E44BC041A73A89B00EDCD1A /* ProBankPlusDetailViewController.h */,
 				8E44BC051A73A89B00EDCD1A /* ProBankPlusDetailViewController.m */,
 				8E44BC061A73A89B00EDCD1A /* ProBankPlusDetailViewController.xib */,
+				17246E361B478869002424A0 /* ProBankPlusDetailViewController~iphone.xib */,
 			);
 			path = ProBankPlusDetail;
 			sourceTree = "<group>";
@@ -5113,6 +5124,7 @@
 				8E44BC081A73A89B00EDCD1A /* ProBaoLanhDetailViewController.h */,
 				8E44BC091A73A89B00EDCD1A /* ProBaoLanhDetailViewController.m */,
 				8E44BC0A1A73A89B00EDCD1A /* ProBaoLanhDetailViewController.xib */,
+				17246E3B1B47904E002424A0 /* ProBaoLanhDetailViewController~iphone.xib */,
 			);
 			path = ProBaoLanhDetail;
 			sourceTree = "<group>";
@@ -6528,6 +6540,7 @@
 				764430661A7000CC007741BA /* menu_calendar.png in Resources */,
 				8497BFC61A295A2300A5ED3C /* glow-marker.png in Resources */,
 				B3157888188D5E5200C0ED01 /* ic-work-fw-group-2-1.png in Resources */,
+				17246E331B4785EC002424A0 /* ProductLeadCellHeader~iphone.xib in Resources */,
 				2D6D76791876726A0051AD9E /* icon_read-1.png in Resources */,
 				8496FB281A2DE34200F4A641 /* ContactLeadCell.xib in Resources */,
 				B315788C188D5E5200C0ED01 /* ic-work-order-group-2-1.png in Resources */,
@@ -6620,6 +6633,7 @@
 				7657E8B41A5AEB3A008A62F9 /* Account360Cell.xib in Resources */,
 				849794631A1FA90000ACC568 /* email_icon_hide.png in Resources */,
 				B39DD45F18A9FFF200FFA8EB /* bg-pdf-reader-1.png in Resources */,
+				17246E3D1B47904E002424A0 /* ProBaoLanhDetailViewController~iphone.xib in Resources */,
 				8497BFED1A295A2300A5ED3C /* step7@2x.png in Resources */,
 				8495DDCF1A30A10A00C4E922 /* ListAccountViewController.xib in Resources */,
 				94BA8D781A2DF3710082AE9E /* EditOpportunityViewController.xib in Resources */,
@@ -6878,6 +6892,7 @@
 				7657E8C61A5AEB3A008A62F9 /* Note360Cell.xib in Resources */,
 				B3A066ED17D1AB8200BA6487 /* icon_up.png in Resources */,
 				76C964511A17731900029978 /* monotone_location_pin_marker.png in Resources */,
+				17246E291B478017002424A0 /* ProductLeadViewCell~iphone.xib in Resources */,
 				843BF0BA1A03EC3200EA1D8A /* ListOpportunityViewController.xib in Resources */,
 				8497BFD01A295A2300A5ED3C /* sdkdemos_icon-72@2x.png in Resources */,
 				8497BFEC1A295A2300A5ED3C /* step7.png in Resources */,
@@ -7021,6 +7036,7 @@
 				7657E8B21A5AEB3A008A62F9 /* EditContact360ViewController.xib in Resources */,
 				76D29ABB1A110F8D004B9CF6 /* CompetionorCell.xib in Resources */,
 				76601A3C194BE90F001D4C01 /* Cancel-PDF.png in Resources */,
+				17246E381B478869002424A0 /* ProBankPlusDetailViewController~iphone.xib in Resources */,
 				2DE2D25C1829060700034877 /* btn-bg-2.png in Resources */,
 				8EC4B90E1A505A7D0078BF13 /* DirectionsViewCell.xib in Resources */,
 				B3157896188D5E5200C0ED01 /* del-btn-2-1.png in Resources */,

@@ -1577,15 +1577,15 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             //NSLog(@"Cancelled");
             break;
         case MFMailComposeResultSaved:
-            //NSLog(@"Saved");
+            //NSLog(@"Saved");LocalizedString(@"KEY_DETAIL")
             break;
         case MFMailComposeResultSent:
         {
             UIAlertView *alert = [[UIAlertView alloc] init];
-            [alert setTitle:@"Gửi email thành công!"];
+            [alert setTitle:LocalizedString(@"KEY_SENDMAIL_SUCCESS")];
             [alert setMessage:nil];
             [alert setDelegate:self];
-            [alert addButtonWithTitle:@"Thoát"];
+            [alert addButtonWithTitle:LocalizedString(@"KEY_ALERT_EXIT")]; //
             
             [alert show];
             
@@ -1594,10 +1594,10 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         case MFMailComposeResultFailed:
         {
             UIAlertView *alert = [[UIAlertView alloc] init];
-            [alert setTitle:@"Không gửi được email!"];
+            [alert setTitle:LocalizedString(@"KEY_SENDMAIL_ERROR")];
             [alert setMessage:nil];
             [alert setDelegate:self];
-            [alert addButtonWithTitle:@"Thoát"];
+            [alert addButtonWithTitle:LocalizedString(@"KEY_ALERT_EXIT")];
             
             [alert show];
             

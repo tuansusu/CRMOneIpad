@@ -31,6 +31,7 @@
 "MENU_GROUP_SYSTEM" = "     HỆ THỐNG";
 "MENU_FUNCTION_SYNC" = "           Đồng bộ";
 "MENU_FUNCTION_CANCEL" = "           Thoát";
+"MENU_FUNCTION_ADDNEW" = "           Thêm mới";
 //menu actiosheet list
 "MENU_ACTIONSHEET_TITLE"="THAO TÁC";
 "MENU_ACTIONSHEET_VIEW"="Xem chi tiết";
@@ -407,5 +408,8 @@
 "KEY_CALENDAR_FRI"="T6";
 "KEY_CALENDAR_SAT"="T7";
 
+//GỬI MAIL
+"KEY_SENDMAIL_SUCCESS"="Gửi email thành công!";
+"KEY_SENDMAIL_ERROR"="Không gửi được email!";
 
 

@@ -18,7 +18,7 @@
 
 @end
 
-@interface ProThanhToanQuocTeDetailViewController : UIViewController
+@interface ProThanhToanQuocTeDetailViewController : BaseViewController
 
 @property (nonatomic,assign) id<ProThanhToanQuocTeDetailViewControllerDelegate>delegate;
 @property (nonatomic,retain) DTOProductDetailObject *dtoProductDetailObject;

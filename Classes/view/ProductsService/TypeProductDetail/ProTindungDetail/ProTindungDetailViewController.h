@@ -19,7 +19,7 @@
 
 @end
 
-@interface ProTindungDetailViewController : UIViewController
+@interface ProTindungDetailViewController : BaseViewController
 
 @property (nonatomic,assign) id<ProTindungDetailViewControllerDelegate>delegate;
 

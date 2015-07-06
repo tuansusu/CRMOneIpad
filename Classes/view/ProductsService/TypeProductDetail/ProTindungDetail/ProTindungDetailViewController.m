@@ -12,6 +12,7 @@
 #import "DTOProTindungDetailProcess.h"
 #import "DTOProductDetailObject.h"
 #import "DataField.h"
+#import "EnumClass.h"
 
 #import "DTOACCOUNTProcess.h"
 
@@ -41,6 +42,7 @@
     IBOutlet UILabel *lblMucDichVay;
     IBOutlet UILabel *lblRM;
     IBOutlet UILabel *lblChiNhanhPhatHanh;
+    IBOutlet UIScrollView *scrollView;
 
     int smgSelect;
 
@@ -129,6 +131,9 @@
             [lblChiNhanhPhatHanh setText:[proTindungDetailDic valueForKey:@"BRANCH_CODE"]];
         }
 
+    }
+    if ([self currentDeviceType]==iPhone) {
+        [scrollView setContentSize:CGSizeMake(320, scrollView.frame.size.height + 400)];
     }
 }
 

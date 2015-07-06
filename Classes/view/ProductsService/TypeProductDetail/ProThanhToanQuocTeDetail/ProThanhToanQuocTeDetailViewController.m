@@ -14,6 +14,7 @@
 
 #import "DTOACCOUNTProcess.h"
 #import "DTOProductDetailObject.h"
+#import "EnumClass.h"
 
 @interface ProThanhToanQuocTeDetailViewController ()
 {
@@ -141,7 +142,11 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if ([self currentDeviceType]==iPhone) {
+        return  120;
+    }else{
     return 40;
+    }
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     ProThanhToanQuocTeViewHeader *header = [[ProThanhToanQuocTeViewHeader alloc] init];
@@ -150,7 +155,12 @@
 
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([self currentDeviceType]==iPhone) {
+        return  120.0f;
+    }
+    else{
     return 50.0f;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

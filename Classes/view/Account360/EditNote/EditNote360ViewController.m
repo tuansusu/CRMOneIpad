@@ -91,7 +91,7 @@
         self.txtContent.layer.cornerRadius = 1.0f;
         //text
         [self setBorderTextfield:self.txtTitle];
-
+        
     }
     
 }
@@ -345,23 +345,7 @@
     }
     
     if (succsess) {
-        //Thong bao cap nhat thanh cong va thoat
-        if ([self currentDeviceType]==iPhone) {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }else{
-            if(_dataSend.count>0){
-                
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                alert.tag = 6;
-                [alert show];
-            }
-            else{
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS2") delegate:self cancelButtonTitle:LocalizedString(@"KEY_NO") otherButtonTitles:LocalizedString(@"KEY_YES"), nil];
-                alert.tag = 5;
-                [alert show];
-            }
-        }
-        
+        [self dismissViewControllerAnimated:YES completion:nil];
     }else{
         //khong bao nhap loi - lien he quan tri
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_ALERT_TITLE")  message:LocalizedString(@"KEY_ALERT_ERROR") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERT_EXIT") otherButtonTitles:nil];

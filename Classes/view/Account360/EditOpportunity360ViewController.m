@@ -680,15 +680,7 @@
     
     succsess = [dtoOpportunityProcess insertToDBWithEntity:dicEntity];
     if (succsess) {
-        //Thong bao cap nhat thanh cong va thoat
-        if ([self currentDeviceType]==iPhone) {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }
-        else{
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Cập nhật thành công, tiếp tục nhập?" delegate:self cancelButtonTitle:@"Không" otherButtonTitles:@"Có", nil];
-            alert.tag = 5;
-            [alert show];
-        }
+        [self dismissViewControllerAnimated:YES completion:nil];
         
     }else{
         //khong bao nhap loi - lien he quan tri

@@ -14,7 +14,7 @@
 -(void) dismissPopoverView;
 @end
 
-@interface SearchAdvanceLeadViewController : UIViewController
+@interface SearchAdvanceLeadViewController : UIViewController<UITextFieldDelegate>
 
 @property (weak,nonatomic) id <SearchAdvanceDelegate> advanceSearchDelegate;
 @property (weak, nonatomic) IBOutlet UILabel *lbmakh;

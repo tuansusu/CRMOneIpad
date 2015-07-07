@@ -829,6 +829,7 @@
 #pragma mark ADVANCE SEARCH
 -(void) actionSearchAdvanceWithCode:(NSString *)strCode withName:(NSString *)strName withMobile:(NSString *)strMobile withEmail:(NSString *)strEmail   withmsthue:(NSString *)strMSthue withCMT: (NSString *) strCMT withDKKD:(NSString *)soDKKD{
     
+    
     NSMutableDictionary *dicCondition = [[NSMutableDictionary alloc]init];
     if (![StringUtil stringIsEmpty:strCode]) {
         [dicCondition setObject:[StringUtil trimString:strCode] forKey:DTOLEAD_code];

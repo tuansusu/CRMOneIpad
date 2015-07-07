@@ -7,6 +7,7 @@
 //
 
 #import "SearchAdvanceLeadViewController.h"
+#import "Util.h"
 
 @interface SearchAdvanceLeadViewController ()
 {
@@ -29,6 +30,7 @@
     int smgSelect ; //option layout
     NSUserDefaults *defaults ;
     Language *obj;
+    Util *util;
     
 }
 @end
@@ -56,6 +58,7 @@
     [self setLanguage];
     smgSelect = [[defaults objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
+    util=[Util new];
 }
 
 
@@ -137,5 +140,16 @@
     txtMSThue.text=LocalizedString(@"KEY_SEARCH_THUE");
     txtName.placeholder=LocalizedString(@"KEY_SEARCH_NAME");
     txtSDKKD.placeholder=LocalizedString(@"KEY_SEARCH_DKKD");
+}
+-(BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if (textField==txtName) {
+        BOOL result = [util CharacterNoEnter:textField.text];
+        if (result) {
+            return NO;
+        }else{
+            return  YES;
+        }
+    }
+    
 }
 @end

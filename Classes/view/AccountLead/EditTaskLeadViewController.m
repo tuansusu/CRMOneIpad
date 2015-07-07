@@ -551,15 +551,8 @@
     
     if (succsess)
     {
-        if ([self currentDeviceType]==iPhone) {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }
-        else{
-            //Thong bao cap nhat thanh cong va thoat
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Cập nhật thành công, tiếp tục nhập?" delegate:self cancelButtonTitle:@"Không" otherButtonTitles:@"Có", nil];
-            alert.tag = 5;
-            [alert show];
-        }
+        [self dismissViewControllerAnimated:YES completion:nil];
+        
     }
     else
     {

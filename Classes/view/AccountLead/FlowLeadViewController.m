@@ -267,14 +267,7 @@
     
     success=[dtoFollowProcess insertToDBWithEntity:dicEntity];
     if (success) {
-        if ([self currentDeviceType]==iPhone) {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }else{
-            //Thong bao cap nhat thanh cong va thoat
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERT_SUCCESS") delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            alert.tag = 5;
-            [alert show];
-        }
+        [self dismissViewControllerAnimated:YES completion:nil];
         //luonghv2
     }
     else{

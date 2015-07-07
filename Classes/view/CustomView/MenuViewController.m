@@ -106,7 +106,7 @@
     [self setupLanguage];
     
     //set content size
-    menuScrolview.contentSize = CGSizeMake(menuScrolview.frame.size.width,726 );
+    menuScrolview.contentSize = CGSizeMake(menuScrolview.frame.size.width,761 );
     
     
     [self updateInterFaceWithOption: [interfaceOption intValue]];
@@ -523,6 +523,25 @@
     
 }
 
+- (IBAction)actionAdd:(id)sender {
+    
+    NSArray *listArr = @[@"tuankk", @"hieunv", @"luonghv2"];
+    int selectIndex = 0;
+    
+    SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
+    
+    detail.selectIndex = selectIndex;
+    
+    detail.listData = listArr;
+    
+    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+    CGRect popoverFrame = ((UIButton*)sender).frame;
+    
+    detail.delegate =(id<SelectIndexDelegate>) self;
+    self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
+    [self.listPopover setPopoverContentSize:CGSizeMake(320, HEIGHT_SELECT_INDEX_ROW*listArr.count) animated:NO];
+    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.TienIchView permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
 
 
 @end

@@ -34,6 +34,7 @@
 "MENU_GROUP_SYSTEM" = "     SYSTEM";
 "MENU_FUNCTION_SYNC" = "           Sync";
 "MENU_FUNCTION_CANCEL" = "           Exit";
+"MENU_FUNCTION_ADDNEW" = "           Add";
 
 
 "KEY_ALERTVIEW_DELETE_MESSAGE" = "Confirm to delete task?";
@@ -96,3 +97,7 @@
 "KEY_WIDGET_ADD_WIDGET_SUCCESS" = "Add Widget success";
 "KEY_WIDGET_UPDATEDB_FAIL" = "Update fail, please retry";
 "KEY_WIDGET_NOWIDGET" = "All Widget is added";
+
+//GỬI MAIL
+"KEY_SENDMAIL_SUCCESS"="Gửi email thành công!";
+"KEY_SENDMAIL_ERROR"="Không gửi được email!";

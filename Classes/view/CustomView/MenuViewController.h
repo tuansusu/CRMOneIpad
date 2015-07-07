@@ -34,5 +34,7 @@
 //@property (weak, nonatomic) IBOutlet UILabel *lbSystem;
 @property (weak, nonatomic) IBOutlet UIButton *btnLogOut;
 
-
+////////////// KHAI BAO BIEN CHUNG//////////
+@property (nonatomic, retain) UIPopoverController *listPopover;
+////////////// KHAI BAO BIEN CHUNG//////////
 @end

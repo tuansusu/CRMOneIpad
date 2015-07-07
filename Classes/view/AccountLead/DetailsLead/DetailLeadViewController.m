@@ -54,6 +54,10 @@
 #define DELETE_LEAD 66
 #define WIDTH_HEADER_EXPAND_INFO 800
 
+#define TAG_ACTIONSHEET_MOREINFO 123
+#define TAG_ACTIONSHEET_ADD 22
+
+
 static NSString* const TaskCalendarNormalCellId   = @"TaskCalendarCellId";
 static NSString* const TaskCalendarTimelineCellId = @"TaskCalTLineCellId";
 static NSString* const TaskActionCellId           = @"TaskActionCellId";
@@ -1668,78 +1672,100 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     
     UIActionSheet *action=[[UIActionSheet alloc]initWithTitle:@"Menu" delegate:self cancelButtonTitle:LocalizedString(@"KEY_CANCEL") destructiveButtonTitle:nil otherButtonTitles:LocalizedString(@"KEY_360_CONTACT"),LocalizedString(@"KEY_360_NOTE"), LocalizedString(@"KEY_360_CALENDAR")
                            , LocalizedString(@"KEY_360_NHIEMVU"), LocalizedString(@"KEY_360_COHOI"), LocalizedString(@"KEY_360_YKIEN"), nil];
-    action.tag=22;
+    action.tag=TAG_ACTIONSHEET_ADD;
     [action showInView:self.view];
 }
 -(void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if(actionSheet.tag==11){
-        if(buttonIndex==0){
+    switch (actionSheet.tag) {
+        case 11:
+            [self loadDataActionSheetWithButtonIndex: buttonIndex];
+            break;
+        case TAG_ACTIONSHEET_ADD:
+            [self loadFormActionSheetWithButtonIndex:buttonIndex];
+            break;
+        case TAG_ACTIONSHEET_MOREINFO:{
+            [self loadFormActionSheetMoreInfoWithButtonIndex: buttonIndex];
+        }
+            break;
             
-            _scrollViewBussiness.hidden=YES;
-            _scrollViewPersonal.hidden=YES;
-             _viewDetailIP.hidden=YES;
-            _mySearchBar.hidden=NO;
-            _viewData.hidden=NO;
+        default:
+            break;
+    }
+}
+
+-(void) loadFormActionSheetMoreInfoWithButtonIndex :(NSInteger)buttonIndex{
+    NSLog(@"more action index %ld", buttonIndex);
+}
+-(void) loadDataActionSheetWithButtonIndex : (NSInteger)buttonIndex{
+    
+    if (buttonIndex==0 || buttonIndex==1 || buttonIndex ==2) {
+        _scrollViewBussiness.hidden=YES;
+        _scrollViewPersonal.hidden=YES;
+        _viewDetailIP.hidden=YES;
+        _mySearchBar.hidden=NO;
+        _viewData.hidden=NO;
+    }
+    
+    switch (buttonIndex) {
+        case 0:{
             _fullNameLB.text=LocalizedString(@"KEY_360_NHIEMVU");
             [self loadDataWithTypeAction:typeLeaderView_Task];
-            
         }
-        else if (buttonIndex ==1){
-            _scrollViewBussiness.hidden=YES;
-            _scrollViewPersonal.hidden=YES;
-            _viewDetailIP.hidden=YES;
-            _mySearchBar.hidden=NO;
-            _viewData.hidden=NO;
+            break;
+        case 1:{
             _fullNameLB.text=LocalizedString(@"KEY_360_COHOI");
             [self loadDataWithTypeAction:typeLeaderView_Opportunity];
         }
-        else if (buttonIndex == 2){
-            _scrollViewBussiness.hidden=YES;
-            _scrollViewPersonal.hidden=YES;
-            _viewDetailIP.hidden=YES;
-            _mySearchBar.hidden=NO;
-            _viewData.hidden=NO;
+            break;
+            case 2:
+        {
             _fullNameLB.text=LocalizedString(@"KEY_360_SPDV");
             [self loadDataWithTypeAction:typeLeaderView_ProductsLead];
         }
-    }
-    else if(actionSheet.tag==22){
-        if(buttonIndex==0){
-            EditContactLeadViewController *edit=[[EditContactLeadViewController alloc]initWithNibName:@"EditContactLeadViewController" bundle:nil];
-            edit.dataRoot=dicData;
-            [self presentViewController:edit animated:YES completion:nil];
-        }
-        else if (buttonIndex==1){
-            EditNoteLeadViewController *edit=[[EditNoteLeadViewController alloc] initWithNibName:@"EditNoteLeadViewController" bundle:nil];
-            [self presentViewController:edit animated:YES completion:nil];
-        }
-        else if (buttonIndex == 2){
-            EditCalendarLeadViewController *viewCalendarController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
-            [viewCalendarController setDelegate:self];
-            viewCalendarController.dataRoot = dicData;
-            [self presentViewController:viewCalendarController animated:YES completion:nil];
-        }
-        else if(buttonIndex == 4){
-            EditOpportunityLeadViewController *edit=[[EditOpportunityLeadViewController alloc] initWithNibName:@"EditOpportunityLeadViewController" bundle:nil];
-            edit.dataSend = dicData;
-            [self presentViewController:edit animated:YES completion:nil];
-        }
-        else if (buttonIndex == 3){
-            EditTaskLeadViewController *edit=[[EditTaskLeadViewController alloc] initWithNibName:@"EditTaskLeadViewController" bundle:nil];
-            edit.dataRoot = dicData;
-            edit.isKHDM = YES;
-            [self presentViewController:edit animated:YES completion:nil];
-        }
-        else if(buttonIndex == 5){
-            
-            ComplainDetailViewController *viewController = [[ComplainDetailViewController alloc]initWithNibName:@"ComplainDetailViewController" bundle:nil];
-            viewController.delegate= self;
-            //            viewController.dataRoot = dicData;
-            viewController.leadId = [[dicData objectForKey:DTOLEAD_clientLeadId] description];
-            [self presentViewController:viewController animated:YES completion:nil];
-        }
+            break;
+        default:
+            break;
     }
 }
+
+-(void) loadFormActionSheetWithButtonIndex :(NSInteger)buttonIndex{
+    if(buttonIndex==0){
+        EditContactLeadViewController *edit=[[EditContactLeadViewController alloc]initWithNibName:@"EditContactLeadViewController" bundle:nil];
+        edit.dataRoot=dicData;
+        [self presentViewController:edit animated:YES completion:nil];
+    }
+    else if (buttonIndex==1){
+        EditNoteLeadViewController *edit=[[EditNoteLeadViewController alloc] initWithNibName:@"EditNoteLeadViewController" bundle:nil];
+        [self presentViewController:edit animated:YES completion:nil];
+    }
+    else if (buttonIndex == 2){
+        EditCalendarLeadViewController *viewCalendarController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
+        [viewCalendarController setDelegate:self];
+        viewCalendarController.dataRoot = dicData;
+        [self presentViewController:viewCalendarController animated:YES completion:nil];
+    }
+    else if(buttonIndex == 4){
+        EditOpportunityLeadViewController *edit=[[EditOpportunityLeadViewController alloc] initWithNibName:@"EditOpportunityLeadViewController" bundle:nil];
+        edit.dataSend = dicData;
+        [self presentViewController:edit animated:YES completion:nil];
+    }
+    else if (buttonIndex == 3){
+        EditTaskLeadViewController *edit=[[EditTaskLeadViewController alloc] initWithNibName:@"EditTaskLeadViewController" bundle:nil];
+        edit.dataRoot = dicData;
+        edit.isKHDM = YES;
+        [self presentViewController:edit animated:YES completion:nil];
+    }
+    else if(buttonIndex == 5){
+        
+        ComplainDetailViewController *viewController = [[ComplainDetailViewController alloc]initWithNibName:@"ComplainDetailViewController" bundle:nil];
+        viewController.delegate= self;
+        //            viewController.dataRoot = dicData;
+        viewController.leadId = [[dicData objectForKey:DTOLEAD_clientLeadId] description];
+        [self presentViewController:viewController animated:YES completion:nil];
+    }
+}
+
+
 ///search cac thong tin lien quan toi khach hang
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     

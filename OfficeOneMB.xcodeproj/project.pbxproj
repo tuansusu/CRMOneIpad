@@ -605,6 +605,7 @@
 		84606E1D1B3016E700701EF9 /* MainViewListCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84606E1C1B3016E700701EF9 /* MainViewListCell~iphone.xib */; };
 		84606E1F1B301A7900701EF9 /* SubListViewCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84606E1E1B301A7900701EF9 /* SubListViewCell~iphone.xib */; };
 		846344641AF1322500647721 /* DTOSYSORGANIZATIONProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 846344631AF1322500647721 /* DTOSYSORGANIZATIONProcess.m */; };
+		846856821B4C356600722E33 /* RepeatCalendarViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846856811B4C356600722E33 /* RepeatCalendarViewController~iphone.xib */; };
 		846C0D101B418AA000ACC205 /* HelpViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846C0D0F1B418AA000ACC205 /* HelpViewController~iphone.xib */; };
 		846C0D121B4198E500ACC205 /* ListComplainsViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846C0D111B4198E500ACC205 /* ListComplainsViewController~iphone.xib */; };
 		846F5A9A1B039F1000119B6B /* CRMAFHTTPRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 846F5A991B039F1000119B6B /* CRMAFHTTPRequestSerializer.m */; };
@@ -2069,6 +2070,7 @@
 		84606E1E1B301A7900701EF9 /* SubListViewCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "SubListViewCell~iphone.xib"; sourceTree = "<group>"; };
 		846344621AF1322500647721 /* DTOSYSORGANIZATIONProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTOSYSORGANIZATIONProcess.h; path = ProcessData/Data/DTOSYSORGANIZATIONProcess.h; sourceTree = "<group>"; };
 		846344631AF1322500647721 /* DTOSYSORGANIZATIONProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTOSYSORGANIZATIONProcess.m; path = ProcessData/Data/DTOSYSORGANIZATIONProcess.m; sourceTree = "<group>"; };
+		846856811B4C356600722E33 /* RepeatCalendarViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "RepeatCalendarViewController~iphone.xib"; sourceTree = "<group>"; };
 		846C0D0F1B418AA000ACC205 /* HelpViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "HelpViewController~iphone.xib"; sourceTree = "<group>"; };
 		846C0D111B4198E500ACC205 /* ListComplainsViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ListComplainsViewController~iphone.xib"; sourceTree = "<group>"; };
 		846F5A981B039F1000119B6B /* CRMAFHTTPRequestSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRMAFHTTPRequestSerializer.h; path = Classes/controller/CRMAFHTTPRequestSerializer.h; sourceTree = SOURCE_ROOT; };
@@ -3140,6 +3142,7 @@
 				159599431A592C0700D87BD4 /* RepeatCalendarViewController.h */,
 				159599441A592C0700D87BD4 /* RepeatCalendarViewController.m */,
 				159599451A592C0700D87BD4 /* RepeatCalendarViewController.xib */,
+				846856811B4C356600722E33 /* RepeatCalendarViewController~iphone.xib */,
 			);
 			name = "Alarm+Recurrence";
 			sourceTree = "<group>";
@@ -6640,6 +6643,7 @@
 				76601A4C194BE90F001D4C01 /* Reader-Mark-N@2x.png in Resources */,
 				1719B7021AC1A9ED0061BD7B /* EditNoteLeadViewController~iphone.xib in Resources */,
 				76199E121A471DA900B792C5 /* MDSearchBar.xib in Resources */,
+				846856821B4C356600722E33 /* RepeatCalendarViewController~iphone.xib in Resources */,
 				76601A3D194BE90F001D4C01 /* AppIcon-057.png in Resources */,
 				76C964821A17A15C00029978 /* vtmap_ic_marker_default.png in Resources */,
 				8497BFEB1A295A2300A5ED3C /* step6@2x.png in Resources */,

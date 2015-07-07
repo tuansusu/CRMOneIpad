@@ -634,8 +634,12 @@
         _listPopover.popoverContentSize = detail.view.frame.size;
         [_listPopover presentPopoverFromRect:_txtRepeat.frame inView:_viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }else{
-        detail.view.frame=CGRectMake(0, 100, 320, 420);
-        [self presentPopupViewController:detail animationType:nil];
+        //detail.view.frame=CGRectMake(0, 100, 320, 420);
+        //[self presentPopupViewController:detail animationType:nil];
+        UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:detail];
+        
+         
+        [self presentViewController:nav animated:YES completion:nil];
     }
 }
 

@@ -517,17 +517,14 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText   // called when text changes (including clear)
 {
-//    if ([util CharacterNoEnter:searchText]) {
-//        strSearchText = searchText;
-//        [self resetLoadData];
-//        [self filterData];
-//    }
+    NSString *safeSearchString = [[searchText componentsSeparatedByCharactersInSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]] componentsJoinedByString:@""];
+    searchBar.text=safeSearchString;
 }
 
 
 -(void) searchBarCancelButtonClicked:(UISearchBar *)searchBar{
-    NSLog(@"searchBarCancelButtonClicked");
     strSearchText = @"";
+    searchBar.text=@"";
     [SVProgressHUD show];
     [self resetLoadData];
     [self filterData];
@@ -537,7 +534,6 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar                     // called when keyboard search button pressed
 {
-    NSLog(@"seach click");
     strSearchText = searchBar.text;
     [SVProgressHUD show];
     [self resetLoadData];
@@ -546,7 +542,15 @@
     [searchBar resignFirstResponder];
     
 }
+-(void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
 
+    searchBar.showsCancelButton=YES;
+}
+-(void) searchBarTextDidEndEditing:(UISearchBar *)searchBar{
+
+    searchBar.showsCancelButton=NO;
+    [searchBar resignFirstResponder];
+}
 - (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope{
     NSLog(@"selectedScopeButtonIndexDidChange = %d", selectedScope);
     iSearchOption = selectedScope;

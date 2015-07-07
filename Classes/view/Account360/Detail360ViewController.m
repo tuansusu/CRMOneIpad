@@ -1739,7 +1739,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         case 11:
             [self loadDataActionSheetWithButtonIndex: buttonIndex];
             break;
-            case TAG_ACTIONSHEET_ADD:
+        case TAG_ACTIONSHEET_ADD:
             [self loadFormActionSheetWithButtonIndex:buttonIndex];
             break;
         case TAG_ACTIONSHEET_MOREINFO:{
@@ -1835,8 +1835,10 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 
 ///search cac thong tin lien quan toi khach hang
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
-    
-    NSLog(@"%@",searchText);
+    NSString *safeSearchString = [[searchText componentsSeparatedByCharactersInSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]] componentsJoinedByString:@""];
+    searchBar.text=safeSearchString;
+}
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     switch (typeActionEvent) {
         case typeLeaderView_ExpandInfo:{
             
@@ -1844,13 +1846,13 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             break;
         case typeLeaderView_Contact:{
             NSLog(@"lien he");
-            arrayData = [dtoContactProcess filterWithArrayCondition:searchText :[dicData objectForKey:DTOACCOUNT_clientAccountId]];
+            arrayData = [dtoContactProcess filterWithArrayCondition:searchBar.text :[dicData objectForKey:DTOACCOUNT_clientAccountId]];
             [self.tbData reloadData];
             
         }break;
         case typeLeaderView_Note:{
             NSLog(@"ghi chu");
-            arrayData = [dtoNoteProcess filterContainWithClient360Id:searchText : [dicData objectForKey:DTOACCOUNT_clientAccountId]];
+            arrayData = [dtoNoteProcess filterContainWithClient360Id:searchBar.text : [dicData objectForKey:DTOACCOUNT_clientAccountId]];
             [self.tbData reloadData];
         }break;
         case typeLeaderView_Opportunity:{
@@ -1867,5 +1869,45 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         default:
             break;
     }
+}
+-(void) searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    searchBar.text=@"";
+    [searchBar resignFirstResponder];
+    switch (typeActionEvent) {
+        case typeLeaderView_ExpandInfo:{
+            
+        }
+            break;
+        case typeLeaderView_Contact:{
+            arrayData = [dtoContactProcess filterWithClientLeaderId :[dicData objectForKey:DTOACCOUNT_clientAccountId]];
+            [self.tbData reloadData];
+            
+        }break;
+        case typeLeaderView_Note:{
+            arrayData = [dtoNoteProcess filterWithClientLeaderId : [dicData objectForKey:DTOACCOUNT_clientAccountId]];
+            [self.tbData reloadData];
+        }break;
+        case typeLeaderView_Opportunity:{
+        }break;
+        case typeLeaderView_Calendar:{
+        }break;
+        case typeLeaderView_Task:{
+        }break;
+        case typeLeaderView_Complains:{
+        }break;
+        case typeLeaderView_ProductsLead:{
+        }break;
+        default:
+            break;
+    }
+    
+}
+-(void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+    
+    searchBar.showsCancelButton=YES;
+}
+-(void) searchBarTextDidEndEditing:(UISearchBar *)searchBar{
+    searchBar.showsCancelButton =NO;
+    [searchBar resignFirstResponder];
 }
 @end

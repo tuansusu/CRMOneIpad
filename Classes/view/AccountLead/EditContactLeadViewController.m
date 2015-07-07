@@ -62,6 +62,7 @@
     //key board
     float heightKeyboard;
     UITextField *_txt;
+    UITextView *txtView;
     //luu lai thong tin chon dia chi cua ban do
     float _longitude, _latitude;
     Language *obj;
@@ -136,8 +137,8 @@
         tableAlert.dataSource=self;
         [tableAlert reloadData];
         [self.txtPosition setInputView:tableAlert];
-        toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-        toolBar.backgroundColor=HEADER_VIEW_COLOR1;
+        toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+        toolBar.barStyle=UIBarStyleDefault;
         UIBarButtonItem *doneBtn;
         UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         
@@ -615,7 +616,6 @@
                                              selector:@selector(keyboardWillBeHidden:)
                                                  name:UIKeyboardWillHideNotification object:nil];
 }
-
 // Called when the UIKeyboardDidShowNotification is sent.
 - (void)keyboardWasShown:(NSNotification*)aNotification
 {
@@ -623,9 +623,8 @@
     NSDictionary* info = [aNotification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     if (kbSize.width>0) {
-        heightKeyboard = kbSize.width;
+        heightKeyboard = kbSize.height;
     }
-    
     
     self.viewMainBodyInfo.contentSize = CGSizeMake(self.viewMainBodyInfo.frame.size.width, self.viewMainBodyInfo.frame.size.height + heightKeyboard);
     
@@ -636,10 +635,21 @@
     // If active text field is hidden by keyboard, scroll it so it's visible
     // Your application might not need or want this behavior.
     //CGRect aRect = self.view.frame;
-    CGRect aRect = CGRectMake(0, 0, 1024, 768);
+    
+    CGRect aRect;
+    if ([self currentDeviceType]==iPhone) {
+        aRect = CGRectMake(0, 0, 320, 568);
+    }
+    else{
+        aRect = CGRectMake(0, 0, 1024, 768);
+    }
     aRect.size.height -= kbSize.width;
     if (!CGRectContainsPoint(aRect, _txt.frame.origin) ) {
-        CGPoint scrollPoint = CGPointMake(0.0, _txt.frame.origin.y-heightKeyboard + 20);
+        CGPoint scrollPoint = CGPointMake(0.0, _txt.frame.origin.y - heightKeyboard);
+        [self.viewMainBodyInfo setContentOffset:scrollPoint animated:YES];
+    }
+    if (!CGRectContainsPoint(aRect, txtView.frame.origin) ) {
+        CGPoint scrollPoint = CGPointMake(0.0, txtView.frame.origin.y - heightKeyboard);
         [self.viewMainBodyInfo setContentOffset:scrollPoint animated:YES];
     }
 }
@@ -648,8 +658,8 @@
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
     
-    if(self.viewMainBodyInfo.contentSize.height>self.viewMainBodyInfo.frame.size.height){
-        self.viewMainBodyInfo.contentSize = CGSizeMake(self.viewMainBodyInfo.frame.size.width, self.viewMainBodyInfo.frame.size.height - heightKeyboard);
+    if(self.viewMainBodyInfo.contentSize.height>self.bodyMainView.frame.size.height){
+        self.viewMainBodyInfo.contentSize = CGSizeMake(self.bodyMainView.frame.size.width, self.bodyMainView.frame.size.height - heightKeyboard);
         
         
         UIEdgeInsets contentInsets = UIEdgeInsetsZero;
@@ -657,7 +667,6 @@
         self.viewMainBodyInfo.scrollIndicatorInsets = contentInsets;
     }
 }
-
 
 #pragma mark UITextField
 
@@ -675,7 +684,19 @@
     return  YES;
     
 }// return NO to disallow editing.
+-(BOOL)textViewShouldBeginEditing:(UITextView *)textView{
 
+    txtView=textView;
+    [self keyboardWillBeHidden:nil];
+    [self keyboardWasShown:nil];
+    return  YES;
+    
+}
+-(void)textViewDidEndEditing:(UITextView *)textView{
+    if (textView==txtView) {
+        txtView=nil;
+    }
+}
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
     
 }// became first responder

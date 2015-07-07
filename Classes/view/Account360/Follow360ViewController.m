@@ -121,8 +121,8 @@
         tableAlert.dataSource=self;
         [tableAlert reloadData];
         [self.txtMucDich setInputView:tableAlert];
-        toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-        toolBar.tintColor=HEADER_VIEW_COLOR1;
+        toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+        toolBar.barStyle=UIBarStyleDefault;
         UIBarButtonItem *doneBtn;
         UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         

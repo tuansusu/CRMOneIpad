@@ -84,7 +84,7 @@
     [self setLanguage];
     if(self.currentDeviceType==iPhone){
         //        [_scrollviewIphone setContentSize:CGSizeMake(0, self.view.frame.size.height)];
-        _scrollviewIphone.contentSize=CGSizeMake(0, self.view.frame.size.height);
+        _bodyMainView.contentSize=CGSizeMake(0, self.view.frame.size.height);
         //
         //show date
         datePicker = [[UIDatePicker alloc] init];
@@ -99,8 +99,8 @@
         tableAlert.tag=222;
         [tableAlert reloadData];
         [self.txtSysCatType setInputView:tableAlert];
-        toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-        toolBar.backgroundColor=HEADER_VIEW_COLOR1;
+        toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+        toolBar.barStyle=UIBarStyleDefault;
         UIBarButtonItem *doneBtn;
         UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         
@@ -654,7 +654,7 @@
     NSDictionary* info = [aNotification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     if (kbSize.width>0) {
-        heightKeyboard = kbSize.width;
+        heightKeyboard = kbSize.height;
     }
     
     
@@ -667,7 +667,14 @@
     // If active text field is hidden by keyboard, scroll it so it's visible
     // Your application might not need or want this behavior.
     //CGRect aRect = self.view.frame;
-    CGRect aRect = CGRectMake(0, 0, 1024, 768);
+    
+    CGRect aRect;
+    if ([self currentDeviceType]==iPhone) {
+        aRect = CGRectMake(0, 0, 320, 568);
+    }
+    else{
+        aRect = CGRectMake(0, 0, 1024, 768);
+    }
     aRect.size.height -= kbSize.width;
     if (!CGRectContainsPoint(aRect, _txt.frame.origin) ) {
         CGPoint scrollPoint = CGPointMake(0.0, _txt.frame.origin.y-heightKeyboard);

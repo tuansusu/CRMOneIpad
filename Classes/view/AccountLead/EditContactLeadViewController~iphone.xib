@@ -27,6 +27,7 @@
                 <outlet property="txtPosition" destination="6wA-4R-nPT" id="0iE-hw-3Ov"/>
                 <outlet property="txtWhereBorn" destination="uQW-iV-icF" id="5B2-UY-da4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewMainBodyInfo" destination="xMh-TS-5gH" id="bfw-q3-4bH"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

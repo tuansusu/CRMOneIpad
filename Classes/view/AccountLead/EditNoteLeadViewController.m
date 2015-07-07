@@ -97,8 +97,24 @@
         //text
         [self setBorderTextfield:self.txtTitle];
         
+        UIToolbar *toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
+        toolbar.barStyle=UIBarStyleDefault;
+        toolbar.items=@[[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],[[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonSystemItemDone target:self action:@selector(actionDone)]];
+        [toolbar sizeToFit];
+        txtTitle.inputAccessoryView=toolbar;
+        txtContent.inputAccessoryView=toolbar;
+        
     }
     
+}
+-(void)actionDone{
+    
+    if ([self.txtTitle isFirstResponder]) {
+        [self.txtTitle resignFirstResponder];
+    }
+    else{
+        [self.txtContent resignFirstResponder];
+    }
 }
 -(void)setBorderTextfield:(UITextField *)txtField{
     

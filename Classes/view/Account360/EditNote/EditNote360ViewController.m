@@ -92,6 +92,24 @@
         //text
         [self setBorderTextfield:self.txtTitle];
         
+        UIToolbar* Toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
+        Toolbar.barStyle = UIBarStyleDefault;
+        Toolbar.items = @[[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],[[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneWithNumberPad)]];
+        [Toolbar sizeToFit];
+        txtTitle.inputAccessoryView = Toolbar;
+        txtContent.inputAccessoryView=Toolbar;
+        
+    }
+    
+}
+-(void)doneWithNumberPad{
+    
+    if([self.txtTitle isFirstResponder]){
+        [self.txtTitle resignFirstResponder];
+    }
+    else{
+        
+        [self.txtContent resignFirstResponder];
     }
     
 }
@@ -691,6 +709,16 @@
     UIAlertView *myAler=[[UIAlertView alloc]initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERT_DEL") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERTVIEW_DELETE_OK") otherButtonTitles:LocalizedString(@"KEY_ALERTVIEW_DELETE_CANCEL"), nil];
     myAler.tag=22;
     [myAler show];
+}
+
+-(void) hiddenKeyBoard {
+    for (UIView *viewTemp in _bodyMainView.subviews) {
+        for (UIView *subViewTemp in viewTemp.subviews) {
+            if([subViewTemp isKindOfClass:[UITextField class]]){
+                [(UITextField *)subViewTemp resignFirstResponder];
+            }
+        }
+    }
 }
 @end
 

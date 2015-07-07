@@ -7,11 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditBussinessLeadViewController">
             <connections>
+                <outlet property="bodyMainView" destination="oq5-GF-5c3" id="v1t-rQ-hKk"/>
                 <outlet property="btnDel" destination="EKo-e3-DNY" id="fe2-Nq-9JB"/>
                 <outlet property="btnSave" destination="Kyn-az-j8t" id="ZgA-cQ-taX"/>
                 <outlet property="fullNameLB" destination="uhJ-4s-No9" id="h7f-Yk-Tpz"/>
                 <outlet property="headerViewBar" destination="x1W-Q4-cdV" id="sxJ-3i-5oc"/>
-                <outlet property="scrollviewIphone" destination="oq5-GF-5c3" id="agl-W6-hkb"/>
                 <outlet property="txtAddress" destination="0Rt-Pf-GfH" id="0tT-hU-wQ8"/>
                 <outlet property="txtCapital" destination="ll1-ng-jOG" id="Ckq-wf-fuR"/>
                 <outlet property="txtCharterCapital" destination="iC3-7z-JpN" id="AA6-1X-2e9"/>
@@ -80,8 +80,8 @@
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thông tin chính" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NeX-PJ-Tlt">
                                     <rect key="frame" x="25" y="8" width="287" height="14"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iq7-CN-cad">
@@ -92,8 +92,8 @@
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thông tin khác" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3G-XD-T1q">
                                     <rect key="frame" x="25" y="182" width="287" height="14"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvS-of-0Ku">

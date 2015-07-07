@@ -144,8 +144,8 @@
         [tableNextTask reloadData];
         [_txtNextTask setInputView:tableNextTask];
         
-        toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-        toolBar.backgroundColor=HEADER_VIEW_COLOR1;
+        toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+        toolBar.barStyle=UIBarStyleDefault;
         UIBarButtonItem *doneBtn;
         UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         
@@ -156,6 +156,7 @@
         [_dtEndDate setInputAccessoryView:toolBar];
         [_txtLevel setInputAccessoryView:toolBar];
         [_txtNextTask setInputAccessoryView:toolBar];
+        [_txtNote setInputAccessoryView:toolBar];
     }
     
     
@@ -177,6 +178,9 @@
     else if ([_txtLevel isFirstResponder]){
         
         [_txtLevel resignFirstResponder];
+    }
+    else if([_txtNote isFirstResponder]){
+        [_txtNote resignFirstResponder];
     }
     else{
         [_txtNextTask resignFirstResponder];

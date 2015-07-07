@@ -107,7 +107,7 @@
         [txtNgayXuLy setInputView:datePicker];
         [txtNgayNhan setInputView:datePicker];
         toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
-        toolBar.backgroundColor=HEADER_VIEW_COLOR1;
+        toolBar.barStyle=UIBarStyleDefault;
         UIBarButtonItem *doneBtn;
         UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         

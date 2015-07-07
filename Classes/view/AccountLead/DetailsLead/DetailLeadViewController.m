@@ -452,8 +452,12 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             
         case typeLeaderView_Complains:
         {
-            self.viewBodyExpandInfo.hidden = NO;
-            self.tbData.hidden  = YES;
+            if ([self currentDeviceType]==iPhone) {
+                self.viewData.hidden = YES;
+            }else{
+                self.viewBodyExpandInfo.hidden = NO;
+                self.tbData.hidden  = YES;
+            }
             [viewComplain setHidden:NO];
             [viewComplain setDelegate:self];
             [viewComplain initDataWithLeaderId:[[dicData objectForKey:DTOLEAD_clientLeadId] description]];
@@ -492,11 +496,8 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     [self.scrollViewPersonal setBackGroundNormalColorWithOption:smgSelect];
     [self.scrollViewBussiness setBackGroundNormalColorWithOption:smgSelect];
     
-    
-    
     [self.tbData setBorderWithOption:smgSelect];
     [self.viewBodyExpandInfo setBorderWithOption:smgSelect];
-    
     
     // self.fullNameLB.text = TITLE_APP;
     

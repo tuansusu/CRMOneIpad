@@ -1756,11 +1756,20 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 -(void) loadFormActionSheetMoreInfoWithButtonIndex :(NSInteger)buttonIndex{
     switch (buttonIndex) {
         case TAG_ACTIONSHEET_MOREINFO_INDEX_TASK:
+            _scollviewDN.hidden=YES;
+            _scrollViewBodyLeft.hidden=YES;
+            _mySearch.hidden=NO;
+            _viewData.hidden=NO;
+            _fullNameLB.text=LocalizedString(@"KEY_360_NHIEMVU");
+            [self loadDataWithTypeAction:typeLeaderView_Task];
             break;
         case TAG_ACTIONSHEET_MOREINFO_INDEX_OPPORTUNITY:
-        {
-            
-        }
+            _scollviewDN.hidden=YES;
+            _scrollViewBodyLeft.hidden=YES;
+            _mySearch.hidden=NO;
+            _viewData.hidden=NO;
+            _fullNameLB.text=LocalizedString(@"KEY_360_COHOI");
+            [self loadDataWithTypeAction:typeLeaderView_Opportunity];
             break;
         case TAG_ACTIONSHEET_MOREINFO_INDEX_PRODUCT:{
             _fullNameLB.text=LocalizedString(@"KEY_360_SPDV");
@@ -1828,8 +1837,10 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         [self presentViewController:edit animated:YES completion:nil];
     }
     else if (buttonIndex == 3){
-        EditTask360ViewController *edit=[[EditTask360ViewController alloc] initWithNibName:@"EditTask360ViewController" bundle:nil];
-        [self presentViewController:edit animated:YES completion:nil];
+        EditTaskLeadViewController *viewController = [[EditTaskLeadViewController alloc]initWithNibName:@"EditTaskLeadViewController" bundle:nil];
+        viewController.dataRoot = dicData;
+        [self presentViewController:viewController animated:YES completion:nil];
+        
     }
 }
 

@@ -1658,7 +1658,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     }
     else if(indexOfTab==5){
         
-        UIActionSheet *actionSheet=[[UIActionSheet alloc] initWithTitle:@"Menu" delegate:self cancelButtonTitle:LocalizedString(@"KEY_CANCEL") destructiveButtonTitle:nil otherButtonTitles:LocalizedString(@"KEY_360_NHIEMVU"),LocalizedString(@"KEY_360_COHOI"),LocalizedString(@"KEY_360_SPDV"), nil];
+        UIActionSheet *actionSheet=[[UIActionSheet alloc] initWithTitle:@"Menu" delegate:self cancelButtonTitle:LocalizedString(@"KEY_CANCEL") destructiveButtonTitle:nil otherButtonTitles:LocalizedString(@"KEY_360_NHIEMVU"),LocalizedString(@"KEY_360_COHOI"), nil];
         actionSheet.tag=11;
         [actionSheet showInView:self.view];
     }
@@ -1676,6 +1676,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             
             _scrollViewBussiness.hidden=YES;
             _scrollViewPersonal.hidden=YES;
+             _viewDetailIP.hidden=YES;
             _mySearchBar.hidden=NO;
             _viewData.hidden=NO;
             _fullNameLB.text=LocalizedString(@"KEY_360_NHIEMVU");
@@ -1685,6 +1686,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         else if (buttonIndex ==1){
             _scrollViewBussiness.hidden=YES;
             _scrollViewPersonal.hidden=YES;
+            _viewDetailIP.hidden=YES;
             _mySearchBar.hidden=NO;
             _viewData.hidden=NO;
             _fullNameLB.text=LocalizedString(@"KEY_360_COHOI");
@@ -1693,6 +1695,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         else if (buttonIndex == 2){
             _scrollViewBussiness.hidden=YES;
             _scrollViewPersonal.hidden=YES;
+            _viewDetailIP.hidden=YES;
             _mySearchBar.hidden=NO;
             _viewData.hidden=NO;
             _fullNameLB.text=LocalizedString(@"KEY_360_SPDV");
@@ -1722,6 +1725,8 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         }
         else if (buttonIndex == 3){
             EditTaskLeadViewController *edit=[[EditTaskLeadViewController alloc] initWithNibName:@"EditTaskLeadViewController" bundle:nil];
+            edit.dataRoot = dicData;
+            edit.isKHDM = YES;
             [self presentViewController:edit animated:YES completion:nil];
         }
         else if(buttonIndex == 5){

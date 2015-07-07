@@ -13,7 +13,7 @@
 #import "HelpViewController.h"
 #import "EnumClass.h"
 
-@interface MenuViewController : BaseViewController
+@interface MenuViewController : BaseViewController<UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *menuView;
 @property (weak, nonatomic) IBOutlet UIView *menuView2;

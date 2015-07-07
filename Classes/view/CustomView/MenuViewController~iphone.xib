@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuViewController">
@@ -13,6 +13,7 @@
                 <outlet property="LichHopView" destination="xsk-pK-2gx" id="vUY-Pd-ABA"/>
                 <outlet property="TienIchView" destination="9gg-Dt-91i" id="J05-mw-4CA"/>
                 <outlet property="btnAccount360" destination="hDr-4H-c9s" id="wPc-sK-Y8L"/>
+                <outlet property="btnAdd" destination="C0R-Qk-Nvm" id="27m-Pk-yCI"/>
                 <outlet property="btnCalendar" destination="VRm-IT-azz" id="s5f-hd-1Tp"/>
                 <outlet property="btnCustomer" destination="nuk-5r-dc6" id="XZW-Wy-T7N"/>
                 <outlet property="btnHelp" destination="AkI-Rh-j3R" id="3Ws-Sq-kto"/>
@@ -235,7 +236,7 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" id="9gg-Dt-91i" userLabel="TiecIchView">
-                            <rect key="frame" x="0.0" y="280" width="210" height="150"/>
+                            <rect key="frame" x="0.0" y="280" width="210" height="180"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="  TIỆN ÍCH" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sxb-Tt-USF" userLabel="Label -      TIỆN ÍCH">
@@ -321,11 +322,31 @@
                                     <rect key="frame" x="13" y="126" width="17" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
+                                <button opaque="NO" tag="520" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="C0R-Qk-Nvm">
+                                    <rect key="frame" x="0.0" y="150" width="210" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <state key="normal" title="           Thêm mới">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <state key="highlighted">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="actionAdd:" destination="-1" eventType="touchUpInside" id="FFH-xV-so3"/>
+                                    </connections>
+                                </button>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menu_add.png" id="nHz-4P-5yI">
+                                    <rect key="frame" x="13" y="159" width="17" height="17"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" id="0t1-SC-JGX" userLabel="HeThongView">
-                            <rect key="frame" x="0.0" y="430" width="259" height="183"/>
+                            <rect key="frame" x="0.0" y="460" width="259" height="183"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="  HỆ THỐNG" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CHq-h3-Bt0">
@@ -432,13 +453,14 @@
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="183" y="540.5"/>
+            <point key="canvasLocation" x="183" y="540"/>
         </view>
     </objects>
     <resources>
         <image name="avatar.png" width="120" height="120"/>
         <image name="menu-ic-quit-1.png" width="30" height="32"/>
         <image name="menu-ic-setting-1.png" width="60" height="60"/>
+        <image name="menu_add.png" width="32" height="32"/>
         <image name="menu_calendar.png" width="30" height="30"/>
         <image name="menu_campaign.png" width="60" height="60"/>
         <image name="menu_customer_360.png" width="60" height="60"/>

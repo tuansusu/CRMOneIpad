@@ -91,6 +91,7 @@
 		17C67D391A5D72FA00EECD66 /* SelectAddInMapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C67D371A5D72FA00EECD66 /* SelectAddInMapsViewController.m */; };
 		17C67D3A1A5D72FA00EECD66 /* SelectAddInMapsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17C67D381A5D72FA00EECD66 /* SelectAddInMapsViewController.xib */; };
 		17C866E91B44DF4800B1AF66 /* EditTask360ViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17C866E71B44DF4800B1AF66 /* EditTask360ViewController~iphone.xib */; };
+		17D9D41E1B4BD29E0091D549 /* menu_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D9D41D1B4BD29E0091D549 /* menu_add.png */; };
 		17E1DC921AB881CC009B683B /* ContactLeadCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17E1DC901AB881CC009B683B /* ContactLeadCell~iphone.xib */; };
 		17E1DC971AB8890B009B683B /* NoteLeadCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17E1DC951AB8890B009B683B /* NoteLeadCell~iphone.xib */; };
 		17EC08BB1B43E445006194FE /* ComplainDetailViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17EC08B91B43E445006194FE /* ComplainDetailViewController~iphone.xib */; };
@@ -1298,6 +1299,7 @@
 		17C67D371A5D72FA00EECD66 /* SelectAddInMapsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAddInMapsViewController.m; sourceTree = "<group>"; };
 		17C67D381A5D72FA00EECD66 /* SelectAddInMapsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectAddInMapsViewController.xib; sourceTree = "<group>"; };
 		17C866E71B44DF4800B1AF66 /* EditTask360ViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EditTask360ViewController~iphone.xib"; sourceTree = "<group>"; };
+		17D9D41D1B4BD29E0091D549 /* menu_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_add.png; sourceTree = "<group>"; };
 		17E1DC901AB881CC009B683B /* ContactLeadCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ContactLeadCell~iphone.xib"; sourceTree = "<group>"; };
 		17E1DC951AB8890B009B683B /* NoteLeadCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "NoteLeadCell~iphone.xib"; sourceTree = "<group>"; };
 		17EC08B91B43E445006194FE /* ComplainDetailViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ComplainDetailViewController~iphone.xib"; sourceTree = "<group>"; };
@@ -6210,6 +6212,7 @@
 		92C68E6D1519DC7D00981728 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				17D9D41D1B4BD29E0091D549 /* menu_add.png */,
 				17A545C81AE5F1BF007F6B1E /* Calendar.png */,
 				17A545C01AE5EFC4007F6B1E /* Email.png */,
 				17A545C11AE5EFC4007F6B1E /* MapMarker.png */,
@@ -6554,6 +6557,7 @@
 				8E7554541A52EFC8001940FB /* iconKeepRight.png in Resources */,
 				8ED402821A41DEC000CCBE6D /* iconBranchArrow@2x.png in Resources */,
 				1755B0001AB5BF4B00F543DA /* EditAccountLeadViewController~iphone.xib in Resources */,
+				17D9D41E1B4BD29E0091D549 /* menu_add.png in Resources */,
 				8497BFEF1A295A2300A5ED3C /* step8@2x.png in Resources */,
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				92C68E551519D4F100981728 /* License.md in Resources */,

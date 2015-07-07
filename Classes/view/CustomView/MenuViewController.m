@@ -15,6 +15,7 @@
 #import "ProfileViewController.h"
 #import "DashboardTaskViewController.h"
 #import "UIImageView+ForScrollView.h"
+#import "EnumClass.h"
 
 @interface MenuViewController ()
 {
@@ -50,6 +51,7 @@
     __weak IBOutlet UIButton *btnSync;
     
     __weak IBOutlet UIButton *btnCancel;
+    __weak IBOutlet UIButton *btnAdd;
     
     
     __weak IBOutlet UIScrollView *menuScrolview;
@@ -76,18 +78,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     // Do any additional setup after loading the view from its nib.
-   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
-//    [self.lbDashboard setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
+    //    [self.lbDashboard setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
     if(self.currentDeviceType == iPad){
         [self.lbTask setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
         [self.lbMeetingSchedule setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
         [self.lbUtility setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
         [lbSystem setBackgroundColor:HEADER_SUB_VIEW_COLOR1];
     }
-   NSString *interfaceOption = [defaults objectForKey:INTERFACE_OPTION];
+    NSString *interfaceOption = [defaults objectForKey:INTERFACE_OPTION];
     
     if (!interfaceOption || [interfaceOption isEqualToString:@"(null)"]) {
         [defaults setObject:@"1" forKey:INTERFACE_OPTION];
@@ -153,16 +155,18 @@
     
     [btnHelp setTitle:LocalizedString(@"MENU_FUNCTION_HELP") forState:UIControlStateNormal];
     
+    [btnAdd setTitle:LocalizedString(@"MENU_FUNCTION_ADDNEW") forState:UIControlStateNormal];
+    
     [lbSystem setText:LocalizedString(@"MENU_GROUP_SYSTEM")];
     [btnSync setTitle:LocalizedString(@"MENU_FUNCTION_SYNC") forState:UIControlStateNormal];
     
     [btnCancel setTitle:LocalizedString(@"MENU_FUNCTION_CANCEL") forState:UIControlStateNormal];
     
     if(self.currentDeviceType == iPhone){
-     [lbGroupCustomer setText: [NSString stringWithFormat:@"  %@",[StringUtil trimString:LocalizedString(@"MENU_GROUP_CUSTOMER") ]]];
-     [lbGroupAction setText: [NSString stringWithFormat:@"  %@",[StringUtil trimString:LocalizedString(@"MENU_GROUP_ACTION_SALE") ]]];
-     [lbGroupUtility setText: [NSString stringWithFormat:@"  %@",[StringUtil trimString:LocalizedString(@"MENU_GROUP_UTILITY") ]]];
-     [lbSystem setText: [NSString stringWithFormat:@"  %@",[StringUtil trimString:LocalizedString(@"MENU_GROUP_SYSTEM") ]]];
+        [lbGroupCustomer setText: [NSString stringWithFormat:@"  %@",[StringUtil trimString:LocalizedString(@"MENU_GROUP_CUSTOMER") ]]];
+        [lbGroupAction setText: [NSString stringWithFormat:@"  %@",[StringUtil trimString:LocalizedString(@"MENU_GROUP_ACTION_SALE") ]]];
+        [lbGroupUtility setText: [NSString stringWithFormat:@"  %@",[StringUtil trimString:LocalizedString(@"MENU_GROUP_UTILITY") ]]];
+        [lbSystem setText: [NSString stringWithFormat:@"  %@",[StringUtil trimString:LocalizedString(@"MENU_GROUP_SYSTEM") ]]];
     }
 }
 
@@ -283,10 +287,10 @@
         
         lbGroupCustomer.backgroundColor =[UIColor colorWithRed:57.0f/255.0f green:60.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
         for (UIView *viewTemp in self.CongViecView.subviews) {
-           if ([viewTemp isKindOfClass:[UIButton class]] && viewTemp.tag != 520) {
-            [self addBottomLineWithBottomControl:viewTemp.frame withInControl:CongViecView];
-          
-           }
+            if ([viewTemp isKindOfClass:[UIButton class]] && viewTemp.tag != 520) {
+                [self addBottomLineWithBottomControl:viewTemp.frame withInControl:CongViecView];
+                
+            }
             
             if ([viewTemp isKindOfClass:[UIImageView class]]) {
                 
@@ -319,8 +323,8 @@
                 [((UIImageView*) viewTemp) setAlpha:1.0f];
             }
         }
-
-
+        
+        
         lbSystem.backgroundColor =[UIColor colorWithRed:57.0f/255.0f green:60.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
         for (UIView *viewTemp in self.HeThongView.subviews) {
             if ([viewTemp isKindOfClass:[UIButton class]] && viewTemp.tag != 520) {
@@ -330,7 +334,7 @@
             if ([viewTemp isKindOfClass:[UIImageView class]]) {
                 
                 [((UIImageView*) viewTemp) setAlpha:1.0f];
-               // ((UIImageView*) viewTemp)
+                // ((UIImageView*) viewTemp)
             }
         }
         
@@ -364,7 +368,7 @@
 
 - (IBAction)action_menu_home:(id)sender {
     MainViewController *targetViewController = [[MainViewController alloc]initWithNibName:@"MainViewController" bundle:nil];
-     UINavigationController * navi = [[UINavigationController alloc] initWithRootViewController:targetViewController];
+    UINavigationController * navi = [[UINavigationController alloc] initWithRootViewController:targetViewController];
     
     [navi setNavigationBarHidden:YES];
     
@@ -394,14 +398,14 @@
 
 //Khach hang dau moi = khach hang tiem nang
 - (IBAction)actionDashboard:(id)sender {
-
+    
     MainViewController *targetViewController = [[MainViewController alloc]initWithNibName:@"MainViewController" bundle:nil];
     UINavigationController * navi = [[UINavigationController alloc] initWithRootViewController:targetViewController];
     [navi setNavigationBarHidden:YES];
-
+    
     [self.mm_drawerController closeDrawerAnimated:YES completion:NULL];
     [self.mm_drawerController setCenterViewController:navi withCloseAnimation:YES completion:nil];
-
+    
 }
 
 //Khach hang dau moi = khach hang tiem nang
@@ -425,8 +429,8 @@
     [self.mm_drawerController closeDrawerAnimated:YES completion:NULL];
     [self.mm_drawerController setCenterViewController:navi withCloseAnimation:YES completion:nil];
     
-//    ListAccountViewController *viewController = [[ListAccountViewController alloc]initWithNibName:@"ListAccountViewController" bundle:nil];
-//    [self presentViewController:viewController animated:YES completion:nil];
+    //    ListAccountViewController *viewController = [[ListAccountViewController alloc]initWithNibName:@"ListAccountViewController" bundle:nil];
+    //    [self presentViewController:viewController animated:YES completion:nil];
 }
 
 - (IBAction)actionOpportunity:(UIButton *)sender {
@@ -439,8 +443,8 @@
     [self.mm_drawerController setCenterViewController:navi withCloseAnimation:YES completion:nil];
     
     
-//    ListOpportunityViewController *viewController = [[ListOpportunityViewController alloc]initWithNibName:@"ListOpportunityViewController" bundle:nil];
-//    [self presentViewController:viewController animated:YES completion:nil];
+    //    ListOpportunityViewController *viewController = [[ListOpportunityViewController alloc]initWithNibName:@"ListOpportunityViewController" bundle:nil];
+    //    [self presentViewController:viewController animated:YES completion:nil];
     
     
 }
@@ -455,20 +459,20 @@
     [self.mm_drawerController closeDrawerAnimated:YES completion:NULL];
     [self.mm_drawerController setCenterViewController:navi withCloseAnimation:YES completion:nil];
     
-//    FFCalendarViewController *calendarVC = [FFCalendarViewController new];
-//    [self presentViewController:calendarVC animated:YES completion:nil];
+    //    FFCalendarViewController *calendarVC = [FFCalendarViewController new];
+    //    [self presentViewController:calendarVC animated:YES completion:nil];
     
 }
 
 - (IBAction)actionTask:(id)sender {
-
+    
     DashboardTaskViewController *targetViewController =[[DashboardTaskViewController alloc] initWithNibName:@"DashboardTaskViewController" bundle:nil];
     UINavigationController * navi = [[UINavigationController alloc] initWithRootViewController:targetViewController];
     [navi setNavigationBarHidden:YES];
-
+    
     [self.mm_drawerController closeDrawerAnimated:YES completion:NULL];
     [self.mm_drawerController setCenterViewController:navi withCloseAnimation:YES completion:nil];
-
+    
     //    FFCalendarViewController *calendarVC = [FFCalendarViewController new];
     //    [self presentViewController:calendarVC animated:YES completion:nil];
     
@@ -485,26 +489,26 @@
     [self.mm_drawerController closeDrawerAnimated:YES completion:NULL];
     [self.mm_drawerController setCenterViewController:navi withCloseAnimation:YES completion:nil];
     
-//    TestMapViewController *viewController = [[TestMapViewController alloc]initWithNibName:@"TestMapViewController" bundle:nil];
-//    [self presentViewController:viewController animated:YES completion:nil];
+    //    TestMapViewController *viewController = [[TestMapViewController alloc]initWithNibName:@"TestMapViewController" bundle:nil];
+    //    [self presentViewController:viewController animated:YES completion:nil];
     
 }
 
 - (IBAction)actionComplain:(id)sender {
-
+    
     ListComplainsViewController *targetViewController = [[ListComplainsViewController alloc]initWithNibName:@"ListComplainsViewController" bundle:nil];
     UINavigationController * navi = [[UINavigationController alloc] initWithRootViewController:targetViewController];
     [navi setNavigationBarHidden:YES];
     
     [self.mm_drawerController closeDrawerAnimated:YES completion:NULL];
     [self.mm_drawerController setCenterViewController:navi withCloseAnimation:YES completion:nil];
-
+    
     
 }
 
 - (IBAction)actionHelp:(id)sender {
     
-
+    
     
     HelpViewController *targetViewController =  [[HelpViewController alloc]initWithNibName:@"HelpViewController" bundle:nil];
     
@@ -525,22 +529,30 @@
 
 - (IBAction)actionAdd:(id)sender {
     
-    NSArray *listArr = @[@"tuankk", @"hieunv", @"luonghv2"];
-    int selectIndex = 0;
-    
-    SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
-    
-    detail.selectIndex = selectIndex;
-    
-    detail.listData = listArr;
-    
-    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
-    CGRect popoverFrame = ((UIButton*)sender).frame;
-    
-    detail.delegate =(id<SelectIndexDelegate>) self;
-    self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(320, HEIGHT_SELECT_INDEX_ROW*listArr.count) animated:NO];
-    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.TienIchView permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    if ([self currentDeviceType]==iPhone) {
+        UIActionSheet *actionSheat = [[UIActionSheet alloc]initWithTitle:@"Menu" delegate:self cancelButtonTitle:@"Huỷ" destructiveButtonTitle:nil otherButtonTitles:@"tuannv36",@"luongdx",@"luonghv2", nil ];
+        actionSheat.tag=1;
+        [actionSheat showInView:self.view];
+        
+    }
+    else{
+        NSArray *listArr = @[@"tuankk", @"hieunv", @"luonghv2"];
+        int selectIndex = 0;
+        
+        SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
+        
+        detail.selectIndex = selectIndex;
+        
+        detail.listData = listArr;
+        
+        self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+        CGRect popoverFrame = ((UIButton*)sender).frame;
+        
+        detail.delegate =(id<SelectIndexDelegate>) self;
+        self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
+        [self.listPopover setPopoverContentSize:CGSizeMake(320, HEIGHT_SELECT_INDEX_ROW*listArr.count) animated:NO];
+        [self.listPopover presentPopoverFromRect:popoverFrame inView:self.TienIchView permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
 }
 
 

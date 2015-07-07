@@ -314,7 +314,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AkI-Rh-j3R">
-                                    <rect key="frame" x="0.0" y="145" width="259" height="35"/>
+                                    <rect key="frame" x="0.0" y="180" width="259" height="35"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -329,12 +329,12 @@
                                         <action selector="actionHelp:" destination="-1" eventType="touchUpInside" id="wKw-ho-2nC"/>
                                     </connections>
                                 </button>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menu_help.png" id="ypB-XA-eD8">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menu_add.png" id="ypB-XA-eD8">
                                     <rect key="frame" x="13" y="154" width="17" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="o3f-EI-j2e">
-                                    <rect key="frame" x="0.0" y="180" width="259" height="35"/>
+                                    <rect key="frame" x="0.0" y="145" width="259" height="35"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -349,7 +349,7 @@
                                         <action selector="actionAdd:" destination="-1" eventType="touchUpInside" id="u9I-EZ-w0B"/>
                                     </connections>
                                 </button>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menu_add.png" id="JXf-Q5-sdu" userLabel="Image View - them moi">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menu_help.png" id="JXf-Q5-sdu" userLabel="Image View - them moi">
                                     <rect key="frame" x="13" y="189" width="17" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>

@@ -44,6 +44,7 @@ enum TypeLeaderView{
 
 //DATA
 @property (nonatomic, retain) NSDictionary *dataSend;
+@property (nonatomic,assign) BOOL *detailNew;
 
 @property (nonatomic) enum TypeLeaderView typeActionEvent;
 

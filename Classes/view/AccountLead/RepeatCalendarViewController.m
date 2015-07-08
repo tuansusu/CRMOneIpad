@@ -85,8 +85,9 @@
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Hủy" style:UIBarButtonItemStylePlain target:self action:@selector(cancelBtnPressed)];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Chọn" style:UIBarButtonItemStyleDone target:self action:@selector(confirmBtnPressed)];
-    
+    self.navigationItem.rightBarButtonItem  = [[UIBarButtonItem alloc] initWithTitle:@"Chọn" style:UIBarButtonItemStyleDone target:self action:@selector(confirmBtnPressed)];
+    self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
+    self.navigationController.navigationBar.barTintColor=HEADER_VIEW_COLOR1;
     [self setupViewForConfig];
 }
 

@@ -406,6 +406,12 @@
     
     succsess = [dtoLeadProcess insertToDBWithEntity:dicEntity];
     if (succsess) {
+        //        NSMutableArray *arrayData=[dtoLeadProcess filterTop];
+        //        NSDictionary *arrayItem = [arrayData objectAtIndex:0];
+        //        DetailLeadViewController *detail = [[DetailLeadViewController alloc]initWithNibName:@"DetailLeadViewController" bundle:nil];
+        //        detail.dataSend=arrayItem;
+        //        detail.detailNew=YES;
+        //        [self presentViewController:detail animated:YES completion:nil];
         [self dismissViewControllerAnimated:YES completion:nil];
     }else{
         //khong bao nhap loi - lien he quan tri

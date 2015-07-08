@@ -523,7 +523,7 @@
     detail.advanceSearchDelegate =(id<SearchAdvanceDelegate>) self;
     
     self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(250, 520) animated:NO];
+    [self.listPopover setPopoverContentSize:CGSizeMake(500, 320) animated:NO];
     [self.listPopover presentPopoverFromRect:popoverFrame inView:self.headerViewBar permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
@@ -858,7 +858,7 @@
     
     arrayData = [dtoLeadProcess filterWithArrayCondition:dicCondition];
     _lbTotal.text = [NSString stringWithFormat:@"Tổng số %d", arrayData.count];
-    
+    totalCount = arrayData.count;
     [self.tbData reloadData];
 }
 -(void) dismissPopoverView

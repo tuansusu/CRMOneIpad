@@ -299,6 +299,11 @@
             
             if (arrayData.count >= 10) {
                 [spinner startAnimating];
+            }else{
+                NSLog(@"VT2");
+                [spinner stopAnimating];
+                spinner.hidden=YES;
+                
             }
         }
         else{
@@ -501,7 +506,7 @@
     detail.advanceSearchDelegate =(id<SearchAdvanceDelegate>) self;
     
     self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
-    [self.listPopover setPopoverContentSize:CGSizeMake(250, 520) animated:NO];
+    [self.listPopover setPopoverContentSize:CGSizeMake(500, 320) animated:NO];
     [self.listPopover presentPopoverFromRect:popoverFrame inView:self.headerViewBar permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
@@ -826,6 +831,7 @@
     
     arrayData = [dtoProcess filterWithArrayCondition:dicCondition];
     _lbTotal.text = [NSString stringWithFormat:@"%@ %d",LocalizedString(@"KEY_LIST_360_TOTAL"), arrayData.count];
+    totalCount = arrayData.count;
     
     [self.tbData reloadData];
 }

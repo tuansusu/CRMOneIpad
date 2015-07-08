@@ -137,7 +137,7 @@
     txtCode.placeholder=LocalizedString(@"KEY_SEARCH_CODE");
     txtEmail.placeholder=@"Email";
     txtMobile.placeholder=LocalizedString(@"KEY_SEARCH_PHONE");
-    txtMSThue.text=LocalizedString(@"KEY_SEARCH_THUE");
+    txtMSThue.placeholder=LocalizedString(@"KEY_SEARCH_THUE");
     txtName.placeholder=LocalizedString(@"KEY_SEARCH_NAME");
     txtSDKKD.placeholder=LocalizedString(@"KEY_SEARCH_DKKD");
 }

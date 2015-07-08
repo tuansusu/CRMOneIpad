@@ -23,7 +23,7 @@
 
 #import "TestMapViewController.h"
 
-@interface ListAccountViewController : BaseViewController<SelectIndexDelegate, UISearchBarDelegate, UISearchDisplayDelegate, Account360CellDelegate,UITabBarControllerDelegate,UITabBarDelegate,UIActionSheetDelegate>
+@interface ListAccountViewController : BaseViewController<SelectIndexDelegate, UISearchBarDelegate, UISearchDisplayDelegate, Account360CellDelegate,UITabBarControllerDelegate,UITabBarDelegate,UIActionSheetDelegate, SearchAdvanceDelegate>
 
 //Header
 @property (weak, nonatomic) IBOutlet UIView *headerViewBar;

@@ -12,8 +12,9 @@
 #import "MainViewController.h"
 #import "HelpViewController.h"
 #import "EnumClass.h"
+#import "SelectIndexViewController.h"
 
-@interface MenuViewController : BaseViewController<UIActionSheetDelegate>
+@interface MenuViewController : BaseViewController<UIActionSheetDelegate,SelectIndexDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *menuView;
 @property (weak, nonatomic) IBOutlet UIView *menuView2;

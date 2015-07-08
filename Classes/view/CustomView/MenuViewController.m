@@ -16,6 +16,8 @@
 #import "DashboardTaskViewController.h"
 #import "UIImageView+ForScrollView.h"
 #import "EnumClass.h"
+#import "EditAccountLeadViewController.h"
+#import "EditBussinessLeadViewController.h"
 
 @interface MenuViewController ()
 {
@@ -530,13 +532,13 @@
 - (IBAction)actionAdd:(id)sender {
     
     if ([self currentDeviceType]==iPhone) {
-        UIActionSheet *actionSheat = [[UIActionSheet alloc]initWithTitle:@"Menu" delegate:self cancelButtonTitle:@"Huỷ" destructiveButtonTitle:nil otherButtonTitles:@"tuannv36",@"luongdx",@"luonghv2", nil ];
+        UIActionSheet *actionSheat = [[UIActionSheet alloc]initWithTitle:@"Menu" delegate:self cancelButtonTitle:@"Huỷ" destructiveButtonTitle:nil otherButtonTitles:LocalizedString(@"KEY_LEAD_ADD_CN"),LocalizedString(@"KEY_LEAD_ADD_DN"),LocalizedString(@"MENU_ADD_FUNCTION_OPPORTUNITY"),LocalizedString(@"MENU_ADD_FUNCTION_TASK"),LocalizedString(@"MENU_ADD_FUNCTION_CALENDAR"), nil ];
         actionSheat.tag=1;
         [actionSheat showInView:self.view];
         
     }
     else{
-        NSArray *listArr = @[@"tuankk", @"hieunv", @"luonghv2"];
+        NSArray *listArr = @[LocalizedString(@"KEY_LEAD_ADD_CN"),LocalizedString(@"KEY_LEAD_ADD_DN"),LocalizedString(@"MENU_ADD_FUNCTION_OPPORTUNITY"),LocalizedString(@"MENU_ADD_FUNCTION_TASK"),LocalizedString(@"MENU_ADD_FUNCTION_CALENDAR")];
         int selectIndex = 0;
         
         SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
@@ -554,6 +556,46 @@
         [self.listPopover presentPopoverFromRect:popoverFrame inView:self.TienIchView permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }
 }
-
+-(void)selectAtIndex:(NSInteger)index{
+    [self actionAddNew:index];
+}
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    [self actionAddNew: buttonIndex];
+}
+-(void) actionAddNew :(NSInteger) index{
+    switch (index) {
+        case 0:{
+            EditAccountLeadViewController *viewController=[[EditAccountLeadViewController alloc] initWithNibName:@"EditAccountLeadViewController" bundle:nil];
+            [self presentViewController:viewController animated:YES completion:nil];}
+            
+            break;
+        case 1:
+        { EditBussinessLeadViewController *viewController=[[EditBussinessLeadViewController alloc] initWithNibName:@"EditBussinessLeadViewController" bundle:nil];
+            [self presentViewController:viewController animated:YES completion:nil];
+            UINavigationController *navi =[[UINavigationController alloc] initWithRootViewController:viewController];
+            navi.navigationBarHidden=YES;
+        }
+            break;
+        case 2:
+        {
+            EditOpportunityViewController *viewController = [[EditOpportunityViewController alloc]initWithNibName:@"EditOpportunityViewController" bundle:nil];
+            [self presentViewController:viewController animated:YES completion:nil];
+        }
+            break;
+        case 3:{
+            EditOpportunityTaskViewController *viewconTroler=[[EditOpportunityTaskViewController alloc]initWithNibName:@"EditOpportunityTaskViewController" bundle:nil];
+            [self presentPopupViewController:viewconTroler animationType:nil];
+        }
+            break;
+        case 4:
+        {EditCalendarLeadViewController *viewController = [[EditCalendarLeadViewController alloc]initWithNibName:@"EditCalendarLeadViewController" bundle:nil];
+            [viewController setDelegate:self];
+            [self presentViewController:viewController animated:YES completion:nil];
+        }
+            break;
+        default:
+            break;
+    }
+}
 
 @end

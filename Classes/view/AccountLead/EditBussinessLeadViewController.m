@@ -331,8 +331,10 @@
         }
         
         if ([viewTemp isKindOfClass:[UIButton class]]) {
-            
-            [((UIButton*) viewTemp) setStyleNormalWithOption:smgSelect];
+            if ([self currentDeviceType]==iPad) {
+                
+                [((UIButton*) viewTemp) setStyleNormalWithOption:smgSelect];
+            }
         }
         
         

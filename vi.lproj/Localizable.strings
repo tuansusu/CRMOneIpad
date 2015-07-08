@@ -19,10 +19,13 @@
 "MENU_FUNCTION_ACCOUNTLEAD" = "           Khách hàng tiềm năng";
 "MENU_FUNCTION_ACCOUNT360" = "           Khách hàng 360";
 "MENU_FUNCTION_OPPORTUNITY" = "           Cơ hội bán hàng";
+"MENU_ADD_FUNCTION_OPPORTUNITY" = "Cơ hội bán hàng";
 "MENU_FUNCTION_MAP" = "           Bản đồ khách hàng";
 "MENU_GROUP_ACTION_SALE" = "     HOẠT ĐỘNG BÁN HÀNG";
 "MENU_FUNCTION_TASK" = "           Công việc";
+"MENU_ADD_FUNCTION_TASK" = "Công việc";
 "MENU_FUNCTION_CALENDAR" = "           Lịch";
+"MENU_ADD_FUNCTION_CALENDAR" = "Lịch";
 "MENU_GROUP_UTILITY" = "     TIỆN ÍCH";
 "MENU_FUNCTION_REPORT" = "           Báo cáo";
 "MENU_FUNCTION_SETTING" = "           Thiết lập";

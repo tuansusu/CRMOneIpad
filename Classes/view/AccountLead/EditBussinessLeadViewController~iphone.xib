@@ -84,24 +84,12 @@
                                     <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iq7-CN-cad">
-                                    <rect key="frame" x="8" y="8" width="14" height="14"/>
-                                    <state key="normal" backgroundImage="icon_down.png">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thông tin khác" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3G-XD-T1q">
                                     <rect key="frame" x="25" y="182" width="287" height="14"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvS-of-0Ku">
-                                    <rect key="frame" x="8" y="182" width="14" height="14"/>
-                                    <state key="normal" backgroundImage="icon_down.png">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                </button>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tên khách hàng" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EEU-8T-nHP">
                                     <rect key="frame" x="8" y="30" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -169,15 +157,6 @@
                                         <outlet property="delegate" destination="-1" id="Ozk-39-NYL"/>
                                     </connections>
                                 </textField>
-                                <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDO-W7-1ep">
-                                    <rect key="frame" x="292" y="244" width="20" height="20"/>
-                                    <state key="normal" title="Button" backgroundImage="MapMarker.png">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="actionChoiseAddress:" destination="-1" eventType="touchUpInside" id="cUp-fq-n2F"/>
-                                    </connections>
-                                </button>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Loại hình doanh nghiệp" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JN2-JC-nlr">
                                     <rect key="frame" x="8" y="280" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -186,12 +165,9 @@
                                         <outlet property="delegate" destination="-1" id="o1H-m2-Tl2"/>
                                     </connections>
                                 </textField>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ihh-Zb-xhP" userLabel="btnSysCat">
-                                    <rect key="frame" x="295" y="287" width="15" height="15"/>
-                                    <state key="normal" backgroundImage="icon_down.png">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                </button>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_down.png" translatesAutoresizingMaskIntoConstraints="NO" id="EPO-oN-MHw">
+                                    <rect key="frame" x="298" y="288" width="14" height="14"/>
+                                </imageView>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Vốn điều lệ" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iC3-7z-JpN">
                                     <rect key="frame" x="8" y="394" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -216,12 +192,9 @@
                                         <outlet property="delegate" destination="-1" id="f8b-Jl-fpb"/>
                                     </connections>
                                 </textField>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxB-wO-nMj" userLabel="btnSysCat">
-                                    <rect key="frame" x="295" y="477" width="15" height="15"/>
-                                    <state key="normal" backgroundImage="icon_down.png">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                </button>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_down.png" translatesAutoresizingMaskIntoConstraints="NO" id="VoI-kC-8TH">
+                                    <rect key="frame" x="298" y="478" width="14" height="14"/>
+                                </imageView>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Doanh thu" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SOG-ri-qv0">
                                     <rect key="frame" x="8" y="318" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -230,6 +203,21 @@
                                         <outlet property="delegate" destination="-1" id="DGr-fa-ECv"/>
                                     </connections>
                                 </textField>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_down.png" translatesAutoresizingMaskIntoConstraints="NO" id="OtI-z9-mKC">
+                                    <rect key="frame" x="8" y="8" width="14" height="14"/>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_down.png" translatesAutoresizingMaskIntoConstraints="NO" id="fGO-Aw-UBo">
+                                    <rect key="frame" x="8" y="182" width="14" height="14"/>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ngc-aV-Ter">
+                                    <rect key="frame" x="292" y="247" width="20" height="20"/>
+                                    <state key="normal" backgroundImage="MapMarker.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="actionChoiseAddress:" destination="-1" eventType="touchUpInside" id="bGp-4i-IGa"/>
+                                    </connections>
+                                </button>
                             </subviews>
                         </scrollView>
                     </subviews>

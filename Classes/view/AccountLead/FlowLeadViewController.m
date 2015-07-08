@@ -84,7 +84,6 @@
     NSString *MyString;
     NSDate *now = [NSDate date];
     dateStart=now;
-    dateRemind=now;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd/MM/yyyy HH:mm"];
     MyString = [dateFormatter stringFromDate:now];
@@ -95,7 +94,10 @@
     NSString *newDay;
     newDay=[dateFormatter stringFromDate:addNew];
     _txtNgayhoanthanh.text=newDay;
-    _txtThoigiannhacnho.text=MyString;
+    NSDate *timeRe = [now addTimeInterval:900];
+    NSString *timeRepart= [dateFormatter stringFromDate:timeRe];
+    dateRemind = timeRe;
+    _txtThoigiannhacnho.text=timeRepart;
     obj=[Language getInstance];
     obj.str=[defaults objectForKey:@"Language"];
     LocalizationSetLanguage(obj.str);
@@ -109,7 +111,7 @@
         datePicker = [[UIDatePicker alloc] init];
         
         datePicker.datePickerMode = UIDatePickerModeDate;
-        datePicker.tintColor=[UIColor whiteColor];
+        datePicker.backgroundColor=[UIColor whiteColor];
         [self.txtNgaybatdau setInputView:datePicker];
         [self.txtNgayhoanthanh setInputView:datePicker];
         [self.txtThoigiannhacnho setInputView:datePicker];
@@ -121,6 +123,7 @@
         [self.txtMucDich setInputView:tableAlert];
         toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
         toolBar.barStyle=UIBarStyleDefault;
+        toolBar.backgroundColor=[UIColor whiteColor];
         UIBarButtonItem *doneBtn;
         UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         
@@ -210,7 +213,7 @@
     //check validate
     if([StringUtil stringIsEmpty:_txtMucDich.text] && [StringUtil stringIsEmpty:catId]){
         
-        [util showTooltip:_txtMucDich withText:@"Chưa chọn mục đích theo dõi" showview:_viewmaininfo];
+        [util showTooltip:_txtMucDich withText:LocalizedString(@"FLOW_MUCDICH") showview:_viewmaininfo];
         [util setBorder:_txtMucDich];
         return;
     }
@@ -489,12 +492,13 @@
     }
     else if(SELECTED_TAG==TAG_SELECT_DATE_END){
         dateEnd = date;
+        dateRemind=[date addTimeInterval:900];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"dd/MM/yyyy HH:mm"];
         self.txtNgayhoanthanh.text = [dateFormatter stringFromDate:date];
     }
     else{
-        dateRemind = date;
+        dateRemind = [date addTimeInterval:900];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"dd/MM/yyyy HH:mm"];
         self.txtThoigiannhacnho.text = [dateFormatter stringFromDate:date];
@@ -590,17 +594,23 @@
         [self.txtNgaybatdau resignFirstResponder];
         self.txtNgaybatdau.text = [NSString stringWithFormat:@"%@",
                                    [dateFormatter stringFromDate:date]];
+        dateStart = date;
     }
     else if ([self.txtNgayhoanthanh isFirstResponder]){
         [self.txtNgayhoanthanh resignFirstResponder];
         self.txtNgayhoanthanh.text = [NSString stringWithFormat:@"%@",
                                       [dateFormatter stringFromDate:date]];
+        self.txtThoigiannhacnho.text = [NSString stringWithFormat:@"%@",
+                                        [dateFormatter stringFromDate:[date addTimeInterval:900]]];
+        dateEnd=date;
+        dateRemind = [date addTimeInterval:900];
         
     }
     else if ([self.txtThoigiannhacnho isFirstResponder]){
         [self.txtThoigiannhacnho resignFirstResponder];
         self.txtThoigiannhacnho.text = [NSString stringWithFormat:@"%@",
-                                        [dateFormatter stringFromDate:date]];
+                                        [dateFormatter stringFromDate:[date addTimeInterval:900]]];
+        dateRemind = [date addTimeInterval:900];
         
     }
     else if ([self.txtMucDich isFirstResponder]){

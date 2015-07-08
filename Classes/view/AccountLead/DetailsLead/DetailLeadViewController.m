@@ -1698,7 +1698,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 }
 -(void) loadDataActionSheetWithButtonIndex : (NSInteger)buttonIndex{
     
-    if (buttonIndex==0 || buttonIndex==1 || buttonIndex ==2) {
+    if (buttonIndex==0 || buttonIndex==1) {
         _scrollViewBussiness.hidden=YES;
         _scrollViewPersonal.hidden=YES;
         _viewDetailIP.hidden=YES;
@@ -1715,12 +1715,6 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         case 1:{
             _fullNameLB.text=LocalizedString(@"KEY_360_COHOI");
             [self loadDataWithTypeAction:typeLeaderView_Opportunity];
-        }
-            break;
-            case 2:
-        {
-            _fullNameLB.text=LocalizedString(@"KEY_360_SPDV");
-            [self loadDataWithTypeAction:typeLeaderView_ProductsLead];
         }
             break;
         default:

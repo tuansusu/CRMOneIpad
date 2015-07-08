@@ -533,12 +533,22 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             
         case type360View_Complains:
         {
-            self.viewBodyExpandInfo.hidden = NO;
-            self.tbData.hidden  = YES;
-            [viewProductsLead setHidden:YES];
+            //            self.viewBodyExpandInfo.hidden = NO;
+            //            self.tbData.hidden  = YES;
+            //            [viewProductsLead setHidden:YES];
+            //            [viewComplain setHidden:NO];
+            //            [viewComplain setDelegate:self];
+            //            [viewComplain initDataWithLeaderId:[[dicData objectForKey:DTOACCOUNT_clientAccountId] description]];
+            if ([self currentDeviceType]==iPhone) {
+                self.viewData.hidden = YES;
+            }else{
+                self.viewBodyExpandInfo.hidden = NO;
+                self.tbData.hidden  = YES;
+            }
             [viewComplain setHidden:NO];
             [viewComplain setDelegate:self];
-            [viewComplain initDataWithLeaderId:[[dicData objectForKey:DTOACCOUNT_clientAccountId] description]];
+            [viewComplain initDataWithLeaderId:[[dicData objectForKey:DTOLEAD_clientLeadId] description]];
+            NSLog(@"complanins count = %ld", (unsigned long)arrayData.count);
         }
             break;
         case type360View_ProductsLead:

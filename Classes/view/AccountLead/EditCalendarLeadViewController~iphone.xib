@@ -138,7 +138,7 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="actionChoiceRepeat:" destination="-1" eventType="touchUpInside" id="wK9-NC-Pjf"/>
+                                <action selector="actionChoiStatus:" destination="-1" eventType="touchUpInside" id="oS4-Xw-Bl3"/>
                             </connections>
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Lặp lại" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ICN-sF-hPb">

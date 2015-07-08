@@ -41,6 +41,7 @@
 
 #define TAG_SELECT_CUSTOMER_TYPE 7
 #define TAG_SELECT_CUSTOMERS     8
+#define TAG_SELECT_EVENT 99
 
 
 @interface EditCalendarLeadViewController () <UITextFieldDelegate, SelectIndexDelegate, CalendarSelectDatePickerDelegate, AlarmCalendarViewDelegate, RepeatCalendarViewDelegate>
@@ -95,6 +96,7 @@
 - (IBAction)actionChocieTimeFrom:(id)sender;
 - (IBAction)actionChoiceDateTo:(id)sender;
 - (IBAction)actionChoiceTimeTo:(id)sender;
+-(IBAction)actionChoiStatus:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnChoiceStatus;
 @property (weak, nonatomic) IBOutlet UIButton *btnChoiceDateFrom;
@@ -189,6 +191,10 @@
     if ([UIDevice getCurrentSysVer] >= 7.0) {
         [UIDevice updateLayoutInIOs7OrAfter:self];
     }
+    
+    
+    listArr  = [NSArray arrayWithObjects:LocalizedString(@"STATUS_HEN"),LocalizedString(@"STATUS_GOI"), LocalizedString(@"STATUS_EMAIL")
+                , LocalizedString(@"STATUS_NGOAI_BH"), LocalizedString(@"STATUS_NGHIPHEP"), LocalizedString(@"STATUS_ORTHER"), nil];
     
     df = [[NSDateFormatter alloc] init];
    	[df setDateFormat:@"dd/MM/yyyy"];
@@ -638,7 +644,7 @@
         //[self presentPopupViewController:detail animationType:nil];
         UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:detail];
         
-         
+        
         [self presentViewController:nav animated:YES completion:nil];
     }
 }
@@ -1001,6 +1007,12 @@
             }
         }
             break;
+        case TAG_SELECT_EVENT:
+            if (index<listArr.count) {
+                NSDictionary *dt = [listArr objectAtIndex:index];
+                _txtEventType.text=dt;
+            }
+            break;
         default:
             break;
     }
@@ -1151,5 +1163,49 @@
     [_txtStatus resignFirstResponder];
     
 }
-
+-(void) actionChoiStatus:(id)sender{
+    
+    if ([self currentDeviceType]==iPhone) {
+        
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:LocalizedString(@"CHOICE_STATUS") delegate:self cancelButtonTitle:LocalizedString(@"CANCEL") destructiveButtonTitle:nil otherButtonTitles:LocalizedString(@"STATUS_HEN"),LocalizedString(@"STATUS_GOI"),LocalizedString(@"STATUS_EMAIL"),LocalizedString(@"STATUS_NGOAI_BH"),LocalizedString(@"STATUS_NGHIPHEP"),LocalizedString(@"STATUS_ORTHER"), nil];
+        actionSheet.tag=1;
+        [actionSheet showInView:self.viewScroll];
+    }else{
+        SELECTED_POPOVER_TAG = TAG_SELECT_EVENT;
+        
+        // status drop down
+        SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
+        // detail.selectIndex = selectStatusIndex;
+        detail.listData = listArr;
+        detail.delegate = (id<SelectIndexDelegate>) self;
+        
+        _listPopover = [[UIPopoverController alloc] initWithContentViewController:detail];
+        _listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
+        _listPopover.popoverContentSize = CGSizeMake(320,250);
+        [_listPopover presentPopoverFromRect:_txtEventType.frame inView:_viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];    }
+}
+-(void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    switch (buttonIndex) {
+        case 0:
+            _txtEventType.text=LocalizedString(@"STATUS_HEN");
+            break;
+        case 1:
+            _txtEventType.text=LocalizedString(@"STATUS_GOI");
+            break;
+        case 2:
+            _txtEventType.text=LocalizedString(@"STATUS_EMAIL");
+            break;
+        case 3:
+            _txtEventType.text=LocalizedString(@"STATUS_NGOAI_BH");
+            break;
+        case 4:
+            _txtEventType.text=LocalizedString(@"STATUS_NGHIPHEP");
+            break;
+        case 5:
+            _txtEventType.text= LocalizedString(@"STATUS_ORTHER");
+            break;
+        default:
+            break;
+    }
+}
 @end

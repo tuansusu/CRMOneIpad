@@ -12,7 +12,7 @@
 
 @class EditCalendarLeadViewController;
 
-@protocol EditCalendarLeadViewControllerDelegate <NSObject,UITableViewDataSource,UITableViewDelegate>
+@protocol EditCalendarLeadViewControllerDelegate <NSObject,UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate>
 
 @optional
 - (void)reloadListCalendarTask;

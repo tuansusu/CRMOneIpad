@@ -235,7 +235,7 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="actionChoiceEventType:" destination="-1" eventType="touchUpInside" id="rM3-2n-nN0"/>
+                                                <action selector="actionChoiStatus:" destination="-1" eventType="touchUpInside" id="zMc-ER-bX8"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lặp lại" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VdQ-d5-amY">

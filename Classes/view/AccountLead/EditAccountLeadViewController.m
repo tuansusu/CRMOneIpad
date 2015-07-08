@@ -801,12 +801,15 @@
         }
         if ([string stringByTrimmingCharactersInSet:nonNumberSet].length > 0)
         {
+            _txtMonthlyIncom.text=[util formatCurrenc:textField :string];
             
-            //_txtMonthlyIncom.text=[NSString stringWithFormat:@"%@ %@",_txtMonthlyIncom.text, @"VND"];
-            
-            return YES;
+            return NO;
         }
         
+        return NO;
+    }
+    if (textField==_txtTotalassets) {
+        _txtTotalassets.text=[util formatCurrenc:textField :string];
         return NO;
     }
     

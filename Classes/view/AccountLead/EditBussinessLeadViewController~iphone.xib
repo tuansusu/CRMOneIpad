@@ -104,7 +104,7 @@
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số điện thoại" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4XA-sO-Iqu">
                                     <rect key="frame" x="8" y="68" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="DAm-1f-xee"/>
                                     </connections>
@@ -115,7 +115,7 @@
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mã số thuế" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FRx-ik-1Xh">
                                     <rect key="frame" x="8" y="106" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="IpD-j3-PfF"/>
                                     </connections>
@@ -123,7 +123,7 @@
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số đăng ký KD" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vHa-e1-Epv">
                                     <rect key="frame" x="8" y="144" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="cug-3p-GuL"/>
                                     </connections>
@@ -139,7 +139,7 @@
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Lợi nhuận trước thuế" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AVb-uO-sSY">
                                     <rect key="frame" x="8" y="356" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="5Bg-cl-FBQ"/>
                                     </connections>
@@ -147,7 +147,10 @@
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tổng tài sản" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P0G-bV-pmV">
                                     <rect key="frame" x="8" y="508" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="1Xb-pw-3Xs"/>
+                                    </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Địa chỉ" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Rt-Pf-GfH">
                                     <rect key="frame" x="8" y="242" width="304" height="30"/>
@@ -171,7 +174,7 @@
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Vốn điều lệ" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iC3-7z-JpN">
                                     <rect key="frame" x="8" y="394" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="aFB-GZ-GTV"/>
                                     </connections>
@@ -179,7 +182,7 @@
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Vốn chủ sở hữu" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ll1-ng-jOG">
                                     <rect key="frame" x="8" y="432" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="vtg-nb-imv"/>
                                     </connections>
@@ -198,7 +201,7 @@
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Doanh thu" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SOG-ri-qv0">
                                     <rect key="frame" x="8" y="318" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="DGr-fa-ECv"/>
                                     </connections>

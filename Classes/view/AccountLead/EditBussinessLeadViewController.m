@@ -580,6 +580,26 @@
             return YES;
         }
     }
+    if (textField==_txtRevenue) {
+        _txtRevenue.text=[util formatCurrenc:textField :string];
+        return NO;
+    }
+    if (textField==_txtProfitBeforeTax) {
+        _txtProfitBeforeTax.text = [util formatCurrenc:textField :string];
+        return  NO;
+    }
+    if (textField==_txtCharterCapital) {
+        _txtCharterCapital.text=[util formatCurrenc:textField :string];
+        return NO;
+    }
+    if (textField==_txtCapital) {
+        _txtCapital.text=[util formatCurrenc:textField :string];
+        return NO;
+    }
+    if (textField==_txtTotalassets) {
+        _txtTotalassets.text=[util formatCurrenc:textField :string];
+        return NO;
+    }
     return  YES;
 }// return NO to not change text
 

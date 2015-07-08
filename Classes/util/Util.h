@@ -24,6 +24,7 @@
 -(void) showTooltip : (UITextField*) inputTooltipView withText : (NSString*) inputMessage showview:(UIView*)viewMainBodyInfo;
 -(BOOL) validateEmail:(NSString *)email;
 -(void)setBorder:(UITextField *)txtView;
+-(NSString *) formatCurrenc:(UITextField *)textField : (NSString *)string;
 
 -(void)setBorderTextfield:(UITextField *)txtField;
 /*

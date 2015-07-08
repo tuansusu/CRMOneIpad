@@ -115,7 +115,7 @@
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số điện thoại" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="75P-bt-tCd">
                                     <rect key="frame" x="8" y="63" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="mpm-tU-Knd"/>
                                     </connections>
@@ -126,7 +126,7 @@
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Chứng minh thư" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XBM-Fo-Myu">
                                     <rect key="frame" x="8" y="96" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="next"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="eHB-2b-h6e"/>
                                     </connections>
@@ -134,7 +134,7 @@
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VQi-gF-eBd">
                                     <rect key="frame" x="8" y="129" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="2Lh-vI-VaA"/>
                                     </connections>
@@ -192,7 +192,10 @@
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Thu nhập cá nhân" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DL6-1o-JSA">
                                     <rect key="frame" x="8" y="381" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="next"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="9jN-0C-wQr"/>
+                                    </connections>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Giới tính" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bD-nW-jxp">
                                     <rect key="frame" x="8" y="316" width="64" height="21"/>
@@ -223,7 +226,10 @@
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tổng tài sản" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hhq-uf-Lr0">
                                     <rect key="frame" x="7" y="414" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="next"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="xC4-wZ-lFe"/>
+                                    </connections>
                                 </textField>
                                 <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0L0-9k-Z3i">
                                     <rect key="frame" x="-90" y="451" width="30" height="20"/>

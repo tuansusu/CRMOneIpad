@@ -279,4 +279,32 @@
         return NO;
     }
 }
+-(NSString *) formatCurrenc:(UITextField *)textField : (NSString *)string{
+
+    NSString *cleanCentString = [[textField.text
+                                  componentsSeparatedByCharactersInSet:
+                                  [[NSCharacterSet decimalDigitCharacterSet] invertedSet]]
+                                 componentsJoinedByString:@""];
+    // Parse final integer value
+    NSInteger centAmount = cleanCentString.integerValue;
+    // Check the user input
+    if (string.length > 0)
+    {
+        // Digit added
+        centAmount = centAmount * 10 + string.integerValue;
+    }
+    else
+    {
+        // Digit deleted
+        centAmount = centAmount / 10;
+    }
+    // Update call amount value
+    NSNumber *amount = [[NSNumber alloc] initWithFloat:(float)centAmount / 100.0f];
+    // Write amount with currency symbols to the textfield
+    NSNumberFormatter *_currencyFormatter = [[NSNumberFormatter alloc] init];
+    [_currencyFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    //[_currencyFormatter setCurrencyCode:@"VND"];
+    [_currencyFormatter setNegativeFormat:@"-¤#,##0.00"];
+    return  [_currencyFormatter stringFromNumber:amount];
+}
 @end

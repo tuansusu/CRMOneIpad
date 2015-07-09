@@ -90,6 +90,7 @@
 		17B20D661AFD1FF70023FCC0 /* Follow360ViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17B20D651AFD1FF70023FCC0 /* Follow360ViewController~iphone.xib */; };
 		17BD0B311B4E29360006DE49 /* ComplainViewHeader~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17BD0B2F1B4E29360006DE49 /* ComplainViewHeader~iphone.xib */; };
 		17BD0B321B4E29360006DE49 /* ComplainViewCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17BD0B301B4E29360006DE49 /* ComplainViewCell~iphone.xib */; };
+		17BD0B371B4E838E0006DE49 /* DashboardTaskViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17BD0B351B4E838E0006DE49 /* DashboardTaskViewController~iphone.xib */; };
 		17C67D391A5D72FA00EECD66 /* SelectAddInMapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C67D371A5D72FA00EECD66 /* SelectAddInMapsViewController.m */; };
 		17C67D3A1A5D72FA00EECD66 /* SelectAddInMapsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17C67D381A5D72FA00EECD66 /* SelectAddInMapsViewController.xib */; };
 		17C866E91B44DF4800B1AF66 /* EditTask360ViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17C866E71B44DF4800B1AF66 /* EditTask360ViewController~iphone.xib */; };
@@ -1300,6 +1301,7 @@
 		17B20D651AFD1FF70023FCC0 /* Follow360ViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Follow360ViewController~iphone.xib"; sourceTree = "<group>"; };
 		17BD0B2F1B4E29360006DE49 /* ComplainViewHeader~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ComplainViewHeader~iphone.xib"; sourceTree = "<group>"; };
 		17BD0B301B4E29360006DE49 /* ComplainViewCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ComplainViewCell~iphone.xib"; sourceTree = "<group>"; };
+		17BD0B351B4E838E0006DE49 /* DashboardTaskViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DashboardTaskViewController~iphone.xib"; sourceTree = "<group>"; };
 		17C67D361A5D72FA00EECD66 /* SelectAddInMapsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectAddInMapsViewController.h; sourceTree = "<group>"; };
 		17C67D371A5D72FA00EECD66 /* SelectAddInMapsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAddInMapsViewController.m; sourceTree = "<group>"; };
 		17C67D381A5D72FA00EECD66 /* SelectAddInMapsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectAddInMapsViewController.xib; sourceTree = "<group>"; };
@@ -5479,6 +5481,7 @@
 				8E8269C51A7A7317001D0E4B /* DashboardTaskViewController.h */,
 				8E8269C61A7A7317001D0E4B /* DashboardTaskViewController.m */,
 				8E8269C71A7A7317001D0E4B /* DashboardTaskViewController.xib */,
+				17BD0B351B4E838E0006DE49 /* DashboardTaskViewController~iphone.xib */,
 			);
 			path = DashboardTaskVC;
 			sourceTree = "<group>";
@@ -6756,6 +6759,7 @@
 				2D2D215F17A6946800A87364 /* InfColorPickerView.xib in Resources */,
 				84606E1D1B3016E700701EF9 /* MainViewListCell~iphone.xib in Resources */,
 				76601A45194BE90F001D4C01 /* Reader-Button-H.png in Resources */,
+				17BD0B371B4E838E0006DE49 /* DashboardTaskViewController~iphone.xib in Resources */,
 				1787F7261B452A1F00C4F004 /* EditOpportunityProductPopupViewController.xib in Resources */,
 				76C964811A17A15C00029978 /* pin.png in Resources */,
 				8E7554681A52EFC8001940FB /* iconTurnSlightLeft.png in Resources */,

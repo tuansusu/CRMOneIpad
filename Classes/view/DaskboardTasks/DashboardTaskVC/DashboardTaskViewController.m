@@ -61,6 +61,8 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 @property (nonatomic,retain) IBOutlet UILabel *barLabel;
 @property (weak, nonatomic) IBOutlet UIView *footerView;
 
+@property(weak, nonatomic)IBOutlet UISearchBar *searchBar;
+
 
 @end
 
@@ -315,6 +317,8 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 -(void) searchBarCancelButtonClicked:(UISearchBar *)searchBar{
     NSLog(@"searchBarCancelButtonClicked");
     strSearchText = @"";
+    [searchBar resignFirstResponder];
+    searchBar.text=@"";
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar                     // called when keyboard search button pressed
@@ -477,6 +481,15 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
             });
         });
     }
+}
+#pragma mark search bar
+-(void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+
+    searchBar.showsCancelButton=YES;
+}
+-(void)searchBarTextDidEndEditing:(UISearchBar *)searchBar{
+
+    searchBar.showsCancelButton=NO;
 }
 
 @end

@@ -69,7 +69,7 @@
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Chọn số lượng" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZDH-Fa-Ihu">
                                     <rect key="frame" x="8" y="104" width="304" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                 </textField>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="errorVaildate.png" translatesAutoresizingMaskIntoConstraints="NO" id="rIT-dR-t4f">
                                     <rect key="frame" x="296" y="111" width="16" height="16"/>
@@ -77,7 +77,7 @@
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Doanh số" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KVT-r5-omR">
                                     <rect key="frame" x="8" y="171" width="180" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                 </textField>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="errorVaildate.png" translatesAutoresizingMaskIntoConstraints="NO" id="koG-RM-Fxa">
                                     <rect key="frame" x="172" y="178" width="16" height="16"/>

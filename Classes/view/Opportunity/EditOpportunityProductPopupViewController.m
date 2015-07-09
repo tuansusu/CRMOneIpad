@@ -106,7 +106,7 @@
         [tableAlert reloadData];
         [_txtCurrency setInputView:tableAlert];
         toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
-        toolBar.backgroundColor=HEADER_VIEW_COLOR1;
+        toolBar.barStyle=UIStatusBarStyleDefault;
         UIBarButtonItem *doneBtn;
         UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         
@@ -114,6 +114,8 @@
         
         [toolBar setItems:[NSArray arrayWithObjects:space,doneBtn, nil]];
         [_txtCurrency setInputAccessoryView:toolBar];
+        [_txtQuantity setInputAccessoryView:toolBar];
+        [_txtRevenue setInputAccessoryView:toolBar];
         
     }
 }
@@ -124,6 +126,11 @@
         // self.txtCustomer.text = @"";
     }
     searchBarController.active = NO;
+}
+-(void)setSelectedDate{
+    [_txtCurrency resignFirstResponder];
+    [_txtQuantity resignFirstResponder];
+    [_txtRevenue resignFirstResponder];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

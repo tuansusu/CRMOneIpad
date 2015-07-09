@@ -88,6 +88,8 @@
 		17A545C91AE5F1BF007F6B1E /* Calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A545C81AE5F1BF007F6B1E /* Calendar.png */; };
 		17B20D641AFD15B40023FCC0 /* FlowLeadViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17B20D621AFD15B40023FCC0 /* FlowLeadViewController~iphone.xib */; };
 		17B20D661AFD1FF70023FCC0 /* Follow360ViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17B20D651AFD1FF70023FCC0 /* Follow360ViewController~iphone.xib */; };
+		17BD0B311B4E29360006DE49 /* ComplainViewHeader~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17BD0B2F1B4E29360006DE49 /* ComplainViewHeader~iphone.xib */; };
+		17BD0B321B4E29360006DE49 /* ComplainViewCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17BD0B301B4E29360006DE49 /* ComplainViewCell~iphone.xib */; };
 		17C67D391A5D72FA00EECD66 /* SelectAddInMapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C67D371A5D72FA00EECD66 /* SelectAddInMapsViewController.m */; };
 		17C67D3A1A5D72FA00EECD66 /* SelectAddInMapsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17C67D381A5D72FA00EECD66 /* SelectAddInMapsViewController.xib */; };
 		17C866E91B44DF4800B1AF66 /* EditTask360ViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17C866E71B44DF4800B1AF66 /* EditTask360ViewController~iphone.xib */; };
@@ -1296,6 +1298,8 @@
 		17A545C81AE5F1BF007F6B1E /* Calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Calendar.png; sourceTree = "<group>"; };
 		17B20D621AFD15B40023FCC0 /* FlowLeadViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "FlowLeadViewController~iphone.xib"; sourceTree = "<group>"; };
 		17B20D651AFD1FF70023FCC0 /* Follow360ViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Follow360ViewController~iphone.xib"; sourceTree = "<group>"; };
+		17BD0B2F1B4E29360006DE49 /* ComplainViewHeader~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ComplainViewHeader~iphone.xib"; sourceTree = "<group>"; };
+		17BD0B301B4E29360006DE49 /* ComplainViewCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ComplainViewCell~iphone.xib"; sourceTree = "<group>"; };
 		17C67D361A5D72FA00EECD66 /* SelectAddInMapsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectAddInMapsViewController.h; sourceTree = "<group>"; };
 		17C67D371A5D72FA00EECD66 /* SelectAddInMapsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAddInMapsViewController.m; sourceTree = "<group>"; };
 		17C67D381A5D72FA00EECD66 /* SelectAddInMapsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectAddInMapsViewController.xib; sourceTree = "<group>"; };
@@ -5257,6 +5261,8 @@
 		8E568F801A58F5010002A3C4 /* ComplainCell */ = {
 			isa = PBXGroup;
 			children = (
+				17BD0B2F1B4E29360006DE49 /* ComplainViewHeader~iphone.xib */,
+				17BD0B301B4E29360006DE49 /* ComplainViewCell~iphone.xib */,
 				8E568F811A58F5170002A3C4 /* ComplainViewCell.h */,
 				8E568F821A58F5170002A3C4 /* ComplainViewCell.m */,
 				8E568F831A58F5170002A3C4 /* ComplainViewCell.xib */,
@@ -6968,6 +6974,7 @@
 				8E44BC2B1A73A89B00EDCD1A /* ProductLeadCellHeader.xib in Resources */,
 				8E7554551A52EFC8001940FB /* iconKeepRight@2x.png in Resources */,
 				7697BBC61A7FB1700023F118 /* menu_map@2x.png in Resources */,
+				17BD0B311B4E29360006DE49 /* ComplainViewHeader~iphone.xib in Resources */,
 				8E75545A1A52EFC8001940FB /* iconRampRight.png in Resources */,
 				8E44BC401A73A89B00EDCD1A /* ProTheDetailViewController.xib in Resources */,
 				76DB17651AC7958400D10878 /* EditOpportunityTaskViewController~iphone.xib in Resources */,
@@ -7190,6 +7197,7 @@
 				8E7554521A52EFC8001940FB /* iconKeepLeft.png in Resources */,
 				76C9645B1A17731900029978 /* BasicPieChartSample.png in Resources */,
 				7697BBD31A7FD0640023F118 /* icon_menu-1@2x.png in Resources */,
+				17BD0B321B4E29360006DE49 /* ComplainViewCell~iphone.xib in Resources */,
 				8ED402871A41DF3C00CCBE6D /* ic_qu_direction_mylocation@2x.png in Resources */,
 				2D007BF818330F6100A664F3 /* img_line_report.png in Resources */,
 				76EE210E19FF4D7100A80414 /* icon-accept-1.png in Resources */,

@@ -1622,15 +1622,37 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 -(void) delegateSendEmail:(NSString *)email{
     [Util sendMail:self withEmail:email];
 }
+-(IBAction)email :(id)sender{
+    
+    NSString *email = [dicData objectForKey:DTOACCOUNT_email];
+    if (![StringUtil stringIsEmpty:email]) {
+        [Util sendMail:self withEmail:email];
+    }
+}
 - (void)delegateCall:(NSString *)mobile {
     if(![StringUtil stringIsEmpty:mobile]){
         NSString *callnumber=[NSString stringWithFormat:@"telprompt://%@",mobile];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callnumber]];
     }
 }
-
+-(IBAction)call:(id)sender{
+    
+    NSString *mobile = [dicData objectForKey:DTOACCOUNT_mobile];
+    if ([StringUtil stringIsEmpty:mobile]) {
+        NSString *callnumber=[NSString stringWithFormat:@"telprompt://%@",mobile];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callnumber]];
+    }
+}
 - (void)delegateSMS:(NSString *)mobile {
     if(![StringUtil stringIsEmpty:mobile]){
+        NSString *sendSMS=[NSString stringWithFormat:@"sms://%@",mobile];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:sendSMS]];
+    }
+}
+-(IBAction)sms:(id)sender{
+    
+    NSString *mobile = [dicData objectForKey:DTOACCOUNT_mobile];
+    if ([StringUtil stringIsEmpty:mobile]) {
         NSString *sendSMS=[NSString stringWithFormat:@"sms://%@",mobile];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:sendSMS]];
     }

@@ -50,6 +50,10 @@ enum TypeLeaderView{
 
 @property (weak, nonatomic) IBOutlet UITableView *tbData;
 
+-(IBAction)call :(id)sender;
+-(IBAction)sms:(id)sender;
+-(IBAction)email:(id)sender;
+
 
 @property (weak, nonatomic) IBOutlet UIView *headerViewBar;
 @property (weak, nonatomic) IBOutlet UILabel *fullNameLB;

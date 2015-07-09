@@ -63,6 +63,10 @@ enum Type360View{
 - (IBAction)homeBack:(id)sender;
 
 - (IBAction)actionAdd:(id)sender;
+
+-(IBAction)call:(id)sender;
+-(IBAction)sms:(id)sender;
+-(IBAction)email:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *btnTempAdd;
 
 

@@ -280,7 +280,7 @@
     }
 }
 -(NSString *) formatCurrenc:(UITextField *)textField : (NSString *)string{
-
+    
     NSString *cleanCentString = [[textField.text
                                   componentsSeparatedByCharactersInSet:
                                   [[NSCharacterSet decimalDigitCharacterSet] invertedSet]]
@@ -303,7 +303,7 @@
     // Write amount with currency symbols to the textfield
     NSNumberFormatter *_currencyFormatter = [[NSNumberFormatter alloc] init];
     [_currencyFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-    //[_currencyFormatter setCurrencyCode:@"VND"];
+    [_currencyFormatter setCurrencyCode:@"đ"];
     [_currencyFormatter setNegativeFormat:@"-¤#,##0.00"];
     return  [_currencyFormatter stringFromNumber:amount];
 }

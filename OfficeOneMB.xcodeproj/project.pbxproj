@@ -7797,8 +7797,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: VIETTEL GROUP";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: VIETTEL GROUP";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7834,8 +7834,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = OfficeOneMB;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "1d2e4ffb-703c-4f3d-85e2-e7fe6977ce0f";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1d2e4ffb-703c-4f3d-85e2-e7fe6977ce0f";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "ldap/openldap-2.4.22/include include";
@@ -7848,9 +7848,9 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: VIETTEL GROUP";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: VIETTEL GROUP";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: VIETTEL GROUP";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7884,8 +7884,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = OfficeOneMB;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "1d2e4ffb-703c-4f3d-85e2-e7fe6977ce0f";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1d2e4ffb-703c-4f3d-85e2-e7fe6977ce0f";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "ldap/openldap-2.4.22/include include";
@@ -7896,16 +7896,16 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: TRAN HIEP (24C2799DLV)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: TRAN HIEP (24C2799DLV)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: VIETTEL GROUP";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: VIETTEL GROUP";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IBC_OTHER_FLAGS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "cc782648-6bb7-41ca-8143-865f009f807e";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cc782648-6bb7-41ca-8143-865f009f807e";
+				PROVISIONING_PROFILE = "1d2e4ffb-703c-4f3d-85e2-e7fe6977ce0f";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1d2e4ffb-703c-4f3d-85e2-e7fe6977ce0f";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -7914,16 +7914,16 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: TRAN HIEP (24C2799DLV)";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: TRAN HIEP (24C2799DLV)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: VIETTEL GROUP";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: VIETTEL GROUP";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IBC_OTHER_FLAGS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "cc782648-6bb7-41ca-8143-865f009f807e";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cc782648-6bb7-41ca-8143-865f009f807e";
+				PROVISIONING_PROFILE = "1d2e4ffb-703c-4f3d-85e2-e7fe6977ce0f";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1d2e4ffb-703c-4f3d-85e2-e7fe6977ce0f";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};

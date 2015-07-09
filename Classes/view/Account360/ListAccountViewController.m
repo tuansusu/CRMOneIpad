@@ -860,14 +860,14 @@
     
 }
 -(void) delegate_call:(NSDictionary *)dicData{
-    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_phone]]){
-        NSString *callnumber=[NSString stringWithFormat:@"telprompt://%@",[dicData objectForKey:DTOACCOUNT_phone]];
+    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_mobile]]){
+        NSString *callnumber=[NSString stringWithFormat:@"telprompt://%@",[dicData objectForKey:DTOACCOUNT_mobile]];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callnumber]];
     }
 }
 -(void) delegate_sms:(NSDictionary *)dicData{
-    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_phone]]){
-        NSString *sendSMS=[NSString stringWithFormat:@"sms://%@",[dicData objectForKey:DTOACCOUNT_phone]];
+    if(![StringUtil stringIsEmpty:[dicData objectForKey:DTOACCOUNT_mobile]]){
+        NSString *sendSMS=[NSString stringWithFormat:@"sms://%@",[dicData objectForKey:DTOACCOUNT_mobile]];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:sendSMS]];
     }
 }

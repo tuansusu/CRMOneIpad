@@ -740,7 +740,13 @@
     if (_dataRoot) {
         if (_isKH360) {
             [dicEntity setObject:[self.dataRoot objectForKey:DTOACCOUNT_clientAccountId] forKey:DTOTASK_accountId];
-        }else{
+        }else if (_isOpportunity){
+            
+            
+            [dicEntity setObject:[self.dataRoot objectForKey:DTOOPPORTUNITY_clientOpportunityId] forKey:DTOTASK_clientOpportunityId];
+            
+        }
+        else{
             [dicEntity setObject:[_dataRoot objectForKey:DTOLEAD_clientLeadId] forKey:DTOTASK_clientLeadId];
         }
     }
@@ -748,12 +754,18 @@
     if (_dataSend)
     {
         if (_isKH360) {
-            if ([self.dataRoot objectForKey:DTOACCOUNT_clientAccountId]) {
-                [dicEntity setObject:[self.dataRoot objectForKey:DTOACCOUNT_clientAccountId] forKey:DTOTASK_accountId];
+            if ([self.dataSend objectForKey:DTOACCOUNT_clientAccountId]) {
+                [dicEntity setObject:[self.dataSend objectForKey:DTOACCOUNT_clientAccountId] forKey:DTOTASK_accountId];
             }
-        }else{
+        }else if (_isOpportunity){
+            NSString *opportunityId = [self.dataSend objectForKey:DTOOPPORTUNITY_clientOpportunityId];
+            if(![StringUtil stringIsEmpty:opportunityId]){
+                [dicEntity setObject:opportunityId forKey:DTOTASK_opportunityId];
+            }
+        }
+        else{
             if ([_dataSend objectForKey:DTOLEAD_clientLeadId]) {
-                [dicEntity setObject:[_dataSend objectForKey:DTOLEAD_clientLeadId] forKey:DTOTASK_clientLeadId];
+                [dicEntity setObject:[_dataSend objectForKey:DTOLEAD_clientLeadId] forKey:DTOTASK_leadId];
             }
             
         }

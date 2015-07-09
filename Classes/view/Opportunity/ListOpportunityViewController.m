@@ -793,9 +793,19 @@
 
 -(void) searchBarCancelButtonClicked:(UISearchBar *)searchBar{
     NSLog(@"searchBarCancelButtonClicked");
+    [searchBar resignFirstResponder];
+    searchBar.text=@"";
+    [self filterData:@"" withStartDate:nil withEndDate:nil withType:nil];
     //strSearchText = @"";
 }
+-(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
 
+    searchBar.showsCancelButton=YES;
+}
+-(void)searchBarTextDidEndEditing:(UISearchBar *)searchBar{
+
+    searchBar.showsCancelButton=NO;
+}
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar                     // called when keyboard search button pressed
 {
     [arrayData removeAllObjects];

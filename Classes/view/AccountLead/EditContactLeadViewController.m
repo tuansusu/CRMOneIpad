@@ -20,6 +20,7 @@
 #import "DTOATTACHMENTProcess.h"
 #import "EnumClass.h"
 #import "DTOSYSCATProcess.h"
+#import "DTOOPPORTUNITYCONTACTProcess.h"
 
 #define TAG_SELECT_DATE_CREATE 1 //NGAY CAP CHUNG MINH THU
 #define TAG_SELECT_DATE_BIRTHDAY 2 //NGAY SINH
@@ -492,24 +493,48 @@
     if (succsess) {
         if (_dataSend.count<=0) {
             
-            
-            strClientContactId = IntToStr(([dtoProcess getClientId] - 1));
-            
-            //cap nhat vao bang quan he
-            NSMutableDictionary *dicSubEntity =  [[NSMutableDictionary alloc]init];
-            
-            DTOACCCONTACTProcess *dtoAccContactProcess = [DTOACCCONTACTProcess new];
-            //id tu tang cua thang AccountcontactId
-            NSString *strAccountContactId = IntToStr([dtoAccContactProcess getClientId]);
-            //id tu tang cua thang AccountcontactId
-            [dicSubEntity setObject:strAccountContactId forKey:DTOACCOUNTCONTACT_clientAccountContactId];
-            //id cua thang contact vua tao
-            [dicSubEntity setObject:strClientContactId forKey:DTOACCOUNTCONTACT_clientAccountId];
-            
-            [dicSubEntity setObject:[self.dataRoot objectForKey:DTOLEAD_clientLeadId] forKey:DTOACCOUNTCONTACT_clientLeadId];
-            [dicSubEntity setObject:@"1" forKey:DTOACCOUNTCONTACT_isActive];
-            
-            succsess = [dtoAccContactProcess insertToDBWithEntity:dicSubEntity];
+            if (self.isOpportunity) {
+                strClientContactId = IntToStr(([dtoProcess getClientId] - 1));
+                
+                //cap nhat vao bang quan he
+                NSMutableDictionary *dicSubEntity =  [[NSMutableDictionary alloc]init];
+                
+                DTOOPPORTUNITYCONTACTProcess  *dtoOpportunityContactProcess = [DTOOPPORTUNITYCONTACTProcess new];
+                //id tu tang cua thang OpportunityContactId
+                
+                
+                NSString *strOpportunityContactId = IntToStr([dtoOpportunityContactProcess getClientId]);
+                //id tu tang cua thang OpportunityContactId
+                [dicSubEntity setObject:strOpportunityContactId forKey:DTOOPPORTUNITYCONTACT_clientOpportunityContactId];
+                [dicSubEntity setObject:@"0" forKey:@"updatedBy"];
+                //id cua thang contact vua tao
+                [dicSubEntity setObject:strClientContactId forKey:DTOCONTACT_clientContactId];
+                
+                [dicSubEntity setObject:[self.dataRoot objectForKey:DTOOPPORTUNITY_clientOpportunityId] forKey:DTOOPPORTUNITY_clientOpportunityId];
+                [dicSubEntity setObject:[self.dataRoot objectForKey:DTOOPPORTUNITY_clientOpportunityId] forKey:DTOOPPORTUNITYCONTACT_opportunityId];
+                [dicSubEntity setObject:@"1" forKey:DTOACCOUNTCONTACT_isActive];
+                
+                succsess = [dtoOpportunityContactProcess insertToDBWithEntity:dicSubEntity];
+            }
+            else{
+                strClientContactId = IntToStr(([dtoProcess getClientId] - 1));
+                
+                //cap nhat vao bang quan he
+                NSMutableDictionary *dicSubEntity =  [[NSMutableDictionary alloc]init];
+                
+                DTOACCCONTACTProcess *dtoAccContactProcess = [DTOACCCONTACTProcess new];
+                //id tu tang cua thang AccountcontactId
+                NSString *strAccountContactId = IntToStr([dtoAccContactProcess getClientId]);
+                //id tu tang cua thang AccountcontactId
+                [dicSubEntity setObject:strAccountContactId forKey:DTOACCOUNTCONTACT_clientAccountContactId];
+                //id cua thang contact vua tao
+                [dicSubEntity setObject:strClientContactId forKey:DTOACCOUNTCONTACT_clientAccountId];
+                
+                [dicSubEntity setObject:[self.dataRoot objectForKey:DTOLEAD_clientLeadId] forKey:DTOACCOUNTCONTACT_clientLeadId];
+                [dicSubEntity setObject:@"1" forKey:DTOACCOUNTCONTACT_isActive];
+                
+                succsess = [dtoAccContactProcess insertToDBWithEntity:dicSubEntity];
+            }
         }
         
     }
@@ -685,7 +710,7 @@
     
 }// return NO to disallow editing.
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView{
-
+    
     txtView=textView;
     [self keyboardWillBeHidden:nil];
     [self keyboardWasShown:nil];

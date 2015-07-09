@@ -526,16 +526,20 @@
     
     [dicEntity setObject:@"1" forKey:DTOTASK_isActive];
     [dicEntity setObject:[DateUtil formatDate:[NSDate date] :FORMAT_DATE_AND_TIME] forKey:DTOTASK_updatedDate];
-    NSString *strClientContactId = IntToStr(([dtoProcess getClientId]));
-    [dicEntity setObject:strClientContactId forKey:DTOTASK_clientTaskId];
     [dicEntity setObject:@"1" forKey:DTOTASK_clientId];
     [dicEntity setObject:@"1" forKey:DTOTASK_typeTask];
     
     if (self.dataRoot) {
+        NSString *strClientContactId = IntToStr(([dtoProcess getClientId]));
+        [dicEntity setObject:strClientContactId forKey:DTOTASK_clientTaskId];
         //TODO: check
         if (self.isKHDM) {
             [dicEntity setObject:[self.dataRoot objectForKey:DTOLEAD_clientLeadId] forKey:DTOTASK_clientLeadId];
-        }else{
+        }
+        else if(self.isOpportunity){
+            [dicEntity setObject:[self.dataRoot objectForKey:DTOOPPORTUNITY_id] forKey:DTOTASK_opportunityId];
+        }
+        else{
             [dicEntity setObject:[self.dataRoot objectForKey:DTOACCOUNT_clientAccountId] forKey:DTOTASK_accountId];
         }
         

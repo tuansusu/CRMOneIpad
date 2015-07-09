@@ -337,11 +337,29 @@
         [dicEntity setObject:[_dataSend objectForKey:DTONOTE_id] forKey:DTONOTE_id];
     }else{
         //truong hop them moi
-        [dicEntity setObject:[self.dataRoot objectForKey:DTOLEAD_clientLeadId] forKey:DTONOTE_clientObjectId];
-        [dicEntity setObject:@"Lead" forKey:DTONOTE_objectType];
-        [dicEntity setObject:strClientContactId forKey:DTONOTE_clientNoteId];
-        NSLog(@"clientObjectId= %@", [dicEntity objectForKey:DTONOTE_clientObjectId]);
-        NSLog(@"clientLeadId= %@", [self.dataRoot objectForKey:DTOLEAD_clientLeadId]);
+        if (_isOpportunity) {
+            NSString *strOpportunityId = [self.dataRoot objectForKey:DTOOPPORTUNITY_opportunityId];
+            //truong hop them moi
+            if(![StringUtil stringIsEmpty:strOpportunityId])
+            {
+                
+                [dicEntity setObject:[self.dataRoot objectForKey:DTOOPPORTUNITY_opportunityId] forKey:DTONOTE_opportunityId];
+            }
+            else
+            {
+                [dicEntity setObject:[self.dataRoot objectForKey:DTOOPPORTUNITY_clientOpportunityId] forKey:DTONOTE_opportunityId];
+            }
+            [dicEntity setObject:@"Opportunity" forKey:DTONOTE_objectType];
+            [dicEntity setObject:strClientContactId forKey:DTONOTE_clientNoteId];
+            
+        }
+        else{
+            [dicEntity setObject:[self.dataRoot objectForKey:DTOLEAD_clientLeadId] forKey:DTONOTE_clientObjectId];
+            [dicEntity setObject:@"Lead" forKey:DTONOTE_objectType];
+            [dicEntity setObject:strClientContactId forKey:DTONOTE_clientNoteId];
+            NSLog(@"clientObjectId= %@", [dicEntity objectForKey:DTONOTE_clientObjectId]);
+            NSLog(@"clientLeadId= %@", [self.dataRoot objectForKey:DTOLEAD_clientLeadId]);
+        }
         
     }
     succsess = [dtoProcess insertToDBWithEntity:dicEntity];

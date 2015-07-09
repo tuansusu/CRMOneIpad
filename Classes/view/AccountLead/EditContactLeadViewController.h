@@ -44,6 +44,8 @@
 
 @property (weak, nonatomic) IBOutlet UIView *bodyMainView;
 
+@property(nonatomic, assign) BOOL isOpportunity;
+
 
 
 //@property (weak, nonatomic) IBOutlet UIView *viewMainBodyInfo;

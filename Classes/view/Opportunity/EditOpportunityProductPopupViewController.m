@@ -128,6 +128,7 @@
     searchBarController.active = NO;
 }
 -(void)setSelectedDate{
+
     [_txtCurrency resignFirstResponder];
     [_txtQuantity resignFirstResponder];
     [_txtRevenue resignFirstResponder];

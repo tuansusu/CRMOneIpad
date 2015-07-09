@@ -29,6 +29,8 @@
  */
 @property (nonatomic, retain) NSDictionary *dataSend;
 
+@property(nonatomic,assign) BOOL *isOpportunity;
+
 /*
  * chuyen tu form KHDM
  */

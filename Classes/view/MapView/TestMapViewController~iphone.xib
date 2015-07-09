@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TestMapViewController">
@@ -23,7 +23,6 @@
                 <outlet property="imgCarSelected" destination="MrU-Gq-Zmp" id="WcR-LX-i2y"/>
                 <outlet property="imgCusSelected" destination="gpg-Mj-6TB" id="zjd-T0-MzZ"/>
                 <outlet property="imgDirSelected" destination="1nI-td-Tsc" id="rYF-Z1-orC"/>
-                <outlet property="imgHomeMenu" destination="Kvh-P8-FQR" id="4PJ-CP-OjL"/>
                 <outlet property="imgMotoSelected" destination="9Gt-yH-3vL" id="XX6-8S-Lbk"/>
                 <outlet property="imgWalkingSelected" destination="ajE-Uw-d2a" id="Pfr-KP-JbC"/>
                 <outlet property="mainView" destination="hrj-Ht-ui3" id="F4k-Jg-uty"/>
@@ -52,10 +51,6 @@
                             <color key="textColor" red="0.88175101899999997" green="0.88175101899999997" blue="0.88175101899999997" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_menu-1.png" id="Kvh-P8-FQR">
-                            <rect key="frame" x="8" y="19" width="32" height="32"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mHd-6v-cd7">
                             <rect key="frame" x="8" y="19" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -64,11 +59,11 @@
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zKk-63-3lP" userLabel="BTNHome">
-                            <rect key="frame" x="3" y="3" width="61" height="44"/>
+                            <rect key="frame" x="0.0" y="15" width="32" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                            <state key="normal">
+                            <state key="normal" backgroundImage="icon_menu-1.png">
                                 <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>

@@ -1555,7 +1555,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 -(IBAction)email:(id)sender{
     NSString *email = [dicData objectForKey:DTOLEAD_email];
     if (![StringUtil stringIsEmpty:email ]) {
-    [Util sendMail:self withEmail:email];
+        [Util sendMail:self withEmail:email];
     }
 }
 - (void)delegate_callContact:(NSString *)mobile {
@@ -1565,7 +1565,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     }
 }
 -(IBAction)call:(id)sender{
-
+    
     NSString *mobile =[dicData objectForKey:DTOLEAD_mobile];
     if(![StringUtil stringIsEmpty:mobile]){
         NSString *callnumber=[NSString stringWithFormat:@"telprompt://%@",mobile];
@@ -1579,7 +1579,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     }
 }
 -(IBAction)sms:(id)sender{
-
+    
     NSString *mobile = [dicData objectForKey:DTOLEAD_mobile];
     if(![StringUtil stringIsEmpty:mobile]){
         NSString *sendSMS=[NSString stringWithFormat:@"sms://%@",mobile];
@@ -1629,67 +1629,84 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
 }
 -(void) tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
     NSUInteger indexOfTab = [[tabBar items] indexOfObject:item];
-    NSLog(@"Tab index = %i", indexOfTab);
-    NSLog(@"Tab bar: did select tab %@", item.title);
-    //chi tiết khách hàng
-    if(indexOfTab==0){
-        _viewDetailIP.hidden=NO;
-        if ([leadType isEqualToString:FIX_LEADTYPE_BUSSINESS]) {
-            _viewData.hidden=YES;
-            _scrollviewDN.hidden=NO;
-            _scrollviewCN.hidden=YES;
-            [_viewDetailIP addSubview:_scrollviewDN];
-        }else{
-            _scrollviewCN.hidden=NO;
-            _scrollviewDN.hidden=YES;
-            _viewData.hidden=YES;
-            [_viewDetailIP addSubview:_scrollviewCN];
-        }
-        _fullNameLB.text=LocalizedString(@"KEY_LEAD_TITLE");
-    }
-    else if(indexOfTab==1){
-        _scrollviewCN.hidden=YES;
-        _scrollviewDN.hidden=YES;
-        _viewDetailIP.hidden=YES;
-        _viewData.hidden=NO;
-        _fullNameLB.text=LocalizedString(@"KEY_360_CONTACT");
-        [self loadDataWithTypeAction:typeLeaderView_Contact];
-    }
-    else if(indexOfTab==2){
-        _scrollviewCN.hidden=YES;
-        _scrollviewDN.hidden=YES;
-        _viewDetailIP.hidden=YES;
-        _viewData.hidden=NO;
-        _fullNameLB.text=LocalizedString(@"KEY_360_NOTE");
-        [self loadDataWithTypeAction:typeLeaderView_Note];
-    }
-    else if(indexOfTab==3){
-        _scrollviewCN.hidden=YES;
-        _scrollviewDN.hidden=YES;
-        _viewDetailIP.hidden=YES;
-        _viewData.hidden=NO;
-        _fullNameLB.text=LocalizedString(@"KEY_360_CALENDAR");
-        if (typeActionEvent == typeLeaderView_Calendar)
+    [self showTabbarIndex:indexOfTab];
+}
+-(void) showTabbarIndex: (NSInteger)index{
+    
+    switch (index) {
+        case 0:
         {
-            calendarIsTimeline = !calendarIsTimeline;
+            _viewDetailIP.hidden=NO;
+            if ([leadType isEqualToString:FIX_LEADTYPE_BUSSINESS]) {
+                _viewData.hidden=YES;
+                _scrollviewDN.hidden=NO;
+                _scrollviewCN.hidden=YES;
+                [_viewDetailIP addSubview:_scrollviewDN];
+            }else{
+                _scrollviewCN.hidden=NO;
+                _scrollviewDN.hidden=YES;
+                _viewData.hidden=YES;
+                [_viewDetailIP addSubview:_scrollviewCN];
+            }
+            _fullNameLB.text=LocalizedString(@"KEY_LEAD_TITLE");
         }
-        [self loadDataWithTypeAction:typeLeaderView_Calendar];
-    }
-    else if(indexOfTab==4){
-        _scrollviewCN.hidden=YES;
-        _scrollviewDN.hidden=YES;
-        _viewDetailIP.hidden=YES;
-        _viewData.hidden=NO;
-        _fullNameLB.text=LocalizedString(@"KEY_360_YKIEN");
-        [self loadDataWithTypeAction:typeLeaderView_Complains];
-    }
-    else if(indexOfTab==5){
-        
-        UIActionSheet *actionSheet=[[UIActionSheet alloc] initWithTitle:@"Menu" delegate:self cancelButtonTitle:LocalizedString(@"KEY_CANCEL") destructiveButtonTitle:nil otherButtonTitles:LocalizedString(@"KEY_360_NHIEMVU"),LocalizedString(@"KEY_360_COHOI"), nil];
-        actionSheet.tag=11;
-        [actionSheet showInView:self.view];
+            break;
+        case 1:
+        {
+            _scrollviewCN.hidden=YES;
+            _scrollviewDN.hidden=YES;
+            _viewDetailIP.hidden=YES;
+            _viewData.hidden=NO;
+            _fullNameLB.text=LocalizedString(@"KEY_360_CONTACT");
+            [self loadDataWithTypeAction:typeLeaderView_Contact];
+        }
+            break;
+        case  2:
+        {
+            _scrollviewCN.hidden=YES;
+            _scrollviewDN.hidden=YES;
+            _viewDetailIP.hidden=YES;
+            _viewData.hidden=NO;
+            _fullNameLB.text=LocalizedString(@"KEY_360_NOTE");
+            [self loadDataWithTypeAction:typeLeaderView_Note];
+        }
+            break;
+        case 3:
+        {
+            _scrollviewCN.hidden=YES;
+            _scrollviewDN.hidden=YES;
+            _viewDetailIP.hidden=YES;
+            _viewData.hidden=NO;
+            _fullNameLB.text=LocalizedString(@"KEY_360_CALENDAR");
+            if (typeActionEvent == typeLeaderView_Calendar)
+            {
+                calendarIsTimeline = !calendarIsTimeline;
+            }
+            [self loadDataWithTypeAction:typeLeaderView_Calendar];
+        }
+            break;
+        case 4:
+        {
+            _scrollviewCN.hidden=YES;
+            _scrollviewDN.hidden=YES;
+            _viewDetailIP.hidden=YES;
+            _viewData.hidden=NO;
+            _fullNameLB.text=LocalizedString(@"KEY_360_YKIEN");
+            [self loadDataWithTypeAction:typeLeaderView_Complains];
+        }
+            break;
+        case 5:
+        {
+            UIActionSheet *actionSheet=[[UIActionSheet alloc] initWithTitle:@"Menu" delegate:self cancelButtonTitle:LocalizedString(@"KEY_CANCEL") destructiveButtonTitle:nil otherButtonTitles:LocalizedString(@"KEY_360_NHIEMVU"),LocalizedString(@"KEY_360_COHOI"), nil];
+            actionSheet.tag=11;
+            [actionSheet showInView:self.view];
+        }
+            break;
+        default:
+            break;
     }
 }
+
 - (IBAction)myactionAdd:(id)sender {
     
     UIActionSheet *action=[[UIActionSheet alloc]initWithTitle:@"Menu" delegate:self cancelButtonTitle:LocalizedString(@"KEY_CANCEL") destructiveButtonTitle:nil otherButtonTitles:LocalizedString(@"KEY_360_CONTACT"),LocalizedString(@"KEY_360_NOTE"), LocalizedString(@"KEY_360_CALENDAR")

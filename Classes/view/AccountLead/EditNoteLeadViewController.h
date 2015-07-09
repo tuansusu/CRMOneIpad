@@ -39,6 +39,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnHome;
 - (IBAction)homeBack:(id)sender;
 
+@property(nonatomic,assign) BOOL isOpportunity;
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 

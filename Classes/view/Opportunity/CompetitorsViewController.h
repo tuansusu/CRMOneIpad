@@ -21,6 +21,7 @@
 #import "EditOpportunityTaskViewController.h"
 #import "EditNoteOpportunityViewController.h"
 #import "EditCalendarOpportunityViewController.h"
+#import "EditCalendarLeadViewController.h"
 #import "UIViewController+MJPopupViewController.h"
 #import "EmptyCell.h"
 #import "ComplainsView.h"
@@ -38,7 +39,7 @@ enum TypeActionEvent{
 };
 
 
-@interface CompetitorsViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate,SelectIndexDelegate,OpportunityProductDelegate,TaskActionCellDelegate,ComplainDetailViewControllerDelegate,EditCalendarOpportunityViewControllerDelegate,ComplainsViewDelegate,UITabBarDelegate,UIActionSheetDelegate>
+@interface CompetitorsViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate,SelectIndexDelegate,OpportunityProductDelegate,TaskActionCellDelegate,ComplainDetailViewControllerDelegate,EditCalendarOpportunityViewControllerDelegate,EditCalendarLeadViewControllerDelegate,ComplainsViewDelegate,UITabBarDelegate,UIActionSheetDelegate,UISearchBarDelegate>
 
 
 @property (nonatomic) enum TypeActionEvent typeActionEvent;
@@ -61,6 +62,8 @@ enum TypeActionEvent{
 @property (weak, nonatomic) IBOutlet UIView *leftViewHeader;
 
 @property (weak, nonatomic) IBOutlet UILabel *leftLabelHeader;
+
+@property (weak,nonatomic) IBOutlet UISearchBar *searchBar;
 
 
 @property (weak, nonatomic) IBOutlet UIView *rightInMainView;

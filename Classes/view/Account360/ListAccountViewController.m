@@ -544,11 +544,11 @@
     
 }
 -(void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
-
+    
     searchBar.showsCancelButton=YES;
 }
 -(void) searchBarTextDidEndEditing:(UISearchBar *)searchBar{
-
+    
     searchBar.showsCancelButton=NO;
     [searchBar resignFirstResponder];
 }
@@ -588,112 +588,8 @@
 }
 
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
-    
-    
-    //    CGRect frame = self.tbData.frame;
-    //    frame.origin.y = frame.origin.y - searchBar.bounds.size.height;
-    //    self.tbData.frame = frame;
-    //
-    //    NSLog(@"end search");
-    //
-    //    searchBar.showsScopeBar = NO;
-    //    [searchBar sizeToFit];
-    //
-    //
-    //    [searchBar setShowsCancelButton:NO animated:YES];
-    //
-    
     return YES;
 }
-
-
-//Thêm phần sửa, xoá hiển thị trên row của table
-
-#pragma mark edit
-/**
- *  Bat Swipe right de cho phep hien thi button xoa 1 row
- *  @return YES: If you want the specified item to be editable.
- */
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *deletePermission =@"1";
-    if ([deletePermission isEqualToString:@"1"]) {
-        return YES;
-    }
-    return NO;
-}
-
-/**
- *  Delete 1 row tren TableView
- */
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        
-        
-        NSDictionary *dicData = [arrayData objectAtIndex:indexPath.row];
-        deleteLeadId = [dicData objectForKey:DTOACCOUNT_id];
-        
-        UIAlertView *mylert = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERTVIEW_DELETE_MESSAGE")  delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERTVIEW_DELETE_OK") otherButtonTitles:LocalizedString(@"KEY_ALERTVIEW_DELETE_CANCEL"), nil];
-        mylert.tag = TAG_DELETE_ITEM;
-        [mylert show];
-        
-        
-    }
-}
-
-/**
- *  Xu ly khi click Button Accessory (tren ios6, xem trong cellForRow co code set AccessoryType cho cell neu khong phai la Header)
- *  TRUONG HOP NAY HIEN TAI KHONG DUNG DEN MA SU DUNG 1 CUSTOM BUTTON VOI ACTION "customButtonAccessoryTapped"
- */
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
-{
-    
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    return SYS_KEY_DELETE;
-}
-
-/**
- *  Them 1 button "Sua" ben canh button "Xoa" (tren ios7, ios6 su dung accessoryType)
- */
--(NSString *)tableView:(UITableView *)tableView titleForSwipeAccessoryButtonForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    /**
-     *  Neu khong phai la Header thi la item level 2
-     */
-    return SYS_KEY_EDIT;
-    //return nil;
-}
-
-/**
- *  Xu ly khi chon button "Sua"
- */
--(void)tableView:(UITableView *)tableView swipeAccessoryButtonPushedForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    //    NSLog(@"sua item at index = %d", indexPath.row);
-    //
-    //    NSDictionary *dicDataTemp = [arrayData objectAtIndex:indexPath.row];
-    //
-    //    NSDictionary *dicData = [dtoProcess getDataWithKey:DTOACCOUNT_id withValue:[dicDataTemp objectForKey:DTOACCOUNT_id]];
-    //
-    //    if ([ObjectToStr([dicDataTemp objectForKey:DTOACCOUNT_accountType]) isEqualToString:FIX_LEADTYPE_PERSON]) {
-    //
-    //        EditAccount360ViewController *viewController = [[EditAccount360ViewController alloc]initWithNibName:@"EditAccount360ViewController" bundle:nil];
-    //        viewController.dataSend = dicData;
-    //        [self presentViewController:viewController animated:YES completion:nil];
-    //    }else{
-    //        EditBussiness360ViewController *viewController = [[EditBussiness360ViewController alloc]initWithNibName:@"EditBussiness360ViewController" bundle:nil];
-    //        // viewController.dataSend = dicDataTemp;
-    //        [self presentViewController:viewController animated:YES completion:nil];
-    //    }
-    
-    
-}
-
-
 
 #pragma mark table edit row
 

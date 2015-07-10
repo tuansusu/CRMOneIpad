@@ -60,7 +60,7 @@
     
     NSString *name= [_dataSend objectForKey:DTOLEAD_name];
     if ([self currentDeviceType]==iPhone) {
-        _lbTitel.text=[name lowercaseString];
+        _lbTitel.text=[name uppercaseString];
     }
     else{
         _lbTitel.text=[NSString stringWithFormat:@"THEO DÕI KHÁCH HÀNG 360 - %@",name];

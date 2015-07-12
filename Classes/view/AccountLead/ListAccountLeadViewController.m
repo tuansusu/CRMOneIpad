@@ -945,7 +945,7 @@
 -(void) delegate_changeStatusFollow:(NSString *)followid{
     
     followId=followid;
-    UIAlertView *aler = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_ALERT_DEL") delegate:self cancelButtonTitle:LocalizedString(@"KEY_INFO_MESSAGE_1") otherButtonTitles: LocalizedString(@"KEY_ALERTVIEW_DELETE_CANCEL"), nil];
+    UIAlertView *aler = [[UIAlertView alloc] initWithTitle:LocalizedString(@"KEY_INFO_TITLE") message:LocalizedString(@"KEY_INFO_CONFIRM_MESSAGE_1") delegate:self cancelButtonTitle:LocalizedString(@"KEY_ALERTVIEW_DELETE_OK") otherButtonTitles: LocalizedString(@"KEY_ALERTVIEW_DELETE_CANCEL"), nil];
     aler.tag=22;
     [aler show];
 }

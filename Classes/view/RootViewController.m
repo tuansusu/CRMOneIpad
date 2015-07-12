@@ -47,15 +47,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
-    if (IS_OS_8_OR_LATER) {
-        
-        NSLog(@" login height = %f", [UIScreen mainScreen].bounds.size.height);
-        NSLog(@"width = %f", [UIScreen mainScreen].bounds.size.width);
-        
-    }
-    
     NSDictionary *dTmp=[[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"]];
     versionSoftware = [dTmp objectForKey:@"CFBundleShortVersionString"];
         //set focus
@@ -116,7 +107,6 @@
     
     self.lblVersion.text = [NSString stringWithFormat:@"%@ %@, %@",VOFFICE,[defaults objectForKey:@"versionSoftware"],COPY_OF_SOFTWARE];
     
-    
     //tf_username.text = macAddress;
     if ([UIDevice getCurrentSysVer] >= 7.0) {
         [UIDevice updateLayoutInIOs7OrAfter:self];
@@ -126,7 +116,6 @@
     self.view.backgroundColor = [UIColor blackColor];
     //self.btnLogin.backgroundColor = BUTTON_ACTIVE_COLOR_1;
     self.lblVersion.textColor = TEXT_TOOLBAR_COLOR1;
-    
     
 }
 
@@ -371,17 +360,17 @@
         }
             break;
             
-        case sync_get_sysorganization:{
-            DTOSYSORGANIZATIONProcess *organizationProcess = [DTOSYSORGANIZATIONProcess new];
-            [organizationProcess synchonizeDatabase:modelEvent.modelData withActionEvent:modelEvent.actionEvent];
-        }
-            break;
+//        case sync_get_sysorganization:{
+//            DTOSYSORGANIZATIONProcess *organizationProcess = [DTOSYSORGANIZATIONProcess new];
+//            [organizationProcess synchonizeDatabase:modelEvent.modelData withActionEvent:modelEvent.actionEvent];
+//        }
+//            break;
             
-        case sync_get_account:{
-            DTOACCOUNTProcess *dtoAccountProcess = [DTOACCOUNTProcess new];
-            [dtoAccountProcess synchonizeDatabase:modelEvent.modelData withActionEvent:modelEvent.actionEvent];
-        }
-            break;
+//        case sync_get_account:{
+//            DTOACCOUNTProcess *dtoAccountProcess = [DTOACCOUNTProcess new];
+//            [dtoAccountProcess synchonizeDatabase:modelEvent.modelData withActionEvent:modelEvent.actionEvent];
+//        }
+//            break;
             
             
         default:
@@ -393,30 +382,10 @@
     
     SyncDataUtil *syncDataUtil = [[SyncDataUtil alloc]initWithViewController:self];
     [syncDataUtil getDBFromServerToClien:self];
-    
-    
-//    [SVProgressHUD showWithStatus:@"sync ..."];
-//    
-//    NSDictionary *dic = @{@"minTimeStamp": @"0", @"maxTimeStamp": @"1427883636848", @"firstResult":@"0", @"pageSize": @"200", @"includeCount":@"true",@"includeActive":@"true"};
-//    ActionEvent* actionEvent = [[ActionEvent alloc] init];
-//    actionEvent.action = sync_get_sysorganization;
-//    actionEvent.viewData = dic;
-//    actionEvent.sender = self;
-//    //[[AppController getController] handleViewEvent:actionEvent];
-//    
-//    
-//    actionEvent = [[ActionEvent alloc] init];
-//    actionEvent.action = sync_get_account;
-//    actionEvent.viewData = dic;
-//    actionEvent.sender = self;
-//    [[AppController getController] handleViewEvent:actionEvent];
 }
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
 }
-
-
-
 
 #pragma mark - Methods
 -(void)touchesEnded: (NSSet *)touches withEvent: (UIEvent *)event
@@ -461,8 +430,6 @@
         return NO;
     
 }
-
-
 - (IBAction)action_introduction:(id)sender {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -518,8 +485,6 @@
         [FileManagerUtil removeFileWithName:theFileName];
     }
 }
-
-
 - (void)dismissReaderViewController:(ReaderViewController *)viewController
 {
 #ifdef DEBUGX
@@ -537,8 +502,6 @@
     
 #endif
 }
-
-
 #pragma mark language
 - (IBAction)vietnamLanguageChoose:(id)sender {
     obj.str=@"vi";
@@ -546,9 +509,7 @@
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:obj.str forKey:@"Language"];
     [self setUpLanguage];
-    
 }
-
 - (IBAction)englishLanguageChoose:(id)sender {
     obj.str=@"en";
     LocalizationSetLanguage(@"en");
@@ -564,10 +525,6 @@
     [self.btnGioiThieu setTitle:LocalizedString(@"KEY_ABOUT") forState:UIControlStateNormal];
     //lbAppTitle.text = LocalizedString(@"KEY_ACCOUNT";
     [lbAppTitle setText:LocalizedString(@"KEY_APP_TITLE" )];
-    
-    
 }
-
-
 
 @end

@@ -6,20 +6,17 @@
 //
 //
 //
-
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "BaseViewController.h"
 #import "ReaderViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import <QuartzCore/CALayer.h>
-
 //menu
 #import "DDMenuController.h"
 #import "MenuViewController.h"
+#import "SyncDataUtil.h"
 
-//syndb
-#import "DTOSYSORGANIZATIONProcess.h"
 
 
 @interface RootViewController : BaseViewController <ReaderViewControllerDelegate, UIAlertViewDelegate,UITextFieldDelegate>{
@@ -50,10 +47,5 @@
 
 - (IBAction)vietnamLanguageChoose:(id)sender;
 - (IBAction)englishLanguageChoose:(id)sender;
-
-- (IBAction)actionAddProduct:(id)sender;
-
-@property (strong, nonatomic) IBOutlet UITableView *tbProduct;
-
 
 @end

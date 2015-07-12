@@ -10,27 +10,15 @@
 #import "UIView+AUISelectiveBorder.h"
 #import "MainViewCell.h"
 #import "MainViewListCell.h"
-#import "ListComplainsViewController.h"
-#import "ProfileViewController.h"
-#import "FFEvent.h"
-#import "FFImportantFilesForCalendar.h"
-
-#import "FFEvent.h"
-#import "FFImportantFilesForCalendar.h"
-
-#import "FFCalendarViewController.h"
 #import "DTOWidgetProcess.h"
-
 #import "DTOWidgetObject.h"
 #import "NSDictionary+QS.h"
-
 #import "EditWidgetViewController.h"
 #import "DTOWidgetTypeProcess.h"
 #import "Items.h"
 
 @interface MainViewController ()<EditWidgetViewControllerDelegate,MainViewListCellDelegate,MainViewCellDelegate>
 {
-    NSString *interfaceOption;
     NSUserDefaults *defaults;
     int smgSelect ; //option layout
 
@@ -92,27 +80,16 @@ NSString* emptyText = @"";
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localeDidChange) name:NSCurrentLocaleDidChangeNotification object:nil];
     
-    
     self.barLabel.text = [NSString stringWithFormat:@"%@ %@, %@",VOFFICE,[defaults objectForKey:@"versionSoftware"],COPY_OF_SOFTWARE];
     //
     dtoWidgetTypeProcess = [DTOWidgetTypeProcess new];
     listWidgetTypeNotUse = [[NSMutableArray alloc] init];
     listWidgetTypeNotUseStr = [[NSMutableArray alloc] init];
     
-    
-    obj=[Language getInstance];
-    defaults = [NSUserDefaults standardUserDefaults];
-    [defaults synchronize];
     obj=[Language getInstance];
     obj.str = [defaults objectForKey:@"Language"];
     LocalizationSetLanguage(obj.str);
     [self setupLanguage];
-
-    //[self.btnHome setImage:[UIImage imageNamed:@"menu_calendar"] forState:UIControlStateNormal];
-    
-    //[self.btnHome.]
-    //[self.btnHome.imageView setAlpha:1.0f];
-
     [self initDataWithReloadTableView:YES];
 }
 
@@ -157,12 +134,6 @@ NSString* emptyText = @"";
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    interfaceOption = [defaults objectForKey:INTERFACE_OPTION];
-
-    if (!interfaceOption || [interfaceOption isEqualToString:@"(null)"]) {
-        [defaults setObject:@"1" forKey:INTERFACE_OPTION];
-    }
-    [self updateInterFaceWithOption:[interfaceOption intValue]];
 }
 
 
@@ -215,11 +186,6 @@ NSString* emptyText = @"";
         }
         
     }
-    
-    
-    
-    
-    
 }
 
 -(void) viewDidAppear:(BOOL)animated
@@ -229,8 +195,6 @@ NSString* emptyText = @"";
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 
 }
-
-
 //Home button
 - (IBAction)homeBack:(id)sender {
     
@@ -303,8 +267,6 @@ NSString* emptyText = @"";
 
     if ([widgetOB.widgetType intValue]==0) {
         
-        NSLog(@"main view cell %d", indexPath.row);
-        
         static NSString *cellId = @"MainViewCell";
         MainViewCell *cell= [tableView dequeueReusableCellWithIdentifier:cellId];
         if ([arrayWidgetDashboard containsObject:cell]) {
@@ -320,12 +282,7 @@ NSString* emptyText = @"";
             return cell;
         }
     } else if ([widgetOB.widgetType intValue]==1) {
-        
-        NSLog(@"main view list cell %d", indexPath.row);
-        
-
         static NSString *cellId = @"MainViewListCell";
-
         MainViewListCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
         if (cell == nil) {
             [self.tbData registerNib:[UINib nibWithNibName:@"MainViewListCell" bundle:nil] forCellReuseIdentifier:@"MainViewListCell"];
@@ -496,7 +453,7 @@ NSString* emptyText = @"";
         
     }else{
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:SYS_Notification_Title message:LocalizedString(@"KEY_WIDGET_ADD_WIDGET_SUCCESS") delegate:self cancelButtonTitle:SYS_Notification_OKButton otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:SYS_Notification_Title message:LocalizedString(@"KEY_WIDGET_NOWIDGET") delegate:self cancelButtonTitle:SYS_Notification_OKButton otherButtonTitles:nil];
         [alert show];
     }
 }
@@ -505,8 +462,6 @@ NSString* emptyText = @"";
     if(buttonIndex <1 )
         return;
     
-    NSLog(@"buttonIndex = %ld", (long)buttonIndex);
-   // [self setSelectedValue:buttonIndex - 1];
     [self addWidgetWithWidgetIndex:buttonIndex - 1];
 }
 

@@ -32,6 +32,7 @@
 		15A92D2D1A447049005DC9CA /* TaskCalTLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A92D2B1A447049005DC9CA /* TaskCalTLineCell.xib */; };
 		15C6A1971A6FDC4800F19B30 /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C6A1951A6FDC4800F19B30 /* PickerViewController.m */; };
 		15C6A1981A6FDC4800F19B30 /* PickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15C6A1961A6FDC4800F19B30 /* PickerViewController.xib */; };
+		17004E2D1B54C067009F44B9 /* Product-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 17004E2C1B54C067009F44B9 /* Product-32.png */; };
 		170862EA1A3F3CB30021705D /* attach_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 170862E91A3F3CB30021705D /* attach_icon.png */; };
 		1719B7021AC1A9ED0061BD7B /* EditNoteLeadViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1719B7001AC1A9ED0061BD7B /* EditNoteLeadViewController~iphone.xib */; };
 		1719B7071AC1AE2A0061BD7B /* EditContact360ViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1719B7051AC1AE2A0061BD7B /* EditContact360ViewController~iphone.xib */; };
@@ -1233,6 +1234,7 @@
 		15C6A1941A6FDC4800F19B30 /* PickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PickerViewController.h; path = CustomView/PickerViewController.h; sourceTree = "<group>"; };
 		15C6A1951A6FDC4800F19B30 /* PickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PickerViewController.m; path = CustomView/PickerViewController.m; sourceTree = "<group>"; };
 		15C6A1961A6FDC4800F19B30 /* PickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PickerViewController.xib; path = CustomView/PickerViewController.xib; sourceTree = "<group>"; };
+		17004E2C1B54C067009F44B9 /* Product-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Product-32.png"; sourceTree = "<group>"; };
 		170862E91A3F3CB30021705D /* attach_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attach_icon.png; sourceTree = "<group>"; };
 		1719B7001AC1A9ED0061BD7B /* EditNoteLeadViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EditNoteLeadViewController~iphone.xib"; sourceTree = "<group>"; };
 		1719B7051AC1AE2A0061BD7B /* EditContact360ViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EditContact360ViewController~iphone.xib"; sourceTree = "<group>"; };
@@ -6204,6 +6206,7 @@
 		92C68E6D1519DC7D00981728 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				17004E2C1B54C067009F44B9 /* Product-32.png */,
 				17D9D41D1B4BD29E0091D549 /* menu_add.png */,
 				17A545C81AE5F1BF007F6B1E /* Calendar.png */,
 				17A545C01AE5EFC4007F6B1E /* Email.png */,
@@ -6832,6 +6835,7 @@
 				06FE2E181A4528B3004A1D16 /* iconDirectionSelected@2x.png in Resources */,
 				1772C8401AC1A04800906FFB /* EditContactLeadViewController~iphone.xib in Resources */,
 				B3A0669F17D1A72400BA6487 /* WCGridViewCell.xib in Resources */,
+				17004E2D1B54C067009F44B9 /* Product-32.png in Resources */,
 				B315789E188D5E5200C0ED01 /* write-btn-2-1.png in Resources */,
 				8EB708771A407A1C001861A0 /* Mobile_GPS_MyLocationIcon.png in Resources */,
 				76008E6C1ABC7FFE00BCFA92 /* icon_opp_task.png in Resources */,

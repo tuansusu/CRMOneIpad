@@ -535,8 +535,8 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    NSString *safeSearchString = [[searchText componentsSeparatedByCharactersInSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]] componentsJoinedByString:@""];
-    searchBar.text=safeSearchString;
+//    NSString *safeSearchString = [[searchText componentsSeparatedByCharactersInSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]] componentsJoinedByString:@""];
+//    searchBar.text=safeSearchString;
 }
 -(void) searchBarCancelButtonClicked:(UISearchBar *)searchBar{
     strSearchText = @"";

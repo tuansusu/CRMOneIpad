@@ -279,36 +279,66 @@
     NSArray *allFields =[NSArray arrayWithObjects:DTOLEAD_accountId, DTOLEAD_address, DTOLEAD_companyPhone, DTOLEAD_email, DTOLEAD_mobile, DTOLEAD_name,DTOLEAD_updatedBy,DTOLEAD_code, DTOLEAD_leadId, DTOLEAD_leadType,DTOLEAD_clientLeadId, DTOLEAD_lat, DTOLEAD_lon, DTOLEAD_id, nil];
     
     
-    
-    NSString *query = [NSString stringWithFormat:@"Select %@ from %@ where status = 1 ",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOACCOUNTLEAD];
-    
+    BOOL isCheckedSpecialKey = NO;
+    for (NSString *strKey in dicCondition.allKeys) {
+        if ([StringUtil stringIsEmpty:[dicCondition objectForKey:strKey]]) {
+            continue;
+        }
+        NSString *strCondition = [dicCondition objectForKey:strKey];
+        if ([strCondition containsString:@"%"]) {
+            isCheckedSpecialKey = true;
+        }
+    }
+    NSString *query = @"";
+    if (isCheckedSpecialKey) {
+        query= [NSString stringWithFormat:@"Select %@ from %@ where ",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOACCOUNTLEAD];
+    }else{
+        query= [NSString stringWithFormat:@"Select %@ from %@ where status = 1 ",[allFields componentsJoinedByString:@"," ] , TABLENAME_DTOACCOUNTLEAD];
+    }
     NSMutableArray *arrayValue = [[NSMutableArray alloc]init];
-    
     BOOL isCheckCondition = NO;
     
     for (NSString *strKey in dicCondition.allKeys) {
         if ([StringUtil stringIsEmpty:[dicCondition objectForKey:strKey]]) {
             continue;
         }
-        
         if (isCheckCondition==NO) {
-            query = [query stringByAppendingString:@" and ( "];
             isCheckCondition = YES;
-            query = [query stringByAppendingString:[NSString stringWithFormat:@" %@ like ?", strKey]];
+            if(isCheckedSpecialKey){
+                query = [query stringByAppendingString:@" status = 1  and  "];
+                query = [query stringByAppendingString:[NSString stringWithFormat:@" %@ like ?", strKey]];
+            }else{
+                query = [query stringByAppendingString:@" and ( "];
+                query = [query stringByAppendingString:[NSString stringWithFormat:@" %@ like ?", strKey]];
+            }
+            
         }else{
-            query = [query stringByAppendingString:[NSString stringWithFormat:@" or %@ like ?", strKey]];
+            
+            if(isCheckedSpecialKey){
+                query = [query stringByAppendingString:[NSString stringWithFormat:@" or status = 1 and %@ like ?", strKey]];
+            }else{
+                query = [query stringByAppendingString:[NSString stringWithFormat:@" or %@ like ?", strKey]];
+            }
+        }
+        NSString *strCondition = [dicCondition objectForKey:strKey];
+        if ([strCondition containsString:@"%"]) {
+            strCondition = [strCondition stringByReplacingOccurrencesOfString:@"%" withString:@"\\%"];
         }
         
-        
-        
         NSString *value = @"%";
-        value = [value stringByAppendingString:[[dicCondition objectForKey:strKey] stringByAppendingString:@"%"]];
+        value = [value stringByAppendingString:[strCondition stringByAppendingString:@"%"]];
         [arrayValue addObject:value];
         
     }
     
     if (isCheckCondition) {
-        query = [query stringByAppendingString:@" ) "];
+        
+        if(isCheckedSpecialKey){
+            query = [query stringByAppendingString:@" ESCAPE '\\' "];
+        }else{
+            query = [query stringByAppendingString:@" ) "];
+        }
+        
     }
     
     
@@ -316,11 +346,15 @@
     
     
     
-    
     if (start == 0) {
-        NSString *countQuery = [NSString stringWithFormat:@"Select count(*) from %@ where status = 1 " , TABLENAME_DTOACCOUNTLEAD];
+        //NSString *countQuery = [NSString stringWithFormat:@"Select count(*) from %@ where status = 1 " , TABLENAME_DTOACCOUNTLEAD];
         
-        
+        NSString *countQuery = @"";
+        if (isCheckedSpecialKey) {
+            countQuery = [NSString stringWithFormat:@"Select count(*) from %@ where  " , TABLENAME_DTOACCOUNTLEAD];
+        }else{
+            countQuery = [NSString stringWithFormat:@"Select count(*) from %@ where status = 1 " , TABLENAME_DTOACCOUNTLEAD];
+        }
         
         isCheckCondition = NO;
         
@@ -330,23 +364,34 @@
             }
             
             if (isCheckCondition==NO) {
-                countQuery = [countQuery stringByAppendingString:@" and ( "];
                 isCheckCondition = YES;
-                countQuery = [countQuery stringByAppendingString:[NSString stringWithFormat:@" %@ like ?", strKey]];
+                if(isCheckedSpecialKey){
+                    countQuery = [countQuery stringByAppendingString:@" status = 1  and  "];
+                    countQuery = [countQuery stringByAppendingString:[NSString stringWithFormat:@" %@ like ?", strKey]];
+                }else{
+                    countQuery = [countQuery stringByAppendingString:@" and ( "];
+                    countQuery = [countQuery stringByAppendingString:[NSString stringWithFormat:@" %@ like ?", strKey]];
+                }
+                
             }else{
-                countQuery = [countQuery stringByAppendingString:[NSString stringWithFormat:@" or %@ like ?", strKey]];
+                
+                if(isCheckedSpecialKey){
+                    countQuery = [countQuery stringByAppendingString:[NSString stringWithFormat:@" or status = 1 and %@ like ?", strKey]];
+                }else{
+                    countQuery = [countQuery stringByAppendingString:[NSString stringWithFormat:@" or %@ like ?", strKey]];
+                }
             }
-            
-            
-            
-//            NSString *value = @"%";
-//            value = [value stringByAppendingString:[[dicCondition objectForKey:strKey] stringByAppendingString:@"%"]];
-//            [arrayValue addObject:value];
-            
+
         }
         
         if (isCheckCondition) {
-            countQuery = [countQuery stringByAppendingString:@" ) "];
+            
+            if(isCheckedSpecialKey){
+                countQuery = [countQuery stringByAppendingString:@" ESCAPE '\\' "];
+            }else{
+                countQuery = [countQuery stringByAppendingString:@" ) "];
+            }
+            //countQuery = [countQuery stringByAppendingString:@"ESCAPE '\\' "];
         }
         
         *totalCount = [DataUtil getCountItemsselectQuery:countQuery valueParamemter:arrayValue] ;
@@ -355,13 +400,6 @@
     query = [query stringByAppendingString:[NSString stringWithFormat:@" limit %d offset %d", limit,start ]];
     
     return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:arrayValue];
-    
-    
-    
-    
-    
-    //return [DataUtil BuilQueryGetListWithListFields:allFields selectQuery:query valueParameter:arrayValue];
-    
 }
 
 @end

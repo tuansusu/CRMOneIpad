@@ -42,6 +42,8 @@
 
 @property (nonatomic,retain) IBOutlet UILabel *barLabel;
 
+@property (weak,nonatomic) IBOutlet UIScrollView *scrollView;
+
 @property (weak, nonatomic) IBOutlet UIView *footerView;
 @property (strong, nonatomic) IBOutlet UIButton *btnNextTask;
 @property (strong, nonatomic) IBOutlet UITextField *txtNextTask;

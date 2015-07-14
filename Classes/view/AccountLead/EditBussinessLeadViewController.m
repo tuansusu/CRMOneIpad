@@ -124,6 +124,8 @@
         [self setBorderTextfield:_txtNgayTL];
         [self setBorderTextfield:_txtTotalassets];
         
+        [Util setContentSizeScrollView:_bodyMainView : 100];
+        
     }
     else{
         [_txtPhone setPaddingRight];

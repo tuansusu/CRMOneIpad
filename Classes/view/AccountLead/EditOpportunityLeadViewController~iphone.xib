@@ -12,6 +12,7 @@
                 <outlet property="dtStartDate" destination="C55-45-nrD" id="aZH-Jv-Ohu"/>
                 <outlet property="fullNameLB" destination="p70-mH-R2F" id="E4b-0F-Ube"/>
                 <outlet property="headerViewBar" destination="rcP-hW-O53" id="ZRv-Nj-gvX"/>
+                <outlet property="scrollView" destination="PaJ-cW-1xj" id="cfl-2z-d3p"/>
                 <outlet property="tbProduct" destination="7xi-kK-I75" id="9qO-R2-3ex"/>
                 <outlet property="txtLevel" destination="oXA-go-H93" id="rMK-kW-I8b"/>
                 <outlet property="txtName" destination="4BB-3d-fun" id="Wzm-DP-olR"/>

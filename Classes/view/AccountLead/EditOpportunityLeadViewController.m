@@ -162,7 +162,7 @@
         [_txtLevel setInputAccessoryView:toolBar];
         [_txtNextTask setInputAccessoryView:toolBar];
         [_txtNote setInputAccessoryView:toolBar];
-        
+        [Util setContentSizeScrollView:_scrollView :100];
     }
     
     

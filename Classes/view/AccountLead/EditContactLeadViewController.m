@@ -150,6 +150,8 @@
         [self.txtDateCreate setInputAccessoryView:toolBar];
         [self.txtPosition setInputAccessoryView:toolBar];
         
+        [Util setContentSizeScrollView:_viewMainBodyInfo :50];
+        
         
         
     }

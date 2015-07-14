@@ -104,6 +104,8 @@
         txtTitle.inputAccessoryView=toolbar;
         txtContent.inputAccessoryView=toolbar;
         
+       // [Util setContentSizeScrollView:_s :<#(NSInteger)#>]
+        
     }
     
 }

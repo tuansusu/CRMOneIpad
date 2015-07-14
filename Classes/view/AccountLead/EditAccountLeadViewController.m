@@ -144,6 +144,8 @@
         [self.txtDateOfBirth setInputAccessoryView:toolBar];
         [self.txtPersonPosition setInputAccessoryView:toolBar];
         
+        [Util setContentSizeScrollView:_bodyMainView : 100];
+        
     }
     else{
         [_txtPhone setPaddingRight];

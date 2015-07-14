@@ -307,4 +307,16 @@
     [_currencyFormatter setNegativeFormat:@"-¤#,##0.00"];
     return  [_currencyFormatter stringFromNumber:amount];
 }
+
++(UIScrollView *) setContentSizeScrollView : (UIScrollView *)scroll : (NSInteger) srheight{
+
+    CGRect screenHeight = [[UIScreen mainScreen] bounds];
+    CGFloat mainheight =screenHeight.size.height;
+    CGFloat scrollHeing = scroll.frame.size.height;
+    if (scrollHeing > mainheight) {
+        CGFloat height = scrollHeing - mainheight + srheight;
+        scroll.contentSize = CGSizeMake(scroll.frame.size.width, scroll.frame.size.height +height );
+    }
+    return scroll;
+}
 @end

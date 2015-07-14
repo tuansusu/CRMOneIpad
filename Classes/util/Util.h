@@ -34,6 +34,7 @@
 
 //ham ko cho nhap ky tu dac biet
 -(BOOL) CharacterNoEnter: (NSString *) strValue;
++(UIScrollView *) setContentSizeScrollView : (UIScrollView *)scroll : (NSInteger) srheight;
 
 //danh sách nhưng tooltip
 @property (nonatomic, retain) NSMutableArray *visiblePopTipViews;

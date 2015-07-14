@@ -274,6 +274,7 @@
         [_txtStatus setInputAccessoryView:toolBar];
         [_txtTimeFrom setInputAccessoryView:toolBar];
         [_txtTimeTo setInputAccessoryView:toolBar];
+        [Util setContentSizeScrollView:_viewScroll :100];
         
     }
 }

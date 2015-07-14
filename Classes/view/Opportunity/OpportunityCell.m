@@ -87,7 +87,7 @@
     NSString *status = [dicData objectForKey:DTOOPPORTUNITY_status];
     
     if ([status isEqualToString:@"1"]) { //DAng soan thao
-        self.viewStatus.backgroundColor = [UIColor grayColor];
+        self.viewStatus.backgroundColor = [UIColor redColor];
     }else if ([status isEqualToString:@"2"]){ //Cho phe duyet ke hoach
         self.viewStatus.backgroundColor = [UIColor yellowColor];
     }

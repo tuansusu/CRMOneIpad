@@ -172,13 +172,6 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
         self.myTabbar.barTintColor=[UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:1.0];
         [self.myTabbar setSelectedItem:self.myTabbar.items[0]];
         
-        CGRect screen = [[UIScreen mainScreen] bounds];
-        CGFloat heightScreen = screen.size.height;
-        CGFloat viewheight = self.view.frame.size.height;
-        if (viewheight>heightScreen) {
-            [self.myTabbar setFrame:CGRectMake(0,0,self.myTabbar.frame.size.width,                      self.myTabbar.frame.size.height)];
-        }
-        
     }
 }
 

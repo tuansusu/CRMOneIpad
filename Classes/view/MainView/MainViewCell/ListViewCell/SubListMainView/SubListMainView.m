@@ -10,6 +10,7 @@
 #import "SubListViewCell.h"
 #import "Globals.h"
 #import "DTOWidgetObject.h"
+#import "EditNoteLeadViewController.h"
 
 
 @implementation SubListMainView
@@ -21,10 +22,10 @@
     // Drawing code
 }
 */
--(void)initDataWithWidgetObject:(DTOWidgetObject*)widgetOB{
+-(void)initDataWithWidgetObject:(DTOWidgetObject*)widgetOB withViewController : (BaseViewController*) viewController{
     arrData = [[NSMutableArray alloc] init];
     _widgetOB = widgetOB;
-
+    _viewController = viewController;
     if ([widgetOB.widgetId intValue]==WIDGET_TYPE_TONG_HOP)
     {
         dtoNoteProcess = [DTONOTEProcess new];
@@ -81,7 +82,37 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSIndexPath* selection = [tableView indexPathForSelectedRow];
+    if (selection){
+        [tableView deselectRowAtIndexPath:selection animated:YES];
+    }
+    if ([_widgetOB.widgetId intValue]==WIDGET_TYPE_TONG_HOP)
+    {
+        
+    }else if ([_widgetOB.widgetId intValue]==WIDGET_TYPE_GHI_CHU)
+    {
+        EditNoteLeadViewController *viewController = [[EditNoteLeadViewController alloc]initWithNibName:@"EditNoteLeadViewController" bundle:nil];
+        viewController.dataRoot = [arrData objectAtIndex:indexPath.row];
+        [_viewController presentViewController:viewController animated:YES completion:nil];
+        
+    }else if ([_widgetOB.widgetId intValue]==WIDGET_TYPE_TKH_TIEN_GUI)
+    {
+        
+    }else if ([_widgetOB.widgetId intValue]==WIDGET_TYPE_TKH_TIN_DUNG)
+    {
+        
+    }else if ([_widgetOB.widgetId intValue]==WIDGET_TYPE_Y_KIEN_KH)
+    {
+        
+    }else if ([_widgetOB.widgetId intValue]==WIDGET_TYPE_THEO_DOI)
+    {
+        
+    }else if ([_widgetOB.widgetId intValue]==WIDGET_TYPE_SU_KIEN_SAP_DIEN_RA)
+    {
+    }
+    
+    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;

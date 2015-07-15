@@ -518,8 +518,8 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText   // called when text changes (including clear)
 {
-    NSString *safeSearchString = [[searchText componentsSeparatedByCharactersInSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]] componentsJoinedByString:@""];
-    searchBar.text=safeSearchString;
+//    NSString *safeSearchString = [[searchText componentsSeparatedByCharactersInSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]] componentsJoinedByString:@""];
+//    searchBar.text=safeSearchString;
 }
 
 
@@ -569,6 +569,7 @@
         [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOACCOUNT_name];
         [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOACCOUNT_mobile];
         [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOACCOUNT_email];
+        [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOACCOUNT_address];
         //arrayData = [dtoLeadProcess filterWithOrArrayCondition:dicCondition];
         [arrayData addObjectsFromArray:[dtoProcess filterWithOrArrayCondition:dicCondition withStart:loaded withLimit:PAGESIZE withOutTotal:&totalCount]];
         
@@ -872,7 +873,7 @@
 -(void) setLanguage{
     [_lbTotal setText:LocalizedString(@"KEY_LIST_360_TOTAL")];
     [_fullNameLB setText:LocalizedString(@"KEY_LIST_360_TITLE")];
-    [_txtSearchBar setPlaceholder:LocalizedString(@"KEY_LIST_360_TOTAL")];
+    [_txtSearchBar setPlaceholder:LocalizedString(@"KEY_LIST_360_TITLE_SEARCH")];
 }
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     if(actionSheet.tag==11){

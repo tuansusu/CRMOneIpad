@@ -19,7 +19,7 @@
     if (self) {
         // Initialization code
         self = [[[NSBundle mainBundle] loadNibNamed:[[self class] description] owner:self options:Nil] objectAtIndex:0];
-        [subListMainView initDataWithWidgetObject:_widgetOB];
+        [subListMainView initDataWithWidgetObject:_widgetOB withViewController:self.delegate];
         btnDelete.layer.cornerRadius = CORNER_RADIUS_BUTTON*3;
         btnDelete.clipsToBounds = YES;
     }
@@ -58,7 +58,7 @@
 -(void)loadDataCellWithWidgetObject:(DTOWidgetObject*)widgetOB{
     _widgetOB = widgetOB;
     [lblTitle setText:widgetOB.widgetName];
-    [subListMainView initDataWithWidgetObject:widgetOB];
+    [subListMainView initDataWithWidgetObject:widgetOB withViewController:self.delegate];
     btnDelete.layer.cornerRadius = CORNER_RADIUS_BUTTON*3;
     btnDelete.clipsToBounds = YES;
 }

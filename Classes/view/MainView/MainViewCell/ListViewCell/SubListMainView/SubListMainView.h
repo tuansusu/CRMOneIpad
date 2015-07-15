@@ -22,8 +22,9 @@
     NSMutableArray *arrData;
     IBOutlet UITableView *tbvListNotes;
     DTOWidgetObject *_widgetOB;
+    BaseViewController *_viewController;
 }
 
--(void)initDataWithWidgetObject:(DTOWidgetObject*)widgetOB;
+-(void)initDataWithWidgetObject:(DTOWidgetObject*)widgetOB withViewController : (BaseViewController*) viewController;
 
 @end

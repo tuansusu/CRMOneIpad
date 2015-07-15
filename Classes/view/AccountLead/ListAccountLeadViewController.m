@@ -580,6 +580,7 @@
         [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOLEAD_name];
         [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOLEAD_mobile];
         [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOLEAD_email];
+        [dicCondition setObject:[StringUtil trimString:strSearchText] forKey:DTOACCOUNT_address];
         //arrayData = [dtoLeadProcess filterWithOrArrayCondition:dicCondition];
         [arrayData addObjectsFromArray:[dtoLeadProcess filterWithOrArrayCondition:dicCondition withStart:loaded withLimit:PAGESIZE withOutTotal:&totalCount]];
         
@@ -1014,7 +1015,7 @@
 -(void) setLanguage{
     [_lbTotal setText:LocalizedString(@"KEY_LIST_360_TOTAL")];
     _fullNameLB.text=LocalizedString(@"KEY_LEAD_TITLE");
-    [_txtSearchBar setPlaceholder:LocalizedString(@"KEY_LIST_360_TOTAL")];
+    [_txtSearchBar setPlaceholder:LocalizedString(@"KEY_LIST_360_TITLE_SEARCH")];
     
     
 }

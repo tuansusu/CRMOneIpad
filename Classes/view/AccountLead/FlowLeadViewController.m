@@ -270,7 +270,15 @@
     
     success=[dtoFollowProcess insertToDBWithEntity:dicEntity];
     if (success) {
-        [self dismissViewControllerAnimated:YES completion:nil];
+        if ([self currentDeviceType]==iPhone) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+        else{
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thông báo" message:@"Thực hiện thành công!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            alert.tag = 5;
+            [alert show];
+        }
         //luonghv2
     }
     else{

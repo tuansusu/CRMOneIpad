@@ -14,6 +14,7 @@
                 <outlet property="btnCreateDate" destination="JYZ-YP-LiC" id="tjS-kM-Wvq"/>
                 <outlet property="btnDelContact" destination="lde-t4-B7w" id="h3t-Xm-sAE"/>
                 <outlet property="btnHome" destination="iYm-aZ-udO" id="uvF-mW-8gS"/>
+                <outlet property="btnPersonalPosition" destination="zkI-tF-dvK" id="AMb-BY-U0B"/>
                 <outlet property="btnSave" destination="Wud-qg-tQQ" id="fk7-UJ-ueH"/>
                 <outlet property="footerView" destination="DMS-oe-1tv" id="2tQ-6Y-Odu"/>
                 <outlet property="fullNameLB" destination="WAG-FP-kuv" id="yj1-P3-pnh"/>
@@ -149,7 +150,7 @@
                                                 <outlet property="delegate" destination="-1" id="bjK-xd-epr"/>
                                             </connections>
                                         </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Chức danh" minimumFontSize="17" id="Ycz-Er-kpa">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Chức danh" minimumFontSize="17" id="Ycz-Er-kpa">
                                             <rect key="frame" x="479" y="120" width="380" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -158,6 +159,16 @@
                                                 <outlet property="delegate" destination="-1" id="Xjo-ib-zfq"/>
                                             </connections>
                                         </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zkI-tF-dvK" userLabel="btnSysCat">
+                                            <rect key="frame" x="829" y="120" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" backgroundImage="ic_cbx-1.png">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="actionSelectPersion:" destination="-1" eventType="touchUpInside" id="Twa-ps-Qsh"/>
+                                            </connections>
+                                        </button>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số điện thoại" minimumFontSize="17" id="agl-ZE-Tdm">
                                             <rect key="frame" x="29" y="180" width="380" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -305,7 +316,7 @@
                                         <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9DO-oz-ia8">
                                             <rect key="frame" x="829" y="360" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Button" image="pin.png">
+                                            <state key="normal" title="Button" image="MapMarker.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -341,13 +352,13 @@
         </view>
     </objects>
     <resources>
+        <image name="MapMarker.png" width="50" height="50"/>
         <image name="avatar.png" width="120" height="120"/>
         <image name="btn-back-1-1.png" width="40" height="40"/>
         <image name="ic_cbx-1.png" width="60" height="60"/>
         <image name="icon_delete_90x90.png" width="90" height="90"/>
         <image name="icon_require-1.png" width="16" height="16"/>
         <image name="icon_save_90x90.png" width="90" height="90"/>
-        <image name="pin.png" width="48" height="48"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

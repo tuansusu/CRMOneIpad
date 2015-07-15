@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditContact360ViewController">
@@ -14,6 +14,7 @@
                 <outlet property="btnCreateDate" destination="diu-da-erv" id="yt6-GE-NtM"/>
                 <outlet property="btnDel" destination="Vo1-cs-gQR" id="kjA-t5-aWJ"/>
                 <outlet property="btnHome" destination="eFe-l9-f6c" id="D6D-LB-U3P"/>
+                <outlet property="btnPersonalPosition" destination="PrB-JE-dSz" id="VQE-RV-AbS"/>
                 <outlet property="btnSave" destination="c4K-Iz-IxO" id="8BG-VA-qgG"/>
                 <outlet property="footerView" destination="t89-1a-Lgo" id="Kqb-6u-Ry9"/>
                 <outlet property="fullNameLB" destination="QuQ-NR-ShW" id="Ehe-5X-XkN"/>
@@ -160,6 +161,16 @@
                                                 <outlet property="delegate" destination="-1" id="9Zn-y6-oFT"/>
                                             </connections>
                                         </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PrB-JE-dSz" userLabel="btnSysCat">
+                                            <rect key="frame" x="880" y="120" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" backgroundImage="ic_cbx-1.png">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="actionSelectPersion:" destination="-1" eventType="touchUpInside" id="GVR-08-kzQ"/>
+                                            </connections>
+                                        </button>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số điện thoại" minimumFontSize="17" id="K4c-ZG-gmn">
                                             <rect key="frame" x="50" y="180" width="400" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -308,9 +319,9 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4QY-Hl-fkZ" userLabel="btn Address">
-                                            <rect key="frame" x="885" y="362" width="25" height="25"/>
+                                            <rect key="frame" x="880" y="360" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" backgroundImage="pin.png">
+                                            <state key="normal" backgroundImage="MapMarker.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -348,13 +359,13 @@
         </view>
     </objects>
     <resources>
+        <image name="MapMarker.png" width="50" height="50"/>
         <image name="avatar.png" width="120" height="120"/>
         <image name="btn-back-1-1.png" width="40" height="40"/>
         <image name="ic_cbx-1.png" width="60" height="60"/>
         <image name="icon_delete_90x90.png" width="90" height="90"/>
         <image name="icon_require-1.png" width="16" height="16"/>
         <image name="icon_save_90x90.png" width="90" height="90"/>
-        <image name="pin.png" width="48" height="48"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

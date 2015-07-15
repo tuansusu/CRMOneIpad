@@ -71,6 +71,8 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *txtEmail;
 
+@property(weak,nonatomic)IBOutlet UIButton *btnPersonalPosition;
+
 
 
 @property (weak, nonatomic) IBOutlet UITextField *txtAddress;
@@ -79,6 +81,8 @@
 @property (weak, nonatomic) IBOutlet UITextView *tvNote;
 
 - (IBAction)actionChoiceDateCreate:(id)sender;
+
+-(IBAction)actionSelectPersion:(id)sender;
 
 - (IBAction)actionChoiceDateBirthday:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *btnCreateDate;

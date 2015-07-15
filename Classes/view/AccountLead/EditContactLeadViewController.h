@@ -46,6 +46,10 @@
 
 @property(nonatomic, assign) BOOL isOpportunity;
 
+-(IBAction)actionSelectPersion:(id)sender;
+
+@property(weak,nonatomic)IBOutlet UIButton *btnPersonalPosition;
+
 
 
 //@property (weak, nonatomic) IBOutlet UIView *viewMainBodyInfo;

@@ -1027,4 +1027,32 @@
     [self.txtPosition resignFirstResponder];
     
 }
+
+-(IBAction)actionSelectPersion:(id)sender{
+    SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
+    
+    //detail.selectIndex = selectPersonPositionIndex;
+    
+    detail.listData = [listArrPersonPosition valueForKey:DTOSYSCAT_name];
+    
+    self.listPopover = [[UIPopoverController alloc]initWithContentViewController:detail];
+    CGRect popoverFrame = _btnPersonalPosition.frame;
+    
+    detail.delegate =(id<SelectIndexDelegate>) self;
+    self.listPopover.delegate = (id<UIPopoverControllerDelegate>)self;
+    [self.listPopover setPopoverContentSize:CGSizeMake(320,250) animated:NO];
+    [self.listPopover presentPopoverFromRect:popoverFrame inView:self.viewMainBodyInfo permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+}
+-(void) selectAtIndex:(NSInteger)index{
+    
+    if (self.listPopover) {
+        [ self.listPopover dismissPopoverAnimated:YES];
+    }
+    
+    if (index<listArrPersonPosition.count) {
+        NSDictionary *dic = [listArrPersonPosition objectAtIndex:index];
+        _txtPosition.text = [dic objectForKey:DTOSYSCAT_name];
+    }
+    
+}
 @end

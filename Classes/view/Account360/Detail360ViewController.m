@@ -1872,6 +1872,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     }
     else if (buttonIndex==1){
         EditNote360ViewController *edit=[[EditNote360ViewController alloc] initWithNibName:@"EditNote360ViewController" bundle:nil];
+        edit.dataRoot=dicData;
         [self presentViewController:edit animated:YES completion:nil];
     }
     else if (buttonIndex == 2){

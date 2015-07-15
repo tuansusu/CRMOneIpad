@@ -1770,6 +1770,7 @@ static NSString* const TaskActionCellId           = @"TaskActionCellId";
     }
     else if (buttonIndex==1){
         EditNoteLeadViewController *edit=[[EditNoteLeadViewController alloc] initWithNibName:@"EditNoteLeadViewController" bundle:nil];
+        edit.dataRoot= dicData;
         [self presentViewController:edit animated:YES completion:nil];
     }
     else if (buttonIndex == 2){

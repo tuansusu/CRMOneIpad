@@ -43,8 +43,6 @@
 
 @implementation MainViewController
 
-NSString* emptyText = @"";
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -54,10 +52,7 @@ NSString* emptyText = @"";
     }
     return self;
 }
-
-
 #pragma mark Appear
-//Ham nay chay lan dau khi view duoc hien thi
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -134,7 +129,7 @@ NSString* emptyText = @"";
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self viewDidLoad];
+    //[self viewDidLoad];
 }
 
 
@@ -191,16 +186,13 @@ NSString* emptyText = @"";
 
 -(void) viewDidAppear:(BOOL)animated
 {
-
     [super viewDidAppear:animated];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 
 }
 //Home button
 - (IBAction)homeBack:(id)sender {
-    
     //[self.btnHome setImage:[UIImage imageNamed:@"icon_menu-1"] forState:UIControlStateNormal];
-    
     [Util backToHome:self];
 }
 
@@ -208,7 +200,6 @@ NSString* emptyText = @"";
 -(void) setupLanguage{
     
 }
-
 #pragma mark EditWidgetViewController Delegate
 
 - (void)closeEditWidgetViewController:(EditWidgetViewController*)editWidgetViewController{
@@ -217,12 +208,8 @@ NSString* emptyText = @"";
 
 #pragma mark Event
 - (void)didFinish {
-
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-
-
 #pragma mark TableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -233,7 +220,6 @@ NSString* emptyText = @"";
         return 500;
     }
     return 450;
-    
 //    if(self.currentDeviceType == iPhone){
 //        if ([widgetOB.widgetType integerValue]==0) {
 //            return 340;
@@ -255,8 +241,6 @@ NSString* emptyText = @"";
 {
     return  1;
 }
-
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return  arrayData.count;
@@ -323,11 +307,7 @@ NSString* emptyText = @"";
         [alert show];
     }
 }
-
-
 #pragma mark Action
-
-
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if( buttonIndex ==1 && alertView.tag==3)
@@ -336,9 +316,7 @@ NSString* emptyText = @"";
         RootViewController *rootView = [[RootViewController alloc] init];
         [appDel.window setRootViewController:rootView];
     }
-
 }
-
 #pragma mark end
 
 - (void)didReceiveMemoryWarning
@@ -349,12 +327,7 @@ NSString* emptyText = @"";
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
-
-
-
 - (void)viewDidUnload {
-
     [super viewDidUnload];
 }
 
@@ -376,8 +349,6 @@ NSString* emptyText = @"";
         
     }
 }
-
-
 -(void)addWidgetWithWidgetTypeOB:(DTOWidgetTypeObject*)dtoWidgetTypeOB{
 
     DTOWidgetObject *widgetOB = [[DTOWidgetObject alloc] init];
@@ -421,8 +392,6 @@ NSString* emptyText = @"";
 {
     
     if (listWidgetTypeNotUse.count>0) {
-        
-        
         if(self.currentDeviceType == iPad){
             SelectIndexViewController *detail = [[SelectIndexViewController alloc] initWithNibName:@"SelectIndexViewController" bundle:nil];
             
@@ -458,11 +427,9 @@ NSString* emptyText = @"";
         [alert show];
     }
 }
-
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     if(buttonIndex <1 )
         return;
-    
     [self addWidgetWithWidgetIndex:buttonIndex - 1];
 }
 

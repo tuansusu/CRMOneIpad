@@ -13,6 +13,7 @@
 #import "TPKeyboardAvoidingScrollView.h"
 #import "Util.h"
 #import "EnumClass.h"
+#import "ComplainModel.h"
 
 @interface ComplainDetailViewController ()<CMPopTipViewDelegate>
 {
@@ -86,6 +87,10 @@
     btnCancel.layer.masksToBounds = YES;
     smgSelect = [[[NSUserDefaults standardUserDefaults] objectForKey:INTERFACE_OPTION] intValue];
     [self updateInterFaceWithOption:smgSelect];
+    if (_isMain) {
+        [self loadDataWithComplainOB:_obj];
+        
+    }
     util=[Util new];
     df = [[NSDateFormatter alloc] init];
    	[df setDateFormat:FORMAT_DATE];
@@ -124,12 +129,12 @@
     if([txtNgayNhan isFirstResponder]){
         [txtNgayNhan resignFirstResponder];
         txtNgayNhan.text = [NSString stringWithFormat:@"%@",
-                                    [df stringFromDate:date]];
+                            [df stringFromDate:date]];
     }
     else{
         [txtNgayXuLy resignFirstResponder];
         txtNgayXuLy.text = [NSString stringWithFormat:@"%@",
-                                   [df stringFromDate:date]];
+                            [df stringFromDate:date]];
         
     }
 }
@@ -275,6 +280,11 @@
         if (_delegate && [_delegate respondsToSelector:@selector(updateComplainDetailViewWithComplainOB:)]) {
             [_delegate updateComplainDetailViewWithComplainOB:complainOB];
         }
+        if (_isMain) {
+            ComplainModel *model =[[ComplainModel alloc] init];
+            [model updateComplainWithComplainOB:complainOB];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
     }
     
 }
@@ -401,6 +411,11 @@
     if ([self checkValid]) {
         if (_delegate && [_delegate respondsToSelector:@selector(updateComplainDetailViewWithComplainOB:)]) {
             [_delegate updateComplainDetailViewWithComplainOB:complainOB];
+        }
+        if (_isMain) {
+            ComplainModel *model =[[ComplainModel alloc] init];
+            [model updateComplainWithComplainOB:complainOB];
+            [self dismissViewControllerAnimated:YES completion:nil];
         }
     }
 }

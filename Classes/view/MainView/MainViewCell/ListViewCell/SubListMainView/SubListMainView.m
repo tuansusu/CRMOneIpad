@@ -13,6 +13,10 @@
 #import "DTOWidgetObject.h"
 #import "ComplainDetailViewController.h"
 #import "EditNoteLeadViewController.h"
+#import "Detail360ViewController.h"
+#import "DetailLeadViewController.h"
+#import "DTOACCOUNTProcess.h"
+#import "DTOACCOUNTLEADProcess.h"
 
 
 @implementation SubListMainView
@@ -102,10 +106,10 @@
         
     }else if ([_widgetOB.widgetId intValue]==WIDGET_TYPE_TKH_TIEN_GUI)
     {
-        
+        [self setShowDetail:dicTempData];
     }else if ([_widgetOB.widgetId intValue]==WIDGET_TYPE_TKH_TIN_DUNG)
     {
-        
+        [self setShowDetail:dicTempData];
     }else if ([_widgetOB.widgetId intValue]==WIDGET_TYPE_Y_KIEN_KH)
     {
         ComplainDetailViewController *complainDetailVC;
@@ -187,5 +191,23 @@
         [cell setLayoutMargins:UIEdgeInsetsZero];
     }
 }
-
+-(void)setShowDetail :(NSDictionary *)dicTempData {
+    DTOACCOUNTProcess *dtoAccoutProcess = [DTOACCOUNTProcess new];
+    NSDictionary *dicDataAccount= [dtoAccoutProcess getDataWithKey:DTOACCOUNT_clientAccountId withValue:[dicTempData objectForKey:DTOPRODUCTDETAIL_clientId]];
+    if (dicDataAccount) {
+        
+        Detail360ViewController *detail = [[Detail360ViewController alloc] init];
+        detail.dataSend= dicDataAccount;
+        [_viewController presentViewController:detail animated:YES completion:nil];
+    }else
+    {
+        DTOACCOUNTLEADProcess *dtoAccoutLeadProcess = [DTOACCOUNTLEADProcess new];
+        dicDataAccount= [dtoAccoutLeadProcess getDataWithKey:DTOLEAD_clientLeadId withValue:[dicTempData objectForKey:DTOPRODUCTDETAIL_clientId]];
+        if (dicDataAccount) {
+            DetailLeadViewController *detail =[[DetailLeadViewController alloc] init];
+            detail.dataSend = dicDataAccount;
+            [_viewController presentViewController:detail animated:YES completion:nil];
+        }
+    }
+}
 @end

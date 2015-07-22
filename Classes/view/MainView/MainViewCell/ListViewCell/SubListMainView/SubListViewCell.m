@@ -11,6 +11,7 @@
 #import "Globals.h"
 #import "DTOACCOUNTProcess.h"
 #import "DTOACCOUNTLEADProcess.h"
+#import "Util.h"
 
 @implementation SubListViewCell
 
@@ -25,15 +26,15 @@
 }
 
 +(SubListViewCell*) initNibCell{
-
+    
     NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"SubListViewCell" owner:nil options:nil];
-
+    
     for(id curentObject in topLevelObjects)
     {
         if([curentObject isKindOfClass:[SubListViewCell class]])
         {
             return (SubListViewCell *) curentObject;
-
+            
         }
     }
     
@@ -41,70 +42,70 @@
 }
 
 -(void) loadDataToCellWithData:(NSDictionary *)dicData WithWidgetObject:(DTOWidgetObject*)widgetOB{
-
+    
     NSString *title = @"";
     NSString *description=@"";
     NSString *time;
-
+    
     if ([widgetOB.widgetId intValue]==WIDGET_TYPE_TONG_HOP)
     {
         if ([StringUtil stringIsEmpty:[dicData objectForKey:DTONOTE_title]]) {
             title = @"";
-
+            
         }else{
             title = [dicData objectForKey:DTONOTE_title];
         }
-
+        
         if ([StringUtil stringIsEmpty:[dicData objectForKey:DTONOTE_content]]) {
             description = @"";
-
+            
         }else{
             description = [dicData objectForKey:DTONOTE_content];
         }
-
+        
         if ([StringUtil stringIsEmpty:[dicData objectForKey:DTONOTE_updatedDate]]) {
             time = @"";
         }else{
             time = [dicData objectForKey:DTONOTE_updatedDate ] ;
         }
-
+        
     }else if ([widgetOB.widgetId intValue]==WIDGET_TYPE_GHI_CHU)
     {
         if ([StringUtil stringIsEmpty:[dicData objectForKey:DTONOTE_title]]) {
             title = @"";
-
+            
         }else{
             title = [dicData objectForKey:DTONOTE_title];
         }
-
+        
         if ([StringUtil stringIsEmpty:[dicData objectForKey:DTONOTE_content]]) {
             description = @"";
-
+            
         }else{
             description = [dicData objectForKey:DTONOTE_content];
         }
-
+        
         if ([StringUtil stringIsEmpty:[dicData objectForKey:DTONOTE_updatedDate]]) {
             time = @"";
         }else{
             time = [dicData objectForKey:DTONOTE_updatedDate ] ;
         }
-
+        
     }else if ([widgetOB.widgetId intValue]==WIDGET_TYPE_TKH_TIEN_GUI)
     {
         if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOPRODUCTDETAIL_clientId]]) {
             title = @"";
-
+            
         }else{
             title = [dicData objectForKey:DTOPRODUCTDETAIL_clientId];
         }
-
+        
         DTOACCOUNTProcess *dtoAccoutProcess = [DTOACCOUNTProcess new];
         NSDictionary *dicDataAccount= [dtoAccoutProcess getDataWithKey:DTOACCOUNT_clientAccountId withValue:[dicData objectForKey:DTOPRODUCTDETAIL_clientId]];
         if (dicDataAccount) {
             if ([StringUtil stringIsEmpty:[dicDataAccount objectForKey:DTOACCOUNT_name]]) {
                 description = @"";
-
+                
             }else{
                 description = [dicDataAccount objectForKey:DTOACCOUNT_name];
             }
@@ -115,24 +116,24 @@
             if (dicDataAccount) {
                 if ([StringUtil stringIsEmpty:[dicDataAccount objectForKey:DTOLEAD_name]]) {
                     description = @"";
-
+                    
                 }else{
                     description = [dicDataAccount objectForKey:DTOLEAD_name];
                 }
             }
         }
-
+        
         if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOPRODUCTDETAIL_BalanceSum]]) {
             time = @"";
         }else{
-            time = [dicData objectForKey:DTOPRODUCTDETAIL_BalanceSum];
+            time =[self formatcurentcy:[dicData objectForKey:DTOPRODUCTDETAIL_BalanceSum]];
         }
-
+        
     }else if ([widgetOB.widgetId intValue]==WIDGET_TYPE_TKH_TIN_DUNG)
     {
         if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOPRODUCTDETAIL_clientId]]) {
             title = @"";
-
+            
         }else{
             title = [dicData objectForKey:DTOPRODUCTDETAIL_clientId];
         }
@@ -141,7 +142,7 @@
         if (dicDataAccount) {
             if ([StringUtil stringIsEmpty:[dicDataAccount objectForKey:DTOACCOUNT_name]]) {
                 description = @"";
-
+                
             }else{
                 description = [dicDataAccount objectForKey:DTOACCOUNT_name];
             }
@@ -152,35 +153,36 @@
             if (dicDataAccount) {
                 if ([StringUtil stringIsEmpty:[dicDataAccount objectForKey:DTOLEAD_name]]) {
                     description = @"";
-
+                    
                 }else{
                     description = [dicDataAccount objectForKey:DTOLEAD_name];
                 }
             }
         }
-
+        
         if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOPRODUCTDETAIL_BalanceSum]]) {
             time = @"";
         }else{
-            time = [dicData objectForKey:DTOPRODUCTDETAIL_BalanceSum];
+            
+            time =[self formatcurentcy:[dicData objectForKey:DTOPRODUCTDETAIL_BalanceSum]];
         }
-
+        
     }else if ([widgetOB.widgetId intValue]==WIDGET_TYPE_Y_KIEN_KH)
     {
         if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOCOMPLAIN_content]]) {
             title = @"";
-
+            
         }else{
             title = [dicData objectForKey:DTOCOMPLAIN_content];
         }
-
+        
         if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOCOMPLAIN_receivedDate]]) {
             description = @"";
-
+            
         }else{
             description = [dicData objectForKey:DTOCOMPLAIN_receivedDate];
         }
-
+        
         if ([StringUtil stringIsEmpty:[dicData objectForKey:DTOCOMPLAIN_status]]) {
             time = @"";
         }else{
@@ -195,18 +197,18 @@
     {
         if ([StringUtil stringIsEmpty:[dicData objectForKey:DTONOTE_title]]) {
             title = @"";
-
+            
         }else{
             title = [dicData objectForKey:DTONOTE_title];
         }
-
+        
         if ([StringUtil stringIsEmpty:[dicData objectForKey:DTONOTE_content]]) {
             description = @"";
-
+            
         }else{
             description = [dicData objectForKey:DTONOTE_content];
         }
-
+        
         if ([StringUtil stringIsEmpty:[dicData objectForKey:DTONOTE_updatedDate]]) {
             time = @"";
         }else{
@@ -217,30 +219,30 @@
     {
         if ([StringUtil stringIsEmpty:[dicData objectForKey:DTONOTE_title]]) {
             title = @"";
-
+            
         }else{
             title = [dicData objectForKey:DTONOTE_title];
         }
-
+        
         if ([StringUtil stringIsEmpty:[dicData objectForKey:DTONOTE_content]]) {
             description = @"";
-
+            
         }else{
             description = [dicData objectForKey:DTONOTE_content];
         }
-
+        
         if ([StringUtil stringIsEmpty:[dicData objectForKey:DTONOTE_updatedDate]]) {
             time = @"";
         }else{
             time = [dicData objectForKey:DTONOTE_updatedDate ] ;
         }
-
+        
     }
-
+    
     lblTitle.text = title;
     lblDescription.text = description;
     lblTime.text = time;
-
+    
 }
 
 - (void)awakeFromNib {
@@ -249,8 +251,31 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
-
+-(NSString *)formatcurentcy: (NSString *)money{
+    
+    // Parse final integer value
+    NSInteger centAmount = money.integerValue;
+    // Check the user input
+    if (money.length > 0)
+    {
+        // Digit added
+        centAmount = centAmount * 10 + money.integerValue;
+    }
+    else
+    {
+        // Digit deleted
+        centAmount = centAmount / 10;
+    }
+    // Update call amount value
+    NSNumber *amount = [[NSNumber alloc] initWithFloat:(float)centAmount / 100.0f];
+    // Write amount with currency symbols to the textfield
+    NSNumberFormatter *_currencyFormatter = [[NSNumberFormatter alloc] init];
+    [_currencyFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [_currencyFormatter setCurrencyCode:@"đ"];
+    [_currencyFormatter setNegativeFormat:@"-¤#,##0.00"];
+    return  [_currencyFormatter stringFromNumber:amount];
+}
 @end

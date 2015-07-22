@@ -244,7 +244,7 @@
                                 <tabBarItem tag="2" title="Sản phẩm" image="Product-32.png" id="9m0-Yx-rzk"/>
                                 <tabBarItem tag="3" title="Công việc" image="icon_opp_task.png" id="hbN-Hw-wuu"/>
                                 <tabBarItem tag="4" title="Ghi chú" image="note_tabbar.png" id="iMD-zL-ihP"/>
-                                <tabBarItem tag="5" title="Lịch" image="calendar_tabbar.png" selectedImage="ic-add-sub-1.png" id="bLZ-Ux-JRi"/>
+                                <tabBarItem tag="5" title="Lịch" image="calendar_tabbar.png" id="bLZ-Ux-JRi"/>
                             </items>
                             <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
